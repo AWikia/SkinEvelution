@@ -1,0 +1,59 @@
+	<header class="mpisto-sticky-header-container">
+		<a class="wordmark" href="{{link-mainpage}}">
+			{{#data-logos}}
+				{{#icon}}<img src="{{.}}">{{/icon}}
+				{{#wordmark}}<img src="{{src}}">{{/wordmark}}
+			{{/data-logos}}
+		</a>
+		<h1 class="title cell" style="text-align:left" translate="no">
+			<a href="{{link-mainpage}}">{{msg-sitetitle}}</a>
+		</h1>
+		<div class="counters cell">
+			<div class="counter articles"><big>{{html-articlecount}}</big> <span>{{msg-eve-pages}}</span></div>
+			<div class="counter photos"><big>{{html-filecount}}</big> <span>{{msg-eve-files}}</span></div>
+		</div>
+		{{#data-portlets-sidebar}}
+			{{#data-portlets-first}}{{>PortletSLN}}{{/data-portlets-first}}
+		{{/data-portlets-sidebar}}
+		<div class="cpe-dropdown local-navigation">
+			<a class="link cell cpe-dropdown__toggle" title="{{msg-eve-navigation-rest}}">
+				<span class="cpe-icon cpe-icon-large cpe-dropdown__toggle-chevron material-icons-outlined">
+					arrow_drop_down
+				</span>
+			</a>
+			<div class="cpe-dropdown__content cpe-is-right-aligned cpe-is-not-scrollable">
+				<ul class="cpe-list cpe-is-linked">
+							{{#data-portlets-sidebar}}
+							{{#array-portlets-rest}}{{>PortletSLN2}}{{/array-portlets-rest}}
+							{{/data-portlets-sidebar}}
+				</ul>
+			</div>
+		</div>
+		<a class="link cell" title="{{msg-recentchanges}}"  href="{{html-mainurl}}Special:RecentChanges">
+			<span class="cpe-icon material-icons-outlined">
+			trending_up
+			</span>
+		</a>
+		<a class="link cell dark-mode darkmode-off" title="{{msg-eve-darkmode}}">
+			<span class="cpe-icon material-icons-outlined">
+			brightness_2
+			</span>
+		</a>
+		<a class="link cell dark-mode darkmode-on" title="{{msg-eve-lightmode}}">
+			<span class="cpe-icon material-icons-outlined">
+			light_mode
+			</span>
+		</a>
+		<a class="link cell" title="{{msg-eve-files}}"  href="{{html-mainurl}}Special:NewFiles">
+			<span class="cpe-icon material-icons-outlined">
+			photo_library
+			</span>
+		</a>
+		<a class="link cell" title="{{msg-mediastatistics-header-video}}"  href="{{html-mainurl}}Special:NewFiles?like=&user=&mediatype%5B%5D=VIDEO&start=&end=&wpFormIdentifier=specialnewimages&limit=50&offset=">
+			<span class="cpe-icon material-icons-outlined">
+			videocam
+			</span>
+		</a>
+		<a class="link cell" title="CSS" href="{{html-mainurl}}MediaWiki:Evelution.css"><svg xmlns="http://www.w3.org/2000/svg" class="cpe-icon" enable-background="new 0 0 24 24" height="28px" viewBox="0 0 24 24" width="28px" fill="currentColor"><g><rect fill="none" height="24" width="24"/></g><g><g><g><g><path d="M12,22C6.49,22,2,17.51,2,12S6.49,2,12,2s10,4.04,10,9c0,3.31-2.69,6-6,6h-1.77c-0.28,0-0.5,0.22-0.5,0.5 c0,0.12,0.05,0.23,0.13,0.33c0.41,0.47,0.64,1.06,0.64,1.67C14.5,20.88,13.38,22,12,22z M12,4c-4.41,0-8,3.59-8,8s3.59,8,8,8 c0.28,0,0.5-0.22,0.5-0.5c0-0.16-0.08-0.28-0.14-0.35c-0.41-0.46-0.63-1.05-0.63-1.65c0-1.38,1.12-2.5,2.5-2.5H16 c2.21,0,4-1.79,4-4C20,7.14,16.41,4,12,4z"/><circle cx="6.5" cy="11.5" r="1.5"/><circle cx="9.5" cy="7.5" r="1.5"/><circle cx="14.5" cy="7.5" r="1.5"/><circle cx="17.5" cy="11.5" r="1.5"/></g></g></g></g></svg>
+		</a>
+	</header>

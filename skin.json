@@ -1,0 +1,119 @@
+{
+  "name": "Evelution",
+  "version": "1.4.0",
+  "namemsg": "skinname-evelution",
+  "descriptionmsg": "evelution-skin-desc",
+  "url": "https://www.mediawiki.org/wiki/Skin:Evelution",
+  "author": [
+    "Qora Qore Telecommunities"
+  ],
+  "type": "skin",
+  "requires": {
+    "MediaWiki": ">= 1.36.0"
+  },
+  "license-name": "GPL-2.0-or-later",
+  "manifest_version": 2,
+	"AutoloadClasses": {
+		"SkinEvelution": "SkinEvelution.php"
+	},
+  "ValidSkinNames": {
+    "evelution": {
+      "class": "SkinEvelution",
+      "args": [
+        {
+          "name": "Evelution",
+          "responsive": true,
+          "templateDirectory": "skins/Evelution/templates/",
+          "messages": [
+            "eve-theme",
+            "eve-themes",
+            "eve-explore",
+            "eve-themes",
+            "eve-togglesize",
+            "eve-pages",
+            "eve-files",
+            "eve-darkmode",
+            "eve-lightmode",
+            "eve-navigation-rest",
+            "sitetitle",
+            "searchsuggest-search",
+            "search",
+            "otherlanguages",
+            "tagline",
+            "whatlinkshere",
+            "log",
+            "specialpages",
+            "upload",
+            "personaltools",
+            "pageinfo-toolboxlink",
+            "history",
+            "randompage",
+            "recentchanges",
+            "otherlanguages",
+            "namespaces",
+            "mediastatistics-header-video",
+            "navigation"
+          ],
+          "styles": [
+            "skins.evelution.styles",
+            "mediawiki.ui.icon",
+            "mediawiki.ui.button"
+          ]
+        }
+      ]
+    }
+  },
+  "MessagesDirs": {
+    "Evelution": [
+      "i18n"
+    ]
+  },
+  "ResourceFileModulePaths": {
+    "localBasePath": "",
+    "remoteSkinPath": "Evelution"
+  },
+  "ResourceModules": {
+    "skins.evelution.styles": {
+      "class": "ResourceLoaderSkinModule",
+      "features": {
+        "normalize": true,
+        "elements": true,
+        "content-tables": true,
+        "content-links": true,
+        "content-thumbnails": true,
+        "interface-category": true,
+        "toc": true
+      },
+      "targets": [
+        "desktop",
+        "mobile"
+      ],
+      "styles": [
+        "resources/CPE.css",
+        "resources/Evelution.css",
+        "resources/Breakpoints.css",
+        "resources/Headroom.css",
+        "resources/OOUI.css"
+      ]
+    },
+    "skins.evelution": {
+      "targets": [
+        "desktop",
+        "mobile"
+      ],
+      "packageFiles": [
+        "resources/chroma.js"
+      ]
+    },
+    "skins.evelution2": {
+      "targets": [
+        "desktop",
+        "mobile"
+      ],
+      "packageFiles": [
+        "resources/themes.js"
+      ]
+    }
+
+  }
+}
