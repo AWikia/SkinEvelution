@@ -1,4 +1,3 @@
-# Blurp
 _QQC is back on MediaWiki with the hybrid Mustache/JS powered theme Evelution, from the makers of CPE Blocks and Qora Qore_
 
 # Description
