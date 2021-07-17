@@ -1,3 +1,6 @@
+# Blurp
+_QQC is back on MediaWiki with the hybrid Mustache/JS powered theme Evelution, from the makers of CPE Blocks and Qora Qore_
+
 # Description
 Evelution is a Next Gen Skin for MediaWiki. Designed to improve reading has four different thems that you can use them on a page-basis. With the inclusion of a Dark Mode, you can read pages with fewer eye stress.
 
