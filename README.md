@@ -5,6 +5,9 @@ With the inclusion of Sticky sidebars and Sticky Community Header, you can have 
 
 Evelution Desktop Skin in two different main Breakpoint Sizes, 705px & 1280px
 
+# Requirements
+To Run Evelution on your wiki, you must have MediaWiki 1.36 or greater. Older versions are not supported
+
 # Installation
 To Install Evelution, you must download the reposistory first. Make a folder called **Evelution** in **Skins** diractory where you have installed MediaWiki and extract the zipped file contents in **Evelution** folder.  Lastly, put this in **LocalSettings.php**:
 ```php
