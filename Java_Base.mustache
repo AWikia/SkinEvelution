@@ -1,0 +1,339 @@
+﻿/* Dropdowns */
+// Function to be used on the first child of .cpe-dropdown container
+function DropDown() {
+$(' .cpe-dropdown')
+        .click(function(e) {
+            var $this = $(this);
+			if ($this.hasClass('cpe-is-active')) {
+            $this.removeClass('cpe-is-active');
+		$(' .cpe-dropdown').off( "click" );			
+
+ return;
+			}
+			e.preventDefault();
+			$this.addClass('cpe-is-active');
+		$(' .cpe-dropdown').off( "click" );			
+        });
+}
+
+// Calls the function on all toggles
+function DropDownUpdate() {
+$('.cpe-dropdown > :first-child').off( "click" );			
+$('.cpe-dropdown').off( "mouseleave" );	
+// Process Menus		
+$(".cpe-dropdown > :first-child")
+					.click( function(e) { 
+						e.preventDefault(); 
+						DropDown(); 
+					});
+					
+// Close dropdowns on mouse leave
+$(' .cpe-dropdown')
+.mouseleave(function() {
+            $(this).removeClass('cpe-is-active');
+        });
+
+}
+
+/* Select Inputs */
+$(' .cpe-dropdown.cpe-select .cpe-dropdown__content .cpe-list li:not(.cpe-dropdown-level-2)')
+.click(function(e) {
+						e.preventDefault();
+						var value = $(this).attr("value");
+						$(' .cpe-dropdown.cpe-select')
+						.click(function() {
+									var content = $('.cpe-select.cpe-is-active .cpe-dropdown__content .cpe-list li:not(.cpe-dropdown-level-2):hover > a').html();
+									$('.cpe-select.cpe-is-active .cpe-select__value').attr("value", value);
+									$('.cpe-select.cpe-is-active .cpe-select__value').html(content);
+									$(this).removeClass('cpe-is-active');
+									$(' .cpe-dropdown.cpe-select').off( "click" );
+								});
+        });
+
+
+
+/* Enable New Global Navigation - No exception for now */
+window.MW18newnavblock=false;
+(function () {
+	AliasFandomComponents();
+	$(' container > main').attr('wide', 'false');
+	$(".cpe-dropdown__content .cpe-list .ThemeA")
+						.click( function(e) { 
+							e.preventDefault(); 
+							HCa(); 
+						});
+	$(".cpe-dropdown__content .cpe-list  .ThemeB")
+						.click( function(e) { 
+							e.preventDefault(); 
+							HCb(); 
+						});
+	$(".cpe-dropdown__content .cpe-list  .ThemeC")
+						.click( function(e) { 
+							e.preventDefault(); 
+							HCc(); 
+						});
+	$(".cpe-dropdown__content .cpe-list .ThemeD")
+						.click( function(e) { 
+							e.preventDefault(); 
+							HCd(); 
+						});
+
+	DropDownUpdate();
+	if (window.MW18newnavblock === true) {
+		return
+	}
+/*
+	if ($("body.mpisto-2018").length || $("body.mpisto-discuss-2018").length) {
+		document.querySelector('.mpisto-gnav[style]').className += " newnav";
+		document.querySelector('.mpisto-gnav:not([style])').className += " newnav";
+	}
+*/
+})();
+
+
+/* Module Toggle */
+function ToggleModule() {
+
+		$('.mpisto-module')
+				.click(function() {
+						var $this = $(this);
+						if ($this.hasClass("hidden-module")) {
+							$this.removeClass("hidden-module");
+						} else {
+							$this.addClass("hidden-module");
+						}
+
+						$('.mpisto-module').off( "click" );
+
+
+			});
+
+}
+
+/* Banners */
+function RemoveBanner() {
+$('#floatingbanner .cpe-banner-notification')
+	.click(function() {
+		var $this= $(this);
+		$this.addClass("cpe-is-transparent")
+		setTimeout(
+		(function () {
+			$this.remove();
+			$('#floatingbanner .cpe-banner-notification').off( "click" );
+	if (!($("#floatingbanner .cpe-banner-notification").length)) {
+		$('#floatingbanner').remove();
+	}
+		}),405);
+	}
+	);
+	
+
+}
+
+function AddFloatingBanner(content='Sample Content',kind='message',extraclass='') {
+	if (kind === 'warning') {
+		var icon = 'cpe-icons-alert-small'
+	} else if (kind === 'alert') {
+		var icon = 'cpe-icons-error-small'
+	} else if (kind === 'success') {
+		var icon = 'cpe-icons-checkmark-small'
+	} else {
+		var icon = 'cpe-icons-flag-small'
+	}
+	if (!($(".top-gap #floatingbanner").length)) {
+		$('.top-gap').prepend ( 
+			  '<div class="cpe-banner-notification__container" id="floatingbanner">' +
+			  '\n</div>'
+		);
+	}
+
+	$('.top-gap #floatingbanner').append ( 
+			'<div class=" cpe-banner-notification cpe-' + kind + '" id="' + extraclass  + '">' +
+			  '<div class="cpe-banner-notification__icon">' +
+				'<svg xmlns="http://www.w3.org/2000/svg" class="cpe-icon cpe-icon-small">' +
+				  '<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#' + icon +'" />' +
+				'</svg>' +
+			  '</div>' +
+			  '<span class="cpe-banner-notification__text">' + content + '</span>' +
+			  '<svg onclick="RemoveBanner()" xmlns="http://www.w3.org/2000/svg" class="cpe-banner-notification__close cpe-icon cpe-icon-tiny">' +
+				'<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#cpe-icons-cross-tiny" />' +
+			  '</svg>' +
+			'</div>' 
+	);
+
+
+}
+
+/* Width Toggler */
+function ToggleWidth() {
+	if 	($(' container > main').attr('wide') == 'true') {
+		$(' container > main').attr('wide', 'false');
+	} else {
+		$(' container > main').attr('wide', 'true');
+	}
+
+}
+
+
+function AliasFandomComponents() {
+
+	var highlightedItems = document.querySelectorAll(":not(svg)[class*='wds-']");
+
+	while ($(':not(svg)[class*="wds-"]').length > 0) {
+		highlightedItems.forEach(function(x) {
+			x.className = x.className.replace("wds-midlight-aqua", "cpe-midlight-color");
+			x.className = x.className.replace("wds-", "cpe-");
+		});
+	}
+
+
+}
+
+
+/* Part of this Skin */
+(function () {
+RemoveEmptyMenus();
+initializeViews();
+	$(".mpisto-global-sidebar.mpisto-global-navigation .link.toggle-size")
+						.click( function(e) { 
+							e.preventDefault(); 
+							ToggleWidth(); 
+						});
+	$(".mpisto-header-container .link.dark-mode, .mpisto-sticky-header-container .link.dark-mode")
+						.click( function(e) { 
+							e.preventDefault(); 
+							ToggleMode(); 
+						});
+
+	$(".cpe-dropdown__content .cpe-list .ThemeA")
+						.click( function(e) { 
+							e.preventDefault(); 
+							HCa(); 
+						});
+	$(".cpe-dropdown__content .cpe-list  .ThemeB")
+						.click( function(e) { 
+							e.preventDefault(); 
+							HCb(); 
+						});
+	$(".cpe-dropdown__content .cpe-list  .ThemeC")
+						.click( function(e) { 
+							e.preventDefault(); 
+							HCc(); 
+						});
+	$(".cpe-dropdown__content .cpe-list .ThemeD")
+						.click( function(e) { 
+							e.preventDefault(); 
+							HCd(); 
+						});
+
+})();
+
+
+function initializeViews() {
+	$(".mpisto-page-header-contribution-buttons .actions > li > a").attr('class','cpe-button'); // Add the CPE button class
+	$(".mpisto-page-header-contribution-buttons .views > li > a").attr('class','cpe-button cpe-is-secondary'); // Add the CPE button class
+// Views
+	// Talk Pages
+	$(".mpisto-page-header-contribution-buttons .views > li#ca-talk > a").prepend(
+	'<span class="cpe-icon cpe-icon-small margined material-icons-outlined">' +
+	'								chat_bubble_outlined' +
+	'							</span>'
+	);
+	// Mainspace, Projectspace
+	$(".mpisto-page-header-contribution-buttons .views > li#ca-nstab-main > a, .mpisto-page-header-contribution-buttons .views > li#ca-nstab-project > a").prepend(
+	'<span class="cpe-icon cpe-icon-small margined material-icons-outlined">' +
+	'								description' +
+	'							</span>'
+	);
+	// Special Pages, MediaWiki
+	$(".mpisto-page-header-contribution-buttons .views > li#ca-nstab-special > a, .mpisto-page-header-contribution-buttons .views > li#ca-nstab-mediawiki > a").prepend(
+	'<span class="cpe-icon cpe-icon-small margined material-icons-outlined">' +
+	'								settings' +
+	'							</span>'
+	);
+	// Userspace
+	$(".mpisto-page-header-contribution-buttons .views > li#ca-nstab-user > a").prepend(
+	'<span class="cpe-icon cpe-icon-small margined material-icons-outlined">' +
+	'								account_circle' +
+	'							</span>'
+	);
+	// Filespace
+	$(".mpisto-page-header-contribution-buttons .views > li#ca-nstab-image > a").prepend(
+	'<span class="cpe-icon cpe-icon-small margined material-icons-outlined">' +
+	'								image' +
+	'							</span>'
+	);
+	// Help
+	$(".mpisto-page-header-contribution-buttons .views > li#ca-nstab-help > a").prepend(
+	'<span class="cpe-icon cpe-icon-small margined material-icons-outlined">' +
+	'								help_outline' +
+	'							</span>'
+	);
+	// templates
+	$(".mpisto-page-header-contribution-buttons .views > li#ca-nstab-template > a, .mpisto-page-header-contribution-buttons .views > li#ca-nstab-module > a").prepend(
+	'<span class="cpe-icon cpe-icon-small margined material-icons-outlined">' +
+	'								bookmark_border' +
+	'							</span>'
+	);
+	// Categories
+	$(".mpisto-page-header-contribution-buttons .views > li#ca-nstab-category > a").prepend(
+	'<span class="cpe-icon cpe-icon-small margined material-icons-outlined">' +
+	'								grid_view' +
+	'							</span>'
+	);
+
+
+// Actions
+	$(".mpisto-page-header-contribution-buttons .actions > li#ca-view > a").prepend(
+	'<span class="cpe-icon cpe-icon-small margined material-icons-outlined">' +
+	'								description' +
+	'							</span>'
+	);
+	$(".mpisto-page-header-contribution-buttons .actions > li#ca-edit > a, .mpisto-page-header-contribution-buttons .actions > li#ca-ve-edit > a, .mpisto-page-header-contribution-buttons .actions > li#ca-create > a").prepend(
+	'<span class="cpe-icon cpe-icon-small margined material-icons-outlined">' +
+	'								edit' +
+	'							</span>'
+	);
+	$(".mpisto-page-header-contribution-buttons .actions > li#ca-viewsource > a").prepend(
+	'<span class="cpe-icon cpe-icon-small margined material-icons-outlined">' +
+	'								lock' +
+	'							</span>'
+	);
+
+	$(".mpisto-page-header-contribution-buttons .actions > li#ca-view-foreign > a").prepend(
+	'<span class="cpe-icon cpe-icon-small margined material-icons-outlined">' +
+	'								flag' +
+	'							</span>'
+	);
+	$(".mpisto-page-header-contribution-buttons .actions > li#ca-history > a").prepend(
+	'<span class="cpe-icon cpe-icon-small margined material-icons-outlined">' +
+	'								history' +
+	'							</span>'
+	);
+
+}
+
+function RemoveEmptyMenus() {
+// Remove the Language Dropdown, if no languages exist
+	var langmenu = document.querySelector(".mpisto-global-navigation.mpisto-global-sidebar .language-menu");
+
+	if (! ($(".mpisto-global-navigation.mpisto-global-sidebar .language-menu .cpe-dropdown__content .cpe-list").length) ) {
+		$(langmenu).remove();
+	}
+
+	var langmenu3 = document.querySelector(".mpisto-global-navigation.mpisto-global-sidebar .variants-menu");
+
+	if (! ($(".mpisto-global-navigation.mpisto-global-sidebar .variants-menu .cpe-dropdown__content .cpe-list > li").length) ) {
+		$(langmenu3).remove();
+	}
+
+
+	var langmenu2 = document.querySelector(".mpisto-page-header .more-actions-menu");
+
+	if (! ($(".mpisto-page-header .more-actions-menu .cpe-dropdown__content .cpe-list > li").length) ) {
+		$(langmenu2).remove();
+	}
+
+
+}
+
