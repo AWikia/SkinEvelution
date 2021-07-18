@@ -1,3 +1,4 @@
+/*
 .theme-A[visualcolors="standard"] {
 --background-image:url("QoreBG1.png");
 --background-color:#250a00;
@@ -50,6 +51,56 @@
 --community-header-bg:#ffb600;
 --floating-header-bg:#ffdb80;
 }
+*/
+
+ .theme-A[visualcolors="standard"] {
+--background-image:url("");
+--background-color:#f6f6f6;
+--link-color:#00d6d6;
+--content-bg:#ffffff;
+--content-border:#cccccc;
+--content-color:#002a32;
+--button-color:#00D6D6;
+--community-header-bg:#13282c;
+--floating-header-bg:auto;
+}
+
+.theme-B[visualcolors="standard"] {
+--background-image:url("");
+--background-color:#f6f6f6;
+--link-color:#00b7e0;
+--content-bg:#ffffff;
+--content-border:#cccccc;
+--content-color:#1a1a1a;
+--button-color:#00B7E0;
+--community-header-bg:#404a57;
+--floating-header-bg:auto;
+}
+
+.theme-C[visualcolors="standard"] {
+--background-image:url("");
+--background-color:#002a32;
+--link-color:#1a5eb8;
+--content-bg:#0e191a;
+--content-border:#7f9998;
+--content-color:#d4d5d5;
+--button-color:#1a5eb8;
+--community-header-bg:#404a56;
+--floating-header-bg:auto;
+}
+
+.theme-D[visualcolors="standard"] {
+--background-image:url("");
+--background-color:#002a32;
+--link-color:#5f7a7b;
+--content-bg:#0e191a;
+--content-border:#7f9998;
+--content-color:#f2f5f5;
+--button-color:#5f7a7b;
+--community-header-bg:#becfd0;
+--floating-header-bg:auto;
+}
+
 
 :root {
 --max-width:1500px;
@@ -234,6 +285,11 @@ container > main {
 	top:0;
 }
 
+body[dark-mode="true"] .mpisto-global-sidebar {
+	--global-nav-link-background-active:var(--link-color-blend-rgb);
+	--global-nav-link-color-active:var(--link-color-blend-light);
+}
+
 .cpe-list li + li.empty {
 	display:none;
 }
@@ -361,10 +417,13 @@ container > main {
 	}*/
 
 	.mpisto-global-sidebar .link:active, .mpisto-global-sidebar .link:focus, .mpisto-global-sidebar .cpe-dropdown.cpe-is-active .link {
-	background-color:rgba(var(--global-nav-link-background-active), 0.3);
-	color:var(--global-nav-link-color-active);
+		background-color:rgba(var(--global-nav-link-background-active), 0.3);
+		color:var(--global-nav-link-color-active);
 	}
 
+	body[dark-mode="true"] .mpisto-global-sidebar .link:active, .mpisto-global-sidebar .link:focus, .mpisto-global-sidebar .cpe-dropdown.cpe-is-active .link {
+		background-color:rgba(var(--global-nav-link-background-active), 0.35);
+	}
 
 	.mpisto-global-sidebar .explore-menu .link .cpe-icon {
 		transform:rotate(0deg);
