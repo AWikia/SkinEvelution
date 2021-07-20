@@ -232,84 +232,146 @@ initializeViews();
 function initializeViews() {
 	$(".mpisto-page-header-contribution-buttons .actions > li > a").attr('class','cpe-button'); // Add the CPE button class
 	$(".mpisto-page-header-contribution-buttons .views > li > a").attr('class','cpe-button'); // Add the CPE button class
-// Views
+/* Views */
+
 	// Talk Pages
 	$(".mpisto-page-header-contribution-buttons .views > li#ca-talk > a").prepend(
 	'<span class="cpe-icon cpe-icon-small margined material-icons-outlined">' +
 	'								chat_bubble_outlined' +
 	'							</span>'
 	);
+
+	// Translation (Translate Extension)
+	$(".mpisto-page-header-contribution-buttons .views > li#ca-translate > a").prepend(
+	'<span class="cpe-icon cpe-icon-small margined material-icons-outlined">' +
+	'								translate' +
+	'							</span>'
+	);
+
+
 	// Mainspace, Projectspace
 	$(".mpisto-page-header-contribution-buttons .views > li#ca-nstab-main > a, .mpisto-page-header-contribution-buttons .views > li#ca-nstab-project > a").prepend(
 	'<span class="cpe-icon cpe-icon-small margined material-icons-outlined">' +
 	'								description' +
 	'							</span>'
 	);
-	// Special Pages, MediaWiki
-	$(".mpisto-page-header-contribution-buttons .views > li#ca-nstab-special > a, .mpisto-page-header-contribution-buttons .views > li#ca-nstab-mediawiki > a").prepend(
+	
+	// Special Pages, MediaWiki, Extension, API
+	$(".mpisto-page-header-contribution-buttons .views > li#ca-nstab-special > a, .mpisto-page-header-contribution-buttons .views > li#ca-nstab-mediawiki > a , .mpisto-page-header-contribution-buttons .views > li#ca-nstab-extension > a, .mpisto-page-header-contribution-buttons .views > li#ca-nstab-topic > a").prepend(
 	'<span class="cpe-icon cpe-icon-small margined material-icons-outlined">' +
 	'								settings' +
 	'							</span>'
 	);
+	
 	// Userspace
 	$(".mpisto-page-header-contribution-buttons .views > li#ca-nstab-user > a").prepend(
 	'<span class="cpe-icon cpe-icon-small margined material-icons-outlined">' +
 	'								account_circle' +
 	'							</span>'
 	);
+	
 	// Filespace
 	$(".mpisto-page-header-contribution-buttons .views > li#ca-nstab-image > a").prepend(
 	'<span class="cpe-icon cpe-icon-small margined material-icons-outlined">' +
 	'								image' +
 	'							</span>'
 	);
+	
 	// Help
 	$(".mpisto-page-header-contribution-buttons .views > li#ca-nstab-help > a").prepend(
 	'<span class="cpe-icon cpe-icon-small margined material-icons-outlined">' +
 	'								help_outline' +
 	'							</span>'
 	);
-	// templates
+	
+	// Templates, modules
 	$(".mpisto-page-header-contribution-buttons .views > li#ca-nstab-template > a, .mpisto-page-header-contribution-buttons .views > li#ca-nstab-module > a").prepend(
 	'<span class="cpe-icon cpe-icon-small margined material-icons-outlined">' +
 	'								bookmark_border' +
 	'							</span>'
 	);
+	
 	// Categories
 	$(".mpisto-page-header-contribution-buttons .views > li#ca-nstab-category > a").prepend(
 	'<span class="cpe-icon cpe-icon-small margined material-icons-outlined">' +
 	'								grid_view' +
 	'							</span>'
 	);
+	
+	// Manual
+	$(".mpisto-page-header-contribution-buttons .views > li#ca-nstab-manual > a, .mpisto-page-header-contribution-buttons .views > li#ca-nstab-tutorial > a").prepend(
+	'<span class="cpe-icon cpe-icon-small margined material-icons-outlined">' +
+	'								build' +
+	'							</span>'
+	);
+	
+	// Thread, Topic, Forum
+	$(".mpisto-page-header-contribution-buttons .views > li#ca-nstab-thread > a, .mpisto-page-header-contribution-buttons .views > li#ca-nstab-topic > a, .mpisto-page-header-contribution-buttons .views > li#ca-nstab-forum > a").prepend(
+	'<span class="cpe-icon cpe-icon-small margined material-icons-outlined">' +
+	'								question_answer' +
+	'							</span>'
+	);
+	
+	// Skin
+	$(".mpisto-page-header-contribution-buttons .views > li#ca-nstab-skin > a").prepend(
+	'<span class="cpe-icon cpe-icon-small margined material-icons-outlined">' +
+	'								palette' +
+	'							</span>'
+	);
 
 
-// Actions
+/* Actions */
+
+	// View
 	$(".mpisto-page-header-contribution-buttons .actions > li#ca-view > a").prepend(
 	'<span class="cpe-icon cpe-icon-small margined material-icons-outlined">' +
 	'								description' +
 	'							</span>'
 	);
+	
+	// Edit
 	$(".mpisto-page-header-contribution-buttons .actions > li#ca-edit > a, .mpisto-page-header-contribution-buttons .actions > li#ca-ve-edit > a, .mpisto-page-header-contribution-buttons .actions > li#ca-create > a").prepend(
 	'<span class="cpe-icon cpe-icon-small margined material-icons-outlined">' +
 	'								edit' +
 	'							</span>'
 	);
+	
+	// View Source
 	$(".mpisto-page-header-contribution-buttons .actions > li#ca-viewsource > a").prepend(
 	'<span class="cpe-icon cpe-icon-small margined material-icons-outlined">' +
 	'								lock' +
 	'							</span>'
 	);
 
-	$(".mpisto-page-header-contribution-buttons .actions > li#ca-view-foreign > a").prepend(
+	// Foreign View, Lanaguage Stats (Translate Extension)
+	$(".mpisto-page-header-contribution-buttons .actions > li#ca-view-foreign > a, .mpisto-page-header-contribution-buttons .actions > li#ca-lstats > a").prepend(
 	'<span class="cpe-icon cpe-icon-small margined material-icons-outlined">' +
 	'								flag' +
 	'							</span>'
 	);
+
+	// History
 	$(".mpisto-page-header-contribution-buttons .actions > li#ca-history > a").prepend(
 	'<span class="cpe-icon cpe-icon-small margined material-icons-outlined">' +
 	'								history' +
 	'							</span>'
 	);
+
+	// Group Statistics (Translate Extension)
+	$(".mpisto-page-header-contribution-buttons .actions > li#ca-mstats > a").prepend(
+	'<span class="cpe-icon cpe-icon-small margined material-icons-outlined">' +
+	'								trending_up' +
+	'							</span>'
+	);
+
+
+	// Export
+	$(".mpisto-page-header-contribution-buttons .actions > li#ca-export > a").prepend(
+	'<span class="cpe-icon cpe-icon-small margined material-icons-outlined">' +
+	'								file_download' +
+	'							</span>'
+	);
+
 
 }
 
@@ -327,12 +389,19 @@ function RemoveEmptyMenus() {
 		$(langmenu3).remove();
 	}
 
+	var langmenu4 = document.querySelector(".mpisto-global-navigation.mpisto-global-sidebar .notices-menu");
+
+	if (! ($("div:not([class]) .cpe-list.cpe-is-linked #pt-notifications-alert").length) ) {
+		$(langmenu4).remove();
+	}
+
 
 	var langmenu2 = document.querySelector(".mpisto-page-header .more-actions-menu");
 
 	if (! ($(".mpisto-page-header .more-actions-menu .cpe-dropdown__content .cpe-list > li").length) ) {
 		$(langmenu2).remove();
 	}
+
 
 
 }
