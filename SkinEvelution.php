@@ -19,6 +19,13 @@ class SkinEvelution extends SkinMustache {
         $data["html-js-link"] = Title::newFromText( 'MediaWiki:Common.js' )->getLocalURL();
         $data["html-spages-link"] = Title::newFromText( 'Special:SpecialPages' )->getLocalURL();
         $data["html-notices-link"] = Title::newFromText( 'Special:Notifications' )->getLocalURL();
+        $data["html-logs-link"] = Title::newFromText( 'Special:Logs' )->getLocalURL();
+        $data["html-upload-link"] = Title::newFromText( 'Special:Upload' )->getLocalURL();
+        $data["html-rpage-link"] = Title::newFromText( 'Special:Random' )->getLocalURL();
+        $data["html-whatlinks-link"] = Title::newFromText( 'Special:WhatLinksHere' )->getLocalURL();
+        $data["html-info-link"] = Title::newFromText( 'Special:PageInfo' )->getLocalURL();
+        $data["html-history-link"] = Title::newFromText( 'Special:PageHistory' )->getLocalURL();
+        $data["html-mcontent-link"] = Title::newFromText( 'Special:ChangeContentModel' )->getLocalURL();
         return $data;
     }
 }

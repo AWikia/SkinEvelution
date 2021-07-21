@@ -30,17 +30,12 @@ UpdateMisc();
 		'<link rel="favicon" href="favicon.ico">'
 		);	
 	}
-	if ($("body.options").length) {
-		UpdateSet()
-		CompileRecColors();
-		CompileChosenThems();
-	}
 		$("head").append(
 		'<meta name="color-scheme" content="light dark">'
 		);	
 		$('body').attr("cursor", "mpisto");
 		CursorT('auto');
-		colortheme('auto');
+		// colortheme('auto');
 		$("head").append('<style class="social-colors"></style>');
 		ManagerRows(); // For Task Manager Only
 		VisualStyleCompile(); // Compiles the Contrast Options
@@ -79,10 +74,6 @@ function VisualStyle(style) {
 	} else {
 		$('html').attr("visualtheme", visualThemes[style]);
 	}
-	if ($("body.options").length) {
-		$("input[class*='CPEVisual']").removeAttr('checked');
-		document.querySelector('input#CPEVisual_' + style ).checked = true;
-	}
 		ThemeColorMetaTag();
 }
 
@@ -108,75 +99,11 @@ function VisualStyleCompile() {
 // In the Visual Styles Dropdown
 /* Visual Styles */
 	for (let i = 0; i < visualThemes.length; i++) {
-		if ($("body.options").length) {
-			str = '<br><input type="radio" name="CPEVisual" id="CPEVisual_' + i + '" onclick="VisualStyle(' + i + ')"></input> <label for="CPEVisual_' + i + '">' + visualThemeNames[i] + '</label>'
-			$(".highcontrastmodes.cpe-visual-styles").append(str);
-
-		}
 		str = '<li><a onclick="VisualStyle(' + i + ')">' + visualThemeNames[i] + '</a></li>'
 		$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-styles").append(str);
 	}
 /* Visual Colors */
 	for (let i = 0; i < visualColors.length; i++) {
-		if ($("body.options").length) {
-//			str = '<br><input type="radio" name="CPEVisualColor" id="CPEVisualColor_' + i + '" onclick="VisualColor(' + i + ')"></input> <label for="CPEVisualColor_' + i + '">' + visualColorNames[i] + '</label>'
-			str = '		<div class="fieldset store-theme-card">' +
-'			<fieldset>' +
-'			<h2> ' +
-'			<svg xmlns="http://www.w3.org/2000/svg" class="cpe-icon" enable-background="new 0 0 24 24" height="28px" viewBox="0 0 24 24" width="28px" fill="currentColor"><g><rect fill="none" height="24" width="24"/></g><g><g><g><g><path d="M12,22C6.49,22,2,17.51,2,12S6.49,2,12,2s10,4.04,10,9c0,3.31-2.69,6-6,6h-1.77c-0.28,0-0.5,0.22-0.5,0.5 c0,0.12,0.05,0.23,0.13,0.33c0.41,0.47,0.64,1.06,0.64,1.67C14.5,20.88,13.38,22,12,22z M12,4c-4.41,0-8,3.59-8,8s3.59,8,8,8 c0.28,0,0.5-0.22,0.5-0.5c0-0.16-0.08-0.28-0.14-0.35c-0.41-0.46-0.63-1.05-0.63-1.65c0-1.38,1.12-2.5,2.5-2.5H16 c2.21,0,4-1.79,4-4C20,7.14,16.41,4,12,4z"/><circle cx="6.5" cy="11.5" r="1.5"/><circle cx="9.5" cy="7.5" r="1.5"/><circle cx="14.5" cy="7.5" r="1.5"/><circle cx="17.5" cy="11.5" r="1.5"/></g></g></g></g></svg>' +
-			visualColorNames[i] + 
-'			</h2>' +
-'			<div class="cpe-floating-button-group">' +
-'				<a class="cpe-floating-button" onclick="VisualColor(' + i + ')" title="Apply ' + visualColorNames[i] + ' Colors to all Wikis">' +
-'                  <svg xmlns="http://www.w3.org/2000/svg" class="cpe-icon cpe-icon-small">' +
-'                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#cpe-icons-checkmark" />' +
-'                  </svg>' +
-'				</a>' +
-'			</div>' +
-'			<section class="preview-theme-section">' +
-'				<div class="preview-theme-wrapper visual-theme theme-A" visualcolors="' + visualColors[i] + '">' +
-'					<div class="background"></div>' +
-'					<div class="window">' +
-'						<div class="header">' +
-'							<text></text>' +
-'						</div>' +
-'						<text></text>' +
-'					</div>' +
-'				</div>' +
-'				<div class="preview-theme-wrapper visual-theme theme-B" visualcolors="' + visualColors[i] + '">' +
-'					<div class="background"></div>' +
-'					<div class="window">' +
-'						<div class="header">' +
-'							<text></text>' +
-'						</div>' +
-'						<text></text>' +
-'					</div>' +
-'				</div>' +
-'				<div class="preview-theme-wrapper visual-theme theme-C" visualcolors="' + visualColors[i] + '">' +
-'					<div class="background"></div>' +
-'					<div class="window">' +
-'						<div class="header">' +
-'							<text></text>' +
-'						</div>' +
-'						<text></text>' +
-'					</div>' +
-'				</div>' +
-'				<div class="preview-theme-wrapper visual-theme theme-D" visualcolors="' + visualColors[i] + '">' +
-'					<div class="background"></div>' +
-'					<div class="window">' +
-'						<div class="header">' +
-'							<text></text>' +
-'						</div>' +
-'						<text></text>' +
-'					</div>' +
-'				</div>' +
-'			</section>' +			
-'			</fieldset>' +
-'			</div>'
-
-			$(".highcontrastmodes.cpe-visual-colors").append(str);
-
-		}
 		str = '<li><a onclick="VisualColor(' + i + ')">' + visualColorNames[i] + '</a></li>'
 		$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-colors").append(str);
 	}
@@ -365,25 +292,10 @@ function colortheme(theme) {
 		window.MW18darkmode = false;
 	}
 	$('body').attr("wikitheme", theme);
-	if (window.MW18darkmode === true) {
-		if ($("body.options").length) {
-			document.querySelector('.rvbg1').style.setProperty("background-color", 'var(--content-color)');
-			document.querySelector('.rvbg2').style.setProperty("background-color", 'var(--content-bg)');
-		}
-	} else {
-		if ($("body.options").length) {
-			document.querySelector('.rvbg2').style.setProperty("background-color", 'var(--content-color)');
-			document.querySelector('.rvbg1').style.setProperty("background-color", 'var(--content-bg)');
-		}
-	}
 	if (window.MW18darkmode) {
 		$('body').attr("dark-mode", isLightColor(body_bg) );
 	} else {
 		$('body').attr("dark-mode", !(isLightColor(body_bg)) );
-	}
-	if ($("body.options").length) {
-		$("input[id*='theme-'][name='themechooser']").removeAttr('checked');
-		$("input[name='themechooser']#theme-" + theme ).attr('checked',true);
 	}
 	if (old_dark != window.MW18darkmode) {
 		ColorUpdate(false);
@@ -940,7 +852,7 @@ function PresetTheme(theme="") {
 	PickColor4('auto');
 	PickColor5('auto');
 	PickColor9('auto');
-	colortheme($('body').attr("wikitheme"))
+//	colortheme($('body').attr("wikitheme"))
 }
 
 /* These functions asks about what color should the user use if no value is set and sets it to an individual component such as Body Background color (The current color is used as initial answer in case of accidental use)
@@ -1381,28 +1293,6 @@ function ResetThemes() {
 
 
 function UpdateMisc() {
-	if ($("body.options").length) {
-		var sfont = getComputedStyle(document.querySelector('html')).getPropertyValue("--custom-secondary-font");
-		if (sfont == '""') {
-			var sfont = '';
-		}
-
-		var wfilter = getComputedStyle(document.querySelector('html')).getPropertyValue("--wordmark-filter");
-		if (wfilter == 'initial') {
-			var wfilter = '';
-		}
-		var wfilter2 = getComputedStyle(document.querySelector('html')).getPropertyValue("--wordmark-filter2");
-		if (wfilter2 == 'initial') {
-			var wfilter2 = '';
-		}
-
-		$('input.font_2nd').val( sfont );
-		$('input.button_radi').val( parseInt( getComputedStyle(document.querySelector('html')).getPropertyValue("--border-radius") ) );
-		$('input.filter1').val( wfilter );
-		$('input.filter2').val( wfilter2 );
-		var x = $('input.filter_duration').val( parseInt( getComputedStyle(document.querySelector('html')).getPropertyValue("--wordmark-filter-duration") ) );
-		var x = $('input.filter_delay').val( parseInt( getComputedStyle(document.querySelector('html')).getPropertyValue("--wordmark-filter-delay") ) );
-	}
 }
 
 
@@ -2097,13 +1987,12 @@ ThemeColorMetaTag();
 if (refresh === true) {
 	CheckBG()
 	CheckAdapt()
-	colortheme($('body').attr("wikitheme"))
-	if ($("body.options").length) {
-		UpdateSet();
-	}
+//	colortheme($('body').attr("wikitheme"))
 }
-if ($("body.options").length) {
-	CompileChosenThems()
+if (window.MW18darkmode) {
+	$('body').attr("dark-mode", isLightColor(content_color) );
+} else {
+	$('body').attr("dark-mode", !(isLightColor(content_color)) );
 }
 SocialCompile();
 if (window.MW18auto === true) {
@@ -2117,43 +2006,6 @@ CursorT('auto-r');
 }
 
 function CheckColorSuitability() {
-	if ($("body.options").length) {
-		/* Check Contrast Colors */
-		if (window.MW18darkmode === true) {
-			var color2 = getComputedStyle(document.querySelector('body')).getPropertyValue("--content-color");
-			var color1a  = getComputedStyle(document.querySelector('body')).getPropertyValue("--content-bg");
-		} else {
-			var color1a = getComputedStyle(document.querySelector('body')).getPropertyValue("--content-color");
-			var color2  = getComputedStyle(document.querySelector('body')).getPropertyValue("--content-bg");
-		}
-		var color1b = getComputedStyle(document.querySelector('html')).getPropertyValue("--link-color");
-		var color1c = getComputedStyle(document.querySelector('body')).getPropertyValue("--content-border");
-		var color1d = getComputedStyle(document.querySelector('html')).getPropertyValue("--button-color");
-		// Content Color
-		if (isSuitableColor(color1a,color2)) {
-			document.querySelector('label .color-warn').style.setProperty("--icon-display", "none");
-		} else {
-			document.querySelector('label .color-warn').style.setProperty("--icon-display", "inline");
-		}
-		// Link Color
-		if (isSuitableColor(color1b, color2)) {
-			document.querySelector('label .link-warn').style.setProperty("--icon-display", "none");
-		} else {
-			document.querySelector('label .link-warn').style.setProperty("--icon-display", "inline");
-		}
-		// Border Color
-		if (isSuitableColor2(color1c, color2)) {
-			document.querySelector('label .border-warn').style.setProperty("--icon-display", "none");
-		} else {
-			document.querySelector('label .border-warn').style.setProperty("--icon-display", "inline");
-		}
-		// Button Color
-		if (isSuitableColor2(color1d, color2)) {
-			document.querySelector('label .button-warn').style.setProperty("--icon-display", "none");
-		} else {
-			document.querySelector('label .button-warn').style.setProperty("--icon-display", "inline");
-		}
-	}
 }
 
 
@@ -2183,83 +2035,6 @@ function CheckAdapt() {
 
 /* Different with the ToggleBG function, only one is present for all three */
 function CheckBG() {
-	if ($("body.options").length   && !($("html.contrast.win10").length) ) { // Don't run if not on Preferences Page
-	/* BG */ // Background Style
-		if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--body-display") === 'legacy') && !($("html.contrast.win10").length)  ) {
-				document.querySelector('input#BG_2').checked = true;
-				document.querySelector('input#BG_1').checked = false;
-				$(".legacy-off").attr('disabled', 'true');
-				$(".modern-off").removeAttr('disabled');
-		} else {
-				$(".legacy-off").removeAttr('disabled');
-				$(".modern-off").attr('disabled', 'true');
-				document.querySelector('input#BG_1').checked = true;
-				document.querySelector('input#BG_2').checked = false;
-		}
-	/* BG1 */ // Background Vertical Alingment
-		if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--background-va") === 'center') && !($("html.contrast.win10").length)  ) {
-				document.querySelector('input#BG1_2').checked = true;
-				document.querySelector('input#BG1_1').checked = false;
-				document.querySelector('input#BG1_3').checked = false;
-		} else if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--background-va") === 'bottom') && !($("html.contrast.win10").length)  ) {
-				document.querySelector('input#BG1_3').checked = true;
-				document.querySelector('input#BG1_1').checked = false;
-				document.querySelector('input#BG1_2').checked = false;
-		} else {
-				document.querySelector('input#BG1_1').checked = true;
-				document.querySelector('input#BG1_2').checked = false;
-				document.querySelector('input#BG1_3').checked = false;
-		}
-	/* BG2 */ // Background Tiling
-		if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--background-no-tiling") === 'true') && !($("html.contrast.win10").length)  ) {
-				document.querySelector('input#BG2').checked = true;
-		} else {
-				document.querySelector('input#BG2').checked = false;
-		}
-	/* BG3 */
-	/*
-	**
-	cover-off items are disabled when background-size is on Cover
-	stretch-off items are disabled when background-size is on Stretched
-	noncover-off items are enabled only if background-size is on Cover
-	noncover-off items are enabled only if background-size is on Cover
-	**
-	*/
-		if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--background-size") === 'contain') && !($("html.contrast.win10").length)  ) {
-				document.querySelector('input#BG3_2').checked = true;
-				document.querySelector('input#BG3_1').checked = false;
-				document.querySelector('input#BG3_3').checked = false;
-				document.querySelector('input#BG3_4').checked = false;
-				$(".cover-off").removeAttr('disabled');
-				$(".stretch-off").removeAttr('disabled');
-				$(".noncover-off").attr('disabled', 'true');
-		} else if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--background-size") === 'stretched') && !($("html.contrast.win10").length)  ) {
-				document.querySelector('input#BG3_3').checked = true;
-				document.querySelector('input#BG3_1').checked = false;
-				document.querySelector('input#BG3_2').checked = false;
-				document.querySelector('input#BG3_4').checked = false;
-				$(".cover-off").removeAttr('disabled');
-				$(".stretch-off").attr('disabled', 'true');
-				$(".noncover-off").attr('disabled', 'true');
-		} else if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--background-size") === 'full') && !($("html.contrast.win10").length)  ) {
-				document.querySelector('input#BG3_4').checked = true;
-				document.querySelector('input#BG3_1').checked = false;
-				document.querySelector('input#BG3_2').checked = false;
-				document.querySelector('input#BG3_3').checked = false;
-				$(".cover-off").removeAttr('disabled');
-				$(".stretch-off").removeAttr('disabled');
-				$(".noncover-off").attr('disabled', 'true');
-		} else { // Cover
-				document.querySelector('input#BG3_1').checked = true;
-				document.querySelector('input#BG3_2').checked = false;
-				document.querySelector('input#BG3_3').checked = false;
-				document.querySelector('input#BG3_4').checked = false;
-				$(".noncover-off").removeAttr('disabled');
-				$(".stretch-off").removeAttr('disabled');
-				$(".cover-off").attr('disabled', 'true');
-		}
-	}
-
 	$("body").attr('body-display', getComputedStyle(document.querySelector('html')).getPropertyValue("--body-display") );
 	$("body").attr('background-size', getComputedStyle(document.querySelector('html')).getPropertyValue("--background-size") );
 	$("body").attr('body-no-tiling', getComputedStyle(document.querySelector('html')).getPropertyValue("--background-no-tiling") );
