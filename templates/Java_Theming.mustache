@@ -14,9 +14,12 @@ var visualColors = ['factorycolors','lunacolors','classicforced','campbellforced
 var visualColorNames = ['Factory', 'XP Luna', 'Windows Forced', 'Campbell Forced', 'Mpisto OSX Forced', 'Tango Forced','RGB Celebration','Retro','Retro II','Retro III','Retro IV','Retro V','Retro VI','Retro VII'];
 
 (function () {
-document.querySelector('html').className += " theme-A"; // We begin with the first theme selected
-ColorUpdate(true);
-UpdateMisc();
+	if (getKey('theme-active') === '-1') {
+		insertKey('theme-active', 'theme-A' );
+	}
+	document.querySelector('html').className += " " + getKey('theme-active'); // We begin with the first theme selected
+	ColorUpdate(true);
+	UpdateMisc();
 	SheShe = 'auto'; // Allowed Values ('auto', true, false)
 	if (SheShe == 'auto') {
 		SheShe = ($("body.server").length != 0);
@@ -51,6 +54,19 @@ UpdateMisc();
 		
 })();
 
+
+function getKey(key) {
+var str = window.localStorage,
+    result = str.getItem('-eve-pref-'+key);
+if (!result) {
+   return '-1';
+}
+return result;
+}
+
+function insertKey(key,value) {
+	window.localStorage.setItem('-eve-pref-' + key, '' + value);
+}
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
@@ -2301,6 +2317,7 @@ function HCa() {
         x.className = x.className.replace(" theme-D", "");
 		ColorUpdate(true);
 		UpdateMisc();
+		insertKey('theme-active', 'theme-A' );
 }
 
 function HCb() {
@@ -2313,6 +2330,7 @@ function HCb() {
         x.className = x.className.replace(" theme-D", "");
 		ColorUpdate(true);
 		UpdateMisc();
+		insertKey('theme-active', 'theme-B' );
 }
 
 function HCc() {
@@ -2325,6 +2343,7 @@ function HCc() {
         x.className = x.className.replace(" theme-D", "");
 		ColorUpdate(true);
 		UpdateMisc();
+		insertKey('theme-active', 'theme-C' );
 }
 
 function HCd() {
@@ -2337,6 +2356,7 @@ function HCd() {
         x.className = x.className.replace(" theme-C", "");
 		ColorUpdate(true);
 		UpdateMisc();
+		insertKey('theme-active', 'theme-D' );
 }
 
 function UpdateFont() {
