@@ -1,4 +1,4 @@
-	<header class="mpisto-sticky-header-container">
+	<header class="mpisto-sticky-header-container full-nav">
 		<a class="wordmark" href="{{link-mainpage}}">
 			{{#data-logos}}
 				{{#icon}}<img src="{{.}}">{{/icon}}
@@ -12,9 +12,6 @@
 			<div class="counter articles"><big>{{html-articlecount}}</big> <span>{{msg-eve-pages}}</span></div>
 			<div class="counter photos"><big>{{html-filecount}}</big> <span>{{msg-eve-files}}</span></div>
 		</div>
-		{{#data-portlets-sidebar}}
-			{{#data-portlets-first}}{{>PortletSLN}}{{/data-portlets-first}}
-		{{/data-portlets-sidebar}}
 		<div class="cpe-dropdown local-navigation">
 			<a class="link cell cpe-dropdown__toggle" title="{{msg-eve-navigation-rest}}">
 				<span class="cpe-icon cpe-icon-large cpe-dropdown__toggle-chevron material-icons-outlined">
@@ -24,6 +21,7 @@
 			<div class="cpe-dropdown__content cpe-is-right-aligned cpe-is-not-scrollable">
 				<ul class="cpe-list cpe-is-linked">
 							{{#data-portlets-sidebar}}
+							{{#array-portlets-first}}{{>PortletSLN2}}{{/array-portlets-first}}
 							{{#array-portlets-rest}}{{>PortletSLN2}}{{/array-portlets-rest}}
 							{{/data-portlets-sidebar}}
 				</ul>
@@ -66,4 +64,17 @@
 			settings
 			</span>
 		</a>
+	  <a class="link nav-switch" title="{{msg-hide}}">
+		<span class="cpe-icon cpe-dropdown__toggle-chevron material-icons-outlined cpe-icon-large">
+			keyboard_arrow_up
+		</span>
+	  </a>
+	</header>
+	
+	<header class="mpisto-sticky-header-container col-nav">
+	  <a class="link nav-switch" title="{{msg-show}}">
+		<span class="cpe-icon cpe-dropdown__toggle-chevron material-icons-outlined cpe-icon-large">
+			keyboard_arrow_down
+		</span>
+	  </a>
 	</header>

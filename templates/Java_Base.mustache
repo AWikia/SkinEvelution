@@ -62,8 +62,12 @@ window.MW18newnavblock=false;
 	if (getKey('toolbar-full') === '-1') {
 		insertKey('toolbar-full', 'true' );
 	}
+	if (getKey('nav-full') === '-1') {
+		insertKey('nav-full', 'true' );
+	}
 	$(' container > main').attr('wide', getKey('content-full') );
 	$(' container > main').attr('toolbar', getKey('toolbar-full'));
+	$(' container > main').attr('nav', getKey('nav-full'));
 	$(".cpe-dropdown__content .cpe-list .ThemeA")
 						.click( function(e) { 
 							e.preventDefault(); 
@@ -191,6 +195,16 @@ function ToggleBar() {
 }
 
 
+function ToggleNav() {
+	if 	($(' container > main').attr('nav') == 'true') {
+		$(' container > main').attr('nav', 'false');
+	} else {
+		$(' container > main').attr('nav', 'true');
+	}
+	insertKey('nav-full', $(' container > main').attr('nav') );
+}
+
+
 
 function AliasFandomComponents() {
 
@@ -220,6 +234,12 @@ initializeViews();
 						.click( function(e) { 
 							e.preventDefault(); 
 							ToggleBar(); 
+						});
+
+	$(".mpisto-sticky-header-container.full-nav .link.nav-switch, .mpisto-sticky-header-container.col-nav .link.nav-switch")
+						.click( function(e) { 
+							e.preventDefault(); 
+							ToggleNav(); 
 						});
 	$(".mpisto-header-container .link.dark-mode, .mpisto-sticky-header-container .link.dark-mode")
 						.click( function(e) { 

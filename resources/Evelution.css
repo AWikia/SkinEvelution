@@ -944,6 +944,8 @@ margin-left: 20px;
 /* Desktop Sticky Header */
 	.mpisto-sticky-header-container {
 		--sticky-nav-opacity:0.95;
+		--tr-scale:100%;
+		--tr-top:calc(-100% - 4px);
 		background-color:rgba(var(--floating-header-bg-rgb), var(--sticky-nav-opacity));
 		color:var(--floating-header-text);
 		position:-webkit-sticky;
@@ -953,20 +955,36 @@ margin-left: 20px;
 		z-index:90;
 		height:var(--sticky-nav-size);
 		display:flex;
-		transition:transform 400ms;
+		transition:transform 400ms ease;
 		width:100%;
 		max-width:var(--max-width);
 		box-shadow: 0 0 3px #000, 0 0 3px #fff;
-		transform:translateY(calc(-100% - 4px));
+		transform:translateY(var(--tr-top)) scaleY(var(--tr-scale));
 		align-items:center;
 		margin-top:calc(0px - var(--sticky-nav-size));
 		box-sizing:content-box;
+		transform-origin:top;
 	}
 
+	main[nav="true"] .mpisto-sticky-header-container.col-nav,
+	main[nav="false"] .mpisto-sticky-header-container.full-nav  {
+		--tr-scale:0%;
+	}
+
+
 	.headroom--not-top .mpisto-sticky-header-container {
-		transform:translateY(-1px);
+		--tr-top:-1px;
 	}
 	
+
+	.mpisto-sticky-header-container.col-nav {
+		width:auto;
+		margin-top:calc(0px - var(--sticky-nav-size));
+		left:100%;
+		float:right;
+	}
+
+
 	.constructor .mpisto-sticky-header-container {
 		display:none;
 	}
