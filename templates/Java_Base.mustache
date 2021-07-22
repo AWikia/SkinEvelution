@@ -57,6 +57,7 @@ window.MW18newnavblock=false;
 (function () {
 	AliasFandomComponents();
 	$(' container > main').attr('wide', 'false');
+	$(' container > main').attr('toolbar', 'true');
 	$(".cpe-dropdown__content .cpe-list .ThemeA")
 						.click( function(e) { 
 							e.preventDefault(); 
@@ -174,6 +175,16 @@ function ToggleWidth() {
 
 }
 
+function ToggleBar() {
+	if 	($(' container > main').attr('toolbar') == 'true') {
+		$(' container > main').attr('toolbar', 'false');
+	} else {
+		$(' container > main').attr('toolbar', 'true');
+	}
+
+}
+
+
 
 function AliasFandomComponents() {
 
@@ -198,6 +209,11 @@ initializeViews();
 						.click( function(e) { 
 							e.preventDefault(); 
 							ToggleWidth(); 
+						});
+	$(".mpisto-global-sidebar.full-toolbar .link.bar-switch, .mpisto-global-sidebar.col-toolbar .link.bar-switch")
+						.click( function(e) { 
+							e.preventDefault(); 
+							ToggleBar(); 
 						});
 	$(".mpisto-header-container .link.dark-mode, .mpisto-sticky-header-container .link.dark-mode")
 						.click( function(e) { 
