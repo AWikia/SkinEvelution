@@ -61,4 +61,17 @@ Of course. It has been tested and it works. For instance, if you want to modify 
 --floating-header-bg:auto;
 }
 ```
-Note that per-page theming is not currently supported as it relies on the ``html`` element to get those color variables and the class for targeting specific page is however on the ``body`` element. This may change in the future
+Per-page theming is also supported. If you want to use a different theme for the 1st theme on **Sample Test Page** article, paste this to ``MediaWiki:Common.css``:
+```css
+.theme-A[visualcolors="standard"] .rootpage-Sample_Test_Page {
+--background-image:url("");
+--background-color:#e995ca;
+--link-color:#18bbc5;
+--content-bg:#ffffff;
+--content-border:#ccc;
+--content-color:#000000;
+--button-color:#18BBC5;
+--community-header-bg:#0000ff;
+--floating-header-bg:auto;
+}
+```
