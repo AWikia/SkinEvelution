@@ -37,6 +37,7 @@ The small 705 breakpoint contains the following differences from the large 1280 
   - Text Size on Community and Sticky headers is smaller
   - No wordmark appears on either header
   - Less content can be seen compared to the large ones
+
 Other than these three changes, both sizes can be used for reading articles. For medium-sized devices, a breakpoint that mixes the small breakpoint with the large ones is present and has the following gimicks:
   - Wordmark appears on either header but on the static ones, it appears smaller
   - Text sizes are a bit smaller compared to the larger ones
