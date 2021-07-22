@@ -18,4 +18,4 @@ wfLoadSkin( 'Evelution' );
 
 # Known Limitations
 - Icons on OOUI elements can only appear in black for light themes and white for dark themes
-- 50px of the bottom of the scrollbar is covered by the bottom toolbar due to browser limitations
+- Toolbar can cover the page action dropdowns if the content area is too small. If it is that case, collapse it.
