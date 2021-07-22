@@ -163,7 +163,7 @@ body .oo-ui-buttonElement-frameless.oo-ui-widget-enabled.oo-ui-flaggedElement-de
 
 body .oo-ui-buttonElement-frameless.oo-ui-widget-enabled > .oo-ui-buttonElement-button:hover,
 body .oo-ui-buttonElement-frameless.oo-ui-widget-enabled.oo-ui-flaggedElement-destructive > .oo-ui-buttonElement-button:hover {
-	color:var(--button-color-);
+	color:var(--button-color-dark);
 }
 
 body .oo-ui-buttonElement-frameless.oo-ui-widget-enabled.oo-ui-buttonElement-pressed > input.oo-ui-buttonElement-button, 
@@ -210,6 +210,7 @@ body .oo-ui-buttonElement-frameless.oo-ui-widget-enabled.oo-ui-flaggedElement-pr
 
 
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled > .oo-ui-buttonElement-button,
+body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-progressive > .oo-ui-buttonElement-button,
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-destructive > .oo-ui-buttonElement-button,
 body .mw-ui-button {
     border-color:var(--button-color);
@@ -219,6 +220,7 @@ body .mw-ui-button {
 }
 
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled > .oo-ui-buttonElement-button:focus,
+body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-progressive > .oo-ui-buttonElement-button:focus,
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-destructive > .oo-ui-buttonElement-button:focus,
 body .mw-ui-button:focus {
     border-color:var(--button-color);
@@ -229,6 +231,7 @@ body .mw-ui-button:focus {
 
 
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled > .oo-ui-buttonElement-button:hover,
+body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-progressive  > .oo-ui-buttonElement-button:hover,
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-destructive  > .oo-ui-buttonElement-button:hover,
 body .mw-ui-button:hover {
     border-color:var(--button-color-dark);
@@ -239,6 +242,8 @@ body .mw-ui-button:hover {
 
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled > .oo-ui-buttonElement-button:active, 
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-buttonElement-pressed > .oo-ui-buttonElement-button,
+body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-progressive > .oo-ui-buttonElement-button:active, 
+body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-buttonElement-pressed.oo-ui-flaggedElement-progressive > .oo-ui-buttonElement-button,
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-destructive > .oo-ui-buttonElement-button:active, 
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-buttonElement-pressed.oo-ui-flaggedElement-destructive > .oo-ui-buttonElement-button,
 body .mw-ui-button:active {
@@ -249,6 +254,7 @@ body .mw-ui-button:active {
 }
 
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled > .oo-ui-buttonElement-button:focus:not(:active),
+body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-progressive > .oo-ui-buttonElement-button:focus:not(:active),
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-destructive > .oo-ui-buttonElement-button:focus:not(:active),
 body .mw-ui-button:focus:not(:active) {
   outline-color:currentcolor;
@@ -494,6 +500,7 @@ body #pagehistory li.selected {
 body .oo-ui-textInputWidget .oo-ui-inputWidget-input,
 body .oo-ui-textInputWidget.oo-ui-widget-enabled .oo-ui-inputWidget-input,
 body .oo-ui-dropdownWidget.oo-ui-widget-enabled .oo-ui-dropdownWidget-handle,
+body .oo-ui-textInputWidget.oo-ui-widget-disabled .oo-ui-inputWidget-input,
 body .mw-ui-input  {
 	--input-box-color:var(--content-bg);
 	--input-box-hover:var(--button-color-content-bg-mix-light);
@@ -521,6 +528,39 @@ body .mw-ui-input  {
     margin:2.5px;
 }
 
+body .oo-ui-textInputWidget.oo-ui-widget-disabled .oo-ui-inputWidget-input {
+    box-shadow:0 0 1.5px 1.5px var(--input-box-color)!important;
+}
+
+body .oo-ui-numberInputWidget-buttoned .oo-ui-inputWidget-input {
+	border-radius:0;
+	padding-top:16px;
+	padding-bottom:16px;
+	margin-left:0!Important;
+	margin-right:0!important;
+	
+}
+
+body .oo-ui-tagMultiselectWidget.oo-ui-tagMultiselectWidget-outlined .oo-ui-inputWidget-input {
+	margin-left:0!Important;
+	margin-right:0!important;
+}
+
+body .oo-ui-comboBoxInputWidget .oo-ui-inputWidget-input {
+	padding-top:16px;
+	padding-bottom:16px;
+	margin-left:0!Important;
+	margin-right:0!important;
+}
+
+body .oo-ui-actionFieldLayout .oo-ui-actionFieldLayout-input > .oo-ui-widget.oo-ui-textInputWidget > .oo-ui-inputWidget-input, 
+body .oo-ui-actionFieldLayout .oo-ui-actionFieldLayout-input > .oo-ui-widget .oo-ui-dropdownWidget-handle,
+body .oo-ui-actionFieldLayout .oo-ui-actionFieldLayout-input > .oo-ui-widget .oo-ui-tagMultiselectWidget-handle {
+	padding-top:16px;
+	padding-bottom:16px;
+	border-radius:var(--border-radius) 0 0 var(--border-radius);
+}
+
 body .mw-ui-input:invalid {
     box-shadow:0 0 1.5px 1.5px var(--input-box-color);
 }
@@ -535,6 +575,15 @@ body .oo-ui-textInputWidget.oo-ui-iconElement .oo-ui-inputWidget-input {
     padding-top: 0;
     padding-bottom: 0;
     box-sizing: border-box;
+}
+
+body .oo-ui-dropdownWidget.oo-ui-indicatorElement .oo-ui-dropdownWidget-handle {
+    padding-left: 2.428571em;
+}
+
+body .oo-ui-textInputWidget.oo-ui-widget-disabled .oo-ui-inputWidget-input {
+	filter:grayscale(1);
+	opacity:1;
 }
 
 body .mw-rcfilters-ui-filterTagMultiselectWidget .oo-ui-tagMultiselectWidget-input input {
@@ -807,4 +856,40 @@ body .uls-language-settings-close-block {
 
 body[dark-mode="true"] .uls-icon-close {
 	filter:invert(1) hue-rotate(180deg);
+}
+
+/* File Input */
+
+
+body .oo-ui-selectFileWidget-dropTarget {
+	background-color:var(--dropdown-bg);
+	color:var(--content-color);
+	border-color:var(--content-border);
+}
+
+body .oo-ui-selectFileWidget.oo-ui-widget-enabled.oo-ui-selectFileWidget-dropTarget {
+	background-color:var(--dropdown-bg);
+	color:var(--content-color);
+}
+
+/* Progress */
+body .oo-ui-progressBarWidget {
+	border-color:var(--content-border);
+}
+
+body .oo-ui-progressBarWidget.oo-ui-widget-disabled {
+	filter:grayscale(1);
+}
+
+body .oo-ui-progressBarWidget:not( .oo-ui-pendingElement-pending ) {
+	background-color:var(--content-bg);
+}
+
+body .oo-ui-progressBarWidget.oo-ui-widget-enabled .oo-ui-progressBarWidget-bar,
+body .oo-ui-progressBarWidget.oo-ui-widget-disabled .oo-ui-progressBarWidget-bar {
+	background-color:var(--link-color);
+}
+
+body .oo-ui-pendingElement-pending {
+	background-color:var(--content-border-content-bg-mix)!important;
 }
