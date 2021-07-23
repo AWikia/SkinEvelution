@@ -2,7 +2,7 @@ Evelution is a Next Gen Skin for MediaWiki. Designed to improve reading has four
 
 With the inclusion of Sticky sidebars and Sticky Community Header, you can have many of the known tools MediaWiki following you.
 
-Evelution Desktop Skin in two different main Breakpoint Sizes, 705px & 1280px
+Evelution Desktop Skin in three different main Breakpoint Sizes, 705px, 1280px & 1500px. It is maintained by Qora Qore Telecommunities, A Techno Services and all other CPE Evelution Developers
 
 You can read more about the skin [here](Overview.md)
 
