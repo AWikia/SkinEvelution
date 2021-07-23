@@ -7,7 +7,7 @@ Evelution can be called whatever you want on your Wiki. It is the second fork of
 
 # Differences of Evelution and MpistoSkin2
 Evelution, despite being essentially similar to MpistoSkin2 from Q.Qore, there're several differences, to name a few:
-- Evelution is a plain Desktop skin with official support of Screens between 705 to 1500 pixels whereas MpistoSkin2 is a hybrid Mobile-Desktop-Desktop XL skin with support of screens between 360 to 2000 pixels. As such, no XS and XL breakpoints exist on Evelution.
+- Evelution is a hybrid Desktop-Desktop XL skin with official support of Screens between 705 to 2000 pixels whereas MpistoSkin2 is a hybrid Mobile-Desktop-Desktop XL skin with support of screens between 360 to 2000 pixels. As such, no XS breakpoint exists on Evelution. XL Breakpoint was added in version 3.4.0
 - Evelution has 705 pixels on its small size instead of 760 pixels that MpistoSkin2 offers. Its large size offers the same size as MpistoSkin2, which is at 1280 pixels.
 - Evelution lacks a right rail that MpistoSkin2 has. However, evelution has support for Sitenotice.
 - Evelution uses smaller typography on the Article compared to MpistoSkin2. Article text size for instance, is at 13 pixels.
@@ -26,11 +26,41 @@ Evelution, despite being essentially similar to MpistoSkin2 from Q.Qore, there'r
 - MpistoSkin2 is a GMK skin that has many wrappers and is semi-dynamical. Evelution is however, a MediaWiki skin with reliance on Mustache and much more dynamical. Because of this, the custom appearance of Preferences Screen is unavailable on Evelutiion but the ones from core MW is at least themed.
 
 # What are the different sizes I can use?
-Evelution gets powered up with two main sizes: 705 pixels for small screens and 1280 pixels for large screens. A middle breakpoint size also exists. Users are able to read articles in either fixed width or full width, whichever they want to use.
+Evelution gets powered up with three main sizes: 705 pixels for small screens, 1280 pixels for large screens and 1500 pixels for extra large screens. A middle breakpoint size also exists. Users are able to read articles in either fixed width or full width, whichever they want to use.
 
 With the inclusion of a top Sticky Navigation and a Bottom Toolbar which both can be collapsed, things can become more fun
 
 The local navigation on Evelution is fetched from ``MediaWiki:Sidebar``. It is placed as links on the ``.color-nav`` container on the static navigation and as submenus of another menu on the sticky navigation called ``.mpisto-sticky-header-container``
+
+## Tyography Sizes between MpistoSkin2 and Evelution
+Between Evelution and MpistoSkin2, typography sizes also differ. Let's take a look at them:
+
+### Desktop
+
+|  Kind                 | Evelution | MpistoSkin2 |
+|  -------------------- | --------- | ----------- |
+| Title (Large)         | 35px      | 38px        |
+| Title (Small)         | 32px      | 35px        |
+| Heading 1             | 26px      | 28px        |
+| Heading 2             | 18px      | 20px        |
+| Heading 3             | 16px      | 17px        |
+| Heading 4 / Text      | 13px      | 14px        |
+| Heading 5 / Subtitle  | 11px      | 12px        |
+| Heading 6             | 9px       | 10px        |
+
+### Desktop XL
+
+|  Kind                 | Evelution | MpistoSkin2 |
+|  -------------------- | --------- | ----------- |
+| Title                 | 44px      | 47px        |
+| Heading 1             | 33px      | 36px        |
+| Heading 2             | 24px      | 26px        |
+| Heading 3             | 20px      | 21px        |
+| Heading 4             | 17px      | 18px        |
+| Text                  | 15px      | 16px        |
+| Heading 5             | 14px      | 15px        |
+| Subtitle              | 13px      | 14px        |
+| Heading 6             | 11px      | 12px        |
 
 # What are the differences between the Small and Large Sizes?
 The small 705 breakpoint contains the following differences from the large 1280 ones:
@@ -41,10 +71,7 @@ The small 705 breakpoint contains the following differences from the large 1280 
 Other than these three changes, both sizes can be used for reading articles. For medium-sized devices, a breakpoint that mixes the small breakpoint with the large ones is present and has the following gimicks:
   - Wordmark appears on either header but on the static ones, it appears smaller
   - Text sizes are a bit smaller compared to the larger ones
-
-# This skin hasn't been designed for Desktop XL devices. Will it work on those devices?
-Absolutely it will as many Desktop Skins do work for Desktop XL devices. However, only 1500 pixels of width will be usable with the skin container being centered on those devices. To make it look even better, it is also decorated with a thick box shadow. 
-
+  - 
 When customizing the skin using CSS, please make sure that when you edit the body background image, don't use the ``body`` element. Use ``.body-community-background`` instead if you want to change the background even more.
 
 # Can I change the themes using CSS?
