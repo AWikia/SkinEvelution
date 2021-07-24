@@ -7,7 +7,7 @@ Evelution can be called whatever you want on your Wiki. It is the second fork of
 
 # Differences of Evelution and MpistoSkin2
 Evelution, despite being essentially similar to MpistoSkin2 from Q.Qore, there're several differences, to name a few:
-- Evelution is a hybrid Desktop-Desktop XL skin with official support of Screens between 705 to 2000 pixels whereas MpistoSkin2 is a hybrid Mobile-Desktop-Desktop XL skin with support of screens between 360 to 2000 pixels. As such, no XS breakpoint exists on Evelution. XL Breakpoint was added in version 3.4.0
+- Evelution used to be a plain Desktop skin with official support of Screens between 705 to 1500 pixels whereas MpistoSkin2 was always a hybrid Mobile-Desktop-Desktop XL skin with support of screens between 360 to 2000 pixels. As such, no XS and XL breakpoints existed on Evelution. XL Breakpoint was added in version 3.4.0 while XS Breakpoint was added in version 3.6.0
 - Evelution has 705 pixels on its small size instead of 760 pixels that MpistoSkin2 offers. Its large size offers the same size as MpistoSkin2, which is at 1280 pixels.
 - Evelution lacks a right rail that MpistoSkin2 has. However, evelution has support for Sitenotice.
 - Evelution uses smaller typography on the Article compared to MpistoSkin2. Article text size for instance, is at 13 pixels.
