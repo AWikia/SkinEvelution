@@ -26,7 +26,7 @@ Evelution, despite being essentially similar to MpistoSkin2 from Q.Qore, there'r
 - MpistoSkin2 is a GMK skin that has many wrappers and is semi-dynamical. Evelution is however, a MediaWiki skin with reliance on Mustache and much more dynamical. Because of this, the custom appearance of Preferences Screen is unavailable on Evelutiion but the ones from core MW is at least themed.
 
 # What are the different sizes I can use?
-Evelution gets powered up with three main sizes: 705 pixels for small screens, 1280 pixels for large screens and 1500 pixels for extra large screens. A middle breakpoint size also exists. Users are able to read articles in either fixed width or full width, whichever they want to use.
+Evelution gets powered up with six main sizes: 320 pixels for small phones, 375 pixels for medium phones, 425 pixels for large phones 705 pixels for small desktops, 1280 pixels for large desktops and 1500 pixels for extra large desktops. A middle breakpoint size also exists. Users are able to read articles in either fixed width or full width, whichever they want to use.
 
 With the inclusion of a top Sticky Navigation and a Bottom Toolbar which both can be collapsed, things can become more fun
 
