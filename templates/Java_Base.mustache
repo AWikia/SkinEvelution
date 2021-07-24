@@ -274,6 +274,10 @@ initializeViews();
 function initializeViews() {
 	$(".mpisto-page-header-contribution-buttons .actions > li > a").attr('class','cpe-button'); // Add the CPE button class
 	$(".mpisto-page-header-contribution-buttons .views > li > a").attr('class','cpe-button'); // Add the CPE button class
+
+	$(".mpisto-header-container .mobile-header .local-navigation .cpe-dropdown:first-child:not(:only-child) .cpe-dropdown__content").addClass('cpe-is-left-aligned'); // Add the CPE button class
+	$(".mpisto-header-container .mobile-header .local-navigation .cpe-dropdown:last-child:not(:only-child) .cpe-dropdown__content").addClass('cpe-is-right-aligned'); // Add the CPE button class
+
 /* Views */
 
 	// Talk Pages
@@ -420,21 +424,27 @@ function initializeViews() {
 function RemoveEmptyMenus() {
 // Remove the Language Dropdown, if no languages exist
 	var langmenu = document.querySelector(".mpisto-global-navigation.mpisto-global-sidebar .language-menu");
+	var langmenuM = document.querySelector(".mpisto-mobile-global-navigation.mpisto-global-sidebar .language-menu");
 
 	if (! ($(".mpisto-global-navigation.mpisto-global-sidebar .language-menu .cpe-dropdown__content .cpe-list").length) ) {
 		$(langmenu).remove();
+		$(langmenuM).remove();
 	}
 
 	var langmenu3 = document.querySelector(".mpisto-global-navigation.mpisto-global-sidebar .variants-menu");
-
+	var langmenu3M = document.querySelector(".mpisto-mobile-global-navigation.mpisto-global-sidebar .variants-menu");
+	
 	if (! ($(".mpisto-global-navigation.mpisto-global-sidebar .variants-menu .cpe-dropdown__content .cpe-list > li").length) ) {
 		$(langmenu3).remove();
+		$(langmenu3M).remove();
 	}
 
 	var langmenu4 = document.querySelector(".mpisto-global-navigation.mpisto-global-sidebar .notices-menu");
-
+	var langmenu4M = document.querySelector(".mpisto-mobile-global-navigation.mpisto-global-sidebar .notices-menu");
+	
 	if (! ($("div:not([class]) .cpe-list.cpe-is-linked #pt-notifications-alert").length) ) {
 		$(langmenu4).remove();
+		$(langmenu4M).remove();
 	}
 
 

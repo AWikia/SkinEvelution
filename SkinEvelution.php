@@ -28,6 +28,7 @@ class SkinEvelution extends SkinMustache {
         $data["html-info-link"] = Title::newFromText( 'Special:PageInfo' )->getLocalURL();
         $data["html-history-link"] = Title::newFromText( 'Special:PageHistory' )->getLocalURL();
         $data["html-mcontent-link"] = Title::newFromText( 'Special:ChangeContentModel' )->getLocalURL();
+        $data["html-edit-link"] = Title::newFromText( 'Special:Edit' )->getLocalURL();
         return $data;
     }
 }
