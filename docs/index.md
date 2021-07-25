@@ -13,3 +13,7 @@ To Run Evelution on your wiki, you must have MediaWiki 1.36 or greater. Older ve
 To Install Evelution, you must download the reposistory first. Make a folder called **Evelution** in **Skins** diractory where you have installed MediaWiki and extract the zipped file contents in **Evelution** folder.  Lastly, put this in **LocalSettings.php**:
 ```php
 wfLoadSkin( 'Evelution' );
+```
+
+# Translating Evelution
+Fork this repo, add a new language code to the i18n folder (Such as fr.php). Copy all contents from en.php to xxx.php (Such as fr.php) and then translate them to the corresponding language (For fr.php should be in French). Then send up a PR and I will be happy to merge it.
