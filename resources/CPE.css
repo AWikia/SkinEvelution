@@ -1172,8 +1172,12 @@ a.cpe-button, button.cpe-button {
     text-decoration:none;
 }
 
-.selected .cpe-button:focus:not(:active) {
-	color:var(--button-color-text);
+.selected .cpe-button:focus:not(:active),
+.selected .cpe-button,
+.selected .cpe-button:hover,
+.selected .cpe-button:active,
+.cpe-button.cpe-is-active {
+	color:var(--button-color-text-inverted);
 }
 
 /* Secondary */
@@ -1209,9 +1213,17 @@ a.cpe-button, button.cpe-button {
 }
 
 .cpe-button.cpe-is-secondary:focus:not(:active):not(.cpe-is-active) {
-  color:var(--button-color);
-  
+  color:var(--button-color); 
 }
+
+.selected .cpe-button.cpe-is-secondary:focus:not(:active),
+.selected .cpe-button.cpe-is-secondary,
+.selected .cpe-button.cpe-is-secondary:hover,
+.selected .cpe-button.cpe-is-secondary:active,
+.cpe-button.cpe-is-secondary.cpe-is-active {
+	color:var(--button-color);
+}
+
 
 /* Text */
 .cpe-button.cpe-is-text {
@@ -1256,6 +1268,7 @@ a.cpe-button, button.cpe-button {
   --button-color-dark:var(--link-color-dark);
   --button-color-dark-super:var(--link-color-dark-super);
   --button-color-text:var(--link-color-text);
+  --button-color-text-inverted:var(--link-color-text-inverted);
   --button-color-text-dark:var(--link-color-text-dark);
   --button-color-content-bg-mix-light:var(--link-color-content-bg-mix-light);
   --button-color-content-bg-mix:var(--link-color-content-bg-mix);
@@ -1267,6 +1280,7 @@ a.cpe-button, button.cpe-button {
   --button-color-dark:var(--content-border-dark);
   --button-color-dark-super:var(--content-border-dark-super);
   --button-color-text:var(--content-border-text);
+  --button-color-text-inverted:var(--content-border-text-inverted);
   --button-color-text-dark:var(--content-border-text-dark);
   --button-color-content-bg-mix-light:var(--content-border-content-bg-mix-light);
   --button-color-content-bg-mix:var(--content-border-content-bg-mix);
@@ -1278,6 +1292,7 @@ a.cpe-button, button.cpe-button {
   --button-color-dark:var(--background-color-dark);
   --button-color-dark-super:var(--background-color-dark-super);
   --button-color-text:var(--background-color-text);
+  --button-color-text-inverted:var(--background-color-text-inverted);
   --button-color-text-dark:var(--background-color-text-dark);
   --button-color-content-bg-mix-light:var(--background-color-content-bg-mix-light);
   --button-color-content-bg-mix:var(--background-color-content-bg-mix);
@@ -1290,6 +1305,7 @@ a.cpe-button, button.cpe-button {
   --button-color-dark:var(--community-header-dark);
   --button-color-dark-super:var(--community-header-dark-super);
   --button-color-text:var(--community-header-text);
+  --button-color-text-inverted:var(--community-header-text-inverted);
   --button-color-text-dark:var(--community-header-text-dark);
   --button-color-content-bg-mix-light:var(--community-header-bg-content-bg-mix-light);
   --button-color-content-bg-mix:var(--community-header-bg-content-bg-mix);
@@ -1300,6 +1316,7 @@ a.cpe-button, button.cpe-button {
   --button-color-dark:var(--content-color-dark);
   --button-color-dark-super:var(--content-color-dark-super);
   --button-color-text:var(--content-color-text);
+  --button-color-text-inverted:var(--content-color-text-inverted);
   --button-color-text-dark:var(--content-color-text-dark);
   --button-color-content-bg-mix-light:var(--content-color-content-bg-mix-light);
   --button-color-content-bg-mix:var(--content-color-content-bg-mix);
@@ -1310,6 +1327,7 @@ a.cpe-button, button.cpe-button {
   --button-color-dark:var(--floating-header-dark);
   --button-color-dark-super:var(--floating-header-dark-super);
   --button-color-text:var(--floating-header-text);
+  --button-color-text-inverted:var(--floating-header-text-inverted);
   --button-color-text-dark:var(--floating-header-text-dark);
   --button-color-content-bg-mix-light:var(--floating-header-bg-content-bg-mix-light);
   --button-color-content-bg-mix:var(--floating-header-bg-content-bg-mix);
@@ -1382,6 +1400,7 @@ margin-left:6px;
   white-space: nowrap;
   direction: ltr;
   pointer-events:none;
+  vertical-align:top;
 
   /* Support for all WebKit browsers. */
   -webkit-font-smoothing: antialiased;
@@ -2103,7 +2122,7 @@ opacity:1;
 }
 
 .cpe-tabs__tab:hover {
-	color:var(--tabs-color-dark)
+	color:var(--tabs-color-dark);
 }
 
 

@@ -200,6 +200,8 @@ container > main {
 .mpisto-wikispace {
 	width:100%;
 	color:var(--content-color);
+	display:flex;
+	flex-direction:column;
 }
 
 .mpisto-global-sidebar {
@@ -223,7 +225,7 @@ container > main {
 	top:0;
 }
 
-body[dark-mode="true"] .mpisto-global-navigation {
+[visualtheme="standard"] body[dark-mode="true"] .mpisto-global-navigation {
 	--global-nav-link-background-active:var(--link-color-blend-rgb);
 	--global-nav-link-color-active:var(--link-color-blend-light);
 }
@@ -378,7 +380,7 @@ body[dark-mode="true"] .mpisto-global-navigation {
 		color:var(--global-nav-link-color-active);
 	}
 
-	body[dark-mode="true"] .mpisto-global-sidebar .link:active, .mpisto-global-sidebar .link:focus, .mpisto-global-sidebar .cpe-dropdown.cpe-is-active .link {
+	[visualtheme="standard"] body[dark-mode="true"] .mpisto-global-sidebar .link:active, .mpisto-global-sidebar .link:focus, .mpisto-global-sidebar .cpe-dropdown.cpe-is-active .link {
 		background-color:rgba(var(--global-nav-link-background-active), 0.35);
 	}
 
@@ -540,7 +542,7 @@ body[dark-mode="true"] .mpisto-global-navigation {
 	top:auto;
 	height:var(--sticky-nav-size);
 	flex-direction:row;
-	z-index:2;
+	z-index:99;
 	width:100%;
 	transform-origin:bottom;
 }
@@ -765,6 +767,7 @@ margin-bottom:20px;
   -webkit-backdrop-filter:var(--backdrop-filter);
   backdrop-filter:var(--backdrop-filter);
   */
+  flex:1;
 }
 
 
@@ -985,9 +988,8 @@ margin-left: 20px;
 	.mpisto-page-header-contribution-buttons {
 		margin-left: 0px;
 	}
-	.mpisto-page-header-contribution-buttons .actions > li > .cpe-button,
-	.mpisto-page-header-contribution-buttons .views > li > .cpe-button,
-	.mpisto-page-header-contribution-buttons .actions > .cpe-dropdown > .cpe-button {
+	.mpisto-page-header-contribution-buttons .cpe-button-group > li > .cpe-button,
+	.mpisto-page-header-contribution-buttons .cpe-button-group > .cpe-dropdown > .cpe-button {
 		font-size:12px;
 		padding-left:10px;
 		padding-right:10px;
@@ -1015,7 +1017,7 @@ margin-left: 20px;
 
 .mpisto-page-header-contribution-buttons .actions > li,
 .mpisto-page-header-contribution-buttons .views > li {
-	display:block;
+	display:flex;
 	margin-bottom:0;
 }
 
@@ -1140,7 +1142,7 @@ margin-left: 20px;
 		width:auto;
 		margin-top:calc(0px - var(--sticky-nav-size));
 		left:100%;
-		float:right;
+		align-self:flex-end;
 	}
 
 

@@ -20,7 +20,7 @@ var visualColorNames = ['Factory', 'XP Luna', 'Windows Forced', 'Campbell Forced
 	document.querySelector('html').className += " " + getKey('theme-active'); // We begin with the first theme selected
 	ColorUpdate(true);
 	UpdateMisc();
-	SheShe = 'auto'; // Allowed Values ('auto', true, false)
+	SheShe = 'auto'; // Allowed Values ('auto', true, false) 
 	if (SheShe == 'auto') {
 		SheShe = ($("body.server").length != 0);
 	}
@@ -42,12 +42,18 @@ var visualColorNames = ['Factory', 'XP Luna', 'Windows Forced', 'Campbell Forced
 		$("head").append('<style class="social-colors"></style>');
 		ManagerRows(); // For Task Manager Only
 		VisualStyleCompile(); // Compiles the Contrast Options
-		if ( ( window.matchMedia('(forced-colors: active)').matches ) ) {
-			VisualStyle(contrastVisual);
-		} else {
-			VisualStyle(-1); // We start without any visual style
+		if (getKey('style-active') === '-1') {
+			if ( ( window.matchMedia('(forced-colors: active)').matches ) ) {
+				insertKey('style-active', contrastvisual );
+			} else {
+				insertKey('style-active', 'S' );
+			}
 		}
-		VisualColor(-1); // We start without any visual style
+		if (getKey('color-active') === '-1') {
+			insertKey('color-active', 'S' );
+		}
+		VisualStyle(getKey('style-active'));
+		VisualColor(getKey('color-active'));
 		ContrastBanner(); // Notice
 		ColorFilter('standard');
 		SocialCompile();
@@ -85,16 +91,17 @@ function ColorFilter(filt) {
 
 /* Visual Styles */
 function VisualStyle(style) {
-	if (style === -1) { // Standard Style
+	if (style === 'S') { // Standard Style
 		$('html').attr("visualtheme", "standard");
 	} else {
 		$('html').attr("visualtheme", visualThemes[style]);
 	}
+		insertKey('style-active', style );
 		ThemeColorMetaTag();
 }
 
 function VisualColor(style) {
-	if (style === -1) { // Standard Style
+	if (style === 'S') { // Standard Style
 		$('html').attr("visualcolors", "standard");
 		if ($('.preview-theme-wrapper.selection-theme').length) {
 			$('.preview-theme-wrapper.selection-theme').attr("visualcolors", "standard");
@@ -105,6 +112,7 @@ function VisualColor(style) {
 			$('.preview-theme-wrapper.selection-theme').attr("visualcolors", visualColors[style]);
 		}
 	}
+		insertKey('color-active', style );
 		ColorUpdate(true);
 		ThemeColorMetaTag();
 }
@@ -1317,17 +1325,25 @@ function ColorTestTwin(color,color2,intensity=1,inter='hsl') {
 	return chroma.mix(color,color2,MW18HoverThreshold*intensity, inter);
 }
 
-function ColorTest(color,text=false) {
+function ColorTest(color,text=false,inv=false) {
 
 	if (isLightColor(color)) {
 		if (text === true) {
-			return '#0e191a'; // Was #000000
+			if (inv === false) {
+				return '#0e191a'; // Was #000000
+			} else {
+				return '#ffffff';
+			}
 		} else {
-			return ColorTestTwin(color,'#000000',0.6);
+			return ColorTestTwin(color,'#000000');
 		}
 	} else {
 		if (text === true) {
-			return '#ffffff';
+			if (inv === true) {
+				return '#0e191a'; // Was #000000
+			} else {
+				return '#ffffff';
+			}
 		} else {
 			return ColorTestTwin(color,'#ffffff');
 		}
@@ -1338,8 +1354,8 @@ function ColorTest(color,text=false) {
 
 function SuperColorTest(color) {
 	if (isLightColor(color)) {
-		var mix = ColorTestTwin(color,'#000000',0.6);
-		return ColorTestTwin(mix,'#000000', 0.6);
+		var mix = ColorTestTwin(color,'#000000');
+		return ColorTestTwin(mix,'#000000');
 	} else {
 		var mix = ColorTestTwin(color,'#ffffff');
 		return ColorTestTwin(mix,'#ffffff');
@@ -1657,6 +1673,7 @@ if (getComputedStyle(document.querySelector('body')).getPropertyValue("--content
 	var content_text2 = ColorTest(content_text);
 	var content_text3 = SuperColorTest(content_text); // Scrollbar
 	var content_text4 = ColorTest(content_text,true);
+	var content_text4I = ColorTest(content_text,true,true);
 	var content_text5 = ColorTest(content_text4,false);
 	colormixl = ColorTestTwin(content_color,content_text,0.8,'rgb');
 	colormix = ColorTestTwin(content_color,content_text,1.6,'rgb');
@@ -1664,6 +1681,7 @@ if (getComputedStyle(document.querySelector('body')).getPropertyValue("--content
 	var content_text2 = ColorTest(dropdowncolor3);
 	var content_text3 = SuperColorTest(dropdowncolor3); // Scrollbar
 	var content_text4 = ColorTest(dropdowncolor3,true);
+	var content_text4I = ColorTest(dropdowncolor3,true,true);
 	var content_text5 = ColorTest(content_text4,false);
 	colormixl = ColorTestTwin(content_color,dropdowncolor3,0.8,'rgb');
 	colormix = ColorTestTwin(content_color,dropdowncolor3,1.6,'rgb');
@@ -1694,6 +1712,7 @@ document.querySelector('body').style.setProperty("--content-bg-dark-super", cont
 document.querySelector('body').style.setProperty("--content-color-dark", content_text2);
 document.querySelector('body').style.setProperty("--content-color-dark-super", content_text3); // Scrollbar
 document.querySelector('body').style.setProperty("--content-color-text", content_text4);
+document.querySelector('body').style.setProperty("--content-color-text-inverted", content_text4I);
 document.querySelector('body').style.setProperty("--content-color-text-dark", content_text5);
 document.querySelector('body').style.setProperty("--content-color-content-bg-mix-light", colormixl);
 document.querySelector('body').style.setProperty("--content-color-content-bg-mix", colormix);
@@ -1707,6 +1726,7 @@ document.querySelector('body').style.setProperty("--content-color-rgb", Color2( 
 document.querySelector('body').style.setProperty("--content-color-dark-rgb", Color2(content_text2));
 document.querySelector('body').style.setProperty("--content-color-dark-super-rgb", Color2(content_text3));
 document.querySelector('body').style.setProperty("--content-color-text-rgb", Color2(content_text4));
+document.querySelector('body').style.setProperty("--content-color-text-inverted-rgb", Color2(content_text4I));
 document.querySelector('body').style.setProperty("--content-color-text-dark-rgb", Color2(content_text5));
 document.querySelector('body').style.setProperty("--content-color-blend-light-rgb", Color2( getComputedStyle(document.querySelector('body')).getPropertyValue("--content-color-blend-light") ));
 document.querySelector('body').style.setProperty("--content-color-blend-rgb", Color2( getComputedStyle(document.querySelector('body')).getPropertyValue("--content-color-blend") ));
@@ -1717,6 +1737,7 @@ document.querySelector('body').style.setProperty("--content-color-blend-rgb", Co
 var button_color = getComputedStyle(document.querySelector('body')).getPropertyValue("--button-color");
 var buttoncolor1 = ColorTest(button_color,false);
 var buttoncolor2 = ColorTest(button_color,true);
+var buttoncolor2I = ColorTest(button_color,true,true);
 var buttoncolor2t = ColorTest(buttoncolor2,false);
 var buttoncolor3 = SuperColorTest(button_color); // Scrollbar
 
@@ -1737,6 +1758,7 @@ buttonmix = ColorTestTwin(content_color,button_color,1.6,'rgb');
 document.querySelector('body').style.setProperty("--button-color-dark", buttoncolor1);
 document.querySelector('body').style.setProperty("--button-color-dark-super", buttoncolor3); // Scrollbar
 document.querySelector('body').style.setProperty("--button-color-text", buttoncolor2);
+document.querySelector('body').style.setProperty("--button-color-text-inverted", buttoncolor2I);
 document.querySelector('body').style.setProperty("--button-color-text-dark", buttoncolor2t);
 document.querySelector('body').style.setProperty("--button-color-content-bg-mix-light", buttonmixl);
 document.querySelector('body').style.setProperty("--button-color-content-bg-mix", buttonmix);
@@ -1745,6 +1767,7 @@ document.querySelector('body').style.setProperty("--button-color-rgb", Color2(bu
 document.querySelector('body').style.setProperty("--button-color-dark-rgb", Color2(buttoncolor1));
 document.querySelector('body').style.setProperty("--button-color-dark-super-rgb", Color2(buttoncolor3));
 document.querySelector('body').style.setProperty("--button-color-text-rgb", Color2(buttoncolor2));
+document.querySelector('body').style.setProperty("--button-color-text-inverted-rgb", Color2(buttoncolor2I));
 document.querySelector('body').style.setProperty("--button-color-text-dark-rgb", Color2(buttoncolor2t));
 document.querySelector('body').style.setProperty("--button-color-blend-light-rgb", Color2( getComputedStyle(document.querySelector('body')).getPropertyValue("--button-color-blend-light") ));
 document.querySelector('body').style.setProperty("--button-color-blend-rgb", Color2( getComputedStyle(document.querySelector('body')).getPropertyValue("--button-color-blend") ));
@@ -1755,6 +1778,7 @@ document.querySelector('body').style.setProperty("--button-color-blend-rgb", Col
 var header_color = getComputedStyle(document.querySelector('body')).getPropertyValue("--community-header-bg");
 var headercolor1 = ColorTest(header_color,false);
 var headercolor2 = ColorTest(header_color,true);
+var headercolor2I = ColorTest(header_color,true,true);
 var headercolor2t = ColorTest(headercolor2,false);
 var headercolor3 = SuperColorTest(header_color); // Scrollbar
 
@@ -1775,6 +1799,7 @@ headermix = ColorTestTwin(content_color,header_color,1.6,'rgb');
 document.querySelector('body').style.setProperty("--community-header-dark", headercolor1);
 document.querySelector('body').style.setProperty("--community-header-dark-super", headercolor3); // Scrollbar
 document.querySelector('body').style.setProperty("--community-header-text", headercolor2);
+document.querySelector('body').style.setProperty("--community-header-text-inverted", headercolor2I);
 document.querySelector('body').style.setProperty("--community-header-text-dark", headercolor2t);
 document.querySelector('body').style.setProperty("--community-header-bg-content-bg-mix-light", headermixl);
 document.querySelector('body').style.setProperty("--community-header-bg-content-bg-mix", headermix);
@@ -1783,6 +1808,7 @@ document.querySelector('body').style.setProperty("--community-header-bg-rgb", Co
 document.querySelector('body').style.setProperty("--community-header-dark-rgb", Color2(headercolor1));
 document.querySelector('body').style.setProperty("--community-header-dark-super-rgb", Color2(headercolor3));
 document.querySelector('body').style.setProperty("--community-header-text-rgb", Color2(headercolor2));
+document.querySelector('body').style.setProperty("--community-header-text-inverted-rgb", Color2(headercolor2I));
 document.querySelector('body').style.setProperty("--community-header-text-dark-rgb", Color2(headercolor2t));
 document.querySelector('body').style.setProperty("--community-header-bg-blend-light-rgb", Color2( getComputedStyle(document.querySelector('body')).getPropertyValue("--community-header-bg-blend-light") ));
 document.querySelector('body').style.setProperty("--community-header-bg-blend-rgb", Color2( getComputedStyle(document.querySelector('body')).getPropertyValue("--community-header-bg-blend") ));
@@ -1793,6 +1819,7 @@ document.querySelector('body').style.setProperty("--community-header-bg-blend-rg
 var link_color = getComputedStyle(document.querySelector('body')).getPropertyValue("--link-color");
 var linkcolor1 = ColorTest(link_color,false);
 var linkcolor2 = ColorTest(link_color,true);
+var linkcolor2I = ColorTest(link_color,true,true);
 var linkcolor2t = ColorTest(linkcolor2,false);
 var linkcolor3 = SuperColorTest(link_color); // Scrollbar
 
@@ -1814,6 +1841,7 @@ linkmix = ColorTestTwin(content_color,link_color,1.6,'rgb');
 document.querySelector('body').style.setProperty("--link-color-dark", linkcolor1);
 document.querySelector('body').style.setProperty("--link-color-dark-super", linkcolor3); // Scrollbar
 document.querySelector('body').style.setProperty("--link-color-text", linkcolor2);
+document.querySelector('body').style.setProperty("--link-color-text-inverted", linkcolor2I);
 document.querySelector('body').style.setProperty("--link-color-text-dark", linkcolor2t);
 document.querySelector('body').style.setProperty("--link-color-content-bg-mix-light", linkmixl);
 document.querySelector('body').style.setProperty("--link-color-content-bg-mix", linkmix);
@@ -1822,6 +1850,7 @@ document.querySelector('body').style.setProperty("--link-color-rgb", Color2(link
 document.querySelector('body').style.setProperty("--link-color-dark-rgb", Color2(linkcolor1));
 document.querySelector('body').style.setProperty("--link-color-dark-super-rgb", Color2(linkcolor3));
 document.querySelector('body').style.setProperty("--link-color-text-rgb", Color2(linkcolor2));
+document.querySelector('body').style.setProperty("--link-color-text-inverted-rgb", Color2(linkcolor2I));
 document.querySelector('body').style.setProperty("--link-color-text-dark-rgb", Color2(linkcolor2t));
 document.querySelector('body').style.setProperty("--link-color-blend-light-rgb", Color2( getComputedStyle(document.querySelector('body')).getPropertyValue("--link-color-blend-light") ));
 document.querySelector('body').style.setProperty("--link-color-blend-rgb", Color2( getComputedStyle(document.querySelector('body')).getPropertyValue("--link-color-blend") ));
@@ -1837,6 +1866,7 @@ if ((getComputedStyle(document.querySelector('body')).getPropertyValue("--conten
 var bordercolor1 = ColorTest(border_color,false);
 var bordercolor3 = SuperColorTest(border_color); // Scrollbar
 var bordercolor2 = ColorTest(border_color,true);
+var bordercolor2I = ColorTest(border_color,true,true);
 var bordercolor2t = ColorTest(bordercolor2,false);
 
 
@@ -1855,6 +1885,7 @@ bordermix = ColorTestTwin(content_color,border_color,1.6,'rgb');
 document.querySelector('body').style.setProperty("--content-border-dark", bordercolor1);
 document.querySelector('body').style.setProperty("--content-border-dark-super", bordercolor3); // Scrollbar
 document.querySelector('body').style.setProperty("--content-border-text", bordercolor2);
+document.querySelector('body').style.setProperty("--content-border-text-inverted", bordercolor2I);
 document.querySelector('body').style.setProperty("--content-border-text-dark", bordercolor2t);
 document.querySelector('body').style.setProperty("--content-border-content-bg-mix-light", bordermixl);
 document.querySelector('body').style.setProperty("--content-border-content-bg-mix", bordermix);
@@ -1863,6 +1894,7 @@ document.querySelector('body').style.setProperty("--content-border-rgb", Color2(
 document.querySelector('body').style.setProperty("--content-border-dark-rgb", Color2(bordercolor1));
 document.querySelector('body').style.setProperty("--content-border-dark-super-rgb", Color2(bordercolor3));
 document.querySelector('body').style.setProperty("--content-border-text-rgb", Color2(bordercolor2));
+document.querySelector('body').style.setProperty("--content-border-text-inverted-rgb", Color2(bordercolor2I));
 document.querySelector('body').style.setProperty("--content-border-text-dark-rgb", Color2(bordercolor2t));
 document.querySelector('body').style.setProperty("--content-border-blend-light-rgb", Color2( getComputedStyle(document.querySelector('body')).getPropertyValue("--content-border-blend-light") ));
 document.querySelector('body').style.setProperty("--content-border-blend-rgb", Color2( getComputedStyle(document.querySelector('body')).getPropertyValue("--content-border-blend") ));
@@ -1874,6 +1906,7 @@ var head_color =	getComputedStyle(document.querySelector('body')).getPropertyVal
 var headcolor1 = ColorTest(head_color,false);
 var headcolor3 = SuperColorTest(head_color); // Scrollbar
 var headcolor2 = ColorTest(head_color,true);
+var headcolor2I = ColorTest(head_color,true,true);
 var headcolor2t = ColorTest(headcolor2,false);
 
 if (isLightColor(head_color)) {
@@ -1891,6 +1924,7 @@ headmix = ColorTestTwin(content_color,head_color,1.6,'rgb');
 document.querySelector('body').style.setProperty("--background-color-dark", headcolor1);
 document.querySelector('body').style.setProperty("--background-color-dark-super", headcolor3); // Scrollbar
 document.querySelector('body').style.setProperty("--background-color-text", headcolor2);
+document.querySelector('body').style.setProperty("--background-color-text-inverted", headcolor2I);
 document.querySelector('body').style.setProperty("--background-color-text-dark", headcolor2t);
 document.querySelector('body').style.setProperty("--background-color-content-bg-mix-light", headmixl);
 document.querySelector('body').style.setProperty("--background-color-content-bg-mix", headmix);
@@ -1899,6 +1933,7 @@ document.querySelector('body').style.setProperty("--background-color-rgb", Color
 document.querySelector('body').style.setProperty("--background-color-dark-rgb", Color2(headcolor1));
 document.querySelector('body').style.setProperty("--background-color-dark-super-rgb", Color2(headcolor3));
 document.querySelector('body').style.setProperty("--background-color-text-rgb", Color2(headcolor2));
+document.querySelector('body').style.setProperty("--background-color-text-inverted-rgb", Color2(headcolor2I));
 document.querySelector('body').style.setProperty("--background-color-text-dark-rgb", Color2(headcolor2t));
 document.querySelector('body').style.setProperty("--background-color-blend-light-rgb", Color2( getComputedStyle(document.querySelector('body')).getPropertyValue("--background-color-blend-light") ));
 document.querySelector('body').style.setProperty("--background-color-blend-rgb", Color2( getComputedStyle(document.querySelector('body')).getPropertyValue("--background-color-blend") ));
@@ -1917,6 +1952,7 @@ var floating_color =getComputedStyle(document.querySelector('container')).getPro
 var floatingcolor1 = ColorTest(floating_color,false);
 var floatingcolor3 = SuperColorTest(floating_color); // Scrollbar
 var floatingcolor2 = ColorTest(floating_color,true);
+var floatingcolor2I = ColorTest(floating_color,true,true);
 var floatingcolor2t = ColorTest(floatingcolor2,false);
 
 if (isLightColor(floating_color)) {
@@ -1934,6 +1970,7 @@ floatmix = ColorTestTwin(content_color,floating_color,1.6,'rgb');
 document.querySelector('body').style.setProperty("--floating-header-dark", floatingcolor1);
 document.querySelector('body').style.setProperty("--floating-header-dark-super", floatingcolor3); // Scrollbar
 document.querySelector('body').style.setProperty("--floating-header-text", floatingcolor2);
+document.querySelector('body').style.setProperty("--floating-header-text-inverted", floatingcolor2I);
 document.querySelector('body').style.setProperty("--floating-header-text-dark", floatingcolor2t);
 document.querySelector('body').style.setProperty("--floating-header-bg-content-bg-mix-light", floatmixl);
 document.querySelector('body').style.setProperty("--floating-header-bg-content-bg-mix", floatmix);
@@ -1943,6 +1980,7 @@ document.querySelector('body').style.setProperty("--floating-header-bg-rgb", Col
 document.querySelector('body').style.setProperty("--floating-header-dark-rgb", Color2(floatingcolor1));
 document.querySelector('body').style.setProperty("--floating-header-dark-super-rgb", Color2(floatingcolor3));
 document.querySelector('body').style.setProperty("--floating-header-text-rgb", Color2(floatingcolor2));
+document.querySelector('body').style.setProperty("--floating-header-text-inverted-rgb", Color2(floatingcolor2I));
 document.querySelector('body').style.setProperty("--floating-header-text-dark-rgb", Color2(floatingcolor2t));
 document.querySelector('body').style.setProperty("--floating-header-bg-blend-light-rgb", Color2( getComputedStyle(document.querySelector('body')).getPropertyValue("--floating-header-bg-blend-light") ));
 document.querySelector('body').style.setProperty("--floating-header-bg-blend-rgb", Color2( getComputedStyle(document.querySelector('body')).getPropertyValue("--floating-header-bg-blend") ));
@@ -1976,24 +2014,30 @@ document.querySelector('body').style.setProperty("--alert-color-content-bg-mix",
 /* Emphasis Themes */
 var emphasiscolor = chroma.mix(content_color, chroma.mix(border_color, link_color, MW18HoverThreshold*2.5), MW18HoverThreshold*2.5);
 var emphasiscolor2 = ColorTest(emphasiscolor,true);
+var emphasiscolor2I = ColorTest(emphasiscolor,true,true);
 var emphasiscolor2t = ColorTest(emphasiscolor2,false);
 var accentcolor = chroma.mix(chroma.mix(content_color, border_color, MW18HoverThreshold*2.5), button_color, MW18HoverThreshold*2.5);
 var accentcolor2 = ColorTest(accentcolor,true);
+var accentcolor2I = ColorTest(accentcolor,true,true);
 var accentcolor2t = ColorTest(accentcolor2,false);
 
 
 document.querySelector('body').style.setProperty("--emphasis-bg", emphasiscolor);
 document.querySelector('body').style.setProperty("--emphasis-bg-text", emphasiscolor2);
+document.querySelector('body').style.setProperty("--emphasis-bg-text-inverted", emphasiscolor2I);
 document.querySelector('body').style.setProperty("--emphasis-bg-text-dark", emphasiscolor2t);
 document.querySelector('body').style.setProperty("--accent-bg", accentcolor);
 document.querySelector('body').style.setProperty("--accent-bg-text", accentcolor2);
+document.querySelector('body').style.setProperty("--accent-bg-text-inverted", accentcolor2I);
 document.querySelector('body').style.setProperty("--accent-bg-text-dark", accentcolor2t);
 // RGB
 document.querySelector('body').style.setProperty("--emphasis-bg-rgb", Color2(emphasiscolor));
 document.querySelector('body').style.setProperty("--emphasis-bg-text-rgb", Color2(emphasiscolor2));
+document.querySelector('body').style.setProperty("--emphasis-bg-text-inverted-rgb", Color2(emphasiscolor2I));
 document.querySelector('body').style.setProperty("--emphasis-bg-text-dark-rgb", Color2(emphasiscolor2t));
 document.querySelector('body').style.setProperty("--accent-bg-rgb", Color2(accentcolor));
 document.querySelector('body').style.setProperty("--accent-bg-text-rgb", Color2(accentcolor2));
+document.querySelector('body').style.setProperty("--accent-bg-text-inverted-rgb", Color2(accentcolor2I));
 document.querySelector('body').style.setProperty("--accent-bg-text-dark-rgb", Color2(accentcolor2t));
 
 
