@@ -96,6 +96,8 @@ function VisualStyle(style) {
 	} else {
 		$('html').attr("visualtheme", visualThemes[style]);
 	}
+	$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-styles li").removeClass('selected');
+	$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-styles li#style" + style).addClass('selected');
 		insertKey('style-active', style );
 		ThemeColorMetaTag();
 }
@@ -112,6 +114,8 @@ function VisualColor(style) {
 			$('.preview-theme-wrapper.selection-theme').attr("visualcolors", visualColors[style]);
 		}
 	}
+	$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-colors li").removeClass('selected');
+	$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-colors li#color" + style).addClass('selected');
 		insertKey('color-active', style );
 		ColorUpdate(true);
 		ThemeColorMetaTag();
@@ -123,12 +127,12 @@ function VisualStyleCompile() {
 // In the Visual Styles Dropdown
 /* Visual Styles */
 	for (let i = 0; i < visualThemes.length; i++) {
-		str = '<li><a onclick="VisualStyle(' + i + ')">' + visualThemeNames[i] + '</a></li>'
+		str = '<li id="style' + i + '"><a onclick="VisualStyle(' + i + ')">' + visualThemeNames[i] + '</a></li>'
 		$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-styles").append(str);
 	}
 /* Visual Colors */
 	for (let i = 0; i < visualColors.length; i++) {
-		str = '<li><a onclick="VisualColor(' + i + ')">' + visualColorNames[i] + '</a></li>'
+		str = '<li id="color' + i + '"><a onclick="VisualColor(' + i + ')">' + visualColorNames[i] + '</a></li>'
 		$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-colors").append(str);
 	}
 
