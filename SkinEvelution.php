@@ -13,8 +13,12 @@ class SkinEvelution extends SkinMustache {
         $data["html-titlealt"] =  $this->getOutput()->getTitle(); // Page Title
         $data["html-articlecount"] = SiteStats::articles();
         $data["html-filecount"] = SiteStats::images();
+        $data["html-editcount"] = SiteStats::edits();
+        $data["html-usercount"] = SiteStats::users();
         $data["msg-eve-pages"] = wfMessage( 'eve-pages' )->numParams( SiteStats::articles() )->parse(); //Overwrite the message so it respects plural forms
         $data["msg-eve-files"] = wfMessage( 'eve-files' )->numParams( SiteStats::images() )->parse();
+        $data["msg-eve-edits"] = wfMessage( 'eve-edits' )->numParams( SiteStats::edits() )->parse();
+        $data["msg-eve-users"] = wfMessage( 'eve-users' )->numParams( SiteStats::users() )->parse();
         $data["html-rc-link"] = Title::newFromText( 'Special:RecentChanges' )->getLocalURL();
         $data["html-files-link"] = Title::newFromText( 'Special:NewFiles' )->getLocalURL();
         $data["html-css-link"] = Title::newFromText( 'MediaWiki:Common.css' )->getLocalURL();

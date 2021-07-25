@@ -52,10 +52,13 @@ var visualColorNames = ['Factory', 'XP Luna', 'Windows Forced', 'Campbell Forced
 		if (getKey('color-active') === '-1') {
 			insertKey('color-active', 'S' );
 		}
+		if (getKey('filter-active') === '-1') {
+			insertKey('filter-active', 'standard' );
+		}
 		VisualStyle(getKey('style-active'));
 		VisualColor(getKey('color-active'));
 		ContrastBanner(); // Notice
-		ColorFilter('standard');
+		ColorFilter(getKey('filter-active'));
 		SocialCompile();
 		
 })();
@@ -85,7 +88,10 @@ function SupportsColorMix() {
 
 /* Color Filter */
 function ColorFilter(filt) {
-		$('body').attr("colorfilter", filt);
+	$('body').attr("colorfilter", filt);
+	$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-color-filters li").removeClass('selected');
+	$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-color-filters li#f-" + filt).addClass('selected');
+	insertKey('filter-active', filt );
 }
 
 
