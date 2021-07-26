@@ -36,3 +36,17 @@ class SkinEvelution extends SkinMustache {
         return $data;
     }
 }
+
+
+
+class EvelutionHooks {
+	public static function onResourceLoaderGetConfigVars( array &$vars, string $skin, Config $config ) {
+		$vars['wgEvelution'] = [
+			'LeftPersonalLinks' => $config->get( 'EvelutionLeftPersonalLinks' ),
+			'DisableColorManagement' => $config->get( 'EvelutionDisableColorManagement' ),
+			'ForceOneHeader' => $config->get( 'EvelutionForceOneHeader' ),
+		];
+
+		return true;
+	}
+}

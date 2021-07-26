@@ -1,12 +1,13 @@
 {
   "name": "Evelution",
-  "version": "4.2.0",
+  "version": "4.3.0",
   "namemsg": "skinname-evelution",
   "descriptionmsg": "evelution-skin-desc",
   "url": "https://www.mediawiki.org/wiki/Skin:Evelution",
   "author": [
     "HM100",
-    "CPE Evelution Supporters",
+    "Supporters",
+    "Translators",
     "..."
   ],
   "type": "skin",
@@ -16,7 +17,26 @@
   "license-name": "GPL-3.0-or-later",
   "manifest_version": 2,
 	"AutoloadClasses": {
-		"SkinEvelution": "SkinEvelution.php"
+		"SkinEvelution": "SkinEvelution.php",
+		"EvelutionHooks": "SkinEvelution.php"
+	},
+	"config": {
+		"EvelutionLeftPersonalLinks": {
+			"value": false,
+			"description": "Moves upper personal links to the left"
+		},
+		"EvelutionDisableColorManagement": {
+			"value": false,
+			"description": "Disables all color-related settings"
+		},
+		"EvelutionForceOneHeader": {
+			"value": false,
+			"description": "On Desktops, disables the static community header and forces the sticky community header to appear at all times"
+		}
+
+	},
+	"Hooks": {
+		"ResourceLoaderGetConfigVars": "EvelutionHooks::onResourceLoaderGetConfigVars"
 	},
   "ValidSkinNames": {
     "evelution": {
@@ -80,6 +100,9 @@
             "skins.evelution.styles",
             "mediawiki.ui.icon",
             "mediawiki.ui.button"
+          ],
+          "scripts": [
+            "skins.evelution"
           ]
         }
       ]
@@ -125,16 +148,7 @@
         "mobile"
       ],
       "packageFiles": [
-        "resources/chroma.js"
-      ]
-    },
-    "skins.evelution2": {
-      "targets": [
-        "desktop",
-        "mobile"
-      ],
-      "packageFiles": [
-        "resources/themes.js"
+        "resources/config.js"
       ]
     }
 

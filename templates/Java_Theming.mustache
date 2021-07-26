@@ -60,6 +60,7 @@ var visualColorNames = ['Factory', 'XP Luna', 'Windows Forced', 'Campbell Forced
 		ContrastBanner(); // Notice
 		ColorFilter(getKey('filter-active'));
 		SocialCompile();
+		$('body').click( function(e) { e.preventDefault; CheckTheme(); } );
 		
 })();
 
@@ -2107,6 +2108,7 @@ function CheckAdapt() {
 function CheckBG() {
 	$("body").attr('body-display', getComputedStyle(document.querySelector('body')).getPropertyValue("--body-display") );
 	$("body").attr('background-size', getComputedStyle(document.querySelector('body')).getPropertyValue("--background-size") );
+	$("body").attr('background-va', getComputedStyle(document.querySelector('body')).getPropertyValue("--background-va") );
 	$("body").attr('body-no-tiling', getComputedStyle(document.querySelector('body')).getPropertyValue("--background-no-tiling") );
 }
 

@@ -623,7 +623,7 @@ body[body-display*="legacy"] .gradient-overlay-2 {
 }
 
 .gradient-overlay-2 {
-	--overlay-transparency:0.92;
+	--overlay-transparency:0.95;
 	top:0;
 	width:100%;
 	height:100%;
@@ -631,7 +631,7 @@ body[body-display*="legacy"] .gradient-overlay-2 {
 	display:block;
 	content:"";
 	z-index:-1;
-	background-image:linear-gradient(rgba(var(--background-color-rgb),0) ,rgba(var(--background-color-rgb),var(--overlay-transparency)) calc(0% + 320px));
+	background-image:linear-gradient(rgba(var(--background-color-rgb),0) ,rgba(var(--background-color-rgb),var(--overlay-transparency)) calc(0% + 330px));
   image-rendering:initial;                  /* CSS4 Proposed  */
   -qq-image-blurring:tick;                  /* 4x4 Web 1-2    */
 	max-width:var(--max-width);
@@ -641,7 +641,7 @@ body[body-display*="legacy"] .gradient-overlay-2 {
 
 
 .gradient-overlay {
-	--overlay-transparency:0.82;
+	--overlay-transparency:0.75;
 	top:0;
 	width:100%;
 	height:100%;
@@ -651,21 +651,12 @@ body[body-display*="legacy"] .gradient-overlay-2 {
 	z-index:-1;
   -webkit-backdrop-filter:var(--backdrop-filter);
   backdrop-filter:var(--backdrop-filter);
-	background-image:linear-gradient(rgba(var(--community-header-bg-rgb),var(--overlay-transparency)) 340px,rgba(var(--community-header-bg-rgb),0));
+	background-image:linear-gradient(rgba(var(--background-color-rgb),var(--overlay-transparency)) 350px,rgba(var(--background-color-rgb),0));
 	pointer-events:none;
 	max-width:var(--max-width);
 	filter:var(--global-filter);
 }
 
-@supports ((-webkit-backdrop-filter:none) or (backdrop-filter:none)) {
-	.gradient-overlay {
-		--overlay-transparency:0.72;
-	}
-	.gradient-overlay-2 {
-		--overlay-transparency:0.87;
-	}
-
-}
 
 /* Option and Headings */
 button, input {
