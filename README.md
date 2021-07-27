@@ -16,5 +16,8 @@ To Install Evelution, you must download the reposistory first. Make a folder cal
 wfLoadSkin( 'Evelution' );
 ```
 
+# More Help
+Join to [https://discord.gg/a6FbV6zWFs](our Discord Server) for more help about Evelution
+
 # Known Limitation
 - Toolbar can cover the page action dropdowns if the content area is too small. If it is that case, collapse it.
