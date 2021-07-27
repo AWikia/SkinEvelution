@@ -16,6 +16,5 @@ To Install Evelution, you must download the reposistory first. Make a folder cal
 wfLoadSkin( 'Evelution' );
 ```
 
-# Known Limitations
-- Icons on OOUI elements can only appear in black for light themes and white for dark themes
+# Known Limitation
 - Toolbar can cover the page action dropdowns if the content area is too small. If it is that case, collapse it.
