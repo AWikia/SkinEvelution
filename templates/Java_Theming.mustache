@@ -17,7 +17,10 @@ var visualColorNames = ['Factory', 'XP Luna', 'Windows Forced', 'Campbell Forced
 	if (getKey('theme-active') === '-1') {
 		insertKey('theme-active', 'theme-A' );
 	}
+
 	document.querySelector('html').className += " " + getKey('theme-active'); // We begin with the first theme selected
+	$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li").removeClass('selected');
+	$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li[data-theme-change='" + getKey('theme-active') + "']").addClass('selected');
 	ColorUpdate(true);
 	UpdateMisc();
 	SheShe = 'auto'; // Allowed Values ('auto', true, false) 
@@ -2374,6 +2377,8 @@ function HCa() {
 		ColorUpdate(true);
 		UpdateMisc();
 		insertKey('theme-active', 'theme-A' );
+		$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li").removeClass('selected');
+		$(".cpe-dropdown .cpe-dropdown__content .cpe-themes li[data-theme-change='" + getKey('theme-active') + "']").addClass('selected');
 }
 
 function HCb() {
@@ -2387,6 +2392,8 @@ function HCb() {
 		ColorUpdate(true);
 		UpdateMisc();
 		insertKey('theme-active', 'theme-B' );
+		$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li").removeClass('selected');
+		$(".cpe-dropdown .cpe-dropdown__content .cpe-themes li[data-theme-change='" + getKey('theme-active') + "']").addClass('selected');
 }
 
 function HCc() {
@@ -2400,6 +2407,8 @@ function HCc() {
 		ColorUpdate(true);
 		UpdateMisc();
 		insertKey('theme-active', 'theme-C' );
+		$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li").removeClass('selected');
+		$(".cpe-dropdown .cpe-dropdown__content .cpe-themes li[data-theme-change='" + getKey('theme-active') + "']").addClass('selected');
 }
 
 function HCd() {
@@ -2413,6 +2422,8 @@ function HCd() {
 		ColorUpdate(true);
 		UpdateMisc();
 		insertKey('theme-active', 'theme-D' );
+		$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li").removeClass('selected');
+		$(".cpe-dropdown .cpe-dropdown__content .cpe-themes li[data-theme-change='" + getKey('theme-active') + "']").addClass('selected');
 }
 
 function UpdateFont() {
