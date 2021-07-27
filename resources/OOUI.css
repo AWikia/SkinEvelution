@@ -294,19 +294,22 @@ body li.gallerybox div.thumb {
 
 /* Chexbox & Radio Boxes */
 body .oo-ui-radioInputWidget [type='radio'],
+body .mw-ui-radio:not(#noop) [type='radio']
 body .oo-ui-checkboxInputWidget [type='checkbox'],
 body .mw-ui-checkbox:not(#noop) [type='checkbox'] {
 	opacity:1;
 }
 
 body .oo-ui-radioInputWidget [type='radio'] + span,
+body .mw-ui-radio:not(#noop) [type='radio'] + label:before,
 body .oo-ui-checkboxInputWidget [type='checkbox'] + span,
 body .mw-ui-checkbox:not(#noop) [type='checkbox'] + label:before {
 	opacity:0!important;
 }
 
 
-body .mw-ui-checkbox:not(#noop) [type='checkbox'] {
+body .mw-ui-checkbox:not(#noop) [type='checkbox'],
+body .mw-ui-radio:not(#noop) [type='radio'] {
 	display:inline-block;
 }
 
@@ -449,7 +452,8 @@ body .oo-ui-buttonElement-frameless.oo-ui-widget-enabled.oo-ui-flaggedElement-pr
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled > .oo-ui-buttonElement-button,
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-progressive > .oo-ui-buttonElement-button,
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-destructive > .oo-ui-buttonElement-button,
-body .mw-ui-button {
+body .mw-ui-button,
+body .mw-button:disabled {
     border-color:var(--button-color);
     background-color:var(--content-bg);
     color:var(--button-color);
@@ -508,7 +512,8 @@ body .oo-ui-buttonElement-framed.oo-ui-widget-disabled > .oo-ui-buttonElement-bu
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-buttonElement-active > .oo-ui-buttonElement-button,
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-buttonElement-active > .oo-ui-buttonElement-button:focus,
 body .oo-ui-buttonSelectWidget.oo-ui-widget-enabled:focus .oo-ui-buttonOptionWidget.oo-ui-optionWidget-selected .oo-ui-buttonElement-button,
-body .mw-ui-button.mw-ui-progressive {
+body .mw-ui-button.mw-ui-progressive,
+body .mw-ui-button.mw-ui-progressive:disabled {
     border-color:var(--button-color);
     background-color:var(--button-color);
     color:var(--button-color-text);
@@ -1024,10 +1029,17 @@ body .oo-ui-tabSelectWidget-frameless .oo-ui-tabOptionWidget.oo-ui-widget-enable
 
 /* ULS Menu */
 body .uls-menu {
-	top:50px!important; /* Override Inline Style */
+	top:0px!important; /* Override Inline Style */
+	left:50px!important;
 	border-color:rgb(var(--content-border-rgb));
 	background-color:var(--content-bg);
 	color:rgb(var(--content-color-rgb));
+	transition:top 400ms ease
+}
+
+.headroom--not-top .uls-menu,
+.single-header .uls-menu {
+	top:50px!important; /* Override Inline Style */
 }
 
 body .uls-search,
@@ -1089,6 +1101,8 @@ body .languagesettings-menu .menu-section.active {
 	color:rgb(var(--content-color-rgb));
 }
 
+
+
 body .languagesettings-menu .menu-section .settings-text {
 	color:var(--content-color-dark);
 }
@@ -1098,12 +1112,28 @@ body .uls-language-settings-close-block {
 }
 
 body[dark-mode="true"] .uls-icon-close {
-	filter:invert(1) hue-rotate(180deg)!important;
+	background:currentColor!important;
+  -webkit-mask-size: 16px 16px;
+          mask-size: 16px 16px;
+  -webkit-mask-position: center center;
+          mask-position: center center;
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  -webkit-mask-image:url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIj4KCTxwYXRoIGQ9Im0zLjYzNiAyLjIyMiAxNC4xNDIgMTQuMTQyLTEuNDE0IDEuNDE0TDIuMjIyIDMuNjM2eiIvPgoJPHBhdGggZD0iTTE3Ljc3OCAzLjYzNiAzLjYzNiAxNy43NzhsLTEuNDE0LTEuNDE0TDE2LjM2NCAyLjIyMnoiLz4KPC9zdmc+Cg==);
+  mask-image:url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIj4KCTxwYXRoIGQ9Im0zLjYzNiAyLjIyMiAxNC4xNDIgMTQuMTQyLTEuNDE0IDEuNDE0TDIuMjIyIDMuNjM2eiIvPgoJPHBhdGggZD0iTTE3Ljc3OCAzLjYzNiAzLjYzNiAxNy43NzhsLTEuNDE0LTEuNDE0TDE2LjM2NCAyLjIyMnoiLz4KPC9zdmc+Cg==);
+
 }
 
 .uls-tipsy.uls-tipsy {
 	visibility:hidden!important;
 }
+
+body #languagesettings-panels .mw-ui-pressed {
+    background-color: var(--button-color-dark-super);
+    color: var(--button-color-text-inverted);
+    box-shadow:0 0 1.5px 1.5px var(--button-color-dark-super);
+}
+
 
 /* File Input */
 
