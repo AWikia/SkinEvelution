@@ -78,31 +78,31 @@ When customizing the skin using CSS, please make sure that when you edit the bod
 Of course. It has been tested and it works. For instance, if you want to modify the 2nd theme, paste this to ``MediaWiki:Common.css``:
 ```css
 .theme-B[visualcolors="standard"] {
---background-image:url("");
---background-color:#e995ca;
---link-color:#18bbc5;
---content-bg:#ffffff;
---content-border:#ccc;
---content-color:#000000;
---button-color:#18BBC5;
---community-header-bg:#0000ff;
---floating-header-bg:auto;
+--community-background-image:url("");
+--community-background-color:#e995ca;
+--anchor-background-color:#058892;
+--page-background-color:#ffffff;
+--page-border-background-color:#ccc;
+--page-text-background-color:#000000;
+--accent-background-color:#18BBC5;
+--sticky-header-background-color:#0000ff;
+--toolbar-background-color:auto;
 }
 ```
 Per-page theming is also supported. If you want to use a different theme for the 1st theme on **Sample Test Page** article, paste this to ``MediaWiki:Common.css``:
 ```css
 .theme-A[visualcolors="standard"] .rootpage-Sample_Test_Page {
---background-image:url("");
---background-color:#e995ca;
---link-color:#18bbc5;
---content-bg:#ffffff;
---content-border:#ccc;
---content-color:#000000;
---button-color:#18BBC5;
---community-header-bg:#0000ff;
---floating-header-bg:auto;
+--community-background-image:url("");
+--community-background-color:#e995ca;
+--anchor-background-color:#058892;
+--page-background-color:#ffffff;
+--page-border-background-color:#ccc;
+--page-text-background-color:#000000;
+--accent-background-color:#18BBC5;
+--sticky-header-background-color:#0000ff;
+--toolbar-background-color:auto;
 }
 ```
 
 # Styling Guides
-When you're about to theme an elmement that it is not wrapped inside the ``container`` element, make sure to use ``rgb(var(--content-border-rgb))`` and ``rgb(var(--content-color-rgb))`` in place of ``var(--content-border)`` and ``var(--content-color)`` when referencing to Page Content Border and Page Text Color respectively since those variables can be set on the body element to ``auto``, thus breaking any styling. See the OOUI.css file in the ``resources`` folder to find out why. You don't need to do this if the element is inside the ``container`` element.
+When you're about to theme an elmement that it is not wrapped inside the ``container`` element, make sure to use  ``rgb(var(--page-background-color-rgb))`` , ``rgb(var(--page-border-background-color-rgb))`` and ``rgb(var(--page-text-background-color-rgb))`` in place of ``var(--page-background-color)` ,``var(--page-border-background-color)`` and ``var(--page-text-background-color)`` when referencing to Page Background Color, Page Content Border and Page Text Color respectively since the latter two variables can be set on the body element to ``auto`` in addition to the first one being set to the container element to a value other than ``inherit`` (The setting to toggle it is not present on Evelution), thus breaking any styling. See the OOUI.css file in the ``resources`` folder to find out why. You don't need to do this if the element is inside the ``container`` element.
