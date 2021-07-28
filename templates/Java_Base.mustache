@@ -143,13 +143,13 @@ $('#floatingbanner .cpe-banner-notification')
 
 function AddFloatingBanner(content='Sample Content',kind='message',extraclass='') {
 	if (kind === 'warning') {
-		var icon = 'cpe-icons-alert-small'
+		var icon = 'report_problem'
 	} else if (kind === 'alert') {
-		var icon = 'cpe-icons-error-small'
+		var icon = 'report'
 	} else if (kind === 'success') {
-		var icon = 'cpe-icons-checkmark-small'
+		var icon = 'done'
 	} else {
-		var icon = 'cpe-icons-flag-small'
+		var icon = 'info'
 	}
 	if (!($(".top-gap #floatingbanner").length)) {
 		$('.top-gap').prepend ( 
@@ -161,9 +161,9 @@ function AddFloatingBanner(content='Sample Content',kind='message',extraclass=''
 	$('.top-gap #floatingbanner').append ( 
 			'<div class=" cpe-banner-notification cpe-' + kind + '" id="' + extraclass  + '">' +
 			  '<div class="cpe-banner-notification__icon">' +
-				'<svg xmlns="http://www.w3.org/2000/svg" class="cpe-icon cpe-icon-small">' +
-				  '<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#' + icon +'" />' +
-				'</svg>' +
+				'<span class="cpe-icon cpe-icon-small material-icons-outlined">' +
+					icon + 
+				'</span>' +
 			  '</div>' +
 			  '<span class="cpe-banner-notification__text">' + content + '</span>' +
 			  '<svg onclick="RemoveBanner()" xmlns="http://www.w3.org/2000/svg" class="cpe-banner-notification__close cpe-icon cpe-icon-tiny">' +
