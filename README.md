@@ -17,7 +17,7 @@ wfLoadSkin( 'Evelution' );
 ```
 
 # More Help
-Join to [https://discord.gg/a6FbV6zWFs](our Discord Server) for more help about Evelution
+Join to [our Discord Server](https://discord.gg/a6FbV6zWFs) for more help about Evelution
 
 # Known Limitation
 - Toolbar can cover the page action dropdowns if the content area is too small. If it is that case, collapse it.
