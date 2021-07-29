@@ -45,7 +45,7 @@ filter:none!important;
 	--lightbox-opacity:1!important;
 }
 
-.mpisto-content .mpisto-wrapper {
+.mpisto-content .mpisto-left-pane {
 	--content-space-opacity:1!important;
 }
 
@@ -126,7 +126,7 @@ filter:none!important;
 	--lightbox-opacity:1!important;
 }
 
-.prt .mpisto-content .mpisto-wrapper {
+.prt .mpisto-content .mpisto-left-pane {
 	--content-space-opacity:1!important;
 }
 
@@ -140,7 +140,7 @@ filter:none!important;
 }
 
 
-.prt.constructor .mpisto-content .mpisto-wrapper::before {
+.prt.constructor .mpisto-content .mpisto-left-pane::before {
 	opacity:1;
 }
 
@@ -342,7 +342,7 @@ background-image:linear-gradient(to left,rgba(255,255,255, 0) 200px,var(--sticky
   filter:none!important;
 }
 
-[visualtheme="basic"] .mpisto-content:not(.mpisto-discussions-content) .mpisto-wrapper, [visualtheme="contrast"] .mpisto-content:not(.mpisto-discussions-content) .mpisto-wrapper,
+[visualtheme="basic"] .mpisto-content:not(.mpisto-discussions-content) .mpisto-left-pane, [visualtheme="contrast"] .mpisto-content:not(.mpisto-discussions-content) .mpisto-left-pane,
 [visualtheme="basic"] .mpisto-options-content, [visualtheme="contrast"] .mpisto-options-content,
 [visualtheme="basic"] .mpisto-editors-content, [visualtheme="contrast"] .mpisto-editors-content {
 	box-shadow:-4px 0 0 0 var(--sticky-header-background-color),
@@ -360,7 +360,7 @@ background-image:linear-gradient(to left,rgba(255,255,255, 0) 200px,var(--sticky
 				5px -1px 0 0 var(--sticky-header-foreground-color)!important;
 				border-top-color:var(--sticky-header-background-color);
 }
-[visualtheme="basic"] .mpisto-content .mpisto-wrapper, [visualtheme="contrast"] .mpisto-content .mpisto-wrapper,
+[visualtheme="basic"] .mpisto-content .mpisto-left-pane, [visualtheme="contrast"] .mpisto-content .mpisto-left-pane,
 [visualtheme="basic"] .mpisto-options-content, [visualtheme="contrast"] .mpisto-options-content,
 [visualtheme="basic"] .mpisto-editors-content, [visualtheme="contrast"] .mpisto-editors-content {
 border-color:var(--sticky-header-foreground-color);
@@ -525,7 +525,7 @@ background-color:var(--accent-background-color);
 	background-color:rgb(var(--global-nav-link-background-active));
 }
 
-[visualtheme="contrast"] .mpisto-content .mpisto-wrapper, [visualtheme="contrast"] .pane-on .mpisto-article-wrapper:after, [visualtheme="basic"] .mpisto-content .mpisto-wrapper {
+[visualtheme="contrast"] .mpisto-content .mpisto-left-pane, [visualtheme="contrast"] .pane-on .mpisto-article-wrapper:after, [visualtheme="basic"] .mpisto-content .mpisto-left-pane {
   background-color:var(--page-background-color);
   border-top-color:transparent;
 }
@@ -599,17 +599,6 @@ body:after {
 }
 
 
-/*
-[visualtheme="contrast"] header.mpisto-navbar {
-  border-top-color:var(--page-text-background-color);
-}
-
-[visualtheme="contrast"] header.mpisto-navbar .link:hover, [visualtheme="contrast"] header.mpisto-navbar .cpe-dropdown:hover .link {
-  background-color:var(--accent-background-color);
-  color:var(--accent-foreground-color);
-  border-color:var(--accent-foreground-color);
-}
-*/
 
 [visualtheme="contrast"] .cpe-dropdown__content .cpe-list.cpe-is-linked>li.selected>a:not(.cpe-button), [visualtheme="contrast"] .cpe-dropdown__content .cpe-list.cpe-is-linked>li.cpe-is-selected>a:not(.cpe-button), [visualtheme="contrast"] .cpe-dropdown__content .cpe-list.cpe-is-linked>li:hover>a:not(.cpe-button){
   background-color:var(--accent-background-color);
@@ -670,8 +659,8 @@ color:var(--accent-foreground-color);
 background-color:var(--accent-background-color);
 }
 
-
-[visualtheme="contrast"] .mpisto-module h2, /*[visualtheme="contrast"] .lightbox h1, [visualtheme="contrast"] .lightbox h2, [visualtheme="contrast"] .lightbox footer,*/ [visualtheme="contrast"] .mpisto-module:not(.editor-module) .buttons {
+/*
+[visualtheme="contrast"] .mpisto-module h2, [visualtheme="contrast"] .mpisto-module:not(.editor-module) .buttons {
   background-color:var(--sticky-header-background-color);
   color:var(--sticky-header-foreground-color);
   z-index:initial;
@@ -681,13 +670,6 @@ background-color:var(--accent-background-color);
 [visualtheme="contrast"] .mpisto-module.editor-module h2 {
   background-color:var(--accent-background-color);
   color:var(--accent-foreground-color);
-}
-
-/*[visualtheme="contrast"] footer.mpisto-footer .mpisto-wrapper .mpisto-footer-container th {
-  background-color:var(--accent-background-color);
-  color:var(--accent-foreground-color);
-  z-index:initial;
-  position:static;
 }
 */
 
@@ -706,9 +688,11 @@ background-color:var(--page-background-color);
 [visualtheme="contrast"] .lightbox .footer {
 	border-color:var(--page-text-background-color);
 }
+/*
 [visualtheme="contrast"] .mpisto-module:not(.editor-module) {
 box-shadow:0 0 0 3px var(--page-border-background-color)!important;
 }
+*/
 
 /* Checkboxes */
 [visualtheme="basic"] input[type="checkbox"], [visualtheme="basic"] input[type="radio"] ,
@@ -1024,8 +1008,8 @@ color:inherit;
 	box-shadow:0 0 0 1px var(--page-border-background-color)!important;
 }
 
-/* Lightbox button stylings. Based on Community Header button theming on non-contrast modes */
-[visualtheme="contrast"] .mpisto-module:not(.editor-module) .buttons .cpe-button /*,[visualtheme="contrast"] .lightbox h1 .cpe-button, [visualtheme="contrast"] .lightbox h2 .cpe-button, [visualtheme="contrast"] .lightbox footer .cpe-button*/  {
+/* Lightbox button stylings. Based on Community Header button theming on non-contrast modes 
+[visualtheme="contrast"] .mpisto-module:not(.editor-module) .buttons .cpe-button   {
 background-color:var(--sticky-header-foreground-color);
 color:var(--sticky-header-background-color);
 border-color:var(--sticky-header-foreground-color);
@@ -1033,59 +1017,59 @@ border-color:var(--sticky-header-foreground-color);
 background-clip:padding-box;
 }
 
-/*[visualtheme="contrast"] .lightbox h1 .cpe-button:hover, [visualtheme="contrast"] .lightbox h2 .cpe-button:hover, [visualtheme="contrast"] .lightbox footer .cpe-button:hover,*/ [visualtheme="contrast"] .mpisto-module:not(.editor-module) .buttons .cpe-button:hover  {
+[visualtheme="contrast"] .mpisto-module:not(.editor-module) .buttons .cpe-button:hover  {
 background-color:var(--sticky-header-foreground-color-hover);
 color:var(--sticky-header-background-color);
 border-color:var(--sticky-header-foreground-color-hover);
 }
 
 
-/*[visualtheme="contrast"] .lightbox h1 .cpe-button:active, [visualtheme="contrast"] .lightbox h2 .cpe-button:active, [visualtheme="contrast"] .lightbox footer .cpe-button:active,*/ [visualtheme="contrast"] .mpisto-module:not(.editor-module) .buttons .cpe-button:active  {
+[visualtheme="contrast"] .mpisto-module:not(.editor-module) .buttons .cpe-button:active  {
 background-color:rgba(var(--sticky-header-foreground-color-hover-rgb), 0.8);
 color:var(--sticky-header-background-color);
 border-color:rgba(var(--sticky-header-foreground-color-hover-rgb), 0.8);
 }
 
 
-/*[visualtheme="contrast"] .lightbox h1 .cpe-button.cpe-is-secondary, [visualtheme="contrast"] .lightbox h2 .cpe-button.cpe-is-secondary, [visualtheme="contrast"] .lightbox footer .cpe-button.cpe-is-secondary,*/ [visualtheme="contrast"] .mpisto-module:not(.editor-module) .buttons .cpe-button.cpe-is-secondary  {
+[visualtheme="contrast"] .mpisto-module:not(.editor-module) .buttons .cpe-button.cpe-is-secondary  {
 color:var(--sticky-header-foreground-color);
 background-color:transparent;
 border-color:var(--sticky-header-foreground-color);
 }
 
-/*[visualtheme="contrast"] .lightbox h1 .cpe-button.cpe-is-secondary:hover, [visualtheme="contrast"] .lightbox h2 .cpe-button.cpe-is-secondary:hover, [visualtheme="contrast"] .lightbox footer .cpe-button.cpe-is-secondary:hover,*/ [visualtheme="contrast"] .mpisto-module:not(.editor-module) .buttons .cpe-button.cpe-is-secondary:hover {
+[visualtheme="contrast"] .mpisto-module:not(.editor-module) .buttons .cpe-button.cpe-is-secondary:hover {
 color:var(--sticky-header-foreground-color-hover);
 background-color:transparent;
 border-color:var(--sticky-header-foreground-color-hover);
 }
 
 
-/*[visualtheme="contrast"] .lightbox h1 .cpe-button.cpe-is-secondary:active, [visualtheme="contrast"] .lightbox h2 .cpe-button.cpe-is-secondary:active, [visualtheme="contrast"] .lightbox footer .cpe-button.cpe-is-secondary:active,*/ [visualtheme="contrast"] .mpisto-module:not(.editor-module) .buttons .cpe-button.cpe-is-secondary:active {
+[visualtheme="contrast"] .mpisto-module:not(.editor-module) .buttons .cpe-button.cpe-is-secondary:active {
 color:rgba(var(--sticky-header-foreground-color-hover-rgb), 0.8);
 background-color:transparent;
 border-color:rgba(var(--sticky-header-foreground-color-hover-rgb), 0.8);
 }
 
 
-/*[visualtheme="contrast"] .lightbox h1 .cpe-button.cpe-is-text, [visualtheme="contrast"] .lightbox h2 .cpe-button.cpe-is-text, [visualtheme="contrast"] .lightbox footer .cpe-button.cpe-is-text,*/ [visualtheme="contrast"] .mpisto-module:not(.editor-module) .buttons .cpe-button.cpe-is-text  {
+[visualtheme="contrast"] .mpisto-module:not(.editor-module) .buttons .cpe-button.cpe-is-text  {
 color:var(--sticky-header-foreground-color);
 background-color:transparent;
 border:0;
 }
 
-/*[visualtheme="contrast"] .lightbox h1 .cpe-button.cpe-is-text:hover, [visualtheme="contrast"] .lightbox h2 .cpe-button.cpe-is-text:hover, [visualtheme="contrast"] .lightbox footer .cpe-button.cpe-is-text:hover*/, [visualtheme="contrast"] .mpisto-module:not(.editor-module) .buttons .cpe-button.cpe-is-text:hover {
+[visualtheme="contrast"] .mpisto-module:not(.editor-module) .buttons .cpe-button.cpe-is-text:hover {
 color:var(--sticky-header-foreground-color-hover);
 background-color:transparent;
 border:0;
 }
 
-/*[visualtheme="contrast"] .lightbox h1 .cpe-button.cpe-is-text:active, [visualtheme="contrast"] .lightbox h2 .cpe-button.cpe-is-text:active, [visualtheme="contrast"] .lightbox footer .cpe-button.cpe-is-text:active*/, [visualtheme="contrast"] .mpisto-module:not(.editor-module) .buttons .cpe-button.cpe-is-text:active {
+[visualtheme="contrast"] .mpisto-module:not(.editor-module) .buttons .cpe-button.cpe-is-text:active {
 color:rgba(var(--sticky-header-foreground-color-hover-rgb), 0.8);
 background-color:transparent;
 border:0;
 }
 
-
+*/
 
 /* Simple Theme */
 [visualtheme="simple"] .mpisto-header-container {
@@ -1215,7 +1199,6 @@ background-image:linear-gradient(to bottom, var(--accent-gradient-color) 35%, va
 }
 
 [visualtheme="simple"] .mpisto-content .mpisto-page-header-title,
-[visualtheme="simple"] .mpisto-right-pane,
 [visualtheme="simple"] .editor-header,
 [visualtheme="simple"] .mpisto-option-way h1,
 [visualtheme="simple"] .mpisto-userpages-header {
@@ -1527,7 +1510,7 @@ color:var(--accent-foreground-color);
 }
 
 
-[visualtheme="classic"] .mpisto-content:not(.mpisto-discussions-content) .mpisto-wrapper,
+[visualtheme="classic"] .mpisto-content:not(.mpisto-discussions-content) .mpisto-left-pane,
 [visualtheme="classic"] .mpisto-options-content,
 [visualtheme="classic"] .mpisto-editors-content {
 	background-color:var(--page-background-color);
@@ -1570,7 +1553,7 @@ color:var(--accent-foreground-color);
 }
 
 
-[visualtheme="classic"] .mpisto-module h2,
+/*[visualtheme="classic"] .mpisto-module h2,*/
 [visualtheme="classic"] .lightbox h1 {
 	background-color:var(--sticky-header-background-color)!important;
 	color:var(--sticky-header-foreground-color)!important;
@@ -1578,17 +1561,18 @@ color:var(--accent-foreground-color);
 	border-radius:0;
 }
 
-[visualtheme="classic"] .mpisto-module .buttons,
+/*[visualtheme="classic"] .mpisto-module .buttons, */
 [visualtheme="classic"] .lightbox footer {
 	background-color:var(--page-secondary-background-color)!important;
 	border-radius:0;
 }
 
-
+/*
 [visualtheme="classic"] .mpisto-module h2:before,
 [visualtheme="classic"] .mpisto-module h2:after {
 	background-color:transparent!important;
 }
+*/
 
 [visualtheme="classic"] input[type="checkbox"] + label:active, [visualtheme="classic"] input[type="radio"] + label:active,
 [visualtheme="classic"] input[type="checkbox"]:active + label, [visualtheme="classic"] input[type="radio"]:active + label {
@@ -1597,7 +1581,8 @@ color:var(--accent-foreground-color);
 
 
 /* Discussions specific CSS */
-[visualtheme="contrast"] .mpisto-discussions-wrapper .card {
+[visualtheme="contrast"] .mpisto-discussions-wrapper .card,
+[visualtheme="contrast"] .mpisto-right-pane .mpisto-module  {
 	border-color:var(--page-border-background-color);
 }
 

@@ -380,9 +380,9 @@ scrollbar-color:var(--scrollbar-thumb-color-1) var(--scrollbar-track-color-1);
 --page-text-background-color:auto;
 --toolbar-background-color:auto;
 --community-background-mode:modern;
---background-alignment:top;
+--community-background-alignment:top;
 --community-background-size:cover;
---background-no-tiling:false;
+--community-background-no-tiling:false;
 --backdrop-filter:blur(8px) sepia(12%) contrast(112%) invert(12%) grayscale(12%) saturate(112%) hue-rotate(12deg) brightness(112%);
 /* Fonts */
 --font-family:"Didact Gothic", "Inter", -apple-system, BlinkMacSystemFont;
@@ -401,8 +401,58 @@ scrollbar-color:var(--scrollbar-thumb-color-1) var(--scrollbar-track-color-1);
 
 }
 
-/* Fandom Variable Aliases */
-:root body {
+/* Fandom Variable Aliases for compatibility */
+body {
+    --theme-body-dynamic-color-1: var(--community-foreground-color);
+    --theme-body-dynamic-color-1--rgb: var(--community-foreground-color-rgb);
+    --theme-body-dynamic-color-2:  var(--community-foreground-color-hover);
+    --theme-body-dynamic-color-2--rgb:  var(--community-foreground-color-hover-rgb);
+    --theme-page-dynamic-color-1:  var(--page-text-background-color);
+    --theme-page-dynamic-color-1--rgb: var(--page-text-background-color-rgb);
+    --theme-page-dynamic-color-1--inverted: var(--page-secondary-background-color);
+    --theme-page-dynamic-color-1--inverted--rgb: var(--page-secondary-background-color-rgb);
+    --theme-page-dynamic-color-2: var(--page-text-background-color-hover);
+    --theme-page-dynamic-color-2--rgb: var(--page-text-background-color-hover-rgb);
+    --theme-sticky-nav-dynamic-color-1: var(--sticky-header-foreground-color);
+    --theme-sticky-nav-dynamic-color-1--rgb: var(--sticky-header-foreground-color-rgb);
+    --theme-sticky-nav-dynamic-color-2: var(--sticky-header-foreground-color-hover);
+    --theme-sticky-nav-dynamic-color-2--rgb: var(--sticky-header-foreground-color-hover-rgb);
+    --theme-link-dynamic-color-1: var(--anchor-foreground-color);
+    --theme-link-dynamic-color-1--rgb: var(--anchor-foreground-color-rgb);
+    --theme-link-dynamic-color-2: var(--anchor-foreground-color-hover);
+    --theme-link-dynamic-color-2--rgb: var(--anchor-foreground-color-hover-rgb);
+    --theme-accent-dynamic-color-1:  var(--accent-foreground-color);
+    --theme-accent-dynamic-color-1--rgb: var(--accent-foreground-color-rgb);
+    --theme-accent-dynamic-color-2: var(--accent-foreground-color-hover);
+    --theme-accent-dynamic-color-2--rgb: var(--accent-foreground-color-hover-rgb);
+    --theme-body-background-color: var(--community-background-color);
+    --theme-body-background-color--rgb: var(--community-background-color-rgb);
+    --theme-body-background-image: var(--community-background-image);
+    --theme-body-text-color: var(--community-foreground-color);
+    --theme-body-text-color--hover: var(--community-foreground-color-hover);
+    --theme-sticky-nav-background-color: var(--sticky-header-background-color);
+    --theme-sticky-nav-text-color: var(--sticky-header-foreground-color);
+    --theme-sticky-nav-text-color--hover: var(--sticky-header-foreground-color-hover);
+    --theme-page-background-color: var(--page-background-color);
+    --theme-page-background-color--rgb: var(--page-background-color-rgb);
+    --theme-page-background-color--secondary: var(--page-secondary-background-color);
+    --theme-page-text-color: var(--page-text-background-color);
+    --theme-page-text-color--rgb: var(--page-text-background-color-rgb);
+    --theme-page-text-color--hover: var(--page-text-background-color-hover);
+    --theme-page-text-mix-color: var(--page-text-background-color-page-background-color-mix);
+    --theme-page-text-mix-color-95: var(--page-text-background-color-page-background-color-mix-light);
+    --theme-page-accent-mix-color: var(--accent-background-color-page-background-color-mix);
+    --theme-page-headings-font: var(--secondary-font);
+    --theme-link-color: var(--anchor-background-color);
+    --theme-link-color--rgb: var(--anchor-background-color-rgb);
+    --theme-link-color--hover: var(--anchor-background-color-hover);
+    --theme-link-label-color: var(--anchor-foreground-color);
+    --theme-accent-color: var(--accent-background-color);
+    --theme-accent-color--rgb: var(--accent-background-color-rgb);
+    --theme-accent-color--hover: var(--accent-background-color-hover);
+    --theme-accent-label-color:  var(--accent-foreground-color);
+    --theme-border-color: var(--page-border-background-color);
+    --theme-border-color--rgb: var(--page-border-background-color-rgb);
     --theme-alert-color: #dd3333;
     --theme-alert-color--rgb: 221,51,51;
     --theme-alert-color--hover: #e66666;
@@ -414,6 +464,7 @@ scrollbar-color:var(--scrollbar-thumb-color-1) var(--scrollbar-track-color-1);
     --theme-success-label: #ffffff;
     --theme-message-color: #575859;
     --theme-message-label: #ffffff;
+
 }
 
 :root { /* Standard */
@@ -506,7 +557,7 @@ container {
 	background-attachment:local;
 	background-attachment:fixed;
 	background-position:center;
-	background-position-y:var(--background-alignment);
+	background-position-y:var(--community-background-alignment);
 	background-size:cover;
 	background-image:var(--community-background-image);
 	background-color:var(--community-background-color);

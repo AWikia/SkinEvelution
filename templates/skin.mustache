@@ -12,22 +12,29 @@
 			<section class="mpisto-content" id="mw-content" onclick="">
 				{{>CommunityHeader}}
 				<div class="mpisto-wrapper">
-					{{>PageHeader}}
 					<div class="mpisto-article-wrapper">
 					  <nav class="mpisto-left-pane">
+						{{>PageHeader}}
+						  <!-- Begin Article -->
 						  <article class="mpisto-article" id="content">
 							{{>ContentBody}}
 						  </article>
-					  </nav>
-					</div>
-					<div class="mpisto-page-header mpisto-page-footer">
-						<div class="mpisto-page-header-main">
-							<div class="mpisto-page-header-title">
-    {{#data-footer}}
-    {{!}}{{#data-info}}{{>FooterList}}{{/data-info}}
-    {{/data-footer}}
+						  <!-- End Article -->
+						  <!-- Begin Footer -->
+						<div class="mpisto-page-header mpisto-page-footer">
+							<div class="mpisto-page-header-main">
+								<div class="mpisto-page-header-title">
+									{{#data-footer}}
+									{{!}}{{#data-info}}{{>FooterList}}{{/data-info}}
+									{{/data-footer}}
+								</div>
 							</div>
 						</div>
+					  <!-- End Footer -->
+					  </nav>
+					  <nav class="mpisto-right-pane">
+						{{>Modules}}
+					  </nav>
 					</div>
 				</div>
 			</section>
