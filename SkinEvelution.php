@@ -19,6 +19,8 @@ class SkinEvelution extends SkinMustache {
         $data["msg-eve-files"] = wfMessage( 'eve-files' )->numParams( SiteStats::images() )->parse();
         $data["msg-eve-edits"] = wfMessage( 'eve-edits' )->numParams( SiteStats::edits() )->parse();
         $data["msg-eve-users"] = wfMessage( 'eve-users' )->numParams( SiteStats::users() )->parse();
+        $data["msg-eve-activity-module"] = wfMessage( 'eve-activity-module' )->inContentLanguage()->parseAsBlock(); // Additional JS is used
+        $data["msg-eve-about-module-info"] = wfMessage( 'eve-about-module-info' )->inContentLanguage()->parseAsBlock();
         $data["html-rc-link"] = Title::newFromText( 'Special:RecentChanges' )->getLocalURL();
         $data["html-files-link"] = Title::newFromText( 'Special:NewFiles' )->getLocalURL();
         $data["html-css-link"] = Title::newFromText( 'MediaWiki:Common.css' )->getLocalURL();
