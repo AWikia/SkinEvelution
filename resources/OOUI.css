@@ -1,10 +1,10 @@
 /* OOUI Overrides for Evelution */
 .oo-ui-flaggedElement-destructive  {
-    --accent-background-color: #dd3333!important;
-    --accent-background-color-hover: #e66666!important;
-    --accent-background-color-active: #ec8c8c!important;
-    --accent-foreground-color: #ffffff!important;
-    --accent-foreground-color-hover: #bfbfbf!important;
+    --accent-background-color: var(--alert-background-color)!important;
+    --accent-background-color-hover: var(--alert-background-color-hover)!important;
+    --accent-background-color-active: var(--alert-background-color-active)!important;
+    --accent-foreground-color: var(--alert-foreground-color)!important;
+    --accent-foreground-color-hover: var(--alert-foreground-color-hover)!important;
     --accent-background-color-page-background-color-mix-light:var(--alert-color-page-background-color-mix-light)!important;
     --accent-background-color-page-background-color-mix: var(--alert-color-page-background-color-mix)!important;
 }
@@ -207,24 +207,34 @@
     overflow: hidden;
 }
 
+.messagebox a, .errorbox a, .warningbox a, .successbox a,
+.messagebox a:visited, .errorbox a:visited, .warningbox a:visited, .successbox a:visited {
+	color:#376266;
+}
+
+.messagebox a:hover, .errorbox a:hover, .warningbox a:hover, .successbox a:hover,
+.messagebox a:visited:hover, .errorbox a:visited:hover, .warningbox a:visited:hover, .successbox a:visited:hover {
+	color:#0e191a;
+}
+
 .messagebox {
-    background-color: #eaecf0;
-    border-color: #a2a9b1;
+    background-color: var(--message-gradient-color);
+    border-color: var(--message-gradient-color-hover);
 }
 
 .errorbox {
-    background-color: #fee7e6;
-    border-color: #d33;
+    background-color: var(--alert-gradient-color);
+    border-color: var(--alert-gradient-color-hover);
 }
 
 .warningbox {
-    background-color: #fef6e7;
-    border-color: #fc3;
+    background-color: var(--warning-gradient-color);
+    border-color: var(--warning-gradient-color-hover);
 }
 
 .successbox {
-    background-color: #d5fdf4;
-    border-color: #14866d;
+    background-color: var(--success-gradient-color);
+    border-color: var(--success-gradient-color-hover);
 }
 
 /* MediaWiki */
@@ -250,17 +260,20 @@ body .mw-notification {
 
 body .mw-notification.mw-notification-type-error {
 	color:#0e191a;
-	background-color:rgba(254,231,230,0.7);
+	background-color:rgba(var(--alert-gradient-color-rgb),0.7);
+    border-color: var(--alert-gradient-color-hover);
 }
 
 body .mw-notification.mw-notification-type-success {
 	color:#0e191a;
-	background-color:rgba(213,253,244,0.7);
+	background-color:rgba(var(--success-gradient-color-rgb),0.7);
+    border-color: var(--success-gradient-color-hover);
 }
 
 body .mw-notification.mw-notification-type-warn {
 	color:#0e191a;
-	background-color:rgba(254,246,231,0.7);
+	background-color:rgba(var(--warning-gradient-color-rgb),0.7);
+    border-color: var(--warning-gradient-color-hover);
 
 }
 

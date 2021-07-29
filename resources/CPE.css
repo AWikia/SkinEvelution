@@ -400,6 +400,22 @@ scrollbar-color:var(--scrollbar-thumb-color-1) var(--scrollbar-track-color-1);
 --cpe-teadrop:url("data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHdpZHRoPSI4Mi42NjY2NyIgaGVpZ2h0PSI4Mi42NjY2NyIgdmlld0JveD0iMCwwLDgyLjY2NjY3LDgyLjY2NjY3Ij4NCgk8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMTk4LjY2NjY2LC0xMzguNjY2NjYpIj4NCgkJPGcgZGF0YS1wYXBlci1kYXRhPSJ7JnF1b3Q7aXNQYWludGluZ0xheWVyJnF1b3Q7OnRydWV9IiBmaWxsPSIjMDAwMDAwIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMCIgc3Ryb2tlLWxpbmVjYXA9ImJ1dHQiIHN0cm9rZS1saW5lam9pbj0ibWl0ZXIiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgc3Ryb2tlLWRhc2hhcnJheT0iIiBzdHJva2UtZGFzaG9mZnNldD0iMCIgc3R5bGU9Im1peC1ibGVuZC1tb2RlOiBub3JtYWwiPg0KCQkJPHBhdGggZmlsbD0iIzAwMDAwMCIgZD0iTTE5OC42NjY2NywxODBjMCwtMjIuODI3NzcgNDEuMzMzMzQsLTQxLjMzMzM0IDQxLjMzMzM0LC00MS4zMzMzNGMwLDAgNDEuMzMzMzMsMTguNTA1NTcgNDEuMzMzMzMsNDEuMzMzMzRjMCwyMi44Mjc3NyAtMTguNTA1NTYsNDEuMzMzMzQgLTQxLjMzMzMzLDQxLjMzMzM0Yy0yMi44Mjc3NywwIC00MS4zMzMzNCwtMTguNTA1NTcgLTQxLjMzMzM0LC00MS4zMzMzNHoiLz4NCgkJPC9nPg0KCTwvZz4NCjwvc3ZnPg==")
 
 }
+/* Generic Colors */
+body {
+    --alert-background-color: #dd3333;
+    --warning-background-color: #ffcc33;
+    --success-background-color: #14866d;
+    --message-background-color: #575859;
+}
+
+/* Use Legible Generic Colors for Dark themes */
+body[dark-mode="true"] {
+    --alert-background-color: #ec8c8c;
+    --warning-background-color: #ffe38c;
+    --success-background-color: #51e5c4;
+    --message-background-color: #a0a1a2;
+}
+
 
 /* Fandom Variable Aliases for compatibility */
 body {
@@ -453,18 +469,17 @@ body {
     --theme-accent-label-color:  var(--accent-foreground-color);
     --theme-border-color: var(--page-border-background-color);
     --theme-border-color--rgb: var(--page-border-background-color-rgb);
-    --theme-alert-color: #dd3333;
-    --theme-alert-color--rgb: 221,51,51;
-    --theme-alert-color--hover: #e66666;
-    --theme-alert-label: #ffffff;
-    --theme-warning-color: #e5ac00;
-    --theme-warning-label: #0e191a;
-    --theme-success-color: #14866d;
-    --theme-success-color--rgb: 20,134,109;
-    --theme-success-label: #ffffff;
-    --theme-message-color: #575859;
-    --theme-message-label: #ffffff;
-
+    --theme-alert-color: var(--alert-background-color);
+    --theme-alert-color--rgb: var(--alert-background-color-rgb);
+    --theme-alert-color--hover: var(--alert-background-color-hover);
+    --theme-alert-label: var(--alert-foreground-color);
+    --theme-warning-color: var(--warning-background-color);
+    --theme-warning-label: var(--warning-foreground-color);
+    --theme-success-color:  var(--success-background-color);
+    --theme-success-color--rgb: var(--success-background-color-rgb);
+    --theme-success-label: var(--success-foreground-color);
+    --theme-message-color: var(--info-background-color);
+    --theme-message-label: var(--info-foreground-color);
 }
 
 :root { /* Standard */
@@ -1303,6 +1318,7 @@ a.cpe-button, button.cpe-button {
   --accent-background-color-page-background-color-mix:var(--sticky-header-background-color-page-background-color-mix);
 }
 
+/* Text Color */
 .cpe-button.cpe-is-colorline {
   --accent-background-color:var(--page-text-background-color);
   --accent-background-color-hover:var(--page-text-background-color-hover);
@@ -1314,6 +1330,7 @@ a.cpe-button, button.cpe-button {
   --accent-background-color-page-background-color-mix:var(--page-text-background-color-page-background-color-mix);
 }
 
+/* Toolbar Color */
 .cpe-button.cpe-is-intitleline {
   --accent-background-color:var(--toolbar-background-color);
   --accent-background-color-hover:var(--toolbar-background-color-hover);
@@ -1325,6 +1342,54 @@ a.cpe-button, button.cpe-button {
   --accent-background-color-page-background-color-mix:var(--toolbar-background-color-page-background-color-mix);
 }
 
+/* Alert Color */
+.cpe-button.cpe-is-alert-color {
+  --accent-background-color:var(--alert-background-color);
+  --accent-background-color-hover:var(--alert-background-color-hover);
+  --accent-background-color-active:var(--alert-background-color-active);
+  --accent-foreground-color:var(--alert-foreground-color);
+  --accent-foreground-color-inverted:var(--alert-foreground-color-inverted);
+  --accent-foreground-color-hover:var(--alert-foreground-color-hover);
+  --accent-background-color-page-background-color-mix-light:var(--alert-background-color-page-background-color-mix-light);
+  --accent-background-color-page-background-color-mix:var(--alert-background-color-page-background-color-mix);
+}
+
+/* Warning Color */
+.cpe-button.cpe-is-warning-color {
+  --accent-background-color:var(--warning-background-color);
+  --accent-background-color-hover:var(--warning-background-color-hover);
+  --accent-background-color-active:var(--warning-background-color-active);
+  --accent-foreground-color:var(--warning-foreground-color);
+  --accent-foreground-color-inverted:var(--warning-foreground-color-inverted);
+  --accent-foreground-color-hover:var(--warning-foreground-color-hover);
+  --accent-background-color-page-background-color-mix-light:var(--warning-background-color-page-background-color-mix-light);
+  --accent-background-color-page-background-color-mix:var(--warning-background-color-page-background-color-mix);
+}
+
+/* Success */
+.cpe-button.cpe-is-success-color {
+  --accent-background-color:var(--success-background-color);
+  --accent-background-color-hover:var(--success-background-color-hover);
+  --accent-background-color-active:var(--success-background-color-active);
+  --accent-foreground-color:var(--success-foreground-color);
+  --accent-foreground-color-inverted:var(--success-foreground-color-inverted);
+  --accent-foreground-color-hover:var(--success-foreground-color-hover);
+  --accent-background-color-page-background-color-mix-light:var(--success-background-color-page-background-color-mix-light);
+  --accent-background-color-page-background-color-mix:var(--success-background-color-page-background-color-mix);
+}
+
+/* Message Color */
+.cpe-button.cpe-is-info-color,
+.cpe-button.cpe-is-message-color {
+  --accent-background-color:var(--message-background-color);
+  --accent-background-color-hover:var(--message-background-color-hover);
+  --accent-background-color-active:var(--message-background-color-active);
+  --accent-foreground-color:var(--message-foreground-color);
+  --accent-foreground-color-inverted:var(--message-foreground-color-inverted);
+  --accent-foreground-color-hover:var(--message-foreground-color-hover);
+  --accent-background-color-page-background-color-mix-light:var(--message-background-color-page-background-color-mix-light);
+  --accent-background-color-page-background-color-mix:var(--message-background-color-page-background-color-mix);
+}
 
 
 /* SVGs */

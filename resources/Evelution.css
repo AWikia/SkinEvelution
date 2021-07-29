@@ -94,13 +94,17 @@ color:var(--anchor-background-color-hover);
 
 
 .mpisto-article a.new,
-.mpisto-article a.new:visited {
-color:#dd3333;
+.mpisto-article a.new:visited,
+.mpisto-module-content a.new,
+.mpisto-module-content a.new:visited {
+color:var(--alert-background-color);
 }
 
 .mpisto-article a.new:hover,
-.mpisto-article a.new:visited:hover {
-color:#E66666;
+.mpisto-article a.new:visited:hover,
+.mpisto-module-content a.new:hover,
+.mpisto-module-content a.new:visited:hover {
+color:var(--alert-background-color-hover);
 }
 
 
@@ -1742,17 +1746,14 @@ border-top-right-radius:0;
 	padding-left:8px;
 }
 
-.mpisto-right-pane .mpisto-module {
-	width:325px;
-}
 
 
 .mpisto-right-pane .mpisto-module {
 	display:flex;
-	background-color:var(--page-background-color);
-	border-radius:calc(var(--border-radius) * 2);
+	background-color:var(--page-secondary-background-color);
+	border-radius:calc(var(--border-radius) * 1);
 	padding:10px;
-	width:325px;
+	width:300px;
 	margin-bottom:10px;
 	font-size:13px;
 	text-shadow:none;
@@ -1790,7 +1791,11 @@ border-top-right-radius:0;
 .activity-module .mw-changeslist-line-inner-rollback,
 .activity-module .mw-changeslist-line-inner-watchingUsers,
 .activity-module .mw-changeslist-line-inner-tags,
-.activity-module .mw-tag-markers {
+.activity-module .mw-tag-markers,
+.activity-module .mw-changeslist-groupdiff,
+.activity-module .mw-rollback-link,
+.activity-module .mw-diff-bytes,
+.activity-module .mw-changeslist-links {
 	display:none!important;
 }
 
