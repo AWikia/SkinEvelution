@@ -56,6 +56,9 @@ $(' .cpe-dropdown.cpe-select .cpe-dropdown__content .cpe-list li:not(.cpe-dropdo
 window.MW18newnavblock=false;
 (function () {
 	AliasFandomComponents();
+	$('body').mouseenter( function(e) { RearrangeDOM(); } );		
+	$('body').mouseover( function(e) { RearrangeDOM(); } );		
+	$('body').mouseout( function(e) { RearrangeDOM(); } );		
 	if (getKey('content-full') === '-1') {
 		insertKey('content-full', 'false' );
 	}
@@ -197,7 +200,7 @@ function ToggleRail() {
 }
 
 
-
+/* Aliases all components with the .wds prefix to the ones from .cpe ones */
 function AliasFandomComponents() {
 
 	var highlightedItems = document.querySelectorAll(":not(svg)[class*='wds-']");
@@ -212,6 +215,18 @@ function AliasFandomComponents() {
 
 }
 
+
+function RearrangeDOM() {
+	if ($('body > .oo-ui-defaultOverlay, body > .mw-notification-area-overlay, body > .uls-menu, body > .ve-ui-overlay, body > .imeselector.imeselector-toggle, body > .mwe-popups, body > .mwe-popups-overlay').length) {
+		var oouioverlays = document.querySelectorAll("body > .oo-ui-defaultOverlay, body > .mw-notification-area-overlay, body > .uls-menu, body > .ve-ui-overlay, body > .imeselector.imeselector-toggle, body > .mwe-popups, body > .mwe-popups-overlay");
+		oouioverlays.forEach(function(x) {
+			var data = $(x);
+			data.detach();
+			$('container').append(data);
+		});
+
+	}
+}
 
 /* Part of this Skin */
 (function () {

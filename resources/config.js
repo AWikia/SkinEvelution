@@ -28,10 +28,12 @@ function insertKey(key,value) {
     if (config.DisableColorManagement === true) {
 		$('.color-management-on').remove();
 		$('body').addClass( "disabled-theming" );	
-		$("body").attr('body-display', 'modern' );
-		$("body").attr('background-size', 'cover' );
-		$("body").attr('background-va', 'top' );
+		$("body").attr('community-background-mode', 'modern' );
+		$("body").attr('community-background-size', 'cover' );
+		$("body").attr('community-background-alignment', 'top' );
     }
-
+	if (config.DisableRightRail === true ) {
+		$('body').addClass( "no-rail" );
+	}
 
 })();

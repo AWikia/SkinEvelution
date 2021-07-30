@@ -47,6 +47,7 @@ class EvelutionHooks {
 			'LeftPersonalLinks' => $config->get( 'EvelutionLeftPersonalLinks' ),
 			'DisableColorManagement' => $config->get( 'EvelutionDisableColorManagement' ),
 			'ForceOneHeader' => $config->get( 'EvelutionForceOneHeader' ),
+			'DisableRightRail' => $config->get( 'EvelutionDisableRightRail' ),
 		];
 
 		return true;

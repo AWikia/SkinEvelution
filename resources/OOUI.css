@@ -5,8 +5,8 @@
     --accent-background-color-active: var(--alert-background-color-active)!important;
     --accent-foreground-color: var(--alert-foreground-color)!important;
     --accent-foreground-color-hover: var(--alert-foreground-color-hover)!important;
-    --accent-background-color-page-background-color-mix-light:var(--alert-color-page-background-color-mix-light)!important;
-    --accent-background-color-page-background-color-mix: var(--alert-color-page-background-color-mix)!important;
+    --accent-background-color-page-background-color-mix-light:var(--alert-background-color-page-background-color-mix-light)!important;
+    --accent-background-color-page-background-color-mix: var(--alert-background-color-page-background-color-mix)!important;
 }
 
 /* Begin */
@@ -14,20 +14,26 @@
 .disabled-theming container,
 .disabled-theming container > main {
 /* Static */
---community-background-image:url("")!important;
---community-background-mode:modern!important;
---community-background-size:cover!important;
---community-background-alignment:top!important;
---community-background-color:#f6f6f6!important;
---anchor-background-color:#0645ad!important;
---page-background-color:#ffffff!important;
---page-border-background-color:#a2a9b1!important;
---page-text-background-color:#000000!important;
---accent-background-color:#3366cc!important;
---sticky-header-background-color:#a7d7f9;
---toolbar-background-color:#ffffff;
+	--community-background-image:url("")!important;
+	--community-background-mode:modern!important;
+	--community-background-size:cover!important;
+	--community-background-alignment:top!important;
+	--community-background-color:#f6f6f6!important;
+	--anchor-background-color:#0645ad!important;
+	--page-background-color:#ffffff!important;
+	--page-border-background-color:#a2a9b1!important;
+	--page-text-background-color:#000000!important;
+	--accent-background-color:#3366cc!important;
+	--sticky-header-background-color:#a7d7f9;
+	--toolbar-background-color:#ffffff;
+    --alert-background-color: #dd3333;
+    --warning-background-color: #ffcc33;
+    --success-background-color: #14866d;
+    --message-background-color: #575859;
 /* Dynamic */
     --page-secondary-background-color: #dde7e8;
+    --page-secondary-background-color-hover: #9ab7ba;
+    --page-secondary-background-color-active: #689398;
     --page-text-gradient-color: #404040;
     --page-text-gradient-color-hover: #000000;
     --page-background-color-hover: #bfbfbf;
@@ -40,6 +46,8 @@
     --page-text-background-color-page-background-color-mix-light: #cccccc;
     --page-text-background-color-page-background-color-mix: #999999;
     --page-secondary-background-color-rgb: 221,231,232;
+    --page-secondary-background-color-hover-rgb: 154,183,186;
+    --page-secondary-background-color-active-rgb: 104,147,152;
     --page-background-color-rgb: 255,255,255;
     --page-background-color-hover-rgb: 191,191,191;
     --page-background-color-active-rgb: 143,143,143;
@@ -153,14 +161,6 @@
     --toolbar-foreground-color-hover-rgb: 55,98,102;
     --toolbar-gradient-color-rgb: 255,255,255;
     --toolbar-gradient-color-hover-rgb: 191,191,191;
-    --info-background-color-page-background-color-mix-light: #dddede;
-    --info-background-color-page-background-color-mix: #bcbcbd;
-    --success-background-color-page-background-color-mix-light: #d0e7e2;
-    --success-background-color-page-background-color-mix: #a1cfc5;
-    --warning-background-color-page-background-color-mix-light: #fff5d6;
-    --warning-background-color-page-background-color-mix: #ffebad;
-    --alert-background-color-page-background-color-mix-light: #f8d6d6;
-    --alert-background-color-page-background-color-mix: #f1adad;
     --page-emphasis-background-color: #afb5d0;
     --page-emphasis-foreground-color: #0e191a;
     --page-emphasis-foreground-color-inverted: #ffffff;
@@ -177,8 +177,93 @@
     --page-secondary-emphasis-foreground-color-rgb: 14,25,26;
     --page-secondary-emphasis-foreground-color-inverted-rgb: 255,255,255;
     --page-secondary-emphasis-foreground-color-hover-rgb: 55,98,102;
+    --alert-gradient-color: #e66666;
+    --alert-gradient-color-hover: #dd3333;
+    --alert-background-color-hover: #e66666;
+    --alert-background-color-active: #ec8c8c;
+    --alert-foreground-color: #ffffff;
+    --alert-foreground-color-inverted: #0e191a;
+    --alert-foreground-color-hover: #bfbfbf;
+    --alert-background-color-page-background-color-mix-light: #f8d6d6;
+    --alert-background-color-page-background-color-mix: #f1adad;
+    --alert-background-color-rgb: 221,51,51;
+    --alert-background-color-hover-rgb: 230,102,102;
+    --alert-background-color-active-rgb: 236,140,140;
+    --alert-foreground-color-rgb: 255,255,255;
+    --alert-foreground-color-inverted-rgb: 14,25,26;
+    --alert-foreground-color-hover-rgb: 191,191,191;
+    --alert-gradient-color-rgb: 230,102,102;
+    --alert-gradient-color-hover-rgb: 221,51,51;
+    --warning-gradient-color: #ffcc33;
+    --warning-gradient-color-hover: #e5ac00;
+    --warning-background-color-hover: #e5ac00;
+    --warning-background-color-active: #ac8100;
+    --warning-foreground-color: #0e191a;
+    --warning-foreground-color-inverted: #ffffff;
+    --warning-foreground-color-hover: #376266;
+    --warning-background-color-page-background-color-mix-light: #fff5d6;
+    --warning-background-color-page-background-color-mix: #ffebad;
+    --warning-background-color-rgb: 255,204,51;
+    --warning-background-color-hover-rgb: 229,172,0;
+    --warning-background-color-active-rgb: 172,129,0;
+    --warning-foreground-color-rgb: 14,25,26;
+    --warning-foreground-color-inverted-rgb: 255,255,255;
+    --warning-foreground-color-hover-rgb: 55,98,102;
+    --warning-gradient-color-rgb: 255,204,51;
+    --warning-gradient-color-hover-rgb: 229,172,0;
+    --success-gradient-color: #20d3ac;
+    --success-gradient-color-hover: #14866d;
+    --success-background-color-hover: #20d3ac;
+    --success-background-color-active: #51e5c4;
+    --success-foreground-color: #ffffff;
+    --success-foreground-color-inverted: #0e191a;
+    --success-foreground-color-hover: #bfbfbf;
+    --success-background-color-page-background-color-mix-light: #d0e7e2;
+    --success-background-color-page-background-color-mix: #a1cfc5;
+    --success-background-color-rgb: 20,134,109;
+    --success-background-color-hover-rgb: 32,211,172;
+    --success-background-color-active-rgb: 81,229,196;
+    --success-foreground-color-rgb: 255,255,255;
+    --success-foreground-color-inverted-rgb: 14,25,26;
+    --success-foreground-color-hover-rgb: 191,191,191;
+    --success-gradient-color-rgb: 32,211,172;
+    --success-gradient-color-hover-rgb: 20,134,109;
+    --message-gradient-color: #808283;
+    --message-gradient-color-hover: #575859;
+    --message-background-color-hover: #808283;
+    --message-background-color-active: #a0a1a2;
+    --message-foreground-color: #ffffff;
+    --message-foreground-color-inverted: #0e191a;
+    --message-foreground-color-hover: #bfbfbf;
+    --message-background-color-page-background-color-mix-light: #dddede;
+    --message-background-color-page-background-color-mix: #bcbcbd;
+    --message-background-color-rgb: 87,88,89;
+    --message-background-color-hover-rgb: 128,130,131;
+    --message-background-color-active-rgb: 160,161,162;
+    --message-foreground-color-rgb: 255,255,255;
+    --message-foreground-color-inverted-rgb: 14,25,26;
+    --message-foreground-color-hover-rgb: 191,191,191;
+    --message-gradient-color-rgb: 128,130,131;
+    --message-gradient-color-hover-rgb: 87,88,89;
 }
 
+container .oo-ui-defaultOverlay,
+container .mw-notification-area-overlay,
+container .uls-menu,
+container .ve-ui-overlay,
+container .mwe-popups-overlay {
+	z-index:101!important;
+	max-width:var(--max-width);
+}
+
+
+container .mwe-popups-overlay {
+	max-width:var(--max-width);
+}
+
+body .mw-pulsating-dot:before, body .mw-pulsating-dot:after {
+	background-color:var(--accent-background-color);
+}
 
 /* Icons */
 .oo-ui-iconElement-icon,
@@ -192,6 +277,9 @@
           mask-repeat: no-repeat;
 }
 
+.oo-ui-iconElement-icon.oo-ui-iconElement-noIcon {
+	visibility:hidden;
+}
 
 /* Error Boxes */
 .messagebox, .errorbox, .warningbox, .successbox {
@@ -239,8 +327,8 @@
 
 /* MediaWiki */
 .mw-prefs-buttons {
-	background-color:rgb(var(--page-background-color-rgb));
-	border-top-color:rgb(var(--page-border-background-color-rgb));
+	background-color:var(--page-background-color);
+	border-top-color:var(--page-border-background-color);
 	bottom:var(--sticky-nav-size);
 	transition:bottom 400ms ease;
 }
@@ -250,8 +338,8 @@ main[toolbar="false"] .mw-prefs-buttons {
 }
 
 body .mw-notification {
-	border-color:rgb(var(--page-border-background-color-rgb));
-	color:rgb(var(--page-text-background-color-rgb));
+	border-color:var(--page-border-background-color);
+	color:var(--page-text-background-color);
 	background-color:rgba(var(--page-secondary-background-color-rgb),0.7);
 	-webkit-backdrop-filter:var(--backdrop-filter);
 	backdrop-filter:var(--backdrop-filter);
@@ -279,7 +367,7 @@ body .mw-notification.mw-notification-type-warn {
 
 body .catlinks {
 	font-size:14px;
-	border:1px solid rgb(var(--page-border-background-color-rgb));
+	border:1px solid var(--page-border-background-color);
 	background-color:var(--page-secondary-background-color);
 	padding:4px;
 	margin-top:4px;
@@ -289,7 +377,7 @@ body .catlinks {
 body div.thumbinner,
 body .thumbimage,
 body li.gallerybox div.thumb {
-	border-color:rgb(var(--page-border-background-color-rgb));
+	border-color:var(--page-border-background-color);
 	background-color:var(--page-secondary-background-color);
 }
 
@@ -327,7 +415,7 @@ body .mw-ui-radio:not(#noop) [type='radio'] {
 }
 
 body .tux-editor-header {
-	color:rgb(var(--page-text-background-color-rgb));
+	color:var(--page-text-background-color);
 }
 
 /* Tabs */
@@ -337,27 +425,27 @@ body .oo-ui-tabSelectWidget-framed {
 
 body .oo-ui-panelLayout-framed,
 .mw-prefs-tabs-wrapper.oo-ui-panelLayout-framed, .mw-prefs-tabs > .oo-ui-menuLayout-content > .oo-ui-indexLayout-stackLayout > .oo-ui-tabPanelLayout {
-	border-color:rgb(var(--page-border-background-color-rgb));
+	border-color:var(--page-border-background-color);
 }
 
 body .oo-ui-tabOptionWidget {
-	color:rgb(var(--page-text-background-color-rgb));
+	color:var(--page-text-background-color);
 }
 
 body .oo-ui-tabSelectWidget-framed .oo-ui-tabOptionWidget.oo-ui-widget-enabled:hover {
 	background-color:rgba(var(--page-background-color-rgb),0.3);
-	color:rgb(var(--page-text-background-color-rgb));
+	color:var(--page-text-background-color);
 }
 
 body .oo-ui-tabSelectWidget-framed .oo-ui-tabOptionWidget.oo-ui-widget-enabled:active {
 	background-color:rgba(var(--page-background-color-rgb),0.8);
-	color:rgb(var(--page-text-background-color-rgb));
+	color:var(--page-text-background-color);
 }
 
 body .oo-ui-tabSelectWidget-framed .oo-ui-tabOptionWidget.oo-ui-optionWidget-selected,
 body .oo-ui-tabSelectWidget-framed .oo-ui-tabOptionWidget.oo-ui-widget-enabled.oo-ui-optionWidget-selected:hover {
-	background-color:rgb(var(--page-background-color-rgb));
-	color:rgb(var(--page-text-background-color-rgb));	
+	background-color:var(--page-background-color);
+	color:var(--page-text-background-color);	
 }
 
 body .oo-ui-tabSelectWidget-framed .oo-ui-tabOptionWidget.oo-ui-optionWidget-selected .oo-ui-labelElement-label {
@@ -429,7 +517,7 @@ body .oo-ui-buttonElement-frameless.oo-ui-widget-enabled.oo-ui-flaggedElement-de
 
 
 body .oo-ui-buttonElement-frameless.oo-ui-widget-enabled > .oo-ui-buttonElement-button {
-	color:rgb(var(--page-text-background-color-rgb));
+	color:var(--page-text-background-color);
 }
 
 
@@ -468,9 +556,9 @@ body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-destr
 body .mw-ui-button,
 body .mw-button:disabled {
     border-color:var(--accent-background-color);
-    background-color:rgb(var(--page-background-color-rgb));
+    background-color:var(--page-background-color);
     color:var(--accent-background-color);
-    box-shadow:0 0 1.5px 1.5px rgb(var(--page-background-color-rgb));
+    box-shadow:0 0 1.5px 1.5px var(--page-background-color);
 }
 
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled > .oo-ui-buttonElement-button:focus,
@@ -478,9 +566,9 @@ body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-progr
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-destructive > .oo-ui-buttonElement-button:focus,
 body .mw-ui-button:focus {
     border-color:var(--accent-background-color);
-    background-color:rgb(var(--page-background-color-rgb));
+    background-color:var(--page-background-color);
     color:var(--accent-background-color);
-    box-shadow:0 0 1.5px 1.5px rgb(var(--page-background-color-rgb));  
+    box-shadow:0 0 1.5px 1.5px var(--page-background-color);  
 }
 
 
@@ -585,18 +673,18 @@ body .oo-ui-tagMultiselectWidget.oo-ui-widget-enabled.oo-ui-tagMultiselectWidget
 
 body .mw-rcfilters-ui-filterTagMultiselectWidget.oo-ui-widget-enabled .oo-ui-tagMultiselectWidget-handle {
 	background-color:var(--page-secondary-background-color);
-	color:rgb(var(--page-text-background-color-rgb));
-	border-color:rgb(var(--page-border-background-color-rgb));
+	color:var(--page-text-background-color);
+	border-color:var(--page-border-background-color);
 }
 
 body .mw-rcfilters-ui-filterTagMultiselectWidget-views-select-widget.oo-ui-widget {
-	border-color:rgb(var(--page-border-background-color-rgb));
+	border-color:var(--page-border-background-color);
 	height:32.5px;
 }
 
 
 body .mw-rcfilters-ui-filterTagMultiselectWidget-wrapper-content-title {
-	color:rgb(var(--page-text-background-color-rgb));
+	color:var(--page-text-background-color);
 }
 
 body .oo-ui-menuSelectWidget,
@@ -607,8 +695,6 @@ body .toc,
 body .oo-ui-popupToolGroup-tools {
 	scrollbar-color:var(--scrollbar-thumb-color-1) var(--scrollbar-track-color-1);
 /** Scrollbar Styling **/
-	/* Width */
-	--scrollbar-width:17px;
 	/* Track */
 	--scrollbar-track-color-1:var(--page-secondary-background-color);
 	--scrollbar-track-color-2:var(--page-secondary-background-color-hover);
@@ -621,8 +707,8 @@ body .oo-ui-popupToolGroup-tools {
 	--scrollbar-thumb-text:var(--page-border-foreground-color);
 	
 	background-color:var(--page-secondary-background-color);
-	color:rgb(var(--page-text-background-color-rgb));
-	border-color:rgb(var(--page-border-background-color-rgb));
+	color:var(--page-text-background-color);
+	border-color:var(--page-border-background-color);
 }
 
 
@@ -639,8 +725,8 @@ body .mw-rcfilters-ui-menuSelectWidget-footer,
 body .oo-ui-tool.oo-ui-widget-enabled > .oo-ui-tool-link:hover,
 body .oo-ui-listToolGroup-tools .oo-ui-tool.oo-ui-widget-enabled:hover,
 body .wikiEditor-ui-toolbar .group .tool-select .menu .options .option:hover {
-	background-color:rgb(var(--page-background-color-rgb));
-	color:rgb(var(--page-text-background-color-rgb));
+	background-color:var(--page-background-color);
+	color:var(--page-text-background-color);
 
 }
 
@@ -651,12 +737,12 @@ body .mw-rcfilters-ui-filterMenuOptionWidget.oo-ui-flaggedElement-muted .mw-rcfi
 }
 
 body .mw-rcfilters-ui-itemMenuOptionWidget-label-title {
-	color:rgb(var(--page-text-background-color-rgb));
+	color:var(--page-text-background-color);
 }
 
 
 body .oo-ui-menuSectionOptionWidget {
-	color:rgb(var(--page-border-background-color-rgb));
+	color:var(--page-border-background-color);
 }
 
 body .oo-ui-menuOptionWidget.oo-ui-optionWidget-selected {
@@ -670,7 +756,7 @@ body .mw-rcfilters-ui-itemMenuOptionWidget.oo-ui-optionWidget-selected {
 }
 
 body .oo-ui-menuOptionWidget.oo-ui-widget-enabled.oo-ui-optionWidget  {
-	color:rgb(var(--page-text-background-color-rgb));
+	color:var(--page-text-background-color);
 }
 
 body .oo-ui-menuOptionWidget.oo-ui-optionWidget-selected.oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted,
@@ -682,7 +768,7 @@ body .oo-ui-menuOptionWidget.oo-ui-optionWidget-pressed.oo-ui-menuOptionWidget.o
 
 body .mw-rcfilters-ui-filterMenuSectionOptionWidget {
 	color:var(--page-border-foreground-color);
-	background-color:rgb(var(--page-border-background-color-rgb));
+	background-color:var(--page-border-background-color);
 }
 
 body .mw-rcfilters-ui-filterMenuSectionOptionWidget-header-title.oo-ui-labelElement-label {
@@ -700,17 +786,17 @@ body .oo-ui-buttonGroupWidget .oo-ui-buttonElement-framed:last-child .oo-ui-butt
 
 
 body .oo-ui-tagItemWidget.oo-ui-widget-enabled {
-	color:rgb(var(--page-text-background-color-rgb));
+	color:var(--page-text-background-color);
 }
 
 body .oo-ui-tagItemWidget.oo-ui-widget-enabled:hover {
-	color:rgb(var(--page-text-background-color-rgb));
+	color:var(--page-text-background-color);
 }
 
 body .oo-ui-tagItemWidget.oo-ui-widget-enabled:not(.oo-ui-tagItemWidget-fixed),
 body .oo-ui-tagMultiselectWidget.oo-ui-widget-enabled.oo-ui-tagMultiselectWidget-outlined .oo-ui-tagItemWidget.oo-ui-widget-enabled {
-	background-color:rgb(var(--page-background-color-rgb));
-	border-color:rgb(var(--page-border-background-color-rgb));
+	background-color:var(--page-background-color);
+	border-color:var(--page-border-background-color);
 }
 
 body .oo-ui-tagItemWidget.oo-ui-widget-enabled:focus {
@@ -720,7 +806,7 @@ body .oo-ui-tagItemWidget.oo-ui-widget-enabled:focus {
 
 body .oo-ui-buttonElement-frameless.oo-ui-widget-enabled > .oo-ui-buttonElement-button:hover {
 	background-color:rgba(var(--page-text-background-color-rgb),0.02745098);
-	color:rgb(var(--page-text-background-color-rgb));
+	color:var(--page-text-background-color);
 }
 
 
@@ -730,19 +816,19 @@ body .oo-ui-tagItemWidget.oo-ui-widget-enabled .oo-ui-buttonElement-button {
 }
 
 body .oo-ui-tagItemWidget.oo-ui-widget-enabled .oo-ui-buttonElement-button:hover {
-	background-color:rgb(var(--page-background-color-rgb));
-	color:rgb(var(--page-text-background-color-rgb));
+	background-color:var(--page-background-color);
+	color:var(--page-text-background-color);
 }
 
 body .oo-ui-buttonElement-frameless.oo-ui-widget-enabled > .oo-ui-buttonElement-button:active {
 	background-color:rgba(var(--page-text-background-color-rgb),0.08235294);
-	color:rgb(var(--page-text-background-color-rgb));
+	color:var(--page-text-background-color);
 }
 
 
 body .oo-ui-tagItemWidget.oo-ui-widget-enabled .oo-ui-buttonElement-button:active {
 	background-color:var(--page-background-color-hover);
-	color:rgb(var(--page-text-background-color-rgb));
+	color:var(--page-text-background-color);
 }
 
 
@@ -757,7 +843,7 @@ body .oo-ui-buttonElement-frameless.oo-ui-widget-enabled > .oo-ui-buttonElement-
 }
 
 body .oo-ui-popupWidget-anchored-top .oo-ui-popupWidget-anchor:after {
-	border-bottom-color:rgb(var(--page-border-background-color-rgb));
+	border-bottom-color:var(--page-border-background-color);
 }
 
 
@@ -774,8 +860,8 @@ body[dark-mode="true"] .oo-ui-iconElement-icon {
 
 body #pagehistory li.selected {
 	background-color:var(--page-secondary-background-color);
-	border-color:rgb(var(--page-border-background-color-rgb));
-	color:rgb(var(--page-text-background-color-rgb));
+	border-color:var(--page-border-background-color);
+	color:var(--page-text-background-color);
 }
 
 
@@ -787,7 +873,7 @@ body .oo-ui-textInputWidget.oo-ui-widget-enabled .oo-ui-inputWidget-input,
 body .oo-ui-dropdownWidget.oo-ui-widget-enabled .oo-ui-dropdownWidget-handle,
 body .oo-ui-textInputWidget.oo-ui-widget-disabled .oo-ui-inputWidget-input,
 body .mw-ui-input  {
-	--input-box-color:rgb(var(--page-background-color-rgb));
+	--input-box-color:var(--page-background-color);
 	--input-box-hover:var(--accent-background-color-page-background-color-mix-light);
 	--input-box-focus:var(--accent-background-color-page-background-color-mix);
 	--input-box-solid:var(--accent-background-color);
@@ -795,10 +881,10 @@ body .mw-ui-input  {
     font-size:13px;
     font-family:var(--secondary-font);
     font-weight:600;
-    color:rgb(var(--page-text-background-color-rgb));
+    color:var(--page-text-background-color);
     padding:9px 12px;
     border:0;
-    border-color:rgb(var(--page-border-background-color-rgb));
+    border-color:var(--page-border-background-color);
     border-radius:var(--border-radius); 
     display:inline-flex;
     align-items:center;
@@ -854,7 +940,7 @@ body .oo-ui-textInputWidget.oo-ui-iconElement .oo-ui-inputWidget-input {
     padding-left: 31.571px;
     margin: 0;
     border-radius: 0;
-    border: 1px solid rgb(var(--page-border-background-color-rgb));
+    border: 1px solid var(--page-border-background-color);
     box-shadow: none!important;
     box-sizing: content-box;
     padding-top: 0;
@@ -888,7 +974,7 @@ body .oo-ui-dropdownWidget.oo-ui-widget-enabled.oo-ui-dropdownWidget-open .oo-ui
 body .mw-ui-input:hover {
     background-color:var(--input-box-hover);
     box-shadow:0 0 1.5px 1.5px var(--input-box-hover);
-    border-color:rgb(var(--page-border-background-color-rgb));
+    border-color:var(--page-border-background-color);
 }
 
 body .oo-ui-textInputWidget.oo-ui-widget-enabled .oo-ui-inputWidget-input:focus,
@@ -896,7 +982,7 @@ body .oo-ui-dropdownWidget.oo-ui-widget-enabled .oo-ui-dropdownWidget-handle:foc
 body .mw-ui-input:focus {
     background-color:var(--input-box-focus);
     box-shadow:0 0 1.5px 1.5px var(--input-box-focus);
-    border-color:rgb(var(--page-border-background-color-rgb));
+    border-color:var(--page-border-background-color);
 }
 
 /* Select Boxes */
@@ -912,7 +998,7 @@ body .oo-ui-dropdownWidget.oo-ui-widget-disabled .oo-ui-dropdownWidget-handle {
 
 body .oo-ui-dropdownWidget.oo-ui-widget-enabled .oo-ui-dropdownWidget-handle,
 body .oo-ui-dropdownWidget.oo-ui-widget-disabled .oo-ui-dropdownWidget-handle {
-	--input-box-color:rgb(var(--page-background-color-rgb));
+	--input-box-color:var(--page-background-color);
 	--input-box-hover:var(--accent-background-color-page-background-color-mix-light);
 	--input-box-focus:var(--accent-background-color-page-background-color-mix);
 	--input-box-solid:var(--accent-background-color);
@@ -920,9 +1006,9 @@ body .oo-ui-dropdownWidget.oo-ui-widget-disabled .oo-ui-dropdownWidget-handle {
     font-size:13px;
     font-family:var(--secondary-font);
     font-weight:600;
-    color:rgb(var(--page-text-background-color-rgb));
+    color:var(--page-text-background-color);
     border:0;
-    border-color:rgb(var(--page-border-background-color-rgb));
+    border-color:var(--page-border-background-color);
 /*    border-radius:var(--border-radius); */
     vertical-align:middle;
     background-color:var(--input-box-color);
@@ -940,26 +1026,26 @@ body .oo-ui-dropdownWidget.oo-ui-widget-enabled.oo-ui-dropdownWidget-open .oo-ui
 body .oo-ui-dropdownWidget.oo-ui-widget-enabled .oo-ui-dropdownWidget-handle:hover {
     background-color:var(--input-box-hover);
     box-shadow:0 0 1.5px 1.5px var(--input-box-hover);
-    border-color:rgb(var(--page-border-background-color-rgb));
-    color:rgb(var(--page-text-background-color-rgb));
+    border-color:var(--page-border-background-color);
+    color:var(--page-text-background-color);
 }
 
 body .oo-ui-dropdownWidget.oo-ui-widget-enabled .oo-ui-dropdownWidget-handle:focus {
     background-color:var(--input-box-focus);
     box-shadow:0 0 1.5px 1.5px var(--input-box-focus);
-    border-color:rgb(var(--page-border-background-color-rgb));
-    color:rgb(var(--page-text-background-color-rgb));
+    border-color:var(--page-border-background-color);
+    color:var(--page-text-background-color);
 }
 
 
 /* Windows */
 body .oo-ui-windowManager-modal.oo-ui-windowManager-floating > .oo-ui-dialog > .oo-ui-window-frame {
-	border-color:rgb(var(--page-border-background-color-rgb));
+	border-color:var(--page-border-background-color);
 }
 
 body .oo-ui-windowManager-modal > .oo-ui-dialog > .oo-ui-window-frame {
 	background-color:var(--page-secondary-background-color);
-	color:rgb(var(--page-text-background-color-rgb));
+	color:var(--page-text-background-color);
 }
 
 body .oo-ui-processDialog-content .oo-ui-window-head, .oo-ui-processDialog-content .oo-ui-window-foot {
@@ -969,8 +1055,8 @@ body .oo-ui-processDialog-content .oo-ui-window-head, .oo-ui-processDialog-conte
 }
 
 body .oo-ui-outlineOptionWidget.oo-ui-optionWidget-highlighted {
-	background-color:rgb(var(--page-background-color-rgb));
-	color:rgb(var(--page-text-background-color-rgb));
+	background-color:var(--page-background-color);
+	color:var(--page-text-background-color);
 }
 
 body .oo-ui-outlineOptionWidget.oo-ui-optionWidget-pressed,
@@ -983,6 +1069,7 @@ body .oo-ui-processDialog-actions-safe .oo-ui-widget-enabled.oo-ui-iconElement:n
 	box-shadow:none;
 	border:0;
 	border-radius:var(--border-radius);
+	color:var(--sticky-header-foreground-color);
 }
 
 body .oo-ui-processDialog-actions-safe .oo-ui-widget-enabled.oo-ui-iconElement:not(.oo-ui-labelElement) > .oo-ui-buttonElement-button:hover {
@@ -1003,13 +1090,13 @@ body .oo-ui-processDialog-actions-safe .oo-ui-widget-enabled.oo-ui-iconElement:n
 body .oo-ui-toolbar-bar,
 body .wikiEditor-ui-toolbar {
     background-color: var(--page-secondary-background-color);
-    color: rgb(var(--page-text-background-color-rgb));
-    border-color:rgb(var(--page-border-background-color-rgb));
+    color: var(--page-text-background-color);
+    border-color:var(--page-border-background-color);
 }
 
 body .oo-ui-popupToolGroup.oo-ui-widget-enabled > .oo-ui-popupToolGroup-handle:hover,
 body .oo-ui-tool.oo-ui-widget-enabled > .oo-ui-tool-link:hover {
-	background-color:rgb(var(--page-background-color-rgb));
+	background-color:var(--page-background-color);
 }
 
 body .oo-ui-popupToolGroup.oo-ui-widget-enabled > .oo-ui-popupToolGroup-handle:active,
@@ -1026,7 +1113,7 @@ body .wikiEditor-ui-toolbar .tabs span.tab a.current:visited,
 body .wikiEditor-ui-toolbar .group .tool-select .label,
 body .wikiEditor-ui-toolbar .group .label,
 body .wikiEditor-ui-toolbar .group .tool-select .options .option {
-	color:rgb(var(--page-text-background-color-rgb));
+	color:var(--page-text-background-color);
 }
 
 body .wikiEditor-ui-toolbar .tabs span.tab a {
@@ -1036,17 +1123,17 @@ body .wikiEditor-ui-toolbar .tabs span.tab a {
 body .wikiEditor-ui-toolbar .page-characters div span {
 	height:22.1px;
 	font-size:14px;
-	border-color:rgb(var(--page-border-background-color-rgb));
-	color:rgb(var(--page-text-background-color-rgb));
+	border-color:var(--page-border-background-color);
+	color:var(--page-text-background-color);
 }
 
 body .wikiEditor-ui-toolbar .page-characters div span:hover {
 	border-color:var(--page-border-background-color-hover);
-	background-color:rgb(var(--page-background-color-rgb));
+	background-color:var(--page-background-color);
 }
 
 body .wikiEditor-ui-toolbar .booklet > .index > :hover {
-	background-color:rgb(var(--page-background-color-rgb));
+	background-color:var(--page-background-color);
 }
 
 body .wikiEditor-ui-toolbar .booklet > .index > .current {
@@ -1057,7 +1144,7 @@ body .wikiEditor-ui-toolbar .booklet > .index > .current {
 /* Echo */
 body .mw-echo-ui-notificationsInboxWidget-toolbarWrapper {
 	background:var(--page-secondary-background-color);
-	color:rgb(var(--page-text-background-color-rgb));
+	color:var(--page-text-background-color);
 	padding:6px;
 }
 
@@ -1086,9 +1173,9 @@ body .oo-ui-tabSelectWidget-frameless .oo-ui-tabOptionWidget.oo-ui-widget-enable
 body .uls-menu {
 	top:0px!important; /* Override Inline Style */
 	left:50px!important;
-	border-color:rgb(var(--page-border-background-color-rgb));
-	background-color:rgb(var(--page-background-color-rgb));
-	color:rgb(var(--page-text-background-color-rgb));
+	border-color:var(--page-border-background-color);
+	background-color:var(--page-background-color);
+	color:var(--page-text-background-color);
 	transition:top 400ms ease
 }
 
@@ -1099,7 +1186,7 @@ body .uls-menu {
 
 body .uls-search,
 body #uls-settings-block {
-	border-color:rgb(var(--page-border-background-color-rgb));
+	border-color:var(--page-border-background-color);
 	background-color:var(--page-secondary-background-color);
 }
 
@@ -1113,7 +1200,7 @@ body .uls-filtersuggestion {
 }
 
 body .uls-lcd {
-	background-color:rgb(var(--page-background-color-rgb));
+	background-color:var(--page-background-color);
 }
 
 body .uls-lcd-region-title,
@@ -1153,7 +1240,7 @@ body .languagesettings-menu .menu-section:hover {
 
 body .languagesettings-menu .menu-section.active {
 	background-color:var(--page-secondary-background-color);
-	color:rgb(var(--page-text-background-color-rgb));
+	color:var(--page-text-background-color);
 }
 
 
@@ -1163,7 +1250,7 @@ body .languagesettings-menu .menu-section .settings-text {
 }
 
 body .uls-language-settings-close-block {
-	background-color:rgb(var(--page-background-color-rgb));
+	background-color:var(--page-background-color);
 }
 
 body[dark-mode="true"] .uls-icon-close {
@@ -1195,18 +1282,18 @@ body #languagesettings-panels .mw-ui-pressed {
 
 body .oo-ui-selectFileWidget-dropTarget {
 	background-color:var(--page-secondary-background-color);
-	color:rgb(var(--page-text-background-color-rgb));
-	border-color:rgb(var(--page-border-background-color-rgb));
+	color:var(--page-text-background-color);
+	border-color:var(--page-border-background-color);
 }
 
 body .oo-ui-selectFileWidget.oo-ui-widget-enabled.oo-ui-selectFileWidget-dropTarget {
 	background-color:var(--page-secondary-background-color);
-	color:rgb(var(--page-text-background-color-rgb));
+	color:var(--page-text-background-color);
 }
 
 /* Progress */
 body .oo-ui-progressBarWidget {
-	border-color:rgb(var(--page-border-background-color-rgb));
+	border-color:var(--page-border-background-color);
 }
 
 body .oo-ui-progressBarWidget.oo-ui-widget-disabled {
@@ -1214,7 +1301,7 @@ body .oo-ui-progressBarWidget.oo-ui-widget-disabled {
 }
 
 body .oo-ui-progressBarWidget:not( .oo-ui-pendingElement-pending ) {
-	background-color:rgb(var(--page-background-color-rgb));
+	background-color:var(--page-background-color);
 }
 
 body .oo-ui-progressBarWidget.oo-ui-widget-enabled .oo-ui-progressBarWidget-bar,
