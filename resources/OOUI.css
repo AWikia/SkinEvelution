@@ -605,6 +605,21 @@ body .oo-ui-popupWidget-popup,
 body .mw-rcfilters-ui-changesListWrapperWidget .mw-changeslist-legend,
 body .toc,
 body .oo-ui-popupToolGroup-tools {
+	scrollbar-color:var(--scrollbar-thumb-color-1) var(--scrollbar-track-color-1);
+/** Scrollbar Styling **/
+	/* Width */
+	--scrollbar-width:17px;
+	/* Track */
+	--scrollbar-track-color-1:var(--page-secondary-background-color);
+	--scrollbar-track-color-2:var(--page-secondary-background-color-hover);
+	--scrollbar-track-color-3:var(--page-secondary-background-color-active);
+	--scrollbar-track-text:var(--page-text-background-color);
+	/* Thumb */
+	--scrollbar-thumb-color-1:var(--page-border-background-color);
+	--scrollbar-thumb-color-2:var(--page-border-background-color-hover);
+	--scrollbar-thumb-color-3:var(--page-border-background-color-active);
+	--scrollbar-thumb-text:var(--page-border-foreground-color);
+	
 	background-color:var(--page-secondary-background-color);
 	color:rgb(var(--page-text-background-color-rgb));
 	border-color:rgb(var(--page-border-background-color-rgb));
@@ -936,6 +951,7 @@ body .oo-ui-dropdownWidget.oo-ui-widget-enabled .oo-ui-dropdownWidget-handle:foc
     color:rgb(var(--page-text-background-color-rgb));
 }
 
+
 /* Windows */
 body .oo-ui-windowManager-modal.oo-ui-windowManager-floating > .oo-ui-dialog > .oo-ui-window-frame {
 	border-color:rgb(var(--page-border-background-color-rgb));
@@ -1019,6 +1035,23 @@ body .wikiEditor-ui-toolbar .tabs span.tab a {
 
 body .wikiEditor-ui-toolbar .page-characters div span {
 	height:22.1px;
+	font-size:14px;
+	border-color:rgb(var(--page-border-background-color-rgb));
+	color:rgb(var(--page-text-background-color-rgb));
+}
+
+body .wikiEditor-ui-toolbar .page-characters div span:hover {
+	border-color:var(--page-border-background-color-hover);
+	background-color:rgb(var(--page-background-color-rgb));
+}
+
+body .wikiEditor-ui-toolbar .booklet > .index > :hover {
+	background-color:rgb(var(--page-background-color-rgb));
+}
+
+body .wikiEditor-ui-toolbar .booklet > .index > .current {
+	background-color:var(--anchor-background-color-page-background-color-mix-light);
+	color:var(--anchor-background-color);
 }
 
 /* Echo */

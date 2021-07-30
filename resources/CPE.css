@@ -374,7 +374,6 @@ Aleo = Latin
 
 :root {
 font-family:Trebuchet MS;
-scrollbar-color:var(--scrollbar-thumb-color-1) var(--scrollbar-track-color-1);
 /* Aliases */
 --page-border-background-color:auto;
 --page-text-background-color:auto;
@@ -392,9 +391,10 @@ scrollbar-color:var(--scrollbar-thumb-color-1) var(--scrollbar-track-color-1);
 --caret-color:auto;
 --custom-secondary-font:"";
 --border-radius:3px;
---wordmark-filter:initial;
---wordmark-filter-duration:300ms;
---wordmark-filter-delay:0;
+--logo-filter:opacity(1);
+--logo-filter-hover:opacity(0.8);
+--logo-filter-duration:300ms;
+--logo-filter-delay:0;
 --max-width:2000px;
 /* Shapes */
 --cpe-teadrop:url("data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHdpZHRoPSI4Mi42NjY2NyIgaGVpZ2h0PSI4Mi42NjY2NyIgdmlld0JveD0iMCwwLDgyLjY2NjY3LDgyLjY2NjY3Ij4NCgk8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMTk4LjY2NjY2LC0xMzguNjY2NjYpIj4NCgkJPGcgZGF0YS1wYXBlci1kYXRhPSJ7JnF1b3Q7aXNQYWludGluZ0xheWVyJnF1b3Q7OnRydWV9IiBmaWxsPSIjMDAwMDAwIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMCIgc3Ryb2tlLWxpbmVjYXA9ImJ1dHQiIHN0cm9rZS1saW5lam9pbj0ibWl0ZXIiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgc3Ryb2tlLWRhc2hhcnJheT0iIiBzdHJva2UtZGFzaG9mZnNldD0iMCIgc3R5bGU9Im1peC1ibGVuZC1tb2RlOiBub3JtYWwiPg0KCQkJPHBhdGggZmlsbD0iIzAwMDAwMCIgZD0iTTE5OC42NjY2NywxODBjMCwtMjIuODI3NzcgNDEuMzMzMzQsLTQxLjMzMzM0IDQxLjMzMzM0LC00MS4zMzMzNGMwLDAgNDEuMzMzMzMsMTguNTA1NTcgNDEuMzMzMzMsNDEuMzMzMzRjMCwyMi44Mjc3NyAtMTguNTA1NTYsNDEuMzMzMzQgLTQxLjMzMzMzLDQxLjMzMzM0Yy0yMi44Mjc3NywwIC00MS4zMzMzNCwtMTguNTA1NTcgLTQxLjMzMzM0LC00MS4zMzMzNHoiLz4NCgkJPC9nPg0KCTwvZz4NCjwvc3ZnPg==")
@@ -510,6 +510,7 @@ body {
   --cpe-text-cursor:url("Windows/text.cur"), text;
   --cpe-hand-cursor:url("Windows/hand.cur"), pointer;
   --global-filter:none;
+	scrollbar-color:var(--scrollbar-thumb-color-1) var(--scrollbar-track-color-1);
 /** Scrollbar Styling **/
 	/* Width */
 	--scrollbar-width:17px;
@@ -958,7 +959,7 @@ textarea, [contenteditable] {
 	--scrollbar-thumb-color-1:var(--page-text-background-color);
 	--scrollbar-thumb-color-2:var(--page-text-background-color-hover);
 	--scrollbar-thumb-color-3:var(--page-text-background-color-active);
-	--scrollbar-thumb-text:var(--page-background-color);
+	--scrollbar-thumb-text:var(--page-text-foreground-color);
 
 }
 
@@ -1717,7 +1718,7 @@ font-size:14px;
 	--scrollbar-thumb-color-1:var(--page-border-background-color);
 	--scrollbar-thumb-color-2:var(--page-border-background-color-hover);
 	--scrollbar-thumb-color-3:var(--page-border-background-color-active);
-	--scrollbar-thumb-text:var(--page-text-background-color);
+	--scrollbar-thumb-text:var(--page-border-foreground-color);
 }
 
 .cpe-dropdown[cpe-orient*="land"] .cpe-dropdown__content {
@@ -2234,7 +2235,7 @@ opacity:1;
 	display:flex;
 	transition:opacity .4s, transform .4s; 
 	overflow:hidden; 
-	transform-origin:top center;
+	transform-origin:bottom center;
 	position:relative;
 	min-height:40px;
     -webkit-backdrop-filter:var(--backdrop-filter);

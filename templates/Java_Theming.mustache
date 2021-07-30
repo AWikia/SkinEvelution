@@ -36,6 +36,11 @@ var visualColorNames = ['Factory', 'XP Luna', 'Windows Forced', 'Campbell Forced
 		'<link rel="favicon" href="favicon.ico">'
 		);	
 	}
+	if ($("body.options").length) {
+		UpdateSet()
+		CompileRecColors();
+		CompileChosenThems();
+	}
 		$("head").append(
 		'<meta name="color-scheme" content="light dark">'
 		);	
@@ -47,7 +52,7 @@ var visualColorNames = ['Factory', 'XP Luna', 'Windows Forced', 'Campbell Forced
 		VisualStyleCompile(); // Compiles the Contrast Options
 		if (getKey('style-active') === '-1') {
 			if ( ( window.matchMedia('(forced-colors: active)').matches ) ) {
-				insertKey('style-active', contrastvisual );
+				insertKey('style-active', contrastVisual );
 			} else {
 				insertKey('style-active', 'S' );
 			}
@@ -106,6 +111,10 @@ function VisualStyle(style) {
 	} else {
 		$('html').attr("visualtheme", visualThemes[style]);
 	}
+	if ($("body.options").length) {
+		$("input[class*='CPEVisual']").removeAttr('checked');
+		document.querySelector('input#CPEVisual_' + style ).checked = true;
+	}
 	$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-styles li").removeClass('selected');
 	$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-styles li#style" + style).addClass('selected');
 		insertKey('style-active', style );
@@ -127,7 +136,7 @@ function VisualColor(style) {
 	$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-colors li").removeClass('selected');
 	$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-colors li#color" + style).addClass('selected');
 		insertKey('color-active', style );
-		ColorUpdate(true);
+		ColorUpdate(true,true);
 		ThemeColorMetaTag();
 }
 
@@ -137,11 +146,75 @@ function VisualStyleCompile() {
 // In the Visual Styles Dropdown
 /* Visual Styles */
 	for (let i = 0; i < visualThemes.length; i++) {
+		if ($("body.options").length) {
+			str = '<br><input type="radio" name="CPEVisual" id="CPEVisual_' + i + '" onclick="VisualStyle(' + i + ')"></input> <label for="CPEVisual_' + i + '">' + visualThemeNames[i] + '</label>'
+			$(".highcontrastmodes.cpe-visual-styles").append(str);
+
+		}
 		str = '<li id="style' + i + '"><a onclick="VisualStyle(' + i + ')">' + visualThemeNames[i] + '</a></li>'
 		$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-styles").append(str);
 	}
 /* Visual Colors */
 	for (let i = 0; i < visualColors.length; i++) {
+		if ($("body.options").length) {
+//			str = '<br><input type="radio" name="CPEVisualColor" id="CPEVisualColor_' + i + '" onclick="VisualColor(' + i + ')"></input> <label for="CPEVisualColor_' + i + '">' + visualColorNames[i] + '</label>'
+			str = '		<div class="fieldset store-theme-card">' +
+'			<fieldset>' +
+'			<h2> ' +
+'			<svg xmlns="http://www.w3.org/2000/svg" class="cpe-icon" enable-background="new 0 0 24 24" height="28px" viewBox="0 0 24 24" width="28px" fill="currentColor"><g><rect fill="none" height="24" width="24"/></g><g><g><g><g><path d="M12,22C6.49,22,2,17.51,2,12S6.49,2,12,2s10,4.04,10,9c0,3.31-2.69,6-6,6h-1.77c-0.28,0-0.5,0.22-0.5,0.5 c0,0.12,0.05,0.23,0.13,0.33c0.41,0.47,0.64,1.06,0.64,1.67C14.5,20.88,13.38,22,12,22z M12,4c-4.41,0-8,3.59-8,8s3.59,8,8,8 c0.28,0,0.5-0.22,0.5-0.5c0-0.16-0.08-0.28-0.14-0.35c-0.41-0.46-0.63-1.05-0.63-1.65c0-1.38,1.12-2.5,2.5-2.5H16 c2.21,0,4-1.79,4-4C20,7.14,16.41,4,12,4z"/><circle cx="6.5" cy="11.5" r="1.5"/><circle cx="9.5" cy="7.5" r="1.5"/><circle cx="14.5" cy="7.5" r="1.5"/><circle cx="17.5" cy="11.5" r="1.5"/></g></g></g></g></svg>' +
+			visualColorNames[i] + 
+'			</h2>' +
+'			<div class="cpe-floating-button-group">' +
+'				<a class="cpe-floating-button" onclick="VisualColor(' + i + ')" title="Apply ' + visualColorNames[i] + ' Colors to all Wikis">' +
+'                  <svg xmlns="http://www.w3.org/2000/svg" class="cpe-icon cpe-icon-small">' +
+'                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#cpe-icons-checkmark" />' +
+'                  </svg>' +
+'				</a>' +
+'			</div>' +
+'			<section class="preview-theme-section">' +
+'				<div class="preview-theme-wrapper visual-theme theme-A" visualcolors="' + visualColors[i] + '">' +
+'					<div class="background"></div>' +
+'					<div class="window">' +
+'						<div class="header">' +
+'							<text></text>' +
+'						</div>' +
+'						<text></text>' +
+'					</div>' +
+'				</div>' +
+'				<div class="preview-theme-wrapper visual-theme theme-B" visualcolors="' + visualColors[i] + '">' +
+'					<div class="background"></div>' +
+'					<div class="window">' +
+'						<div class="header">' +
+'							<text></text>' +
+'						</div>' +
+'						<text></text>' +
+'					</div>' +
+'				</div>' +
+'				<div class="preview-theme-wrapper visual-theme theme-C" visualcolors="' + visualColors[i] + '">' +
+'					<div class="background"></div>' +
+'					<div class="window">' +
+'						<div class="header">' +
+'							<text></text>' +
+'						</div>' +
+'						<text></text>' +
+'					</div>' +
+'				</div>' +
+'				<div class="preview-theme-wrapper visual-theme theme-D" visualcolors="' + visualColors[i] + '">' +
+'					<div class="background"></div>' +
+'					<div class="window">' +
+'						<div class="header">' +
+'							<text></text>' +
+'						</div>' +
+'						<text></text>' +
+'					</div>' +
+'				</div>' +
+'			</section>' +			
+'			</fieldset>' +
+'			</div>'
+
+			$(".highcontrastmodes.cpe-visual-colors").append(str);
+
+		}
 		str = '<li id="color' + i + '"><a onclick="VisualColor(' + i + ')">' + visualColorNames[i] + '</a></li>'
 		$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-colors").append(str);
 	}
@@ -218,7 +291,6 @@ ContrastBanner();
 
 function ThemeColorMetaTag() {
 	/* Top bar for Mobile Devices */
-	CheckColorSuitability()
 }
 
 /* Used only on Task Manager, ignored elsewhere */
@@ -248,11 +320,11 @@ if ($("body.tskmngr").length) {
 
 function ContrastBanner() {
 
-/* For Task Manager */
-if  ($("body.mpisto-2018").length) {
+/* For MpistoSkin2 (Obsolete) or Evelution */
+if  ( ($("body.mpisto-2018").length) || ($("body.skin-Evelution").length) ) {
 	if ( ( window.matchMedia('(forced-colors: active)').matches ) && (window.MW18ContrastNotice === false)  && ($('html').attr("visualtheme") !== 'contrast'  ) ) {
 		window.MW18ContrastNotice = true;
-		AddFloatingBanner("You're currently using a high contrast theme on your device. You may want to use the High Contrast visual style found in the <b>Visual Styles</b> dropdown in the page header so as to have a consistent high contrast experience.",'message','contrastbanner')  
+		AddFloatingBanner("You're currently using a high contrast theme on your device. You may want to use the <a onclick='RemoveBanner(); VisualStyle(" + contrastVisual + ")'>High Contrast</a> visual style so as to have a consistent high contrast experience.",'message','contrastbanner')  
 	} else {
 		if ( (!($(".top-gap #contrastbanner").length)) && ($('html').attr("visualtheme") !== 'contrast'  )) {
 			window.MW18ContrastNotice = false;
@@ -334,6 +406,21 @@ function colortheme(theme) {
 		$('body').attr("dark-mode", isLightColor(body_bg) );
 	} else {
 		$('body').attr("dark-mode", !(isLightColor(body_bg)) );
+	}
+	if (window.MW18darkmode === true) {
+		if ($("body.options").length) {
+			document.querySelector('.rvbg1').style.setProperty("background-color", 'var(--page-text-background-color)');
+			document.querySelector('.rvbg2').style.setProperty("background-color", 'var(--page-background-color)');
+		}
+	} else {
+		if ($("body.options").length) {
+			document.querySelector('.rvbg2').style.setProperty("background-color", 'var(--page-text-background-color)');
+			document.querySelector('.rvbg1').style.setProperty("background-color", 'var(--page-background-color)');
+		}
+	}
+	if ($("body.options").length) {
+		$("input[id*='theme-'][name='themechooser']").removeAttr('checked');
+		$("input[name='themechooser']#theme-" + theme ).attr('checked',true);
 	}
 	if (old_dark != window.MW18darkmode) {
 		ColorUpdate(false);
@@ -1331,6 +1418,28 @@ function ResetThemes() {
 
 
 function UpdateMisc() {
+	if ($("body.options").length) {
+		var sfont = getComputedStyle(document.querySelector('body')).getPropertyValue("--custom-secondary-font");
+		if (sfont == '""') {
+			var sfont = '';
+		}
+
+		var wfilter = getComputedStyle(document.querySelector('body')).getPropertyValue("--logo-filter");
+		if (wfilter == 'initial') {
+			var wfilter = '';
+		}
+		var wfilter2 = getComputedStyle(document.querySelector('body')).getPropertyValue("--logo-filter-hover");
+		if (wfilter2 == 'initial') {
+			var wfilter2 = '';
+		}
+
+		$('input.font_2nd').val( sfont );
+		$('input.button_radi').val( parseInt( getComputedStyle(document.querySelector('body')).getPropertyValue("--border-radius") ) );
+		$('input.filter1').val( wfilter );
+		$('input.filter2').val( wfilter2 );
+		var x = $('input.filter_duration').val( parseInt( getComputedStyle(document.querySelector('body')).getPropertyValue("--logo-filter-duration") ) );
+		var x = $('input.filter_delay').val( parseInt( getComputedStyle(document.querySelector('body')).getPropertyValue("--logo-filter-delay") ) );
+	}
 }
 
 
@@ -1623,7 +1732,7 @@ function SocialCompile() {
 
 
 /* Used to udpate all dynamical variables */
-function ColorUpdate(refresh) {
+function ColorUpdate(refresh=true,suitcheck=false) {
 /** Page BG **/
 /* Set Vars */
 // content_text is Content Color
@@ -1701,8 +1810,14 @@ if (getComputedStyle(document.querySelector('body')).getPropertyValue("--page-te
 	colormix = ColorTestTwin(content_color,dropdowncolor3,1.6,'rgb');
 }
 
+var dropdowncolorH = ColorTest(dropdowncolor);
+var dropdowncolorA = SuperColorTest(dropdowncolor); // Scrollbar
+
 
 document.querySelector('body').style.setProperty("--page-secondary-background-color", dropdowncolor);
+document.querySelector('body').style.setProperty("--page-secondary-background-color-hover", dropdowncolorH);
+document.querySelector('body').style.setProperty("--page-secondary-background-color-active", dropdowncolorA);
+
 document.querySelector('container').style.setProperty("--page-border-background-color", dropdowncolor2);
 if (window.MW18darkmode === true) {
 	document.querySelector('container').style.setProperty("--page-background-color", content_color);
@@ -1721,6 +1836,8 @@ document.querySelector('body').style.setProperty("--page-text-gradient-color-hov
 }
 
 
+
+
 document.querySelector('body').style.setProperty("--page-background-color-hover", content_color2);
 document.querySelector('body').style.setProperty("--page-background-color-active", content_color3); // Scrollbar
 document.querySelector('body').style.setProperty("--page-text-background-color-hover", content_text2);
@@ -1733,6 +1850,8 @@ document.querySelector('body').style.setProperty("--page-text-background-color-p
 
 // RGB
 document.querySelector('body').style.setProperty("--page-secondary-background-color-rgb", Color2(dropdowncolor));
+document.querySelector('body').style.setProperty("--page-secondary-background-color-hover-rgb", Color2(dropdowncolorH));
+document.querySelector('body').style.setProperty("--page-secondary-background-color-active-rgb", Color2(dropdowncolorA));
 document.querySelector('body').style.setProperty("--page-background-color-rgb", Color2( getComputedStyle(document.querySelector('container')).getPropertyValue("--page-background-color") ));
 document.querySelector('body').style.setProperty("--page-background-color-hover-rgb", Color2(content_color2));
 document.querySelector('body').style.setProperty("--page-background-color-active-rgb", Color2(content_color3));
@@ -2208,6 +2327,12 @@ if (refresh === true) {
 	CheckBG()
 	CheckAdapt()
 //	colortheme($('body').attr("wikitheme"))
+	if ($("body.options").length) {
+		UpdateSet();
+	}
+}
+if ($("body.options").length) {
+	CompileChosenThems()
 }
 SocialCompile();
 if (window.MW18auto === true) {
@@ -2218,9 +2343,110 @@ CursorT('auto-r');
 }
 
 
+if (suitcheck === true) {
+	CheckColorSuitability();
 }
 
-function CheckColorSuitability() {
+}
+
+function CheckColorSuitability(refresh) {
+	/* Check Contrast Colors */
+	if (window.MW18darkmode === true) {
+		var color1a  = getComputedStyle(document.querySelector('container')).getPropertyValue("--page-background-color");
+		var color2 = getComputedStyle(document.querySelector('container')).getPropertyValue("--page-text-background-color");
+	} else {
+		var color1a = getComputedStyle(document.querySelector('container')).getPropertyValue("--page-text-background-color");
+		var color2  = getComputedStyle(document.querySelector('container')).getPropertyValue("--page-background-color");
+	}
+	var color1b = getComputedStyle(document.querySelector('body')).getPropertyValue("--anchor-background-color");
+	var color1c = getComputedStyle(document.querySelector('container')).getPropertyValue("--page-border-background-color");
+	var color1d = getComputedStyle(document.querySelector('body')).getPropertyValue("--accent-background-color");
+	if ($("body.options").length) { // MpistoSkin2's Preferences Page
+		// Content Color
+		if (isSuitableColor(color1a,color2)) {
+			document.querySelector('label .color-warn').style.setProperty("--icon-display", "none");
+		} else {
+			document.querySelector('label .color-warn').style.setProperty("--icon-display", "inline");
+		}
+		// Link Color
+		if (isSuitableColor(color1b, color2)) {
+			document.querySelector('label .link-warn').style.setProperty("--icon-display", "none");
+		} else {
+			document.querySelector('label .link-warn').style.setProperty("--icon-display", "inline");
+		}
+		// Border Color
+		if (isSuitableColor2(color1c, color2)) {
+			document.querySelector('label .border-warn').style.setProperty("--icon-display", "none");
+		} else {
+			document.querySelector('label .border-warn').style.setProperty("--icon-display", "inline");
+		}
+		// Button Color
+		if (isSuitableColor2(color1d, color2)) {
+			document.querySelector('label .button-warn').style.setProperty("--icon-display", "none");
+		} else {
+			document.querySelector('label .button-warn').style.setProperty("--icon-display", "inline");
+		}
+	} else { // Everything else
+		var colornames = ['Page Text', 'Anchor', 'Page Border', 'Accent']; // List of the four color values that can become unsuitable
+		var uns = false; // Becomes true if an unsuitable color found
+		var suit0 = false;
+		var suit1 = false;
+		var suit2 = false;
+		var suit3 = false;
+		/* Variables that will attain to one of the values found in the colornames variable */
+		issue0 = "";
+		issue1 = "";
+		issue2 = "";
+		issue3 = "";
+		// Content Color
+		if ( !(isSuitableColor(color1a,color2) )) {
+			var uns = true;
+			var suit0 = true;
+		}
+		// Link Color
+		if ( !(isSuitableColor(color1b, color2)) ) {
+			var uns = true;
+			var suit1 = true;
+		}
+		// Border Color
+		if ( !(isSuitableColor2(color1c, color2)) ) {
+			var uns = true;
+			var suit2 = true;
+		}
+		// Button Color
+		if ( !(isSuitableColor2(color1d, color2)) ) {
+			var uns = true;
+			var suit3 = true;
+		}
+		var issues = [suit0, suit1, suit2, suit3]; // Individual items can become true if one usuitable color is found
+		if (uns) { // At least one color not suited found
+			amount = 0;
+			for (let i = 0; i < issues.length; i++) {
+				if (issues[i]) {
+					if (issue0 == "") {
+						issue0 = colornames[i];
+					} else if (issue1 == "") {
+						issue1 = colornames[i];
+					} else if (issue2 == "") {
+						issue2 = colornames[i];
+					} else if (issue3 == "") {
+						issue3= colornames[i];
+					}
+					amount= amount + 1;
+				}
+			}
+			if (amount == 1) {
+				result = issue0 + " Background Color. Please replace it with a compatible ones.";
+			} else 	if (amount == 2) {
+				result = issue0 + " and " + issue1 + " Background Colors. Please replace them with compatible ones.";
+			} else 	if (amount == 3) {
+				result = issue0 + ", " + issue1 + " and " + issue2 + " Background Colors. Please replace them with compatible ones.";
+			} else 	if (amount == 4) {
+				result = issue0 + ", " + issue1 + ", " + issue2 + " and " + issue3 + " Background Colors. Please replace them with compatible ones.";
+			}
+			AddFloatingBanner("This theme currently uses incompatible " + result ,'warning','unsuitablethemebanner'); // Message to be put (Warning Banner)
+		}
+	}
 }
 
 
@@ -2250,6 +2476,83 @@ function CheckAdapt() {
 
 /* Different with the ToggleBG function, only one is present for all three */
 function CheckBG() {
+	if ($("body.options").length   && !($("html.contrast.win10").length) ) { // Don't run if not on Preferences Page
+	/* BG */ // Background Style
+		if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--community-background-mode") === 'legacy') && !($("html.contrast.win10").length)  ) {
+				document.querySelector('input#BG_2').checked = true;
+				document.querySelector('input#BG_1').checked = false;
+				$(".legacy-off").attr('disabled', 'true');
+				$(".modern-off").removeAttr('disabled');
+		} else {
+				$(".legacy-off").removeAttr('disabled');
+				$(".modern-off").attr('disabled', 'true');
+				document.querySelector('input#BG_1').checked = true;
+				document.querySelector('input#BG_2').checked = false;
+		}
+	/* BG1 */ // Background Vertical Alingment
+		if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--community-background-alignment") === 'center') && !($("html.contrast.win10").length)  ) {
+				document.querySelector('input#BG1_2').checked = true;
+				document.querySelector('input#BG1_1').checked = false;
+				document.querySelector('input#BG1_3').checked = false;
+		} else if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--community-background-alignment") === 'bottom') && !($("html.contrast.win10").length)  ) {
+				document.querySelector('input#BG1_3').checked = true;
+				document.querySelector('input#BG1_1').checked = false;
+				document.querySelector('input#BG1_2').checked = false;
+		} else {
+				document.querySelector('input#BG1_1').checked = true;
+				document.querySelector('input#BG1_2').checked = false;
+				document.querySelector('input#BG1_3').checked = false;
+		}
+	/* BG2 */ // Background Tiling
+		if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--community-background-no-tiling") === 'true') && !($("html.contrast.win10").length)  ) {
+				document.querySelector('input#BG2').checked = true;
+		} else {
+				document.querySelector('input#BG2').checked = false;
+		}
+	/* BG3 */
+	/*
+	**
+	cover-off items are disabled when background-size is on Cover
+	stretch-off items are disabled when background-size is on Stretched
+	noncover-off items are enabled only if background-size is on Cover
+	noncover-off items are enabled only if background-size is on Cover
+	**
+	*/
+		if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--community-background-size") === 'contain') && !($("html.contrast.win10").length)  ) {
+				document.querySelector('input#BG3_2').checked = true;
+				document.querySelector('input#BG3_1').checked = false;
+				document.querySelector('input#BG3_3').checked = false;
+				document.querySelector('input#BG3_4').checked = false;
+				$(".cover-off").removeAttr('disabled');
+				$(".stretch-off").removeAttr('disabled');
+				$(".noncover-off").attr('disabled', 'true');
+		} else if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--community-background-size") === 'stretched') && !($("html.contrast.win10").length)  ) {
+				document.querySelector('input#BG3_3').checked = true;
+				document.querySelector('input#BG3_1').checked = false;
+				document.querySelector('input#BG3_2').checked = false;
+				document.querySelector('input#BG3_4').checked = false;
+				$(".cover-off").removeAttr('disabled');
+				$(".stretch-off").attr('disabled', 'true');
+				$(".noncover-off").attr('disabled', 'true');
+		} else if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--community-background-size") === 'full') && !($("html.contrast.win10").length)  ) {
+				document.querySelector('input#BG3_4').checked = true;
+				document.querySelector('input#BG3_1').checked = false;
+				document.querySelector('input#BG3_2').checked = false;
+				document.querySelector('input#BG3_3').checked = false;
+				$(".cover-off").removeAttr('disabled');
+				$(".stretch-off").removeAttr('disabled');
+				$(".noncover-off").attr('disabled', 'true');
+		} else { // Cover
+				document.querySelector('input#BG3_1').checked = true;
+				document.querySelector('input#BG3_2').checked = false;
+				document.querySelector('input#BG3_3').checked = false;
+				document.querySelector('input#BG3_4').checked = false;
+				$(".noncover-off").removeAttr('disabled');
+				$(".stretch-off").removeAttr('disabled');
+				$(".cover-off").attr('disabled', 'true');
+		}
+	}
+
 	$("body").attr('community-background-mode', getComputedStyle(document.querySelector('body')).getPropertyValue("--community-background-mode") );
 	$("body").attr('community-background-size', getComputedStyle(document.querySelector('body')).getPropertyValue("--community-background-size") );
 	$("body").attr('community-background-alignment', getComputedStyle(document.querySelector('body')).getPropertyValue("--community-background-alignment") );
@@ -2515,7 +2818,7 @@ function HCa() {
         x.className = x.className.replace(" theme-B", "");
         x.className = x.className.replace(" theme-C", "");
         x.className = x.className.replace(" theme-D", "");
-		ColorUpdate(true);
+		ColorUpdate(true,true);
 		UpdateMisc();
 		insertKey('theme-active', 'theme-A' );
 		$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li").removeClass('selected');
@@ -2530,7 +2833,7 @@ function HCb() {
         x.className = x.className.replace(" theme-A", "");
         x.className = x.className.replace(" theme-C", "");
         x.className = x.className.replace(" theme-D", "");
-		ColorUpdate(true);
+		ColorUpdate(true,true);
 		UpdateMisc();
 		insertKey('theme-active', 'theme-B' );
 		$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li").removeClass('selected');
@@ -2545,7 +2848,7 @@ function HCc() {
         x.className = x.className.replace(" theme-A", "");
         x.className = x.className.replace(" theme-B", "");
         x.className = x.className.replace(" theme-D", "");
-		ColorUpdate(true);
+		ColorUpdate(true,true);
 		UpdateMisc();
 		insertKey('theme-active', 'theme-C' );
 		$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li").removeClass('selected');
@@ -2560,7 +2863,7 @@ function HCd() {
         x.className = x.className.replace(" theme-A", "");
         x.className = x.className.replace(" theme-B", "");
         x.className = x.className.replace(" theme-C", "");
-		ColorUpdate(true);
+		ColorUpdate(true,true);
 		UpdateMisc();
 		insertKey('theme-active', 'theme-D' );
 		$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li").removeClass('selected');
@@ -2990,7 +3293,7 @@ var x = $('input.filter_delay').val();
 function UpdateColorThreshold() {
 	var x = $('input.color_threshold').val();
 	window.MW18LightThreshold = x;
-	ColorUpdate(true);
+		ColorUpdate(true,true);
 }
 
 function UpdateHoverRation() {
