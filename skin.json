@@ -1,6 +1,6 @@
 {
   "name": "Evelution",
-  "version": "5.0.0",
+  "version": "5.1.0",
   "namemsg": "skinname-evelution",
   "descriptionmsg": "evelution-skin-desc",
   "url": "https://www.mediawiki.org/wiki/Skin:Evelution",
@@ -36,8 +36,11 @@
 		"EvelutionDisableRightRail": {
 			"value": false,
 			"description": "Disables Evelution's right rail completely"
+		},
+		"EvelutionServerMode": {
+			"value": false,
+			"description": "Switches the layout to be more server-friendly."
 		}
-
 	},
 	"Hooks": {
 		"ResourceLoaderGetConfigVars": "EvelutionHooks::onResourceLoaderGetConfigVars"
@@ -102,7 +105,11 @@
             "notifications",
             "changecontentmodel",
             "edit",
-            "aboutsite"
+            "aboutsite",
+            "longpages",
+            "unusedtemplates",
+            "apisandbox",
+            "allmessages"
           ],
           "styles": [
             "skins.evelution.styles",
@@ -144,6 +151,7 @@
       "styles": [
         "resources/CPE.css",
         "resources/Evelution.css",
+        "resources/EvelutionServer.css",
         "resources/Breakpoints.css",
         "resources/Headroom.css",
         "resources/Visual Styles & Colors.css",

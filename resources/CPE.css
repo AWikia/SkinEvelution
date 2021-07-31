@@ -402,18 +402,18 @@ font-family:Trebuchet MS;
 }
 /* Generic Colors */
 body {
-    --alert-background-color: #dd3333;
-    --warning-background-color: #ffcc33;
-    --success-background-color: #14866d;
-    --message-background-color: #575859;
+    --alert-background-color:#dd3333;
+    --warning-background-color:#ffcc33;
+    --success-background-color:#14866d;
+    --message-background-color:#575859;
 }
 
 /* Use Legible Generic Colors for Dark themes */
 body[dark-mode="true"] {
-    --alert-background-color: #ec8c8c;
-    --warning-background-color: #ffe38c;
-    --success-background-color: #51e5c4;
-    --message-background-color: #a0a1a2;
+    --alert-background-color:#ec8c8c;
+    --warning-background-color:#ffe38c;
+    --success-background-color:#51e5c4;
+    --message-background-color:#a0a1a2;
 }
 
 
@@ -2053,13 +2053,15 @@ opacity:1;
 
 /* Floating Buttons */
 .cpe-floating-button {
-  --floating-accent-background-color:var(--page-text-background-color);
+  --floating-button-color:var(--page-text-background-color);
+  --floating-button-color-hover:var(--page-text-background-color-hover);
   --floating-button-background-color:var(--page-background-color);
   --floating-button-hover-background-color:var(--page-text-background-color-page-background-color-mix-light);
+  text-decoration:none;
   align-items: center;
   background-image:none;
   background-color:var(--floating-button-background-color);
-  color:var(--floating-accent-background-color);
+  color:var(--floating-button-color);
   box-shadow: 0 0 10px 0 rgba(26, 26, 26, 0.25), 0 0 10px rgba(240, 240, 240, 0.25);
   border-radius: 50%;
   border: 0;
@@ -2073,17 +2075,28 @@ opacity:1;
   transition-property: box-shadow, background-color, color;
   width: 38px;
 }
+
+.cpe-floating-button:visited {
+	color:var(--floating-button-color);
+}
+
+.cpe-floating-button:visited:hover {
+	color:var(--floating-button-color-hover);
+}
+
+
 .cpe-floating-button:not([disabled]),
 .cpe-floating-button:not(.cpe-is-disabled) {
   cursor:var(--cpe-hand-cursor);
 }
 .cpe-floating-button:not([disabled]):hover,
 .cpe-floating-button:not(.cpe-is-disabled):hover {
+  text-decoration:none;
   box-shadow: 0 0 10px 0 rgba(26, 26, 26, 0.5), 0 0 10px rgba(240, 240, 240, 0.5);
   background-image:none;
   background-color:var(--floating-button-hover-background-color);
   border:0;
-  color:var(--floating-accent-background-color);
+  color:var(--floating-button-color-hover);
 }
 .cpe-floating-button-group {
   display: inline-flex;
@@ -2105,12 +2118,14 @@ opacity:1;
 
 
 .cpe-floating-button.critical {
-  --floating-accent-background-color:#dd3333;
+  --floating-button-color:var(--alert-background-color);
+  --floating-button-color-hover:var(--alert-background-color-hover);
   --floating-button-hover-background-color:var(--alert-background-color-page-background-color-mix-light);
 }
 
 .cpe-floating-button.accent {
-  --floating-accent-background-color:var(--page-border-background-color);
+  --floating-button-color:var(--page-border-background-color);
+  --floating-button-color-hover:var(--page-border-background-color-hover);
   --floating-button-hover-background-color:var(--page-border-background-color-page-background-color-mix-light);
 }
 

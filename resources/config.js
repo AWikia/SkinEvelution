@@ -35,5 +35,10 @@ function insertKey(key,value) {
 	if (config.DisableRightRail === true ) {
 		$('body').addClass( "no-rail" );
 	}
+	if (config.ServerMode === true ) {
+		$('body').addClass( "server-mode" );
+	} else {
+		$('body').addClass( "home-mode" );
+	}
 
 })();

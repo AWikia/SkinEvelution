@@ -21,7 +21,7 @@
 						<div class="counter users"><big>{{html-usercount}}</big> <span>{{msg-eve-users}}</span></div>
 					</section>
 					<section class="buttons">
-						<nav>
+						<nav class="header-buttons">
 							<a class="link cell" title="{{msg-recentchanges}}"  href="{{html-rc-link}}">
 								<span class="cpe-icon material-icons-outlined">
 								trending_up
@@ -60,11 +60,49 @@
 								</span>
 							</a>
 						</nav>
-						<nav class="local-navigation">
+						<nav class="local-navigation home-nav">
 							{{#data-portlets-sidebar}}
 							{{#data-portlets-first}}{{>PortletMLN}}{{/data-portlets-first}}
 							{{#array-portlets-rest}}{{>PortletMLN}}{{/array-portlets-rest}}
 							{{/data-portlets-sidebar}}
+						</nav>
+						<nav class="actions-navigation server-nav">
+							<div class="cpe-dropdown local-navigation">
+								<a class="link cell cpe-dropdown__toggle" title="{{msg-eve-navigation-rest}}">
+									<span class="cpe-icon cpe-icon-large cpe-dropdown__toggle-chevron material-icons-outlined">
+										arrow_drop_down
+									</span>
+								</a>
+								<div class="cpe-dropdown__content cpe-is-right-aligned cpe-is-not-scrollable">
+									<ul class="cpe-list cpe-is-linked">
+												{{#data-portlets-sidebar}}
+												{{#data-portlets-first}}{{>PortletSLN2}}{{/data-portlets-first}}
+												{{#array-portlets-rest}}{{>PortletSLN2}}{{/array-portlets-rest}}
+												{{/data-portlets-sidebar}}
+									</ul>
+								</div>
+							</div>
+							<a class="link cell" title="{{msg-longpages}}" href="{{html-longpages-link}}">
+								<span class="cpe-icon material-icons-outlined">
+								star_border
+								</span>
+							</a>
+							<a class="link cell" title="{{msg-unusedtemplates}}" href="{{html-unusedtemplates-link}}">
+								<span class="cpe-icon material-icons-outlined">
+								bookmark_remove
+								</span>
+							</a>
+							<a class="link cell" title="{{msg-apisandbox}}" href="{{html-apisandbox-link}}">
+								<span class="cpe-icon material-icons-outlined">
+								api
+								</span>
+							</a>
+							<a class="link cell" title="{{msg-allmessages}}" href="{{html-messages-link}}">
+								<span class="cpe-icon material-icons-outlined">
+								security
+								</span>
+							</a>
+
 						</nav>
 					</section>
 				</section>

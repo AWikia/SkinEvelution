@@ -1,0 +1,61 @@
+/* Styles for the Sevrer Segment */
+.server-mode .color-nav,
+.server-mode .mobile-header .home-nav,
+.home-mode .mobile-header .server-nav,
+.server-mode .mpisto-sticky-header-container .local-navigation {
+	display:none;
+}
+
+.server-mode .mpisto-header-container .wordmark {
+	height:44px;
+	margin:5px 10px 0;
+}
+
+.mpisto-content .mpisto-actions {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index:10;
+}
+
+.mpisto-content .mpisto-actions .cpe-floating-button-group {
+    padding: 18px 18px 18px 8px;
+    position: static;
+    position: -webkit-sticky;
+    position: sticky;
+    top: var(--sticky-nav-size);
+}
+
+.server-mode .mpisto-content .mpisto-actions  {
+	display:flex;
+}
+
+.server-mode .mpisto-content .mpisto-title  {
+	font-size:30px;
+}
+
+
+/* Responsive Design */
+@media only screen and (max-width:704px) {
+	.server-mode .mpisto-content .mpisto-actions  {
+		display:none;
+	}
+}
+
+@media only screen and (min-width:705px) and (max-width:979px) {
+	.server-mode .mpisto-content, .server-mode .top-gap {
+		width:100%!important;
+		margin:0!important;
+	}
+
+	.server-mode .mpisto-personal-links .link.toggle-size {
+		display:none!important;
+	}
+}
+
+@media only screen and (min-width:1500px) {
+	.server-mode .mpisto-content .mpisto-title  {
+		font-size:37px;
+	}
+}

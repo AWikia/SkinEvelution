@@ -35,6 +35,10 @@ class SkinEvelution extends SkinMustache {
         $data["html-history-link"] = Title::newFromText( 'Special:PageHistory' )->getLocalURL();
         $data["html-mcontent-link"] = Title::newFromText( 'Special:ChangeContentModel' )->getLocalURL();
         $data["html-edit-link"] = Title::newFromText( 'Special:Edit' )->getLocalURL();
+        $data["html-longpages-link"] = Title::newFromText( 'Special:LongPages' )->getLocalURL();
+        $data["html-unusedtemplates-link"] = Title::newFromText( 'Special:UnusedTemplates' )->getLocalURL();
+        $data["html-apisandbox-link"] = Title::newFromText( 'Special:APISandbox' )->getLocalURL();
+        $data["html-messages-link"] = Title::newFromText( 'Special:AllMessages' )->getLocalURL();
         return $data;
     }
 }
@@ -48,6 +52,7 @@ class EvelutionHooks {
 			'DisableColorManagement' => $config->get( 'EvelutionDisableColorManagement' ),
 			'ForceOneHeader' => $config->get( 'EvelutionForceOneHeader' ),
 			'DisableRightRail' => $config->get( 'EvelutionDisableRightRail' ),
+			'ServerMode' => $config->get( 'EvelutionServerMode' ),
 		];
 
 		return true;
