@@ -1,5 +1,6 @@
 /* OOUI Overrides for Evelution */
-.oo-ui-flaggedElement-destructive  {
+.oo-ui-flaggedElement-destructive,
+.mw-ui-destructive  {
     --accent-background-color: var(--alert-background-color)!important;
     --accent-background-color-hover: var(--alert-background-color-hover)!important;
     --accent-background-color-active: var(--alert-background-color-active)!important;
@@ -496,21 +497,28 @@ body .mw-rcfilters-ui-liveUpdateButtonWidget.oo-ui-toggleWidget-on:after {
 
 /* Frameless Buttons */
 body .oo-ui-buttonElement-frameless.oo-ui-labelElement > .oo-ui-buttonElement-button,
-body .oo-ui-buttonElement-frameless.oo-ui-widget-enabled.oo-ui-flaggedElement-destructive > .oo-ui-buttonElement-button {
+body .oo-ui-buttonElement-frameless.oo-ui-widget-enabled.oo-ui-flaggedElement-destructive > .oo-ui-buttonElement-button,
+body .mw-ui-button.mw-ui-quiet,
+body .mw-button.mw-ui-quiet:disabled {
+
 	background-color:transparent!important;
 	color:var(--accent-background-color);
 	border-color:transparent!important;
 }
 
 body .oo-ui-buttonElement-frameless.oo-ui-widget-enabled > .oo-ui-buttonElement-button:hover,
-body .oo-ui-buttonElement-frameless.oo-ui-widget-enabled.oo-ui-flaggedElement-destructive > .oo-ui-buttonElement-button:hover {
+body .oo-ui-buttonElement-frameless.oo-ui-widget-enabled.oo-ui-flaggedElement-destructive > .oo-ui-buttonElement-button:hover,
+body .mw-ui-button.mw-ui-quiet:hover {
+
 	color:var(--accent-background-color-hover);
 }
 
 body .oo-ui-buttonElement-frameless.oo-ui-widget-enabled.oo-ui-buttonElement-pressed > input.oo-ui-buttonElement-button, 
 body .oo-ui-buttonElement-frameless.oo-ui-widget-enabled > .oo-ui-buttonElement-button:active,
 body .oo-ui-buttonElement-frameless.oo-ui-widget-enabled.oo-ui-flaggedElement-destructive > .oo-ui-buttonElement-button:active, 
-body .oo-ui-buttonElement-frameless.oo-ui-widget-enabled.oo-ui-flaggedElement-destructive.oo-ui-buttonElement-pressed > .oo-ui-buttonElement-button {
+body .oo-ui-buttonElement-frameless.oo-ui-widget-enabled.oo-ui-flaggedElement-destructive.oo-ui-buttonElement-pressed > .oo-ui-buttonElement-button,
+body .mw-ui-button.mw-ui-quiet:active {
+
 	color:var(--accent-background-color-active);
 }
 
@@ -725,7 +733,7 @@ body .mw-rcfilters-ui-menuSelectWidget-footer,
 body .oo-ui-tool.oo-ui-widget-enabled > .oo-ui-tool-link:hover,
 body .oo-ui-listToolGroup-tools .oo-ui-tool.oo-ui-widget-enabled:hover,
 body .wikiEditor-ui-toolbar .group .tool-select .menu .options .option:hover {
-	background-color:var(--page-background-color);
+	background-color:var(--page-secondary-background-color-hover);
 	color:var(--page-text-background-color);
 
 }
@@ -1311,4 +1319,201 @@ body .oo-ui-progressBarWidget.oo-ui-widget-disabled .oo-ui-progressBarWidget-bar
 
 body .oo-ui-pendingElement-pending {
 	background-color:var(--page-border-background-color-page-background-color-mix)!important;
+}
+
+/* Translate Extension */
+body .ext-translate-container .tux-messagelist .tux-message-pagemode .tux-message-item-compact {
+	border-bottom-color:var(--page-secondary-background-color-hover);
+	border-left-color:var(--page-border-background-color);
+	border-right-color:var(--page-border-background-color);
+	background-color:var(--page-secondary-background-color);
+	color:var(--page-text-background-color);
+}
+body .ext-translate-container .tux-messagelist .tux-message-pagemode:first-child .tux-message-item-compact {
+	border-top-color:var(--page-border-background-color);
+}
+
+body .ext-translate-container .tux-messagelist .tux-message-pagemode:last-child .tux-message-item-compact {
+	border-bottom-color:var(--page-border-background-color);
+}
+
+body .ext-translate-container .tux-messagelist .tux-message-pagemode {
+	background-color:transparent;
+	color:var(--page-text-background-color);
+}
+
+body .tux-messagelist {
+	background-color:transparent;
+	color:var(--page-text-background-color);
+}
+
+
+body .tux-messagetable-header {
+	border-bottom-color:var(--page-text-background-color-hover);
+	box-shadow: 0 3px 3px -3px rgba(var(--text-background-color-rgb), 0.5);
+}
+
+body .group-warning {
+	background-color:var(--warning-gradient-color);
+	color:#0e191a;
+	border:2px solid var(--warning-gradient-color-hover);
+}
+
+body .ext-translate-container .tux-messagelist .tux-message-pagemode .tux-message-item-compact:hover {
+	background-color:var(--page-secondary-background-color-hover);
+	color:var(--page-text-background-color);
+}
+
+body .tux-message-item {
+	border-bottom-color:var(--page-border-background-color);
+	background:var(--page-secondary-background-color);
+}
+
+body .tux-message-item:hover {
+	background:var(--page-secondary-background-color-hover);
+}
+
+body .tux-message-editor {
+	background-color:var(--page-background-color);
+	border-color:var(--page-text-background-color-hover);
+	box-shadow: 0 2px 6px rgba(var(--text-background-color-rgb), 0.3);
+	color:var(--page-text-background-color);
+}
+
+body .grid .tux-message-editor .messagekey {
+	color:inherit;
+}
+
+body .tux-message-editor .messagekey .caret {
+    border-top-color: var(--page-text-background-color);
+}
+
+body .tux-message-editor .editcolumn {
+	background-color:var(--page-background-color);
+	border-right-color:var(--page-border-background-color);
+}
+
+body .grid .tux-message-editor .close {
+	background:currentColor;
+    -webkit-mask: no-repeat center center;
+    mask: no-repeat center center;
+    -webkit-mask-image: linear-gradient(transparent,transparent),url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2220%22 height=%2220%22 viewBox=%220 0 20 20%22%3E %3Cpath d=%22M3.636 2.222l14.142 14.142-1.414 1.414L2.222 3.636z%22/%3E %3Cpath d=%22M17.778 3.636L3.636 17.778l-1.414-1.414L16.364 2.222z%22/%3E %3C/svg%3E");
+    mask-image: linear-gradient(transparent,transparent),url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2220%22 height=%2220%22 viewBox=%220 0 20 20%22%3E %3Cpath d=%22M3.636 2.222l14.142 14.142-1.414 1.414L2.222 3.636z%22/%3E %3Cpath d=%22M17.778 3.636L3.636 17.778l-1.414-1.414L16.364 2.222z%22/%3E %3C/svg%3E");
+}
+
+body .tux-dropdown-menu {
+	border-color:var(--page-border-background-color);
+	box-shadow:0 3px 3px -3px rgba(var(--text-background-color-rgb), 0.5);
+}
+
+body .grid .tux-message-editor .infocolumn-block {
+	background-color:var(--page-secondary-background-color);
+}
+
+body .tux-message-editor__caret:before {
+	border-right-color:var(--page-border-background-color);
+}
+
+body .tux-message-editor__caret:after {
+	border-right-color:var(--page-secondary-background-color);
+}
+
+body .tux-messagelist .tux-message-pagemode .tux-pagemode-source {
+	color:inherit;
+}
+
+body .tux-action-bar {
+    background-color: var(--page-background-color-hover);
+    color: var(--page-text-background-color);
+    box-shadow: 0 2px 6px rgba(var(--page-text-background-color), 0.3);
+}
+
+body .tux-editor-editsummary-block input {
+	background-color:var(--page-secondary-background-color);
+	border-color:var(--page-border-background-color);
+	color:var(--page-text-background-color);
+}
+
+body .tux-editor-insert-buttons button {
+    border-color:var(--page-border-background-button);
+    background-color:var(--page-background-color);
+    color:var(--page-text-background-color);
+}
+
+body .tux-editor-insert-buttons .tux-editor-paste-original-button {
+    background-color:var(--page-background-color);
+}
+
+body .tux-message-selector li a,
+body .tux-breadcrumb,
+body .ext-translate-language-selector-label,
+body .tux-message-selector label,
+body .tux-message-editor .shortcutinfo {
+	color:var(--page-text-background-color);
+}
+
+body .tux-message-selector li a:hover {
+	color:var(--page-text-background-color-hover);
+}
+
+
+body .tux-message-selector li.selected a,
+body .tux-breadcrumb__item--aggregate,
+body .ext-translate-language-selector .uls {
+	color:var(--anchor-background-color);
+}
+
+body .tux-message-selector li.selected a:hover,
+body .tux-breadcrumb__item--aggregate:hover,
+body .ext-translate-language-selector .uls:hover  {
+	color:var(--anchor-background-color-active);
+}
+
+body .tux-message-selector .more ul {
+	border-color:var(--page-border-background-color);
+	border-top-color:transparent;
+	background-color:var(--page-background-color);
+	border-color:var(--page-border-background-color);
+}
+
+body .tux-action-bar button {
+	background:var(--page-background-color);
+	color:var(--page-text-background-color);
+}
+
+body .tux-action-bar button:hover {
+	background:var(--page-background-color);
+}
+
+
+body .tux-action-bar button:active, body .tux-action-bar button.down {
+	background:var(--page-text-background-color);
+	color:var(--page-background-color);
+}
+
+body .tux-message-editor textarea {
+	border-color:var(--page-border-background-color-hover);
+	color:var(--page-text-background-color);
+}
+
+body .tux-groupselector {
+    top: 64px;
+    right: 0;
+    border-color:var(--page-text-background-color-hover);
+    background-color: var(--page-background-color);
+    box-shadow: 0 5px 10px rgba(var(--page-text-background-color),0.2);
+}
+
+@media screen and (min-height: 600px) {
+	.tux-messagetable-header.floating {
+		background: var(--page-secondary-background-color);
+		top: 50px;
+		left:50px;
+		z-index: 200;
+		max-width:calc(var(--max-width) - 50px);
+	}
+}
+
+.grid .row .six {
+	display:flex;
 }
