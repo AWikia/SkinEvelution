@@ -104,5 +104,34 @@ Per-page theming is also supported. If you want to use a different theme for the
 }
 ```
 
-# Styling Guides
-When you're about to theme an elmement that it is not wrapped inside the ``container`` element, make sure to use  ``rgb(var(--page-background-color-rgb))`` , ``rgb(var(--page-border-background-color-rgb))`` and ``rgb(var(--page-text-background-color-rgb))`` in place of ``var(--page-background-color)`` ,``var(--page-border-background-color)`` and ``var(--page-text-background-color)`` when referencing to Page Background Color, Page Content Border and Page Text Color respectively since the latter two variables can be set on the body element to ``auto`` in addition to the first one being set to the container element to a value other than ``inherit`` when inverted colors are active. (The setting to toggle it is not present on Evelution), thus breaking any styling. See the OOUI.css file in the ``resources`` folder to find out why. You don't need to do this if the element is inside the ``container`` element.
+# Configuring Evelution
+Evelution, being a Mustache-powered MW skin, does support a few configurations, standard and non-standard, to name a few:
+
+## Logo (Since 1.0.0)
+Evelution uses ``$wgLogo`` to fetch the logo. If ``$wgLogos[icon]`` exists, then that setting will be used to fetch the logo. If none of them are found, no logo is shown. Note that any size works, and it can also be an SVG image in addition to a PNG ones. This logo appears on Desktop and Sticky community headers on the Large Size onwards
+
+## Wordmark (Since 5.3.0)
+By default, Evelution writes the sitename next to the wordmark. If you want to use your own mark instead of the default text ones, set the ``$wgLogos[wordmark]`` property on LocalSettings.php. Note that the wordmark set must be at most 40px in height for best results and it will appear monochrome so as it can adapt any text color. This wordmark appears on all places the default text-mark would appear otherwise so.
+
+## ``$wgEvelutionLeftPersonalLinks`` (Since 4.3.0)
+Defaults to false. When set to true, it allows you to align the toolbar links to the left.
+
+## ``$wgEvelutionDisableColorManagement`` (Since 4.3.0)
+Defaults to false meaning you have color management, When set to true, it hardcodes the color scheme used on Evelution to be similar to the ones used in Vector. This setting is useful for wikis that can't adapt to the many color schemes Evelution gives.
+
+## ``$wgEvelutionForceOneHeader`` (Since 4.3.0)
+Defaults to false. When set to true, it removes the Desktop Community Header and leaves the Desktop sticky header the only ones for Desktops. This setting does not affect Mobile Devices. This setting is useful for wikis who want a solo header layout. Sticky header is still able to be collapsed.
+
+## ``$wgEvelutionDisableRightRail`` (Since 5.0.0)
+Defaults to false meaning that a right rail will be shown where appropriate. When set to true, no right rail will appear. If the wiki heavily relies on layouts that might break with the Right Rail on, this setting is very useful to be turned on.
+
+## ``$wgEvelutionServerMode`` (Since 5.1.0)
+Defaults to false aka Home Mode. When set to true aka Server Mode, it changes the layout to be more server/development wikis-friendly: 
+- No Desktop Local Navigation
+- Addition of Left actions link before the content (Which has the local navigation menus)
+- Smaller page header title, F
+- ull width Small Breakpoint size 
+- No right rail on Help and Project Namespaces
+
+## ``$wgEvelutionCustomFont`` (Since 5.3.0)
+Defaults to an empty string meaning Didact Gothic will be used. When set to another value, that font will be used instead
