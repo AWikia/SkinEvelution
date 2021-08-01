@@ -131,8 +131,8 @@ Defaults to false meaning that a right rail will be shown where appropriate. Whe
 Defaults to false aka Home Mode. When set to true aka Server Mode, it changes the layout to be more server/development wikis-friendly: 
 - No Desktop Local Navigation
 - Addition of Left actions link before the content (Which has the local navigation menus)
-- Smaller page header title, F
-- ull width Small Breakpoint size 
+- Smaller page header title
+- Full width Small Breakpoint size 
 - No right rail on Help and Project Namespaces
 
 ### ``$wgEvelutionCustomFont`` (Since 5.3.0)
