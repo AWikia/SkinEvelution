@@ -50,7 +50,7 @@
 --toolbar-background-color:#576dcd;
 }
 
-
+/** Font Overrides **/
 :root {
 --foreign-fonts:"";
 --secondary-foreign-fonts:"";
@@ -236,7 +236,7 @@ container > main {
 	--global-nav-opacity:0.95;
 	display:flex;
 	flex-direction:column;
-	font-family:"Source Sans Pro", var(--foreign-fonts), cursive;
+	font-family:"Source Sans Pro", var(--font-family);
 	background-color:rgba(var(--global-nav-color), var(--global-nav-opacity));
 	color:var(--global-nav-text-color);
 	box-shadow: 0 0 3px var(--page-text-background-color), 0 0 3px var(--page-secondary-background-color);
@@ -1094,7 +1094,9 @@ margin-left: 20px;
 		line-height:1.4;
 		font-size:22px;
 		font-weight:800;
-		font-family:var(--secondary-font), cursive;
+		align-items:center;
+		font-family:var(--secondary-font), sans-serif;
+		height:50px;
 	}
 
 	.mobile-header .title a {
@@ -1103,7 +1105,17 @@ margin-left: 20px;
 		transition:color 400ms ease;
 		overflow:hidden;
 		text-overflow:ellipsis;
+		width:100%;
+		height:inherit;
+		display:inline-flex;
+		align-items:center;
 	}
+
+	.mobile-header .title .title-logo {
+		-webkit-mask-position:center;
+		mask-position:center; 
+	}
+
 
 	.mobile-header .title a:hover {
 		color:var(--community-foreground-color-hover);
@@ -1246,9 +1258,17 @@ margin-left: 20px;
 		font-weight:700;
 		height:var(--sticky-nav-size);
 		padding:0 6px;
-		font-family:var(--secondary-font), cursive;
+		font-family:var(--secondary-font), sans-serif;
 		overflow:hidden;
 		display:flex;
+	}
+
+	.mpisto-sticky-header-container .title .title-logo {
+		background-color:currentColor;
+		-webkit-mask-position:left;
+		mask-position:left; 
+		-webkit-mask-repeat:no-repeat; 
+		mask-repeat:no-repeat;
 	}
 
 	.mpisto-sticky-header-container .title a {
@@ -1258,6 +1278,9 @@ margin-left: 20px;
 		overflow:hidden;
 		text-overflow:ellipsis;
 		align-self:center;
+		height:inherit;
+		display:inline-flex;
+		align-items:center;
 	}
 
 	.mpisto-sticky-header-container .title a:hover {
@@ -1576,6 +1599,13 @@ body[community-background-mode="legacy"] .mpisto-header-container {
 		font-weight:bolder;
 	}
 
+	.mpisto-header-container .title .title-logo {
+		background-color:currentColor;
+		-webkit-mask-repeat:no-repeat;
+		mask-repeat:no-repeat;
+	}
+
+
 	.color-header .title {
 		width:100%;
 		line-height:1.4;
@@ -1583,11 +1613,12 @@ body[community-background-mode="legacy"] .mpisto-header-container {
 		font-weight:700;
 		max-height:50px;
 		padding:0 16px 0 11px;
-		font-family:var(--secondary-font), cursive;
-		white-space:pre-wrap;
+		font-family:var(--secondary-font), sans-serif;
+		white-space:wrap;
 		overflow:hidden;
 		text-overflow:ellipsis;
 		max-height:50px;
+		height:50px;
 	}
 
 	.color-header .title a {
@@ -1599,7 +1630,16 @@ body[community-background-mode="legacy"] .mpisto-header-container {
 		display:block;
 		max-height:inherit;
 		text-align:left;
+		height:inherit;
+		display:inline-flex;
+		align-items:center;
 	}
+	
+	.color-header .title .title-logo {
+		-webkit-mask-position:left;
+		mask-position:left; 
+	}
+
 
 	.color-header .title a:hover {
 		color:var(--community-foreground-color-hover);

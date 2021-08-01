@@ -40,5 +40,6 @@ function insertKey(key,value) {
 	} else {
 		$('body').addClass( "home-mode" );
 	}
+	document.querySelector('html').style.setProperty("--custom-font", config.CustomFont);
 
 })();

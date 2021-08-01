@@ -53,6 +53,7 @@ class EvelutionHooks {
 			'ForceOneHeader' => $config->get( 'EvelutionForceOneHeader' ),
 			'DisableRightRail' => $config->get( 'EvelutionDisableRightRail' ),
 			'ServerMode' => $config->get( 'EvelutionServerMode' ),
+			'CustomFont' => $config->get( 'EvelutionCustomFont' ),
 		];
 
 		return true;

@@ -217,8 +217,8 @@ function AliasFandomComponents() {
 
 
 function RearrangeDOM() {
-	if ($('body > .oo-ui-defaultOverlay, body > .mw-notification-area-overlay, body > .uls-menu, body > .ve-ui-overlay, body > .imeselector.imeselector-toggle, body > .mwe-popups, body > .mwe-popups-overlay').length) {
-		var oouioverlays = document.querySelectorAll("body > .oo-ui-defaultOverlay, body > .mw-notification-area-overlay, body > .uls-menu, body > .ve-ui-overlay, body > .imeselector.imeselector-toggle, body > .mwe-popups, body > .mwe-popups-overlay");
+	if ($('body > .oo-ui-defaultOverlay, body > .mw-notification-area-overlay, body > .uls-menu, body > .ve-ui-overlay, body > .imeselector.imeselector-toggle, body > .mwe-popups, body > .mwe-popups-overlay, body > .tux-groupselector').length) {
+		var oouioverlays = document.querySelectorAll("body > .oo-ui-defaultOverlay, body > .mw-notification-area-overlay, body > .uls-menu, body > .ve-ui-overlay, body > .imeselector.imeselector-toggle, body > .mwe-popups, body > .mwe-popups-overlay, body > .tux-groupselector");
 		oouioverlays.forEach(function(x) {
 			var data = $(x);
 			data.detach();
@@ -310,30 +310,59 @@ function initializeViews() {
 	'							</span>'
 	);
 
-	// Translation (Translate Extension)
-	$(".mpisto-page-header-contribution-buttons .views > li#ca-translate > a").prepend(
+	// Translation (Translate Extension), Translations Extension
+	$(".mpisto-page-header-contribution-buttons .views > li#ca-translate > a, .mpisto-page-header-contribution-buttons .views > li#ca-nstab-translations > a").prepend(
 	'<span class="cpe-icon cpe-icon-small margined material-icons-outlined">' +
 	'								translate' +
 	'							</span>'
 	);
 
 
-	// Mainspace, Projectspace
-	$(".mpisto-page-header-contribution-buttons .views > li#ca-nstab-main > a, .mpisto-page-header-contribution-buttons .views > li#ca-nstab-project > a").prepend(
+	// Manage Message Groups (Translate Extension)
+	$(".mpisto-page-header-contribution-buttons .views > li#ca-managemessagegroups > a").prepend(
+	'<span class="cpe-icon cpe-icon-small margined material-icons-outlined">' +
+	'								dashboard' +
+	'							</span>'
+	);
+
+	// Aggregate Groups (Translate Extension)
+	$(".mpisto-page-header-contribution-buttons .views > li#ca-aggregategroups > a").prepend(
+	'<span class="cpe-icon cpe-icon-small margined material-icons-outlined">' +
+	'								group_work' +
+	'							</span>'
+	);
+
+
+	// Mainspace
+	$(".mpisto-page-header-contribution-buttons .views > li#ca-nstab-main > a").prepend(
+	'<span class="cpe-icon cpe-icon-small margined material-icons-outlined">' +
+	'								article' +
+	'							</span>'
+	);
+	
+	// Projectspace
+	$(".mpisto-page-header-contribution-buttons .views > li#ca-nstab-project > a").prepend(
 	'<span class="cpe-icon cpe-icon-small margined material-icons-outlined">' +
 	'								description' +
 	'							</span>'
 	);
-	
-	// Special Pages, MediaWiki, Extension, API
-	$(".mpisto-page-header-contribution-buttons .views > li#ca-nstab-special > a, .mpisto-page-header-contribution-buttons .views > li#ca-nstab-mediawiki > a , .mpisto-page-header-contribution-buttons .views > li#ca-nstab-extension > a, .mpisto-page-header-contribution-buttons .views > li#ca-nstab-api > a").prepend(
+
+	// Special Pages, MediaWiki, Extension
+	$(".mpisto-page-header-contribution-buttons .views > li#ca-nstab-special > a, .mpisto-page-header-contribution-buttons .views > li#ca-nstab-mediawiki > a , .mpisto-page-header-contribution-buttons .views > li#ca-nstab-extension > a").prepend(
 	'<span class="cpe-icon cpe-icon-small margined material-icons-outlined">' +
 	'								settings' +
 	'							</span>'
 	);
-	
+
+	// API
+	$(".mpisto-page-header-contribution-buttons .views > li#ca-nstab-api > a").prepend(
+	'<span class="cpe-icon cpe-icon-small margined material-icons-outlined">' +
+	'								api' +
+	'							</span>'
+	);
+
 	// Userspace
-	$(".mpisto-page-header-contribution-buttons .views > li#ca-nstab-user > a").prepend(
+	$(".mpisto-page-header-contribution-buttons .views > li#ca-nstab-user > a, .mpisto-page-header-contribution-buttons .views > li#ca-nstab-user-profile > a, .mpisto-page-header-contribution-buttons .views > li#ca-nstab-userwiki > a").prepend(
 	'<span class="cpe-icon cpe-icon-small margined material-icons-outlined">' +
 	'								person' +
 	'							</span>'
@@ -387,6 +416,20 @@ function initializeViews() {
 	'								palette' +
 	'							</span>'
 	);
+	
+	// Newsletter, User Blog
+	$(".mpisto-page-header-contribution-buttons .views > li#ca-nstab-newsletter > a, .mpisto-page-header-contribution-buttons .views > li#ca-nstab-user-blog > a").prepend(
+	'<span class="cpe-icon cpe-icon-small margined material-icons-outlined">' +
+	'								feed' +
+	'							</span>'
+	);
+
+	// Newsletter, User Blog
+	$(".mpisto-page-header-contribution-buttons .views > li#ca-nstab-widget > a").prepend(
+	'<span class="cpe-icon cpe-icon-small margined material-icons-outlined">' +
+	'								widgets' +
+	'							</span>'
+	);
 
 
 /* Actions */
@@ -435,11 +478,20 @@ function initializeViews() {
 	);
 
 	// Group Statistics (Translate Extension)
-	$(".mpisto-page-header-contribution-buttons .actions > li#ca-mstats > a").prepend(
+	$(".mpisto-page-header-contribution-buttons .actions > li#ca-mstats > a, .mpisto-page-header-contribution-buttons .actions > li#ca-translationstats > a").prepend(
 	'<span class="cpe-icon cpe-icon-small margined material-icons-outlined">' +
 	'								trending_up' +
 	'							</span>'
 	);
+
+
+	// Supported Languages (Translate Extension)
+	$(".mpisto-page-header-contribution-buttons .actions > li#ca-supportedlanguages > a").prepend(
+	'<span class="cpe-icon cpe-icon-small margined material-icons-outlined">' +
+	'								translate' +
+	'							</span>'
+	);
+
 
 
 	// Export

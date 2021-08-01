@@ -3,7 +3,7 @@
 				<a class="wordmark" href="{{link-mainpage}}">
 				{{#data-logos}}
 					{{#icon}}<img src="{{.}}">{{/icon}}
-					{{#wordmark}}<img src="{{src}}">{{/wordmark}}
+					{{^icon}}{{#1x}}<img src="{{.}}">{{/1x}}{{/icon}}
 				{{/data-logos}}
 				</a>
 
@@ -11,7 +11,13 @@
 
 				<header class="mobile-header">
 				<section class="title" translate="no">
-					<a href="{{link-mainpage}}">{{msg-sitetitle}}</a>
+					{{#data-logos}}
+						{{#wordmark}}
+						<a href="{{link-mainpage}}" class="title-logo" style="-webkit-mask-image:url({{.}}); mask-image:url({{.}});"><span style="visibility:hidden;">{{msg-sitetitle}}</span></a>
+						{{/wordmark}}
+						{{^wordmark}}<a href="{{link-mainpage}}">{{msg-sitetitle}}</a>{{/wordmark}}
+					{{/data-logos}}
+					
 				</section>
 				<section class="container">
 					<section class="counters">
@@ -110,7 +116,14 @@
 				<header class="color-header">
 						<div class="table">
 							<div class="tr">
-								<h1 class="title cell" style="text-align:left" translate="no"><a href="{{link-mainpage}}">{{msg-sitetitle}}</a></h1>
+								<h1 class="title cell" style="text-align:left" translate="no">
+								{{#data-logos}}
+									{{#wordmark}}
+									<a href="{{link-mainpage}}" class="title-logo" style="-webkit-mask-image:url({{.}}); mask-image:url({{.}});"><span style="visibility:hidden;">{{msg-sitetitle}}</span></a>
+									{{/wordmark}}
+									{{^wordmark}}<a href="{{link-mainpage}}">{{msg-sitetitle}}</a>{{/wordmark}}
+								{{/data-logos}}
+								</h1>
 								<div class="counters cell">
 									<div class="counter articles"><big>{{html-articlecount}}</big> <span>{{msg-eve-pages}}</span></div>
 									<div class="counter photos"><big>{{html-filecount}}</big> <span>{{msg-eve-files}}</span></div>

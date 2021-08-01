@@ -384,11 +384,14 @@ font-family:Trebuchet MS;
 --community-background-no-tiling:false;
 --backdrop-filter:blur(8px) sepia(12%) contrast(112%) invert(12%) grayscale(12%) saturate(112%) hue-rotate(12deg) brightness(112%);
 /* Fonts */
---font-family:"Didact Gothic", "Inter", -apple-system, BlinkMacSystemFont;
+--main-fonts:""; /* Empty but other languages will depend on it */
 --foreign-fonts:"Didact Gothic", "M PLUS 1p",  "Nanum Gothic", "Prompt", "Cairo", "Ramabhadra", "Catamaran", "Noto Sans", "Noto Sans SC", "Noto Sans TC", "Noto Sans HK", "Hind Siliguri", "Baloo Tamma 2", "Kantumruy", "Manjari", "Padauk", "Baloo Bhaina 2", "Alef";
+--font-family:var(--custom-font), var(--main-fonts), "Didact Gothic", "Inter", var(--foreign-fonts), sans-serif;
 --secondary-foreign-fonts:"M PLUS Rounded 1c", "Jua", "Mitr", "NTR", "Pavanam", "Mukta", "Noto Sans SC", "Noto Sans TC", "Noto Sans HK", "Baloo Da 2", "Baloo Tamma 2", "Battambang", "Baloo Chettan 2", "Padauk", "Baloo Bhaina 2", "Rubik";
---secondary-font:var(--custom-secondary-font), "Rubik", "Arimo", "Liberation Sans", var(--secondary-foreign-fonts);
+--main-secondary-fonts:""; /* Empty but other languages will depend on it */
+--secondary-font:var(--custom-secondary-font), var(--main-secondary-fonts), "Rubik", "Arimo", "Liberation Sans", var(--secondary-foreign-fonts);
 --caret-color:auto;
+--custom-font:"";
 --custom-secondary-font:"";
 --border-radius:3px;
 --logo-filter:opacity(1);
@@ -525,7 +528,7 @@ body {
 	--scrollbar-thumb-color-3:var(--accent-background-color-active);
 	--scrollbar-thumb-text:var(--accent-foreground-color);
   margin:0 auto;
-  font-family:var(--font-family), var(--foreign-fonts);
+  font-family:var(--font-family);
 	cursor:var(--cpe-body-cursor);
 	max-width:var(--max-width);
 	overflow:hidden;
@@ -557,7 +560,7 @@ container {
 
 
 .serif body { /* Noto Sans */
---font-family:Aleo;
+--main-fonts:Aleo;
 --foreign-fonts:"Vollkorn", "Noto Serif JP", "Song Myung", "Pridi", "Amiri", "Ramaraja", "Catamaran", "Martel", "Noto Serif SC", "Noto Serif TC", "Hind Siliguri", "David Libre", "Benne", "Hanuman", "Manjari", "Padauk", "Baloo Bhaina 2";
 }
 
@@ -631,7 +634,7 @@ body[caret-color-auto*="true"] .careta-off {
 }
 
 .secondary, h1, h2, h3, h4, h5, h6 {
-  font-family:var(--secondary-font), cursive;
+  font-family:var(--secondary-font), sans-serif;
 }
 
 body[community-background-mode*="legacy"] .gradient-overlay,
@@ -1006,7 +1009,7 @@ body .wikitable {
 body .wikitable > tr > th,
 body .wikitable > * > tr > th {
 	background-color:var(--page-secondary-background-color);
-	font-family:var(--secondary-font), cursive;
+	font-family:var(--secondary-font), sans-serif;
 	font-weight:900;
 	text-align:center;
 }
