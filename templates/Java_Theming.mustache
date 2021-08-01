@@ -1447,9 +1447,13 @@ function ColorTestTwin(color,color2,intensity=1,inter='hsl') {
 	return chroma.mix(color,color2,MW18HoverThreshold*intensity, inter);
 }
 
-function ColorTest(color,text=false,inv=false) {
-
-	if (isLightColor(color)) {
+function ColorTest(color,text=false,inv=false,dledlen=false) {
+	if (dledlen === true) {
+		var color2 = getComputedStyle(document.querySelector('container')).getPropertyValue("--page-background-color");
+	} else {
+		var color2 = color;
+	}
+	if (isLightColor(color2)) {
 		if (text === true) {
 			if (inv === false) {
 				return '#0e191a'; // Was #000000
@@ -2317,6 +2321,11 @@ document.querySelector('body').style.setProperty("--message-foreground-color-inv
 document.querySelector('body').style.setProperty("--message-foreground-color-hover-rgb", Color2(messagecolor2t));
 document.querySelector('body').style.setProperty("--message-gradient-color-rgb", Color2( getComputedStyle(document.querySelector('body')).getPropertyValue("--message-gradient-color") ));
 document.querySelector('body').style.setProperty("--message-gradient-color-hover-rgb", Color2( getComputedStyle(document.querySelector('body')).getPropertyValue("--message-gradient-color-hover") ));
+
+
+/* Article Link Colors */
+document.querySelector('body').style.setProperty("--article-link-background-color-hover", ColorTest(link_color,false,false,true));
+document.querySelector('body').style.setProperty("--article-new-link-background-color-hover", ColorTest(alert_color,false,false,true));
 
 
 ThemeColorMetaTag();
