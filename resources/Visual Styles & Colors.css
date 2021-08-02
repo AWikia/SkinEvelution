@@ -353,6 +353,7 @@ background-image:linear-gradient(to left,rgba(255,255,255, 0) 200px,var(--sticky
 }
 */
 [visualtheme="basic"] .mpisto-content:not(.mpisto-discussions-content) .mpisto-left-pane, [visualtheme="contrast"] .mpisto-content:not(.mpisto-discussions-content) .mpisto-left-pane,
+[visualtheme="basic"] .mpisto-right-pane .mpisto-module, [visualtheme="contrast"] .mpisto-right-pane .mpisto-module,
 [visualtheme="basic"] .mpisto-options-content, [visualtheme="contrast"] .mpisto-options-content,
 [visualtheme="basic"] .mpisto-editors-content, [visualtheme="contrast"] .mpisto-editors-content {
 	box-shadow:-4px 0 0 0 var(--sticky-header-background-color),
@@ -370,10 +371,22 @@ background-image:linear-gradient(to left,rgba(255,255,255, 0) 200px,var(--sticky
 				5px -1px 0 0 var(--sticky-header-foreground-color)!important;
 				border-top-color:var(--sticky-header-background-color);
 }
-[visualtheme="basic"] .mpisto-content .mpisto-left-pane, [visualtheme="contrast"] .mpisto-content .mpisto-left-pane,
+
+[visualtheme="basic"] .mpisto-content:not(.mpisto-discussions-content) .mpisto-left-pane, [visualtheme="contrast"] .mpisto-content:not(.mpisto-discussions-content) .mpisto-left-pane,
+[visualtheme="basic"] .mpisto-right-pane .mpisto-module, [visualtheme="contrast"] .mpisto-right-pane .mpisto-module,
 [visualtheme="basic"] .mpisto-options-content, [visualtheme="contrast"] .mpisto-options-content,
 [visualtheme="basic"] .mpisto-editors-content, [visualtheme="contrast"] .mpisto-editors-content {
 border-color:var(--sticky-header-foreground-color);
+}
+
+[visualtheme="basic"] .mpisto-right-pane .mpisto-module, [visualtheme="contrast"] .mpisto-right-pane .mpisto-module {
+	background-color:var(--sticky-header-background-color);
+	border-color:var(--sticky-header-background-color);
+	color:var(--sticky-header-foreground-color);
+}
+
+[visualtheme="basic"] .mpisto-right-pane .mpisto-module .mpisto-module-content, [visualtheme="contrast"] .mpisto-right-pane .mpisto-module .mpisto-module-content {
+	border-color:var(--sticky-header-foreground-color);
 }
 
 [visualtheme="basic"] .mpisto-header-container, [visualtheme="contrast"] .mpisto-header-container {
@@ -934,11 +947,16 @@ color:inherit;
 /* Title */
 [visualtheme="basic"] .mpisto-content .mpisto-page-header .mpisto-title,
 [visualtheme="contrast"] .mpisto-content .mpisto-page-header .mpisto-title, 
+[visualtheme="basic"] .mpisto-right-pane .mpisto-module h2,
+[visualtheme="contrast"] .mpisto-right-pane .mpisto-module h2,
 [visualtheme="basic"] .mpisto-option-way h1,
 [visualtheme="contrast"] .mpisto-option-way h1 {
+/*
 	-webkit-text-fill-color:var(--sticky-header-background-color);
 	-webkit-text-stroke-color:var(--sticky-header-foreground-color);
+*/
 	text-shadow:none;
+	background-image:linear-gradient(to top,rgba(var(--sticky-header-foreground-color-hover-rgb),0.25) 54%,transparent 54%,transparent 100%)
 }
 
 /* Buttons */
@@ -1218,13 +1236,16 @@ background-image:linear-gradient(to bottom, var(--accent-gradient-color) 35%, va
 
 [visualtheme="simple"] .mpisto-content .mpisto-page-header .mpisto-title, 
 [visualtheme="simple"] .mpisto-option-way h1 {
+/*
 	-webkit-text-fill-color:currentColor;
 	-webkit-text-stroke-color:transparent;
+*/
 	text-shadow:none;
 	color:inherit;
 }
 
 [visualtheme="simple"] .mpisto-content .mpisto-page-header-title,
+[visualtheme="simple"] .mpisto-right-pane .mpisto-module,
 [visualtheme="simple"] .editor-header,
 [visualtheme="simple"] .mpisto-option-way h1,
 [visualtheme="simple"] .mpisto-userpages-header {
@@ -1608,8 +1629,7 @@ color:var(--accent-foreground-color);
 
 
 /* Discussions specific CSS */
-[visualtheme="contrast"] .mpisto-discussions-wrapper .card,
-[visualtheme="contrast"] .mpisto-right-pane .mpisto-module  {
+[visualtheme="contrast"] .mpisto-discussions-wrapper .card  {
 	border-color:var(--page-border-background-color);
 }
 

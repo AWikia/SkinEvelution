@@ -18,9 +18,6 @@ function insertKey(key,value) {
 (function() {
     'use strict';
     var config = mw.config.get('wgEvelution');
-	var config2 =  mw.config.get([
-				'wgUserGroups'
-			]); 
 
     if (config.LeftPersonalLinks === true) {
 		$('body').addClass( "left-links" );
@@ -45,13 +42,4 @@ function insertKey(key,value) {
 	}
 	document.querySelector('html').style.setProperty("--custom-font", config.CustomFont);
 	$("html").attr('icon-mode', config.IconStyle);
-	
-	if (!/interface-admin/.test(config2.wgUserGroups.join()) ) {
-		$(".css-link, .js-link").remove();
-	}
-
-	if (! ($("#p-tb li#t-upload").length) ) {
-		$(".upload-link").remove();
-	}
-
 })();
