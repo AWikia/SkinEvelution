@@ -139,4 +139,4 @@ Defaults to false aka Home Mode. When set to true aka Server Mode, it changes th
 Defaults to an empty string meaning Didact Gothic will be used. When set to another value, that font will be used instead
 
 ### ``$wgEvelutionIconStyle`` (Since 5.5.0)
-Defaults to outlined. When set to either filled, rounded, shart or two-tone, it changes the icon display to a style other than outlined. Values outside the allowed ones will result in outlined icons. It does not affect OOUI and Inline SVGs but does affect Material Icons inserted on articles
+Defaults to outlined. When set to either filled, rounded, shart or two-tone, it changes the icon display to a style other than outlined. Values outside the allowed ones will result in outlined icons. It does not affect OOUI and Inline SVGs but does affect Material Icons inserted on articles. Note that twotone icons are not colorable so you may avoid using that value
