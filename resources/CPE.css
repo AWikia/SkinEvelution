@@ -384,12 +384,12 @@ font-family:Trebuchet MS;
 --community-background-no-tiling:false;
 --backdrop-filter:blur(8px) sepia(12%) contrast(112%) invert(12%) grayscale(12%) saturate(112%) hue-rotate(12deg) brightness(112%);
 /* Fonts */
---main-fonts:""; /* Empty but other languages will depend on it */
+--main-fonts:"Didact Gothic", "Inter"; /* Empty but other languages will depend on it */
 --foreign-fonts:"Didact Gothic", "M PLUS 1p",  "Nanum Gothic", "Prompt", "Cairo", "Ramabhadra", "Catamaran", "Noto Sans", "Noto Sans SC", "Noto Sans TC", "Noto Sans HK", "Hind Siliguri", "Baloo Tamma 2", "Kantumruy", "Manjari", "Padauk", "Baloo Bhaina 2", "Alef";
---font-family:var(--custom-font), var(--main-fonts), "Didact Gothic", "Inter", var(--foreign-fonts), sans-serif;
+--font-family:var(--custom-font), var(--main-fonts), var(--foreign-fonts), sans-serif;
 --secondary-foreign-fonts:"M PLUS Rounded 1c", "Jua", "Mitr", "NTR", "Pavanam", "Mukta", "Noto Sans SC", "Noto Sans TC", "Noto Sans HK", "Baloo Da 2", "Baloo Tamma 2", "Battambang", "Baloo Chettan 2", "Padauk", "Baloo Bhaina 2", "Rubik";
---main-secondary-fonts:""; /* Empty but other languages will depend on it */
---secondary-font:var(--custom-secondary-font), var(--main-secondary-fonts), "Rubik", "Arimo", "Liberation Sans", var(--secondary-foreign-fonts);
+--main-secondary-fonts:"Rubik", "Arimo", "Liberation Sans"; /* Empty but other languages will depend on it */
+--secondary-font:var(--custom-secondary-font), var(--main-secondary-fonts), var(--secondary-foreign-fonts);
 --caret-color:auto;
 --custom-font:"";
 --custom-secondary-font:"";
@@ -403,6 +403,14 @@ font-family:Trebuchet MS;
 --cpe-teadrop:url("data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHdpZHRoPSI4Mi42NjY2NyIgaGVpZ2h0PSI4Mi42NjY2NyIgdmlld0JveD0iMCwwLDgyLjY2NjY3LDgyLjY2NjY3Ij4NCgk8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMTk4LjY2NjY2LC0xMzguNjY2NjYpIj4NCgkJPGcgZGF0YS1wYXBlci1kYXRhPSJ7JnF1b3Q7aXNQYWludGluZ0xheWVyJnF1b3Q7OnRydWV9IiBmaWxsPSIjMDAwMDAwIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMCIgc3Ryb2tlLWxpbmVjYXA9ImJ1dHQiIHN0cm9rZS1saW5lam9pbj0ibWl0ZXIiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgc3Ryb2tlLWRhc2hhcnJheT0iIiBzdHJva2UtZGFzaG9mZnNldD0iMCIgc3R5bGU9Im1peC1ibGVuZC1tb2RlOiBub3JtYWwiPg0KCQkJPHBhdGggZmlsbD0iIzAwMDAwMCIgZD0iTTE5OC42NjY2NywxODBjMCwtMjIuODI3NzcgNDEuMzMzMzQsLTQxLjMzMzM0IDQxLjMzMzM0LC00MS4zMzMzNGMwLDAgNDEuMzMzMzMsMTguNTA1NTcgNDEuMzMzMzMsNDEuMzMzMzRjMCwyMi44Mjc3NyAtMTguNTA1NTYsNDEuMzMzMzQgLTQxLjMzMzMzLDQxLjMzMzM0Yy0yMi44Mjc3NywwIC00MS4zMzMzNCwtMTguNTA1NTcgLTQxLjMzMzM0LC00MS4zMzMzNHoiLz4NCgkJPC9nPg0KCTwvZz4NCjwvc3ZnPg==")
 
 }
+
+@media (prefers-reduced-data:reduce) {
+	:root {
+	--main-fonts:"Helvectica Neue", "Helvetica", "Arial", sans-serif; /* Empty but other languages will depend on it */
+	--main-secondary-fonts:system-ui, BlinkMacSystemFont, -apple-system; /* Empty but other languages will depend on it */
+	}
+}
+
 /* Generic Colors */
 body {
     --alert-background-color:#dd3333;

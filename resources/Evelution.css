@@ -124,6 +124,7 @@ body .tocnumber {
 
 body {
 	min-width:320px;
+	overflow:hidden;
 }
 @media only screen and (max-width:319px) {
 	body {
@@ -1073,6 +1074,28 @@ margin-left: 20px;
 	margin-bottom:0;
 }
 
+/**/
+@media only screen and (max-width:1279px) {
+.community-header-link:not(:nth-child(-n+3)),
+.community-more-link:nth-child(1),
+.community-more-link:nth-child(2),
+.community-more-link:nth-child(3),
+.mobile-more-link:nth-child(1),
+.mobile-more-link:nth-child(2),
+.mobile-more-link:nth-child(3),
+.sticky-more-link:nth-child(1),
+.sticky-more-link:nth-child(2),
+.sticky-more-link:nth-child(3) {
+	display:none!important;
+}
+}
+
+@media only screen and (min-width:1280px) {
+	.cpe-dropdown.more-header-links {
+		display:none!important;
+	}
+}
+
 /* Title Logo */
 .title-logo {
 		background-color:currentColor;
@@ -1545,10 +1568,16 @@ body[community-background-mode="legacy"] .mpisto-header-container {
 		height:50px;
 		margin:0 0 0 -1px;
 	}
+
+
+	.color-header div[style*="display:flex;"] .link {
+		display:inline-flex;
+		align-items:center;
+	}
 	
 	.color-header .cpe-dropdown {
 		height:inherit;
-		display:inline-block;
+		text-align:left;
 	}
 	
 	.color-nav .cpe-dropdown {
