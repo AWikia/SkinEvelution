@@ -15,5 +15,7 @@ To Install Evelution, you must download the reposistory first. Make a folder cal
 wfLoadSkin( 'Evelution' );
 ```
 
+You don't have to make Evelution the default wiki skin in order to gain access to the Evelution Discord Server or requet for custom theming for your wiki.
+
 # Translating Evelution
 Fork this repo, add a new language code to the i18n folder (Such as fr.php). Copy all contents from en.php to xxx.php (Such as fr.php) and then translate them to the corresponding language (For fr.php should be in French). Then send up a PR and I will be happy to merge it.
