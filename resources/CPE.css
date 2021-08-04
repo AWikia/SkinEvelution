@@ -374,11 +374,14 @@ Aleo = Latin
 
 :root {
 font-family:Trebuchet MS;
+/* Base Foreground Colors */
+--light-theme-foreground-color:#1e0c1b;
+--dark-theme-foreground-color:#ffffff;
 /* Aliases */
 --page-border-background-color:auto;
 --page-text-background-color:auto;
 --toolbar-background-color:auto;
---community-background-mode:modern;
+--community-background-mode:blended;
 --community-background-alignment:top;
 --community-background-size:cover;
 --community-background-no-tiling:false;
@@ -574,7 +577,8 @@ container {
 --foreign-fonts:"Vollkorn", "Noto Serif JP", "Song Myung", "Pridi", "Amiri", "Ramaraja", "Catamaran", "Martel", "Noto Serif SC", "Noto Serif TC", "Hind Siliguri", "David Libre", "Benne", "Hanuman", "Manjari", "Padauk", "Baloo Bhaina 2";
 }
 
-.body-community-background {
+ .body-community-background {
+	--extra-size:var(--global-nav-size);
 	top:0;
 	width:100%;
 	height:100%;
@@ -583,9 +587,7 @@ container {
 	content:"";
 	z-index:-2;
 	background-repeat:no-repeat;
-	background-attachment:local;
-	background-attachment:fixed;
-	background-position:center;
+	background-position:calc(50% + var(--extra-size));
 	background-position-y:var(--community-background-alignment);
 	background-size:cover;
 	background-image:var(--community-background-image);
@@ -600,36 +602,37 @@ container {
 }
 
 
-body[community-background-mode*="legacy"] .body-community-background {
+body[community-background-mode*="standard"] .body-community-background {
+	height:160px;
 	background-repeat:repeat;
 }
 
-body[community-background-mode*="legacy"][community-background-size="contain"] .body-community-background {
+body[community-background-mode*="full"] .body-community-background {
+	background-repeat:repeat;
+}
+
+
+body[community-background-mode*="standard"][community-background-size="contain"] .body-community-background,
+body[community-background-mode*="full"][community-background-size="contain"] .body-community-background {
 	background-size:contain;
 }
 
-body[community-background-mode*="legacy"][community-background-size="stretched"] .body-community-background {
+
+body[community-background-mode*="standard"][community-background-size="stretched"] .body-community-background,
+body[community-background-mode*="full"][community-background-size="stretched"] .body-community-background {
 	background-size:100% 100%;
 	background-position:center;
 }
 
-body[community-background-mode*="legacy"][community-background-size="full"] .body-community-background {
+body[community-background-mode*="standard"][community-background-size="full"] .body-community-background,
+body[community-background-mode*="full"][community-background-size="full"] .body-community-background {
 	background-size:auto;
 }
 
-body[community-background-mode*="legacy"][body-no-tiling*="true"] .body-community-background {
+body[community-background-mode*="standard"][body-no-tiling*="true"] .body-community-background,
+body[community-background-mode*="full"][body-no-tiling*="true"] .body-community-background {
 	background-repeat:no-repeat;
 }
-
-@media only screen and (min-width:2000px) {
-	body[community-background-mode*="legacy"][community-background-size="stretched"] .body-community-background {
-		background-size:var(--max-width) 100%;
-	}
-	body[community-background-mode*="legacy"][community-background-size="contain"] .body-community-background {
-		background-size:var(--max-width);
-	}
-}
-
 
 
 body[page-text-background-color-auto*="false"] .colora-on,
@@ -647,13 +650,14 @@ body[caret-color-auto*="true"] .careta-off {
   font-family:var(--secondary-font), sans-serif;
 }
 
-body[community-background-mode*="legacy"] .gradient-overlay,
-body[community-background-mode*="legacy"] .gradient-overlay-2 {
+body[community-background-mode*="full"] .gradient-overlay,
+body[community-background-mode*="full"] .gradient-overlay-2,
+body[community-background-mode*="standard"] .gradient-overlay {
 	display:none!important;
 }
 
 .gradient-overlay-2 {
-	--overlay-transparency:0.95;
+	--overlay-transparency:0.9;
 	top:0;
 	width:100%;
 	height:100%;
@@ -661,7 +665,7 @@ body[community-background-mode*="legacy"] .gradient-overlay-2 {
 	display:block;
 	content:"";
 	z-index:-1;
-	background-image:linear-gradient(rgba(var(--community-background-color-rgb),0) ,rgba(var(--community-background-color-rgb),var(--overlay-transparency)) calc(0% + 350px));
+	background-image:linear-gradient(rgba(var(--community-background-color-rgb),0) ,rgba(var(--community-background-color-rgb),var(--overlay-transparency)) calc(0% + 160px));
   image-rendering:initial;                  /* CSS4 Proposed  */
   -qq-image-blurring:tick;                  /* 4x4 Web 1-2    */
 	max-width:var(--max-width);
@@ -671,7 +675,7 @@ body[community-background-mode*="legacy"] .gradient-overlay-2 {
 
 
 .gradient-overlay {
-	--overlay-transparency:0.75;
+	--overlay-transparency:0.6;
 	top:0;
 	width:100%;
 	height:100%;
@@ -681,11 +685,17 @@ body[community-background-mode*="legacy"] .gradient-overlay-2 {
 	z-index:-1;
   -webkit-backdrop-filter:var(--backdrop-filter);
   backdrop-filter:var(--backdrop-filter);
-	background-image:linear-gradient(rgba(var(--community-background-color-rgb),var(--overlay-transparency)) 350px,rgba(var(--community-background-color-rgb),0));
+	background-image:linear-gradient(rgba(var(--community-background-color-rgb),var(--overlay-transparency)) 160px,rgba(var(--community-background-color-rgb),0));
 	pointer-events:none;
 	max-width:var(--max-width);
 	filter:var(--global-filter);
 }
+
+
+body[community-background-mode*="standard"] .gradient-overlay-2 {
+	--overlay-transparency:1;
+}
+
 
 
 /* Option and Headings */
