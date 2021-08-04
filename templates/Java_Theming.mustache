@@ -1334,7 +1334,8 @@ function DownloadTheme(full=false) {
 				 '--community-foreground-color-hover-rgb:' + getComputedStyle(document.querySelector('container')).getPropertyValue("--community-foreground-color-hover-rgb")  + ';\n' +
 				// Community BG Settings
 				 '--community-background-mode:' + getComputedStyle(document.querySelector('container')).getPropertyValue("--community-background-mode")  + ';\n' +
-				 '--community-background-alignment:' + getComputedStyle(document.querySelector('container')).getPropertyValue("--community-background-alignment")  + ';\n' +
+				 '--community-background-horizontal-alignment:' + getComputedStyle(document.querySelector('container')).getPropertyValue("--community-background-horizontal-alignment")  + ';\n' +
+				 '--community-background-vertical-alignment:' + getComputedStyle(document.querySelector('container')).getPropertyValue("--community-background-vertical-alignment")  + ';\n' +
 				 '--community-background-size:' + getComputedStyle(document.querySelector('container')).getPropertyValue("--community-background-size")  + ';\n' +
 				 '--community-background-no-tiling:' + getComputedStyle(document.querySelector('container')).getPropertyValue("--community-background-no-tiling")  + ';\n' +
 				 // Anchor Color
@@ -1577,7 +1578,8 @@ function DownloadTheme(full=false) {
 				 '--community-background-image:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--community-background-image")  + ';\n' +
 				 '--community-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--community-background-color")  + ';\n' +
 				 '--community-background-mode:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--community-background-mode")  + ';\n' +
-				 '--community-background-alignment:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--community-background-alignment")  + ';\n' +
+				 '--community-background-horizontal-alignment:' + getComputedStyle(document.querySelector('container')).getPropertyValue("--community-background-horizontal-alignment")  + ';\n' +
+				 '--community-background-vertical-alignment:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--community-background-vertical-alignment")  + ';\n' +
 				 '--community-background-size:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--community-background-size")  + ';\n' +
 				 '--community-background-no-tiling:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--community-background-no-tiling")  + ';\n' +
 				 '--anchor-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--anchor-background-color")  + ';\n' +
@@ -2780,11 +2782,11 @@ function CheckBG() {
 				document.querySelector('input#BG_1').checked = false;
 		}
 	/* BG1 */ // Background Vertical Alingment
-		if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--community-background-alignment") === 'center')   ) {
+		if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--community-background-vertical-alignment") === 'center')   ) {
 				document.querySelector('input#BG1_2').checked = true;
 				document.querySelector('input#BG1_1').checked = false;
 				document.querySelector('input#BG1_3').checked = false;
-		} else if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--community-background-alignment") === 'bottom')  ) {
+		} else if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--community-background-vertical-alignment") === 'bottom')  ) {
 				document.querySelector('input#BG1_3').checked = true;
 				document.querySelector('input#BG1_1').checked = false;
 				document.querySelector('input#BG1_2').checked = false;
@@ -2841,19 +2843,36 @@ function CheckBG() {
 				$(".stretch-off").removeAttr('disabled');
 				$(".cover-off").attr('disabled', 'true');
 		}
+	/* BG4 */ // Background Vertical Alingment
+		if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--community-background-horizontal-alignment") === 'left')   ) {
+				document.querySelector('input#BG4_2').checked = true;
+				document.querySelector('input#BG4_1').checked = false;
+				document.querySelector('input#BG4_3').checked = false;
+		} else if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--community-background-horizontal-alignment") === 'right')  ) {
+				document.querySelector('input#BG4_3').checked = true;
+				document.querySelector('input#BG4_1').checked = false;
+				document.querySelector('input#BG4_2').checked = false;
+		} else {
+				document.querySelector('input#BG4_1').checked = true;
+				document.querySelector('input#BG4_2').checked = false;
+				document.querySelector('input#BG4_3').checked = false;
+		}
+
 	}
 
 	$("body").attr('community-background-mode', background_mode); // getComputedStyle(document.querySelector('body')).getPropertyValue("--community-background-mode");
 	$("body").attr('community-background-size', getComputedStyle(document.querySelector('body')).getPropertyValue("--community-background-size") );
-	$("body").attr('community-background-alignment', getComputedStyle(document.querySelector('body')).getPropertyValue("--community-background-alignment") );
-	$("body").attr('body-no-tiling', getComputedStyle(document.querySelector('body')).getPropertyValue("--community-background-no-tiling") );
+	$("body").attr('community-background-horizontal-alignment', getComputedStyle(document.querySelector('body')).getPropertyValue("--community-background-horizontal-alignment") );
+	$("body").attr('community-background-vertical-alignment', getComputedStyle(document.querySelector('body')).getPropertyValue("--community-background-vertical-alignment") );
+	$("body").attr('community-background-no-tiling', getComputedStyle(document.querySelector('body')).getPropertyValue("--community-background-no-tiling") );
 }
 
 /* 
 ** BG  = Backgkround Body Display - community-background-mode attribute is ued
-** BG1 = Background Position - No body attribute is used
-** BG2 = Background Tiling (Only on Legacy Background Display with Full or Contain sizing) - community-background-no-tiling attribute is used
-** BG3 = Background Size (Only on Legacy Background Display) - community-background-size attribute is used
+** BG1 = Background Vertial Position - community-background-vertical-alignment attribute is ued
+** BG2 = Background Tiling (Except on Blended Legacy Background Display with Full or Contain sizing) - community-background-no-tiling attribute is used
+** BG3 = Background Size (Except on Blended Background Display) - community-background-size attribute is used
+** BG4 = Background Horizontal Position - community-background-horizontal-alignment attribute is ued
 */
 
 function ToggleBG() {
@@ -2944,7 +2963,7 @@ if (top.checked) {
 	if ($("html.theme-A").length) {
 		$("style.designer-style.theme-A").append(
 		'.theme-A[visualcolors="standard"] {' +
-		'--community-background-alignment:' + str + '!important;' +
+		'--community-background-vertical-alignment:' + str + '!important;' +
 		'}'
 		);	
 	}
@@ -2952,7 +2971,7 @@ if (top.checked) {
 	if ($("html.theme-B").length) {
 		$("style.designer-style.theme-B").append(
 		'.theme-B[visualcolors="standard"] {' +
-		'--community-background-alignment:' + str + '!important;' +
+		'--community-background-vertical-alignment:' + str + '!important;' +
 		'}'
 		);	
 	}
@@ -2960,7 +2979,7 @@ if (top.checked) {
 	if ($("html.theme-C").length) {
 		$("style.designer-style.theme-C").append(
 		'.theme-C[visualcolors="standard"] {' +
-		'--community-background-alignment:' + str + '!important;' +
+		'--community-background-vertical-alignment:' + str + '!important;' +
 		'}'
 		);	
 	}
@@ -2968,7 +2987,7 @@ if (top.checked) {
 	if ($("html.theme-D").length) {
 		$("style.designer-style.theme-D").append(
 		'.theme-D[visualcolors="standard"] {' +
-		'--community-background-alignment:' + str + '!important;' +
+		'--community-background-vertical-alignment:' + str + '!important;' +
 		'}'
 		);	
 	}
@@ -3092,6 +3111,53 @@ if (cover.checked) {
 		$("style.designer-style.theme-D").append(
 		'.theme-D[visualcolors="standard"] {' +
 		'--community-background-size:' + str + '!important;' +
+		'}'
+		);	
+	}
+	CheckBG();
+}
+
+
+function ToggleBG4() {
+var left = document.querySelector('input#BG4_1');
+var middle = document.querySelector('input#BG4_2');
+var right = document.querySelector('input#BG4_3');
+let str = "";
+if (left.checked) {
+	str = "left";
+} else if (middle.checked) {
+	str = "center";
+} else if (right.checked) {
+	str = "right";
+}
+	if ($("html.theme-A").length) {
+		$("style.designer-style.theme-A").append(
+		'.theme-A[visualcolors="standard"] {' +
+		'--community-background-horizontal-alignment:' + str + '!important;' +
+		'}'
+		);	
+	}
+
+	if ($("html.theme-B").length) {
+		$("style.designer-style.theme-B").append(
+		'.theme-B[visualcolors="standard"] {' +
+		'--community-background-horizontal-alignment:' + str + '!important;' +
+		'}'
+		);	
+	}
+
+	if ($("html.theme-C").length) {
+		$("style.designer-style.theme-C").append(
+		'.theme-C[visualcolors="standard"] {' +
+		'--community-background-horizontal-alignment:' + str + '!important;' +
+		'}'
+		);	
+	}
+
+	if ($("html.theme-D").length) {
+		$("style.designer-style.theme-D").append(
+		'.theme-D[visualcolors="standard"] {' +
+		'--community-background-horizontal-alignment:' + str + '!important;' +
 		'}'
 		);	
 	}

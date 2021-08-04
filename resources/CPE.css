@@ -382,7 +382,9 @@ font-family:Trebuchet MS;
 --page-text-background-color:auto;
 --toolbar-background-color:auto;
 --community-background-mode:blended;
---community-background-alignment:top;
+--community-background-alignment:var(--community-background-vertical-alignment) var(--community-background-horizontal-alignment);
+--community-background-horizontal-alignment:center;
+--community-background-vertical-alignment:top;
 --community-background-size:cover;
 --community-background-no-tiling:false;
 --backdrop-filter:blur(8px) sepia(12%) contrast(112%) invert(12%) grayscale(12%) saturate(112%) hue-rotate(12deg) brightness(112%);
@@ -527,6 +529,7 @@ body {
   --cpe-hand-cursor:url("Windows/hand.cur"), pointer;
   --global-filter:none;
 	scrollbar-color:var(--scrollbar-thumb-color-1) var(--scrollbar-track-color-1);
+	--header-size:160px;
 /** Scrollbar Styling **/
 	/* Width */
 	--scrollbar-width:17px;
@@ -578,22 +581,22 @@ container {
 }
 
  .body-community-background {
-	--extra-size:var(--global-nav-size);
+	--extra-size:var(--global-nav-size,0px);
 	top:0;
-	width:100%;
+	width:calc(100% - var(--extra-size));
 	height:100%;
+	margin-left:var(--extra-size);
 	position:fixed!Important;
 	display:block;
 	content:"";
 	z-index:-2;
 	background-repeat:no-repeat;
-	background-position:calc(50% + var(--extra-size));
-	background-position-y:var(--community-background-alignment);
+	background-position:var(--community-background-alignment);
 	background-size:cover;
 	background-image:var(--community-background-image);
 	background-color:var(--community-background-color);
 	pointer-events:none;
-	max-width:var(--max-width);
+	max-width:calc(var(--max-width) - var(--extra-size));
 	image-rendering:initial;                  /* CSS4 Proposed  */
 	-qq-image-blurring:tick;                  /* 4x4 Web 1-2    */
 	filter:var(--global-filter);
@@ -603,7 +606,7 @@ container {
 
 
 body[community-background-mode*="standard"] .body-community-background {
-	height:160px;
+	height:var(--header-size);
 	background-repeat:repeat;
 }
 
@@ -629,8 +632,8 @@ body[community-background-mode*="full"][community-background-size="full"] .body-
 	background-size:auto;
 }
 
-body[community-background-mode*="standard"][body-no-tiling*="true"] .body-community-background,
-body[community-background-mode*="full"][body-no-tiling*="true"] .body-community-background {
+body[community-background-mode*="standard"][community-background-no-tiling*="true"] .body-community-background,
+body[community-background-mode*="full"][community-background-no-tiling*="true"] .body-community-background {
 	background-repeat:no-repeat;
 }
 
@@ -665,7 +668,7 @@ body[community-background-mode*="standard"] .gradient-overlay {
 	display:block;
 	content:"";
 	z-index:-1;
-	background-image:linear-gradient(rgba(var(--community-background-color-rgb),0) ,rgba(var(--community-background-color-rgb),var(--overlay-transparency)) calc(0% + 160px));
+	background-image:linear-gradient(rgba(var(--community-background-color-rgb),0) ,rgba(var(--community-background-color-rgb),var(--overlay-transparency)) calc(0% + var(--header-size) ));
   image-rendering:initial;                  /* CSS4 Proposed  */
   -qq-image-blurring:tick;                  /* 4x4 Web 1-2    */
 	max-width:var(--max-width);
@@ -685,7 +688,7 @@ body[community-background-mode*="standard"] .gradient-overlay {
 	z-index:-1;
   -webkit-backdrop-filter:var(--backdrop-filter);
   backdrop-filter:var(--backdrop-filter);
-	background-image:linear-gradient(rgba(var(--community-background-color-rgb),var(--overlay-transparency)) 160px,rgba(var(--community-background-color-rgb),0));
+	background-image:linear-gradient(rgba(var(--community-background-color-rgb),var(--overlay-transparency)) var(--header-size),rgba(var(--community-background-color-rgb),0));
 	pointer-events:none;
 	max-width:var(--max-width);
 	filter:var(--global-filter);
