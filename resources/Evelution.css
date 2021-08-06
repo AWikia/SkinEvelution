@@ -221,10 +221,12 @@ container > main {
 }
 
 .mpisto-wikispace {
+	--wikispace-padding:var(--global-nav-size);
 	width:100%;
 	color:var(--page-text-background-color);
 	display:flex;
 	flex-direction:column;
+	padding-left:var(--wikispace-padding);
 }
 
 .mpisto-global-sidebar {
@@ -251,6 +253,10 @@ container > main {
 [visualtheme="standard"] body[dark-mode="true"] .mpisto-global-navigation {
 	--global-nav-link-background-active:var(--anchor-gradient-color-hover-rgb);
 	--global-nav-link-color-active:var(--anchor-gradient-color);
+}
+
+.mpisto-global-navigation {
+	position:fixed;
 }
 
 .cpe-list li + li.empty {
@@ -567,7 +573,7 @@ container > main {
 	height:var(--sticky-nav-size);
 	flex-direction:row;
 	z-index:99;
-	width:100%;
+	width:calc(100% - var(----wikispace-padding));
 	transform-origin:bottom;
 }
 
@@ -639,7 +645,7 @@ main[toolbar="false"] .mpisto-personal-links.full-toolbar  {
 }
 
 
-@media only screen and (min-width:705px) {
+@media only screen and (min-width:425px) {
 	.mpisto-mobile-global-navigation  {
 		display:none;
 	}
@@ -1197,7 +1203,7 @@ margin-left: 20px;
 		height:var(--sticky-nav-size);
 		display:flex;
 		transition:transform 400ms ease;
-		width:100%;
+		width:calc(100% - var(----wikispace-padding));
 		max-width:var(--max-width);
 		box-shadow: 0 0 3px #000, 0 0 3px #fff;
 		transform:translateY(var(--tr-top)) scaleY(var(--tr-scale));
