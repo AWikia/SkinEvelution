@@ -1,7 +1,7 @@
 .theme-A[visualcolors="standard"] {
---community-background-image:url("SwirlsB.png");
+--community-background-image:url("Cubes1.png");
 --community-background-color:#767676;
---community-background-vertical-alignment:center;
+--community-background-size:contain;
 --anchor-background-color:#562c05;
 --page-background-color:#ffffff;
 --page-border-background-color:#6e6e6e;
@@ -12,9 +12,9 @@
 }
 
 .theme-B[visualcolors="standard"] {
---community-background-image:url("SwirlsB.png");
+--community-background-image:url("Cubes2.png");
 --community-background-color:#a13bc9;
---community-background-vertical-alignment:center;
+--community-background-size:contain;
 --anchor-background-color:#8b12ae;
 --page-background-color:#d9cfe5;
 --page-border-background-color:#800080;
@@ -25,9 +25,9 @@
 }
 
 .theme-C[visualcolors="standard"] {
---community-background-image:url("SwirlsA.png");
+--community-background-image:url("Cubes3.png");
 --community-background-color:#000000;
---community-background-vertical-alignment:center;
+--community-background-size:contain;
 --anchor-background-color:#c0c0c0;
 --page-background-color:#000000;
 --page-border-background-color:#6e6e6e;
@@ -38,9 +38,9 @@
 }
 
 .theme-D[visualcolors="standard"] {
---community-background-image:url("SwirlsA.png");
+--community-background-image:url("Cubes4.png");
 --community-background-color:#180052;
---community-background-vertical-alignment:center;
+--community-background-size:contain;
 --anchor-background-color:#02abea;
 --page-background-color:#0a3b76;
 --page-border-background-color:#008080;
@@ -1905,7 +1905,7 @@ border-top-right-radius:0;
 	display:none;
 	flex-direction:column;
     position: relative;
-    transition: margin-left 400ms ease, transform 400ms ease;
+    transition: margin-left 400ms ease, transform 400ms ease, padding-left 400ms ease, padding-right 400ms ease;
     transform-origin: right;
 }
 
@@ -1959,7 +1959,9 @@ border-top-right-radius:0;
 
 @media only screen and (min-width:980px) {
 	 main[rail="false"] .mpisto-right-pane {
-		margin-left: calc(0px - 20px - var(--module-size));
+		padding-left:0;
+		padding-right:0;
+		margin-left: calc(0px - var(--module-size));
 		pointer-events: none;
 		transform: scalex(0);
 	}
