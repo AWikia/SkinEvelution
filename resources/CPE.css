@@ -780,7 +780,7 @@ text-shadow:none;
 }
 
 /* Scrollbars */
-body:not(.touch-events) ::-webkit-scrollbar {
+body:not(.phone) ::-webkit-scrollbar {
 width:var(--scrollbar-width);
 height:var(--scrollbar-width);
 background-color:var(--scrollbar-track-color-1);
@@ -788,7 +788,7 @@ position:relative;
 cursor:var(--cpe-auto-cursor);
 }
 
-body:not(.touch-events) ::-webkit-scrollbar-thumb {
+body:not(.phone) ::-webkit-scrollbar-thumb {
   background-color:var(--scrollbar-thumb-color-1);
   box-shadow:0 0px 0 2px inset var(--scrollbar-thumb-color-1);
   border:2px solid var(--scrollbar-track-color-1);
@@ -796,26 +796,26 @@ body:not(.touch-events) ::-webkit-scrollbar-thumb {
   color:var(--scrollbar-thumb-text);
 }
 
-body:not(.touch-events) ::-webkit-scrollbar-thumb:hover {
+body:not(.phone) ::-webkit-scrollbar-thumb:hover {
   background-color:var(--scrollbar-thumb-color-2);
   box-shadow:0 0px 0 2px inset var(--scrollbar-thumb-color-2);
 }
 
-body:not(.touch-events) ::-webkit-scrollbar-thumb:active {
+body:not(.phone) ::-webkit-scrollbar-thumb:active {
   background-color:var(--scrollbar-thumb-color-3);
   box-shadow:0 0px 0 2px inset var(--scrollbar-thumb-color-3);
 }
 
-body:not(.touch-events) ::-webkit-scrollbar-thumb:vertical {
+body:not(.phone) ::-webkit-scrollbar-thumb:vertical {
 	min-height:20px;
 }
 
-body:not(.touch-events) ::-webkit-scrollbar-thumb:horizontal {
+body:not(.phone) ::-webkit-scrollbar-thumb:horizontal {
 	min-width:20px;
 }
 
 
-body:not(.touch-events) ::-webkit-scrollbar-button {
+body:not(.phone) ::-webkit-scrollbar-button {
   background-color:var(--scrollbar-track-color-1);
   color:var(--scrollbar-track-text);
   background-size:75%;
@@ -827,50 +827,50 @@ body:not(.touch-events) ::-webkit-scrollbar-button {
 }
 
 
-body:not(.touch-events) ::-webkit-scrollbar-button:hover {
+body:not(.phone) ::-webkit-scrollbar-button:hover {
   background-color:var(--scrollbar-track-color-2);
 }
 
-body:not(.touch-events) ::-webkit-scrollbar-button:active {
+body:not(.phone) ::-webkit-scrollbar-button:active {
   background-color:var(--scrollbar-track-color-3);
 }
 
-body:not(.touch-events) ::-webkit-scrollbar-button:vertical:start {
+body:not(.phone) ::-webkit-scrollbar-button:vertical:start {
 	border-bottom-width:1px;
 	border-bottom-left-radius:var(--scrollbar-width);
 	border-bottom-right-radius:var(--scrollbar-width);
 }
 
-body:not(.touch-events) ::-webkit-scrollbar-button:vertical {
+body:not(.phone) ::-webkit-scrollbar-button:vertical {
 	border-left-width:1px;
 	border-right-width:1px;
 }
 
-body:not(.touch-events) ::-webkit-scrollbar-button:horizontal {
+body:not(.phone) ::-webkit-scrollbar-button:horizontal {
 	border-top-width:1px;
 	border-bottom-width:1px;
 }
 
-body:not(.touch-events) ::-webkit-scrollbar-button:vertical:end {
+body:not(.phone) ::-webkit-scrollbar-button:vertical:end {
 	border-top-width:1px;
 	border-top-left-radius:var(--scrollbar-width);
 	border-top-right-radius:var(--scrollbar-width);
 }
 
-body:not(.touch-events) ::-webkit-scrollbar-button:horizontal:start {
+body:not(.phone) ::-webkit-scrollbar-button:horizontal:start {
 	border-right-width:1px;
 	border-top-right-radius:var(--scrollbar-width);
 	border-bottom-right-radius:var(--scrollbar-width);
 }
 
 
-body:not(.touch-events) ::-webkit-scrollbar-button:horizontal:end {
+body:not(.phone) ::-webkit-scrollbar-button:horizontal:end {
 	border-left-width:1px;
 	border-top-left-radius:var(--scrollbar-width);
 	border-bottom-left-radius:var(--scrollbar-width);
 }
 
-body:not(.touch-events) ::-webkit-scrollbar-corner {
+body:not(.phone) ::-webkit-scrollbar-corner {
 	background-color:var(--scrollbar-track-text);
 }
 
@@ -2676,7 +2676,7 @@ input[type="checkbox"]:indeterminate:active  {
 
 /* No Special Cursor */
 [cursor*="none"],
-.touch-events  {
+.phone  {
   --cpe-body-cursor:auto;
   --cpe-auto-cursor: default;
   --cpe-blocked-cursor:not-allowed;
@@ -2687,7 +2687,7 @@ input[type="checkbox"]:indeterminate:active  {
 
 
 /* No Special Cursor */
-.touch-events  {
+.phone  {
   --cpe-body-cursor:auto!important;
   --cpe-auto-cursor: default!important;
   --cpe-blocked-cursor:not-allowed!important;
@@ -2705,6 +2705,10 @@ input[type="checkbox"]:indeterminate:active  {
 }
 }
 
+
+body.phone ::-webkit-scrollbar {
+	display:none!important;
+}
 .phone {
 	-webkit-text-size-adjust:100%;
 	-moz-text-size-adjust:100%;

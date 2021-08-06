@@ -568,12 +568,13 @@ container > main {
 	--global-nav-link-color-hover:var(--toolbar-foreground-color-hover);
 	--global-nav-link-color-active:rgba(var(--toolbar-foreground-color-hover-rgb),0.8);
 	--global-nav-link-background-active:var(--toolbar-foreground-color-hover-rgb);
+	--toolbar-link-size:var(--sticky-nav-size);
 	bottom:0;
 	top:auto;
 	height:var(--sticky-nav-size);
 	flex-direction:row;
 	z-index:99;
-	width:calc(100% - var(----wikispace-padding));
+	width:calc(100%);
 	transform-origin:bottom;
 }
 
@@ -583,13 +584,12 @@ main[toolbar="false"] .mpisto-personal-links.full-toolbar  {
 }
 
 .mpisto-personal-links.col-toolbar {
-	width:auto;
+	width:var(--toolbar-link-size);
 	bottom:var(--sticky-nav-size);
 	left:100%;
 	margin-top:calc(0px - var(--sticky-nav-size));
 	bottom:0;
 	z-index:98;
-	align-self:flex-end;
 }
 
 
@@ -600,7 +600,7 @@ main[toolbar="false"] .mpisto-personal-links.full-toolbar  {
 
 
 .mpisto-personal-links .link  {
-	width:var(--sticky-nav-size);
+	width:var(--toolbar-link-size);
 	height:var(--sticky-nav-size);
 }
 
@@ -634,74 +634,7 @@ main[toolbar="false"] .mpisto-personal-links.full-toolbar  {
 }
 
 .mpisto-personal-links .link.bar-switch[cpe-tooltip]:after {
-	right:6px;
-}
-
-
-.mpisto-mobile-global-navigation  {
-	top:0;
-	bottom:auto;
-	height:var(--sticky-nav-size);
-	flex-direction:row;
-	z-index:99;
-	width:100%;
-	transform-origin:bottom;
-}
-
-
-@media only screen and (min-width:375px) {
-	.mpisto-mobile-global-navigation  {
-		display:none;
-	}
-}
-
-
-.mpisto-mobile-global-navigation:hover  {
-	z-index:100;
-}
-
-
-	.mpisto-mobile-global-navigation .explore-menu .link .cpe-icon {
-		transform:rotate(90deg);
-	}
-
-
-.mpisto-mobile-global-navigation .link  {
-	width:calc(var(--sticky-nav-size) / 1.5);
-	height:var(--sticky-nav-size);
-}
-
-.mpisto-mobile-global-navigation .upper-links {
-	flex-direction:row;
-}
-
-.mpisto-mobile-global-navigation .bottom-links  {
-	flex-direction:row-reverse;
-}
-
-
-.mpisto-mobile-global-navigation .link[cpe-tooltip]:before {
-	transform:rotate(0deg);
-	left:50%;
-	right:auto;
-	top:auto;
-	bottom:-1px;
-}
-
-.mpisto-mobile-global-navigation .link[cpe-tooltip]:after {
-	top:calc(100% + 1px);
-	left:auto;
-	right:auto;
-	bottom:auto;
-}
-
-.mpisto-mobile-global-navigation .meta-menu .cpe-dropdown__content.cpe-is-left-aligned {
-	left:0;
-}
-
-.mpisto-mobile-global-navigation .bottom-links .link[cpe-tooltip]:first-child::after,
-.mpisto-mobile-global-navigation .bottom-links > :first-child .link[cpe-tooltip]::after {
-	right:0;
+	right:2px;
 }
 
 
