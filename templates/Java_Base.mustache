@@ -69,9 +69,9 @@ window.MW18newnavblock=false;
 		insertKey('rail-full', 'true' );
 	}
 	$(' container > main').attr('wide', getKey('content-full') );
-	$(' container > main').attr('toolbar', getKey('toolbar-full'));
-	$(' container > main').attr('nav', getKey('nav-full'));
-	$(' container > main').attr('rail', getKey('rail-full'));
+	$(' container > main').attr('toolbar', getKey('toolbar-full') );
+	$(' container > main').attr('nav', getKey('nav-full') );
+	$(' container > main').attr('rail', getKey('rail-full') );
 	DropDownUpdate();
 	if (window.MW18newnavblock === true) {
 		return
@@ -156,44 +156,6 @@ function AddFloatingBanner(content='Sample Content',kind='message',extraclass=''
 	);
 
 
-}
-
-/* Width Toggler */
-function ToggleWidth() {
-	if 	($(' container > main').attr('wide') == 'true') {
-		$(' container > main').attr('wide', 'false');
-	} else {
-		$(' container > main').attr('wide', 'true');
-	}
-	insertKey('content-full', $(' container > main').attr('wide') );
-}
-
-function ToggleBar() {
-	if 	($(' container > main').attr('toolbar') == 'true') {
-		$(' container > main').attr('toolbar', 'false');
-	} else {
-		$(' container > main').attr('toolbar', 'true');
-	}
-	insertKey('toolbar-full', $(' container > main').attr('toolbar') );
-}
-
-
-function ToggleNav() {
-	if 	($(' container > main').attr('nav') == 'true') {
-		$(' container > main').attr('nav', 'false');
-	} else {
-		$(' container > main').attr('nav', 'true');
-	}
-	insertKey('nav-full', $(' container > main').attr('nav') );
-}
-
-function ToggleRail() {
-	if 	($(' container > main').attr('rail') == 'true') {
-		$(' container > main').attr('rail', 'false');
-	} else {
-		$(' container > main').attr('rail', 'true');
-	}
-	insertKey('rail-full', $(' container > main').attr('rail') );
 }
 
 
@@ -296,6 +258,46 @@ initializeViews();
 						});
 
 })();
+
+
+/* Width Toggler */
+function ToggleWidth() {
+	if 	($(' container > main').attr('wide') == 'true') {
+		$(' container > main').attr('wide', 'false');
+	} else {
+		$(' container > main').attr('wide', 'true');
+	}
+	insertKey('content-full', $(' container > main').attr('wide') );
+}
+
+function ToggleBar() {
+	if 	($(' container > main').attr('toolbar') == 'true') {
+		$(' container > main').attr('toolbar', 'false');
+	} else {
+		$(' container > main').attr('toolbar', 'true');
+	}
+	insertKey('toolbar-full', $(' container > main').attr('toolbar') );
+}
+
+
+function ToggleNav() {
+	if 	($(' container > main').attr('nav') == 'true') {
+		$(' container > main').attr('nav', 'false');
+	} else {
+		$(' container > main').attr('nav', 'true');
+	}
+	insertKey('nav-full', $(' container > main').attr('nav') );
+}
+
+function ToggleRail() {
+	if 	($(' container > main').attr('rail') == 'true') {
+		$(' container > main').attr('rail', 'false');
+	} else {
+		$(' container > main').attr('rail', 'true');
+	}
+	insertKey('rail-full', $(' container > main').attr('rail') );
+}
+
 
 
 function initializeViews() {

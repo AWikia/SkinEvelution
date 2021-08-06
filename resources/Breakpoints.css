@@ -9,6 +9,44 @@
 	/* Small Phones */
 	@media only screen and (max-width:374px) {
 	
+		.mobile-header .counter .cpe-icon {
+			display:inline-block;
+			vertical-align:middle;
+		}
+
+		.mobile-header .counter .text {
+			display:none;
+		}
+		
+		.mobile-header .counters {
+			font-size:10px;
+		}
+		.mobile-header .title {
+			font-size:18px;
+		}
+		.mobile-header .buttons .link, 
+		.mobile-header .buttons .cpe-dropdown .link {
+			padding-left:0px;
+			padding-right:0px;
+		}
+
+		.mpisto-personal-links .link {
+			width:calc(var(--sticky-nav-size) / 2);
+		}
+
+		.mpisto-personal-links .link .cpe-icon {
+			font-size:20px;
+			width:20px;
+			height:20px;
+			min-width:20px;
+			min-height:20px;
+		}
+
+	}
+	
+	/* Medium Phones */
+	@media only screen and (min-width:375px) and (max-width:424px) {		
+
 		.mobile-header .counters {
 			font-size:12px;
 		}
@@ -20,33 +58,29 @@
 			padding-left:0px;
 			padding-right:0px;
 		}
+
+		.mpisto-personal-links .link {
+			width:calc(var(--sticky-nav-size) / 1.75);
+		}
 		
-	}
-	
-	/* Medium Phones */
-	@media only screen and (max-width:424px) {		
-
-		.mpisto-global-navigation {
-			display:none;
+		.mpisto-personal-links .link .cpe-icon {
+			font-size:22px;
+			width:22px;
+			height:22px;
+			min-width:22px;
+			min-height:22px;
 		}
-
-		.body-community-background,
-		.gradient-overlay,
-		.gradient-overlay-2 {
-			--extra-size:0px;
-			top:var(--global-nav-size);
-			height:calc(100% - var(--global-nav-size));
-		}
-
-		.mpisto-wikispace {
-			--wikispace-padding:0;
-		}
-
 
 	}
 
+	/* Large Phones */
+	@media only screen and (min-width:425px) {
+		.mpisto-personal-links .link {
+			width:calc(var(--sticky-nav-size) / 1.5);
+		}
+	}
 
-
+	/* All Phones */
 	.mpisto-page-header-contribution-buttons .cpe-button-group > li > .cpe-button,
 	.mpisto-page-header-contribution-buttons .cpe-button-group > .cpe-dropdown > .cpe-button {
 		font-size:0;
@@ -138,11 +172,7 @@
 	  min-width:0px;
 	  border-radius:0!important;
 	}
-
-	.mpisto-personal-links .upper-links .link {
-		width:calc(var(--sticky-nav-size) / 1.5);
-	}
-
+	
 	.mpisto-header-container {
 	  border-radius:0!important;
 	}

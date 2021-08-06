@@ -544,10 +544,10 @@ body {
 	--scrollbar-thumb-color-3:var(--accent-background-color-active);
 	--scrollbar-thumb-text:var(--accent-foreground-color);
   margin:0 auto;
+	overflow:hidden!important;
   font-family:var(--font-family);
 	cursor:var(--cpe-body-cursor);
 	max-width:var(--max-width);
-	overflow:hidden;
 }
 
 
@@ -560,6 +560,7 @@ body::after {
 	position:fixed;
 	top:0;
 	box-shadow:0 0 40px 0px;
+	pointer-events:none;
 }
 
 container {
@@ -567,10 +568,10 @@ container {
 	margin:0 auto;
 	max-width:var(--max-width);
 	position:relative;
+	overflow-y:auto;
 	display:block;
 	height:100vh;
 	z-index:1;
-	overflow-y:auto;
 	filter:var(--global-filter);
 }
 
@@ -2708,22 +2709,4 @@ input[type="checkbox"]:indeterminate:active  {
 	-moz-text-size-adjust:100%;
 	text-size-adjust:100%;
 	--scrollbar-size:0!important;
-}
-
-html:not(.wiki-wizard):not(.options) .touch-events {
-	overflow-y:auto!important;
-}
-
-.touch-events container {
-	overflow-y:initial!important;
-}
-
-@supports (-webkit-backdrop-filter:none;) {
-html:not(.wiki-wizard):not(.options) body{
-	overflow-y:auto!important;
-}
-
-container {
-	overflow-y:initial!important;
-}
 }
