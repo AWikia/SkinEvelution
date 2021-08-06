@@ -411,13 +411,18 @@
    * Default options
    * @type {Object}
    */
+	if ($("body.phone").length) {
+		var ement = window;
+	} else {
+		var ement = document.querySelector("container");
+	}
   Headroom.options = {
     tolerance: {
       up: 10,
       down: 10
     },
     offset: 90,
-    scroller: isBrowser() ? document.querySelector("container") : null,
+    scroller: isBrowser() ? ement : null,
     classes: {
       frozen: "headroom--frozen",
       pinned: "headroom--pinned",
