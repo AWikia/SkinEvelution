@@ -2699,14 +2699,21 @@ input[type="checkbox"]:indeterminate:active  {
 
 /* And one more thing */
 
-.touch-events * {
+@supports (scrollbar-width:none) {
+.phone * {
 	scrollbar-width:none!important;
 }
+}
 
-
-.touch-events {
+.phone {
 	-webkit-text-size-adjust:100%;
 	-moz-text-size-adjust:100%;
 	text-size-adjust:100%;
 	--scrollbar-size:0!important;
+	overflow:visible!important;
+}
+
+.phone container {
+	display:contents;
+	overflow:initial;
 }
