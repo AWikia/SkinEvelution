@@ -56,7 +56,7 @@ class EvelutionHooks {
 			'DisableRightRail' => $config->get( 'EvelutionDisableRightRail' ),
 			'ServerMode' => $config->get( 'EvelutionServerMode' ),
 			'CustomFont' => $config->get( 'EvelutionCustomFont' ),
-			'IconStyle' => $config->get( 'EvelutionIconStyle' ),
+			'IconWireframe' => $config->get( 'EvelutionIconWireframe' ),
 		];
 
 		return true;

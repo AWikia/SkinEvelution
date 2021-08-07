@@ -41,5 +41,5 @@ function insertKey(key,value) {
 		$('body').addClass( "home-mode" );
 	}
 	document.querySelector('html').style.setProperty("--custom-font", config.CustomFont);
-	$("html").attr('icon-mode', config.IconStyle);
+	$("html").attr('icon-wireframe', config.IconWireframe);
 })();
