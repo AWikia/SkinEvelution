@@ -218,15 +218,18 @@ resize:none;
 container > main {
 	display:flex;
 	flex-direction:row;
+	width:100%;
+	position:absolute;
+	top:0;
+	--wikispace-padding:var(--global-nav-size);
+	padding-left:var(--wikispace-padding);
 }
 
 .mpisto-wikispace {
-	--wikispace-padding:var(--global-nav-size);
 	width:100%;
 	color:var(--page-text-background-color);
 	display:flex;
 	flex-direction:column;
-	padding-left:var(--wikispace-padding);
 }
 
 .mpisto-global-sidebar {
@@ -255,9 +258,6 @@ container > main {
 	--global-nav-link-color-active:var(--anchor-gradient-color);
 }
 
-.mpisto-global-navigation {
-	position:fixed;
-}
 
 .cpe-list li + li.empty {
 	display:none;
@@ -1593,7 +1593,7 @@ margin-left: 20px;
 		     -o-animation: 600ms linear 200ms infinite normal color-header-hover;
 		        animation: 600ms linear 200ms infinite normal color-header-hover;
 */
-		background-color:rgba(var(--community-foreground-color-rgb),0.15);
+		background-color:rgba(var(--community-background-color-rgb),0.15);
 		border-color:rgba(var(--community-background-color-hover-rgb),0.15);
 		color:var(--community-foreground-color-hover);
 	}
