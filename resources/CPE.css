@@ -496,8 +496,8 @@ body {
     --theme-success-color:  var(--success-background-color);
     --theme-success-color--rgb: var(--success-background-color-rgb);
     --theme-success-label: var(--success-foreground-color);
-    --theme-message-color: var(--info-background-color);
-    --theme-message-label: var(--info-foreground-color);
+    --theme-message-color: var(--message-background-color);
+    --theme-message-label: var(--message-foreground-color);
 }
 
 :root { /* Standard */
@@ -1190,13 +1190,17 @@ a.cpe-button, button.cpe-button {
     text-decoration:none;
 }
 
-.selected .cpe-button:focus:not(:active),
 .selected .cpe-button,
 .selected .cpe-button:hover,
 .selected .cpe-button:active,
 .cpe-button.cpe-is-active {
 	color:var(--accent-foreground-color-inverted);
 }
+
+.selected .cpe-button:focus:not(:active){
+	color:var(--accent-foreground-color-hover-inverted);
+}
+
 
 /* Secondary */
 .cpe-button.cpe-is-secondary {
@@ -1286,8 +1290,9 @@ a.cpe-button, button.cpe-button {
   --accent-background-color-hover:var(--anchor-background-color-hover);
   --accent-background-color-active:var(--anchor-background-color-active);
   --accent-foreground-color:var(--anchor-foreground-color);
-  --accent-foreground-color-inverted:var(--anchor-foreground-color-inverted);
   --accent-foreground-color-hover:var(--anchor-foreground-color-hover);
+  --accent-foreground-color-inverted:var(--anchor-foreground-color-inverted);
+  --accent-foreground-color-hover-inverted:var(--anchor-foreground-color-hover-inverted);
   --accent-background-color-page-background-color-mix-light:var(--anchor-background-color-page-background-color-mix-light);
   --accent-background-color-page-background-color-mix:var(--anchor-background-color-page-background-color-mix);
 }
@@ -1298,8 +1303,9 @@ a.cpe-button, button.cpe-button {
   --accent-background-color-hover:var(--page-border-background-color-hover);
   --accent-background-color-active:var(--page-border-background-color-active);
   --accent-foreground-color:var(--page-border-foreground-color);
-  --accent-foreground-color-inverted:var(--page-border-foreground-color-inverted);
   --accent-foreground-color-hover:var(--page-border-foreground-color-hover);
+  --accent-foreground-color-inverted:var(--page-border-foreground-color-inverted);
+  --accent-foreground-color-hover-inverted:var(--page-border-foreground-color-hover-inverted);
   --accent-background-color-page-background-color-mix-light:var(--page-border-background-color-page-background-color-mix-light);
   --accent-background-color-page-background-color-mix:var(--page-border-background-color-page-background-color-mix);
 }
@@ -1310,8 +1316,9 @@ a.cpe-button, button.cpe-button {
   --accent-background-color-hover:var(--community-background-color-hover);
   --accent-background-color-active:var(--community-background-color-active);
   --accent-foreground-color:var(--community-foreground-color);
-  --accent-foreground-color-inverted:var(--community-foreground-color-inverted);
   --accent-foreground-color-hover:var(--community-foreground-color-hover);
+  --accent-foreground-color-inverted:var(--community-foreground-color-inverted);
+  --accent-foreground-color-inverted-hover:var(--community-foreground-color-hover-inverted);
   --accent-background-color-page-background-color-mix-light:var(--community-background-color-page-background-color-mix-light);
   --accent-background-color-page-background-color-mix:var(--community-background-color-page-background-color-mix);
 }
@@ -1323,8 +1330,9 @@ a.cpe-button, button.cpe-button {
   --accent-background-color-hover:var(--sticky-header-background-color-hover);
   --accent-background-color-active:var(--sticky-header-background-color-active);
   --accent-foreground-color:var(--sticky-header-foreground-color);
-  --accent-foreground-color-inverted:var(--sticky-header-foreground-color-inverted);
   --accent-foreground-color-hover:var(--sticky-header-foreground-color-hover);
+  --accent-foreground-color-inverted:var(--sticky-header-foreground-color-inverted);
+  --accent-foreground-color-hover-inverted:var(--sticky-header-foreground-color-hover-inverted);
   --accent-background-color-page-background-color-mix-light:var(--sticky-header-background-color-page-background-color-mix-light);
   --accent-background-color-page-background-color-mix:var(--sticky-header-background-color-page-background-color-mix);
 }
@@ -1335,8 +1343,9 @@ a.cpe-button, button.cpe-button {
   --accent-background-color-hover:var(--page-text-background-color-hover);
   --accent-background-color-active:var(--page-text-background-color-active);
   --accent-foreground-color:var(--page-text-foreground-color);
-  --accent-foreground-color-inverted:var(--page-text-foreground-color-inverted);
   --accent-foreground-color-hover:var(--page-text-foreground-color-hover);
+  --accent-foreground-color-inverted:var(--page-text-foreground-color-inverted);
+  --accent-foreground-color-hover-inverted:var(--page-text-foreground-color-hover-inverted);
   --accent-background-color-page-background-color-mix-light:var(--page-text-background-color-page-background-color-mix-light);
   --accent-background-color-page-background-color-mix:var(--page-text-background-color-page-background-color-mix);
 }
@@ -1347,8 +1356,9 @@ a.cpe-button, button.cpe-button {
   --accent-background-color-hover:var(--toolbar-background-color-hover);
   --accent-background-color-active:var(--toolbar-background-color-active);
   --accent-foreground-color:var(--toolbar-foreground-color);
-  --accent-foreground-color-inverted:var(--toolbar-foreground-color-inverted);
   --accent-foreground-color-hover:var(--toolbar-foreground-color-hover);
+  --accent-foreground-color-inverted:var(--toolbar-foreground-color-inverted);
+  --accent-foreground-color-hover-inverted:var(--toolbar-foreground-color-hover-inverted);
   --accent-background-color-page-background-color-mix-light:var(--toolbar-background-color-page-background-color-mix-light);
   --accent-background-color-page-background-color-mix:var(--toolbar-background-color-page-background-color-mix);
 }
@@ -1359,8 +1369,9 @@ a.cpe-button, button.cpe-button {
   --accent-background-color-hover:var(--alert-background-color-hover);
   --accent-background-color-active:var(--alert-background-color-active);
   --accent-foreground-color:var(--alert-foreground-color);
-  --accent-foreground-color-inverted:var(--alert-foreground-color-inverted);
   --accent-foreground-color-hover:var(--alert-foreground-color-hover);
+  --accent-foreground-color-inverted:var(--alert-foreground-color-inverted);
+  --accent-foreground-color-hover-inverted:var(--alert-foreground-color-hover-inverted);
   --accent-background-color-page-background-color-mix-light:var(--alert-background-color-page-background-color-mix-light);
   --accent-background-color-page-background-color-mix:var(--alert-background-color-page-background-color-mix);
 }
@@ -1371,8 +1382,9 @@ a.cpe-button, button.cpe-button {
   --accent-background-color-hover:var(--warning-background-color-hover);
   --accent-background-color-active:var(--warning-background-color-active);
   --accent-foreground-color:var(--warning-foreground-color);
-  --accent-foreground-color-inverted:var(--warning-foreground-color-inverted);
   --accent-foreground-color-hover:var(--warning-foreground-color-hover);
+  --accent-foreground-color-inverted:var(--warning-foreground-color-inverted);
+  --accent-foreground-color-hover-inverted:var(--warning-foreground-color-hover-inverted);
   --accent-background-color-page-background-color-mix-light:var(--warning-background-color-page-background-color-mix-light);
   --accent-background-color-page-background-color-mix:var(--warning-background-color-page-background-color-mix);
 }
@@ -1383,8 +1395,9 @@ a.cpe-button, button.cpe-button {
   --accent-background-color-hover:var(--success-background-color-hover);
   --accent-background-color-active:var(--success-background-color-active);
   --accent-foreground-color:var(--success-foreground-color);
-  --accent-foreground-color-inverted:var(--success-foreground-color-inverted);
   --accent-foreground-color-hover:var(--success-foreground-color-hover);
+  --accent-foreground-color-inverted:var(--success-foreground-color-inverted);
+  --accent-foreground-color-hover-inverted:var(--success-foreground-color-hover-inverted);
   --accent-background-color-page-background-color-mix-light:var(--success-background-color-page-background-color-mix-light);
   --accent-background-color-page-background-color-mix:var(--success-background-color-page-background-color-mix);
 }
@@ -1396,8 +1409,9 @@ a.cpe-button, button.cpe-button {
   --accent-background-color-hover:var(--message-background-color-hover);
   --accent-background-color-active:var(--message-background-color-active);
   --accent-foreground-color:var(--message-foreground-color);
-  --accent-foreground-color-inverted:var(--message-foreground-color-inverted);
   --accent-foreground-color-hover:var(--message-foreground-color-hover);
+  --accent-foreground-color-inverted:var(--message-foreground-color-inverted);
+  --accent-foreground-color-hover-inverted:var(--message-foreground-color-hover-inverted);
   --accent-background-color-page-background-color-mix-light:var(--message-background-color-page-background-color-mix-light);
   --accent-background-color-page-background-color-mix:var(--message-background-color-page-background-color-mix);
 }
