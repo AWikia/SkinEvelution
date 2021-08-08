@@ -66,6 +66,7 @@ body {
   --cpe-hand-cursor:pointer!important;
 	--global-nav-size:50px;
 	--sticky-nav-size:50px;
+	--breakpoint-size:1200px;
 /*font-family:Source Sans Pro, "Trebuchet MS", "Prompt",  "M PLUS 1p", "Gothic A1", sans-serif;
 */
 border-radius:1px; /* mInerva and some other browsers do not render local attachment without this */
@@ -125,7 +126,7 @@ body .tocnumber {
 }
 
 body {
-	min-width:320px;
+	min-width:315px;
 }
 
 @media only screen and (max-width:319px) {
@@ -230,6 +231,7 @@ container > main {
 	color:var(--page-text-background-color);
 	display:flex;
 	flex-direction:column;
+	height:100vh;
 }
 
 .mpisto-global-sidebar {
@@ -708,21 +710,21 @@ position:relative;
   margin-top:15px;
 }
 
-.mpisto-content, .top-gap, .top-gap .cpe-banner-notification__container#floatingbanner  {
-	width:calc(1240px - var(--global-nav-size) - var(--scrollbar-width));
+[responsive]  {
+	width:calc(var(--breakpoint-size) - 45px - var(--global-nav-size) - var(--scrollbar-width));
 	margin-left:auto;
 	margin-right:auto;
 	transition:width 400ms ease;
 }
 
 /* Wide */
-	main[wide="true"] .mpisto-content,  main[wide="true"] .top-gap {
-		width:calc(100% - 40px);
+	main[wide="true"] [responsive] {
+		width:calc(100% - 45px);
 	}
 
 	main[wide="true"]  .top-gap .cpe-banner-notification__container#floatingbanner  {
-		width:calc(100% - 40px - var(--global-nav-size) - var(--scrollbar-width));
-		max-width:calc(var(--max-width) - 40px - var(--global-nav-size) - var(--scrollbar-width));
+		width:calc(100% - 45px - var(--global-nav-size) - var(--scrollbar-width));
+		max-width:calc(var(--max-width) - 45px - var(--global-nav-size) - var(--scrollbar-width));
 	}
 	
 	main[wide="true"] .wide-off {
@@ -776,36 +778,37 @@ padding:10px 10px 0;
 overflow:visible;
 position:relative;
 word-wrap: break-word;
-font-size:13px;
+font-size:14px;
 }
 
 .mpisto-article h1, .mpisto-article h2, .mpisto-article h3, .mpisto-article h4, .mpisto-article h5, .mpisto-article h6 {
 margin:0.25em 0 .25em;
 }
 
+/* Typography */
 
 .mpisto-article h1 {
-font-size:26px;
+font-size:27px; /* 1.8lol */
 }
 
 .mpisto-article h2 {
-font-size:18px;
+font-size:21px; /* 1.4lol */
 }
 
 .mpisto-article h3 {
-font-size:16px;
+font-size:18px; /* 1.2lol */
 }
 
 .mpisto-article h4 {
-font-size:13px;
+font-size:15px; /* 1lol */
 }
 
 .mpisto-article h5 {
-font-size:11px;
+font-size:12px; /* 0.8lol */
 }
 
 .mpisto-article h6 {
-font-size:9px;
+font-size:9px; /* 0.6lol */
 font-variant:small-caps;
 }
 
@@ -840,7 +843,7 @@ min-width:0;
 
 .mpisto-content .mpisto-title {
 align-items: flex-end;
-font-size:35px;
+font-size:39px; /* 2.6lol */
 font-weight:700;
 max-width:100%;
 word-wrap: break-word;
@@ -893,7 +896,7 @@ border-bottom-right-radius:0;
 
 
 .mpisto-content .mpisto-page-header .mpisto-sub {
-font-size:11px;
+font-size:12px;
 line-height:1;
 font-weight:200;
 max-width:100%;
@@ -922,7 +925,7 @@ padding:8px 18px;
 margin-left: 20px;
 }
 
-@media only screen and (max-width:979px) {
+@media only screen and (max-width:974px) {
 	.mpisto-page-header-contribution-buttons {
 		margin-left: 0px;
 	}
@@ -1274,7 +1277,7 @@ margin-left: 20px;
 	}
 
 
-@media only screen and (min-width:1500px) {
+@media only screen and (min-width:1440px) {
 	.mpisto-sticky-header-container .title {
 		font-size:26px;
 	}
@@ -1287,7 +1290,7 @@ margin-left: 20px;
 }
 
 
-@media only screen and (max-width:1279px) {
+@media only screen and (max-width:1199px) {
 	.mpisto-sticky-header-container .title {
 		font-size:20px;
 	}
@@ -1307,7 +1310,7 @@ margin-left: 20px;
 
 }
 
-@media only screen and (max-width:979px) {
+@media only screen and (max-width:974px) {
 	.mpisto-sticky-header-container .title {
 		font-size:17px;
 	}
@@ -1338,7 +1341,7 @@ margin-left: 20px;
 
 }
 
-@media only screen and (max-width:704px) {
+@media only screen and (max-width:749px) {
 	.mpisto-sticky-header-container {
 		display:none;
 	}
@@ -1623,7 +1626,7 @@ margin-left: 20px;
 
 
 /* XL */
-@media only screen and (min-width:1500px) {
+@media only screen and (min-width:1440px) {
 	.color-header .title {
 		font-size:26px;
 	}
@@ -1642,7 +1645,8 @@ margin-left: 20px;
 
 
 /* M */
-@media only screen and (max-width:1279px) {
+@media only screen and (max-width:1199px) {
+/*
 	.mpisto-header-container .wordmark {
 		height:80px;
 		margin:0;
@@ -1660,7 +1664,7 @@ margin-left: 20px;
 	.mpisto-header-container .wordmark {
 		margin-top:12px;
 	}
-
+*/
 	.color-header .title {
 		font-size:20px;
 	}
@@ -1689,7 +1693,7 @@ margin-left: 20px;
 
 
 /* S */
-@media only screen and (max-width:979px) {
+@media only screen and (max-width:974px) {
 	.color-header .title {
 		padding:0 10px;
 		font-size:17px;
@@ -1726,7 +1730,7 @@ margin-left: 20px;
 }
 
 /* S+ */
-@media only screen and (min-width:705px) {
+@media only screen and (min-width:750px) {
 	.mobile-header {
 		display:none;
 	}
@@ -1741,7 +1745,7 @@ margin-left: 20px;
 
 
 /* XS */
-@media only screen and (max-width:704px) {
+@media only screen and (max-width:749px) {
 	.color-header, .color-nav, .mpisto-header-container .wordmark {
 		display:none;
 	}
@@ -1860,27 +1864,27 @@ border-top-right-radius:0;
 }
 
 
-@media only screen and (max-width:979px) {
+@media only screen and (max-width:974px) {
 	.toggle-rail-button {
 		display:none!important;
 	}
 }
 
-@media only screen and (max-width:1279px) {
+@media only screen and (max-width:1199px) {
 	.mpisto-right-pane {
 		--module-size:265px;
 	}
 }
 
 
-@media only screen and (min-width:1500px) {
+@media only screen and (min-width:1440px) {
 	.mpisto-right-pane {
 		--module-size:315px;
 	}
 }
 
 
-@media only screen and (min-width:980px) {
+@media only screen and (min-width:975px) {
 	 main[rail="false"] .mpisto-right-pane {
 		padding-left:0;
 		padding-right:0;
