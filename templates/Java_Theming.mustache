@@ -1598,7 +1598,8 @@ function DownloadTheme(full=false) {
 				 '--logo-filter-hover:' + wordfilter2  + ';\n' +
 				 '--logo-filter-duration:' + getComputedStyle(document.querySelector('container')).getPropertyValue("--logo-filter-duration")  + ';\n' +
 				 '--logo-filter-delay:' + getComputedStyle(document.querySelector('container')).getPropertyValue("--logo-filter-delay")  + ';\n' +
-				 '--article-link-background-color-hover:' + getComputedStyle(document.querySelector('container')).getPropertyValue("--article-link-background-color-hover")  + ';\n' +
+				 '--article-link-background-color-hover:' + getComputedStyle(document.querySelector('container')).getPropertyValue("--article-secondary-link-background-color-hover")  + ';\n' +
+				 '--article-secondary-link-background-color-hover:' + getComputedStyle(document.querySelector('container')).getPropertyValue("--article-link-background-color-hover")  + ';\n' +
 				 '--article-new-link-background-color-hover:' + getComputedStyle(document.querySelector('container')).getPropertyValue("--article-new-link-background-color-hover")  + ';\n' +
 				 '}' // Ending
 	} else { // For use with Theme Management
@@ -2044,7 +2045,12 @@ if ( (window.MW18darkmode === true) ) {
 	var content_text =	getComputedStyle(document.querySelector('body')).getPropertyValue("--page-background-color");
 // Adaptive
 	if (getComputedStyle(document.querySelector('body')).getPropertyValue("--page-text-background-color") === 'auto') {
-		var content_color = ColorTest(content_text,true);
+		if (isLightColor(content_text)) {
+			var content_color = getComputedStyle(document.querySelector('html')).getPropertyValue("--light-theme-text-background-color")
+		} else {
+			var content_color = getComputedStyle(document.querySelector('html')).getPropertyValue("--dark-theme-text-background-color")
+		}
+
 	} else {
 		var content_color =	getComputedStyle(document.querySelector('body')).getPropertyValue("--page-text-background-color");
 	}
@@ -2059,7 +2065,7 @@ var content_color3 = SuperColorTest(content_color); // Scrollbar
 
 
 if ((getComputedStyle(document.querySelector('body')).getPropertyValue("--page-text-background-color") === 'auto') ) {
-	var dropdowncolor3 = ColorTest(content_color,true);;	
+	var dropdowncolor3 = ColorTest(content_color,true);	
 } else {
 	var dropdowncolor3 = 'inherit';
 }
@@ -2073,17 +2079,17 @@ if (isSuperLightColor(content_color) && (false)) {
 
 	
 } else if (isLightColor(content_color)) {
-	var dropdowncolor = chroma.mix(content_color,'#0e191a',MW18HoverThreshold*0.4, 'hsv');
+	var dropdowncolor = chroma.mix(content_color,getComputedStyle(document.querySelector('html')).getPropertyValue("--light-theme-text-background-color"),MW18HoverThreshold*0.4, 'hsv');
 	if ((getComputedStyle(document.querySelector('body')).getPropertyValue("--page-border-background-color") === 'auto')  ) {
-		var dropdowncolor2 = chroma.mix(content_color,'#0e191a',MW18HoverThreshold*2.4, 'hsv');
+		var dropdowncolor2 = chroma.mix(content_color,getComputedStyle(document.querySelector('html')).getPropertyValue("--light-theme-text-background-color"),MW18HoverThreshold*2.4, 'hsv');
 	} else {
 		var dropdowncolor2 = 'inherit';
 	}
 
 } else {
-	var dropdowncolor = chroma.mix(content_color,'#ffffff',MW18HoverThreshold*0.4, 'hsv');
+	var dropdowncolor = chroma.mix(content_color,getComputedStyle(document.querySelector('html')).getPropertyValue("--dark-theme-text-background-color"),MW18HoverThreshold*0.4, 'hsv');
 	if ((getComputedStyle(document.querySelector('body')).getPropertyValue("--page-border-background-color") === 'auto')  ) {
-		var dropdowncolor2 = chroma.mix(content_color,'#ffffff',MW18HoverThreshold*2.4, 'hsv');
+		var dropdowncolor2 = chroma.mix(content_color,getComputedStyle(document.querySelector('html')).getPropertyValue("--dark-theme-text-background-color"),MW18HoverThreshold*2.4, 'hsv');
 	} else {
 		var dropdowncolor2 = 'inherit';
 	}
@@ -2671,6 +2677,7 @@ document.querySelector('body').style.setProperty("--message-gradient-color-hover
 
 /* Article Link Colors */
 document.querySelector('body').style.setProperty("--article-link-background-color-hover", ColorTest(link_color,false,false,true));
+document.querySelector('body').style.setProperty("--article-secondary-link-background-color-hover", ColorTest(button_color,false,false,true));
 document.querySelector('body').style.setProperty("--article-new-link-background-color-hover", ColorTest(alert_color,false,false,true));
 
 
