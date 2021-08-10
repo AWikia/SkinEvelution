@@ -21,6 +21,10 @@ var visualColorNames = ['Factory', 'XP Luna', 'Windows Forced', 'Campbell Forced
 	document.querySelector('html').className += " " + getKey('theme-active'); // We begin with the first theme selected
 	$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li").removeClass('selected');
 	$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li[data-theme-change='" + getKey('theme-active') + "']").addClass('selected');
+	if (getKey('color-mode') === '-1') {
+		insertKey('color-mode', 'auto' );
+	}
+   	colortheme( getKey('color-mode') );
 	ColorUpdate(true);
 	UpdateMisc();
 	SheShe = 'auto'; // Allowed Values ('auto', true, false) 
@@ -46,7 +50,6 @@ var visualColorNames = ['Factory', 'XP Luna', 'Windows Forced', 'Campbell Forced
 		);	
 		$('body').attr("cursor", "mpisto");
 		CursorT('auto');
-		// colortheme('system-a');
 		$("head").append('<style class="social-colors"></style>');
 		ManagerRows(); // For Task Manager Only
 		 VisualStyleCompile(); // Compiles the Contrast Options
@@ -338,70 +341,70 @@ if  ( ($("body.mpisto-2018").length) || ($("body.skin-Evelution").length) ) {
 
 
 /* Changes Wiki theme style
-   Supported values: auto, auto-r, light, dark, system-a, system-ar, system, system-r */
+   Supported values: auto, auto-r, light, dark */
 function colortheme(theme) {
     var body_bg =	getComputedStyle(document.querySelector('body')).getPropertyValue("--page-background-color");
     var old_dark = window.MW18darkmode
 	if (theme === 'auto') { // Auto
-		window.MW18darkmode = false;
+			if ( window.matchMedia('(prefers-color-scheme: dark)').matches ) {
+				window.MW18darkmode = true;
+			} else {
+				window.MW18darkmode = false;
+			}
 	} 	else if (theme === 'auto-r') { // Auto-Dark
-		window.MW18darkmode = true;
+			if ( window.matchMedia('(prefers-color-scheme: dark)').matches ) {
+				window.MW18darkmode = false;
+			} else {
+				window.MW18darkmode = true;
+			}
 	} 	else if (theme === 'light') { // Light
-		if (isLightColor(body_bg)) {
-		window.MW18darkmode = false;
-		} else {
-		window.MW18darkmode = true;
-		}
+			if (isLightColor(body_bg)) {
+				if ( window.matchMedia('(prefers-color-scheme: dark)').matches ) {
+					window.MW18darkmode = true;
+				} else {
+					window.MW18darkmode = false;
+				}
+			} else {
+				if ( window.matchMedia('(prefers-color-scheme: dark)').matches ) {
+					window.MW18darkmode = false;
+				} else {
+					window.MW18darkmode = true;
+				}
+			}
 	} 	else if (theme === 'dark') { // Dark
-		if (isLightColor(body_bg)) {
-		window.MW18darkmode = true;
-		} else {
-		window.MW18darkmode = false;
-		}
-	} 	else if (theme === 'system-a') { // Auto-System
-		if ( window.matchMedia('(prefers-color-scheme: dark)').matches ) {
-		window.MW18darkmode = true;
-		} else {
-		window.MW18darkmode = false;
-		}
-	} 	else if (theme === 'system-ar') { // Auto-System-Dark
-		if ( window.matchMedia('(prefers-color-scheme: dark)').matches ) {
-		window.MW18darkmode = false;
-		} else {
-		window.MW18darkmode = true;
-		}
-	} 	else if (theme === 'system') { // System
-		if (isLightColor(body_bg)) {
-			if ( window.matchMedia('(prefers-color-scheme: dark)').matches ) {
-			window.MW18darkmode = true;
+			if (isLightColor(body_bg)) {
+				if ( window.matchMedia('(prefers-color-scheme: dark)').matches ) {
+					window.MW18darkmode = false;
+				} else {
+					window.MW18darkmode = true;
+				}
 			} else {
-			window.MW18darkmode = false;
+				if ( window.matchMedia('(prefers-color-scheme: dark)').matches ) {
+					window.MW18darkmode = true;
+				} else {
+					window.MW18darkmode = false;
+				}
 			}
-		} else {
-			if ( window.matchMedia('(prefers-color-scheme: dark)').matches ) {
-			window.MW18darkmode = false;
-			} else {
-			window.MW18darkmode = true;
-			}
-		}
-	} 	else if (theme === 'system-r') { // System-Dark
-		if (isLightColor(body_bg)) {
-			if ( window.matchMedia('(prefers-color-scheme: dark)').matches ) {
-			window.MW18darkmode = false;
-			} else {
-			window.MW18darkmode = true;
-			}
-		} else {
-			if ( window.matchMedia('(prefers-color-scheme: dark)').matches ) {
-			window.MW18darkmode = true;
-			} else {
-			window.MW18darkmode = false;
-			}
-		}
 	} else {
 		window.MW18darkmode = false;
 	}
 	$('body').attr("wikitheme", theme);
+	if ( window.matchMedia('(prefers-color-scheme: light)').matches ) {
+		if ( (theme === 'light') || (theme === 'auto') ) {
+			$('body').attr("inverted-colors", 'false' );
+		} else {
+			$('body').attr("inverted-colors", 'true' );
+		}
+	} else {
+		if ( (theme === 'light') || (theme === 'auto') ) {
+			$('body').attr("inverted-colors", 'true' );
+		} else {
+			$('body').attr("inverted-colors", 'false' );
+		}
+	}
+	insertKey('color-mode', theme );
+	$(".mpisto-page-header .color-modes li").removeClass('selected');
+	$(".mpisto-page-header .color-modes li." + theme).addClass('selected');
 	if (window.MW18darkmode) {
 		$('body').attr("dark-mode", isLightColor(body_bg) );
 	} else {
@@ -433,26 +436,24 @@ function ToggleMode() {
 		colortheme('auto-r');
 	} else 	if (theme === 'auto-r') {
 		colortheme('auto');
-	} else 	if (theme === 'system-a') {
-		colortheme('system-ar');
-	} else 	if (theme === 'system-ar') {
-		colortheme('system-a');
 	} else 	if (theme === 'light') {
 		colortheme('dark');
 	} else 	if (theme === 'dark') {
 		colortheme('light');
-	} else 	if (theme === 'system') {
-		colortheme('system-r');
-	} else 	if (theme === 'system-r') {
-		colortheme('system');
 	}
+}
 
-
-
-
-
-
-
+function ColorMode(m1='auto', m2='auto-r') {
+	var theme = $('body').attr("wikitheme");
+	if (theme === 'auto') {
+		colortheme(m1);
+	} else 	if (theme === 'auto-r') {
+		colortheme(m2);
+	} else 	if (theme === 'light') {
+		colortheme(m1);
+	} else 	if (theme === 'dark') {
+		colortheme(m2);
+	}
 }
 
 /* Changes body background image */
@@ -977,7 +978,7 @@ function PresetTheme(theme="") {
 	PickColor4('auto');
 	PickColor5('auto');
 	PickColor9('auto');
-//	colortheme($('body').attr("wikitheme"))
+	colortheme($('body').attr("wikitheme"))
 }
 
 /* These functions asks about what color should the user use if no value is set and sets it to an individual component such as Body Background color (The current color is used as initial answer in case of accidental use)
@@ -2174,8 +2175,16 @@ document.querySelector('body').style.setProperty("--page-text-gradient-color-hov
 
 
 /** Button Color **/
+// Inverted Colors Quirk
+if ( (window.MW18darkmode === true) && ( !(isSuitableColor2(getComputedStyle(document.querySelector('body')).getPropertyValue("--accent-background-color"), getComputedStyle(document.querySelector('container')).getPropertyValue("--page-background-color"))) ) ) {
+	document.querySelector('container').style.setProperty("--accent-background-color", ColorTest(ColorTest(getComputedStyle(document.querySelector('body')).getPropertyValue("--accent-background-color"),false,false,true),false,false,true));
+} else {
+	document.querySelector('container').style.setProperty("--accent-background-color", 'inherit');
+}
+
+
 /* Set Vars */
-var button_color = getComputedStyle(document.querySelector('body')).getPropertyValue("--accent-background-color");
+var button_color = getComputedStyle(document.querySelector('container')).getPropertyValue("--accent-background-color");
 var buttoncolor1 = ColorTest(button_color,false);
 var buttoncolor2 = ColorTest(button_color,true);
 var buttoncolor2I = ColorTest(button_color,true,true);
@@ -2263,7 +2272,14 @@ document.querySelector('body').style.setProperty("--sticky-header-gradient-color
 
 /** Link Color **/
 /* Set Vars */
-var link_color = getComputedStyle(document.querySelector('body')).getPropertyValue("--anchor-background-color");
+// Inverted Colors Quirk
+if ( (window.MW18darkmode === true) && ( !(isSuitableColor(getComputedStyle(document.querySelector('body')).getPropertyValue("--anchor-background-color"), getComputedStyle(document.querySelector('container')).getPropertyValue("--page-background-color"))) ) ) {
+	document.querySelector('container').style.setProperty("--anchor-background-color", ColorTest(ColorTest(getComputedStyle(document.querySelector('body')).getPropertyValue("--anchor-background-color"),false,false,true),false,false,true));
+} else {
+	document.querySelector('container').style.setProperty("--anchor-background-color", 'inherit');
+}
+
+var link_color = getComputedStyle(document.querySelector('container')).getPropertyValue("--anchor-background-color");
 var linkcolor1 = ColorTest(link_color,false);
 var linkcolor2 = ColorTest(link_color,true);
 var linkcolor2I = ColorTest(link_color,true,true);
@@ -2687,7 +2703,7 @@ ThemeColorMetaTag();
 if (refresh === true) {
 	CheckBG()
 	CheckAdapt()
-//	colortheme($('body').attr("wikitheme"))
+	colortheme($('body').attr("wikitheme"))
 	if ($("body.options").length) {
 		UpdateSet();
 	}
