@@ -14,10 +14,6 @@ function insertKey(key,value) {
 	window.localStorage.setItem('-eve-pref-' + key, '' + value);
 }
 
-/* Visual Themes */
-var visualThemeNames_l10n = [mw.msg( 'eve-style-basic' ),mw.msg( 'eve-style-contrast' ),mw.msg( 'eve-style-simple' ),mw.msg( 'eve-style-classic' )];
-/* Visual Colors */
-var visualColorNames_l10n = [mw.msg( 'eve-color-factorycolors' ), mw.msg( 'eve-color-lunacolors' ), mw.msg( 'eve-color-classicforced' ), mw.msg( 'eve-color-campbellforced' ), mw.msg( 'eve-color-forced' ), mw.msg( 'eve-color-tangoforced' ),mw.msg( 'eve-color-rgbcolors' ),mw.msg( 'eve-color-retro' ),mw.msg( 'eve-color-retro' ) + ' II',mw.msg( 'eve-color-retro' ) + ' III',mw.msg( 'eve-color-retro' ) + ' IV',mw.msg( 'eve-color-retro' ) + ' V',mw.msg( 'eve-color-retro' ) + ' VI',mw.msg( 'eve-color-retro' ) + ' VII',mw.msg( 'eve-color-fandomcolors' ) ];
 
 
 (function() {
@@ -48,7 +44,12 @@ var visualColorNames_l10n = [mw.msg( 'eve-color-factorycolors' ), mw.msg( 'eve-c
 	document.querySelector('html').style.setProperty("--custom-font", config.CustomFont);
 	$("html").attr('icon-wireframe', config.IconWireframe);
 	
-	
+
+/* Visual Themes */
+var visualThemeNames_l10n = [mw.msg( 'eve-style-basic' ),mw.msg( 'eve-style-contrast' ),mw.msg( 'eve-style-simple' ),mw.msg( 'eve-style-classic' )];
+/* Visual Colors */
+var visualColorNames_l10n = [mw.msg( 'eve-color-factorycolors' ), mw.msg( 'eve-color-lunacolors' ), mw.msg( 'eve-color-classicforced' ), mw.msg( 'eve-color-campbellforced' ), mw.msg( 'eve-color-forced' ), mw.msg( 'eve-color-tangoforced' ),mw.msg( 'eve-color-rgbcolors' ),mw.msg( 'eve-color-retro' ),mw.msg( 'eve-color-retro' ) + ' II',mw.msg( 'eve-color-retro' ) + ' III',mw.msg( 'eve-color-retro' ) + ' IV',mw.msg( 'eve-color-retro' ) + ' V',mw.msg( 'eve-color-retro' ) + ' VI',mw.msg( 'eve-color-retro' ) + ' VII',mw.msg( 'eve-color-fandomcolors' ) ];
+
 
 // Changes Strings into l10ned version
 /* Visual Styles */
