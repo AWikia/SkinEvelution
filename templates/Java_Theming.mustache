@@ -2066,7 +2066,11 @@ var content_color3 = SuperColorTest(content_color); // Scrollbar
 
 
 if ((getComputedStyle(document.querySelector('body')).getPropertyValue("--page-text-background-color") === 'auto') ) {
-	var dropdowncolor3 = ColorTest(content_color,true);	
+	if (isLightColor(content_color)) {
+		var dropdowncolor3 = getComputedStyle(document.querySelector('html')).getPropertyValue("--light-theme-text-background-color")
+	} else {
+		var dropdowncolor3 = getComputedStyle(document.querySelector('html')).getPropertyValue("--dark-theme-text-background-color")
+	}
 } else {
 	var dropdowncolor3 = 'inherit';
 }
