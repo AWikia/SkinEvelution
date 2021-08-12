@@ -1744,7 +1744,7 @@ function ColorTestTwin(color,color2,intensity=1,inter='hsl') {
 	return chroma.mix(color,color2,MW18HoverThreshold*intensity, inter);
 }
 
-function ColorTest(color,text=false,inv=false,dledlen=false) {
+function ColorTest(color,text=false,inv=false,dledlen=false) { // Regular Colors
 	if (dledlen === true) {
 		var color2 = getComputedStyle(document.querySelector('container')).getPropertyValue("--page-background-color");
 	} else {
@@ -1758,7 +1758,7 @@ function ColorTest(color,text=false,inv=false,dledlen=false) {
 				return getComputedStyle(document.querySelector('html')).getPropertyValue("--dark-theme-foreground-color");
 			}
 		} else {
-			return ColorTestTwin(color,getComputedStyle(document.querySelector('html')).getPropertyValue("--light-theme-foreground-color"));
+			return ColorTestTwin(color,'#000000');
 		}
 	} else {
 		if (text === true) {
@@ -1768,23 +1768,31 @@ function ColorTest(color,text=false,inv=false,dledlen=false) {
 				return getComputedStyle(document.querySelector('html')).getPropertyValue("--dark-theme-foreground-color");
 			}
 		} else {
-			return ColorTestTwin(color, getComputedStyle(document.querySelector('html')).getPropertyValue("--dark-theme-foreground-color") );
+			return ColorTestTwin(color, '#ffffff' );
 		}
 	}
 
 
 }
 
-function SuperColorTest(color) {
+function SuperColorTest(color) { // Double Amount
 	if (isLightColor(color)) {
-		var mix = ColorTestTwin(color, getComputedStyle(document.querySelector('html')).getPropertyValue("--light-theme-foreground-color"));
-		return ColorTestTwin(mix, getComputedStyle(document.querySelector('html')).getPropertyValue("--light-theme-foreground-color"));
+		var mix = ColorTestTwin(color, '#000000');
+		return ColorTestTwin(mix, '#000000');
 	} else {
-		var mix = ColorTestTwin(color,getComputedStyle(document.querySelector('html')).getPropertyValue("--dark-theme-foreground-color"));
-		return ColorTestTwin(mix, getComputedStyle(document.querySelector('html')).getPropertyValue("--dark-theme-foreground-color"));
+		var mix = ColorTestTwin(color, '#ffffff');
+		return ColorTestTwin(mix, '#ffffff');
 	}
 }
 
+
+function ColorInvert(color) {
+	var r = 255 - chroma(color).get('rgb.r');
+	var g = 255 - chroma(color).get('rgb.g');
+	var b = 255 - chroma(color).get('rgb.b');
+	var h = chroma(color).get('hsl.h');	
+	return chroma.rgb(r,g,b).set('hsl.h', h);
+}
 
 
 
@@ -1804,7 +1812,7 @@ function Color2(color) {
 	return chroma(color).get('rgb.r') + ',' + chroma(color).get('rgb.g') + ',' + chroma(color).get('rgb.b');
 }
 
-// Conversion for Hex
+// Conversion for Hex (Unused)
 function Color3(r=0,g=0,b=0) {
 	return chroma('rgb(' + r + ',' + g + ',' + b + ')' ).get('hex');
 }
@@ -1812,10 +1820,12 @@ function Color3(r=0,g=0,b=0) {
 
 function isLightColor(color) {
 	return ((chroma.contrast(getComputedStyle(document.querySelector('html')).getPropertyValue("--light-theme-foreground-color"), color)) > MW18LightThreshold*0.1);
+//	return ((chroma(color).luminance()) > (MW18LightThreshold*0.01 - 0.001))
 }
 
 function isSuperLightColor(color) {
 	return ((chroma.contrast(getComputedStyle(document.querySelector('html')).getPropertyValue("--light-theme-foreground-color"), color)) > window.MW18LightThreshold*0.12);
+//	return ( (chroma(color).luminance()) > (MW18LightThreshold*0.012 - 0.001))
 }
 
 
@@ -2238,7 +2248,14 @@ document.querySelector('body').style.setProperty("--accent-gradient-color-hover-
 
 /** Header Color **/
 /* Set Vars */
-var header_color = getComputedStyle(document.querySelector('body')).getPropertyValue("--sticky-header-background-color");
+// Liatch Quirk
+if ( (window.MW18darkmode === true) ) {
+	document.querySelector('container').style.setProperty("--sticky-header-background-color", ColorInvert(getComputedStyle(document.querySelector('body')).getPropertyValue("--sticky-header-background-color")));
+} else {
+	document.querySelector('container').style.setProperty("--sticky-header-background-color", 'inherit');
+}
+
+var header_color = getComputedStyle(document.querySelector('container')).getPropertyValue("--sticky-header-background-color");
 var headercolor1 = ColorTest(header_color,false);
 var headercolor2 = ColorTest(header_color,true);
 var headercolor2I = ColorTest(header_color,true,true);
@@ -2397,7 +2414,14 @@ document.querySelector('body').style.setProperty("--page-border-gradient-color-h
 
 /** Body Bg **/
 /* Set Vars */
-var head_color =	getComputedStyle(document.querySelector('body')).getPropertyValue("--community-background-color");
+// Liatch Quirk
+if ( (window.MW18darkmode === true) ) {
+	document.querySelector('container').style.setProperty("--community-background-color", ColorInvert(getComputedStyle(document.querySelector('body')).getPropertyValue("--community-background-color")));
+} else {
+	document.querySelector('container').style.setProperty("--community-background-color", 'inherit');
+}
+
+var head_color =	getComputedStyle(document.querySelector('container')).getPropertyValue("--community-background-color");
 var headcolor1 = ColorTest(head_color,false);
 var headcolor3 = SuperColorTest(head_color); // Scrollbar
 var headcolor2 = ColorTest(head_color,true);
@@ -2438,7 +2462,14 @@ document.querySelector('body').style.setProperty("--community-gradient-color-hov
 
 /* Floating Header Bg */
 if ((getComputedStyle(document.querySelector('body')).getPropertyValue("--toolbar-background-color") !== 'auto')  ) {
-	var floating_header =	'inherit' ;
+	// Liatch Quirk
+	if ( (window.MW18darkmode === true) ) {
+		floating_header = ColorInvert(getComputedStyle(document.querySelector('body')).getPropertyValue("--toolbar-background-color"));
+	} else {
+		floating_header = 'inherit';
+	}
+
+
 } else {
 	var floating_header = ColorTestTwin(content_color,ColorTestTwin(header_color,button_color,1,'rgb'),2.5,'rgb');
 }

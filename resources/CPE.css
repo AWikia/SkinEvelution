@@ -374,7 +374,7 @@ Aleo = Latin
 :root {
 font-family:Trebuchet MS;
 /* Base Foreground Colors */
---light-theme-foreground-color:#000000; /* Was #1e0c1b */
+--light-theme-foreground-color:#1e0c1b;
 --dark-theme-foreground-color:#ffffff;
 --light-theme-text-background-color:#3a3a3a;
 --dark-theme-text-background-color:#e6e6e6;
@@ -460,33 +460,33 @@ body {
     --theme-accent-dynamic-color-1--rgb: var(--accent-foreground-color-rgb);
     --theme-accent-dynamic-color-2: var(--accent-foreground-color-hover);
     --theme-accent-dynamic-color-2--rgb: var(--accent-foreground-color-hover-rgb);
-    --theme-body-background-color: var(--community-background-color);
+    --theme-body-background-color: rgb(var(--community-background-color-rgb));
     --theme-body-background-color--rgb: var(--community-background-color-rgb);
     --theme-body-background-image: var(--community-background-image);
     --theme-body-text-color: var(--community-foreground-color);
     --theme-body-text-color--hover: var(--community-foreground-color-hover);
-    --theme-sticky-nav-background-color: var(--sticky-header-background-color);
+    --theme-sticky-nav-background-color: rgb(var(--sticky-header-background-color-rgb));
     --theme-sticky-nav-text-color: var(--sticky-header-foreground-color);
     --theme-sticky-nav-text-color--hover: var(--sticky-header-foreground-color-hover);
-    --theme-page-background-color: var(--page-background-color);
+    --theme-page-background-color: rgb(var(--page-background-color-rgb));
     --theme-page-background-color--rgb: var(--page-background-color-rgb);
     --theme-page-background-color--secondary: var(--page-secondary-background-color);
-    --theme-page-text-color: var(--page-text-background-color);
+    --theme-page-text-color: rgb(var(--page-text-background-color-rgb));
     --theme-page-text-color--rgb: var(--page-text-background-color-rgb);
     --theme-page-text-color--hover: var(--page-text-background-color-hover);
     --theme-page-text-mix-color: var(--page-text-background-color-page-background-color-mix);
     --theme-page-text-mix-color-95: var(--page-text-background-color-page-background-color-mix-light);
     --theme-page-accent-mix-color: var(--accent-background-color-page-background-color-mix);
     --theme-page-headings-font: var(--secondary-font);
-    --theme-link-color: var(--anchor-background-color);
+    --theme-link-color: rgb(var(--anchor-background-color-rgb));
     --theme-link-color--rgb: var(--anchor-background-color-rgb);
     --theme-link-color--hover: var(--anchor-background-color-hover);
     --theme-link-label-color: var(--anchor-foreground-color);
-    --theme-accent-color: var(--accent-background-color);
+    --theme-accent-color: rgb(var(--accent-background-color-rgb));
     --theme-accent-color--rgb: var(--accent-background-color-rgb);
     --theme-accent-color--hover: var(--accent-background-color-hover);
     --theme-accent-label-color:  var(--accent-foreground-color);
-    --theme-border-color: var(--page-border-background-color);
+    --theme-border-color: rgb(var(--page-border-background-color-rgb));
     --theme-border-color--rgb: var(--page-border-background-color-rgb);
     --theme-alert-color: var(--alert-background-color);
     --theme-alert-color--rgb: var(--alert-background-color-rgb);
@@ -535,7 +535,7 @@ body {
 	/* Width */
 	--scrollbar-width:17px;
 	/* Track */
-	--scrollbar-track-color-1:var(--community-background-color);
+	--scrollbar-track-color-1:rgb(var(--community-background-color-rgb));
 	--scrollbar-track-color-2:var(--community-background-color-hover);
 	--scrollbar-track-color-3:var(--community-background-color-active);
 	--scrollbar-track-text:var(--community-foreground-color);
@@ -597,7 +597,7 @@ container {
 	background-position:var(--community-background-alignment);
 	background-size:cover;
 	background-image:var(--community-background-image);
-	background-color:var(--community-background-color);
+	background-color:rgb(var(--community-background-color-rgb));
 	pointer-events:none;
 	max-width:calc(var(--max-width) - var(--extra-size));
 	image-rendering:initial;                  /* CSS4 Proposed  */
@@ -660,7 +660,7 @@ body[community-background-mode="full"] .gradient-overlay {
 	display:block;
 	content:"";
 	z-index:-1;
-	background-image:linear-gradient(rgba(var(--community-background-color-rgb),0) ,var(--community-background-color) calc(0% + var(--header-size) ));
+	background-image:linear-gradient(rgba(var(--community-background-color-rgb),0) ,rgb(var(--community-background-color-rgb)) calc(0% + var(--header-size) ));
   image-rendering:initial;                  /* CSS4 Proposed  */
   -qq-image-blurring:tick;                  /* 4x4 Web 1-2    */
 	max-width:var(--max-width);
