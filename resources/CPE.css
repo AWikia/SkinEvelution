@@ -597,7 +597,7 @@ container {
 	background-position:var(--community-background-alignment);
 	background-size:cover;
 	background-image:var(--community-background-image);
-	background-color:rgb(var(--community-background-color-rgb));
+	background-color:transparent;
 	pointer-events:none;
 	max-width:calc(var(--max-width) - var(--extra-size));
 	image-rendering:initial;                  /* CSS4 Proposed  */
@@ -607,6 +607,25 @@ container {
 
 }
 
+ .body-community-background-color {
+	--extra-size:var(--global-nav-size,0px);
+	top:0;
+	width:calc(100% - var(--extra-size));
+	height:var(--header-size);
+	background-repeat:repeat;
+	margin-left:var(--extra-size);
+	position:fixed!Important;
+	display:block;
+	content:"";
+	z-index:-3;
+	background-color:rgb(var(--community-background-color-rgb));
+	pointer-events:none;
+	max-width:calc(var(--max-width) - var(--extra-size));
+	image-rendering:initial;                  /* CSS4 Proposed  */
+	-qq-image-blurring:tick;                  /* 4x4 Web 1-2    */
+	filter:var(--global-filter);
+
+}
 
 body[community-background-mode="full"] .body-community-background {
 	height:100%;
@@ -919,6 +938,9 @@ body[inverted-colors="false"] .systemdarkmode-on {
 	display:none!important;
 }
 
+body[inverted-colors="true"]  .invertion-on {
+	filter:invert(1) hue-rotate(180deg);
+}
 
 :not(.unset)[disabled], 
 :not(.unset):disabled, 
