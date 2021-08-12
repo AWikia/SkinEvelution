@@ -109,6 +109,27 @@ function ToggleModule() {
 
 }
 
+/* Aliases all components with the .wds prefix to the ones from .cpe ones */
+function AliasFandomComponents() {
+
+	var highlightedItems = document.querySelectorAll(":not(svg)[class*='wds-'], [class*='cpe-is-'], [class*='cpe-has-']");
+
+	while ($(':not(svg)[class*="wds-"], [class*="cpe-is-"], [class*="cpe-has-"]').length > 0) {
+		highlightedItems.forEach(function(x) {
+			x.className = x.className.replace("wds-is-", "is-");
+			x.className = x.className.replace("wds-has-", "has-");
+			x.className = x.className.replace("cpe-is-", "is-");
+			x.className = x.className.replace("cpe-has-", "has-");
+			x.className = x.className.replace("wds-midlight-aqua", "cpe-midlight-color");
+			x.className = x.className.replace("wds-", "cpe-");
+		});
+	}
+
+
+}
+
+
+
 /* Banners */
 function RemoveBanner() {
 $('#floatingbanner .cpe-banner-notification')
@@ -163,25 +184,6 @@ function AddFloatingBanner(content='Sample Content',kind='message',extraclass=''
 
 }
 
-
-/* Aliases all components with the .wds prefix to the ones from .cpe ones */
-function AliasFandomComponents() {
-
-	var highlightedItems = document.querySelectorAll(":not(svg)[class*='wds-'], [class*='cpe-is-'], [class*='cpe-has-']");
-
-	while ($(':not(svg)[class*="wds-"], [class*="cpe-is-"], [class*="cpe-has-"]').length > 0) {
-		highlightedItems.forEach(function(x) {
-			x.className = x.className.replace("wds-is-", "is-");
-			x.className = x.className.replace("wds-has-", "has-");
-			x.className = x.className.replace("cpe-is-", "is-");
-			x.className = x.className.replace("cpe-has-", "has-");
-			x.className = x.className.replace("wds-midlight-aqua", "cpe-midlight-color");
-			x.className = x.className.replace("wds-", "cpe-");
-		});
-	}
-
-
-}
 
 
 /* Part of this Skin */
