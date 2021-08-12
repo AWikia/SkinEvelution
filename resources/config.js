@@ -47,18 +47,6 @@ function insertKey(key,value) {
 	
 
 
-
-	if ($('body > .oo-ui-defaultOverlay, body > .mw-notification-area-overlay, body > .uls-menu, body > .ve-ui-overlay, body > .imeselector.imeselector-toggle, body > .mwe-popups, body > .mwe-popups-overlay, body > .tux-groupselector').length) {
-		var oouioverlays = document.querySelectorAll("body > .oo-ui-defaultOverlay, body > .mw-notification-area-overlay, body > .uls-menu, body > .ve-ui-overlay, body > .imeselector.imeselector-toggle, body > .mwe-popups, body > .mwe-popups-overlay, body > .tux-groupselector");
-		oouioverlays.forEach(function(x) {
-			var data = $(x);
-			data.detach();
-			$('container > stickya').append(data);
-		});
-
-	}
-
-
 })();
 
 function CompileVisualL10N() {
