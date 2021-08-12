@@ -106,6 +106,9 @@ Per-page theming is also supported. If you want to use a different theme for the
 }
 ```
 
+## Style Guide
+When Styling OOUI elements, any container that it is outside the ``<container>`` element (Use the F12 tools to find out which) and scrollbars, use ``rgb(var(--anchor-background-color-rgb))``, ``rgb(var(--page-background-color-rgb))``, ``rgb(var(--page-border-background-color-rgb))``, ``rgb(var(--page-text-background-color-rgb))``, ``rgb(var(--accent-background-color-rgb))`` and ``rgb(var(--toolbar-background-color-rgb))`` in place of ``var(--anchor-background-color)``, ``var(--page-background-color)``, ``var(--page-border-background-color)``, ``var(--page-text-background-color)``, ``var(--accent-background-color)`` and ``var(--toolbar-background-color)`` so as to make those elements display properly when either some of the elements are in autocolorization or Inverted colors are active (Anchor and Accent Background color on ``<container>`` element only differ from the ones set in ``<body>`` under inverted colors)
+
 ## Configuring Evelution
 Evelution, being a Mustache-powered MW skin, does support a few configurations, standard and non-standard, to name a few:
 
