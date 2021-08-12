@@ -342,7 +342,7 @@ if  ( ($("body.mpisto-2018").length) || ($("body.skin-Evelution").length) ) {
 
 /* Changes Wiki theme style
    Supported values: auto, auto-r, light, dark */
-function colortheme(theme) {
+function colortheme(theme='auto', repaint=true) {
     var body_bg =	getComputedStyle(document.querySelector('body')).getPropertyValue("--page-background-color");
     var old_dark = window.MW18darkmode
 	if (theme === 'auto') { // Auto
@@ -402,6 +402,7 @@ function colortheme(theme) {
 			$('body').attr("inverted-colors", 'false' );
 		}
 	}
+	$('body').attr("liatch", window.MW18darkmode );
 	insertKey('color-mode', theme );
 	$(".mpisto-page-header .color-modes li").removeClass('selected');
 	$(".mpisto-page-header .color-modes li." + theme).addClass('selected');
@@ -420,7 +421,7 @@ function colortheme(theme) {
 		$("input[id*='theme-'][name='themechooser']").removeAttr('checked');
 		$("input[name='themechooser']#theme-" + theme ).attr('checked',true);
 	}
-	if (old_dark != window.MW18darkmode) {
+	if ((old_dark != window.MW18darkmode) && (repaint) ) {
 		ColorUpdate(false);
 	}
 	if (window.MW18darkmode) {
@@ -2043,6 +2044,9 @@ function SocialCompile() {
 
 /* Used to udpate all dynamical variables */
 function ColorUpdate(refresh=true,suitcheck=false) {
+if (refresh === true) {
+	colortheme($('body').attr("wikitheme"), false)
+}
 /** Page BG **/
 /* Set Vars */
 // content_text is Content Color
@@ -2761,7 +2765,6 @@ ThemeColorMetaTag();
 if (refresh === true) {
 	CheckBG()
 	CheckAdapt()
-	colortheme($('body').attr("wikitheme"))
 	if ($("body.options").length) {
 		UpdateSet();
 	}
