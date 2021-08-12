@@ -9,14 +9,14 @@ function DropDown() {
 $(' .cpe-dropdown')
         .click(function(e) {
             var $this = $(this);
-			if ($this.hasClass('cpe-is-active')) {
-            $this.removeClass('cpe-is-active');
+			if ($this.hasClass('is-active')) {
+            $this.removeClass('is-active');
 		$(' .cpe-dropdown').off( "click" );			
 
  return;
 			}
 			e.preventDefault();
-			$this.addClass('cpe-is-active');
+			$this.addClass('is-active');
 		$(' .cpe-dropdown').off( "click" );			
         });
 }
@@ -35,7 +35,7 @@ $(".cpe-dropdown > :first-child")
 // Close dropdowns on mouse leave
 $(' .cpe-dropdown')
 .mouseleave(function() {
-            $(this).removeClass('cpe-is-active');
+            $(this).removeClass('is-active');
         });
 
 }
@@ -47,10 +47,10 @@ $(' .cpe-dropdown.cpe-select .cpe-dropdown__content .cpe-list li:not(.cpe-dropdo
 						var value = $(this).attr("value");
 						$(' .cpe-dropdown.cpe-select')
 						.click(function() {
-									var content = $('.cpe-select.cpe-is-active .cpe-dropdown__content .cpe-list li:not(.cpe-dropdown-level-2):hover > a').html();
-									$('.cpe-select.cpe-is-active .cpe-select__value').attr("value", value);
-									$('.cpe-select.cpe-is-active .cpe-select__value').html(content);
-									$(this).removeClass('cpe-is-active');
+									var content = $('.cpe-select.is-active .cpe-dropdown__content .cpe-list li:not(.cpe-dropdown-level-2):hover > a').html();
+									$('.cpe-select.is-active .cpe-select__value').attr("value", value);
+									$('.cpe-select.is-active .cpe-select__value').html(content);
+									$(this).removeClass('is-active');
 									$(' .cpe-dropdown.cpe-select').off( "click" );
 								});
         });
@@ -114,7 +114,7 @@ function RemoveBanner() {
 $('#floatingbanner .cpe-banner-notification')
 	.click(function() {
 		var $this= $(this);
-		$this.addClass("cpe-is-transparent")
+		$this.addClass("is-transparent")
 		setTimeout(
 		(function () {
 			$this.remove();
@@ -167,10 +167,14 @@ function AddFloatingBanner(content='Sample Content',kind='message',extraclass=''
 /* Aliases all components with the .wds prefix to the ones from .cpe ones */
 function AliasFandomComponents() {
 
-	var highlightedItems = document.querySelectorAll(":not(svg)[class*='wds-']");
+	var highlightedItems = document.querySelectorAll(":not(svg)[class*='wds-'], [class*='cpe-is-'], [class*='cpe-has-']");
 
-	while ($(':not(svg)[class*="wds-"]').length > 0) {
+	while ($(':not(svg)[class*="wds-"], [class*="cpe-is-"], [class*="cpe-has-"]').length > 0) {
 		highlightedItems.forEach(function(x) {
+			x.className = x.className.replace("wds-is-", "is-");
+			x.className = x.className.replace("wds-has-", "has-");
+			x.className = x.className.replace("cpe-is-", "is-");
+			x.className = x.className.replace("cpe-has-", "has-");
 			x.className = x.className.replace("wds-midlight-aqua", "cpe-midlight-color");
 			x.className = x.className.replace("wds-", "cpe-");
 		});
@@ -182,15 +186,17 @@ function AliasFandomComponents() {
 
 /* Part of this Skin */
 function RearrangeDOM() {
+/*
 	if ($('body > .oo-ui-defaultOverlay, body > .mw-notification-area-overlay, body > .uls-menu, body > .ve-ui-overlay, body > .imeselector.imeselector-toggle, body > .mwe-popups, body > .mwe-popups-overlay, body > .tux-groupselector').length) {
 		var oouioverlays = document.querySelectorAll("body > .oo-ui-defaultOverlay, body > .mw-notification-area-overlay, body > .uls-menu, body > .ve-ui-overlay, body > .imeselector.imeselector-toggle, body > .mwe-popups, body > .mwe-popups-overlay, body > .tux-groupselector");
 		oouioverlays.forEach(function(x) {
 			var data = $(x);
 			data.detach();
-			$('container').append(data);
+			$('container > stickya').append(data);
 		});
 
 	}
+*/
 }
 
 (function () {
@@ -199,7 +205,15 @@ function RearrangeDOM() {
 	$('body').mouseleave( function(e) { RearrangeDOM(); CheckTheme(); } );		
 	$('body').mouseover( function(e) { RearrangeDOM(); } );		
 	$('body').mouseout( function(e) { RearrangeDOM(); } );		
-//	$('body').click( function(e) { CheckTheme(); } );		
+	$('container').focus( function(e) { RearrangeDOM(); } );	
+		
+	$('.uls-trigger').focus( function(e) { RearrangeDOM(); } );		
+	$('.uls-trigger').mouseover( function(e) { RearrangeDOM(); } );		
+	$('.uls-trigger').blur( function(e) { RearrangeDOM(); } );		
+	$('.uls-preferences-link').focus( function(e) { RearrangeDOM(); } );		
+	$('.uls-preferences-link').mouseover( function(e) { RearrangeDOM(); } );		
+	$('.uls-preferences-link').blur( function(e) { RearrangeDOM(); } );		
+
 	/* END DITTO */
 
 if  ($(".mpisto-right-pane .activity-module.mpisto-module").length)  {
@@ -309,8 +323,8 @@ function initializeViews() {
 	$(".mpisto-page-header-contribution-buttons .actions > li > a").attr('class','cpe-button'); // Add the CPE button class
 	$(".mpisto-page-header-contribution-buttons .views > li > a").attr('class','cpe-button'); // Add the CPE button class
 
-	$(".mpisto-header-container .mobile-header .local-navigation .cpe-dropdown:first-child:not(:only-child) .cpe-dropdown__content").addClass('cpe-is-left-aligned'); // Add the CPE button class
-	$(".mpisto-header-container .mobile-header .local-navigation .cpe-dropdown:last-child:not(:only-child) .cpe-dropdown__content").addClass('cpe-is-right-aligned'); // Add the CPE button class
+	$(".mpisto-header-container .mobile-header .local-navigation .cpe-dropdown:first-child:not(:only-child) .cpe-dropdown__content").addClass('is-left-aligned'); // Add the CPE button class
+	$(".mpisto-header-container .mobile-header .local-navigation .cpe-dropdown:last-child:not(:only-child) .cpe-dropdown__content").addClass('is-right-aligned'); // Add the CPE button class
 
 /* Views */
 
@@ -536,7 +550,7 @@ function RemoveEmptyMenus() {
 	var langmenu4 = document.querySelector(".mpisto-global-navigation.mpisto-global-sidebar .notices-menu");
 	var langmenu4M = document.querySelector(".mpisto-mobile-global-navigation.mpisto-global-sidebar .notices-menu");
 	
-	if (! ($("div:not([class])[style='position:absolute; top:-999999999999999px; left:0;'] .cpe-list.cpe-is-linked #pt-notifications-alert").length) ) {
+	if (! ($("div:not([class])[style='position:absolute; top:-999999999999999px; left:0;'] .cpe-list.is-linked #pt-notifications-alert").length) ) {
 		$(langmenu4).remove();
 		$(langmenu4M).remove();
 	}
