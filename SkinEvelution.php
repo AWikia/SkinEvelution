@@ -40,7 +40,9 @@ class SkinEvelution extends SkinMustache {
         $data["html-apisandbox-link"] = Title::newFromText( 'Special:APISandbox' )->getLocalURL();
         $data["html-messages-link"] = Title::newFromText( 'Special:AllMessages' )->getLocalURL();
         $data["html-linkedactivity-link"] = Title::newFromText( 'Special:RecentChangesLinked' )->getLocalURL();
-
+        $data["html-export-link"] = Title::newFromText( 'Special:Export' )->getLocalURL();
+        $data["html-stats-link"] = Title::newFromText( 'Special:Statistics' )->getLocalURL();
+        $data["html-allpages-link"] = Title::newFromText( 'Special:AllPages' )->getLocalURL();
         return $data;
     }
 }
