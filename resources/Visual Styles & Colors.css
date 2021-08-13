@@ -90,7 +90,7 @@ html:not([visualtheme="contrast"]) .pane-on .mpisto-article-wrapper:after {
 
 .prt .mpisto-global-sidebar, [visualtheme="basic"] .mpisto-global-sidebar, [visualtheme="contrast"] .mpisto-global-sidebar {
 	--global-nav-opacity:1!important;
-	background-color:rgb(var(--global-nav-color))!important;
+	background-color:var(--global-nav-color)!important;
 }
 
 /* Reduced Animations 
@@ -196,25 +196,18 @@ html:not([visualtheme="contrast"]) .prt .pane-on .mpisto-article-wrapper:after {
 */
 
 [visualtheme="basic"] .mpisto-global-navigation {
-	--global-nav-color:var(--sticky-header-background-color-rgb);
+	--global-nav-color:var(--sticky-header-background-color);
 	--global-nav-text-color:var(--sticky-header-foreground-color);
 	--global-nav-link-color-hover:var(--sticky-header-foreground-color-hover);
 	--global-nav-link-color-active:rgba(var(--sticky-header-foreground-color-hover-rgb),0.8);
-	--global-nav-link-background-active:var(--sticky-header-foreground-color-rgb);
-	--global-nav-link-opacity:0.25;
+	--global-nav-link-background-active:var(--sticky-header-foreground-color-hover-rgb);
+	--global-nav-link-opacity:0.2;
 }
 
 
 [visualtheme="contrast"] .mpisto-global-sidebar {
 	--global-nav-link-color-active:var(--accent-foreground-color);
 	--global-nav-link-background-active:var(--accent-background-color-rgb);
-}
-
-[visualtheme="contrast"] .mpisto-global-navigation, 
-[visualtheme="contrast"] .mpisto-mobile-global-navigation {
-	--global-nav-color:var(--page-secondary-background-color-rgb);
-	--global-nav-text-color:var(--page-text-background-color);
-	--global-nav-link-color-hover:var(--page-text-background-color-hover);
 }
 
 
@@ -1158,7 +1151,7 @@ background-image:linear-gradient(to bottom, var(--accent-gradient-color) 35%, va
 
 
 [visualtheme="simple"] .mpisto-global-sidebar {
-	--global-nav-color:var(--accent-gradient-color-rgb)!important;
+	--global-nav-color:var(--accent-gradient-color)!important;
 	--global-nav-text-color:var(--accent-foreground-color)!important;
 	--global-nav-link-color-hover:var(--accent-foreground-color-hover)!important;
 	--global-nav-link-color-active:rgba(var(--accent-foreground-color-hover-rgb),0.8)!important;
@@ -1168,7 +1161,7 @@ background-image:linear-gradient(to bottom, var(--accent-gradient-color) 35%, va
 
 
 [visualtheme="simple"] .mpisto-personal-links {
-	--global-nav-color:var(--toolbar-gradient-color-rgb)!important;
+	--global-nav-color:var(--toolbar-gradient-color)!important;
 	--global-nav-text-color:var(--toolbar-foreground-color)!important;
 	--global-nav-link-color-hover:var(--toolbar-foreground-color-hover)!important;
 	--global-nav-link-color-active:rgba(var(--toolbar-foreground-color-hover-rgb),0.8)!important;
@@ -1248,11 +1241,14 @@ background-image:linear-gradient(to bottom, var(--accent-gradient-color) 35%, va
 	color:inherit;
 }
 
+/*
+
 [visualtheme="simple"] .toggle-rail-button {
-	--text-color:var(--page-emphasis-foreground-color);
-	--text-color-hover:var(--page-emphasis-foreground-color-hover-rgb);
+	--text-color:var(--anchor-foreground-color); /* var(--page-emphasis-foreground-color) 
+	--text-color-hover:var(--anchor-foreground-color-hover-rgb); /* var(--page-emphasis-foreground-color-hover-rgb) 
 }
 
+*/
 
 [visualtheme="simple"] .mpisto-content .mpisto-page-header-title,
 [visualtheme="simple"] .mpisto-right-pane .mpisto-module,
@@ -1260,8 +1256,8 @@ background-image:linear-gradient(to bottom, var(--accent-gradient-color) 35%, va
 [visualtheme="simple"] .mpisto-option-way h1,
 [visualtheme="simple"] .mpisto-userpages-header {
 	background-image:none;
-	background-color:var(--page-emphasis-background-color);
-	color:var(--page-emphasis-foreground-color);
+	background-color:var(--anchor-background-color-page-background-color-mix); /* var(--page-emphasis-background-color) */
+/*	color:var(--anchor-foreground-color); */ /*  var(--page-emphasis-foreground-color) */
 }
 
 [visualtheme="simple"] .mpisto-option-pane {
@@ -1369,8 +1365,8 @@ box-shadow:none!important;
 }
 
 [visualtheme="classic"] .mpisto-global-sidebar {
-	--global-nav-color:var(--page-secondary-background-color-rgb);
-	background-color:rgb(var(--global-nav-color));
+	--global-nav-color:var(--page-secondary-background-color);
+	background-color:var(--global-nav-color);
 	box-sizing:content-box;
 }
 

@@ -234,19 +234,19 @@ container > main {
 }
 
 .mpisto-global-sidebar {
-	--global-nav-color:var(--page-emphasis-background-color-rgb);
-	--global-nav-text-color:var(--page-emphasis-foreground-color);
-	--global-nav-link-color-hover:var(--page-emphasis-foreground-color-hover);
-	--global-nav-link-color-active:rgba(var(--page-emphasis-foreground-color-hover-rgb),0.8);
-	--global-nav-link-background-active:var(--page-emphasis-background-color-hover-rgb);
-	--global-nav-link-opacity:0.5;
+	--global-nav-color:var(--page-background-color);
+	--global-nav-text-color:var(--page-text-background-color);
+	--global-nav-link-color-hover:var(--page-text-background-color-hover);
+	--global-nav-link-color-active:rgba(var(--page-text-background-color-active-rgb),1);
+	--global-nav-link-background-active:var(--page-background-color-hover-rgb);
+	--global-nav-link-opacity:0.4;
 	--global-nav-opacity:1;
 	display:flex;
 	flex-direction:column;
 	font-family:"Source Sans Pro", var(--font-family);
-	background-color:rgba(var(--global-nav-color), var(--global-nav-opacity));
+	background-color:var(--global-nav-color);
 	color:var(--global-nav-text-color);
-	box-shadow: 0 0 3px var(--page-text-background-color), 0 0 3px var(--page-secondary-background-color);
+	box-shadow: 0 0 3px var(--page-text-background-color), 0 0 3px var(--page-background-color);
 	height:100%;
 	width:var(--global-nav-size) ;
 	position:-webkit-sticky;
@@ -495,12 +495,12 @@ container > main {
 
 /* Personal Toolbar */
 .mpisto-personal-links  {
-	--global-nav-color:var(--toolbar-background-color-rgb);
+	--global-nav-color:var(--toolbar-background-color);
 	--global-nav-text-color:var(--toolbar-foreground-color);
 	--global-nav-link-color-hover:var(--toolbar-foreground-color-hover);
 	--global-nav-link-color-active:rgba(var(--toolbar-foreground-color-hover-rgb),0.8);
 	--global-nav-link-background-active:var(--toolbar-foreground-color-hover-rgb);
-	--global-nav-link-opacity:0.25;
+	--global-nav-link-opacity:0.2;
 	--toolbar-link-size:var(--sticky-nav-size);
 	bottom:0;
 	top:auto;
@@ -748,7 +748,7 @@ width:100%;
 }
 
 .mpisto-content .mpisto-article-wrapper .mpisto-left-pane {
-  --content-space-opacity:0.9;
+  --content-space-opacity:0.95;
   box-shadow:0 2px 6px 0 rgba(0,0,0,.2), 0 2px 6px 0 rgba(255,255,255,0.2);
   border:1px solid var(--page-border-background-color);	
   background-color:rgba(var(--page-background-color-rgb), var(--content-space-opacity));
