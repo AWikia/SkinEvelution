@@ -1074,6 +1074,7 @@ body .wikitable > * > tr > td {
     outline-offset:0px;
     box-sizing:border-box;
     box-shadow:0 0 1.5px 1.5px var(--input-box-color);
+    box-shadow:0 0 1.5px 1.5px currentColor;
     margin:2.5px;
     cursor:var(--cpe-text-cursor);
     min-width:200px;
@@ -1096,13 +1097,16 @@ body .wikitable > * > tr > td {
 .cpe-input:hover {
     background-color:var(--input-box-hover);
     box-shadow:0 0 1.5px 1.5px var(--input-box-hover);
+    box-shadow:0 0 1.5px 1.5px currentColor;
 }
 
 .cpe-input:focus,
 .cpe-select.is-active .cpe-input {
     background-color:var(--input-box-focus);
     box-shadow:0 0 1.5px 1.5px var(--input-box-focus);
+    box-shadow:0 0 1.5px 1.5px var(--input-box-solid);
 }
+
 
 
 select.cpe-input {
@@ -1247,15 +1251,20 @@ a.cpe-button, button.cpe-button {
 }
 
 .cpe-button.is-secondary:visited:hover {
-    color:var(--accent-background-color);
+    color:var(--accent-background-color-hover);
+}
+
+.cpe-button.is-secondary:visited:active {
+    color:var(--accent-background-color-hover);
 }
 
 
 
 .cpe-button.is-secondary:hover {
     border-color:var(--accent-background-color-hover);
-    background-color:var(--accent-background-color-page-background-color-mix-light);
-    color:var(--accent-background-color);
+    background-color:var(--accent-background-color-page-background-color-mix-light); 
+    background-color:var(--page-background-color);
+    color:var(--accent-background-color-hover);
     box-shadow:0 0 1.5px 1.5px var(--accent-background-color-page-background-color-mix-light);
     box-shadow:0 0 1.5px 1.5px currentColor;
 }
@@ -1263,13 +1272,15 @@ a.cpe-button, button.cpe-button {
 .cpe-button.is-secondary:active, .cpe-button.is-secondary.is-active, .selected .cpe-button.is-secondary {
     border-color:var(--button-border-dark-super);
     background-color:var(--accent-background-color-page-background-color-mix);
-    color:var(--accent-background-color); /* color:var(--accent-background-color-active); */ 
+    background-color:var(--page-background-color);
+    color:var(--accent-background-color-active); /* color:var(--accent-background-color-active); */ 
     box-shadow:0 0 1.5px 1.5px var(--accent-background-color-page-background-color-mix);
     box-shadow:0 0 1.5px 1.5px currentColor;
 }
 
 .cpe-button.is-secondary:focus:not(:active):not(.is-active) {
-  color:var(--accent-background-color); 
+  background-color:var(--page-background-color); 
+  color:var(--accent-background-color-active); 
 }
 
 .selected .cpe-button.is-secondary:focus:not(:active),
@@ -1277,7 +1288,8 @@ a.cpe-button, button.cpe-button {
 .selected .cpe-button.is-secondary:hover,
 .selected .cpe-button.is-secondary:active,
 .cpe-button.is-secondary.is-active {
-	color:var(--accent-background-color);
+	background-color:var(--page-background-color); 
+	color:var(--accent-background-color-active);
 }
 
 
