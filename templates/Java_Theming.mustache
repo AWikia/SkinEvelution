@@ -14,17 +14,87 @@ var visualColors = ['factorycolors','lunacolors','classicforced','campbellforced
 var visualColorNames = ['Factory', 'XP Luna', 'Windows Forced', 'Campbell Forced', 'Mpisto OSX Forced', 'Tango Forced','RGB Celebration','Retro','Retro II','Retro III','Retro IV','Retro V','Retro VI','Retro VII','Fandom 2021'];
 
 (function () {
+	// Evelution Specific
 	if (getKey('theme-active') === '-1') {
 		insertKey('theme-active', 'theme-A' );
 	}
-
-	document.querySelector('html').className += " " + getKey('theme-active'); // We begin with the first theme selected
-	$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li").removeClass('selected');
-	$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li[data-theme-change='" + getKey('theme-active') + "']").addClass('selected');
+	if (getKey('style-active') === '-1') {
+		if ( ( window.matchMedia('(forced-colors: active)').matches ) ) {
+			insertKey('style-active', contrastVisual );
+		} else {
+			insertKey('style-active', 'S' );
+		}
+	}
+	if (getKey('color-active') === '-1') {
+		insertKey('color-active', 'S' );
+	}
+	if (getKey('filter-active') === '-1') {
+		insertKey('filter-active', 'standard' );
+	}
 	if (getKey('color-mode') === '-1') {
 		insertKey('color-mode', 'auto' );
 	}
-   	colortheme( getKey('color-mode'),false);
+	var theme_active = getKey('theme-active');
+	var style_active = getKey('style-active');
+	var color_active = getKey('color-active');
+	var filter_active = getKey('filter-active');
+	var color_mode = getKey('color-mode');
+    getParams().forEach(function (param) {
+        var key = param.split("=")[0];
+        var value = param.split("=")[1];
+
+        switch (key) {
+            case 'usetheme':
+				switch (value) {
+					case 'theme-A':
+					case 'A':
+					case '0':
+						theme_active = 'theme-A'
+						break;
+					case 'theme-B':
+					case 'B':
+					case '1':
+						theme_active = 'theme-B'
+						break;
+					case 'theme-C':
+					case 'C':
+					case '2':
+						theme_active = 'theme-C'
+						break;
+					case 'theme-D':
+					case 'D':
+					case '3':
+						theme_active = 'theme-D'
+						break;
+					default:
+						theme_active = 'theme-D'
+						break;
+				}
+				console.info('Active theme settings overriden')
+                break;
+            case 'usevisualstyle':
+				style_active = visualThemes.indexOf(value);
+				console.info('Active visual style settings overriden')
+                break;
+            case 'usevisualcolors':
+				color_active = visualColors.indexOf(value);
+				console.info('Active visual colors settings overriden')
+                break;
+            case 'usefilter':
+				filter_active = value;
+				console.info('Active color filter settings overriden');
+                break;
+            case 'usecolormode':
+				color_mode = value;
+				console.info('Color mode settings overriden');
+                break;
+        }
+    });
+	// End Evelution Specific
+	document.querySelector('html').className += " " + theme_active; // We begin with the first theme selected
+	$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li").removeClass('selected');
+	$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li[data-theme-change='" + theme_active + "']").addClass('selected');
+   	colortheme( color_mode,false,false);
 	ColorUpdate(true);
 	UpdateMisc();
 	SheShe = 'auto'; // Allowed Values ('auto', true, false) 
@@ -53,23 +123,10 @@ var visualColorNames = ['Factory', 'XP Luna', 'Windows Forced', 'Campbell Forced
 		$("head").append('<style class="social-colors"></style>');
 		ManagerRows(); // For Task Manager Only
 		 VisualStyleCompile(); // Compiles the Contrast Options
-		if (getKey('style-active') === '-1') {
-			if ( ( window.matchMedia('(forced-colors: active)').matches ) ) {
-				insertKey('style-active', contrastVisual );
-			} else {
-				insertKey('style-active', 'S' );
-			}
-		}
-		if (getKey('color-active') === '-1') {
-			insertKey('color-active', 'S' );
-		}
-		if (getKey('filter-active') === '-1') {
-			insertKey('filter-active', 'standard' );
-		}
-		VisualStyle(getKey('style-active'));
-		VisualColor(getKey('color-active'));
+		VisualStyle(style_active,false);
+		VisualColor(color_active,false);
 		ContrastBanner(); // Notice
-		ColorFilter(getKey('filter-active'));
+		ColorFilter(filter_active,false);
 		SocialCompile();
 //		$('body').click( function(e) { e.preventDefault; CheckTheme(); } );
 		CheckDeprecation();
@@ -89,6 +146,15 @@ function insertKey(key,value) {
 	window.localStorage.setItem('-eve-pref-' + key, '' + value);
 }
 
+function getParams() {
+	if (window.location.search != "") {
+		var params = window.location.search.split("?")[1].split("&");
+    } else {
+		var params = []
+    }
+	return params
+}
+
 function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
 }
@@ -99,17 +165,19 @@ function SupportsColorMix() {
 }
 
 /* Color Filter */
-function ColorFilter(filt) {
+function ColorFilter(filt,save=true) {
 	$('body').attr("colorfilter", filt);
 	$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-color-filters li").removeClass('selected');
 	$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-color-filters li#f-" + filt).addClass('selected');
+	if (save) {
 	insertKey('filter-active', filt );
+	}
 }
 
 
 /* Visual Styles */
-function VisualStyle(style) {
-	if (style === 'S') { // Standard Style
+function VisualStyle(style,save=true) {
+	if ( (style === 'S') || (style === -1) ) { // Standard Style
 		$('html').attr("visualtheme", "standard");
 	} else {
 		$('html').attr("visualtheme", visualThemes[style]);
@@ -120,12 +188,14 @@ function VisualStyle(style) {
 	}
 	$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-styles li").removeClass('selected');
 	$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-styles li#style" + style).addClass('selected');
+		if (save) {
 		insertKey('style-active', style );
+		}
 		ThemeColorMetaTag();
 }
 
-function VisualColor(style) {
-	if (style === 'S') { // Standard Style
+function VisualColor(style,save=true) {
+	if ( (style === 'S') || (style === -1) ) { // Standard Style
 		$('html').attr("visualcolors", "standard");
 		if ($('.preview-theme-wrapper.selection-theme').length) {
 			$('.preview-theme-wrapper.selection-theme').attr("visualcolors", "standard");
@@ -138,7 +208,9 @@ function VisualColor(style) {
 	}
 	$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-colors li").removeClass('selected');
 	$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-colors li#color" + style).addClass('selected');
+		if (save) {
 		insertKey('color-active', style );
+		}
 		ColorUpdate(true,true);
 		ThemeColorMetaTag();
 }
@@ -342,7 +414,7 @@ if  ( ($("body.mpisto-2018").length) || ($("body.skin-Evelution").length) ) {
 
 /* Changes Wiki theme style
    Supported values: auto, auto-r, light, dark */
-function colortheme(theme='auto', repaint=true) {
+function colortheme(theme='auto', repaint=true, save=true) {
     var body_bg =	getComputedStyle(document.querySelector('body')).getPropertyValue("--page-background-color");
     var old_dark = window.MW18darkmode
 	if (theme === 'auto') { // Auto
@@ -371,7 +443,9 @@ function colortheme(theme='auto', repaint=true) {
 		$('body').attr("inverted-colors", ( (theme === 'light') || (theme === 'auto') ) );
 	}
 	$('body').attr("liatch", window.MW18darkmode );
-	insertKey('color-mode', theme );
+	if (save) {
+		insertKey('color-mode', theme );
+	}
 	$(".mpisto-page-header .color-modes li").removeClass('selected');
 	$(".mpisto-page-header .color-modes li." + theme).addClass('selected');
 	if (window.MW18darkmode === true) {

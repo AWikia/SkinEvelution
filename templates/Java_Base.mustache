@@ -73,10 +73,37 @@ window.MW18newnavblock=false;
 	if (getKey('rail-full') === '-1') {
 		insertKey('rail-full', 'true' );
 	}
-	$(' container > main').attr('wide', getKey('content-full') );
-	$(' container > main').attr('toolbar', getKey('toolbar-full') );
-	$(' container > main').attr('nav', getKey('nav-full') );
-	$(' container > main').attr('rail', getKey('rail-full') );
+	var content_full = getKey('content-full')
+	var toolbar_full = getKey('toolbar-full');
+	var nav_full = getKey('nav-full');
+	var rail_full = getKey('rail-full');
+    getParams().forEach(function (param) {
+        var key = param.split("=")[0];
+        var value = param.split("=")[1];
+
+        switch (key) {
+            case 'fullwidth':
+				content_full = (value === 'true');
+				console.info('Article width settings overriden')
+                break;
+            case 'hidetoolbar':
+				toolbar_full = (value === 'false');
+				console.info('Toolbar visibility settings overriden')
+                break;
+            case 'hidenavbar':
+				nav_full = (value === 'false');
+				console.info('Sticky navigation visibility settings overriden')
+                break;
+            case 'hiderail':
+				rail_full = (value === 'false');
+				console.info('Right pane visibility settings overriden')
+                break;
+        }
+    });
+	$(' container > main').attr('wide', content_full );
+	$(' container > main').attr('toolbar', toolbar_full );
+	$(' container > main').attr('nav', nav_full );
+	$(' container > main').attr('rail', rail_full );
 	DropDownUpdate();
 	if (window.MW18newnavblock === true) {
 		return

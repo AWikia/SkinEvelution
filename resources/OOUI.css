@@ -795,7 +795,8 @@ body .oo-ui-tabSelectWidget-framed .oo-ui-tabOptionWidget.oo-ui-optionWidget-sel
 }
 
 body .oo-ui-buttonElement > .oo-ui-buttonElement-button,
-body .mw-ui-button {
+body .mw-ui-button,
+body .mw-ui-button:not(:disabled) {
     transition:background-color 200ms, border-color 200ms, outline-offset 50ms, outline-color 200ms, color 200ms, box-shadow 200ms!important;
     font-size:13px;
     font-family:var(--secondary-font);
@@ -833,6 +834,7 @@ body .mw-rcfilters-ui-liveUpdateButtonWidget.oo-ui-toggleWidget-on:after {
 body .oo-ui-buttonElement-frameless.oo-ui-labelElement > .oo-ui-buttonElement-button,
 body .oo-ui-buttonElement-frameless.oo-ui-widget-enabled.oo-ui-flaggedElement-destructive > .oo-ui-buttonElement-button,
 body .mw-ui-button.mw-ui-quiet,
+body .mw-ui-button.mw-ui-quiet:not(:disabled),
 body .mw-button.mw-ui-quiet:disabled {
 
 	background-color:transparent!important;
@@ -842,6 +844,7 @@ body .mw-button.mw-ui-quiet:disabled {
 
 body .oo-ui-buttonElement-frameless.oo-ui-widget-enabled > .oo-ui-buttonElement-button:hover,
 body .oo-ui-buttonElement-frameless.oo-ui-widget-enabled.oo-ui-flaggedElement-destructive > .oo-ui-buttonElement-button:hover,
+body .mw-ui-button.mw-ui-quiet:not(:disabled):hover,
 body .mw-ui-button.mw-ui-quiet:hover {
 
 	color:var(--accent-background-color-hover);
@@ -851,6 +854,7 @@ body .oo-ui-buttonElement-frameless.oo-ui-widget-enabled.oo-ui-buttonElement-pre
 body .oo-ui-buttonElement-frameless.oo-ui-widget-enabled > .oo-ui-buttonElement-button:active,
 body .oo-ui-buttonElement-frameless.oo-ui-widget-enabled.oo-ui-flaggedElement-destructive > .oo-ui-buttonElement-button:active, 
 body .oo-ui-buttonElement-frameless.oo-ui-widget-enabled.oo-ui-flaggedElement-destructive.oo-ui-buttonElement-pressed > .oo-ui-buttonElement-button,
+body .mw-ui-button.mw-ui-quiet:not(:disabled):active,
 body .mw-ui-button.mw-ui-quiet:active {
 
 	color:var(--accent-background-color-active);
@@ -896,6 +900,7 @@ body .oo-ui-buttonElement-framed.oo-ui-widget-enabled > .oo-ui-buttonElement-but
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-progressive > .oo-ui-buttonElement-button,
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-destructive > .oo-ui-buttonElement-button,
 body .mw-ui-button,
+body .mw-ui-button:not(:disabled),
 body .mw-button:disabled {
     border-color:rgb(var(--accent-background-color-rgb));
     background-color:rgb(var(--page-background-color-rgb));
@@ -907,6 +912,7 @@ body .mw-button:disabled {
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled > .oo-ui-buttonElement-button:focus,
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-progressive > .oo-ui-buttonElement-button:focus,
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-destructive > .oo-ui-buttonElement-button:focus,
+body .mw-ui-button:not(:disabled):focus,
 body .mw-ui-button:focus {
     border-color:rgb(var(--accent-background-color-rgb));
     background-color:rgb(var(--page-background-color-rgb));
@@ -919,6 +925,7 @@ body .mw-ui-button:focus {
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled > .oo-ui-buttonElement-button:hover,
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-progressive  > .oo-ui-buttonElement-button:hover,
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-destructive  > .oo-ui-buttonElement-button:hover,
+body .mw-ui-button:not(:disabled):hover,
 body .mw-ui-button:hover {
     border-color:var(--accent-background-color-hover);
     background-color:var(--accent-background-color-page-background-color-mix-light);
@@ -934,6 +941,7 @@ body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-progr
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-buttonElement-pressed.oo-ui-flaggedElement-progressive > .oo-ui-buttonElement-button,
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-destructive > .oo-ui-buttonElement-button:active, 
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-buttonElement-pressed.oo-ui-flaggedElement-destructive > .oo-ui-buttonElement-button,
+body .mw-ui-button:not(:disabled):active,
 body .mw-ui-button:active {
     border-color:var(--accent-background-color-active);
     background-color:var(--accent-background-color-page-background-color-mix);
@@ -946,9 +954,11 @@ body .mw-ui-button:active {
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled > .oo-ui-buttonElement-button:focus:not(:active),
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-progressive > .oo-ui-buttonElement-button:focus:not(:active),
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-destructive > .oo-ui-buttonElement-button:focus:not(:active),
+body .mw-ui-button:not(:disabled):focus,
 body .mw-ui-button:focus:not(:active) {
   outline-color:currentcolor;
-  outline-offset:-2px;
+  outline-offset:-2px!important;
+  outline-width:2px;
     text-decoration:none;
 }
 
@@ -962,6 +972,7 @@ body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-buttonElement-active
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-buttonElement-active > .oo-ui-buttonElement-button:focus,
 body .oo-ui-buttonSelectWidget.oo-ui-widget-enabled:focus .oo-ui-buttonOptionWidget.oo-ui-optionWidget-selected .oo-ui-buttonElement-button,
 body .mw-ui-button.mw-ui-progressive,
+body .mw-ui-button.mw-ui-progressive:not(:disabled),
 body .mw-ui-button.mw-ui-progressive:disabled {
     border-color:rgb(var(--accent-background-color-rgb));
     background-color:rgb(var(--accent-background-color-rgb));
@@ -971,6 +982,7 @@ body .mw-ui-button.mw-ui-progressive:disabled {
 
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive > .oo-ui-buttonElement-button:focus,
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-destructive > .oo-ui-buttonElement-button:focus,
+body .mw-ui-button.mw-ui-progressive:not(:disabled):focus,
 body .mw-ui-button.mw-ui-progressive:focus {
     box-shadow:0 0 1.5px 1.5px rgb(var(--accent-background-color-rgb));
     border-color:rgb(var(--accent-background-color-rgb));
@@ -982,6 +994,7 @@ body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-prima
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-destructive > .oo-ui-buttonElement-button:hover,
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-buttonElement-active > .oo-ui-buttonElement-button:focus:hover,
 body .oo-ui-buttonSelectWidget.oo-ui-widget-enabled:focus:hover .oo-ui-buttonOptionWidget.oo-ui-optionWidget-selected .oo-ui-buttonElement-button,
+body .mw-ui-button.mw-ui-progressive:not(:disabled):hover,
 body .mw-ui-button.mw-ui-progressive:hover  {
     border-color:var(--accent-background-color-hover);
     background-color:var(--accent-background-color-hover);
@@ -996,15 +1009,18 @@ body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-prima
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive.oo-ui-popupToolGroup-active > .oo-ui-buttonElement-button,
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-buttonElement-active > .oo-ui-buttonElement-button:focus:active,
 body .oo-ui-buttonSelectWidget.oo-ui-widget-enabled:focus:active .oo-ui-buttonOptionWidget.oo-ui-optionWidget-selected .oo-ui-buttonElement-button,
+body .mw-ui-button.mw-ui-progressive:not(:disabled):active,
 body .mw-ui-button.mw-ui-progressive:active  {
     border-color:var(--accent-background-color-active);
     background-color:var(--accent-background-color-active);
     color:var(--accent-foreground-color);
     box-shadow:0 0 1.5px 1.5px var(--accent-background-color-active);
+    outline-color:transparent;
 }
 
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive > .oo-ui-buttonElement-button:focus:not(:active),
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-destructive > .oo-ui-buttonElement-button:focus:not(:active),
+body .mw-ui-button.mw-ui-progressive:not(:disabled):focus,
 body .mw-ui-button.mw-ui-progressive:focus:not(:active) {
   outline-color:currentcolor;
   outline-offset:-2px;
