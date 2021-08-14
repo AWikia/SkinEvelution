@@ -2114,9 +2114,13 @@ document.querySelector('body').style.setProperty("--page-text-gradient-color-hov
 
 
 /** Button Color **/
+/* Set Vars */
 // Liatch Quirk
-if ( (window.MW18darkmode === true) && ( !(isSuitableColor2(getComputedStyle(document.querySelector('body')).getPropertyValue("--accent-background-color"), getComputedStyle(document.querySelector('container')).getPropertyValue("--page-background-color"))) ) ) {
-		document.querySelector('container').style.setProperty("--accent-background-color", ColorTest(getComputedStyle(document.querySelector('body')).getPropertyValue("--accent-background-color"),false,false,true));
+if ( (window.MW18darkmode === true) ) {
+	document.querySelector('container').style.setProperty("--accent-background-color", ColorInvert(getComputedStyle(document.querySelector('body')).getPropertyValue("--accent-background-color")));
+	if ( !(isSuitableColor2(getComputedStyle(document.querySelector('container')).getPropertyValue("--accent-background-color"), getComputedStyle(document.querySelector('container')).getPropertyValue("--page-background-color"))) )  { // If still not legible
+		document.querySelector('container').style.setProperty("--accent-background-color", ColorTest(getComputedStyle(document.querySelector('container')).getPropertyValue("--accent-background-color"),false,false,true));
+	}
 	if ( !(isSuitableColor2(getComputedStyle(document.querySelector('container')).getPropertyValue("--accent-background-color"), getComputedStyle(document.querySelector('container')).getPropertyValue("--page-background-color"))) )  { // If still not legible
 		document.querySelector('container').style.setProperty("--accent-background-color", ColorTest(getComputedStyle(document.querySelector('container')).getPropertyValue("--accent-background-color"),false,false,true));
 	}
@@ -2128,7 +2132,6 @@ if ( (window.MW18darkmode === true) && ( !(isSuitableColor2(getComputedStyle(doc
 }
 
 
-/* Set Vars */
 var button_color = getComputedStyle(document.querySelector('container')).getPropertyValue("--accent-background-color");
 var buttoncolor1 = ColorTest(button_color,false);
 var buttoncolor2 = ColorTest(button_color,true);
@@ -2225,8 +2228,11 @@ document.querySelector('body').style.setProperty("--sticky-header-gradient-color
 /** Link Color **/
 /* Set Vars */
 // Liatch Quirk
-if ( (window.MW18darkmode === true) && ( !(isSuitableColor(getComputedStyle(document.querySelector('body')).getPropertyValue("--anchor-background-color"), getComputedStyle(document.querySelector('container')).getPropertyValue("--page-background-color"))) ) ) {
-		document.querySelector('container').style.setProperty("--anchor-background-color", ColorTest(getComputedStyle(document.querySelector('body')).getPropertyValue("--anchor-background-color"),false,false,true));
+if ( (window.MW18darkmode === true) ) {
+	document.querySelector('container').style.setProperty("--anchor-background-color", ColorInvert(getComputedStyle(document.querySelector('body')).getPropertyValue("--anchor-background-color")));
+	if ( !(isSuitableColor(getComputedStyle(document.querySelector('container')).getPropertyValue("--anchor-background-color"), getComputedStyle(document.querySelector('container')).getPropertyValue("--page-background-color"))) )  { // If still not legible
+		document.querySelector('container').style.setProperty("--anchor-background-color", ColorTest(getComputedStyle(document.querySelector('container')).getPropertyValue("--anchor-background-color"),false,false,true));
+	}
 	if ( !(isSuitableColor(getComputedStyle(document.querySelector('container')).getPropertyValue("--anchor-background-color"), getComputedStyle(document.querySelector('container')).getPropertyValue("--page-background-color"))) )  { // If still not legible
 		document.querySelector('container').style.setProperty("--anchor-background-color", ColorTest(getComputedStyle(document.querySelector('container')).getPropertyValue("--anchor-background-color"),false,false,true));
 	}
@@ -2285,8 +2291,12 @@ document.querySelector('body').style.setProperty("--anchor-gradient-color-hover-
 
 if ((getComputedStyle(document.querySelector('body')).getPropertyValue("--page-border-background-color") != 'auto') ) { // Only run Liatch quirk if not in autocolorization
 	// Liatch Quirk
-	if ( (window.MW18darkmode === true) && ( !(isSuitableColor2(getComputedStyle(document.querySelector('body')).getPropertyValue("--page-border-background-color"), getComputedStyle(document.querySelector('container')).getPropertyValue("--page-background-color"))) ) ) {
-		document.querySelector('container').style.setProperty("--page-border-background-color", ColorTest(getComputedStyle(document.querySelector('body')).getPropertyValue("--page-border-background-color"),false,false,true));
+
+	if ( (window.MW18darkmode === true) ) {
+		document.querySelector('container').style.setProperty("--page-border-background-color", ColorInvert(getComputedStyle(document.querySelector('body')).getPropertyValue("--page-border-background-color")));
+		if ( !(isSuitableColor2(getComputedStyle(document.querySelector('container')).getPropertyValue("--page-border-background-color"), getComputedStyle(document.querySelector('container')).getPropertyValue("--page-background-color"))) )  { // If still not legible
+			document.querySelector('container').style.setProperty("--page-border-background-color", ColorTest(getComputedStyle(document.querySelector('container')).getPropertyValue("--page-border-background-color"),false,false,true));
+		}
 		if ( !(isSuitableColor2(getComputedStyle(document.querySelector('container')).getPropertyValue("--page-border-background-color"), getComputedStyle(document.querySelector('container')).getPropertyValue("--page-background-color"))) )  { // If still not legible
 			document.querySelector('container').style.setProperty("--page-border-background-color", ColorTest(getComputedStyle(document.querySelector('container')).getPropertyValue("--page-border-background-color"),false,false,true));
 		}
@@ -2665,16 +2675,11 @@ if (suitcheck === true) {
 
 function CheckColorSuitability(refresh) {
 	/* Check Contrast Colors */
-	if (window.MW18darkmode === true) {
-		var color1a  = getComputedStyle(document.querySelector('container')).getPropertyValue("--page-background-color");
-		var color2 = getComputedStyle(document.querySelector('container')).getPropertyValue("--page-text-background-color");
-	} else {
-		var color1a = getComputedStyle(document.querySelector('container')).getPropertyValue("--page-text-background-color");
-		var color2  = getComputedStyle(document.querySelector('container')).getPropertyValue("--page-background-color");
-	}
-	var color1b = getComputedStyle(document.querySelector('body')).getPropertyValue("--anchor-background-color");
+	var color1a = getComputedStyle(document.querySelector('container')).getPropertyValue("--page-text-background-color");
+	var color2  = getComputedStyle(document.querySelector('container')).getPropertyValue("--page-background-color");
+	var color1b = getComputedStyle(document.querySelector('container')).getPropertyValue("--anchor-background-color");
 	var color1c = getComputedStyle(document.querySelector('container')).getPropertyValue("--page-border-background-color");
-	var color1d = getComputedStyle(document.querySelector('body')).getPropertyValue("--accent-background-color");
+	var color1d = getComputedStyle(document.querySelector('container')).getPropertyValue("--accent-background-color");
 	if ($("body.options").length) { // MpistoSkin2's Preferences Page
 		// Content Color
 		if (isSuitableColor(color1a,color2)) {
