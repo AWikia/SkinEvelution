@@ -23,14 +23,10 @@ $(' .cpe-dropdown')
 
 // Calls the function on all toggles
 function DropDownUpdate() {
-$('.cpe-dropdown > :first-child').off( "click" );			
-$('.cpe-dropdown').off( "mouseleave" );	
+ $('.cpe-dropdown').off( "mouseleave" );	
 // Process Menus		
 $(".cpe-dropdown > :first-child")
-					.click( function(e) { 
-						e.preventDefault(); 
-						DropDown(); 
-					});
+					.attr('onclick', 'DropDown();')
 					
 // Close dropdowns on mouse leave
 $(' .cpe-dropdown')
@@ -38,7 +34,10 @@ $(' .cpe-dropdown')
             $(this).removeClass('is-active');
         });
 
+
+
 }
+
 
 /* Select Inputs */
 $(' .cpe-dropdown.cpe-select .cpe-dropdown__content .cpe-list li:not(.cpe-dropdown-level-2)')
@@ -231,7 +230,7 @@ function RearrangeDOM() {
 (function () {
 	/* DITTO */
 	$('body').mouseenter( function(e) { CheckTheme(); } );		
-	$('body').mouseleave( function(e) { CheckTheme(); } );		
+	$('body').mouseleave( function(e) { DropDownUpdate(); CheckTheme(); } );		
 		
 
 	/* END DITTO */
