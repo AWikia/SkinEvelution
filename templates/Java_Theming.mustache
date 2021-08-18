@@ -1020,6 +1020,7 @@ function PresetTheme(theme="") {
 	/* Make theme adaptive, if it isn't */
 	PickColor4('auto');
 	PickColor5('auto');
+	PickColor8('auto');
 	PickColor9('auto');
 	colortheme($('body').attr("wikitheme"))
 }
@@ -1042,6 +1043,31 @@ $('input[type="range"][name="bg"].blue').val( chroma(x).get('rgb.b'));
 
 UpdateValue()
 }
+
+function PickColor8(color="") {
+if (color==="") {
+	if ( $("body").attr('community-header-text-color-auto') === 'true' ) {
+		var x= prompt("Community Header Text Color", 'auto');
+	} else {
+		var x= prompt("Community Header Text Color", chroma(getComputedStyle(document.querySelector('body')).getPropertyValue("--community-header-text-color")));
+	}
+} else {
+	var x=color;
+}
+
+if (x !=='auto') {
+	$("body").attr('community-header-text-color-auto', 'false');
+	$('input[type="range"][name="bgt"].red').val(chroma(x).get('rgb.r'));
+	$('input[type="range"][name="bgt"].green').val( chroma(x).get('rgb.g'));
+	$('input[type="range"][name="bgt"].blue').val( chroma(x).get('rgb.b'));
+} else {
+	$("body").attr('community-header-text-color-auto', 'true');
+}
+
+
+UpdateValue()
+}
+
 
 function PickColor2(color="") {
 if (color==="") {
@@ -1196,6 +1222,14 @@ function UpdateSet() {
 		$('input[type="range"][name="bg"].green').val( chroma(getComputedStyle(document.querySelector('body')).getPropertyValue("--community-background-color")).get('rgb.g') );
 		$('input[type="range"][name="bg"].blue').val( chroma(getComputedStyle(document.querySelector('body')).getPropertyValue("--community-background-color")).get('rgb.b') );
 
+		if (getComputedStyle(document.querySelector('body')).getPropertyValue("--community-header-text-color") != 'auto') {
+			/* Community Header Text */
+			$('input[type="range"][name="bgt"].red').val(chroma(getComputedStyle(document.querySelector('body')).getPropertyValue("--community-header-text-color")).get('rgb.r') );
+			$('input[type="range"][name="bgt"].green').val( chroma(getComputedStyle(document.querySelector('body')).getPropertyValue("--community-header-text-color")).get('rgb.g') );
+			$('input[type="range"][name="bgt"].blue').val( chroma(getComputedStyle(document.querySelector('body')).getPropertyValue("--community-header-text-color")).get('rgb.b') );
+		}
+
+
 		/* Header (A.K.A. Active Title Bar) */
 		var header_color =	getComputedStyle(document.querySelector('body')).getPropertyValue("--sticky-header-background-color");
 		$('input[type="range"][name="header"].red').val(chroma(header_color).get('rgb.r') );
@@ -1251,6 +1285,12 @@ function UpdateSet() {
 
 /* Updates all 8 required color variables for each theme to the values of the sliders */
 function UpdateValue() {
+	if ( $("body").attr('community-header-text-color-auto') === 'true' ) {
+		var communityheadercolorfinal = 'auto' ;
+	} else {
+		var communityheadercolorfinal = chroma('rgb(' + $('input[type="range"][name="bgt"].red').val() + ',' + $('input[type="range"][name="bgt"].green').val() + ',' + $('input[type="range"][name="bgt"].blue').val() + ')') ;
+	}
+
 	var linkcolor1final = chroma('rgb(' + $('input[type="range"][name="linkcolor"].red').val() + ',' + $('input[type="range"][name="linkcolor"].green').val() + ',' + $('input[type="range"][name="linkcolor"].blue').val() + ')') ;
 	var headercolorfinal = chroma('rgb(' + $('input[type="range"][name="header"].red').val() + ',' + $('input[type="range"][name="header"].green').val() + ',' + $('input[type="range"][name="header"].blue').val() + ')') ;
 	if ( $("body").attr('page-border-background-color-auto') === 'true' ) {
@@ -1283,6 +1323,7 @@ function UpdateValue() {
 		$("style.designer-style.theme-A").append(
 		'.theme-A[visualcolors="standard"] {' +
 		'--community-background-color:' + chroma('rgb(' + $('input[type="range"][name="bg"].red').val() + ',' + $('input[type="range"][name="bg"].green').val() + ',' + $('input[type="range"][name="bg"].blue').val() + ')') + '!important;' +
+		'--community-header-text-color:' + communityheadercolorfinal + '!important;' +
 		'--anchor-background-color:' + linkcolor1final + '!important;' +
 		'--page-background-color:' + chroma('rgb(' + $('input[type="range"][name="contentbg"].red').val() + ',' + $('input[type="range"][name="contentbg"].green').val() + ',' + $('input[type="range"][name="contentbg"].blue').val() + ')') + '!important;' +
 		'--page-border-background-color:' + contentborderfinal + '!important;' +
@@ -1299,6 +1340,7 @@ function UpdateValue() {
 		$("style.designer-style.theme-B").append(
 		'.theme-B[visualcolors="standard"] {' +
 		'--community-background-color:' + chroma('rgb(' + $('input[type="range"][name="bg"].red').val() + ',' + $('input[type="range"][name="bg"].green').val() + ',' + $('input[type="range"][name="bg"].blue').val() + ')') + '!important;' +
+		'--community-header-text-color:' + communityheadercolorfinal + '!important;' +
 		'--anchor-background-color:' + linkcolor1final + '!important;' +
 		'--page-background-color:' + chroma('rgb(' + $('input[type="range"][name="contentbg"].red').val() + ',' + $('input[type="range"][name="contentbg"].green').val() + ',' + $('input[type="range"][name="contentbg"].blue').val() + ')') + '!important;' +
 		'--page-border-background-color:' + contentborderfinal + '!important;' +
@@ -1314,7 +1356,9 @@ function UpdateValue() {
 	if ($("html.theme-C").length) {
 		$("style.designer-style.theme-C").append(
 		'.theme-C[visualcolors="standard"] {' +
-		'--community-background-color:' + chroma('rgb(' + $('input[type="range"][name="bg"].red').val() + ',' + $('input[type="range"][name="bg"].green').val() + ',' + $('input[type="range"][name="bg"].blue').val() + ')') + '!important;' +
+		'--community-background-color:' + chroma('rgb(' + $('input[type="range"][name="bg"].red').val() + ',' + $('input[type="range"][name="bg"].green').val() + ',' + 
+$('input[type="range"][name="bg"].blue').val() + ')') + '!important;' +
+		'--community-header-text-color:' + communityheadercolorfinal + '!important;' +
 		'--anchor-background-color:' + linkcolor1final + '!important;' +
 		'--page-background-color:' + chroma('rgb(' + $('input[type="range"][name="contentbg"].red').val() + ',' + $('input[type="range"][name="contentbg"].green').val() + ',' + $('input[type="range"][name="contentbg"].blue').val() + ')') + '!important;' +
 		'--page-border-background-color:' + contentborderfinal + '!important;' +
@@ -1331,6 +1375,7 @@ function UpdateValue() {
 		$("style.designer-style.theme-D").append(
 		'.theme-D[visualcolors="standard"] {' +
 		'--community-background-color:' + chroma('rgb(' + $('input[type="range"][name="bg"].red').val() + ',' + $('input[type="range"][name="bg"].green').val() + ',' + $('input[type="range"][name="bg"].blue').val() + ')') + '!important;' +
+		'--community-header-text-color:' + communityheadercolorfinal + '!important;' +
 		'--anchor-background-color:' + linkcolor1final + '!important;' +
 		'--page-background-color:' + chroma('rgb(' + $('input[type="range"][name="contentbg"].red').val() + ',' + $('input[type="range"][name="contentbg"].green').val() + ',' + $('input[type="range"][name="contentbg"].blue').val() + ')') + '!important;' +
 		'--page-border-background-color:' + contentborderfinal + '!important;' +
@@ -1358,6 +1403,7 @@ function DownloadTheme(full=false) {
 		result = '.theme-A[visualcolors="standard"] {\n' + // Beginning
 				// Community BG
 				 '--community-background-image:' + getComputedStyle(document.querySelector('container')).getPropertyValue("--community-background-image")  + ';\n' +
+				 '--community-background-image-opacity:' + getComputedStyle(document.querySelector('container')).getPropertyValue("--community-background-image-opacity")  + ';\n' +
 				// Community Color
 				 '--community-background-color:' + getComputedStyle(document.querySelector('container')).getPropertyValue("--community-background-color")  + ';\n' +
 				 '--community-background-color-hover:' + getComputedStyle(document.querySelector('container')).getPropertyValue("--community-background-color-hover")  + ';\n' +
@@ -1380,7 +1426,11 @@ function DownloadTheme(full=false) {
 				 '--community-foreground-color-hover-rgb:' + getComputedStyle(document.querySelector('container')).getPropertyValue("--community-foreground-color-hover-rgb")  + ';\n' +
 				 '--community-foreground-color-inverted-rgb:' + getComputedStyle(document.querySelector('container')).getPropertyValue("--community-foreground-color-inverted-rgb")  + ';\n' +
 				 '--community-foreground-color-hover-inverted-rgb:' + getComputedStyle(document.querySelector('container')).getPropertyValue("--community-foreground-color-hover-inverted-rgb")  + ';\n' +
-
+				// Community Text Color
+				 '--community-background-text-color:' + getComputedStyle(document.querySelector('container')).getPropertyValue("--community-background-text-color")  + ';\n' +
+				 '--community-background-text-color-hover:' + getComputedStyle(document.querySelector('container')).getPropertyValue("--community-background-text-color-hover")  + ';\n' +
+				 '--community-background-text-color-rgb:' + getComputedStyle(document.querySelector('container')).getPropertyValue("--community-background-text-color-rgb")  + ';\n' +
+				 '--community-background-text-color-hover-rgb:' + getComputedStyle(document.querySelector('container')).getPropertyValue("--community-background-text-color-hover-rgb")  + ';\n' +
 				// Community BG Settings
 				 '--community-background-mode:' + getComputedStyle(document.querySelector('container')).getPropertyValue("--community-background-mode")  + ';\n' +
 				 '--community-background-horizontal-alignment:' + getComputedStyle(document.querySelector('container')).getPropertyValue("--community-background-horizontal-alignment")  + ';\n' +
@@ -1618,7 +1668,9 @@ function DownloadTheme(full=false) {
 	} else { // For use with Theme Management
 		result = '.theme-A[visualcolors="standard"] {\n' + // Beginning
 				 '--community-background-image:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--community-background-image")  + ';\n' +
+				 '--community-background-image-opacity:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--community-background-image-opacity")  + ';\n' +
 				 '--community-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--community-background-color")  + ';\n' +
+				 '--community-background-text-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--community-background-text-color")  + ';\n' +
 				 '--community-background-mode:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--community-background-mode")  + ';\n' +
 				 '--community-background-horizontal-alignment:' + getComputedStyle(document.querySelector('container')).getPropertyValue("--community-background-horizontal-alignment")  + ';\n' +
 				 '--community-background-vertical-alignment:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--community-background-vertical-alignment")  + ';\n' +
@@ -1770,7 +1822,11 @@ function ColorTest(color,text=false,inv=false,dledlen=false) { // Regular Colors
 				return getComputedStyle(document.querySelector('html')).getPropertyValue("--dark-theme-foreground-color");
 			}
 		} else {
-			return ColorTestTwin(color,'#000000');
+			if (inv === false) {
+				return ColorTestTwin(color,'#000000');
+			} else {
+				return ColorTestTwin(color,'#ffffff');
+			}
 		}
 	} else {
 		if (text === true) {
@@ -1780,7 +1836,11 @@ function ColorTest(color,text=false,inv=false,dledlen=false) { // Regular Colors
 				return getComputedStyle(document.querySelector('html')).getPropertyValue("--dark-theme-foreground-color");
 			}
 		} else {
-			return ColorTestTwin(color, '#ffffff' );
+			if (inv === true) {
+				return ColorTestTwin(color,'#000000');
+			} else {
+				return ColorTestTwin(color,'#ffffff');
+			}
 		}
 	}
 
@@ -2468,6 +2528,32 @@ document.querySelector('body').style.setProperty("--community-foreground-color-i
 document.querySelector('body').style.setProperty("--community-foreground-color-hover-inverted-rgb", Color2(headcolor2tI));
 document.querySelector('body').style.setProperty("--community-gradient-color-rgb", Color2( getComputedStyle(document.querySelector('body')).getPropertyValue("--community-gradient-color") ));
 document.querySelector('body').style.setProperty("--community-gradient-color-hover-rgb", Color2( getComputedStyle(document.querySelector('body')).getPropertyValue("--community-gradient-color-hover") ));
+
+/** Community Header text color **/
+if ((getComputedStyle(document.querySelector('body')).getPropertyValue("--community-header-text-color") !== 'auto')  ) {
+	// Liatch Quirk
+	if ( (window.MW18darkmode === true) ) {
+		headertext_color = ColorInvert(getComputedStyle(document.querySelector('body')).getPropertyValue("--community-header-text-color"));
+	} else {
+		headertext_color = 'inherit';
+	}
+
+
+} else {
+	var headertext_color = getComputedStyle(document.querySelector('body')).getPropertyValue("--community-foreground-color");
+}
+
+document.querySelector('container').style.setProperty("--community-header-text-color", headertext_color);
+var headertext_color= getComputedStyle(document.querySelector('container')).getPropertyValue("--community-header-text-color");
+
+var headertextcolor1 = ColorTest(headertext_color,false,true,true);
+
+document.querySelector('body').style.setProperty("--community-header-text-color-hover", headertextcolor1);
+
+// RGB
+document.querySelector('body').style.setProperty("--community-header-text-color-rgb", Color2( getComputedStyle(document.querySelector('container')).getPropertyValue("--community-header-text-color") ));
+document.querySelector('body').style.setProperty("--community-header-text-color-hover-rgb", Color2(headertextcolor1));
+
 
 /* Floating Header Bg */
 if ((getComputedStyle(document.querySelector('body')).getPropertyValue("--toolbar-background-color") !== 'auto')  ) {
