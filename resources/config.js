@@ -3,7 +3,7 @@
 /* Copied from Themes.js */
 function getKey(key) {
 var str = window.localStorage,
-    result = str.getItem('-eve-pref-'+key);
+    result = str.getItem('-evelution-pref-'+key);
 if (!result) {
    return '-1';
 }
@@ -11,7 +11,7 @@ return result;
 }
 
 function insertKey(key,value) {
-	window.localStorage.setItem('-eve-pref-' + key, '' + value);
+	window.localStorage.setItem('-evelution-pref-' + key, '' + value);
 }
 
 
@@ -52,9 +52,9 @@ function insertKey(key,value) {
 function CompileVisualL10N() {
 
 /* Visual Themes */
-var visualThemeNames_l10n = [mw.msg( 'eve-style-basic' ),mw.msg( 'eve-style-contrast' ),mw.msg( 'eve-style-simple' ),mw.msg( 'eve-style-classic' )];
+var visualThemeNames_l10n = [mw.msg( 'evelution-style-basic' ),mw.msg( 'evelution-style-contrast' ),mw.msg( 'evelution-style-simple' ),mw.msg( 'evelution-style-classic' )];
 /* Visual Colors */
-var visualColorNames_l10n = [mw.msg( 'eve-color-factorycolors' ), mw.msg( 'eve-color-lunacolors' ), mw.msg( 'eve-color-classicforced' ), mw.msg( 'eve-color-campbellforced' ), mw.msg( 'eve-color-forced' ), mw.msg( 'eve-color-tangoforced' ),mw.msg( 'eve-color-rgbcolors' ),mw.msg( 'eve-color-retro' ),mw.msg( 'eve-color-retro' ) + ' II',mw.msg( 'eve-color-retro' ) + ' III',mw.msg( 'eve-color-retro' ) + ' IV',mw.msg( 'eve-color-retro' ) + ' V',mw.msg( 'eve-color-retro' ) + ' VI',mw.msg( 'eve-color-retro' ) + ' VII',mw.msg( 'eve-color-fandomcolors' ) ];
+var visualColorNames_l10n = [mw.msg( 'evelution-color-factorycolors' ), mw.msg( 'evelution-color-lunacolors' ), mw.msg( 'evelution-color-classicforced' ), mw.msg( 'evelution-color-campbellforced' ), mw.msg( 'evelution-color-forced' ), mw.msg( 'evelution-color-tangoforced' ),mw.msg( 'evelution-color-rgbcolors' ),mw.msg( 'evelution-color-retro' ),mw.msg( 'evelution-color-retro' ) + ' II',mw.msg( 'evelution-color-retro' ) + ' III',mw.msg( 'evelution-color-retro' ) + ' IV',mw.msg( 'evelution-color-retro' ) + ' V',mw.msg( 'evelution-color-retro' ) + ' VI',mw.msg( 'evelution-color-retro' ) + ' VII',mw.msg( 'evelution-color-fandomcolors' ) ];
 
 // Changes Strings into l10ned version
 /* Visual Styles */

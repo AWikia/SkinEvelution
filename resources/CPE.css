@@ -1335,6 +1335,7 @@ a.cpe-button, button.cpe-button {
 /* Link Color */
 .cpe-button.is-alternate {
   --accent-background-color:var(--anchor-background-color);
+  --accent-background-color-rgb:var(--anchor-background-color-rgb);
   --accent-background-color-hover:var(--anchor-background-color-hover);
   --accent-background-color-active:var(--anchor-background-color-active);
   --accent-foreground-color:var(--anchor-foreground-color);
@@ -1348,6 +1349,7 @@ a.cpe-button, button.cpe-button {
 /* Border Color */
 .cpe-button.is-borderline {
   --accent-background-color:var(--page-border-background-color);
+  --accent-background-color-rgb:var(--page-border-background-color-rgb);
   --accent-background-color-hover:var(--page-border-background-color-hover);
   --accent-background-color-active:var(--page-border-background-color-active);
   --accent-foreground-color:var(--page-border-foreground-color);
@@ -1361,6 +1363,7 @@ a.cpe-button, button.cpe-button {
 /* Body Color */
 .cpe-button.is-headline {
   --accent-background-color:var(--community-background-color);
+  --accent-background-color-rgb:var(--community-background-color-rgb);
   --accent-background-color-hover:var(--community-background-color-hover);
   --accent-background-color-active:var(--community-background-color-active);
   --accent-foreground-color:var(--community-foreground-color);
@@ -1375,6 +1378,7 @@ a.cpe-button, button.cpe-button {
 /* Header Color */
 .cpe-button.is-titleline {
   --accent-background-color:var(--sticky-header-background-color);
+  --accent-background-color-rgb:var(--sticky-header-background-color-rgb);
   --accent-background-color-hover:var(--sticky-header-background-color-hover);
   --accent-background-color-active:var(--sticky-header-background-color-active);
   --accent-foreground-color:var(--sticky-header-foreground-color);
@@ -1388,6 +1392,7 @@ a.cpe-button, button.cpe-button {
 /* Text Color */
 .cpe-button.is-colorline {
   --accent-background-color:var(--page-text-background-color);
+  --accent-background-color-rgb:var(--page-text-background-color-rgb);
   --accent-background-color-hover:var(--page-text-background-color-hover);
   --accent-background-color-active:var(--page-text-background-color-active);
   --accent-foreground-color:var(--page-text-foreground-color);
@@ -1401,6 +1406,7 @@ a.cpe-button, button.cpe-button {
 /* Toolbar Color */
 .cpe-button.is-intitleline {
   --accent-background-color:var(--toolbar-background-color);
+  --accent-background-color-rgb:var(--toolbar-background-color-rgb);
   --accent-background-color-hover:var(--toolbar-background-color-hover);
   --accent-background-color-active:var(--toolbar-background-color-active);
   --accent-foreground-color:var(--toolbar-foreground-color);
@@ -1414,6 +1420,7 @@ a.cpe-button, button.cpe-button {
 /* Alert Color */
 .cpe-button.is-alert-color {
   --accent-background-color:var(--alert-background-color);
+  --accent-background-color-rgb:var(--alert-background-color-rgb);
   --accent-background-color-hover:var(--alert-background-color-hover);
   --accent-background-color-active:var(--alert-background-color-active);
   --accent-foreground-color:var(--alert-foreground-color);
@@ -1427,6 +1434,7 @@ a.cpe-button, button.cpe-button {
 /* Warning Color */
 .cpe-button.is-warning-color {
   --accent-background-color:var(--warning-background-color);
+  --accent-background-color-rgb:var(--warning-background-color-rgb);
   --accent-background-color-hover:var(--warning-background-color-hover);
   --accent-background-color-active:var(--warning-background-color-active);
   --accent-foreground-color:var(--warning-foreground-color);
@@ -1440,6 +1448,7 @@ a.cpe-button, button.cpe-button {
 /* Success */
 .cpe-button.is-success-color {
   --accent-background-color:var(--success-background-color);
+  --accent-background-color-rgb:var(--success-background-color-rgb);
   --accent-background-color-hover:var(--success-background-color-hover);
   --accent-background-color-active:var(--success-background-color-active);
   --accent-foreground-color:var(--success-foreground-color);
@@ -1454,6 +1463,7 @@ a.cpe-button, button.cpe-button {
 .cpe-button.is-info-color,
 .cpe-button.is-message-color {
   --accent-background-color:var(--message-background-color);
+  --accent-background-color-rgb:var(--message-background-color-rgb);
   --accent-background-color-hover:var(--message-background-color-hover);
   --accent-background-color-active:var(--message-background-color-active);
   --accent-foreground-color:var(--message-foreground-color);
@@ -1782,7 +1792,7 @@ transition:display 300ms;
 position:absolute;
 transform:translateX(-50%);
 z-index:4;
-box-shadow:0 2px 6px 0 rgba(0,0,0,.2), 0 2px 6px 0 rgba(255,255,255,0.2);
+box-shadow:0 2px 6px 0 rgba(var(--page-text-background-color-rgb),.2), 0 2px 6px 0 rgba(var(--page-background-color-rgb),0.2);
 font-size:14px;
   scrollbar-width:thin;
   scrollbar-color:var(--scrollbar-thumb-color-1) var(--scrollbar-track-color-1);
@@ -1802,6 +1812,7 @@ font-size:14px;
 }
 
 .cpe-dropdown[cpe-orient="land"] .cpe-dropdown__content {
+	box-shadow:2px 0 6px 0 rgba(var(--page-text-background-color-rgb),.2), 2px 0 6px 0 rgba(var(--page-background-color-rgb),0.2);
 	left:100%;
 	min-width:0;
 	top:-50%;
@@ -1924,11 +1935,19 @@ display:none!important;
 .cpe-dropdown.is-active.has-dark-shadow::before,.cpe-dropdown.is-active.has-shadow::before {display:none}
 
 .cpe-dropdown.has-shadow .cpe-dropdown__content{
-	box-shadow:0 3px 7px 0 rgba(0,0,0,.3), 0 3px 7px 0 rgba(255,255,255,0.3);
+	box-shadow:0 3px 7px 0 rgba(var(--page-text-background-color-rgb),.3), 0 3px 7px 0 rgba(var(--page-background-color-rgb),0.3);
 }
 
 .cpe-dropdown.has-dark-shadow .cpe-dropdown__content{
-	box-shadow:0 4px 8px 0 rgba(0,0,0,.4), 0 4px 8px 0 rgba(255,255,255,0.4);
+	box-shadow:0 4px 8px 0 rgba(var(--page-text-background-color-rgb),.4), 0 4px 8px 0 rgba(var(--page-background-color-rgb),0.4);
+}
+
+.cpe-dropdown.has-shadow[cpe-orient="land"] .cpe-dropdown__content{
+	box-shadow:3px 0 7px 0 rgba(var(--page-text-background-color-rgb),.3), 3px 0 7px 0 rgba(var(--page-background-color-rgb),0.3);
+}
+
+.cpe-dropdown.has-dark-shadow[cpe-orient="land"] .cpe-dropdown__content{
+	box-shadow:4px 0 8px 0 rgba(var(--page-text-background-color-rgb),.4), 4px 0 8px 0 rgba(var(--page-background-color-rgb),0.4);
 }
 
 
@@ -2338,7 +2357,7 @@ opacity:1;
 	opacity:0; transform:scaleY(0);
 }
 .cpe-banner-notification__container{
-	box-shadow:0 2px 6px 0 rgba(0,0,0,.2), 0 2px 6px 0 rgba(255,255,255,0.2);
+	box-shadow:0 2px 6px 0 rgba(var(--page-text-background-color-rgb),.2), 0 2px 6px 0 rgba(var(--page-background-color-rgb),0.4);
 	z-index:19;
 	position:relative;
 }

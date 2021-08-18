@@ -11,7 +11,7 @@ var visualThemeNames = ['Basic','High Contrast','Simple','Classic'];
 var contrastVisual = 1;
 /* Visual Colors */
 var visualColors = ['factorycolors','lunacolors','classicforced','campbellforced','forced','tangoforced','rgbcolors','retro','retro2','retro3','retro4','retro5','retro6','retro7','fandomcolors'];
-var visualColorNames = ['Factory', 'XP Luna', 'Windows Forced', 'Campbell Forced', 'Mpisto OSX Forced', 'Tango Forced','RGB Celebration','Retro','Retro II','Retro III','Retro IV','Retro V','Retro VI','Retro VII','Fandom 2021'];
+var visualColorNames = ['Factory', 'XP Luna', 'Windows Forced', 'Campbell Forced', 'evelution OSX Forced', 'Tango Forced','RGB Celebration','Retro','Retro II','Retro III','Retro IV','Retro V','Retro VI','Retro VII','Fandom 2021'];
 
 (function () {
 	// Evelution Specific
@@ -102,7 +102,7 @@ var visualColorNames = ['Factory', 'XP Luna', 'Windows Forced', 'Campbell Forced
 		SheShe = ($("body.server").length != 0);
 	}
 	$('html').attr("she-she", SheShe);
-	if ( ($("body.mpisto-2018").length) || ($("body.mpisto-2018-mobile").length)) {
+	if ( ($("body.evelution-2018").length) || ($("body.evelution-2018-mobile").length)) {
 		$("head").append(
 		'<link rel="manifest" href="manifest.json" crossorigin="use-credentials">' +
 		'<link rel="shortcut icon" href="favicon.ico">' +
@@ -118,7 +118,7 @@ var visualColorNames = ['Factory', 'XP Luna', 'Windows Forced', 'Campbell Forced
 		$("head").append(
 		'<meta name="color-scheme" content="light dark">'
 		);	
-		$('body').attr("cursor", "mpisto");
+		$('body').attr("cursor", "evelution");
 		CursorT('auto');
 		$("head").append('<style class="social-colors"></style>');
 		ManagerRows(); // For Task Manager Only
@@ -135,7 +135,7 @@ var visualColorNames = ['Factory', 'XP Luna', 'Windows Forced', 'Campbell Forced
 
 function getKey(key) {
 var str = window.localStorage,
-    result = str.getItem('-eve-pref-'+key);
+    result = str.getItem('-evelution-pref-'+key);
 if (!result) {
    return '-1';
 }
@@ -143,7 +143,7 @@ return result;
 }
 
 function insertKey(key,value) {
-	window.localStorage.setItem('-eve-pref-' + key, '' + value);
+	window.localStorage.setItem('-evelution-pref-' + key, '' + value);
 }
 
 function getParams() {
@@ -307,11 +307,11 @@ function UpdateSitename() {
 		console.log('No Sitename is used. Untitled will be used as a fallback')
     }
     if (x.checked) {
-	$(".mpisto-sticky-header-container .title a").text(y + ' Wiki');
+	$(".evelution-sticky-header .title a").text(y + ' Wiki');
 	$(".color-header .title a").text(y + ' Wiki');
 	$(".mobile-header .title a").text(y + ' Wiki');
 	} else {
-	$(".mpisto-sticky-header-container .title a").text(y);
+	$(".evelution-sticky-header .title a").text(y);
 	$(".color-header .title a").text(y);
 	$(".mobile-header .title a").text(y);
 	}
@@ -395,8 +395,8 @@ if ($("body.tskmngr").length) {
 
 function ContrastBanner() {
 
-/* For MpistoSkin2 (Obsolete) or Evelution */
-if  ( ($("body.mpisto-2018").length) || ($("body.skin-Evelution").length) ) {
+/* For evelutionSkin2 (Obsolete) or Evelution */
+if  ( ($("body.evelution-2018").length) || ($("body.skin-Evelution").length) ) {
 	if ( ( window.matchMedia('(forced-colors: active)').matches ) && (window.MW18ContrastNotice === false)  && ($('html').attr("visualtheme") !== 'contrast'  ) ) {
 		window.MW18ContrastNotice = true;
 		AddFloatingBanner("You're currently using a high contrast theme on your device. You may want to use the <a onclick='RemoveBanner(); VisualStyle(" + contrastVisual + ")'>High Contrast</a> visual style so as to have a consistent high contrast experience.",'message','contrastbanner')  
@@ -446,8 +446,8 @@ function colortheme(theme='auto', repaint=true, save=true) {
 	if (save) {
 		insertKey('color-mode', theme );
 	}
-	$(".mpisto-page-header .color-modes li").removeClass('selected');
-	$(".mpisto-page-header .color-modes li." + theme).addClass('selected');
+	$(".evelution-page-header .color-modes li").removeClass('selected');
+	$(".evelution-page-header .color-modes li." + theme).addClass('selected');
 	if (window.MW18darkmode === true) {
 		if ($("body.options").length) {
 			document.querySelector('.rvbg1').style.setProperty("background-color", 'var(--page-text-background-color)');
@@ -678,7 +678,7 @@ if (files[0].size > 1024000) {
 		'--logo:url("' + img.src + '")!important;' +
 		'}'
 		);
-//		$(".mpisto-header-container .wordmark img").attr("src", img.src);
+//		$(".evelution-community-header .wordmark img").attr("src", img.src);
 
 }
 
@@ -2024,7 +2024,7 @@ function CompileChosenThems() {
 function SocialCompile() {
 	$("head .social-colors").text('');	
 	let str = '';
-	var socialV = ['facebook','googleplus','line','linkedin','instagram','meneame','nk','odnoklassniki','reddit','tumblr','twitter','vkontakte','wykop','weibo','youtube','discord','fandom','asecure','steam','spotify','twitch','qore','mpisto','splashhol','gamepedia','github','xbox']
+	var socialV = ['facebook','googleplus','line','linkedin','instagram','meneame','nk','odnoklassniki','reddit','tumblr','twitter','vkontakte','wykop','weibo','youtube','discord','fandom','asecure','steam','spotify','twitch','qore','evelution','splashhol','gamepedia','github','xbox']
 	var socialC = ['#3b5998','#dd4b39','#00c300','#0077b5','#e02d69','#ff6400','#4077a7','#f96900','#ff4500','#34465d','#1da1f2','#587ca3','#fb803f','#ff8140','#cd201f','#5865f2','#00acac','#0009FF','#000','#1ed760','#563194','#ff4500','#18bbc5','#61448d','#f4801f','#191717','#5dc21e']
 	var socialAM = socialC.length
 // Start Content BG
@@ -2754,7 +2754,7 @@ function CheckColorSuitability(refresh) {
 	var color1b = getComputedStyle(document.querySelector('container')).getPropertyValue("--anchor-background-color");
 	var color1c = getComputedStyle(document.querySelector('container')).getPropertyValue("--page-border-background-color");
 	var color1d = getComputedStyle(document.querySelector('container')).getPropertyValue("--accent-background-color");
-	if ($("body.options").length) { // MpistoSkin2's Preferences Page
+	if ($("body.options").length) { // evelutionSkin2's Preferences Page
 		// Content Color
 		if (isSuitableColor(color1a,color2)) {
 			document.querySelector('label .color-warn').style.setProperty("--icon-display", "none");
