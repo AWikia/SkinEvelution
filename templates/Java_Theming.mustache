@@ -2930,6 +2930,11 @@ function CheckColorSuitability(refresh) {
 
 
 function CheckAdapt() {
+		if ((getComputedStyle(document.querySelector('body')).getPropertyValue("--community-header-text-color") === 'auto')  ) {
+				$("body").attr('community-header-text-color-auto', 'true');
+		} else {
+				$("body").attr('community-header-text-color-auto', 'false');
+		}
 		if ((getComputedStyle(document.querySelector('body')).getPropertyValue("--toolbar-background-color") === 'auto')  ) {
 				$("body").attr('toolbar-background-color-auto', 'true');
 		} else {
