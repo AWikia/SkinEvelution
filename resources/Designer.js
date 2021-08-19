@@ -39,7 +39,6 @@ function InitDesigner() {
 	$(".evelution-page-header-contribution-buttons .designer-buttons .theme-test-button").click( function(e) { e.preventDefault; TestTheme();  });
 	// Clear out content area
 	$("#mw-content-text").empty().addClass('cpe-theme-designer').attr('style','overflow:visible');
-	$("#content").attr('style','overflow:visible');
 	$("#mw-content-text").append(
 		'<div class="cpe-is-hidden" style="display:non;">' +
 		// Body Background Color
