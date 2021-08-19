@@ -2584,6 +2584,118 @@ input[type="checkbox"]:indeterminate:active  {
   color:var(--checkbox-active-bg);
 }
 
+
+/* Ranges */
+input[type="range"] {
+  color: var(--page-text-background-color);
+  margin: 0 auto;
+  background-color: transparent;
+  height: 30px;
+  min-width: 175px;
+  -webkit-appearance: none;
+  appearance:none;
+  cursor:inherit;
+}
+input[type="range"]::-webkit-slider-thumb {
+  border-radius: 50%;
+  background-color: var(--anchor-background-color);
+  box-shadow: 0 0 0 8px rgba(var(--anchor-gradient-color-rgb), 0.5);
+  border: 0;
+  -webkit-appearance: none;
+  appearance:none;
+  width: 10px;
+  height: 10px;
+  margin-top: -2.5px;
+  /* Hack for Chrome and Safari */
+  overflow: visible;
+}
+input[type="range"]::-moz-range-thumb {
+  border-radius: 50%;
+  background-color: var(--anchor-background-color);
+  box-shadow: 0 0 0 8px rgba(var(--anchor-gradient-color-rgb), 0.5);
+  border: 0;
+  -webkit-appearance: none;
+  appearance:none;
+  width: 10px;
+  height: 10px;
+  vertical-align: middle;
+}
+input[type="range"]:active::-webkit-slider-thumb {
+  box-shadow: 0 0 0 8px rgba(var(--anchor-gradient-color-hover-rgb), 0.6);
+}
+input[type="range"]:active::-moz-range-thumb {
+  box-shadow: 0 0 0 8px rgba(var(--anchor-gradient-color-hover-rgb), 0.6);
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  border: 0;
+  padding: 0;
+  background-color: var(--page-text-background-color);
+  color: transparent;
+  height: 5px;
+  -webkit-appearance: none;
+  appearance:none;
+  vertical-align: middle;
+}
+input[type="range"]::-moz-range-track {
+  border: 0;
+  padding: 0;
+  background-color: var(--page-text-background-color);
+  color: transparent;
+  height: 5px;
+  -webkit-appearance: none;
+  appearance:none;
+  vertical-align: middle;
+}
+input[type="range"]::-webkit-slider-track {
+  background-color: var(--anchor-background-color);
+  border: 0;
+  height: 5px;
+}
+input[type="range"]::-moz-range-progress {
+  background-color: var(--anchor-background-color);
+  border: 0;
+  height: 5px;
+}
+input[type="range"]::-qq-slider-filler {
+  background-color: var(--anchor-background-color);
+  border: 0;
+  height: 5px;
+}
+
+
+/* For Touch Devices or Phones */
+.phone input[type="range"], .xo input[type="range"], input[type="range"].big {
+  height: 35px;
+  min-width: 150px;
+  line-height:0;
+}
+.phone input[type="range"]::-webkit-slider-thumb, .xo input[type="range"]::-webkit-slider-thumb, input[type="range"].big::-webkit-slider-thumb {
+  width: 20px;
+  height: 20px;
+  margin-top: -5px;
+  /* Hack for Chrome and Safari */
+}
+.phone input[type="range"]::-moz-range-thumb, .xo input[type="range"]::-moz-range-thumb, input[type="range"].big::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+}
+.phone input[type="range"]::-webkit-slider-runnable-track, .xo input[type="range"]::-webkit-slider-runnable-track, input[type="range"].big::-webkit-slider-runnable-track {
+  height: 10px;
+}
+.phone input[type="range"]::-moz-range-track, .xo input[type="range"]::-moz-range-track,  input[type="range"].big::-moz-range-track {
+  height: 10px;
+}
+.phone input[type="range"]::-webkit-slider-track, .xo input[type="range"]::-webkit-slider-track, input[type="range"].big::-webkit-slider-track {
+  height: 10px;
+}
+.phone input[type="range"]::-moz-range-progress, .xo input[type="range"]::-moz-range-progress, input[type="range"].big::-moz-range-progress {
+  height: 10px;
+}
+.phone input[type="range"]::-qq-slider-filler, .xo input[type="range"]::-qq-slider-filler, input[type="range"].big::-qq-slider-filler {
+  height: 10px;
+}
+
+
 /* Color Filters */
 [colorfilter="invert"] {
 	--global-filter:invert(1);

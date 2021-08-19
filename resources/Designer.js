@@ -40,6 +40,7 @@ function InitDesigner() {
 	// Clear out content area
 	$("#mw-content-text").empty().addClass('cpe-theme-designer').attr('style','overflow:visible');
 	$("#mw-content-text").append(
+		'<div style="margin-bottom:10px;">' + mw.message( 'evelution-designer-notice' ).text() + '</div>' +
 		'<div class="cpe-is-hidden" style="display:non;">' +
 		// Body Background Color
 			'<datalist id="bodybg_colors">' +
@@ -354,7 +355,7 @@ function InitDesigner() {
 				'</td>' +
 
 				'<td style="text-align:center; width:150px">' +
-					'<input type="range" class="xo" style="min-width:130px; min-width:130px;" id="bodyimageopacity" value="100" min="0" max="100" />' + // Body Background 
+					'<input type="range" class="big" style="min-width:130px; min-width:130px;" id="bodyimageopacity" value="100" min="0" max="100" />' + // Body Background 
 				'</td>' +
 			'</tr>' +
 		// TR
@@ -563,7 +564,7 @@ function InitDesigner() {
 				'</td>' +
 
 				'<td style="text-align:center; width:150px">' +
-					'<input type="range" class="xo" style="min-width:130px; min-width:130px;" id="border-radius" value="3" min="0" max="15" />' + // Body Background 
+					'<input type="range" class="big" style="min-width:130px; min-width:130px;" id="border-radius" value="3" min="0" max="15" />' + // Body Background 
 				'</td>' +
 			'</tr>' +
 		// TR
@@ -603,7 +604,7 @@ function InitDesigner() {
 				'</td>' +
 
 				'<td style="text-align:center; width:150px">' +
-					'<input type="range" class="xo" style="min-width:130px; min-width:130px;" id="filter3" value="300" min="0" max="1000" step="20" />' + // Body Background 
+					'<input type="range" class="big" style="min-width:130px; min-width:130px;" id="filter3" value="300" min="0" max="1000" step="20" />' + // Body Background 
 				'</td>' +
 			'</tr>' +
 		// TR
@@ -613,7 +614,7 @@ function InitDesigner() {
 				'</td>' +
 
 				'<td style="text-align:center; width:150px">' +
-					'<input type="range" class="xo" style="min-width:130px; min-width:130px;" id="filter4" value="0" min="0" max="1000" step="20" />' + // Body Background 
+					'<input type="range" class="big" style="min-width:130px; min-width:130px;" id="filter4" value="0" min="0" max="1000" step="20" />' + // Body Background 
 				'</td>' +
 			'</tr>' +
 		'</table>'
@@ -649,7 +650,7 @@ function CopyTheme() {
 		var autocolor5 = $('#caretcolor').val();
 	}
 		result = '.theme-A[visualcolors="standard"] {\n' + // Beginning
-				 '--community-background-image:' +"url(" + $('#bodyimage').val() + ")"  + ';\n' +
+				 '--community-background-image:' +'url("' + $('#bodyimage').val() + '")'  + ';\n' +
 				 '--community-background-image-opacity:' + $('#bodyimageopacity').val() + "%" + ';\n' +
 				 '--community-background-color:' + $('#bodybg').val()  + ';\n' +
 				 '--community-header-text-color:' + autocolor1  + ';\n' +
