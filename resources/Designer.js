@@ -727,7 +727,7 @@ function TestTheme() {
 	document.querySelector('html').style.setProperty("--wordmark-filter-hover", $('#filter2').val() );
 	document.querySelector('html').style.setProperty("--wordmark-filter-duration", $('#filter3').val() + "ms" );
 	document.querySelector('html').style.setProperty("--wordmark-filter-delay", $('#filter4').val() + "ms" );
-	ColorUpdate();
+	ColorUpdate(true,true);
 }
 
 function SelectInputs() {
