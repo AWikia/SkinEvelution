@@ -652,7 +652,7 @@ function CopyTheme() {
 				 '--community-background-image:' +"url(" + $('#bodyimage').val() + ")"  + ';\n' +
 				 '--community-background-image-opacity:' + $('#bodyimageopacity').val() + "%" + ';\n' +
 				 '--community-background-color:' + $('#bodybg').val()  + ';\n' +
-				 '--community-background-text-color:' + autocolor1  + ';\n' +
+				 '--community-header-text-color:' + autocolor1  + ';\n' +
 				 '--community-background-mode:' + $('.bg_mode .cpe-select__value').attr('value')  + ';\n' +
 				 '--community-background-horizontal-alignment:' + $('.bg_align2 .cpe-select__value').attr('value') + ';\n' +
 				 '--community-background-vertical-alignment:' + $('.bg_align .cpe-select__value').attr('value') + ';\n' +
