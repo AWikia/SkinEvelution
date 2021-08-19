@@ -312,7 +312,7 @@ function InitDesigner() {
 				'<option value="#bf00ff">' +
 			'</datalist>' +
 		'</div>' +
-		'<table class="wikitable" style="width:300px; font-size:14px; margin:0 auto;">' +
+		'<table class="wikitable" style="max-width:300px; font-size:14px; margin:0 auto;">' +
 			'<tr>' +
 				'<th colspan="2">' + mw.msg( 'evelution-designer-body' ) + '</th>' +
 			'</tr>' +
