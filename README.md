@@ -16,9 +16,6 @@ To Install Evelution, you must download the reposistory first. Make a folder cal
 wfLoadSkin( 'Evelution' );
 ```
 
-# Known Issue
-- Currently, no Powered by Ivilution icon is being added to the footer even though it is intended.
-
 # More Help
 Join to [our Discord Server](https://discord.gg/a6FbV6zWFs) for more help about Evelution
 
