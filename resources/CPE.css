@@ -2429,7 +2429,8 @@ input[type="checkbox"], input[type="radio"] {
 --checkbox-checked-shadow:var(--checkbox-active-bg);
 --checkbox-checked-shadow-hover:var(--checkbox-active-bg);
 --checkbox-checked-text:var(--checkbox-active-bg);
-  box-shadow:0 0 1px 1px var(--checkbox-unchecked-shadow);
+--checkbox-focused-shadow:transparent;
+  box-shadow:0 0 1px 1px var(--checkbox-unchecked-shadow), inset 0 0 1px 1px var(--checkbox-focused-shadow);
   padding:1,5px;
   background-color:var(--checkbox-unchecked-bg);
   color:var(--checkbox-active-bg);
@@ -2445,6 +2446,16 @@ input[type="checkbox"], input[type="radio"] {
   appearance:none;
   border:0;
 }
+
+input[type="checkbox"]:checked:not(:active):focus, input[type="radio"]:checked:not(:active):focus {
+	--checkbox-focused-shadow:var(--checkbox-unchecked-bg);
+}
+
+input[type="checkbox"]:not(:checked):focus, input[type="radio"]:not(:checked):focus {
+	--checkbox-unchecked-shadow:var(--checkbox-checked-bg);
+}
+
+
 
 .cpe-dropdown__content .cpe-list input[type="checkbox"], .cpe-dropdown__content .cpe-list input[type="radio"] {
 	width:15px;
@@ -2501,8 +2512,8 @@ input[type="checkbox"]:active::after, input[type="radio"]:active::after {
 /* These styles are not used in IE and Edge since we use the ms-check to display the square. This applies to other engines only to show a minus sign */
 input[type="checkbox"]:indeterminate::after {
     opacity:1;
-    -webkit-mask-size: 80%;
-    mask-size: 80%;
+    -webkit-mask-size: 100%;
+    mask-size: 100%;
 }
 
 input[type="checkbox"]:indeterminate::after, input[type="checkbox"][indeterminate]:not(:checked)::after {
@@ -2539,8 +2550,8 @@ input[type="checkbox"]:checked::after, input[type="radio"]:checked::after {
 
 
 input[type="checkbox"]:checked::after {
-    -webkit-mask-size: 80%;
-    mask-size: 80%;
+    -webkit-mask-size: 100%;
+    mask-size: 100%;
 }
 
 
@@ -2549,19 +2560,19 @@ input[type="radio"] {
 }
 
 input[type="checkbox"]:hover, input[type="radio"]:hover {
-	box-shadow:0 0 1px 1px var(--checkbox-active-bg);
+	box-shadow:0 0 1px 1px var(--checkbox-active-bg), inset 0 0 1px 1px var(--checkbox-focused-shadow);
 }
 
 
 input[type="checkbox"]:active, input[type="radio"]:active {
-  box-shadow:0 0 1px 1px var(--checkbox-active-bg);
+  box-shadow:0 0 1px 1px var(--checkbox-active-bg), inset 0 0 1px 1px var(--checkbox-focused-shadow);
   background-color:var(--checkbox-active-bg);
   color:var(--checkbox-active-bg);
 }
 
 input[type="checkbox"]:checked, input[type="radio"]:checked,
 input[type="checkbox"]:indeterminate {
-  box-shadow:0 0 1px 1px var(--checkbox-checked-shadow);
+  box-shadow:0 0 1px 1px var(--checkbox-checked-shadow), inset 0 0 1px 1px var(--checkbox-focused-shadow);
   background-color:var(--checkbox-checked-bg);
   color:var(--checkbox-checked-text);
 }
@@ -2570,7 +2581,7 @@ input[type="checkbox"]:indeterminate {
 
 input[type="checkbox"]:checked:hover, input[type="radio"]:checked:hover,
 input[type="checkbox"]:indeterminate:hover {
-  box-shadow:0 0 1px 1px var(--checkbox-checked-shadow-hover);
+  box-shadow:0 0 1px 1px var(--checkbox-checked-shadow-hover), inset 0 0 1px 1px var(--checkbox-focused-shadow);
   background-color:var(--checkbox-checked-bg-hover);
   color:var(--checkbox-checked-text);
 
@@ -2579,11 +2590,10 @@ input[type="checkbox"]:indeterminate:hover {
 
 input[type="checkbox"]:checked:active, input[type="radio"]:checked:active,
 input[type="checkbox"]:indeterminate:active  {
-  box-shadow:0 0 1px 1px var(--checkbox-active-bg);
+  box-shadow:0 0 1px 1px var(--checkbox-active-bg), inset 0 0 1px 1px var(--checkbox-focused-shadow);
   background-color:var(--checkbox-active-bg);
   color:var(--checkbox-active-bg);
 }
-
 
 /* Ranges */
 input[type="range"] {
