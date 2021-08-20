@@ -157,5 +157,5 @@ Defaulted to outlined. When set to either filled, rounded, shart or two-tone, it
 ### ``$wgEvelutionIconWireframe`` (Since 6.2.0, until 8.0.0)
 Defaulted to true aka outlined Icons. When set to false, icons would display filled aka without any wireframe
 
-### ``$wgEvelutionIconWireframe`` (Since 8.1.0)
+### ``$wgEvelutionStickyRail`` (Since 8.1.0)
 Defaults to true aka right rail will be sticky. When set to false, right rail will not be sticky. In order for sticky behavior of right rail to appear, browser window size must be at least 960x600.
