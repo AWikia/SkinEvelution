@@ -831,8 +831,14 @@ function TestTheme() {
 	} else {
 		var autocolor5 = $('#caretcolor').val();
 	}
+	if ( ( ( $('#bodyimage').val().startsWith('url("') ) && ( $('#bodyimage').val().endsWith('")') ) ) ||
+		  ( ( $('#bodyimage').val().startsWith('url(') ) && ( $('#bodyimage').val().endsWith(')') ) ) ) {
+		var image = $('#bodyimage').val();
+    } else {
+		var image = 'url("' + $('#bodyimage').val() + '")';
+    }
 	document.querySelector('html').style.setProperty("--community-background-color", $('#bodybg').val() );
-	document.querySelector('html').style.setProperty("--community-background-image", "url(" + $('#bodyimage').val() + ")" );
+	document.querySelector('html').style.setProperty("--community-background-image", image );
 	document.querySelector('html').style.setProperty("--community-background-image-opacity", $('#bodyimageopacity').val() + "%" );
 	document.querySelector('html').style.setProperty("--community-background-mode", $('.bg_mode .cpe-select__value').attr('value') );
 	document.querySelector('html').style.setProperty("--community-background-vertical-alignment", $('.bg_align .cpe-select__value').attr('value') );
