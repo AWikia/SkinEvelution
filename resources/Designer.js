@@ -8,10 +8,13 @@ if ($("body.page-CPE_ThemeDesigner").length) {
 
 function InitDesigner() {
 	// Remove the following things
-	$(".cpe-button-group.views, .cpe-button-group.actions, #catlinks").remove();
+	$(".cpe-button-group.views, .cpe-button-group.actions, #catlinks, .td-off").remove();
+	$("html").attr("visualcolors", "standard"); // Unset Visual Colors mode
+	ColorUpdate();
 	// Put new buttons
 	$(".evelution-page-header-contribution-buttons").append(
-		'<div class="designer-buttons cpe-button-group"></div>'
+		'<div class="designer-buttons cpe-button-group"></div>' +
+		'<div class="designer-buttons2 cpe-button-group"></div>'
 	);
 	// Copy theme
 	$(".evelution-page-header-contribution-buttons .designer-buttons").append(
@@ -25,8 +28,20 @@ function InitDesigner() {
 		'</button>'
 	);
 	$(".evelution-page-header-contribution-buttons .designer-buttons .theme-copy-button").click( function(e) { e.preventDefault; CopyTheme();  });
-	
+	// Paste theme
 	$(".evelution-page-header-contribution-buttons .designer-buttons").append(
+		'<button class="cpe-button theme-paste-button">' +
+		'<span class="cpe-icon cpe-icon-small material-icons">' +
+		'content_paste' +
+		'</span>' +
+		'<span>' +
+		mw.msg( 'evelution-designer-paste' ) +
+		'</span>' +
+		'</button>'
+	);
+	$(".evelution-page-header-contribution-buttons .designer-buttons .theme-paste-button").click( function(e) { e.preventDefault; PasteTheme();  });
+	
+	$(".evelution-page-header-contribution-buttons .designer-buttons2").append(
 		'<button class="cpe-button theme-test-button">' +
 		'<span class="cpe-icon cpe-icon-small material-icons">' +
 		'build' +
@@ -35,8 +50,20 @@ function InitDesigner() {
 		mw.msg( 'evelution-designer-test' ) +
 		'</span>' +
 		'</button>'
-	)
-	$(".evelution-page-header-contribution-buttons .designer-buttons .theme-test-button").click( function(e) { e.preventDefault; TestTheme();  });
+	);
+	$(".evelution-page-header-contribution-buttons .designer-buttons2 .theme-test-button").click( function(e) { e.preventDefault; TestTheme();  });
+	$(".evelution-page-header-contribution-buttons .designer-buttons2").append(
+		'<button class="cpe-button theme-clear-button">' +
+		'<span class="cpe-icon cpe-icon-small material-icons">' +
+		'undo' +
+		'</span>' +
+		'<span>' +
+		mw.msg( 'evelution-designer-clear' ) +
+		'</span>' +
+		'</button>'
+	);
+	$(".evelution-page-header-contribution-buttons .designer-buttons2 .theme-clear-button").click( function(e) { e.preventDefault; ClearTheme();  }).prop('disabled', true);
+
 	// Clear out content area
 	$("#mw-content-text").empty().addClass('cpe-theme-designer').attr('style','overflow:visible');
 	$("#mw-content-text").append(
@@ -649,8 +676,14 @@ function CopyTheme() {
 	} else {
 		var autocolor5 = $('#caretcolor').val();
 	}
+	if ( ( ( $('#bodyimage').val().startsWith('url("') ) && ( $('#bodyimage').val().endsWith('")') ) ) ||
+		  ( ( $('#bodyimage').val().startsWith('url(') ) && ( $('#bodyimage').val().endsWith(')') ) ) ) {
+		var image = $('#bodyimage').val();
+    } else {
+		var image = 'url("' + $('#bodyimage').val() + '")';
+    }
 		result = '.theme-A[visualcolors="standard"] {\n' + // Beginning
-				 '--community-background-image:' +'url("' + $('#bodyimage').val() + '")'  + ';\n' +
+				 '--community-background-image:' + image + ';\n' +
 				 '--community-background-image-opacity:' + $('#bodyimageopacity').val() + "%" + ';\n' +
 				 '--community-background-color:' + $('#bodybg').val()  + ';\n' +
 				 '--community-header-text-color:' + autocolor1  + ';\n' +
@@ -678,8 +711,101 @@ function CopyTheme() {
 		 alert('Successfully copied CPE Framework theme to Clipboard')
 }
 
+function PasteTheme() {
+	// Pastes theme
+	// Body BG
+	$('#bodybg').val( getComputedStyle(document.querySelector('html')).getPropertyValue("--community-background-color") );
+	// Body Header Text
+	if (getComputedStyle(document.querySelector('html')).getPropertyValue("--community-header-text-color") === 'auto' ) {
+		document.querySelector('.wikitable #auto1').checked = true;
+	} else {
+		document.querySelector('.wikitable #auto1').checked = false;
+		$('#bodybg2').val( getComputedStyle(document.querySelector('html')).getPropertyValue("--community-header-text-color") );
+	}
+	$('.wikitable #bodybg2').prop('disabled',(document.querySelector('.wikitable #auto1').checked) );
+	// Body Image
+	$('#bodyimage').val( getComputedStyle(document.querySelector('html')).getPropertyValue("--community-background-image") );
+	// Body Image Opacity
+	$('#bodyimageopacity').val( parseInt(getComputedStyle(document.querySelector('html')).getPropertyValue("--community-background-image-opacity")) );
+	// Body Image Mode
+	bg_mode = ["Standard", "Full"][["standard", "full"].indexOf( getComputedStyle(document.querySelector('html')).getPropertyValue("--community-background-mode") ) ]
+	$('.bg_mode .cpe-select__value').attr('value', getComputedStyle(document.querySelector('html')).getPropertyValue("--community-background-mode") );
+	$('.bg_mode .cpe-select__value').html( bg_mode );
+	// Body Image Alignment V
+	bg_align = ["Top", "Middle", "Bottom"][["top", "center", "bottom"].indexOf( getComputedStyle(document.querySelector('html')).getPropertyValue("--community-background-vertical-alignment") ) ]
+	$('.bg_align .cpe-select__value').attr('value', getComputedStyle(document.querySelector('html')).getPropertyValue("--community-background-vertical-alignment") );
+	$('.bg_align .cpe-select__value').html( bg_align );
+	// Body Image Alignment H
+	bg_align2 = ["Left", "Middle", "Right"][["left", "center", "right"].indexOf( getComputedStyle(document.querySelector('html')).getPropertyValue("--community-background-horizontal-alignment") ) ]
+	$('.bg_align2 .cpe-select__value').attr('value', getComputedStyle(document.querySelector('html')).getPropertyValue("--community-background-horizontal-alignment") );
+	$('.bg_align2 .cpe-select__value').html( bg_align2 );
+	// Body Image Size
+	bg_size = ["Cover", "Contain", "Stretched", "Full"][["cover", "contain", "stretched", "full"].indexOf( getComputedStyle(document.querySelector('html')).getPropertyValue("--community-background-size") ) ]
+	$('.bg_size .cpe-select__value').attr('value', getComputedStyle(document.querySelector('html')).getPropertyValue("--community-background-size") )
+	$('.bg_size .cpe-select__value').html( bg_size );
+	// Body Image Tiling
+	document.querySelector('input#tiling').checked = (getComputedStyle(document.querySelector('html')).getPropertyValue("--community-background-no-tiling") === 'false');
+	// Page BG
+	$('#pagebg').val( getComputedStyle(document.querySelector('html')).getPropertyValue("--page-background-color") );
+	// Page Text BG
+	if (getComputedStyle(document.querySelector('html')).getPropertyValue("--page-text-background-color") === 'auto' ) {
+		document.querySelector('.wikitable #auto3').checked = true;
+	} else {
+		document.querySelector('.wikitable #auto3').checked = false;
+		$('#pagebg3').val( getComputedStyle(document.querySelector('html')).getPropertyValue("--page-text-background-color") );
+	}
+	$('.wikitable #pagebg3').prop('disabled',(document.querySelector('.wikitable #auto3').checked) );
+	// Page Border BG
+	if (getComputedStyle(document.querySelector('html')).getPropertyValue("--page-border-background-color") === 'auto' ) {
+		document.querySelector('.wikitable #auto2').checked = true;
+	} else {
+		document.querySelector('.wikitable #auto2').checked = false;
+		$('#pagebg2').val( getComputedStyle(document.querySelector('html')).getPropertyValue("--page-border-background-color") );
+	}
+	$('.wikitable #pagebg2').prop('disabled',(document.querySelector('.wikitable #auto2').checked) );
+	// Anchor BG
+	$('#anchorcolor').val( getComputedStyle(document.querySelector('html')).getPropertyValue("--anchor-background-color") );
+	// Accent BG
+	$('#accentcolor').val( getComputedStyle(document.querySelector('html')).getPropertyValue("--accent-background-color") );
+	// Header BG
+	$('#headercolor').val( getComputedStyle(document.querySelector('html')).getPropertyValue("--sticky-header-background-color") );
+	// Toolbar BG
+	if (getComputedStyle(document.querySelector('html')).getPropertyValue("--toolbar-background-color") === 'auto' ) {
+		document.querySelector('.wikitable #auto4').checked = true;
+	} else {
+		document.querySelector('.wikitable #auto4').checked = false;
+		$('#toolbarcolor').val( getComputedStyle(document.querySelector('html')).getPropertyValue("--toolbar-background-color") );
+	}
+	$('.wikitable #toolbarcolor').prop('disabled',(document.querySelector('.wikitable #auto4').checked) );
+	// Caret Color
+	if (getComputedStyle(document.querySelector('html')).getPropertyValue("--caret-color") === 'auto' ) {
+		document.querySelector('.wikitable #auto5').checked = true;
+	} else {
+		document.querySelector('.wikitable #auto5').checked = false;
+		$('#caretcolor').val( getComputedStyle(document.querySelector('html')).getPropertyValue("--caret-color") );
+	}
+	$('.wikitable #caretcolor').prop('disabled',(document.querySelector('.wikitable #auto5').checked) );
+	// Border Radius
+	$('#border-radius').val( parseInt(getComputedStyle(document.querySelector('html')).getPropertyValue("--border-radius")) );
+	// Secondary Font
+	var sfont = getComputedStyle(document.querySelector('html')).getPropertyValue("--custom-secondary-font");
+	if (sfont == '""') {
+		var sfont = '';
+	}
+	$('#secondfont').val( sfont );
+	// Filter
+	$('#filter').val( getComputedStyle(document.querySelector('html')).getPropertyValue("--logo-filter") );
+	// Filter (Hover)
+	$('#filter2').val( getComputedStyle(document.querySelector('html')).getPropertyValue("--logo-filter2") );
+	// Filter Duration
+	$('#filter3').val( parseInt(getComputedStyle(document.querySelector('html')).getPropertyValue("--logo-filter-duration")) );
+	// Filter Delay
+	$('#filter4').val( parseInt(getComputedStyle(document.querySelector('html')).getPropertyValue("--logo-filter-delay")) );
+}
+
 function TestTheme() {
 	// Tests theme
+	$(".evelution-page-header-contribution-buttons .designer-buttons2 .theme-clear-button").prop('disabled', false);
 	if (document.querySelector('.wikitable #auto1').checked) {
 		var autocolor1 = 'auto';
 	} else {
@@ -724,11 +850,42 @@ function TestTheme() {
 	document.querySelector('html').style.setProperty("--caret-color", autocolor5 );
 	document.querySelector('html').style.setProperty("--border-radius", $('#border-radius').val() + "px" );
 	document.querySelector('html').style.setProperty("--custom-secondary-font", $('#secondfont').val() );
-	document.querySelector('html').style.setProperty("--wordmark-filter", $('#filter').val() );
-	document.querySelector('html').style.setProperty("--wordmark-filter-hover", $('#filter2').val() );
-	document.querySelector('html').style.setProperty("--wordmark-filter-duration", $('#filter3').val() + "ms" );
-	document.querySelector('html').style.setProperty("--wordmark-filter-delay", $('#filter4').val() + "ms" );
+	document.querySelector('html').style.setProperty("--logo-filter", $('#filter').val() );
+	document.querySelector('html').style.setProperty("--logo-filter-hover", $('#filter2').val() );
+	document.querySelector('html').style.setProperty("--logo-filter-duration", $('#filter3').val() + "ms" );
+	document.querySelector('html').style.setProperty("--logo-filter-delay", $('#filter4').val() + "ms" );
 	ColorUpdate(true,true);
+}
+
+
+function ClearTheme() {
+	// Tests theme
+	$(".evelution-page-header-contribution-buttons .designer-buttons2 .theme-clear-button").prop('disabled', true);
+	document.querySelector('html').style.removeProperty("--community-background-color");
+	document.querySelector('html').style.removeProperty("--community-background-image");
+	document.querySelector('html').style.removeProperty("--community-background-image-opacity");
+	document.querySelector('html').style.removeProperty("--community-background-mode");
+	document.querySelector('html').style.removeProperty("--community-background-vertical-alignment");
+	document.querySelector('html').style.removeProperty("--community-background-horizontal-alignment");
+	document.querySelector('html').style.removeProperty("--community-background-size");
+	document.querySelector('html').style.removeProperty("--community-background-no-tiling");
+	document.querySelector('html').style.removeProperty("--community-header-text-color");
+	document.querySelector('html').style.removeProperty("--page-background-color");
+	document.querySelector('html').style.removeProperty("--page-border-background-color");
+	document.querySelector('html').style.removeProperty("--page-text-background-color");
+	document.querySelector('html').style.removeProperty("--anchor-background-color");
+	document.querySelector('html').style.removeProperty("--accent-background-color");
+	document.querySelector('html').style.removeProperty("--sticky-header-background-color");
+	document.querySelector('html').style.removeProperty("--toolbar-background-color");
+	document.querySelector('html').style.removeProperty("--caret-color");
+	document.querySelector('html').style.removeProperty("--border-radius");
+	document.querySelector('html').style.removeProperty("--custom-secondary-font");
+	document.querySelector('html').style.removeProperty("--logo-filter");
+	document.querySelector('html').style.removeProperty("--logo-filter-hover");
+	document.querySelector('html').style.removeProperty("--logo-filter-duration");
+	document.querySelector('html').style.removeProperty("--logo-filter-delay");
+	ColorUpdate(true,true);
+
 }
 
 function SelectInputs() {
