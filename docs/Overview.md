@@ -154,5 +154,8 @@ Defaults to an empty string meaning Didact Gothic will be used. When set to anot
 ### ``$wgEvelutionIconStyle`` (Since 5.5.0, until 6.1.0)
 Defaulted to outlined. When set to either filled, rounded, shart or two-tone, it changed the icon display to a style other than outlined. Values outside the allowed ones would result in outlined icons. It did not affected OOUI and Inline SVGs but did affected Material Icons inserted on articles.
 
-### ``$wgEvelutionIconWireframe`` (Since 6.2.0)
-Defaults to true aka outlined Icons. When set to false, icons will display filled aka without any wireframe
+### ``$wgEvelutionIconWireframe`` (Since 6.2.0, until 8.0.0)
+Defaulted to true aka outlined Icons. When set to false, icons would display filled aka without any wireframe
+
+### ``$wgEvelutionIconWireframe`` (Since 8.1.0)
+Defaults to true aka right rail will be sticky. When set to false, right rail will not be sticky. In order for sticky behavior of right rail to appear, browser window size must be at least 960x600.
