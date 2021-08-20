@@ -43,7 +43,7 @@ function insertKey(key,value) {
 		$('body').addClass( "home-mode" );
 	}
 	document.querySelector('html').style.setProperty("--custom-font", config.CustomFont);
-	$("html").attr('icon-wireframe', config.IconWireframe);
+	$("html").attr('sticky-rail', config.StickyRail);
 	
 
 

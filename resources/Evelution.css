@@ -1932,7 +1932,34 @@ border-top-right-radius:0;
 	.server-mode.action-view:not(.ns--1):not(.ns-4):not(.ns-6):not(.ns-8):not(.ns-12):not(.mainpage):not(.no-rail) .evelution-page-header-title {
 		padding-right:50px;
 	}
-
+	
+	@media only screen and (min-height:700px) {
+		[sticky-rail="true"] .evelution-rail-wrapper {
+			position:-webkit-sticky;
+			position:sticky;
+			top:calc(var(--sticky-nav-size) + 15px);
+			height:100%;
+		}
+		[sticky-rail="true"] .evelution-rail-wrapper .info-module .evelution-module-content {
+			max-height:75px;
+			overflow-y:auto;
+		}
+		@media only screen and (min-height:750px) {
+			[sticky-rail="true"] .evelution-rail-wrapper .info-module .evelution-module-content {
+				max-height:125px;
+			}
+		}
+		@media only screen and (min-height:800px) {
+			[sticky-rail="true"] .evelution-rail-wrapper .info-module .evelution-module-content {
+				max-height:175px;
+			}
+		}
+		@media only screen and (min-height:875px) {
+			[sticky-rail="true"] .evelution-rail-wrapper .info-module .evelution-module-content {
+				max-height:250px;
+			}
+		}
+	}
 }
 
 
