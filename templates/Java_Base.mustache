@@ -4,40 +4,10 @@ document.querySelector("body").className += " phone"
 }
 
 /* Dropdowns */
-// Function to be used on the first child of .cpe-dropdown container
-function DropDown() {
-$(' .cpe-dropdown')
-        .click(function(e) {
-            var $this = $(this);
-			if ($this.hasClass('is-active')) {
-            $this.removeClass('is-active');
-		$(' .cpe-dropdown').off( "click" );			
-
- return;
-			}
-			e.preventDefault();
-			$this.addClass('is-active');
-		$(' .cpe-dropdown').off( "click" );			
-        });
-}
-
 // Calls the function on all toggles
 function DropDownUpdate() {
- $('.cpe-dropdown').off( "mouseleave" );	
-// Process Menus		
-$(".cpe-dropdown > :first-child")
-					.attr('onclick', 'DropDown();')
-					
-// Close dropdowns on mouse leave
-$(' .cpe-dropdown')
-.mouseleave(function() {
-            $(this).removeClass('is-active');
-        });
-
-
-
-}
-
+$(".cpe-dropdown")
+					.attr('tabindex', '-1');
 
 /* Select Inputs */
 $(' .cpe-dropdown.cpe-select .cpe-dropdown__content .cpe-list li:not(.cpe-dropdown-level-2)')
@@ -46,13 +16,15 @@ $(' .cpe-dropdown.cpe-select .cpe-dropdown__content .cpe-list li:not(.cpe-dropdo
 						var value = $(this).attr("value");
 						$(' .cpe-dropdown.cpe-select')
 						.click(function() {
-									var content = $('.cpe-select.is-active .cpe-dropdown__content .cpe-list li:not(.cpe-dropdown-level-2):hover > a').html();
-									$('.cpe-select.is-active .cpe-select__value').attr("value", value);
-									$('.cpe-select.is-active .cpe-select__value').html(content);
-									$(this).removeClass('is-active');
+									var content = $('.cpe-select:focus-within .cpe-dropdown__content .cpe-list li:not(.cpe-dropdown-level-2):hover > a').html();
+									$('.cpe-select:focus-within .cpe-select__value').attr("value", value);
+									$('.cpe-select:focus-within .cpe-select__value').html(content);
+									$(this).blur();
 									$(' .cpe-dropdown.cpe-select').off( "click" );
 								});
         });
+					
+}
 
 
 

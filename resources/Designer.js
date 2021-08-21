@@ -928,19 +928,4 @@ $('.wikitable #auto5').click(
 							}   
 						);
 
-$(' .cpe-dropdown.cpe-select .cpe-dropdown__content .cpe-list li:not(.cpe-dropdown-level-2)')
-.click(function(e) {
-						e.preventDefault();
-						var value = $(this).attr("value");
-						$(' .cpe-dropdown.cpe-select')
-						.click(function() {
-									var content = $('.cpe-select.is-active .cpe-dropdown__content .cpe-list li:not(.cpe-dropdown-level-2):hover > a').html();
-									$('.cpe-select.is-active .cpe-select__value').attr("value", value);
-									$('.cpe-select.is-active .cpe-select__value').html(content);
-									$(this).removeClass('is-active');
-									$(' .cpe-dropdown.cpe-select').off( "click" );
-								});
-        });
-
-
 }
