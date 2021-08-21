@@ -327,8 +327,6 @@ function InitDesigner() {
 				'<option value="#4a5459">' +
 				'<option value="#000000">' +
 				'<option value="#ffffff">' +
-				'<option value="#4700a5">' +
-				'<option value="#0000d3">' +
 			'</datalist>' +
 			'<datalist id="caretcolor_colors">' +
 				'<option value="#bfff00">' +
