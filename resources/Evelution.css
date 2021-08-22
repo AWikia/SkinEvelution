@@ -249,13 +249,12 @@ container > main {
 	color:var(--global-nav-text-color);
 	box-shadow: 0 0 3px var(--page-text-background-color), 0 0 3px var(--page-background-color);
 	height:100%;
-	width:var(--global-nav-size) ;
+	width:var(--global-nav-size);
 	position:-webkit-sticky;
 	position:sticky;
 	z-index:100;
 	top:0;
 }
-
 
 .cpe-list li + li.empty {
 	display:none;
@@ -330,7 +329,7 @@ container > main {
 	top:calc(25% + 8px);
 	bottom:auto;
 	left:auto;
-	right:-1px;
+	right:-2px;
 	content:'';
 	display:none;
 	height:0;
@@ -338,7 +337,13 @@ container > main {
 	position:absolute;
 	z-index:100;
 	border:8px solid transparent;
-	border-bottom-color:var(--page-border-background-color);
+	border-color:var(--page-secondary-background-color);
+    -webkit-mask: url(/wiki/skins/Evelution/resources/Arrow.svg?1f999) no-repeat;
+    mask: url(/wiki/skins/Evelution/resources/Arrow.svg?1f999) no-repeat;
+    -webkit-mask-size: 48px;
+    mask-size: 48px;
+    -webkit-mask-position: bottom;
+    mask-position: bottom;
 	margin-left:-8px;
 	pointer-events:none;
 }
@@ -353,8 +358,8 @@ container > main {
 	z-index:99;
 	padding:2px;
 	font-size:12px;
-	border:1px solid var(--page-border-background-color);
-	border-radius:calc( var(--border-radius) / 1.5 );
+	border:1px solid var(--page-secondary-background-color);
+	border-radius:var(--border-radius);
 	background-color:var(--page-secondary-background-color);
 	color:var(--page-text-background-color);
 	box-shadow:0 0 4px 1px rgba(var(--page-text-background-color-rgb), 0.5);
