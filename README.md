@@ -16,6 +16,9 @@ To Install Evelution, you must download the reposistory first. Make a folder cal
 wfLoadSkin( 'Evelution' );
 ```
 
+# New Version release
+- New releaes on Evelution will always come by HM100. However, users with **Triage** access can merge others PRs to Evelution. Once I got access to Evelution Skin in my personal MW instance, I will try to merge the changes from this repo to the **Evelution** folder in my MW instance and will release a new release, major or minor.
+
 # More Help
 Join to [our Discord Server](https://discord.gg/a6FbV6zWFs) for more help about Evelution
 
