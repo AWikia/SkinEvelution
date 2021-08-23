@@ -7,10 +7,10 @@ if ($("body.page-CPE_ThemeDesigner").length) {
 })();
 
 function InitDesigner() {
+	// Change Title
+	$(".evelution-page-header .evelution-title").html( mw.msg( 'evelution-designer-title' ) );
 	// Remove the following things
 	$(".cpe-button-group.views, .cpe-button-group.actions, #catlinks, .td-off").remove();
-	$("html").attr("visualcolors", "standard"); // Unset Visual Colors mode
-	ColorUpdate();
 	// Put new buttons
 	$(".evelution-page-header-contribution-buttons").append(
 		'<div class="designer-buttons cpe-button-group"></div>' +
@@ -645,6 +645,8 @@ function InitDesigner() {
 		'</table>'
 	);
 	SelectInputs();
+	$("html").attr("visualcolors", "standard"); // Unset Visual Colors mode
+	ColorUpdate();
 }
 
 function CopyTheme() {
