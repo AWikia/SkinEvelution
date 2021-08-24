@@ -487,7 +487,8 @@ function InitDesigner() {
 				'</td>' +
 
 				'<td style="text-align:center; width:150px">' +
-					'<input type="checkbox" name="tiling" id="tiling" checked>' +
+					'<div><span styke="vertical-align:middle">X:</span> <input type="checkbox" name="tiling" id="tilingH" checked></div>' +
+					'<div><span styke="vertical-align:middle">Y:</span> <input type="checkbox" name="tiling" id="tilingV" checked></div>' +
 				'</td>' +
 			'</tr>' +
 
@@ -691,7 +692,8 @@ function CopyTheme() {
 				 '--community-background-horizontal-alignment:' + $('.bg_align2 .cpe-select__value').attr('value') + ';\n' +
 				 '--community-background-vertical-alignment:' + $('.bg_align .cpe-select__value').attr('value') + ';\n' +
 				 '--community-background-size:' + $('.bg_size .cpe-select__value').attr('value')  + ';\n' +
-				 '--community-background-no-tiling:' + (!( document.querySelector('input#tiling').checked ))  + ';\n' +
+				 '--community-background-no-horizontal-tiling:' + (!( document.querySelector('input#tilingH').checked ))  + ';\n' +
+				 '--community-background-no-vertical-tiling:' + (!( document.querySelector('input#tilingV').checked ))  + ';\n' +
 				 '--anchor-background-color:' + $('#anchorcolor').val() + ';\n' +
 				 '--page-background-color:' + $('#pagebg').val() + ';\n' +
 				 '--page-border-background-color:' + autocolor2  + ';\n' +
@@ -744,7 +746,8 @@ function PasteTheme() {
 	$('.bg_size .cpe-select__value').attr('value', getComputedStyle(document.querySelector('html')).getPropertyValue("--community-background-size") )
 	$('.bg_size .cpe-select__value').html( bg_size );
 	// Body Image Tiling
-	document.querySelector('input#tiling').checked = (getComputedStyle(document.querySelector('html')).getPropertyValue("--community-background-no-tiling") === 'false');
+	document.querySelector('input#tilingH').checked = (getComputedStyle(document.querySelector('html')).getPropertyValue("--community-background-no-horizontal-tiling") === 'false');
+	document.querySelector('input#tilingV').checked = (getComputedStyle(document.querySelector('html')).getPropertyValue("--community-background-no-vertical-tiling") === 'false');
 	// Page BG
 	$('#pagebg').val( getComputedStyle(document.querySelector('html')).getPropertyValue("--page-background-color") );
 	// Page Text BG
@@ -844,7 +847,8 @@ function TestTheme() {
 	document.querySelector('html').style.setProperty("--community-background-vertical-alignment", $('.bg_align .cpe-select__value').attr('value') );
 	document.querySelector('html').style.setProperty("--community-background-horizontal-alignment", $('.bg_align2 .cpe-select__value').attr('value') );
 	document.querySelector('html').style.setProperty("--community-background-size", $('.bg_size .cpe-select__value').attr('value') );
-	document.querySelector('html').style.setProperty("--community-background-no-tiling", (!( document.querySelector('input#tiling').checked )) );
+	document.querySelector('html').style.setProperty("--community-background-no-horizontal-tiling", (!( document.querySelector('input#tilingH').checked )) );
+	document.querySelector('html').style.setProperty("--community-background-no-vertical-tiling", (!( document.querySelector('input#tilingV').checked )) );
 	document.querySelector('html').style.setProperty("--community-header-text-color", autocolor1 );
 	document.querySelector('html').style.setProperty("--page-background-color", $('#pagebg').val() );
 	document.querySelector('html').style.setProperty("--page-border-background-color", autocolor2 );
@@ -874,7 +878,8 @@ function ClearTheme() {
 	document.querySelector('html').style.removeProperty("--community-background-vertical-alignment");
 	document.querySelector('html').style.removeProperty("--community-background-horizontal-alignment");
 	document.querySelector('html').style.removeProperty("--community-background-size");
-	document.querySelector('html').style.removeProperty("--community-background-no-tiling");
+	document.querySelector('html').style.removeProperty("--community-background-no-horizontal-tiling");
+	document.querySelector('html').style.removeProperty("--community-background-no-vertical-tiling");
 	document.querySelector('html').style.removeProperty("--community-header-text-color");
 	document.querySelector('html').style.removeProperty("--page-background-color");
 	document.querySelector('html').style.removeProperty("--page-border-background-color");

@@ -1434,7 +1434,8 @@ function DownloadTheme(full=false) {
 				 '--community-background-horizontal-alignment:' + getComputedStyle(document.querySelector('container')).getPropertyValue("--community-background-horizontal-alignment")  + ';\n' +
 				 '--community-background-vertical-alignment:' + getComputedStyle(document.querySelector('container')).getPropertyValue("--community-background-vertical-alignment")  + ';\n' +
 				 '--community-background-size:' + getComputedStyle(document.querySelector('container')).getPropertyValue("--community-background-size")  + ';\n' +
-				 '--community-background-no-tiling:' + getComputedStyle(document.querySelector('container')).getPropertyValue("--community-background-no-tiling")  + ';\n' +
+				 '--community-background-no-horizontal-tiling:' + getComputedStyle(document.querySelector('container')).getPropertyValue("--community-background-no-horizontal-tiling")  + ';\n' +
+				 '--community-background-no-vertical-tiling:' + getComputedStyle(document.querySelector('container')).getPropertyValue("--community-background-no-vertical-tiling")  + ';\n' +
 				 // Anchor Color
 				 '--anchor-background-color:' + getComputedStyle(document.querySelector('container')).getPropertyValue("--anchor-background-color")  + ';\n' +
 				 '--anchor-background-color-hover:' + getComputedStyle(document.querySelector('container')).getPropertyValue("--anchor-background-color-hover")  + ';\n' +
@@ -1673,7 +1674,8 @@ function DownloadTheme(full=false) {
 				 '--community-background-horizontal-alignment:' + getComputedStyle(document.querySelector('container')).getPropertyValue("--community-background-horizontal-alignment")  + ';\n' +
 				 '--community-background-vertical-alignment:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--community-background-vertical-alignment")  + ';\n' +
 				 '--community-background-size:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--community-background-size")  + ';\n' +
-				 '--community-background-no-tiling:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--community-background-no-tiling")  + ';\n' +
+				 '--community-background-no-horizontal-tiling:' + getComputedStyle(document.querySelector('container')).getPropertyValue("--community-background-no-horizontal-tiling")  + ';\n' +
+				 '--community-background-no-vertical-tiling:' + getComputedStyle(document.querySelector('container')).getPropertyValue("--community-background-no-vertical-tiling")  + ';\n' +
 				 '--anchor-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--anchor-background-color")  + ';\n' +
 				 '--page-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--page-background-color")  + ';\n' +
 				 '--page-border-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--page-border-background-color")  + ';\n' +
@@ -3007,10 +3009,15 @@ function CheckBG() {
 				document.querySelector('input#BG1_3').checked = false;
 		}
 	/* BG2 */ // Background Tiling
-		if ((getComputedStyle(document.querySelector('body')).getPropertyValue("--community-background-no-tiling") === 'true') && !($("html.contrast.win10").length)  ) {
+		if ((getComputedStyle(document.querySelector('body')).getPropertyValue("--community-background-no-horizontal-tiling") === 'true') && !($("html.contrast.win10").length)  ) {
 				document.querySelector('input#BG2').checked = true;
 		} else {
 				document.querySelector('input#BG2').checked = false;
+		}
+		if ((getComputedStyle(document.querySelector('body')).getPropertyValue("--community-background-no-vertical-tiling") === 'true') && !($("html.contrast.win10").length)  ) {
+				document.querySelector('input#BG2_1').checked = true;
+		} else {
+				document.querySelector('input#BG2_1').checked = false;
 		}
 	/* BG3 */
 	/*
@@ -3075,7 +3082,8 @@ function CheckBG() {
 	$("body").attr('community-background-size', getComputedStyle(document.querySelector('body')).getPropertyValue("--community-background-size") );
 	$("body").attr('community-background-horizontal-alignment', getComputedStyle(document.querySelector('body')).getPropertyValue("--community-background-horizontal-alignment") );
 	$("body").attr('community-background-vertical-alignment', getComputedStyle(document.querySelector('body')).getPropertyValue("--community-background-vertical-alignment") );
-	$("body").attr('community-background-no-tiling', getComputedStyle(document.querySelector('body')).getPropertyValue("--community-background-no-tiling") );
+	$("body").attr('community-background-no-horizontal-tiling', getComputedStyle(document.querySelector('body')).getPropertyValue("--community-background-no-horizontal-tiling") );
+	$("body").attr('community-background-no-vertical-tiling', getComputedStyle(document.querySelector('body')).getPropertyValue("--community-background-no-vertical-tiling") );
 }
 
 /* 

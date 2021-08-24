@@ -389,7 +389,8 @@ font-family:Trebuchet MS;
 --community-background-horizontal-alignment:center;
 --community-background-vertical-alignment:center;
 --community-background-size:cover;
---community-background-no-tiling:false;
+--community-background-no-horizontal-tiling:false;
+--community-background-no-vertical-tiling:false;
 --backdrop-filter:blur(8px) sepia(12%) contrast(112%) invert(12%) grayscale(12%) saturate(112%) hue-rotate(12deg) brightness(112%);
 /* Fonts */
 --main-fonts:"Didact Gothic", "Inter"; /* Empty but other languages will depend on it */
@@ -656,8 +657,12 @@ body[community-background-size="full"] .body-community-background {
 	background-size:auto;
 }
 
-body[community-background-no-tiling="true"] .body-community-background {
-	background-repeat:no-repeat;
+body[community-background-no-horizontal-tiling="true"] .body-community-background {
+	background-repeat-x:no-repeat;
+}
+
+body[community-background-no-vertical-tiling="true"] .body-community-background {
+	background-repeat-y:no-repeat;
 }
 
 
