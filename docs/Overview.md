@@ -14,7 +14,7 @@ Evelution, despite being essentially similar to MpistoSkin2 from Q.Qore, there'r
 - Evelution used to lack a right rail that MpistoSkin2 has. However, evelution has support for Sitenotice. 4.8.0 added support for Right Rail but in a completely different style despite sharing the same classes from MpistoSkin2
 - Evelution uses smaller typography on the Article compared to MpistoSkin2. Article text size for instance, is at 13 pixels.
 - Evelution uses LocalStorage to store all skin-related settings (Theme Management, Article Width, Toolbar width and Sticky Nav width) so when page is reloaded, those settings are preserved. MpistoSkin2 does not rely on this and as such, all skin-related settings are reset when page is reloaded.
-- Evelution does not take care of System's native Dark Mode, unlike MpistoSkin2
+- Evelution used not to take care of System's native Dark Mode, unlike MpistoSkin2
 - Evelution's Global Navigation consists of different items:
   - Top links include the GitHub link (Scoped to this repository), the Evelution Support Server Link and the MediaWik site link
   - The Explore Menu contains the list of links found in the footer the Vector skin has, instead of the official A Techno Links
@@ -26,6 +26,20 @@ Evelution, despite being essentially similar to MpistoSkin2 from Q.Qore, there'r
 - Unlike MpistoSkin2, no Global Footer exists. However, a small article footer does exist
 - In Evelution, only namespaces, views and actions reside by default on Page Header Actions. In MpistoSkoin2, Visual Appearance also redies there.
 - MpistoSkin2 is a GMK skin that has many wrappers and is semi-dynamical. Evelution is however, a MediaWiki skin with reliance on Mustache and much more dynamical. Because of this, the custom appearance of Preferences Screen is unavailable on Evelutiion but the ones from core MW is at least themed.
+
+## Differences of Evelution and FandomDesktop
+Evelution, despite being as a close-off to Fandom's new FandomDesktop, there're several differences, to name a few:
+- Evelution uses breakpoints to define its appearance, like Oasis but unlike FandomDesktop
+- Unlike FandomDesktop where FandomMobile is the Mobile segment of FandomDesktop, Evelution has the mobile segment inside the skin. However, a more mobile optimized version with minimal formatting named Tunic is available.
+- Evelution uses LocalStorage to store all skin-related settings (Theme Management, Article Width, Toolbar width and Sticky Nav width), unlike FandomDesktop which uses user preferences. As a result, those are tied to a specific browser for all users instead to a specific user for all browsers
+- You have the ability to collapse the sticky nav, unlike FandomDesktop
+- Toolbar appears as icon-only with tooltips and like Oasis but unlike FandomDesktop, it appears as a full-width container. It is uncustomizable as well but is loaded with many links
+- Unlike FandomDesktop, no Global Footer exists. However, a small article footer does exist
+- Evelution has no user avatar support, unlike FandomDesktop and such an icon takes place.
+- Unlike FandomDesktop, no floating page actions exist. While server mode of Evelution gives something similar, it is completely unrelated.
+- Unlike FandomDesktop, in Evelution you have double the amount of themes you can define in FandomDesktop and the light/dark mode toggle does not toggle between wiki themes but rather between Inverted Colors mode. Also, Evelution takes care of System's native dark mode, unlike FandomDesktop
+- Page header on Evelution is completely different from the ones found in FandomDesktop but similar
+- Global Nav is mostly unbranded, is smaller and is themed. Also, search is not opened as a modal but rather as dropdown in the global nav. In addition global nav links do not include text below the icon and instead have tooltips.
 
 ## What are the different sizes I can use?
 Evelution gets powered up with six main sizes: 320 pixels for small phones, 375 pixels for medium phones, 425 pixels for large phones 705 pixels for small desktops, 1280 pixels for large desktops and 1500 pixels for extra large desktops. A middle breakpoint size also exists. Users are able to read articles in either fixed width or full width, whichever they want to use.
