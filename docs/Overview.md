@@ -40,6 +40,8 @@ Evelution, despite being as a close-off to Fandom's new FandomDesktop, there're 
 - Unlike FandomDesktop, in Evelution you have double the amount of themes you can define in FandomDesktop and the light/dark mode toggle does not toggle between wiki themes but rather between Inverted Colors mode. Also, Evelution takes care of System's native dark mode, unlike FandomDesktop
 - Page header on Evelution is completely different from the ones found in FandomDesktop but similar
 - Global Nav is mostly unbranded, is smaller and is themed. Also, search is not opened as a modal but rather as dropdown in the global nav. In addition global nav links do not include text below the icon and instead have tooltips.
+- Evelution, unlike FandomDesktop uses pure JS to control theming and theming variables can be changed with ease. All background-related options are accesed with CSS variables as well. Several attributes to the body element are put as well. Users can also force specific color scheme or use different premade visual styles.
+  - Evelution is, however compatible with **ALL** Fandom theming CSS variables. However, they're aliased to existing CPE Language variables, so instead of having the behavior seen in FandomDesktop, they have essentially the same behavior from CPE Language System.
 
 ## What are the different sizes I can use?
 Evelution gets powered up with six main sizes: 320 pixels for small phones, 375 pixels for medium phones, 425 pixels for large phones 705 pixels for small desktops, 1280 pixels for large desktops and 1500 pixels for extra large desktops. A middle breakpoint size also exists. Users are able to read articles in either fixed width or full width, whichever they want to use.
