@@ -393,8 +393,8 @@ container > main {
 
 	.evelution-sidebar .link:active, 
 	.evelution-sidebar .link:focus, 
-	.evelution-sidebar .cpe-dropdown:focus .link,
-	.evelution-sidebar .cpe-dropdown:focus-within .link {
+	.evelution-sidebar .cpe-dropdown:focus > .link,
+	.evelution-sidebar .cpe-dropdown:focus-within > .link {
 		background-color:rgba(var(--global-nav-link-background-active), var(--global-nav-link-opacity));
 		color:var(--global-nav-link-color-active);
 	}
@@ -1259,8 +1259,8 @@ margin-left: 20px;
 
 	.evelution-sticky-header .link:hover, 
 	.evelution-sticky-header .link:focus, 
-	.evelution-sticky-header .cpe-dropdown:focus .link, 
-	.evelution-sticky-header .cpe-dropdown:focus-within .link, 
+	.evelution-sticky-header .cpe-dropdown:focus > .link, 
+	.evelution-sticky-header .cpe-dropdown:focus-within > .link, 
 	.evelution-sticky-header .link.active  {
 /*		-webkit-animation: 600ms linear 200ms infinite normal color-header-hover;
 		     -o-animation: 600ms linear 200ms infinite normal color-header-hover;
@@ -1547,8 +1547,8 @@ margin-left: 20px;
 	
 	.evelution-community-header .link:hover, 
 	.evelution-community-header .link:focus, 
-	.evelution-community-header .cpe-dropdown:focus .link, 
-	.evelution-community-header .cpe-dropdown:focus-within .link, 
+	.evelution-community-header .cpe-dropdown:focus > .link, 
+	.evelution-community-header .cpe-dropdown:focus-within > .link, 
 	.evelution-community-header .link.active  {
 /*		-webkit-animation: 600ms linear 200ms infinite normal color-header-hover;
 		     -o-animation: 600ms linear 200ms infinite normal color-header-hover;
@@ -1866,6 +1866,21 @@ border-top-right-radius:0;
 	color:var(--page-text-background-color);
 	padding:0 10px;
 	border:1px solid transparent;
+	  scrollbar-width:thin;
+	  scrollbar-color:var(--scrollbar-thumb-color-1) var(--scrollbar-track-color-1);
+	 /** Scrollbar Styling **/
+		/* Width */
+		--scrollbar-width:8.5px;
+		/* Track */
+		--scrollbar-track-color-1:transparent;
+		--scrollbar-track-color-2:transparent;
+		--scrollbar-track-color-3:transparent;
+		--scrollbar-track-text:transparent;
+		/* Thumb */
+		--scrollbar-thumb-color-1:var(--page-border-background-color);
+		--scrollbar-thumb-color-2:var(--page-border-background-color-hover);
+		--scrollbar-thumb-color-3:var(--page-border-background-color-active);
+		--scrollbar-thumb-text:var(--page-border-foreground-color);
 }
 
 .evelution-rail-wrapper .evelution-module h2 {
