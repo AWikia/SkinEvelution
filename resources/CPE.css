@@ -485,7 +485,7 @@ body {
     --theme-page-headings-font: var(--secondary-font);
     --theme-link-color: rgb(var(--anchor-background-color-rgb));
     --theme-link-color--rgb: var(--anchor-background-color-rgb);
-    --theme-link-color--hover: var(--anchor-background-color-hover);
+    --theme-link-color--hover: var(--anchor-background-color-hover-dledlen);
     --theme-link-label-color: var(--anchor-foreground-color);
     --theme-accent-color: rgb(var(--accent-background-color-rgb));
     --theme-accent-color--rgb: var(--accent-background-color-rgb);
@@ -495,7 +495,7 @@ body {
     --theme-border-color--rgb: var(--page-border-background-color-rgb);
     --theme-alert-color: var(--alert-background-color);
     --theme-alert-color--rgb: var(--alert-background-color-rgb);
-    --theme-alert-color--hover: var(--alert-background-color-hover);
+    --theme-alert-color--hover: var(--alert-background-color-hover-dledlen);
     --theme-alert-label: var(--alert-foreground-color);
     --theme-warning-color: var(--warning-background-color);
     --theme-warning-label: var(--warning-foreground-color);
@@ -896,7 +896,7 @@ color:rgb(var(--anchor-background-color-rgb));
 a:hover,
 body a:hover,
 body a:visited:hover {
-color:var(--article-link-background-color-hover);
+color:var(--anchor-background-color-hover-dledlen);
 cursor:var(--cpe-hand-cursor);
 }
 
@@ -1274,20 +1274,20 @@ a.cpe-button, button.cpe-button {
 }
 
 .cpe-button.is-secondary:visited:hover {
-    color:var(--accent-background-color-hover);
+    color:var(--accent-background-color-hover-dledlen);
 }
 
 .cpe-button.is-secondary:visited:active {
-    color:var(--accent-background-color-active);
+    color:var(--accent-background-color-active-dledlen);
 }
 
 
 
 .cpe-button.is-secondary:hover {
-    border-color:var(--accent-background-color-hover);
+    border-color:var(--accent-background-color-hover-dledlen);
     background-color:var(--accent-background-color-page-background-color-mix-light); 
     background-color:var(--page-background-color);
-    color:var(--accent-background-color-hover);
+    color:var(--accent-background-color-hover-dledlen);
     box-shadow:0 0 1.5px 1.5px var(--accent-background-color-page-background-color-mix-light);
     box-shadow:0 0 1.5px 1.5px currentColor;
 }
@@ -1297,17 +1297,17 @@ a.cpe-button, button.cpe-button {
 .selected .cpe-button.is-secondary,
 .cpe-dropdown:focus > .cpe-button.is-secondary,
 .cpe-dropdown:focus-within > .cpe-button.is-secondary {
-    border-color:var(--button-border-dark-super);
+    border-color:var(--accent-background-color-active-dledlen);
     background-color:var(--accent-background-color-page-background-color-mix);
     background-color:var(--page-background-color);
-    color:var(--accent-background-color-active); /* color:var(--accent-background-color-active); */ 
+    color:var(--accent-background-color-active-dledlen); /* color:var(--accent-background-color-active); */ 
     box-shadow:0 0 1.5px 1.5px var(--accent-background-color-page-background-color-mix);
     box-shadow:0 0 1.5px 1.5px currentColor;
 }
 
 .cpe-button.is-secondary:focus:not(:active):not(.is-active) {
   background-color:var(--page-background-color); 
-  color:var(--accent-background-color-active); 
+  color:var(--accent-background-color-active-dledlen); 
 }
 
 .cpe-dropdown:focus > .cpe-button.is-secondary,
@@ -1318,7 +1318,7 @@ a.cpe-button, button.cpe-button {
 .selected .cpe-button.is-secondary:active,
 .cpe-button.is-secondary.is-active {
 	background-color:var(--page-background-color); 
-	color:var(--accent-background-color-active);
+	color:var(--accent-background-color-active-dledlen);
 }
 
 
@@ -1335,7 +1335,7 @@ a.cpe-button, button.cpe-button {
 }
 
 .cpe-button.is-text:visited:hover {
-    color:var(--accent-background-color-hover);
+    color:var(--accent-background-color-hover-dledlen);
 }
 
 .cpe-button.is-text:visited:active {
@@ -1345,13 +1345,13 @@ a.cpe-button, button.cpe-button {
 
 .cpe-button.is-text:hover {
   border-color:transparent;
-  color:var(--accent-background-color-hover);
+  color:var(--accent-background-color-hover-dledlen);
   background-color:transparent;
 }
 
 .cpe-button.is-text:active {
   border-color:transparent;
-  color:var(--accent-background-color-active);
+  color:var(--accent-background-color-active-dledlen);
   background-color:transparent;
 }
 
@@ -1365,6 +1365,8 @@ a.cpe-button, button.cpe-button {
   --accent-background-color-rgb:var(--anchor-background-color-rgb);
   --accent-background-color-hover:var(--anchor-background-color-hover);
   --accent-background-color-active:var(--anchor-background-color-active);
+  --accent-background-color-hover-dledlen:var(--anchor-background-color-hover-dledlen);
+  --accent-background-color-active-dledlen:var(--anchor-background-color-active-dledlen);
   --accent-foreground-color:var(--anchor-foreground-color);
   --accent-foreground-color-hover:var(--anchor-foreground-color-hover);
   --accent-foreground-color-inverted:var(--anchor-foreground-color-inverted);
@@ -1379,6 +1381,8 @@ a.cpe-button, button.cpe-button {
   --accent-background-color-rgb:var(--page-border-background-color-rgb);
   --accent-background-color-hover:var(--page-border-background-color-hover);
   --accent-background-color-active:var(--page-border-background-color-active);
+  --accent-background-color-hover-dledlen:var(--page-border-background-color-hover-dledlen);
+  --accent-background-color-active-dledlen:var(--page-border-background-color-active-dledlen);
   --accent-foreground-color:var(--page-border-foreground-color);
   --accent-foreground-color-hover:var(--page-border-foreground-color-hover);
   --accent-foreground-color-inverted:var(--page-border-foreground-color-inverted);
@@ -1393,6 +1397,8 @@ a.cpe-button, button.cpe-button {
   --accent-background-color-rgb:var(--community-background-color-rgb);
   --accent-background-color-hover:var(--community-background-color-hover);
   --accent-background-color-active:var(--community-background-color-active);
+  --accent-background-color-hover-dledlen:var(--community-background-color-hover-dledlen);
+  --accent-background-color-active-dledlen:var(--community-background-color-active-dledlen);
   --accent-foreground-color:var(--community-foreground-color);
   --accent-foreground-color-hover:var(--community-foreground-color-hover);
   --accent-foreground-color-inverted:var(--community-foreground-color-inverted);
@@ -1408,6 +1414,8 @@ a.cpe-button, button.cpe-button {
   --accent-background-color-rgb:var(--sticky-header-background-color-rgb);
   --accent-background-color-hover:var(--sticky-header-background-color-hover);
   --accent-background-color-active:var(--sticky-header-background-color-active);
+  --accent-background-color-hover-dledlen:var(--sticky-header-background-color-hover-dledlen);
+  --accent-background-color-active-dledlen:var(--sticky-header-background-color-active-dledlen);
   --accent-foreground-color:var(--sticky-header-foreground-color);
   --accent-foreground-color-hover:var(--sticky-header-foreground-color-hover);
   --accent-foreground-color-inverted:var(--sticky-header-foreground-color-inverted);
@@ -1422,6 +1430,8 @@ a.cpe-button, button.cpe-button {
   --accent-background-color-rgb:var(--page-text-background-color-rgb);
   --accent-background-color-hover:var(--page-text-background-color-hover);
   --accent-background-color-active:var(--page-text-background-color-active);
+  --accent-background-color-hover-dledlen:var(--page-text-background-color-hover-dledlen);
+  --accent-background-color-active-dledlen:var(--page-text-background-color-active-dledlen);
   --accent-foreground-color:var(--page-text-foreground-color);
   --accent-foreground-color-hover:var(--page-text-foreground-color-hover);
   --accent-foreground-color-inverted:var(--page-text-foreground-color-inverted);
@@ -1436,6 +1446,8 @@ a.cpe-button, button.cpe-button {
   --accent-background-color-rgb:var(--toolbar-background-color-rgb);
   --accent-background-color-hover:var(--toolbar-background-color-hover);
   --accent-background-color-active:var(--toolbar-background-color-active);
+  --accent-background-color-hover-dledlen:var(--toolbar-background-color-hover-dledlen);
+  --accent-background-color-active-dledlen:var(--toolbar-background-color-active-dledlen);
   --accent-foreground-color:var(--toolbar-foreground-color);
   --accent-foreground-color-hover:var(--toolbar-foreground-color-hover);
   --accent-foreground-color-inverted:var(--toolbar-foreground-color-inverted);
@@ -1450,6 +1462,8 @@ a.cpe-button, button.cpe-button {
   --accent-background-color-rgb:var(--alert-background-color-rgb);
   --accent-background-color-hover:var(--alert-background-color-hover);
   --accent-background-color-active:var(--alert-background-color-active);
+  --accent-background-color-hover-dledlen:var(--alert-background-color-hover-dledlen);
+  --accent-background-color-active-dledlen:var(--alert-background-color-active-dledlen);
   --accent-foreground-color:var(--alert-foreground-color);
   --accent-foreground-color-hover:var(--alert-foreground-color-hover);
   --accent-foreground-color-inverted:var(--alert-foreground-color-inverted);
@@ -1464,6 +1478,8 @@ a.cpe-button, button.cpe-button {
   --accent-background-color-rgb:var(--warning-background-color-rgb);
   --accent-background-color-hover:var(--warning-background-color-hover);
   --accent-background-color-active:var(--warning-background-color-active);
+  --accent-background-color-hover-dledlen:var(--warning-background-color-hover-dledlen);
+  --accent-background-color-active-dledlen:var(--warning-background-color-active-dledlen);
   --accent-foreground-color:var(--warning-foreground-color);
   --accent-foreground-color-hover:var(--warning-foreground-color-hover);
   --accent-foreground-color-inverted:var(--warning-foreground-color-inverted);
@@ -1478,6 +1494,8 @@ a.cpe-button, button.cpe-button {
   --accent-background-color-rgb:var(--success-background-color-rgb);
   --accent-background-color-hover:var(--success-background-color-hover);
   --accent-background-color-active:var(--success-background-color-active);
+  --accent-background-color-hover-dledlen:var(--success-background-color-hover-dledlen);
+  --accent-background-color-active-dledlen:var(--success-background-color-active-dledlen);
   --accent-foreground-color:var(--success-foreground-color);
   --accent-foreground-color-hover:var(--success-foreground-color-hover);
   --accent-foreground-color-inverted:var(--success-foreground-color-inverted);
@@ -1493,6 +1511,8 @@ a.cpe-button, button.cpe-button {
   --accent-background-color-rgb:var(--message-background-color-rgb);
   --accent-background-color-hover:var(--message-background-color-hover);
   --accent-background-color-active:var(--message-background-color-active);
+  --accent-background-color-hover-dledlen:var(--message-background-color-hover-dledlen);
+  --accent-background-color-active-dledlen:var(--message-background-color-active-dledlen);
   --accent-foreground-color:var(--message-foreground-color);
   --accent-foreground-color-hover:var(--message-foreground-color-hover);
   --accent-foreground-color-inverted:var(--message-foreground-color-inverted);
