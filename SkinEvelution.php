@@ -43,6 +43,7 @@ class SkinEvelution extends SkinMustache {
         $data["html-export-link"] = Title::newFromText( 'Special:Export' )->getLocalURL();
         $data["html-stats-link"] = Title::newFromText( 'Special:Statistics' )->getLocalURL();
         $data["html-allpages-link"] = Title::newFromText( 'Special:AllPages' )->getLocalURL();
+        $data["html-designer-link"] = Title::newFromText( 'CPE ThemeDesigner' )->getLocalURL();
         return $data;
     }
 }

@@ -9,6 +9,7 @@ if ($("body.page-CPE_ThemeDesigner").length) {
 function InitDesigner() {
 	// Change Title
 	$(".evelution-page-header .evelution-title").html( mw.msg( 'evelution-designer-title' ) );
+	$(".link[designer-on]").addClass( 'active' );
 	// Remove the following things
 	$(".cpe-button-group.views, .cpe-button-group.actions, #catlinks, .td-off").remove();
 	// Put new buttons
