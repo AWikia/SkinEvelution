@@ -1859,9 +1859,9 @@ function ColorTest(color,text=false,inv=false,dledlen=false) { // Regular Colors
 			}
 		} else {
 			if (inv === false) {
-				return GetHoverColor(color, '#000000','hsl',10,steps);
+				return chroma(color).darken(1.25);  // GetHoverColor(color, '#000000','hsl',10,steps);
 			} else {
-				return GetHoverColor(color, '#ffffff','hsl',10,steps);
+				return chroma(color).darken(-1.25); // GetHoverColor(color, '#ffffff','hsl',10,steps);
 			}
 		}
 	} else {
@@ -1873,9 +1873,9 @@ function ColorTest(color,text=false,inv=false,dledlen=false) { // Regular Colors
 			}
 		} else {
 			if (inv === true) {
-				return GetHoverColor(color, '#000000','hsl',10,steps);
+				return chroma(color).darken(1.25);  // GetHoverColor(color, '#000000','hsl',10,steps);
 			} else {
-				return GetHoverColor(color, '#ffffff','hsl',10,steps);
+				return chroma(color).darken(-1.25); // GetHoverColor(color, '#ffffff','hsl',10,steps);
 			}
 		}
 	}
@@ -1895,9 +1895,9 @@ function SuperColorTest(color,dledlen=false) { // Double Amount
 		var steps = 3
 	}
 	if (isLightColor(color2)) {
-		return GetActiveColor(color, '#000000','hsl',10,steps);
+		return chroma(color).darken(2.5);  // GetActiveColor(color, '#000000','hsl',10,steps);
 	} else {
-		return GetActiveColor(color, '#ffffff','hsl',10,steps);
+		return chroma(color).darken(-2.5); // GetActiveColor(color, '#ffffff','hsl',10,steps);
 	}
 }
 
@@ -1933,10 +1933,10 @@ function Color3(r=0,g=0,b=0) {
 	return chroma('rgb(' + r + ',' + g + ',' + b + ')' ).get('hex');
 }
 
-
 function isLightColor(color) {
 	return ((chroma.contrast('#000000', color)) > 5);
 }
+
 
 function isSuperLightColor(color) {
 	return ((chroma.contrast('#000000', color)) > 6);
