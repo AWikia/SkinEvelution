@@ -1859,9 +1859,9 @@ function ColorTest(color,text=false,inv=false,dledlen=false) { // Regular Colors
 			}
 		} else {
 			if (inv === false) {
-				return chroma(color).darken(1.25);  // GetHoverColor(color, '#000000','hsl',10,steps);
+				return GetHoverColor(color, '#000000','hsl',10,4);
 			} else {
-				return chroma(color).darken(-1.25); // GetHoverColor(color, '#ffffff','hsl',10,steps);
+				return GetHoverColor(color, '#ffffff','hsl',10,4);
 			}
 		}
 	} else {
@@ -1873,9 +1873,9 @@ function ColorTest(color,text=false,inv=false,dledlen=false) { // Regular Colors
 			}
 		} else {
 			if (inv === true) {
-				return chroma(color).darken(1.25);  // GetHoverColor(color, '#000000','hsl',10,steps);
+				return GetHoverColor(color, '#000000','hsl',10,4);
 			} else {
-				return chroma(color).darken(-1.25); // GetHoverColor(color, '#ffffff','hsl',10,steps);
+				return GetHoverColor(color, '#ffffff','hsl',10,4);
 			}
 		}
 	}
@@ -1895,9 +1895,9 @@ function SuperColorTest(color,dledlen=false) { // Double Amount
 		var steps = 3
 	}
 	if (isLightColor(color2)) {
-		return chroma(color).darken(2.5);  // GetActiveColor(color, '#000000','hsl',10,steps);
+		return GetActiveColor(color, '#000000','hsl',10,4);
 	} else {
-		return chroma(color).darken(-2.5); // GetActiveColor(color, '#ffffff','hsl',10,steps);
+		return GetActiveColor(color, '#ffffff','hsl',10,4);
 	}
 }
 
