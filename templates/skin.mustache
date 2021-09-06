@@ -1,32 +1,33 @@
 {{>Icons}}
 	<div class="gradient-overlay" style="position:absolute; pointer-events:none;"></div>
-	<div class="invertion-on" style=" pointer-events: none; position: absolute; z-index: -2; width: 100%; height: 100%;"><div class="body-community-background " style="position:absolute; pointer-events:none;"></div></div>
+	<div class="invertion-on" style=" pointer-events: none; position: absolute; z-index: -2; width: 100%; height: 100%;"><div class="body-community-background fandom-community-header__background" style="position:absolute; pointer-events:none;"></div></div>
 	<div class="body-community-background-color" style="position:absolute; pointer-events:none;"></div>
 	<container tabindex="-1">
 		<stickya style="display:block; z-index:100; position:fixed; width:100%"></stickya>
 		{{>GlobalNavigation}}
 		<main>
-		<aside class="evelution-wikispace">
+		<aside class="evelution-wikispace main-container">
 			<div class="top-gap" responsive></div>
 			{{>StickyHeader}}
-			<section class="evelution-content" responsive id="mw-content" onclick="">
+			<section class="evelution-content resizable-container" responsive id="mw-content" onclick="">
 				{{>CommunityHeader}}
-				<div class="evelution-wrapper">
+				<div class="evelution-wrapper page">
 					<div class="evelution-article-wrapper">
-					  <nav class="evelution-article-container">
+					  <nav class="evelution-article-container page__main">
+						{{>PageActions}}
 						{{>PageHeader}}
 						<div class="evelution-article-content">
 							  {{>ServerActions}}
 							  <!-- Begin Article -->
-							  <article class="evelution-article" id="content">
+							  <article class="evelution-article page-content" id="content">
 								{{>ContentBody}}
 							  </article>
 							  <!-- End Article -->
 						  </div>
 						  <!-- Begin Footer -->
-						<div class="evelution-page-header evelution-page-footer">
-							<div class="evelution-page-header-main">
-								<div class="evelution-page-header-title">
+						<div class="evelution-page-header evelution-page-footer page-header">
+							<div class="evelution-page-header-main page-header__bottom">
+								<div class="evelution-page-header-title page-header__title-wrapper">
 									{{#data-footer}}
 									{{!}}{{#data-info}}{{>FooterList}}{{/data-info}}
 									{{/data-footer}}
@@ -35,7 +36,7 @@
 						</div>
 					  <!-- End Footer -->
 					  </nav>
-					  <nav class="evelution-rail-wrapper">
+					  <nav class="evelution-rail-wrapper page__right-rail WikiaRail">
 						{{>Modules}}
 					  </nav>
 					</div>

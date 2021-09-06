@@ -44,6 +44,13 @@ function insertKey(key,value) {
 	}
 	document.querySelector('html').style.setProperty("--custom-font", config.CustomFont);
 	$("html").attr('sticky-rail', config.StickyRail);
+	if (! ( ($("#ca-edit").length) || ($("#ca-viewsource").length)  ) ) { // Remove Edit Button
+		$(".evelution-floating-actions .cpe-floating-button.edit").remove();
+	} 
+	if (! ($("#ca-edit").length) ) { // Rename to viewsource
+		$(".evelution-floating-actions .cpe-floating-button.edit").attr("cpe-tooltip", mw.msg( 'viewsource' ) );
+		$(".evelution-floating-actions .cpe-floating-button.edit .cpe-icon.material-icons").html('lock');
+	}
 	
 
 
@@ -54,7 +61,7 @@ function CompileVisualL10N() {
 /* Visual Themes */
 var visualThemeNames_l10n = [mw.msg( 'evelution-style-basic' ),mw.msg( 'evelution-style-contrast' ),mw.msg( 'evelution-style-simple' ),mw.msg( 'evelution-style-classic' )];
 /* Visual Colors */
-var visualColorNames_l10n = [mw.msg( 'evelution-color-factorycolors' ), mw.msg( 'evelution-color-lunacolors' ), mw.msg( 'evelution-color-classicforced' ), mw.msg( 'evelution-color-campbellforced' ), mw.msg( 'evelution-color-forced' ), mw.msg( 'evelution-color-tangoforced' ),mw.msg( 'evelution-color-rgbcolors' ),mw.msg( 'evelution-color-retro' ),mw.msg( 'evelution-color-retro' ) + ' II',mw.msg( 'evelution-color-retro' ) + ' III',mw.msg( 'evelution-color-retro' ) + ' IV',mw.msg( 'evelution-color-retro' ) + ' V',mw.msg( 'evelution-color-retro' ) + ' VI',mw.msg( 'evelution-color-retro' ) + ' VII',mw.msg( 'evelution-color-fandomcolors' ) ];
+var visualColorNames_l10n = [mw.msg( 'evelution-color-factorycolors' ), mw.msg( 'evelution-color-lunacolors' ), mw.msg( 'evelution-color-classicforced' ), mw.msg( 'evelution-color-campbellforced' ), mw.msg( 'evelution-color-forced' ), mw.msg( 'evelution-color-tangoforced' ),mw.msg( 'evelution-color-rgbcolors' ),mw.msg( 'evelution-color-retro' ),mw.msg( 'evelution-color-retro' ) + ' II',mw.msg( 'evelution-color-retro' ) + ' III',mw.msg( 'evelution-color-retro' ) + ' IV',mw.msg( 'evelution-color-retro' ) + ' V',mw.msg( 'evelution-color-retro' ) + ' VI',mw.msg( 'evelution-color-retro' ) + ' VII',mw.msg( 'evelution-color-fandomcolors' ), mw.msg( 'evelution-color-candycrush' ), mw.msg( 'evelution-color-candycrush' ) + ' II' ];
 
 // Changes Strings into l10ned version
 /* Visual Styles */
