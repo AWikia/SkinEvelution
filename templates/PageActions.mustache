@@ -23,13 +23,69 @@
 				light_mode
 			</span>
 		</a>
-		<div class="cpe-dropdown themes color-management-on" cpe-orient="land">
-			<div class="cpe-floating-button accent themes page-side-tool" cpe-tooltip="{{msg-evelution-themes}}">
+		<a class="cpe-floating-button accent color-toggle color-management-on solo-on page-side-tool" onclick="ColorMode()" cpe-tooltip="{{msg-evelution-togglecolor}} (Solo)">
+			<span class="cpe-icon material-icons">
+				hdr_auto
+			</span>
+		</a>
+		<a class="cpe-floating-button accent color-toggle color-management-on solo-off page-side-tool" onclick="ColorMode()" cpe-tooltip="{{msg-evelution-togglecolor}} (Duo)">
+			<span class="cpe-icon material-icons">
+				hdr_auto
+			</span>
+		</a>
+		<div class="cpe-dropdown filters" cpe-orient="land">
+			<div class="cpe-floating-button accent filters page-side-tool" cpe-tooltip="{{msg-evelution-color-filters}}">
+				<span class="cpe-icon material-icons">
+					invert_colors
+				</span>
+			</div>
+			<div class="cpe-dropdown__content is-right-aligned cpe-visual-appearance">					
+				<ul class="cpe-list is-linked cpe-color-filters">						
+					<li id="f-standard"><a onclick="ColorFilter('standard')">{{msg-evelution-standard}}</a></li>
+					<li id="f-invert"><a onclick="ColorFilter('invert')">{{msg-evelution-filter-invert}}</a></li>
+					<li id="f-night"><a onclick="ColorFilter('night')">{{msg-evelution-filter-night}}</a></li>
+					<li id="f-gray"><a onclick="ColorFilter('gray')">{{msg-evelution-filter-gray}}</a></li>
+					<li id="f-darkgray"><a onclick="ColorFilter('darkgray')">{{msg-evelution-filter-darkgray}}</a></li>
+					<li id="f-yelblk"><a onclick="ColorFilter('yelblk')">{{msg-evelution-filter-yelblk}}</a></li>
+					<li id="f-bluwht"><a onclick="ColorFilter('bluwht')">{{msg-evelution-filter-bluwht}}</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<!-- Styles -->
+		<div class="cpe-dropdown styles" cpe-orient="land">				
+			<div class="cpe-floating-button accent themes page-side-tool" cpe-tooltip="{{msg-evelution-visual-styles}}">
+				<span class="cpe-icon material-icons">
+					format_paint
+				</span>
+			</div>
+			<div class="cpe-dropdown__content is-right-aligned cpe-visual-appearance">					
+				 <ul class="cpe-list is-linked cpe-visual-styles">						
+					<li id="styleS"><a onclick="VisualStyle('S')">{{msg-evelution-standard}}</a></li>
+				</ul>
+			</div>
+		</div>
+		<!-- Colors -->
+		<div class="cpe-dropdown colors color-management-on td-off" cpe-orient="land">				
+			<div class="cpe-floating-button accent colors page-side-tool" cpe-tooltip="{{msg-evelution-visual-colors}}">
 				<span class="cpe-icon material-icons">
 					palette
 				</span>
 			</div>
-			<div class="cpe-dropdown__content">
+			<div class="cpe-dropdown__content is-right-aligned cpe-visual-appearance">					
+				 <ul class="cpe-list is-linked cpe-visual-colors">						
+					<li id="styleS"><a onclick="VisualStyle('S')">{{msg-evelution-standard}}</a></li>
+				</ul>
+			</div>
+		</div>
+		<!-- Themes -->
+		<div class="cpe-dropdown themes color-management-on" cpe-orient="land">
+			<div class="cpe-floating-button accent themes page-side-tool" cpe-tooltip="{{msg-evelution-themes}}">
+				<span class="cpe-icon material-icons">
+					brush
+				</span>
+			</div>
+			<div class="cpe-dropdown__content cpe-is-right-aligned">
 				<ul class="cpe-list is-linked cpe-themes">
 					<li data-theme-change="theme-A">
 						<a class="ThemeA">

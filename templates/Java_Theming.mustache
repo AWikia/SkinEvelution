@@ -484,16 +484,16 @@ function ToggleMode() {
 	}
 }
 
-function ColorMode(m1='auto', m2='auto-r') {
+function ColorMode() {
 	var theme = $('body').attr("wikitheme");
 	if (theme === 'auto') {
-		colortheme(m1);
+		colortheme('light');
 	} else 	if (theme === 'auto-r') {
-		colortheme(m2);
+		colortheme('dark');
 	} else 	if (theme === 'light') {
-		colortheme(m1);
+		colortheme('auto');
 	} else 	if (theme === 'dark') {
-		colortheme(m2);
+		colortheme('auto-r');
 	}
 }
 
@@ -1825,7 +1825,7 @@ function UpdateMisc() {
 
 /* Begin Color Parsers */
 function ColorTestTwin(color,color2,intensity=1,inter='hsl') {
-	return chroma.mix(color,color2,0.3*intensity, inter);
+	return chroma.mix(color,color2,0.5*intensity, inter);
 }
 
 function GetHoverColor(color1='#ffffff',color2='#000000',inter='hsl',steps=4,modi=1) {
@@ -1845,11 +1845,6 @@ function ColorTest(color,text=false,inv=false,dledlen=false) { // Regular Colors
 	} else {
 		var color2 = color;
 	}
-	if ( ( !(isLightColor(color)) && (isLightColor(color2)) ) || ( !(isLightColor(color2)) && (isLightColor(color)) ) ) {
-		var steps = (inv) ? 3 : 5;
-	} else {
-		var steps = (inv) ? 5 : 3;
-	}
 	if (isLightColor(color2)) {
 		if (text === true) {
 			if (inv === false) {
@@ -1859,9 +1854,9 @@ function ColorTest(color,text=false,inv=false,dledlen=false) { // Regular Colors
 			}
 		} else {
 			if (inv === false) {
-				return GetHoverColor(color, '#000000','hsl',10,steps);
+				return GetHoverColor(color, '#000000','hsl',10,4);
 			} else {
-				return GetHoverColor(color, '#ffffff','hsl',10,steps);
+				return GetHoverColor(color, '#ffffff','hsl',10,4);
 			}
 		}
 	} else {
@@ -1873,9 +1868,9 @@ function ColorTest(color,text=false,inv=false,dledlen=false) { // Regular Colors
 			}
 		} else {
 			if (inv === true) {
-				return GetHoverColor(color, '#000000','hsl',10,steps);
+				return GetHoverColor(color, '#000000','hsl',10,4);
 			} else {
-				return GetHoverColor(color, '#ffffff','hsl',10,steps);
+				return GetHoverColor(color, '#ffffff','hsl',10,4);
 			}
 		}
 	}
@@ -1889,15 +1884,10 @@ function SuperColorTest(color,dledlen=false) { // Double Amount
 	} else {
 		var color2 = color;
 	}
-	if ( ( !(isLightColor(color)) && (isLightColor(color2)) ) || ( !(isLightColor(color2)) && (isLightColor(color)) ) ) {
-		var steps = 5
-	} else {
-		var steps = 3
-	}
 	if (isLightColor(color2)) {
-		return GetActiveColor(color, '#000000','hsl',10,steps);
+		return GetActiveColor(color, '#000000','hsl',10,4);
 	} else {
-		return GetActiveColor(color, '#ffffff','hsl',10,steps);
+		return GetActiveColor(color, '#ffffff','hsl',10,4);
 	}
 }
 

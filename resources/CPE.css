@@ -947,10 +947,18 @@ body[dark-mode="false"] .darkmode-on {
 	display:none!important;
 }
 
-body[inverted-colors="true"] .systemdarkmode-off,
+body[inverted-="true"] .systemdarkmode-off,
 body[inverted-colors="false"] .systemdarkmode-on {
 	display:none!important;
 }
+
+body[wikitheme="light"] .solo-on,
+body[wikitheme="dark"] .solo-on,
+body[wikitheme="auto"] .solo-off,
+body[wikitheme="auto-r"] .solo-off {
+	display:none!important;
+}
+
 
 body[liatch="true"]  .invertion-on {
 	filter:invert(1) hue-rotate(180deg);
@@ -1209,6 +1217,10 @@ select.cpe-input {
     color:var(--accent-foreground-color);
 }
 
+.cpe-button:visited:active {
+    color:var(--accent-foreground-color-inverted);
+}
+
 
 a.cpe-button, button.cpe-button {
   cursor:var(--cpe-hand-cursor);
@@ -1234,6 +1246,7 @@ a.cpe-button, button.cpe-button {
     outline-color:transparent;
     outline-offset:0px;
     text-decoration:none;
+	color:var(--accent-foreground-color-inverted);
 }
 
 .cpe-button:focus:not(:active):not(.is-active) {
