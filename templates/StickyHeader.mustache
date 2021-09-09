@@ -10,10 +10,10 @@
 				{{#wordmark}}
 					<div style="--height:{{height}}px; display:contents">
 						{{#src}}
-						<a title="{{msg-sitetitle}}" href="{{link-mainpage}}" class="title-logo" style="-webkit-mask-image:url({{.}}); mask-image:url({{.}});"><span style="visibility:hidden;">Abc</span></a>
+						<a href="{{link-mainpage}}" class="title-logo" style="-webkit-mask-image:url({{.}}); mask-image:url({{.}});"><span style="visibility:hidden;">Abc</span></a>
 						{{/src}}
 						{{^src}}
-						<a title="{{msg-sitetitle}}" href="{{link-mainpage}}" class="title-logo" style="-webkit-mask-image:url({{.}}); mask-image:url({{.}});"><span style="visibility:hidden;">Abc</span></a>
+						<a href="{{link-mainpage}}" class="title-logo" style="-webkit-mask-image:url({{.}}); mask-image:url({{.}});"><span style="visibility:hidden;">Abc</span></a>
 						{{/src}}
 					</div>
 				{{/wordmark}}
@@ -29,7 +29,7 @@
 			<div class="counter users"><big>{{html-usercount}}</big> <span class="cpe-icon material-icons">person</span> <span class="text">{{msg-evelution-users}}</span></div>
 		</div>
 		<div class="cpe-dropdown local-navigation">
-			<a class="link cell cpe-dropdown__toggle" title="{{msg-evelution-navigation-rest}}">
+			<a class="link cell cpe-dropdown__toggle" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-navigation}}">
 				<span class="cpe-icon cpe-icon-large cpe-dropdown__toggle-chevron material-icons">
 					arrow_drop_down
 				</span>
@@ -44,7 +44,7 @@
 			</div>
 		</div>
 		{{>CommunityLinks}}
-	  <a class="link nav-switch" title="{{msg-hide}}">
+	  <a class="link nav-switch" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-hide}}">
 		<span class="cpe-icon cpe-dropdown__toggle-chevron material-icons cpe-icon-large">
 			keyboard_arrow_up
 		</span>
@@ -52,7 +52,7 @@
 	</header>
 	
 	<header class="evelution-sticky-header col-nav fandom-sticky-header">
-	  <a class="link nav-switch" title="{{msg-show}}">
+	  <a class="link nav-switch" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-show}}">
 		<span class="cpe-icon cpe-dropdown__toggle-chevron material-icons cpe-icon-large">
 			keyboard_arrow_down
 		</span>
