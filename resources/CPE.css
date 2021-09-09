@@ -539,6 +539,7 @@ body {
   --global-filter:none;
 	scrollbar-color:var(--scrollbar-thumb-color-1) var(--scrollbar-track-color-1);
 	--header-size:160px;
+	--dropdown-opacity:0.7;
 /** Scrollbar Styling **/
 	/* Width */
 	--scrollbar-width:17px;
@@ -1102,7 +1103,7 @@ body .wikitable > * > tr > td {
 	position:absolute;
 	z-index:100;
 	border:8px solid transparent;
-	border-color:var(--page-secondary-background-color);
+	border-color:var(--page-border-background-color);
     -webkit-mask: url("Arrow.svg") no-repeat;
     mask: url("Arrow.svg") no-repeat;
     -webkit-mask-size: 48px;
@@ -1123,10 +1124,15 @@ body .wikitable > * > tr > td {
 	bottom:auto;
 	z-index:99;
 	padding:2px;
+	font-weight:normal;
+	text-transform:none;
+	text-shadow:none;
 	font-size:12px;
-	border:1px solid var(--page-secondary-background-color);
+	-webkit-backdrop-filter:var(--backdrop-filter);
+	backdrop-filter:var(--backdrop-filter);
+	border:1px solid var(--page-border-background-color);
 	border-radius:var(--border-radius);
-	background-color:var(--page-secondary-background-color);
+	background-color:rgba(var(--page-secondary-background-color-rgb),var(--dropdown-opacity));
 	color:var(--page-text-background-color);
 	box-shadow:0 0 4px 1px rgba(var(--page-text-background-color-rgb), 0.5);
 	line-height:17px;
@@ -1956,7 +1962,6 @@ margin-left:0;
 
 /* Level A */
 .cpe-dropdown__content{
-	--dropdown-opacity:0.7;
 background-color:rgba(var(--page-secondary-background-color-rgb),var(--dropdown-opacity));
 color:var(--page-text-background-color);
 border:1px solid var(--page-border-background-color);
@@ -2798,8 +2803,11 @@ input[type="checkbox"]:indeterminate:active  {
   color:var(--checkbox-active-bg);
 }
 
-/* Ranges */
+/** Ranges **/
+
+/* Base */
 input[type="range"] {
+  --range-percent:0%;
   color: var(--page-text-background-color);
   margin: 0 auto;
   background-color: transparent;
@@ -2809,6 +2817,8 @@ input[type="range"] {
   appearance:none;
   cursor:inherit;
 }
+
+/* Thumb */
 input[type="range"]::-webkit-slider-thumb {
   border-radius: 50%;
   background-color: var(--anchor-background-color);
@@ -2822,6 +2832,7 @@ input[type="range"]::-webkit-slider-thumb {
   /* Hack for Chrome and Safari */
   overflow: visible;
 }
+
 input[type="range"]::-moz-range-thumb {
   border-radius: 50%;
   background-color: var(--anchor-background-color);
@@ -2833,43 +2844,42 @@ input[type="range"]::-moz-range-thumb {
   height: 10px;
   vertical-align: middle;
 }
+
 input[type="range"]:active::-webkit-slider-thumb {
   box-shadow: 0 0 0 8px rgba(var(--anchor-gradient-color-hover-rgb), 0.6);
 }
+
 input[type="range"]:active::-moz-range-thumb {
   box-shadow: 0 0 0 8px rgba(var(--anchor-gradient-color-hover-rgb), 0.6);
 }
+
+/* Runnable Track */
 input[type="range"]::-webkit-slider-runnable-track {
   border: 0;
   padding: 0;
   background-color: var(--page-text-background-color);
+  background-image:linear-gradient(90deg,var(--anchor-background-color) var(--range-percent),var(--page-text-background-color) var(--range-percent));
   color: transparent;
   height: 5px;
   -webkit-appearance: none;
   appearance:none;
   vertical-align: middle;
 }
+
 input[type="range"]::-moz-range-track {
   border: 0;
   padding: 0;
   background-color: var(--page-text-background-color);
+  background-image:linear-gradient(90deg,var(--anchor-background-color) var(--range-percent),var(--page-text-background-color) var(--range-percent)); /* Unused on Firefox */
   color: transparent;
   height: 5px;
   -webkit-appearance: none;
   appearance:none;
   vertical-align: middle;
 }
-input[type="range"]::-webkit-slider-track {
-  background-color: var(--anchor-background-color);
-  border: 0;
-  height: 5px;
-}
+
+/* Filler (Only for Firefox, uses different method for Chrome */
 input[type="range"]::-moz-range-progress {
-  background-color: var(--anchor-background-color);
-  border: 0;
-  height: 5px;
-}
-input[type="range"]::-qq-slider-filler {
   background-color: var(--anchor-background-color);
   border: 0;
   height: 5px;
@@ -2882,31 +2892,35 @@ input[type="range"]::-qq-slider-filler {
   min-width: 150px;
   line-height:0;
 }
+
+/* Thumb */
+
 .phone input[type="range"]::-webkit-slider-thumb, .xo input[type="range"]::-webkit-slider-thumb, input[type="range"].big::-webkit-slider-thumb {
   width: 20px;
   height: 20px;
   margin-top: -5px;
   /* Hack for Chrome and Safari */
 }
+
 .phone input[type="range"]::-moz-range-thumb, .xo input[type="range"]::-moz-range-thumb, input[type="range"].big::-moz-range-thumb {
   width: 20px;
   height: 20px;
 }
+
+/* Runnable Track */
 .phone input[type="range"]::-webkit-slider-runnable-track, .xo input[type="range"]::-webkit-slider-runnable-track, input[type="range"].big::-webkit-slider-runnable-track {
   height: 10px;
 }
+
 .phone input[type="range"]::-moz-range-track, .xo input[type="range"]::-moz-range-track,  input[type="range"].big::-moz-range-track {
   height: 10px;
 }
-.phone input[type="range"]::-webkit-slider-track, .xo input[type="range"]::-webkit-slider-track, input[type="range"].big::-webkit-slider-track {
-  height: 10px;
-}
+
+/* Filler */
 .phone input[type="range"]::-moz-range-progress, .xo input[type="range"]::-moz-range-progress, input[type="range"].big::-moz-range-progress {
   height: 10px;
 }
-.phone input[type="range"]::-qq-slider-filler, .xo input[type="range"]::-qq-slider-filler, input[type="range"].big::-qq-slider-filler {
-  height: 10px;
-}
+
 
 
 /* Color Filters */

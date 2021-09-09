@@ -27,6 +27,18 @@ $(' .cpe-dropdown.cpe-select .cpe-dropdown__content .cpe-list li:not(.cpe-dropdo
 }
 
 
+function UpdateRange() {
+	$('input[type="range"]').css( "--range-percent", function( ) {
+		return (($(this).val() * 100) / $(this).attr('max')) + '%';
+	});
+}
+
+function UpdateRangeInputs() {
+	if (! (navigator.userAgent.match("Firefox")) ) { // Not on Gecko browsers
+		UpdateRange();
+		$("input[type='range']").on("input", function(e) { UpdateRange(); } );
+	}
+}
 
 /* Enable New Global Navigation - No exception for now */
 window.MW18newnavblock=false;
@@ -75,6 +87,7 @@ window.MW18newnavblock=false;
 	$(' container > main').attr('toolbar', toolbar_full );
 	$(' container > main').attr('nav', nav_full );
 	$(' container > main').attr('rail', rail_full );
+	UpdateRangeInputs();
 	DropDownUpdate();
 	if (window.MW18newnavblock === true) {
 		return

@@ -805,6 +805,7 @@ function PasteTheme() {
 	$('#filter3').val( parseInt(getComputedStyle(document.querySelector('html')).getPropertyValue("--logo-filter-duration")) );
 	// Filter Delay
 	$('#filter4').val( parseInt(getComputedStyle(document.querySelector('html')).getPropertyValue("--logo-filter-delay")) );
+	UpdateRangeInputs();
 }
 
 function TestTheme() {
@@ -901,6 +902,7 @@ function ClearTheme() {
 }
 
 function SelectInputs() {
+UpdateRangeInputs();
 DropDownUpdate();
 /* Select Inputs */
 $('.wikitable #auto1').click(
