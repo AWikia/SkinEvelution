@@ -1,6 +1,40 @@
 <?php
+ use MediaWiki\User\UserOptionsLookup;
+ use Html;
+ use MediaWiki\MediaWikiServices;
+ use Sanitizer;
+ use TextContent;
+ use User;
+ use wAvatar;
 
-// use SiteStats;
+
+/* Code From Universal Omega's Cosmos Skin */
+class EvelutionSocialProfile {
+	/**
+	 * @param string $user
+	 * @return User|null
+	 */
+	private static function getUser( $user ) {
+		$services = MediaWikiServices::getInstance();
+
+		$titleFactory = $services->getTitleFactory();
+		$title = $titleFactory->newFromText( $user );
+
+		if (
+			is_object( $title ) &&
+			( $title->getNamespace() == NS_USER || $title->getNamespace() == NS_USER_PROFILE ) &&
+			!$title->isSubpage()
+		) {
+			$user = $title->getText();
+		}
+
+		$userFactory = $services->getUserFactory();
+		$user = $userFactory->newFromName( $user );
+
+		return $user;
+	}
+}
+
 
 class SkinEvelution extends SkinMustache {
     /**
@@ -44,6 +78,14 @@ class SkinEvelution extends SkinMustache {
         $data["html-stats-link"] = Title::newFromText( 'Special:Statistics' )->getLocalURL();
         $data["html-allpages-link"] = Title::newFromText( 'Special:AllPages' )->getLocalURL();
         $data["html-designer-link"] = Title::newFromText( 'CPE ThemeDesigner' )->getLocalURL();
+        if ( class_exists( 'wAvatar' ) ) {
+			$avatar = new wAvatar( $this->getSkin()->getUser()
+				->getId(), 'l' );
+			$avatarElement = $avatar->getAvatarURL();
+		} else {
+			$avatarElement = '<span class="cpe-icon material-icons">account_circle</span>';
+		}
+		$data["html-avatar"] = $avatarElement;
         return $data;
     }
 }
