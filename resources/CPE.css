@@ -374,10 +374,10 @@ Aleo = Latin
 :root {
 font-family:Trebuchet MS;
 /* Base Foreground Colors */
---light-theme-foreground-color:#092344;
---dark-theme-foreground-color:#f2f6fa;
---light-theme-text-background-color:#1a1a1a;
---dark-theme-text-background-color:#d4d5d5;
+--light-theme-foreground-color:#302040;
+--dark-theme-foreground-color:#f5f0fa;
+--light-theme-text-background-color:#292929;
+--dark-theme-text-background-color:#f5f5f5;
 /* Aliases */
 --page-border-background-color:auto;
 --page-text-background-color:auto;
@@ -2811,7 +2811,7 @@ input[type="range"] {
   color: var(--page-text-background-color);
   margin: 0 auto;
   background-color: transparent;
-  height: 30px;
+  height: 35px;
   min-width: 175px;
   -webkit-appearance: none;
   appearance:none;
@@ -2822,13 +2822,13 @@ input[type="range"] {
 input[type="range"]::-webkit-slider-thumb {
   border-radius: 50%;
   background-color: var(--anchor-background-color);
-  box-shadow: 0 0 0 8px rgba(var(--anchor-gradient-color-rgb), 0.5);
+  box-shadow:0 0 0 1px rgba(var(--page-secondary-background-color-rgb),0.5);
   border: 0;
   -webkit-appearance: none;
   appearance:none;
-  width: 10px;
-  height: 10px;
-  margin-top: -2.5px;
+  width: 25px;
+  height: 25px;
+  margin-top: -6.25px;
   /* Hack for Chrome and Safari */
   overflow: visible;
 }
@@ -2836,89 +2836,93 @@ input[type="range"]::-webkit-slider-thumb {
 input[type="range"]::-moz-range-thumb {
   border-radius: 50%;
   background-color: var(--anchor-background-color);
-  box-shadow: 0 0 0 8px rgba(var(--anchor-gradient-color-rgb), 0.5);
+  box-shadow:0 0 0 1px rgba(var(--page-secondary-background-color-rgb),0.5);
   border: 0;
   -webkit-appearance: none;
   appearance:none;
-  width: 10px;
-  height: 10px;
+  width: 25px;
+  height: 25px;
   vertical-align: middle;
+  margin-top: 0px;
 }
 
-input[type="range"]:active::-webkit-slider-thumb {
-  box-shadow: 0 0 0 8px rgba(var(--anchor-gradient-color-hover-rgb), 0.6);
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  background-color: var(--anchor-background-color-hover);
+  box-shadow:0 0 0 2px rgba(var(--page-secondary-background-color-rgb),0.5);
 }
 
-input[type="range"]:active::-moz-range-thumb {
-  box-shadow: 0 0 0 8px rgba(var(--anchor-gradient-color-hover-rgb), 0.6);
+input[type="range"]::-moz-range-thumb:hover {
+  background-color: var(--anchor-background-color-hover);
+  box-shadow:0 0 0 2px rgba(var(--page-secondary-background-color-rgb),0.5);
 }
+
+
+input[type="range"]::-webkit-slider-thumb:active {
+  background-color: var(--anchor-background-color-active);
+  box-shadow:0 0 0 3px rgba(var(--page-secondary-background-color-rgb),0.5);
+}
+
+input[type="range"]::-moz-range-thumb:active {
+  background-color: var(--anchor-background-color-active);
+  box-shadow:0 0 0 3px rgba(var(--page-secondary-background-color-rgb),0.5);
+}
+
 
 /* Runnable Track */
 input[type="range"]::-webkit-slider-runnable-track {
-  border: 0;
+	--range-filler-color:var(--anchor-background-color);
+  border:0;
   padding: 0;
   background-color: var(--page-text-background-color);
-  background-image:linear-gradient(90deg,var(--anchor-background-color) var(--range-percent),var(--page-text-background-color) var(--range-percent));
+  background-image:linear-gradient(90deg,var(--range-filler-color) var(--range-percent),var(--page-text-background-color) var(--range-percent));
   color: transparent;
-  height: 5px;
+  height: 12.5px;
   -webkit-appearance: none;
   appearance:none;
   vertical-align: middle;
+  border-radius:var(--border-radius);
+  box-shadow:0 0 0 1px rgba(var(--page-secondary-background-color-rgb),0.5) inset;
 }
 
 input[type="range"]::-moz-range-track {
+	--range-filler-color:var(--anchor-background-color);
   border: 0;
   padding: 0;
   background-color: var(--page-text-background-color);
-  background-image:linear-gradient(90deg,var(--anchor-background-color) var(--range-percent),var(--page-text-background-color) var(--range-percent)); /* Unused on Firefox */
+  background-image:linear-gradient(90deg,var(--range-filler-color) var(--range-percent),var(--page-text-background-color) var(--range-percent)); /* Unused on Firefox */
   color: transparent;
-  height: 5px;
+  height: 12.5px;
   -webkit-appearance: none;
   appearance:none;
   vertical-align: middle;
+  border-radius:var(--border-radius);
+  box-shadow:0 0 0 1px rgba(var(--page-secondary-background-color-rgb),0.5) inset;
 }
 
-/* Filler (Only for Firefox, uses different method for Chrome */
-input[type="range"]::-moz-range-progress {
-  background-color: var(--anchor-background-color);
-  border: 0;
-  height: 5px;
+/*
+input[type="range"]::-webkit-slider-runnable-track:hover {
+	--range-filler-color:var(--anchor-background-color-hover);
 }
 
-
-/* For Touch Devices or Phones */
-.phone input[type="range"], .xo input[type="range"], input[type="range"].big {
-  height: 35px;
-  min-width: 150px;
-  line-height:0;
+input[type="range"]::-moz-range-track:hover {
+	--range-filler-color:var(--anchor-background-color-hover);
 }
 
-/* Thumb */
-
-.phone input[type="range"]::-webkit-slider-thumb, .xo input[type="range"]::-webkit-slider-thumb, input[type="range"].big::-webkit-slider-thumb {
-  width: 20px;
-  height: 20px;
-  margin-top: -5px;
-  /* Hack for Chrome and Safari */
+input[type="range"]::-webkit-slider-runnable-track:active {
+	--range-filler-color:var(--anchor-background-color-active);
 }
 
-.phone input[type="range"]::-moz-range-thumb, .xo input[type="range"]::-moz-range-thumb, input[type="range"].big::-moz-range-thumb {
-  width: 20px;
-  height: 20px;
+input[type="range"]::-moz-range-track:active {
+	--range-filler-color:var(--anchor-background-color-active);
 }
-
-/* Runnable Track */
-.phone input[type="range"]::-webkit-slider-runnable-track, .xo input[type="range"]::-webkit-slider-runnable-track, input[type="range"].big::-webkit-slider-runnable-track {
-  height: 10px;
-}
-
-.phone input[type="range"]::-moz-range-track, .xo input[type="range"]::-moz-range-track,  input[type="range"].big::-moz-range-track {
-  height: 10px;
-}
-
+*/
 /* Filler */
-.phone input[type="range"]::-moz-range-progress, .xo input[type="range"]::-moz-range-progress, input[type="range"].big::-moz-range-progress {
-  height: 10px;
+input[type="range"]::-moz-range-progress {
+  background-color: transparent;
+  border: 0;
+  height: 12.5px;
+  display:none;
 }
 
 

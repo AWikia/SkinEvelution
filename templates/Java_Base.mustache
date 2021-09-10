@@ -34,10 +34,8 @@ function UpdateRange() {
 }
 
 function UpdateRangeInputs() {
-	if (! (navigator.userAgent.match("Firefox")) ) { // Not on Gecko browsers
-		UpdateRange();
-		$("input[type='range']").on("input", function(e) { UpdateRange(); } );
-	}
+	UpdateRange();
+	$("input[type='range']").on("input", function(e) { UpdateRange(); } );
 }
 
 /* Enable New Global Navigation - No exception for now */
