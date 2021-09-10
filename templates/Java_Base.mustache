@@ -536,6 +536,10 @@ function initializeViews() {
 }
 
 function RemoveEmptyMenus() {
+// Remove Miraheze elements
+	if (!window.location.host.includes('miraheze.org')) {
+		$('.miraheze-only').remove();
+	}
 // Remove the Language Dropdown, if no languages exist
 	var langmenu = document.querySelector(".evelution-navigation.evelution-sidebar .language-menu");
 	var langmenuM = document.querySelector(".evelution-mobile-global-navigation.evelution-sidebar .language-menu");
