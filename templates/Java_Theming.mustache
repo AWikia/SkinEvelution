@@ -78,10 +78,6 @@ var visualColorNames = ['Factory', 'XP Luna', 'Windows Forced', 'Campbell Forced
 				color_active = visualColors.indexOf(value);
 				console.info('Active visual colors settings overriden')
                 break;
-            case 'usefilter':
-				filter_active = value;
-				console.info('Active color filter settings overriden');
-                break;
             case 'usecolormode':
 				color_mode = value;
 				console.info('Color mode settings overriden');
@@ -124,7 +120,6 @@ var visualColorNames = ['Factory', 'XP Luna', 'Windows Forced', 'Campbell Forced
 		VisualStyle(style_active,false);
 		VisualColor(color_active,false);
 		ContrastBanner(); // Notice
-		ColorFilter(filter_active,false);
 		SocialCompile();
 //		$('body').click( function(e) { e.preventDefault; CheckTheme(); } );
 		CheckDeprecation();
@@ -162,15 +157,6 @@ function SupportsColorMix() {
 	return CSS.supports("color","color-mix(in srgb, #34c9eb 70%, white)") || CSS.supports("color:color-mix(in srgb, #34c9eb 70%, white)") 
 }
 
-/* Color Filter */
-function ColorFilter(filt,save=true) {
-	$('body').attr("colorfilter", filt);
-	$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-color-filters li").removeClass('selected');
-	$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-color-filters li#f-" + filt).addClass('selected');
-	if (save) {
-	insertKey('filter-active', filt );
-	}
-}
 
 
 /* Visual Styles */

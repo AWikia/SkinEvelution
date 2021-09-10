@@ -51,7 +51,9 @@ function insertKey(key,value) {
 		$(".evelution-floating-actions .cpe-floating-button.edit").attr("cpe-tooltip", mw.msg( 'viewsource' ) );
 		$(".evelution-floating-actions .cpe-floating-button.edit .cpe-icon.material-icons").html('lock');
 	}
-	
+	if (! ($("#ca-history").length) ) { // Remove History Button
+		$(".evelution-floating-actions .cpe-floating-button.history").remove();
+	}
 
 
 })();

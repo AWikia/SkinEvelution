@@ -75,6 +75,7 @@ class SkinEvelution extends SkinMustache {
         $data["html-messages-link"] = Title::newFromText( 'Special:AllMessages' )->getLocalURL();
         $data["html-linkedactivity-link"] = Title::newFromText( 'Special:RecentChangesLinked' )->getLocalURL();
         $data["html-export-link"] = Title::newFromText( 'Special:Export' )->getLocalURL();
+        $data["html-import-link"] = Title::newFromText( 'Special:Import' )->getLocalURL();
         $data["html-stats-link"] = Title::newFromText( 'Special:Statistics' )->getLocalURL();
         $data["html-allpages-link"] = Title::newFromText( 'Special:AllPages' )->getLocalURL();
         $data["html-designer-link"] = Title::newFromText( 'CPE ThemeDesigner' )->getLocalURL();

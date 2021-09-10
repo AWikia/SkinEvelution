@@ -536,7 +536,6 @@ body {
   --cpe-help-cursor:url("Windows/help.cur"), help;
   --cpe-text-cursor:url("Windows/text.cur"), text;
   --cpe-hand-cursor:url("Windows/hand.cur"), pointer;
-  --global-filter:none;
 	scrollbar-color:var(--scrollbar-thumb-color-1) var(--scrollbar-track-color-1);
 	--header-size:160px;
 	--dropdown-opacity:0.7;
@@ -583,7 +582,6 @@ container {
 	display:block;
 	height:100vh;
 	z-index:1;
-	filter:var(--global-filter);
 }
 
 
@@ -612,9 +610,6 @@ container {
 	max-width:calc(var(--max-width) - var(--extra-size));
 	image-rendering:initial;                  /* CSS4 Proposed  */
 	-qq-image-blurring:tick;                  /* 4x4 Web 1-2    */
-	filter:var(--global-filter);
-
-
 }
 
  .body-community-background-color {
@@ -633,8 +628,6 @@ container {
 	max-width:calc(var(--max-width) - var(--extra-size));
 	image-rendering:initial;                  /* CSS4 Proposed  */
 	-qq-image-blurring:tick;                  /* 4x4 Web 1-2    */
-	filter:var(--global-filter);
-
 }
 
 body[community-background-mode="full"] .body-community-background,
@@ -698,7 +691,6 @@ body[community-background-mode="full"] .gradient-overlay {
   image-rendering:initial;                  /* CSS4 Proposed  */
   -qq-image-blurring:tick;                  /* 4x4 Web 1-2    */
 	max-width:var(--max-width);
-	filter:var(--global-filter);
 }
 
 
@@ -2926,36 +2918,6 @@ input[type="range"]::-moz-range-progress {
 }
 
 
-
-/* Color Filters */
-[colorfilter="invert"] {
-	--global-filter:invert(1);
-}
-
-[colorfilter="night"] {
-	--global-filter:invert(1) hue-rotate(180deg);
-}
-
-[colorfilter="gray"] {
-	--global-filter:grayscale(1);
-}
-
-[colorfilter="darkgray"] {
-	--global-filter:invert(1) grayscale(1);
-}
-
-
-[colorfilter="darkgray"] {
-	--global-filter:invert(1) grayscale(1);
-}
-
-[colorfilter="yelblk"] {
-	--global-filter:sepia(1) hue-rotate(200deg) invert(1);
-}
-
-[colorfilter="bluwht"] {
-	--global-filter:sepia(1) hue-rotate(200deg);
-}
 
 /** Themed Cursors **/
 /* Apple */
