@@ -120,6 +120,55 @@ function InitDesigner() {
 				'<option value="#f900a5">' +
 				'<option value="#ff5fdc">' +
 				'<option value="#e2e2e2">' +
+// Fandom
+				'<option value="#f9ebc3">' +
+				'<option value="#ede5dd">' +
+				'<option value="#f7e1d3">' +
+				'<option value="#dfdbc3">' +
+				'<option value="#fbe300">' +
+				'<option value="#ffbf99">' +
+				'<option value="#ffbf99">' +
+				'<option value="#fdc355">' +
+				'<option value="#cdbd89">' +
+				'<option value="#d5a593">' +
+				'<option value="#a37719">' +
+				'<option value="#836d35">' +
+				'<option value="#776b41">' +
+				'<option value="#f14700">' +
+				'<option value="#dd3509">' +
+				'<option value="#a34111">' +
+				'<option value="#7b3b09">' +
+				'<option value="#4f4341">' +
+				'<option value="#454545">' +
+				'<option value="#611d03">' +
+				'<option value="#891100">' +
+				'<option value="#71130f">' +
+				'<option value="#ebfffb">' +
+				'<option value="#ebf1f5">' +
+				'<option value="#f5ebf5">' +
+				'<option value="#e7f3d1">' +
+				'<option value="#bde9fd">' +
+				'<option value="#dfbddd">' +
+				'<option value="#c3d167">' +
+				'<option value="#a5b5c5">' +
+				'<option value="#6599ff">' +
+				'<option value="#6b93b1">' +
+				'<option value="#978f33">' +
+				'<option value="#53835d">' +
+				'<option value="#7f6f9f">' +
+				'<option value="#d335f7">' +
+				'<option value="#337700">' +
+				'<option value="#006baf">' +
+				'<option value="#2b53b5">' +
+				'<option value="#2d2b17">' +
+				'<option value="#003715">' +
+				'<option value="#012d59">' +
+				'<option value="#6f017b">' +
+				'<option value="#790145">' +
+				'<option value="#ffffff">' +
+				'<option value="#f1f1f1">' +
+				'<option value="#ebebeb">' +
+				'<option value="#000000">' +
 			'</datalist>' +
 			'<datalist id="headercolor_colors">' +
 				'<option value="#ffb900">' +
@@ -169,6 +218,30 @@ function InitDesigner() {
 				'<option value="#525e54">' +
 				'<option value="#847545">' +
 				'<option value="#7e735f">' +
+// Fandom
+				'<option value="#fec356">' +
+				'<option value="#6699ff">' +
+				'<option value="#6c93b1">' +
+				'<option value="#a47719">' +
+				'<option value="#846d35">' +
+				'<option value="#786c42">' +
+				'<option value="#f14800">' +
+				'<option value="#337800">' +
+				'<option value="#006cb0">' +
+				'<option value="#dd360a">' +
+				'<option value="#a34112">' +
+				'<option value="#474646">' +
+				'<option value="#7b3b0a">' +
+				'<option value="#4f4341">' +
+				'<option value="#0038d8">' +
+				'<option value="#2d2c18">' +
+				'<option value="#611e03">' +
+				'<option value="#003816">' +
+				'<option value="#891100">' +
+				'<option value="#012e59">' +
+				'<option value="#721410">' +
+				'<option value="#6f027c">' +
+				'<option value="#7a0146">' +
 			'</datalist>' +
 			'<datalist id="toolbarcolor_colors">' +
 				'<option value="#ababab">' +
@@ -201,6 +274,19 @@ function InitDesigner() {
 				'<option value="#bc3b8c">' +
 				'<option value="#7e73a5">' +
 				'<option value="#879289">' +
+// Fandom
+				'<option value="#D09632">' +
+				'<option value="#DD4702">' +
+				'<option value="#2B53B5">' +
+				'<option value="#3A5766">' +
+				'<option value="#285F00">' +
+				'<option value="#4A4612">' +
+				'<option value="#8F3000">' +
+				'<option value="#A301B4">' +
+				'<option value="#6D0D00">' +
+				'<option value="#002266">' +
+				'<option value="#580062">' +
+				'<option value="#808080">' +
 			'</datalist>' +
 			'<datalist id="pagebg_colors">' +
 				'<option value="#000000">' +
@@ -236,6 +322,24 @@ function InitDesigner() {
 				'<option value="#563f7f">' +
 				'<option value="#a186be">' +
 				'<option value="#d9cfe5">' +
+// Fandom
+				'<option value="#ebf2f5">' +
+				'<option value="#e7f4d2">' +
+				'<option value="#f5ebf5">' +
+				'<option value="#f9ecc3">' +
+				'<option value="#eee5de">' +
+				'<option value="#f7e1d4">' +
+				'<option value="#d4e6f7">' +
+				'<option value="#dfdbc3">' +
+				'<option value="#dfbddd">' +
+				'<option value="#cebe8a">' +
+				'<option value="#a5b5c6">' +
+				'<option value="#474646">' +
+				'<option value="#2d2c18">' +
+				'<option value="#611e03">' +
+				'<option value="#012e59">' +
+				'<option value="#f2f2f2">' +
+				'<option value="#ebebeb">' +
 			'</datalist>' +
 			'<datalist id="pagebg3_colors">' +
 				'<option value="#ffffff">' +
@@ -249,6 +353,11 @@ function InitDesigner() {
 				'<option value="#ffff00">' +
 				'<option value="#ff00ff">' +
 				'<option value="#00ffff">' +
+// Fandom
+				'<option value="#1a1a1a">' +
+				'<option value="#3a3a3a">' +
+				'<option value="#d4d5d5">' +
+				'<option value="#e6e6e6">' +
 			'</datalist>' +
 			'<datalist id="pagebg2_colors">' +
 				'<option value="#a3a3a3">' +
@@ -262,6 +371,9 @@ function InitDesigner() {
 				'<option value="#808000">' +
 				'<option value="#800080">' +
 				'<option value="#008080">' +
+// Fandom
+				'<option value="#000000">' +
+				'<option value="#ffffff">' +
 			'</datalist>' +
 			'<datalist id="anchorcolor_colors">' +
 				'<option value="#00ff00">' +
@@ -301,6 +413,19 @@ function InitDesigner() {
 				'<option value="#8b12ae">' +
 				'<option value="#4da60c">' +
 				'<option value="#a74f01">' +
+// Fandom
+				'<option value="#fce300">' +
+				'<option value="#fec356">' +
+				'<option value="#c4d167">' +
+				'<option value="#6699ff">' +
+				'<option value="#6c93b1">' +
+				'<option value="#a47719">' +
+				'<option value="#54845e">' +
+				'<option value="#337800">' +
+				'<option value="#006cb0">' +
+				'<option value="#0148c2">' +
+				'<option value="#6f027c">' +
+				'<option value="#ffffff">' +
 			'</datalist>' +
 			'<datalist id="accentcolor_colors">' +
 				'<option value="#ff8c00">' +
@@ -328,6 +453,30 @@ function InitDesigner() {
 				'<option value="#4a5459">' +
 				'<option value="#000000">' +
 				'<option value="#ffffff">' +
+// Fandom
+				'<option value="#fec356">' +
+				'<option value="#6699ff">' +
+				'<option value="#6c93b1">' +
+				'<option value="#a47719">' +
+				'<option value="#846d35">' +
+				'<option value="#786c42">' +
+				'<option value="#f14800">' +
+				'<option value="#337800">' +
+				'<option value="#006cb0">' +
+				'<option value="#dd360a">' +
+				'<option value="#a34112">' +
+				'<option value="#474646">' +
+				'<option value="#7b3b0a">' +
+				'<option value="#4f4341">' +
+				'<option value="#0038d8">' +
+				'<option value="#2d2c18">' +
+				'<option value="#611e03">' +
+				'<option value="#003816">' +
+				'<option value="#891100">' +
+				'<option value="#012e59">' +
+				'<option value="#721410">' +
+				'<option value="#6f027c">' +
+				'<option value="#7a0146">' +
 			'</datalist>' +
 			'<datalist id="caretcolor_colors">' +
 				'<option value="#bfff00">' +
@@ -337,6 +486,9 @@ function InitDesigner() {
 				'<option value="#00bfff">' +
 				'<option value="#00ffbf">' +
 				'<option value="#bf00ff">' +
+// Fandom
+				'<option value="#000000">' +
+				'<option value="#ffffff">' +
 			'</datalist>' +
 		'</div>' +
 		'<table class="wikitable" style="max-width:300px; font-size:14px; margin:0 auto;">' +
