@@ -919,31 +919,47 @@ padding:8px var(--content-padding);
 display:flex;
 align-items:flex-end;
 align-self:stretch;
-flex-direction: column;
 flex-shrink:0;
-justify-content: space-between;
-padding:8px var(--content-padding);
+padding:8px var(--content-padding) 0;
 /*text-align:right;*/
+flex-wrap:wrap;
 }
 
 
 .evelution-page-header-contribution-buttons {
-margin-left: 20px;
+display:flex;
+justify-content:flex-end;
+align-self:stretch;
+flex-shrink:0;
+padding:8px var(--content-padding) 0;
+}
+
+.evelution-page-header .cpe-button-group.views {
+	align-self:stretch;
+	flex:1;
+}
+.evelution-page-header .cpe-button-group.actions {
+	align-self:stretch;
+}
+
+
+.evelution-page-header-contribution-buttons:empty {
+	padding-top:0;
 }
 
 @media only screen and (max-width:959px) {
 	.evelution-page-header-contribution-buttons {
 		margin-left: 0px;
 	}
-	.evelution-page-header-contribution-buttons .cpe-button-group > li > .cpe-button,
-	.evelution-page-header-contribution-buttons .cpe-button-group > .cpe-dropdown > .cpe-button {
+	.evelution-page-header-contribution .cpe-button-group > li > .cpe-button,
+	.evelution-page-header-contribution .cpe-button-group > .cpe-dropdown > .cpe-button {
 		font-size:12px;
 		padding-left:10px;
 		padding-right:10px;
 	}
 
 	/*
-	.evelution-page-header-contribution-buttons .actions > .more-actions-menu > .cpe-button {
+	.evelution-page-header-contribution .actions > .more-actions-menu > .cpe-button {
 		padding-left:5px;
 		padding-right:5px;
 	}
@@ -952,15 +968,15 @@ margin-left: 20px;
 }
 
 /*
-.evelution-page-header-contribution-buttons .actions > .more-actions-menu > .cpe-button {
+.evelution-page-header-contribution .actions > .more-actions-menu > .cpe-button {
 	padding-left:6px;
 	padding-right:6px;
 }
 */
 
-.evelution-page-header-contribution-buttons .color-modes > li,
-.evelution-page-header-contribution-buttons .actions > li,
-.evelution-page-header-contribution-buttons .views > li {
+.evelution-page-header-contribution .color-modes > li,
+.evelution-page-header-contribution .actions > li,
+.evelution-page-header-contribution .views > li {
 	display:flex;
 	margin-bottom:0;
 }
