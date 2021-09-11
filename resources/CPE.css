@@ -616,7 +616,7 @@ container {
 	--extra-size:var(--global-nav-size,0px);
 	top:0;
 	width:calc(100% - var(--extra-size));
-	height:var(--header-size);
+	height:100%;
 	background-repeat:repeat;
 	margin-left:var(--extra-size);
 	position:fixed!Important;
@@ -630,9 +630,8 @@ container {
 	-qq-image-blurring:tick;                  /* 4x4 Web 1-2    */
 }
 
-body[community-background-mode="full"] .body-community-background,
-body[community-background-mode="full"] .body-community-background-color {
-	height:100%;
+body[community-background-mode="full"] .body-community-background {
+	height:100%!important;
 }
 
 
@@ -682,12 +681,12 @@ body[community-background-mode="full"] .gradient-overlay {
 .gradient-overlay {
 	top:0;
 	width:100%;
-	height:100%;
+	height:var(--header-size);
 	position:fixed!Important;
 	display:block;
 	content:"";
 	z-index:-1;
-	background-image:linear-gradient(rgba(var(--community-background-color-rgb),0) ,rgb(var(--community-background-color-rgb)) calc(0% + var(--header-size) ));
+	background-image:linear-gradient(to bottom, rgba(var(--community-background-color-rgb),0) 25% ,rgb(var(--community-background-color-rgb)));
   image-rendering:initial;                  /* CSS4 Proposed  */
   -qq-image-blurring:tick;                  /* 4x4 Web 1-2    */
 	max-width:var(--max-width);
