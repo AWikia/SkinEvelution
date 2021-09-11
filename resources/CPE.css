@@ -686,7 +686,7 @@ body[community-background-mode="full"] .gradient-overlay {
 	display:block;
 	content:"";
 	z-index:-1;
-	background-image:linear-gradient(to bottom, rgba(var(--community-background-color-rgb),0) 25% ,rgb(var(--community-background-color-rgb)));
+	background-image:linear-gradient(to bottom, rgba(var(--community-background-color-rgb),0.05) 5% ,rgb(var(--community-background-color-rgb)));
   image-rendering:initial;                  /* CSS4 Proposed  */
   -qq-image-blurring:tick;                  /* 4x4 Web 1-2    */
 	max-width:var(--max-width);
@@ -781,7 +781,7 @@ font-weight:inherit;
 /* Selection */
 
 ::selection {
-background-color:rgba(var(--anchor-background-color-hover-rgb), 0.5);
+background-color:rgba(var(--anchor-background-color-rgb), 0.5);
 cursor:inherit;
 text-shadow:none;
 }
@@ -797,7 +797,7 @@ cursor:var(--cpe-auto-cursor);
 
 body:not(.phone) ::-webkit-scrollbar-thumb {
   background-color:var(--scrollbar-thumb-color-1);
-  box-shadow:0 0px 0 2px inset var(--scrollbar-thumb-color-1);
+  box-shadow:0 0 2px var(--scrollbar-track-color-1) inset;
   border:2px solid var(--scrollbar-track-color-1);
   border-radius:var(--scrollbar-width);
   color:var(--scrollbar-thumb-text);
@@ -805,12 +805,12 @@ body:not(.phone) ::-webkit-scrollbar-thumb {
 
 body:not(.phone) ::-webkit-scrollbar-thumb:hover {
   background-color:var(--scrollbar-thumb-color-2);
-  box-shadow:0 0px 0 2px inset var(--scrollbar-thumb-color-2);
+  box-shadow:0 0 2px var(--scrollbar-track-color-1) inset;
 }
 
 body:not(.phone) ::-webkit-scrollbar-thumb:active {
   background-color:var(--scrollbar-thumb-color-3);
-  box-shadow:0 0px 0 2px inset var(--scrollbar-thumb-color-3);
+  box-shadow:0 0 2px var(--scrollbar-track-color-1) inset;
 }
 
 body:not(.phone) ::-webkit-scrollbar-thumb:vertical {

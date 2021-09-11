@@ -1840,9 +1840,9 @@ function ColorTest(color,text=false,inv=false,dledlen=false) { // Regular Colors
 			}
 		} else {
 			if (inv === false) {
-				return GetHoverColor(color, '#000000','hsl',11,4);
+				return GetHoverColor(color, '#000000','hsl',14,5);
 			} else {
-				return GetHoverColor(color, '#ffffff','hsl',11,4);
+				return GetHoverColor(color, '#ffffff','hsl',14,5);
 			}
 		}
 	} else {
@@ -1854,9 +1854,9 @@ function ColorTest(color,text=false,inv=false,dledlen=false) { // Regular Colors
 			}
 		} else {
 			if (inv === true) {
-				return GetHoverColor(color, '#000000','hsl',11,4);
+				return GetHoverColor(color, '#000000','hsl',14,5);
 			} else {
-				return GetHoverColor(color, '#ffffff','hsl',11,4);
+				return GetHoverColor(color, '#ffffff','hsl',14,5);
 			}
 		}
 	}
@@ -1871,9 +1871,9 @@ function SuperColorTest(color,dledlen=false) { // Double Amount
 		var color2 = color;
 	}
 	if (isLightColor(color2)) {
-		return GetActiveColor(color, '#000000','hsl',11,4);
+		return GetActiveColor(color, '#000000','hsl',14,5);
 	} else {
-		return GetActiveColor(color, '#ffffff','hsl',11,4);
+		return GetActiveColor(color, '#ffffff','hsl',14,5);
 	}
 }
 
@@ -2173,17 +2173,17 @@ if ((getComputedStyle(document.querySelector('body')).getPropertyValue("--page-t
 }
 
 if (isLightColor(content_color)) {
-	var dropdowncolor = chroma.mix(content_color,'#000000',0.2, 'hsv');
+	var dropdowncolor = chroma.mix(content_color,'#000000',0.15, 'hsv');
 	if ((getComputedStyle(document.querySelector('body')).getPropertyValue("--page-border-background-color") === 'auto')  ) {
-		var dropdowncolor2 = chroma.mix(content_color,'#1a1a1a',0.4, 'hsv');
+		var dropdowncolor2 = chroma.mix(content_color,'#1a1a1a',0.35, 'hsv');
 	} else {
 		var dropdowncolor2 = 'inherit';
 	}
 
 } else {
-	var dropdowncolor = chroma.mix(content_color,'#ffffff',0.2, 'hsv');
+	var dropdowncolor = chroma.mix(content_color,'#ffffff',0.15, 'hsv');
 	if ((getComputedStyle(document.querySelector('body')).getPropertyValue("--page-border-background-color") === 'auto')  ) {
-		var dropdowncolor2 = chroma.mix(content_color,'#e5e5e5',0.4, 'hsv');
+		var dropdowncolor2 = chroma.mix(content_color,'#e5e5e5',0.35, 'hsv');
 	} else {
 		var dropdowncolor2 = 'inherit';
 	}
