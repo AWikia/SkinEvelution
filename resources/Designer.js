@@ -684,7 +684,7 @@ function CopyTheme() {
     } else {
 		var image = 'url("' + $('#bodyimage').val() + '")';
     }
-		result = '.theme-A[visualcolors="standard"] {\n' + // Beginning
+		result = '[theme="' + $('html').attr('theme') + '"][visualcolors="standard"] {\n' + // Beginning
 				 '--community-background-image:' + image + ';\n' +
 				 '--community-background-image-opacity:' + $('#bodyimageopacity').val() + "%" + ';\n' +
 				 '--community-background-color:' + $('#bodybg').val()  + ';\n' +

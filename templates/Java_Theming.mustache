@@ -2,6 +2,7 @@
 window.MW18autoDark = false;
 window.MW18darkmode = false;
 window.MW18ContrastNotice = false;
+window.MW18ForcedTheme = false;
 
 /* Visual Themes */
 var visualThemes = ['basic', 'contrast', 'simple','classic']
@@ -13,8 +14,8 @@ var visualColorNames = ['Factory', 'XP Luna', 'Windows Forced', 'Campbell Forced
 
 (function () {
 	// Evelution Specific
-	if (getKey('theme-active') === '-1') {
-		insertKey('theme-active', 'theme-A' );
+	if (getKey('theme-selected') === '-1') {
+		insertKey('theme-selected', 'A' );
 	}
 	if (getKey('style-active') === '-1') {
 		if ( ( window.matchMedia('(forced-colors: active)').matches ) ) {
@@ -32,7 +33,7 @@ var visualColorNames = ['Factory', 'XP Luna', 'Windows Forced', 'Campbell Forced
 	if (getKey('color-mode') === '-1') {
 		insertKey('color-mode', 'auto' );
 	}
-	var theme_active = getKey('theme-active');
+	var theme_selected = getKey('theme-selected');
 	var style_active = getKey('style-active');
 	var color_active = getKey('color-active');
 	var filter_active = getKey('filter-active');
@@ -47,25 +48,25 @@ var visualColorNames = ['Factory', 'XP Luna', 'Windows Forced', 'Campbell Forced
 					case 'theme-A':
 					case 'A':
 					case '0':
-						theme_active = 'theme-A'
+						theme_selected = 'A'
 						break;
 					case 'theme-B':
 					case 'B':
 					case '1':
-						theme_active = 'theme-B'
+						theme_selected = 'B'
 						break;
 					case 'theme-C':
 					case 'C':
 					case '2':
-						theme_active = 'theme-C'
+						theme_selected = 'C'
 						break;
 					case 'theme-D':
 					case 'D':
 					case '3':
-						theme_active = 'theme-D'
+						theme_selected = 'D'
 						break;
 					default:
-						theme_active = 'theme-D'
+						theme_selected = 'standard'
 						break;
 				}
 				console.info('Active theme settings overriden')
@@ -84,10 +85,9 @@ var visualColorNames = ['Factory', 'XP Luna', 'Windows Forced', 'Campbell Forced
                 break;
         }
     });
-	// End Evelution Specific
-	document.querySelector('html').className += " " + theme_active; // We begin with the first theme selected
+	$('html').attr('theme',theme_selected);
 	$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li").removeClass('selected');
-	$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li[data-theme-change='" + theme_active + "']").addClass('selected');
+	$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li[data-theme-change='theme-" + theme_selected + "']").addClass('selected');
    	colortheme( color_mode,false,false);
 	ColorUpdate(true);
 	UpdateMisc();
@@ -3421,66 +3421,46 @@ if (left.checked) {
 /* Toggles Theme */
 function HCa() {
     var x = document.querySelector('html');
-    if (x.className.indexOf("theme-A") == -1) {
-        x.className += " theme-A";
-    }
-        x.className = x.className.replace(" theme-B", "");
-        x.className = x.className.replace(" theme-C", "");
-        x.className = x.className.replace(" theme-D", "");
+		$('html').attr('theme','A');
 		ColorUpdate(true,true);
 		CheckDeprecation();
 		UpdateMisc();
-		insertKey('theme-active', 'theme-A' );
+		insertKey('theme-selected', 'A' );
 		$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li").removeClass('selected');
-		$(".cpe-dropdown .cpe-dropdown__content .cpe-themes li[data-theme-change='" + getKey('theme-active') + "']").addClass('selected');
+		$(".cpe-dropdown .cpe-dropdown__content .cpe-themes li[data-theme-change='theme-" + getKey('theme-selected') + "']").addClass('selected');
 }
 
 function HCb() {
     var x = document.querySelector('html');
-    if (x.className.indexOf("theme-B") == -1) {
-        x.className += " theme-B";
-		}
-        x.className = x.className.replace(" theme-A", "");
-        x.className = x.className.replace(" theme-C", "");
-        x.className = x.className.replace(" theme-D", "");
+		$('html').attr('theme','B');
 		ColorUpdate(true,true);
 		CheckDeprecation();
 		UpdateMisc();
-		insertKey('theme-active', 'theme-B' );
+		insertKey('theme-selected', 'B' );
 		$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li").removeClass('selected');
-		$(".cpe-dropdown .cpe-dropdown__content .cpe-themes li[data-theme-change='" + getKey('theme-active') + "']").addClass('selected');
+		$(".cpe-dropdown .cpe-dropdown__content .cpe-themes li[data-theme-change='theme-" + getKey('theme-selected') + "']").addClass('selected');
 }
 
 function HCc() {
     var x = document.querySelector('html');
-    if (x.className.indexOf("theme-C") == -1) {
-        x.className += " theme-C";
-    }
-        x.className = x.className.replace(" theme-A", "");
-        x.className = x.className.replace(" theme-B", "");
-        x.className = x.className.replace(" theme-D", "");
+		$('html').attr('theme','C');
 		ColorUpdate(true,true);
 		CheckDeprecation();
 		UpdateMisc();
-		insertKey('theme-active', 'theme-C' );
+		insertKey('theme-selected', 'C' );
 		$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li").removeClass('selected');
-		$(".cpe-dropdown .cpe-dropdown__content .cpe-themes li[data-theme-change='" + getKey('theme-active') + "']").addClass('selected');
+		$(".cpe-dropdown .cpe-dropdown__content .cpe-themes li[data-theme-change='theme-" + getKey('theme-selected') + "']").addClass('selected');
 }
 
 function HCd() {
     var x = document.querySelector('html');
-    if (x.className.indexOf("theme-D") == -1) {
-        x.className += " theme-D";
-    }
-        x.className = x.className.replace(" theme-A", "");
-        x.className = x.className.replace(" theme-B", "");
-        x.className = x.className.replace(" theme-C", "");
+		$('html').attr('theme','D');
 		ColorUpdate(true,true);
 		CheckDeprecation();
 		UpdateMisc();
-		insertKey('theme-active', 'theme-D' );
+		insertKey('theme-selected', 'D' );
 		$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li").removeClass('selected');
-		$(".cpe-dropdown .cpe-dropdown__content .cpe-themes li[data-theme-change='" + getKey('theme-active') + "']").addClass('selected');
+		$(".cpe-dropdown .cpe-dropdown__content .cpe-themes li[data-theme-change='theme-" + getKey('theme-selected') + "']").addClass('selected');
 }
 
 function UpdateFont() {
