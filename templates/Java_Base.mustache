@@ -539,6 +539,8 @@ function RemoveEmptyMenus() {
 	if (!window.location.host.includes('miraheze.org')) {
 		$('.miraheze-only').remove();
 	}
+	$('.footer-places-darkmode-toggle').remove(); // Evelution has its dark mode so this is unneded
+	$('html').removeClass('client-dark-mode'); // Evelution has its dark mode so this is unneded
 // Remove the Language Dropdown, if no languages exist
 	var langmenu = document.querySelector(".evelution-navigation.evelution-sidebar .language-menu");
 	var langmenuM = document.querySelector(".evelution-mobile-global-navigation.evelution-sidebar .language-menu");
