@@ -1085,7 +1085,7 @@ $('.wikitable #auto5').click(
 								$('.wikitable #caretcolor').prop('disabled',(document.querySelector('.wikitable #auto5').checked) );
 							}   
 						);
-// UpdateSelectInputs();
+// UpdateRangeInputs();
 	$('input[type="range"]').css( "--range-percent", function( ) {
 		return (($(this).val() * 100) / $(this).attr('max')) + '%';
 	});
