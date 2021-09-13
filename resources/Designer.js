@@ -952,7 +952,7 @@ function PasteTheme() {
 	// Filter
 	$('#filter').val( getComputedStyle(document.querySelector('html')).getPropertyValue("--logo-filter") );
 	// Filter (Hover)
-	$('#filter2').val( getComputedStyle(document.querySelector('html')).getPropertyValue("--logo-filter2") );
+	$('#filter2').val( getComputedStyle(document.querySelector('html')).getPropertyValue("--logo-filter-hover") );
 	// Filter Duration
 	$('#filter3').val( parseInt(getComputedStyle(document.querySelector('html')).getPropertyValue("--logo-filter-duration")) );
 	// Filter Delay
