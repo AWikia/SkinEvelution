@@ -1085,7 +1085,31 @@ $('.wikitable #auto5').click(
 								$('.wikitable #caretcolor').prop('disabled',(document.querySelector('.wikitable #auto5').checked) );
 							}   
 						);
-UpdateRangeInputs();
-DropDownUpdate();
+// UpdateSelectInputs();
+	$('input[type="range"]').css( "--range-percent", function( ) {
+		return (($(this).val() * 100) / $(this).attr('max')) + '%';
+	});
+	$("input[type='range']").on("input", function(e) { UpdateRange(); } );
+
+// DropDownUpdate();
+$(".cpe-dropdown")
+					.attr('tabindex', '-1');
+
+/* Select Inputs */
+$(' .cpe-dropdown.cpe-select .cpe-dropdown__content .cpe-list li:not(.cpe-dropdown-level-2)')
+.click(function(e) {
+						e.preventDefault();
+						var value = $(this).attr("value");
+						$(' .cpe-dropdown.cpe-select')
+						.click(function() {
+									var content = $('.cpe-select:focus-within .cpe-dropdown__content .cpe-list li:not(.cpe-dropdown-level-2):hover > a').html();
+									$('.cpe-select:focus-within .cpe-select__value').attr("value", value);
+									$('.cpe-select:focus-within .cpe-select__value').html(content);
+									$(this).blur();
+									$(' .cpe-dropdown.cpe-select').off( "click" );
+								});
+        });
+					
+
 
 }
