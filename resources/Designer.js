@@ -1054,8 +1054,6 @@ function ClearTheme() {
 }
 
 function SelectInputs() {
-UpdateRangeInputs();
-DropDownUpdate();
 /* Select Inputs */
 $('.wikitable #auto1').click(
 							function(e) {
@@ -1087,5 +1085,7 @@ $('.wikitable #auto5').click(
 								$('.wikitable #caretcolor').prop('disabled',(document.querySelector('.wikitable #auto5').checked) );
 							}   
 						);
+UpdateRangeInputs();
+DropDownUpdate();
 
 }

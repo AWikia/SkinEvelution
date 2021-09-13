@@ -54,7 +54,6 @@ function insertKey(key,value) {
 	if (! ($("#ca-history").length) ) { // Remove History Button
 		$(".evelution-floating-actions .cpe-floating-button.history").remove();
 	}
-	ColorUpdate(true,true);
 })();
 
 function CompileVisualL10N() {
