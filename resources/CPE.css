@@ -2359,6 +2359,7 @@ opacity:1;
 .cpe-floating-button {
   --floating-button-color:var(--page-text-background-color);
   --floating-button-color-hover:var(--page-text-background-color-hover);
+  --floating-button-color-active:var(--floating-button-color-hover);
   --floating-button-background-color:var(--page-background-color);
   --floating-button-hover-background-color:var(--page-text-background-color-page-background-color-mix-light);
   text-decoration:none!important;
@@ -2408,6 +2409,13 @@ opacity:1;
   border:0;
   color:var(--floating-button-color-hover);
 }
+
+.cpe-dropdown:focus > .cpe-floating-button,
+.cpe-dropdown:focus-within > .cpe-floating-button {
+  color:var(--floating-button-color-active);
+}
+
+
 .cpe-floating-button-group {
   display: inline-flex;
 }
