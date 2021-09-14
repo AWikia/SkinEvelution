@@ -863,7 +863,7 @@ function CopyTheme() {
 				 '--logo-filter-delay:' + $('#filter4').val() + "ms" + ';\n' +
 				 '}' // Ending
 		 navigator.clipboard.writeText(result);
-		 alert('Successfully copied CPE Framework theme to Clipboard')
+		 AddFloatingBanner('Successfully copied CPE Framework theme to Clipboard','success'); // alert('Successfully copied CPE Framework theme to Clipboard');
 }
 
 function PasteTheme() {
