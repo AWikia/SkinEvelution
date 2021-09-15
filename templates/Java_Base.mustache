@@ -1,4 +1,4 @@
-﻿/* Mobile Only CSS */
+/* Mobile Only CSS */
 if (navigator.userAgent.match("Mobile")) {
 document.querySelector("body").className += " phone"
 }
@@ -184,9 +184,9 @@ function AddFloatingBanner(content='Sample Content',kind='message',extraclass=''
 				'</span>' +
 			  '</div>' +
 			  '<span class="cpe-banner-notification__text">' + content + '</span>' +
-			  '<svg onclick="RemoveBanner()" xmlns="http://www.w3.org/2000/svg" class="cpe-banner-notification__close cpe-icon cpe-icon-tiny">' +
-				'<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#cpe-icons-cross-tiny" />' +
-			  '</svg>' +
+			  '<span onclick="RemoveBanner()" class="cpe-banner-notification__close">' +
+				'<span class="cpe-icon cpe-icon-tiny cpe-icon-large material-icons">close</span>' +
+			  '</span>' +
 			'</div>' 
 	);
 
