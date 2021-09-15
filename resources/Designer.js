@@ -796,7 +796,8 @@ function InitDesigner() {
 					'<input type="range" class="big" style="min-width:130px; min-width:130px;" id="filter4" value="0" min="0" max="1000" step="20" />' + // Body Background 
 				'</td>' +
 			'</tr>' +
-		'</table>'
+		'</table>' +
+		'<div class="theme-code"></div>'
 	);
 	SelectInputs();
 	$("html").attr("visualcolors", "standard"); // Unset Visual Colors mode
@@ -862,6 +863,12 @@ function CopyTheme() {
 				 '--logo-filter-duration:' + $('#filter3').val() + "ms" + ';\n' +
 				 '--logo-filter-delay:' + $('#filter4').val() + "ms" + ';\n' +
 				 '}' // Ending
+		$("div.theme-code").empty().append(
+			'<h2>Code</h2>' +
+			'<pre>' +
+			result +
+			'</pre>'
+		);
 		 navigator.clipboard.writeText(result);
 		 AddFloatingBanner('Successfully copied CPE Framework theme to Clipboard','success'); // alert('Successfully copied CPE Framework theme to Clipboard');
 }
