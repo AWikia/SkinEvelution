@@ -1,7 +1,13 @@
 ﻿(function () {
 
-if ($("body.page-CPE_ThemeDesigner").length) {
-	InitDesigner()
+  const mwConfig2 = mw.config.get([
+    "wgNamespaceNumber",
+    "wgTitle",
+  ]);
+
+if (($("body.page-CPE_ThemeDesigner").length) ||
+	(mwConfig2.wgNamespaceNumber === -1 && mwConfig2.wgTitle === "CPEThemeDesigner") ){
+	InitDesigner();
 }
 
 })();
@@ -800,6 +806,10 @@ function InitDesigner() {
 		'<div class="theme-code"></div>'
 	);
 	SelectInputs();
+    var pageTitle = $("#firstheading").html();
+    const oldDocTitle = document.title;
+    const index = oldDocTitle.indexOf(" -");
+    if (index >= 0) document.title = pageTitle + oldDocTitle.substring(index);
 	$("html").attr("visualcolors", "standard"); // Unset Visual Colors mode
 	ColorUpdate();
 }
