@@ -99,25 +99,6 @@ window.MW18newnavblock=false;
 })();
 
 
-/* Module Toggle */
-function ToggleModule() {
-
-		$('.evelution-module')
-				.click(function() {
-						var $this = $(this);
-						if ($this.hasClass("hidden-module")) {
-							$this.removeClass("hidden-module");
-						} else {
-							$this.addClass("hidden-module");
-						}
-
-						$('.evelution-module').off( "click" );
-
-
-			});
-
-}
-
 /* Aliases all components with the .wds prefix to the ones from .cpe ones */
 function AliasFandomComponents() {
 
@@ -387,8 +368,8 @@ function initializeViews() {
 	'							</span>'
 	);
 	
-	// Thread, Topic, Forum
-	$(".evelution-page-header-contribution .views > li#ca-nstab-thread > a, .evelution-page-header-contribution .views > li#ca-nstab-topic > a, .evelution-page-header-contribution .views > li#ca-nstab-forum > a").prepend(
+	// Thread, Topic, Forum, Commentstreams
+	$(".evelution-page-header-contribution .views > li#ca-nstab-thread > a, .evelution-page-header-contribution .views > li#ca-nstab-topic > a, .evelution-page-header-contribution .views > li#ca-nstab-forum > a, .evelution-page-header-contribution .views > li#ca-nstab-commentstreams > a").prepend(
 	'<span class="cpe-icon cpe-icon-small margined material-icons">' +
 	'								question_answer' +
 	'							</span>'
@@ -414,6 +395,36 @@ function initializeViews() {
 	'								widgets' +
 	'							</span>'
 	);
+
+	// Poll
+	$(".evelution-page-header-contribution .views > li#ca-nstab-poll > a").prepend(
+	'<span class="cpe-icon cpe-icon-small margined material-icons">' +
+	'								leaderboard' +
+	'							</span>'
+	);
+
+	// Video
+	$(".evelution-page-header-contribution .views > li#ca-nstab-video > a").prepend(
+	'<span class="cpe-icon cpe-icon-small margined material-icons">' +
+	'								videocam' +
+	'							</span>'
+	);
+
+
+	// Tech
+	$(".evelution-page-header-contribution .views > li#ca-nstab-tech > a").prepend(
+	'<span class="cpe-icon cpe-icon-small margined material-icons">' +
+	'								games' +
+	'							</span>'
+	);
+
+	// Draft
+	$(".evelution-page-header-contribution .views > li#ca-nstab-draft > a").prepend(
+	'<span class="cpe-icon cpe-icon-small margined material-icons">' +
+	'								edit' +
+	'							</span>'
+	);
+
 
 
 /* Views */
@@ -484,6 +495,14 @@ function initializeViews() {
 	'								file_download' +
 	'							</span>'
 	);
+
+	// WikiLove
+	$(".evelution-page-header-contribution .actions > li#ca-wikilove > a").prepend(
+	'<span class="cpe-icon cpe-icon-small margined material-icons">' +
+	'								favorite' +
+	'							</span>'
+	);
+
 
 }
 
