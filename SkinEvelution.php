@@ -78,7 +78,7 @@ class SkinEvelution extends SkinMustache {
         $data["html-import-link"] = Title::newFromText( 'Special:Import' )->getLocalURL();
         $data["html-stats-link"] = Title::newFromText( 'Special:Statistics' )->getLocalURL();
         $data["html-allpages-link"] = Title::newFromText( 'Special:AllPages' )->getLocalURL();
-        $data["html-designer-link"] = Title::newFromText( 'CPE ThemeDesigner' )->getLocalURL();
+        $data["html-designer-link"] = Title::newFromText( 'Special:CPEThemeDesigner' )->getLocalURL();
         if ( class_exists( 'wAvatar' ) ) {
 			$avatar = new wAvatar( $this->getSkin()->getUser()
 				->getId(), 'l' );
