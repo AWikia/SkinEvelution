@@ -286,7 +286,7 @@ function initializeViews() {
 
 function RemoveEmptyMenus() {
 // Remove Miraheze elements
-	if (!window.location.host.includes('miraheze.org')) {
+	if (!$("#footer-icons img[alt='Miraheze Wiki Hosting']").length) { // Check if an image with the Miraheze Wiki hosting alt exists
 		$('.miraheze-only').remove();
 	}
 	$('#footer-places .footer-places-darkmode-toggle').remove(); // Evelution has its dark mode so this is unneded
