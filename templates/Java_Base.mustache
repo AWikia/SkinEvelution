@@ -3,6 +3,30 @@ if (navigator.userAgent.match("Mobile")) {
 document.querySelector("body").className += " phone"
 }
 
+/* Local Storage */
+function getKey(key) {
+var str = window.localStorage,
+    result = str.getItem('-evelution-pref-'+key);
+if (!result) {
+   return '-1';
+}
+return result;
+}
+
+function insertKey(key,value) {
+	window.localStorage.setItem('-evelution-pref-' + key, '' + value);
+}
+
+function getParams() {
+	if (window.location.search != "") {
+		var params = window.location.search.split("?")[1].split("&");
+    } else {
+		var params = []
+    }
+	return params
+}
+
+
 /* Dropdowns */
 // Calls the function on all toggles
 function DropDownUpdate() {
@@ -39,7 +63,6 @@ function UpdateRangeInputs() {
 }
 
 /* Enable New Global Navigation - No exception for now */
-window.MW18newnavblock=false;
 (function () {
 	AliasFandomComponents();
 	if (getKey('content-full') === '-1') {
@@ -87,15 +110,6 @@ window.MW18newnavblock=false;
 	$(' container > main').attr('rail', rail_full );
 	UpdateRangeInputs();
 	DropDownUpdate();
-	if (window.MW18newnavblock === true) {
-		return
-	}
-/*
-	if ($("body.evelution-2018").length || $("body.evelution-discuss-2018").length) {
-		document.querySelector('.evelution-gnav[style]').className += " newnav";
-		document.querySelector('.evelution-gnav:not([style])').className += " newnav";
-	}
-*/
 })();
 
 
