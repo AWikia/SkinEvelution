@@ -882,14 +882,27 @@ function CopyTheme() {
 				 '--logo-filter-duration:' + $('#filter3').val() + "ms" + ';\n' +
 				 '--logo-filter-delay:' + $('#filter4').val() + "ms" + ';\n' +
 				 '}' // Ending
-		$("div.theme-code").empty().append(
-			'<h2>Code</h2>' +
-			'<pre>' +
-			result +
-			'</pre>'
-		);
-		 navigator.clipboard.writeText(result);
-		 AddFloatingBanner('Successfully copied CPE Framework theme to Clipboard','success'); // alert('Successfully copied CPE Framework theme to Clipboard');
+		if (navigator.clipboard) {
+			navigator.clipboard.writeText(result).then(function() {
+			 AddFloatingBanner('Successfully copied CPE Framework theme to Clipboard','success'); // alert('Successfully copied CPE Framework theme to Clipboard');
+			}, function() {
+			 AddFloatingBanner('Failed to copy CPE Framework theme to Clipboard. You can, however find the generated theme code below the Theme Designer applet so that you will be able to select it and copy that to the clipboard.','alert');
+			$("div.theme-code").empty().append(
+				'<h2>Code</h2>' +
+				'<pre>' +
+				result +
+				'</pre>'
+			);
+			});
+		} else {
+			 AddFloatingBanner('Failed to copy CPE Framework theme to Clipboard. You can, however find the generated theme code below the Theme Designer applet so that you will be able to select it and copy that to the clipboard.','alert');
+			$("div.theme-code").empty().append(
+				'<h2>Code</h2>' +
+				'<pre>' +
+				result +
+				'</pre>'
+			);
+		}
 }
 
 function PasteTheme() {
