@@ -453,13 +453,17 @@ container > main {
 
 /* Personal Toolbar */
 .evelution-toolbox  {
-	--global-nav-color:var(--toolbar-background-color);
+	--global-nav-color:var(--toolbar-background-color-rgb);
 	--global-nav-text-color:var(--toolbar-foreground-color);
 	--global-nav-link-color-hover:var(--toolbar-foreground-color-hover);
 	--global-nav-link-color-active:rgba(var(--toolbar-foreground-color-hover-rgb),0.8);
 	--global-nav-link-background-active:var(--toolbar-foreground-color-hover-rgb);
 	--global-nav-link-opacity:0.2;
 	--toolbar-link-size:var(--sticky-nav-size);
+	--global-nav-opacity:var(--dropdown-opacity);
+	-webkit-backdrop-filter:var(--backdrop-filter);
+	backdrop-filter:var(--backdrop-filter);
+	background-color:rgba(var(--global-nav-color), var(--global-nav-opacity));
 	bottom:0;
 	top:auto;
 	height:var(--sticky-nav-size);
@@ -1114,7 +1118,7 @@ gap:2px;
 
 /* Desktop Sticky Header */
 	.evelution-sticky-header {
-		--sticky-nav-opacity:0.95;
+		--sticky-nav-opacity:var(--dropdown-opacity);
 		--tr-scale:100%;
 		background-color:rgba(var(--sticky-header-background-color-rgb), var(--sticky-nav-opacity));
 		color:var(--sticky-header-foreground-color);
@@ -1134,6 +1138,8 @@ gap:2px;
 		margin-top:calc(0px - var(--sticky-nav-size));
 		box-sizing:content-box;
 		transform-origin:top;
+		-webkit-backdrop-filter:var(--backdrop-filter);
+		backdrop-filter:var(--backdrop-filter);
 	}
 
 	main[nav="true"] .evelution-sticky-header.col-nav,
@@ -1156,6 +1162,10 @@ gap:2px;
 		z-index:98;
 	}
 
+
+	.evelution-sticky-header .cpe-dropdown__content {
+		--dropdown-opacity:0.9;
+	}
 
 	.constructor .evelution-sticky-header {
 		display:none;
@@ -1180,7 +1190,7 @@ gap:2px;
 		position:relative;
 		display:flex;
 	}
-	
+		
 	.evelution-sticky-header .wordmark img {
 		image-rendering:initial;                  /* CSS4 Proposed  */
 		height:80%;

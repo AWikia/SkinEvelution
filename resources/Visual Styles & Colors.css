@@ -181,6 +181,54 @@ html:not([visualtheme="contrast"]) .prt .pane-on .evelution-article-wrapper:afte
 }
 
 
+/* Lite Visual Style */
+[visualtheme="lite"] .lightbox {
+	background-color:rgba(var(--sticky-header-background-color), 0.98);
+}
+
+[visualtheme="lite"] .lightbox-container:target {
+	--lightbox-opacity:1!important;
+}
+
+[visualtheme="lite"] .evelution-content .evelution-article-container {
+	--content-space-opacity:1!important;
+}
+
+[visualtheme="lite"] .evelution-sticky-header {
+	--sticky-nav-opacity:1!important;
+}
+
+[visualtheme="lite"] body,
+[visualtheme="lite"] .cpe-dropdown__content,
+[visualtheme="lite"] .cpe-dropdown__content .cpe-list.is-linked .cpe-dropdown-level-2 .cpe-dropdown-level-2__content {
+	--dropdown-opacity:1!important;
+}
+
+
+[visualtheme="lite"] .constructor .evelution-content .evelution-article-container::before {
+	opacity:1;
+}
+
+
+
+
+[visualtheme="lite"] *,[visualtheme="lite"] :before,[visualtheme="lite"] :after {
+	-webkit-backdrop-filter:none!important;
+	backdrop-filter:none!important;
+}
+
+[visualtheme="lite"] .evelution-option-pane {
+filter:none!important;
+}
+
+@media only screen and (max-width:1019px) {
+[visualtheme="lite"] .pane-on .evelution-article-wrapper:after {
+	opacity:1;
+}
+}
+
+
+
 
 /* Basic Theme */
 [visualtheme="basic"] *,[visualtheme="basic"] :before,[visualtheme="basic"] :after {
@@ -1628,6 +1676,7 @@ box-shadow:none!important;
 	background-color:rgb(var(--page-background-color-rgb));
 }
 
+[visualtheme="classic"] body,
 [visualtheme="classic"] .cpe-dropdown__content,
 [visualtheme="classic"] .cpe-dropdown-level-2__content {
 	--dropdown-opacity:1!important;
