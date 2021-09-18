@@ -371,6 +371,16 @@ Aleo = Latin
 	font-weight:900;
 }
 
+:root { /* Standard */
+--community-background-image:url("loadbg_dev.png");
+--community-background-color:#441177;
+--anchor-background-color:#dd2300;
+--page-background-color:#f1f2f3;
+--accent-background-color:#dd8300;
+--sticky-header-background-color:#b88300;
+}
+
+
 :root {
 font-family:Trebuchet MS;
 /* Base Foreground Colors */
@@ -509,14 +519,6 @@ body {
 	--theme-background-image-opacity:var(--community-background-image-opacity);
 }
 
-:root { /* Standard */
---community-background-image:url("loadbg_dev.png");
---community-background-color:#441177;
---anchor-background-color:#dd2300;
---page-background-color:#f1f2f3;
---accent-background-color:#dd8300;
---sticky-header-background-color:#b88300;
-}
 
 :root:not(.theming-loaded) {
 --community-background-image-opacity:100%;
@@ -1312,11 +1314,11 @@ color:inherit;
 /* Wikiatable style */
 body .wikitable {
 	line-height:1.6;
-	border:1px solid var(--page-border-background-color);
-	background-color:var(--page-background-color);
+	border:1px solid rgb(var(--page-border-background-color-rgb));
+	background-color:rgb(var(--page-background-color-rgb));
 	border-collapse:collapse;
 	font-size:inherit;
-	color:var(--page-text-background-color);
+	color:rgb(var(--page-text-background-color-rgb));
 }
 
 
@@ -1332,7 +1334,7 @@ body .wikitable > tr > th,
 body .wikitable > * > tr > th,
 body .wikitable > tr > td,
 body .wikitable > * > tr > td {
-	border:1px solid var(--page-border-background-color);
+	border:1px solid rgb(var(--page-border-background-color-rgb));
 	padding:5px;
 	margin:1px 0;
 /*	text-align:center; */
