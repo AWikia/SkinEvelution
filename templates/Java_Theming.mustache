@@ -1059,7 +1059,7 @@ if ((getComputedStyle(document.querySelector('body')).getPropertyValue("--page-t
 		var content_text = getComputedStyle(document.querySelector('html')).getPropertyValue("--dark-theme-text-background-color")
 	}
 } else {
-		var content_text = getComputedStyle(document.querySelector('container')).getPropertyValue("--page-text-background-color");
+		var content_text = getComputedStyle(document.querySelector('body')).getPropertyValue("--page-text-background-color");
 }
 
 if ((getComputedStyle(document.querySelector('body')).getPropertyValue("--page-text-background-color") != 'auto') ) { // Only run this part of Liatch quirk if not in autocolorization
@@ -1080,7 +1080,7 @@ if ((getComputedStyle(document.querySelector('body')).getPropertyValue("--page-t
 } else {
 	document.querySelector('container').style.setProperty("--page-text-background-color", content_text);
 }
-
+		var content_text = getComputedStyle(document.querySelector('container')).getPropertyValue("--page-text-background-color");
 
 
 var content_color2 = ColorTest(content_color);
