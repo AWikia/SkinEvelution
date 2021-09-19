@@ -971,6 +971,26 @@ function SuperColorTest(color,dledlen=false) { // Double Amount
 	}
 }
 
+function AutopickColor(color1,color2,attr="light-page-text",inv=false) { // Double Amount
+	if (isLightColor(color1)) {
+		if (inv == false) {
+			$('body').attr(attr, 'true');
+			return color1;
+		} else {
+			return color2;
+		}
+		$('body').attr(attr, 'true');
+	} else {
+		if (inv == true) {
+			return color1;
+		} else {
+			$('body').attr(attr, 'false');
+			return color2;
+		}
+	}
+}
+
+
 
 function ColorInvert(color) {
 	var r = 1 - Color(color).getRed();
@@ -1150,18 +1170,8 @@ document.querySelector('body').style.setProperty("--page-secondary-background-co
 
 document.querySelector('container').style.setProperty("--page-border-background-color", dropdowncolor2);
 
-if (isLightColor( getComputedStyle(document.querySelector('container')).getPropertyValue("--page-text-background-color") )) {
-document.querySelector('body').style.setProperty("--page-text-gradient-color", getComputedStyle(document.querySelector('container')).getPropertyValue("--page-text-background-color"));
-document.querySelector('body').style.setProperty("--page-text-gradient-color-hover", content_text2);
-$('body').attr("light-page-text", 'true');
-} else {
-document.querySelector('body').style.setProperty("--page-text-gradient-color", content_text2);
-document.querySelector('body').style.setProperty("--page-text-gradient-color-hover", getComputedStyle(document.querySelector('container')).getPropertyValue("--page-text-background-color"));
-$('body').attr("light-page-text", 'false');
-}
-
-
-
+document.querySelector('body').style.setProperty("--page-text-gradient-color", AutopickColor(getComputedStyle(document.querySelector('container')).getPropertyValue("--page-text-background-color"),content_text2,"light-page-text",false));
+document.querySelector('body').style.setProperty("--page-text-gradient-color-hover", AutopickColor(getComputedStyle(document.querySelector('container')).getPropertyValue("--page-text-background-color"),content_text2,"light-page-text",true));
 
 document.querySelector('body').style.setProperty("--page-background-color-hover", content_color2);
 document.querySelector('body').style.setProperty("--page-background-color-active", content_color3); // Scrollbar
@@ -1220,15 +1230,9 @@ var buttoncolor2tI = ColorTest(buttoncolor2I,false);
 var buttoncolor3 = SuperColorTest(button_color); // Scrollbar
 
 
-if (isLightColor(button_color)) {
-document.querySelector('body').style.setProperty("--accent-gradient-color", button_color);
-document.querySelector('body').style.setProperty("--accent-gradient-color-hover", buttoncolor1);
-$('body').attr("light-accent", 'true');
-} else {
-document.querySelector('body').style.setProperty("--accent-gradient-color", buttoncolor1);
-document.querySelector('body').style.setProperty("--accent-gradient-color-hover", button_color);
-$('body').attr("light-accent", 'false');
-}
+document.querySelector('body').style.setProperty("--accent-gradient-color", AutopickColor(button_color,buttoncolor1,"light-accent",false));
+document.querySelector('body').style.setProperty("--accent-gradient-color-hover", AutopickColor(button_color,buttoncolor1,"light-accent",true));
+
 
 buttonmixl = GetHoverColor(content_color,button_color);
 buttonmix = GetActiveColor(content_color,button_color);
@@ -1272,15 +1276,8 @@ var headercolor2t = ColorTest(headercolor2,false);
 var headercolor2tI = ColorTest(headercolor2I,false);
 var headercolor3 = SuperColorTest(header_color); // Scrollbar
 
-if (isLightColor(header_color)) {
-document.querySelector('body').style.setProperty("--sticky-header-gradient-color", header_color);
-document.querySelector('body').style.setProperty("--sticky-header-gradient-color-hover", headercolor1);
-$('body').attr("light-sticky-header", 'true');
-} else {
-document.querySelector('body').style.setProperty("--sticky-header-gradient-color", headercolor1);
-document.querySelector('body').style.setProperty("--sticky-header-gradient-color-hover", header_color);
-$('body').attr("light-sticky-header", 'false');
-}
+document.querySelector('body').style.setProperty("--sticky-header-gradient-color", AutopickColor(header_color,headercolor1,"light-sticky-header",false));
+document.querySelector('body').style.setProperty("--sticky-header-gradient-color-hover", AutopickColor(header_color,headercolor1,"light-sticky-header",true));
 
 headermixl = GetHoverColor(content_color,header_color);
 headermix = GetActiveColor(content_color,header_color);
@@ -1336,15 +1333,8 @@ var linkcolor3 = SuperColorTest(link_color); // Scrollbar
 
 
 
-if (isLightColor(link_color)) {
-document.querySelector('body').style.setProperty("--anchor-gradient-color", link_color);
-document.querySelector('body').style.setProperty("--anchor-gradient-color-hover", linkcolor1);
-$('body').attr("light-anchor", 'true');
-} else {
-document.querySelector('body').style.setProperty("--anchor-gradient-color", linkcolor1);
-document.querySelector('body').style.setProperty("--anchor-gradient-color-hover", link_color);
-$('body').attr("light-anchor", 'false');
-}
+document.querySelector('body').style.setProperty("--anchor-gradient-color", AutopickColor(link_color,linkcolor1,"light-anchor",false));
+document.querySelector('body').style.setProperty("--anchor-gradient-color-hover", AutopickColor(link_color,linkcolor1,"light-anchor",true));
 
 linkmixl = GetHoverColor(content_color,link_color);
 linkmix = GetActiveColor(content_color,link_color);
@@ -1400,15 +1390,8 @@ var bordercolor2I = ColorTest(border_color,true,true);
 var bordercolor2t = ColorTest(bordercolor2,false);
 var bordercolor2tI = ColorTest(bordercolor2I,false);
 
-if (isLightColor(border_color)) {
-document.querySelector('body').style.setProperty("--page-border-gradient-color", border_color);
-document.querySelector('body').style.setProperty("--page-border-gradient-color-hover", bordercolor1);
-$('body').attr("light-page-border", 'true');
-} else {
-document.querySelector('body').style.setProperty("--page-border-gradient-color", bordercolor1);
-document.querySelector('body').style.setProperty("--page-border-gradient-color-hover", border_color);
-$('body').attr("light-page-border", 'false');
-}
+document.querySelector('body').style.setProperty("--page-border-gradient-color", AutopickColor(border_color,bordercolor1,"light-page-border",false));
+document.querySelector('body').style.setProperty("--page-border-gradient-color-hover", AutopickColor(border_color,bordercolor1,"light-page-border",true));
 
 bordermixl = GetHoverColor(content_color,border_color);
 bordermix = GetActiveColor(content_color,border_color);
@@ -1451,15 +1434,8 @@ var headcolor2I = ColorTest(head_color,true,true);
 var headcolor2t = ColorTest(headcolor2,false);
 var headcolor2tI = ColorTest(headcolor2I,false);
 
-if (isLightColor(head_color)) {
-document.querySelector('body').style.setProperty("--community-gradient-color", head_color);
-document.querySelector('body').style.setProperty("--community-gradient-color-hover", headcolor1);
-$('body').attr("light-community", 'true');
-} else {
-document.querySelector('body').style.setProperty("--community-gradient-color", headcolor1);
-document.querySelector('body').style.setProperty("--community-gradient-color-hover", head_color);
-$('body').attr("light-community", 'false');
-}
+document.querySelector('body').style.setProperty("--community-gradient-color", AutopickColor(head_color,headcolor1,"light-community",false));
+document.querySelector('body').style.setProperty("--community-gradient-color-hover", AutopickColor(head_color,headcolor1,"light-community",true));
 
 headmixl = GetHoverColor(content_color,head_color);
 headmix = GetActiveColor(content_color,head_color);
@@ -1535,15 +1511,8 @@ var floatingcolor2I = ColorTest(floating_color,true,true);
 var floatingcolor2t = ColorTest(floatingcolor2,false);
 var floatingcolor2tI = ColorTest(floatingcolor2I,false);
 
-if (isLightColor(floating_color)) {
-document.querySelector('body').style.setProperty("--toolbar-gradient-color", floating_color);
-document.querySelector('body').style.setProperty("--toolbar-gradient-color-hover", floatingcolor1);
-$('body').attr("light-toolbar", 'true');
-} else {
-document.querySelector('body').style.setProperty("--toolbar-gradient-color", floatingcolor1);
-document.querySelector('body').style.setProperty("--toolbar-gradient-color-hover", floating_color);
-$('body').attr("light-toolbar", 'false');
-}
+document.querySelector('body').style.setProperty("--toolbar-gradient-color", AutopickColor(floating_color,floatingcolor1,"light-toolbar",false));
+document.querySelector('body').style.setProperty("--toolbar-gradient-color-hover", AutopickColor(floating_color,floatingcolor1,"light-toolbar",true));
 
 floatmixl = GetHoverColor(content_color,floating_color);
 floatmix = GetActiveColor(content_color,floating_color);
@@ -1589,15 +1558,8 @@ var alertcolor2tI = ColorTest(alertcolor2I,false);
 var alertcolor3 = SuperColorTest(alert_color); // Scrollbar
 
 
-if (isLightColor(alert_color)) {
-document.querySelector('body').style.setProperty("--alert-gradient-color", alert_color);
-document.querySelector('body').style.setProperty("--alert-gradient-color-hover", alertcolor1);
-$('body').attr("light-alert", 'true');
-} else {
-document.querySelector('body').style.setProperty("--alert-gradient-color", alertcolor1);
-document.querySelector('body').style.setProperty("--alert-gradient-color-hover", alert_color);
-$('body').attr("light-alert", 'false');
-}
+document.querySelector('body').style.setProperty("--alert-gradient-color", AutopickColor(alert_color,alertcolor1,"light-alert",false));
+document.querySelector('body').style.setProperty("--alert-gradient-color-hover", AutopickColor(alert_color,alertcolor1,"light-alert",true));
 
 alertmixl = GetHoverColor(content_color,alert_color);
 alertmix = GetActiveColor(content_color,alert_color);
@@ -1635,15 +1597,8 @@ var warningcolor2tI = ColorTest(warningcolor2I,false);
 var warningcolor3 = SuperColorTest(warning_color); // Scrollbar
 
 
-if (isLightColor(warning_color)) {
-document.querySelector('body').style.setProperty("--warning-gradient-color", warning_color);
-document.querySelector('body').style.setProperty("--warning-gradient-color-hover", warningcolor1);
-$('body').attr("light-warning", 'true');
-} else {
-document.querySelector('body').style.setProperty("--warning-gradient-color", warningcolor1);
-document.querySelector('body').style.setProperty("--warning-gradient-color-hover", warning_color);
-$('body').attr("light-warning", 'false');
-}
+document.querySelector('body').style.setProperty("--warning-gradient-color", AutopickColor(warning_color,warningcolor1,"light-warning",false));
+document.querySelector('body').style.setProperty("--warning-gradient-color-hover", AutopickColor(warning_color,warningcolor1,"light-warning",true));
 
 warningmixl = GetHoverColor(content_color,warning_color);
 warningmix = GetActiveColor(content_color,warning_color);
@@ -1681,15 +1636,8 @@ var successcolor2tI = ColorTest(successcolor2I,false);
 var successcolor3 = SuperColorTest(success_color); // Scrollbar
 
 
-if (isLightColor(success_color)) {
-document.querySelector('body').style.setProperty("--success-gradient-color", success_color);
-document.querySelector('body').style.setProperty("--success-gradient-color-hover", successcolor1);
-$('body').attr("light-success", 'true');
-} else {
-document.querySelector('body').style.setProperty("--success-gradient-color", successcolor1);
-document.querySelector('body').style.setProperty("--success-gradient-color-hover", success_color);
-$('body').attr("light-success", 'false');
-}
+document.querySelector('body').style.setProperty("--success-gradient-color", AutopickColor(success_color,successcolor1,"light-success",false));
+document.querySelector('body').style.setProperty("--success-gradient-color-hover", AutopickColor(success_color,successcolor1,"light-success",true));
 
 successmixl = GetHoverColor(content_color,success_color);
 successmix = GetActiveColor(content_color,success_color);
@@ -1727,15 +1675,8 @@ var messagecolor2tI = ColorTest(messagecolor2I,false);
 var messagecolor3 = SuperColorTest(message_color); // Scrollbar
 
 
-if (isLightColor(message_color)) {
-document.querySelector('body').style.setProperty("--message-gradient-color", message_color);
-document.querySelector('body').style.setProperty("--message-gradient-color-hover", messagecolor1);
-$('body').attr("light-message", 'true');
-} else {
-document.querySelector('body').style.setProperty("--message-gradient-color", messagecolor1);
-document.querySelector('body').style.setProperty("--message-gradient-color-hover", message_color);
-$('body').attr("light-message", 'false');
-}
+document.querySelector('body').style.setProperty("--message-gradient-color", AutopickColor(message_color,messagecolor1,"light-message",false));
+document.querySelector('body').style.setProperty("--message-gradient-color-hover", AutopickColor(message_color,messagecolor1,"light-message",true));
 
 messagemixl = GetHoverColor(content_color,message_color);
 messagemix = GetActiveColor(content_color,message_color);
