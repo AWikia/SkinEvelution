@@ -1,4 +1,4 @@
-﻿window.MW18auto = true;
+﻿﻿window.MW18auto = true;
 window.MW18autoDark = false;
 window.MW18darkmode = false;
 window.MW18ContrastNotice = false;
@@ -883,7 +883,7 @@ function DownloadTheme(full=false) {
 
 /* Begin Color Parsers */
 function ColorTestTwin(color,color2,intensity=1,inter='hsl') {
-	return chroma.mix(color,color2,0.5*intensity, inter);
+	return chroma.mix(color,color2,0.5*intensity, inter).get('hex');
 }
 
 function GetHoverColor(color1='#ffffff',color2='#000000',inter='hsl',steps=4,modi=1) {
@@ -912,9 +912,9 @@ function ColorTest(color,text=false,inv=false,dledlen=false) { // Regular Colors
 			}
 		} else {
 			if (inv === false) {
-				return GetHoverColor(color, '#000000','hsl',14,5);
+				return Color(color).darkenByAmount( 0.2 );
 			} else {
-				return GetHoverColor(color, '#ffffff','hsl',14,5);
+				return Color(color).lightenByAmount( 0.2 );
 			}
 		}
 	} else {
@@ -926,9 +926,9 @@ function ColorTest(color,text=false,inv=false,dledlen=false) { // Regular Colors
 			}
 		} else {
 			if (inv === true) {
-				return GetHoverColor(color, '#000000','hsl',14,5);
+				return Color(color).darkenByAmount( 0.2 );
 			} else {
-				return GetHoverColor(color, '#ffffff','hsl',14,5);
+				return Color(color).lightenByAmount( 0.2 );
 			}
 		}
 	}
@@ -943,9 +943,9 @@ function SuperColorTest(color,dledlen=false) { // Double Amount
 		var color2 = color;
 	}
 	if (isLightColor(color2)) {
-		return GetActiveColor(color, '#000000','hsl',14,5);
-	} else {
-		return GetActiveColor(color, '#ffffff','hsl',14,5);
+				return Color(color).darkenByAmount( 0.4 );
+			} else {
+				return Color(color).lightenByAmount( 0.4 );
 	}
 }
 
@@ -955,7 +955,7 @@ function ColorInvert(color) {
 	var g = 255 - chroma(color).get('rgb.g');
 	var b = 255 - chroma(color).get('rgb.b');
 	var h = chroma(color).get('hsl.h');	
-	return chroma.rgb(r,g,b).set('hsl.h', h);
+	return chroma.rgb(r,g,b).set('hsl.h', h).get('hex');
 }
 
 
@@ -973,7 +973,8 @@ return Color2(SuperColorTest(color));
 
 // Conversion for R,G,B syntax
 function Color2(color) {
-	return chroma(color).get('rgb.r') + ',' + chroma(color).get('rgb.g') + ',' + chroma(color).get('rgb.b');
+//	return chroma(color).get('rgb.r') + ',' + chroma(color).get('rgb.g') + ',' + chroma(color).get('rgb.b');
+	return (Color(color).getRed() * 255 ) + ',' + (Color(color).getGreen() * 255) + ',' + (Color(color).getBlue() * 255);
 }
 
 // Conversion for Hex (Unused)
@@ -1088,17 +1089,17 @@ var content_color3 = SuperColorTest(content_color); // Scrollbar
 
 
 if (isLightColor(content_color)) {
-	var dropdowncolor = chroma.mix(content_color,'#000000',0.15, 'hsv');
+	var dropdowncolor = chroma.mix(content_color,'#000000',0.15, 'hsv').get('hex');
 	if ((getComputedStyle(document.querySelector('body')).getPropertyValue("--page-border-background-color") === 'auto')  ) {
-		var dropdowncolor2 = chroma.mix(content_color,'#1a1a1a',0.35, 'hsv');
+		var dropdowncolor2 = chroma.mix(content_color,'#1a1a1a',0.35, 'hsv').get('hex');
 	} else {
 		var dropdowncolor2 = 'inherit';
 	}
 
 } else {
-	var dropdowncolor = chroma.mix(content_color,'#ffffff',0.15, 'hsv');
+	var dropdowncolor = chroma.mix(content_color,'#ffffff',0.15, 'hsv').get('hex');
 	if ((getComputedStyle(document.querySelector('body')).getPropertyValue("--page-border-background-color") === 'auto')  ) {
-		var dropdowncolor2 = chroma.mix(content_color,'#e5e5e5',0.35, 'hsv');
+		var dropdowncolor2 = chroma.mix(content_color,'#e5e5e5',0.35, 'hsv').get('hex');
 	} else {
 		var dropdowncolor2 = 'inherit';
 	}
