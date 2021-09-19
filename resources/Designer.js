@@ -23,7 +23,7 @@ if (($("body.page-CPE_ThemeDesigner").length) ||
 
 function InitDesigner() {
 	// Change Title
-	$(".evelution-page-header .evelution-title").html( mw.msg( 'evelution-designer-title' ) );
+	$(".evelution-page-header .evelution-title > span").html( mw.msg( 'evelution-designer-title' ) );
 	$(".link[designer-on]").addClass( 'active' );
 	// Remove the following things
 	$(".cpe-button-group.views, .cpe-button-group.actions, #catlinks, .td-off, .evelution-floating-actions .cpe-floating-button.edit, .evelution-floating-actions .cpe-floating-button.history").remove();
@@ -815,7 +815,7 @@ function InitDesigner() {
 		'<div class="theme-code"></div>'
 	);
 	SelectInputs();
-    var pageTitle = $("#firstheading").html();
+    var pageTitle = $("#firstheading > span").html();
     const oldDocTitle = document.title;
     const index = oldDocTitle.indexOf(" -");
     if (index >= 0) document.title = pageTitle + oldDocTitle.substring(index);
@@ -856,6 +856,11 @@ function CopyTheme() {
     } else {
 		var image = 'url("' + $('#bodyimage').val() + '")';
     }
+    if ( $('#secondfont').val().length === 0) {
+		var customfont = '""';
+    } else {
+		var customfont = $('#secondfont').val();
+    }
 		result = '[theme="' + $('html').attr('theme') + '"][visualcolors="standard"] {\n' + // Beginning
 				 '--community-background-image:' + image + ';\n' +
 				 '--community-background-image-opacity:' + $('#bodyimageopacity').val() + "%" + ';\n' +
@@ -875,7 +880,7 @@ function CopyTheme() {
 				 '--sticky-header-background-color:' + $('#headercolor').val() + ';\n' +
 				 '--toolbar-background-color:' + autocolor4  + ';\n' +
 				 '--caret-color:' + autocolor5  + ';\n' +
-				 '--custom-secondary-font:' + $('#secondfont').val() + ';\n' +
+				 '--custom-secondary-font:' + customfont + ';\n' +
 				 '--border-radius:' + $('#border-radius').val() + "px"  + ';\n' +
 				 '--logo-filter:' + $('#filter').val() + ';\n' +
 				 '--logo-filter-hover:' + $('#filter2').val()  + ';\n' +

@@ -1,5 +1,4 @@
-﻿
-/**
+﻿/**
  * chroma.js - JavaScript library for color conversions
  *
  * Copyright (c) 2011-2019, Gregor Aisch
@@ -342,7 +341,24 @@ if (!net.brehaut) {
         getLuminance: function() {
             return (this.red * 0.2126) + (this.green * 0.7152) + (this.blue * 0.0722);
         },
-
+        getLuminance2: function() { // Edit by Qora Qore Telecomunities
+			if (this.red <= 0.03928 ) {
+				var r = (this.red / 12.92)
+			} else {
+				var r = ((this.red+0.055)/1.055) ^ 2.4
+			}
+			if (this.green <= 0.03928 ) {
+				var g = (this.green / 12.92)
+			} else {
+				var g = ((this.green+0.055)/1.055) ^ 2.4
+			}
+			if (this.blue <= 0.03928 ) {
+				var b = (this.blue / 12.92)
+			} else {
+				var b = ((this.blue+0.055)/1.055) ^ 2.4
+			}
+            return ( ((r * 0.2126) + (g * 0.7152) + (b * 0.0722)) / 3);
+        },
         /* does an alpha based blend of color onto this. alpha is the
          * amount of 'color' to use. (0 to 1)
          */
