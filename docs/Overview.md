@@ -94,15 +94,14 @@ When customizing the skin using CSS, please make sure that when you edit the bod
 
 ## Is there a native dark mode?
 Yes. Evelution not only offers many dark themes but also an Inverted Colors Mode. This is offered in Solo theme mode (Strictly light or dark themes) and Duo theme mode (Light/Dark themes). State of Inverted Colors is reversed when system's native dark mode is active. Color invertion is powered by **Liatch** With **Liacth** phenomenon running (Based on value of Inverted colors):
-  - Page Background Color and Page Text Background Color roles are switched
+  - All static background colors (Except Caret Color) are getting a partial invertion to make them play nice under this mode
   - Anchor Background Color, Static Page Border Background Color and Accent Background Color are color edited versions of the original if them won't play nice under Page Text Background Color as the role of Page Background Color
-  - Community Background Color, Sticky Header Background Color and Static Toolbar Background Color are getting a partial invertion to make them play nice under this mode
   - Community Background Image gets inverted to improve legibility of Community Header
 
 ## Can I change the themes using CSS?
 Of course. It has been tested and it works. For instance, if you want to modify the 2nd theme, paste this to ``MediaWiki:Common.css``:
 ```css
-.theme-B[visualcolors="standard"] {
+[theme="B"][visualcolors="standard"] {
 --community-background-image:url("");
 --community-background-color:#e995ca;
 --anchor-background-color:#058892;
@@ -116,7 +115,7 @@ Of course. It has been tested and it works. For instance, if you want to modify 
 ```
 Per-page theming is also supported. If you want to use a different theme for the 1st theme on **Sample Test Page** article, paste this to ``MediaWiki:Common.css``:
 ```css
-.theme-A[visualcolors="standard"] .rootpage-Sample_Test_Page {
+[theme="A"][visualcolors="standard"] .rootpage-Sample_Test_Page {
 --community-background-image:url("");
 --community-background-color:#e995ca;
 --anchor-background-color:#058892;
