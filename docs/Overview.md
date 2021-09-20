@@ -135,6 +135,86 @@ When Styling OOUI elements, any container that it is outside the ``<container>``
 ## Testing your themes against color contrast
 When checking your themes, you must be in Duo theme mode without inverted colors on as Liatch (Such as Duo theme mode with Inverted Colors enabled) will modify the theme to avoid any color contrast issue
 
+## Theming Variables
+This section lists all static Theming Variables and where they're used:
+
+### ``--community-background-image`` (Accepts: ``<image>``)
+This is used as the background image of the body container. When the opposite version of that theme is being running, this will appear inverted. An empty value results in no background being shown.
+
+### ``--community-background-image-opacity`` (Accepts: ``<percentage>``)
+This is used as the opacity of the body background image. 0% makes it invisible, 50% makes translucent and 100% makes it visible.
+
+### ``--community-background-color`` (Accepts: ``<color>``)
+This is used as the background color of the body container and the gradient overlay shown on header backgrounds. This is also used on  ``is-headline`` buttons.
+
+### ``--community-header-text-color`` (Accepts: ``<color> | auto``)
+This is used as the foreground color of the Community Header. When set to ``auto``, it autopicks the computed foreground community color.
+
+### ``--community-background-mode`` (Accepts: ``standard | full``)
+When set to ``standard``, community background spans to the header area only. When set to ``full``, communnity background spans to the whole screen.
+
+### ``--community-background-horizontal-alignment`` (Accepts: ``left | center | right``)
+Sets the horizontal alignment of the background image. Accepts all standard properties ``background-position-x`` supports.
+
+### ``--community-background-vertical-alignment`` (Accepts: ``top | center | bottom``)
+Sets the vertical alignment of the background image. Accepts all standard properties ``background-position-y`` supports.
+
+### ``--community-background-size`` (Accepts: ``cover | contain | stretched | full``)
+When set to ``cover``, it makes the background image display on the whole screen, clipping some parts of it. When set to ``contain``, it behaves like cover except that no clipping happens in which it can reveal the community background color. When set to ``stretched``, it behaves like contain except that the background image will be stretched to remove any bg color revealance. When set to ``full``, it dispalys the background image as it is (Without changing its size).
+
+### ``--community-background-no-horizontal-tiling`` (Accepts: ``<boolean>``)
+When set to ``true``, it removes background tiling on the horizontal axis
+
+### ``--community-background-no-vertical-tiling`` (Accepts: ``<boolean>``)
+When set to ``true``, it removes background tiling on the vertical axis
+
+### ``--anchor-background-color`` (Accepts: ``<color>``)
+This is used as the color of the links, checkboxes and range inputs. This is also used on  ``is-alternate`` and secondary OOUI buttons.
+
+### ``--page-background-color`` (Accepts: ``<color>``)
+This is used as the background color of the page container, rail modules and many more containers.
+
+### ``--page-border-background-color`` (Accepts: ``<color> | auto``)
+This is used as the border color of the page container, rail modules and many more containers.  When set to ``auto``, it autopicks a color based on page background color.
+ This is also used on  ``is-borderline`` buttons.
+
+### ``--page-text-background-color`` (Accepts: ``<color> | auto``)
+This is used as the border color of the page container, rail modules and many more containers.  When set to ``auto``, it autopicks either the light or dark text background color, whichever works best on the set page background color.
+ This is also used on  ``is-colorline`` buttons.
+
+### ``--accent-background-color`` (Accepts: ``<color>``)
+This is used as the color of the buttons, selected text in Contrast and Classic visual styles, primary OOUI buttons and hovered and focused input styles without extra class
+
+### ``--sticky-header-background-color`` (Accepts: ``<color>``)
+This is used as the color of the sticky header navigation. This is also used on  ``is-titleline`` buttons.
+
+
+### ``--toolbar-background-color`` (Accepts: ``<color> | auto``)
+This is used as the color of the toolbox.  When set to ``auto``, it autopicks a color based on page, accent and sticky header background colors. This is also used on  ``is-intitleline`` buttons.
+
+### ``--caret-color`` (Accepts: ``<color> | auto``)
+This is used as the color of the insertation caret.  When set to ``auto``, it autopicks the text color of the editable element.
+
+
+### ``--custom-secondary-font`` (Accepts: ``<family-name>``)
+This is used as the extra secondary font to be used other than the stock ones. When set to an empty quoted string, no special extra font is used.
+
+### ``--border-radius`` (Accepts: ``<length>``)
+This is used to control the rounded corners of all supported elements. 0px removes the rounded corners entirely. Values between 0 to 15px are generally favored.
+
+
+### ``--logo-filter`` (Accepts: ``<filter-function>``)
+This is used as the base filter of the logo.
+
+### ``--logo-filter-hover`` (Accepts: ``<filter-function>``)
+This is used as the base filter of the logo when hovering on it. When set to empty, it fallbacks to the base logo filter.
+
+### ``--logo-filter-duration`` (Accepts: ``<time>``)
+This is used as the time needed to transition from the base filter to the hover filter and vice versa. 0ms removes the transition. Values between 0ms to 1000ms are generally favored.
+
+### ``--logo-filter-delay`` (Accepts: ``<time>``)
+This is used as the time needed to start the transition from the base filter to the hover filter and vice versa. 0ms removes the delay. Values between 0ms to 1000ms are generally favored.
+
 ## Configuring Evelution
 Evelution, being a Mustache-powered MW skin, does support a few configurations, standard and non-standard, to name a few:
 
