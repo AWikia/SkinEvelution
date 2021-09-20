@@ -92,17 +92,9 @@ var visualColorNames = ['Factory', 'XP Luna', 'Windows Forced', 'Campbell Forced
 	ColorUpdate(true);
 	SheShe = 'auto'; // Allowed Values ('auto', true, false) 
 	if (SheShe == 'auto') {
-		SheShe = ($("body.server").length != 0);
+		SheShe = ($("body.server-mode").length != 0);
 	}
 	$('html').attr("she-she", SheShe);
-	if ( ($("body.evelution-2018").length) || ($("body.evelution-2018-mobile").length)) {
-		$("head").append(
-		'<link rel="manifest" href="manifest.json" crossorigin="use-credentials">' +
-		'<link rel="shortcut icon" href="favicon.ico">' +
-		'<link rel="icon" href="favicon.ico">' +
-		'<link rel="favicon" href="favicon.ico">'
-		);	
-	}
 		$("head").append(
 		'<meta name="color-scheme" content="light dark">'
 		);	
@@ -114,7 +106,7 @@ var visualColorNames = ['Factory', 'XP Luna', 'Windows Forced', 'Campbell Forced
 		VisualStyle(style_active,false);
 		VisualColor(color_active,false);
 		ContrastBanner(); // Notice
-		SocialCompile();
+//		SocialCompile();
 //		$('body').click( function(e) { e.preventDefault; CheckTheme(); } );
 		CheckDeprecation();
 		$('html').addClass('theming-loaded');
@@ -306,8 +298,8 @@ if ($("body.tskmngr").length) {
 
 function ContrastBanner() {
 
-/* For evelutionSkin2 (Obsolete) or Evelution */
-if  ( ($("body.evelution-2018").length) || ($("body.skin-Evelution").length) ) {
+/* For Evelution */
+if  ( ($("body.skin-evelution").length) ) {
 	if ( ( window.matchMedia('(forced-colors: active)').matches ) && (window.MW18ContrastNotice === false)  && ($('html').attr("visualtheme") !== 'contrast'  ) ) {
 		window.MW18ContrastNotice = true;
 		AddFloatingBanner("You're currently using a high contrast theme on your device. You may want to use the <a onclick='RemoveBanner(); VisualStyle(" + contrastVisual + ")'>High Contrast</a> visual style so as to have a consistent high contrast experience.",'message','contrastbanner')  
