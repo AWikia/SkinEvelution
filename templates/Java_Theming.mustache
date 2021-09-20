@@ -995,11 +995,15 @@ function GetContrast(color1,color2) {
 
 
 function isSuitableColor(color,color2) {
-return ((chroma.contrast(color, color2)) > 3)
+return ((chroma.contrast(color, color2)) >= 3)
 }
 
 function isSuitableColor2(color,color2) {
-return ((chroma.contrast(color, color2)) > 1.25) // For Border Color
+return ((chroma.contrast(color, color2)) >= 1.25) // For Border Color
+}
+
+function isSuitableColor3(color,color2) {
+return ((chroma.contrast(color, color2)) >= 1.05) // For Border Color
 }
 
 
@@ -1688,6 +1692,10 @@ function CheckColorSuitability(refresh) {
 		}
 		// Link Color
 		if ( !(isSuitableColor(color1b, color2)) ) {
+			var uns = true;
+			var suit1 = true;
+		}
+		if ( !(isSuitableColor3(color1b, color1a)) ) {
 			var uns = true;
 			var suit1 = true;
 		}
