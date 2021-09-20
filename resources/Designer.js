@@ -22,6 +22,7 @@ if (($("body.page-CPE_ThemeDesigner").length) ||
 })();
 
 function InitDesigner() {
+	$("body").attr("testing", "false");
 	// Change Title
 	$(".evelution-page-header .evelution-title > span").html( mw.msg( 'evelution-designer-title' ) );
 	$(".link[designer-on]").addClass( 'active' );
@@ -538,7 +539,7 @@ function InitDesigner() {
 				'</td>' +
 
 				'<td style="text-align:center; width:150px">' +
-					'<input type="url" id="bodyimage" class="cpe-input" style="width:130px; min-width:130px;" placeholder="URL" />' + // Body Background 
+					'<input type="url" id="bodyimage" class="cpe-input designer-text" style="width:130px; min-width:130px;" placeholder="URL" />' + // Body Background 
 				'</td>' +
 			'</tr>' +
 		// TR
@@ -768,7 +769,7 @@ function InitDesigner() {
 				'</td>' +
 
 				'<td style="text-align:center; width:150px">' +
-					'<input type="text" id="secondfont" class="cpe-input" style="width:130px; min-width:130px;" placeholder="Font" />' + // Body Background 
+					'<input type="text" id="secondfont" class="cpe-input designer-text" style="width:130px; min-width:130px;" placeholder="Font" />' + // Body Background 
 				'</td>' +
 			'</tr>' +
 		// TR
@@ -778,7 +779,7 @@ function InitDesigner() {
 				'</td>' +
 
 				'<td style="text-align:center; width:150px">' +
-					'<input type="text" id="filter" class="cpe-input" style="width:130px; min-width:130px;" placeholder="Filter" value="opacity(1)" />' + // Body Background 
+					'<input type="text" id="filter" class="cpe-input designer-text" style="width:130px; min-width:130px;" placeholder="Filter" value="opacity(1)" />' + // Body Background 
 				'</td>' +
 			'</tr>' +
 		// TR
@@ -788,7 +789,7 @@ function InitDesigner() {
 				'</td>' +
 
 				'<td style="text-align:center; width:150px">' +
-					'<input type="text" id="filter2" class="cpe-input" style="width:130px; min-width:130px;" placeholder="Filter" value="opacity(0.8)" />' + // Body Background 
+					'<input type="text" id="filter2" class="cpe-input designer-text" style="width:130px; min-width:130px;" placeholder="Filter" value="opacity(0.8)" />' + // Body Background 
 				'</td>' +
 			'</tr>' +
 		// TR
@@ -1006,7 +1007,9 @@ function PasteTheme() {
 
 function TestTheme() {
 	// Tests theme
+	$("body").attr("testing", "true");
 	$(".evelution-page-header-contribution-buttons .designer-buttons2 .theme-clear-button").prop('disabled', false);
+	$(".evelution-page-header-contribution-buttons .designer-buttons2 .theme-test-button").prop('disabled', true);
 	if (document.querySelector('.wikitable #auto1').checked) {
 		var autocolor1 = 'auto';
 	} else {
@@ -1065,10 +1068,18 @@ function TestTheme() {
 	ColorUpdate(true,true);
 }
 
+function TestDynamicTheme() {
+	if ($("body").attr("testing") === "true" ) {
+		TestTheme();
+	}
+}
+
 
 function ClearTheme() {
+	$("body").attr("testing", "false");
 	// Tests theme
 	$(".evelution-page-header-contribution-buttons .designer-buttons2 .theme-clear-button").prop('disabled', true);
+	$(".evelution-page-header-contribution-buttons .designer-buttons2 .theme-test-button").prop('disabled', false);
 	document.querySelector('html').style.removeProperty("--community-background-color");
 	document.querySelector('html').style.removeProperty("--community-background-image");
 	document.querySelector('html').style.removeProperty("--community-background-image-opacity");
@@ -1103,37 +1114,44 @@ $('.wikitable #auto1').click(
 							function(e) {
 								e.preventDefault
 								$('.wikitable #bodybg2').prop('disabled',(document.querySelector('.wikitable #auto1').checked) );
+								TestDynamicTheme();
 							}   
 						);
 $('.wikitable #auto2').click(
 							function(e) {
 								e.preventDefault
 								$('.wikitable #pagebg2').prop('disabled',(document.querySelector('.wikitable #auto2').checked) );
+								TestDynamicTheme();
 							}   
 						);
 $('.wikitable #auto3').click(
 							function(e) {
 								e.preventDefault
 								$('.wikitable #pagebg3').prop('disabled',(document.querySelector('.wikitable #auto3').checked) );
+								TestDynamicTheme();
 							}   
 						);
 $('.wikitable #auto4').click(
 							function(e) {
 								e.preventDefault
 								$('.wikitable #toolbarcolor').prop('disabled',(document.querySelector('.wikitable #auto4').checked) );
+								TestDynamicTheme();
 							}   
 						);
 $('.wikitable #auto5').click(
 							function(e) {
 								e.preventDefault
 								$('.wikitable #caretcolor').prop('disabled',(document.querySelector('.wikitable #auto5').checked) );
+								TestDynamicTheme();
 							}   
 						);
 // UpdateRangeInputs();
 	$('input[type="range"]').css( "--range-percent", function( ) {
 		return (($(this).val() * 100) / $(this).attr('max')) + '%';
 	});
-	$("input[type='range']").on("input", function(e) { UpdateRange(); } );
+	$("input[type='range']").on("input", function(e) { UpdateRange(); } ).change( function(e) { TestDynamicTheme(); } ); // Change
+	$("input[type='color']").change( function(e) { TestDynamicTheme(); } ); // Change
+	$("input.designer-text").change( function(e) { TestDynamicTheme(); } ); // Change
 
 // DropDownUpdate();
 $(".cpe-dropdown")
@@ -1149,6 +1167,7 @@ $(' .cpe-dropdown.cpe-select .cpe-dropdown__content .cpe-list li:not(.cpe-dropdo
 									var content = $('.cpe-select:focus-within .cpe-dropdown__content .cpe-list li:not(.cpe-dropdown-level-2):hover > a').html();
 									$('.cpe-select:focus-within .cpe-select__value').attr("value", value);
 									$('.cpe-select:focus-within .cpe-select__value').html(content);
+									TestDynamicTheme(); // Change
 									$(this).blur();
 									$(' .cpe-dropdown.cpe-select').off( "click" );
 								});
