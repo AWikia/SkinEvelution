@@ -115,7 +115,7 @@ Of course. It has been tested and it works. For instance, if you want to modify 
 ```
 Per-page theming is also supported. If you want to use a different theme for the 1st theme on **Sample Test Page** article, paste this to ``MediaWiki:Common.css``:
 ```css
-[theme="A"][visualcolors="standard"] .rootpage-Sample_Test_Page {
+[theme="A"][visualcolors="standard"].config-rootpage-Sample_Test_Page {
 --community-background-image:url("");
 --community-background-color:#e995ca;
 --anchor-background-color:#058892;
@@ -127,9 +127,6 @@ Per-page theming is also supported. If you want to use a different theme for the
 --toolbar-background-color:auto;
 }
 ```
-
-## Style Guide
-When Styling OOUI elements, any container that it is outside the ``<container>`` element (Use the F12 tools to find out which) and scrollbars, use ``rgb(var(--community-background-color-rgb))``, ``rgb(var(--anchor-background-color-rgb))``, ``rgb(var(--page-background-color-rgb))``, ``rgb(var(--page-border-background-color-rgb))``, ``rgb(var(--page-text-background-color-rgb))``, ``rgb(var(--accent-background-color-rgb))``, ``rgb(var(--sticky-header-background-color-rgb))`` and ``rgb(var(--toolbar-background-color-rgb))`` in place of ``var(--community-background-color)``, ``var(--anchor-background-color)``, ``var(--page-background-color)``, ``var(--page-border-background-color)``, ``var(--page-text-background-color)``, ``var(--accent-background-color)``, ``var(--sticky-header-background-color)`` and ``var(--toolbar-background-color)`` so as to make those elements display properly when either some of the elements are in autocolorization or Inverted colors are active (Anchor and Accent Background color on ``<container>`` element only differ from the ones set in ``<body>`` under inverted colors)
 
 ## Testing your themes against color contrast
 When checking your themes, you must be in Duo theme mode without inverted colors on as Liatch (Such as Duo theme mode with Inverted Colors enabled) will modify the theme to avoid any color contrast issue
