@@ -1110,6 +1110,18 @@ function ClearTheme() {
 
 function SelectInputs() {
 /* Select Inputs */
+$('.wikitable #tilingV').click(
+							function(e) {
+								e.preventDefault
+								TestDynamicTheme();
+							}   
+						);
+$('.wikitable #tilingH').click(
+							function(e) {
+								e.preventDefault
+								TestDynamicTheme();
+							}   
+						);
 $('.wikitable #auto1').click(
 							function(e) {
 								e.preventDefault
