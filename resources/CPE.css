@@ -430,8 +430,38 @@ font-family:Trebuchet MS;
 	}
 }
 
+/* Color mixes for browsers supporting color-mix() */
+@supports ( color:color-mix(in srgb, var(--accent-background-color) 40%, var(--page-background-color)) ) {
+	body {
+		--community-background-color-page-background-color-mix-light:color-mix(in srgb, var(--community-background-color) 20%, var(--page-background-color));
+		--community-background-color-page-background-color-mix:color-mix(in srgb, var(--community-background-color) 40%, var(--page-background-color));
+		--anchor-background-color-page-background-color-mix-light:color-mix(in srgb, var(--anchor-background-color) 20%, var(--page-background-color));
+		--anchor-background-color-page-background-color-mix:color-mix(in srgb, var(--anchor-background-color) 40%, var(--page-background-color));
+		--page-border-background-color-page-background-color-mix-light:color-mix(in srgb, var(--page-border-background-color) 20%, var(--page-background-color));
+		--page-border-background-color-page-background-color-mix:color-mix(in srgb, var(--page-border-background-color) 40%, var(--page-background-color));
+		--page-text-background-color-page-background-color-mix-light:color-mix(in srgb, var(--page-text-background-color) 20%, var(--page-background-color));
+		--page-text-background-color-page-background-color-mix:color-mix(in srgb, var(--page-text-background-color) 40%, var(--page-background-color));
+		--accent-background-color-page-background-color-mix-light:color-mix(in srgb, var(--accent-background-color) 20%, var(--page-background-color));
+		--accent-background-color-page-background-color-mix:color-mix(in srgb, var(--accent-background-color) 40%, var(--page-background-color));
+		--sticky-header-background-color-page-background-color-mix-light:color-mix(in srgb, var(--sticky-header-background-color) 20%, var(--page-background-color));
+		--sticky-header-background-color-page-background-color-mix:color-mix(in srgb, var(--sticky-header-background-color) 40%, var(--page-background-color));
+		--toolbar-background-color-page-background-color-mix-light:color-mix(in srgb, var(--toolbar-background-color) 20%, var(--page-background-color));
+		--toolbar-background-color-page-background-color-mix:color-mix(in srgb, var(--toolbar-background-color) 40%, var(--page-background-color));
+		--alert-background-color-page-background-color-mix-light:color-mix(in srgb, var(--alert-background-color) 20%, var(--page-background-color));
+		--alert-background-color-page-background-color-mix:color-mix(in srgb, var(--alert-background-color) 40%, var(--page-background-color));
+		--warning-background-color-page-background-color-mix-light:color-mix(in srgb, var(--warning-background-color) 20%, var(--page-background-color));
+		--warning-background-color-page-background-color-mix:color-mix(in srgb, var(--warning-background-color) 40%, var(--page-background-color));
+		--success-background-color-page-background-color-mix-light:color-mix(in srgb, var(--success-background-color) 20%, var(--page-background-color));
+		--success-background-color-page-background-color-mix:color-mix(in srgb, var(--success-background-color) 40%, var(--page-background-color));
+		--message-background-color-page-background-color-mix-light:color-mix(in srgb, var(--message-background-color) 20%, var(--page-background-color));
+		--message-background-color-page-background-color-mix:color-mix(in srgb, var(--message-background-color) 40%, var(--page-background-color));
+	}
+
+
+}
+
 /* Generic Colors & Color Scheme */
-body {
+:root {
 	color-scheme:light!important;
     --alert-background-color:#dd3333;
     --warning-background-color:#ffcc33;
@@ -440,7 +470,7 @@ body {
 }
 
 /* Use Legible Generic Colors for Dark themes */
-body[dark-mode="true"] {
+:root[dark-mode="true"] {
 	color-scheme:dark!important;
     --alert-background-color:#ec8a8a;
     --warning-background-color:#ffe699;
@@ -475,33 +505,33 @@ body {
     --theme-accent-dynamic-color-1--rgb: var(--accent-foreground-color-rgb);
     --theme-accent-dynamic-color-2: var(--accent-foreground-color-hover);
     --theme-accent-dynamic-color-2--rgb: var(--accent-foreground-color-hover-rgb);
-    --theme-body-background-color: rgb(var(--community-background-color-rgb));
+    --theme-body-background-color: var(--community-background-color);
     --theme-body-background-color--rgb: var(--community-background-color-rgb);
     --theme-body-background-image: var(--community-background-image);
     --theme-body-text-color: var(--community-foreground-color);
     --theme-body-text-color--hover: var(--community-foreground-color-hover);
-    --theme-sticky-nav-background-color: rgb(var(--sticky-header-background-color-rgb));
+    --theme-sticky-nav-background-color: var(--sticky-header-background-color);
     --theme-sticky-nav-text-color: var(--sticky-header-foreground-color);
     --theme-sticky-nav-text-color--hover: var(--sticky-header-foreground-color-hover);
-    --theme-page-background-color: rgb(var(--page-background-color-rgb));
+    --theme-page-background-color: var(--page-background-color);
     --theme-page-background-color--rgb: var(--page-background-color-rgb);
     --theme-page-background-color--secondary: var(--page-secondary-background-color);
-    --theme-page-text-color: rgb(var(--page-text-background-color-rgb));
+    --theme-page-text-color: var(--page-text-background-color);
     --theme-page-text-color--rgb: var(--page-text-background-color-rgb);
     --theme-page-text-color--hover: var(--page-text-background-color-hover);
     --theme-page-text-mix-color: var(--page-text-background-color-page-background-color-mix);
     --theme-page-text-mix-color-95: var(--page-text-background-color-page-background-color-mix-light);
     --theme-page-accent-mix-color: var(--accent-background-color-page-background-color-mix);
     --theme-page-headings-font: var(--secondary-font);
-    --theme-link-color: rgb(var(--anchor-background-color-rgb));
+    --theme-link-color: var(--anchor-background-color);
     --theme-link-color--rgb: var(--anchor-background-color-rgb);
     --theme-link-color--hover: var(--anchor-background-color-hover-dledlen);
     --theme-link-label-color: var(--anchor-foreground-color);
-    --theme-accent-color: rgb(var(--accent-background-color-rgb));
+    --theme-accent-color: var(--accent-background-color);
     --theme-accent-color--rgb: var(--accent-background-color-rgb);
     --theme-accent-color--hover: var(--accent-background-color-hover);
     --theme-accent-label-color:  var(--accent-foreground-color);
-    --theme-border-color: rgb(var(--page-border-background-color-rgb));
+    --theme-border-color: var(--page-border-background-color);
     --theme-border-color--rgb: var(--page-border-background-color-rgb);
     --theme-alert-color: var(--alert-background-color);
     --theme-alert-color--rgb: var(--alert-background-color-rgb);
@@ -768,12 +798,12 @@ body {
 	/* Width */
 	--scrollbar-width:17px;
 	/* Track */
-	--scrollbar-track-color-1:rgb(var(--community-background-color-rgb));
+	--scrollbar-track-color-1:var(--community-background-color);
 	--scrollbar-track-color-2:var(--community-background-color-hover);
 	--scrollbar-track-color-3:var(--community-background-color-active);
 	--scrollbar-track-text:var(--community-foreground-color);
 	/* Thumb */
-	--scrollbar-thumb-color-1:rgb(var(--accent-background-color-rgb));
+	--scrollbar-thumb-color-1:var(--accent-background-color);
 	--scrollbar-thumb-color-2:var(--accent-background-color-hover);
 	--scrollbar-thumb-color-3:var(--accent-background-color-active);
 	--scrollbar-thumb-text:var(--accent-foreground-color);
@@ -848,7 +878,7 @@ container {
 	display:block;
 	content:"";
 	z-index:-3;
-	background-color:rgb(var(--community-background-color-rgb));
+	background-color:var(--community-background-color);
 	pointer-events:none;
 	max-width:calc(var(--max-width) - var(--extra-size));
 	image-rendering:initial;                  /* CSS4 Proposed  */
@@ -911,7 +941,7 @@ body[community-background-mode="full"] .gradient-overlay {
 	display:block;
 	content:"";
 	z-index:-1;
-	background-image:linear-gradient(to bottom, rgba(var(--community-background-color-rgb),0.05) 5% ,rgb(var(--community-background-color-rgb)));
+	background-image:linear-gradient(to bottom, rgba(var(--community-background-color-rgb),0.05) 5% ,var(--community-background-color));
   image-rendering:initial;                  /* CSS4 Proposed  */
   -qq-image-blurring:tick;                  /* 4x4 Web 1-2    */
 	max-width:var(--max-width);
@@ -1109,14 +1139,14 @@ a,
 body a {
 transition:color 200ms;
 text-decoration:none;
-color:rgb(var(--anchor-background-color-rgb));
+color:var(--anchor-background-color);
 cursor:var(--cpe-hand-cursor);
 background-color:transparent;
 	caret-color:var(--caret-color);
 }
 
 body a:visited {
-color:rgb(var(--anchor-background-color-rgb));
+color:var(--anchor-background-color);
 }
 
 a:hover,
@@ -1230,7 +1260,7 @@ textarea, [contenteditable] {
 	--scrollbar-track-color-3:transparent;
 	--scrollbar-track-text:transparent;
 	/* Thumb */
-	--scrollbar-thumb-color-1:rgb(var(--page-text-background-color-rgb));
+	--scrollbar-thumb-color-1:var(--page-text-background-color);
 	--scrollbar-thumb-color-2:var(--page-text-background-color-hover);
 	--scrollbar-thumb-color-3:var(--page-text-background-color-active);
 	--scrollbar-thumb-text:var(--page-text-foreground-color);
@@ -1270,11 +1300,11 @@ color:inherit;
 /* Wikiatable style */
 body .wikitable {
 	line-height:1.6;
-	border:1px solid rgb(var(--page-border-background-color-rgb));
-	background-color:rgb(var(--page-background-color-rgb));
+	border:1px solid var(--page-border-background-color);
+	background-color:var(--page-background-color);
 	border-collapse:collapse;
 	font-size:inherit;
-	color:rgb(var(--page-text-background-color-rgb));
+	color:var(--page-text-background-color);
 }
 
 
@@ -1290,7 +1320,7 @@ body .wikitable > tr > th,
 body .wikitable > * > tr > th,
 body .wikitable > tr > td,
 body .wikitable > * > tr > td {
-	border:1px solid rgb(var(--page-border-background-color-rgb));
+	border:1px solid var(--page-border-background-color);
 	padding:5px;
 	margin:1px 0;
 /*	text-align:center; */
@@ -2871,9 +2901,9 @@ border-top:1px solid var(--page-border-background-color);}
 /* Checkboxes */
 /* Commented Styles = Old Design */
 input[type="checkbox"], input[type="radio"] {
---checkbox-unchecked-bg:rgb(var(--page-background-color-rgb));
---checkbox-unchecked-shadow:rgb(var(--page-border-background-color-rgb));
---checkbox-active-bg:rgb(var(--anchor-background-color-rgb));
+--checkbox-unchecked-bg:var(--page-background-color);
+--checkbox-unchecked-shadow:var(--page-border-background-color);
+--checkbox-active-bg:var(--anchor-background-color);
 --checkbox-checked-bg:var(--anchor-background-color-page-background-color-mix-light);
 --checkbox-checked-bg-hover:var(--anchor-background-color-page-background-color-mix);
 --checkbox-checked-shadow:var(--checkbox-active-bg);
