@@ -22,25 +22,25 @@ function insertKey(key,value) {
     var config = mw.config.get('wgEvelution');
 
     if (config.LeftPersonalLinks === true) {
-		$('body').addClass( "left-links" );
+		$('html').addClass( "left-links" );
     }
     if (config.ForceOneHeader === true) {
-		$('body').addClass( "single-header" );
+		$('html').addClass( "single-header" );
     }
     if (config.DisableColorManagement === true) {
 		$('.color-management-on').remove();
-		$('body').addClass( "disabled-theming" );	
+		$('html').addClass( "disabled-theming" );	
 		$("body").attr('community-background-mode', 'modern' );
 		$("body").attr('community-background-size', 'cover' );
 		$("body").attr('community-background-alignment', 'top' );
     }
 	if (config.DisableRightRail === true ) {
-		$('body').addClass( "no-rail" );
+		$('html').addClass( "no-rail" );
 	}
 	if (config.ServerMode === true ) {
-		$('body').addClass( "server-mode" );
+		$('html').addClass( "server-mode" );
 	} else {
-		$('body').addClass( "home-mode" );
+		$('html').addClass( "home-mode" );
 	}
 	document.querySelector('html').style.setProperty("--custom-font", config.CustomFont);
 	$("html").attr('sticky-rail', config.StickyRail);
