@@ -57,6 +57,18 @@ function InitDesigner() {
 		'</button>'
 	);
 	$(".evelution-page-header-contribution-buttons .designer-buttons .theme-paste-button").click( function(e) { e.preventDefault; PasteTheme();  });
+	// Applly theme
+	$(".evelution-page-header-contribution-buttons .designer-buttons2").append(
+		'<button class="cpe-button theme-apply-button">' +
+		'<span class="cpe-icon cpe-icon-small material-icons">' +
+		'verified' +
+		'</span>' +
+		'<span>' +
+		mw.msg( 'evelution-designer-apply' ) +
+		'</span>' +
+		'</button>'
+	);
+	$(".evelution-page-header-contribution-buttons .designer-buttons2 .theme-apply-button").click( function(e) { e.preventDefault; ApplyTheme();  });
 	
 	$(".evelution-page-header-contribution-buttons .designer-buttons2").append(
 		'<button class="cpe-button theme-test-button">' +
@@ -822,6 +834,97 @@ function InitDesigner() {
     if (index >= 0) document.title = pageTitle + oldDocTitle.substring(index);
 	$("html").attr("visualcolors", "standard"); // Unset Visual Colors mode
 	ColorUpdate();
+}
+
+function ApplyTheme () {
+	// Copies theme to clipboard
+	if (document.querySelector('.wikitable #auto1').checked) {
+		var autocolor1 = 'auto';
+	} else {
+		var autocolor1 = $('#bodybg2').val();
+	}
+	if (document.querySelector('.wikitable #auto2').checked) {
+		var autocolor2 = 'auto';
+	} else {
+		var autocolor2 = $('#pagebg2').val();
+	}
+	if (document.querySelector('.wikitable #auto3').checked) {
+		var autocolor3 = 'auto';
+	} else {
+		var autocolor3 = $('#pagebg3').val();
+	}
+	if (document.querySelector('.wikitable #auto4').checked) {
+		var autocolor4 = 'auto';
+	} else {
+		var autocolor4 = $('#toolbarcolor').val();
+	}
+	if (document.querySelector('.wikitable #auto5').checked) {
+		var autocolor5 = 'auto';
+	} else {
+		var autocolor5 = $('#caretcolor').val();
+	}
+	if ( ( ( $('#bodyimage').val().startsWith('url("') ) && ( $('#bodyimage').val().endsWith('")') ) ) ||
+		  ( ( $('#bodyimage').val().startsWith('url(') ) && ( $('#bodyimage').val().endsWith(')') ) ) ) {
+		var image = $('#bodyimage').val();
+    } else {
+		var image = 'url("' + $('#bodyimage').val() + '")';
+    }
+    if ( $('#secondfont').val().length === 0) {
+		var customfont = '""';
+    } else {
+		var customfont = $('#secondfont').val();
+    }
+		result = '/* Community Theme */' +
+				 '[theme="' + $('html').attr('theme') + '"][visualcolors="standard"] {\n' + // Beginning
+				 '--community-background-image:' + image + ';\n' +
+				 '--community-background-image-opacity:' + $('#bodyimageopacity').val() + "%" + ';\n' +
+				 '--community-background-color:' + $('#bodybg').val()  + ';\n' +
+				 '--community-header-text-color:' + autocolor1  + ';\n' +
+				 '--community-background-mode:' + $('.bg_mode .cpe-select__value').attr('value')  + ';\n' +
+				 '--community-background-horizontal-alignment:' + $('.bg_align2 .cpe-select__value').attr('value') + ';\n' +
+				 '--community-background-vertical-alignment:' + $('.bg_align .cpe-select__value').attr('value') + ';\n' +
+				 '--community-background-size:' + $('.bg_size .cpe-select__value').attr('value')  + ';\n' +
+				 '--community-background-no-horizontal-tiling:' + (!( document.querySelector('input#tilingH').checked ))  + ';\n' +
+				 '--community-background-no-vertical-tiling:' + (!( document.querySelector('input#tilingV').checked ))  + ';\n' +
+				 '--anchor-background-color:' + $('#anchorcolor').val() + ';\n' +
+				 '--page-background-color:' + $('#pagebg').val() + ';\n' +
+				 '--page-border-background-color:' + autocolor2  + ';\n' +
+				 '--page-text-background-color:' + autocolor3  + ';\n' +
+				 '--accent-background-color:' + $('#accentcolor').val() + ';\n' +
+				 '--sticky-header-background-color:' + $('#headercolor').val() + ';\n' +
+				 '--toolbar-background-color:' + autocolor4  + ';\n' +
+				 '--caret-color:' + autocolor5  + ';\n' +
+				 '--custom-secondary-font:' + customfont + ';\n' +
+				 '--border-radius:' + $('#border-radius').val() + "px"  + ';\n' +
+				 '--logo-filter:' + $('#filter').val() + ';\n' +
+				 '--logo-filter-hover:' + $('#filter2').val()  + ';\n' +
+				 '--logo-filter-duration:' + $('#filter3').val() + "ms" + ';\n' +
+				 '--logo-filter-delay:' + $('#filter4').val() + "ms" + ';\n' +
+				 '}\n' // Ending
+
+/*
+	edit.js
+
+	MediaWiki API Demos
+	Demo of `Edit` module: POST request to edit a page
+
+	MIT License
+*/
+
+var params = {
+		action: 'edit',
+		title: 'MediaWiki:Evelution.css',
+		appendtext: result,
+		minor: 'true',
+		bot: 'true',
+		summary: 'Inserting Evelution Theme ' +  $('html').attr('theme'),
+		recreate: 'true',
+		format: 'json'
+	},
+	api = new mw.Api();
+
+api.postWithToken( 'csrf', params ).done( function ( data ) { AddFloatingBanner('Succesfully applied Theme '  +  $('html').attr('theme') + ' to MediaWiki:Evelution.css.','success'); } ).fail( function (data) { AddFloatingBanner('Failed to apply Theme '  +  $('html').attr('theme') + ' to MediaWiki:Evelution.css as page couldn\'t be edited.','alert'); } );
+
 }
 
 function CopyTheme() {
