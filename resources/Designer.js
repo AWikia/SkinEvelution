@@ -874,7 +874,7 @@ function ApplyTheme () {
     } else {
 		var customfont = $('#secondfont').val();
     }
-		result = '/* Community Theme */' +
+		result = '\n/* Community Theme */\n' +
 				 '[theme="' + $('html').attr('theme') + '"][visualcolors="standard"] {\n' + // Beginning
 				 '--community-background-image:' + image + ';\n' +
 				 '--community-background-image-opacity:' + $('#bodyimageopacity').val() + "%" + ';\n' +
