@@ -1,7 +1,14 @@
 	<header class="evelution-sticky-header full-nav fandom-sticky-header">
 		<a class="wordmark" href="{{link-mainpage}}">
 			{{#data-logos}}
-				{{#icon}}<img src="{{.}}">{{/icon}}
+				{{#icon}}
+					{{#src}}
+						<img src="{{.}}">
+					{{/src}}
+					{{^src}}
+						<img src="{{.}}">
+					{{/src}}
+				{{/icon}}
 				{{^icon}}{{#1x}}<img src="{{.}}">{{/1x}}{{/icon}}
 			{{/data-logos}}
 		</a>
