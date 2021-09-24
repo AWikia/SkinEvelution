@@ -182,11 +182,11 @@ This is used as the border color of the page container, rail modules and many mo
 This is used as the color of the buttons, selected text in Contrast and Classic visual styles, primary OOUI buttons and hovered and focused input styles without extra class
 
 ### ``--sticky-header-background-color`` (Accepts: ``<color>``)
-This is used as the color of the sticky header navigation. This is also used on  ``is-titleline`` buttons.
+This is used as the color of the sticky header navigation and since 11.17.6 as the color of the toolbox. This is also used on  ``is-titleline`` buttons.
 
 
-### ``--toolbar-background-color`` (Accepts: ``<color> | auto``)
-This is used as the color of the toolbox.  When set to ``auto``, it autopicks a color based on page, accent and sticky header background colors. This is also used on  ``is-intitleline`` buttons.
+### ``--toolbar-background-color`` (Accepts: ``<color> | auto``, until 11.17.5)
+This was used as the color of the toolbox.  When set to ``auto``, it autopicked a color based on page, accent and sticky header background colors. This was also used on  ``is-intitleline`` buttons.
 
 ### ``--caret-color`` (Accepts: ``<color> | auto``)
 This is used as the color of the insertation caret.  When set to ``auto``, it autopicks the text color of the editable element.
