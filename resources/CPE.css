@@ -121,7 +121,6 @@ font-family:Trebuchet MS;
 /* Aliases */
 --page-border-background-color:auto;
 --page-text-background-color:auto;
---toolbar-background-color:auto;
 --community-background-image-opacity:100%;
 --community-header-text-color:auto;
 --community-background-mode:standard;
@@ -176,14 +175,12 @@ font-family:Trebuchet MS;
 		--accent-background-color-page-background-color-mix:color-mix(in srgb, var(--accent-background-color) 40%, var(--page-background-color));
 		--sticky-header-background-color-page-background-color-mix-light:color-mix(in srgb, var(--sticky-header-background-color) 20%, var(--page-background-color));
 		--sticky-header-background-color-page-background-color-mix:color-mix(in srgb, var(--sticky-header-background-color) 40%, var(--page-background-color));
-		--toolbar-background-color-page-background-color-mix-light:color-mix(in srgb, var(--toolbar-background-color) 20%, var(--page-background-color));
-		--toolbar-background-color-page-background-color-mix:color-mix(in srgb, var(--toolbar-background-color) 40%, var(--page-background-color));
 		--alert-background-color-page-background-color-mix-light:color-mix(in srgb, var(--alert-background-color) 20%, var(--page-background-color));
 		--alert-background-color-page-background-color-mix:color-mix(in srgb, var(--alert-background-color) 40%, var(--page-background-color));
 		--warning-background-color-page-background-color-mix-light:color-mix(in srgb, var(--warning-background-color) 20%, var(--page-background-color));
 		--warning-background-color-page-background-color-mix:color-mix(in srgb, var(--warning-background-color) 40%, var(--page-background-color));
 		--success-background-color-page-background-color-mix-light:color-mix(in srgb, var(--success-background-color) 20%, var(--page-background-color));
-		--success-background-color-page-background-color-mix:color-mix(in srgb, var(--success-background-color) 40%, var(--page-background-color));
+		--succeoss-background-color-page-background-color-mix:color-mix(in srgb, var(--success-background-color) 40%, var(--page-background-color));
 		--message-background-color-page-background-color-mix-light:color-mix(in srgb, var(--message-background-color) 20%, var(--page-background-color));
 		--message-background-color-page-background-color-mix:color-mix(in srgb, var(--message-background-color) 40%, var(--page-background-color));
 	}
@@ -491,16 +488,6 @@ body {
 --sticky-header-background-color-rgb:184,131,0;
 --sticky-header-foreground-color-rgb:9,35,68;
 --sticky-header-foreground-color-hover-rgb:21,81,158;
---toolbar-background-color:#C16700;
---toolbar-background-color-hover:#FF9B28;
---toolbar-foreground-color:#f2f6fa;
---toolbar-foreground-color-hover:#A8C3DE;
---toolbar-foreground-color-inverted:#092344;
---toolbar-background-color-page-background-color-mix-light:#E7D6C2;
---toolbar-background-color-page-background-color-mix:#DEBA92;
---toolbar-background-color-rgb:193,103,0;
---toolbar-foreground-color-rgb:242,246,250;
---toolbar-foreground-color-hover-rgb:168,195,222;
 --alert-background-color:#dd3333;
 --alert-background-color-hover:#EC8A8A;
 --alert-foreground-color:#f2f6fa;
@@ -554,7 +541,6 @@ body {
 --community-background-color-hover-dledlen:#11041E;
 --sticky-header-background-color-hover-dledlen:#523A00;
 --page-text-background-color-hover-dledlen:#0E1012;
---toolbar-background-color-hover-dledlen:#5B3100;
 --alert-background-color-hover-dledlen:#921818;
 --warning-background-color-hover-dledlen:#CC9900;
 --success-background-color-hover-dledlen:#072D25;
@@ -705,8 +691,6 @@ body[page-text-background-color-auto="false"] .colora-on,
 body[page-text-background-color-auto="true"] .colora-off,
 body[page-border-background-color-auto="false"] .bordera-on,
 body[page-border-background-color-auto="true"] .bordera-off,
-body[toolbar-background-color-auto="false"] .floatinga-on,
-body[toolbar-background-color-auto="true"] .floatinga-off,
 body[caret-color-auto="false"] .careta-on,
 body[caret-color-auto="true"] .careta-off { 
 	display:none!important;
@@ -1328,12 +1312,6 @@ select.cpe-input {
   --input-box-focus:var(--page-text-background-color-page-background-color-mix);
 }
 
-.cpe-input.is-intitleline {
-  --input-box-solid:var(--floting-header);
-  --input-box-hover:var(--floting-header-page-background-color-mix-light);
-  --input-box-focus:var(--floting-header-page-background-color-mix);
-}
-
 
 /** Buttons **/
 /* Primary */
@@ -1593,18 +1571,6 @@ a.cpe-button, button.cpe-button {
   --accent-background-color-page-background-color-mix:var(--page-text-background-color-page-background-color-mix);
 }
 
-/* Toolbar Color */
-.cpe-button.is-intitleline {
-  --accent-background-color:var(--toolbar-background-color);
-  --accent-background-color-rgb:var(--toolbar-background-color-rgb);
-  --accent-background-color-hover:var(--toolbar-background-color-hover);
-  --accent-background-color-hover-dledlen:var(--toolbar-background-color-hover-dledlen);
-  --accent-foreground-color:var(--toolbar-foreground-color);
-  --accent-foreground-color-hover:var(--toolbar-foreground-color-hover);
-  --accent-foreground-color-inverted:var(--toolbar-foreground-color-inverted);
-  --accent-background-color-page-background-color-mix-light:var(--toolbar-background-color-page-background-color-mix-light);
-  --accent-background-color-page-background-color-mix:var(--toolbar-background-color-page-background-color-mix);
-}
 
 /* Alert Color */
 .cpe-button.is-alert-color {
@@ -2571,11 +2537,6 @@ opacity:1;
 	--tabs-color-active:var(--page-text-background-color-hover);
 }
 
-.cpe-tabs__tab.is-intitleline {
-	--tabs-color:var(--toolbar-background-color);
-	--tabs-color-hover:var(--toolbar-background-color-hover);
-	--tabs-color-active:var(--toolbar-background-color-hover);
-}
 
 
 /* Banners */
