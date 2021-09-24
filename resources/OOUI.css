@@ -958,12 +958,10 @@ body .oo-ui-popupToolGroup-tools {
 	/* Track */
 	--scrollbar-track-color-1:var(--page-secondary-background-color);
 	--scrollbar-track-color-2:var(--page-secondary-background-color-hover);
-	--scrollbar-track-color-3:var(--page-secondary-background-color-hover);
 	--scrollbar-track-text:var(--page-text-background-color);
 	/* Thumb */
 	--scrollbar-thumb-color-1:var(--page-border-background-color);
 	--scrollbar-thumb-color-2:var(--page-border-background-color-hover);
-	--scrollbar-thumb-color-3:var(--page-border-background-color-hover);
 	--scrollbar-thumb-text:var(--page-border-foreground-color);
 	
 	background-color:var(--page-secondary-background-color);
@@ -978,12 +976,10 @@ body .toc {
 	/* Track */
 	--scrollbar-track-color-1:transparent;
 	--scrollbar-track-color-2:transparent;
-	--scrollbar-track-color-3:transparent;
 	--scrollbar-track-text:var(--page-text-background-color);
 	/* Thumb */
 	--scrollbar-thumb-color-1:var(--page-border-background-color);
 	--scrollbar-thumb-color-2:var(--page-border-background-color-hover);
-	--scrollbar-thumb-color-3:var(--page-border-background-color-hover);
 	--scrollbar-thumb-text:var(--page-border-foreground-color);
 	
 	background-color:rgba(var(--page-secondary-background-color-rgb),0.4);
@@ -1975,4 +1971,82 @@ body .mw-widget-calendarWidget-day-heading {
 
 body .mw-widget-calendarWidget-header .mw-widget-calendarWidget-labelButton .oo-ui-buttonElement-button {
     width: 18em;
+}
+
+/* MediaGallery */
+body .mw-mmv-stripe-button.mw-mmv-description-page-button, 
+body .mw-mmv-stripe-button.mw-mmv-description-page-button:active, 
+body .mw-mmv-stripe-button.mw-mmv-description-page-button:visited {
+	padding:0 9px;
+	border-radius:var(--border-radius);
+	margin:12px;
+}
+
+body.mw-mmv-lightbox-open {
+	overflow-y:auto!important;
+	/** Scrollbar Styling **/
+		/* Track */
+		--scrollbar-track-color-1:var(--page-text-background-color);
+		--scrollbar-track-color-2:var(--page-text-background-color-hover);
+		--scrollbar-track-text:var(--page-text-foreground-color);
+		/* Thumb */
+		--scrollbar-thumb-color-1:var(--page-background-color);
+		--scrollbar-thumb-color-2:var(--page-background-color-hover);
+		--scrollbar-thumb-text:var(--page-text-background-color);
+
+}
+
+body .mw-mmv-title-para.mw-mmv-title-smaller {
+	height:36px;
+	line-height:36px;
+	margin:0 0 10px;
+	padding:10px 20px 0 20px;
+}
+
+body .mw-mmv-post-image {
+	color:var(--page-text-background-color);
+	background-color:var(--page-background-color);
+}
+
+body .mw-mmv-image-metadata {
+	color:var(--page-text-background-color);
+	background-color:var(--page-secondary-background-color);
+	border-color:var(--page-border-background-color)
+}
+
+body .mw-mmv-overlay {
+	background-color:var(--page-text-background-color);
+}
+
+[dark-mode="true"] .mw-mmv-download-button, 
+[dark-mode="true"] .mw-mmv-reuse-button, 
+[dark-mode="true"] .mw-mmv-options-button, 
+[dark-mode="true"] .mw-mmv-close, 
+[dark-mode="true"] .mw-mmv-fullscreen, 
+[dark-mode="true"] .mw-mmv-next-image, 
+[dark-mode="true"] .mw-mmv-prev-image {
+	filter:invert(1) hue-rotate(180deg);
+}
+
+body .mw-mmv-dialog {
+	color:var(--page-text-background-color);
+	background-color:var(--page-secondary-background-color);
+	border-color:var(--page-border-background-color);
+	box-shadow:0 2px 2px 0 var(--page-border-background-color-hover);
+}
+
+body .mw-mmv-options-dialog-header {
+	color:inherit;
+}
+
+body .mw-mmv-options-text-header {
+	color:var(--page-text-background-color-hover);
+}
+
+body .mw-mmv-options-text-body {
+	color:rgba(var(--page-text-background-color-hover-rgb),0.9);
+}
+
+body .mw-mmv-dialog .mw-mmv-dialog-down-arrow {
+	background-color:var(--page-secondary-background-color);
 }
