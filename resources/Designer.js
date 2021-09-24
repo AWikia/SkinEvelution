@@ -574,7 +574,7 @@ function InitDesigner() {
 				'</td>' +
 
 				'<td style="text-align:center; width:150px">' +
-				   '<div class="cpe-dropdown cpe-select">' +
+				   '<div class="cpe-dropdown cpe-select" tabindex="-1">' +
 						'<div class="cpe-input bg_mode cpe-dropdown__toggle" style="width:130px; min-width:130px;">' +
 							'<span class="cpe-select__value" value="standard">Standard</span>' +
 							'<span class="cpe-icon cpe-icon-tiny cpe-icon-large cpe-dropdown__toggle-chevron material-icons">' +
@@ -597,7 +597,7 @@ function InitDesigner() {
 				'</td>' +
 
 				'<td style="text-align:center; width:150px">' +
-				   '<div class="cpe-dropdown cpe-select">' +
+				   '<div class="cpe-dropdown cpe-select" tabindex="-1">' +
 						'<div class="cpe-input bg_align cpe-dropdown__toggle" style="width:130px; min-width:130px;">' +
 							'<span class="cpe-select__value" value="center">Middle</span>' +
 							'<span class="cpe-icon cpe-icon-tiny cpe-icon-large cpe-dropdown__toggle-chevron material-icons">' +
@@ -621,7 +621,7 @@ function InitDesigner() {
 				'</td>' +
 
 				'<td style="text-align:center; width:150px">' +
-				   '<div class="cpe-dropdown cpe-select">' +
+				   '<div class="cpe-dropdown cpe-select" tabindex="-1">' +
 						'<div class="cpe-input bg_align2 cpe-dropdown__toggle" style="width:130px; min-width:130px;">' +
 							'<span class="cpe-select__value" value="center">Middle</span>' +
 							'<span class="cpe-icon cpe-icon-tiny cpe-icon-large cpe-dropdown__toggle-chevron material-icons">' +
@@ -645,7 +645,7 @@ function InitDesigner() {
 				'</td>' +
 
 				'<td style="text-align:center; width:150px">' +
-				   '<div class="cpe-dropdown cpe-select">' +
+				   '<div class="cpe-dropdown cpe-select" tabindex="-1">' +
 						'<div class="cpe-input bg_size cpe-dropdown__toggle" style="width:130px; min-width:130px;">' +
 							'<span class="cpe-select__value" value="cover">Cover</span>' +
 							'<span class="cpe-icon cpe-icon-tiny cpe-icon-large cpe-dropdown__toggle-chevron material-icons">' +
@@ -1269,10 +1269,6 @@ $('.wikitable #auto5').click(
 	$("input[type='range']").on("input", function(e) { UpdateRange(); } ).change( function(e) { TestDynamicTheme(); } ); // Change
 	$("input[type='color']").change( function(e) { TestDynamicTheme(); } ); // Change
 	$("input.designer-text").change( function(e) { TestDynamicTheme(); } ); // Change
-
-// DropDownUpdate();
-$(".cpe-dropdown")
-					.attr('tabindex', '-1');
 
 /* Select Inputs */
 $(' .cpe-dropdown.cpe-select .cpe-dropdown__content .cpe-list li:not(.cpe-dropdown-level-2)')
