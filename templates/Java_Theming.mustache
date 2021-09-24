@@ -89,6 +89,7 @@ var visualColorNames = ['Factory', 'XP Luna', 'Windows Forced', 'Campbell Forced
 	$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li").removeClass('selected');
 	$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li[data-theme-change='theme-" + theme_selected + "']").addClass('selected');
    	colortheme( color_mode,false,false);
+	GenericColorUpdate()
 	ColorUpdate(true);
 	SheShe = 'auto'; // Allowed Values ('auto', true, false) 
 	if (SheShe == 'auto') {
@@ -264,6 +265,7 @@ function CursorT(theme) {
 	Called on body element only */
 function CheckTheme() {
 	/* Wiki theme */
+	GenericColorUpdate();
 	ColorUpdate(true);
 	ThemeColorMetaTag();
 ManagerRows();
@@ -940,12 +942,7 @@ function SocialCompile() {
 
 /* End Color Parsers */
 
-
-/* Used to udpate all dynamical variables */
-function ColorUpdate(refresh=true,suitcheck=false) {
-if (refresh === true) {
-	colortheme($('html').attr("wikitheme"), false,false)
-}
+function GenericColorUpdate() {
 /** Foreground Colors **/
 document.querySelector('html').style.setProperty("--light-theme-foreground-color-hover", ColorTest(getComputedStyle(document.querySelector('html')).getPropertyValue("--light-theme-foreground-color")) );
 document.querySelector('html').style.setProperty("--dark-theme-foreground-color-hover", ColorTest(getComputedStyle(document.querySelector('html')).getPropertyValue("--dark-theme-foreground-color")) );
@@ -955,7 +952,13 @@ document.querySelector('html').style.setProperty("--dark-theme-foreground-color-
 
 document.querySelector('html').style.setProperty("--light-theme-foreground-color-hover-rgb", Color2(ColorTest(getComputedStyle(document.querySelector('html')).getPropertyValue("--light-theme-foreground-color"))) );
 document.querySelector('html').style.setProperty("--dark-theme-foreground-color-hover-rgb", Color2(ColorTest(getComputedStyle(document.querySelector('html')).getPropertyValue("--dark-theme-foreground-color"))) );
+}
 
+/* Used to udpate all dynamical variables */
+function ColorUpdate(refresh=true,suitcheck=false) {
+if (refresh === true) {
+	colortheme($('html').attr("wikitheme"), false,false)
+}
 
 /** Page BG **/
 /* Set Vars */
@@ -1545,7 +1548,6 @@ function CheckAdapt() {
 		} else {
 				$("body").attr('caret-color-auto', 'false');
 		}
-//	ColorUpdate(false);
 }
 
 /* Different with the ToggleBG function, only one is present for all three */
