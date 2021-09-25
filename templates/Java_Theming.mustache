@@ -324,7 +324,7 @@ if  ( ($("body.skin-evelution").length) ) {
 /* Changes Wiki theme style
    Supported values: auto, auto-r, light, dark */
 function colortheme(theme='auto', repaint=true, save=true) {
-    var body_bg =	getComputedStyle(document.querySelector('body')).getPropertyValue("--page-background-color");
+    var body_bg =	getComputedStyle(document.querySelector('html')).getPropertyValue("--page-background-color");
     var old_dark = window.MW18darkmode
 	if (theme === 'auto') { // Auto
 		window.MW18darkmode = ( window.matchMedia('(prefers-color-scheme: dark)').matches );
