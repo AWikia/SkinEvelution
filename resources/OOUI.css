@@ -369,7 +369,7 @@ body .oo-ui-buttonElement.oo-ui-widget-enabled > .oo-ui-buttonElement-button > .
 
 /* Error Boxes */
 .messagebox, .errorbox, .warningbox, .successbox {
-    color: #0e191a;
+    color: var(--message-foreground-color);
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -383,12 +383,12 @@ body .oo-ui-buttonElement.oo-ui-widget-enabled > .oo-ui-buttonElement-button > .
 
 .messagebox a, .errorbox a, .warningbox a, .successbox a,
 .messagebox a:visited, .errorbox a:visited, .warningbox a:visited, .successbox a:visited {
-	color:#376266;
+	color:var(--message-foreground-color-hover);
 }
 
 .messagebox a:hover, .errorbox a:hover, .warningbox a:hover, .successbox a:hover,
 .messagebox a:visited:hover, .errorbox a:visited:hover, .warningbox a:visited:hover, .successbox a:visited:hover {
-	color:#0e191a;
+	color:rgba(var(--message-foreground-color-hover-rgb),0.8);
 }
 
 .messagebox {
@@ -410,6 +410,28 @@ body .oo-ui-buttonElement.oo-ui-widget-enabled > .oo-ui-buttonElement-button > .
     background-color: var(--success-background-color);
     border-color: var(--success-background-color-hover);
 }
+
+/* Dark Mode  */
+[dark-mode="true"] .messagebox {
+    background-color: var(--message-background-color-hover);
+    border-color: var(--message-background-color);
+}
+
+[dark-mode="true"] .errorbox {
+    background-color: var(--alert-background-color-hover);
+    border-color: var(--alert-background-color);
+}
+
+[dark-mode="true"] .warningbox {
+    background-color: var(--warning-background-color-hover);
+    border-color: var(--warning-background-color);
+}
+
+[dark-mode="true"] .successbox {
+    background-color: var(--success-background-color-hover);
+    border-color: var(--success-background-color);
+}
+
 
 /** Flagged Revs **/
 
