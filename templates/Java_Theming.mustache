@@ -361,9 +361,9 @@ function colortheme(theme='auto', repaint=true, save=true) {
 		ColorUpdate(false);
 	}
 	if (window.MW18darkmode) {
-		$('html').attr("dark-mode", isLightColor(getComputedStyle(document.querySelector('body')).getPropertyValue("--page-background-color")) );
+		$('html').attr("dark-mode", isLightColor(getComputedStyle(document.querySelector('html')).getPropertyValue("--page-background-color")) );
 	} else {
-		$('html').attr("dark-mode", !(isLightColor(getComputedStyle(document.querySelector('body')).getPropertyValue("--page-background-color"))) );
+		$('html').attr("dark-mode", !(isLightColor(getComputedStyle(document.querySelector('html')).getPropertyValue("--page-background-color"))) );
 	}
 }
 
