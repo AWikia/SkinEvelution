@@ -705,15 +705,6 @@ function DownloadTheme(full=false) {
 				 '--logo-filter-hover:' + wordfilter2  + ';\n' +
 				 '--logo-filter-duration:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--logo-filter-duration")  + ';\n' +
 				 '--logo-filter-delay:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--logo-filter-delay")  + ';\n' +
-				 '--anchor-background-color-hover-dledlen:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--anchor-background-color-hover-dledlen")  + ';\n' +
-				 '--accent-background-color-hover-dledlen:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--accent-background-color-hover-dledlen")  + ';\n' +
-				 '--page-border-background-color-hover-dledlen:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--page-border-background-color-hover-dledlen")  + ';\n' +
-				 '--community-background-color-hover-dledlen:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--community-background-color-hover-dledlen")  + ';\n' +
-				 '--sticky-header-background-color-hover-dledlen:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--sticky-header-background-color-hover-dledlen")  + ';\n' +
-				 '--alert-background-color-hover-dledlen:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--alert-background-color-hover-dledlen")  + ';\n' +
-				 '--warning-background-color-hover-dledlen:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--warning-background-color-hover-dledlen")  + ';\n' +
-				 '--success-background-color-hover-dledlen:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--success-background-color-hover-dledlen")  + ';\n' +
-				 '--message-background-color-hover-dledlen:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--message-background-color-hover-dledlen")  + ';\n' +
 				 '}' // Ending
 	} else { // For use with Theme Management
 		result = '[theme="A"][visualcolors="standard"] {\n' + // Beginning
@@ -1019,14 +1010,14 @@ if (isLightColor(content_color)) {
 
 }
 	setLightful(content_text,'page-text');
-	var content_text2 = ColorTest(content_text);
+	var content_text2 = ColorTest(content_text,false,true,true);
 	var content_text4I = ColorTest(content_text2,true);
 	if (!SupportsColorMix()) {
 		colormixl = GetHoverColor(content_color,content_text);
 		colormix = GetActiveColor(content_color,content_text);
 	}
 
-var dropdowncolorH = ColorTest(dropdowncolor);
+var dropdowncolorH = ColorTest(dropdowncolor,false,false,true);
 
 
 document.querySelector('html').style.setProperty("--page-secondary-background-color", dropdowncolor);
@@ -1140,7 +1131,7 @@ if ( (window.MW18darkmode === true) ) {
 }
 
 var link_color = getComputedStyle(document.querySelector('body')).getPropertyValue("--anchor-background-color");
-var linkcolor1 = ColorTest(link_color,false);
+var linkcolor1 = ColorTest(link_color,false,false,true);
 var linkcolor2I = ColorTest(linkcolor1,true);
 setLightful(link_color,'anchor');
 
@@ -1184,7 +1175,7 @@ if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--page-b
 
 var border_color =	getComputedStyle(document.querySelector('body')).getPropertyValue("--page-border-background-color");
 
-var bordercolor1 = ColorTest(border_color,false);
+var bordercolor1 = ColorTest(border_color);
 var bordercolor2I = ColorTest(bordercolor1,true);
 setLightful(border_color,'page-border');
 
@@ -1214,7 +1205,7 @@ if ( (window.MW18darkmode === true) ) {
 }
 
 var head_color =	getComputedStyle(document.querySelector('body')).getPropertyValue("--community-background-color");
-var headcolor1 = ColorTest(head_color,false);
+var headcolor1 = ColorTest(head_color,false,false,true);
 var headcolor2I = ColorTest(headcolor1,true);
 setLightful(head_color,'community');
 
@@ -1270,7 +1261,7 @@ if (window.MW18darkmode) {
 /** Alert Color **/
 /* Set Vars */
 var alert_color = getComputedStyle(document.querySelector('html')).getPropertyValue("--alert-background-color");
-var alertcolor1 = ColorTest(alert_color,false);
+var alertcolor1 = ColorTest(alert_color,false,false,true);
 var alertcolor2I = ColorTest(alertcolor1,true);
 setLightful(alert_color,'alert');
 
@@ -1294,7 +1285,7 @@ document.querySelector('html').style.setProperty("--alert-background-color-rgb",
 /** Warning Color **/
 /* Set Vars */
 var warning_color = getComputedStyle(document.querySelector('html')).getPropertyValue("--warning-background-color");
-var warningcolor1 = ColorTest(warning_color,false);
+var warningcolor1 = ColorTest(warning_color,false,false,true);
 var warningcolor2I = ColorTest(warningcolor1,true);
 setLightful(warning_color,'warning');
 
@@ -1318,7 +1309,7 @@ document.querySelector('html').style.setProperty("--warning-background-color-rgb
 /** Success Color **/
 /* Set Vars */
 var success_color = getComputedStyle(document.querySelector('html')).getPropertyValue("--success-background-color");
-var successcolor1 = ColorTest(success_color,false);
+var successcolor1 = ColorTest(success_color,false,false,true);
 var successcolor2I = ColorTest(successcolor1,true);
 setLightful(success_color,'success');
 
@@ -1342,7 +1333,7 @@ document.querySelector('html').style.setProperty("--success-background-color-rgb
 /** Message Color **/
 /* Set Vars */
 var message_color = getComputedStyle(document.querySelector('html')).getPropertyValue("--message-background-color");
-var messagecolor1 = ColorTest(message_color,false);
+var messagecolor1 = ColorTest(message_color,false,false,true);
 var messagecolor2I = ColorTest(messagecolor1,true);
 setLightful(message_color,'message');
 
@@ -1363,16 +1354,6 @@ if (!SupportsColorMix()) {
 document.querySelector('html').style.setProperty("--message-background-color-rgb", Color2(message_color));
 
 
-/* Article Link Colors */
-document.querySelector('html').style.setProperty("--anchor-background-color-hover-dledlen", ColorTest(link_color,false,false,true));
-document.querySelector('html').style.setProperty("--accent-background-color-hover-dledlen", ColorTest(button_color,false,false,true));
-document.querySelector('html').style.setProperty("--page-border-background-color-hover-dledlen", ColorTest(border_color,false,false,true));
-document.querySelector('html').style.setProperty("--community-background-color-hover-dledlen", ColorTest(head_color,false,false,true));
-document.querySelector('html').style.setProperty("--sticky-header-background-color-hover-dledlen", ColorTest(header_color,false,false,true));
-document.querySelector('html').style.setProperty("--alert-background-color-hover-dledlen", ColorTest(alert_color,false,false,true));
-document.querySelector('html').style.setProperty("--warning-background-color-hover-dledlen", ColorTest(warning_color,false,false,true));
-document.querySelector('html').style.setProperty("--success-background-color-hover-dledlen", ColorTest(success_color,false,false,true));
-document.querySelector('html').style.setProperty("--message-background-color-hover-dledlen", ColorTest(message_color,false,false,true));
 
 ThemeColorMetaTag();
 

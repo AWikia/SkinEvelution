@@ -249,32 +249,6 @@ function InitDesigner() {
 				'<option value="#525e54">' +
 				'<option value="#847545">' +
 				'<option value="#7e735f">' +
-// Fandom
-				'<option value="#fec356">' +
-				'<option value="#6699ff">' +
-				'<option value="#6c93b1">' +
-				'<option value="#a47719">' +
-				'<option value="#846d35">' +
-				'<option value="#786c42">' +
-				'<option value="#f14800">' +
-				'<option value="#337800">' +
-				'<option value="#006cb0">' +
-				'<option value="#dd360a">' +
-				'<option value="#a34112">' +
-				'<option value="#474646">' +
-				'<option value="#7b3b0a">' +
-				'<option value="#4f4341">' +
-				'<option value="#0038d8">' +
-				'<option value="#2d2c18">' +
-				'<option value="#611e03">' +
-				'<option value="#003816">' +
-				'<option value="#891100">' +
-				'<option value="#012e59">' +
-				'<option value="#721410">' +
-				'<option value="#6f027c">' +
-				'<option value="#7a0146">' +
-			'</datalist>' +
-			'<datalist id="toolbarcolor_colors">' +
 				'<option value="#ababab">' +
 				'<option value="#8acfff">' +
 				'<option value="#f598d6">' +
@@ -306,6 +280,29 @@ function InitDesigner() {
 				'<option value="#7e73a5">' +
 				'<option value="#879289">' +
 // Fandom
+				'<option value="#fec356">' +
+				'<option value="#6699ff">' +
+				'<option value="#6c93b1">' +
+				'<option value="#a47719">' +
+				'<option value="#846d35">' +
+				'<option value="#786c42">' +
+				'<option value="#f14800">' +
+				'<option value="#337800">' +
+				'<option value="#006cb0">' +
+				'<option value="#dd360a">' +
+				'<option value="#a34112">' +
+				'<option value="#474646">' +
+				'<option value="#7b3b0a">' +
+				'<option value="#4f4341">' +
+				'<option value="#0038d8">' +
+				'<option value="#2d2c18">' +
+				'<option value="#611e03">' +
+				'<option value="#003816">' +
+				'<option value="#891100">' +
+				'<option value="#012e59">' +
+				'<option value="#721410">' +
+				'<option value="#6f027c">' +
+				'<option value="#7a0146">' +
 				'<option value="#D09632">' +
 				'<option value="#DD4702">' +
 				'<option value="#2B53B5">' +
@@ -742,17 +739,6 @@ function InitDesigner() {
 					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#ffb900" id="headercolor" list="headercolor_colors" />' + // Page BG
 				'</td>' +
 			'</tr>' +
-		// TR
-			'<tr>' +
-				'<th style="width:150px;">' + 
-					mw.msg( 'evelution-designer-toolbar' ) + 
-				'</td>' +
-
-				'<td style="text-align:center; width:150px">' + 
-					'<input type="checkbox" name="auto4" id="auto4">' + '<label for="auto4">' + mw.msg( 'evelution-designer-auto' ) + '</label> <br>' +
-					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#ababab" id="toolbarcolor" list="toolbarcolor_colors" />' + // Page BG
-				'</td>' +
-			'</tr>' +
 			'<tr>' +
 				'<th colspan="2">' + mw.msg( 'evelution-designer-other' ) + '</th>' +
 			'</tr>' +
@@ -855,11 +841,6 @@ function ApplyTheme () {
 	} else {
 		var autocolor3 = $('#pagebg3').val();
 	}
-	if (document.querySelector('.wikitable #auto4').checked) {
-		var autocolor4 = 'auto';
-	} else {
-		var autocolor4 = $('#toolbarcolor').val();
-	}
 	if (document.querySelector('.wikitable #auto5').checked) {
 		var autocolor5 = 'auto';
 	} else {
@@ -894,7 +875,6 @@ function ApplyTheme () {
 				 '--page-text-background-color:' + autocolor3  + ';\n' +
 				 '--accent-background-color:' + $('#accentcolor').val() + ';\n' +
 				 '--sticky-header-background-color:' + $('#headercolor').val() + ';\n' +
-				 '--toolbar-background-color:' + autocolor4  + ';\n' +
 				 '--caret-color:' + autocolor5  + ';\n' +
 				 '--custom-secondary-font:' + customfont + ';\n' +
 				 '--border-radius:' + $('#border-radius').val() + "px"  + ';\n' +
@@ -946,11 +926,6 @@ function CopyTheme() {
 	} else {
 		var autocolor3 = $('#pagebg3').val();
 	}
-	if (document.querySelector('.wikitable #auto4').checked) {
-		var autocolor4 = 'auto';
-	} else {
-		var autocolor4 = $('#toolbarcolor').val();
-	}
 	if (document.querySelector('.wikitable #auto5').checked) {
 		var autocolor5 = 'auto';
 	} else {
@@ -984,7 +959,6 @@ function CopyTheme() {
 				 '--page-text-background-color:' + autocolor3  + ';\n' +
 				 '--accent-background-color:' + $('#accentcolor').val() + ';\n' +
 				 '--sticky-header-background-color:' + $('#headercolor').val() + ';\n' +
-				 '--toolbar-background-color:' + autocolor4  + ';\n' +
 				 '--caret-color:' + autocolor5  + ';\n' +
 				 '--custom-secondary-font:' + customfont + ';\n' +
 				 '--border-radius:' + $('#border-radius').val() + "px"  + ';\n' +
@@ -1075,14 +1049,6 @@ function PasteTheme() {
 	$('#accentcolor').val( getComputedStyle(document.querySelector('html')).getPropertyValue("--accent-background-color") );
 	// Header BG
 	$('#headercolor').val( getComputedStyle(document.querySelector('html')).getPropertyValue("--sticky-header-background-color") );
-	// Toolbar BG
-	if (getComputedStyle(document.querySelector('html')).getPropertyValue("--toolbar-background-color") === 'auto' ) {
-		document.querySelector('.wikitable #auto4').checked = true;
-	} else {
-		document.querySelector('.wikitable #auto4').checked = false;
-		$('#toolbarcolor').val( getComputedStyle(document.querySelector('html')).getPropertyValue("--toolbar-background-color") );
-	}
-	$('.wikitable #toolbarcolor').prop('disabled',(document.querySelector('.wikitable #auto4').checked) );
 	// Caret Color
 	if (getComputedStyle(document.querySelector('html')).getPropertyValue("--caret-color") === 'auto' ) {
 		document.querySelector('.wikitable #auto5').checked = true;
@@ -1130,11 +1096,6 @@ function TestTheme() {
 	} else {
 		var autocolor3 = $('#pagebg3').val();
 	}
-	if (document.querySelector('.wikitable #auto4').checked) {
-		var autocolor4 = 'auto';
-	} else {
-		var autocolor4 = $('#toolbarcolor').val();
-	}
 	if (document.querySelector('.wikitable #auto5').checked) {
 		var autocolor5 = 'auto';
 	} else {
@@ -1162,7 +1123,6 @@ function TestTheme() {
 	document.querySelector('html').style.setProperty("--anchor-background-color", $('#anchorcolor').val() );
 	document.querySelector('html').style.setProperty("--accent-background-color", $('#accentcolor').val() );
 	document.querySelector('html').style.setProperty("--sticky-header-background-color", $('#headercolor').val() );
-	document.querySelector('html').style.setProperty("--toolbar-background-color", autocolor4 );
 	document.querySelector('html').style.setProperty("--caret-color", autocolor5 );
 	document.querySelector('html').style.setProperty("--border-radius", $('#border-radius').val() + "px" );
 	document.querySelector('html').style.setProperty("--custom-secondary-font", $('#secondfont').val() );
@@ -1201,7 +1161,6 @@ function ClearTheme() {
 	document.querySelector('html').style.removeProperty("--anchor-background-color");
 	document.querySelector('html').style.removeProperty("--accent-background-color");
 	document.querySelector('html').style.removeProperty("--sticky-header-background-color");
-	document.querySelector('html').style.removeProperty("--toolbar-background-color");
 	document.querySelector('html').style.removeProperty("--caret-color");
 	document.querySelector('html').style.removeProperty("--border-radius");
 	document.querySelector('html').style.removeProperty("--custom-secondary-font");
@@ -1245,13 +1204,6 @@ $('.wikitable #auto3').click(
 							function(e) {
 								e.preventDefault
 								$('.wikitable #pagebg3').prop('disabled',(document.querySelector('.wikitable #auto3').checked) );
-								TestDynamicTheme();
-							}   
-						);
-$('.wikitable #auto4').click(
-							function(e) {
-								e.preventDefault
-								$('.wikitable #toolbarcolor').prop('disabled',(document.querySelector('.wikitable #auto4').checked) );
 								TestDynamicTheme();
 							}   
 						);
