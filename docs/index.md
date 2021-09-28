@@ -5,7 +5,9 @@ With the inclusion of Sticky sidebars and Sticky Community Header, you can have 
 
 Evelution Desktop Skin in three different main Breakpoint Sizes, 705px, 1280px & 1500px. It is maintained by Qora Qore Telecommunities, A Techno Services and all other CPE Evelution Developers
 
-You can read more about the skin [here](Overview.md). Also, Evelution uses the ``main`` branch that it is compatible with both MediaWiki 1.36 and MediaWiki 1.37
+You can read more about the skin [here](Overview.md). 
+
+Evelution uses the ``main`` branch that it is compatible with both MediaWiki 1.36 and MediaWiki 1.37 so currently no separate branches for 1.36 (``REL_1.36``) and 1.37 (``REL_1.37``)
 
 # Requirements
 To Run Evelution on your wiki, you must have MediaWiki 1.36 or greater. Older versions are not supported
