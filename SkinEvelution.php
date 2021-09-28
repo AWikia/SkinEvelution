@@ -43,7 +43,6 @@ class SkinEvelution extends SkinMustache {
      */
     public function getTemplateData() {
         $data = parent::getTemplateData();
-        $data["html-mainurl"] = "/wiki/index.php/"; // URL
         $data["html-titlealt"] =  $this->getOutput()->getTitle(); // Page Title
         $data["html-articlecount"] = SiteStats::articles();
         $data["html-filecount"] = SiteStats::images();
