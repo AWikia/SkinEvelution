@@ -1,7 +1,7 @@
 ﻿(function () {
     var config = mw.config.get('wgEvelution');
 
-    if (config.Designer === false) {
+    if (config.Designer === false) { // Don't run with disabled designer
 	$(".link.theme-designer").remove();
 		return
     }
