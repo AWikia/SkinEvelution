@@ -104,6 +104,6 @@ class SkinEvelution extends SkinMustache {
 				'StickyRail' => $this->getConfig()->get( 'EvelutionStickyRail' ),
 				'Designer' => $this->getConfig()->get( 'EvelutionDesigner' ),
 			]
-		];
+		] );
 	}
 }
