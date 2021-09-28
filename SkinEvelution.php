@@ -102,6 +102,7 @@ class EvelutionHooks {
 			'ServerMode' => $config->get( 'EvelutionServerMode' ),
 			'CustomFont' => $config->get( 'EvelutionCustomFont' ),
 			'StickyRail' => $config->get( 'EvelutionStickyRail' ),
+			'Designer' => $config->get( 'EvelutionDesigner' ),
 		];
 
 		return true;
