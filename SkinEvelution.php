@@ -88,23 +88,22 @@ class SkinEvelution extends SkinMustache {
 		$data["html-avatar"] = $avatarElement;
         return $data;
     }
-}
-
-
-
-class EvelutionHooks {
-	public static function onResourceLoaderGetConfigVars( array &$vars, string $skin, Config $config ) {
-		$vars['wgEvelution'] = [
-			'LeftPersonalLinks' => $config->get( 'EvelutionLeftPersonalLinks' ),
-			'DisableColorManagement' => $config->get( 'EvelutionDisableColorManagement' ),
-			'ForceOneHeader' => $config->get( 'EvelutionForceOneHeader' ),
-			'DisableRightRail' => $config->get( 'EvelutionDisableRightRail' ),
-			'ServerMode' => $config->get( 'EvelutionServerMode' ),
-			'CustomFont' => $config->get( 'EvelutionCustomFont' ),
-			'StickyRail' => $config->get( 'EvelutionStickyRail' ),
-			'Designer' => $config->get( 'EvelutionDesigner' ),
+	/**
+	 * @inheritDoc
+	 * @return array
+	 */
+	protected function getJsConfigVars(): array {
+		return array_merge( parent::getJsConfigVars(), [
+			'wgEvelution' => [
+				'LeftPersonalLinks' => $this->getConfig()->get( 'EvelutionLeftPersonalLinks' ),
+				'DisableColorManagement' => $this->getConfig()->get( 'EvelutionDisableColorManagement' ),
+				'ForceOneHeader' => $this->getConfig()->get( 'EvelutionForceOneHeader' ),
+				'DisableRightRail' => $this->getConfig()->get( 'EvelutionDisableRightRail' ),
+				'ServerMode' => $this->getConfig()->get( 'EvelutionServerMode' ),
+				'CustomFont' => $this->getConfig()->get( 'EvelutionCustomFont' ),
+				'StickyRail' => $this->getConfig()->get( 'EvelutionStickyRail' ),
+				'Designer' => $this->getConfig()->get( 'EvelutionDesigner' ),
+			]
 		];
-
-		return true;
 	}
 }
