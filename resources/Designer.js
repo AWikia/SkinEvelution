@@ -2,6 +2,7 @@
     var config = mw.config.get('wgEvelution');
 
     if (config.Designer === false) {
+	$(".link.theme-designer").remove();
 		return
     }
 
