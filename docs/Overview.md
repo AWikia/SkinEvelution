@@ -50,36 +50,6 @@ With the inclusion of a top Sticky Navigation and a Bottom Toolbar which both ca
 
 The local navigation on Evelution is fetched from ``MediaWiki:Sidebar``. It is placed as links on the ``.color-nav`` container on the static navigation and as submenus of another menu on the sticky navigation called ``.mpisto-sticky-header-container``
 
-### Tyography Sizes between MpistoSkin2 and Evelution
-Between Evelution and MpistoSkin2, typography sizes also differ. Let's take a look at them:
-
-#### Desktop
-
-|  Kind                 | Evelution | MpistoSkin2 |
-|  -------------------- | --------- | ----------- |
-| Title (Large)         | 35px      | 38px        |
-| Title (Small)         | 32px      | 35px        |
-| Heading 1             | 26px      | 28px        |
-| Heading 2             | 18px      | 20px        |
-| Heading 3             | 16px      | 17px        |
-| Heading 4 / Text      | 13px      | 14px        |
-| Heading 5 / Subtitle  | 11px      | 12px        |
-| Heading 6             | 9px       | 10px        |
-
-#### Desktop XL
-
-|  Kind                 | Evelution | MpistoSkin2 |
-|  -------------------- | --------- | ----------- |
-| Title                 | 44px      | 47px        |
-| Heading 1             | 33px      | 36px        |
-| Heading 2             | 24px      | 26px        |
-| Heading 3             | 20px      | 21px        |
-| Heading 4             | 17px      | 18px        |
-| Text                  | 15px      | 16px        |
-| Heading 5             | 14px      | 15px        |
-| Subtitle              | 13px      | 14px        |
-| Heading 6             | 11px      | 12px        |
-
 ## What are the differences between the Small and Large Sizes?
 The small 705 breakpoint contains the following differences from the large 1280 ones:
   - Text Size on Community and Sticky headers is smaller
