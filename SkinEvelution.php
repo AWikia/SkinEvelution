@@ -1,11 +1,6 @@
 <?php
  use MediaWiki\User\UserOptionsLookup;
- use Html;
  use MediaWiki\MediaWikiServices;
- use Sanitizer;
- use TextContent;
- use User;
- use wAvatar;
 
 
 /* Code From Universal Omega's Cosmos Skin */
