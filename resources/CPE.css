@@ -333,13 +333,6 @@ font-family:Trebuchet MS;
 	--sticky-header-foreground-color-hover-rgb:var(--light-theme-foreground-color-hover-rgb);
 }
 
-:root[light-toolbar="true"] {
-	--toolbar-foreground-color:var(--light-theme-foreground-color);
-	--toolbar-foreground-color-hover:var(--light-theme-foreground-color-hover);
-	--toolbar-foreground-color-rgb:var(--light-theme-foreground-color-rgb);
-	--toolbar-foreground-color-hover-rgb:var(--light-theme-foreground-color-hover-rgb);
-}
-
 :root[light-alert="true"] {
 	--alert-foreground-color:var(--light-theme-foreground-color);
 	--alert-foreground-color-hover:var(--light-theme-foreground-color-hover);
@@ -366,6 +359,76 @@ font-family:Trebuchet MS;
 	--message-foreground-color-hover:var(--light-theme-foreground-color-hover);
 	--message-foreground-color-rgb:var(--light-theme-foreground-color-rgb);
 	--message-foreground-color-hover-rgb:var(--light-theme-foreground-color-hover-rgb);
+}
+
+/* Gradient Color Sets */
+/* Base Light */
+:root {
+	--community-gradient-color:var(--community-background-color);
+	--community-gradient-color-hover:var(--community-background-color-hover);
+	--anchor-gradient-color:var(--anchor-background-color);
+	--anchor-gradient-color-hover:var(--anchor-background-color-hover);
+	--page-gradient-color:var(--page-background-color);
+	--page-gradient-color-hover:var(--page-background-color-hover);
+	--page-secondary-gradient-color:var(--page-secondary-background-color);
+	--page-secondary-gradient-color-hover:var(--page-secondary-background-color-hover);
+	--page-border-gradient-color:var(--page-border-background-color);
+	--page-border-gradient-color-hover:var(--page-border-background-color-hover);
+	--page-text-gradient-color:var(--page-text-background-color);
+	--page-text-gradient-color-hover:var(--page-text-background-color-hover);
+	--accent-gradient-color:var(--accent-background-color);
+	--accent-gradient-color-hover:var(--accent-background-color-hover);
+	--sticky-header-gradient-color:var(--sticky-header-background-color);
+	--sticky-header-gradient-color-hover:var(--sticky-header-background-color-hover);
+	--alert-gradient-color:var(--alert-background-color);
+	--alert-gradient-color-hover:var(--alert-background-color-hover);
+	--warning-gradient-color:var(--warning-background-color);
+	--warning-gradient-color-hover:var(--warning-background-color-hover);
+	--success-gradient-color:var(--success-background-color);
+	--success-gradient-color-hover:var(--success-background-color-hover);
+	--message-gradient-color:var(--message-background-color);
+	--message-gradient-color-hover:var(--message-background-color-hover);
+}
+
+
+/* Base Dark */
+:root[dark-mode="true"] {
+	--community-gradient-color:var(--community-background-color-hover);
+	--community-gradient-color-hover:var(--community-background-color);
+	--anchor-gradient-color:var(--anchor-background-color-hover);
+	--anchor-gradient-color-hover:var(--anchor-background-color);
+	--page-gradient-color:var(--page-background-color-hover);
+	--page-gradient-color-hover:var(--page-background-color);
+	--page-secondary-gradient-color:var(--page-secondary-background-color-hover);
+	--page-secondary-gradient-color-hover:var(--page-secondary-background-color);
+	--alert-gradient-color:var(--alert-background-color-hover);
+	--alert-gradient-color-hover:var(--alert-background-color);
+	--warning-gradient-color:var(--warning-background-color-hover);
+	--warning-gradient-color-hover:var(--warning-background-color);
+	--success-gradient-color:var(--success-background-color-hover);
+	--success-gradient-color-hover:var(--success-background-color);
+	--message-gradient-color:var(--message-background-color-hover);
+	--message-gradient-color-hover:var(--message-background-color);
+}
+
+:root[dark-mode="false"] {
+	--page-text-gradient-color:var(--page-text-background-color-hover);
+	--page-text-gradient-color-hover:var(--page-text-background-color);
+}
+
+:root[light-page-border="false"] {
+	--page-border-gradient-color:var(--page-border-background-color-hover);
+	--page-border-gradient-color-hover:var(--page-border-background-color);
+}
+
+:root[light-accent="false"] {
+	--accent-gradient-color:var(--accent-background-color-hover);
+	--accent-gradient-color-hover:var(--accent-background-color);
+}
+
+:root[light-sticky-header="false"] {
+	--sticky-header-gradient-color:var(--sticky-header-background-color-hover);
+	--sticky-header-gradient-color-hover:var(--sticky-header-background-color);
 }
 
 
@@ -441,14 +504,9 @@ body {
 :root:not(.theming-loaded) {
 --community-background-image-opacity:100%;
 --community-background-color-hover:#11041E;
---community-foreground-color:#f2f6fa;
---community-foreground-color-hover:#A8C3DE;
---community-foreground-color-inverted:#f2f6fa;
 --community-background-color-page-background-color-mix-light:#CEC5DA;
 --community-background-color-page-background-color-mix:#AC98C1;
 --community-background-color-rgb:68,17,119;
---community-foreground-color-rgb:242,246,250;
---community-foreground-color-hover-rgb:168,195,222;
 --community-header-text-color-hover:#FFFFFF;
 --community-header-text-color-rgb:242,246,250;
 --community-header-text-color-hover-rgb:255,255,255;
@@ -459,27 +517,17 @@ body {
 --community-background-no-horizontal-tiling:false;
 --community-background-no-vertical-tiling:false;
 --anchor-background-color-hover:#771300;
---anchor-foreground-color:#f2f6fa;
---anchor-foreground-color-hover:#A8C3DE;
---anchor-foreground-color-inverted:#f2f6fa;
 --anchor-background-color-page-background-color-mix-light:#EDC9C2;
 --anchor-background-color-page-background-color-mix:#E99F92;
 --anchor-background-color-rgb:221,35,0;
---anchor-foreground-color-rgb:242,246,250;
---anchor-foreground-color-hover-rgb:168,195,222;
 --page-background-color-hover:#BABFC4;
 --page-secondary-background-color:#D3D4D5;
 --page-secondary-background-color-hover:#9FA1A3;
 --page-background-color-rgb:241,242,243;
 --page-secondary-background-color-rgb:211,212,213;
 --page-border-background-color-hover:#EFEFEF;
---page-border-foreground-color:#092344;
---page-border-foreground-color-inverted:#092344;
---page-border-foreground-color-hover:#15519E;
 --page-border-background-color-page-background-color-mix-light:#E6E7E8;
 --page-border-background-color-page-background-color-mix:#DBDCDD;
---page-border-background-color-rgb:187,188,189;
---page-border-foreground-color-rgb:9,35,68;
 --page-text-background-color-hover:#647488;
 --page-text-foreground-color:#f2f6fa;
 --page-text-foreground-color-hover:#A8C3DE;
@@ -488,62 +536,14 @@ body {
 --page-text-background-color-page-background-color-mix:#A7ACB1;
 --page-text-background-color-rgb:57,66,77;
 --page-text-background-color-hover-rgb:100,116,136;
---page-text-foreground-color-rgb:242,246,250;
---page-text-foreground-color-hover-rgb:168,195,222;
 --accent-background-color-hover:#774700;
---accent-foreground-color:#092344;
---accent-foreground-color-hover:#15519E;
---accent-foreground-color-inverted:#f2f6fa;
 --accent-background-color-page-background-color-mix-light:#EDDCC2;
 --accent-background-color-page-background-color-mix:#E9C692;
 --accent-background-color-rgb:221,131,0;
---accent-foreground-color-rgb:9,35,68;
---accent-foreground-color-hover-rgb:21,81,158;
 --sticky-header-background-color-hover:#523A00;
---sticky-header-foreground-color:#092344;
---sticky-header-foreground-color-hover:#15519E;
---sticky-header-foreground-color-inverted:#f2f6fa;
 --sticky-header-background-color-page-background-color-mix-light:#E6DCC2;
 --sticky-header-background-color-page-background-color-mix:#DAC692;
 --sticky-header-background-color-rgb:184,131,0;
---sticky-header-foreground-color-rgb:9,35,68;
---sticky-header-foreground-color-hover-rgb:21,81,158;
---alert-background-color-hover:#590000;
---alert-foreground-color:#f2f6fa;
---alert-foreground-color-hover:#A8C3DE;
---alert-foreground-color-inverted:#f2f6fa;
---alert-background-color-page-background-color-mix-light:#E7C2C2;
---alert-background-color-page-background-color-mix:#DD9192;
---alert-background-color-rgb:191,0,0;
---alert-foreground-color-rgb:242,246,250;
---alert-foreground-color-hover-rgb:168,195,222;
---warning-background-color-hover:#4D3200;
---warning-foreground-color:#f2f6fa;
---warning-foreground-color-hover:#A8C3DE;
---warning-foreground-color-inverted:#f2f6fa;
---warning-background-color-page-background-color-mix-light:#E5D9C2;
---warning-background-color-page-background-color-mix:#D8C092;
---warning-background-color-rgb:179,116,0;
---warning-foreground-color-rgb:242,246,250;
---warning-foreground-color-hover-rgb:168,195,222;
---success-background-color-hover:#001A0C;
---success-foreground-color:#f2f6fa;
---success-foreground-color-hover:#A8C3DE;
---success-foreground-color-inverted:#f2f6fa;
---success-background-color-page-background-color-mix-light:#C1DBCE;
---success-background-color-page-background-color-mix:#91C4A9;
---success-background-color-rgb:0,128,57;
---success-foreground-color-rgb:242,246,250;
---success-foreground-color-hover-rgb:168,195,222;
---message-background-color-hover:#404040;
---message-foreground-color:#f2f6fa;
---message-foreground-color-hover:#A8C3DE;
---message-foreground-color-inverted:#f2f6fa;
---message-background-color-page-background-color-mix-light:#D8D9D9;
---message-background-color-page-background-color-mix:#BFBFC0;
---message-background-color-rgb:115,115,115;
---message-foreground-color-rgb:242,246,250;
---message-foreground-color-hover-rgb:168,195,222;
 --caret-color:auto;
 --custom-secondary-font:"";
 --border-radius:3px;
