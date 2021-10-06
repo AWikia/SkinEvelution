@@ -1323,11 +1323,19 @@ select.cpe-input {
 /** Buttons **/
 /* Primary */
 .cpe-button {
+	--button-background-color:var(--accent-background-color);
+	--button-background-color-hover:var(--accent-background-color-hover);
+	--button-foreground-color:var(--accent-foreground-color);
+	--button-foreground-color-hover:var(--accent-foreground-color-hover);
+	--button-foreground-color-inverted:var(--accent-foreground-color-inverted);
+	--secondary-button-background-color:var(--page-background-color);
+	--secondary-button-foreground-color:var(--anchor-background-color);
+	--secondary-button-foreground-color-hover:var(--anchor-background-color-hover);
     transition:background-color 200ms, border-color 200ms, outline-offset 50ms, outline-color 200ms, color 200ms, box-shadow 200ms;
     font-size:13px;
     font-family:var(--secondary-font);
     font-weight:600;
-    color:var(--accent-foreground-color);
+    color:var(--button-foreground-color);
     padding:7px 12px;
     border-radius:var(--border-radius);
     display:inline-flex;
@@ -1336,28 +1344,28 @@ select.cpe-input {
     vertical-align:middle;
     line-height:16px;
     border:0px solid;
-    border-color:var(--accent-background-color);
-    background-color:var(--accent-background-color);
+    border-color:var(--button-background-color);
+    background-color:var(--button-background-color);
     outline:2px solid transparent;
     outline-offset:0px;
     box-sizing:content-box;
     min-height:18px;
-    box-shadow:0 0 1.5px 1.5px var(--accent-background-color);
+    box-shadow:0 0 1.5px 1.5px var(--button-background-color);
     margin:2.5px;
     cursor:var(--cpe-auto-cursor);
     text-decoration:none;
 }
 
 .cpe-button:visited {
-    color:var(--accent-foreground-color);
+    color:var(--button-foreground-color);
 }
 
 .cpe-button:visited:hover {
-    color:var(--accent-foreground-color);
+    color:var(--button-foreground-color);
 }
 
 .cpe-button:visited:active {
-    color:var(--accent-foreground-color-inverted);
+    color:var(--button-foreground-color-inverted);
 }
 
 
@@ -1367,10 +1375,10 @@ a.cpe-button, button.cpe-button {
 
 
 .cpe-button:hover {
-    border-color:var(--accent-background-color-hover);
-    background-color:var(--accent-background-color-hover);
-    color:var(--accent-foreground-color);
-    box-shadow:0 0 1.5px 1.5px var(--accent-background-color-hover);
+    border-color:var(--button-background-color-hover);
+    background-color:var(--button-background-color-hover);
+    color:var(--button-foreground-color);
+    box-shadow:0 0 1.5px 1.5px var(--button-background-color-hover);
     text-decoration:none;
 }
 
@@ -1379,20 +1387,20 @@ a.cpe-button, button.cpe-button {
 .selected .cpe-button, 
 .cpe-dropdown:focus > .cpe-button,
 .cpe-dropdown:focus-within > .cpe-button {
-    border-color:var(--accent-background-color-hover);
-    background-color:var(--accent-background-color-hover);
-    box-shadow:0 0 1.5px 1.5px var(--accent-background-color-hover);
+    border-color:var(--button-background-color-hover);
+    background-color:var(--button-background-color-hover);
+    box-shadow:0 0 1.5px 1.5px var(--button-background-color-hover);
     outline-color:transparent;
     outline-offset:0px;
     text-decoration:none;
-	color:var(--accent-foreground-color-inverted);
+	color:var(--button-foreground-color-inverted);
 }
 
 .cpe-button:focus:not(:active):not(.is-active) {
   outline-color:currentcolor;
   outline-offset:-2px;
-  border-color:var(--accent-background-color);
-  color:var(--accent-foreground-color-hover);
+  border-color:var(--button-background-color);
+  color:var(--button-foreground-color-hover);
     text-decoration:none;
 }
 
@@ -1403,45 +1411,43 @@ a.cpe-button, button.cpe-button {
 .cpe-button.is-active,
 .cpe-dropdown:focus > .cpe-button,
 .cpe-dropdown:focus-within > .cpe-button  {
-	color:var(--accent-foreground-color-inverted);
+	color:var(--button-foreground-color-inverted);
 }
 
 .cpe-button.is-active:focus,
 .selected .cpe-button:focus:not(:active) {
-	color:var(--accent-foreground-color-inverted);
+	color:var(--button-foreground-color-inverted);
 	outline-color:transparent;
 }
 
 
 /* Secondary */
 .cpe-button.is-secondary {
-    border-color:var(--anchor-background-color);
-    background-color:var(--page-background-color);
-    color:var(--anchor-background-color);
+    border-color:var(--secondary-button-foreground-color);
+    background-color:var(--secondary-button-background-color);
+    color:var(--secondary-button-foreground-color);
     box-shadow:0 0 1.5px 1.5px var(--page-background-color);
     box-shadow:0 0 1.5px 1.5px currentColor;
 }
 
 .cpe-button.is-secondary:visited {
-    color:var(--anchor-background-color);
+    color:var(--secondary-button-foreground-color);
 }
 
 .cpe-button.is-secondary:visited:hover {
-    color:var(--anchor-background-color-hover);
+    color:var(--secondary-button-foreground-color-hover);
 }
 
 .cpe-button.is-secondary:visited:active {
-    color:var(--anchor-background-color-hover);
+    color:var(--secondary-button-foreground-color-hover);
 }
 
 
 
 .cpe-button.is-secondary:hover {
-    border-color:var(--anchor-background-color-hover);
-    background-color:var(--anchor-background-color-page-background-color-mix-light); 
-    background-color:var(--page-background-color);
-    color:var(--anchor-background-color-hover);
-    box-shadow:0 0 1.5px 1.5px var(--anchor-background-color-page-background-color-mix-light);
+    border-color:var(--secondary-button-foreground-color-hover);
+    background-color:var(--secondary-button-background-color);
+    color:var(--secondary-button-foreground-color-hover);
     box-shadow:0 0 1.5px 1.5px currentColor;
 }
 
@@ -1450,17 +1456,15 @@ a.cpe-button, button.cpe-button {
 .selected .cpe-button.is-secondary,
 .cpe-dropdown:focus > .cpe-button.is-secondary,
 .cpe-dropdown:focus-within > .cpe-button.is-secondary {
-    border-color:var(--anchor-background-color-hover);
-    background-color:var(--anchor-background-color-page-background-color-mix);
-    background-color:var(--page-background-color);
-    color:var(--anchor-background-color-hover); /* color:var(--anchor-background-color-hover); */ 
-    box-shadow:0 0 1.5px 1.5px var(--anchor-background-color-page-background-color-mix);
+    border-color:var(--secondary-button-foreground-color-hover);
+    background-color:var(--secondary-button-background-color);
+    color:var(--secondary-button-foreground-color-hover);
     box-shadow:0 0 1.5px 1.5px currentColor;
 }
 
 .cpe-button.is-secondary:focus:not(:active):not(.is-active) {
-  background-color:var(--page-background-color); 
-  color:var(--anchor-background-color-hover); 
+  background-color:var(--secondary-button-background-color); 
+  color:var(--secondary-button-foreground-color-hover); 
 }
 
 .cpe-dropdown:focus > .cpe-button.is-secondary,
@@ -1470,41 +1474,41 @@ a.cpe-button, button.cpe-button {
 .selected .cpe-button.is-secondary:hover,
 .selected .cpe-button.is-secondary:active,
 .cpe-button.is-secondary.is-active {
-	background-color:var(--page-background-color); 
-	color:var(--anchor-background-color-hover);
+	background-color:var(--secondary-button-background-color); 
+	color:var(--secondary-button-foreground-color-hover);
 }
 
 
 /* Text */
 .cpe-button.is-text {
   border-color:transparent;
-  color:var(--anchor-background-color);
+  color:var(--secondary-button-foreground-color);
   background-color:transparent;
   box-shadow:0 0 1.5px 1.5px transparent;
 }
 
 .cpe-button.is-text:visited {
-    color:var(--anchor-background-color);
+    color:var(--secondary-button-foreground-color);
 }
 
 .cpe-button.is-text:visited:hover {
-    color:var(--anchor-background-color-hover);
+    color:var(--secondary-button-foreground-color-hover);
 }
 
 .cpe-button.is-text:visited:active {
-    color:var(--anchor-background-color-hover);
+    color:var(--secondary-button-foreground-color-hover);
 }
 
 
 .cpe-button.is-text:hover {
   border-color:transparent;
-  color:var(--anchor-background-color-hover);
+  color:var(--secondary-button-foreground-color-hover);
   background-color:transparent;
 }
 
 .cpe-button.is-text:active {
   border-color:transparent;
-  color:var(--anchor-background-color-hover);
+  color:var(--secondary-button-foreground-color-hover);
   background-color:transparent;
 }
 
@@ -1514,123 +1518,69 @@ a.cpe-button, button.cpe-button {
 
 /* Unaccented Buttons */
 .cpe-button.is-unaccented {
-  --accent-background-color:var(--page-border-background-color);
-  --accent-background-color-rgb:var(--page-border-background-color-rgb);
-  --accent-background-color-hover:var(--page-border-background-color-hover);
-  --accent-foreground-color:var(--page-border-foreground-color);
-  --accent-foreground-color-hover:var(--page-border-foreground-color-hover);
-  --accent-foreground-color-inverted:var(--page-border-foreground-color-inverted);
-  --accent-background-color-page-background-color-mix-light:var(--page-border-background-color-page-background-color-mix-light);
-  --accent-background-color-page-background-color-mix:var(--page-border-background-color-page-background-color-mix);
-  --anchor-background-color:var(--page-text-background-color);
-  --anchor-background-color-rgb:var(--page-text-background-color-rgb);
-  --anchor-background-color-hover:var(--page-text-background-color-hover);
-  --anchor-foreground-color:var(--page-text-foreground-color);
-  --anchor-foreground-color-hover:var(--page-text-foreground-color-hover);
-  --anchor-foreground-color-inverted:var(--page-text-foreground-color-inverted);
-  --anchor-background-color-page-background-color-mix-light:var(--page-text-background-color-page-background-color-mix-light);
-  --anchor-background-color-page-background-color-mix:var(--page-text-background-color-page-background-color-mix);
+  --button-background-color:var(--page-border-background-color);
+  --button-background-color-hover:var(--page-border-background-color-hover);
+  --button-foreground-color:var(--page-border-foreground-color);
+  --button-foreground-color-hover:var(--page-border-foreground-color-hover);
+  --button-foreground-color-inverted:var(--page-border-foreground-color-inverted);
+  --secondary-button-foreground-color:var(--page-text-background-color);
+  --secondary-button-foreground-color-hover:var(--page-text-background-color-hover);
 }
 
 /* Alternate Colored Buttons */
 .cpe-button.is-alternate {
-  --accent-background-color:var(--sticky-header-background-color);
-  --accent-background-color-rgb:var(--sticky-header-background-color-rgb);
-  --accent-background-color-hover:var(--sticky-header-background-color-hover);
-  --accent-foreground-color:var(--sticky-header-foreground-color);
-  --accent-foreground-color-hover:var(--sticky-header-foreground-color-hover);
-  --accent-foreground-color-inverted:var(--sticky-header-foreground-color-inverted);
-  --accent-background-color-page-background-color-mix-light:var(--sticky-header-background-color-page-background-color-mix-light);
-  --accent-background-color-page-background-color-mix:var(--sticky-header-background-color-page-background-color-mix);
-  --anchor-background-color:var(--community-background-color);
-  --anchor-background-color-rgb:var(--community-background-color-rgb);
-  --anchor-background-color-hover:var(--community-background-color-hover);
-  --anchor-foreground-color:var(--community-foreground-color);
-  --anchor-foreground-color-hover:var(--community-foreground-color-hover);
-  --anchor-foreground-color-inverted:var(--community-foreground-color-inverted);
-  --anchor-background-color-page-background-color-mix-light:var(--community-background-color-page-background-color-mix-light);
-  --anchor-background-color-page-background-color-mix:var(--community-background-color-page-background-color-mix);
+  --button-background-color:var(--sticky-header-background-color);
+  --button-background-color-hover:var(--sticky-header-background-color-hover);
+  --button-foreground-color:var(--sticky-header-foreground-color);
+  --button-foreground-color-hover:var(--sticky-header-foreground-color-hover);
+  --button-foreground-color-inverted:var(--sticky-header-foreground-color-inverted);
+  --secondary-button-foreground-color:var(--community-background-color);
+  --secondary-button-foreground-color-hover:var(--community-background-color-hover);
 }
 
 /* Alert Color */
 .cpe-button.is-alert-color {
-  --accent-background-color:var(--alert-background-color);
-  --accent-background-color-rgb:var(--alert-background-color-rgb);
-  --accent-background-color-hover:var(--alert-background-color-hover);
-  --accent-foreground-color:var(--alert-foreground-color);
-  --accent-foreground-color-hover:var(--alert-foreground-color-hover);
-  --accent-foreground-color-inverted:var(--alert-foreground-color-inverted);
-  --accent-background-color-page-background-color-mix-light:var(--alert-background-color-page-background-color-mix-light);
-  --accent-background-color-page-background-color-mix:var(--alert-background-color-page-background-color-mix);
-  --anchor-background-color:var(--alert-background-color);
-  --anchor-background-color-rgb:var(--alert-background-color-rgb);
-  --anchor-background-color-hover:var(--alert-background-color-hover);
-  --anchor-foreground-color:var(--alert-foreground-color);
-  --anchor-foreground-color-hover:var(--alert-foreground-color-hover);
-  --anchor-foreground-color-inverted:var(--alert-foreground-color-inverted);
-  --anchor-background-color-page-background-color-mix-light:var(--alert-background-color-page-background-color-mix-light);
-  --anchor-background-color-page-background-color-mix:var(--alert-background-color-page-background-color-mix);
+  --button-background-color:var(--alert-background-color);
+  --button-background-color-hover:var(--alert-background-color-hover);
+  --button-foreground-color:var(--alert-foreground-color);
+  --button-foreground-color-hover:var(--alert-foreground-color-hover);
+  --button-foreground-color-inverted:var(--alert-foreground-color-inverted);
+  --secondary-button-foreground-color:var(--alert-background-color);
+  --secondary-button-foreground-color-hover:var(--alert-background-color-hover);
 }
 
 /* Warning Color */
 .cpe-button.is-warning-color {
-  --accent-background-color:var(--warning-background-color);
-  --accent-background-color-rgb:var(--warning-background-color-rgb);
-  --accent-background-color-hover:var(--warning-background-color-hover);
-  --accent-foreground-color:var(--warning-foreground-color);
-  --accent-foreground-color-hover:var(--warning-foreground-color-hover);
-  --accent-foreground-color-inverted:var(--warning-foreground-color-inverted);
-  --accent-background-color-page-background-color-mix-light:var(--warning-background-color-page-background-color-mix-light);
-  --accent-background-color-page-background-color-mix:var(--warning-background-color-page-background-color-mix);
-  --anchor-background-color:var(--warning-background-color);
-  --anchor-background-color-rgb:var(--warning-background-color-rgb);
-  --anchor-background-color-hover:var(--warning-background-color-hover);
-  --anchor-foreground-color:var(--warning-foreground-color);
-  --anchor-foreground-color-hover:var(--warning-foreground-color-hover);
-  --anchor-foreground-color-inverted:var(--warning-foreground-color-inverted);
-  --anchor-background-color-page-background-color-mix-light:var(--warning-background-color-page-background-color-mix-light);
-  --anchor-background-color-page-background-color-mix:var(--warning-background-color-page-background-color-mix);
+  --button-background-color:var(--warning-background-color);
+  --button-background-color-hover:var(--warning-background-color-hover);
+  --button-foreground-color:var(--warning-foreground-color);
+  --button-foreground-color-hover:var(--warning-foreground-color-hover);
+  --button-foreground-color-inverted:var(--warning-foreground-color-inverted);
+  --secondary-button-foreground-color:var(--warning-background-color);
+  --secondary-button-foreground-color-hover:var(--warning-background-color-hover);
 }
 
 /* Success */
 .cpe-button.is-success-color {
-  --accent-background-color:var(--success-background-color);
-  --accent-background-color-rgb:var(--success-background-color-rgb);
-  --accent-background-color-hover:var(--success-background-color-hover);
-  --accent-foreground-color:var(--success-foreground-color);
-  --accent-foreground-color-hover:var(--success-foreground-color-hover);
-  --accent-foreground-color-inverted:var(--success-foreground-color-inverted);
-  --accent-background-color-page-background-color-mix-light:var(--success-background-color-page-background-color-mix-light);
-  --accent-background-color-page-background-color-mix:var(--success-background-color-page-background-color-mix);
-  --anchor-background-color:var(--success-background-color);
-  --anchor-background-color-rgb:var(--success-background-color-rgb);
-  --anchor-background-color-hover:var(--success-background-color-hover);
-  --anchor-foreground-color:var(--success-foreground-color);
-  --anchor-foreground-color-hover:var(--success-foreground-color-hover);
-  --anchor-foreground-color-inverted:var(--success-foreground-color-inverted);
-  --anchor-background-color-page-background-color-mix-light:var(--success-background-color-page-background-color-mix-light);
-  --anchor-background-color-page-background-color-mix:var(--success-background-color-page-background-color-mix);
+  --button-background-color:var(--success-background-color);
+  --button-background-color-hover:var(--success-background-color-hover);
+  --button-foreground-color:var(--success-foreground-color);
+  --button-foreground-color-hover:var(--success-foreground-color-hover);
+  --button-foreground-color-inverted:var(--success-foreground-color-inverted);
+  --secondary-button-foreground-color:var(--success-background-color);
+  --secondary-button-foreground-color-hover:var(--success-background-color-hover);
 }
 
 /* Message Color */
 .cpe-button.is-info-color,
 .cpe-button.is-message-color {
-  --accent-background-color:var(--message-background-color);
-  --accent-background-color-rgb:var(--message-background-color-rgb);
-  --accent-background-color-hover:var(--message-background-color-hover);
-  --accent-foreground-color:var(--message-foreground-color);
-  --accent-foreground-color-hover:var(--message-foreground-color-hover);
-  --accent-foreground-color-inverted:var(--message-foreground-color-inverted);
-  --accent-background-color-page-background-color-mix-light:var(--message-background-color-page-background-color-mix-light);
-  --accent-background-color-page-background-color-mix:var(--message-background-color-page-background-color-mix);
-  --anchor-background-color:var(--message-background-color);
-  --anchor-background-color-rgb:var(--message-background-color-rgb);
-  --anchor-background-color-hover:var(--message-background-color-hover);
-  --anchor-foreground-color:var(--message-foreground-color);
-  --anchor-foreground-color-hover:var(--message-foreground-color-hover);
-  --anchor-foreground-color-inverted:var(--message-foreground-color-inverted);
-  --anchor-background-color-page-background-color-mix-light:var(--message-background-color-page-background-color-mix-light);
-  --anchor-background-color-page-background-color-mix:var(--message-background-color-page-background-color-mix);
+  --button-background-color:var(--message-background-color);
+  --button-background-color-hover:var(--message-background-color-hover);
+  --button-foreground-color:var(--message-foreground-color);
+  --button-foreground-color-hover:var(--message-foreground-color-hover);
+  --button-foreground-color-inverted:var(--message-foreground-color-inverted);
+  --secondary-button-foreground-color:var(--message-background-color);
+  --secondary-button-foreground-color-hover:var(--message-background-color-hover);
 }
 
 
@@ -2445,6 +2395,9 @@ opacity:1;
 
 /* Tabs */
 .cpe-tabs{
+	--tabs-color:rgba(var(--page-text-background-color-rgb),0.7);
+	--tabs-color-hover:var(--page-text-background-color);
+	--tabs-color-active:var(--anchor-background-color);
 	align-items:flex-end;
 	display:flex;
 	list-style:none;
@@ -2452,10 +2405,7 @@ opacity:1;
 	padding:0
 }
 
-.cpe-tabs__tab{
-	--tabs-color:var(--accent-background-color);
-	--tabs-color-hover:var(--accent-background-color-hover);
-	--tabs-color-active:var(--accent-background-color-hover);
+.cpe-tabs__tab {
 	cursor:var(--cpe-auto-cursor);
 	flex-shrink:0;
 	line-height:14px;
@@ -2514,36 +2464,14 @@ opacity:1;
 	color:var(--tabs-color-active);
 }
 
-.cpe-tabs__tab.is-alternate {
-	--tabs-color:var(--anchor-background-color);
-	--tabs-color-hover:var(--anchor-background-color-hover);
-	--tabs-color-active:var(--anchor-background-color-hover);
+.cpe-tabs.is-unaccented {
+	--tabs-color-active:var(--page-text-background-color-hover); /* Regular version used elsewhere so hover version is used */
 }
-
-.cpe-tabs__tab.is-borderline {
-	--tabs-color:var(--page-border-background-color);
-	--tabs-color-hover:var(--page-border-background-color-hover);
-	--tabs-color-active:var(--page-border-background-color-hover);
-}
-
 
 .cpe-tabs.is-headline {
-	--tabs-color:var(--community-background-color);
-	--tabs-color-hover:var(--community-background-color-hover);
-	--tabs-color-active:var(--community-background-color-hover);
+	--tabs-color-active:var(--community-background-color);
 }
 
-.cpe-tabs__tab.is-titleline {
-	--tabs-color:var(--sticky-header-background-color);
-	--tabs-color-hover:var(--sticky-header-background-color-hover);
-	--tabs-color-active:var(--sticky-header-background-color-hover);
-}
-
-.cpe-tabs.is-colorline {
-	--tabs-color:var(--page-text-background-color);
-	--tabs-color-hover:var(--page-text-background-color-hover);
-	--tabs-color-active:var(--page-text-background-color-hover);
-}
 
 
 
