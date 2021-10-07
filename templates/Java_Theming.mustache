@@ -606,6 +606,7 @@ function DownloadTheme(full=false) {
 				 '--page-background-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--page-background-color-hover")  + ';\n' +
 				 '--page-gradient-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--page-gradient-color")  + ';\n' +
 				 '--page-gradient-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--page-gradient-color-hover")  + ';\n' +
+				 '--page-3d-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--page-3d-background-color")  + ';\n' +
 				 '--page-secondary-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--page-secondary-background-color")  + ';\n' +
 				 '--page-secondary-background-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--page-secondary-background-color-hover")  + ';\n' +
 				 '--page-secondary-gradient-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--page-secondary-gradient-color")  + ';\n' +
@@ -1020,7 +1021,7 @@ if (isLightColor(content_color)) {
 	} else {
 		var dropdowncolor2 = 'inherit';
 	}
-
+	document.querySelector('html').style.setProperty("--page-3d-background-color", Color(content_color).lightenByAmount( 0.075 ));
 } else {
 	var dropdowncolor = ColorTestTwin(content_color,"#ffffff",0.25);
 	if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--page-border-background-color") === 'auto')  ) {
@@ -1028,7 +1029,7 @@ if (isLightColor(content_color)) {
 	} else {
 		var dropdowncolor2 = 'inherit';
 	}
-
+	document.querySelector('html').style.setProperty("--page-3d-background-color", Color(content_color).lightenByAmount( 0.15 ));
 }
 	setLightful(content_text,'page-text');
 	var content_text2 = ColorTest(content_text,false,true,true);
