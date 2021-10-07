@@ -5,8 +5,8 @@ window.MW18ContrastNotice = false;
 window.MW18ForcedTheme = false;
 
 /* Visual Themes */
-var visualThemes = ['lite', 'basic', 'contrast', 'simple','classic']
-var visualThemeNames = ['Lite','Basic','High Contrast','Simple','Classic'];
+var visualThemes = ['lite', 'basic', 'contrast', 'simple']
+var visualThemeNames = ['Lite','Basic','High Contrast','Simple'];
 var contrastVisual = 2;
 /* Visual Colors */
 var visualColors = ['factorycolors','lunacolors','classicforced','campbellforced','forced','forced2','tangoforced','rgbcolors','retro','retro2','retro3','retro4','retro5','retro6','retro7','fandomcolors','fandomcolors2', 'fandomcolors3', 'candycrush','candycrush2','discord','evelution'];
@@ -606,8 +606,6 @@ function DownloadTheme(full=false) {
 				 '--page-background-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--page-background-color-hover")  + ';\n' +
 				 '--page-gradient-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--page-gradient-color")  + ';\n' +
 				 '--page-gradient-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--page-gradient-color-hover")  + ';\n' +
-				 '--page-3d-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--page-3d-background-color")  + ';\n' +
-				 '--page-3d-background-color-dark:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--page-3d-background-color-dark")  + ';\n' +
 				 '--page-secondary-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--page-secondary-background-color")  + ';\n' +
 				 '--page-secondary-background-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--page-secondary-background-color-hover")  + ';\n' +
 				 '--page-secondary-gradient-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--page-secondary-gradient-color")  + ';\n' +
@@ -1036,8 +1034,6 @@ if (isLightColor(content_color)) {
 	if (!SupportsColorMix()) {
 		colormixl = GetHoverColor(content_color,content_text);
 		colormix = GetActiveColor(content_color,content_text);
-		document.querySelector('html').style.setProperty("--page-3d-background-color", ColorTestTwin(content_color,"#e5e5e5",0.4));
-		document.querySelector('html').style.setProperty("--page-3d-background-color-dark", ColorTestTwin(content_color,"#1a1a1a",0.8));
 	}
 
 var dropdowncolorH = ColorTest(dropdowncolor,false,false,true);
