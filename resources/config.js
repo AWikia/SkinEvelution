@@ -59,7 +59,7 @@ function insertKey(key,value) {
 function CompileVisualL10N() {
 
 /* Visual Themes */
-var visualThemeNames_l10n = ['Lite',mw.msg( 'evelution-style-basic' ),mw.msg( 'evelution-style-contrast' ),mw.msg( 'evelution-style-simple' ),mw.msg( 'evelution-style-classic' )];
+var visualThemeNames_l10n = ['Lite',mw.msg( 'evelution-style-basic' ),mw.msg( 'evelution-style-contrast' ),mw.msg( 'evelution-style-simple' )];
 /* Visual Colors */
 var visualColorNames_l10n = [mw.msg( 'evelution-color-factorycolors' ), mw.msg( 'evelution-color-lunacolors' ), mw.msg( 'evelution-color-classicforced' ), mw.msg( 'evelution-color-campbellforced' ), mw.msg( 'evelution-color-forced' ), mw.msg( 'evelution-color-forced' ) + ' II', mw.msg( 'evelution-color-tangoforced' ),mw.msg( 'evelution-color-rgbcolors' ),mw.msg( 'evelution-color-retro' ),mw.msg( 'evelution-color-retro' ) + ' II',mw.msg( 'evelution-color-retro' ) + ' III',mw.msg( 'evelution-color-retro' ) + ' IV',mw.msg( 'evelution-color-retro' ) + ' V',mw.msg( 'evelution-color-retro' ) + ' VI',mw.msg( 'evelution-color-retro' ) + ' VII',mw.msg( 'evelution-color-fandomcolors' ),mw.msg( 'evelution-color-fandomcolors' ) + ' II',mw.msg( 'evelution-color-fandomcolors' ) + ' III', mw.msg( 'evelution-color-candycrush' ), mw.msg( 'evelution-color-candycrush' ) + ' II' , mw.msg( 'evelution-color-discord' ),'Evelution OS'];
 
