@@ -124,10 +124,10 @@ Aleo = Latin
 :root {
 font-family:Trebuchet MS;
 /* Base Foreground Colors */
---light-theme-foreground-color:#140a1f;
---dark-theme-foreground-color:#faf7fc;
---light-theme-text-background-color:#1a1a1a;
---dark-theme-text-background-color:#d4d5d5;
+--light-theme-foreground-color:#000000;
+--dark-theme-foreground-color:#ffffff;
+--light-theme-text-background-color:#3a3a3a;
+--dark-theme-text-background-color:#e6e6e6;
 /* Aliases */
 --page-border-background-color:auto;
 --page-text-background-color:auto;
@@ -249,6 +249,7 @@ font-family:Trebuchet MS;
 :root {
 /* Base */
 	--community-foreground-color:var(--dark-theme-foreground-color);
+	--community-header-text-foreground-color:var(--dark-theme-foreground-color);
 	--anchor-foreground-color:var(--dark-theme-foreground-color);
 	--page-border-foreground-color:var(--dark-theme-foreground-color);
 	--page-text-foreground-color:var(--dark-theme-foreground-color);
@@ -261,6 +262,7 @@ font-family:Trebuchet MS;
 	--message-foreground-color:var(--dark-theme-foreground-color);
 /* Hover */
 	--community-foreground-color-hover:var(--dark-theme-foreground-color-hover);
+	--community-header-text-foreground-color-hover:var(--dark-theme-foreground-color-hover);
 	--anchor-foreground-color-hover:var(--dark-theme-foreground-color-hover);
 	--page-border-foreground-color-hover:var(--dark-theme-foreground-color-hover);
 	--page-text-foreground-color-hover:var(--dark-theme-foreground-color-hover);
@@ -273,6 +275,7 @@ font-family:Trebuchet MS;
 	--message-foreground-color-hover:var(--dark-theme-foreground-color-hover);
 /* RGB Base */
 	--community-foreground-color-rgb:var(--dark-theme-foreground-color-rgb);
+	--community-header-text-foreground-color-rgb:var(--dark-theme-foreground-color-rgb);
 	--anchor-foreground-color-rgb:var(--dark-theme-foreground-color-rgb);
 	--page-border-foreground-color-rgb:var(--dark-theme-foreground-color-rgb);
 	--page-text-foreground-color-rgb:var(--dark-theme-foreground-color-rgb);
@@ -285,6 +288,7 @@ font-family:Trebuchet MS;
 	--message-foreground-color-rgb:var(--dark-theme-foreground-color-rgb);
 /* RGB Hover */
 	--community-foreground-color-hover-rgb:var(--dark-theme-foreground-color-hover-rgb);
+	--community-header-text-foreground-color-hover-rgb:var(--dark-theme-foreground-color-hover-rgb);
 	--anchor-foreground-color-hover-rgb:var(--dark-theme-foreground-color-hover-rgb);
 	--page-border-foreground-color-hover-rgb:var(--dark-theme-foreground-color-hover-rgb);
 	--page-text-foreground-color-hover-rgb:var(--dark-theme-foreground-color-hover-rgb);
@@ -305,6 +309,14 @@ font-family:Trebuchet MS;
 	--community-foreground-color-rgb:var(--light-theme-foreground-color-rgb);
 	--community-foreground-color-hover-rgb:var(--light-theme-foreground-color-hover-rgb);
 }
+
+:root[light-community-header-text="true"] {
+	--community-header-text-foreground-color:var(--light-theme-foreground-color);
+	--community-header-text-foreground-color-hover:var(--light-theme-foreground-color-hover);
+	--community-header-text-foreground-color-rgb:var(--light-theme-foreground-color-rgb);
+	--community-header-text-foreground-color-hover-rgb:var(--light-theme-foreground-color-hover-rgb);
+}
+
 
 :root[light-anchor="true"] {
 	--anchor-foreground-color:var(--light-theme-foreground-color);
@@ -585,9 +597,9 @@ body {
 	--scrollbar-track-color-2:var(--community-background-color-hover);
 	--scrollbar-track-text:var(--community-foreground-color);
 	/* Thumb */
-	--scrollbar-thumb-color-1:var(--accent-background-color);
-	--scrollbar-thumb-color-2:var(--accent-background-color-hover);
-	--scrollbar-thumb-text:var(--accent-foreground-color);
+	--scrollbar-thumb-color-1:var(--community-header-text-background-color);
+	--scrollbar-thumb-color-2:var(--community-header-text-background-color-hover);
+	--scrollbar-thumb-text:var(--community-header-text-foreground-color);
 	accent-color:var(--accent-background-color);
 
   margin:0 auto;
