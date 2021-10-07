@@ -869,7 +869,7 @@ function ApplyTheme () {
 				 '--community-background-image:' + image + ';\n' +
 				 '--community-background-image-opacity:' + $('#bodyimageopacity').val() + "%" + ';\n' +
 				 '--community-background-color:' + $('#bodybg').val()  + ';\n' +
-				 '--community-header-text-color:' + autocolor1  + ';\n' +
+				 '--community-header-text-background-color:' + autocolor1  + ';\n' +
 				 '--community-background-mode:' + $('.bg_mode .cpe-select__value').attr('value')  + ';\n' +
 				 '--community-background-horizontal-alignment:' + $('.bg_align2 .cpe-select__value').attr('value') + ';\n' +
 				 '--community-background-vertical-alignment:' + $('.bg_align .cpe-select__value').attr('value') + ';\n' +
@@ -953,7 +953,7 @@ function CopyTheme() {
 				 '--community-background-image:' + image + ';\n' +
 				 '--community-background-image-opacity:' + $('#bodyimageopacity').val() + "%" + ';\n' +
 				 '--community-background-color:' + $('#bodybg').val()  + ';\n' +
-				 '--community-header-text-color:' + autocolor1  + ';\n' +
+				 '--community-header-text-background-color:' + autocolor1  + ';\n' +
 				 '--community-background-mode:' + $('.bg_mode .cpe-select__value').attr('value')  + ';\n' +
 				 '--community-background-horizontal-alignment:' + $('.bg_align2 .cpe-select__value').attr('value') + ';\n' +
 				 '--community-background-vertical-alignment:' + $('.bg_align .cpe-select__value').attr('value') + ';\n' +
@@ -1002,11 +1002,11 @@ function PasteTheme() {
 	// Body BG
 	$('#bodybg').val( getComputedStyle(document.querySelector('html')).getPropertyValue("--community-background-color") );
 	// Body Header Text
-	if (getComputedStyle(document.querySelector('html')).getPropertyValue("--community-header-text-color") === 'auto' ) {
+	if (getComputedStyle(document.querySelector('html')).getPropertyValue("--community-header-text-background-color") === 'auto' ) {
 		document.querySelector('.wikitable #auto1').checked = true;
 	} else {
 		document.querySelector('.wikitable #auto1').checked = false;
-		$('#bodybg2').val( getComputedStyle(document.querySelector('html')).getPropertyValue("--community-header-text-color") );
+		$('#bodybg2').val( getComputedStyle(document.querySelector('html')).getPropertyValue("--community-header-text-background-color") );
 	}
 	$('.wikitable #bodybg2').prop('disabled',(document.querySelector('.wikitable #auto1').checked) );
 	// Body Image
@@ -1123,7 +1123,7 @@ function TestTheme() {
 	document.querySelector('html').style.setProperty("--community-background-size", $('.bg_size .cpe-select__value').attr('value') );
 	document.querySelector('html').style.setProperty("--community-background-no-horizontal-tiling", (!( document.querySelector('input#tilingH').checked )) );
 	document.querySelector('html').style.setProperty("--community-background-no-vertical-tiling", (!( document.querySelector('input#tilingV').checked )) );
-	document.querySelector('html').style.setProperty("--community-header-text-color", autocolor1 );
+	document.querySelector('html').style.setProperty("--community-header-text-background-color", autocolor1 );
 	document.querySelector('html').style.setProperty("--page-background-color", $('#pagebg').val() );
 	document.querySelector('html').style.setProperty("--page-border-background-color", autocolor2 );
 	document.querySelector('html').style.setProperty("--page-text-background-color", autocolor3 );
@@ -1161,7 +1161,7 @@ function ClearTheme() {
 	document.querySelector('html').style.removeProperty("--community-background-size");
 	document.querySelector('html').style.removeProperty("--community-background-no-horizontal-tiling");
 	document.querySelector('html').style.removeProperty("--community-background-no-vertical-tiling");
-	document.querySelector('html').style.removeProperty("--community-header-text-color");
+	document.querySelector('html').style.removeProperty("--community-header-text-background-color");
 	document.querySelector('html').style.removeProperty("--page-background-color");
 	document.querySelector('html').style.removeProperty("--page-border-background-color");
 	document.querySelector('html').style.removeProperty("--page-text-background-color");
