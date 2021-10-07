@@ -577,10 +577,14 @@ function DownloadTheme(full=false) {
 				 '--community-foreground-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--community-foreground-color-rgb")  + ';\n' +
 				 '--community-foreground-color-hover-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--community-foreground-color-hover-rgb")  + ';\n' +
 				// Community Text Color
-				 '--community-header-text-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--community-header-text-color")  + ';\n' +
-				 '--community-header-text-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--community-header-text-color-hover")  + ';\n' +
-				 '--community-header-text-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--community-header-text-color-rgb")  + ';\n' +
-				 '--community-header-text-color-hover-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--community-header-text-color-hover-rgb")  + ';\n' +
+				 '--community-header-text-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--community-header-text-background-color")  + ';\n' +
+				 '--community-header-text-background-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--community-header-text-background-color-hover")  + ';\n' +
+				 '--community-header-text-foreground-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--community-header-text-foreground-color")  + ';\n' +
+				 '--community-header-text-foreground-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--community-header-text-foreground-color-hover")  + ';\n' +
+				 '--community-header-text-background-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--community-header-text-background-color-rgb")  + ';\n' +
+				 '--community-header-text-background-color-hover-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--community-header-text-background-color-hover-rgb")  + ';\n' +
+				 '--community-header-text-foreground-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--community-header-text-foreground-color-rgb")  + ';\n' +
+				 '--community-header-text-foreground-color-hover-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--community-header-text-foreground-color-hover-rgb")  + ';\n' +
 				// Community BG Settings
 				 '--community-background-mode:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--community-background-mode")  + ';\n' +
 				 '--community-background-horizontal-alignment:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--community-background-horizontal-alignment")  + ';\n' +
@@ -1243,10 +1247,10 @@ if (!SupportsColorMix()) {
 document.querySelector('html').style.setProperty("--community-background-color-rgb", Color2(head_color));
 
 /** Community Header text color **/
-if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--community-header-text-color") !== 'auto')  ) {
+if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--community-header-text-background-color") !== 'auto')  ) {
 	// Liatch Quirk
 	if ( (window.MW18darkmode === true) ) {
-		headertext_color = ColorInvert(getComputedStyle(document.querySelector('html')).getPropertyValue("--community-header-text-color"));
+		headertext_color = ColorInvert(getComputedStyle(document.querySelector('html')).getPropertyValue("--community-header-text-background-color"));
 	} else {
 		headertext_color = 'inherit';
 	}
@@ -1256,16 +1260,17 @@ if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--commun
 	var headertext_color = getComputedStyle(document.querySelector('html')).getPropertyValue("--community-foreground-color");
 }
 
-document.querySelector('body').style.setProperty("--community-header-text-color", headertext_color);
-var headertext_color= getComputedStyle(document.querySelector('body')).getPropertyValue("--community-header-text-color");
+document.querySelector('body').style.setProperty("--community-header-text-background-color", headertext_color);
+var headertext_color= getComputedStyle(document.querySelector('body')).getPropertyValue("--community-header-text-background-color");
 
 var headertextcolor1 = ColorTest(headertext_color,false,true,true);
+	setLightful(headertext_color,'community-header-text');
 
-document.querySelector('html').style.setProperty("--community-header-text-color-hover", headertextcolor1);
+document.querySelector('html').style.setProperty("--community-header-text-background-color-hover", headertextcolor1);
 
 // RGB
-document.querySelector('html').style.setProperty("--community-header-text-color-rgb", Color2( getComputedStyle(document.querySelector('body')).getPropertyValue("--community-header-text-color") ));
-document.querySelector('html').style.setProperty("--community-header-text-color-hover-rgb", Color2(headertextcolor1));
+document.querySelector('html').style.setProperty("--community-header-text-background-color-rgb", Color2( getComputedStyle(document.querySelector('body')).getPropertyValue("--community-header-text-background-color") ));
+document.querySelector('html').style.setProperty("--community-header-text-background-color-hover-rgb", Color2(headertextcolor1));
 
 
 /* This goes before compiling Generic Colors or else they will think the theme is light */
@@ -1471,10 +1476,10 @@ function CheckColorSuitability(refresh) {
 
 
 function CheckAdapt() {
-		if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--community-header-text-color") === 'auto')  ) {
-				$("body").attr('community-header-text-color-auto', 'true');
+		if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--community-header-text-background-color") === 'auto')  ) {
+				$("body").attr('community-header-text-background-color-auto', 'true');
 		} else {
-				$("body").attr('community-header-text-color-auto', 'false');
+				$("body").attr('community-header-text-background-color-auto', 'false');
 		}
 		if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--page-border-background-color") === 'auto')  ) {
 				$("body").attr('page-border-background-color-auto', 'true');
