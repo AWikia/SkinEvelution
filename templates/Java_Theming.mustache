@@ -1022,6 +1022,9 @@ if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--page-t
 		if ( !(isSuitableColor(getComputedStyle(document.querySelector('body')).getPropertyValue("--page-text-background-color"), getComputedStyle(document.querySelector('body')).getPropertyValue("--page-background-color"))) )  { // If still not legible
 			document.querySelector('body').style.setProperty("--page-text-background-color", ColorTest(getComputedStyle(document.querySelector('body')).getPropertyValue("--page-text-background-color"),false,false,true));
 		}
+		if ( !(isSuitableColor(getComputedStyle(document.querySelector('body')).getPropertyValue("--page-text-background-color"), getComputedStyle(document.querySelector('body')).getPropertyValue("--page-background-color"))) )  { // If still not legible
+			document.querySelector('body').style.setProperty("--page-text-background-color", ColorTest(getComputedStyle(document.querySelector('body')).getPropertyValue("--page-text-background-color"),false,false,true));
+		}
 
 } else {
 	document.querySelector('body').style.setProperty("--page-text-background-color", content_text);
@@ -1085,6 +1088,9 @@ if ( (window.MW18darkmode === true) ) {
 } else {
 	document.querySelector('body').style.setProperty("--accent-background-color", 'inherit');
 }
+	if ( !(isSuitableColor2(getComputedStyle(document.querySelector('body')).getPropertyValue("--accent-background-color"), getComputedStyle(document.querySelector('body')).getPropertyValue("--page-background-color"))) )  { // If still not legible
+		document.querySelector('body').style.setProperty("--accent-background-color", ColorTest(getComputedStyle(document.querySelector('body')).getPropertyValue("--accent-background-color"),false,false,true));
+	}
 	if ( !(isSuitableColor2(getComputedStyle(document.querySelector('body')).getPropertyValue("--accent-background-color"), getComputedStyle(document.querySelector('body')).getPropertyValue("--page-background-color"))) )  { // If still not legible
 		document.querySelector('body').style.setProperty("--accent-background-color", ColorTest(getComputedStyle(document.querySelector('body')).getPropertyValue("--accent-background-color"),false,false,true));
 	}
@@ -1166,6 +1172,9 @@ if ( (window.MW18darkmode === true) ) {
 	if ( !(isSuitableColor(getComputedStyle(document.querySelector('body')).getPropertyValue("--anchor-background-color"), getComputedStyle(document.querySelector('body')).getPropertyValue("--page-background-color"))) )  { // If still not legible
 		document.querySelector('body').style.setProperty("--anchor-background-color", ColorTest(getComputedStyle(document.querySelector('body')).getPropertyValue("--anchor-background-color"),false,false,true));
 	}
+	if ( !(isSuitableColor(getComputedStyle(document.querySelector('body')).getPropertyValue("--anchor-background-color"), getComputedStyle(document.querySelector('body')).getPropertyValue("--page-background-color"))) )  { // If still not legible
+		document.querySelector('body').style.setProperty("--anchor-background-color", ColorTest(getComputedStyle(document.querySelector('body')).getPropertyValue("--anchor-background-color"),false,false,true));
+	}
 
 var link_color = getComputedStyle(document.querySelector('body')).getPropertyValue("--anchor-background-color");
 var linkcolor1 = ColorTest(link_color,false,false,true);
@@ -1199,6 +1208,9 @@ if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--page-b
 	if ( (window.MW18darkmode === true) ) {
 		document.querySelector('body').style.setProperty("--page-border-background-color", ColorInvert(getComputedStyle(document.querySelector('html')).getPropertyValue("--page-border-background-color")));
 	}
+		if ( !(isSuitableColor2(getComputedStyle(document.querySelector('body')).getPropertyValue("--page-border-background-color"), getComputedStyle(document.querySelector('body')).getPropertyValue("--page-background-color"))) )  { // If still not legible
+			document.querySelector('body').style.setProperty("--page-border-background-color", ColorTest(getComputedStyle(document.querySelector('body')).getPropertyValue("--page-border-background-color"),false,false,true));
+		}
 		if ( !(isSuitableColor2(getComputedStyle(document.querySelector('body')).getPropertyValue("--page-border-background-color"), getComputedStyle(document.querySelector('body')).getPropertyValue("--page-background-color"))) )  { // If still not legible
 			document.querySelector('body').style.setProperty("--page-border-background-color", ColorTest(getComputedStyle(document.querySelector('body')).getPropertyValue("--page-border-background-color"),false,false,true));
 		}
