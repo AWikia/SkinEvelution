@@ -1406,11 +1406,11 @@ if (suitcheck === true) {
 
 function CheckColorSuitability(refresh) {
 	/* Check Contrast Colors */
-	var color1a = getComputedStyle(document.querySelector('body')).getPropertyValue("--page-text-background-color");
-	var color2  = getComputedStyle(document.querySelector('body')).getPropertyValue("--page-background-color");
-	var color1b = getComputedStyle(document.querySelector('body')).getPropertyValue("--anchor-background-color");
-	var color1c = getComputedStyle(document.querySelector('body')).getPropertyValue("--page-border-background-color");
-	var color1d = getComputedStyle(document.querySelector('body')).getPropertyValue("--accent-background-color");
+	var color1a = getComputedStyle(document.querySelector('html')).getPropertyValue("--page-text-background-color");
+	var color2  = getComputedStyle(document.querySelector('html')).getPropertyValue("--page-background-color");
+	var color1b = getComputedStyle(document.querySelector('html')).getPropertyValue("--anchor-background-color");
+	var color1c = getComputedStyle(document.querySelector('html')).getPropertyValue("--page-border-background-color");
+	var color1d = getComputedStyle(document.querySelector('html')).getPropertyValue("--accent-background-color");
 		var colornames = ['Page Text', 'Anchor', 'Page Border', 'Accent']; // List of the four color values that can become unsuitable
 		var uns = false; // Becomes true if an unsuitable color found
 		var suit0 = false;
@@ -1423,24 +1423,30 @@ function CheckColorSuitability(refresh) {
 		issue2 = "";
 		issue3 = "";
 		// Content Color
+	if (color1a !== 'auto') {
 		if ( !(isSuitableColor(color1a,color2) )) {
 			var uns = true;
 			var suit0 = true;
 		}
+	}
 		// Link Color
 		if ( !(isSuitableColor(color1b, color2)) ) {
 			var uns = true;
 			var suit1 = true;
 		}
+/*
 		if ( !(isSuitableColor3(color1b, color1a)) ) {
 			var uns = true;
 			var suit1 = true;
 		}
+*/
 		// Border Color
+	if (color1c !== 'auto') {
 		if ( !(isSuitableColor2(color1c, color2)) ) {
 			var uns = true;
 			var suit2 = true;
 		}
+	}
 		// Button Color
 		if ( !(isSuitableColor2(color1d, color2)) ) {
 			var uns = true;
