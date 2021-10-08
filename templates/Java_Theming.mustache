@@ -885,7 +885,7 @@ function Color2(color) {
 
 
 function isLightColor(color) {
-	return ((chroma.contrast('#000000',  Color(color).toString())) >= 4.5)
+	return ((chroma.contrast('#ffffff',  Color(color).toString())) <= 4.5)
 //	return (Color(color).getLuminance() >= 0.5)
 }
 
@@ -895,7 +895,7 @@ function setLightful(color,prop="page-text") {
 }
 
 function isSuperLightColor(color) {
-	return ((chroma.contrast('#000000', Color(color).toString())) >= 15)
+	return ((chroma.contrast('#ffffff', Color(color).toString())) <= 15)
 //	return (Color(color).getLuminance() >= 0.75)
 }
 
