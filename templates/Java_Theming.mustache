@@ -888,10 +888,11 @@ function isLightColor(color) {
 	var c1 = (chroma.contrast('#000000',  Color(color).toString()))
 	var c2 = (chroma.contrast('#ffffff',  Color(color).toString()))
 	var contrast = (window.matchMedia('(prefers-contrast: more)').matches) ? 7 : 4.5
+	var contrast2 = (window.matchMedia('(prefers-contrast: more)').matches) ? 3 : 4.5
 	if (c1 > c2) {
 		return (c1 >= contrast )
 	} else {
-		return (c2 < contrast )
+		return (c2 < contrast2 )
 	}
 }
 
@@ -903,11 +904,12 @@ function setLightful(color,prop="page-text") {
 function isSuperLightColor(color) {
 	var c1 = (chroma.contrast('#000000',  Color(color).toString()))
 	var c2 = (chroma.contrast('#ffffff',  Color(color).toString()))
-	var contrast = (window.matchMedia('(prefers-contrast: more)').matches) ? 18 : 15
+	var contrast = (window.matchMedia('(prefers-contrast: more)').matches) ? 18 : 16
+	var contrast2 = (window.matchMedia('(prefers-contrast: more)').matches) ? 14 : 16
 	if (c1 > c2) {
 		return (c1 >= contrast )
 	} else {
-		return (c2 < contrast )
+		return (c2 < contrast2 )
 	}
 }
 
