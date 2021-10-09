@@ -177,7 +177,7 @@ background-image:linear-gradient(to left,rgba(255,255,255, 0) 200px,var(--sticky
 
 
 
-[visualtheme="basic"] .color-header .link {
+[visualtheme="basic"] .evelution-community-header .link {
     border:1px solid var(--community-header-text-background-color);
 }
 
@@ -188,16 +188,16 @@ background-image:linear-gradient(to left,rgba(255,255,255, 0) 200px,var(--sticky
 
 [visualtheme="basic"] .evelution-community-header .link:hover  {
 		background-color:rgba(var(--anchor-background-color-rgb),0.2);
-		color:inherit;
+		color:var(--community-header-text-background-color-hover);
 		box-shadow:none;
-		border:1px solid var(--community-header-text-background-color);
+		border:1px solid var(--community-header-text-background-color-hover);
 }
 
 [visualtheme="basic"] .evelution-sticky-header .link:hover  {
 		background-color:rgba(var(--anchor-background-color-rgb),0.2);
-		color:inherit;
+		color:var(--sticky-header-foreground-color-hover);
 		box-shadow:none;
-		border:1px solid var(--sticky-header-foreground-color);
+		border:1px solid var(--sticky-header-foreground-color-hover);
 }
 
 
@@ -211,9 +211,9 @@ background-image:linear-gradient(to left,rgba(255,255,255, 0) 200px,var(--sticky
 [visualtheme="basic"] .evelution-sticky-header .link:focus, 
 [visualtheme="basic"] .evelution-sticky-header .cpe-dropdown:focus > .link,
 [visualtheme="basic"] .evelution-sticky-header .cpe-dropdown:focus-within > .link {
-		border:1px solid var(--community-header-text-background-color);
+		border:1px solid var(--community-header-text-background-color-hover);
 		background-color:rgba(var(--anchor-background-color-rgb),0.4);
-		color:inherit;
+		color:rgba(var(--community-header-text-background-color-hover-rgb),0.8);
 		box-shadow:none;
 }
 
@@ -222,7 +222,10 @@ background-image:linear-gradient(to left,rgba(255,255,255, 0) 200px,var(--sticky
 [visualtheme="basic"] .evelution-sticky-header .link:focus, 
 [visualtheme="basic"] .evelution-sticky-header .cpe-dropdown:focus > .link,
 [visualtheme="basic"] .evelution-sticky-header .cpe-dropdown:focus-within > .link {
-		border-color:var(--sticky-header-foreground-color);
+		border:1px solid var(--sticky-header-foreground-color-hover);
+		background-color:rgba(var(--anchor-background-color-rgb),0.4);
+		color:rgba(var(--sticky-header-foreground-color-hover-rgb),0.8);
+		box-shadow:none;
 }
 
 
@@ -369,7 +372,7 @@ linear-gradient(90deg, transparent 0%, transparent calc(50% - -3px), currentColo
 
 
 
-[visualtheme="contrast"] .color-header .link,
+[visualtheme="contrast"] .evelution-community-header .link,
 [visualtheme="contrast"] .evelution-sticky-header .link {
 	background-clip:padding-box;
 	background-color:var(--page-secondary-background-color);
@@ -1083,19 +1086,14 @@ color:inherit;
 [visualtheme="simple"] .evelution-community-header .link:focus, 
 [visualtheme="simple"] .evelution-community-header .cpe-dropdown:focus > .link,
 [visualtheme="simple"] .evelution-community-header .cpe-dropdown:focus-within > .link {
-	background-color:var(--community-background-color);
+	background-color:var(--community-background-color-hover);
 	-webkit-animation:none;
 	animation:none;
 	border-color:transparent;
 	box-shadow:none;
-	color:var(--community-foreground-color-hover);
+	color:var(--community-foreground-color-inverted);
 }
 
-[visualtheme="simple"] .color-header .link:hover, 
-[visualtheme="simple"] .color-header .cpe-dropdown:focus > .link,
-[visualtheme="simple"] .color-header .cpe-dropdown:focus-within > .link {
-	background-color:var(--community-background-color-hover);
-}
 
 [visualtheme="simple"] .evelution-sticky-header .link.active, 
 [visualtheme="simple"] .evelution-sticky-header .link:hover, 
