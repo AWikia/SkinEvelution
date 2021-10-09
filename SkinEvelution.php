@@ -59,9 +59,9 @@ class SkinEvelution extends SkinMustache {
         $data["html-upload-link"] = SpecialPage::getTitleFor( 'Upload' )->getLocalURL();
         $data["html-rpage-link"] = SpecialPage::getTitleFor( 'Randompage' )->getLocalURL();
         $data["html-whatlinks-link"] = SpecialPage::getTitleFor( 'Whatlinkshere' )->getLocalURL();
-        $data["html-info-link"] = SpecialPage::getTitleFor( 'Pageinfo' )->getLocalURL();
-        $data["html-history-link"] = SpecialPage::getTitleFor( 'Pagehistory' )->getLocalURL();
-        $data["html-mcontent-link"] = SpecialPage::getTitleFor( 'Changecontentmodel' )->getLocalURL();
+        $data["html-info-link"] = SpecialPage::getTitleFor( 'PageInfo' )->getLocalURL();
+        $data["html-history-link"] = SpecialPage::getTitleFor( 'PageHistory' )->getLocalURL();
+        $data["html-mcontent-link"] = SpecialPage::getTitleFor( 'ChangeContentModel' )->getLocalURL();
         $data["html-edit-link"] = SpecialPage::getTitleFor( 'EditPage' )->getLocalURL();
         $data["html-longpages-link"] = SpecialPage::getTitleFor( 'Longpages' )->getLocalURL();
         $data["html-unusedtemplates-link"] = SpecialPage::getTitleFor( 'Unusedtemplates' )->getLocalURL();
