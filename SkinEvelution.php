@@ -50,7 +50,7 @@ class SkinEvelution extends SkinMustache {
         $data["msg-evelution-activity-module"] = wfMessage( 'evelution-activity-module' )->inContentLanguage()->parseAsBlock(); // Additional JS is used
         $data["msg-evelution-about-module-info"] = wfMessage( 'evelution-about-module-info' )->inContentLanguage()->parseAsBlock();
         $data["html-rc-link"] = SpecialPage::getTitleFor( 'Recentchanges' )->getLocalURL();
-        $data["html-files-link"] = SpecialPage::getTitleFor( 'NewFiles' )->getLocalURL();
+        $data["html-files-link"] = SpecialPage::getTitleFor( 'Newimages' )->getLocalURL();
         $data["html-css-link"] = Title::newFromText( 'MediaWiki:Evelution.css' )->getLocalURL();
         $data["html-js-link"] = Title::newFromText( 'MediaWiki:Evelution.js' )->getLocalURL();
         $data["html-spages-link"] = SpecialPage::getTitleFor( 'Specialpages' )->getLocalURL();
