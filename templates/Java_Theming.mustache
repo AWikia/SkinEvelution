@@ -1038,18 +1038,19 @@ if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--page-t
 
 var content_color2 = ColorTest(content_color);
 
+var adjustment = (window.matchMedia('(prefers-contrast: more)').matches) ? 0.3 : 0.25
 
 if (isLightColor(content_color)) {
-	var dropdowncolor = ColorTestTwin(content_color,"#000000",0.25);
+	var dropdowncolor = ColorTestTwin(content_color,"#000000",adjustment);
 	if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--page-border-background-color") === 'auto')  ) {
-		var dropdowncolor2 = ColorTestTwin(content_color,"#1a1a1a",0.5);
+		var dropdowncolor2 = ColorTestTwin(content_color,"#1a1a1a",adjustment*2);
 	} else {
 		var dropdowncolor2 = 'inherit';
 	}
 } else {
-	var dropdowncolor = ColorTestTwin(content_color,"#ffffff",0.25);
+	var dropdowncolor = ColorTestTwin(content_color,"#ffffff",adjustment);
 	if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--page-border-background-color") === 'auto')  ) {
-		var dropdowncolor2 = ColorTestTwin(content_color,"#e5e5e5",0.5);
+		var dropdowncolor2 = ColorTestTwin(content_color,"#e5e5e5",adjustment*2);
 	} else {
 		var dropdowncolor2 = 'inherit';
 	}
