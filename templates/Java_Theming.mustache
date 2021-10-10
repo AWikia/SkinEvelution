@@ -1364,9 +1364,9 @@ document.querySelector('html').style.setProperty("--community-header-text-backgr
 
 /* This goes before compiling Generic Colors or else they will think the theme is light */
 	if (window.MW18darkmode) {
-		$('html').attr("dark-mode", isLightColor(body_bg));
+		$('html').attr("dark-mode", isLightColor(GetPage()));
 	} else {
-		$('html').attr("dark-mode", !(isLightColor(body_bg) ));
+		$('html').attr("dark-mode", !(isLightColor(GetPage()) ));
 	}
 
 
