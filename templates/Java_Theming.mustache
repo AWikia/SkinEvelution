@@ -290,7 +290,7 @@ function GetAccent() {
 
 function GetStickyHeader() {
 	if (ForcedColors()) {
-		return getComputedStyle(document.querySelector('.fc-graytext')).getPropertyValue("color");
+		return getComputedStyle(document.querySelector('.fc-canvas')).getPropertyValue("color");
 	} else {
 		return getComputedStyle(document.querySelector('body')).getPropertyValue("--sticky-header-background-color");
 	}
@@ -1094,7 +1094,7 @@ if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--page-t
 
 var content_color2 = ColorTest(content_color);
 
-var adjustment = (window.matchMedia('(prefers-contrast: more)').matches) ? 0.3 : 0.25
+var adjustment = (window.matchMedia('(prefers-contrast: more)').matches) ? 0.35 : 0.25
 
 if (isLightColor(content_color)) {
 	var dropdowncolor = ColorTestTwin(content_color,"#000000",adjustment);
