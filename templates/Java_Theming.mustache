@@ -148,6 +148,9 @@ function SupportsColorMix() {
 	return CSS.supports("color","color-mix(in srgb, #34c9eb 70%, white)") || CSS.supports("color:color-mix(in srgb, #34c9eb 70%, white)") 
 }
 
+function ForcedColors() {
+	return window.matchMedia('(forced-colors: active)').matches 
+}
 
 
 /* Visual Styles */
@@ -224,6 +227,77 @@ function UpdateSitename() {
 	}
 }
 
+/* Getting non-generic color values */
+function GetCommunity() {
+	if (ForcedColors()) {
+		return getComputedStyle(document.querySelector('.fc-canvas')).getPropertyValue("color");
+	} else {
+		return getComputedStyle(document.querySelector('body')).getPropertyValue("--community-background-color");
+	}
+}
+
+function GetCommunityHeaderText() {
+	if (ForcedColors()) {
+		return getComputedStyle(document.querySelector('.fc-canvastext')).getPropertyValue("color");
+	} else {
+		return getComputedStyle(document.querySelector('body')).getPropertyValue("--community-header-text-background-color");
+	}
+}
+
+
+function GetPage() {
+	if (ForcedColors()) {
+		return getComputedStyle(document.querySelector('.fc-canvas')).getPropertyValue("color");
+	} else {
+		return getComputedStyle(document.querySelector('body')).getPropertyValue("--page-background-color");
+	}
+}
+
+function GetAnchor() {
+	if (ForcedColors()) {
+		return getComputedStyle(document.querySelector('.fc-linktext')).getPropertyValue("color");
+	} else {
+		return getComputedStyle(document.querySelector('body')).getPropertyValue("--anchor-background-color");
+	}
+}
+
+
+function GetPageBorder() {
+	if (ForcedColors()) {
+		return getComputedStyle(document.querySelector('.fc-graytext')).getPropertyValue("color");
+	} else {
+		return getComputedStyle(document.querySelector('body')).getPropertyValue("--page-border-background-color");
+	}
+}
+
+
+function GetPageText() {
+	if (ForcedColors()) {
+		return getComputedStyle(document.querySelector('.fc-canvastext')).getPropertyValue("color");
+	} else {
+		return getComputedStyle(document.querySelector('body')).getPropertyValue("--page-text-background-color");
+	}
+}
+
+
+function GetAccent() {
+	if (ForcedColors()) {
+		return getComputedStyle(document.querySelector('.fc-highlight')).getPropertyValue("color");
+	} else {
+		return getComputedStyle(document.querySelector('body')).getPropertyValue("--accent-background-color");
+	}
+}
+
+function GetStickyHeader() {
+	if (ForcedColors()) {
+		return getComputedStyle(document.querySelector('.fc-graytext')).getPropertyValue("color");
+	} else {
+		return getComputedStyle(document.querySelector('body')).getPropertyValue("--sticky-header-background-color");
+	}
+}
+
+/* End of this work */
+
 /* Changes Cursor Theme */
 function CursorT(theme) {
 	if (theme === 'auto') {
@@ -238,7 +312,7 @@ function CursorT(theme) {
 			window.MW18autoDark = false;
 	}
    if (window.MW18auto === true) {
-		var body_bg =	getComputedStyle(document.querySelector('body')).getPropertyValue("--page-background-color");
+		var body_bg =	GetPage();
 		if (isLightColor(body_bg)) {
 			$('body').attr("curtheme", "light")
 		} else {
@@ -248,7 +322,7 @@ function CursorT(theme) {
 
 
    if (window.MW18autoDark === true) {
-		var body_bg =	getComputedStyle(document.querySelector('body')).getPropertyValue("--page-background-color");
+		var body_bg =	GetPage();
 		if (isLightColor(body_bg)) {
 			$('body').attr("curtheme", "dark")
 		} else {
@@ -324,7 +398,10 @@ if  ( ($("body.skin-evelution").length) ) {
 function colortheme(theme='auto', repaint=true, save=true) {
     var body_bg =	getComputedStyle(document.querySelector('html')).getPropertyValue("--page-background-color");
     var old_dark = window.MW18darkmode
-	if (theme === 'auto') { // Auto
+    if (ForcedColors()) {
+		window.MW18darkmode = false;
+		var body_bg = getComputedStyle(document.querySelector('.fc-canvas')).getPropertyValue("color");
+	} else if (theme === 'auto') { // Auto
 		window.MW18darkmode = ( window.matchMedia('(prefers-color-scheme: dark)').matches );
 	} else if (theme === 'auto-r') { // Auto-Dark
 		window.MW18darkmode = ( window.matchMedia('(prefers-color-scheme: light)').matches );
@@ -359,9 +436,9 @@ function colortheme(theme='auto', repaint=true, save=true) {
 		ColorUpdate(false);
 	}
 	if (window.MW18darkmode) {
-		$('html').attr("dark-mode", isLightColor(getComputedStyle(document.querySelector('html')).getPropertyValue("--page-background-color")) );
+		$('html').attr("dark-mode", isLightColor(body_bg));
 	} else {
-		$('html').attr("dark-mode", !(isLightColor(getComputedStyle(document.querySelector('html')).getPropertyValue("--page-background-color"))) );
+		$('html').attr("dark-mode", !(isLightColor(body_bg) ));
 	}
 }
 
@@ -805,7 +882,7 @@ function GetActiveColor(color1='#ffffff',color2='#000000') { // Used by color mi
 
 function ColorTest(color,text=false,inv=false,dledlen=false) { // Regular Colors
 	if (dledlen === true) {
-		var color2 = getComputedStyle(document.querySelector('body')).getPropertyValue("--page-background-color");
+		var color2 = GetPage();
 	} else {
 		var color2 = color;
 	}
@@ -840,26 +917,6 @@ function ColorTest(color,text=false,inv=false,dledlen=false) { // Regular Colors
 	}
 
 
-}
-
-
-function AutopickColor(color1,color2,attr="light-page-text",inv=false) { // Double Amount
-	if (isLightColor(color1)) {
-		if (inv == false) {
-			$('body').attr(attr, 'true');
-			return color1;
-		} else {
-			return color2;
-		}
-		$('body').attr(attr, 'true');
-	} else {
-		if (inv == true) {
-			return color1;
-		} else {
-			$('body').attr(attr, 'false');
-			return color2;
-		}
-	}
 }
 
 
@@ -997,7 +1054,7 @@ if ( (window.MW18darkmode === true) ) {
 } else {
 	document.querySelector('body').style.setProperty("--page-background-color", 'inherit');
 }
-var content_color = getComputedStyle(document.querySelector('body')).getPropertyValue("--page-background-color");
+var content_color =  GetPage();
 
 
 // Part B
@@ -1008,7 +1065,7 @@ if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--page-t
 		var content_text = getComputedStyle(document.querySelector('html')).getPropertyValue("--dark-theme-text-background-color")
 	}
 } else {
-		var content_text = getComputedStyle(document.querySelector('html')).getPropertyValue("--page-text-background-color");
+		var content_text =  GetPageText();
 }
 
 if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--page-text-background-color") != 'auto') ) { // Only run this part of Liatch quirk if not in autocolorization
@@ -1017,24 +1074,23 @@ if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--page-t
 	} else {
 		document.querySelector('body').style.setProperty("--page-text-background-color", 'inherit');
 	}
-		if ( !(isSuitableColor(getComputedStyle(document.querySelector('body')).getPropertyValue("--page-text-background-color"), getComputedStyle(document.querySelector('body')).getPropertyValue("--page-background-color"))) )  { // If still not legible
-			document.querySelector('body').style.setProperty("--page-text-background-color", ColorTest(getComputedStyle(document.querySelector('body')).getPropertyValue("--page-text-background-color"),false,false,true));
+		if ( !(isSuitableColor(GetPageText(), GetPage())) )  { // If still not legible
+			document.querySelector('body').style.setProperty("--page-text-background-color", ColorTest(GetPageText(),false,false,true));
 		}
-		if ( !(isSuitableColor(getComputedStyle(document.querySelector('body')).getPropertyValue("--page-text-background-color"), getComputedStyle(document.querySelector('body')).getPropertyValue("--page-background-color"))) )  { // If still not legible
-			document.querySelector('body').style.setProperty("--page-text-background-color", ColorTest(getComputedStyle(document.querySelector('body')).getPropertyValue("--page-text-background-color"),false,false,true));
+		if ( !(isSuitableColor(GetPageText(), GetPage())) )  { // If still not legible
+			document.querySelector('body').style.setProperty("--page-text-background-color", ColorTest(GetPageText(),false,false,true));
 		}
-		if ( !(isSuitableColor(getComputedStyle(document.querySelector('body')).getPropertyValue("--page-text-background-color"), getComputedStyle(document.querySelector('body')).getPropertyValue("--page-background-color"))) )  { // If still not legible
-			document.querySelector('body').style.setProperty("--page-text-background-color", ColorTest(getComputedStyle(document.querySelector('body')).getPropertyValue("--page-text-background-color"),false,false,true));
+		if ( !(isSuitableColor(GetPageText(), GetPage())) )  { // If still not legible
+			document.querySelector('body').style.setProperty("--page-text-background-color", ColorTest(GetPageText(),false,false,true));
 		}
-		if ( !(isSuitableColor(getComputedStyle(document.querySelector('body')).getPropertyValue("--page-text-background-color"), getComputedStyle(document.querySelector('body')).getPropertyValue("--page-background-color"))) )  { // If still not legible
-			document.querySelector('body').style.setProperty("--page-text-background-color", ColorTest(getComputedStyle(document.querySelector('body')).getPropertyValue("--page-text-background-color"),false,false,true));
+		if ( !(isSuitableColor(GetPageText(), GetPage())) )  { // If still not legible
+			document.querySelector('body').style.setProperty("--page-text-background-color", ColorTest(GetPageText(),false,false,true));
 		}
 
 } else {
 	document.querySelector('body').style.setProperty("--page-text-background-color", content_text);
 }
-		var content_text = getComputedStyle(document.querySelector('body')).getPropertyValue("--page-text-background-color");
-
+		var content_text = GetPageText()
 
 var content_color2 = ColorTest(content_color);
 
@@ -1080,8 +1136,8 @@ if (!SupportsColorMix()) {
 }
 // RGB
 document.querySelector('html').style.setProperty("--page-secondary-background-color-rgb", Color2(dropdowncolor));
-document.querySelector('html').style.setProperty("--page-background-color-rgb", Color2( getComputedStyle(document.querySelector('body')).getPropertyValue("--page-background-color") ));
-document.querySelector('html').style.setProperty("--page-text-background-color-rgb", Color2( getComputedStyle(document.querySelector('body')).getPropertyValue("--page-text-background-color") ));
+document.querySelector('html').style.setProperty("--page-background-color-rgb", Color2( GetPage() ));
+document.querySelector('html').style.setProperty("--page-text-background-color-rgb", Color2( GetPageText() ));
 document.querySelector('html').style.setProperty("--page-text-background-color-hover-rgb", Color2(content_text2));
 
 
@@ -1093,21 +1149,21 @@ if ( (window.MW18darkmode === true) ) {
 } else {
 	document.querySelector('body').style.setProperty("--accent-background-color", 'inherit');
 }
-	if ( !(isSuitableColor2(getComputedStyle(document.querySelector('body')).getPropertyValue("--accent-background-color"), getComputedStyle(document.querySelector('body')).getPropertyValue("--page-background-color"))) )  { // If still not legible
-		document.querySelector('body').style.setProperty("--accent-background-color", ColorTest(getComputedStyle(document.querySelector('body')).getPropertyValue("--accent-background-color"),false,false,true));
-	}
-	if ( !(isSuitableColor2(getComputedStyle(document.querySelector('body')).getPropertyValue("--accent-background-color"), getComputedStyle(document.querySelector('body')).getPropertyValue("--page-background-color"))) )  { // If still not legible
-		document.querySelector('body').style.setProperty("--accent-background-color", ColorTest(getComputedStyle(document.querySelector('body')).getPropertyValue("--accent-background-color"),false,false,true));
-	}
-	if ( !(isSuitableColor2(getComputedStyle(document.querySelector('body')).getPropertyValue("--accent-background-color"), getComputedStyle(document.querySelector('body')).getPropertyValue("--page-background-color"))) )  { // If still not legible
-		document.querySelector('body').style.setProperty("--accent-background-color", ColorTest(getComputedStyle(document.querySelector('body')).getPropertyValue("--accent-background-color"),false,false,true));
-	}
-	if ( !(isSuitableColor2(getComputedStyle(document.querySelector('body')).getPropertyValue("--accent-background-color"), getComputedStyle(document.querySelector('body')).getPropertyValue("--page-background-color"))) )  { // If still not legible
-		document.querySelector('body').style.setProperty("--accent-background-color", ColorTest(getComputedStyle(document.querySelector('body')).getPropertyValue("--accent-background-color"),false,false,true));
-	}
+		if ( !(isSuitableColor2(GetAccent(), GetPage())) )  { // If still not legible
+			document.querySelector('body').style.setProperty("--accent-background-color", ColorTest(GetAccent(),false,false,true));
+		}
+		if ( !(isSuitableColor2(GetAccent(), GetPage())) )  { // If still not legible
+			document.querySelector('body').style.setProperty("--accent-background-color", ColorTest(GetAccent(),false,false,true));
+		}
+		if ( !(isSuitableColor2(GetAccent(), GetPage())) )  { // If still not legible
+			document.querySelector('body').style.setProperty("--accent-background-color", ColorTest(GetAccent(),false,false,true));
+		}
+		if ( !(isSuitableColor2(GetAccent(), GetPage())) )  { // If still not legible
+			document.querySelector('body').style.setProperty("--accent-background-color", ColorTest(GetAccent(),false,false,true));
+		}
 
 
-var button_color = getComputedStyle(document.querySelector('body')).getPropertyValue("--accent-background-color");
+var button_color = GetAccent();
 var buttoncolor1 = ColorTest(button_color,false);
 var buttoncolor2I = ColorTest(buttoncolor1,true);
 setLightful(button_color,'accent');
@@ -1138,7 +1194,7 @@ if ( (window.MW18darkmode === true) ) {
 	document.querySelector('body').style.setProperty("--sticky-header-background-color", 'inherit');
 }
 
-var header_color = getComputedStyle(document.querySelector('body')).getPropertyValue("--sticky-header-background-color");
+var header_color = GetStickyHeader();
 var headercolor1 = ColorTest(header_color,false);
 var headercolor2I = ColorTest(headercolor1,true);
 setLightful(header_color,'sticky-header');
@@ -1168,20 +1224,20 @@ if ( (window.MW18darkmode === true) ) {
 } else {
 	document.querySelector('body').style.setProperty("--anchor-background-color", 'inherit');
 }
-	if ( !(isSuitableColor(getComputedStyle(document.querySelector('body')).getPropertyValue("--anchor-background-color"), getComputedStyle(document.querySelector('body')).getPropertyValue("--page-background-color"))) )  { // If still not legible
-		document.querySelector('body').style.setProperty("--anchor-background-color", ColorTest(getComputedStyle(document.querySelector('body')).getPropertyValue("--anchor-background-color"),false,false,true));
-	}
-	if ( !(isSuitableColor(getComputedStyle(document.querySelector('body')).getPropertyValue("--anchor-background-color"), getComputedStyle(document.querySelector('body')).getPropertyValue("--page-background-color"))) )  { // If still not legible
-		document.querySelector('body').style.setProperty("--anchor-background-color", ColorTest(getComputedStyle(document.querySelector('body')).getPropertyValue("--anchor-background-color"),false,false,true));
-	}
-	if ( !(isSuitableColor(getComputedStyle(document.querySelector('body')).getPropertyValue("--anchor-background-color"), getComputedStyle(document.querySelector('body')).getPropertyValue("--page-background-color"))) )  { // If still not legible
-		document.querySelector('body').style.setProperty("--anchor-background-color", ColorTest(getComputedStyle(document.querySelector('body')).getPropertyValue("--anchor-background-color"),false,false,true));
-	}
-	if ( !(isSuitableColor(getComputedStyle(document.querySelector('body')).getPropertyValue("--anchor-background-color"), getComputedStyle(document.querySelector('body')).getPropertyValue("--page-background-color"))) )  { // If still not legible
-		document.querySelector('body').style.setProperty("--anchor-background-color", ColorTest(getComputedStyle(document.querySelector('body')).getPropertyValue("--anchor-background-color"),false,false,true));
-	}
+		if ( !(isSuitableColor(GetAnchor(), GetPage())) )  { // If still not legible
+			document.querySelector('body').style.setProperty("--anchor-background-color", ColorTest(GetAnchor(),false,false,true));
+		}
+		if ( !(isSuitableColor(GetAnchor(), GetPage())) )  { // If still not legible
+			document.querySelector('body').style.setProperty("--anchor-background-color", ColorTest(GetAnchor(),false,false,true));
+		}
+		if ( !(isSuitableColor(GetAnchor(), GetPage())) )  { // If still not legible
+			document.querySelector('body').style.setProperty("--anchor-background-color", ColorTest(GetAnchor(),false,false,true));
+		}
+		if ( !(isSuitableColor(GetAnchor(), GetPage())) )  { // If still not legible
+			document.querySelector('body').style.setProperty("--anchor-background-color", ColorTest(GetAnchor(),false,false,true));
+		}
 
-var link_color = getComputedStyle(document.querySelector('body')).getPropertyValue("--anchor-background-color");
+var link_color = GetAnchor();
 var linkcolor1 = ColorTest(link_color,false,false,true);
 var linkcolor2I = ColorTest(linkcolor1,true);
 setLightful(link_color,'anchor');
@@ -1213,22 +1269,22 @@ if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--page-b
 	if ( (window.MW18darkmode === true) ) {
 		document.querySelector('body').style.setProperty("--page-border-background-color", ColorInvert(getComputedStyle(document.querySelector('html')).getPropertyValue("--page-border-background-color")));
 	}
-		if ( !(isSuitableColor2(getComputedStyle(document.querySelector('body')).getPropertyValue("--page-border-background-color"), getComputedStyle(document.querySelector('body')).getPropertyValue("--page-background-color"))) )  { // If still not legible
-			document.querySelector('body').style.setProperty("--page-border-background-color", ColorTest(getComputedStyle(document.querySelector('body')).getPropertyValue("--page-border-background-color"),false,false,true));
+		if ( !(isSuitableColor2(GetPageBorder(), GetPage())) )  { // If still not legible
+			document.querySelector('body').style.setProperty("--page-border-background-color", ColorTest(GetPageBorder(),false,false,true));
 		}
-		if ( !(isSuitableColor2(getComputedStyle(document.querySelector('body')).getPropertyValue("--page-border-background-color"), getComputedStyle(document.querySelector('body')).getPropertyValue("--page-background-color"))) )  { // If still not legible
-			document.querySelector('body').style.setProperty("--page-border-background-color", ColorTest(getComputedStyle(document.querySelector('body')).getPropertyValue("--page-border-background-color"),false,false,true));
+		if ( !(isSuitableColor2(GetPageBorder(), GetPage())) )  { // If still not legible
+			document.querySelector('body').style.setProperty("--page-border-background-color", ColorTest(GetPageBorder(),false,false,true));
 		}
-		if ( !(isSuitableColor2(getComputedStyle(document.querySelector('body')).getPropertyValue("--page-border-background-color"), getComputedStyle(document.querySelector('body')).getPropertyValue("--page-background-color"))) )  { // If still not legible
-			document.querySelector('body').style.setProperty("--page-border-background-color", ColorTest(getComputedStyle(document.querySelector('body')).getPropertyValue("--page-border-background-color"),false,false,true));
+		if ( !(isSuitableColor2(GetPageBorder(), GetPage())) )  { // If still not legible
+			document.querySelector('body').style.setProperty("--page-border-background-color", ColorTest(GetPageBorder(),false,false,true));
 		}
-		if ( !(isSuitableColor2(getComputedStyle(document.querySelector('body')).getPropertyValue("--page-border-background-color"), getComputedStyle(document.querySelector('body')).getPropertyValue("--page-background-color"))) )  { // If still not legible
-			document.querySelector('body').style.setProperty("--page-border-background-color", ColorTest(getComputedStyle(document.querySelector('body')).getPropertyValue("--page-border-background-color"),false,false,true));
+		if ( !(isSuitableColor2(GetPageBorder(), GetPage())) )  { // If still not legible
+			document.querySelector('body').style.setProperty("--page-border-background-color", ColorTest(GetPageBorder(),false,false,true));
 		}
 
 }
 
-var border_color =	getComputedStyle(document.querySelector('body')).getPropertyValue("--page-border-background-color");
+var border_color =	GetPageBorder();
 
 var bordercolor1 = ColorTest(border_color);
 var bordercolor2I = ColorTest(bordercolor1,true);
@@ -1259,7 +1315,7 @@ if ( (window.MW18darkmode === true) ) {
 	document.querySelector('body').style.setProperty("--community-background-color", 'inherit');
 }
 
-var head_color =	getComputedStyle(document.querySelector('body')).getPropertyValue("--community-background-color");
+var head_color =	GetCommunity();
 var headcolor1 = ColorTest(head_color,false,false,true);
 var headcolor2I = ColorTest(headcolor1,true);
 setLightful(head_color,'community');
@@ -1294,7 +1350,7 @@ if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--commun
 }
 
 document.querySelector('body').style.setProperty("--community-header-text-background-color", headertext_color);
-var headertext_color= getComputedStyle(document.querySelector('body')).getPropertyValue("--community-header-text-background-color");
+var headertext_color= GetCommunityHeaderText();
 
 var headertextcolor1 = ColorTest(headertext_color,false,true,true);
 	setLightful(headertext_color,'community-header-text');
