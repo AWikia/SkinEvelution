@@ -197,12 +197,19 @@ font-family:Trebuchet MS;
 }
 
 /** Generic Colors & Color Scheme **/
+html {
+	color-scheme:light!important;
+}
+
+:root[dark-mode="true"] {
+	color-scheme:dark!important;
+}
+
 
 /* On browsers without color-contrast support */
 @supports not (color:color-contrast(wheat vs tan, sienna, #d2691e)) {
 /* Light */
 html {
-	color-scheme:light!important;
     --alert-background-color:#b30000!important; /* Was dd3333 */
     --warning-background-color:#996300!important; /* Was ffcc33 */
     --success-background-color:#008040!important; /* Was 14866d */
@@ -223,7 +230,6 @@ html {
 
 /* Dark */
 :root[dark-mode="true"] {
-	color-scheme:dark!important;
     --alert-background-color:#ff6666!important;
     --warning-background-color:#ffce73!important;
     --success-background-color:#80ffb8!important;
