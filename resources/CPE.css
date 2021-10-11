@@ -202,47 +202,75 @@ font-family:Trebuchet MS;
     --alert-background-color:#b30000!important; /* Was dd3333 */
     --warning-background-color:#996300!important; /* Was ffcc33 */
     --success-background-color:#008040!important; /* Was 14866d */
-    --message-background-color:#666666!important; /* Was 575859 */
+    --message-background-color:#5900b3!important; /* Was 575859 */
 }
-
+/*
 :root {
     --alert-background-color-hover: #4D0000!important;
-    --alert-foreground-color-inverted: var(--dark-theme-foreground-color)!important;
     --alert-background-color-rgb: 178,0,0!important;
     --warning-background-color-hover: #332100!important;
-    --warning-foreground-color-inverted: var(--dark-theme-foreground-color)!important;
     --warning-background-color-rgb: 153,99,0!important;
     --success-background-color-hover: #001A0D!important;
-    --success-foreground-color-inverted: var(--dark-theme-foreground-color)!important;
     --success-background-color-rgb: 0,128,64!important;
     --message-background-color-hover: #333333!important;
-    --message-foreground-color-inverted: var(--dark-theme-foreground-color)!important;
     --message-background-color-rgb: 102,102,102!important;
 }
-
+*/
 /* Use Legible Generic Colors for Dark themes */
 :root[dark-mode="true"] {
 	color-scheme:dark!important;
     --alert-background-color:#ff6666!important;
     --warning-background-color:#ffce73!important;
     --success-background-color:#80ffb8!important;
-    --message-background-color:#999999!important;
+    --message-background-color:#b266ff!important;
+}
+
+@supports not (color:color-contrast(wheat vs tan, sienna, #d2691e)) {
+:root {
+    --alert-background-color-hover: #4D0000!important;
+    --alert-background-color-rgb: 178,0,0!important;
+    --warning-background-color-hover: #332100!important;
+    --warning-background-color-rgb: 153,99,0!important;
+    --success-background-color-hover: #001A0D!important;
+    --success-background-color-rgb: 0,128,64!important;
+    --message-background-color-hover: #26004D!important;
+    --message-background-color-rgb: 89,0,178!important;
 }
 
 :root[dark-mode="true"] {
     --alert-background-color-hover: #FFCCCC!important;
-    --alert-foreground-color-inverted: var(--light-theme-foreground-color)!important;
     --alert-background-color-rgb: 255,102,102!important;
     --warning-background-color-hover: #fff2d9!important;
-    --warning-foreground-color-inverted: var(--light-theme-foreground-color)!important;
     --warning-background-color-rgb: 255,205,114!important;
     --success-background-color-hover: #E6FFF1!important;
-    --success-foreground-color-inverted: var(--light-theme-foreground-color)!important;
+    --success-background-color-rgb: 127,255,184!important;
+    --message-background-color-hover: #e5CCFF!important;
+    --message-background-color-rgb: 175,102,255!important;
+}
+
+}
+
+@supports (color:color-contrast(wheat vs tan, sienna, #d2691e)) {
+	body {
+		--alert-background-color:color-contrast(var(--page-background-color) vs #ff1919, #ff3333, #ff4d4d, #ff6666, #ff8080, #ff9999, #ffb3b3, #ffcccc, #ffe6e6, #e60000, #cc0000, #b30000, #990000, #800000, #660000, #4d0000, #330000, #1a0000 to 4.5)!important;
+		--warning-background-color:color-contrast(var(--page-background-color) vs #ffaf19, #ffb833, #ffc14d, #ffc966, #ffc966, #ffdb99, #ffe4b3, #ffedcc, #fff6e6, #e69500, #cc8500, #b37400, #996300, #805300, #664200, #4d3200, #332100, #1a1100 to 4.5)!important;
+		--success-background-color:color-contrast(var(--page-background-color) vs #19ff8c, #33ff99, #4dffa6, #66ffb3, #80ffbf, #99ffcc, #b3ffd9, #ccffe6, #e6fff2, #00e673, #00cc66, #00b359, #00994d, #008040, #006633, #004d26, #00331a, #001a0d to 4.5)!important;
+		--message-background-color:color-contrast(var(--page-background-color) vs #8c19ff, #9833ff, #a54dff, #b266ff, #bf80ff, #cc99ff, #d9b3ff, #e5ccff, #f2e6ff, #7100e6, #6400cc, #5800b3, #4b0099, #3f0080, #320066, #26004d, #190033, #0d001a to 4.5)!important;
+	}
+}
+
+/*
+:root[dark-mode="true"] {
+    --alert-background-color-hover: #FFCCCC!important;
+    --alert-background-color-rgb: 255,102,102!important;
+    --warning-background-color-hover: #fff2d9!important;
+    --warning-background-color-rgb: 255,205,114!important;
+    --success-background-color-hover: #E6FFF1!important;
     --success-background-color-rgb: 127,255,184!important;
     --message-background-color-hover: #CCCCCC!important;
-    --message-foreground-color-inverted: var(--light-theme-foreground-color)!important;
     --message-background-color-rgb: 153,153,153!important;
 }
+*/
 
 /** Foreground Color Sets **/
 /* Base Dark */
@@ -299,7 +327,19 @@ font-family:Trebuchet MS;
 	--warning-foreground-color-hover-rgb:var(--dark-theme-foreground-color-hover-rgb);
 	--success-foreground-color-hover-rgb:var(--dark-theme-foreground-color-hover-rgb);
 	--message-foreground-color-hover-rgb:var(--dark-theme-foreground-color-hover-rgb);
-
+/* Inverted */
+	--community-foreground-color-inverted:var(--dark-theme-foreground-color);
+	--community-header-text-foreground-color-inverted:var(--dark-theme-foreground-color);
+	--anchor-foreground-color-inverted:var(--dark-theme-foreground-color);
+	--page-border-foreground-color-inverted:var(--dark-theme-foreground-color);
+	--page-text-foreground-color-inverted:var(--dark-theme-foreground-color);
+	--accent-foreground-color-inverted:var(--dark-theme-foreground-color);
+	--sticky-header-foreground-color-inverted:var(--dark-theme-foreground-color);
+	--toolbar-foreground-color-inverted:var(--dark-theme-foreground-color);
+	--alert-foreground-color-inverted:var(--dark-theme-foreground-color);
+	--warning-foreground-color-inverted:var(--dark-theme-foreground-color);
+	--success-foreground-color-inverted:var(--dark-theme-foreground-color);
+	--message-foreground-color-inverted:var(--dark-theme-foreground-color);
 }
 
 /* Base Light */
@@ -380,6 +420,52 @@ font-family:Trebuchet MS;
 	--message-foreground-color-rgb:var(--light-theme-foreground-color-rgb);
 	--message-foreground-color-hover-rgb:var(--light-theme-foreground-color-hover-rgb);
 }
+
+:root[light-community-hover="true"] {
+	--community-foreground-color-inverted:var(--light-theme-foreground-color);
+}
+
+:root[light-community-header-text-hover="true"] {
+	--community-header-text-foreground-color-inverted:var(--light-theme-foreground-color);
+}
+
+
+:root[light-anchor-hover="true"] {
+	--anchor-foreground-color-inverted:var(--light-theme-foreground-color);
+}
+
+:root[light-page-border-hover="true"] {
+	--page-border-foreground-color-inverted:var(--light-theme-foreground-color);
+}
+
+:root[light-page-text-hover="true"] {
+	--page-text-foreground-color-inverted:var(--light-theme-foreground-color);
+}
+
+:root[light-accent-hover="true"] {
+	--accent-foreground-color-inverted:var(--light-theme-foreground-color);
+}
+
+:root[light-sticky-header-hover="true"] {
+	--sticky-header-foreground-color-inverted:var(--light-theme-foreground-color);
+}
+
+:root[light-alert-hover="true"] {
+	--alert-foreground-color-inverted:var(--light-theme-foreground-color);
+}
+
+:root[light-warning-hover="true"] {
+	--warning-foreground-color-inverted:var(--light-theme-foreground-color);
+}
+
+:root[light-success-hover="true"] {
+	--success-foreground-color-inverted:var(--light-theme-foreground-color);
+}
+
+:root[light-message-hover="true"] {
+	--message-foreground-color-inverted:var(--light-theme-foreground-color);
+}
+
 
 /* Gradient Color Sets */
 /* Base Light */
