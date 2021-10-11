@@ -148,6 +148,11 @@ function SupportsColorMix() {
 	return CSS.supports("color","color-mix(in srgb, #34c9eb 70%, white)") || CSS.supports("color:color-mix(in srgb, #34c9eb 70%, white)") 
 }
 
+function SupportsColorContrast() {
+	return CSS.supports("color","color-contrast(wheat vs tan, sienna, #d2691e)") 
+
+}
+
 function ForcedColors() {
 	return window.matchMedia('(forced-colors: active)').matches 
 }
@@ -295,6 +300,39 @@ function GetStickyHeader() {
 		return getComputedStyle(document.querySelector('body')).getPropertyValue("--sticky-header-background-color");
 	}
 }
+
+function GetAlert() {
+	if (SupportsColorContrast()) {
+		return getComputedStyle(document.querySelector('.ad-alert')).getPropertyValue("color");
+	} else {
+		return getComputedStyle(document.querySelector('body')).getPropertyValue("--alert-background-color");
+	}
+}
+
+function GetWarning() {
+	if (SupportsColorContrast()) {
+		return getComputedStyle(document.querySelector('.ad-warning')).getPropertyValue("color");
+	} else {
+		return getComputedStyle(document.querySelector('body')).getPropertyValue("--warning-background-color");
+	}
+}
+
+function GetSuccess() {
+	if (SupportsColorContrast()) {
+		return getComputedStyle(document.querySelector('.ad-success')).getPropertyValue("color");
+	} else {
+		return getComputedStyle(document.querySelector('body')).getPropertyValue("--success-background-color");
+	}
+}
+
+function GetMessage() {
+	if (SupportsColorContrast()) {
+		return getComputedStyle(document.querySelector('.ad-message')).getPropertyValue("color");
+	} else {
+		return getComputedStyle(document.querySelector('body')).getPropertyValue("--message-background-color");
+	}
+}
+
 
 /* End of this work */
 
@@ -992,7 +1030,8 @@ return ((chroma.contrast(color, color2)) >= contrast) // For Border Color
 }
 
 function isSuitableColor3(color,color2) {
-return ((chroma.contrast(color, color2)) >= 1.03) // For Border Color
+var contrast = (window.matchMedia('(prefers-contrast: more)').matches) ? 4.5 : 3
+return ((chroma.contrast(color, color2)) >= contrast)
 }
 
 
@@ -1076,15 +1115,15 @@ if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--page-t
 	}
 		if ( !(isSuitableColor(GetPageText(), GetPage())) )  { // If still not legible
 			document.querySelector('body').style.setProperty("--page-text-background-color", ColorTest(GetPageText(),false,false,true));
-		}
-		if ( !(isSuitableColor(GetPageText(), GetPage())) )  { // If still not legible
-			document.querySelector('body').style.setProperty("--page-text-background-color", ColorTest(GetPageText(),false,false,true));
-		}
-		if ( !(isSuitableColor(GetPageText(), GetPage())) )  { // If still not legible
-			document.querySelector('body').style.setProperty("--page-text-background-color", ColorTest(GetPageText(),false,false,true));
-		}
-		if ( !(isSuitableColor(GetPageText(), GetPage())) )  { // If still not legible
-			document.querySelector('body').style.setProperty("--page-text-background-color", ColorTest(GetPageText(),false,false,true));
+			if ( !(isSuitableColor(GetPageText(), GetPage())) )  { // If still not legible
+				document.querySelector('body').style.setProperty("--page-text-background-color", ColorTest(GetPageText(),false,false,true));
+				if ( !(isSuitableColor(GetPageText(), GetPage())) )  { // If still not legible
+					document.querySelector('body').style.setProperty("--page-text-background-color", ColorTest(GetPageText(),false,false,true));
+					if ( !(isSuitableColor(GetPageText(), GetPage())) )  { // If still not legible
+						document.querySelector('body').style.setProperty("--page-text-background-color", ColorTest(GetPageText(),false,false,true));
+					}
+				}
+			}
 		}
 
 } else {
@@ -1111,9 +1150,9 @@ if (isLightColor(content_color)) {
 		var dropdowncolor2 = 'inherit';
 	}
 }
-	setLightful(content_text,'page-text');
 	var content_text2 = ColorTest(content_text,false,true,true);
-	var content_text4I = ColorTest(content_text2,true);
+	setLightful(content_text,'page-text');
+	setLightful(content_text2,'page-text-hover');
 	if (!SupportsColorMix()) {
 		colormixl = GetHoverColor(content_color,content_text);
 		colormix = GetActiveColor(content_color,content_text);
@@ -1129,7 +1168,6 @@ document.querySelector('body').style.setProperty("--page-border-background-color
 
 document.querySelector('html').style.setProperty("--page-background-color-hover", content_color2);
 document.querySelector('html').style.setProperty("--page-text-background-color-hover", content_text2);
-document.querySelector('html').style.setProperty("--page-text-foreground-color-inverted", content_text4I);
 if (!SupportsColorMix()) {
 	document.querySelector('html').style.setProperty("--page-text-background-color-page-background-color-mix-light", colormixl);
 	document.querySelector('html').style.setProperty("--page-text-background-color-page-background-color-mix", colormix);
@@ -1165,9 +1203,8 @@ if ( (window.MW18darkmode === true) ) {
 
 var button_color = GetAccent();
 var buttoncolor1 = ColorTest(button_color,false);
-var buttoncolor2I = ColorTest(buttoncolor1,true);
 setLightful(button_color,'accent');
-
+setLightful(buttoncolor1,'accent-hover');
 
 if (!SupportsColorMix()) {
 	buttonmixl = GetHoverColor(content_color,button_color);
@@ -1176,7 +1213,6 @@ if (!SupportsColorMix()) {
 
 /* Set Values */
 document.querySelector('html').style.setProperty("--accent-background-color-hover", buttoncolor1);
-document.querySelector('html').style.setProperty("--accent-foreground-color-inverted", buttoncolor2I);
 if (!SupportsColorMix()) {
 	document.querySelector('html').style.setProperty("--accent-background-color-page-background-color-mix-light", buttonmixl);
 	document.querySelector('html').style.setProperty("--accent-background-color-page-background-color-mix", buttonmix);
@@ -1196,8 +1232,8 @@ if ( (window.MW18darkmode === true) ) {
 
 var header_color = GetStickyHeader();
 var headercolor1 = ColorTest(header_color,false);
-var headercolor2I = ColorTest(headercolor1,true);
 setLightful(header_color,'sticky-header');
+setLightful(headercolor1,'sticky-header-hover');
 
 if (!SupportsColorMix()) {
 	headermixl = GetHoverColor(content_color,header_color);
@@ -1207,7 +1243,6 @@ if (!SupportsColorMix()) {
 
 /* Set Values */
 document.querySelector('html').style.setProperty("--sticky-header-background-color-hover", headercolor1);
-document.querySelector('html').style.setProperty("--sticky-header-foreground-color-inverted", headercolor2I);
 if (!SupportsColorMix()) {
 	document.querySelector('html').style.setProperty("--sticky-header-background-color-page-background-color-mix-light", headermixl);
 	document.querySelector('html').style.setProperty("--sticky-header-background-color-page-background-color-mix", headermix);
@@ -1239,9 +1274,8 @@ if ( (window.MW18darkmode === true) ) {
 
 var link_color = GetAnchor();
 var linkcolor1 = ColorTest(link_color,false,false,true);
-var linkcolor2I = ColorTest(linkcolor1,true);
 setLightful(link_color,'anchor');
-
+setLightful(buttoncolor1,'anchor-hover');
 
 
 if (!SupportsColorMix()) {
@@ -1251,7 +1285,6 @@ if (!SupportsColorMix()) {
 
 /* Set Values */
 document.querySelector('html').style.setProperty("--anchor-background-color-hover", linkcolor1);
-document.querySelector('html').style.setProperty("--anchor-foreground-color-inverted", linkcolor2I);
 if (!SupportsColorMix()) {
 	document.querySelector('html').style.setProperty("--anchor-background-color-page-background-color-mix-light", linkmixl);
 	document.querySelector('html').style.setProperty("--anchor-background-color-page-background-color-mix", linkmix);
@@ -1287,8 +1320,8 @@ if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--page-b
 var border_color =	GetPageBorder();
 
 var bordercolor1 = ColorTest(border_color);
-var bordercolor2I = ColorTest(bordercolor1,true);
 setLightful(border_color,'page-border');
+setLightful(bordercolor1,'page-border-hover');
 
 if (!SupportsColorMix()) {
 	bordermixl = GetHoverColor(content_color,border_color);
@@ -1297,7 +1330,6 @@ if (!SupportsColorMix()) {
 
 /* Set Values */
 document.querySelector('html').style.setProperty("--page-border-background-color-hover", bordercolor1);
-document.querySelector('html').style.setProperty("--page-border-foreground-color-inverted", bordercolor2I);
 if (!SupportsColorMix()) {
 	document.querySelector('html').style.setProperty("--page-border-background-color-page-background-color-mix-light", bordermixl);
 	document.querySelector('html').style.setProperty("--page-border-background-color-page-background-color-mix", bordermix);
@@ -1317,8 +1349,8 @@ if ( (window.MW18darkmode === true) ) {
 
 var head_color =	GetCommunity();
 var headcolor1 = ColorTest(head_color,false,false,true);
-var headcolor2I = ColorTest(headcolor1,true);
 setLightful(head_color,'community');
+setLightful(headcolor1,'community-hover');
 
 if (!SupportsColorMix()) {
 	headmixl = GetHoverColor(content_color,head_color);
@@ -1327,7 +1359,6 @@ if (!SupportsColorMix()) {
 
 /* Set Values */
 document.querySelector('html').style.setProperty("--community-background-color-hover", headcolor1);
-document.querySelector('html').style.setProperty("--community-foreground-color-inverted", headcolor2I);
 if (!SupportsColorMix()) {
 	document.querySelector('html').style.setProperty("--community-background-color-page-background-color-mix-light", headmixl);
 	document.querySelector('html').style.setProperty("--community-background-color-page-background-color-mix", headmix);
@@ -1354,6 +1385,7 @@ var headertext_color= GetCommunityHeaderText();
 
 var headertextcolor1 = ColorTest(headertext_color,false,true,true);
 	setLightful(headertext_color,'community-header-text');
+	setLightful(headertextcolor1,'community-header-text-hover');
 
 document.querySelector('html').style.setProperty("--community-header-text-background-color-hover", headertextcolor1);
 
@@ -1363,29 +1395,28 @@ document.querySelector('html').style.setProperty("--community-header-text-backgr
 
 
 /* This goes before compiling Generic Colors or else they will think the theme is light */
+	
 	if (window.MW18darkmode) {
-		$('html').attr("dark-mode", isLightColor(GetPage()));
+		$('html').attr("dark-mode", isLightColor( getComputedStyle(document.querySelector('html')).getPropertyValue("--page-background-color") ));
 	} else {
-		$('html').attr("dark-mode", !(isLightColor(GetPage()) ));
+		$('html').attr("dark-mode", !(isLightColor( getComputedStyle(document.querySelector('html')).getPropertyValue("--page-background-color") ) ));
 	}
 
 
 /** Alert Color **/
 /* Set Vars */
-var alert_color = getComputedStyle(document.querySelector('html')).getPropertyValue("--alert-background-color");
+var alert_color = GetAlert();
 var alertcolor1 = ColorTest(alert_color,false,false,true);
-var alertcolor2I = ColorTest(alertcolor1,true);
 setLightful(alert_color,'alert');
+setLightful(alertcolor1,'alert-hover');
 
 if (!SupportsColorMix()) {
 	alertmixl = GetHoverColor(content_color,alert_color);
 	alertmix = GetActiveColor(content_color,alert_color);
 }
 
-
 /* Set Values */
 document.querySelector('html').style.setProperty("--alert-background-color-hover", alertcolor1);
-document.querySelector('html').style.setProperty("--alert-foreground-color-inverted", alertcolor2I);
 if (!SupportsColorMix()) {
 	document.querySelector('html').style.setProperty("--alert-background-color-page-background-color-mix-light", alertmixl);
 	document.querySelector('html').style.setProperty("--alert-background-color-page-background-color-mix", alertmix);
@@ -1396,11 +1427,10 @@ document.querySelector('html').style.setProperty("--alert-background-color-rgb",
 
 /** Warning Color **/
 /* Set Vars */
-var warning_color = getComputedStyle(document.querySelector('html')).getPropertyValue("--warning-background-color");
+var warning_color = GetWarning();
 var warningcolor1 = ColorTest(warning_color,false,false,true);
-var warningcolor2I = ColorTest(warningcolor1,true);
 setLightful(warning_color,'warning');
-
+setLightful(warningcolor1,'warning-hover');
 
 if (!SupportsColorMix()) {
 	warningmixl = GetHoverColor(content_color,warning_color);
@@ -1409,7 +1439,6 @@ if (!SupportsColorMix()) {
 
 /* Set Values */
 document.querySelector('html').style.setProperty("--warning-background-color-hover", warningcolor1);
-document.querySelector('html').style.setProperty("--warning-foreground-color-inverted", warningcolor2I);
 if (!SupportsColorMix()) {
 	document.querySelector('html').style.setProperty("--warning-background-color-page-background-color-mix-light", warningmixl);
 	document.querySelector('html').style.setProperty("--warning-background-color-page-background-color-mix", warningmix);
@@ -1420,11 +1449,10 @@ document.querySelector('html').style.setProperty("--warning-background-color-rgb
 
 /** Success Color **/
 /* Set Vars */
-var success_color = getComputedStyle(document.querySelector('html')).getPropertyValue("--success-background-color");
+var success_color = GetSuccess();
 var successcolor1 = ColorTest(success_color,false,false,true);
-var successcolor2I = ColorTest(successcolor1,true);
 setLightful(success_color,'success');
-
+setLightful(successcolor1,'success-hover');
 
 if (!SupportsColorMix()) {
 	successmixl = GetHoverColor(content_color,success_color);
@@ -1433,7 +1461,6 @@ if (!SupportsColorMix()) {
 
 /* Set Values */
 document.querySelector('html').style.setProperty("--success-background-color-hover", successcolor1);
-document.querySelector('html').style.setProperty("--success-foreground-color-inverted", successcolor2I);
 if (!SupportsColorMix()) {
 	document.querySelector('html').style.setProperty("--success-background-color-page-background-color-mix-light", successmixl);
 	document.querySelector('html').style.setProperty("--success-background-color-page-background-color-mix", successmix);
@@ -1444,11 +1471,10 @@ document.querySelector('html').style.setProperty("--success-background-color-rgb
 
 /** Message Color **/
 /* Set Vars */
-var message_color = getComputedStyle(document.querySelector('html')).getPropertyValue("--message-background-color");
+var message_color = GetMessage();
 var messagecolor1 = ColorTest(message_color,false,false,true);
-var messagecolor2I = ColorTest(messagecolor1,true);
 setLightful(message_color,'message');
-
+setLightful(messagecolor1,'message-hover');
 
 if (!SupportsColorMix()) {
 	messagemixl = GetHoverColor(content_color,message_color);
@@ -1457,7 +1483,6 @@ if (!SupportsColorMix()) {
 
 /* Set Values */
 document.querySelector('html').style.setProperty("--message-background-color-hover", messagecolor1);
-document.querySelector('html').style.setProperty("--message-foreground-color-inverted", messagecolor2I);
 if (!SupportsColorMix()) {
 	document.querySelector('html').style.setProperty("--message-background-color-page-background-color-mix-light", messagemixl);
 	document.querySelector('html').style.setProperty("--message-background-color-page-background-color-mix", messagemix);
