@@ -1152,7 +1152,9 @@ if (isLightColor(content_color)) {
 }
 	var content_text2 = ColorTest(content_text,false,true,true);
 	setLightful(content_text,'page-text');
+	if (!SupportsColorContrast()) {
 	setLightful(content_text2,'page-text-hover');
+	}
 	if (!SupportsColorMix()) {
 		colormixl = GetHoverColor(content_color,content_text);
 		colormix = GetActiveColor(content_color,content_text);
@@ -1204,8 +1206,9 @@ if ( (window.MW18darkmode === true) ) {
 var button_color = GetAccent();
 var buttoncolor1 = ColorTest(button_color,false);
 setLightful(button_color,'accent');
-setLightful(buttoncolor1,'accent-hover');
-
+if (!SupportsColorContrast()) {
+	setLightful(buttoncolor1,'accent-hover');
+}
 if (!SupportsColorMix()) {
 	buttonmixl = GetHoverColor(content_color,button_color);
 	buttonmix = GetActiveColor(content_color,button_color);
@@ -1233,7 +1236,9 @@ if ( (window.MW18darkmode === true) ) {
 var header_color = GetStickyHeader();
 var headercolor1 = ColorTest(header_color,false);
 setLightful(header_color,'sticky-header');
-setLightful(headercolor1,'sticky-header-hover');
+if (!SupportsColorContrast()) {
+	setLightful(headercolor1,'sticky-header-hover');
+}
 
 if (!SupportsColorMix()) {
 	headermixl = GetHoverColor(content_color,header_color);
@@ -1275,8 +1280,9 @@ if ( (window.MW18darkmode === true) ) {
 var link_color = GetAnchor();
 var linkcolor1 = ColorTest(link_color,false,false,true);
 setLightful(link_color,'anchor');
-setLightful(buttoncolor1,'anchor-hover');
-
+if (!SupportsColorContrast()) {
+	setLightful(linkcolor1,'anchor-hover');
+}
 
 if (!SupportsColorMix()) {
 	linkmixl = GetHoverColor(content_color,link_color);
@@ -1321,7 +1327,9 @@ var border_color =	GetPageBorder();
 
 var bordercolor1 = ColorTest(border_color);
 setLightful(border_color,'page-border');
-setLightful(bordercolor1,'page-border-hover');
+if (!SupportsColorContrast()) {
+	setLightful(bordercolor1,'page-border-hover');
+}
 
 if (!SupportsColorMix()) {
 	bordermixl = GetHoverColor(content_color,border_color);
@@ -1350,7 +1358,9 @@ if ( (window.MW18darkmode === true) ) {
 var head_color =	GetCommunity();
 var headcolor1 = ColorTest(head_color,false,false,true);
 setLightful(head_color,'community');
-setLightful(headcolor1,'community-hover');
+if (!SupportsColorContrast()) {
+	setLightful(headcolor1,'community-hover');
+}
 
 if (!SupportsColorMix()) {
 	headmixl = GetHoverColor(content_color,head_color);
@@ -1385,7 +1395,9 @@ var headertext_color= GetCommunityHeaderText();
 
 var headertextcolor1 = ColorTest(headertext_color,false,true,true);
 	setLightful(headertext_color,'community-header-text');
+if (!SupportsColorContrast()) {
 	setLightful(headertextcolor1,'community-header-text-hover');
+}
 
 document.querySelector('html').style.setProperty("--community-header-text-background-color-hover", headertextcolor1);
 
@@ -1408,7 +1420,9 @@ document.querySelector('html').style.setProperty("--community-header-text-backgr
 var alert_color = GetAlert();
 var alertcolor1 = ColorTest(alert_color,false,false,true);
 setLightful(alert_color,'alert');
-setLightful(alertcolor1,'alert-hover');
+if (!SupportsColorContrast()) {
+	setLightful(alertcolor1,'alert-hover');
+}
 
 if (!SupportsColorMix()) {
 	alertmixl = GetHoverColor(content_color,alert_color);
@@ -1430,7 +1444,9 @@ document.querySelector('html').style.setProperty("--alert-background-color-rgb",
 var warning_color = GetWarning();
 var warningcolor1 = ColorTest(warning_color,false,false,true);
 setLightful(warning_color,'warning');
-setLightful(warningcolor1,'warning-hover');
+if (!SupportsColorContrast()) {
+	setLightful(warningcolor1,'warning-hover');
+}
 
 if (!SupportsColorMix()) {
 	warningmixl = GetHoverColor(content_color,warning_color);
@@ -1452,7 +1468,9 @@ document.querySelector('html').style.setProperty("--warning-background-color-rgb
 var success_color = GetSuccess();
 var successcolor1 = ColorTest(success_color,false,false,true);
 setLightful(success_color,'success');
-setLightful(successcolor1,'success-hover');
+if (!SupportsColorContrast()) {
+	setLightful(successcolor1,'success-hover');
+}
 
 if (!SupportsColorMix()) {
 	successmixl = GetHoverColor(content_color,success_color);
@@ -1474,7 +1492,9 @@ document.querySelector('html').style.setProperty("--success-background-color-rgb
 var message_color = GetMessage();
 var messagecolor1 = ColorTest(message_color,false,false,true);
 setLightful(message_color,'message');
-setLightful(messagecolor1,'message-hover');
+if (!SupportsColorContrast()) {
+	setLightful(messagecolor1,'message-hover');
+}
 
 if (!SupportsColorMix()) {
 	messagemixl = GetHoverColor(content_color,message_color);
