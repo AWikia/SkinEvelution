@@ -414,49 +414,91 @@ html {
 	--message-foreground-color-hover-rgb:var(--light-theme-foreground-color-hover-rgb);
 }
 
-:root[light-community-hover="true"] {
-	--community-foreground-color-inverted:var(--light-theme-foreground-color);
+/* Inverted Variables for Browsers without color-contrast */
+@supports not (color:color-contrast(wheat vs tan, sienna, #d2691e)) {
+	body {
+	/* Inverted */
+		--community-foreground-color-inverted:var(--dark-theme-foreground-color);
+		--community-header-text-foreground-color-inverted:var(--dark-theme-foreground-color);
+		--anchor-foreground-color-inverted:var(--dark-theme-foreground-color);
+		--page-border-foreground-color-inverted:var(--dark-theme-foreground-color);
+		--page-text-foreground-color-inverted:var(--dark-theme-foreground-color);
+		--accent-foreground-color-inverted:var(--dark-theme-foreground-color);
+		--sticky-header-foreground-color-inverted:var(--dark-theme-foreground-color);
+		--alert-foreground-color-inverted:var(--dark-theme-foreground-color);
+		--warning-foreground-color-inverted:var(--dark-theme-foreground-color);
+		--success-foreground-color-inverted:var(--dark-theme-foreground-color);
+		--message-foreground-color-inverted:var(--dark-theme-foreground-color);
+	}
+	:root[light-community-hover="true"] {
+		--community-foreground-color-inverted:var(--light-theme-foreground-color);
+	}
+
+	:root[light-community-header-text-hover="true"] {
+		--community-header-text-foreground-color-inverted:var(--light-theme-foreground-color);
+	}
+	:root[light-anchor-hover="true"] body {
+		--anchor-foreground-color-inverted:var(--light-theme-foreground-color);
+	}
+
+	:root[light-page-border-hover="true"] body {
+		--page-border-foreground-color-inverted:var(--light-theme-foreground-color);
+	}
+
+	:root[light-page-text-hover="true"] body {
+		--page-text-foreground-color-inverted:var(--light-theme-foreground-color);
+	}
+
+	:root[light-accent-hover="true"] body {
+		--accent-foreground-color-inverted:var(--light-theme-foreground-color);
+	}
+
+	:root[light-sticky-header-hover="true"] body {
+		--sticky-header-foreground-color-inverted:var(--light-theme-foreground-color);
+	}
+
+	:root[light-alert-hover="true"] body {
+		--alert-foreground-color-inverted:var(--light-theme-foreground-color);
+	}
+
+	:root[light-warning-hover="true"] body {
+		--warning-foreground-color-inverted:var(--light-theme-foreground-color);
+	}
+
+	:root[light-success-hover="true"] body {
+		--success-foreground-color-inverted:var(--light-theme-foreground-color);
+	}
+
+	:root[light-message-hover="true"] body {
+		--message-foreground-color-inverted:var(--light-theme-foreground-color);
+	}
 }
 
-:root[light-community-header-text-hover="true"] {
-	--community-header-text-foreground-color-inverted:var(--light-theme-foreground-color);
-}
 
-
-:root[light-anchor-hover="true"] {
-	--anchor-foreground-color-inverted:var(--light-theme-foreground-color);
-}
-
-:root[light-page-border-hover="true"] {
-	--page-border-foreground-color-inverted:var(--light-theme-foreground-color);
-}
-
-:root[light-page-text-hover="true"] {
-	--page-text-foreground-color-inverted:var(--light-theme-foreground-color);
-}
-
-:root[light-accent-hover="true"] {
-	--accent-foreground-color-inverted:var(--light-theme-foreground-color);
-}
-
-:root[light-sticky-header-hover="true"] {
-	--sticky-header-foreground-color-inverted:var(--light-theme-foreground-color);
-}
-
-:root[light-alert-hover="true"] {
-	--alert-foreground-color-inverted:var(--light-theme-foreground-color);
-}
-
-:root[light-warning-hover="true"] {
-	--warning-foreground-color-inverted:var(--light-theme-foreground-color);
-}
-
-:root[light-success-hover="true"] {
-	--success-foreground-color-inverted:var(--light-theme-foreground-color);
-}
-
-:root[light-message-hover="true"] {
-	--message-foreground-color-inverted:var(--light-theme-foreground-color);
+/* Inverted Variables for Browsers with color-contrast */
+@supports (color:color-contrast(wheat vs tan, sienna, #d2691e)) {
+	body {
+		--required-contrast:4.5;
+	}
+	@media (prefers-contrast:more) {
+		body {
+			--required-contrast:7;
+		}
+	}
+	body {
+	/* Inverted */
+		--community-foreground-color-inverted:color-contrast(var(--community-background-color-hover) vs var(--dark-theme-foreground-color), var(--light-theme-foreground-color) to var(--required-contrast));
+		--community-header-text-foreground-color-inverted:color-contrast(var(--community-header-text-background-color-hover) vs var(--dark-theme-foreground-color), var(--light-theme-foreground-color) to var(--required-contrast));
+		--anchor-foreground-color-inverted:color-contrast(var(--anchor-background-color-hover) vs var(--dark-theme-foreground-color), var(--light-theme-foreground-color) to var(--required-contrast));
+		--page-border-foreground-color-inverted:color-contrast(var(--page-border-background-color-hover) vs var(--dark-theme-foreground-color), var(--light-theme-foreground-color) to var(--required-contrast));
+		--page-text-foreground-color-inverted:color-contrast(var(--page-text-background-color-hover) vs var(--dark-theme-foreground-color), var(--light-theme-foreground-color) to var(--required-contrast));
+		--accent-foreground-color-inverted:color-contrast(var(--accent-background-color-hover) vs var(--dark-theme-foreground-color), var(--light-theme-foreground-color) to var(--required-contrast));
+		--sticky-header-foreground-color-inverted:color-contrast(var(--sticky-header-background-color-hover) vs var(--dark-theme-foreground-color), var(--light-theme-foreground-color) to var(--required-contrast));
+		--alert-foreground-color-inverted:color-contrast(var(--alert-background-color-hover) vs var(--dark-theme-foreground-color), var(--light-theme-foreground-color) to var(--required-contrast));
+		--warning-foreground-color-inverted:color-contrast(var(--warning-background-color-hover) vs var(--dark-theme-foreground-color), var(--light-theme-foreground-color) to var(--required-contrast));
+		--success-foreground-color-inverted:color-contrast(var(--success-background-color-hover) vs var(--dark-theme-foreground-color), var(--light-theme-foreground-color) to var(--required-contrast));
+		--message-foreground-color-inverted:color-contrast(var(--message-background-color-hover) vs var(--dark-theme-foreground-color), var(--light-theme-foreground-color) to var(--required-contrast));
+	}
 }
 
 
