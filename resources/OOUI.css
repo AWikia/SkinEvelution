@@ -292,56 +292,72 @@ body .oo-ui-buttonElement.oo-ui-widget-enabled > .oo-ui-buttonElement-button > .
     overflow: hidden;
 }
 
-.messagebox a, .errorbox a, .warningbox a, .successbox a,
-.messagebox a:visited, .errorbox a:visited, .warningbox a:visited, .successbox a:visited {
+.errorbox a,
+.errorbox a:visited {
+	color:var(--alert-foreground-color-hover);
+}
+
+.errorbox a:hover,
+.errorbox a:visited:hover {
+	color:rgba(var(--alert-foreground-color-hover-rgb),0.8);
+}
+
+
+.warningbox  a,
+.warningbox a:visited {
+	color:var(--warning-foreground-color-hover);
+}
+
+.warningbox a:hover,
+.warningbox a:visited:hover {
+	color:rgba(var(--warning-foreground-color-hover-rgb),0.8);
+}
+
+.successbox a,
+.successbox a:visited {
+	color:var(--success-foreground-color-hover);
+}
+
+.successbox a:hover,
+ .successbox a:visited:hover {
+	color:rgba(var(--success-foreground-color-hover-rgb),0.8);
+}
+
+.messagebox a
+.messagebox a:visited {
 	color:var(--message-foreground-color-hover);
 }
 
-.messagebox a:hover, .errorbox a:hover, .warningbox a:hover, .successbox a:hover,
-.messagebox a:visited:hover, .errorbox a:visited:hover, .warningbox a:visited:hover, .successbox a:visited:hover {
+.messagebox a:hover
+.messagebox a:visited:hover {
 	color:rgba(var(--message-foreground-color-hover-rgb),0.8);
 }
 
+
 .messagebox {
-    background-color: var(--message-background-color);
-    border-color: var(--message-background-color-hover);
+    background-color: var(--message-gradient-color);
+    border-color: var(--message-gradient-color-hover);
+    color: var(--message-foreground-color);
 }
 
 .errorbox {
-    background-color: var(--alert-background-color);
-    border-color: var(--alert-background-color-hover);
+    background-color: var(--alert-gradient-color);
+    border-color: var(--alert-gradient-color-hover);
+    color: var(--alert-foreground-color);
 }
 
 .warningbox {
-    background-color: var(--warning-background-color);
-    border-color: var(--warning-background-color-hover);
+    background-color: var(--warning-gradient-color);
+    border-color: var(--warning-gradient-color-hover);
+    color: var(--warning-foreground-color);
 }
 
 .successbox {
-    background-color: var(--success-background-color);
-    border-color: var(--success-background-color-hover);
+    background-color: var(--success-gradient-color);
+    border-color: var(--success-gradient-color-hover);
+    color: var(--success-foreground-color);
 }
 
-/* Dark Mode  */
-[dark-mode="true"] .messagebox {
-    background-color: var(--message-background-color-hover);
-    border-color: var(--message-background-color);
-}
-
-[dark-mode="true"] .errorbox {
-    background-color: var(--alert-background-color-hover);
-    border-color: var(--alert-background-color);
-}
-
-[dark-mode="true"] .warningbox {
-    background-color: var(--warning-background-color-hover);
-    border-color: var(--warning-background-color);
-}
-
-[dark-mode="true"] .successbox {
-    background-color: var(--success-background-color-hover);
-    border-color: var(--success-background-color);
-}
 
 
 /** Flagged Revs **/
