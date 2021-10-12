@@ -242,6 +242,15 @@ function GetCommunityHeaderText() {
 }
 
 
+function GetPageShort() { // Like GetPage() without forced colors mode you get the unaltered page background mode (Used for checking dark mode)
+	if (ForcedColors()) {
+		return getComputedStyle(document.querySelector('.fc-canvas')).getPropertyValue("color");
+	} else {
+		return getComputedStyle(document.querySelector('html')).getPropertyValue("--page-background-color");
+	}
+}
+
+
 function GetPage() {
 	if (ForcedColors()) {
 		return getComputedStyle(document.querySelector('.fc-canvas')).getPropertyValue("color");
@@ -405,11 +414,10 @@ if  ( ($("body.skin-evelution").length) ) {
 /* Changes Wiki theme style
    Supported values: auto, auto-r, light, dark */
 function colortheme(theme='auto', repaint=true, save=true) {
-    var body_bg =	getComputedStyle(document.querySelector('html')).getPropertyValue("--page-background-color");
+    var body_bg =	GetPageShort();
     var old_dark = window.MW18darkmode
     if (ForcedColors()) {
 		window.MW18darkmode = false;
-		var body_bg = getComputedStyle(document.querySelector('.fc-canvas')).getPropertyValue("color");
 	} else if (theme === 'auto') { // Auto
 		window.MW18darkmode = ( window.matchMedia('(prefers-color-scheme: dark)').matches );
 	} else if (theme === 'auto-r') { // Auto-Dark
@@ -891,11 +899,17 @@ function GetActiveColor(color1='#ffffff',color2='#000000') { // Used by color mi
 
 function ColorTest(color,text=false,inv=false,dledlen=false) { // Regular Colors
 	if (dledlen === true) {
-		var color2 = GetPage();
+		var color2 = GetPageShort();
+		if (window.MW18darkmode === true) {
+			var func = !(isLightColor(color2));
+		} else {
+			var func = isLightColor(color2);
+		}
 	} else {
 		var color2 = color;
+		var func = isLightColor(color2);
 	}
-	if (isLightColor(color2)) {
+	if (func) {
 		if (text === true) {
 			if (inv === false) {
 				return getComputedStyle(document.querySelector('html')).getPropertyValue("--light-theme-foreground-color"); // Was #000000 and 0e191a
@@ -1392,9 +1406,9 @@ document.querySelector('html').style.setProperty("--community-header-text-backgr
 /* This goes before compiling Generic Colors or else they will think the theme is light */
 	
 	if (window.MW18darkmode) {
-		$('html').attr("dark-mode", isLightColor( getComputedStyle(document.querySelector('html')).getPropertyValue("--page-background-color") ));
+		$('html').attr("dark-mode", isLightColor( GetPageShort() ));
 	} else {
-		$('html').attr("dark-mode", !(isLightColor( getComputedStyle(document.querySelector('html')).getPropertyValue("--page-background-color") ) ));
+		$('html').attr("dark-mode", !(isLightColor( GetPageShort() ) ));
 	}
 
 	$('body').attr("alert-color",BestAlertColor() );
