@@ -1090,7 +1090,6 @@ var content_color =  GetPage();
 
 
 // Part B
-	var content_text =  GetPageText();
 
 if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--page-text-background-color") != 'auto') ) { // Only run this part of Liatch quirk if not in autocolorization
 	if ( (window.MW18darkmode === true) ) {
@@ -1114,6 +1113,8 @@ if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--page-t
 } else {
 	document.querySelector('body').style.setProperty("--page-text-background-color", 'inherit');
 }
+
+	var content_text =  GetPageText();
 
 var content_color2 = ColorTest(content_color);
 
