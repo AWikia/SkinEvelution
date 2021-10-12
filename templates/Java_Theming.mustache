@@ -318,9 +318,13 @@ var colors2= ['#e69500', '#cc8500', '#b37400', '#996300', '#805300', '#664200', 
 var colors3= ['#00e673', '#00cc66', '#00b359', '#00994d', '#008040', '#006633', '#004d26', '#00331a', '#001a0d', '#19ff8c', '#33ff99', '#4dffa6', '#66ffb3', '#80ffbf', '#99ffcc', '#b3ffd9', '#ccffe6', '#e6fff2'];
 var colors4= ['#727272', '#666666', '#595959', '#4c4c4c', '#404040', '#333333', '#262626', '#191919', '#0c0c0c', '#8c8c8c', '#999999', '#a5a5a5', '#b2b2b2', '#bfbfbf', '#cccccc', '#d8d8d8', '#e5e5e5', '#f2f2f2'];
 }
+		contrastA = 3
+		contrastW = (window.matchMedia('(prefers-contrast: more)').matches) ? 3 : 2.5
+		contrastS = (window.matchMedia('(prefers-contrast: more)').matches) ? 3 : 2.5
+		contrastM = (window.matchMedia('(prefers-contrast: more)').matches) ? 3 : 2.5
 
 	for (let i = 0; i < colors.length; i++) {
-		if ( ((chroma.contrast(GetPage(), colors[i])) >= 3) && ((chroma.contrast(GetPage(), colors2[i])) >= 2.85) && ((chroma.contrast(GetPage(), colors3[i])) >= 2.7) && ((chroma.contrast(GetPage(), colors4[i])) >= 2.55) ) {
+		if ( ((chroma.contrast(GetPage(), colors[i])) >= contrastA) && ((chroma.contrast(GetPage(), colors2[i])) >= contrastW) && ((chroma.contrast(GetPage(), colors3[i])) >= contrastS) && ((chroma.contrast(GetPage(), colors4[i])) >= contrastM) ) {
 			return Color4(colors[i]);
 		}
 	}
@@ -1050,7 +1054,8 @@ function SocialCompile() {
 /* Used to udpate all dynamical variables */
 function ColorUpdate(refresh=true) {
 if (refresh === true) {
-	colortheme($('html').attr("wikitheme"), false,false)
+	colortheme($('html').attr("wikitheme"), false,false);
+	CheckAdapt();
 	/** Foreground Colors **/
 	document.querySelector('html').style.setProperty("--light-theme-foreground-color-hover", ColorTest(getComputedStyle(document.querySelector('html')).getPropertyValue("--light-theme-foreground-color")) );
 	document.querySelector('html').style.setProperty("--dark-theme-foreground-color-hover", ColorTest(getComputedStyle(document.querySelector('html')).getPropertyValue("--dark-theme-foreground-color")) );
@@ -1083,15 +1088,7 @@ var content_color =  GetPage();
 
 
 // Part B
-if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--page-text-background-color") === 'auto')) {
-	if (isLightColor(content_color)) {
-		var content_text = getComputedStyle(document.querySelector('html')).getPropertyValue("--light-theme-text-background-color")
-	} else {
-		var content_text = getComputedStyle(document.querySelector('html')).getPropertyValue("--dark-theme-text-background-color")
-	}
-} else {
-		var content_text =  GetPageText();
-}
+	var content_text =  GetPageText();
 
 if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--page-text-background-color") != 'auto') ) { // Only run this part of Liatch quirk if not in autocolorization
 	if ( (window.MW18darkmode === true) ) {
@@ -1113,32 +1110,32 @@ if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--page-t
 		}
 
 } else {
-	document.querySelector('body').style.setProperty("--page-text-background-color", content_text);
+	document.querySelector('body').style.setProperty("--page-text-background-color", 'inherit');
 }
-		var content_text = GetPageText()
 
 var content_color2 = ColorTest(content_color);
 
 var adjustment = (window.matchMedia('(prefers-contrast: more)').matches) ? 0.35 : 0.25
 
-if (isLightColor(content_color)) {
-	if (!SupportsColorMix()) {
+if (!SupportsColorMix()) {
+	if (isLightColor(content_color)) {
 		var dropdowncolor = ColorTestTwin(content_color,"#000000",adjustment);
-	}
-	if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--page-border-background-color") === 'auto')  ) {
-		var dropdowncolor2 = ColorTestTwin(content_color,"#1a1a1a",adjustment*2);
+		if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--page-border-background-color") === 'auto')  ) {
+			var dropdowncolor2 = ColorTestTwin(content_color,"#000000",adjustment*2);
+		} else {
+			var dropdowncolor2 = 'inherit';
+		}
 	} else {
-		var dropdowncolor2 = 'inherit';
-	}
-} else {
-	if (!SupportsColorMix()) {
 		var dropdowncolor = ColorTestTwin(content_color,"#ffffff",adjustment);
+		if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--page-border-background-color") === 'auto')  ) {
+			var dropdowncolor2 = ColorTestTwin(content_color,"#ffffff",adjustment*2);
+		} else {
+			var dropdowncolor2 = 'inherit';
+		}
 	}
-	if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--page-border-background-color") === 'auto')  ) {
-		var dropdowncolor2 = ColorTestTwin(content_color,"#e5e5e5",adjustment*2);
-	} else {
-		var dropdowncolor2 = 'inherit';
-	}
+	document.querySelector('body').style.setProperty("--page-border-background-color", dropdowncolor2);
+} else {
+	document.querySelector('body').style.setProperty("--page-border-background-color", 'inherit');
 }
 	var content_text2 = ColorTest(content_text,false,true,true);
 	setLightful(content_text,'page-text');
@@ -1151,6 +1148,7 @@ if (isLightColor(content_color)) {
 	}
 	if (SupportsColorMix()) {
 		var dropdowncolor = getComputedStyle(document.querySelector('.page-sec')).getPropertyValue("color")
+		var dropdowncolor2 = getComputedStyle(document.querySelector('.page-bor')).getPropertyValue("color")
 	}
 var dropdowncolorH = ColorTest(dropdowncolor,false,false,true);
 
@@ -1159,7 +1157,6 @@ if (!SupportsColorMix()) {
 }
 document.querySelector('html').style.setProperty("--page-secondary-background-color-hover", dropdowncolorH);
 
-document.querySelector('body').style.setProperty("--page-border-background-color", dropdowncolor2);
 
 
 document.querySelector('html').style.setProperty("--page-background-color-hover", content_color2);
@@ -1381,7 +1378,7 @@ if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--commun
 
 
 } else {
-	var headertext_color = getComputedStyle(document.querySelector('html')).getPropertyValue("--community-foreground-color");
+	var headertext_color = 'inherit'
 }
 
 document.querySelector('body').style.setProperty("--community-header-text-background-color", headertext_color);
@@ -1522,7 +1519,6 @@ ThemeColorMetaTag();
 
 if (refresh === true) {
 	CheckBG()
-	CheckAdapt()
 }
 // SocialCompile();
 
