@@ -1,6 +1,4 @@
-﻿﻿window.MW18auto = true;
-window.MW18autoDark = false;
-window.MW18darkmode = false;
+﻿window.MW18darkmode = false;
 window.MW18ContrastNotice = false;
 window.MW18ForcedTheme = false;
 
@@ -98,8 +96,6 @@ var visualColorNames = ['Factory', 'XP Luna', 'Windows Forced', 'Campbell Forced
 		$("head").append(
 		'<meta name="color-scheme" content="light dark">'
 		);	
-		$('body').attr("cursor", "evelution");
-		CursorT('auto');
 		$("head").append('<style class="social-colors"></style>');
 		ManagerRows(); // For Task Manager Only
 		 VisualStyleCompile(); // Compiles the Contrast Options
@@ -302,74 +298,53 @@ function GetStickyHeader() {
 }
 
 function GetAlert() {
-	if (SupportsColorContrast()) {
 		return getComputedStyle(document.querySelector('.ad-alert')).getPropertyValue("color");
-	} else {
-		return getComputedStyle(document.querySelector('body')).getPropertyValue("--alert-background-color");
-	}
 }
 
-function GetWarning() {
-	if (SupportsColorContrast()) {
-		return getComputedStyle(document.querySelector('.ad-warning')).getPropertyValue("color");
-	} else {
-		return getComputedStyle(document.querySelector('body')).getPropertyValue("--warning-background-color");
+function BestAlertColor() {
+if (isLightColor(GetPage())) {
+var colors = ['#ff1919', '#ff3333', '#ff4d4d', '#ff6666', '#ff8080', '#ff9999', '#ffb3b3', '#ffcccc', '#ffe6e6', '#e60000', '#cc0000', '#b30000', '#990000', '#800000', '#660000', '#4d0000', '#330000', '#1a0000'];
+var colors2= ['#ffaf19', '#ffb833', '#ffc14d', '#ffc966', '#ffc966', '#ffdb99', '#ffe4b3', '#ffedcc', '#fff6e6', '#e69500', '#cc8500', '#b37400', '#996300', '#805300', '#664200', '#4d3200', '#332100', '#1a1100'];
+var colors3= ['#19ff8c', '#33ff99', '#4dffa6', '#66ffb3', '#80ffbf', '#99ffcc', '#b3ffd9', '#ccffe6', '#e6fff2', '#00e673', '#00cc66', '#00b359', '#00994d', '#008040', '#006633', '#004d26', '#00331a', '#001a0d'];
+var colors4= ['#8c19ff', '#9833ff', '#a54dff', '#b266ff', '#bf80ff', '#cc99ff', '#d9b3ff', '#e5ccff', '#f2e6ff', '#7100e6', '#6400cc', '#5800b3', '#4b0099', '#3f0080', '#320066', '#26004d', '#190033', '#0d001a'];
+} else {
+var colors = ['#e60000', '#cc0000', '#b30000', '#990000', '#800000', '#660000', '#4d0000', '#330000', '#1a0000', '#ff1919', '#ff3333', '#ff4d4d', '#ff6666', '#ff8080', '#ff9999', '#ffb3b3', '#ffcccc', '#ffe6e6'];
+var colors2= ['#e69500', '#cc8500', '#b37400', '#996300', '#805300', '#664200', '#4d3200', '#332100', '#1a1100', '#ffaf19', '#ffb833', '#ffc14d', '#ffc966', '#ffc966', '#ffdb99', '#ffe4b3', '#ffedcc', '#fff6e6'];
+var colors3= ['#00e673', '#00cc66', '#00b359', '#00994d', '#008040', '#006633', '#004d26', '#00331a', '#001a0d', '#19ff8c', '#33ff99', '#4dffa6', '#66ffb3', '#80ffbf', '#99ffcc', '#b3ffd9', '#ccffe6', '#e6fff2'];
+var colors4= ['#7100e6', '#6400cc', '#5800b3', '#4b0099', '#3f0080', '#320066', '#26004d', '#190033', '#0d001a', '#8c19ff', '#9833ff', '#a54dff', '#b266ff', '#bf80ff', '#cc99ff', '#d9b3ff', '#e5ccff', '#f2e6ff'];
+}
+
+	for (let i = 0; i < colors.length; i++) {
+		if ( ((chroma.contrast(GetPage(), colors[i])) >= 3) && ((chroma.contrast(GetPage(), colors2[i])) >= 3) && ((chroma.contrast(GetPage(), colors3[i])) >= 3) && ((chroma.contrast(GetPage(), colors4[i])) >= 3) ) {
+			return Color4(colors[i]);
+		}
 	}
+	if (isLightColor(GetPage())) {
+		return '153 0 0';
+	} else {
+		return '255 102 102';
+	}
+
+ 
+}
+
+
+
+function GetWarning() {
+		return getComputedStyle(document.querySelector('.ad-warning')).getPropertyValue("color");
 }
 
 function GetSuccess() {
-	if (SupportsColorContrast()) {
 		return getComputedStyle(document.querySelector('.ad-success')).getPropertyValue("color");
-	} else {
-		return getComputedStyle(document.querySelector('body')).getPropertyValue("--success-background-color");
-	}
 }
 
 function GetMessage() {
-	if (SupportsColorContrast()) {
 		return getComputedStyle(document.querySelector('.ad-message')).getPropertyValue("color");
-	} else {
-		return getComputedStyle(document.querySelector('body')).getPropertyValue("--message-background-color");
-	}
 }
 
 
 /* End of this work */
 
-/* Changes Cursor Theme */
-function CursorT(theme) {
-	if (theme === 'auto') {
-		window.MW18auto = true;
-		window.MW18autoDark = false
-	} 	else if (theme === 'auto-r') {
-		window.MW18autoDark = true
-		window.MW18auto = false
-	}	else {
-			$('body').attr("curtheme", theme);
-			window.MW18auto = false;
-			window.MW18autoDark = false;
-	}
-   if (window.MW18auto === true) {
-		var body_bg =	GetPage();
-		if (isLightColor(body_bg)) {
-			$('body').attr("curtheme", "light")
-		} else {
-			$('body').attr("curtheme", "dark")
-		}
-	}
-
-
-   if (window.MW18autoDark === true) {
-		var body_bg =	GetPage();
-		if (isLightColor(body_bg)) {
-			$('body').attr("curtheme", "dark")
-		} else {
-			$('body').attr("curtheme", "light")
-		}
-	}
-
-
-}
 
 /* Used for some wiki theme modes 
 	Also used for some notifications
@@ -978,6 +953,10 @@ function Color2(color) {
 	return Math.round(Color(color).getRed() * 255 ) + ',' + Math.round(Color(color).getGreen() * 255) + ',' + Math.round(Color(color).getBlue() * 255);
 }
 
+function Color4(color) {
+	return Math.round(Color(color).getRed() * 255 ) + ' ' + Math.round(Color(color).getGreen() * 255) + ' ' + Math.round(Color(color).getBlue() * 255);
+}
+
 
 function isLightColor(color) {
 	var c1 = (chroma.contrast('#000000',  Color(color).toString()))
@@ -1136,14 +1115,18 @@ var content_color2 = ColorTest(content_color);
 var adjustment = (window.matchMedia('(prefers-contrast: more)').matches) ? 0.35 : 0.25
 
 if (isLightColor(content_color)) {
-	var dropdowncolor = ColorTestTwin(content_color,"#000000",adjustment);
+	if (!SupportsColorMix()) {
+		var dropdowncolor = ColorTestTwin(content_color,"#000000",adjustment);
+	}
 	if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--page-border-background-color") === 'auto')  ) {
 		var dropdowncolor2 = ColorTestTwin(content_color,"#1a1a1a",adjustment*2);
 	} else {
 		var dropdowncolor2 = 'inherit';
 	}
 } else {
-	var dropdowncolor = ColorTestTwin(content_color,"#ffffff",adjustment);
+	if (!SupportsColorMix()) {
+		var dropdowncolor = ColorTestTwin(content_color,"#ffffff",adjustment);
+	}
 	if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--page-border-background-color") === 'auto')  ) {
 		var dropdowncolor2 = ColorTestTwin(content_color,"#e5e5e5",adjustment*2);
 	} else {
@@ -1159,10 +1142,14 @@ if (isLightColor(content_color)) {
 		colormixl = GetHoverColor(content_color,content_text);
 		colormix = GetActiveColor(content_color,content_text);
 	}
-
+	if (SupportsColorMix()) {
+		var dropdowncolor = getComputedStyle(document.querySelector('.page-sec')).getPropertyValue("color")
+	}
 var dropdowncolorH = ColorTest(dropdowncolor,false,false,true);
 
-document.querySelector('html').style.setProperty("--page-secondary-background-color", dropdowncolor);
+if (!SupportsColorMix()) {
+	document.querySelector('html').style.setProperty("--page-secondary-background-color", dropdowncolor);
+}
 document.querySelector('html').style.setProperty("--page-secondary-background-color-hover", dropdowncolorH);
 
 document.querySelector('body').style.setProperty("--page-border-background-color", dropdowncolor2);
@@ -1414,6 +1401,10 @@ document.querySelector('html').style.setProperty("--community-header-text-backgr
 		$('html').attr("dark-mode", !(isLightColor( getComputedStyle(document.querySelector('html')).getPropertyValue("--page-background-color") ) ));
 	}
 
+	$('body').attr("alert-color",BestAlertColor() );
+//	$('body').attr("warning-color",Color4(GetWarning()));
+//	$('body').attr("success-color",Color4(GetSuccess()));
+//	$('body').attr("message-color",Color4(GetMessage()));
 
 /** Alert Color **/
 /* Set Vars */
@@ -1427,7 +1418,10 @@ if (!SupportsColorContrast()) {
 if (!SupportsColorMix()) {
 	alertmixl = GetHoverColor(content_color,alert_color);
 	alertmix = GetActiveColor(content_color,alert_color);
+} else {
 }
+
+
 
 /* Set Values */
 document.querySelector('html').style.setProperty("--alert-background-color-hover", alertcolor1);
@@ -1446,6 +1440,8 @@ var warningcolor1 = ColorTest(warning_color,false,false,true);
 setLightful(warning_color,'warning');
 if (!SupportsColorContrast()) {
 	setLightful(warningcolor1,'warning-hover');
+} else {
+	$('body').attr("warning-color",Color2(GetWarning()));
 }
 
 if (!SupportsColorMix()) {
@@ -1470,6 +1466,8 @@ var successcolor1 = ColorTest(success_color,false,false,true);
 setLightful(success_color,'success');
 if (!SupportsColorContrast()) {
 	setLightful(successcolor1,'success-hover');
+} else {
+	$('body').attr("success-color",Color2(GetSuccess()) );
 }
 
 if (!SupportsColorMix()) {
@@ -1494,6 +1492,8 @@ var messagecolor1 = ColorTest(message_color,false,false,true);
 setLightful(message_color,'message');
 if (!SupportsColorContrast()) {
 	setLightful(messagecolor1,'message-hover');
+} else {
+	$('body').attr("message-color",Color2(GetMessage()) );
 }
 
 if (!SupportsColorMix()) {
@@ -1514,21 +1514,12 @@ document.querySelector('html').style.setProperty("--message-background-color-rgb
 
 ThemeColorMetaTag();
 
-/* Cursor Theme */
 if (refresh === true) {
 	CheckBG()
 	CheckAdapt()
 }
 // SocialCompile();
 
-/*
-if (window.MW18auto === true) {
-CursorT('auto');
-}
-if (window.MW18autoDark === true) {
-CursorT('auto-r');
-}
-*/
 
 }
 
