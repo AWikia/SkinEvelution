@@ -1398,15 +1398,15 @@ document.querySelector('html').style.setProperty("--community-header-text-backgr
 	}
 
 	$('body').attr("alert-color",BestAlertColor() );
-//	$('body').attr("warning-color",Color4(GetWarning()));
-//	$('body').attr("success-color",Color4(GetSuccess()));
-//	$('body').attr("message-color",Color4(GetMessage()));
-
+	setLightful(GetAlert(),'alert');
+	setLightful(GetWarning(),'warning');
+	setLightful(GetSuccess(),'success');
+	setLightful(GetMessage(),'message');
+	
 /** Alert Color **/
 /* Set Vars */
 var alert_color = GetAlert();
 var alertcolor1 = ColorTest(alert_color,false,false,true);
-setLightful(alert_color,'alert');
 if (!SupportsColorContrast()) {
 	setLightful(alertcolor1,'alert-hover');
 }
@@ -1433,7 +1433,6 @@ document.querySelector('html').style.setProperty("--alert-background-color-rgb",
 /* Set Vars */
 var warning_color = GetWarning();
 var warningcolor1 = ColorTest(warning_color,false,false,true);
-setLightful(warning_color,'warning');
 if (!SupportsColorContrast()) {
 	setLightful(warningcolor1,'warning-hover');
 } else {
@@ -1459,7 +1458,6 @@ document.querySelector('html').style.setProperty("--warning-background-color-rgb
 /* Set Vars */
 var success_color = GetSuccess();
 var successcolor1 = ColorTest(success_color,false,false,true);
-setLightful(success_color,'success');
 if (!SupportsColorContrast()) {
 	setLightful(successcolor1,'success-hover');
 } else {
@@ -1485,7 +1483,6 @@ document.querySelector('html').style.setProperty("--success-background-color-rgb
 /* Set Vars */
 var message_color = GetMessage();
 var messagecolor1 = ColorTest(message_color,false,false,true);
-setLightful(message_color,'message');
 if (!SupportsColorContrast()) {
 	setLightful(messagecolor1,'message-hover');
 } else {
