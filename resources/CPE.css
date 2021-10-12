@@ -170,6 +170,24 @@ font-family:Trebuchet MS;
 	}
 }
 
+/*
+**
+** Autocolorization quirks 
+** NOTE: All declerations must be with !important in order to override the inline style of these properties set to <body> to inherit
+**
+*/
+body[page-text-background-color-auto="true"] {
+	--page-text-background-color:var(--light-theme-text-background-color)!important;
+}
+
+html[dark-mode="true"] body[page-text-background-color-auto="true"] {
+	--page-text-background-color:var(--dark-theme-text-background-color)!important;
+}
+
+body[community-header-text-background-color-auto="true"] {
+	--community-header-text-background-color:var(--community-foreground-color)!important;
+}
+
 /* Color mixes and secondary background for browsers supporting color-mix() */
 @supports ( color:color-mix(in srgb, red 40%, white) ) {
 	body {
@@ -183,6 +201,9 @@ font-family:Trebuchet MS;
 	}
 	html[dark-mode="true"] body {
 		--page-color-mix:#ffffff;
+	}
+	body[page-border-background-color-auto="true"] {
+		--page-border-background-color:color-mix(in srgb, var(--page-color-mix) calc(var(--page-mix-ratio) * 2), var(--page-background-color))!important;
 	}
 	body {
 		--page-secondary-background-color:color-mix(in srgb, var(--page-color-mix) var(--page-mix-ratio), var(--page-background-color));
