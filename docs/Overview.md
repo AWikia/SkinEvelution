@@ -181,6 +181,9 @@ This is used as the time needed to transition from the base filter to the hover 
 ### ``--logo-filter-delay`` (Accepts: ``<time>``)
 This is used as the time needed to start the transition from the base filter to the hover filter and vice versa. 0ms removes the delay. Values between 0ms to 1000ms are generally favored.
 
+### Generic colors (Alert, Warning, Success, Message)
+Those four colors are not user customizable but they're rather picked automatically based on contrast with Page Background Color. ``--alert-background-color`` is always a red color and is used on new links, destructive buttons and errorboxes. ``--warning-background-color`` is always an orange color and is used on warningboxes. ``--success-background-color`` is always an green color and is used on constructive buttons and successboxes. ``--message-background-color`` is always a grayscale color and is used on neutral buttons and messageboxes. All four colors will share the same lightness so there'll be no inconsistancy between them and those are not matched for a specific color scheme aka the same color can be used in both light and dark themes.
+
 ## Configuring Evelution
 Evelution, being a Mustache-powered MW skin, does support a few configurations, standard and non-standard, to name a few:
 
