@@ -7,7 +7,7 @@ Evelution Desktop Skin in three different main Breakpoint Sizes, 705px, 1280px &
 
 You can read more about the skin [here](Overview.md). 
 
-Evelution uses the ``main`` branch that it is compatible with both MediaWiki 1.36 and MediaWiki 1.37 so currently no separate branches for 1.36 (``REL_1.36``) and 1.37 (``REL_1.37``)
+Evelution uses the ``main`` branch that it is compatible with MediaWiki 1.36 to MediaWiki 1.38 so currently no separate branches for 1.36 (``REL_1.36``), 1.37 (``REL_1.37``) and 1.38 (``REL_1.38``)
 
 # Requirements
 To Run Evelution on your wiki, you must have MediaWiki 1.36 or greater. Older versions are not supported
