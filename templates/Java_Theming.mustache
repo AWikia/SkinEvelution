@@ -1010,13 +1010,13 @@ function isDarkColor(color) {
 
 function isSuperLightColor(color) {
 	var c1 = (chroma.contrast('#000000',  Color(color).toString()))
-	var contrast = (window.matchMedia('(prefers-contrast: more)').matches) ? 18 : 16
+	var contrast = (window.matchMedia('(prefers-contrast: more)').matches) ? 18 : 15
 	return (c1 >= contrast )
 }
 
 function isSuperDarkColor(color) {
-	var c1 = (chroma.contrast('#000000',  Color(color).toString()))
-	var contrast = (window.matchMedia('(prefers-contrast: more)').matches) ? 1.5 : 2
+	var c1 = (chroma.contrast('#ffffff',  Color(color).toString()))
+	var contrast = (window.matchMedia('(prefers-contrast: more)').matches) ? 18 : 15
 	return (c1 < contrast )
 }
 
