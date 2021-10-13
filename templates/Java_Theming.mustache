@@ -308,6 +308,19 @@ function GetAlert() {
 		return getComputedStyle(document.querySelector('.ad-alert')).getPropertyValue("color");
 }
 
+
+function GetWarning() {
+		return getComputedStyle(document.querySelector('.ad-warning')).getPropertyValue("color");
+}
+
+function GetSuccess() {
+		return getComputedStyle(document.querySelector('.ad-success')).getPropertyValue("color");
+}
+
+function GetMessage() {
+		return getComputedStyle(document.querySelector('.ad-message')).getPropertyValue("color");
+}
+
 function BestAlertColor() {
 if (isLightColor(GetPage())) {
 var colors = ['#ff1919', '#ff3333', '#ff4d4d', '#ff6666', '#ff8080', '#ff9999', '#ffb3b3', '#ffcccc', '#ffe6e6', '#e60000', '#cc0000', '#b30000', '#990000', '#800000', '#660000', '#4d0000', '#330000', '#1a0000'];
@@ -340,17 +353,18 @@ var colors4= ['#727272', '#666666', '#595959', '#4c4c4c', '#404040', '#333333', 
 }
 
 
-
-function GetWarning() {
-		return getComputedStyle(document.querySelector('.ad-warning')).getPropertyValue("color");
-}
-
-function GetSuccess() {
-		return getComputedStyle(document.querySelector('.ad-success')).getPropertyValue("color");
-}
-
-function GetMessage() {
-		return getComputedStyle(document.querySelector('.ad-message')).getPropertyValue("color");
+function ActiveColorSet() { // Debugging material
+	var set = ['255 25 25', '255 51 51', '255 77 77', '255 102 102', '255 128 128', '255 153 153', '255 179 179', '255 204 204', '255 230 230', '230 0 0', '204 0 0', '179 0 0', '153 0 0', '128 0 0', '102 0 0', '77 0 0', '51 0 0', '26 0 0'].indexOf($('html').attr("alert-color"))
+var colors = ['#ff1919', '#ff3333', '#ff4d4d', '#ff6666', '#ff8080', '#ff9999', '#ffb3b3', '#ffcccc', '#ffe6e6', '#e60000', '#cc0000', '#b30000', '#990000', '#800000', '#660000', '#4d0000', '#330000', '#1a0000'];
+var colors2= ['#ffaf19', '#ffb833', '#ffc14d', '#ffc966', '#ffc966', '#ffdb99', '#ffe4b3', '#ffedcc', '#fff6e6', '#e69500', '#cc8500', '#b37400', '#996300', '#805300', '#664200', '#4d3200', '#332100', '#1a1100'];
+var colors3= ['#19ff8c', '#33ff99', '#4dffa6', '#66ffb3', '#80ffbf', '#99ffcc', '#b3ffd9', '#ccffe6', '#e6fff2', '#00e673', '#00cc66', '#00b359', '#00994d', '#008040', '#006633', '#004d26', '#00331a', '#001a0d'];
+var colors4= ['#8c8c8c', '#999999', '#a5a5a5', '#b2b2b2', '#bfbfbf', '#cccccc', '#d8d8d8', '#e5e5e5', '#f2f2f2', '#727272', '#666666', '#595959', '#4c4c4c', '#404040', '#333333', '#262626', '#191919', '#0c0c0c'];
+	var s = 'This theme uses set ' + set + ' of generic colors:' +
+		   '\n Alert Color:' + colors[set] + 
+		   '\n Warning Color:' + colors2[set] + 
+		   '\n Success Color:' + colors3[set] + 
+		   '\n Message Color:' + colors4[set]
+	alert(s)
 }
 
 
