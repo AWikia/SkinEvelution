@@ -322,24 +322,21 @@ function GetMessage() {
 }
 
 function BestAlertColor() {
-if (isLightColor(GetPage())) {
-/** V1 **/
-var colors = ['#ff1919', '#ff3333', '#ff4d4d', '#ff6666', '#ff8080', '#ff9999', '#ffb3b3', '#ffcccc', '#ffe6e6', '#e60000', '#cc0000', '#b30000', '#990000', '#800000', '#660000', '#4d0000', '#330000', '#1a0000'];
-var colors2= ['#ffaf19', '#ffb833', '#ffc14d', '#ffc966', '#ffd280', '#ffdb99', '#ffe4b3', '#ffedcc', '#fff6e6', '#e69500', '#cc8500', '#b37400', '#996300', '#805300', '#664200', '#4d3200', '#332100', '#1a1100'];
-var colors3= ['#19ff8c', '#33ff99', '#4dffa6', '#66ffb3', '#80ffbf', '#99ffcc', '#b3ffd9', '#ccffe6', '#e6fff2', '#00e673', '#00cc66', '#00b359', '#00994d', '#008040', '#006633', '#004d26', '#00331a', '#001a0d'];
-var colors4= ['#8c8c8c', '#999999', '#a5a5a5', '#b2b2b2', '#bfbfbf', '#cccccc', '#d8d8d8', '#e5e5e5', '#f2f2f2', '#727272', '#666666', '#595959', '#4c4c4c', '#404040', '#333333', '#262626', '#191919', '#0c0c0c'];
-} else {
+if ( (isSuperLightColor(GetPage())) || (isSuperDarkColor(GetPage())) ) {
 /** V1 **/
 var colors = ['#e60000', '#cc0000', '#b30000', '#990000', '#800000', '#660000', '#4d0000', '#330000', '#1a0000', '#ff1919', '#ff3333', '#ff4d4d', '#ff6666', '#ff8080', '#ff9999', '#ffb3b3', '#ffcccc', '#ffe6e6'];
 var colors2= ['#e69500', '#cc8500', '#b37400', '#996300', '#805300', '#664200', '#4d3200', '#332100', '#1a1100', '#ffaf19', '#ffb833', '#ffc14d', '#ffc966', '#ffd280', '#ffdb99', '#ffe4b3', '#ffedcc', '#fff6e6'];
 var colors3= ['#00e673', '#00cc66', '#00b359', '#00994d', '#008040', '#006633', '#004d26', '#00331a', '#001a0d', '#19ff8c', '#33ff99', '#4dffa6', '#66ffb3', '#80ffbf', '#99ffcc', '#b3ffd9', '#ccffe6', '#e6fff2'];
 var colors4= ['#727272', '#666666', '#595959', '#4c4c4c', '#404040', '#333333', '#262626', '#191919', '#0c0c0c', '#8c8c8c', '#999999', '#a5a5a5', '#b2b2b2', '#bfbfbf', '#cccccc', '#d8d8d8', '#e5e5e5', '#f2f2f2'];
+
+} else {
+/** V1 **/
+var colors = ['#ff1919', '#ff3333', '#ff4d4d', '#ff6666', '#ff8080', '#ff9999', '#ffb3b3', '#ffcccc', '#ffe6e6', '#e60000', '#cc0000', '#b30000', '#990000', '#800000', '#660000', '#4d0000', '#330000', '#1a0000'];
+var colors2= ['#ffaf19', '#ffb833', '#ffc14d', '#ffc966', '#ffd280', '#ffdb99', '#ffe4b3', '#ffedcc', '#fff6e6', '#e69500', '#cc8500', '#b37400', '#996300', '#805300', '#664200', '#4d3200', '#332100', '#1a1100'];
+var colors3= ['#19ff8c', '#33ff99', '#4dffa6', '#66ffb3', '#80ffbf', '#99ffcc', '#b3ffd9', '#ccffe6', '#e6fff2', '#00e673', '#00cc66', '#00b359', '#00994d', '#008040', '#006633', '#004d26', '#00331a', '#001a0d'];
+var colors4= ['#8c8c8c', '#999999', '#a5a5a5', '#b2b2b2', '#bfbfbf', '#cccccc', '#d8d8d8', '#e5e5e5', '#f2f2f2', '#727272', '#666666', '#595959', '#4c4c4c', '#404040', '#333333', '#262626', '#191919', '#0c0c0c'];
+
 }
-/* V2 */
-var colors = ['#ff1919', '#e60000', '#ff3333', '#cc0000', '#ff4d4d', '#b30000', '#ff6666', '#990000', '#ff8080', '#800000', '#ff9999', '#660000', '#ffb3b3', '#4d0000', '#ffcccc', '#330000', '#ffe6e6', '#1a0000']
-var colors2= ['#ffaf19', '#e69500', '#ffb833', '#cc8500', '#ffc14d', '#b37400', '#ffc966', '#996300', '#ffd280', '#805300', '#ffdb99', '#664200', '#ffe4b3', '#4d3200', '#ffedcc', '#332100', '#fffee6', '#1a1100']
-var colors3= ['#19ff8c', '#00e673', '#33ff99', '#00cc66', '#4dffa6', '#00b359', '#66ffb3', '#00994d', '#80ffbf', '#008040', '#99ffcc', '#006633', '#b3ffd9', '#004d26', '#ccffe6', '#00331a', '#e6fff2', '#001a0d']
-var colors4= ['#8c8c8c', '#727272', '#999999', '#666666', '#a5a5a5', '#595959', '#b2b2b2', '#4c4c4c', '#bfbfbf', '#404040', '#cccccc', '#333333', '#d8d8d8', '#262626', '#e5e5e5', '#191919', '#f2f2f2', '#0c0c0c']
 		contrastA = 3
 		contrastW = (window.matchMedia('(prefers-contrast: more)').matches) ? 3 : 2.5
 		contrastS = (window.matchMedia('(prefers-contrast: more)').matches) ? 3 : 2.5
@@ -480,7 +477,7 @@ function colortheme(theme='auto', repaint=true, save=true) {
 		ColorUpdate(false);
 	}
 
-	$('html').attr("dark-mode", (!isLightColor(GetPage())) );
+	$('html').attr("dark-mode", (isDarkColor(GetPage())) );
 	if (window.MW18darkmode) {
 		$('html').attr("dark-mode-adjusted", isLightColor( GetPageShort() ));
 	} else {
@@ -991,6 +988,9 @@ function Color4(color) {
 	return Math.round(Color(color).getRed() * 255 ) + ' ' + Math.round(Color(color).getGreen() * 255) + ' ' + Math.round(Color(color).getBlue() * 255);
 }
 
+function setLightful(color,prop="page-text") {
+	$("html").attr("light-" + prop, isLightColor(color))
+}
 
 function isLightColor(color) {
 	var c1 = (chroma.contrast('#000000',  Color(color).toString()))
@@ -1004,22 +1004,22 @@ function isLightColor(color) {
 	}
 }
 
-
-function setLightful(color,prop="page-text") {
-	$("html").attr("light-" + prop, isLightColor(color))
+function isDarkColor(color) {
+	return !isLightColor(color)
 }
 
 function isSuperLightColor(color) {
 	var c1 = (chroma.contrast('#000000',  Color(color).toString()))
-	var c2 = (chroma.contrast('#ffffff',  Color(color).toString()))
 	var contrast = (window.matchMedia('(prefers-contrast: more)').matches) ? 18 : 16
-	var contrast2 = (window.matchMedia('(prefers-contrast: more)').matches) ? 14 : 16
-	if (c1 > c2) {
-		return (c1 >= contrast )
-	} else {
-		return (c2 < contrast2 )
-	}
+	return (c1 >= contrast )
 }
+
+function isSuperDarkColor(color) {
+	var c1 = (chroma.contrast('#000000',  Color(color).toString()))
+	var contrast = (window.matchMedia('(prefers-contrast: more)').matches) ? 1.25 : 1.75
+	return (c1 < contrast )
+}
+
 
 function GetContrast(color1,color2) {
 	var L1 = Color(color1).getLuminance2();
@@ -1423,7 +1423,7 @@ document.querySelector('html').style.setProperty("--community-header-text-backgr
 
 /* This goes before compiling Generic Colors or else they will think the theme is light */
 	
-	$('html').attr("dark-mode", (!isLightColor(GetPage())) );
+	$('html').attr("dark-mode", (isDarkColor(GetPage())) );
 	if (window.MW18darkmode) {
 		$('html').attr("dark-mode-adjusted", isLightColor( GetPageShort() ));
 	} else {
