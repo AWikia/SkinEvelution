@@ -107,423 +107,64 @@ function InitDesigner() {
 	$("#mw-content-text").empty().addClass('cpe-theme-designer').attr('style','overflow:visible');
 	$("#mw-content-text").append(
 		'<div style="margin-bottom:10px;">' + mw.message( 'evelution-designer-notice' ).text() + '</div>' +
-		'<div class="cpe-is-hidden" style="display:non;">' +
+		'<div class="cpe-is-hidden" style="display:none;">' +
 		// Body Background Color
-			'<datalist id="bodybg_colors">' +
-				'<option value="#1d1d1d">' +
-				'<option value="#8d0017">' +
-				'<option value="#ac0000">' +
-				'<option value="#d34500">' +
-				'<option value="#eb9900">' +
-				'<option value="#ffb317">' +
-				'<option value="#7d9b34">' +
-				'<option value="#5ea200">' +
-				'<option value="#417800">' +
-				'<option value="#1d5100">' +
-				'<option value="#003c00">' +
-				'<option value="#44a177">' +
-				'<option value="#008d8f">' +
-				'<option value="#00a8a9">' +
-				'<option value="#009bf0">' +
-				'<option value="#0068b7">' +
-				'<option value="#009381">' +
-				'<option value="#091a45">' +
-				'<option value="#180052">' +
-				'<option value="#490090">' +
-				'<option value="#711993">' +
-				'<option value="#8d37af">' +
-				'<option value="#8c005a">' +
-				'<option value="#ab0064">' +
-				'<option value="#ea0098">' +
-				'<option value="#5e5e5e">' +
-				'<option value="#be0021">' +
-				'<option value="#f73400">' +
-				'<option value="#ff892b">' +
-				'<option value="#ffc12c">' +
-				'<option value="#ffc91a">' +
-				'<option value="#8acb00">' +
-				'<option value="#6db000">' +
-				'<option value="#169900">' +
-				'<option value="#58cc7d">' +
-				'<option value="#00d1d2">' +
-				'<option value="#41c3ff">' +
-				'<option value="#008ee1">' +
-				'<option value="#00baff">' +
-				'<option value="#0075c6">' +
-				'<option value="#4617b4">' +
-				'<option value="#6800b3">' +
-				'<option value="#a13bc9">' +
-				'<option value="#bd56e5">' +
-				'<option value="#c02883">' +
-				'<option value="#f900a5">' +
-				'<option value="#ff5fdc">' +
-				'<option value="#e2e2e2">' +
-// Fandom
-				'<option value="#f9ebc3">' +
-				'<option value="#ede5dd">' +
-				'<option value="#f7e1d3">' +
-				'<option value="#dfdbc3">' +
-				'<option value="#fbe300">' +
-				'<option value="#ffbf99">' +
-				'<option value="#ffbf99">' +
-				'<option value="#fdc355">' +
-				'<option value="#cdbd89">' +
-				'<option value="#d5a593">' +
-				'<option value="#a37719">' +
-				'<option value="#836d35">' +
-				'<option value="#776b41">' +
-				'<option value="#f14700">' +
-				'<option value="#dd3509">' +
-				'<option value="#a34111">' +
-				'<option value="#7b3b09">' +
-				'<option value="#4f4341">' +
-				'<option value="#454545">' +
-				'<option value="#611d03">' +
-				'<option value="#891100">' +
-				'<option value="#71130f">' +
-				'<option value="#ebfffb">' +
-				'<option value="#ebf1f5">' +
-				'<option value="#f5ebf5">' +
-				'<option value="#e7f3d1">' +
-				'<option value="#bde9fd">' +
-				'<option value="#dfbddd">' +
-				'<option value="#c3d167">' +
-				'<option value="#a5b5c5">' +
-				'<option value="#6599ff">' +
-				'<option value="#6b93b1">' +
-				'<option value="#978f33">' +
-				'<option value="#53835d">' +
-				'<option value="#7f6f9f">' +
-				'<option value="#d335f7">' +
-				'<option value="#337700">' +
-				'<option value="#006baf">' +
-				'<option value="#2b53b5">' +
-				'<option value="#2d2b17">' +
-				'<option value="#003715">' +
-				'<option value="#012d59">' +
-				'<option value="#6f017b">' +
-				'<option value="#790145">' +
-				'<option value="#ffffff">' +
-				'<option value="#f1f1f1">' +
-				'<option value="#ebebeb">' +
-				'<option value="#000000">' +
+			'<datalist id="bodybg_colors">' + // community-background-color
+				'<option value="#ffc995">' +
+				'<option value="#ad6140">' +
 			'</datalist>' +
-			'<datalist id="headercolor_colors">' +
-				'<option value="#ffb900">' +
-				'<option value="#ff8c00">' +
-				'<option value="#f7630c">' +
-				'<option value="#ca5010">' +
-				'<option value="#da3b01">' +
-				'<option value="#ef6950">' +
-				'<option value="#d13438">' +
-				'<option value="#ff4343">' +
-				'<option value="#e74856">' +
-				'<option value="#e81023">' +
-				'<option value="#ea005e">' +
-				'<option value="#c30052">' +
-				'<option value="#bf0077">' +
-				'<option value="#c239b3">' +
-				'<option value="#9a0089">' +
-				'<option value="#0078d7">' +
-				'<option value="#0063b1">' +
-				'<option value="#8e8cd8">' +
-				'<option value="#6b69d6">' +
-				'<option value="#8764b8">' +
-				'<option value="#744da9">' +
-				'<option value="#b146c2">' +
-				'<option value="#881798">' +
-				'<option value="#0099bc">' +
-				'<option value="#2d7d9a">' +
-				'<option value="#00b7c3">' +
-				'<option value="#028387">' +
-				'<option value="#00b294">' +
-				'<option value="#018574">' +
-				'<option value="#00cc6a">' +
-				'<option value="#10893e">' +
-				'<option value="#7a7574">' +
-				'<option value="#5d5a58">' +
-				'<option value="#86768a">' +
-				'<option value="#515c6b">' +
-				'<option value="#567c73">' +
-				'<option value="#486860">' +
-				'<option value="#498205">' +
-				'<option value="#107c10">' +
+			'<datalist id="bodybg2_colors">' + // community-header-text-background-color
+				'<option value="#1b2a34">' +
+				'<option value="#f4f4f4">' +
+			'</datalist>' +
+			'<datalist id="headercolor_colors">' + // sticky-header-backgrouund-color
+				'<option value="#0a1327">' +
+				'<option value="#f58624">' +
+				'<option value="#543324">' +
+				'<option value="#eeeeee">' +
+				'<option value="#c27f53">' +
+			'</datalist>' +
+			'<datalist id="pagebg_colors">' + // page-background-color
+				'<option value="#ffffff">' +
+				'<option value="#f4f4f4">' +
 				'<option value="#767676">' +
-				'<option value="#4c4a48">' +
-				'<option value="#69797e">' +
-				'<option value="#4a5459">' +
-				'<option value="#647c64">' +
-				'<option value="#525e54">' +
-				'<option value="#847545">' +
-				'<option value="#7e735f">' +
-				'<option value="#ababab">' +
-				'<option value="#8acfff">' +
-				'<option value="#f598d6">' +
-				'<option value="#f3d240">' +
-				'<option value="#add85f">' +
-				'<option value="#78d9d9">' +
-				'<option value="#ffaf51">' +
-				'<option value="#ff6f6f">' +
-				'<option value="#f359a8">' +
-				'<option value="#47cf74">' +
-				'<option value="#c48aff">' +
-				'<option value="#58b1fc">' +
-				'<option value="#9898ff">' +
-				'<option value="#c3b5a8">' +
-				'<option value="#ffffff">' +
-				'<option value="#576dcd">' +
-				'<option value="#4074ff">' +
-				'<option value="#4099e1">' +
-				'<option value="#40b2cc">' +
-				'<option value="#40c5ae">' +
-				'<option value="#40c280">' +
-				'<option value="#9bcc3f">' +
-				'<option value="#fce840">' +
-				'<option value="#f98a48">' +
-				'<option value="#e1676a">' +
-				'<option value="#ed4c5a">' +
-				'<option value="#ef4086">' +
-				'<option value="#bc3b8c">' +
-				'<option value="#7e73a5">' +
-				'<option value="#879289">' +
-// Fandom
-				'<option value="#fec356">' +
-				'<option value="#6699ff">' +
-				'<option value="#6c93b1">' +
-				'<option value="#a47719">' +
-				'<option value="#846d35">' +
-				'<option value="#786c42">' +
-				'<option value="#f14800">' +
-				'<option value="#337800">' +
-				'<option value="#006cb0">' +
-				'<option value="#dd360a">' +
-				'<option value="#a34112">' +
-				'<option value="#474646">' +
-				'<option value="#7b3b0a">' +
-				'<option value="#4f4341">' +
-				'<option value="#0038d8">' +
-				'<option value="#2d2c18">' +
-				'<option value="#611e03">' +
-				'<option value="#003816">' +
-				'<option value="#891100">' +
-				'<option value="#012e59">' +
-				'<option value="#721410">' +
-				'<option value="#6f027c">' +
-				'<option value="#7a0146">' +
-				'<option value="#D09632">' +
-				'<option value="#DD4702">' +
-				'<option value="#2B53B5">' +
-				'<option value="#3A5766">' +
-				'<option value="#285F00">' +
-				'<option value="#4A4612">' +
-				'<option value="#8F3000">' +
-				'<option value="#A301B4">' +
-				'<option value="#6D0D00">' +
-				'<option value="#002266">' +
-				'<option value="#580062">' +
-				'<option value="#808080">' +
-			'</datalist>' +
-			'<datalist id="pagebg_colors">' +
+				'<option value="#646464">' +
 				'<option value="#000000">' +
-				'<option value="#ffffff">' +
-				'<option value="#dcdcdc">' +
-				'<option value="#787878">' +
-				'<option value="#464646">' +
-				'<option value="#0a3b76">' +
-				'<option value="#4395d1">' +
-				'<option value="#99d9ea">' +
-				'<option value="#0076a3">' +
-				'<option value="#0d686b">' +
-				'<option value="#00a99d">' +
-				'<option value="#7accc8">' +
-				'<option value="#82ca9c">' +
-				'<option value="#74a402">' +
-				'<option value="#c4df9b">' +
-				'<option value="#84871c">' +
-				'<option value="#d9d56f">' +
-				'<option value="#fff468">' +
-				'<option value="#fff799">' +
-				'<option value="#ffc20e">' +
-				'<option value="#eb6119">' +
-				'<option value="#fbaf5d">' +
-				'<option value="#e57300">' +
-				'<option value="#c14000">' +
-				'<option value="#9e6b52">' +
-				'<option value="#8c6239">' +
-				'<option value="#c7b299">' +
-				'<option value="#b82832">' +
-				'<option value="#d85171">' +
-				'<option value="#fedfec">' +
-				'<option value="#563f7f">' +
-				'<option value="#a186be">' +
-				'<option value="#d9cfe5">' +
-// Fandom
-				'<option value="#ebf2f5">' +
-				'<option value="#e7f4d2">' +
-				'<option value="#f5ebf5">' +
-				'<option value="#f9ecc3">' +
-				'<option value="#eee5de">' +
-				'<option value="#f7e1d4">' +
-				'<option value="#d4e6f7">' +
-				'<option value="#dfdbc3">' +
-				'<option value="#dfbddd">' +
-				'<option value="#cebe8a">' +
-				'<option value="#a5b5c6">' +
-				'<option value="#474646">' +
-				'<option value="#2d2c18">' +
-				'<option value="#611e03">' +
-				'<option value="#012e59">' +
-				'<option value="#f2f2f2">' +
-				'<option value="#ebebeb">' +
+				'<option value="#ffff80">' +
+				'<option value="#fc97ac">' +
 			'</datalist>' +
-			'<datalist id="pagebg3_colors">' +
-				'<option value="#ffffff">' +
-				'<option value="#e2e2e2">' +
-				'<option value="#bfbfbf">' +
-				'<option value="#2b2b2b">' +
-				'<option value="#000000">' +
-				'<option value="#ff0000">' +
-				'<option value="#00ff00">' +
-				'<option value="#0000ff">' +
-				'<option value="#ffff00">' +
-				'<option value="#ff00ff">' +
-				'<option value="#00ffff">' +
-// Fandom
-				'<option value="#1a1a1a">' +
-				'<option value="#3a3a3a">' +
-				'<option value="#d4d5d5">' +
-				'<option value="#e6e6e6">' +
+			'<datalist id="pagebg3_colors">' + // page-text-background-color
+				'<option value="#1b2a34">' +
+				'<option value="#f4f4f4">' +
 			'</datalist>' +
-			'<datalist id="pagebg2_colors">' +
-				'<option value="#a3a3a3">' +
-				'<option value="#3c3c3c">' +
-				'<option value="#6e6e6e">' +
-				'<option value="#cccccc">' +
-				'<option value="#808080">' +
-				'<option value="#800000">' +
-				'<option value="#008000">' +
-				'<option value="#000080">' +
-				'<option value="#808000">' +
-				'<option value="#800080">' +
-				'<option value="#008080">' +
-// Fandom
-				'<option value="#000000">' +
-				'<option value="#ffffff">' +
+			'<datalist id="pagebg2_colors">' +  // page-border-background-color
+				'<option value="#d0d0d0">' +
+				'<option value="#646464">' +
+				'<option value="#eeeeee">' +
 			'</datalist>' +
-			'<datalist id="anchorcolor_colors">' +
-				'<option value="#00ff00">' +
-				'<option value="#8080ff">' +
-				'<option value="#c0c0c0">' +
-				'<option value="#000000">' +
-				'<option value="#ffffff">' +
-				'<option value="#ffff00">' +
-				'<option value="#77ffff">' +
-				'<option value="#00007f">' +
-				'<option value="#600000">' +
-				'<option value="#ff0000">' +
-				'<option value="#952aab">' +
-				'<option value="#ff0066">' +
-				'<option value="#fa6d6d">' +
-				'<option value="#00ffff">' +
-				'<option value="#ccffff">' +
-				'<option value="#c056a2">' +
-				'<option value="#ff6ec7">' +
-				'<option value="#ff7f00">' +
-				'<option value="#8e236b">' +
-				'<option value="#7f500d">' +
-				'<option value="#0366cc">' +
-				'<option value="#fbf305">' +
-				'<option value="#ff6403">' +
-				'<option value="#dd0907">' +
-				'<option value="#f20884">' +
-				'<option value="#4700a5">' +
-				'<option value="#0000d3">' +
-				'<option value="#02abe2">' +
-				'<option value="#1fb714">' +
-				'<option value="#006412">' +
-				'<option value="#562c05">' +
-				'<option value="#90713a">' +
-				'<option value="#404040">' +
-				'<option value="#117dbb">' +
-				'<option value="#8b12ae">' +
-				'<option value="#4da60c">' +
-				'<option value="#a74f01">' +
-// Fandom
-				'<option value="#fce300">' +
-				'<option value="#fec356">' +
-				'<option value="#c4d167">' +
-				'<option value="#6699ff">' +
-				'<option value="#6c93b1">' +
-				'<option value="#a47719">' +
-				'<option value="#54845e">' +
-				'<option value="#337800">' +
-				'<option value="#006cb0">' +
-				'<option value="#0148c2">' +
-				'<option value="#6f027c">' +
-				'<option value="#ffffff">' +
+			'<datalist id="anchorcolor_colors">' + // anchor-background-color
+				'<option value="#1e5aa8">' +
+				'<option value="#00aaa4">' +
+				'<option value="#d3359d">' +
+				'<option value="#9dc3f7">' +
+				'<option value="#ffff80">' +
+				'<option value="#1e5aa8">' +
 			'</datalist>' +
-			'<datalist id="accentcolor_colors">' +
-				'<option value="#ff8c00">' +
-				'<option value="#e81123">' +
-				'<option value="#d13438">' +
-				'<option value="#c30052">' +
-				'<option value="#bf0077">' +
-				'<option value="#9a0089">' +
-				'<option value="#881798">' +
-				'<option value="#744da9">' +
-				'<option value="#10893e">' +
-				'<option value="#107c10">' +
-				'<option value="#018574">' +
-				'<option value="#2d7d9a">' +
-				'<option value="#0063b1">' +
-				'<option value="#6b69d6">' +
-				'<option value="#8e8cd8">' +
-				'<option value="#8764b8">' +
-				'<option value="#038387">' +
-				'<option value="#486860">' +
-				'<option value="#525e54">' +
-				'<option value="#7e735f">' +
-				'<option value="#4c4a48">' +
-				'<option value="#515c6b">' +
-				'<option value="#4a5459">' +
-				'<option value="#000000">' +
+			'<datalist id="accentcolor_colors">' + // accent-background-color
+				'<option value="#9dc3f7">' +
+				'<option value="#1e5aa8">' +
+				'<option value="#68c3e2">' +
+				'<option value="#1b2a34">' +
+				'<option value="#aee9ef">' +
+				'<option value="#fac80a">' +
 				'<option value="#ffffff">' +
-// Fandom
-				'<option value="#fec356">' +
-				'<option value="#6699ff">' +
-				'<option value="#6c93b1">' +
-				'<option value="#a47719">' +
-				'<option value="#846d35">' +
-				'<option value="#786c42">' +
-				'<option value="#f14800">' +
-				'<option value="#337800">' +
-				'<option value="#006cb0">' +
-				'<option value="#dd360a">' +
-				'<option value="#a34112">' +
-				'<option value="#474646">' +
-				'<option value="#7b3b0a">' +
-				'<option value="#4f4341">' +
-				'<option value="#0038d8">' +
-				'<option value="#2d2c18">' +
-				'<option value="#611e03">' +
-				'<option value="#003816">' +
-				'<option value="#891100">' +
-				'<option value="#012e59">' +
-				'<option value="#721410">' +
-				'<option value="#6f027c">' +
-				'<option value="#7a0146">' +
+				'<option value="#b40000">' +
+				'<option value="#ff6d77">' +
+				'<option value="#c27f53">' +
 			'</datalist>' +
-			'<datalist id="caretcolor_colors">' +
-				'<option value="#bfff00">' +
-				'<option value="#fafa00">' +
-				'<option value="#ffbf00">' +
-				'<option value="#ff00bf">' +
-				'<option value="#00bfff">' +
-				'<option value="#00ffbf">' +
-				'<option value="#bf00ff">' +
-// Fandom
-				'<option value="#000000">' +
-				'<option value="#ffffff">' +
+			'<datalist id="caretcolor_colors">' + // caret-color
+				'<option value="#237841">' +
+				'<option value="#afbed6">' +
 			'</datalist>' +
 		'</div>' +
 		'<table class="wikitable" style="max-width:300px; font-size:14px; margin:0 auto;">' +
@@ -537,7 +178,7 @@ function InitDesigner() {
 				'</td>' +
 
 				'<td style="text-align:center; width:150px">' + 
-					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#1d1d1d" id="bodybg" list="bodybg_colors" />' + // Body Background 
+					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#ffc995" id="bodybg" list="bodybg_colors" />' + // Body Background 
 				'</td>' +
 			'</tr>' +
 		// TR
@@ -548,7 +189,7 @@ function InitDesigner() {
 
 				'<td style="text-align:center; width:150px">' +
 					'<input type="checkbox" name="auto1" id="auto1">' + '<label for="auto1">' + mw.msg( 'evelution-designer-auto' ) + '</label> <br>' +
-					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#8d0017" id="bodybg2" list="bodybg_colors" />' + // Body Background 
+					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#1b2a34" id="bodybg2" list="bodybg2_colors" />' + // Body Background 
 				'</td>' +
 			'</tr>' +
 		// TR
@@ -691,7 +332,7 @@ function InitDesigner() {
 				'</td>' +
 
 				'<td style="text-align:center; width:150px">' + 
-					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#000000" id="pagebg" list="pagebg_colors" />' + // Page BG
+					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#ffffff" id="pagebg" list="pagebg_colors" />' + // Page BG
 				'</td>' +
 			'</tr>' +
 		// TR
@@ -702,7 +343,7 @@ function InitDesigner() {
 
 				'<td style="text-align:center; width:150px">' + 
 					'<input type="checkbox" name="auto3" id="auto3">' + '<label for="auto3">' + mw.msg( 'evelution-designer-auto' ) + '</label> <br>' +
-					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#ffffff" id="pagebg3" list="pagebg3_colors" />' + // Page BG
+					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#1b2a34" id="pagebg3" list="pagebg3_colors" />' + // Page BG
 				'</td>' +
 			'</tr>' +
 		// TR
@@ -713,7 +354,7 @@ function InitDesigner() {
 
 				'<td style="text-align:center; width:150px">' + 
 					'<input type="checkbox" name="auto2" id="auto2">' + '<label for="auto2">' + mw.msg( 'evelution-designer-auto' ) + '</label> <br>' +
-					'<input type="color"  class="cpe-button is-square" style="width:68px;" value="#808080" id="pagebg2" list="pagebg2_colors" />' + // Page BG
+					'<input type="color"  class="cpe-button is-square" style="width:68px;" value="#d0d0d0" id="pagebg2" list="pagebg2_colors" />' + // Page BG
 				'</td>' +
 			'</tr>' +
 		// TR
@@ -723,7 +364,7 @@ function InitDesigner() {
 				'</td>' +
 
 				'<td style="text-align:center; width:150px">' + 
-					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#00ff00" id="anchorcolor" list="anchorcolor_colors" />' + // Page BG
+					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#1e5aa8" id="anchorcolor" list="anchorcolor_colors" />' + // Page BG
 				'</td>' +
 			'</tr>' +
 		// TR
@@ -733,7 +374,7 @@ function InitDesigner() {
 				'</td>' +
 
 				'<td style="text-align:center; width:150px">' + 
-					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#ff8c00" id="accentcolor" list="accentcolor_colors" />' + // Page BG
+					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#9dc3f7" id="accentcolor" list="accentcolor_colors" />' + // Page BG
 				'</td>' +
 			'</tr>' +
 		// TR
@@ -743,7 +384,7 @@ function InitDesigner() {
 				'</td>' +
 
 				'<td style="text-align:center; width:150px">' + 
-					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#ffb900" id="headercolor" list="headercolor_colors" />' + // Page BG
+					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#0a1327" id="headercolor" list="headercolor_colors" />' + // Page BG
 				'</td>' +
 			'</tr>' +
 			'<tr>' +
@@ -757,7 +398,7 @@ function InitDesigner() {
 
 				'<td style="text-align:center; width:150px">' + 
 					'<input type="checkbox" name="auto5" id="auto5">' + '<label for="auto5">' + mw.msg( 'evelution-designer-auto' ) + '</label> <br>' +
-					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#bfff00" id="caretcolor" list="caretcolor_colors" />' + // Page BG
+					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#237841" id="caretcolor" list="caretcolor_colors" />' + // Page BG
 				'</td>' +
 			'</tr>' +
 		// TR
@@ -821,6 +462,24 @@ function InitDesigner() {
 				'</td>' +
 			'</tr>' +
 		'</table>' +
+		'<hr>' +
+		'<div class="button-testing">' +
+			'<div class="cpe-button">Base Color</div>' +
+			'<div class="cpe-button is-unaccented">Unaccented Color</div>' +
+			'<div class="cpe-button is-alternate">Alternate Color</div>' +
+			'<div class="cpe-button is-alert-color">Alert Background Color</div>' +
+			'<div class="cpe-button is-warning-color">Warning Background Color</div>' +
+			'<div class="cpe-button is-success-color">Success Background Color</div>' +
+			'<div class="cpe-button is-message-color">Message Background Color</div>' +
+			'<hr>' +
+			'<div class="cpe-button is-secondary">Base Color</div>' +
+			'<div class="cpe-button is-secondary is-unaccented">Unaccented Color</div>' +
+			'<div class="cpe-button is-secondary is-alternate">Alternate Color</div>' +
+			'<div class="cpe-button is-secondary is-alert-color">Alert Background Color</div>' +
+			'<div class="cpe-button is-secondary is-warning-color">Warning Background Color</div>' +
+			'<div class="cpe-button is-secondary is-success-color">Success Background Color</div>' +
+			'<div class="cpe-button is-secondary is-message-color">Message Background Color</div>' +
+		'</div>' +
 		'<div class="theme-code"></div>'
 	);
 	SelectInputs();
