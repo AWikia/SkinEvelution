@@ -109,62 +109,154 @@ function InitDesigner() {
 		'<div style="margin-bottom:10px;">' + mw.message( 'evelution-designer-notice' ).text() + '</div>' +
 		'<div class="cpe-is-hidden" style="display:none;">' +
 		// Body Background Color
-			'<datalist id="bodybg_colors">' + // community-background-color
-				'<option value="#ffc995">' +
-				'<option value="#ad6140">' +
-			'</datalist>' +
-			'<datalist id="bodybg2_colors">' + // community-header-text-background-color
+			'<datalist id="td_colors">' + // community-background-color (27)
+				'<option value="#9cd6cc">' +
 				'<option value="#1b2a34">' +
-				'<option value="#f4f4f4">' +
-			'</datalist>' +
-			'<datalist id="headercolor_colors">' + // sticky-header-backgrouund-color
-				'<option value="#0a1327">' +
-				'<option value="#f58624">' +
+				'<option value="#1e5aa8">' +
+				'<option value="#1c58a7">' +
+				'<option value="#58ab41">' +
+				'<option value="#9dc3f7">' +
+				'<option value="#fcac00">' +
+				'<option value="#ffec6c">' +
+				'<option value="#ff9ecd">' +
+				'<option value="#8a12a8">' +
 				'<option value="#543324">' +
-				'<option value="#eeeeee">' +
-				'<option value="#c27f53">' +
-			'</datalist>' +
-			'<datalist id="pagebg_colors">' + // page-background-color
-				'<option value="#ffffff">' +
-				'<option value="#f4f4f4">' +
-				'<option value="#767676">' +
-				'<option value="#646464">' +
-				'<option value="#000000">' +
-				'<option value="#ffff80">' +
-				'<option value="#fc97ac">' +
-			'</datalist>' +
-			'<datalist id="pagebg3_colors">' + // page-text-background-color
-				'<option value="#1b2a34">' +
-				'<option value="#f4f4f4">' +
-			'</datalist>' +
-			'<datalist id="pagebg2_colors">' +  // page-border-background-color
-				'<option value="#d0d0d0">' +
-				'<option value="#646464">' +
-				'<option value="#eeeeee">' +
-			'</datalist>' +
-			'<datalist id="anchorcolor_colors">' + // anchor-background-color
-				'<option value="#1e5aa8">' +
-				'<option value="#00aaa4">' +
-				'<option value="#d3359d">' +
-				'<option value="#9dc3f7">' +
-				'<option value="#ffff80">' +
-				'<option value="#fc97ac">' +
-			'</datalist>' +
-			'<datalist id="accentcolor_colors">' + // accent-background-color
-				'<option value="#9dc3f7">' +
-				'<option value="#1e5aa8">' +
-				'<option value="#68c3e2">' +
-				'<option value="#1b2a34">' +
-				'<option value="#aee9ef">' +
-				'<option value="#fac80a">' +
-				'<option value="#ffffff">' +
-				'<option value="#b40000">' +
+				'<option value="#645a4c">' +
+				'<option value="#6c96bf">' +
+				'<option value="#dfc176">' +
+				'<option value="#3cb371">' +
+				'<option value="#aa4d8e">' +
+				'<option value="#cecece">' +
+				'<option value="#764d3b">' +
 				'<option value="#ff6d77">' +
-				'<option value="#c27f53">' +
-			'</datalist>' +
-			'<datalist id="caretcolor_colors">' + // caret-color
-				'<option value="#237841">' +
+				'<option value="#469bc3">' +
+				'<option value="#19325a">' +
+				'<option value="#0e3e9a">' +
+				'<option value="#646464">' +
+				'<option value="#352100">' +
+				'<option value="#ad6140">' +
+				'<option value="#00451a">' +
+				'<option value="#545955">' +
+				'<option value="#91501c">' +
+				'<option value="#d3359d">' +
+				'<option value="#720012">' +
+				'<option value="#897d62">' +
+				'<option value="#069d9f">' +
+				'<option value="#d86d2c">' +
+				'<option value="#7f7f7f">' +
+				'<option value="#d0d0d0">' +
+				'<option value="#ae7a59">' +
+				'<option value="#d27744">' +
+				'<option value="#cf8a47">' +
+				'<option value="#78fc78">' +
+				'<option value="#ff8014">' +
+				'<option value="#ff94c2">' +
+				'<option value="#83724f">' +
+				'<option value="#898788">' +
+				'<option value="#bb805a">' +
+				'<option value="#ffffff">' +
+				'<option value="#923978">' +
+				'<option value="#8c00ff">' +
+				'<option value="#e0ffb0">' +
+				'<option value="#bdc6ad">' +
+				'<option value="#f5f3d7">' +
+				'<option value="#00852b">' +
+				'<option value="#cda4de">' +
+				'<option value="#d3f2ea">' +
+				'<option value="#97cbd9">' +
+				'<option value="#969696">' +
+				'<option value="#ffc995">' +
+				'<option value="#add9a8">' +
+				'<option value="#8a928d">' +
+				'<option value="#deea92">' +
+				'<option value="#f9a777">' +
+				'<option value="#fa9c1c">' +
+				'<option value="#fecccf">' +
+				'<option value="#f9b7a5">' +
+				'<option value="#00aaa4">' +
 				'<option value="#afbed6">' +
+				'<option value="#ffd67f">' +
+				'<option value="#564e9d">' +
+				'<option value="#a5ca18">' +
+				'<option value="#abd9ff">' +
+				'<option value="#901f76">' +
+				'<option value="#656761">' +
+				'<option value="#ffff80">' +
+				'<option value="#68c3e2">' +
+				'<option value="#7396c8">' +
+				'<option value="#aa7d55">' +
+				'<option value="#f785b1">' +
+				'<option value="#7fc475">' +
+				'<option value="#a06eb9">' +
+				'<option value="#441a91">' +
+				'<option value="#b7d425">' +
+				'<option value="#f58624">' +
+				'<option value="#4861ac">' +
+				'<option value="#5b7590">' +
+				'<option value="#0a1327">' +
+				'<option value="#d60026">' +
+				'<option value="#c27f53">' +
+				'<option value="#008e3c">' +
+				'<option value="#6d6e5c">' +
+				'<option value="#dbac34">' +
+				'<option value="#6a7944">' +
+				'<option value="#767676">' +
+				'<option value="#eeeeee">' +
+				'<option value="#77774e">' +
+				'<option value="#d67923">' +
+				'<option value="#484d48">' +
+				'<option value="#aa7f2e">' +
+				'<option value="#deac66">' +
+				'<option value="#a0a0a0">' +
+				'<option value="#989b99">' +
+				'<option value="#f6f2df">' +
+				'<option value="#f6a9bb">' +
+				'<option value="#671f81">' +
+				'<option value="#b40000">' +
+				'<option value="#5f3109">' +
+				'<option value="#ac8247">' +
+				'<option value="#8e5597">' +
+				'<option value="#fcfcfc">' +
+				'<option value="#f5cd2f">' +
+				'<option value="#f4f4f4">' +
+				'<option value="#fac80a">' +
+				'<option value="#872b17">' +
+				'<option value="#f06d61">' +
+				'<option value="#70819a">' +
+				'<option value="#708e7c">' +
+				'<option value="#75657d">' +
+				'<option value="#88605e">' +
+				'<option value="#77c9d8">' +
+				'<option value="#ab6038">' +
+				'<option value="#b0a06f">' +
+				'<option value="#635f52">' +
+				'<option value="#000000">' +
+				'<option value="#56e646">' +
+				'<option value="#fcb76d">' +
+				'<option value="#96709f">' +
+				'<option value="#0020a0">' +
+				'<option value="#df6695">' +
+				'<option value="#fbe890">' +
+				'<option value="#237841">' +
+				'<option value="#aee9ef">' +
+				'<option value="#6babe4">' +
+				'<option value="#7dc291">' +
+				'<option value="#559ab7">' +
+				'<option value="#c0ff00">' +
+				'<option value="#ff800d">' +
+				'<option value="#dab000">' +
+				'<option value="#f08f1c">' +
+				'<option value="#fc97ac">' +
+				'<option value="#a5a5cb">' +
+				'<option value="#c91a09">' +
+				'<option value="#c281a5">' +
+				'<option value="#c1dff0">' +
+				'<option value="#c8c8c8">' +
+				'<option value="#bcb4a5">' +
+				'<option value="#fdc383">' +
+				'<option value="#26469a">' +
+				'<option value="#e2f99a">' +
+
 			'</datalist>' +
 		'</div>' +
 		'<table class="wikitable" style="max-width:300px; font-size:14px; margin:0 auto;">' +
@@ -178,7 +270,7 @@ function InitDesigner() {
 				'</td>' +
 
 				'<td style="text-align:center; width:150px">' + 
-					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#ffc995" id="bodybg" list="bodybg_colors" />' + // Body Background 
+					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#ffc995" id="bodybg" list="td_colors" />' + // Body Background 
 				'</td>' +
 			'</tr>' +
 		// TR
@@ -189,7 +281,7 @@ function InitDesigner() {
 
 				'<td style="text-align:center; width:150px">' +
 					'<input type="checkbox" name="auto1" id="auto1">' + '<label for="auto1">' + mw.msg( 'evelution-designer-auto' ) + '</label> <br>' +
-					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#1b2a34" id="bodybg2" list="bodybg2_colors" />' + // Body Background 
+					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#1b2a34" id="bodybg2" list="td_colors" />' + // Body Background 
 				'</td>' +
 			'</tr>' +
 		// TR
@@ -332,7 +424,7 @@ function InitDesigner() {
 				'</td>' +
 
 				'<td style="text-align:center; width:150px">' + 
-					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#ffffff" id="pagebg" list="pagebg_colors" />' + // Page BG
+					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#ffffff" id="pagebg" list="td_colors" />' + // Page BG
 				'</td>' +
 			'</tr>' +
 		// TR
@@ -343,7 +435,7 @@ function InitDesigner() {
 
 				'<td style="text-align:center; width:150px">' + 
 					'<input type="checkbox" name="auto3" id="auto3">' + '<label for="auto3">' + mw.msg( 'evelution-designer-auto' ) + '</label> <br>' +
-					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#1b2a34" id="pagebg3" list="pagebg3_colors" />' + // Page BG
+					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#1b2a34" id="pagebg3" list="td_colors" />' + // Page BG
 				'</td>' +
 			'</tr>' +
 		// TR
@@ -354,7 +446,7 @@ function InitDesigner() {
 
 				'<td style="text-align:center; width:150px">' + 
 					'<input type="checkbox" name="auto2" id="auto2">' + '<label for="auto2">' + mw.msg( 'evelution-designer-auto' ) + '</label> <br>' +
-					'<input type="color"  class="cpe-button is-square" style="width:68px;" value="#d0d0d0" id="pagebg2" list="pagebg2_colors" />' + // Page BG
+					'<input type="color"  class="cpe-button is-square" style="width:68px;" value="#d0d0d0" id="pagebg2" list="td_colors" />' + // Page BG
 				'</td>' +
 			'</tr>' +
 		// TR
@@ -364,7 +456,7 @@ function InitDesigner() {
 				'</td>' +
 
 				'<td style="text-align:center; width:150px">' + 
-					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#1e5aa8" id="anchorcolor" list="anchorcolor_colors" />' + // Page BG
+					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#1e5aa8" id="anchorcolor" list="td_colors" />' + // Page BG
 				'</td>' +
 			'</tr>' +
 		// TR
@@ -374,7 +466,7 @@ function InitDesigner() {
 				'</td>' +
 
 				'<td style="text-align:center; width:150px">' + 
-					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#9dc3f7" id="accentcolor" list="accentcolor_colors" />' + // Page BG
+					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#9dc3f7" id="accentcolor" list="td_colors" />' + // Page BG
 				'</td>' +
 			'</tr>' +
 		// TR
@@ -384,7 +476,7 @@ function InitDesigner() {
 				'</td>' +
 
 				'<td style="text-align:center; width:150px">' + 
-					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#0a1327" id="headercolor" list="headercolor_colors" />' + // Page BG
+					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#6c96bf" id="headercolor" list="td_colors" />' + // Page BG
 				'</td>' +
 			'</tr>' +
 			'<tr>' +
@@ -398,7 +490,7 @@ function InitDesigner() {
 
 				'<td style="text-align:center; width:150px">' + 
 					'<input type="checkbox" name="auto5" id="auto5">' + '<label for="auto5">' + mw.msg( 'evelution-designer-auto' ) + '</label> <br>' +
-					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#237841" id="caretcolor" list="caretcolor_colors" />' + // Page BG
+					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#237841" id="caretcolor" list="td_colors" />' + // Page BG
 				'</td>' +
 			'</tr>' +
 		// TR
