@@ -1091,6 +1091,8 @@ if (refresh === true) {
 }
 
 
+
+
 /** Page BG **/
 /* Set Vars */
 // content_text is Content Color
@@ -1101,41 +1103,12 @@ if (refresh === true) {
 // dropdowncolor2 is Content Border
 
 // Liatch Quirk
-// Part A
 if ( (window.MW18darkmode === true) ) {
 	document.querySelector('body').style.setProperty("--page-background-color", ColorInvert(getComputedStyle(document.querySelector('html')).getPropertyValue("--page-background-color")));
 } else {
 	document.querySelector('body').style.setProperty("--page-background-color", 'inherit');
 }
 var content_color =  GetPage();
-
-
-// Part B
-
-if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--page-text-background-color") != 'auto') ) { // Only run this part of Liatch quirk if not in autocolorization
-	if ( (window.MW18darkmode === true) ) {
-		document.querySelector('body').style.setProperty("--page-text-background-color", ColorInvert(getComputedStyle(document.querySelector('html')).getPropertyValue("--page-text-background-color")));
-	} else {
-		document.querySelector('body').style.setProperty("--page-text-background-color", 'inherit');
-	}
-		if ( !(isSuitableColor(GetPageText(), GetPage())) )  { // If still not legible
-			document.querySelector('body').style.setProperty("--page-text-background-color", ColorTest(GetPageText(),false,false,true));
-			if ( !(isSuitableColor(GetPageText(), GetPage())) )  { // If still not legible
-				document.querySelector('body').style.setProperty("--page-text-background-color", ColorTest(GetPageText(),false,false,true));
-				if ( !(isSuitableColor(GetPageText(), GetPage())) )  { // If still not legible
-					document.querySelector('body').style.setProperty("--page-text-background-color", ColorTest(GetPageText(),false,false,true));
-					if ( !(isSuitableColor(GetPageText(), GetPage())) )  { // If still not legible
-						document.querySelector('body').style.setProperty("--page-text-background-color", ColorTest(GetPageText(),false,false,true));
-					}
-				}
-			}
-		}
-
-} else {
-	document.querySelector('body').style.setProperty("--page-text-background-color", 'inherit');
-}
-
-	var content_text =  GetPageText();
 
 var content_color2 = ColorTest(content_color);
 
@@ -1161,15 +1134,6 @@ if (!SupportsColorMix()) {
 } else {
 	document.querySelector('body').style.setProperty("--page-border-background-color", 'inherit');
 }
-	var content_text2 = ColorTest(content_text,false,true,true);
-	setLightful(content_text,'page-text');
-	if (!SupportsColorContrast()) {
-	setLightful(content_text2,'page-text-hover');
-	}
-	if (!SupportsColorMix()) {
-		colormixl = GetHoverColor(content_color,content_text);
-		colormix = GetActiveColor(content_color,content_text);
-	}
 	if (SupportsColorMix()) {
 		var dropdowncolor = getComputedStyle(document.querySelector('.page-sec')).getPropertyValue("color")
 		var dropdowncolor2 = getComputedStyle(document.querySelector('.page-bor')).getPropertyValue("color")
@@ -1184,16 +1148,68 @@ document.querySelector('html').style.setProperty("--page-secondary-background-co
 
 
 document.querySelector('html').style.setProperty("--page-background-color-hover", content_color2);
-document.querySelector('html').style.setProperty("--page-text-background-color-hover", content_text2);
+// RGB
+document.querySelector('html').style.setProperty("--page-secondary-background-color-rgb", Color2(dropdowncolor));
+document.querySelector('html').style.setProperty("--page-background-color-rgb", Color2( GetPage() ));
+
+/* This goes before compiling Generic Colors or else they will think the theme is light */
+	
+	$('html').attr("dark-mode", (isDarkColor(GetPage())) );
+	if (window.MW18darkmode) {
+		$('html').attr("dark-mode-adjusted", isLightColor( GetPageShort() ));
+	} else {
+		$('html').attr("dark-mode-adjusted", !(isLightColor( GetPageShort() ) ));
+	}
+
+
+/** Page text color **/
+if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--page-text-background-color") !== 'auto')  ) {
+	// Liatch Quirk
+	if ( (window.MW18darkmode === true) ) {
+		content_text = ColorInvert(getComputedStyle(document.querySelector('html')).getPropertyValue("--page-text-background-color"));
+	} else {
+		content_text = 'inherit';
+	}
+	document.querySelector('body').style.setProperty("--page-text-background-color", 'inherit');
+
+		if ( !(isSuitableColor(GetPageText(), GetPage())) )  { // If still not legible
+			document.querySelector('body').style.setProperty("--page-text-background-color", ColorTest(GetPageText(),false,false,true));
+		}
+		if ( !(isSuitableColor(GetPageText(), GetPage())) )  { // If still not legible
+			document.querySelector('body').style.setProperty("--page-text-background-color", ColorTest(GetPageText(),false,false,true));
+		}
+		if ( !(isSuitableColor(GetPageText(), GetPage())) )  { // If still not legible
+			document.querySelector('body').style.setProperty("--page-text-background-color", ColorTest(GetPageText(),false,false,true));
+		}
+		if ( !(isSuitableColor(GetPageText(), GetPage())) )  { // If still not legible
+			document.querySelector('body').style.setProperty("--page-text-background-color", ColorTest(GetPageText(),false,false,true));
+		}
+
+} else {
+	var content_text = 'inherit'
+}
+
+
+var content_text= GetPageText();
+
+var content_text1 = ColorTest(content_text,false,true,true);
+	setLightful(content_text,'page-text');
+if (!SupportsColorContrast()) {
+	setLightful(content_text1,'page-text-hover');
+}
+if (!SupportsColorMix()) {
+	colormixl = GetHoverColor(content_color,GetPageText());
+	colormix = GetActiveColor(content_color,GetPageText());
+}
+
+document.querySelector('html').style.setProperty("--page-text-background-color-hover", content_text1);
 if (!SupportsColorMix()) {
 	document.querySelector('html').style.setProperty("--page-text-background-color-page-background-color-mix-light", colormixl);
 	document.querySelector('html').style.setProperty("--page-text-background-color-page-background-color-mix", colormix);
 }
 // RGB
-document.querySelector('html').style.setProperty("--page-secondary-background-color-rgb", Color2(dropdowncolor));
-document.querySelector('html').style.setProperty("--page-background-color-rgb", Color2( GetPage() ));
-document.querySelector('html').style.setProperty("--page-text-background-color-rgb", Color2( GetPageText() ));
-document.querySelector('html').style.setProperty("--page-text-background-color-hover-rgb", Color2(content_text2));
+document.querySelector('html').style.setProperty("--page-text-background-color-rgb", Color2( getComputedStyle(document.querySelector('body')).getPropertyValue("--page-text-background-color") ));
+document.querySelector('html').style.setProperty("--page-text-background-color-hover-rgb", Color2(content_text1));
 
 
 /** Button Color **/
@@ -1421,14 +1437,6 @@ document.querySelector('html').style.setProperty("--community-header-text-backgr
 document.querySelector('html').style.setProperty("--community-header-text-background-color-hover-rgb", Color2(headertextcolor1));
 
 
-/* This goes before compiling Generic Colors or else they will think the theme is light */
-	
-	$('html').attr("dark-mode", (isDarkColor(GetPage())) );
-	if (window.MW18darkmode) {
-		$('html').attr("dark-mode-adjusted", isLightColor( GetPageShort() ));
-	} else {
-		$('html').attr("dark-mode-adjusted", !(isLightColor( GetPageShort() ) ));
-	}
 
 
 	$('html').attr("alert-color",BestAlertColor() );
