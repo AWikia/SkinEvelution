@@ -148,7 +148,7 @@ function InitDesigner() {
 				'<option value="#d3359d">' +
 				'<option value="#9dc3f7">' +
 				'<option value="#ffff80">' +
-				'<option value="#1e5aa8">' +
+				'<option value="#fc97ac">' +
 			'</datalist>' +
 			'<datalist id="accentcolor_colors">' + // accent-background-color
 				'<option value="#9dc3f7">' +
