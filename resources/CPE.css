@@ -1921,7 +1921,7 @@ select.cpe-input {
 	--button-foreground-color:var(--accent-foreground-color);
 	--button-foreground-color-hover:var(--accent-foreground-color-hover);
 	--button-foreground-color-inverted:var(--accent-foreground-color-inverted);
-	--secondary-button-background-color:var(--page-background-color);
+	--secondary-button-background-color:transparent;
 	--secondary-button-foreground-color:var(--anchor-background-color);
 	--secondary-button-foreground-color-hover:var(--anchor-background-color-hover);
     transition:background-color 200ms, border-color 200ms, outline-offset 50ms, outline-color 200ms, color 200ms, box-shadow 200ms;
@@ -2608,6 +2608,9 @@ background-color:rgba(var(--anchor-background-color-rgb),0.2);
 color:var(--anchor-background-color);
 }
 
+.cpe-dropdown__content .cpe-button {
+	--secondary-button-background-color:transparent;
+}
 
  .cpe-dropdown::after,.cpe-dropdown::before{bottom:-1px;content:'';display:none;height:0;left:50%;position:absolute;width:0;z-index:5}
 
@@ -3173,6 +3176,7 @@ input[type="checkbox"], input[type="radio"] {
   -webkit-appearance:none;
   appearance:none;
   border:0;
+  margin:4px;
 }
 
 input[type="checkbox"]:checked:not(:active):focus, input[type="radio"]:checked:not(:active):focus {
@@ -3190,12 +3194,6 @@ input[type="checkbox"]:not(:checked):focus, input[type="radio"]:not(:checked):fo
 	height:15px;
 }
 
-
-@supports (-webkit-box-shadow:0 0 10px) and (not (-moz-appearance:none)) {
-input[type="checkbox"], input[type="radio"] {
-  margin:4px;
-}
-}
 
 input[type="checkbox"]::after, input[type="radio"]::after {
     background-color: currentcolor;
