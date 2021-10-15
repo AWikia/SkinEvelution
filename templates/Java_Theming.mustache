@@ -1108,6 +1108,17 @@ if ( (window.MW18darkmode === true) ) {
 } else {
 	document.querySelector('body').style.setProperty("--page-background-color", 'inherit');
 }
+
+/* This goes before compiling Generic Colors or else they will think the theme is light */
+	
+	$('html').attr("dark-mode", (isDarkColor(GetPage())) );
+	if (window.MW18darkmode) {
+		$('html').attr("dark-mode-adjusted", isLightColor( GetPageShort() ));
+	} else {
+		$('html').attr("dark-mode-adjusted", !(isLightColor( GetPageShort() ) ));
+	}
+
+
 var content_color =  GetPage();
 
 var content_color2 = ColorTest(content_color);
@@ -1152,14 +1163,6 @@ document.querySelector('html').style.setProperty("--page-background-color-hover"
 document.querySelector('html').style.setProperty("--page-secondary-background-color-rgb", Color2(dropdowncolor));
 document.querySelector('html').style.setProperty("--page-background-color-rgb", Color2( GetPage() ));
 
-/* This goes before compiling Generic Colors or else they will think the theme is light */
-	
-	$('html').attr("dark-mode", (isDarkColor(GetPage())) );
-	if (window.MW18darkmode) {
-		$('html').attr("dark-mode-adjusted", isLightColor( GetPageShort() ));
-	} else {
-		$('html').attr("dark-mode-adjusted", !(isLightColor( GetPageShort() ) ));
-	}
 
 
 /** Page text color **/
