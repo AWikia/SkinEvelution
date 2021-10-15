@@ -86,25 +86,30 @@ var visualColorNames = ['Factory', 'XP Luna', 'Windows Forced', 'Campbell Forced
 	$('html').attr('theme',theme_selected);
 	$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li").removeClass('selected');
 	$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li[data-theme-change='theme-" + theme_selected + "']").addClass('selected');
-   	colortheme( color_mode,false,false);
+	$('html').attr('wikitheme',color_mode);
 	ColorUpdate(true);
 	SheShe = 'auto'; // Allowed Values ('auto', true, false) 
 	if (SheShe == 'auto') {
 		SheShe = ($("body.server-mode").length != 0);
 	}
 	$('html').attr("she-she", SheShe);
+	if ( ($(".evelution-sticky-header").length) ) {
 		$("head").append(
-		'<meta name="color-scheme" content="light dark">'
+		'<meta name="theme-color" content="' + Color( getComputedStyle(document.querySelector('.evelution-sticky-header')).getPropertyValue("background-color") ).setAlpha(1).toString() + '">'
 		);	
-		$("head").append('<style class="social-colors"></style>');
-		ManagerRows(); // For Task Manager Only
-		 VisualStyleCompile(); // Compiles the Contrast Options
-		VisualStyle(style_active,false);
-		VisualColor(color_active,false);
-		ContrastBanner(); // Notice
-//		SocialCompile();
-		CheckDeprecation();
-		$('html').addClass('theming-loaded');
+	} else {
+		$("head").append(
+		'<meta name="theme-color" content="' + Color( getComputedStyle(document.querySelector('.body-community-background-color')).getPropertyValue("background-color") ).setAlpha(1).toString() + '">'
+		);	
+	}
+	$("head").append('<style class="social-colors"></style>');
+	ManagerRows(); // For Task Manager Only
+	VisualStyleCompile(); // Compiles the Contrast Options
+	VisualStyle(style_active,false);
+	VisualColor(color_active,false);
+	ContrastBanner(); // Notice
+//	SocialCompile();
+	$('html').addClass('theming-loaded');
 
 })();
 
@@ -389,6 +394,12 @@ ContrastBanner();
 
 function ThemeColorMetaTag() {
 	/* Top bar for Mobile Devices */
+	if ( ($(".evelution-sticky-header").length) ) {
+		$('meta[name*="theme-color"]').attr("content", Color(getComputedStyle(document.querySelector('.evelution-sticky-header')).getPropertyValue("background-color")).setAlpha(1).toString() );
+	} else {
+		$('meta[name*="theme-color"]').attr("content", Color( getComputedStyle(document.querySelector('.body-community-background-color')).getPropertyValue("background-color") ).setAlpha(1).toString() );
+	}
+
 }
 
 /* Used only on Task Manager, ignored elsewhere */
@@ -1586,11 +1597,6 @@ function CheckAdapt() {
 }
 
 /* Different with the ToggleBG function, only one is present for all three */
-function CheckDeprecation() {
-	if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--community-background-mode") === 'blended') || (getComputedStyle(document.querySelector('html')).getPropertyValue("--community-background-mode") === 'modern') ) {
-			console.warn("Blened background mode has been dropped as of 5.11.0. Please use standard instead.");
-		}
-}
 function CheckBG() {
 	var	background_mode = "standard";
 	if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--community-background-mode") === 'full') || (getComputedStyle(document.querySelector('html')).getPropertyValue("--community-background-mode") === 'legacy')  ) {
@@ -1623,7 +1629,6 @@ function HCa() {
     var x = document.querySelector('html');
 		$('html').attr('theme','A');
 		ColorUpdate(true);
-		CheckDeprecation();
 		insertKey('theme-selected', 'A' );
 		$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li").removeClass('selected');
 		$(".cpe-dropdown .cpe-dropdown__content .cpe-themes li[data-theme-change='theme-" + getKey('theme-selected') + "']").addClass('selected');
@@ -1633,7 +1638,6 @@ function HCb() {
     var x = document.querySelector('html');
 		$('html').attr('theme','B');
 		ColorUpdate(true);
-		CheckDeprecation();
 		insertKey('theme-selected', 'B' );
 		$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li").removeClass('selected');
 		$(".cpe-dropdown .cpe-dropdown__content .cpe-themes li[data-theme-change='theme-" + getKey('theme-selected') + "']").addClass('selected');
@@ -1643,7 +1647,6 @@ function HCc() {
     var x = document.querySelector('html');
 		$('html').attr('theme','C');
 		ColorUpdate(true);
-		CheckDeprecation();
 		insertKey('theme-selected', 'C' );
 		$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li").removeClass('selected');
 		$(".cpe-dropdown .cpe-dropdown__content .cpe-themes li[data-theme-change='theme-" + getKey('theme-selected') + "']").addClass('selected');
@@ -1653,7 +1656,6 @@ function HCd() {
     var x = document.querySelector('html');
 		$('html').attr('theme','D');
 		ColorUpdate(true);
-		CheckDeprecation();
 		insertKey('theme-selected', 'D' );
 		$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li").removeClass('selected');
 		$(".cpe-dropdown .cpe-dropdown__content .cpe-themes li[data-theme-change='theme-" + getKey('theme-selected') + "']").addClass('selected');
