@@ -7,6 +7,17 @@ Feel free to use it on your wiki and make it as the default skin, if you wish. M
 
 Evelution can be called whatever you want on your Wiki. It is the second fork of MpistoSkin2, the first being MpistoServerSkin2.
 
+## How Evelution will look on my wiki when I insatall it for first time?
+When Evelution gets installed, you'll start fresh with our default themes and settings. Only the following customizations from core MW settings will load on Evelution:
+- Logo (If set, with its visibility on Sticky Header) (Fetched from ``$wgLogos[icon], $wgLogos[x1] or $wgLogo``)
+- Wordmark (If set)  (Fetched from ``$wgLogos[wordmark]``)
+- Any other non-evelution configuration (Such as System Messages or Configuration)
+- Local Nav from MediaWiki:Sidebar and Sitenotice from MediaWiki:Sitenotice
+- CSS through MediaWiki:Common.css
+- JS through MediaWiki:Common.js
+
+Themes can easily be made through the use of ThemeDesigner tool (Not available on Miraheze Wikis) or by contacting HM100 on Discord. Themes code must be put into Evelution.css (Or to Common.css if you also have Tunic installed) in order to load. Evelution-specific CSS can go to MediaWiki:Evelution.css (For changing parts of the layout or making your wiki's design themable) as well.
+
 ## Differences of Evelution and MpistoSkin2
 Evelution, despite being essentially similar to MpistoSkin2 from Q.Qore, there're several differences, to name a few:
 - Evelution used to be a plain Desktop skin with official support of Screens between 705 to 1500 pixels whereas MpistoSkin2 was always a hybrid Mobile-Desktop-Desktop XL skin with support of screens between 360 to 2000 pixels. As such, no XS and XL breakpoints existed on Evelution. XL Breakpoint was added in version 3.4.0 while XS Breakpoint was added in version 3.6.0
