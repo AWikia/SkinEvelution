@@ -132,6 +132,9 @@ if (!net.brehaut) {
     var rgb_rgba_percentage_regex = new RegExp([
         '^rgb(a?)\\(', css_percentage, ',', css_percentage, ',', css_percentage, '(,(', css_number, '))?\\)$'
     ].join(css_whitespace));
+    var color_regex = new RegExp([
+        '^color(a?)\\(srgb ', css_number, ' ', css_number, ' ', css_number, '( / (', css_number, '))?\\)$'
+    ].join(css_whitespace)); // QQC Edit
 
     // Package wide variables
 
@@ -399,7 +402,12 @@ if (!net.brehaut) {
             // CSS RGB(A) literal:
             function(css) {
                 css = trim(css);
-
+// QQC Edit Start
+                var withColor = match(color_regex, 1); 
+                if (withColor) {
+                    return withColor;
+                }
+// QQC Edit End
                 var withInteger = match(rgb_rgba_integer_regex, 255);
                 if (withInteger) {
                     return withInteger;
