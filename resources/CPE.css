@@ -192,8 +192,13 @@ html[dark-mode="true"] body[page-text-background-color-auto="true"] {
 }
 
 body[community-header-text-background-color-auto="true"] {
-	--community-header-text-background-color:var(--community-foreground-color)!important;
+	--community-header-text-background-color:var(--light-theme-text-background-color)!important;
 }
+
+html[light-community="false"] body[community-header-text-background-color-auto="true"] {
+	--community-header-text-background-color:var(--dark-theme-text-background-color)!important;
+}
+
 
 /* Color mixes and secondary background for browsers supporting color-mix() */
 @supports ( color:color-mix(in srgb, red 40%, white) ) {
