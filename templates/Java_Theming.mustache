@@ -348,7 +348,7 @@ var colors4= ['#8c8c8c', '#999999', '#a5a5a5', '#b2b2b2', '#bfbfbf', '#cccccc', 
 		contrastM = (window.matchMedia('(prefers-contrast: more)').matches) ? 3.37 : 2.25
 
 	for (let i = 0; i < colors.length; i++) {
-		if ( ((chroma.contrast(GetPage(), colors[i])) >= 4.5) && ((chroma.contrast(GetPage(), colors2[i])) >= 4.12) && ((chroma.contrast(GetPage(), colors3[i])) >= 3.75) && ((chroma.contrast(GetPage(), colors4[i])) >= 3.37) ) {
+		if ( ((chroma.contrast(GetPage(), colors[i])) >= contrastA) && ((chroma.contrast(GetPage(), colors2[i])) >= contrastW) && ((chroma.contrast(GetPage(), colors3[i])) >= contrastS) && ((chroma.contrast(GetPage(), colors4[i])) >= contrastM) ) {
 			return Color4(colors[i]);
 		}
 	}
