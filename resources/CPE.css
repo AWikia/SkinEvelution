@@ -705,6 +705,7 @@ html {
 	--community-foreground-color:var(--dark-theme-foreground-color);
 	--community-header-text-foreground-color:var(--dark-theme-foreground-color);
 	--anchor-foreground-color:var(--dark-theme-foreground-color);
+	--page-foreground-color:var(--dark-theme-foreground-color);
 	--page-border-foreground-color:var(--dark-theme-foreground-color);
 	--page-text-foreground-color:var(--dark-theme-foreground-color);
 	--accent-foreground-color:var(--dark-theme-foreground-color);
@@ -717,6 +718,7 @@ html {
 	--community-foreground-color-hover:var(--dark-theme-foreground-color-hover);
 	--community-header-text-foreground-color-hover:var(--dark-theme-foreground-color-hover);
 	--anchor-foreground-color-hover:var(--dark-theme-foreground-color-hover);
+	--page-foreground-color-hover:var(--dark-theme-foreground-color-hover);
 	--page-border-foreground-color-hover:var(--dark-theme-foreground-color-hover);
 	--page-text-foreground-color-hover:var(--dark-theme-foreground-color-hover);
 	--accent-foreground-color-hover:var(--dark-theme-foreground-color-hover);
@@ -729,6 +731,7 @@ html {
 	--community-foreground-color-rgb:var(--dark-theme-foreground-color-rgb);
 	--community-header-text-foreground-color-rgb:var(--dark-theme-foreground-color-rgb);
 	--anchor-foreground-color-rgb:var(--dark-theme-foreground-color-rgb);
+	--page-foreground-color-rgb:var(--dark-theme-foreground-color-rgb);
 	--page-border-foreground-color-rgb:var(--dark-theme-foreground-color-rgb);
 	--page-text-foreground-color-rgb:var(--dark-theme-foreground-color-rgb);
 	--accent-foreground-color-rgb:var(--dark-theme-foreground-color-rgb);
@@ -741,6 +744,7 @@ html {
 	--community-foreground-color-hover-rgb:var(--dark-theme-foreground-color-hover-rgb);
 	--community-header-text-foreground-color-hover-rgb:var(--dark-theme-foreground-color-hover-rgb);
 	--anchor-foreground-color-hover-rgb:var(--dark-theme-foreground-color-hover-rgb);
+	--page-foreground-color-hover-rgb:var(--dark-theme-foreground-color-hover-rgb);
 	--page-border-foreground-color-hover-rgb:var(--dark-theme-foreground-color-hover-rgb);
 	--page-text-foreground-color-hover-rgb:var(--dark-theme-foreground-color-hover-rgb);
 	--accent-foreground-color-hover-rgb:var(--dark-theme-foreground-color-hover-rgb);
@@ -784,6 +788,13 @@ html {
 	--anchor-foreground-color-hover:var(--light-theme-foreground-color-hover);
 	--anchor-foreground-color-rgb:var(--light-theme-foreground-color-rgb);
 	--anchor-foreground-color-hover-rgb:var(--light-theme-foreground-color-hover-rgb);
+}
+
+:root[dark-mode="true"] {
+	--page-foreground-color:var(--light-theme-foreground-color);
+	--page-foreground-color-hover:var(--light-theme-foreground-color-hover);
+	--page-foreground-color-rgb:var(--light-theme-foreground-color-rgb);
+	--page-foreground-color-hover-rgb:var(--light-theme-foreground-color-hover-rgb);
 }
 
 :root[light-page-border="true"] {
@@ -1006,11 +1017,13 @@ html {
 
 /* Fadeout Background Colors */
 /* Base Light */
-:root {
+body {
 	--fadeout-opacity:0.15;
 	--community-fadeout-color:rgba(var(--community-background-color-rgb),var(--fadeout-opacity));
 	--community-header-text-fadeout-color:rgba(var(--community-header-text-background-color-rgb),var(--fadeout-opacity));
 	--anchor-fadeout-color:rgba(var(--anchor-background-color-rgb),var(--fadeout-opacity));
+	--page-fadeout-color:rgba(var(--page-background-color-rgb),var(--fadeout-opacity));
+	--page-secondary-fadeout-color:rgba(var(--page-secondary-background-color-rgb),var(--fadeout-opacity));
 	--page-border-fadeout-color:rgba(var(--page-border-background-color-rgb),var(--fadeout-opacity));
 	--page-text-fadeout-color:rgba(var(--page-text-background-color-rgb),var(--fadeout-opacity));
 	--accent-fadeout-color:rgba(var(--accent-background-color-rgb),var(--fadeout-opacity));
@@ -1022,7 +1035,7 @@ html {
 }
 
 /* Base Dark */
-:root[dark-mode="true"] {
+:root[dark-mode="true"] body {
 	--fadeout-opacity:0.3;
 }
 
@@ -1034,8 +1047,8 @@ body {
     --theme-body-dynamic-color-1--rgb: var(--community-foreground-color-rgb);
     --theme-body-dynamic-color-2:  var(--community-foreground-color-hover);
     --theme-body-dynamic-color-2--rgb:  var(--community-foreground-color-hover-rgb);
-    --theme-page-dynamic-color-1:  var(--page-text-background-color);
-    --theme-page-dynamic-color-1--rgb: var(--page-text-background-color-rgb);
+    --theme-page-dynamic-color-1:  var(--page-foreground-color);
+    --theme-page-dynamic-color-1--rgb: var(--page-foreground-color-rgb);
     --theme-page-dynamic-color-1--inverted: var(--page-secondary-background-color);
     --theme-page-dynamic-color-1--inverted--rgb: var(--page-secondary-background-color-rgb);
     --theme-page-dynamic-color-2: var(--page-text-background-color-hover);
