@@ -709,7 +709,6 @@ html {
 	--page-text-foreground-color:var(--dark-theme-foreground-color);
 	--accent-foreground-color:var(--dark-theme-foreground-color);
 	--sticky-header-foreground-color:var(--dark-theme-foreground-color);
-	--toolbar-foreground-color:var(--dark-theme-foreground-color);
 	--alert-foreground-color:var(--dark-theme-foreground-color);
 	--warning-foreground-color:var(--dark-theme-foreground-color);
 	--success-foreground-color:var(--dark-theme-foreground-color);
@@ -722,7 +721,6 @@ html {
 	--page-text-foreground-color-hover:var(--dark-theme-foreground-color-hover);
 	--accent-foreground-color-hover:var(--dark-theme-foreground-color-hover);
 	--sticky-header-foreground-color-hover:var(--dark-theme-foreground-color-hover);
-	--toolbar-foreground-color-hover:var(--dark-theme-foreground-color-hover);
 	--alert-foreground-color-hover:var(--dark-theme-foreground-color-hover);
 	--warning-foreground-color-hover:var(--dark-theme-foreground-color-hover);
 	--success-foreground-color-hover:var(--dark-theme-foreground-color-hover);
@@ -735,7 +733,6 @@ html {
 	--page-text-foreground-color-rgb:var(--dark-theme-foreground-color-rgb);
 	--accent-foreground-color-rgb:var(--dark-theme-foreground-color-rgb);
 	--sticky-header-foreground-color-rgb:var(--dark-theme-foreground-color-rgb);
-	--toolbar-foreground-color-rgb:var(--dark-theme-foreground-color-rgb);
 	--alert-foreground-color-rgb:var(--dark-theme-foreground-color-rgb);
 	--warning-foreground-color-rgb:var(--dark-theme-foreground-color-rgb);
 	--success-foreground-color-rgb:var(--dark-theme-foreground-color-rgb);
@@ -748,7 +745,6 @@ html {
 	--page-text-foreground-color-hover-rgb:var(--dark-theme-foreground-color-hover-rgb);
 	--accent-foreground-color-hover-rgb:var(--dark-theme-foreground-color-hover-rgb);
 	--sticky-header-foreground-color-hover-rgb:var(--dark-theme-foreground-color-hover-rgb);
-	--toolbar-foreground-color-hover-rgb:var(--dark-theme-foreground-color-hover-rgb);
 	--alert-foreground-color-hover-rgb:var(--dark-theme-foreground-color-hover-rgb);
 	--warning-foreground-color-hover-rgb:var(--dark-theme-foreground-color-hover-rgb);
 	--success-foreground-color-hover-rgb:var(--dark-theme-foreground-color-hover-rgb);
@@ -761,7 +757,6 @@ html {
 	--page-text-foreground-color-inverted:var(--dark-theme-foreground-color);
 	--accent-foreground-color-inverted:var(--dark-theme-foreground-color);
 	--sticky-header-foreground-color-inverted:var(--dark-theme-foreground-color);
-	--toolbar-foreground-color-inverted:var(--dark-theme-foreground-color);
 	--alert-foreground-color-inverted:var(--dark-theme-foreground-color);
 	--warning-foreground-color-inverted:var(--dark-theme-foreground-color);
 	--success-foreground-color-inverted:var(--dark-theme-foreground-color);
@@ -1004,6 +999,29 @@ html {
 	--sticky-header-gradient-color:var(--sticky-header-background-color-hover);
 	--sticky-header-gradient-color-hover:var(--sticky-header-background-color);
 }
+
+/* Fadeout Background Colors */
+/* Base Light */
+:root {
+	--fadeout-opacity:0.15;
+	--community-fadeout-color:rgba(var(--community-background-color-rgb),var(--fadeout-opacity));
+	--community-header-text-fadeout-color:rgba(var(--community-header-text-background-color-rgb),var(--fadeout-opacity));
+	--anchor-fadeout-color:rgba(var(--anchor-background-color-rgb),var(--fadeout-opacity));
+	--page-border-fadeout-color:rgba(var(--page-border-background-color-rgb),var(--fadeout-opacity));
+	--page-text-fadeout-color:rgba(var(--page-text-background-color-rgb),var(--fadeout-opacity));
+	--accent-fadeout-color:rgba(var(--accent-background-color-rgb),var(--fadeout-opacity));
+	--sticky-header-fadeout-color:rgba(var(--sticky-header-background-color-rgb),var(--fadeout-opacity));
+	--alert-fadeout-color:rgba(var(--alert-background-color-rgb),var(--fadeout-opacity));
+	--warning-fadeout-color:rgba(var(--warning-background-color-rgb),var(--fadeout-opacity));
+	--success-fadeout-color:rgba(var(--success-background-color-rgb),var(--fadeout-opacity));
+	--message-fadeout-color:rgba(var(--message-background-color-rgb),var(--fadeout-opacity));
+}
+
+/* Base Dark */
+:root[dark-mode="true"] {
+	--fadeout-opacity:0.3;
+}
+
 
 
 /* Fandom Variable Aliases for compatibility */
@@ -2613,7 +2631,7 @@ max-height:150px;
 
  .cpe-dropdown__content .cpe-list.is-linked>li.is-selected>a:not(.cpe-button),
   .cpe-dropdown__content .cpe-list.is-linked>li.selected>a:not(.cpe-button), .cpe-dropdown__content .cpe-list.is-linked>li:hover>a:not(.cpe-button){
-background-color:rgba(var(--anchor-background-color-rgb),0.2);
+background-color:var(--anchor-fadeout-color);
 color:var(--anchor-background-color);
 }
 
