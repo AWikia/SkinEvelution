@@ -34,6 +34,16 @@ This snipset changes the floating actions to be themed according to a chosen col
 }
 ```
 
+### Page Secondary
+```css
+.cpe-floating-button.page-side-tool {
+    --floating-button-color: var(--page-foreground-color);
+    --floating-button-color-hover: var(--page-foreground-color);
+    --floating-button-background-color: var(--page-secondary-background-color);
+    --floating-button-hover-background-color: var(--page-secondary-background-color-hover);
+}
+```
+
 ### Page Border
 ```css
 .cpe-floating-button.page-side-tool {
