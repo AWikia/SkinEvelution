@@ -1,24 +1,4 @@
 /* OOUI and Extension Overrides for Evelution */
-.oo-ui-flaggedElement-destructive,
-.mw-ui-destructive  {
-    --accent-background-color-rgb: var(--alert-background-color-rgb)!important;
-    --accent-background-color: var(--alert-background-color)!important;
-    --accent-background-color-hover: var(--alert-background-color-hover)!important;
-    --accent-foreground-color: var(--alert-foreground-color)!important;
-    --accent-foreground-color-hover: var(--alert-foreground-color-hover)!important;
-    --accent-foreground-color-inverted: var(--alert-foreground-color-inverted)!important;
-    --accent-background-color-page-background-color-mix-light:var(--alert-background-color-page-background-color-mix-light)!important;
-    --accent-background-color-page-background-color-mix: var(--alert-background-color-page-background-color-mix)!important;
-    --anchor-background-color-rgb: var(--alert-background-color-rgb)!important;
-    --anchor-background-color: var(--alert-background-color)!important;
-    --anchor-background-color-hover: var(--alert-background-color-hover)!important;
-    --anchor-foreground-color: var(--alert-foreground-color)!important;
-    --anchor-foreground-color-hover: var(--alert-foreground-color-hover)!important;
-    --anchor-background-color-page-background-color-mix-light:var(--alert-background-color-page-background-color-mix-light)!important;
-    --anchor-background-color-page-background-color-mix: var(--alert-background-color-page-background-color-mix)!important;
-
-}
-
 /* Begin */
 
 /* Static Variables for non-color management compliance 
@@ -651,6 +631,30 @@ body .mw-ui-button:not(:disabled) {
     outline-offset:0px;
 }
 
+/* Progressive */
+.oo-ui-flaggedElement-progressive,
+.mw-ui-progressive  {
+	--page-text-background-color:var(--anchor-background-color)!important;
+	--page-text-background-color-hover:var(--anchor-background-color-hover)!important;
+}
+
+/* Destructive */
+.oo-ui-flaggedElement-destructive,
+.mw-ui-destructive  {
+/* Primary */
+    --accent-background-color: var(--alert-background-color)!important;
+    --accent-background-color-hover: var(--alert-background-color-hover)!important;
+    --accent-foreground-color: var(--alert-foreground-color)!important;
+    --accent-foreground-color-hover: var(--alert-foreground-color-hover)!important;
+    --accent-foreground-color-inverted: var(--alert-foreground-color-inverted)!important;
+/* Secondary */
+    --anchor-background-color: var(--alert-background-color)!important;
+    --anchor-background-color-hover: var(--alert-background-color-hover)!important;
+    --page-text-background-color: var(--alert-background-color)!important;
+    --page-text-background-color-hover: var(--alert-background-color-hover)!important;
+}
+
+
 body .oo-ui-buttonElement-frameless.oo-ui-iconElement > .oo-ui-buttonElement-button {
 	padding:0;
 	margin:0;
@@ -674,7 +678,7 @@ body .mw-ui-button.mw-ui-quiet:not(:disabled),
 body .mw-button.mw-ui-quiet:disabled {
 
 	background-color:transparent!important;
-	color:var(--anchor-background-color);
+	color:var(--secondary-button-foreground-color);
 	border-color:transparent!important;
 	box-shadow:none!important;
 	
@@ -685,7 +689,7 @@ body .oo-ui-buttonElement-frameless.oo-ui-widget-enabled.oo-ui-flaggedElement-de
 body .mw-ui-button.mw-ui-quiet:not(:disabled):hover,
 body .mw-ui-button.mw-ui-quiet:hover {
 
-	color:var(--anchor-background-color-hover);
+	color:var(--secondary-button-foreground-color-hover);
 }
 
 body .oo-ui-buttonElement-frameless.oo-ui-widget-enabled.oo-ui-buttonElement-pressed > input.oo-ui-buttonElement-button, 
@@ -695,7 +699,7 @@ body .oo-ui-buttonElement-frameless.oo-ui-widget-enabled.oo-ui-flaggedElement-de
 body .mw-ui-button.mw-ui-quiet:not(:disabled):active,
 body .mw-ui-button.mw-ui-quiet:active {
 
-	color:var(--anchor-background-color-hover);
+	color:var(--secondary-button-foreground-color-hover);
 }
 
 
@@ -717,17 +721,17 @@ body .oo-ui-buttonElement-frameless.oo-ui-widget-enabled > .oo-ui-buttonElement-
 /* Framelsss Primary */
 body .oo-ui-buttonElement-frameless.oo-ui-widget-enabled.oo-ui-flaggedElement-progressive > .oo-ui-buttonElement-button {
 	background-color:transparent!important;
-	color:var(--anchor-background-color);
+	color:var(--secondary-button-foreground-color);
 	border-color:transparent!important;
 }
 
 body .oo-ui-buttonElement-frameless.oo-ui-widget-enabled.oo-ui-flaggedElement-progressive > .oo-ui-buttonElement-button:hover {
-	color:var(--anchor-background-color-hover);
+	color:var(--secondary-button-foreground-color-hover);
 }
 
 
 body .oo-ui-buttonElement-frameless.oo-ui-widget-enabled.oo-ui-flaggedElement-progressive > .oo-ui-buttonElement-button:active {
-	color:var(--anchor-background-color-hover); /* color:var(--anchor-background-color-hover); */
+	color:var(--secondary-button-foreground-color-hover); /* color:var(--secondary-button-foreground-color-hover); */
 }
 
 
@@ -740,9 +744,9 @@ body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-destr
 body .mw-ui-button,
 body .mw-ui-button:not(:disabled),
 body .mw-button:disabled {
-    border-color:var(--anchor-background-color);
+    border-color:var(--secondary-button-foreground-color);
     background-color:var(--page-background-color);
-    color:var(--anchor-background-color);
+    color:var(--secondary-button-foreground-color);
     box-shadow:0 0 1.5px 1.5px var(--page-background-color);
     box-shadow:0 0 1.5px 1.5px currentColor;
 }
@@ -752,9 +756,9 @@ body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-progr
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-destructive > .oo-ui-buttonElement-button:focus,
 body .mw-ui-button:not(:disabled):focus,
 body .mw-ui-button:focus {
-    border-color:var(--anchor-background-color);
+    border-color:var(--secondary-button-foreground-color);
     background-color:var(--page-background-color);
-    color:var(--anchor-background-color-hover);
+    color:var(--secondary-button-foreground-color-hover);
     box-shadow:0 0 1.5px 1.5px var(--page-background-color);  
     box-shadow:0 0 1.5px 1.5px currentColor;
 }
@@ -765,11 +769,11 @@ body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-progr
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-destructive  > .oo-ui-buttonElement-button:hover,
 body .mw-ui-button:not(:disabled):hover,
 body .mw-ui-button:hover {
-    border-color:var(--anchor-background-color-hover);
-    background-color:var(--anchor-background-color-page-background-color-mix-light);
+    border-color:var(--secondary-button-foreground-color-hover);
+    background-color:var(--secondary-button-foreground-color-page-background-color-mix-light);
     background-color:var(--page-background-color);
-    color:var(--anchor-background-color-hover);
-    box-shadow:0 0 1.5px 1.5px var(--anchor-background-color-page-background-color-mix-light);
+    color:var(--secondary-button-foreground-color-hover);
+    box-shadow:0 0 1.5px 1.5px var(--secondary-button-foreground-color-page-background-color-mix-light);
     box-shadow:0 0 1.5px 1.5px currentColor;
 }
 
@@ -781,11 +785,11 @@ body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-destr
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-buttonElement-pressed.oo-ui-flaggedElement-destructive > .oo-ui-buttonElement-button,
 body .mw-ui-button:not(:disabled):active,
 body .mw-ui-button:active {
-    border-color:var(--anchor-background-color-hover);
-    background-color:var(--anchor-background-color-page-background-color-mix);
+    border-color:var(--secondary-button-foreground-color-hover);
+    background-color:var(--secondary-button-foreground-color-page-background-color-mix);
     background-color:var(--page-background-color);
-    color:var(--anchor-background-color-hover); /* color:var(--anchor-background-color-hover); */ 
-    box-shadow:0 0 1.5px 1.5px var(--anchor-background-color-page-background-color-mix);
+    color:var(--secondary-button-foreground-color-hover); /* color:var(--secondary-button-foreground-color-hover); */ 
+    box-shadow:0 0 1.5px 1.5px var(--secondary-button-foreground-color-page-background-color-mix);
     box-shadow:0 0 1.5px 1.5px currentColor;
 }
 
@@ -812,32 +816,32 @@ body .oo-ui-buttonSelectWidget.oo-ui-widget-enabled:focus .oo-ui-buttonOptionWid
 body .mw-ui-button.mw-ui-progressive,
 body .mw-ui-button.mw-ui-progressive:not(:disabled),
 body .mw-ui-button.mw-ui-progressive:disabled {
-    border-color:var(--accent-background-color);
-    background-color:var(--accent-background-color);
-    color:var(--accent-foreground-color);
-    box-shadow:0 0 1.5px 1.5px var(--accent-background-color);
+    border-color:var(--button-background-color);
+    background-color:var(--button-background-color);
+    color:var(--button-foreground-color);
+    box-shadow:0 0 1.5px 1.5px var(--button-background-color);
 }
 
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive > .oo-ui-buttonElement-button:focus,
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-destructive > .oo-ui-buttonElement-button:focus,
 body .mw-ui-button.mw-ui-progressive:not(:disabled):focus,
 body .mw-ui-button.mw-ui-progressive:focus {
-    box-shadow:0 0 1.5px 1.5px var(--accent-background-color);
-    border-color:var(--accent-background-color);
-    background-color:var(--accent-background-color);
-    color:var(--accent-foreground-color);
+    box-shadow:0 0 1.5px 1.5px var(--button-background-color);
+    border-color:var(--button-background-color);
+    background-color:var(--button-background-color);
+    color:var(--button-foreground-color);
 }
 
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive > .oo-ui-buttonElement-button:hover,
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-destructive > .oo-ui-buttonElement-button:hover,
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-buttonElement-active > .oo-ui-buttonElement-button:focus:hover,
-body .oo-ui-buttonSelectWidget.oo-ui-widget-enabled:focus:hover .oo-ui-buttonOptionWidget.oo-ui-optionWidget-selected .oo-ui-buttonElement-button,
+body .oo-ui-buttonSelectWidget.oo-ui-widget-enabled:focus .oo-ui-buttonOptionWidget.oo-ui-optionWidget-selected .oo-ui-buttonElement-button:hover,
 body .mw-ui-button.mw-ui-progressive:not(:disabled):hover,
 body .mw-ui-button.mw-ui-progressive:hover  {
-    border-color:var(--accent-background-color-hover);
-    background-color:var(--accent-background-color-hover);
-    color:var(--accent-foreground-color);
-    box-shadow:0 0 1.5px 1.5px var(--accent-background-color-hover);
+    border-color:var(--button-background-color-hover);
+    background-color:var(--button-background-color-hover);
+    color:var(--button-foreground-color);
+    box-shadow:0 0 1.5px 1.5px var(--button-background-color-hover);
 }
 
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive > .oo-ui-buttonElement-button:active, 
@@ -846,13 +850,13 @@ body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-prima
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive.oo-ui-buttonElement-active > .oo-ui-buttonElement-button, 
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive.oo-ui-popupToolGroup-active > .oo-ui-buttonElement-button,
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-buttonElement-active > .oo-ui-buttonElement-button:focus:active,
-body .oo-ui-buttonSelectWidget.oo-ui-widget-enabled:focus:active .oo-ui-buttonOptionWidget.oo-ui-optionWidget-selected .oo-ui-buttonElement-button,
+body .oo-ui-buttonSelectWidget.oo-ui-widget-enabled:focus .oo-ui-buttonOptionWidget.oo-ui-optionWidget-selected .oo-ui-buttonElement-button:active,
 body .mw-ui-button.mw-ui-progressive:not(:disabled):active,
 body .mw-ui-button.mw-ui-progressive:active  {
-    border-color:var(--accent-background-color-hover);
-    background-color:var(--accent-background-color-hover);
-    color:var(--accent-foreground-color-inverted);
-    box-shadow:0 0 1.5px 1.5px var(--accent-background-color-hover);
+    border-color:var(--button-background-color-hover);
+    background-color:var(--button-background-color-hover);
+    color:var(--button-foreground-color-inverted);
+    box-shadow:0 0 1.5px 1.5px var(--button-background-color-hover);
     outline-color:transparent;
 }
 
@@ -862,8 +866,8 @@ body .mw-ui-button.mw-ui-progressive:not(:disabled):focus,
 body .mw-ui-button.mw-ui-progressive:focus:not(:active) {
   outline-color:currentcolor;
   outline-offset:-2px;
-  border-color:var(--accent-background-color);
-  color:var(--accent-foreground-color-hover);
+  border-color:var(--button-background-color);
+  color:var(--button-foreground-color-hover);
     text-decoration:none;
 }
 
@@ -1142,9 +1146,9 @@ body .oo-ui-textInputWidget.oo-ui-widget-disabled .oo-ui-inputWidget-input,
 body .mw-widget-dateInputWidget-handle,
 body .mw-ui-input  {
 	--input-box-color:var(--page-background-color);
-	--input-box-hover:var(--accent-background-color-page-background-color-mix-light);
-	--input-box-focus:var(--accent-background-color-page-background-color-mix);
-	--input-box-solid:var(--accent-background-color);
+	--input-box-hover:var(--anchor-background-color-page-background-color-mix-light);
+	--input-box-focus:var(--anchor-background-color-page-background-color-mix);
+	--input-box-solid:var(--anchor-background-color);
     transition:background-color 200ms, border-color 200ms, outline-offset 50ms, outline-color 200ms, color 200ms, box-shadow 200ms!important;
     font-size:13px;
     font-family:var(--secondary-font);
@@ -1281,9 +1285,9 @@ body .oo-ui-dropdownWidget.oo-ui-widget-disabled .oo-ui-dropdownWidget-handle {
 body .oo-ui-dropdownWidget.oo-ui-widget-enabled .oo-ui-dropdownWidget-handle,
 body .oo-ui-dropdownWidget.oo-ui-widget-disabled .oo-ui-dropdownWidget-handle {
 	--input-box-color:var(--page-background-color);
-	--input-box-hover:var(--accent-background-color-page-background-color-mix-light);
-	--input-box-focus:var(--accent-background-color-page-background-color-mix);
-	--input-box-solid:var(--accent-background-color);
+	--input-box-hover:var(--anchor-background-color-page-background-color-mix-light);
+	--input-box-focus:var(--anchor-background-color-page-background-color-mix);
+	--input-box-solid:var(--anchor-background-color);
     transition:background-color 200ms, border-color 200ms, outline-offset 50ms, outline-color 200ms, color 200ms, box-shadow 200ms;
     font-size:13px;
     font-family:var(--secondary-font);
