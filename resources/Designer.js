@@ -45,7 +45,7 @@ function InitDesigner() {
 	);
 	// Copy theme
 	$(".evelution-page-header-contribution-buttons .designer-buttons").append(
-		'<button class="cpe-button theme-copy-button">' +
+		'<button class="cpe-button is-tertiary theme-copy-button">' +
 		'<span class="cpe-icon cpe-icon-small material-icons">' +
 		'content_copy' +
 		'</span>' +
@@ -57,7 +57,7 @@ function InitDesigner() {
 	$(".evelution-page-header-contribution-buttons .designer-buttons .theme-copy-button").click( function(e) { e.preventDefault; CopyTheme();  });
 	// Paste theme
 	$(".evelution-page-header-contribution-buttons .designer-buttons").append(
-		'<button class="cpe-button theme-paste-button">' +
+		'<button class="cpe-button is-tertiary theme-paste-button">' +
 		'<span class="cpe-icon cpe-icon-small material-icons">' +
 		'content_paste' +
 		'</span>' +
@@ -69,7 +69,7 @@ function InitDesigner() {
 	$(".evelution-page-header-contribution-buttons .designer-buttons .theme-paste-button").click( function(e) { e.preventDefault; PasteTheme();  });
 	// Applly theme
 	$(".evelution-page-header-contribution-buttons .designer-buttons2").append(
-		'<button class="cpe-button theme-apply-button">' +
+		'<button class="cpe-button is-tertiary theme-apply-button">' +
 		'<span class="cpe-icon cpe-icon-small material-icons">' +
 		'verified' +
 		'</span>' +
@@ -81,7 +81,7 @@ function InitDesigner() {
 	$(".evelution-page-header-contribution-buttons .designer-buttons2 .theme-apply-button").click( function(e) { e.preventDefault; ApplyTheme();  });
 	
 	$(".evelution-page-header-contribution-buttons .designer-buttons2").append(
-		'<button class="cpe-button theme-test-button">' +
+		'<button class="cpe-button is-tertiary theme-test-button">' +
 		'<span class="cpe-icon cpe-icon-small material-icons">' +
 		'build' +
 		'</span>' +
@@ -92,7 +92,7 @@ function InitDesigner() {
 	);
 	$(".evelution-page-header-contribution-buttons .designer-buttons2 .theme-test-button").click( function(e) { e.preventDefault; TestTheme();  });
 	$(".evelution-page-header-contribution-buttons .designer-buttons2").append(
-		'<button class="cpe-button theme-clear-button">' +
+		'<button class="cpe-button is-tertiary theme-clear-button">' +
 		'<span class="cpe-icon cpe-icon-small material-icons">' +
 		'undo' +
 		'</span>' +
@@ -571,6 +571,14 @@ function InitDesigner() {
 			'<div class="cpe-button is-secondary is-warning-color">Warning Background Color</div>' +
 			'<div class="cpe-button is-secondary is-success-color">Success Background Color</div>' +
 			'<div class="cpe-button is-secondary is-message-color">Message Background Color</div>' +
+			'<hr>' +
+			'<div class="cpe-button is-tertiary">Base Color</div>' +
+			'<div class="cpe-button is-tertiary is-unaccented">Unaccented Color</div>' +
+			'<div class="cpe-button is-tertiary is-alternate">Alternate Color</div>' +
+			'<div class="cpe-button is-tertiary is-alert-color">Alert Background Color</div>' +
+			'<div class="cpe-button is-tertiary is-warning-color">Warning Background Color</div>' +
+			'<div class="cpe-button is-tertiary is-success-color">Success Background Color</div>' +
+			'<div class="cpe-button is-tertiary is-message-color">Message Background Color</div>' +
 		'</div>' +
 		'<div class="theme-code"></div>'
 	);
