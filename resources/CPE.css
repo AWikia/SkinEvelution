@@ -112,12 +112,12 @@ Aleo = Latin
 
 
 :root { /* Standard */
---community-background-image:url("loadbg_dev.png");
---community-background-color:#441177;
+--body-background-image:url("loadbg_dev.png");
+--body-background-color:#441177;
 --anchor-background-color:#dd2300;
 --page-background-color:#f1f2f3;
 --accent-background-color:#dd8300;
---sticky-header-background-color:#b88300;
+--minibar-background-color:#b88300;
 }
 
 
@@ -138,15 +138,15 @@ font-family:Trebuchet MS;
 /* Aliases */
 --page-border-background-color:auto;
 --page-text-background-color:auto;
---community-background-image-opacity:100%;
---community-header-text-background-color:auto;
---community-background-mode:standard;
---community-background-alignment:var(--community-background-vertical-alignment) var(--community-background-horizontal-alignment);
---community-background-horizontal-alignment:center;
---community-background-vertical-alignment:center;
---community-background-size:cover;
---community-background-no-horizontal-tiling:false;
---community-background-no-vertical-tiling:false;
+--body-background-image-opacity:100%;
+--superbar-text-background-color:auto;
+--body-background-mode:standard;
+--body-background-alignment:var(--body-background-vertical-alignment) var(--body-background-horizontal-alignment);
+--body-background-horizontal-alignment:center;
+--body-background-vertical-alignment:center;
+--body-background-size:cover;
+--body-background-no-horizontal-tiling:false;
+--body-background-no-vertical-tiling:false;
 --backdrop-filter:blur(10px) sepia(10%) contrast(110%) invert(10%) grayscale(10%) saturate(110%) hue-rotate(10deg) brightness(110%);
 /* Fonts */
 --main-fonts:"Didact Gothic", "Inter"; /* Empty but other languages will depend on it */
@@ -191,12 +191,12 @@ html[dark-mode="true"] body[page-text-background-color-auto="true"] {
 	--page-text-background-color:var(--dark-theme-text-background-color)!important;
 }
 
-body[community-header-text-background-color-auto="true"] {
-	--community-header-text-background-color:var(--light-theme-text-background-color)!important;
+body[superbar-text-background-color-auto="true"] {
+	--superbar-text-background-color:var(--light-theme-text-background-color)!important;
 }
 
-html[light-community="false"] body[community-header-text-background-color-auto="true"] {
-	--community-header-text-background-color:var(--dark-theme-text-background-color)!important;
+html[light-body="false"] body[superbar-text-background-color-auto="true"] {
+	--superbar-text-background-color:var(--dark-theme-text-background-color)!important;
 }
 
 
@@ -219,8 +219,8 @@ html[light-community="false"] body[community-header-text-background-color-auto="
 	}
 	body {
 		--page-secondary-background-color:color-mix(in srgb, var(--page-color-mix) var(--page-mix-ratio), var(--page-background-color));
-		--community-background-color-page-background-color-mix-light:color-mix(in srgb, var(--community-background-color) 20%, var(--page-background-color));
-		--community-background-color-page-background-color-mix:color-mix(in srgb, var(--community-background-color) 40%, var(--page-background-color));
+		--body-background-color-page-background-color-mix-light:color-mix(in srgb, var(--body-background-color) 20%, var(--page-background-color));
+		--body-background-color-page-background-color-mix:color-mix(in srgb, var(--body-background-color) 40%, var(--page-background-color));
 		--anchor-background-color-page-background-color-mix-light:color-mix(in srgb, var(--anchor-background-color) 20%, var(--page-background-color));
 		--anchor-background-color-page-background-color-mix:color-mix(in srgb, var(--anchor-background-color) 40%, var(--page-background-color));
 		--page-border-background-color-page-background-color-mix-light:color-mix(in srgb, var(--page-border-background-color) 20%, var(--page-background-color));
@@ -229,8 +229,8 @@ html[light-community="false"] body[community-header-text-background-color-auto="
 		--page-text-background-color-page-background-color-mix:color-mix(in srgb, var(--page-text-background-color) 40%, var(--page-background-color));
 		--accent-background-color-page-background-color-mix-light:color-mix(in srgb, var(--accent-background-color) 20%, var(--page-background-color));
 		--accent-background-color-page-background-color-mix:color-mix(in srgb, var(--accent-background-color) 40%, var(--page-background-color));
-		--sticky-header-background-color-page-background-color-mix-light:color-mix(in srgb, var(--sticky-header-background-color) 20%, var(--page-background-color));
-		--sticky-header-background-color-page-background-color-mix:color-mix(in srgb, var(--sticky-header-background-color) 40%, var(--page-background-color));
+		--minibar-background-color-page-background-color-mix-light:color-mix(in srgb, var(--minibar-background-color) 20%, var(--page-background-color));
+		--minibar-background-color-page-background-color-mix:color-mix(in srgb, var(--minibar-background-color) 40%, var(--page-background-color));
 		--alert-background-color-page-background-color-mix-light:color-mix(in srgb, var(--alert-background-color) 20%, var(--page-background-color));
 		--alert-background-color-page-background-color-mix:color-mix(in srgb, var(--alert-background-color) 40%, var(--page-background-color));
 		--warning-background-color-page-background-color-mix-light:color-mix(in srgb, var(--warning-background-color) 20%, var(--page-background-color));
@@ -702,65 +702,65 @@ html {
 /* Base Dark */
 :root {
 /* Base */
-	--community-foreground-color:var(--dark-theme-foreground-color);
-	--community-header-text-foreground-color:var(--dark-theme-foreground-color);
+	--body-foreground-color:var(--dark-theme-foreground-color);
+	--superbar-text-foreground-color:var(--dark-theme-foreground-color);
 	--anchor-foreground-color:var(--dark-theme-foreground-color);
 	--page-foreground-color:var(--dark-theme-foreground-color);
 	--page-border-foreground-color:var(--dark-theme-foreground-color);
 	--page-text-foreground-color:var(--dark-theme-foreground-color);
 	--accent-foreground-color:var(--dark-theme-foreground-color);
-	--sticky-header-foreground-color:var(--dark-theme-foreground-color);
+	--minibar-foreground-color:var(--dark-theme-foreground-color);
 	--alert-foreground-color:var(--dark-theme-foreground-color);
 	--warning-foreground-color:var(--dark-theme-foreground-color);
 	--success-foreground-color:var(--dark-theme-foreground-color);
 	--message-foreground-color:var(--dark-theme-foreground-color);
 /* Hover */
-	--community-foreground-color-hover:var(--dark-theme-foreground-color-hover);
-	--community-header-text-foreground-color-hover:var(--dark-theme-foreground-color-hover);
+	--body-foreground-color-hover:var(--dark-theme-foreground-color-hover);
+	--superbar-text-foreground-color-hover:var(--dark-theme-foreground-color-hover);
 	--anchor-foreground-color-hover:var(--dark-theme-foreground-color-hover);
 	--page-foreground-color-hover:var(--dark-theme-foreground-color-hover);
 	--page-border-foreground-color-hover:var(--dark-theme-foreground-color-hover);
 	--page-text-foreground-color-hover:var(--dark-theme-foreground-color-hover);
 	--accent-foreground-color-hover:var(--dark-theme-foreground-color-hover);
-	--sticky-header-foreground-color-hover:var(--dark-theme-foreground-color-hover);
+	--minibar-foreground-color-hover:var(--dark-theme-foreground-color-hover);
 	--alert-foreground-color-hover:var(--dark-theme-foreground-color-hover);
 	--warning-foreground-color-hover:var(--dark-theme-foreground-color-hover);
 	--success-foreground-color-hover:var(--dark-theme-foreground-color-hover);
 	--message-foreground-color-hover:var(--dark-theme-foreground-color-hover);
 /* RGB Base */
-	--community-foreground-color-rgb:var(--dark-theme-foreground-color-rgb);
-	--community-header-text-foreground-color-rgb:var(--dark-theme-foreground-color-rgb);
+	--body-foreground-color-rgb:var(--dark-theme-foreground-color-rgb);
+	--superbar-text-foreground-color-rgb:var(--dark-theme-foreground-color-rgb);
 	--anchor-foreground-color-rgb:var(--dark-theme-foreground-color-rgb);
 	--page-foreground-color-rgb:var(--dark-theme-foreground-color-rgb);
 	--page-border-foreground-color-rgb:var(--dark-theme-foreground-color-rgb);
 	--page-text-foreground-color-rgb:var(--dark-theme-foreground-color-rgb);
 	--accent-foreground-color-rgb:var(--dark-theme-foreground-color-rgb);
-	--sticky-header-foreground-color-rgb:var(--dark-theme-foreground-color-rgb);
+	--minibar-foreground-color-rgb:var(--dark-theme-foreground-color-rgb);
 	--alert-foreground-color-rgb:var(--dark-theme-foreground-color-rgb);
 	--warning-foreground-color-rgb:var(--dark-theme-foreground-color-rgb);
 	--success-foreground-color-rgb:var(--dark-theme-foreground-color-rgb);
 	--message-foreground-color-rgb:var(--dark-theme-foreground-color-rgb);
 /* RGB Hover */
-	--community-foreground-color-hover-rgb:var(--dark-theme-foreground-color-hover-rgb);
-	--community-header-text-foreground-color-hover-rgb:var(--dark-theme-foreground-color-hover-rgb);
+	--body-foreground-color-hover-rgb:var(--dark-theme-foreground-color-hover-rgb);
+	--superbar-text-foreground-color-hover-rgb:var(--dark-theme-foreground-color-hover-rgb);
 	--anchor-foreground-color-hover-rgb:var(--dark-theme-foreground-color-hover-rgb);
 	--page-foreground-color-hover-rgb:var(--dark-theme-foreground-color-hover-rgb);
 	--page-border-foreground-color-hover-rgb:var(--dark-theme-foreground-color-hover-rgb);
 	--page-text-foreground-color-hover-rgb:var(--dark-theme-foreground-color-hover-rgb);
 	--accent-foreground-color-hover-rgb:var(--dark-theme-foreground-color-hover-rgb);
-	--sticky-header-foreground-color-hover-rgb:var(--dark-theme-foreground-color-hover-rgb);
+	--minibar-foreground-color-hover-rgb:var(--dark-theme-foreground-color-hover-rgb);
 	--alert-foreground-color-hover-rgb:var(--dark-theme-foreground-color-hover-rgb);
 	--warning-foreground-color-hover-rgb:var(--dark-theme-foreground-color-hover-rgb);
 	--success-foreground-color-hover-rgb:var(--dark-theme-foreground-color-hover-rgb);
 	--message-foreground-color-hover-rgb:var(--dark-theme-foreground-color-hover-rgb);
 /* Inverted */
-	--community-foreground-color-inverted:var(--dark-theme-foreground-color);
-	--community-header-text-foreground-color-inverted:var(--dark-theme-foreground-color);
+	--body-foreground-color-inverted:var(--dark-theme-foreground-color);
+	--superbar-text-foreground-color-inverted:var(--dark-theme-foreground-color);
 	--anchor-foreground-color-inverted:var(--dark-theme-foreground-color);
 	--page-border-foreground-color-inverted:var(--dark-theme-foreground-color);
 	--page-text-foreground-color-inverted:var(--dark-theme-foreground-color);
 	--accent-foreground-color-inverted:var(--dark-theme-foreground-color);
-	--sticky-header-foreground-color-inverted:var(--dark-theme-foreground-color);
+	--minibar-foreground-color-inverted:var(--dark-theme-foreground-color);
 	--alert-foreground-color-inverted:var(--dark-theme-foreground-color);
 	--warning-foreground-color-inverted:var(--dark-theme-foreground-color);
 	--success-foreground-color-inverted:var(--dark-theme-foreground-color);
@@ -768,18 +768,18 @@ html {
 }
 
 /* Base Light */
-:root[light-community="true"] {
-	--community-foreground-color:var(--light-theme-foreground-color);
-	--community-foreground-color-hover:var(--light-theme-foreground-color-hover);
-	--community-foreground-color-rgb:var(--light-theme-foreground-color-rgb);
-	--community-foreground-color-hover-rgb:var(--light-theme-foreground-color-hover-rgb);
+:root[light-body="true"] {
+	--body-foreground-color:var(--light-theme-foreground-color);
+	--body-foreground-color-hover:var(--light-theme-foreground-color-hover);
+	--body-foreground-color-rgb:var(--light-theme-foreground-color-rgb);
+	--body-foreground-color-hover-rgb:var(--light-theme-foreground-color-hover-rgb);
 }
 
-:root[light-community-header-text="true"] {
-	--community-header-text-foreground-color:var(--light-theme-foreground-color);
-	--community-header-text-foreground-color-hover:var(--light-theme-foreground-color-hover);
-	--community-header-text-foreground-color-rgb:var(--light-theme-foreground-color-rgb);
-	--community-header-text-foreground-color-hover-rgb:var(--light-theme-foreground-color-hover-rgb);
+:root[light-superbar-text="true"] {
+	--superbar-text-foreground-color:var(--light-theme-foreground-color);
+	--superbar-text-foreground-color-hover:var(--light-theme-foreground-color-hover);
+	--superbar-text-foreground-color-rgb:var(--light-theme-foreground-color-rgb);
+	--superbar-text-foreground-color-hover-rgb:var(--light-theme-foreground-color-hover-rgb);
 }
 
 
@@ -818,11 +818,11 @@ html {
 	--accent-foreground-color-hover-rgb:var(--light-theme-foreground-color-hover-rgb);
 }
 
-:root[light-sticky-header="true"] {
-	--sticky-header-foreground-color:var(--light-theme-foreground-color);
-	--sticky-header-foreground-color-hover:var(--light-theme-foreground-color-hover);
-	--sticky-header-foreground-color-rgb:var(--light-theme-foreground-color-rgb);
-	--sticky-header-foreground-color-hover-rgb:var(--light-theme-foreground-color-hover-rgb);
+:root[light-minibar="true"] {
+	--minibar-foreground-color:var(--light-theme-foreground-color);
+	--minibar-foreground-color-hover:var(--light-theme-foreground-color-hover);
+	--minibar-foreground-color-rgb:var(--light-theme-foreground-color-rgb);
+	--minibar-foreground-color-hover-rgb:var(--light-theme-foreground-color-hover-rgb);
 }
 
 :root[light-alert="true"] {
@@ -857,24 +857,24 @@ html {
 @supports not (color:color-contrast(wheat vs tan, sienna, #d2691e)) {
 	body {
 	/* Inverted */
-		--community-foreground-color-inverted:var(--dark-theme-foreground-color);
-		--community-header-text-foreground-color-inverted:var(--dark-theme-foreground-color);
+		--body-foreground-color-inverted:var(--dark-theme-foreground-color);
+		--superbar-text-foreground-color-inverted:var(--dark-theme-foreground-color);
 		--anchor-foreground-color-inverted:var(--dark-theme-foreground-color);
 		--page-border-foreground-color-inverted:var(--dark-theme-foreground-color);
 		--page-text-foreground-color-inverted:var(--dark-theme-foreground-color);
 		--accent-foreground-color-inverted:var(--dark-theme-foreground-color);
-		--sticky-header-foreground-color-inverted:var(--dark-theme-foreground-color);
+		--minibar-foreground-color-inverted:var(--dark-theme-foreground-color);
 		--alert-foreground-color-inverted:var(--dark-theme-foreground-color);
 		--warning-foreground-color-inverted:var(--dark-theme-foreground-color);
 		--success-foreground-color-inverted:var(--dark-theme-foreground-color);
 		--message-foreground-color-inverted:var(--dark-theme-foreground-color);
 	}
-	:root[light-community-hover="true"] {
-		--community-foreground-color-inverted:var(--light-theme-foreground-color);
+	:root[light-body-hover="true"] {
+		--body-foreground-color-inverted:var(--light-theme-foreground-color);
 	}
 
-	:root[light-community-header-text-hover="true"] {
-		--community-header-text-foreground-color-inverted:var(--light-theme-foreground-color);
+	:root[light-superbar-text-hover="true"] {
+		--superbar-text-foreground-color-inverted:var(--light-theme-foreground-color);
 	}
 	:root[light-anchor-hover="true"] body {
 		--anchor-foreground-color-inverted:var(--light-theme-foreground-color);
@@ -892,8 +892,8 @@ html {
 		--accent-foreground-color-inverted:var(--light-theme-foreground-color);
 	}
 
-	:root[light-sticky-header-hover="true"] body {
-		--sticky-header-foreground-color-inverted:var(--light-theme-foreground-color);
+	:root[light-minibar-hover="true"] body {
+		--minibar-foreground-color-inverted:var(--light-theme-foreground-color);
 	}
 
 	:root[light-alert-hover="true"] body {
@@ -926,13 +926,13 @@ html {
 	}
 	body {
 	/* Inverted */
-		--community-foreground-color-inverted:color-contrast(var(--community-background-color-hover) vs var(--dark-theme-foreground-color), var(--light-theme-foreground-color) to var(--required-contrast));
-		--community-header-text-foreground-color-inverted:color-contrast(var(--community-header-text-background-color-hover) vs var(--dark-theme-foreground-color), var(--light-theme-foreground-color) to var(--required-contrast));
+		--body-foreground-color-inverted:color-contrast(var(--body-background-color-hover) vs var(--dark-theme-foreground-color), var(--light-theme-foreground-color) to var(--required-contrast));
+		--superbar-text-foreground-color-inverted:color-contrast(var(--superbar-text-background-color-hover) vs var(--dark-theme-foreground-color), var(--light-theme-foreground-color) to var(--required-contrast));
 		--anchor-foreground-color-inverted:color-contrast(var(--anchor-background-color-hover) vs var(--dark-theme-foreground-color), var(--light-theme-foreground-color) to var(--required-contrast));
 		--page-border-foreground-color-inverted:color-contrast(var(--page-border-background-color-hover) vs var(--dark-theme-foreground-color), var(--light-theme-foreground-color) to var(--required-contrast));
 		--page-text-foreground-color-inverted:color-contrast(var(--page-text-background-color-hover) vs var(--dark-theme-foreground-color), var(--light-theme-foreground-color) to var(--required-contrast));
 		--accent-foreground-color-inverted:color-contrast(var(--accent-background-color-hover) vs var(--dark-theme-foreground-color), var(--light-theme-foreground-color) to var(--required-contrast));
-		--sticky-header-foreground-color-inverted:color-contrast(var(--sticky-header-background-color-hover) vs var(--dark-theme-foreground-color), var(--light-theme-foreground-color) to var(--required-contrast));
+		--minibar-foreground-color-inverted:color-contrast(var(--minibar-background-color-hover) vs var(--dark-theme-foreground-color), var(--light-theme-foreground-color) to var(--required-contrast));
 		--alert-foreground-color-inverted:color-contrast(var(--alert-background-color-hover) vs var(--dark-theme-foreground-color), var(--light-theme-foreground-color) to var(--required-contrast));
 		--warning-foreground-color-inverted:color-contrast(var(--warning-background-color-hover) vs var(--dark-theme-foreground-color), var(--light-theme-foreground-color) to var(--required-contrast));
 		--success-foreground-color-inverted:color-contrast(var(--success-background-color-hover) vs var(--dark-theme-foreground-color), var(--light-theme-foreground-color) to var(--required-contrast));
@@ -944,10 +944,10 @@ html {
 /* Gradient Color Sets */
 /* Base Light */
 :root body {
-	--community-gradient-color:var(--community-background-color);
-	--community-gradient-color-hover:var(--community-background-color-hover);
-	--community-header-text-gradient-color:var(--community-header-text-background-color);
-	--community-header-text-gradient-color-hover:var(--community-header-text-background-color-hover);
+	--body-gradient-color:var(--body-background-color);
+	--body-gradient-color-hover:var(--body-background-color-hover);
+	--superbar-text-gradient-color:var(--superbar-text-background-color);
+	--superbar-text-gradient-color-hover:var(--superbar-text-background-color-hover);
 	--anchor-gradient-color:var(--anchor-background-color);
 	--anchor-gradient-color-hover:var(--anchor-background-color-hover);
 	--page-gradient-color:var(--page-background-color);
@@ -960,8 +960,8 @@ html {
 	--page-text-gradient-color-hover:var(--page-text-background-color-hover);
 	--accent-gradient-color:var(--accent-background-color);
 	--accent-gradient-color-hover:var(--accent-background-color-hover);
-	--sticky-header-gradient-color:var(--sticky-header-background-color);
-	--sticky-header-gradient-color-hover:var(--sticky-header-background-color-hover);
+	--minibar-gradient-color:var(--minibar-background-color);
+	--minibar-gradient-color-hover:var(--minibar-background-color-hover);
 	--alert-gradient-color:var(--alert-background-color);
 	--alert-gradient-color-hover:var(--alert-background-color-hover);
 	--warning-gradient-color:var(--warning-background-color);
@@ -975,8 +975,8 @@ html {
 
 /* Base Dark */
 :root[dark-mode="true"] body {
-	--community-gradient-color:var(--community-background-color-hover);
-	--community-gradient-color-hover:var(--community-background-color);
+	--body-gradient-color:var(--body-background-color-hover);
+	--body-gradient-color-hover:var(--body-background-color);
 	--anchor-gradient-color:var(--anchor-background-color-hover);
 	--anchor-gradient-color-hover:var(--anchor-background-color);
 	--page-gradient-color:var(--page-background-color-hover);
@@ -994,8 +994,8 @@ html {
 }
 
 :root[dark-mode="false"] body {
-	--community-header-text-gradient-color:var(--community-header-text-background-color-hover);
-	--community-header-text-gradient-color-hover:var(--community-header-text-background-color);
+	--superbar-text-gradient-color:var(--superbar-text-background-color-hover);
+	--superbar-text-gradient-color-hover:var(--superbar-text-background-color);
 	--page-text-gradient-color:var(--page-text-background-color-hover);
 	--page-text-gradient-color-hover:var(--page-text-background-color);
 }
@@ -1010,24 +1010,24 @@ html {
 	--accent-gradient-color-hover:var(--accent-background-color);
 }
 
-:root[light-sticky-header="false"] body {
-	--sticky-header-gradient-color:var(--sticky-header-background-color-hover);
-	--sticky-header-gradient-color-hover:var(--sticky-header-background-color);
+:root[light-minibar="false"] body {
+	--minibar-gradient-color:var(--minibar-background-color-hover);
+	--minibar-gradient-color-hover:var(--minibar-background-color);
 }
 
 /* Fadeout Background Colors */
 /* Base Light */
 body {
 	--fadeout-opacity:0.15;
-	--community-fadeout-color:rgba(var(--community-background-color-rgb),var(--fadeout-opacity));
-	--community-header-text-fadeout-color:rgba(var(--community-header-text-background-color-rgb),var(--fadeout-opacity));
+	--body-fadeout-color:rgba(var(--body-background-color-rgb),var(--fadeout-opacity));
+	--superbar-text-fadeout-color:rgba(var(--superbar-text-background-color-rgb),var(--fadeout-opacity));
 	--anchor-fadeout-color:rgba(var(--anchor-background-color-rgb),var(--fadeout-opacity));
 	--page-fadeout-color:rgba(var(--page-background-color-rgb),var(--fadeout-opacity));
 	--page-secondary-fadeout-color:rgba(var(--page-secondary-background-color-rgb),var(--fadeout-opacity));
 	--page-border-fadeout-color:rgba(var(--page-border-background-color-rgb),var(--fadeout-opacity));
 	--page-text-fadeout-color:rgba(var(--page-text-background-color-rgb),var(--fadeout-opacity));
 	--accent-fadeout-color:rgba(var(--accent-background-color-rgb),var(--fadeout-opacity));
-	--sticky-header-fadeout-color:rgba(var(--sticky-header-background-color-rgb),var(--fadeout-opacity));
+	--minibar-fadeout-color:rgba(var(--minibar-background-color-rgb),var(--fadeout-opacity));
 	--alert-fadeout-color:rgba(var(--alert-background-color-rgb),var(--fadeout-opacity));
 	--warning-fadeout-color:rgba(var(--warning-background-color-rgb),var(--fadeout-opacity));
 	--success-fadeout-color:rgba(var(--success-background-color-rgb),var(--fadeout-opacity));
@@ -1043,20 +1043,20 @@ body {
 
 /* Fandom Variable Aliases for compatibility */
 body {
-    --theme-body-dynamic-color-1: var(--community-foreground-color);
-    --theme-body-dynamic-color-1--rgb: var(--community-foreground-color-rgb);
-    --theme-body-dynamic-color-2:  var(--community-foreground-color-hover);
-    --theme-body-dynamic-color-2--rgb:  var(--community-foreground-color-hover-rgb);
+    --theme-body-dynamic-color-1: var(--body-foreground-color);
+    --theme-body-dynamic-color-1--rgb: var(--body-foreground-color-rgb);
+    --theme-body-dynamic-color-2:  var(--body-foreground-color-hover);
+    --theme-body-dynamic-color-2--rgb:  var(--body-foreground-color-hover-rgb);
     --theme-page-dynamic-color-1:  var(--page-foreground-color);
     --theme-page-dynamic-color-1--rgb: var(--page-foreground-color-rgb);
     --theme-page-dynamic-color-1--inverted: var(--page-secondary-background-color);
     --theme-page-dynamic-color-1--inverted--rgb: var(--page-secondary-background-color-rgb);
     --theme-page-dynamic-color-2: var(--page-text-background-color-hover);
     --theme-page-dynamic-color-2--rgb: var(--page-text-background-color-hover-rgb);
-    --theme-sticky-nav-dynamic-color-1: var(--sticky-header-foreground-color);
-    --theme-sticky-nav-dynamic-color-1--rgb: var(--sticky-header-foreground-color-rgb);
-    --theme-sticky-nav-dynamic-color-2: var(--sticky-header-foreground-color-hover);
-    --theme-sticky-nav-dynamic-color-2--rgb: var(--sticky-header-foreground-color-hover-rgb);
+    --theme-sticky-nav-dynamic-color-1: var(--minibar-foreground-color);
+    --theme-sticky-nav-dynamic-color-1--rgb: var(--minibar-foreground-color-rgb);
+    --theme-sticky-nav-dynamic-color-2: var(--minibar-foreground-color-hover);
+    --theme-sticky-nav-dynamic-color-2--rgb: var(--minibar-foreground-color-hover-rgb);
     --theme-link-dynamic-color-1: var(--anchor-foreground-color);
     --theme-link-dynamic-color-1--rgb: var(--anchor-foreground-color-rgb);
     --theme-link-dynamic-color-2: var(--anchor-foreground-color-hover);
@@ -1065,14 +1065,15 @@ body {
     --theme-accent-dynamic-color-1--rgb: var(--accent-foreground-color-rgb);
     --theme-accent-dynamic-color-2: var(--accent-foreground-color-hover);
     --theme-accent-dynamic-color-2--rgb: var(--accent-foreground-color-hover-rgb);
-    --theme-body-background-color: var(--community-background-color);
-    --theme-body-background-color--rgb: var(--community-background-color-rgb);
-    --theme-body-background-image: var(--community-background-image);
-    --theme-body-text-color: var(--community-foreground-color);
-    --theme-body-text-color--hover: var(--community-foreground-color-hover);
-    --theme-sticky-nav-background-color: var(--sticky-header-background-color);
-    --theme-sticky-nav-text-color: var(--sticky-header-foreground-color);
-    --theme-sticky-nav-text-color--hover: var(--sticky-header-foreground-color-hover);
+    --theme-body-background-color: var(--body-background-color);
+    --theme-body-background-color--rgb: var(--body-background-color-rgb);
+    --theme-body-background-image: var(--body-background-image);
+    --theme-body-text-color: var(--body-foreground-color);
+    --theme-body-text-color--rgb: var(--body-foreground-color-rgb);
+    --theme-body-text-color--hover: var(--body-foreground-color-hover);
+    --theme-sticky-nav-background-color: var(--minibar-background-color);
+    --theme-sticky-nav-text-color: var(--minibar-foreground-color);
+    --theme-sticky-nav-text-color--hover: var(--minibar-foreground-color-hover);
     --theme-page-background-color: var(--page-background-color);
     --theme-page-background-color--rgb: var(--page-background-color-rgb);
     --theme-page-background-color--secondary: var(--page-secondary-background-color);
@@ -1098,27 +1099,28 @@ body {
     --theme-alert-color--hover: var(--alert-background-color-hover);
     --theme-alert-label: var(--alert-foreground-color);
     --theme-warning-color: var(--warning-background-color);
+    --theme-warning-color--rgb: var(--warning-background-color-rgb);
     --theme-warning-label: var(--warning-foreground-color);
     --theme-success-color:  var(--success-background-color);
     --theme-success-color--rgb: var(--success-background-color-rgb);
     --theme-success-label: var(--success-foreground-color);
     --theme-message-color: var(--message-background-color);
     --theme-message-label: var(--message-foreground-color);
-	--theme-community-header-color:var(--community-header-text-background-color);
-	--theme-community-header-color--hover:var(--community-header-text-background-color-hover);
-	--theme-background-image-opacity:var(--community-background-image-opacity);
+	--theme-community-header-color:var(--superbar-text-background-color);
+	--theme-community-header-color--hover:var(--superbar-text-background-color-hover);
+	--theme-background-image-opacity:var(--body-background-image-opacity);
 }
 
 
 :root:not(.theming-loaded) {
---community-background-image-opacity:100%;
---community-background-color-hover:#11041E;
---community-background-color-page-background-color-mix-light:#CEC5DA;
---community-background-color-page-background-color-mix:#AC98C1;
---community-background-color-rgb:68,17,119;
---community-header-text-background-color-hover:#FFFFFF;
---community-header-text-background-color-rgb:242,246,250;
---community-header-text-background-color-hover-rgb:255,255,255;
+--body-background-image-opacity:100%;
+--body-background-color-hover:#11041E;
+--body-background-color-page-background-color-mix-light:#CEC5DA;
+--body-background-color-page-background-color-mix:#AC98C1;
+--body-background-color-rgb:68,17,119;
+--superbar-text-background-color-hover:#FFFFFF;
+--superbar-text-background-color-rgb:242,246,250;
+--superbar-text-background-color-hover-rgb:255,255,255;
 --anchor-background-color-hover:#771300;
 --anchor-background-color-page-background-color-mix-light:#EDC9C2;
 --anchor-background-color-page-background-color-mix:#E99F92;
@@ -1143,10 +1145,10 @@ body {
 --accent-background-color-page-background-color-mix-light:#EDDCC2;
 --accent-background-color-page-background-color-mix:#E9C692;
 --accent-background-color-rgb:221,131,0;
---sticky-header-background-color-hover:#523A00;
---sticky-header-background-color-page-background-color-mix-light:#E6DCC2;
---sticky-header-background-color-page-background-color-mix:#DAC692;
---sticky-header-background-color-rgb:184,131,0;
+--minibar-background-color-hover:#523A00;
+--minibar-background-color-page-background-color-mix-light:#E6DCC2;
+--minibar-background-color-page-background-color-mix:#DAC692;
+--minibar-background-color-rgb:184,131,0;
 --caret-color:auto;
 --custom-secondary-font:"";
 --border-radius:3px;
@@ -1162,22 +1164,22 @@ body {
 		display:none!important;
 	}
 	:root {
-		--community-background-image:url("")!important;
-		--community-background-image-opacity:100%!important;
-		--community-background-color:canvas!important;
-		--community-header-text-background-color:canvastext!important;
-		--community-background-mode:standard!important;
-		--community-background-horizontal-alignment:center!important;
-		--community-background-vertical-alignment:center!important;
-		--community-background-size:cover!important;
-		--community-background-no-horizontal-tiling:false!important;
-		--community-background-no-vertical-tiling:false!important;
+		--body-background-image:url("")!important;
+		--body-background-image-opacity:100%!important;
+		--body-background-color:canvas!important;
+		--superbar-text-background-color:canvastext!important;
+		--body-background-mode:standard!important;
+		--body-background-horizontal-alignment:center!important;
+		--body-background-vertical-alignment:center!important;
+		--body-background-size:cover!important;
+		--body-background-no-horizontal-tiling:false!important;
+		--body-background-no-vertical-tiling:false!important;
 		--anchor-background-color:linktext!important;
 		--page-background-color:canvas!important;
 		--page-border-background-color:graytext!important;
 		--page-text-background-color:canvastext!important;
 		--accent-background-color:highlight!important;
-		--sticky-header-background-color:buttonface!important;
+		--minibar-background-color:buttonface!important;
 		--caret-color:auto!important;
 		--custom-secondary-font:""!important;
 		--border-radius:3px!important;
@@ -1219,13 +1221,13 @@ body {
 	/* Width */
 	--scrollbar-width:17px;
 	/* Track */
-	--scrollbar-track-color-1:var(--community-background-color);
-	--scrollbar-track-color-2:var(--community-background-color-hover);
-	--scrollbar-track-text:var(--community-foreground-color);
+	--scrollbar-track-color-1:var(--body-background-color);
+	--scrollbar-track-color-2:var(--body-background-color-hover);
+	--scrollbar-track-text:var(--body-foreground-color);
 	/* Thumb */
-	--scrollbar-thumb-color-1:var(--community-header-text-background-color);
-	--scrollbar-thumb-color-2:var(--community-header-text-background-color-hover);
-	--scrollbar-thumb-text:var(--community-header-text-foreground-color);
+	--scrollbar-thumb-color-1:var(--superbar-text-background-color);
+	--scrollbar-thumb-color-2:var(--superbar-text-background-color-hover);
+	--scrollbar-thumb-text:var(--superbar-text-foreground-color);
 	accent-color:var(--accent-background-color);
 
   margin:0 auto;
@@ -1249,7 +1251,7 @@ body::after {
 }
 
 container {
-    color: var(--community-foreground-color);
+    color: var(--body-foreground-color);
     margin: 0 auto;
     max-width: var(--max-width);
     position: relative;
@@ -1266,7 +1268,7 @@ container {
 --foreign-fonts:"Vollkorn", "Noto Serif JP", "Song Myung", "Pridi", "Amiri", "Ramaraja", "Catamaran", "Martel", "Noto Serif SC", "Noto Serif TC", "Hind Siliguri", "David Libre", "Benne", "Hanuman", "Manjari", "Padauk", "Baloo Bhaina 2";
 }
 
- .body-community-background {
+ .body-background {
 	--extra-size:var(--global-nav-size,0px);
 	top:0;
 	width:calc(100% - var(--extra-size));
@@ -1277,18 +1279,18 @@ container {
 	display:block;
 	content:"";
 	z-index:-2;
-	background-position:var(--community-background-alignment);
+	background-position:var(--body-background-alignment);
 	background-size:cover;
-	background-image:var(--community-background-image);
+	background-image:var(--body-background-image);
 	background-color:transparent;
 	pointer-events:none;
-	opacity:var(--community-background-image-opacity);
+	opacity:var(--body-background-image-opacity);
 	max-width:calc(var(--max-width) - var(--extra-size));
 	image-rendering:initial;                  /* CSS4 Proposed  */
 	-qq-image-blurring:tick;                  /* 4x4 Web 1-2    */
 }
 
- .body-community-background-color {
+ .body-background-color {
 	--extra-size:var(--global-nav-size,0px);
 	top:0;
 	width:calc(100% - var(--extra-size));
@@ -1299,38 +1301,38 @@ container {
 	display:block;
 	content:"";
 	z-index:-3;
-	background-color:var(--community-background-color);
+	background-color:var(--body-background-color);
 	pointer-events:none;
 	max-width:calc(var(--max-width) - var(--extra-size));
 	image-rendering:initial;                  /* CSS4 Proposed  */
 	-qq-image-blurring:tick;                  /* 4x4 Web 1-2    */
 }
 
-body[community-background-mode="full"] .body-community-background {
+body[body-background-mode="full"] .body-background {
 	height:100%!important;
 }
 
 
 
-body[community-background-size="contain"] .body-community-background {
+body[body-background-size="contain"] .body-background {
 	background-size:contain;
 }
 
 
-body[community-background-size="stretched"] .body-community-background {
+body[body-background-size="stretched"] .body-background {
 	background-size:100% 100%;
 	background-position:center;
 }
 
-body[community-background-size="full"] .body-community-background {
+body[body-background-size="full"] .body-background {
 	background-size:auto;
 }
 
-body[community-background-no-horizontal-tiling="true"] .body-community-background {
+body[body-background-no-horizontal-tiling="true"] .body-background {
 	background-repeat-x:no-repeat;
 }
 
-body[community-background-no-vertical-tiling="true"] .body-community-background {
+body[body-background-no-vertical-tiling="true"] .body-background {
 	background-repeat-y:no-repeat;
 }
 
@@ -1348,7 +1350,7 @@ body[caret-color-auto="true"] .careta-off {
   font-family:var(--secondary-font), sans-serif;
 }
 
-body[community-background-mode="full"] .gradient-overlay {
+body[body-background-mode="full"] .gradient-overlay {
 	display:none!important;
 }
 
@@ -1360,7 +1362,7 @@ body[community-background-mode="full"] .gradient-overlay {
 	display:block;
 	content:"";
 	z-index:-1;
-	background-image:linear-gradient(to bottom, rgba(var(--community-background-color-rgb),0.05) 5% ,var(--community-background-color));
+	background-image:linear-gradient(to bottom, rgba(var(--body-background-color-rgb),0.05) 5% ,var(--body-background-color));
   image-rendering:initial;                  /* CSS4 Proposed  */
   -qq-image-blurring:tick;                  /* 4x4 Web 1-2    */
 	max-width:var(--max-width);
@@ -1939,15 +1941,15 @@ select.cpe-input {
 }
 
 .cpe-input.is-headline {
-  --input-box-solid:var(--community-background-color);
-  --input-box-hover:var(--community-background-color-page-background-color-mix-light);
-  --input-box-focus:var(--community-background-color-page-background-color-mix);
+  --input-box-solid:var(--body-background-color);
+  --input-box-hover:var(--body-background-color-page-background-color-mix-light);
+  --input-box-focus:var(--body-background-color-page-background-color-mix);
 }
 
 .cpe-input.is-titleline {
-  --input-box-solid:var(--sticky-header-background-color);
-  --input-box-hover:var(--sticky-header-background-color-page-background-color-mix-light);
-  --input-box-focus:var(--sticky-header-background-color-page-background-color-mix);
+  --input-box-solid:var(--minibar-background-color);
+  --input-box-hover:var(--minibar-background-color-page-background-color-mix-light);
+  --input-box-focus:var(--minibar-background-color-page-background-color-mix);
 }
 
 .cpe-input.is-colorline {
@@ -2230,15 +2232,15 @@ a.cpe-button, button.cpe-button {
 
 /* Alternate Colored Buttons */
 .cpe-button.is-alternate {
-  --button-background-color:var(--sticky-header-background-color);
-  --button-background-color-hover:var(--sticky-header-background-color-hover);
-  --button-foreground-color:var(--sticky-header-foreground-color);
-  --button-foreground-color-hover:var(--sticky-header-foreground-color-hover);
-  --button-foreground-color-inverted:var(--sticky-header-foreground-color-inverted);
-  --secondary-button-foreground-color:var(--community-background-color);
-  --secondary-button-foreground-color-hover:var(--community-background-color-hover);
-  --tertiary-button-background-color:var(--community-fadeout-color);
-  --tertiary-button-foreground-color:var(--community-background-color);
+  --button-background-color:var(--minibar-background-color);
+  --button-background-color-hover:var(--minibar-background-color-hover);
+  --button-foreground-color:var(--minibar-foreground-color);
+  --button-foreground-color-hover:var(--minibar-foreground-color-hover);
+  --button-foreground-color-inverted:var(--minibar-foreground-color-inverted);
+  --secondary-button-foreground-color:var(--body-background-color);
+  --secondary-button-foreground-color-hover:var(--body-background-color-hover);
+  --tertiary-button-background-color:var(--body-fadeout-color);
+  --tertiary-button-foreground-color:var(--body-background-color);
 }
 
 /* Alert Color */
@@ -3187,7 +3189,7 @@ opacity:1;
 }
 
 .cpe-tabs__tab.is-alternate {
-	--tabs-color-active:var(--community-background-color);
+	--tabs-color-active:var(--body-background-color);
 }
 
 

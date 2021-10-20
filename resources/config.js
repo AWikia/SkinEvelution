@@ -30,9 +30,9 @@ function insertKey(key,value) {
     if (config.DisableColorManagement === true) {
 		$('.color-management-on').remove();
 		$('html').addClass( "disabled-theming" );	
-		$("body").attr('community-background-mode', 'modern' );
-		$("body").attr('community-background-size', 'cover' );
-		$("body").attr('community-background-alignment', 'top' );
+		$("body").attr('body-background-mode', 'modern' );
+		$("body").attr('body-background-size', 'cover' );
+		$("body").attr('body-background-alignment', 'top' );
     }
 	if (config.DisableRightRail === true ) {
 		$('html').addClass( "no-rail" );
