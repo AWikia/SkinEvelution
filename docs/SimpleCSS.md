@@ -4,23 +4,23 @@ Those CSS snipsets go to MediaWiki:Evelution.css (For Sitewide Use) or to Specia
 ## Custom Page Side Tool Customization
 This snipset changes the floating actions to be themed according to a chosen color value, akin to the Simple Visual Style:
 
-### Community
+### Body/Community
 ```css
 .cpe-floating-button.page-side-tool {
-    --floating-button-color: var(--community-foreground-color);
-    --floating-button-color-hover: var(--community-foreground-color);
-    --floating-button-background-color: var(--community-background-color);
-    --floating-button-hover-background-color: var(--community-background-color-hover);
+    --floating-button-color: var(--body-foreground-color);
+    --floating-button-color-hover: var(--body-foreground-color);
+    --floating-button-background-color: var(--body-background-color);
+    --floating-button-hover-background-color: var(--body-background-color-hover);
 }
 ```
 
-### Community Header Text
+### Superbar Text/Community Header Text
 ```css
 .cpe-floating-button.page-side-tool {
-    --floating-button-color: var(--community-header-text-foreground-color);
-    --floating-button-color-hover: var(--community-header-text-foreground-color);
-    --floating-button-background-color: var(--community-header-text-background-color);
-    --floating-button-hover-background-color: var(--community-header-text-background-color-hover);
+    --floating-button-color: var(--superbar-text-foreground-color);
+    --floating-button-color-hover: var(--superbar-text-foreground-color);
+    --floating-button-background-color: var(--superbar-text-background-color);
+    --floating-button-hover-background-color: var(--superbar-text-background-color-hover);
 }
 ```
 
@@ -74,13 +74,13 @@ This snipset changes the floating actions to be themed according to a chosen col
 }
 ```
 
-### Sticky Nav
+### Minibar/Sticky Nav
 ```css
 .cpe-floating-button.page-side-tool {
-    --floating-button-color: var(--sticky-header-foreground-color);
-    --floating-button-color-hover: var(--sticky-header-foreground-color);
-    --floating-button-background-color: var(--sticky-header-background-color);
-    --floating-button-hover-background-color: var(--sticky-header-background-color-hover);
+    --floating-button-color: var(--minibar-foreground-color);
+    --floating-button-color-hover: var(--minibar-foreground-color);
+    --floating-button-background-color: var(--minibar-background-color);
+    --floating-button-hover-background-color: var(--minibar-background-color-hover);
 }
 ```
 
@@ -127,17 +127,17 @@ This snipset changes the floating actions to be themed according to a chosen col
 ### Color Fun
 ```css
 .cpe-floating-button.page-side-tool.toggle-size {
-    --floating-button-color: var(--community-foreground-color);
-    --floating-button-color-hover: var(--community-foreground-color);
-    --floating-button-background-color: var(--community-background-color);
-    --floating-button-hover-background-color: var(--community-background-color-hover);
+    --floating-button-color: var(--body-foreground-color);
+    --floating-button-color-hover: var(--body-foreground-color);
+    --floating-button-background-color: var(--body-background-color);
+    --floating-button-hover-background-color: var(--body-background-color-hover);
 }
 
 .cpe-floating-button.page-side-tool.edit {
-    --floating-button-color: var(--community-header-text-foreground-color);
-    --floating-button-color-hover: var(--community-header-text-foreground-color);
-    --floating-button-background-color: var(--community-header-text-background-color);
-    --floating-button-hover-background-color: var(--community-header-text-background-color-hover);
+    --floating-button-color: var(--superbar-text-foreground-color);
+    --floating-button-color-hover: var(--superbar-text-foreground-color);
+    --floating-button-background-color: var(--superbar-text-background-color);
+    --floating-button-hover-background-color: var(--superbar-text-background-color-hover);
 }
 
 .cpe-floating-button.page-side-tool.history {
@@ -176,10 +176,10 @@ This snipset changes the floating actions to be themed according to a chosen col
 }
 
 .themes .cpe-floating-button.page-side-tool {
-    --floating-button-color: var(--sticky-header-foreground-color);
-    --floating-button-color-hover: var(--sticky-header-foreground-color);
-    --floating-button-background-color: var(--sticky-header-background-color);
-    --floating-button-hover-background-color: var(--sticky-header-background-color-hover);
+    --floating-button-color: var(--minibar-foreground-color);
+    --floating-button-color-hover: var(--minibar-foreground-color);
+    --floating-button-background-color: var(--minibar-background-color);
+    --floating-button-hover-background-color: var(--minibar-background-color-hover);
 }
 ```
 
