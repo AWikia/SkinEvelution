@@ -115,34 +115,34 @@ When checking your themes, you must be in Duo theme mode without inverted colors
 ## Theming Variables
 This section lists all static Theming Variables and where they're used:
 
-### ``--community-background-image`` (Accepts: ``<image>``)
+### ``--body-background-image`` (Accepts: ``<image>``)
 This is used as the background image of the body container. When the opposite version of that theme is being running, this will appear inverted. An empty value results in no background being shown.
 
-### ``--community-background-image-opacity`` (Accepts: ``<percentage>``)
+### ``--body-background-image-opacity`` (Accepts: ``<percentage>``)
 This is used as the opacity of the body background image. 0% makes it invisible, 50% makes translucent and 100% makes it visible.
 
-### ``--community-background-color`` (Accepts: ``<color>``)
+### ``--body-background-color`` (Accepts: ``<color>``)
 This is used as the background color of the body container and the gradient overlay shown on header backgrounds. This is also used on  ``is-headline`` buttons.
 
-### ``--community-header-text-color`` (Accepts: ``<color> | auto``)
+### ``--superbar-text-background-color`` (Accepts: ``<color> | auto``)
 This is used as the foreground color of the Community Header. When set to ``auto``, it autopicks the computed foreground community color.
 
-### ``--community-background-mode`` (Accepts: ``standard | full``)
+### ``--body-background-mode`` (Accepts: ``standard | full``)
 When set to ``standard``, community background spans to the header area only. When set to ``full``, communnity background spans to the whole screen.
 
-### ``--community-background-horizontal-alignment`` (Accepts: ``left | center | right``)
+### ``--body-background-horizontal-alignment`` (Accepts: ``left | center | right``)
 Sets the horizontal alignment of the background image. Accepts all standard properties ``background-position-x`` supports.
 
-### ``--community-background-vertical-alignment`` (Accepts: ``top | center | bottom``)
+### ``--body-background-vertical-alignment`` (Accepts: ``top | center | bottom``)
 Sets the vertical alignment of the background image. Accepts all standard properties ``background-position-y`` supports.
 
-### ``--community-background-size`` (Accepts: ``cover | contain | stretched | full``)
+### ``--body-background-size`` (Accepts: ``cover | contain | stretched | full``)
 When set to ``cover``, it makes the background image display on the whole screen, clipping some parts of it. When set to ``contain``, it behaves like cover except that no clipping happens in which it can reveal the community background color. When set to ``stretched``, it behaves like contain except that the background image will be stretched to remove any bg color revealance. When set to ``full``, it dispalys the background image as it is (Without changing its size).
 
-### ``--community-background-no-horizontal-tiling`` (Accepts: ``<boolean>``)
+### ``--body-background-no-horizontal-tiling`` (Accepts: ``<boolean>``)
 When set to ``true``, it removes background tiling on the horizontal axis
 
-### ``--community-background-no-vertical-tiling`` (Accepts: ``<boolean>``)
+### ``--body-background-no-vertical-tiling`` (Accepts: ``<boolean>``)
 When set to ``true``, it removes background tiling on the vertical axis
 
 ### ``--anchor-background-color`` (Accepts: ``<color>``)
@@ -162,7 +162,7 @@ This is used as the border color of the page container, rail modules and many mo
 ### ``--accent-background-color`` (Accepts: ``<color>``)
 This is used as the color of the buttons, selected text in Contrast and Classic visual styles, primary OOUI buttons and hovered and focused input styles without extra class
 
-### ``--sticky-header-background-color`` (Accepts: ``<color>``)
+### ``--minibar-background-color`` (Accepts: ``<color>``)
 This is used as the color of the sticky header navigation and since 11.17.6 as the color of the toolbox. This is also used on  ``is-titleline`` buttons.
 
 
@@ -203,6 +203,12 @@ Evelution uses ``$wgLogo`` to fetch the logo. If ``$wgLogos[icon]`` exists, then
 
 ### Wordmark (Since 5.3.0)
 By default, Evelution writes the sitename next to the wordmark. If you want to use your own mark instead of the default text ones, set the ``$wgLogos[wordmark]`` property on LocalSettings.php. Note that the wordmark set must be at most 40px in height for best results and it will appear monochrome so as it can adapt any text color. This wordmark appears on all places the default text-mark would appear otherwise so.
+
+### Information Module (Since 4.7.0)
+Content placed in ``MediaWiki:Evelution-about-module-info`` will appear on the information module
+
+### Discord Server Widget (Since 14.0.0)
+If a vaild server ID is placed into ``MediaWiki:Evelution-discord-module-server-id``, a discord widget of the server with the corresponding server ID will appear on the Discord Module. Likewise, it also shows a create account link in the module buttons so users without a discord account can join the conversation there. Note that the server must have its server widget enabled. See [here](https://dev.fandom.com/wiki/DiscordIntegrator/instructions#Step_2:_Enable_Discord_widget) for instructions how to enable the server widget of your server.
 
 ### ``$wgEvelutionLeftPersonalLinks`` (Since 4.3.0)
 Defaults to false. When set to true, it allows you to align the toolbar links to the left.
