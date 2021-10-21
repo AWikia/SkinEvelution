@@ -344,8 +344,8 @@ function ToggleRail() {
 
 
 function initializeViews() {
-	$(".evelution-page-header-contribution .actions > li > a").attr('class','cpe-button').attr('has-icon','true'); // Add the CPE button class
-	$(".evelution-page-header-contribution .views > li > a").attr('class','cpe-button').attr('has-icon','true');; // Add the CPE button class
+	$(".evelution-page-header-contribution .actions > li > a").attr('class','cpe-button is-tertiary').attr('has-icon','true'); // Add the CPE button class
+	$(".evelution-page-header-contribution .views > li > a").attr('class','cpe-button is-tertiary').attr('has-icon','true');; // Add the CPE button class
 
 	$(".evelution-community-header .mobile-header .local-navigation .cpe-dropdown:first-child:not(:only-child) .cpe-dropdown__content").addClass('is-left-aligned'); // Add the CPE button class
 	$(".evelution-community-header .mobile-header .local-navigation .cpe-dropdown:last-child:not(:only-child) .cpe-dropdown__content").addClass('is-right-aligned'); // Add the CPE button class
@@ -358,6 +358,9 @@ function RemoveEmptyMenus() {
 // Remove Miraheze elements
 	if (!$("#footer-icons img[alt='Miraheze Wiki Hosting']").length) { // Check if an image with the Miraheze Wiki hosting alt exists
 		$('.miraheze-only').remove();
+	}
+	if ($("#footer-icons img[alt='Miraheze Wiki Hosting']").length) { // Check if an image with the Miraheze Wiki hosting alt exists
+		$('html').addClass('miraheze-wiki-hosting')
 	}
 	$('#footer-places .footer-places-darkmode-toggle').remove(); // Evelution has its dark mode so this is unneded
 	$('html').removeClass('client-dark-mode'); // Evelution has its dark mode so this is unneded
