@@ -469,16 +469,6 @@ function InitDesigner() {
 					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#9dc3f7" id="accentcolor" list="td_colors" />' + // Page BG
 				'</td>' +
 			'</tr>' +
-		// TR
-			'<tr>' +
-				'<th style="width:150px;">' + 
-					mw.msg( 'evelution-designer-sticky-header' ) + 
-				'</td>' +
-
-				'<td style="text-align:center; width:150px">' + 
-					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#6c96bf" id="headercolor" list="td_colors" />' + // Page BG
-				'</td>' +
-			'</tr>' +
 			'<tr>' +
 				'<th colspan="2">' + mw.msg( 'evelution-designer-other' ) + '</th>' +
 			'</tr>' +
@@ -640,7 +630,6 @@ function ApplyTheme () {
 				 '--page-border-background-color:' + autocolor2  + ';\n' +
 				 '--page-text-background-color:' + autocolor3  + ';\n' +
 				 '--accent-background-color:' + $('#accentcolor').val() + ';\n' +
-				 '--minibar-background-color:' + $('#headercolor').val() + ';\n' +
 				 '--caret-color:' + autocolor5  + ';\n' +
 				 '--custom-secondary-font:' + customfont + ';\n' +
 				 '--border-radius:' + $('#border-radius').val() + "px"  + ';\n' +
@@ -724,7 +713,6 @@ function CopyTheme() {
 				 '--page-border-background-color:' + autocolor2  + ';\n' +
 				 '--page-text-background-color:' + autocolor3  + ';\n' +
 				 '--accent-background-color:' + $('#accentcolor').val() + ';\n' +
-				 '--minibar-background-color:' + $('#headercolor').val() + ';\n' +
 				 '--caret-color:' + autocolor5  + ';\n' +
 				 '--custom-secondary-font:' + customfont + ';\n' +
 				 '--border-radius:' + $('#border-radius').val() + "px"  + ';\n' +
@@ -813,8 +801,6 @@ function PasteTheme() {
 	$('#anchorcolor').val( getComputedStyle(document.querySelector('html')).getPropertyValue("--anchor-background-color") );
 	// Accent BG
 	$('#accentcolor').val( getComputedStyle(document.querySelector('html')).getPropertyValue("--accent-background-color") );
-	// Header BG
-	$('#headercolor').val( getComputedStyle(document.querySelector('html')).getPropertyValue("--minibar-background-color") );
 	// Caret Color
 	if (getComputedStyle(document.querySelector('html')).getPropertyValue("--caret-color") === 'auto' ) {
 		document.querySelector('.wikitable #auto5').checked = true;
@@ -888,7 +874,6 @@ function TestTheme() {
 	document.querySelector('html').style.setProperty("--page-text-background-color", autocolor3 );
 	document.querySelector('html').style.setProperty("--anchor-background-color", $('#anchorcolor').val() );
 	document.querySelector('html').style.setProperty("--accent-background-color", $('#accentcolor').val() );
-	document.querySelector('html').style.setProperty("--minibar-background-color", $('#headercolor').val() );
 	document.querySelector('html').style.setProperty("--caret-color", autocolor5 );
 	document.querySelector('html').style.setProperty("--border-radius", $('#border-radius').val() + "px" );
 	document.querySelector('html').style.setProperty("--custom-secondary-font", $('#secondfont').val() );
@@ -926,7 +911,6 @@ function ClearTheme() {
 	document.querySelector('html').style.removeProperty("--page-text-background-color");
 	document.querySelector('html').style.removeProperty("--anchor-background-color");
 	document.querySelector('html').style.removeProperty("--accent-background-color");
-	document.querySelector('html').style.removeProperty("--minibar-background-color");
 	document.querySelector('html').style.removeProperty("--caret-color");
 	document.querySelector('html').style.removeProperty("--border-radius");
 	document.querySelector('html').style.removeProperty("--custom-secondary-font");
