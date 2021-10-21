@@ -203,12 +203,13 @@ container > main {
 }
 
 .evelution-sidebar {
-	--global-nav-color:var(--page-background-color);
+	--global-nav-color:var(--page-secondary-background-color);
 	--global-nav-text-color:var(--page-text-background-color);
 	--global-nav-link-color-hover:var(--page-text-background-color-hover);
+	--global-nav-link-background-hover:var(--page-text-background-color-rgb);
 	--global-nav-link-color-active:var(--secondary-accent-background-color);
 	--global-nav-link-background-active:var(--secondary-accent-background-color-rgb);
-	--global-nav-link-opacity:var(--fadeout-opacity);
+	--global-nav-link-opacity:0.2;
 	--global-nav-opacity:1;
 	display:flex;
 	flex-direction:column;
@@ -272,7 +273,7 @@ container > main {
 }
 
 	.evelution-sidebar .link {
-		transition:background-color 400ms ease, color 400ms ease, border-color 400ms ease, text-shadow 400ms ease, opacity 300ms ease, padding 300ms ease, max-width 300ms ease, font-size 300ms ease;
+		transition:background-color 400ms ease, color 400ms ease, text-shadow 400ms ease, opacity 300ms ease, padding 300ms ease, max-width 300ms ease, font-size 300ms ease;
 		height:var(--global-nav-size);
 		width:var(--global-nav-size);
 		color:inherit;
@@ -284,6 +285,8 @@ container > main {
 		align-items:center;
 		justify-content:center;
 		cursor:var(--cpe-hand-cursor);
+		border-radius:var(--border-radius);
+		border:1px solid transparent;
 	}
 
 
@@ -302,8 +305,9 @@ container > main {
 
 
 	.evelution-sidebar .link:hover {
-	color:var(--global-nav-link-color-hover);
-	background-color:transparent;
+		color:var(--global-nav-link-color-hover);
+		background-color:rgba(var(--global-nav-link-background-hover), var(--global-nav-link-opacity));
+		border-color:rgba(var(--global-nav-link-background-hover), calc(var(--global-nav-link-opacity) * 0.5));
 	}
 
 	.evelution-sidebar .link:active, 
@@ -311,7 +315,8 @@ container > main {
 	.evelution-sidebar .link.active, 
 	.evelution-sidebar .cpe-dropdown:focus > .link,
 	.evelution-sidebar .cpe-dropdown:focus-within > .link {
-		background-color:rgba(var(--global-nav-link-background-active), var(--global-nav-link-opacity));
+		background-color:rgba(var(--global-nav-link-background-active), calc(var(--global-nav-link-opacity) * 2));
+		border-color:rgba(var(--global-nav-link-background-active), var(--global-nav-link-opacity));
 		color:var(--global-nav-link-color-active);
 	}
 
@@ -415,11 +420,6 @@ container > main {
 /* Personal Toolbar */
 .evelution-toolbox  {
 	--global-nav-color:var(--page-secondary-background-color-rgb);
-	--global-nav-text-color:var(--page-foreground-color);
-	--global-nav-link-color-hover:var(--page-text-background-color-hover);
-	--global-nav-link-color-active:rgba(var(--page-text-background-color-hover-rgb),0.8);
-	--global-nav-link-background-active:var(--page-text-background-color-hover-rgb);
-	--global-nav-link-opacity:0.2;
 	--toolbar-link-size:var(--minibar-size);
 	--global-nav-opacity:var(--dropdown-opacity);
 	-webkit-backdrop-filter:var(--backdrop-filter);
@@ -1185,7 +1185,7 @@ gap:2px;
 		--minibar-opacity:var(--dropdown-opacity);
 		--tr-scale:100%;
 		background-color:rgba(var(--page-secondary-background-color-rgb), var(--minibar-opacity));
-		color:var(--page-foreground-color);
+		color:var(--page-text-backgound-color);
 		position:-webkit-sticky;
 		position:sticky;
 		top:calc(-4px - var(--minibar-size));
@@ -1301,12 +1301,12 @@ gap:2px;
 	}
 
 	.evelution-minibar .title a:hover {
-		color:var(--page-foreground-color-hover);
+		color:var(--page-text-background-color-hover);
 	}
 
 	.evelution-minibar .title a:active,
 	.evelution-minibar .title a:focus {
-		color:rgba(var(--page-foreground-color-hover-rgb), 0.8);
+		color:rgba(var(--page-text-background-color-hover-rgb), 0.8);
 	}
 
 
@@ -1345,7 +1345,7 @@ gap:2px;
 }
 
 	.evelution-minibar .link {
-		transition:color 400ms ease, background-color 300ms linear, border-color 300ms linear, background-image 300ms linear, transform 300ms linear, box-shadow 50ms linear;
+		transition:color 400ms ease, background-color 300ms linear, background-image 300ms linear, transform 300ms linear, box-shadow 50ms linear;
 		padding: 0 7px;
 		height:inherit;
 		color:inherit;
@@ -1369,9 +1369,9 @@ gap:2px;
 	.evelution-minibar .cpe-dropdown:focus > .link, 
 	.evelution-minibar .cpe-dropdown:focus-within > .link, 
 	.evelution-minibar .link.active  {
-		background-color:rgba(var(--page-foreground-color-rgb),0.2);
-		border-color:rgba(var(--page-foreground-color-hover-rgb),0.1);
-		color:var(--page-foreground-color-hover);
+		background-color:rgba(var(--page-text-background-color-rgb),0.2);
+		border-color:rgba(var(--page-text-background-color-rgb),0.1);
+		color:var(--page-text-background-color-hover);
 	}
 
 	.evelution-minibar .link:hover, .evelution-minibar .link.active  {
@@ -1384,9 +1384,9 @@ gap:2px;
 	.evelution-minibar .cpe-dropdown:focus  .link, 
 	.evelution-minibar .cpe-dropdown:focus-within  .link, 
 	.evelution-minibar .link.active  {
-		background-color:rgba(var(--page-foreground-color-hover-rgb),0.4);
-		border-color:rgba(var(--page-foreground-color-hover-rgb),0.2);
-		color:rgba(var(--page-foreground-color-hover-rgb), 0.8);
+		background-color:rgba(var(--secondary-accent-background-color-rgb),0.4);
+		border-color:rgba(var(--secondary-accent-background-color-rgb),0.2);
+		color:var(--secondary-accent-background-color);
 
 	}
 
@@ -1586,7 +1586,7 @@ gap:2px;
 
 	.evelution-superbar .link {
 		cursor:var(--cpe-hand-cursor);
-		transition:color 400ms ease, background-color 300ms linear, border-color 300ms linear, background-image 300ms linear, transform 300ms linear, box-shadow 50ms linear;
+		transition:color 400ms ease, background-color 300ms linear, background-image 300ms linear, transform 300ms linear, box-shadow 50ms linear;
 		padding: 0 7px;
 		height:inherit;
 		color:inherit;
