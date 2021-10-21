@@ -145,40 +145,31 @@ When set to ``true``, it removes background tiling on the horizontal axis
 ### ``--body-background-no-vertical-tiling`` (Accepts: ``<boolean>``)
 When set to ``true``, it removes background tiling on the vertical axis
 
-### ``--anchor-background-color`` (Accepts: ``<color>``)
-This is used as the color of the links, checkboxes and range inputs. This is also used on  ``is-alternate`` and secondary OOUI buttons.
+### ``--secondary-accent-background-color`` (Accepts: ``<color>``)
+This is used as the color of the links, checkboxes and range inputs. This is also used on  ``is-alternate``, secondary OOUI buttons and hovered and focused OOUI inputs.
 
 ### ``--page-background-color`` (Accepts: ``<color>``)
 This is used as the background color of the page container, rail modules and many more containers.
 
 ### ``--page-border-background-color`` (Accepts: ``<color> | auto``)
-This is used as the border color of the page container, rail modules and many more containers.  When set to ``auto``, it autopicks a color based on page background color.
+This is used as the border color of the page container, rail modules and many more containers and as the color of the toolbox.  When set to ``auto``, it autopicks a color based on page background color.
  This is also used on  ``is-borderline`` buttons.
 
 ### ``--page-text-background-color`` (Accepts: ``<color> | auto``)
-This is used as the border color of the page container, rail modules and many more containers.  When set to ``auto``, it autopicks either the light or dark text background color, whichever works best on the set page background color.
+This is used as the text color of the page container, rail modules and many more containers.  When set to ``auto``, it autopicks either the light or dark text background color, whichever works best on the set page background color.
  This is also used on  ``is-colorline`` buttons.
 
 ### ``--accent-background-color`` (Accepts: ``<color>``)
-This is used as the color of the buttons, selected text in Contrast and Classic visual styles, primary OOUI buttons and hovered and focused input styles without extra class
-
-### ``--minibar-background-color`` (Accepts: ``<color>``)
-This is used as the color of the sticky header navigation and since 11.17.6 as the color of the toolbox. This is also used on  ``is-titleline`` buttons.
-
-
-### ``--toolbar-background-color`` (Accepts: ``<color> | auto``, until 11.17.5)
-This was used as the color of the toolbox.  When set to ``auto``, it autopicked a color based on page, accent and sticky header background colors. This was also used on  ``is-intitleline`` buttons.
+This is used as the color of the buttons, sticky header, selected text in Contrast and Classic visual styles, primary OOUI buttons and hovered and focused input styles without extra class
 
 ### ``--caret-color`` (Accepts: ``<color> | auto``)
 This is used as the color of the insertation caret.  When set to ``auto``, it autopicks the text color of the editable element.
-
 
 ### ``--custom-secondary-font`` (Accepts: ``<family-name>``)
 This is used as the extra secondary font to be used other than the stock ones. When set to an empty quoted string, no special extra font is used.
 
 ### ``--border-radius`` (Accepts: ``<length>``)
 This is used to control the rounded corners of all supported elements. 0px removes the rounded corners entirely. Values between 0 to 15px are generally favored.
-
 
 ### ``--logo-filter`` (Accepts: ``<filter-function>``)
 This is used as the base filter of the logo.
@@ -232,12 +223,6 @@ Defaults to false aka Home Mode. When set to true aka Server Mode, it changes th
 
 ### ``$wgEvelutionCustomFont`` (Since 5.3.0)
 Defaults to an empty string meaning Didact Gothic will be used. When set to another value, that font will be used instead
-
-### ``$wgEvelutionIconStyle`` (Since 5.5.0, until 6.1.0)
-Defaulted to outlined. When set to either filled, rounded, shart or two-tone, it changed the icon display to a style other than outlined. Values outside the allowed ones would result in outlined icons. It did not affected OOUI and Inline SVGs but did affected Material Icons inserted on articles.
-
-### ``$wgEvelutionIconWireframe`` (Since 6.2.0, until 8.0.0)
-Defaulted to true aka outlined Icons. When set to false, icons would display filled aka without any wireframe
 
 ### ``$wgEvelutionStickyRail`` (Since 8.1.0)
 Defaults to true aka right rail will be sticky. When set to false, right rail will not be sticky. In order for sticky behavior of right rail to appear, browser window size must be at least 960x600.
