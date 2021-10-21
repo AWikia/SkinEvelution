@@ -49,6 +49,7 @@ class SkinEvelution extends SkinMustache {
         $data["msg-evelution-users"] = wfMessage( 'evelution-users' )->numParams( SiteStats::users() )->parse();
         $data["msg-evelution-activity-module"] = wfMessage( 'evelution-activity-module' )->inContentLanguage()->parseAsBlock(); // Additional JS is used
         $data["msg-evelution-about-module-info"] = wfMessage( 'evelution-about-module-info' )->inContentLanguage()->parseAsBlock();
+        $data["msg-evelution-discord-module-server-id"] = wfMessage( 'evelution-discord-module-server-id' )->inContentLanguage()->parseAsBlock();
         $data["html-rc-link"] = SpecialPage::getTitleFor( 'Recentchanges' )->getLocalURL();
         $data["html-files-link"] = SpecialPage::getTitleFor( 'Newimages' )->getLocalURL();
         $data["html-css-link"] = Title::newFromText( 'MediaWiki:Evelution.css' )->getLocalURL();
