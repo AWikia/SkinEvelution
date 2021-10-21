@@ -147,7 +147,7 @@ font-family:Trebuchet MS;
 --body-background-size:cover;
 --body-background-no-horizontal-tiling:false;
 --body-background-no-vertical-tiling:false;
---backdrop-filter:blur(12.5px) sepia(25%) contrast(125%) invert(25%) grayscale(25%) saturate(125%) hue-rotate(12.5deg) brightness(125%);
+--backdrop-filter:blur(10px) sepia(5%) contrast(105%) invert(5%) grayscale(5%) saturate(105%) hue-rotate(0.5deg) brightness(105%);
 /* Fonts */
 --main-fonts:"Didact Gothic", "Inter"; /* Empty but other languages will depend on it */
 --foreign-fonts:"Didact Gothic", "M PLUS 1p",  "Nanum Gothic", "Prompt", "Cairo", "Ramabhadra", "Catamaran", "Noto Sans", "Noto Sans SC", "Noto Sans TC", "Noto Sans HK", "Hind Siliguri", "Baloo Tamma 2", "Kantumruy", "Manjari", "Padauk", "Baloo Bhaina 2", "Alef";
@@ -249,6 +249,9 @@ body {
 	--minibar-foreground-color-rgb:var(--accent-foreground-color-rgb);
 	--minibar-foreground-color-hover:var(--accent-foreground-color-hover);
 	--minibar-foreground-color-hover-rgb:var(--accent-foreground-color-hover-rgb);
+/* Base Accent */
+--page-accent-background-color:rgba(var(--accent-background-color-rgb),0.2);
+--page-accent-box-shadow:inset 0 0 0 100vh var(--page-accent-background-color);
 }
 
 /** Generic Colors & Color Scheme **/
@@ -1194,7 +1197,7 @@ body {
   --cpe-hand-cursor:pointer;
 	scrollbar-color:var(--scrollbar-thumb-color-1) var(--scrollbar-track-color-1);
 	--header-size:160px;
-	--dropdown-opacity:0.66;
+	--dropdown-opacity:0.4;
 /** Scrollbar Styling **/
 	/* Width */
 	--scrollbar-width:17px;
@@ -2584,6 +2587,7 @@ margin-left:0;
 
 /* Level A */
 .cpe-dropdown__content{
+--page-accent-background-color:rgba(var(--page-background-color-rgb),0.2);
 background-color:rgba(var(--page-secondary-background-color-rgb),var(--dropdown-opacity));
 color:var(--page-text-background-color);
 border:1px solid var(--page-border-background-color);
@@ -2598,7 +2602,7 @@ transition:display 300ms;
 position:absolute;
 transform:translateX(-50%);
 z-index:4;
-box-shadow:0 2px 6px 0 rgba(var(--page-text-background-color-rgb),.2), 0 2px 6px 0 rgba(var(--page-background-color-rgb),0.2);
+box-shadow:0 2px 6px 0 rgba(var(--page-text-background-color-rgb),.2), 0 2px 6px 0 rgba(var(--page-background-color-rgb),0.2), var(--page-accent-box-shadow);
 font-size:14px;
   scrollbar-width:thin;
   scrollbar-color:var(--scrollbar-thumb-color-1) var(--scrollbar-track-color-1);
@@ -2616,7 +2620,7 @@ font-size:14px;
 }
 
 .cpe-dropdown[cpe-orient="land"] .cpe-dropdown__content {
-	box-shadow:2px 0 6px 0 rgba(var(--page-text-background-color-rgb),.2), 2px 0 6px 0 rgba(var(--page-background-color-rgb),0.2);
+	box-shadow:2px 0 6px 0 rgba(var(--page-text-background-color-rgb),.2), 2px 0 6px 0 rgba(var(--page-background-color-rgb),0.2), var(--page-accent-box-shadow);
 	left:100%;
 	min-width:0;
 	top:-50%;
@@ -2815,10 +2819,11 @@ top:auto;bottom:-8px
 */
 
 .cpe-dropdown__content .cpe-list.is-linked .cpe-dropdown-level-2 .cpe-dropdown-level-2__content{
-	--dropdown-opacity:0.9;
+	--dropdown-opacity:0.8;
 background-color:rgba(var(--page-secondary-background-color-rgb),var(--dropdown-opacity));
 border:1px solid var(--page-border-background-color);
 border-radius:var(--border-radius);
+box-shadow:var(--page-accent-box-shadow);
 display:none;
 left:100%;
 padding:8px 0;
@@ -3171,7 +3176,9 @@ opacity:1;
 
 /* Banners */
 .cpe-banner-notification{
+	--page-accent-background-color:rgba(var(--page-background-color-rgb),0.2);
 	background-color:rgba(var(--page-secondary-background-color-rgb),var(--dropdown-opacity));
+	box-shadow:var(--page-accent-box-shadow);
 	color:var(--page-text-background-color);
 	display:flex;
 	transition:opacity .4s, transform .4s; 
