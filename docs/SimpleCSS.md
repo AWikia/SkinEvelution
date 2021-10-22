@@ -11,6 +11,7 @@ This snipset changes the floating actions to be themed according to a chosen col
     --floating-button-color-hover: var(--body-foreground-color);
     --floating-button-background-color: var(--body-background-color);
     --floating-button-hover-background-color: var(--body-background-color-hover);
+	--floating-button-fadeout-opacity:0;
 }
 ```
 
@@ -21,6 +22,7 @@ This snipset changes the floating actions to be themed according to a chosen col
     --floating-button-color-hover: var(--superbar-text-foreground-color);
     --floating-button-background-color: var(--superbar-text-background-color);
     --floating-button-hover-background-color: var(--superbar-text-background-color-hover);
+	--floating-button-fadeout-opacity:0;
 }
 ```
 
@@ -31,6 +33,7 @@ This snipset changes the floating actions to be themed according to a chosen col
     --floating-button-color-hover: var(--secondary-accent-foreground-color);
     --floating-button-background-color: var(--secondary-accent-background-color);
     --floating-button-hover-background-color: var(--secondary-accent-background-color-hover);
+	--floating-button-fadeout-opacity:0;
 }
 ```
 
@@ -42,6 +45,7 @@ This snipset changes the floating actions to be themed according to a chosen col
     --floating-button-color-hover: var(--page-foreground-color);
     --floating-button-background-color: var(--page-background-color);
     --floating-button-hover-background-color: var(--page-background-color-hover);
+	--floating-button-fadeout-opacity:0;
 }
 ```
 
@@ -52,6 +56,7 @@ This snipset changes the floating actions to be themed according to a chosen col
     --floating-button-color-hover: var(--page-foreground-color);
     --floating-button-background-color: var(--page-secondary-background-color);
     --floating-button-hover-background-color: var(--page-secondary-background-color-hover);
+	--floating-button-fadeout-opacity:0;
 }
 ```
 
@@ -62,6 +67,7 @@ This snipset changes the floating actions to be themed according to a chosen col
     --floating-button-color-hover: var(--page-border-foreground-color);
     --floating-button-background-color: var(--page-border-background-color);
     --floating-button-hover-background-color: var(--page-border-background-color-hover);
+	--floating-button-fadeout-opacity:0;
 }
 ```
 
@@ -72,6 +78,7 @@ This snipset changes the floating actions to be themed according to a chosen col
     --floating-button-color-hover: var(--page-text-foreground-color);
     --floating-button-background-color: var(--page-text-background-color);
     --floating-button-hover-background-color: var(--page-text-background-color-hover);
+	--floating-button-fadeout-opacity:0;
 }
 ```
 
@@ -82,6 +89,7 @@ This snipset changes the floating actions to be themed according to a chosen col
     --floating-button-color-hover: var(--accent-foreground-color);
     --floating-button-background-color: var(--accent-background-color);
     --floating-button-hover-background-color: var(--accent-background-color-hover);
+	--floating-button-fadeout-opacity:0;
 }
 ```
 
@@ -92,6 +100,7 @@ This snipset changes the floating actions to be themed according to a chosen col
     --floating-button-color-hover: var(--alert-foreground-color);
     --floating-button-background-color: var(--alert-background-color);
     --floating-button-hover-background-color: var(--alert-background-color-hover);
+	--floating-button-fadeout-opacity:0;
 }
 ```
 
@@ -102,6 +111,7 @@ This snipset changes the floating actions to be themed according to a chosen col
     --floating-button-color-hover: var(--warning-foreground-color);
     --floating-button-background-color: var(--warning-background-color);
     --floating-button-hover-background-color: var(--warning-background-color-hover);
+	--floating-button-fadeout-opacity:0;
 }
 ```
 
@@ -112,6 +122,7 @@ This snipset changes the floating actions to be themed according to a chosen col
     --floating-button-color-hover: var(--success-foreground-color);
     --floating-button-background-color: var(--success-background-color);
     --floating-button-hover-background-color: var(--success-background-color-hover);
+	--floating-button-fadeout-opacity:0;
 }
 ```
 
@@ -122,11 +133,16 @@ This snipset changes the floating actions to be themed according to a chosen col
     --floating-button-color-hover: var(--message-foreground-color);
     --floating-button-background-color: var(--message-background-color);
     --floating-button-hover-background-color: var(--message-background-color-hover);
+	--floating-button-fadeout-opacity:0;
 }
 ```
 
 ### Color Fun
 ```css
+.cpe-floating-button.page-side-tool {
+	--floating-button-fadeout-opacity:0;
+}
+
 .cpe-floating-button.page-side-tool.toggle-size {
     --floating-button-color: var(--body-foreground-color);
     --floating-button-color-hover: var(--body-foreground-color);
@@ -186,6 +202,10 @@ This snipset changes the floating actions to be themed according to a chosen col
 
 ### Generic Color Fun
 ```css
+.cpe-floating-button.page-side-tool {
+	--floating-button-fadeout-opacity:0;
+}
+
 .cpe-floating-button.page-side-tool.toggle-size,
 .cpe-floating-button.page-side-tool.edit {
     --floating-button-color: var(--alert-foreground-color);
