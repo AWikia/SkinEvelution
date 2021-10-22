@@ -108,7 +108,6 @@ var visualColorNames = ['Factory', 'XP Luna', 'Windows Forced', 'Campbell Forced
 	VisualStyle(style_active,false);
 	VisualColor(color_active,false);
 	ContrastBanner(); // Notice
-//	SocialCompile();
 	$('html').addClass('theming-loaded');
 
 })();
@@ -475,8 +474,6 @@ function colortheme(theme='auto', repaint=true, save=true) {
 	if (save) {
 		insertKey('color-mode', theme );
 	}
-	$(".evelution-page-header .color-modes li").removeClass('selected');
-	$(".evelution-page-header .color-modes li." + theme).addClass('selected');
 	if ((old_dark != window.MW18darkmode) && (repaint) ) {
 		ColorUpdate(false);
 	}
@@ -1038,28 +1035,6 @@ return ((chroma.contrast(color, color2)) >= contrast)
 
 
 
-function SocialCompile() {
-	$("head .social-colors").text('');	
-	let str = '';
-	var socialV = ['facebook','googleplus','line','linkedin','instagram','meneame','nk','odnoklassniki','reddit','tumblr','twitter','vkontakte','wykop','weibo','youtube','discord','fandom','asecure','steam','spotify','twitch','qore','evelution','splashhol','gamepedia','github','xbox']
-	var socialC = ['#3b5998','#dd4b39','#00c300','#0077b5','#e02d69','#ff6400','#4077a7','#f96900','#ff4500','#34465d','#1da1f2','#587ca3','#fb803f','#ff8140','#cd201f','#5865f2','#00acac','#0009FF','#000','#1ed760','#563194','#ff4500','#18bbc5','#61448d','#f4801f','#191717','#5dc21e']
-	var socialAM = socialC.length
-// Start Content BG
-	var content_color =	getComputedStyle(document.querySelector('body')).getPropertyValue("--page-background-color");
-// End Content BG
-
-	for (let i = 0; i < socialAM; i++) {
-	  var color = socialC[i];
-//	  var colormixl = ColorTestTwin(content_color,color,0.8);
-//      var colormix = ColorTestTwin(content_color,color,1.6);
-	  var name = socialV[i];
-	  var data = '.cpe-button.is-' + name + '-color{' +'--accent-background-color:' + color + '!important;' + '--accent-background-color-hover:' + ColorTest(color,false) + '!important;' + '--accent-foreground-color:' + ColorTest(color,true) + '!important;' + '--accent-foreground-color-hover:' + ColorTest(ColorTest(color,true),false) + '!important;' +  '--accent-foreground-color-inverted:' + ColorTest(color,true,true) + '!important;' + ColorTest(ColorTest(color,true,true),false) + '!important;' + '}'
-	  str = str + data;
-	}
-
-	$("head .social-colors").append(str);
-
-}
 
 /* End Color Parsers */
 
@@ -1068,7 +1043,7 @@ function ColorUpdate(refresh=true) {
 if (refresh === true) {
 	colortheme($('html').attr("wikitheme"), false,false);
 	CheckAdapt();
-	/** Foreground Colors **/
+	/** Foreground Colors 
 	document.querySelector('html').style.setProperty("--light-theme-foreground-color-hover", ColorTest(getComputedStyle(document.querySelector('html')).getPropertyValue("--light-theme-foreground-color")) );
 	document.querySelector('html').style.setProperty("--dark-theme-foreground-color-hover", ColorTest(getComputedStyle(document.querySelector('html')).getPropertyValue("--dark-theme-foreground-color")) );
 
@@ -1077,6 +1052,7 @@ if (refresh === true) {
 
 	document.querySelector('html').style.setProperty("--light-theme-foreground-color-hover-rgb", Color2(ColorTest(getComputedStyle(document.querySelector('html')).getPropertyValue("--light-theme-foreground-color"))) );
 	document.querySelector('html').style.setProperty("--dark-theme-foreground-color-hover-rgb", Color2(ColorTest(getComputedStyle(document.querySelector('html')).getPropertyValue("--dark-theme-foreground-color"))) );
+	**/
 }
 
 
@@ -1164,16 +1140,16 @@ if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--page-t
 	}
 	document.querySelector('body').style.setProperty("--page-text-background-color", content_text);
 
-		if ( !(isSuitableColor(GetPageText(), GetPage())) )  { // If still not legible
+		if ( !(isSuitableColor(GetPageText(), content_color)) )  { // If still not legible
 			document.querySelector('body').style.setProperty("--page-text-background-color", ColorTest(GetPageText(),false,false,true));
 		}
-		if ( !(isSuitableColor(GetPageText(), GetPage())) )  { // If still not legible
+		if ( !(isSuitableColor(GetPageText(), content_color)) )  { // If still not legible
 			document.querySelector('body').style.setProperty("--page-text-background-color", ColorTest(GetPageText(),false,false,true));
 		}
-		if ( !(isSuitableColor(GetPageText(), GetPage())) )  { // If still not legible
+		if ( !(isSuitableColor(GetPageText(), content_color)) )  { // If still not legible
 			document.querySelector('body').style.setProperty("--page-text-background-color", ColorTest(GetPageText(),false,false,true));
 		}
-		if ( !(isSuitableColor(GetPageText(), GetPage())) )  { // If still not legible
+		if ( !(isSuitableColor(GetPageText(), content_color)) )  { // If still not legible
 			document.querySelector('body').style.setProperty("--page-text-background-color", ColorTest(GetPageText(),false,false,true));
 		}
 
@@ -1204,16 +1180,16 @@ if ( (window.MW18darkmode === true) ) {
 } else {
 	document.querySelector('body').style.setProperty("--accent-background-color", 'inherit');
 }
-		if ( !(isSuitableColor2(GetAccent(), GetPage())) )  { // If still not legible
+		if ( !(isSuitableColor2(GetAccent(), content_color)) )  { // If still not legible
 			document.querySelector('body').style.setProperty("--accent-background-color", ColorTest(GetAccent(),false,false,true));
 		}
-		if ( !(isSuitableColor2(GetAccent(), GetPage())) )  { // If still not legible
+		if ( !(isSuitableColor2(GetAccent(), content_color)) )  { // If still not legible
 			document.querySelector('body').style.setProperty("--accent-background-color", ColorTest(GetAccent(),false,false,true));
 		}
-		if ( !(isSuitableColor2(GetAccent(), GetPage())) )  { // If still not legible
+		if ( !(isSuitableColor2(GetAccent(), content_color)) )  { // If still not legible
 			document.querySelector('body').style.setProperty("--accent-background-color", ColorTest(GetAccent(),false,false,true));
 		}
-		if ( !(isSuitableColor2(GetAccent(), GetPage())) )  { // If still not legible
+		if ( !(isSuitableColor2(GetAccent(), content_color)) )  { // If still not legible
 			document.querySelector('body').style.setProperty("--accent-background-color", ColorTest(GetAccent(),false,false,true));
 		}
 
@@ -1238,16 +1214,16 @@ if ( (window.MW18darkmode === true) ) {
 } else {
 	document.querySelector('body').style.setProperty("--secondary-accent-background-color", 'inherit');
 }
-		if ( !(isSuitableColor(GetSecondaryAccent(), GetPage())) )  { // If still not legible
+		if ( !(isSuitableColor(GetSecondaryAccent(), content_color)) )  { // If still not legible
 			document.querySelector('body').style.setProperty("--secondary-accent-background-color", ColorTest(GetSecondaryAccent(),false,false,true));
 		}
-		if ( !(isSuitableColor(GetSecondaryAccent(), GetPage())) )  { // If still not legible
+		if ( !(isSuitableColor(GetSecondaryAccent(), content_color)) )  { // If still not legible
 			document.querySelector('body').style.setProperty("--secondary-accent-background-color", ColorTest(GetSecondaryAccent(),false,false,true));
 		}
-		if ( !(isSuitableColor(GetSecondaryAccent(), GetPage())) )  { // If still not legible
+		if ( !(isSuitableColor(GetSecondaryAccent(), content_color)) )  { // If still not legible
 			document.querySelector('body').style.setProperty("--secondary-accent-background-color", ColorTest(GetSecondaryAccent(),false,false,true));
 		}
-		if ( !(isSuitableColor(GetSecondaryAccent(), GetPage())) )  { // If still not legible
+		if ( !(isSuitableColor(GetSecondaryAccent(), content_color)) )  { // If still not legible
 			document.querySelector('body').style.setProperty("--secondary-accent-background-color", ColorTest(GetSecondaryAccent(),false,false,true));
 		}
 
@@ -1274,16 +1250,16 @@ if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--page-b
 	if ( (window.MW18darkmode === true) ) {
 		document.querySelector('body').style.setProperty("--page-border-background-color", ColorInvert(getComputedStyle(document.querySelector('html')).getPropertyValue("--page-border-background-color")));
 	}
-		if ( !(isSuitableColor2(GetPageBorder(), GetPage())) )  { // If still not legible
+		if ( !(isSuitableColor2(GetPageBorder(), content_color)) )  { // If still not legible
 			document.querySelector('body').style.setProperty("--page-border-background-color", ColorTest(GetPageBorder(),false,false,true));
 		}
-		if ( !(isSuitableColor2(GetPageBorder(), GetPage())) )  { // If still not legible
+		if ( !(isSuitableColor2(GetPageBorder(), content_color)) )  { // If still not legible
 			document.querySelector('body').style.setProperty("--page-border-background-color", ColorTest(GetPageBorder(),false,false,true));
 		}
-		if ( !(isSuitableColor2(GetPageBorder(), GetPage())) )  { // If still not legible
+		if ( !(isSuitableColor2(GetPageBorder(), content_color)) )  { // If still not legible
 			document.querySelector('body').style.setProperty("--page-border-background-color", ColorTest(GetPageBorder(),false,false,true));
 		}
-		if ( !(isSuitableColor2(GetPageBorder(), GetPage())) )  { // If still not legible
+		if ( !(isSuitableColor2(GetPageBorder(), content_color)) )  { // If still not legible
 			document.querySelector('body').style.setProperty("--page-border-background-color", ColorTest(GetPageBorder(),false,false,true));
 		}
 
@@ -1375,11 +1351,11 @@ if (!SupportsColorContrast()) {
 
 
 
-/* Set Values */
+/* Set Values
 document.querySelector('html').style.setProperty("--alert-background-color-hover", alertcolor1);
 // RGB
 document.querySelector('html').style.setProperty("--alert-background-color-rgb", Color2(alert_color));
-
+ */
 
 /** Warning Color **/
 /* Set Vars */
@@ -1392,11 +1368,11 @@ if (!SupportsColorContrast()) {
 }
 
 
-/* Set Values */
+/* Set Values
 document.querySelector('html').style.setProperty("--warning-background-color-hover", warningcolor1);
 // RGB
 document.querySelector('html').style.setProperty("--warning-background-color-rgb", Color2(warning_color));
-
+ */
 
 /** Success Color **/
 /* Set Vars */
@@ -1409,11 +1385,11 @@ if (!SupportsColorContrast()) {
 }
 
 
-/* Set Values */
+/* Set Values
 document.querySelector('html').style.setProperty("--success-background-color-hover", successcolor1);
 // RGB
 document.querySelector('html').style.setProperty("--success-background-color-rgb", Color2(success_color));
-
+ */
 
 /** Message Color **/
 /* Set Vars */
@@ -1426,11 +1402,11 @@ if (!SupportsColorContrast()) {
 }
 
 
-/* Set Values */
+/* Set Values
 document.querySelector('html').style.setProperty("--message-background-color-hover", messagecolor1);
 // RGB
 document.querySelector('html').style.setProperty("--message-background-color-rgb", Color2(message_color));
-
+ */
 
 
 ThemeColorMetaTag();
@@ -1438,7 +1414,6 @@ ThemeColorMetaTag();
 if (refresh === true) {
 	CheckBG()
 }
-// SocialCompile();
 
 
 }
