@@ -261,7 +261,11 @@ function GetPage() {
 	if (ForcedColors()) {
 		return getComputedStyle(document.querySelector('.fc-canvas')).getPropertyValue("color");
 	} else {
-		return getComputedStyle(document.querySelector('html')).getPropertyValue("--page-background-color");
+		var page = getComputedStyle(document.querySelector('html')).getPropertyValue("--page-background-color");
+		if ( (window.MW18darkmode === true) ) {
+			return ColorInvert(page);
+		}
+		return page
 	}
 }
 
@@ -321,9 +325,6 @@ function GetMessage() {
 
 function BestAlertColor() {
 var page = GetPage()
-if ( (window.MW18darkmode === true) ) {
-	var page = ColorInvert(page);
-}
 if ( Color(page).getLightness() < 0.5) {
 /** V1 **/
 var colors = ['#e60000', '#cc0000', '#b30000', '#990000', '#800000', '#660000', '#4d0000', '#330000', '#1a0000', '#ff1919', '#ff3333', '#ff4d4d', '#ff6666', '#ff8080', '#ff9999', '#ffb3b3', '#ffcccc', '#ffe6e6'];
@@ -888,9 +889,6 @@ function ColorTestTwin(color1,color2,intensity=1) {
 function ColorTest(color,text=false,inv=false,dledlen=false) { // Regular Colors
 	if (dledlen === true) {
 		var color2 = GetPage();
-		if ( (window.MW18darkmode === true) ) {
-			var color2 = ColorInvert(color2);
-		}
 	} else {
 		var color2 = color;
 	}
@@ -1039,7 +1037,7 @@ var result2 = ''
 // dropdowncolor is Dropdown Bg
 // dropdowncolor2 is Content Border
 
-var content_color =  GetPage();
+var content_color =  GetPageShort();
 
 // Liatch Quirk
 if ( (window.MW18darkmode === true) ) {
