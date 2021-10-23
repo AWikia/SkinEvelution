@@ -102,7 +102,7 @@ var visualColorNames = ['Factory', 'XP Luna', 'Windows Forced', 'Campbell Forced
 		'<meta name="theme-color" content="' + Color( getComputedStyle(document.querySelector('.body-background-color')).getPropertyValue("background-color") ).setAlpha(1).toString() + '">'
 		);	
 	}
-	$("head").append('<style class="social-colors"></style>');
+	$("head").append('<style class="theming"></style>');
 	ManagerRows(); // For Task Manager Only
 	VisualStyleCompile(); // Compiles the Contrast Options
 	VisualStyle(style_active,false);
@@ -233,7 +233,7 @@ function GetCommunity() {
 	if (ForcedColors()) {
 		return getComputedStyle(document.querySelector('.fc-canvas')).getPropertyValue("color");
 	} else {
-		return getComputedStyle(document.querySelector('body')).getPropertyValue("--body-background-color");
+		return Color(getComputedStyle(document.querySelector('html')).getPropertyValue("--body-background-color")).toString();
 	}
 }
 
@@ -241,7 +241,7 @@ function GetCommunityHeaderText() {
 	if (ForcedColors()) {
 		return getComputedStyle(document.querySelector('.fc-canvastext')).getPropertyValue("color");
 	} else {
-		return getComputedStyle(document.querySelector('body')).getPropertyValue("--superbar-text-background-color");
+		return Color(getComputedStyle(document.querySelector('html')).getPropertyValue("--superbar-text-background-color")).toString();
 	}
 }
 
@@ -250,7 +250,7 @@ function GetPageShort() { // Like GetPage() without forced colors mode you get t
 	if (ForcedColors()) {
 		return getComputedStyle(document.querySelector('.fc-canvas')).getPropertyValue("color");
 	} else {
-		return getComputedStyle(document.querySelector('html')).getPropertyValue("--page-background-color");
+		return Color(getComputedStyle(document.querySelector('html')).getPropertyValue("--page-background-color")).toString();
 	}
 }
 
@@ -259,7 +259,7 @@ function GetPage() {
 	if (ForcedColors()) {
 		return getComputedStyle(document.querySelector('.fc-canvas')).getPropertyValue("color");
 	} else {
-		return getComputedStyle(document.querySelector('body')).getPropertyValue("--page-background-color");
+		return Color(getComputedStyle(document.querySelector('html')).getPropertyValue("--page-background-color")).toString();
 	}
 }
 
@@ -267,7 +267,7 @@ function GetSecondaryAccent() {
 	if (ForcedColors()) {
 		return getComputedStyle(document.querySelector('.fc-linktext')).getPropertyValue("color");
 	} else {
-		return getComputedStyle(document.querySelector('body')).getPropertyValue("--secondary-accent-background-color");
+		return Color(getComputedStyle(document.querySelector('html')).getPropertyValue("--secondary-accent-background-color")).toString();
 	}
 }
 
@@ -275,10 +275,10 @@ function GetSecondaryAccent() {
 function GetPageBorder() {
 	if (ForcedColors()) {
 		return getComputedStyle(document.querySelector('.fc-graytext')).getPropertyValue("color");
-	} else if (SupportsColorMix()) {
+	} else if ((SupportsColorMix())  && ((getComputedStyle(document.querySelector('html')).getPropertyValue("--page-border-background-color") === 'auto')  ) ) {
 		return getComputedStyle(document.querySelector('.page-bor')).getPropertyValue("color");
 	} else {
-		return getComputedStyle(document.querySelector('body')).getPropertyValue("--page-border-background-color");
+		return Color(getComputedStyle(document.querySelector('html')).getPropertyValue("--page-border-background-color")).toString();
 	}
 }
 
@@ -287,7 +287,7 @@ function GetPageText() {
 	if (ForcedColors()) {
 		return getComputedStyle(document.querySelector('.fc-canvastext')).getPropertyValue("color");
 	} else {
-		return getComputedStyle(document.querySelector('body')).getPropertyValue("--page-text-background-color");
+		return Color(getComputedStyle(document.querySelector('html')).getPropertyValue("--page-text-background-color")).toString();
 	}
 }
 
@@ -296,7 +296,7 @@ function GetAccent() {
 	if (ForcedColors()) {
 		return getComputedStyle(document.querySelector('.fc-highlight')).getPropertyValue("color");
 	} else {
-		return getComputedStyle(document.querySelector('body')).getPropertyValue("--accent-background-color");
+		return Color(getComputedStyle(document.querySelector('html')).getPropertyValue("--accent-background-color")).toString();
 	}
 }
 
@@ -318,7 +318,11 @@ function GetMessage() {
 }
 
 function BestAlertColor() {
-if ( Color(GetPage()).getLightness() < 0.5) {
+var page = GetPage()
+if ( (window.MW18darkmode === true) ) {
+	var page = ColorInvert(page);
+}
+if ( Color(page).getLightness() < 0.5) {
 /** V1 **/
 var colors = ['#e60000', '#cc0000', '#b30000', '#990000', '#800000', '#660000', '#4d0000', '#330000', '#1a0000', '#ff1919', '#ff3333', '#ff4d4d', '#ff6666', '#ff8080', '#ff9999', '#ffb3b3', '#ffcccc', '#ffe6e6'];
 var colors2= ['#e69500', '#cc8500', '#b37400', '#996300', '#805300', '#664200', '#4d3200', '#332100', '#1a1100', '#ffaf19', '#ffb833', '#ffc14d', '#ffc966', '#ffd280', '#ffdb99', '#ffe4b3', '#ffedcc', '#fff6e6'];
@@ -339,12 +343,12 @@ var colors4= ['#8c8c8c', '#999999', '#a5a5a5', '#b2b2b2', '#bfbfbf', '#cccccc', 
 		contrastM = (window.matchMedia('(prefers-contrast: more)').matches) ? 3.37 : 2.25
 
 	for (let i = 0; i < colors.length; i++) {
-		if ( ((chroma.contrast(GetPage(), colors[i])) >= contrastA) && ((chroma.contrast(GetPage(), colors2[i])) >= contrastW) && ((chroma.contrast(GetPage(), colors3[i])) >= contrastS) && ((chroma.contrast(GetPage(), colors4[i])) >= contrastM) ) {
+		if ( ((chroma.contrast(page, colors[i])) >= contrastA) && ((chroma.contrast(page, colors2[i])) >= contrastW) && ((chroma.contrast(page, colors3[i])) >= contrastS) && ((chroma.contrast(page, colors4[i])) >= contrastM) ) {
 			return Color4(colors[i]);
 		}
 	}
 	/* If no color can be found legible, fallback to specific color */
-	if (isLightColor(GetPage())) {
+	if (isLightColor(page)) {
 		return '153 0 0';
 	} else {
 		return '255 102 102';
@@ -476,13 +480,6 @@ function colortheme(theme='auto', repaint=true, save=true) {
 	}
 	if ((old_dark != window.MW18darkmode) && (repaint) ) {
 		ColorUpdate(false);
-	}
-
-	$('html').attr("dark-mode", (isDarkColor(GetPage())) );
-	if (window.MW18darkmode) {
-		$('html').attr("dark-mode-adjusted", isLightColor( GetPageShort() ));
-	} else {
-		$('html').attr("dark-mode-adjusted", !(isLightColor( GetPageShort() ) ));
 	}
 }
 
@@ -881,37 +878,17 @@ function ColorTestTwin(color1,color2,intensity=1) {
 	var r1 = Color(color2).getRed() * alpha;
 	var g1 = Color(color2).getGreen() * alpha;
 	var b1 = Color(color2).getBlue() * alpha;
-	return Color([(r + r1) * 255,(g + g1) * 255,(b + b1) * 255]);
+	return Color([(r + r1) * 255,(g + g1) * 255,(b + b1) * 255]).toString();
 }
 
-function GetHoverColor(color1='#ffffff',color2='#000000') { // Used by color mixes
-	var alpha = 0.2;
-	var r = Color(color1).getRed() * (1 - alpha);
-	var g = Color(color1).getGreen() * (1 - alpha);
-	var b = Color(color1).getBlue() * (1 - alpha);
-
-	var r1 = Color(color2).getRed() * alpha;
-	var g1 = Color(color2).getGreen() * alpha;
-	var b1 = Color(color2).getBlue() * alpha;
-	return Color([(r + r1) * 255,(g + g1) * 255,(b + b1) * 255]);
-}
-
-function GetActiveColor(color1='#ffffff',color2='#000000') { // Used by color mixes
-	var alpha = 0.4;
-	var r = Color(color1).getRed() * (1 - alpha);
-	var g = Color(color1).getGreen() * (1 - alpha);
-	var b = Color(color1).getBlue() * (1 - alpha);
-
-	var r1 = Color(color2).getRed() * alpha;
-	var g1 = Color(color2).getGreen() * alpha;
-	var b1 = Color(color2).getBlue() * alpha;
-	return Color([(r + r1) * 255,(g + g1) * 255,(b + b1) * 255]);
-}
 
 
 function ColorTest(color,text=false,inv=false,dledlen=false) { // Regular Colors
 	if (dledlen === true) {
 		var color2 = GetPage();
+		if ( (window.MW18darkmode === true) ) {
+			var color2 = ColorInvert(color2);
+		}
 	} else {
 		var color2 = color;
 	}
@@ -925,9 +902,9 @@ function ColorTest(color,text=false,inv=false,dledlen=false) { // Regular Colors
 			}
 		} else {
 			if (inv === false) {
-				return Color(color).darkenByAmount( 0.2 );
+				return Color(color).darkenByAmount( 0.2 ).toString();
 			} else {
-				return Color(color).lightenByAmount( 0.2 );
+				return Color(color).lightenByAmount( 0.2 ).toString();
 			}
 		}
 	} else {
@@ -939,9 +916,9 @@ function ColorTest(color,text=false,inv=false,dledlen=false) { // Regular Colors
 			}
 		} else {
 			if (inv === true) {
-				return Color(color).darkenByAmount( 0.2 );
+				return Color(color).darkenByAmount( 0.2 ).toString();
 			} else {
-				return Color(color).lightenByAmount( 0.2 );
+				return Color(color).lightenByAmount( 0.2 ).toString();
 			}
 		}
 	}
@@ -955,7 +932,7 @@ function ColorInvert(color) {
 	var r = 1 - Color(color).getRed();
 	var g = 1 - Color(color).getGreen();
 	var b = 1 - Color(color).getBlue();
-	return Color(color).setRed(r).setGreen(g).setBlue(b).shiftHue(180);
+	return Color(color).setRed(r).setGreen(g).setBlue(b).shiftHue(180).toString();
 }
 
 
@@ -1056,7 +1033,8 @@ if (refresh === true) {
 }
 
 
-
+var result = ''
+var result2 = ''
 
 /** Page BG **/
 /* Set Vars */
@@ -1067,24 +1045,24 @@ if (refresh === true) {
 // dropdowncolor is Dropdown Bg
 // dropdowncolor2 is Content Border
 
+var content_color =  GetPage();
+
 // Liatch Quirk
 if ( (window.MW18darkmode === true) ) {
-	document.querySelector('body').style.setProperty("--page-background-color", ColorInvert(getComputedStyle(document.querySelector('html')).getPropertyValue("--page-background-color")));
-} else {
-	document.querySelector('body').style.setProperty("--page-background-color", 'inherit');
+	var content_color = ColorInvert(content_color);
 }
 
 /* This goes before compiling Generic Colors or else they will think the theme is light */
 	
-	$('html').attr("dark-mode", (isDarkColor(GetPage())) );
+	$('html').attr("dark-mode", (isDarkColor(content_color )) );
 	if (window.MW18darkmode) {
 		$('html').attr("dark-mode-adjusted", isLightColor( GetPageShort() ));
+		var result2 = result2 + "--page-background-color:" + content_color + ";\n"
 	} else {
 		$('html').attr("dark-mode-adjusted", !(isLightColor( GetPageShort() ) ));
 	}
 
 
-var content_color =  GetPage();
 
 var content_color2 = ColorTest(content_color);
 
@@ -1095,20 +1073,19 @@ if (!SupportsColorMix()) {
 		var dropdowncolor = ColorTestTwin(content_color,"#000000",adjustment);
 		if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--page-border-background-color") === 'auto')  ) {
 			var dropdowncolor2 = ColorTestTwin(content_color,"#000000",adjustment*2);
+			var result2 = result2 + "--page-border-background-color:" + dropdowncolor2 + ";\n"
 		} else {
-			var dropdowncolor2 = 'inherit';
+			var dropdowncolor2 = GetPageBorder();
 		}
 	} else {
 		var dropdowncolor = ColorTestTwin(content_color,"#ffffff",adjustment);
 		if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--page-border-background-color") === 'auto')  ) {
 			var dropdowncolor2 = ColorTestTwin(content_color,"#ffffff",adjustment*2);
+			var result2 = result2 + "--page-border-background-color:" + dropdowncolor2 + ";\n"
 		} else {
-			var dropdowncolor2 = 'inherit';
+			var dropdowncolor2 = GetPageBorder();
 		}
 	}
-	document.querySelector('body').style.setProperty("--page-border-background-color", dropdowncolor2);
-} else {
-	document.querySelector('body').style.setProperty("--page-border-background-color", 'inherit');
 }
 	if (SupportsColorMix()) {
 		var dropdowncolor = getComputedStyle(document.querySelector('.page-sec')).getPropertyValue("color")
@@ -1117,48 +1094,50 @@ if (!SupportsColorMix()) {
 var dropdowncolorH = ColorTest(dropdowncolor,false,false,true);
 
 if (!SupportsColorMix()) {
-	document.querySelector('html').style.setProperty("--page-secondary-background-color", dropdowncolor);
+	var result = result + "--page-secondary-background-color:" + dropdowncolor + ";\n"
 }
-document.querySelector('html').style.setProperty("--page-secondary-background-color-hover", dropdowncolorH);
+	var result = result + "--page-secondary-background-color-hover:" + dropdowncolorH + ";\n"
 
 
 
-document.querySelector('html').style.setProperty("--page-background-color-hover", content_color2);
+	var result = result + "--page-background-color-hover:" + content_color2 + ";\n"
+
 // RGB
-document.querySelector('html').style.setProperty("--page-secondary-background-color-rgb", Color2(dropdowncolor));
-document.querySelector('html').style.setProperty("--page-background-color-rgb", Color2( GetPage() ));
+	var result = result + "--page-secondary-background-color-rgb:" + Color2(dropdowncolor) + ";\n"
 
+	var result = result + "--page-background-color-rgb:" + Color2( content_color ) + ";\n"
 
 
 /** Page text color **/
+var content_text= GetPageText();
+
 if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--page-text-background-color") !== 'auto')  ) {
 	// Liatch Quirk
 	if ( (window.MW18darkmode === true) ) {
-		content_text = ColorInvert(getComputedStyle(document.querySelector('html')).getPropertyValue("--page-text-background-color"));
-	} else {
-		content_text = 'inherit';
+		var content_text = ColorInvert(content_text);
 	}
-	document.querySelector('body').style.setProperty("--page-text-background-color", content_text);
 
-		if ( !(isSuitableColor(GetPageText(), content_color)) )  { // If still not legible
-			document.querySelector('body').style.setProperty("--page-text-background-color", ColorTest(GetPageText(),false,false,true));
+		if ( !(isSuitableColor(content_text, content_color)) )  { // If still not legible
+			var content_text= ColorTest(content_text,false,false,true);
+			if ( !(isSuitableColor(content_text, content_color)) )  { // If still not legible
+				var content_text= ColorTest(content_text,false,false,true);
+				if ( !(isSuitableColor(content_text, content_color)) )  { // If still not legible
+					var content_text= ColorTest(content_text,false,false,true);
+					if ( !(isSuitableColor(content_text, content_color)) )  { // If still not legible
+						var content_text= ColorTest(content_text,false,false,true);
+					}
+				}
+			}
+			var result2 = result2 + "--page-text-background-color:" + content_text + ";\n"
+		}  else if ( (window.MW18darkmode === true) ) {
+			var result2 = result2 + "--page-text-background-color:" + content_text + ";\n"
 		}
-		if ( !(isSuitableColor(GetPageText(), content_color)) )  { // If still not legible
-			document.querySelector('body').style.setProperty("--page-text-background-color", ColorTest(GetPageText(),false,false,true));
-		}
-		if ( !(isSuitableColor(GetPageText(), content_color)) )  { // If still not legible
-			document.querySelector('body').style.setProperty("--page-text-background-color", ColorTest(GetPageText(),false,false,true));
-		}
-		if ( !(isSuitableColor(GetPageText(), content_color)) )  { // If still not legible
-			document.querySelector('body').style.setProperty("--page-text-background-color", ColorTest(GetPageText(),false,false,true));
-		}
+
 
 } else {
-	var content_text = 'inherit'
+	var content_text = getComputedStyle(document.querySelector('body')).getPropertyValue("--page-text-background-color")
 }
 
-
-var content_text= GetPageText();
 
 var content_text1 = ColorTest(content_text,false,true,true);
 	setLightful(content_text,'page-text');
@@ -1166,68 +1145,77 @@ if (!SupportsColorContrast()) {
 	setLightful(content_text1,'page-text-hover');
 }
 
-document.querySelector('html').style.setProperty("--page-text-background-color-hover", content_text1);
+
+if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--page-text-background-color") !== 'auto')  ) {
+	var result = result + "--page-text-background-color-hover:" + content_text1 + ";\n"
+
 // RGB
-document.querySelector('html').style.setProperty("--page-text-background-color-rgb", Color2( getComputedStyle(document.querySelector('body')).getPropertyValue("--page-text-background-color") ));
-document.querySelector('html').style.setProperty("--page-text-background-color-hover-rgb", Color2(content_text1));
+	var result = result + "--page-text-background-color-rgb:" + Color2( content_text ) + ";\n"
+	var result = result + "--page-text-background-color-hover-rgb:" + Color2(content_text1) + ";\n"
+}
 
 
 /** Button Color **/
 /* Set Vars */
-// Liatch Quirk
-if ( (window.MW18darkmode === true) ) {
-	document.querySelector('body').style.setProperty("--accent-background-color", ColorInvert(getComputedStyle(document.querySelector('html')).getPropertyValue("--accent-background-color")));
-} else {
-	document.querySelector('body').style.setProperty("--accent-background-color", 'inherit');
-}
-		if ( !(isSuitableColor2(GetAccent(), content_color)) )  { // If still not legible
-			document.querySelector('body').style.setProperty("--accent-background-color", ColorTest(GetAccent(),false,false,true));
-		}
-		if ( !(isSuitableColor2(GetAccent(), content_color)) )  { // If still not legible
-			document.querySelector('body').style.setProperty("--accent-background-color", ColorTest(GetAccent(),false,false,true));
-		}
-		if ( !(isSuitableColor2(GetAccent(), content_color)) )  { // If still not legible
-			document.querySelector('body').style.setProperty("--accent-background-color", ColorTest(GetAccent(),false,false,true));
-		}
-		if ( !(isSuitableColor2(GetAccent(), content_color)) )  { // If still not legible
-			document.querySelector('body').style.setProperty("--accent-background-color", ColorTest(GetAccent(),false,false,true));
-		}
-
 
 var button_color = GetAccent();
+
+// Liatch Quirk
+if ( (window.MW18darkmode === true) ) {
+	var button_color = ColorInvert(button_color);
+}
+		if ( !(isSuitableColor2(button_color, content_color)) )  { // If still not legible
+			var button_color= ColorTest(button_color,false,false,true);
+			if ( !(isSuitableColor2(button_color, content_color)) )  { // If still not legible
+				var button_color= ColorTest(button_color,false,false,true);
+				if ( !(isSuitableColor2(button_color, content_color)) )  { // If still not legible
+					var button_color= ColorTest(button_color,false,false,true);
+					if ( !(isSuitableColor2(button_color, content_color)) )  { // If still not legible
+						var button_color= ColorTest(button_color,false,false,true);
+					}
+				}
+			}
+			var result2 = result2 + "--accent-background-color:" + button_color + ";\n"
+		}  else if ( (window.MW18darkmode === true) ) {
+			var result2 = result2 + "--accent-background-color:" + button_color + ";\n"
+		}
+
+
 var buttoncolor1 = ColorTest(button_color,false);
 setLightful(button_color,'accent');
 if (!SupportsColorContrast()) {
 	setLightful(buttoncolor1,'accent-hover');
 }
 /* Set Values */
-document.querySelector('html').style.setProperty("--accent-background-color-hover", buttoncolor1);
+	var result = result + "--accent-background-color-hover:" + buttoncolor1 + ";\n"
 // RGB
-document.querySelector('html').style.setProperty("--accent-background-color-rgb", Color2(button_color));
+	var result = result + "--accent-background-color-rgb:" + Color2(button_color) + ";\n"
 
 
 /** Link Color **/
 /* Set Vars */
+var link_color = GetSecondaryAccent();
+
 // Liatch Quirk
 if ( (window.MW18darkmode === true) ) {
-	document.querySelector('body').style.setProperty("--secondary-accent-background-color", ColorInvert(getComputedStyle(document.querySelector('html')).getPropertyValue("--secondary-accent-background-color")));
-} else {
-	document.querySelector('body').style.setProperty("--secondary-accent-background-color", 'inherit');
+	var link_color = ColorInvert(link_color);
 }
-		if ( !(isSuitableColor(GetSecondaryAccent(), content_color)) )  { // If still not legible
-			document.querySelector('body').style.setProperty("--secondary-accent-background-color", ColorTest(GetSecondaryAccent(),false,false,true));
-		}
-		if ( !(isSuitableColor(GetSecondaryAccent(), content_color)) )  { // If still not legible
-			document.querySelector('body').style.setProperty("--secondary-accent-background-color", ColorTest(GetSecondaryAccent(),false,false,true));
-		}
-		if ( !(isSuitableColor(GetSecondaryAccent(), content_color)) )  { // If still not legible
-			document.querySelector('body').style.setProperty("--secondary-accent-background-color", ColorTest(GetSecondaryAccent(),false,false,true));
-		}
-		if ( !(isSuitableColor(GetSecondaryAccent(), content_color)) )  { // If still not legible
-			document.querySelector('body').style.setProperty("--secondary-accent-background-color", ColorTest(GetSecondaryAccent(),false,false,true));
+		if ( !(isSuitableColor(link_color, content_color)) )  { // If still not legible
+			var link_color= ColorTest(link_color,false,false,true);
+			if ( !(isSuitableColor(link_color, content_color)) )  { // If still not legible
+				var link_color= ColorTest(link_color,false,false,true);
+				if ( !(isSuitableColor(link_color, content_color)) )  { // If still not legible
+					var link_color= ColorTest(link_color,false,false,true);
+					if ( !(isSuitableColor(link_color, content_color)) )  { // If still not legible
+						var link_color= ColorTest(link_color,false,false,true);
+					}
+				}
+			}
+			var result2 = result2 + "--secondary-accent-background-color:" + link_color + ";\n"
+		}  else if ( (window.MW18darkmode === true) ) {
+			var result2 = result2 + "--secondary-accent-background-color:" + link_color + ";\n"
 		}
 
-var link_color = GetSecondaryAccent();
 var linkcolor1 = ColorTest(link_color,false,false,true);
 setLightful(link_color,'secondary-accent');
 if (!SupportsColorContrast()) {
@@ -1236,36 +1224,42 @@ if (!SupportsColorContrast()) {
 
 
 /* Set Values */
-document.querySelector('html').style.setProperty("--secondary-accent-background-color-hover", linkcolor1);
+	var result = result + "--secondary-accent-background-color-hover:" + linkcolor1 + ";\n"
 // RGB
-document.querySelector('html').style.setProperty("--secondary-accent-background-color-rgb", Color2(link_color));
+	var result = result + "--secondary-accent-background-color-rgb:" + Color2(link_color) + ";\n"
 
 /** Content Border **/
 /* Set Vars */
 
+var border_color =	dropdowncolor2;
 
 if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--page-border-background-color") != 'auto') ) { // Only run Liatch quirk if not in autocolorization
 	// Liatch Quirk
 
 	if ( (window.MW18darkmode === true) ) {
-		document.querySelector('body').style.setProperty("--page-border-background-color", ColorInvert(getComputedStyle(document.querySelector('html')).getPropertyValue("--page-border-background-color")));
+		var border_color = ColorInvert(border_color);
 	}
-		if ( !(isSuitableColor2(GetPageBorder(), content_color)) )  { // If still not legible
-			document.querySelector('body').style.setProperty("--page-border-background-color", ColorTest(GetPageBorder(),false,false,true));
+
+
+		if ( !(isSuitableColor2(border_color, content_color)) )  { // If still not legible
+			var border_color= ColorTest(border_color,false,false,true);
+			if ( !(isSuitableColor2(border_color, content_color)) )  { // If still not legible
+				var border_color= ColorTest(border_color,false,false,true);
+				if ( !(isSuitableColor2(border_color, content_color)) )  { // If still not legible
+					var border_color= ColorTest(border_color,false,false,true);
+					if ( !(isSuitableColor2(border_color, content_color)) )  { // If still not legible
+						var border_color= ColorTest(border_color,false,false,true);
+					}
+				}
+			}
+			var result2 = result2 + "--page-border-background-color:" + border_color + ";\n"
+		}  else if ( (window.MW18darkmode === true) ) {
+			var result2 = result2 + "--page-border-background-color:" + border_color + ";\n"
 		}
-		if ( !(isSuitableColor2(GetPageBorder(), content_color)) )  { // If still not legible
-			document.querySelector('body').style.setProperty("--page-border-background-color", ColorTest(GetPageBorder(),false,false,true));
-		}
-		if ( !(isSuitableColor2(GetPageBorder(), content_color)) )  { // If still not legible
-			document.querySelector('body').style.setProperty("--page-border-background-color", ColorTest(GetPageBorder(),false,false,true));
-		}
-		if ( !(isSuitableColor2(GetPageBorder(), content_color)) )  { // If still not legible
-			document.querySelector('body').style.setProperty("--page-border-background-color", ColorTest(GetPageBorder(),false,false,true));
-		}
+
 
 }
 
-var border_color =	GetPageBorder();
 
 var bordercolor1 = ColorTest(border_color);
 setLightful(border_color,'page-border');
@@ -1275,21 +1269,22 @@ if (!SupportsColorContrast()) {
 
 
 /* Set Values */
-document.querySelector('html').style.setProperty("--page-border-background-color-hover", bordercolor1);
+	var result = result + "--page-border-background-color-hover:" + bordercolor1 + ";\n"
 // RGB
-document.querySelector('html').style.setProperty("--page-border-background-color-rgb", Color2(border_color));
+	var result = result + "--page-border-background-color-rgb:" + Color2(border_color) + ";\n"
 
 
 /** Body Bg **/
 /* Set Vars */
-// Liatch Quirk
-if ( (window.MW18darkmode === true) ) {
-	document.querySelector('body').style.setProperty("--body-background-color", ColorInvert(getComputedStyle(document.querySelector('html')).getPropertyValue("--body-background-color")));
-} else {
-	document.querySelector('body').style.setProperty("--body-background-color", 'inherit');
-}
 
 var head_color =	GetCommunity();
+
+// Liatch Quirk
+if ( (window.MW18darkmode === true) ) {
+		var head_color = ColorInvert(head_color);
+		var result2 = result2 + "--body-background-color:" + head_color + ";\n"
+}
+
 var headcolor1 = ColorTest(head_color,false,false,true);
 setLightful(head_color,'body');
 if (!SupportsColorContrast()) {
@@ -1298,26 +1293,23 @@ if (!SupportsColorContrast()) {
 
 
 /* Set Values */
-document.querySelector('html').style.setProperty("--body-background-color-hover", headcolor1);
+	var result = result + "--body-background-color-hover:" + headcolor1 + ";\n"
 // RGB
-document.querySelector('html').style.setProperty("--body-background-color-rgb", Color2(head_color));
+	var result = result + "--body-background-color-rgb:" + Color2(head_color) + ";\n"
 
 /** Community Header text color **/
+
+var headertext_color= GetCommunityHeaderText();
+
 if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--superbar-text-background-color") !== 'auto')  ) {
 	// Liatch Quirk
 	if ( (window.MW18darkmode === true) ) {
-		headertext_color = ColorInvert(getComputedStyle(document.querySelector('html')).getPropertyValue("--superbar-text-background-color"));
-	} else {
-		headertext_color = 'inherit';
+		var headertext_color = ColorInvert(headertext_color);
+		var result2 = result2 + "--superbar-text-background-color:" + headertext_color + ";\n"
 	}
 
 
-} else {
-	var headertext_color = 'inherit'
 }
-
-document.querySelector('body').style.setProperty("--superbar-text-background-color", headertext_color);
-var headertext_color= GetCommunityHeaderText();
 
 var headertextcolor1 = ColorTest(headertext_color,false,true,true);
 	setLightful(headertext_color,'superbar-text');
@@ -1325,12 +1317,13 @@ if (!SupportsColorContrast()) {
 	setLightful(headertextcolor1,'superbar-text-hover');
 }
 
-document.querySelector('html').style.setProperty("--superbar-text-background-color-hover", headertextcolor1);
+if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--superbar-text-background-color") !== 'auto')  ) {
+	var result = result + "--superbar-text-background-color-hover:" + headertextcolor1 + ";\n"
 
 // RGB
-document.querySelector('html').style.setProperty("--superbar-text-background-color-rgb", Color2( getComputedStyle(document.querySelector('body')).getPropertyValue("--superbar-text-background-color") ));
-document.querySelector('html').style.setProperty("--superbar-text-background-color-hover-rgb", Color2(headertextcolor1));
-
+	var result = result + "--superbar-text-background-color-rgb:" + Color2( getComputedStyle(document.querySelector('body')).getPropertyValue("--superbar-text-background-color") ) + ";\n"
+	var result = result + "--superbar-text-background-color-hover-rgb:" + Color2(headertextcolor1) + ";\n"
+}
 
 
 
@@ -1414,6 +1407,7 @@ ThemeColorMetaTag();
 if (refresh === true) {
 	CheckBG()
 }
+$("head .theming").html(':root {\n' + result + '}\n' + 'body {\n' + result2 + '}');
 
 
 }
