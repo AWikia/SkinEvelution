@@ -275,8 +275,6 @@ function GetSecondaryAccent() {
 function GetPageBorder() {
 	if (ForcedColors()) {
 		return getComputedStyle(document.querySelector('.fc-graytext')).getPropertyValue("color");
-	} else if ((SupportsColorMix())  && ((getComputedStyle(document.querySelector('html')).getPropertyValue("--page-border-background-color") === 'auto')  ) ) {
-		return getComputedStyle(document.querySelector('.page-bor')).getPropertyValue("color");
 	} else {
 		return getComputedStyle(document.querySelector('html')).getPropertyValue("--page-border-background-color");
 	}
@@ -1068,7 +1066,6 @@ var content_color2 = ColorTest(content_color);
 
 var adjustment = (window.matchMedia('(prefers-contrast: more)').matches) ? 0.35 : 0.25
 
-if (!SupportsColorMix()) {
 	if (isLightColor(content_color)) {
 		var dropdowncolor = ColorTestTwin(content_color,"#000000",adjustment);
 		if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--page-border-background-color") === 'auto')  ) {
@@ -1086,16 +1083,9 @@ if (!SupportsColorMix()) {
 			var dropdowncolor2 = GetPageBorder();
 		}
 	}
-}
-	if (SupportsColorMix()) {
-		var dropdowncolor = getComputedStyle(document.querySelector('.page-sec')).getPropertyValue("color")
-		var dropdowncolor2 = getComputedStyle(document.querySelector('.page-bor')).getPropertyValue("color")
-	}
 var dropdowncolorH = ColorTest(dropdowncolor,false,false,true);
 
-if (!SupportsColorMix()) {
 	var result = result + "--page-secondary-background-color:" + dropdowncolor + ";\n"
-}
 	var result = result + "--page-secondary-background-color-hover:" + dropdowncolorH + ";\n"
 
 
