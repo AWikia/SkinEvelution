@@ -123,17 +123,27 @@ Aleo = Latin
 
 :root {
 font-family:Trebuchet MS;
+/* Base Text Background Colors */
+	--light-theme-text-background-color:#29262b;
+	--light-theme-text-background-color-hover-light:#5D5661;
+	--light-theme-text-background-color-hover-dark:#000000;
+	--light-theme-text-background-color-rgb:41,38,43;
+	--light-theme-text-background-color-hover-light-rgb:93,86,97;
+	--light-theme-text-background-color-hover-dark-rgb:0,0,0;
+	--dark-theme-text-background-color:#dbd9de;
+	--dark-theme-text-background-color-hover-light:#ffffff;
+	--dark-theme-text-background-color-hover-dark:#A7A2AE;
+	--dark-theme-text-background-color-rgb:219,217,222;
+	--dark-theme-text-background-color-hover-light-rgb:255,255,255;
+	--dark-theme-text-background-color-hover-dark-rgb:167,162,174;
 /* Base Foreground Colors */
---light-theme-foreground-color:#000000!important;
---dark-theme-foreground-color:#ffffff!important;
---light-theme-text-background-color:#2a2b2b;
---dark-theme-text-background-color:#d4d5d5;
-/* Base Foreground Colors Hover and RGB */
+	--light-theme-foreground-color:#000000!important;
     --light-theme-foreground-color-hover: #333333!important;
-    --dark-theme-foreground-color-hover: #CCCCCC!important;
     --light-theme-foreground-color-rgb: 0,0,0!important;
-    --dark-theme-foreground-color-rgb: 255,255,255!important;
     --light-theme-foreground-color-hover-rgb: 51,51,51!important;
+	--dark-theme-foreground-color:#ffffff!important;
+    --dark-theme-foreground-color-hover: #CCCCCC!important;
+    --dark-theme-foreground-color-rgb: 255,255,255!important;
     --dark-theme-foreground-color-hover-rgb: 204,204,204!important;
 /* Aliases */
 --page-border-background-color:auto;
@@ -183,20 +193,52 @@ font-family:Trebuchet MS;
 ** NOTE: All declerations must be with !important in order to override the inline style of these properties set to <body> to inherit
 **
 */
+
+/** Page Text **/
+
+/* Light */
 body[page-text-background-color-auto="true"] {
 	--page-text-background-color:var(--light-theme-text-background-color)!important;
+	--page-text-background-color-hover:var(--light-theme-text-background-color-hover-light)!important;
+	--page-text-background-color-rgb:var(--light-theme-text-background-color-rgb)!important;
+	--page-text-background-color-hover-rgb:var(--light-theme-text-background-color-hover-light-rgb)!important;
 }
 
+/* Dark */
 html[dark-mode="true"] body[page-text-background-color-auto="true"] {
 	--page-text-background-color:var(--dark-theme-text-background-color)!important;
+	--page-text-background-color-hover:var(--dark-theme-text-background-color-hover-dark)!important;
+	--page-text-background-color-rgb:var(--dark-theme-text-background-color-rgb)!important;
+	--page-text-background-color-hover-rgb:var(--dark-theme-text-background-color-hover-dark-rgb)!important;
 }
 
+
+/** Superbar Text **/
+
+/* Light */
 body[superbar-text-background-color-auto="true"] {
 	--superbar-text-background-color:var(--light-theme-text-background-color)!important;
+	--superbar-text-background-color-hover:var(--light-theme-text-background-color-hover-light)!important;
+	--superbar-text-background-color-rgb:var(--light-theme-text-background-color-rgb)!important;
+	--superbar-text-background-color-hover-rgb:var(--light-theme-text-background-color-hover-light-rgb)!important;
 }
 
+html[dark-mode="true"] body[superbar-text-background-color-auto="true"] {
+	--superbar-text-background-color-hover:var(--light-theme-text-background-color-hover-dark)!important;
+	--superbar-text-background-color-hover-rgb:var(--light-theme-text-background-color-hover-dark-rgb)!important;
+}
+
+/* Dark */
 html[light-body="false"] body[superbar-text-background-color-auto="true"] {
 	--superbar-text-background-color:var(--dark-theme-text-background-color)!important;
+	--superbar-text-background-color-hover:var(--dark-theme-text-background-color-hover-light)!important;
+	--superbar-text-background-color-rgb:var(--dark-theme-text-background-color-rgb)!important;
+	--superbar-text-background-color-hover-rgb:var(--dark-theme-text-background-color-hover-light-rgb)!important;
+}
+
+html[light-body="false"][dark-mode="true"] body[superbar-text-background-color-auto="true"] {
+	--superbar-text-background-color-hover:var(--dark-theme-text-background-color-hover-dark)!important;
+	--superbar-text-background-color-hover-rgb:var(--dark-theme-text-background-color-hover-dark-rgb)!important;
 }
 
 
@@ -467,109 +509,109 @@ html {
 		--message-background-color-rgb:12, 12, 12!important;
 	}
 /* Generic Alert Color Light theme Hover Locks */
-	html[dark-mode="false"][alert-color="255 25 25"] { /* ff1919 */
+	html[alert-color="255 25 25"] { /* ff1919 */
 		--alert-background-color-hover:#b30000!important;
 		--warning-background-color-hover:#b37400!important;
 		--success-background-color-hover:#00b258!important;
 		--message-background-color-hover:#595959!important;
 	}
-	html[dark-mode="false"][alert-color="255 51 51"] { /* ff3333 */
+	html[alert-color="255 51 51"] { /* ff3333 */
 		--alert-background-color-hover:#cc0000!important;
 		--warning-background-color-hover:#cc8400!important;
 		--success-background-color-hover:#00cc64!important;
 		--message-background-color-hover:#666666!important;
 	}
-	html[dark-mode="false"][alert-color="255 77 77"] { /* ff4d4d */
+	html[alert-color="255 77 77"] { /* ff4d4d */
 		--alert-background-color-hover:#e60000!important;
 		--warning-background-color-hover:#e59400!important;
 		--success-background-color-hover:#00e570!important;
 		--message-background-color-hover:#727272!important;
 	}
-	html[dark-mode="false"][alert-color="255 102 102"] { /* ff6666 */
+	html[alert-color="255 102 102"] { /* ff6666 */
 		--alert-background-color-hover:#ff0000!important;
 		--warning-background-color-hover:#ffa500!important;
 		--success-background-color-hover:#00ff7c!important;
 		--message-background-color-hover:#7f7f7f!important;
 	}
-	html[dark-mode="false"][alert-color="255 128 128"] { /* ff8080 */
+	html[alert-color="255 128 128"] { /* ff8080 */
 		--alert-background-color-hover:#ff1919!important;
 		--warning-background-color-hover:#ffad19!important;
 		--success-background-color-hover:#19ff88!important;
 		--message-background-color-hover:#8c8c8c!important;
 	}
-	html[dark-mode="false"][alert-color="255 153 153"] { /* ff9999 */
+	html[alert-color="255 153 153"] { /* ff9999 */
 		--alert-background-color-hover:#ff3333!important;
 		--warning-background-color-hover:#ffb733!important;
 		--success-background-color-hover:#33ff95!important;
 		--message-background-color-hover:#999999!important;
 	}
-	html[dark-mode="false"][alert-color="255 179 179"] { /* ffb3b3 */
+	html[alert-color="255 179 179"] { /* ffb3b3 */
 		--alert-background-color-hover:#ff4d4e!important;
 		--warning-background-color-hover:#ffc04d!important;
 		--success-background-color-hover:#4cffa2!important;
 		--message-background-color-hover:#a5a5a5!important;
 	}
-	html[dark-mode="false"][alert-color="255 204 204"] { /* ffcccc */
+	html[alert-color="255 204 204"] { /* ffcccc */
 		--alert-background-color-hover:#ff6666!important;
 		--warning-background-color-hover:#ffc966!important;
 		--success-background-color-hover:#66ffaf!important;
 		--message-background-color-hover:#b2b2b2!important;
 	}
-	html[dark-mode="false"][alert-color="255 230 230"] { /* ffe6e6 */
+	html[alert-color="255 230 230"] { /* ffe6e6 */
 		--alert-background-color-hover:#ff8080!important;
 		--warning-background-color-hover:#ffd180!important;
 		--success-background-color-hover:#7fffbc!important;
 		--message-background-color-hover:#bfbfbf!important;
 	}
-	html[dark-mode="false"][alert-color="230 0 0"] { /* e60000 */
+	html[alert-color="230 0 0"] { /* e60000 */
 		--alert-background-color-hover:#800000!important;
 		--warning-background-color-hover:#805300!important;
 		--success-background-color-hover:#007f3f!important;
 		--message-background-color-hover:#3f3f3f!important;
 	}
-	html[dark-mode="false"][alert-color="204 0 0"] { /* cc0000 */
+	html[alert-color="204 0 0"] { /* cc0000 */
 		--alert-background-color-hover:#660000!important;
 		--warning-background-color-hover:#664200!important;
 		--success-background-color-hover:#006632!important;
 		--message-background-color-hover:#333333!important;
 	}
-	html[dark-mode="false"][alert-color="179 0 0"] { /* b30000 */
+	html[alert-color="179 0 0"] { /* b30000 */
 		--alert-background-color-hover:#4d0000!important;
 		--warning-background-color-hover:#4d3200!important;
 		--success-background-color-hover:#004c25!important;
 		--message-background-color-hover:#262626!important;
 	}
-	html[dark-mode="false"][alert-color="153 0 0"] { /* 990000 */
+	html[alert-color="153 0 0"] { /* 990000 */
 		--alert-background-color-hover:#330000!important;
 		--warning-background-color-hover:#332100!important;
 		--success-background-color-hover:#003318!important;
 		--message-background-color-hover:#191919!important;
 	}
-	html[dark-mode="false"][alert-color="128 0 0"] { /* 800000 */
+	html[alert-color="128 0 0"] { /* 800000 */
 		--alert-background-color-hover:#1a0000!important;
 		--warning-background-color-hover:#1a1100!important;
 		--success-background-color-hover:#00190c!important;
 		--message-background-color-hover:#0d0d0d!important;
 	}
-	html[dark-mode="false"][alert-color="102 0 0"] { /* 660000 */
+	html[alert-color="102 0 0"] { /* 660000 */
 		--alert-background-color-hover:#000000!important;
 		--warning-background-color-hover:#000000!important;
 		--success-background-color-hover:#000000!important;
 		--message-background-color-hover:#000000!important;
 	}
-	html[dark-mode="false"][alert-color="77 0 0"] { /* 4d0000 */
+	html[alert-color="77 0 0"] { /* 4d0000 */
 		--alert-background-color-hover:#000000!important;
 		--warning-background-color-hover:#000000!important;
 		--success-background-color-hover:#000000!important;
 		--message-background-color-hover:#000000!important;
 	}
-	html[dark-mode="false"][alert-color="51 0 0"] { /* 330000 */
+	html[alert-color="51 0 0"] { /* 330000 */
 		--alert-background-color-hover:#000000!important;
 		--warning-background-color-hover:#000000!important;
 		--success-background-color-hover:#000000!important;
 		--message-background-color-hover:#000000!important;
 	}
-	html[dark-mode="false"][alert-color="26 0 0"] { /* 1a0000 */
+	html[alert-color="26 0 0"] { /* 1a0000 */
 		--alert-background-color-hover:#000000!important;
 		--warning-background-color-hover:#000000!important;
 		--success-background-color-hover:#000000!important;
@@ -692,7 +734,7 @@ html {
 	--body-foreground-color:var(--dark-theme-foreground-color);
 	--superbar-text-foreground-color:var(--dark-theme-foreground-color);
 	--secondary-accent-foreground-color:var(--dark-theme-foreground-color);
-	--page-foreground-color:var(--dark-theme-foreground-color);
+	--page-foreground-color:var(--light-theme-foreground-color);
 	--page-border-foreground-color:var(--dark-theme-foreground-color);
 	--page-text-foreground-color:var(--dark-theme-foreground-color);
 	--accent-foreground-color:var(--dark-theme-foreground-color);
@@ -704,7 +746,7 @@ html {
 	--body-foreground-color-hover:var(--dark-theme-foreground-color-hover);
 	--superbar-text-foreground-color-hover:var(--dark-theme-foreground-color-hover);
 	--secondary-accent-foreground-color-hover:var(--dark-theme-foreground-color-hover);
-	--page-foreground-color-hover:var(--dark-theme-foreground-color-hover);
+	--page-foreground-color-hover:var(--light-theme-foreground-color-hover);
 	--page-border-foreground-color-hover:var(--dark-theme-foreground-color-hover);
 	--page-text-foreground-color-hover:var(--dark-theme-foreground-color-hover);
 	--accent-foreground-color-hover:var(--dark-theme-foreground-color-hover);
@@ -716,7 +758,7 @@ html {
 	--body-foreground-color-rgb:var(--dark-theme-foreground-color-rgb);
 	--superbar-text-foreground-color-rgb:var(--dark-theme-foreground-color-rgb);
 	--secondary-accent-foreground-color-rgb:var(--dark-theme-foreground-color-rgb);
-	--page-foreground-color-rgb:var(--dark-theme-foreground-color-rgb);
+	--page-foreground-color-rgb:var(--light-theme-foreground-color-rgb);
 	--page-border-foreground-color-rgb:var(--dark-theme-foreground-color-rgb);
 	--page-text-foreground-color-rgb:var(--dark-theme-foreground-color-rgb);
 	--accent-foreground-color-rgb:var(--dark-theme-foreground-color-rgb);
@@ -728,7 +770,7 @@ html {
 	--body-foreground-color-hover-rgb:var(--dark-theme-foreground-color-hover-rgb);
 	--superbar-text-foreground-color-hover-rgb:var(--dark-theme-foreground-color-hover-rgb);
 	--secondary-accent-foreground-color-hover-rgb:var(--dark-theme-foreground-color-hover-rgb);
-	--page-foreground-color-hover-rgb:var(--dark-theme-foreground-color-hover-rgb);
+	--page-foreground-color-hover-rgb:var(--light-theme-foreground-color-hover-rgb);
 	--page-border-foreground-color-hover-rgb:var(--dark-theme-foreground-color-hover-rgb);
 	--page-text-foreground-color-hover-rgb:var(--dark-theme-foreground-color-hover-rgb);
 	--accent-foreground-color-hover-rgb:var(--dark-theme-foreground-color-hover-rgb);
@@ -772,7 +814,7 @@ html {
 	--secondary-accent-foreground-color-hover-rgb:var(--light-theme-foreground-color-hover-rgb);
 }
 
-:root[dark-mode="false"] {
+:root[dark-mode="true"] {
 	--page-foreground-color:var(--light-theme-foreground-color);
 	--page-foreground-color-hover:var(--light-theme-foreground-color-hover);
 	--page-foreground-color-rgb:var(--light-theme-foreground-color-rgb);
@@ -915,8 +957,8 @@ html {
 :root body {
 	--body-gradient-color:var(--body-background-color);
 	--body-gradient-color-hover:var(--body-background-color-hover);
-	--superbar-text-gradient-color:var(--superbar-text-background-color);
-	--superbar-text-gradient-color-hover:var(--superbar-text-background-color-hover);
+	--superbar-text-gradient-color:var(--superbar-text-background-color-hover);
+	--superbar-text-gradient-color-hover:var(--superbar-text-background-color);
 	--secondary-accent-gradient-color:var(--secondary-accent-background-color);
 	--secondary-accent-gradient-color-hover:var(--secondary-accent-background-color-hover);
 	--page-gradient-color:var(--page-background-color);
@@ -925,8 +967,8 @@ html {
 	--page-secondary-gradient-color-hover:var(--page-secondary-background-color-hover);
 	--page-border-gradient-color:var(--page-border-background-color);
 	--page-border-gradient-color-hover:var(--page-border-background-color-hover);
-	--page-text-gradient-color:var(--page-text-background-color);
-	--page-text-gradient-color-hover:var(--page-text-background-color-hover);
+	--page-text-gradient-color:var(--page-text-background-color-hover);
+	--page-text-gradient-color-hover:var(--page-text-background-color);
 	--accent-gradient-color:var(--accent-background-color);
 	--accent-gradient-color-hover:var(--accent-background-color-hover);
 	--alert-gradient-color:var(--alert-background-color);
@@ -960,11 +1002,11 @@ html {
 	--message-gradient-color-hover:var(--message-background-color);
 }
 
-:root[dark-mode="false"] body {
-	--superbar-text-gradient-color:var(--superbar-text-background-color-hover);
-	--superbar-text-gradient-color-hover:var(--superbar-text-background-color);
-	--page-text-gradient-color:var(--page-text-background-color-hover);
-	--page-text-gradient-color-hover:var(--page-text-background-color);
+:root[dark-mode="true"] body {
+	--superbar-text-gradient-color:var(--superbar-text-background-color);
+	--superbar-text-gradient-color-hover:var(--superbar-text-background-color-hover);
+	--page-text-gradient-color:var(--page-text-background-color);
+	--page-text-gradient-color-hover:var(--page-text-background-color-hover);
 }
 
 :root[light-page-border="false"] body {
