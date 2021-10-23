@@ -240,6 +240,8 @@ function GetCommunity() {
 function GetCommunityHeaderText() {
 	if (ForcedColors()) {
 		return getComputedStyle(document.querySelector('.fc-canvastext')).getPropertyValue("color");
+	} else if (getComputedStyle(document.querySelector('html')).getPropertyValue("--superbar-text-background-color") === 'auto') {
+		return getComputedStyle(document.querySelector('body')).getPropertyValue("--superbar-text-background-color");
 	} else {
 		return getComputedStyle(document.querySelector('html')).getPropertyValue("--superbar-text-background-color");
 	}
@@ -284,6 +286,8 @@ function GetPageBorder() {
 function GetPageText() {
 	if (ForcedColors()) {
 		return getComputedStyle(document.querySelector('.fc-canvastext')).getPropertyValue("color");
+	} else if (getComputedStyle(document.querySelector('html')).getPropertyValue("--page-text-background-color") === 'auto') {
+		return getComputedStyle(document.querySelector('body')).getPropertyValue("--page-text-background-color");
 	} else {
 		return getComputedStyle(document.querySelector('html')).getPropertyValue("--page-text-background-color");
 	}
@@ -982,17 +986,6 @@ function isSuperDarkColor(color) {
 }
 
 
-function GetContrast(color1,color2) {
-	var L1 = Color(color1).getLuminance2();
-	var L2 = Color(color2).getLuminance2();
-	if (L2 < L1) {
-		return ( (L1 + 0.05) / (L2 + 0.05) );
-	} else {
-		return ( (L2 + 0.05) / (L1 + 0.05) );
-	}
-}
-
-
 function isSuitableColor(color,color2) {
 var contrast = (window.matchMedia('(prefers-contrast: more)').matches) ? 4.5 : 3
 return ((chroma.contrast(color, color2)) >= contrast)
@@ -1016,7 +1009,10 @@ return ((chroma.contrast(color, color2)) >= contrast)
 /* Used to udpate all dynamical variables */
 function ColorUpdate(refresh=true) {
 if (refresh === true) {
-	colortheme($('html').attr("wikitheme"), false,false);
+	var theme = $('html').attr("wikitheme");
+	if ( (theme === 'light') || (theme === 'dark')) {
+		colortheme(theme, false,false);
+	}
 	CheckAdapt();
 	/** Foreground Colors 
 	document.querySelector('html').style.setProperty("--light-theme-foreground-color-hover", ColorTest(getComputedStyle(document.querySelector('html')).getPropertyValue("--light-theme-foreground-color")) );
@@ -1136,13 +1132,11 @@ if (!SupportsColorContrast()) {
 }
 
 
-if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--page-text-background-color") !== 'auto')  ) {
 	var result = result + "--page-text-background-color-hover:" + content_text1 + ";\n"
 
 // RGB
 	var result = result + "--page-text-background-color-rgb:" + Color2( content_text ) + ";\n"
 	var result = result + "--page-text-background-color-hover-rgb:" + Color2(content_text1) + ";\n"
-}
 
 
 /** Button Color **/
@@ -1307,13 +1301,11 @@ if (!SupportsColorContrast()) {
 	setLightful(headertextcolor1,'superbar-text-hover');
 }
 
-if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--superbar-text-background-color") !== 'auto')  ) {
 	var result = result + "--superbar-text-background-color-hover:" + headertextcolor1 + ";\n"
 
 // RGB
 	var result = result + "--superbar-text-background-color-rgb:" + Color2( getComputedStyle(document.querySelector('body')).getPropertyValue("--superbar-text-background-color") ) + ";\n"
 	var result = result + "--superbar-text-background-color-hover-rgb:" + Color2(headertextcolor1) + ";\n"
-}
 
 
 
