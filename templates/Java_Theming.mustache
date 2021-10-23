@@ -233,7 +233,7 @@ function GetCommunity() {
 	if (ForcedColors()) {
 		return getComputedStyle(document.querySelector('.fc-canvas')).getPropertyValue("color");
 	} else {
-		return Color(getComputedStyle(document.querySelector('html')).getPropertyValue("--body-background-color")).toString();
+		return getComputedStyle(document.querySelector('html')).getPropertyValue("--body-background-color");
 	}
 }
 
@@ -241,7 +241,7 @@ function GetCommunityHeaderText() {
 	if (ForcedColors()) {
 		return getComputedStyle(document.querySelector('.fc-canvastext')).getPropertyValue("color");
 	} else {
-		return Color(getComputedStyle(document.querySelector('html')).getPropertyValue("--superbar-text-background-color")).toString();
+		return getComputedStyle(document.querySelector('html')).getPropertyValue("--superbar-text-background-color");
 	}
 }
 
@@ -250,7 +250,7 @@ function GetPageShort() { // Like GetPage() without forced colors mode you get t
 	if (ForcedColors()) {
 		return getComputedStyle(document.querySelector('.fc-canvas')).getPropertyValue("color");
 	} else {
-		return Color(getComputedStyle(document.querySelector('html')).getPropertyValue("--page-background-color")).toString();
+		return getComputedStyle(document.querySelector('html')).getPropertyValue("--page-background-color");
 	}
 }
 
@@ -259,7 +259,7 @@ function GetPage() {
 	if (ForcedColors()) {
 		return getComputedStyle(document.querySelector('.fc-canvas')).getPropertyValue("color");
 	} else {
-		return Color(getComputedStyle(document.querySelector('html')).getPropertyValue("--page-background-color")).toString();
+		return getComputedStyle(document.querySelector('html')).getPropertyValue("--page-background-color");
 	}
 }
 
@@ -267,7 +267,7 @@ function GetSecondaryAccent() {
 	if (ForcedColors()) {
 		return getComputedStyle(document.querySelector('.fc-linktext')).getPropertyValue("color");
 	} else {
-		return Color(getComputedStyle(document.querySelector('html')).getPropertyValue("--secondary-accent-background-color")).toString();
+		return getComputedStyle(document.querySelector('html')).getPropertyValue("--secondary-accent-background-color");
 	}
 }
 
@@ -278,7 +278,7 @@ function GetPageBorder() {
 	} else if ((SupportsColorMix())  && ((getComputedStyle(document.querySelector('html')).getPropertyValue("--page-border-background-color") === 'auto')  ) ) {
 		return getComputedStyle(document.querySelector('.page-bor')).getPropertyValue("color");
 	} else {
-		return Color(getComputedStyle(document.querySelector('html')).getPropertyValue("--page-border-background-color")).toString();
+		return getComputedStyle(document.querySelector('html')).getPropertyValue("--page-border-background-color");
 	}
 }
 
@@ -287,7 +287,7 @@ function GetPageText() {
 	if (ForcedColors()) {
 		return getComputedStyle(document.querySelector('.fc-canvastext')).getPropertyValue("color");
 	} else {
-		return Color(getComputedStyle(document.querySelector('html')).getPropertyValue("--page-text-background-color")).toString();
+		return getComputedStyle(document.querySelector('html')).getPropertyValue("--page-text-background-color");
 	}
 }
 
@@ -296,7 +296,7 @@ function GetAccent() {
 	if (ForcedColors()) {
 		return getComputedStyle(document.querySelector('.fc-highlight')).getPropertyValue("color");
 	} else {
-		return Color(getComputedStyle(document.querySelector('html')).getPropertyValue("--accent-background-color")).toString();
+		return getComputedStyle(document.querySelector('html')).getPropertyValue("--accent-background-color");
 	}
 }
 
