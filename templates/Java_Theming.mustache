@@ -318,7 +318,11 @@ function GetMessage() {
 }
 
 function BestAlertColor() {
-if ( Color(GetPage()).getLightness() < 0.5) {
+var page = GetPage()
+if ( (window.MW18darkmode === true) ) {
+	var page = ColorInvert(page);
+}
+if ( Color(page).getLightness() < 0.5) {
 /** V1 **/
 var colors = ['#e60000', '#cc0000', '#b30000', '#990000', '#800000', '#660000', '#4d0000', '#330000', '#1a0000', '#ff1919', '#ff3333', '#ff4d4d', '#ff6666', '#ff8080', '#ff9999', '#ffb3b3', '#ffcccc', '#ffe6e6'];
 var colors2= ['#e69500', '#cc8500', '#b37400', '#996300', '#805300', '#664200', '#4d3200', '#332100', '#1a1100', '#ffaf19', '#ffb833', '#ffc14d', '#ffc966', '#ffd280', '#ffdb99', '#ffe4b3', '#ffedcc', '#fff6e6'];
@@ -339,12 +343,12 @@ var colors4= ['#8c8c8c', '#999999', '#a5a5a5', '#b2b2b2', '#bfbfbf', '#cccccc', 
 		contrastM = (window.matchMedia('(prefers-contrast: more)').matches) ? 3.37 : 2.25
 
 	for (let i = 0; i < colors.length; i++) {
-		if ( ((chroma.contrast(GetPage(), colors[i])) >= contrastA) && ((chroma.contrast(GetPage(), colors2[i])) >= contrastW) && ((chroma.contrast(GetPage(), colors3[i])) >= contrastS) && ((chroma.contrast(GetPage(), colors4[i])) >= contrastM) ) {
+		if ( ((chroma.contrast(page, colors[i])) >= contrastA) && ((chroma.contrast(page, colors2[i])) >= contrastW) && ((chroma.contrast(page, colors3[i])) >= contrastS) && ((chroma.contrast(page, colors4[i])) >= contrastM) ) {
 			return Color4(colors[i]);
 		}
 	}
 	/* If no color can be found legible, fallback to specific color */
-	if (isLightColor(GetPage())) {
+	if (isLightColor(page)) {
 		return '153 0 0';
 	} else {
 		return '255 102 102';
@@ -477,14 +481,6 @@ function colortheme(theme='auto', repaint=true, save=true) {
 	if ((old_dark != window.MW18darkmode) && (repaint) ) {
 		ColorUpdate(false);
 	}
-/*
-	$('html').attr("dark-mode", (isDarkColor(GetPage())) );
-	if (window.MW18darkmode) {
-		$('html').attr("dark-mode-adjusted", isLightColor( GetPageShort() ));
-	} else {
-		$('html').attr("dark-mode-adjusted", !(isLightColor( GetPageShort() ) ));
-	}
-*/
 }
 
 function ToggleMode() {
