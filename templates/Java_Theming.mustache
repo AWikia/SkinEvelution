@@ -364,6 +364,57 @@ var colors4= ['#8c8c8c', '#999999', '#a5a5a5', '#b2b2b2', '#bfbfbf', '#cccccc', 
  
 }
 
+/* Get Foreground Variables */
+
+function GetForegroundVariable(color,hover=false) {
+	if (hover) {
+		if (isLightColor(color)) {
+			return 'var(--light-theme-foreground-color-hover)'
+		} else {
+			return 'var(--dark-theme-foreground-color-hover)'
+		}
+	} else {
+		if (isLightColor(color)) {
+			return 'var(--light-theme-foreground-color)'
+		} else {
+			return 'var(--dark-theme-foreground-color)'
+		}
+	}
+}
+
+function GetForegroundVariable2(color,hover=false) {
+	if (hover) {
+		if (isLightColor(color)) {
+			return 'var(--light-theme-foreground-color-hover-rgb)'
+		} else {
+			return 'var(--dark-theme-foreground-color-hover-rgb)'
+		}
+	} else {
+		if (isLightColor(color)) {
+			return 'var(--light-theme-foreground-color-rgb)'
+		} else {
+			return 'var(--dark-theme-foreground-color-rgb)'
+		}
+	}
+}
+
+/* Get Gradient Variables */
+function GetGradientVariable(color,name="page") {
+	if (isLightColor(color)) {
+		return ['var(--' + name + '-background-color)', 'var(--' + name + '-background-color-hover)']
+	} else {
+		return ['var(--' + name + '-background-color-hover)', 'var(--' + name + '-background-color)']
+	}
+}
+
+function GetGradientVariable2(color,name="page") {
+	if (isDarkColor(color)) {
+		return ['var(--' + name + '-background-color)', 'var(--' + name + '-background-color-hover)']
+	} else {
+		return ['var(--' + name + '-background-color-hover)', 'var(--' + name + '-background-color)']
+	}
+}
+
 
 function ActiveColorSet() { // Debugging material
 	var set = ['255 25 25', '255 51 51', '255 77 77', '255 102 102', '255 128 128', '255 153 153', '255 179 179', '255 204 204', '255 230 230', '230 0 0', '204 0 0', '179 0 0', '153 0 0', '128 0 0', '102 0 0', '77 0 0', '51 0 0', '26 0 0'].indexOf($('html').attr("alert-color"))
@@ -945,10 +996,6 @@ function Color4(color) {
 	return Math.round(Color(color).getRed() * 255 ) + ' ' + Math.round(Color(color).getGreen() * 255) + ' ' + Math.round(Color(color).getBlue() * 255);
 }
 
-function setLightful(color,prop="page-text") {
-	$("html").attr("light-" + prop, isLightColor(color))
-}
-
 function isLightColor(color) {
 	var c1 = (chroma.contrast('#000000',  Color(color).toString()))
 	var c2 = (chroma.contrast('#ffffff',  Color(color).toString()))
@@ -1034,11 +1081,11 @@ if ( (window.MW18darkmode === true) ) {
 
 /* This goes before compiling Generic Colors or else they will think the theme is light */
 	
-	$('html').attr("dark-mode", (isDarkColor(content_color )) );
+//	$('html').attr("dark-mode", (isDarkColor(content_color )) );
 	if (window.MW18darkmode) {
-		$('html').attr("dark-mode-adjusted", isLightColor( GetPageShort() ));
+		$('html').attr("dark-mode", isLightColor( GetPageShort() ));
 	} else {
-		$('html').attr("dark-mode-adjusted", !(isLightColor( GetPageShort() ) ));
+		$('html').attr("dark-mode", !(isLightColor( GetPageShort() ) ));
 	}
 
 
@@ -1095,7 +1142,6 @@ if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--page-t
 
 
 var content_text1 = ColorTest(content_text,false,true,true);
-	setLightful(content_text,'page-text');
 
 
 
@@ -1124,7 +1170,6 @@ if ( (window.MW18darkmode === true) ) {
 
 
 var buttoncolor1 = ColorTest(button_color,false);
-setLightful(button_color,'accent');
 
 
 /** Link Color **/
@@ -1149,7 +1194,6 @@ if ( (window.MW18darkmode === true) ) {
 		}
 
 var linkcolor1 = ColorTest(link_color,false,false,true);
-setLightful(link_color,'secondary-accent');
 
 
 
@@ -1185,7 +1229,6 @@ if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--page-b
 
 
 var bordercolor1 = ColorTest(border_color);
-setLightful(border_color,'page-border');
 
 
 /** Body Bg **/
@@ -1199,7 +1242,6 @@ if ( (window.MW18darkmode === true) ) {
 }
 
 var headcolor1 = ColorTest(head_color,false,false,true);
-setLightful(head_color,'body');
 
 /** Community Header text color **/
 
@@ -1215,13 +1257,11 @@ if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--superb
 }
 
 var headertextcolor1 = ColorTest(headertext_color,false,true,true);
-	setLightful(headertext_color,'superbar-text');
 	
 /** Alert Color **/
 /* Set Vars */
 var alert_color = BestAlertColor()[0];
 var alertcolor1 = ColorTest(alert_color,false,false,true);
-setLightful(alert_color,'alert');
 
 
 
@@ -1230,7 +1270,6 @@ setLightful(alert_color,'alert');
 /* Set Vars */
 var warning_color = BestAlertColor()[1];
 var warningcolor1 = ColorTest(warning_color,false,false,true);
-setLightful(warning_color,'warning');
 
 
 
@@ -1238,14 +1277,12 @@ setLightful(warning_color,'warning');
 /* Set Vars */
 var success_color = BestAlertColor()[2];
 var successcolor1 = ColorTest(success_color,false,false,true);
-setLightful(success_color,'success');
 
 
 /** Message Color **/
 /* Set Vars */
 var message_color = BestAlertColor()[3];
 var messagecolor1 = ColorTest(message_color,false,false,true);
-setLightful(message_color,'message');
 
 
 
@@ -1259,45 +1296,113 @@ if (refresh === true) {
 /* Set Values for dynamical variables */
 	var result = 		  "--page-secondary-background-color:" + dropdowncolor + ";\n" + 
 						  "--page-secondary-background-color-hover:" + dropdowncolorH + ";\n" + 
-						  "--page-background-color-hover:" + content_color2 + ";\n" + 
+						  "--page-secondary-gradient-color:" + GetGradientVariable(content_color,'page-secondary')[0] + ";\n" +
+						  "--page-secondary-gradient-color-hover:" + GetGradientVariable(content_color,'page-secondary')[1] + ";\n" +
+						  "--page-background-color-hover:" + content_color2 + ";\n" +
+						  "--page-gradient-color:" + GetGradientVariable(content_color,'page')[0] + ";\n" +
+						  "--page-gradient-color-hover:" + GetGradientVariable(content_color,'page')[1] + ";\n" +
+						  "--page-foreground-color:" + GetForegroundVariable(content_color) + ";\n" +
+						  "--page-foreground-color-hover:" + GetForegroundVariable(content_color,true) + ";\n" + 
 						  "--page-secondary-background-color-rgb:" + Color2(dropdowncolor) + ";\n" + 
 						  "--page-background-color-rgb:" + Color2( content_color ) + ";\n" +
+						  "--page-foreground-color-rgb:" + GetForegroundVariable2(content_color) + ";\n" +
+						  "--page-foreground-color-hover-rgb:" + GetForegroundVariable2(content_color,true) + ";\n" + 
 						  "--page-text-background-color-hover:" + content_text1 + ";\n" +
-						  "--page-text-foreground-color-inverted:" + ColorTest(content_text1,true,false) + ";\n" +
+						  "--page-text-gradient-color:" + GetGradientVariable2(content_color,'page-text')[0] + ";\n" +
+						  "--page-text-gradient-color-hover:" + GetGradientVariable2(content_color,'page-text')[1] + ";\n" +
+						  "--page-text-foreground-color:" + GetForegroundVariable(content_text) + ";\n" +
+						  "--page-text-foreground-color-hover:" + GetForegroundVariable(content_text,true) + ";\n" +
+						  "--page-text-foreground-color-inverted:" + GetForegroundVariable(content_text1) + ";\n" +
 						  "--page-text-background-color-rgb:" + Color2( content_text ) + ";\n" +
 						  "--page-text-background-color-hover-rgb:" + Color2(content_text1) + ";\n" +
+						  "--page-text-foreground-color-rgb:" + GetForegroundVariable2(content_text) + ";\n" +
+						  "--page-text-foreground-color-hover-rgb:" + GetForegroundVariable2(content_text,true) + ";\n" +
 						  "--accent-background-color-hover:" + buttoncolor1 + ";\n" +
-						  "--accent-foreground-color-inverted:" + ColorTest(buttoncolor1,true,false) + ";\n" +
+						  "--accent-gradient-color:" + GetGradientVariable(button_color,'accent')[0] + ";\n" +
+						  "--accent-gradient-color-hover:" + GetGradientVariable(button_color,'accent')[1] + ";\n" +
+						  "--accent-foreground-color:" + GetForegroundVariable(button_color) + ";\n" +
+						  "--accent-foreground-color-hover:" + GetForegroundVariable(button_color,true) + ";\n" +
+						  "--accent-foreground-color-inverted:" + GetForegroundVariable(buttoncolor1) + ";\n" +
 						  "--accent-background-color-rgb:" + Color2(button_color) + ";\n" +
+						  "--accent-foreground-color-rgb:" + GetForegroundVariable2(button_color) + ";\n" +
+						  "--accent-foreground-color-hover-rgb:" + GetForegroundVariable2(button_color,true) + ";\n" +
 						  "--secondary-accent-background-color-hover:" + linkcolor1 + ";\n" +
-						  "--secondary-accent-foreground-color-inverted:" + ColorTest(linkcolor1,true,false) + ";\n" +
+						  "--secondary-accent-gradient-color:" + GetGradientVariable(content_color,'secondary-accent')[0] + ";\n" +
+						  "--secondary-accent-gradient-color-hover:" + GetGradientVariable(content_color,'secondary-accent')[1] + ";\n" +
+						  "--secondary-accent-foreground-color:" + GetForegroundVariable(link_color) + ";\n" +
+						  "--secondary-accent-foreground-color-hover:" + GetForegroundVariable(link_color,true) + ";\n" +
+						  "--secondary-accent-foreground-color-inverted:" + GetForegroundVariable(linkcolor1) + ";\n" +
 						  "--secondary-accent-background-color-rgb:" + Color2(link_color) + ";\n" +
+						  "--secondary-accent-foreground-color-rgb:" + GetForegroundVariable2(link_color) + ";\n" +
+						  "--secondary-accent-foreground-color-hover-rgb:" + GetForegroundVariable2(link_color,true) + ";\n" +
 						  "--page-border-background-color-hover:" + bordercolor1 + ";\n" +
-						  "--page-border-foreground-color-inverted:" + ColorTest(bordercolor1,true,false) + ";\n" +
+						  "--page-border-gradient-color:" + GetGradientVariable(border_color,'page-border')[0] + ";\n" +
+						  "--page-border-gradient-color-hover:" + GetGradientVariable(border_color,'page-border')[1] + ";\n" +
+						  "--page-border-foreground-color:" + GetForegroundVariable(border_color) + ";\n" +
+						  "--page-border-foreground-color-hover:" + GetForegroundVariable(border_color,true) + ";\n" +
+						  "--page-border-foreground-color-inverted:" + GetForegroundVariable(bordercolor1) + ";\n" +
 						  "--page-border-background-color-rgb:" + Color2(border_color) + ";\n" +
+						  "--page-border-foreground-color-rgb:" + GetForegroundVariable2(border_color) + ";\n" +
+						  "--page-border-foreground-color-hover-rgb:" + GetForegroundVariable2(border_color,true) + ";\n" +
 						  "--body-background-color-hover:" + headcolor1 + ";\n" +
-						  "--body-foreground-color-inverted:" + ColorTest(headcolor1,true,false) + ";\n" +
+						  "--body-gradient-color:" + GetGradientVariable(content_color,'body')[0] + ";\n" +
+						  "--body-gradient-color-hover:" + GetGradientVariable(content_color,'body')[1] + ";\n" +
+						  "--body-foreground-color:" + GetForegroundVariable(head_color) + ";\n" +
+						  "--body-foreground-color-hover:" + GetForegroundVariable(head_color,true) + ";\n" +
+						  "--body-foreground-color-inverted:" + GetForegroundVariable(headcolor1) + ";\n" +
 						  "--body-background-color-rgb:" + Color2(head_color) + ";\n" +
+						  "--body-foreground-color-rgb:" + GetForegroundVariable2(head_color) + ";\n" +
+						  "--body-foreground-color-hover-rgb:" + GetForegroundVariable2(head_color,true) + ";\n" +
 						  "--superbar-text-background-color-hover:" + headertextcolor1 + ";\n" +
-						  "--superbar-text-foreground-color-inverted:" + ColorTest(headertextcolor1,true,false) + ";\n" +
+						  "--superbar-text-gradient-color:" + GetGradientVariable2(content_color,'superbar-text')[0] + ";\n" +
+						  "--superbar-text-gradient-color-hover:" + GetGradientVariable2(content_color,'superbar-text')[1] + ";\n" +
+						  "--superbar-text-foreground-color:" + GetForegroundVariable(headertext_color) + ";\n" +
+						  "--superbar-text-foreground-color-hover:" + GetForegroundVariable(headertext_color,true) + ";\n" +
+						  "--superbar-text-foreground-color-inverted:" + GetForegroundVariable(headertextcolor1) + ";\n" +
 						  "--superbar-text-background-color-rgb:" + Color2( headertext_color ) + ";\n" +
 						  "--superbar-text-background-color-hover-rgb:" + Color2(headertextcolor1) + ";\n" +
+						  "--superbar-text-foreground-color-rgb:" + GetForegroundVariable2(headertext_color) + ";\n" +
+						  "--superbar-text-foreground-color-hover-rgb:" + GetForegroundVariable2(headertext_color,true) + ";\n" +
 						  "--alert-background-color:" + alert_color + "!important;\n" +
 						  "--alert-background-color-hover:" + alertcolor1 + "!important;\n" +
-						  "--alert-foreground-color-inverted:" + ColorTest(alertcolor1,true,false) + "!important;\n" +
+						  "--alert-gradient-color:" + GetGradientVariable(content_color,'alert')[0] + "!important;\n" +
+						  "--alert-gradient-color-hover:" + GetGradientVariable(content_color,'alert')[1] + "!important;\n" +
+						  "--alert-foreground-color:" + GetForegroundVariable(alert_color) + "!important;\n" +
+						  "--alert-foreground-color-hover:" + GetForegroundVariable(alert_color,true) + "!important;\n" +
+						  "--alert-foreground-color-inverted:" + GetForegroundVariable(alertcolor1) + "!important;\n" +
 						  "--alert-background-color-rgb:" + Color2(alert_color) + "!important;\n" +
+						  "--alert-foreground-color-rgb:" + GetForegroundVariable2(alert_color) + "!important;\n" +
+						  "--alert-foreground-color-hover-rgb:" + GetForegroundVariable2(alert_color,true) + "!important;\n" +
 						  "--warning-background-color:" + warning_color + "!important;\n" +
 						  "--warning-background-color-hover:" + warningcolor1 + "!important;\n" +
-						  "--warning-foreground-color-inverted:" + ColorTest(warningcolor1,true,false) + "!important;\n" +
+						  "--warning-gradient-color:" + GetGradientVariable(content_color,'warning')[0] + "!important;\n" +
+						  "--warning-gradient-color-hover:" + GetGradientVariable(content_color,'warning')[1] + "!important;\n" +
+						  "--warning-foreground-color:" + GetForegroundVariable(warning_color) + "!important;\n" +
+						  "--warning-foreground-color-hover:" + GetForegroundVariable(warning_color,true) + "!important;\n" +
+						  "--warning-foreground-color-inverted:" + GetForegroundVariable(warningcolor1) + "!important;\n" +
 						  "--warning-background-color-rgb:" + Color2(warning_color) + "!important;\n" +
+						  "--warning-foreground-color-rgb:" + GetForegroundVariable2(warning_color) + "!important;\n" +
+						  "--warning-foreground-color-hover-rgb:" + GetForegroundVariable2(warning_color,true) + "!important;\n" +
 						  "--success-background-color:" + success_color + "!important;\n" +
 						  "--success-background-color-hover:" + successcolor1 + "!important;\n" +
-						  "--success-foreground-color-inverted:" + ColorTest(successcolor1,true,false) + "!important;\n" +
+						  "--success-gradient-color:" + GetGradientVariable(content_color,'success')[0] + "!important;\n" +
+						  "--success-gradient-color-hover:" + GetGradientVariable(content_color,'success')[1] + "!important;\n" +
+						  "--success-foreground-color:" + GetForegroundVariable(success_color) + "!important;\n" +
+						  "--success-foreground-color-hover:" + GetForegroundVariable(success_color,true) + "!important;\n" +
+						  "--success-foreground-color-inverted:" + GetForegroundVariable(successcolor1) + "!important;\n" +
 						  "--success-background-color-rgb:" + Color2(success_color) + "!important;\n" +
+						  "--success-foreground-color-rgb:" + GetForegroundVariable2(success_color) + "!important;\n" +
+						  "--success-foreground-color-hover-rgb:" + GetForegroundVariable2(success_color,true) + "!important;\n" +
 						  "--message-background-color:" + message_color + "!important;\n" +
 						  "--message-background-color-hover:" + messagecolor1 + "!important;\n" +
-						  "--message-foreground-color-inverted:" + ColorTest(messagecolor1,true,false) + "!important;\n" +
-						  "--message-background-color-rgb:" + Color2(message_color) + "!important;\n"
+						  "--message-gradient-color:" + GetGradientVariable(content_color,'message')[0] + "!important;\n" +
+						  "--message-gradient-color-hover:" + GetGradientVariable(content_color,'message')[1] + "!important;\n" +
+						  "--message-foreground-color:" + GetForegroundVariable(message_color) + "!important;\n" +
+						  "--message-foreground-color-hover:" + GetForegroundVariable(message_color,true) + "!important;\n" +
+						  "--message-foreground-color-inverted:" + GetForegroundVariable(messagecolor1) + "!important;\n" +
+						  "--message-background-color-rgb:" + Color2(message_color) + "!important;\n" +
+						  "--message-foreground-color-rgb:" + GetForegroundVariable2(message_color) + "!important;\n" +
+						  "--message-foreground-color-hover-rgb:" + GetForegroundVariable2(message_color,true) + "!important;\n"
 
 /* Set Values for color-adjusted variables */
 	var result2 = 		  "--page-background-color:" + content_color + ";\n" +
