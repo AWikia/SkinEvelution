@@ -535,12 +535,7 @@ function colortheme(theme='auto', repaint=true, save=true) {
 		window.MW18darkmode = ( window.matchMedia('(prefers-color-scheme: dark)').matches );
 	}
 	$('html').attr("wikitheme", theme);
-	if ( window.matchMedia('(prefers-color-scheme: light)').matches ) {
-		$('html').attr("inverted-colors", ( (theme === 'dark') || (theme === 'auto-r') ) );
-	} else {
-		$('html').attr("inverted-colors", ( (theme === 'light') || (theme === 'auto') ) );
-	}
-	$('html').attr("liatch", window.MW18darkmode );
+	$('html').attr("inverted-colors", window.MW18darkmode );
 	if (save) {
 		insertKey('color-mode', theme );
 	}
