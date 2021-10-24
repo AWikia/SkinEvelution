@@ -249,7 +249,11 @@ function GetCommunityHeaderText() {
 	if (ForcedColors()) {
 		return getComputedStyle(document.querySelector('.fc-canvastext')).getPropertyValue("color");
 	} else if (getComputedStyle(document.querySelector('html')).getPropertyValue("--superbar-text-background-color") === 'auto') {
-		if (isLightColor(GetCommunity())) {
+		var color = getComputedStyle(document.querySelector('html')).getPropertyValue("--body-background-color");
+		if ( (window.MW18darkmode === true) ) {
+			var color = ColorInvert(color);
+		}
+		if (isLightColor(color)) {
 			return getComputedStyle(document.querySelector('body')).getPropertyValue("--light-theme-text-background-color");
 		} else {
 			return getComputedStyle(document.querySelector('body')).getPropertyValue("--dark-theme-text-background-color");
