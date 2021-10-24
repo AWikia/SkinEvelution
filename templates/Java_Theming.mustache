@@ -497,7 +497,9 @@ function colortheme(theme='auto', repaint=true, save=true) {
 }
 
 function SetAccent(tick='false',save='true') {
-		insertKey('accent-active', tick );
+		if (save) {
+			insertKey('accent-active', tick );
+		}
 		$('html').attr("accented", tick);
 }
 
