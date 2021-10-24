@@ -18,29 +18,51 @@
 				history
 			</span>
 		</a>
-		<a class="cpe-floating-button accent dark-mode darkmode-off forced-colors-off page-side-tool" onclick="ToggleMode()" cpe-tooltip="{{msg-evelution-darkmode}}">
+		<a class="cpe-floating-button accent accent-toggle page-side-tool" onclick="ToggleAccent()" cpe-tooltip="{{msg-evelution-toggleaccent}}">
 			<span class="cpe-icon material-icons">
-				dark_mode
+				<span class="cpe-icon material-icons accented-off">
+					invert_colors
+				</span>
+				<span class="cpe-icon material-icons accented-on">
+					invert_colors_off
+				</span>
 			</span>
 		</a>
-		<a class="cpe-floating-button accent dark-mode darkmode-on forced-colors-off page-side-tool" onclick="ToggleMode()" cpe-tooltip="{{msg-evelution-lightmode}}">
-			<span class="cpe-icon material-icons">
-				light_mode
-			</span>
-		</a>
-		<a class="cpe-floating-button accent color-toggle color-management-on solo-on forced-colors-off page-side-tool" onclick="ColorMode()" cpe-tooltip="{{msg-evelution-togglecolor}} (Solo)">
-			<span class="cpe-icon material-icons">
-				hdr_auto
-			</span>
-		</a>
-		<a class="cpe-floating-button accent color-toggle color-management-on solo-off forced-colors-off page-side-tool" onclick="ColorMode()" cpe-tooltip="{{msg-evelution-togglecolor}} (Duo)">
-			<span class="cpe-icon material-icons">
-				hdr_auto
-			</span>
-		</a>
+		<!-- Color Modes -->
+		<div class="cpe-dropdown color-modes forced-colors-off" cpe-orient="land">				
+			<div class="cpe-floating-button accent color-modes page-side-tool" cpe-tooltip="{{msg-evelution-colormodes}}">
+				<span class="cpe-icon material-icons">
+					hdr_auto
+				</span>
+			</div>
+			<div class="cpe-dropdown__content cpe-visual-appearance">					
+				 <ul class="cpe-list is-linked cpe-color-modes">						
+					<li data-color-mode="auto">
+						<a onclick="colortheme('auto')">
+							{{msg-evelution-lightmode}} (Duo)
+						</a>
+					</li>
+					<li data-color-mode="light">
+						<a onclick="colortheme('light')">
+							{{msg-evelution-lightmode}} (Solo)
+						</a>
+					</li>
+					<li data-color-mode="auto-r">
+						<a onclick="colortheme('auto-r')">
+							{{msg-evelution-darkmode}} (Duo)
+						</a>
+					</li>
+					<li data-color-mode="dark">
+						<a onclick="colortheme('dark')">
+							{{msg-evelution-darkmode}} (Solo)
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
 		<!-- Styles -->
 		<div class="cpe-dropdown styles" cpe-orient="land">				
-			<div class="cpe-floating-button accent themes page-side-tool" cpe-tooltip="{{msg-evelution-visual-styles}}">
+			<div class="cpe-floating-button accent styles page-side-tool" cpe-tooltip="{{msg-evelution-visual-styles}}">
 				<span class="cpe-icon material-icons">
 					format_paint
 				</span>
