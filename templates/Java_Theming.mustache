@@ -31,11 +31,15 @@ var visualColorNames = ['Factory', 'XP Luna', 'Windows Forced', 'Campbell Forced
 	if (getKey('color-mode') === '-1') {
 		insertKey('color-mode', 'auto' );
 	}
+	if (getKey('accent-active') === '-1') {
+		insertKey('accent-active', 'false' );
+	}
 	var theme_selected = getKey('theme-selected');
 	var style_active = getKey('style-active');
 	var color_active = getKey('color-active');
 	var filter_active = getKey('filter-active');
 	var color_mode = getKey('color-mode');
+	var accent_active = getKey('accent-active');
     getParams().forEach(function (param) {
         var key = param.split("=")[0];
         var value = param.split("=")[1];
@@ -81,13 +85,17 @@ var visualColorNames = ['Factory', 'XP Luna', 'Windows Forced', 'Campbell Forced
 				color_mode = value;
 				console.info('Color mode settings overriden');
                 break;
+            case 'useaccent':
+				accent_active = value;
+				console.info('Accent mode settings overriden');
+                break;
         }
     });
 	$('html').attr('theme',theme_selected);
 	$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li").removeClass('selected');
 	$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li[data-theme-change='theme-" + theme_selected + "']").addClass('selected');
-	$('html').attr('wikitheme',color_mode);
-//	ColorUpdate(true);
+	colortheme(color_mode,false,false)
+	SetAccent(accent_active,false)
 	SheShe = 'auto'; // Allowed Values ('auto', true, false) 
 	if (SheShe == 'auto') {
 		SheShe = ($("body.server-mode").length != 0);
@@ -481,38 +489,26 @@ function colortheme(theme='auto', repaint=true, save=true) {
 	if (save) {
 		insertKey('color-mode', theme );
 	}
+	$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-color-modes li").removeClass('selected');
+	$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-color-modes li[data-color-mode='" + theme + "']").addClass('selected');
 	if ((old_dark != window.MW18darkmode) && (repaint) ) {
 		ColorUpdate(false);
 	}
 }
 
-function ToggleMode() {
-	var theme = $('html').attr("wikitheme");
-	if (theme === 'auto') {
-		colortheme('auto-r');
-	} else 	if (theme === 'auto-r') {
-		colortheme('auto');
-	} else 	if (theme === 'light') {
-		colortheme('dark');
-	} else 	if (theme === 'dark') {
-		colortheme('light');
-	}
-}
-
-function ColorMode() {
-	var theme = $('html').attr("wikitheme");
-	if (theme === 'auto') {
-		colortheme('light');
-	} else 	if (theme === 'auto-r') {
-		colortheme('dark');
-	} else 	if (theme === 'light') {
-		colortheme('auto');
-	} else 	if (theme === 'dark') {
-		colortheme('auto-r');
-	}
+function SetAccent(tick='false',save='true') {
+		insertKey('accent-active', tick );
+		$('html').attr("accented", tick);
 }
 
 
+function ToggleAccent() {
+	if ($('html').attr("accented") === 'false') {
+		SetAccent( 'true' )
+	} else {
+		SetAccent ( 'false')
+	}
+}
 
 
 
@@ -1008,9 +1004,7 @@ return ((chroma.contrast(color, color2)) >= contrast)
 function ColorUpdate(refresh=true) {
 if (refresh === true) {
 	var theme = $('html').attr("wikitheme");
-	if ( (theme === 'light') || (theme === 'dark')) {
-		colortheme(theme, false,false);
-	}
+	colortheme(theme, false,false);
 	CheckAdapt();
 	/** Foreground Colors 
 	document.querySelector('html').style.setProperty("--light-theme-foreground-color-hover", ColorTest(getComputedStyle(document.querySelector('html')).getPropertyValue("--light-theme-foreground-color")) );
@@ -1023,10 +1017,6 @@ if (refresh === true) {
 	document.querySelector('html').style.setProperty("--dark-theme-foreground-color-hover-rgb", Color2(ColorTest(getComputedStyle(document.querySelector('html')).getPropertyValue("--dark-theme-foreground-color"))) );
 	**/
 }
-
-
-var result = ''
-var result2 = ''
 
 /** Page BG **/
 /* Set Vars */
@@ -1049,7 +1039,6 @@ if ( (window.MW18darkmode === true) ) {
 	$('html').attr("dark-mode", (isDarkColor(content_color )) );
 	if (window.MW18darkmode) {
 		$('html').attr("dark-mode-adjusted", isLightColor( GetPageShort() ));
-		var result2 = result2 + "--page-background-color:" + content_color + ";\n"
 	} else {
 		$('html').attr("dark-mode-adjusted", !(isLightColor( GetPageShort() ) ));
 	}
@@ -1064,7 +1053,6 @@ var adjustment = (window.matchMedia('(prefers-contrast: more)').matches) ? 0.35 
 		var dropdowncolor = ColorTestTwin(content_color,"#000000",adjustment);
 		if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--page-border-background-color") === 'auto')  ) {
 			var dropdowncolor2 = ColorTestTwin(content_color,"#000000",adjustment*2);
-			var result2 = result2 + "--page-border-background-color:" + dropdowncolor2 + ";\n"
 		} else {
 			var dropdowncolor2 = GetPageBorder();
 		}
@@ -1072,24 +1060,12 @@ var adjustment = (window.matchMedia('(prefers-contrast: more)').matches) ? 0.35 
 		var dropdowncolor = ColorTestTwin(content_color,"#ffffff",adjustment);
 		if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--page-border-background-color") === 'auto')  ) {
 			var dropdowncolor2 = ColorTestTwin(content_color,"#ffffff",adjustment*2);
-			var result2 = result2 + "--page-border-background-color:" + dropdowncolor2 + ";\n"
 		} else {
 			var dropdowncolor2 = GetPageBorder();
 		}
 	}
 var dropdowncolorH = ColorTest(dropdowncolor,false,false,true);
 
-	var result = result + "--page-secondary-background-color:" + dropdowncolor + ";\n"
-	var result = result + "--page-secondary-background-color-hover:" + dropdowncolorH + ";\n"
-
-
-
-	var result = result + "--page-background-color-hover:" + content_color2 + ";\n"
-
-// RGB
-	var result = result + "--page-secondary-background-color-rgb:" + Color2(dropdowncolor) + ";\n"
-
-	var result = result + "--page-background-color-rgb:" + Color2( content_color ) + ";\n"
 
 
 /** Page text color **/
@@ -1112,9 +1088,6 @@ if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--page-t
 					}
 				}
 			}
-			var result2 = result2 + "--page-text-background-color:" + content_text + ";\n"
-		}  else if ( (window.MW18darkmode === true) ) {
-			var result2 = result2 + "--page-text-background-color:" + content_text + ";\n"
 		}
 
 
@@ -1130,11 +1103,6 @@ if (!SupportsColorContrast()) {
 }
 
 
-	var result = result + "--page-text-background-color-hover:" + content_text1 + ";\n"
-
-// RGB
-	var result = result + "--page-text-background-color-rgb:" + Color2( content_text ) + ";\n"
-	var result = result + "--page-text-background-color-hover-rgb:" + Color2(content_text1) + ";\n"
 
 
 /** Button Color **/
@@ -1157,9 +1125,6 @@ if ( (window.MW18darkmode === true) ) {
 					}
 				}
 			}
-			var result2 = result2 + "--accent-background-color:" + button_color + ";\n"
-		}  else if ( (window.MW18darkmode === true) ) {
-			var result2 = result2 + "--accent-background-color:" + button_color + ";\n"
 		}
 
 
@@ -1168,10 +1133,6 @@ setLightful(button_color,'accent');
 if (!SupportsColorContrast()) {
 	setLightful(buttoncolor1,'accent-hover');
 }
-/* Set Values */
-	var result = result + "--accent-background-color-hover:" + buttoncolor1 + ";\n"
-// RGB
-	var result = result + "--accent-background-color-rgb:" + Color2(button_color) + ";\n"
 
 
 /** Link Color **/
@@ -1193,9 +1154,6 @@ if ( (window.MW18darkmode === true) ) {
 					}
 				}
 			}
-			var result2 = result2 + "--secondary-accent-background-color:" + link_color + ";\n"
-		}  else if ( (window.MW18darkmode === true) ) {
-			var result2 = result2 + "--secondary-accent-background-color:" + link_color + ";\n"
 		}
 
 var linkcolor1 = ColorTest(link_color,false,false,true);
@@ -1205,10 +1163,6 @@ if (!SupportsColorContrast()) {
 }
 
 
-/* Set Values */
-	var result = result + "--secondary-accent-background-color-hover:" + linkcolor1 + ";\n"
-// RGB
-	var result = result + "--secondary-accent-background-color-rgb:" + Color2(link_color) + ";\n"
 
 /** Content Border **/
 /* Set Vars */
@@ -1234,9 +1188,7 @@ if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--page-b
 					}
 				}
 			}
-			var result2 = result2 + "--page-border-background-color:" + border_color + ";\n"
 		}  else if ( (window.MW18darkmode === true) ) {
-			var result2 = result2 + "--page-border-background-color:" + border_color + ";\n"
 		}
 
 
@@ -1250,12 +1202,6 @@ if (!SupportsColorContrast()) {
 }
 
 
-/* Set Values */
-	var result = result + "--page-border-background-color-hover:" + bordercolor1 + ";\n"
-// RGB
-	var result = result + "--page-border-background-color-rgb:" + Color2(border_color) + ";\n"
-
-
 /** Body Bg **/
 /* Set Vars */
 
@@ -1264,7 +1210,6 @@ var head_color =	GetCommunity();
 // Liatch Quirk
 if ( (window.MW18darkmode === true) ) {
 		var head_color = ColorInvert(head_color);
-		var result2 = result2 + "--body-background-color:" + head_color + ";\n"
 }
 
 var headcolor1 = ColorTest(head_color,false,false,true);
@@ -1272,12 +1217,6 @@ setLightful(head_color,'body');
 if (!SupportsColorContrast()) {
 	setLightful(headcolor1,'body-hover');
 }
-
-
-/* Set Values */
-	var result = result + "--body-background-color-hover:" + headcolor1 + ";\n"
-// RGB
-	var result = result + "--body-background-color-rgb:" + Color2(head_color) + ";\n"
 
 /** Community Header text color **/
 
@@ -1287,7 +1226,6 @@ if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--superb
 	// Liatch Quirk
 	if ( (window.MW18darkmode === true) ) {
 		var headertext_color = ColorInvert(headertext_color);
-		var result2 = result2 + "--superbar-text-background-color:" + headertext_color + ";\n"
 	}
 
 
@@ -1298,14 +1236,6 @@ var headertextcolor1 = ColorTest(headertext_color,false,true,true);
 if (!SupportsColorContrast()) {
 	setLightful(headertextcolor1,'superbar-text-hover');
 }
-
-	var result = result + "--superbar-text-background-color-hover:" + headertextcolor1 + ";\n"
-
-// RGB
-	var result = result + "--superbar-text-background-color-rgb:" + Color2( getComputedStyle(document.querySelector('body')).getPropertyValue("--superbar-text-background-color") ) + ";\n"
-	var result = result + "--superbar-text-background-color-hover-rgb:" + Color2(headertextcolor1) + ";\n"
-
-
 
 	$('html').attr("alert-color",BestAlertColor() );
 	setLightful(GetAlert(),'alert');
@@ -1336,8 +1266,6 @@ var warning_color = GetWarning();
 var warningcolor1 = ColorTest(warning_color,false,false,true);
 if (!SupportsColorContrast()) {
 	setLightful(warningcolor1,'warning-hover');
-} else {
-	$('body').attr("warning-color",Color2(GetWarning()));
 }
 
 
@@ -1353,8 +1281,6 @@ var success_color = GetSuccess();
 var successcolor1 = ColorTest(success_color,false,false,true);
 if (!SupportsColorContrast()) {
 	setLightful(successcolor1,'success-hover');
-} else {
-	$('body').attr("success-color",Color2(GetSuccess()) );
 }
 
 
@@ -1370,8 +1296,6 @@ var message_color = GetMessage();
 var messagecolor1 = ColorTest(message_color,false,false,true);
 if (!SupportsColorContrast()) {
 	setLightful(messagecolor1,'message-hover');
-} else {
-	$('body').attr("message-color",Color2(GetMessage()) );
 }
 
 
@@ -1387,6 +1311,37 @@ ThemeColorMetaTag();
 if (refresh === true) {
 	CheckBG()
 }
+
+/* Set Values for dynamical variables */
+	var result = 		  "--page-secondary-background-color:" + dropdowncolor + ";\n" + 
+						  "--page-secondary-background-color-hover:" + dropdowncolorH + ";\n" + 
+						  "--page-background-color-hover:" + content_color2 + ";\n" + 
+						  "--page-secondary-background-color-rgb:" + Color2(dropdowncolor) + ";\n" + 
+						  "--page-background-color-rgb:" + Color2( content_color ) + ";\n" +
+						  "--page-text-background-color-hover:" + content_text1 + ";\n" +
+						  "--page-text-background-color-rgb:" + Color2( content_text ) + ";\n" +
+						  "--page-text-background-color-hover-rgb:" + Color2(content_text1) + ";\n" +
+						  "--accent-background-color-hover:" + buttoncolor1 + ";\n" +
+						  "--accent-background-color-rgb:" + Color2(button_color) + ";\n" +
+						  "--secondary-accent-background-color-hover:" + linkcolor1 + ";\n" +
+						  "--secondary-accent-background-color-rgb:" + Color2(link_color) + ";\n" +
+						  "--page-border-background-color-hover:" + bordercolor1 + ";\n" +
+						  "--page-border-background-color-rgb:" + Color2(border_color) + ";\n" +
+						  "--body-background-color-hover:" + headcolor1 + ";\n" +
+						  "--body-background-color-rgb:" + Color2(head_color) + ";\n" +
+						  "--superbar-text-background-color-hover:" + headertextcolor1 + ";\n" +
+						  "--superbar-text-background-color-rgb:" + Color2( headertext_color ) + ";\n" +
+						  "--superbar-text-background-color-hover-rgb:" + Color2(headertextcolor1) + ";\n"
+
+/* Set Values for color-adjusted variables */
+	var result2 = 		  "--page-background-color:" + content_color + ";\n" +
+						  "--page-text-background-color:" + content_text + ";\n" +
+						  "--accent-background-color:" + button_color + ";\n" +
+						  "--secondary-accent-background-color:" + link_color + ";\n" +
+						  "--page-border-background-color:" + border_color + ";\n" +
+						  "--body-background-color:" + head_color + ";\n" +
+						  "--superbar-text-background-color:" + headertext_color + ";\n"
+
 $("head .theming").html(':root {\n' + result + '}\n' + 'body {\n' + result2 + '}');
 
 
