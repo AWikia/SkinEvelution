@@ -1096,9 +1096,6 @@ if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--page-t
 
 var content_text1 = ColorTest(content_text,false,true,true);
 	setLightful(content_text,'page-text');
-if (!SupportsColorContrast()) {
-	setLightful(content_text1,'page-text-hover');
-}
 
 
 
@@ -1128,9 +1125,6 @@ if ( (window.MW18darkmode === true) ) {
 
 var buttoncolor1 = ColorTest(button_color,false);
 setLightful(button_color,'accent');
-if (!SupportsColorContrast()) {
-	setLightful(buttoncolor1,'accent-hover');
-}
 
 
 /** Link Color **/
@@ -1156,9 +1150,6 @@ if ( (window.MW18darkmode === true) ) {
 
 var linkcolor1 = ColorTest(link_color,false,false,true);
 setLightful(link_color,'secondary-accent');
-if (!SupportsColorContrast()) {
-	setLightful(linkcolor1,'secondary-accent-hover');
-}
 
 
 
@@ -1195,9 +1186,6 @@ if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--page-b
 
 var bordercolor1 = ColorTest(border_color);
 setLightful(border_color,'page-border');
-if (!SupportsColorContrast()) {
-	setLightful(bordercolor1,'page-border-hover');
-}
 
 
 /** Body Bg **/
@@ -1212,9 +1200,6 @@ if ( (window.MW18darkmode === true) ) {
 
 var headcolor1 = ColorTest(head_color,false,false,true);
 setLightful(head_color,'body');
-if (!SupportsColorContrast()) {
-	setLightful(headcolor1,'body-hover');
-}
 
 /** Community Header text color **/
 
@@ -1231,18 +1216,12 @@ if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--superb
 
 var headertextcolor1 = ColorTest(headertext_color,false,true,true);
 	setLightful(headertext_color,'superbar-text');
-if (!SupportsColorContrast()) {
-	setLightful(headertextcolor1,'superbar-text-hover');
-}
 	
 /** Alert Color **/
 /* Set Vars */
 var alert_color = BestAlertColor()[0];
 var alertcolor1 = ColorTest(alert_color,false,false,true);
 setLightful(alert_color,'alert');
-if (!SupportsColorContrast()) {
-	setLightful(alertcolor1,'alert-hover');
-}
 
 
 
@@ -1252,9 +1231,6 @@ if (!SupportsColorContrast()) {
 var warning_color = BestAlertColor()[1];
 var warningcolor1 = ColorTest(warning_color,false,false,true);
 setLightful(warning_color,'warning');
-if (!SupportsColorContrast()) {
-	setLightful(warningcolor1,'warning-hover');
-}
 
 
 
@@ -1263,9 +1239,6 @@ if (!SupportsColorContrast()) {
 var success_color = BestAlertColor()[2];
 var successcolor1 = ColorTest(success_color,false,false,true);
 setLightful(success_color,'success');
-if (!SupportsColorContrast()) {
-	setLightful(successcolor1,'success-hover');
-}
 
 
 /** Message Color **/
@@ -1273,9 +1246,7 @@ if (!SupportsColorContrast()) {
 var message_color = BestAlertColor()[3];
 var messagecolor1 = ColorTest(message_color,false,false,true);
 setLightful(message_color,'message');
-if (!SupportsColorContrast()) {
-	setLightful(messagecolor1,'message-hover');
-}
+
 
 
 
@@ -1292,30 +1263,40 @@ if (refresh === true) {
 						  "--page-secondary-background-color-rgb:" + Color2(dropdowncolor) + ";\n" + 
 						  "--page-background-color-rgb:" + Color2( content_color ) + ";\n" +
 						  "--page-text-background-color-hover:" + content_text1 + ";\n" +
+						  "--page-text-foreground-color-inverted:" + ColorTest(content_text1,true,false) + ";\n" +
 						  "--page-text-background-color-rgb:" + Color2( content_text ) + ";\n" +
 						  "--page-text-background-color-hover-rgb:" + Color2(content_text1) + ";\n" +
 						  "--accent-background-color-hover:" + buttoncolor1 + ";\n" +
+						  "--accent-foreground-color-inverted:" + ColorTest(buttoncolor1,true,false) + ";\n" +
 						  "--accent-background-color-rgb:" + Color2(button_color) + ";\n" +
 						  "--secondary-accent-background-color-hover:" + linkcolor1 + ";\n" +
+						  "--secondary-accent-foreground-color-inverted:" + ColorTest(linkcolor1,true,false) + ";\n" +
 						  "--secondary-accent-background-color-rgb:" + Color2(link_color) + ";\n" +
 						  "--page-border-background-color-hover:" + bordercolor1 + ";\n" +
+						  "--page-border-foreground-color-inverted:" + ColorTest(bordercolor1,true,false) + ";\n" +
 						  "--page-border-background-color-rgb:" + Color2(border_color) + ";\n" +
 						  "--body-background-color-hover:" + headcolor1 + ";\n" +
+						  "--body-foreground-color-inverted:" + ColorTest(headcolor1,true,false) + ";\n" +
 						  "--body-background-color-rgb:" + Color2(head_color) + ";\n" +
 						  "--superbar-text-background-color-hover:" + headertextcolor1 + ";\n" +
+						  "--superbar-text-foreground-color-inverted:" + ColorTest(headertextcolor1,true,false) + ";\n" +
 						  "--superbar-text-background-color-rgb:" + Color2( headertext_color ) + ";\n" +
-						  "--superbar-text-background-color-hover:" + Color2(headertextcolor1) + ";\n" +
+						  "--superbar-text-background-color-hover-rgb:" + Color2(headertextcolor1) + ";\n" +
 						  "--alert-background-color:" + alert_color + "!important;\n" +
 						  "--alert-background-color-hover:" + alertcolor1 + "!important;\n" +
+						  "--alert-foreground-color-inverted:" + ColorTest(alertcolor1,true,false) + "!important;\n" +
 						  "--alert-background-color-rgb:" + Color2(alert_color) + "!important;\n" +
 						  "--warning-background-color:" + warning_color + "!important;\n" +
 						  "--warning-background-color-hover:" + warningcolor1 + "!important;\n" +
+						  "--warning-foreground-color-inverted:" + ColorTest(warningcolor1,true,false) + "!important;\n" +
 						  "--warning-background-color-rgb:" + Color2(warning_color) + "!important;\n" +
 						  "--success-background-color:" + success_color + "!important;\n" +
 						  "--success-background-color-hover:" + successcolor1 + "!important;\n" +
+						  "--success-foreground-color-inverted:" + ColorTest(successcolor1,true,false) + "!important;\n" +
 						  "--success-background-color-rgb:" + Color2(success_color) + "!important;\n" +
 						  "--message-background-color:" + message_color + "!important;\n" +
 						  "--message-background-color-hover:" + messagecolor1 + "!important;\n" +
+						  "--message-foreground-color-inverted:" + ColorTest(messagecolor1,true,false) + "!important;\n" +
 						  "--message-background-color-rgb:" + Color2(message_color) + "!important;\n"
 
 /* Set Values for color-adjusted variables */
