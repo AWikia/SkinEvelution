@@ -315,20 +315,20 @@ function GetAccent() {
 }
 
 function GetAlert() {
-		return getComputedStyle(document.querySelector('.ad-alert')).getPropertyValue("color");
+		return BestAlertColor()[0];
 }
 
 
 function GetWarning() {
-		return getComputedStyle(document.querySelector('.ad-warning')).getPropertyValue("color");
+		return BestAlertColor()[1];
 }
 
 function GetSuccess() {
-		return getComputedStyle(document.querySelector('.ad-success')).getPropertyValue("color");
+		return BestAlertColor()[2];
 }
 
 function GetMessage() {
-		return getComputedStyle(document.querySelector('.ad-message')).getPropertyValue("color");
+		return BestAlertColor()[3];
 }
 
 function BestAlertColor() {
@@ -355,15 +355,11 @@ var colors4= ['#8c8c8c', '#999999', '#a5a5a5', '#b2b2b2', '#bfbfbf', '#cccccc', 
 
 	for (let i = 0; i < colors.length; i++) {
 		if ( ((chroma.contrast(page, colors[i])) >= contrastA) && ((chroma.contrast(page, colors2[i])) >= contrastW) && ((chroma.contrast(page, colors3[i])) >= contrastS) && ((chroma.contrast(page, colors4[i])) >= contrastM) ) {
-			return Color4(colors[i]);
+			return [colors[i], colors2[i], colors3[i], colors4[i]];
 		}
 	}
 	/* If no color can be found legible, fallback to specific color */
-	if (isLightColor(page)) {
-		return '153 0 0';
-	} else {
-		return '255 102 102';
-	}
+		return [colors[3], colors2[3], colors3[3], colors4[3]];
 
  
 }
@@ -1238,17 +1234,12 @@ var headertextcolor1 = ColorTest(headertext_color,false,true,true);
 if (!SupportsColorContrast()) {
 	setLightful(headertextcolor1,'superbar-text-hover');
 }
-
-	$('html').attr("alert-color",BestAlertColor() );
-	setLightful(GetAlert(),'alert');
-	setLightful(GetWarning(),'warning');
-	setLightful(GetSuccess(),'success');
-	setLightful(GetMessage(),'message');
 	
 /** Alert Color **/
 /* Set Vars */
-var alert_color = GetAlert();
+var alert_color = BestAlertColor()[0];
 var alertcolor1 = ColorTest(alert_color,false,false,true);
+setLightful(alert_color,'alert');
 if (!SupportsColorContrast()) {
 	setLightful(alertcolor1,'alert-hover');
 }
@@ -1256,56 +1247,36 @@ if (!SupportsColorContrast()) {
 
 
 
-/* Set Values
-document.querySelector('html').style.setProperty("--alert-background-color-hover", alertcolor1);
-// RGB
-document.querySelector('html').style.setProperty("--alert-background-color-rgb", Color2(alert_color));
- */
-
 /** Warning Color **/
 /* Set Vars */
-var warning_color = GetWarning();
+var warning_color = BestAlertColor()[1];
 var warningcolor1 = ColorTest(warning_color,false,false,true);
+setLightful(warning_color,'warning');
 if (!SupportsColorContrast()) {
 	setLightful(warningcolor1,'warning-hover');
 }
 
 
-/* Set Values
-document.querySelector('html').style.setProperty("--warning-background-color-hover", warningcolor1);
-// RGB
-document.querySelector('html').style.setProperty("--warning-background-color-rgb", Color2(warning_color));
- */
 
 /** Success Color **/
 /* Set Vars */
-var success_color = GetSuccess();
+var success_color = BestAlertColor()[2];
 var successcolor1 = ColorTest(success_color,false,false,true);
+setLightful(success_color,'success');
 if (!SupportsColorContrast()) {
 	setLightful(successcolor1,'success-hover');
 }
 
 
-/* Set Values
-document.querySelector('html').style.setProperty("--success-background-color-hover", successcolor1);
-// RGB
-document.querySelector('html').style.setProperty("--success-background-color-rgb", Color2(success_color));
- */
-
 /** Message Color **/
 /* Set Vars */
-var message_color = GetMessage();
+var message_color = BestAlertColor()[3];
 var messagecolor1 = ColorTest(message_color,false,false,true);
+setLightful(message_color,'message');
 if (!SupportsColorContrast()) {
 	setLightful(messagecolor1,'message-hover');
 }
 
-
-/* Set Values
-document.querySelector('html').style.setProperty("--message-background-color-hover", messagecolor1);
-// RGB
-document.querySelector('html').style.setProperty("--message-background-color-rgb", Color2(message_color));
- */
 
 
 ThemeColorMetaTag();
@@ -1333,7 +1304,19 @@ if (refresh === true) {
 						  "--body-background-color-rgb:" + Color2(head_color) + ";\n" +
 						  "--superbar-text-background-color-hover:" + headertextcolor1 + ";\n" +
 						  "--superbar-text-background-color-rgb:" + Color2( headertext_color ) + ";\n" +
-						  "--superbar-text-background-color-hover-rgb:" + Color2(headertextcolor1) + ";\n"
+						  "--superbar-text-background-color-hover:" + Color2(headertextcolor1) + ";\n" +
+						  "--alert-background-color:" + alert_color + "!important;\n" +
+						  "--alert-background-color-hover:" + alertcolor1 + "!important;\n" +
+						  "--alert-background-color-rgb:" + Color2(alert_color) + "!important;\n" +
+						  "--warning-background-color:" + warning_color + "!important;\n" +
+						  "--warning-background-color-hover:" + warningcolor1 + "!important;\n" +
+						  "--warning-background-color-rgb:" + Color2(warning_color) + "!important;\n" +
+						  "--success-background-color:" + success_color + "!important;\n" +
+						  "--success-background-color-hover:" + successcolor1 + "!important;\n" +
+						  "--success-background-color-rgb:" + Color2(success_color) + "!important;\n" +
+						  "--message-background-color:" + message_color + "!important;\n" +
+						  "--message-background-color-hover:" + messagecolor1 + "!important;\n" +
+						  "--message-background-color-rgb:" + Color2(message_color) + "!important;\n"
 
 /* Set Values for color-adjusted variables */
 	var result2 = 		  "--page-background-color:" + content_color + ";\n" +
