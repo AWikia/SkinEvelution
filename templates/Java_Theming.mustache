@@ -1045,11 +1045,19 @@ if ( (window.MW18darkmode === true) ) {
 }
 
 /* This goes before compiling Generic Colors or else they will think the theme is light */
-	
+	$('html').removeClass("theme-fandomdesktop-light").removeClass("theme-fandomdesktop-dark")
 	if (window.MW18darkmode) {
-		$('html').attr("dark-mode", isLightColor( GetPageShort() ));
+		if (isLightColor( GetPageShort() )) {
+			$('html').addClass("theme-fandomdesktop-dark");
+		} else {
+			$('html').addClass("theme-fandomdesktop-light");
+		}
 	} else {
-		$('html').attr("dark-mode", isDarkColor( GetPageShort()  ));
+		if (isDarkColor( GetPageShort() )) {
+			$('html').addClass("theme-fandomdesktop-dark");
+		} else {
+			$('html').addClass("theme-fandomdesktop-light");
+		}
 	}
 
 
