@@ -164,6 +164,13 @@ font-family:Trebuchet MS;
 --logo-filter-duration:300ms;
 --logo-filter-delay:0;
 --max-width:1920px;
+--header-size:160px;
+/* Theme-related */
+--bg-size:cover;
+--bg-tile-x:no-repeat;
+--bg-tile-y:no-repeat;
+--bg-overlay-display:block;
+--bg-overlay-size:var(--header-size);
 /* Shapes */
 --cpe-teadrop:url("data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHdpZHRoPSI4Mi42NjY2NyIgaGVpZ2h0PSI4Mi42NjY2NyIgdmlld0JveD0iMCwwLDgyLjY2NjY3LDgyLjY2NjY3Ij4NCgk8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMTk4LjY2NjY2LC0xMzguNjY2NjYpIj4NCgkJPGcgZGF0YS1wYXBlci1kYXRhPSJ7JnF1b3Q7aXNQYWludGluZ0xheWVyJnF1b3Q7OnRydWV9IiBmaWxsPSIjMDAwMDAwIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMCIgc3Ryb2tlLWxpbmVjYXA9ImJ1dHQiIHN0cm9rZS1saW5lam9pbj0ibWl0ZXIiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgc3Ryb2tlLWRhc2hhcnJheT0iIiBzdHJva2UtZGFzaG9mZnNldD0iMCIgc3R5bGU9Im1peC1ibGVuZC1tb2RlOiBub3JtYWwiPg0KCQkJPHBhdGggZmlsbD0iIzAwMDAwMCIgZD0iTTE5OC42NjY2NywxODBjMCwtMjIuODI3NzcgNDEuMzMzMzQsLTQxLjMzMzM0IDQxLjMzMzM0LC00MS4zMzMzNGMwLDAgNDEuMzMzMzMsMTguNTA1NTcgNDEuMzMzMzMsNDEuMzMzMzRjMCwyMi44Mjc3NyAtMTguNTA1NTYsNDEuMzMzMzQgLTQxLjMzMzMzLDQxLjMzMzM0Yy0yMi44Mjc3NywwIC00MS4zMzMzNCwtMTguNTA1NTcgLTQxLjMzMzM0LC00MS4zMzMzNHoiLz4NCgkJPC9nPg0KCTwvZz4NCjwvc3ZnPg==");
 /* Scrollbar */
@@ -176,27 +183,6 @@ font-family:Trebuchet MS;
 	--main-secondary-fonts:system-ui, BlinkMacSystemFont, -apple-system; /* Empty but other languages will depend on it */
 	}
 }
-
-/*
-**
-** Autocolorization quirks 
-** NOTE: All declerations must be with !important in order to override the inline style of these properties set to <body> to inherit
-**
-*/
-
-/** Page Text **/
-
-/* Light */
-body[page-text-background-color-auto="true"] {
-	--page-text-background-color:var(--light-theme-text-background-color)!important;
-
-}
-
-/* Dark */
-html[dark-mode="true"] body[page-text-background-color-auto="true"] {
-	--page-text-background-color:var(--dark-theme-text-background-color)!important;
-}
-
 
 
 /* Misc Colors (Complement with Luna theming) */
@@ -435,7 +421,6 @@ body {
   --cpe-text-cursor:text;
   --cpe-hand-cursor:pointer;
 	scrollbar-color:var(--scrollbar-thumb-color-1) var(--scrollbar-track-color-1);
-	--header-size:160px;
 	--dropdown-opacity:0.3;
 /** Scrollbar Styling **/
 	/* Width */
@@ -492,15 +477,15 @@ container {
 	--extra-size:var(--global-nav-size,0px);
 	top:0;
 	width:calc(100% - var(--extra-size));
-	height:var(--header-size);
-	background-repeat:repeat;
+	height:var(--bg-overlay-size);
+	background-repeat:var(--bg-tile-x) var(--bg-tile-y);
 	margin-left:var(--extra-size);
 	position:fixed!Important;
 	display:block;
 	content:"";
 	z-index:-2;
 	background-position:var(--body-background-alignment);
-	background-size:cover;
+	background-size:var(--bg-size);
 	background-image:var(--body-background-image);
 	background-color:transparent;
 	pointer-events:none;
@@ -528,58 +513,17 @@ container {
 	-qq-image-blurring:tick;                  /* 4x4 Web 1-2    */
 }
 
-body[body-background-mode="full"] .body-background {
-	height:100%!important;
-}
-
-
-
-body[body-background-size="contain"] .body-background {
-	background-size:contain;
-}
-
-
-body[body-background-size="stretched"] .body-background {
-	background-size:100% 100%;
-	background-position:center;
-}
-
-body[body-background-size="full"] .body-background {
-	background-size:auto;
-}
-
-body[body-background-no-horizontal-tiling="true"] .body-background {
-	background-repeat-x:no-repeat;
-}
-
-body[body-background-no-vertical-tiling="true"] .body-background {
-	background-repeat-y:no-repeat;
-}
-
-
-body[page-text-background-color-auto="false"] .colora-on,
-body[page-text-background-color-auto="true"] .colora-off,
-body[page-border-background-color-auto="false"] .bordera-on,
-body[page-border-background-color-auto="true"] .bordera-off,
-body[caret-color-auto="false"] .careta-on,
-body[caret-color-auto="true"] .careta-off { 
-	display:none!important;
-}
 
 .secondary, h1, h2, h3, h4, h5, h6 {
   font-family:var(--secondary-font), sans-serif;
 }
 
-body[body-background-mode="full"] .gradient-overlay {
-	display:none!important;
-}
-
 .gradient-overlay {
 	top:0;
 	width:100%;
-	height:var(--header-size);
+	height:var(--bg-overlay-size);
 	position:fixed!Important;
-	display:block;
+	display:var(--bg-overlay-display);
 	content:"";
 	z-index:-1;
 	background-image:linear-gradient(to bottom, rgba(var(--body-background-color-rgb),0.05) 5% ,var(--body-background-color));
@@ -851,17 +795,8 @@ html[accented="false"] .accented-on {
 }
 
 
-
-html[wikitheme="light"] .solo-on,
-html[wikitheme="dark"] .solo-on,
-html[wikitheme="auto"] .solo-off,
-html[wikitheme="auto-r"] .solo-off {
-	display:none!important;
-}
-
-
-html[inverted-colors="true"]  .invertion-on {
-	filter:invert(1) hue-rotate(180deg);
+body .invertion-on {
+	filter:var(--invertion-filter, none);
 }
 
 :not(.unset)[disabled], 
