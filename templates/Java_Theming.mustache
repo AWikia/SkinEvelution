@@ -330,18 +330,28 @@ var colors3= ['#19ff8c', '#33ff99', '#4dffa6', '#66ffb3', '#80ffbf', '#99ffcc', 
 var colors4= ['#8c8c8c', '#999999', '#a5a5a5', '#b2b2b2', '#bfbfbf', '#cccccc', '#d8d8d8', '#e5e5e5', '#f2f2f2', '#727272', '#666666', '#595959', '#4c4c4c', '#404040', '#333333', '#262626', '#191919', '#0c0c0c'];
 
 }
+
+
 		contrastA = (window.matchMedia('(prefers-contrast: more)').matches) ? 4.50 : 3.00
 		contrastW = (window.matchMedia('(prefers-contrast: more)').matches) ? 4.12 : 2.75
 		contrastS = (window.matchMedia('(prefers-contrast: more)').matches) ? 3.75 : 2.50
 		contrastM = (window.matchMedia('(prefers-contrast: more)').matches) ? 3.37 : 2.25
 
 	for (let i = 0; i < colors.length; i++) {
-		if ( ((chroma.contrast(page, colors[i])) >= contrastA) && ((chroma.contrast(page, colors2[i])) >= contrastW) && ((chroma.contrast(page, colors3[i])) >= contrastS) && ((chroma.contrast(page, colors4[i])) >= contrastM) ) {
-			return [colors[i], colors2[i], colors3[i], colors4[i]];
+		var alert = ColorTestTwin(colors[i], page, 0.15,360);
+		var warn = ColorTestTwin(colors2[i], page, 0.15,38);
+		var done = ColorTestTwin(colors3[i], page, 0.15,150);
+		var info = ColorTestTwin(colors4[i], page, 0.15,-1)
+		if ( ((chroma.contrast(page, alert)) >= contrastA) && ((chroma.contrast(page, warn)) >= contrastW) && ((chroma.contrast(page, done)) >= contrastS) && ((chroma.contrast(page, info)) >= contrastM) ) {
+			var page = ColorInvert(page);
+			return [alert, warn, done, info];
 		}
 	}
+	
+	
 	/* If no color can be found legible, fallback to specific color */
-		return [colors[3], colors2[3], colors3[3], colors4[3]];
+			var page = ColorInvert(page);
+			return [ColorTestTwin(colors[3], page, 0.15,360), ColorTestTwin(colors2[3], page, 0.15,38), ColorTestTwin(colors3[3], page, 0.15,150), ColorTestTwin(colors4[3], page, 0.15,-1)];
 
  
 }
@@ -395,21 +405,6 @@ function GetGradientVariable2(color,name="page") {
 	} else {
 		return ['var(--' + name + '-background-color-hover)', 'var(--' + name + '-background-color)']
 	}
-}
-
-
-function ActiveColorSet() { // Debugging material
-var colors = ['#ff1919', '#ff3333', '#ff4d4d', '#ff6666', '#ff8080', '#ff9999', '#ffb3b3', '#ffcccc', '#ffe6e6', '#e60000', '#cc0000', '#b30000', '#990000', '#800000', '#660000', '#4d0000', '#330000', '#1a0000'];
-var colors2= ['#ffaf19', '#ffb833', '#ffc14d', '#ffc966', '#ffd280', '#ffdb99', '#ffe4b3', '#ffedcc', '#fff6e6', '#e69500', '#cc8500', '#b37400', '#996300', '#805300', '#664200', '#4d3200', '#332100', '#1a1100'];
-var colors3= ['#19ff8c', '#33ff99', '#4dffa6', '#66ffb3', '#80ffbf', '#99ffcc', '#b3ffd9', '#ccffe6', '#e6fff2', '#00e673', '#00cc66', '#00b359', '#00994d', '#008040', '#006633', '#004d26', '#00331a', '#001a0d'];
-var colors4= ['#8c8c8c', '#999999', '#a5a5a5', '#b2b2b2', '#bfbfbf', '#cccccc', '#d8d8d8', '#e5e5e5', '#f2f2f2', '#727272', '#666666', '#595959', '#4c4c4c', '#404040', '#333333', '#262626', '#191919', '#0c0c0c'];
-	var set = colors.indexOf(BestAlertColor()[0])
-	var s = 'This theme uses set ' + set + ' of generic colors:' +
-		   '\n Alert Color: ' + colors[set] + 
-		   '\n Warning Color: ' + colors2[set] + 
-		   '\n Success Color: ' + colors3[set] + 
-		   '\n Message Color: ' + colors4[set]
-	alert(s)
 }
 
 
@@ -883,7 +878,7 @@ function DownloadTheme(full=false) {
 
 
 /* Begin Color Parsers */
-function ColorTestTwin(color1,color2,intensity=1) {
+function ColorTestTwin(color1,color2,intensity=1,hue='nil') {
 	var alpha = 0.5*intensity;
 	var r = Color(color1).getRed() * (1 - alpha);
 	var g = Color(color1).getGreen() * (1 - alpha);
@@ -892,7 +887,13 @@ function ColorTestTwin(color1,color2,intensity=1) {
 	var r1 = Color(color2).getRed() * alpha;
 	var g1 = Color(color2).getGreen() * alpha;
 	var b1 = Color(color2).getBlue() * alpha;
-	return Color([(r + r1) * 255,(g + g1) * 255,(b + b1) * 255]).toString();
+	if (hue === 'nil') {
+		return Color([(r + r1) * 255,(g + g1) * 255,(b + b1) * 255]).toString();
+	} else if (hue === -1) {
+		return Color([(r + r1) * 255,(g + g1) * 255,(b + b1) * 255]).setSaturation(0).setHue(0).toString();
+	} else {
+		return Color([(r + r1) * 255,(g + g1) * 255,(b + b1) * 255]).setHue(hue).toString();
+	}
 }
 
 
