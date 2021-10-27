@@ -1,0 +1,123 @@
+<div class="evelution-floating-actions page-side-tools__wrapper">
+	<div class="evelution-floating-actions-container cpe-floating-button-group is-vertical page-side-tools">
+		<a class="cpe-floating-button accent toggle-size page-side-tool content-size-toggle" onclick="ToggleWidth()" cpe-tooltip="{{msg-evelution-togglesize}}">
+			<span class="cpe-icon material-icons wide-off">
+				open_in_full
+			</span>
+			<span class="cpe-icon material-icons wide-on">
+				close_fullscreen
+			</span>
+		</a>
+		<a class="cpe-floating-button accent edit page-side-tool page-side-edit" href="{{html-edit-link}}/{{ html-titlealt}}" cpe-tooltip="{{msg-edit}}">
+			<span class="cpe-icon material-icons">
+				edit
+			</span>
+		</a>
+		<a class="cpe-floating-button accent history page-side-tool" href="{{html-history-link}}/{{ html-titlealt}}" cpe-tooltip="{{msg-history}}">
+			<span class="cpe-icon material-icons">
+				history
+			</span>
+		</a>
+		<a class="cpe-floating-button accent accent-toggle page-side-tool" onclick="ToggleAccent()" cpe-tooltip="{{msg-evelution-toggleaccent}}">
+			<span class="cpe-icon material-icons">
+				<span class="cpe-icon material-icons accented-off">
+					invert_colors
+				</span>
+				<span class="cpe-icon material-icons accented-on">
+					invert_colors_off
+				</span>
+			</span>
+		</a>
+		<!-- Color Modes -->
+		<div class="cpe-dropdown color-modes forced-colors-off" cpe-orient="land">				
+			<div class="cpe-floating-button accent color-modes page-side-tool" cpe-tooltip="{{msg-evelution-colormodes}}">
+				<span class="cpe-icon material-icons">
+					hdr_auto
+				</span>
+			</div>
+			<div class="cpe-dropdown__content cpe-visual-appearance">					
+				 <ul class="cpe-list is-linked cpe-color-modes">						
+					<li data-color-mode="auto">
+						<a onclick="colortheme('auto')">
+							{{msg-evelution-lightmode}} (Duo)
+						</a>
+					</li>
+					<li data-color-mode="light">
+						<a onclick="colortheme('light')">
+							{{msg-evelution-lightmode}} (Solo)
+						</a>
+					</li>
+					<li data-color-mode="auto-r">
+						<a onclick="colortheme('auto-r')">
+							{{msg-evelution-darkmode}} (Duo)
+						</a>
+					</li>
+					<li data-color-mode="dark">
+						<a onclick="colortheme('dark')">
+							{{msg-evelution-darkmode}} (Solo)
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<!-- Styles -->
+		<div class="cpe-dropdown styles" cpe-orient="land">				
+			<div class="cpe-floating-button accent styles page-side-tool" cpe-tooltip="{{msg-evelution-visual-styles}}">
+				<span class="cpe-icon material-icons">
+					format_paint
+				</span>
+			</div>
+			<div class="cpe-dropdown__content cpe-visual-appearance">					
+				 <ul class="cpe-list is-linked cpe-visual-styles">						
+<!--					<li id="styleA" automatic><a onclick="VisualStyle('<automatic>')">{{msg-evelution-designer-auto}}</a></li> -->
+					<li id="styleS"><a onclick="VisualStyle('S')">{{msg-evelution-standard}}</a></li>
+				</ul>
+			</div>
+		</div>
+		<!-- Colors -->
+		<div class="cpe-dropdown colors color-management-on td-off forced-colors-off" cpe-orient="land">				
+			<div class="cpe-floating-button accent colors page-side-tool" cpe-tooltip="{{msg-evelution-visual-colors}}">
+				<span class="cpe-icon material-icons">
+					palette
+				</span>
+			</div>
+			<div class="cpe-dropdown__content is-right-aligned cpe-visual-appearance">					
+				 <ul class="cpe-list is-linked cpe-visual-colors">						
+					<li id="colorS"><a onclick="VisualColor('S')">{{msg-evelution-standard}}</a></li>
+				</ul>
+			</div>
+		</div>
+		<!-- Themes -->
+		<div class="cpe-dropdown themes color-management-on forced-colors-off" cpe-orient="land">
+			<div class="cpe-floating-button accent themes page-side-tool" cpe-tooltip="{{msg-evelution-themes}}">
+				<span class="cpe-icon material-icons">
+					brush
+				</span>
+			</div>
+			<div class="cpe-dropdown__content cpe-is-right-aligned">
+				<ul class="cpe-list is-linked cpe-themes">
+					<li data-theme-change="theme-A">
+						<a class="ThemeA" onclick="HCa()">
+							{{msg-evelution-theme}} A
+						</a>
+					</li>
+					<li data-theme-change="theme-B">
+						<a class="ThemeB" onclick="HCb()">
+							{{msg-evelution-theme}} B
+						</a>
+					</li>
+					<li data-theme-change="theme-C">
+						<a class="ThemeC" onclick="HCc()">
+							{{msg-evelution-theme}} C
+						</a>
+					</li>
+					<li data-theme-change="theme-D">
+						<a class="ThemeD" onclick="HCd()">
+							{{msg-evelution-theme}} D
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
