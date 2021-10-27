@@ -148,6 +148,7 @@ font-family:Trebuchet MS;
 --body-background-no-horizontal-tiling:false;
 --body-background-no-vertical-tiling:false;
 --backdrop-filter:blur(10px) sepia(5%) contrast(105%) invert(5%) grayscale(5%) saturate(105%) hue-rotate(0.5deg) brightness(105%);
+--system-visual-style:standard;
 /* Fonts */
 --main-fonts:"Didact Gothic", "Inter"; /* Empty but other languages will depend on it */
 --foreign-fonts:"Didact Gothic", "M PLUS 1p",  "Nanum Gothic", "Prompt", "Cairo", "Ramabhadra", "Catamaran", "Noto Sans", "Noto Sans SC", "Noto Sans TC", "Noto Sans HK", "Hind Siliguri", "Baloo Tamma 2", "Kantumruy", "Manjari", "Padauk", "Baloo Bhaina 2", "Alef";
@@ -164,6 +165,13 @@ font-family:Trebuchet MS;
 --logo-filter-duration:300ms;
 --logo-filter-delay:0;
 --max-width:1920px;
+--header-size:160px;
+/* Theme-related */
+--bg-size:cover;
+--bg-tile-x:no-repeat;
+--bg-tile-y:no-repeat;
+--bg-overlay-display:block;
+--bg-overlay-size:var(--header-size);
 /* Shapes */
 --cpe-teadrop:url("data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHdpZHRoPSI4Mi42NjY2NyIgaGVpZ2h0PSI4Mi42NjY2NyIgdmlld0JveD0iMCwwLDgyLjY2NjY3LDgyLjY2NjY3Ij4NCgk8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMTk4LjY2NjY2LC0xMzguNjY2NjYpIj4NCgkJPGcgZGF0YS1wYXBlci1kYXRhPSJ7JnF1b3Q7aXNQYWludGluZ0xheWVyJnF1b3Q7OnRydWV9IiBmaWxsPSIjMDAwMDAwIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMCIgc3Ryb2tlLWxpbmVjYXA9ImJ1dHQiIHN0cm9rZS1saW5lam9pbj0ibWl0ZXIiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgc3Ryb2tlLWRhc2hhcnJheT0iIiBzdHJva2UtZGFzaG9mZnNldD0iMCIgc3R5bGU9Im1peC1ibGVuZC1tb2RlOiBub3JtYWwiPg0KCQkJPHBhdGggZmlsbD0iIzAwMDAwMCIgZD0iTTE5OC42NjY2NywxODBjMCwtMjIuODI3NzcgNDEuMzMzMzQsLTQxLjMzMzM0IDQxLjMzMzM0LC00MS4zMzMzNGMwLDAgNDEuMzMzMzMsMTguNTA1NTcgNDEuMzMzMzMsNDEuMzMzMzRjMCwyMi44Mjc3NyAtMTguNTA1NTYsNDEuMzMzMzQgLTQxLjMzMzMzLDQxLjMzMzM0Yy0yMi44Mjc3NywwIC00MS4zMzMzNCwtMTguNTA1NTcgLTQxLjMzMzM0LC00MS4zMzMzNHoiLz4NCgkJPC9nPg0KCTwvZz4NCjwvc3ZnPg==");
 /* Scrollbar */
@@ -176,40 +184,6 @@ font-family:Trebuchet MS;
 	--main-secondary-fonts:system-ui, BlinkMacSystemFont, -apple-system; /* Empty but other languages will depend on it */
 	}
 }
-
-/*
-**
-** Autocolorization quirks 
-** NOTE: All declerations must be with !important in order to override the inline style of these properties set to <body> to inherit
-**
-*/
-
-/** Page Text **/
-
-/* Light */
-body[page-text-background-color-auto="true"] {
-	--page-text-background-color:var(--light-theme-text-background-color)!important;
-
-}
-
-/* Dark */
-html[dark-mode="true"] body[page-text-background-color-auto="true"] {
-	--page-text-background-color:var(--dark-theme-text-background-color)!important;
-}
-
-
-/** Superbar Text **/
-
-/* Light */
-body[superbar-text-background-color-auto="true"] {
-	--superbar-text-background-color:var(--light-theme-text-background-color)!important;
-}
-
-/* Dark */
-html[light-body="false"] body[superbar-text-background-color-auto="true"] {
-	--superbar-text-background-color:var(--dark-theme-text-background-color)!important;
-}
-
 
 
 /* Misc Colors (Complement with Luna theming) */
@@ -224,7 +198,7 @@ html {
 	color-scheme:light!important;
 }
 
-:root[dark-mode="true"] {
+:root.theme-fandomdesktop-dark {
 	color-scheme:dark!important;
 }
 
@@ -235,306 +209,6 @@ html {
 		--message-background-color:#4d4d4d;
 	}
 
-
-/** Foreground Color Sets **/
-/* Base Dark */
-:root {
-/* Base */
-	--body-foreground-color:var(--dark-theme-foreground-color);
-	--superbar-text-foreground-color:var(--dark-theme-foreground-color);
-	--secondary-accent-foreground-color:var(--dark-theme-foreground-color);
-	--page-foreground-color:var(--light-theme-foreground-color);
-	--page-border-foreground-color:var(--dark-theme-foreground-color);
-	--page-text-foreground-color:var(--dark-theme-foreground-color);
-	--accent-foreground-color:var(--dark-theme-foreground-color);
-	--alert-foreground-color:var(--dark-theme-foreground-color);
-	--warning-foreground-color:var(--dark-theme-foreground-color);
-	--success-foreground-color:var(--dark-theme-foreground-color);
-	--message-foreground-color:var(--dark-theme-foreground-color);
-/* Hover */
-	--body-foreground-color-hover:var(--dark-theme-foreground-color-hover);
-	--superbar-text-foreground-color-hover:var(--dark-theme-foreground-color-hover);
-	--secondary-accent-foreground-color-hover:var(--dark-theme-foreground-color-hover);
-	--page-foreground-color-hover:var(--light-theme-foreground-color-hover);
-	--page-border-foreground-color-hover:var(--dark-theme-foreground-color-hover);
-	--page-text-foreground-color-hover:var(--dark-theme-foreground-color-hover);
-	--accent-foreground-color-hover:var(--dark-theme-foreground-color-hover);
-	--alert-foreground-color-hover:var(--dark-theme-foreground-color-hover);
-	--warning-foreground-color-hover:var(--dark-theme-foreground-color-hover);
-	--success-foreground-color-hover:var(--dark-theme-foreground-color-hover);
-	--message-foreground-color-hover:var(--dark-theme-foreground-color-hover);
-/* RGB Base */
-	--body-foreground-color-rgb:var(--dark-theme-foreground-color-rgb);
-	--superbar-text-foreground-color-rgb:var(--dark-theme-foreground-color-rgb);
-	--secondary-accent-foreground-color-rgb:var(--dark-theme-foreground-color-rgb);
-	--page-foreground-color-rgb:var(--light-theme-foreground-color-rgb);
-	--page-border-foreground-color-rgb:var(--dark-theme-foreground-color-rgb);
-	--page-text-foreground-color-rgb:var(--dark-theme-foreground-color-rgb);
-	--accent-foreground-color-rgb:var(--dark-theme-foreground-color-rgb);
-	--alert-foreground-color-rgb:var(--dark-theme-foreground-color-rgb);
-	--warning-foreground-color-rgb:var(--dark-theme-foreground-color-rgb);
-	--success-foreground-color-rgb:var(--dark-theme-foreground-color-rgb);
-	--message-foreground-color-rgb:var(--dark-theme-foreground-color-rgb);
-/* RGB Hover */
-	--body-foreground-color-hover-rgb:var(--dark-theme-foreground-color-hover-rgb);
-	--superbar-text-foreground-color-hover-rgb:var(--dark-theme-foreground-color-hover-rgb);
-	--secondary-accent-foreground-color-hover-rgb:var(--dark-theme-foreground-color-hover-rgb);
-	--page-foreground-color-hover-rgb:var(--light-theme-foreground-color-hover-rgb);
-	--page-border-foreground-color-hover-rgb:var(--dark-theme-foreground-color-hover-rgb);
-	--page-text-foreground-color-hover-rgb:var(--dark-theme-foreground-color-hover-rgb);
-	--accent-foreground-color-hover-rgb:var(--dark-theme-foreground-color-hover-rgb);
-	--alert-foreground-color-hover-rgb:var(--dark-theme-foreground-color-hover-rgb);
-	--warning-foreground-color-hover-rgb:var(--dark-theme-foreground-color-hover-rgb);
-	--success-foreground-color-hover-rgb:var(--dark-theme-foreground-color-hover-rgb);
-	--message-foreground-color-hover-rgb:var(--dark-theme-foreground-color-hover-rgb);
-/* Inverted */
-	--body-foreground-color-inverted:var(--dark-theme-foreground-color);
-	--superbar-text-foreground-color-inverted:var(--dark-theme-foreground-color);
-	--secondary-accent-foreground-color-inverted:var(--dark-theme-foreground-color);
-	--page-border-foreground-color-inverted:var(--dark-theme-foreground-color);
-	--page-text-foreground-color-inverted:var(--dark-theme-foreground-color);
-	--accent-foreground-color-inverted:var(--dark-theme-foreground-color);
-	--alert-foreground-color-inverted:var(--dark-theme-foreground-color);
-	--warning-foreground-color-inverted:var(--dark-theme-foreground-color);
-	--success-foreground-color-inverted:var(--dark-theme-foreground-color);
-	--message-foreground-color-inverted:var(--dark-theme-foreground-color);
-}
-
-/* Base Light */
-:root[light-body="true"] {
-	--body-foreground-color:var(--light-theme-foreground-color);
-	--body-foreground-color-hover:var(--light-theme-foreground-color-hover);
-	--body-foreground-color-rgb:var(--light-theme-foreground-color-rgb);
-	--body-foreground-color-hover-rgb:var(--light-theme-foreground-color-hover-rgb);
-}
-
-:root[light-superbar-text="true"] {
-	--superbar-text-foreground-color:var(--light-theme-foreground-color);
-	--superbar-text-foreground-color-hover:var(--light-theme-foreground-color-hover);
-	--superbar-text-foreground-color-rgb:var(--light-theme-foreground-color-rgb);
-	--superbar-text-foreground-color-hover-rgb:var(--light-theme-foreground-color-hover-rgb);
-}
-
-
-:root[light-secondary-accent="true"] {
-	--secondary-accent-foreground-color:var(--light-theme-foreground-color);
-	--secondary-accent-foreground-color-hover:var(--light-theme-foreground-color-hover);
-	--secondary-accent-foreground-color-rgb:var(--light-theme-foreground-color-rgb);
-	--secondary-accent-foreground-color-hover-rgb:var(--light-theme-foreground-color-hover-rgb);
-}
-
-:root[dark-mode="true"] {
-	--page-foreground-color:var(--dark-theme-foreground-color);
-	--page-foreground-color-hover:var(--dark-theme-foreground-color-hover);
-	--page-foreground-color-rgb:var(--dark-theme-foreground-color-rgb);
-	--page-foreground-color-hover-rgb:var(--dark-theme-foreground-color-hover-rgb);
-}
-
-:root[light-page-border="true"] {
-	--page-border-foreground-color:var(--light-theme-foreground-color);
-	--page-border-foreground-color-hover:var(--light-theme-foreground-color-hover);
-	--page-border-foreground-color-rgb:var(--light-theme-foreground-color-rgb);
-	--page-border-foreground-color-hover-rgb:var(--light-theme-foreground-color-hover-rgb);
-}
-
-:root[light-page-text="true"] {
-	--page-text-foreground-color:var(--light-theme-foreground-color);
-	--page-text-foreground-color-hover:var(--light-theme-foreground-color-hover);
-	--page-text-foreground-color-rgb:var(--light-theme-foreground-color-rgb);
-	--page-text-foreground-color-hover-rgb:var(--light-theme-foreground-color-hover-rgb);
-}
-
-:root[light-accent="true"] {
-	--accent-foreground-color:var(--light-theme-foreground-color);
-	--accent-foreground-color-hover:var(--light-theme-foreground-color-hover);
-	--accent-foreground-color-rgb:var(--light-theme-foreground-color-rgb);
-	--accent-foreground-color-hover-rgb:var(--light-theme-foreground-color-hover-rgb);
-}
-
-:root[light-alert="true"] {
-	--alert-foreground-color:var(--light-theme-foreground-color);
-	--alert-foreground-color-hover:var(--light-theme-foreground-color-hover);
-	--alert-foreground-color-rgb:var(--light-theme-foreground-color-rgb);
-	--alert-foreground-color-hover-rgb:var(--light-theme-foreground-color-hover-rgb);
-}
-
-:root[light-warning="true"] {
-	--warning-foreground-color:var(--light-theme-foreground-color);
-	--warning-foreground-color-hover:var(--light-theme-foreground-color-hover);
-	--warning-foreground-color-rgb:var(--light-theme-foreground-color-rgb);
-	--warning-foreground-color-hover-rgb:var(--light-theme-foreground-color-hover-rgb);
-}
-
-:root[light-success="true"] {
-	--success-foreground-color:var(--light-theme-foreground-color);
-	--success-foreground-color-hover:var(--light-theme-foreground-color-hover);
-	--success-foreground-color-rgb:var(--light-theme-foreground-color-rgb);
-	--success-foreground-color-hover-rgb:var(--light-theme-foreground-color-hover-rgb);
-}
-
-:root[light-message="true"] {
-	--message-foreground-color:var(--light-theme-foreground-color);
-	--message-foreground-color-hover:var(--light-theme-foreground-color-hover);
-	--message-foreground-color-rgb:var(--light-theme-foreground-color-rgb);
-	--message-foreground-color-hover-rgb:var(--light-theme-foreground-color-hover-rgb);
-}
-
-/* Inverted Variables for Browsers without color-contrast */
-@supports not (color:color-contrast(wheat vs tan, sienna, #d2691e)) {
-	body {
-	/* Inverted */
-		--body-foreground-color-inverted:var(--dark-theme-foreground-color);
-		--superbar-text-foreground-color-inverted:var(--dark-theme-foreground-color);
-		--secondary-accent-foreground-color-inverted:var(--dark-theme-foreground-color);
-		--page-border-foreground-color-inverted:var(--dark-theme-foreground-color);
-		--page-text-foreground-color-inverted:var(--dark-theme-foreground-color);
-		--accent-foreground-color-inverted:var(--dark-theme-foreground-color);
-		--alert-foreground-color-inverted:var(--dark-theme-foreground-color);
-		--warning-foreground-color-inverted:var(--dark-theme-foreground-color);
-		--success-foreground-color-inverted:var(--dark-theme-foreground-color);
-		--message-foreground-color-inverted:var(--dark-theme-foreground-color);
-	}
-	:root[light-body-hover="true"] body {
-		--body-foreground-color-inverted:var(--light-theme-foreground-color);
-	}
-
-	:root[light-superbar-text-hover="true"] body {
-		--superbar-text-foreground-color-inverted:var(--light-theme-foreground-color);
-	}
-	:root[light-secondary-accent-hover="true"] body {
-		--secondary-accent-foreground-color-inverted:var(--light-theme-foreground-color);
-	}
-
-	:root[light-page-border-hover="true"] body {
-		--page-border-foreground-color-inverted:var(--light-theme-foreground-color);
-	}
-
-	:root[light-page-text-hover="true"] body {
-		--page-text-foreground-color-inverted:var(--light-theme-foreground-color);
-	}
-
-	:root[light-accent-hover="true"] body {
-		--accent-foreground-color-inverted:var(--light-theme-foreground-color);
-	}
-
-	:root[light-alert-hover="true"] body {
-		--alert-foreground-color-inverted:var(--light-theme-foreground-color);
-	}
-
-	:root[light-warning-hover="true"] body {
-		--warning-foreground-color-inverted:var(--light-theme-foreground-color);
-	}
-
-	:root[light-success-hover="true"] body {
-		--success-foreground-color-inverted:var(--light-theme-foreground-color);
-	}
-
-	:root[light-message-hover="true"] body {
-		--message-foreground-color-inverted:var(--light-theme-foreground-color);
-	}
-}
-
-
-/* Inverted Variables for Browsers with color-contrast */
-@supports (color:color-contrast(wheat vs tan, sienna, #d2691e)) {
-	body {
-		--required-contrast:4.5;
-	}
-	@media (prefers-contrast:more) {
-		body {
-			--required-contrast:7;
-		}
-	}
-	body {
-	/* Inverted */
-		--body-foreground-color-inverted:color-contrast(var(--body-background-color-hover) vs var(--dark-theme-foreground-color), var(--light-theme-foreground-color) to var(--required-contrast));
-		--superbar-text-foreground-color-inverted:color-contrast(var(--superbar-text-background-color-hover) vs var(--dark-theme-foreground-color), var(--light-theme-foreground-color) to var(--required-contrast));
-		--secondary-accent-foreground-color-inverted:color-contrast(var(--secondary-accent-background-color-hover) vs var(--dark-theme-foreground-color), var(--light-theme-foreground-color) to var(--required-contrast));
-		--page-border-foreground-color-inverted:color-contrast(var(--page-border-background-color-hover) vs var(--dark-theme-foreground-color), var(--light-theme-foreground-color) to var(--required-contrast));
-		--page-text-foreground-color-inverted:color-contrast(var(--page-text-background-color-hover) vs var(--dark-theme-foreground-color), var(--light-theme-foreground-color) to var(--required-contrast));
-		--accent-foreground-color-inverted:color-contrast(var(--accent-background-color-hover) vs var(--dark-theme-foreground-color), var(--light-theme-foreground-color) to var(--required-contrast));
-		--alert-foreground-color-inverted:color-contrast(var(--alert-background-color-hover) vs var(--dark-theme-foreground-color), var(--light-theme-foreground-color) to var(--required-contrast));
-		--warning-foreground-color-inverted:color-contrast(var(--warning-background-color-hover) vs var(--dark-theme-foreground-color), var(--light-theme-foreground-color) to var(--required-contrast));
-		--success-foreground-color-inverted:color-contrast(var(--success-background-color-hover) vs var(--dark-theme-foreground-color), var(--light-theme-foreground-color) to var(--required-contrast));
-		--message-foreground-color-inverted:color-contrast(var(--message-background-color-hover) vs var(--dark-theme-foreground-color), var(--light-theme-foreground-color) to var(--required-contrast));
-	}
-}
-
-
-/* Gradient Color Sets */
-/* Base Light */
-:root body {
-/* Body */
-	--body-gradient-color:var(--body-background-color);
-	--body-gradient-color-hover:var(--body-background-color-hover);
-/* Superbar Text */
-	--superbar-text-gradient-color:var(--superbar-text-background-color-hover);
-	--superbar-text-gradient-color-hover:var(--superbar-text-background-color);
-/* Secondary Accent */
-	--secondary-accent-gradient-color:var(--secondary-accent-background-color);
-	--secondary-accent-gradient-color-hover:var(--secondary-accent-background-color-hover);
-/* Page */
-	--page-gradient-color:var(--page-background-color);
-	--page-gradient-color-hover:var(--page-background-color-hover);
-/* Page Secondary */
-	--page-secondary-gradient-color:var(--page-secondary-background-color);
-	--page-secondary-gradient-color-hover:var(--page-secondary-background-color-hover);
-/* Page Border */
-	--page-border-gradient-color:var(--page-border-background-color);
-	--page-border-gradient-color-hover:var(--page-border-background-color-hover);
-/* Page Text */
-	--page-text-gradient-color:var(--page-text-background-color-hover);
-	--page-text-gradient-color-hover:var(--page-text-background-color);
-/* Accent */
-	--accent-gradient-color:var(--accent-background-color);
-	--accent-gradient-color-hover:var(--accent-background-color-hover);
-	--alert-gradient-color:var(--alert-background-color);
-	--alert-gradient-color-hover:var(--alert-background-color-hover);
-	--warning-gradient-color:var(--warning-background-color);
-	--warning-gradient-color-hover:var(--warning-background-color-hover);
-	--success-gradient-color:var(--success-background-color);
-	--success-gradient-color-hover:var(--success-background-color-hover);
-	--message-gradient-color:var(--message-background-color);
-	--message-gradient-color-hover:var(--message-background-color-hover);
-}
-
-
-/* Base Dark */
-:root[dark-mode="true"] body {
-	--body-gradient-color:var(--body-background-color-hover);
-	--body-gradient-color-hover:var(--body-background-color);
-	--secondary-accent-gradient-color:var(--secondary-accent-background-color-hover);
-	--secondary-accent-gradient-color-hover:var(--secondary-accent-background-color);
-	--page-gradient-color:var(--page-background-color-hover);
-	--page-gradient-color-hover:var(--page-background-color);
-	--page-secondary-gradient-color:var(--page-secondary-background-color-hover);
-	--page-secondary-gradient-color-hover:var(--page-secondary-background-color);
-	--alert-gradient-color:var(--alert-background-color-hover);
-	--alert-gradient-color-hover:var(--alert-background-color);
-	--warning-gradient-color:var(--warning-background-color-hover);
-	--warning-gradient-color-hover:var(--warning-background-color);
-	--success-gradient-color:var(--success-background-color-hover);
-	--success-gradient-color-hover:var(--success-background-color);
-	--message-gradient-color:var(--message-background-color-hover);
-	--message-gradient-color-hover:var(--message-background-color);
-}
-
-:root[dark-mode="true"] body {
-	--superbar-text-gradient-color:var(--superbar-text-background-color);
-	--superbar-text-gradient-color-hover:var(--superbar-text-background-color-hover);
-	--page-text-gradient-color:var(--page-text-background-color);
-	--page-text-gradient-color-hover:var(--page-text-background-color-hover);
-}
-
-:root[light-page-border="false"] body {
-	--page-border-gradient-color:var(--page-border-background-color-hover);
-	--page-border-gradient-color-hover:var(--page-border-background-color);
-}
-
-:root[light-accent="false"] body {
-	--accent-gradient-color:var(--accent-background-color-hover);
-	--accent-gradient-color-hover:var(--accent-background-color);
-}
 
 /* Fadeout Background Colors */
 /* Base Light */
@@ -748,7 +422,6 @@ body {
   --cpe-text-cursor:text;
   --cpe-hand-cursor:pointer;
 	scrollbar-color:var(--scrollbar-thumb-color-1) var(--scrollbar-track-color-1);
-	--header-size:160px;
 	--dropdown-opacity:0.3;
 /** Scrollbar Styling **/
 	/* Width */
@@ -805,15 +478,15 @@ container {
 	--extra-size:var(--global-nav-size,0px);
 	top:0;
 	width:calc(100% - var(--extra-size));
-	height:var(--header-size);
-	background-repeat:repeat;
+	height:var(--bg-overlay-size);
+	background-repeat:var(--bg-tile-x) var(--bg-tile-y);
 	margin-left:var(--extra-size);
 	position:fixed!Important;
 	display:block;
 	content:"";
 	z-index:-2;
 	background-position:var(--body-background-alignment);
-	background-size:cover;
+	background-size:var(--bg-size);
 	background-image:var(--body-background-image);
 	background-color:transparent;
 	pointer-events:none;
@@ -841,58 +514,17 @@ container {
 	-qq-image-blurring:tick;                  /* 4x4 Web 1-2    */
 }
 
-body[body-background-mode="full"] .body-background {
-	height:100%!important;
-}
-
-
-
-body[body-background-size="contain"] .body-background {
-	background-size:contain;
-}
-
-
-body[body-background-size="stretched"] .body-background {
-	background-size:100% 100%;
-	background-position:center;
-}
-
-body[body-background-size="full"] .body-background {
-	background-size:auto;
-}
-
-body[body-background-no-horizontal-tiling="true"] .body-background {
-	background-repeat-x:no-repeat;
-}
-
-body[body-background-no-vertical-tiling="true"] .body-background {
-	background-repeat-y:no-repeat;
-}
-
-
-body[page-text-background-color-auto="false"] .colora-on,
-body[page-text-background-color-auto="true"] .colora-off,
-body[page-border-background-color-auto="false"] .bordera-on,
-body[page-border-background-color-auto="true"] .bordera-off,
-body[caret-color-auto="false"] .careta-on,
-body[caret-color-auto="true"] .careta-off { 
-	display:none!important;
-}
 
 .secondary, h1, h2, h3, h4, h5, h6 {
   font-family:var(--secondary-font), sans-serif;
 }
 
-body[body-background-mode="full"] .gradient-overlay {
-	display:none!important;
-}
-
 .gradient-overlay {
 	top:0;
 	width:100%;
-	height:var(--header-size);
+	height:var(--bg-overlay-size);
 	position:fixed!Important;
-	display:block;
+	display:var(--bg-overlay-display);
 	content:"";
 	z-index:-1;
 	background-image:linear-gradient(to bottom, rgba(var(--body-background-color-rgb),0.05) 5% ,var(--body-background-color));
@@ -1153,8 +785,8 @@ background-color:rgba(var(--secondary-accent-background-color-rgb), 0.5);
 }
 
 
-html[dark-mode-adjusted="true"] .darkmode-off,
-html[dark-mode-adjusted="false"] .darkmode-on {
+html.theme-fandomdesktop-dark .darkmode-off,
+html.theme-fandomdesktop-light .darkmode-on {
 	display:none!important;
 }
 
@@ -1164,21 +796,8 @@ html[accented="false"] .accented-on {
 }
 
 
-html[inverted-colors="true"] .systemdarkmode-off,
-html[inverted-colors="false"] .systemdarkmode-on {
-	display:none!important;
-}
-
-html[wikitheme="light"] .solo-on,
-html[wikitheme="dark"] .solo-on,
-html[wikitheme="auto"] .solo-off,
-html[wikitheme="auto-r"] .solo-off {
-	display:none!important;
-}
-
-
-html[liatch="true"]  .invertion-on {
-	filter:invert(1) hue-rotate(180deg);
+body .invertion-on {
+	filter:var(--invertion-filter, none);
 }
 
 :not(.unset)[disabled], 
