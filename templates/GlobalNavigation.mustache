@@ -139,11 +139,22 @@
 			</div>
 		</div>
 	  <!-- Notifications -->
-		<a class="link cell cpe-dropdown__toggle" cpe-tooltip="{{msg-notifications}}" href="{{html-notices-link}}">
+		<div class="link cell cpe-dropdown__toggle alert notices-menu" cpe-tooltip="{{msg-tooltip-pt-notifications-alert}}" href="{{html-notices-link}}">
+			<div style="position:absolute; visibility:visible; width:var(--global-nav-size);">
+							{{#data-portlets.data-notifications}}{{>Portlet2}}{{/data-portlets.data-notifications}}
+			</div>
 			<span class="cpe-icon material-icons">
 				notifications
 			</span>
-		</a>
+		</div>
+		<div class="link cell cpe-dropdown__toggle notice notices-menu" cpe-tooltip="{{msg-tooltip-pt-notifications-notice}}" href="{{html-notices-link}}">
+			<div style="position:absolute; visibility:visible; width:var(--global-nav-size);">
+							{{#data-portlets.data-notifications}}{{>Portlet2}}{{/data-portlets.data-notifications}}
+			</div>
+			<span class="cpe-icon material-icons">
+				mail
+			</span>
+		</div>
 
 		<div class="cpe-dropdown has-dark-shadow user-profile" cpe-orient="land">
 			<div class="link cell cpe-dropdown__toggle" cpe-tooltip="{{msg-personaltools}}">
