@@ -1378,13 +1378,6 @@ body .wikiEditor-ui-toolbar .booklet > .index > .current {
 	color:var(--secondary-accent-background-color);
 }
 
-/* Echo */
-body .mw-echo-ui-notificationsInboxWidget-toolbarWrapper {
-	background:var(--page-secondary-background-color);
-	color:var(--page-text-background-color);
-	padding:6px;
-}
-
 /* Frameless Tabs */
 body .oo-ui-tabSelectWidget-frameless .oo-ui-tabOptionWidget {
 	box-shadow:inset 0 0 0 0 var(--accent-background-color);
@@ -1404,21 +1397,6 @@ body .oo-ui-tabSelectWidget-frameless .oo-ui-tabOptionWidget.oo-ui-widget-enable
 body .oo-ui-tabSelectWidget-frameless .oo-ui-tabOptionWidget.oo-ui-widget-enabled:active {
 	color:var(--accent-background-color-hover);
 	box-shadow:inset 0 -2px 0 0 var(--accent-background-color-hover);
-}
-
-body .mw-echo-ui-pageNotificationsOptionWidget.oo-ui-optionWidget-selected {
-	color:var(--secondary-accent-background-color);
-	background-color:var(--secondary-accent-fadeout-color);
-}
-
-body .mw-echo-ui-pageNotificationsOptionWidget.oo-ui-optionWidget-selected.mw-echo-ui-pageNotificationsOptionWidget.oo-ui-optionWidget-highlighted, 
-body .mw-echo-ui-pageNotificationsOptionWidget.oo-ui-optionWidget-pressed.mw-echo-ui-pageNotificationsOptionWidget.oo-ui-optionWidget-highlighted {
-	color:var(--secondary-accent-background-color);
-	background-color:rgba(var(--secondary-accent-background-color-rgb),0.1);
-}
-
-body .oo-ui-optionWidget-selected .mw-echo-ui-pageNotificationsOptionWidget-label-count {
-	color:var(--secondary-accent-background-color);
 }
 
 /* ULS Menu */
@@ -2001,7 +1979,28 @@ body .diff-addedline .diffchange {
 }
 
 /* Echno Support */
-.mw-echo-ui-notificationBadgeButtonPopupWidget-popup {
+body .mw-echo-ui-notificationsInboxWidget-toolbarWrapper {
+	background:var(--page-secondary-background-color);
+	color:var(--page-text-background-color);
+	padding:6px;
+}
+
+body .mw-echo-ui-pageNotificationsOptionWidget.oo-ui-optionWidget-selected {
+	color:var(--secondary-accent-background-color);
+	background-color:var(--secondary-accent-fadeout-color);
+}
+
+body .mw-echo-ui-pageNotificationsOptionWidget.oo-ui-optionWidget-selected.mw-echo-ui-pageNotificationsOptionWidget.oo-ui-optionWidget-highlighted, 
+body .mw-echo-ui-pageNotificationsOptionWidget.oo-ui-optionWidget-pressed.mw-echo-ui-pageNotificationsOptionWidget.oo-ui-optionWidget-highlighted {
+	color:var(--secondary-accent-background-color);
+	background-color:rgba(var(--secondary-accent-background-color-rgb),0.1);
+}
+
+body .oo-ui-optionWidget-selected .mw-echo-ui-pageNotificationsOptionWidget-label-count {
+	color:var(--secondary-accent-background-color);
+}
+
+body .mw-echo-ui-notificationBadgeButtonPopupWidget-popup {
     bottom:0px!important;
     top:0!important;
     left:var(--global-nav-size)!important;
@@ -2018,20 +2017,21 @@ body .diff-addedline .diffchange {
 }
 
 
-.mw-echo-ui-notificationBadgeButtonPopupWidget-popup  .oo-ui-popupWidget-anchor {
+body .mw-echo-ui-notificationBadgeButtonPopupWidget-popup  .oo-ui-popupWidget-anchor {
 	display:none!important;
 }
 
-.mw-echo-ui-notificationBadgeButtonPopupWidget-popup::before {
+body .mw-echo-ui-notificationBadgeButtonPopupWidget-popup::before {
     display:none;
 }
-.mw-echo-ui-notificationBadgeButtonPopupWidget-popup .oo-ui-popupWidget-body.oo-ui-clippableElement-clippable {
+
+body .mw-echo-ui-notificationBadgeButtonPopupWidget-popup .oo-ui-popupWidget-body.oo-ui-clippableElement-clippable {
     min-height:1px!important;
     height:auto!important;
     flex:1;
 }
 
-.mw-echo-ui-notificationBadgeButtonPopupWidget-popup .oo-ui-clippableElement-clippable oo-ui-popupWidget-body {
+body .mw-echo-ui-notificationBadgeButtonPopupWidget-popup .oo-ui-clippableElement-clippable oo-ui-popupWidget-body {
     flex:1!important;
     
 }
@@ -2086,6 +2086,8 @@ body #pt-notifications-notice .mw-echo-notifications-badge:after {
 	border-radius:100px;
 	border-color:var(--page-border-background-color)!important;
 	background-color:var(--page-border-background-color)!important;
+	font-family:var(--secondary-font),sans-serif;
+	left:50%;
 }
 
 body .mw-echo-ui-notificationBadgeButtonPopupWidget-popup .oo-ui-popupWidget-popup {
@@ -2115,7 +2117,7 @@ body .mw-echo-ui-overlay .mw-echo-ui-notificationBadgeButtonPopupWidget-popup {
 	padding:0;
 }
 
-	@media only screen and (min-height:460px) and (max-height:599px) { /* Medium Icons */
+	@media only screen and (min-height:480px) and (max-height:599px) { /* Medium Icons */
 		body #pt-notifications-alert .mw-echo-notifications-badge:after, 
 		body #pt-notifications-notice .mw-echo-notifications-badge:after {
 			top:7px;
@@ -2123,7 +2125,7 @@ body .mw-echo-ui-overlay .mw-echo-ui-notificationBadgeButtonPopupWidget-popup {
 		}
 	}
 
-	@media only screen and (min-height:375px) and (max-height:459px) { /* Small Icons */
+	@media only screen and (min-height:385px) and (max-height:479px) { /* Small Icons */
 		body #pt-notifications-alert .mw-echo-notifications-badge:after, 
 		body #pt-notifications-notice .mw-echo-notifications-badge:after {
 			top:5px;
@@ -2131,7 +2133,7 @@ body .mw-echo-ui-overlay .mw-echo-ui-notificationBadgeButtonPopupWidget-popup {
 		}
 	}
 
-	@media only screen and (max-height:374px) { /* Extra Small Icons */
+	@media only screen and (max-height:384px) { /* Extra Small Icons */
 		body #pt-notifications-alert .mw-echo-notifications-badge:after, 
 		body #pt-notifications-notice .mw-echo-notifications-badge:after {
 			top:3px;
