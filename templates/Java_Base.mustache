@@ -271,13 +271,6 @@ function RearrangeDOM() {
 }
 
 (function () {
-	/* DITTO */
-	$('body').mouseenter( function(e) { CheckTheme(); } );		
-	$('body').mouseleave( function(e) { DropDownUpdate(); CheckTheme(); } );		
-		
-
-	/* END DITTO */
-
 
 if  ($(".evelution-rail-wrapper .activity-module.evelution-module").length)  {
 	var oldc = $('.evelution-rail-wrapper .activity-module.evelution-module .evelution-module-content').text();
@@ -301,6 +294,12 @@ initializeViews();
 			$('html').addClass("config-" + body_classes[i]);
 		}
 
+	/* DITTO */
+	$('body').mouseenter( function(e) { CheckTheme(); } );		
+	$('body').mouseleave( function(e) { DropDownUpdate(); CheckTheme(); } );		
+		
+
+	/* END DITTO */
 
 })();
 
@@ -349,54 +348,47 @@ function initializeViews() {
 	$(".evelution-page-header-contribution .actions > li > a").attr('class','cpe-button is-tertiary').attr('has-icon','true'); // Add the CPE button class
 	$(".evelution-page-header-contribution .views > li > a").attr('class','cpe-button is-tertiary').attr('has-icon','true');; // Add the CPE button class
 
-	$(".evelution-community-header .mobile-header .local-navigation .cpe-dropdown:first-child:not(:only-child) .cpe-dropdown__content").addClass('is-left-aligned'); // Add the CPE button class
-	$(".evelution-community-header .mobile-header .local-navigation .cpe-dropdown:last-child:not(:only-child) .cpe-dropdown__content").addClass('is-right-aligned'); // Add the CPE button class
-
-
-
 }
 
 function RemoveEmptyMenus() {
 // Remove Miraheze elements
-	if (!$("#footer-icons img[alt='Miraheze Wiki Hosting']").length) { // Check if an image with the Miraheze Wiki hosting alt exists
-		$('.miraheze-only').remove();
-	}
 	if ($("#footer-icons img[alt='Miraheze Wiki Hosting']").length) { // Check if an image with the Miraheze Wiki hosting alt exists
 		$('html').addClass('miraheze-wiki-hosting')
 	}
-	$('#footer-places .footer-places-darkmode-toggle').remove(); // Evelution has its dark mode so this is unneded
-	$('html').removeClass('client-dark-mode'); // Evelution has its dark mode so this is unneded
 // Remove the Language Dropdown, if no languages exist
-	var langmenu = document.querySelector(".evelution-navigation.evelution-sidebar .language-menu");
-	var langmenuM = document.querySelector(".evelution-mobile-global-navigation.evelution-sidebar .language-menu");
 
 	if (! ($(".evelution-navigation.evelution-sidebar .language-menu .cpe-dropdown__content .cpe-list").length) ) {
+		var langmenu = document.querySelector(".evelution-navigation.evelution-sidebar .language-menu");
+		var langmenuM = document.querySelector(".evelution-mobile-global-navigation.evelution-sidebar .language-menu");
 		$(langmenu).remove();
 		$(langmenuM).remove();
 	}
-
-	var langmenu3 = document.querySelector(".evelution-navigation.evelution-sidebar .variants-menu");
-	var langmenu3M = document.querySelector(".evelution-mobile-global-navigation.evelution-sidebar .variants-menu");
 	
 	if (! ($(".evelution-navigation.evelution-sidebar .variants-menu .cpe-dropdown__content .cpe-list > li").length) ) {
+		var langmenu3 = document.querySelector(".evelution-navigation.evelution-sidebar .variants-menu");
+		var langmenu3M = document.querySelector(".evelution-mobile-global-navigation.evelution-sidebar .variants-menu");
 		$(langmenu3).remove();
 		$(langmenu3M).remove();
 	}
 
-	var langmenu4 = document.querySelector(".evelution-navigation.evelution-sidebar .link.alert");
-	var langmenu4b = document.querySelector(".evelution-navigation.evelution-sidebar .link.notice");
+	var langmenu4N = document.querySelector(".evelution-navigation.evelution-sidebar .link.notices-menu #pt-notifications-notice");
+	var langmenu4bN = document.querySelector(".evelution-navigation.evelution-sidebar .link.updates-menu #pt-notifications-alert");
 	var langmenu4M = document.querySelector(".evelution-mobile-global-navigation.evelution-sidebar .notices-menu");
-	
+		$(langmenu4N).remove();	
+		$(langmenu4bN).remove();
+
 	if (! ($("div:not([class])[style='position:absolute; top:-999999999999999px; left:0;'] .cpe-list.is-linked #pt-notifications-alert").length) ) {
+		var langmenu4 = document.querySelector(".evelution-navigation.evelution-sidebar .link.notices-menu");
+		var langmenu4b = document.querySelector(".evelution-navigation.evelution-sidebar .link.updates-menu");
 		$(langmenu4).remove();
 		$(langmenu4b).remove();
 		$(langmenu4M).remove();
 	}
 
 
-	var langmenu2 = document.querySelector(".evelution-page-header .more-actions-menu");
 
 	if (! ($(".evelution-page-header .more-actions-menu .cpe-dropdown__content .cpe-list > li").length) ) {
+		var langmenu2 = document.querySelector(".evelution-page-header .more-actions-menu");
 		$(langmenu2).remove();
 	}
 

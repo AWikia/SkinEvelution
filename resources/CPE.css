@@ -148,6 +148,7 @@ font-family:Trebuchet MS;
 --body-background-no-horizontal-tiling:false;
 --body-background-no-vertical-tiling:false;
 --backdrop-filter:blur(10px) sepia(5%) contrast(105%) invert(5%) grayscale(5%) saturate(105%) hue-rotate(0.5deg) brightness(105%);
+--system-visual-style:standard;
 /* Fonts */
 --main-fonts:"Didact Gothic", "Inter"; /* Empty but other languages will depend on it */
 --foreign-fonts:"Didact Gothic", "M PLUS 1p",  "Nanum Gothic", "Prompt", "Cairo", "Ramabhadra", "Catamaran", "Noto Sans", "Noto Sans SC", "Noto Sans TC", "Noto Sans HK", "Hind Siliguri", "Baloo Tamma 2", "Kantumruy", "Manjari", "Padauk", "Baloo Bhaina 2", "Alef";
@@ -1008,6 +1009,23 @@ body .wikitable > * > tr > td {
     top: 30%;
 }
 
+@media only screen and (max-width:749px) {
+	[cpe-tooltip-position="bottom-mobile"][cpe-tooltip]:before {
+		transform:rotate(0deg);
+		left:50%;
+		right:auto;
+		top:auto;
+		bottom:-2px;
+	}
+
+	[cpe-tooltip-position="bottom-mobile"][cpe-tooltip]:after {
+		top:calc(100% + 1px);
+		left:auto;
+		right:auto;
+		bottom:auto;
+	}
+}
+
 
 
 /* End Tooltips */
@@ -1808,7 +1826,7 @@ font-size:14px;
 
 
 
-.cpe-dropdown__content.is-right-aligned{
+.cpe-dropdown__content.is-right-aligned {
 left:auto;
 right:0;
 transform:none;
@@ -2087,6 +2105,69 @@ opacity:1;
 }
 
 
+/* Desktop-only Landscape */
+@media only screen and (min-width:750px) {
+	.cpe-dropdown[cpe-orient="land-desktop"] .cpe-dropdown__content {
+		box-shadow:2px 0 6px 0 rgba(var(--page-text-background-color-rgb),.2), 2px 0 6px 0 rgba(var(--page-background-color-rgb),0.2), var(--page-accent-box-shadow);
+		left:100%;
+		min-width:0;
+		top:-50%;
+		transform:none;
+	}
+
+	.cpe-dropdown[cpe-orient="land-desktop"] .cpe-dropdown__content.is-right-aligned{
+	right:auto;
+	right:revert;
+	top:auto;
+	bottom:0;
+	transform:none;
+	}
+	.cpe-dropdown[cpe-orient="land-desktop"] .cpe-dropdown__content.is-left-aligned{
+	right:auto;
+	right:revert;
+	top:0;
+	transform:none
+	}
+
+
+	 .cpe-dropdown[cpe-orient="land-desktop"]::after,.cpe-dropdown[cpe-orient="land-desktop"]::before {
+		transform:rotate(-90deg);
+		top:calc(50% - 5px);
+		bottom:auto;
+		left:auto;
+		right:-1px;
+	 }
+
+
+	.cpe-dropdown.has-shadow[cpe-orient="land-desktop"] .cpe-dropdown__content{
+		box-shadow:3px 0 7px 0 rgba(var(--page-text-background-color-rgb),.3), 3px 0 7px 0 rgba(var(--page-background-color-rgb),0.3);
+	}
+
+	.cpe-dropdown.has-dark-shadow[cpe-orient="land-desktop"] .cpe-dropdown__content{
+		box-shadow:4px 0 8px 0 rgba(var(--page-text-background-color-rgb),.4), 4px 0 8px 0 rgba(var(--page-background-color-rgb),0.4);
+	}
+
+	.cpe-dropdown:focus[cpe-orient="land-desktop"] .cpe-dropdown__content,
+	.cpe-dropdown:focus-within[cpe-orient="land-desktop"] .cpe-dropdown__content {
+		left:100%;
+		animation:contribution-dropdown_land 0.3s;
+	}
+
+	.cpe-dropdown:focus[cpe-orient="land-desktop"]::before, .cpe-dropdown:focus[cpe-orient="land-desktop"]::after,
+	.cpe-dropdown:focus-within[cpe-orient="land-desktop"]::before, .cpe-dropdown:focus-within[cpe-orient="land-desktop"]::after {
+	 animation: contribution-dropdown-b_land 0.3s;
+	}
+
+
+	.cpe-dropdown[cpe-orient="land-desktop"] .cpe-dropdown__content{
+		left:calc(100% - 10px);
+		top:-50%;
+	}
+
+
+}
+
+
 /* Used for dropdowns */
 @keyframes contribution-dropdown {
  from {opacity: 0; top: calc(100% - 10px);}
@@ -2134,6 +2215,8 @@ opacity:1;
  from {opacity: 1; transform: translateX(0);}
  to {opacity: 0; transform: translateX(-10px);}
 }
+
+
 
 
 /* Lists */

@@ -1,9 +1,12 @@
+{{^hasNotifications}}
+<span style="color:red;"></span>
+{{/hasNotifications}}
 <div style="position:absolute; top:-999999999999999px; left:0;">
 				{{#data-portlets.data-notifications}}{{>Portlet2}}{{/data-portlets.data-notifications}}
 </div>
   <header class="evelution-sidebar evelution-navigation global-navigation">
 	<div class="upper-links global-navigation__top">
-		<a class="company link" cpe-tooltip="{{msg-evelution-documentation}}" href="https://awikia.github.io/SkinEvelution">
+		<a class="company link" cpe-tooltip-position="bottom-mobile" cpe-tooltip="{{msg-evelution-documentation}}" href="https://awikia.github.io/SkinEvelution">
             <svg xmlns="http://www.w3.org/2000/svg" class="cpe-icon server-off">
 				<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#evelution-logo" />
 			</svg>
@@ -11,10 +14,37 @@
 				<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#evelution-server-logo" />
 			</svg>
 		</a>
-		<a class="github link" cpe-tooltip="GitHub" href="https://github.com/AWikia/SkinEvelution">
+		<div class="mobile-only cpe-dropdown has-dark-shadow explore-menu" cpe-orient="land-desktop">
+			<div class="link cpe-dropdown__toggle" cpe-tooltip-position="bottom-mobile" cpe-tooltip={{msg-evelution-explore}}>
+				<span class="cpe-icon material-icons">
+					arrow_forward_ios
+				</span>
+			</div>
+		    <div class="cpe-dropdown__content is-left-aligned">
+				<ul class="cpe-list is-linked">
+					<li class="github">
+						<a href="https://github.com/AWikia/SkinEvelution">GitHub</a>
+					</li>
+					<li class="mediawiki">
+						<a href="https://mediawiki.org">MediaWiki</a>
+					</li>
+					<li class="miraheze miraheze-only">
+						<a href="https://meta.miraheze.org/wiki/Special:MyLanguage/Miraheze">Miraheze</a>
+					</li>
+					<li class="discord">
+						<a href="https://discord.gg/a6FbV6zWFs">{{msg-evelution-support}}</a>
+					</li>
+					<hr>
+		        {{#data-footer}}
+					{{!}}{{#data-places}}{{>FooterList3}}{{/data-places}}
+				{{/data-footer}}
+				</ul>
+			</div>
+		</div>
+		<a class="desktop-only github link" cpe-tooltip-position="bottom-mobile" cpe-tooltip="GitHub" href="https://github.com/AWikia/SkinEvelution">
 			<svg class="cpe-icon" height="32" viewBox="0 0 16 16" version="1.1" width="32" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
 		</a>
-		<a class="mediawiki link" cpe-tooltip="MediaWiki" href="https://mediawiki.org">
+		<a class="desktop-only mediawiki link" cpe-tooltip-position="bottom-mobile" cpe-tooltip="MediaWiki" href="https://mediawiki.org">
 			<svg xmlns="http://www.w3.org/2000/svg" class="cpe-icon" style="transform:scale(1.2)" width="25" height="25" viewBox="0 0 25 25">
 				<defs>
 					<style>
@@ -44,7 +74,7 @@
 				</g>
 			</svg>
 		</a>
-		<a class="miraheze link miraheze-only" cpe-tooltip="Miraheze" href="https://meta.miraheze.org/wiki/Special:MyLanguage/Miraheze">
+		<a class="desktop-only miraheze link miraheze-only" cpe-tooltip-position="bottom-mobile" cpe-tooltip="Miraheze" href="https://meta.miraheze.org/wiki/Special:MyLanguage/Miraheze">
 <svg class="cpe-icon" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" id="svg4206" version="1.1" inkscape:version="1.1 (c68e22c387, 2021-05-23)" viewBox="0 0 46.999999 49.999999" sodipodi:docname="meta-icon.svg">
   <metadata id="metadata4212">
     <rdf:RDF>
@@ -68,13 +98,13 @@
     <path style="fill:currentColor;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" d="M 14.968739,72.694267 36.158346,72.756587 47.12708,91.702591 36.282994,110.39931 H 14.906415 L 4,91.640276 Z" id="path4756-4-7-0-4-5" inkscape:connector-curvature="0" inkscape:transform-center-x="23.96383" inkscape:transform-center-y="-86.16407"/>
   </g>
 </svg>		</a>
-		<a class="discord link" cpe-tooltip="{{msg-evelution-support}}" href="https://discord.gg/a6FbV6zWFs">
+		<a class="desktop-only discord link" cpe-tooltip-position="bottom-mobile" cpe-tooltip="{{msg-evelution-support}}" href="https://discord.gg/a6FbV6zWFs">
 				<span class="cpe-icon material-icons">
 					live_help
 				</span>
 		</a>
-		<div class="cpe-dropdown has-dark-shadow explore-menu" cpe-orient="land">
-			<div class="link cpe-dropdown__toggle" cpe-tooltip={{msg-evelution-explore}}>
+		<div class="desktop-only cpe-dropdown has-dark-shadow explore-menu" cpe-orient="land-desktop">
+			<div class="link cpe-dropdown__toggle" cpe-tooltip-position="bottom-mobile" cpe-tooltip={{msg-evelution-explore}}>
 				<span class="cpe-icon material-icons">
 					arrow_forward_ios
 				</span>
@@ -88,8 +118,8 @@
 	</div>
 	<div class="bottom-links global-navigation__bottom">
 		<!-- Language Variants -->
-		<div class="cpe-dropdown has-dark-shadow variants-menu" cpe-orient="land">
-			<div class="link cell cpe-dropdown__toggle" cpe-tooltip="{{msg-evelution-variants}}">
+		<div class="cpe-dropdown has-dark-shadow variants-menu" cpe-orient="land-desktop">
+			<div class="link cell cpe-dropdown__toggle" cpe-tooltip-position="bottom-mobile" cpe-tooltip="{{msg-evelution-variants}}">
 				<span class="cpe-icon material-icons">
 					font_download
 				</span>
@@ -99,8 +129,8 @@
 			</div>
 		</div>
 		<!-- In other Langauges -->
-		<div class="cpe-dropdown has-dark-shadow language-menu" cpe-orient="land">
-			<div class="link cell cpe-dropdown__toggle" cpe-tooltip="{{msg-otherlanguages}}">
+		<div class="cpe-dropdown has-dark-shadow language-menu" cpe-orient="land-desktop">
+			<div class="link cell cpe-dropdown__toggle" cpe-tooltip-position="bottom-mobile" cpe-tooltip="{{msg-otherlanguages}}">
 				<span class="cpe-icon material-icons">
 					translate
 				</span>
@@ -111,8 +141,8 @@
 		</div>
 
 		<!-- Search -->
-		<div class="cpe-dropdown has-dark-shadow search" cpe-orient="land">
-			<div class="link cpe-dropdown__toggle" cpe-tooltip={{msg-search}}>
+		<div class="cpe-dropdown has-dark-shadow search" cpe-orient="land-desktop">
+			<div class="link cpe-dropdown__toggle" cpe-tooltip-position="bottom-mobile" cpe-tooltip={{msg-search}}>
 				<span class="cpe-icon material-icons">
 					search
 				</span>
@@ -139,7 +169,7 @@
 			</div>
 		</div>
 	  <!-- Notifications -->
-		<div class="link cell cpe-dropdown__toggle alert notices-menu" cpe-tooltip="{{msg-tooltip-pt-notifications-alert}}" href="{{html-notices-link}}">
+		<div class="link cell notice notices-menu" cpe-tooltip-position="bottom-mobile" cpe-tooltip="{{msg-tooltip-pt-notifications-alert}}">
 			<div style="position:absolute; visibility:visible; width:var(--global-nav-size);">
 							{{#data-portlets.data-notifications}}{{>Portlet2}}{{/data-portlets.data-notifications}}
 			</div>
@@ -147,7 +177,7 @@
 				notifications
 			</span>
 		</div>
-		<div class="link cell cpe-dropdown__toggle notice notices-menu" cpe-tooltip="{{msg-tooltip-pt-notifications-notice}}" href="{{html-notices-link}}">
+		<div class="link cell notice updates-menu" cpe-tooltip-position="bottom-mobile" cpe-tooltip="{{msg-tooltip-pt-notifications-notice}}">
 			<div style="position:absolute; visibility:visible; width:var(--global-nav-size);">
 							{{#data-portlets.data-notifications}}{{>Portlet2}}{{/data-portlets.data-notifications}}
 			</div>
@@ -156,8 +186,8 @@
 			</span>
 		</div>
 
-		<div class="cpe-dropdown has-dark-shadow user-profile" cpe-orient="land">
-			<div class="link cell cpe-dropdown__toggle" cpe-tooltip="{{msg-personaltools}}">
+		<div class="cpe-dropdown has-dark-shadow user-profile" cpe-orient="land-desktop">
+			<div class="link cell cpe-dropdown__toggle" cpe-tooltip-position="bottom-mobile" cpe-tooltip="{{msg-personaltools}}">
 									<div class="raw-parser">{{html-avatar}}</div>
 								
 			</div>
