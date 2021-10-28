@@ -2010,12 +2010,13 @@ body .mw-echo-ui-notificationBadgeButtonPopupWidget-popup {
     transition:top 400ms ease, height 400ms ease;
 }
 
-.headroom--not-top .mw-echo-ui-notificationBadgeButtonPopupWidget-popup,
-.single-header .mw-echo-ui-notificationBadgeButtonPopupWidget-popup {
-	top:var(--minibar-size)!important; /* Override Inline Style */
-    height:calc(100vh - var(--minibar-size))!important;
+@media only screen and (min-width:750px) {
+	.headroom--not-top .mw-echo-ui-notificationBadgeButtonPopupWidget-popup,
+	.single-header .mw-echo-ui-notificationBadgeButtonPopupWidget-popup {
+		top:var(--minibar-size)!important; /* Override Inline Style */
+		height:calc(100vh - var(--minibar-size))!important;
+	}
 }
-
 
 body .mw-echo-ui-notificationBadgeButtonPopupWidget-popup  .oo-ui-popupWidget-anchor {
 	display:none!important;
