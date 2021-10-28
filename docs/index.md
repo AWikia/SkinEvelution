@@ -28,6 +28,7 @@ If you want to create a new theme without using CPE Theme Designer (i.e. Due to 
 ```css
 [theme="A"][visualcolors="standard"] { /* Replace [theme="A"] with either [theme="B"], [theme="C"] or [theme="D"] if you want to target the other 3 slots, otherwise don't replace [theme="A"] with anything */ 
 --body-background-image:url("loadbg_dev.png"); /* <image> */
+--body-background-image-opacity:100%; /* <percentage> */
 --body-background-color:#441177; /* <color> */
 --body-background-mode:standard; /* standard | full */
 --body-background-horizontal-alignment:top; /* left | center | right */
