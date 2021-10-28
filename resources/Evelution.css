@@ -329,28 +329,35 @@ container > main {
 	.evelution-navigation .explore-menu .link .cpe-icon {
 		--icon-rotate:0deg;
 	}
+
+	@media only screen and (max-width:404px) { /* S+M Mobile only */
+		.evelution-navigation .desktop-only {
+			display:none;
+		}
+	}
+	@media only screen and (min-width:405px) { /* L Mobile + Desktop only */
+		.evelution-navigation .mobile-only {
+			display:none;
+		}
+	}
 	
 	@media only screen and (max-width:749px) { /* Mobile only */
 
 		.evelution-sidebar .link .cpe-icon {
-			--icon-size:0.9;
+			--icon-size:0.85;
 		}
 
 		.evelution-sidebar .link .cpe-icon.cpe-icon-small {
-			--icon-size:0.6;
+			--icon-size:0.55;
 		}
 
 
 		.evelution-sidebar .link .cpe-icon.cpe-icon-tiny {
-			--icon-size:0.4;
-		}
-
-		.evelution-navigation .desktop-only {
-			display:none;
+			--icon-size:0.35;
 		}
 
 		.evelution-navigation .link {
-			width:calc(var(--global-nav-size) * 0.79);
+			width:calc(var(--global-nav-size) * 0.73);
 		}
 
 
@@ -373,9 +380,6 @@ container > main {
 	}
 	
 	@media only screen and (min-width:750px) { /* Desktop only */
-		.evelution-navigation .mobile-only {
-			display:none;
-		}
 		@media only screen and (max-height:384px) { /* Extra Small Icons */
 			body {
 				--global-nav-size:28px;

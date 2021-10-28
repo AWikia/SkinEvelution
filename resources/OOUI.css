@@ -2050,8 +2050,8 @@ body .mw-echo-ui-notificationBadgeButtonPopupWidget-popup .oo-ui-clippableElemen
     padding:0!important;
 }
 
-.alert #pt-notifications-notice,
-.notice #pt-notifications-alert {
+.notices-menu #pt-notifications-notice,
+.updates-menu #pt-notifications-alert {
 	display:none!important;
 }
 
@@ -2100,23 +2100,36 @@ body .mw-echo-ui-notificationBadgeButtonPopupWidget-footer {
 	justify-content:center;
 }
 
-@media (max-width:720px) {
+@media (max-width:749px) {
+body .mw-echo-ui-notificationBadgeButtonPopupWidget-popup {
+	height:auto!important;
+}
+
 .mw-echo-ui-overlay .oo-ui-popupWidget-popup {
-    width: calc(100% - var(--global-nav-size))!important;
+    width: 100%!important;
+	top:var(--global-nav-size)!important; /* Override Inline Style */
+    height:calc(100vh - var(--global-nav-size))!important;
 }
 
 body .mw-echo-ui-overlay .mw-echo-ui-notificationBadgeButtonPopupWidget-popup {
-	left:var(--global-nav-size)!important;
+	left:0!important;
 	right:auto!important;
-    width: calc(100% - var(--global-nav-size))!important;
-}
+    width: calc(100%)!important;
 }
 
-.evelution-navigation .link.alert .cpe-list, 
-.evelution-navigation .link.notice .cpe-list {
+.mw-echo-ui-overlay .oo-ui-clippableElement-clippable {
+	width:100%!important;
+}
+
+}
+
+
+.evelution-navigation .link.notices-menu .cpe-list, 
+.evelution-navigation .link.updates-menu .cpe-list {
 	padding:0;
 }
 
+@media only screen and (min-width:750px) {
 	@media only screen and (min-height:480px) and (max-height:599px) { /* Medium Icons */
 		body #pt-notifications-alert .mw-echo-notifications-badge:after, 
 		body #pt-notifications-notice .mw-echo-notifications-badge:after {
@@ -2140,3 +2153,4 @@ body .mw-echo-ui-overlay .mw-echo-ui-notificationBadgeButtonPopupWidget-popup {
 			font-size:0.6em;
 		}
 	}
+}
