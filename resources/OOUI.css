@@ -1999,3 +1999,142 @@ body .diff td.diff-addedline {
 body .diff-addedline .diffchange {
 	background-color:var(--success-fadeout-color);
 }
+
+/* Echno Support */
+.mw-echo-ui-notificationBadgeButtonPopupWidget-popup {
+    bottom:0px!important;
+    top:0!important;
+    left:var(--global-nav-size)!important;
+    height:calc(100vh)!important;
+    display:flex;
+    margin-top:0!important;
+    transition:top 400ms ease, height 400ms ease;
+}
+
+.headroom--not-top .mw-echo-ui-notificationBadgeButtonPopupWidget-popup,
+.single-header .mw-echo-ui-notificationBadgeButtonPopupWidget-popup {
+	top:var(--minibar-size)!important; /* Override Inline Style */
+    height:calc(100vh - var(--minibar-size))!important;
+}
+
+
+.mw-echo-ui-notificationBadgeButtonPopupWidget-popup  .oo-ui-popupWidget-anchor {
+	display:none!important;
+}
+
+.mw-echo-ui-notificationBadgeButtonPopupWidget-popup::before {
+    display:none;
+}
+.mw-echo-ui-notificationBadgeButtonPopupWidget-popup .oo-ui-popupWidget-body.oo-ui-clippableElement-clippable {
+    min-height:1px!important;
+    height:auto!important;
+    flex:1;
+}
+
+.mw-echo-ui-notificationBadgeButtonPopupWidget-popup .oo-ui-clippableElement-clippable oo-ui-popupWidget-body {
+    flex:1!important;
+    
+}
+
+#pt-notifications-alert .mw-echo-notifications-badge.mw-echo-notifications-badge-all-read, #pt-notifications-notice .mw-echo-notifications-badge.mw-echo-notifications-badge-all-read,
+#pt-notifications-alert .mw-echo-notifications-badge, #pt-notifications-notice .mw-echo-notifications-badge {
+    width: var(--global-nav-size)!important;
+    height: var(--global-nav-size)!important;
+    margin: 0 calc(0 - var(--global-nav-size) )!important;
+    background-image: none!important;
+    -webkit-mask-image: none!important;
+    mask-image: none!important;
+    opacity:1!important;
+    z-index:10;
+    box-shadow:none!important;
+    padding:0!important;
+}
+
+.alert #pt-notifications-notice,
+.notice #pt-notifications-alert {
+	display:none!important;
+}
+
+body .mw-echo-ui-notificationItemWidget {
+	background-color:var(--page-secondary-background-color);
+	color:var(--page-text-background-color);
+}
+
+body .mw-echo-ui-notificationItemWidget:hover {
+	background-color:var(--page-secondary-background-color-hover);
+}
+
+
+body .mw-echo-ui-notificationItemWidget-unread,
+body .mw-echo-ui-placeholderItemWidget  {
+	background-color:var(--page-background-color);
+	color:var(--page-text-background-color);
+}
+
+body .mw-echo-ui-notificationItemWidget-unread:hover {
+	background-color:var(--page-background-color-hover);
+}
+
+body .mw-echo-ui-notificationsListWidget:not(:hover) a, body #p-personal .mw-echo-ui-notificationsListWidget:not(:hover) a.new,
+body .mw-echo-ui-notificationItemWidget-content-message-header {
+	color:var(--page-text-background-color);
+}
+
+body #pt-notifications-alert .mw-echo-notifications-badge:after, 
+body #pt-notifications-notice .mw-echo-notifications-badge:after {
+	color:var(--page-border-foreground-color)!important;
+	border-radius:100px;
+	border-color:var(--page-border-background-color)!important;
+	background-color:var(--page-border-background-color)!important;
+}
+
+body .mw-echo-ui-notificationBadgeButtonPopupWidget-popup .oo-ui-popupWidget-popup {
+    display: flex;
+    flex-flow: column;
+}
+
+body .mw-echo-ui-notificationBadgeButtonPopupWidget-footer {
+	display:flex;
+	justify-content:center;
+}
+
+@media (max-width:720px) {
+.mw-echo-ui-overlay .oo-ui-popupWidget-popup {
+    width: calc(100% - var(--global-nav-size))!important;
+}
+
+body .mw-echo-ui-overlay .mw-echo-ui-notificationBadgeButtonPopupWidget-popup {
+	left:var(--global-nav-size)!important;
+	right:auto!important;
+    width: calc(100% - var(--global-nav-size))!important;
+}
+}
+
+.evelution-navigation .link.alert .cpe-list, 
+.evelution-navigation .link.notice .cpe-list {
+	padding:0;
+}
+
+	@media only screen and (min-height:460px) and (max-height:599px) { /* Medium Icons */
+		body #pt-notifications-alert .mw-echo-notifications-badge:after, 
+		body #pt-notifications-notice .mw-echo-notifications-badge:after {
+			top:7px;
+			font-size:0.8em;
+		}
+	}
+
+	@media only screen and (min-height:375px) and (max-height:459px) { /* Small Icons */
+		body #pt-notifications-alert .mw-echo-notifications-badge:after, 
+		body #pt-notifications-notice .mw-echo-notifications-badge:after {
+			top:5px;
+			font-size:0.7em;
+		}
+	}
+
+	@media only screen and (max-height:374px) { /* Extra Small Icons */
+		body #pt-notifications-alert .mw-echo-notifications-badge:after, 
+		body #pt-notifications-notice .mw-echo-notifications-badge:after {
+			top:3px;
+			font-size:0.6em;
+		}
+	}
