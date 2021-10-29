@@ -117,7 +117,7 @@ Aleo = Latin
 --secondary-accent-background-color:#dd2300;
 --page-background-color:#f1f2f3;
 --accent-background-color:#dd8300;
---caret-color:#b88300;
+--caret-background-color:#b88300;
 }
 
 
@@ -156,7 +156,7 @@ font-family:Trebuchet MS;
 --secondary-foreign-fonts:"M PLUS Rounded 1c", "Jua", "Mitr", "NTR", "Pavanam", "Mukta", "Noto Sans SC", "Noto Sans TC", "Noto Sans HK", "Baloo Da 2", "Baloo Tamma 2", "Battambang", "Baloo Chettan 2", "Padauk", "Baloo Bhaina 2", "Rubik";
 --main-secondary-fonts:"Rubik", "Helvetica Neue", "Helvetica", "Arial"; /* Empty but other languages will depend on it */
 --secondary-font:var(--custom-secondary-font), var(--main-secondary-fonts), var(--secondary-foreign-fonts);
---caret-color:auto;
+--caret-background-color:auto;
 --custom-font:"";
 --custom-secondary-font:"";
 --border-radius:3px;
@@ -357,7 +357,7 @@ body {
 --page-text-background-color-hover-rgb:100,116,136;
 --accent-background-color-hover:#774700;
 --accent-background-color-rgb:221,131,0;
---caret-color:auto;
+--caret-background-color:auto;
 --custom-secondary-font:"";
 --border-radius:3px;
 --logo-filter:opacity(1);
@@ -387,7 +387,7 @@ body {
 		--page-border-background-color:graytext!important;
 		--page-text-background-color:canvastext!important;
 		--accent-background-color:highlight!important;
-		--caret-color:auto!important;
+		--caret-background-color:auto!important;
 		--custom-secondary-font:""!important;
 		--border-radius:3px!important;
 		--logo-filter:opacity(1)!important;
@@ -556,7 +556,7 @@ button, input {
 	box-shadow:none;
 	text-shadow:none;
 	cursor:var(--cpe-text-cursor);
-	caret-color:var(--caret-color);
+	caret-color:var(--caret-background-color);
 }
 
 input[type="submit"], input[type="reset"], input[type="button"], button {
@@ -729,7 +729,7 @@ text-decoration:none;
 color:var(--secondary-accent-background-color);
 cursor:var(--cpe-hand-cursor);
 background-color:transparent;
-	caret-color:var(--caret-color);
+	caret-color:var(--caret-background-color);
 }
 
 body a:visited {
@@ -824,7 +824,7 @@ html[she-she="false"] .she-she-on {
 
 
 textarea, [contenteditable] {
-	caret-color:var(--caret-color);
+	caret-color:var(--caret-background-color);
   cursor:var(--cpe-text-cursor);
   scrollbar-width:thin;
   scrollbar-color:var(--scrollbar-thumb-color-1) var(--scrollbar-track-color-1);
@@ -1120,6 +1120,11 @@ select.cpe-input {
   --input-box-focus:var(--page-text-background-color-rgb);
 }
 
+.cpe-input.is-cartline {
+  --input-box-solid:var(--caret-background-color);
+  --input-box-focus:var(--caret-background-color-rgb);
+}
+
 
 /** Buttons **/
 /* Primary */
@@ -1394,11 +1399,11 @@ a.cpe-button, button.cpe-button {
 
 /* Alternate Colored Buttons */
 .cpe-button.is-alternate {
-  --button-background-color:var(--page-secondary-background-color);
-  --button-background-color-hover:var(--page-secondary-background-color-hover);
-  --button-foreground-color:var(--page-foreground-color);
-  --button-foreground-color-hover:var(--page-foreground-color-hover);
-  --button-foreground-color-inverted:var(--page-foreground-color);
+  --button-background-color:var(--caret-background-color);
+  --button-background-color-hover:var(--caret-background-color-hover);
+  --button-foreground-color:var(--caret-foreground-color);
+  --button-foreground-color-hover:var(--caret-foreground-color-hover);
+  --button-foreground-color-inverted:var(--caret-foreground-color-inverted);
   --secondary-button-foreground-color:var(--body-background-color);
   --secondary-button-foreground-color-hover:var(--body-background-color-hover);
   --tertiary-button-background-color:var(--body-fadeout-color);
