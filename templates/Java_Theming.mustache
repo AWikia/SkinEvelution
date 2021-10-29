@@ -327,7 +327,7 @@ function GetMessage() {
 
 function BestAlertColor() {
 var page = GetPage()
-if ( Color(page).getLightness() < 0.5) {
+if ( chroma(page).get('hsl.l') < 0.5) {
 /** V1 **/
 var colors = ['#e60000', '#cc0000', '#b30000', '#990000', '#800000', '#660000', '#4d0000', '#330000', '#1a0000', '#ff1919', '#ff3333', '#ff4d4d', '#ff6666', '#ff8080', '#ff9999', '#ffb3b3', '#ffcccc', '#ffe6e6'];
 var colors2= ['#e69500', '#cc8500', '#b37400', '#996300', '#805300', '#664200', '#4d3200', '#332100', '#1a1100', '#ffaf19', '#ffb833', '#ffc14d', '#ffc966', '#ffd280', '#ffdb99', '#ffe4b3', '#ffedcc', '#fff6e6'];
@@ -351,9 +351,10 @@ var colors4= ['#8c8c8c', '#999999', '#a5a5a5', '#b2b2b2', '#bfbfbf', '#cccccc', 
 
 	for (let i = 0; i < colors.length; i++) {
 		var alert = ColorTestTwin(colors[i], ColorInvert(page), 0.15,360);
-		var warn = Color(ColorTestTwin(colors2[i], ColorInvert(page), 0.15,38)).setSaturation(Color(alert).getSaturation()).setLightness(Color(alert).getLightness()).toString();
-		var done = Color(ColorTestTwin(colors3[i], ColorInvert(page), 0.15,150)).setSaturation(Color(alert).getSaturation()).setLightness(Color(alert).getLightness()).toString();
-		var info = Color(ColorTestTwin(colors4[i], ColorInvert(page), 0.15,-1)).setLightness(Color(alert).getLightness()).toString();
+		var alertsat = chroma(alert).get('hsl.s');
+		var warn = chroma(ColorTestTwin(colors2[i], ColorInvert(page), 0.15,38)).set('hsl.s',alertsat).set('hsl.l', chroma(alert).get('hsl.l')).hex();
+		var done = chroma(ColorTestTwin(colors3[i], ColorInvert(page), 0.15,150)).set('hsl.s',alertsat).set('hsl.l', chroma(alert).get('hsl.l')).hex();
+		var info = chroma(ColorTestTwin(colors4[i], ColorInvert(page), 0.15,-1)).set('hsl.l',chroma(alert).get('hsl.l')).hex();
 		if ( ((chroma.contrast(page, alert)) >= contrastA) && ((chroma.contrast(page, warn)) >= contrastW) && ((chroma.contrast(page, done)) >= contrastS) && ((chroma.contrast(page, info)) >= contrastM) ) {
 			return [alert, warn, done, info];
 		}
@@ -891,22 +892,14 @@ function DownloadTheme(full=false) {
 /* Begin Color Parsers */
 function ColorTestTwin(color1,color2,intensity=1,hue='nil') {
 	var alpha = 0.5*intensity;
-	var r = Color(color1).getRed() * (1 - alpha);
-	var g = Color(color1).getGreen() * (1 - alpha);
-	var b = Color(color1).getBlue() * (1 - alpha);
-
-	var r1 = Color(color2).getRed() * alpha;
-	var g1 = Color(color2).getGreen() * alpha;
-	var b1 = Color(color2).getBlue() * alpha;
 	if (hue === 'nil') {
-		return Color([(r + r1) * 255,(g + g1) * 255,(b + b1) * 255]).toString();
+		return chroma.mix(color1, color2, alpha, 'rgb').hex();
 	} else if (hue === -1) {
-		return Color([(r + r1) * 255,(g + g1) * 255,(b + b1) * 255]).setSaturation(0).setHue(0).toString();
+		return chroma.mix(color1, color2, alpha, 'rgb').set('hsl.s', 0).set('hsl.h', 0).hex();
 	} else {
-		return Color([(r + r1) * 255,(g + g1) * 255,(b + b1) * 255]).setHue(hue).toString();
+		return chroma.mix(color1, color2, alpha, 'rgb').set('hsl.h', hue).hex();
 	}
 }
-
 
 
 function ColorTest(color,text=false,inv=false,dledlen=false) { // Regular Colors
@@ -916,6 +909,7 @@ function ColorTest(color,text=false,inv=false,dledlen=false) { // Regular Colors
 		var color2 = color;
 	}
 	var func = (isLightColor(color2));
+	var light = chroma(color).get('hsl.l')
 	if (func) {
 		if (text === true) {
 			if (inv === false) {
@@ -925,9 +919,9 @@ function ColorTest(color,text=false,inv=false,dledlen=false) { // Regular Colors
 			}
 		} else {
 			if (inv === false) {
-				return Color(color).darkenByAmount( 0.2 ).toString();
+				return chroma(color).set('hsl.l', light-0.2).hex();
 			} else {
-				return Color(color).lightenByAmount( 0.2 ).toString();
+				return chroma(color).set('hsl.l', light+0.2).hex();
 			}
 		}
 	} else {
@@ -939,9 +933,9 @@ function ColorTest(color,text=false,inv=false,dledlen=false) { // Regular Colors
 			}
 		} else {
 			if (inv === true) {
-				return Color(color).darkenByAmount( 0.2 ).toString();
+				return chroma(color).set('hsl.l', light-0.2).hex();
 			} else {
-				return Color(color).lightenByAmount( 0.2 ).toString();
+				return chroma(color).set('hsl.l', light+0.2).hex();
 			}
 		}
 	}
@@ -952,10 +946,11 @@ function ColorTest(color,text=false,inv=false,dledlen=false) { // Regular Colors
 
 
 function ColorInvert(color) {
-	var r = 1 - Color(color).getRed();
-	var g = 1 - Color(color).getGreen();
-	var b = 1 - Color(color).getBlue();
-	return Color(color).setRed(r).setGreen(g).setBlue(b).shiftHue(180).toString();
+	var r = 255 - chroma(color).get('rgb.r');
+	var g = 255 - chroma(color).get('rgb.g');
+	var b = 255 - chroma(color).get('rgb.b');
+	var h = chroma(color).get('hsl.h');
+	return chroma(color).set('rgb.r', r).set('rgb.g', g).set('rgb.b', b).set('hsl.h', h).hex();
 }
 
 
@@ -967,16 +962,16 @@ function ColorTest2(color,text=false) {
 
 // Conversion for R,G,B syntax
 function Color2(color) {
-	return Math.round(Color(color).getRed() * 255 ) + ',' + Math.round(Color(color).getGreen() * 255) + ',' + Math.round(Color(color).getBlue() * 255);
+	return Math.round(chroma(color).get('rgb.r') ) + ',' + Math.round(chroma(color).get('rgb.g') ) + ',' + Math.round(chroma(color).get('rgb.b') );
 }
 
 function Color4(color) {
-	return Math.round(Color(color).getRed() * 255 ) + ' ' + Math.round(Color(color).getGreen() * 255) + ' ' + Math.round(Color(color).getBlue() * 255);
+	return Math.round(chroma(color).get('rgb.r') ) + ' ' + Math.round(chroma(color).get('rgb.g') ) + ' ' + Math.round(chroma(color).get('rgb.b') );
 }
 
 function isLightColor(color) {
-	var c1 = (chroma.contrast('#000000',  Color(color).toString()))
-	var c2 = (chroma.contrast('#ffffff',  Color(color).toString()))
+	var c1 = (chroma.contrast('#000000',  chroma(color).hex()))
+	var c2 = (chroma.contrast('#ffffff',  chroma(color).hex()))
 	var contrast = (window.matchMedia('(prefers-contrast: more)').matches) ? 7 : 4.5
 	var contrast2 = (window.matchMedia('(prefers-contrast: more)').matches) ? 3 : 4.5
 	if (c1 > c2) {
@@ -991,13 +986,13 @@ function isDarkColor(color) {
 }
 
 function isSuperLightColor(color) {
-	var c1 = (chroma.contrast('#000000',  Color(color).toString()))
+	var c1 = (chroma.contrast('#000000',  chroma(color).hex()))
 	var contrast = (window.matchMedia('(prefers-contrast: more)').matches) ? 13 : 10
 	return (c1 >= contrast )
 }
 
 function isSuperDarkColor(color) {
-	var c1 = (chroma.contrast('#ffffff',  Color(color).toString()))
+	var c1 = (chroma.contrast('#ffffff',  chroma(color).hex()))
 	var contrast = (window.matchMedia('(prefers-contrast: more)').matches) ? 13 : 10
 	return (c1 >= contrast )
 }
