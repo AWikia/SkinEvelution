@@ -42,9 +42,9 @@ If you want to create a new theme without using CPE Theme Designer (i.e. Due to 
 --page-border-background-color:#aaabbb; /* auto | <color> */
 --page-text-background-color:#222222; /* auto | <color> */
 --accent-background-color:#dd8300; /* <color> */
---caret-color:#b88300; /* auto | <color> */
+--caret-background-color:#b88300; /* auto | <color> */
 --custom-secondary-font:""; /* <string> */
---border-radius:3px; /* <number 0 to 15 */
+--border-radius:3px; /* <number> 0 to 15 */
 --logo-filter:opacity(1); /* <filter-function> */
 --logo-filter-hover:opacity(0.8); /* <filter-function> */
 --logo-filter-duration:300ms; /* <duration> */
