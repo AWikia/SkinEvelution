@@ -352,9 +352,9 @@ var colors4= ['#8c8c8c', '#999999', '#a5a5a5', '#b2b2b2', '#bfbfbf', '#cccccc', 
 	for (let i = 0; i < colors.length; i++) {
 		var alert = ColorTestTwin(colors[i], ColorInvert(page), 0.15,360);
 		var alertsat = chroma(alert).get('hsl.s');
-		var warn = chroma(ColorTestTwin(colors2[i], ColorInvert(page), 0.15,38)).set('hsl.s',alertsat).set('hsl.l', chroma(alert).get('hsl.l')).hex();
-		var done = chroma(ColorTestTwin(colors3[i], ColorInvert(page), 0.15,150)).set('hsl.s',alertsat).set('hsl.l', chroma(alert).get('hsl.l')).hex();
-		var info = chroma(ColorTestTwin(colors4[i], ColorInvert(page), 0.15,-1)).set('hsl.l',chroma(alert).get('hsl.l')).hex();
+		var warn = chroma(ColorTestTwin(colors2[i], ColorInvert(page), 0.15,38)).set('hsl.s',alertsat).set('hsl.l', chroma(alert).get('hsl.l'));
+		var done = chroma(ColorTestTwin(colors3[i], ColorInvert(page), 0.15,150)).set('hsl.s',alertsat).set('hsl.l', chroma(alert).get('hsl.l'));
+		var info = chroma(ColorTestTwin(colors4[i], ColorInvert(page), 0.15,-1)).set('hsl.l',chroma(alert).get('hsl.l'));
 		if ( ((chroma.contrast(page, alert)) >= contrastA) && ((chroma.contrast(page, warn)) >= contrastW) && ((chroma.contrast(page, done)) >= contrastS) && ((chroma.contrast(page, info)) >= contrastM) ) {
 			return [alert, warn, done, info];
 		}
@@ -893,11 +893,11 @@ function DownloadTheme(full=false) {
 function ColorTestTwin(color1,color2,intensity=1,hue='nil') {
 	var alpha = 0.5*intensity;
 	if (hue === 'nil') {
-		return chroma.mix(color1, color2, alpha, 'rgb').hex();
+		return chroma.mix(color1, color2, alpha, 'rgb');
 	} else if (hue === -1) {
-		return chroma.mix(color1, color2, alpha, 'rgb').set('hsl.s', 0).set('hsl.h', 0).hex();
+		return chroma.mix(color1, color2, alpha, 'rgb').set('hsl.s', 0).set('hsl.h', 0);
 	} else {
-		return chroma.mix(color1, color2, alpha, 'rgb').set('hsl.h', hue).hex();
+		return chroma.mix(color1, color2, alpha, 'rgb').set('hsl.h', hue);
 	}
 }
 
@@ -919,9 +919,9 @@ function ColorTest(color,text=false,inv=false,dledlen=false) { // Regular Colors
 			}
 		} else {
 			if (inv === false) {
-				return chroma(color).set('hsl.l', light-0.2).hex();
+				return chroma(color).set('hsl.l', light-0.2);
 			} else {
-				return chroma(color).set('hsl.l', light+0.2).hex();
+				return chroma(color).set('hsl.l', light+0.2);
 			}
 		}
 	} else {
@@ -933,9 +933,9 @@ function ColorTest(color,text=false,inv=false,dledlen=false) { // Regular Colors
 			}
 		} else {
 			if (inv === true) {
-				return chroma(color).set('hsl.l', light-0.2).hex();
+				return chroma(color).set('hsl.l', light-0.2);
 			} else {
-				return chroma(color).set('hsl.l', light+0.2).hex();
+				return chroma(color).set('hsl.l', light+0.2);
 			}
 		}
 	}
@@ -950,7 +950,7 @@ function ColorInvert(color) {
 	var g = 255 - chroma(color).get('rgb.g');
 	var b = 255 - chroma(color).get('rgb.b');
 	var h = chroma(color).get('hsl.h');
-	return chroma(color).set('rgb.r', r).set('rgb.g', g).set('rgb.b', b).set('hsl.h', h).hex();
+	return chroma(color).set('rgb.r', r).set('rgb.g', g).set('rgb.b', b).set('hsl.h', h);
 }
 
 
@@ -970,8 +970,8 @@ function Color4(color) {
 }
 
 function isLightColor(color) {
-	var c1 = (chroma.contrast('#000000',  chroma(color).hex()))
-	var c2 = (chroma.contrast('#ffffff',  chroma(color).hex()))
+	var c1 = (chroma.contrast('#000000',  chroma(color)))
+	var c2 = (chroma.contrast('#ffffff',  chroma(color)))
 	var contrast = (window.matchMedia('(prefers-contrast: more)').matches) ? 7 : 4.5
 	var contrast2 = (window.matchMedia('(prefers-contrast: more)').matches) ? 3 : 4.5
 	if (c1 > c2) {
@@ -986,13 +986,13 @@ function isDarkColor(color) {
 }
 
 function isSuperLightColor(color) {
-	var c1 = (chroma.contrast('#000000',  chroma(color).hex()))
+	var c1 = (chroma.contrast('#000000',  chroma(color)))
 	var contrast = (window.matchMedia('(prefers-contrast: more)').matches) ? 13 : 10
 	return (c1 >= contrast )
 }
 
 function isSuperDarkColor(color) {
-	var c1 = (chroma.contrast('#ffffff',  chroma(color).hex()))
+	var c1 = (chroma.contrast('#ffffff',  chroma(color)))
 	var contrast = (window.matchMedia('(prefers-contrast: more)').matches) ? 13 : 10
 	return (c1 >= contrast )
 }
