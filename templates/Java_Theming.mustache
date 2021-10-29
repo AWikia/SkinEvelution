@@ -296,6 +296,18 @@ function GetAccent() {
 	}
 }
 
+function GetCaret() {
+	if (ForcedColors()) {
+		return getComputedStyle(document.querySelector('.fc-canvastext')).getPropertyValue("color");
+	} else if (getComputedStyle(document.querySelector('html')).getPropertyValue("--caret-background-color") === 'auto') {
+		var color = getComputedStyle(document.querySelector('html')).getPropertyValue("--accent-background-color").trim();
+		return color
+	} else {
+		return getComputedStyle(document.querySelector('html')).getPropertyValue("--caret-background-color").trim();
+	}
+}
+
+
 function GetAlert() {
 		return BestAlertColor()[0];
 }
@@ -837,7 +849,7 @@ function DownloadTheme(full=false) {
 				 '--message-foreground-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--message-foreground-color-rgb")  + ';\n' +
 				 '--message-foreground-color-hover-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--message-foreground-color-hover-rgb")  + ';\n' +
 				 // Miscs
-				 '--caret-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--caret-color")  + ';\n' +
+				 '--caret-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--caret-background-color")  + ';\n' +
 				 '--custom-secondary-font:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--custom-secondary-font")  + ';\n' +
 				 '--border-radius:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--border-radius")  + ';\n' +
 				 '--logo-filter:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--logo-filter")  + ';\n' +
@@ -862,7 +874,7 @@ function DownloadTheme(full=false) {
 				 '--page-border-background-color:' + getComputedStyle(document.querySelector('html')).getPropertyValue("--page-border-background-color")  + ';\n' +
 				 '--page-text-background-color:' + getComputedStyle(document.querySelector('html')).getPropertyValue("--page-text-background-color")  + ';\n' +
 				 '--accent-background-color:' + getComputedStyle(document.querySelector('html')).getPropertyValue("--accent-background-color")  + ';\n' +
-				 '--caret-color:' + getComputedStyle(document.querySelector('html')).getPropertyValue("--caret-color")  + ';\n' +
+				 '--caret-background-color:' + getComputedStyle(document.querySelector('html')).getPropertyValue("--caret-background-color")  + ';\n' +
 				 '--custom-secondary-font:' + getComputedStyle(document.querySelector('html')).getPropertyValue("--custom-secondary-font")  + ';\n' +
 				 '--border-radius:' + getComputedStyle(document.querySelector('html')).getPropertyValue("--border-radius")  + ';\n' +
 				 '--logo-filter:' + getComputedStyle(document.querySelector('html')).getPropertyValue("--logo-filter")  + ';\n' +
@@ -1227,7 +1239,19 @@ if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--superb
 }
 
 var headertextcolor1 = ColorTest(headertext_color,false,true,true);
-	
+
+/** Caret Color **/
+/* Set Vars */
+var caret_color = GetCaret();
+// Liatch Quirk
+if ( (window.MW18darkmode === true) ) {
+		var caret_color = ColorInvert(caret_color);
+}
+
+var caretcolor1 = ColorTest(caret_color);
+
+
+
 /** Alert Color **/
 /* Set Vars */
 var alert_color = BestAlertColor()[0];
@@ -1315,6 +1339,13 @@ if (['full','legacy'].includes(getComputedStyle(document.querySelector('html')).
 						  "--superbar-text-background-color-hover-rgb:" + Color2(headertextcolor1) + ";\n" +
 						  "--superbar-text-foreground-color-rgb:" + GetForegroundVariable2(headertext_color) + ";\n" +
 						  "--superbar-text-foreground-color-hover-rgb:" + GetForegroundVariable2(headertext_color,true) + ";\n" +
+						  "--caret-background-color-hover:" + caretcolor1 + ";\n" +
+						  "--caret-foreground-color:" + GetForegroundVariable(caret_color) + ";\n" +
+						  "--caret-foreground-color-hover:" + GetForegroundVariable(caret_color,true) + ";\n" +
+						  "--caret-foreground-color-inverted:" + GetForegroundVariable(caretcolor1) + ";\n" +
+						  "--caret-background-color-rgb:" + Color2( caret_color ) + ";\n" +
+						  "--caret-foreground-color-rgb:" + GetForegroundVariable2(caret_color) + ";\n" +
+						  "--caret-foreground-color-hover-rgb:" + GetForegroundVariable2(caret_color,true) + ";\n" +
 						  "--alert-background-color:" + alert_color + "!important;\n" +
 						  "--alert-background-color-hover:" + alertcolor1 + "!important;\n" +
 						  "--alert-gradient-color:" + GetGradientVariable(content_color,'alert')[0] + "!important;\n" +
@@ -1380,6 +1411,9 @@ if (['full','legacy'].includes(getComputedStyle(document.querySelector('html')).
 						  "--superbar-text-background-color:" + headertext_color + ";\n" +
 						  "--superbar-text-gradient-color:" + GetGradientVariable2(content_color,'superbar-text')[0] + ";\n" +
 						  "--superbar-text-gradient-color-hover:" + GetGradientVariable2(content_color,'superbar-text')[1] + ";\n" +
+						  "--caret-background-color:" + caret_color + ";\n" +
+						  "--caret-gradient-color:" + GetGradientVariable(caret_color,'caret')[0] + ";\n" +
+						  "--caret-gradient-color-hover:" + GetGradientVariable(caret_color,'caret')[1] + ";\n" +
 						  "--bg-size:" + ['cover','contain','100% 100%','auto'][["cover", "contain", "stretched", "full"].indexOf( getComputedStyle(document.querySelector('html')).getPropertyValue("--body-background-size") ) ] + ";\n" +
 						  "--bg-tile-x:" + ['repeat','no-repeat'][["false", "true"].indexOf( getComputedStyle(document.querySelector('html')).getPropertyValue("--body-background-no-horizontal-tiling") ) ] + ";\n" +
 						  "--bg-tile-y:" + ['repeat','no-repeat'][["false", "true"].indexOf( getComputedStyle(document.querySelector('html')).getPropertyValue("--body-background-no-vertical-tiling") ) ] + ";\n" +

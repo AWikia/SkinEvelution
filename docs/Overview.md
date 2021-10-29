@@ -122,7 +122,7 @@ This is used as the background image of the body container. When the opposite ve
 This is used as the opacity of the body background image. 0% makes it invisible, 50% makes translucent and 100% makes it visible.
 
 ### ``--body-background-color`` (Accepts: ``<color>``)
-This is used as the background color of the body container and the gradient overlay shown on header backgrounds. This is also used on  ``is-headline`` buttons.
+This is used as the background color of the body container and the gradient overlay shown on header backgrounds. This is also used on  ``is-headline`` inputs and ``is-alternate`` secondary buttons.
 
 ### ``--superbar-text-background-color`` (Accepts: ``<color> | auto``)
 This is used as the foreground color of the Community Header. When set to ``auto``, it autopicks the computed foreground community color.
@@ -146,24 +146,22 @@ When set to ``true``, it removes background tiling on the horizontal axis
 When set to ``true``, it removes background tiling on the vertical axis
 
 ### ``--secondary-accent-background-color`` (Accepts: ``<color>``)
-This is used as the color of the links, checkboxes and range inputs. This is also used on  ``is-alternate``, secondary OOUI buttons and hovered and focused OOUI inputs.
+This is used as the color of the links, checkboxes and range inputs. This is also used on  ``is-alternate`` inputs, secondary buttons and on OOUI inputs.
 
 ### ``--page-background-color`` (Accepts: ``<color>``)
 This is used as the background color of the page container, rail modules and many more containers.
 
 ### ``--page-border-background-color`` (Accepts: ``<color> | auto``)
-This is used as the border color of the page container, rail modules and many more containers and as the color of the toolbox.  When set to ``auto``, it autopicks a color based on page background color.
- This is also used on  ``is-borderline`` buttons.
+This is used as the border color of the page container, rail modules and many more containers and as the color of the toolbox.  When set to ``auto``, it autopicks a color based on page background color. This is also used on  ``is-borderline`` inputs and ``is-unaccented`` primary buttons.
 
 ### ``--page-text-background-color`` (Accepts: ``<color> | auto``)
-This is used as the text color of the page container, rail modules and many more containers.  When set to ``auto``, it autopicks either the light or dark text background color, whichever works best on the set page background color.
- This is also used on  ``is-colorline`` buttons.
+This is used as the text color of the page container, rail modules, many more containers.  When set to ``auto``, it autopicks either the light or dark text background color, whichever works best on the set page background color. This is also used on ``is-colorline`` inputs and ``is-unaccented`` secondary buttons.
 
 ### ``--accent-background-color`` (Accepts: ``<color>``)
-This is used as the color of the buttons, sticky header, selected text in Contrast and Classic visual styles, primary OOUI buttons and hovered and focused input styles without extra class
+This is used as the color of the buttons, sticky header, selected text in Contrast visual style, primary OOUI buttons and input styles without extra class
 
-### ``--caret-color`` (Accepts: ``<color> | auto``)
-This is used as the color of the insertation caret.  When set to ``auto``, it autopicks the text color of the editable element.
+### ``--caret-background-color`` (Accepts: ``<color> | auto``)
+This is used as the color of the insertation caret.  When set to ``auto``, it autopicks the computed accent background color. This is also used on ``is-cartline`` inputs and ``is-alternate`` primary buttons.
 
 ### ``--custom-secondary-font`` (Accepts: ``<family-name>``)
 This is used as the extra secondary font to be used other than the stock ones. When set to an empty quoted string, no special extra font is used.
