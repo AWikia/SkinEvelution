@@ -74,8 +74,22 @@ html:not(.server-mode) .server-on {
 		transform:none;
 	}
 
-	.server-mode .evelution-content .evelution-article-wrapper .evelution-article-container {
-		--content-padding:38px;
+	.server-mode .evelution-content .evelution-article-wrapper {
+		--left-content-padding:38px;
+		--right-content-padding:9px;
+	}
+
+
+	.evelution-rail-wrapper .evelution-module {
+		padding-left:var(--left-content-padding);
+		padding-right:var(--right-content-padding);
+	}
+	
+	.evelution-module .evelution-module-content {
+		margin-left:calc(0px - var(--left-content-padding));		
+		margin-right:calc(0px - var(--right-content-padding));
+		padding-left:calc(10px + var(--left-content-padding));
+		padding-right:calc(10px + var(--right-content-padding));
 	}
 
 
