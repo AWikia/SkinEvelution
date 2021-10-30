@@ -373,16 +373,17 @@ function RemoveEmptyMenus() {
 
 	var langmenu4N = document.querySelector(".evelution-navigation.evelution-sidebar .link.notices-menu #pt-notifications-notice");
 	var langmenu4bN = document.querySelector(".evelution-navigation.evelution-sidebar .link.updates-menu #pt-notifications-alert");
-	var langmenu4M = document.querySelector(".evelution-mobile-global-navigation.evelution-sidebar .notices-menu");
 		$(langmenu4N).remove();	
 		$(langmenu4bN).remove();
 
-	if (! ($("div:not([class])[style='position:absolute; top:-999999999999999px; left:0;'] .cpe-list.is-linked #pt-notifications-alert").length) ) {
+	if (! ($(".evelution-navigation.evelution-sidebar .link.notices-menu .cpe-list > #pt-notifications-alert").length) ) {
 		var langmenu4 = document.querySelector(".evelution-navigation.evelution-sidebar .link.notices-menu");
-		var langmenu4b = document.querySelector(".evelution-navigation.evelution-sidebar .link.updates-menu");
 		$(langmenu4).remove();
+	}
+
+	if (! ($(".evelution-navigation.evelution-sidebar .link.updates-menu .cpe-list > #pt-notifications-notice").length) ) {
+		var langmenu4b = document.querySelector(".evelution-navigation.evelution-sidebar .link.updates-menu");
 		$(langmenu4b).remove();
-		$(langmenu4M).remove();
 	}
 
 
