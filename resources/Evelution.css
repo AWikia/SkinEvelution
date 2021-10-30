@@ -727,6 +727,8 @@ position:relative;
 
 
 .evelution-article-wrapper {
+  --left-content-padding:28px;
+  --right-content-padding:18px;
 display:flex;
 position:relative;
 justify-content:space-between;
@@ -739,11 +741,10 @@ width:100%;
 }
 
 .evelution-content .evelution-article-wrapper .evelution-article-container {
-  --content-padding:28px;
   box-shadow:0 2px 6px 0 rgba(var(--page-text-background-color-rgb),.4), 0 2px 6px 0 rgba(var(--page-background-color-rgb),0.4);
   border:1px solid var(--page-border-background-color);	
   background-color:var(--page-background-color);
-  padding:0 var(--content-padding) var(--content-padding);
+  padding:0 var(--right-content-padding) 18px var(--left-content-padding);
   border-radius:calc(var(--border-radius) * 2);
   width:100%;
   display:flex;
@@ -992,7 +993,7 @@ position:relative;
 z-index:6;
 background-clip:padding-box;
 border-top:1px solid transparent;
-margin:-1px calc(0px - var(--content-padding)) 0;
+margin:-1px calc(0px - var(--right-content-padding)) 0 calc(0px - var(--left-content-padding));
 }
 
 .evelution-page-header-main {
@@ -1025,7 +1026,7 @@ text-align:left;
 display:block;
 line-height:1.35;
 margin:0;
-padding:10px var(--content-padding);
+padding:10px var(--right-content-padding) 10px var(--left-content-padding);
 text-align:center;
 	background-color:rgba(var(--luna-background-color-rgb),calc(var(--dropdown-opacity) * var(--intensity)));
 	color:var(--luna-text-background-color);
@@ -1097,7 +1098,7 @@ font-weight:200;
 max-width:100%;
 word-wrap: break-word;
 margin:0;
-padding:8px var(--content-padding);
+padding:8px var(--right-content-padding) 8px var(--left-content-padding);
 }
 
 .evelution-content .evelution-page-header .evelution-page-header-subtitle > span {
@@ -1109,7 +1110,7 @@ display:flex;
 align-items:flex-end;
 align-self:stretch;
 flex-shrink:0;
-padding:8px var(--content-padding) 0;
+padding:8px var(--right-content-padding) 8px var(--left-content-padding);
 flex-wrap:wrap;
 }
 
@@ -1119,7 +1120,7 @@ display:flex;
 justify-content:flex-end;
 align-self:stretch;
 flex-shrink:0;
-padding:8px var(--content-padding) 0;
+padding:8px var(--right-content-padding) 8px var(--left-content-padding);
 flex-wrap:wrap;
 gap:2px;
 }

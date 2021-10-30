@@ -290,9 +290,12 @@
 		transform:none;
 	}
 
-	.evelution-content .evelution-article-wrapper .evelution-article-container {
-		--content-padding:38px;
+	.evelution-content .evelution-article-wrapper {
+		--left-content-padding:38px;
+		--right-content-padding:9px;
 	}
+	
+	
 
 	.evelution-floating-actions-container {
 		top: calc(var(--global-nav-size) + 10px);
@@ -327,6 +330,8 @@
 		font-size:36px; /* 2.4lol */
 /*		-webkit-text-stroke-width:1px; */
 	}
+
+
 
 
 	.evelution-userpages-header .evelution-profile-masthead hgroup h1 {
@@ -388,7 +393,17 @@
 
 	.evelution-rail-wrapper .evelution-module {
 		width:100%;
+		padding-left:var(--left-content-padding);
+		padding-right:var(--right-content-padding);
 	}
+	
+	.evelution-module .evelution-module-content {
+		margin-left:calc(0px - var(--left-content-padding));		
+		margin-right:calc(0px - var(--right-content-padding));
+		padding-left:calc(10px + var(--left-content-padding));
+		padding-right:calc(10px + var(--right-content-padding));
+	}
+
 
 	.evelution-userpages-header .evelution-profile-masthead header {
 		flex-direction:column;
