@@ -89,6 +89,7 @@ class SkinEvelution extends SkinMustache {
 		$data["has-server-mode"] = $this->getConfig()->get( 'EvelutionServerMode' );
 		$data["html-custom-fontoo"] = $this->getConfig()->get( 'EvelutionCustomFont' );
 		$data["has-no-color-management"] = $this->getConfig()->get( 'EvelutionDisableColorManagement' );
+		$data["has-forced-full-width"] = $this->getConfig()->get ( 'EvelutionForceFullWidth' );
         return $data;
     }
 
