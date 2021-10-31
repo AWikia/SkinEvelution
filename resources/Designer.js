@@ -256,6 +256,28 @@ function InitDesigner() {
 				'<option value="#e2f99a">' +
 
 			'</datalist>' +
+			'<datalist id="td_fonts">' + // Fonts
+				'<option value="Rubik">' +
+				'<option value="Work Sans">' +
+				'<option value="Lora">' +
+				'<option value="Roboto Slab">' +
+				'<option value="BioRhyme">' +
+				'<option value="Inknut Antiqua">' +
+			'</datalist>' +
+			'<datalist id="td_imageopacity">' + // Image Opacity
+				'<option value="0" label="0%">' +
+				'<option value="25">' +
+				'<option value="50" label="50%">' +
+				'<option value="75">' +
+				'<option value="100" label="100%">' +
+			'</datalist>' +
+			'<datalist id="td_filterdur">' + // Image Opacity
+				'<option value="0">' +
+				'<option value="300">' +
+				'<option value="600" >' +
+				'<option value="1000" >' +
+			'</datalist>' +
+
 		'</div>' +
 		'<table class="wikitable" style="max-width:300px; font-size:14px; margin:0 auto;">' +
 			'<tr>' +
@@ -299,7 +321,7 @@ function InitDesigner() {
 				'</td>' +
 
 				'<td style="text-align:center; width:150px">' +
-					'<input type="range" class="big" style="min-width:130px; min-width:130px;" id="bodyimageopacity" value="100" min="0" max="100" />' + // Body Background 
+					'<input type="range" class="big" style="min-width:130px; min-width:130px;" id="bodyimageopacity" value="100" min="0" max="100" list="td_imageopacity" autocomplete="off" />' + // Body Background 
 				'</td>' +
 			'</tr>' +
 		// TR
@@ -488,7 +510,7 @@ function InitDesigner() {
 				'</td>' +
 
 				'<td style="text-align:center; width:150px">' +
-					'<input type="range" class="big" style="min-width:130px; min-width:130px;" id="border-radius" value="3" min="0" max="15" />' + // Body Background 
+					'<input type="range" class="big" style="min-width:130px; min-width:130px;" id="border-radius" value="3" min="0" max="15" autocomplete="off" />' + // Body Background 
 				'</td>' +
 			'</tr>' +
 		// TR
@@ -498,7 +520,7 @@ function InitDesigner() {
 				'</td>' +
 
 				'<td style="text-align:center; width:150px">' +
-					'<input type="text" id="secondfont" class="cpe-input designer-text" style="width:130px; min-width:130px;" placeholder="Font" />' + // Body Background 
+					'<input type="text" id="secondfont" class="cpe-input designer-text" style="width:130px; min-width:130px;" placeholder="Font" list="td_fonts" autocomplete="off" />' + // Body Background 
 				'</td>' +
 			'</tr>' +
 		// TR
@@ -528,7 +550,7 @@ function InitDesigner() {
 				'</td>' +
 
 				'<td style="text-align:center; width:150px">' +
-					'<input type="range" class="big" style="min-width:130px; min-width:130px;" id="filter3" value="300" min="0" max="1000" step="20" />' + // Body Background 
+					'<input type="range" class="big" style="min-width:130px; min-width:130px;" id="filter3" value="300" min="0" max="1000" step="20" list="td_filterdur" autocomplete="off" />' + // Body Background 
 				'</td>' +
 			'</tr>' +
 		// TR
@@ -538,7 +560,7 @@ function InitDesigner() {
 				'</td>' +
 
 				'<td style="text-align:center; width:150px">' +
-					'<input type="range" class="big" style="min-width:130px; min-width:130px;" id="filter4" value="0" min="0" max="1000" step="20" />' + // Body Background 
+					'<input type="range" class="big" style="min-width:130px; min-width:130px;" id="filter4" value="0" min="0" max="1000" step="20" list="td_filterdur" autocomplete="off"  />' + // Body Background 
 				'</td>' +
 			'</tr>' +
 		'</table>' +
