@@ -16,7 +16,7 @@
 	<div class="gradient-overlay" style="position:absolute; pointer-events:none;"></div>
 	<div class="invertion-on" style=" pointer-events: none; position: absolute; z-index: -2; width: 100%; height: 100%;"><div class="body-background fandom-community-header__background" style="position:absolute; pointer-events:none;"></div></div>
 	<div class="body-background-color" style="position:absolute; pointer-events:none;"></div>
-	<container>
+	<container class="{{^has-server-mode}}home-mode{{/has-server-mode}}{{#has-server-mode}}server-mode{{/has-server-mode}}{{#has-disabled-rail}} no-rail{{/has-disabled-rail}}{{#has-single-header}} single-header{{/has-single-header}}" sticky-rail="{{{html-sticky-rail}}}"> <!--<container> -->
 		<stickya style="display:block; z-index:100; position:fixed; width:100%"></stickya>
 		{{>GlobalNavigation}}
 		<main wide="false" toolbar="true" nav="true" rail="true">
@@ -64,7 +64,58 @@
 	</container>
 
 
+<style>
+	html {
+		--custom-font:{{{html-custom-fontoo}}}!important;
+	}
+	{{#has-no-color-management}}
+	:root,
+	:root[visualcolors],
+	:root[theme] {
+		--body-background-image:url("")!important;
+		--body-background-mode:modern!important;
+		--body-background-size:cover!important;
+		--body-background-alignment:top!important;
+		--body-background-color:#f6f6f6!important;
+		--superbar-text-color:#000000!important;
+		--secondary-accent-background-color:#0645ad!important;
+		--page-background-color:#ffffff!important;
+		--page-border-background-color:#a2a9b1!important;
+		--page-text-background-color:#000000!important;
+		--accent-background-color:#3366cc!important;
+		--caret-background-color:#a7d7f9!important;
+	}
+	@media (forced-colors: active) {
+		:root,
+		:root[visualcolors],
+		:root[theme] {
+			--body-background-image:url("")!important;
+			--body-background-image-opacity:100%!important;
+			--body-background-color:canvas!important;
+			--superbar-text-background-color:canvastext!important;
+			--body-background-mode:standard!important;
+			--body-background-horizontal-alignment:center!important;
+			--body-background-vertical-alignment:center!important;
+			--body-background-size:cover!important;
+			--body-background-no-horizontal-tiling:false!important;
+			--body-background-no-vertical-tiling:false!important;
+			--secondary-accent-background-color:linktext!important;
+			--page-background-color:canvas!important;
+			--page-border-background-color:graytext!important;
+			--page-text-background-color:canvastext!important;
+			--accent-background-color:highlight!important;
+			--caret-background-color:auto!important;
+			--custom-secondary-font:""!important;
+			--border-radius:3px!important;
+			--logo-filter:opacity(1)!important;
+			--logo-filter-hover:opacity(1)!important;
+			--logo-filter-duration:0ms!important;
+			--logo-filter-delay:0ms!important;
+		}
+	}
 
+	{{/has-no-color-management}}
+</style>
 <script>
 /* Jquery JS */
 
