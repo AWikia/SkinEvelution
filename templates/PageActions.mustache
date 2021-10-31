@@ -1,13 +1,15 @@
 <div class="evelution-floating-actions page-side-tools__wrapper">
 	<div class="evelution-floating-actions-container cpe-floating-button-group is-vertical page-side-tools">
-		<a class="cpe-floating-button accent toggle-size page-side-tool content-size-toggle" onclick="ToggleWidth()" cpe-tooltip="{{msg-evelution-togglesize}}">
-			<span class="cpe-icon material-icons wide-off">
-				open_in_full
-			</span>
-			<span class="cpe-icon material-icons wide-on">
-				close_fullscreen
-			</span>
-		</a>
+		{{^has-forced-full-width}}
+			<a class="cpe-floating-button accent toggle-size page-side-tool content-size-toggle" onclick="ToggleWidth()" cpe-tooltip="{{msg-evelution-togglesize}}">
+				<span class="cpe-icon material-icons wide-off">
+					open_in_full
+				</span>
+				<span class="cpe-icon material-icons wide-on">
+					close_fullscreen
+				</span>
+			</a>
+		{{/has-forced-full-width}}
 		<a class="cpe-floating-button accent edit page-side-tool page-side-edit" href="{{html-edit-link}}/{{ html-titlealt}}" cpe-tooltip="{{msg-edit}}">
 			<span class="cpe-icon material-icons">
 				edit
