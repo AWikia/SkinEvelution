@@ -225,5 +225,5 @@ Defaults to an empty string meaning Didact Gothic will be used. When set to anot
 ### ``$wgEvelutionStickyRail`` (Since 8.1.0)
 Defaults to true aka right rail will be sticky. When set to false, right rail will not be sticky. In order for sticky behavior of right rail to appear, browser window size must be at least 960x600.
 
-### ``$wgEvelutionDesigner`` (Since 13.0.0)
-Defaults to false. Set this to true to activate the hidden Theme Designer applet. Only intended for developers and should not be left enabled if theming work was done.
+### ``$wgEvelutionForceFullWidth`` (Since 26.1.0)
+Defaults to false. When set to true, it will force Evelution to be in Full width, negating the breakpoint sizes. Use this if your wiki can't handle things in the standard size and will work exclusively with full width size.
