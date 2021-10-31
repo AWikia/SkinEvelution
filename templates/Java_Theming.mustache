@@ -329,41 +329,44 @@ function BestAlertColor() {
 var page = GetPage()
 if ( chroma(page).get('hsl.l') < 0.5) {
 /** V1 **/
-var colors = ['#e60000', '#cc0000', '#b30000', '#990000', '#800000', '#660000', '#4d0000', '#330000', '#1a0000', '#ff1919', '#ff3333', '#ff4d4d', '#ff6666', '#ff8080', '#ff9999', '#ffb3b3', '#ffcccc', '#ffe6e6'];
-var colors2= ['#e69500', '#cc8500', '#b37400', '#996300', '#805300', '#664200', '#4d3200', '#332100', '#1a1100', '#ffaf19', '#ffb833', '#ffc14d', '#ffc966', '#ffd280', '#ffdb99', '#ffe4b3', '#ffedcc', '#fff6e6'];
-var colors3= ['#00e673', '#00cc66', '#00b359', '#00994d', '#008040', '#006633', '#004d26', '#00331a', '#001a0d', '#19ff8c', '#33ff99', '#4dffa6', '#66ffb3', '#80ffbf', '#99ffcc', '#b3ffd9', '#ccffe6', '#e6fff2'];
-var colors4= ['#727272', '#666666', '#595959', '#4c4c4c', '#404040', '#333333', '#262626', '#191919', '#0c0c0c', '#8c8c8c', '#999999', '#a5a5a5', '#b2b2b2', '#bfbfbf', '#cccccc', '#d8d8d8', '#e5e5e5', '#f2f2f2'];
-
+	var colors = ['45%', '40%', '35%', '30%', '25%', '20%', '15%', '10%', '5%', '55%', '60%', '65%', '70%', '75%', '80%', '85%', '90%', '95%']
 } else {
 /** V1 **/
-var colors = ['#ff1919', '#ff3333', '#ff4d4d', '#ff6666', '#ff8080', '#ff9999', '#ffb3b3', '#ffcccc', '#ffe6e6', '#e60000', '#cc0000', '#b30000', '#990000', '#800000', '#660000', '#4d0000', '#330000', '#1a0000'];
-var colors2= ['#ffaf19', '#ffb833', '#ffc14d', '#ffc966', '#ffd280', '#ffdb99', '#ffe4b3', '#ffedcc', '#fff6e6', '#e69500', '#cc8500', '#b37400', '#996300', '#805300', '#664200', '#4d3200', '#332100', '#1a1100'];
-var colors3= ['#19ff8c', '#33ff99', '#4dffa6', '#66ffb3', '#80ffbf', '#99ffcc', '#b3ffd9', '#ccffe6', '#e6fff2', '#00e673', '#00cc66', '#00b359', '#00994d', '#008040', '#006633', '#004d26', '#00331a', '#001a0d'];
-var colors4= ['#8c8c8c', '#999999', '#a5a5a5', '#b2b2b2', '#bfbfbf', '#cccccc', '#d8d8d8', '#e5e5e5', '#f2f2f2', '#727272', '#666666', '#595959', '#4c4c4c', '#404040', '#333333', '#262626', '#191919', '#0c0c0c'];
-
+	var colors = ['55%', '60%', '65%', '70%', '75%', '80%', '85%', '90%', '95%', '45%', '40%', '35%', '30%', '25%', '20%', '15%', '10%', '5%']
 }
 
-
+		alerth = 350 // 360
+		warningh = 50 // 38
+		successh = 110 // 150
+		messageh = 200 // -1
+		
 		contrastA = (window.matchMedia('(prefers-contrast: more)').matches) ? 4.50 : 3.00
 		contrastW = (window.matchMedia('(prefers-contrast: more)').matches) ? 4.12 : 2.75
 		contrastS = (window.matchMedia('(prefers-contrast: more)').matches) ? 3.75 : 2.50
 		contrastM = (window.matchMedia('(prefers-contrast: more)').matches) ? 3.37 : 2.25
 
 	for (let i = 0; i < colors.length; i++) {
-		var alert = ColorTestTwin(colors[i], ColorInvert(page), 0.15,360);
-		var alertsat = chroma(alert).get('hsl.s');
-		var warn = chroma(ColorTestTwin(colors2[i], ColorInvert(page), 0.15,38)).set('hsl.s',alertsat).set('hsl.l', chroma(alert).get('hsl.l'));
-		var done = chroma(ColorTestTwin(colors3[i], ColorInvert(page), 0.15,150)).set('hsl.s',alertsat).set('hsl.l', chroma(alert).get('hsl.l'));
-		var info = chroma(ColorTestTwin(colors4[i], ColorInvert(page), 0.15,-1)).set('hsl.l',chroma(alert).get('hsl.l'));
+		var color = chroma('hsl(0,100%,' + colors[i] + ')').hex(); // Base Color
+		var alert = ColorTestTwin(color, ColorInvert(page), 0.15,alerth); // Alert
+		var alertsat = chroma(alert).get('hsl.s'); // Saturation of Alert Color
+		var alertlight =  chroma(alert).get('hsl.l') // Lightness of Alert Color
+		var warn = chroma(ColorTestTwin(color, ColorInvert(page), 0.15,warningh)).set('hsl.s',alertsat).set('hsl.l', alertlight);  // Warning
+		var done = chroma(ColorTestTwin(color, ColorInvert(page), 0.15,successh)).set('hsl.s',alertsat).set('hsl.l', alertlight); // Success
+		var info = chroma(ColorTestTwin(color, ColorInvert(page), 0.15,messageh)).set('hsl.l', alertlight); // Message
 		if ( ((chroma.contrast(page, alert)) >= contrastA) && ((chroma.contrast(page, warn)) >= contrastW) && ((chroma.contrast(page, done)) >= contrastS) && ((chroma.contrast(page, info)) >= contrastM) ) {
 			return [alert, warn, done, info];
 		}
 	}
-	
-	
-	/* If no color can be found legible, fallback to specific color */
-			var page = ColorInvert(page);
-			return [ColorTestTwin(colors[3], page, 0.15,360), ColorTestTwin(colors2[3], page, 0.15,38), ColorTestTwin(colors3[3], page, 0.15,150), ColorTestTwin(colors4[3], page, 0.15,-1)];
+
+	/* If no color can be found legible, fallback to specific color */	
+		var color = chroma('hsl(0,100%,' + colors[3] + ')' ).hex();
+		var alert = ColorTestTwin(color, ColorInvert(page), 0.15,alerth);
+		var alertsat = chroma(alert).get('hsl.s');
+		var alertlight =  chroma(alert).get('hsl.l') // Lightness of Alert Color
+		var warn = chroma(ColorTestTwin(color, ColorInvert(page), 0.15,warningh)).set('hsl.s',alertsat).set('hsl.l', alertlight);
+		var done = chroma(ColorTestTwin(color, ColorInvert(page), 0.15,successh)).set('hsl.s',alertsat).set('hsl.l', alertlight);
+		var info = chroma(ColorTestTwin(color, ColorInvert(page), 0.15,messageh)).set('hsl.l',alertlight);
+		return [alert, warn, done, info];
 
  
 }
@@ -801,6 +804,18 @@ function DownloadTheme(full=false) {
 				 '--accent-background-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--accent-background-color-rgb")  + ';\n' +
 				 '--accent-foreground-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--accent-foreground-color-rgb")  + ';\n' +
 				 '--accent-foreground-color-hover-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--accent-foreground-color-hover-rgb")  + ';\n' +
+				 // Caret
+				 '--caret-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--caret-background-color")  + ';\n' +
+				 '--caret-background-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--caret-background-color-hover")  + ';\n' +
+				 '--caret-fadeout-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--caret-fadeout-color")  + ';\n' +
+				 '--caret-gradient-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--caret-gradient-color")  + ';\n' +
+				 '--caret-gradient-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--caret-gradient-color-hover")  + ';\n' +
+				 '--caret-foreground-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--caret-foreground-color")  + ';\n' +
+				 '--caret-foreground-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--caret-foreground-color-hover")  + ';\n' +
+				 '--caret-foreground-color-inverted:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--caret-foreground-color-inverted")  + ';\n' +
+				 '--caret-background-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--caret-background-color-rgb")  + ';\n' +
+				 '--caret-foreground-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--caret-foreground-color-rgb")  + ';\n' +
+				 '--caret-foreground-color-hover-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--caret-foreground-color-hover-rgb")  + ';\n' +
 				 // Alert
 				 '--alert-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--alert-background-color")  + ';\n' +
 				 '--alert-background-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--alert-background-color-hover")  + ';\n' +
@@ -850,7 +865,6 @@ function DownloadTheme(full=false) {
 				 '--message-foreground-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--message-foreground-color-rgb")  + ';\n' +
 				 '--message-foreground-color-hover-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--message-foreground-color-hover-rgb")  + ';\n' +
 				 // Miscs
-				 '--caret-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--caret-background-color")  + ';\n' +
 				 '--custom-secondary-font:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--custom-secondary-font")  + ';\n' +
 				 '--border-radius:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--border-radius")  + ';\n' +
 				 '--logo-filter:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--logo-filter")  + ';\n' +
