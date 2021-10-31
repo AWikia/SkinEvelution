@@ -1,7 +1,5 @@
 ﻿(function () {
-    var config = mw.config.get('wgEvelution');
-
-    if ( (config.Designer === false) || ($("#footer-icons img[alt='Miraheze Wiki Hosting']").length) ) { // Don't run with disabled designer or on Miraheze Wikis
+    if ( ($("#footer-icons img[alt='Miraheze Wiki Hosting']").length) ) { // Don't run with disabled designer or on Miraheze Wikis
 	$(".link.theme-designer").remove();
 		return
     }

@@ -19,28 +19,7 @@ function insertKey(key,value) {
 (function() {
     'use strict';
 	CompileVisualL10N();
-    var config = mw.config.get('wgEvelution');
 
-    if (config.LeftPersonalLinks === true) {
-		$('html').addClass( "left-links" );
-    }
-    if (config.ForceOneHeader === true) {
-		$('html').addClass( "single-header" );
-    }
-    if (config.DisableColorManagement === true) {
-		$('.color-management-on').remove();
-		$('html').addClass( "disabled-theming" );
-    }
-	if (config.DisableRightRail === true ) {
-		$('html').addClass( "no-rail" );
-	}
-	if (config.ServerMode === true ) {
-		$('html').addClass( "server-mode" );
-	} else {
-		$('html').addClass( "home-mode" );
-	}
-	document.querySelector('html').style.setProperty("--custom-font", config.CustomFont);
-	$("html").attr('sticky-rail', config.StickyRail);
 	if (! ( ($("#ca-edit").length) || ($("#ca-viewsource").length)  ) ) { // Remove Edit Button
 		$(".evelution-floating-actions .cpe-floating-button.edit").remove();
 	} 
