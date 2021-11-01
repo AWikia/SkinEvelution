@@ -250,3 +250,11 @@ This snipset changes the floating actions to be themed according to a chosen col
     --floating-button-hover-background-color: var(--message-background-color-hover);
 }
 ```
+
+## Hide Visual Colors
+This snipset hides the visual colors button from the floating actions. Useful if your wiki will not work with the alternate color schemes we give
+```css
+.colors .cpe-floating-button.page-side-tool {
+	display:none
+}
+```
