@@ -2518,7 +2518,7 @@ border-top:1px solid var(--page-border-background-color);}
 
 /* Checkboxes */
 input[type="checkbox"], input[type="radio"] {
---checkbox-unchecked-bg:var(--page-background-color);
+--checkbox-unchecked-bg:transparent;
 --checkbox-unchecked-shadow:var(--page-border-background-color);
 --checkbox-active-bg:var(--secondary-accent-background-color);
 --checkbox-checked-bg:rgba(var(--secondary-accent-background-color-rgb),0.2);
@@ -2527,14 +2527,14 @@ input[type="checkbox"], input[type="radio"] {
 --checkbox-checked-shadow-hover:var(--checkbox-active-bg);
 --checkbox-checked-text:var(--checkbox-active-bg);
 --checkbox-focused-shadow:transparent;
-  box-shadow:0 0 1px 1px var(--checkbox-unchecked-shadow), inset 0 0 1px 1px var(--checkbox-focused-shadow);
+  box-shadow:0 0 1px 1px var(--checkbox-unchecked-shadow), inset 0 0 0 1px var(--checkbox-focused-shadow);
   background-color:var(--checkbox-unchecked-bg);
   color:var(--checkbox-active-bg);
   border-radius:26%;
   position:relative;
   transition:background-color 200ms, box-shadow 200ms, color 200ms, opacity 200ms, -webkit-mask-size 200ms, mask-size 200ms;
-  height:22px;
-  width:22px;
+  height:1.42857em;
+  width:1.42857em;
   display:inline-block;
   vertical-align:middle;
   -moz-appearance:none;
@@ -2544,11 +2544,12 @@ input[type="checkbox"], input[type="radio"] {
   margin:4px;
 }
 
-input[type="checkbox"]:checked:not(:active):focus, input[type="radio"]:checked:not(:active):focus {
-	--checkbox-focused-shadow:var(--checkbox-unchecked-bg);
+input[type="checkbox"]:checked:not(:active):focus, input[type="radio"]:checked:not(:active):focus,
+.oo-ui-radioSelectWidget:focus input[type="checkbox"]:checked:not(:active), .oo-ui-radioSelectWidget:focus input[type="radio"]:checked:not(:active)  {
+	--checkbox-focused-shadow:var(--checkbox-checked-bg-hover);
 }
 
-input[type="checkbox"]:not(:checked):focus, input[type="radio"]:not(:checked):focus {
+input[type="checkbox"]:not(:checked):focus, input[type="radio"]:not(:checked):focus  {
 	--checkbox-unchecked-shadow:var(--checkbox-checked-bg);
 }
 
@@ -2649,19 +2650,19 @@ input[type="radio"] {
 }
 
 input[type="checkbox"]:hover, input[type="radio"]:hover {
-	box-shadow:0 0 1px 1px var(--checkbox-active-bg), inset 0 0 1px 1px var(--checkbox-focused-shadow);
+	box-shadow:0 0 1px 1px var(--checkbox-active-bg), inset 0 0 0 1px var(--checkbox-focused-shadow);
 }
 
 
 input[type="checkbox"]:active, input[type="radio"]:active {
-  box-shadow:0 0 1px 1px var(--checkbox-active-bg), inset 0 0 1px 1px var(--checkbox-focused-shadow);
+  box-shadow:0 0 1px 1px var(--checkbox-active-bg), inset 0 0 0 1px var(--checkbox-focused-shadow);
   background-color:var(--checkbox-active-bg);
   color:var(--checkbox-active-bg);
 }
 
 input[type="checkbox"]:checked, input[type="radio"]:checked,
 input[type="checkbox"]:indeterminate {
-  box-shadow:0 0 1px 1px var(--checkbox-checked-shadow), inset 0 0 1px 1px var(--checkbox-focused-shadow);
+  box-shadow:0 0 1px 1px var(--checkbox-checked-shadow), inset 0 0 0 1px var(--checkbox-focused-shadow);
   background-color:var(--checkbox-checked-bg);
   color:var(--checkbox-checked-text);
 }
@@ -2670,7 +2671,7 @@ input[type="checkbox"]:indeterminate {
 
 input[type="checkbox"]:checked:hover, input[type="radio"]:checked:hover,
 input[type="checkbox"]:indeterminate:hover {
-  box-shadow:0 0 1px 1px var(--checkbox-checked-shadow-hover), inset 0 0 1px 1px var(--checkbox-focused-shadow);
+  box-shadow:0 0 1px 1px var(--checkbox-checked-shadow-hover), inset 0 0 0 1px var(--checkbox-focused-shadow);
   background-color:var(--checkbox-checked-bg-hover);
   color:var(--checkbox-checked-text);
 
@@ -2679,7 +2680,7 @@ input[type="checkbox"]:indeterminate:hover {
 
 input[type="checkbox"]:checked:active, input[type="radio"]:checked:active,
 input[type="checkbox"]:indeterminate:active  {
-  box-shadow:0 0 1px 1px var(--checkbox-active-bg), inset 0 0 1px 1px var(--checkbox-focused-shadow);
+  box-shadow:0 0 1px 1px var(--checkbox-active-bg), inset 0 0 0 1px var(--checkbox-focused-shadow);
   background-color:var(--checkbox-active-bg);
   color:var(--checkbox-active-bg);
 }
