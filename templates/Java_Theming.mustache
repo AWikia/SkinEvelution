@@ -245,7 +245,7 @@ function GetPage() {
 	} else {
 		var page = getComputedStyle(document.querySelector('html')).getPropertyValue("--page-background-color").trim();
 		if ( (window.MW18darkmode === true) ) {
-			return ColorInvert(page);
+			var page = ColorInvertAndAdjustWhenNeeded(page, GetPageShort())
 		}
 		return page
 	}
@@ -275,7 +275,7 @@ function GetPageText() {
 	} else if (getComputedStyle(document.querySelector('html')).getPropertyValue("--page-text-background-color") === 'auto') {
 		var color = getComputedStyle(document.querySelector('html')).getPropertyValue("--page-background-color").trim();
 		if ( (window.MW18darkmode === true) ) {
-			var color = ColorInvert(color);
+			var color = ColorInvertAndAdjustWhenNeeded(color, GetPageShort())
 		}
 		if (isLightColor(color)) {
 			return getComputedStyle(document.querySelector('body')).getPropertyValue("--light-theme-text-background-color");
@@ -915,6 +915,19 @@ function ColorTestTwin(color1,color2,intensity=1,hue='nil') {
 	}
 }
 
+function ColorInvertAndAdjustWhenNeeded(color,color2) { // Only used for Page Background Color
+			var page = ColorInvert(color);
+			var func = (isLightColor(page));
+			var light = chroma(color).get('hsl.l')
+			if ( !(isSuitableColor3(page, color2)) )  { // If still not legible
+				if (func) {
+					return chroma(page).set('hsl.l', light*0.5);
+				} else {
+					return chroma(page).set('hsl.l', light*2);
+				}
+			}
+			return page
+}
 
 function ColorTest(color,text=false,inv=false,dledlen=false) { // Regular Colors
 	if (dledlen === true) {
@@ -1023,7 +1036,7 @@ return ((chroma.contrast(color, color2)) >= contrast) // For Border Color
 }
 
 function isSuitableColor3(color,color2) {
-var contrast = (window.matchMedia('(prefers-contrast: more)').matches) ? 4.5 : 3
+var contrast = (window.matchMedia('(prefers-contrast: more)').matches) ? 2 : 1.5
 return ((chroma.contrast(color, color2)) >= contrast)
 }
 
@@ -1062,8 +1075,9 @@ var content_color =  GetPageShort();
 
 // Liatch Quirk
 if ( (window.MW18darkmode === true) ) {
-	var content_color = ColorInvert(content_color);
+	var content_color = ColorInvertAndAdjustWhenNeeded(content_color, GetPageShort())
 }
+
 
 /* This goes before compiling Generic Colors or else they will think the theme is light */
 	$('html').removeClass("theme-fandomdesktop-light").removeClass("theme-fandomdesktop-dark")
