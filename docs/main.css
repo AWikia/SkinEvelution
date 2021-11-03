@@ -158,6 +158,7 @@ body {
 	--dropdown-opacity:1;
 	--fadeout-opacity:0.225;
 	--global-nav-size:50px;
+	--minibar-size:50px;
   --cpe-body-cursor:auto;
   --cpe-auto-cursor: default;
   --cpe-blocked-cursor:not-allowed;
@@ -593,6 +594,293 @@ body  {
 
 		}
 }
+
+/* Taken from Evelution.css Evelution Minibar */
+/* Desktop Sticky Header */
+	.evelution-minibar {
+		--minibar-opacity:var(--dropdown-opacity);
+		--tr-scale:100%;
+		background-color:rgba(var(--luna-background-color-rgb), var(--minibar-opacity));
+		color:var(--luna-text-background-color);
+		position:-webkit-sticky;
+		position:sticky;
+		top:calc(-4px - var(--minibar-size));
+		z-index:99;
+		padding-top:1px;
+		height:var(--minibar-size);
+		display:flex;
+		transition:transform 400ms ease, top 400ms ease, box-shadow 400ms ease, background-color 400ms ease;
+		width:100%;
+		max-width:var(--max-width);
+		box-shadow: 0 0 3px var(--page-text-background-color), 0 0 3px var(--page-background-color), var(--page-accent-box-shadow);
+		transform:scaleY(var(--tr-scale));
+		align-items:center;
+		margin-top:calc(0px - var(--minibar-size));
+		box-sizing:content-box;
+		transform-origin:top;
+		-webkit-backdrop-filter:var(--backdrop-filter);
+		backdrop-filter:var(--backdrop-filter);
+	}
+
+	body[nav="true"] .evelution-minibar.col-nav,
+	body[nav="false"] .evelution-minibar.full-nav  {
+		--tr-scale:0;
+	}
+
+
+	.headroom--not-top .evelution-minibar,
+	.single-header .evelution-minibar {
+		top:-1px;
+	}
+	
+
+	.evelution-minibar.col-nav {
+		width:auto;
+		margin-top:calc(0px - var(--minibar-size));
+		left:100%;
+		align-self:flex-end;
+		z-index:98;
+	}
+
+
+	.evelution-minibar .cpe-dropdown__content {
+		--dropdown-opacity:0.8;
+	}
+
+	.constructor .evelution-minibar {
+		display:none;
+	}
+
+	.options .evelution-minibar,
+	.editor .evelution-minibar {
+		transform:translateY(0%);
+		position:relative;
+		top:-20px;
+		margin-top:0;
+		padding-top:0;
+	}
+
+	
+	.evelution-minibar .wordmark {
+		vertical-align:middle;
+		height:55px;
+		float:left;
+		margin:0 0 0 6px;
+		z-index:25;
+		position:relative;
+		display:flex;
+	}
+		
+	.evelution-minibar .wordmark img {
+		image-rendering:initial;                  /* CSS4 Proposed  */
+		height:80%;
+		vertical-align:middle;
+		transition-property:filter;
+		transition-delay:var(--logo-filter-delay,0);
+		transition-duration:var(--logo-filter-duration,300ms) ;
+		filter:var(--logo-filter,none);
+		align-self:center;
+	}
+
+	.evelution-minibar .wordmark:hover img {
+		filter:var(--logo-filter-hover,var(--logo-filter, none));
+	}
+
+
+	.evelution-minibar .title {
+		flex:1;
+		line-height:1.4;
+		font-size:23px;
+		font-weight:700;
+		height:var(--minibar-size);
+		padding:0 6px;
+		font-family:var(--secondary-font), sans-serif;
+		overflow:hidden;
+		display:flex;
+	}
+
+	.evelution-minibar .title .title-logo {
+		font-size:24px;
+	}
+
+	.evelution-minibar .title a {
+		text-decoration:none;
+		color:inherit;
+		transition:color 400ms ease;
+		overflow:hidden;
+		text-overflow:ellipsis;
+		align-self:center;
+		height:inherit;
+		display:inline-flex;
+		align-items:center;
+		width:100%;
+	}
+
+	.evelution-minibar .title a:hover {
+		color:var(--luna-text-background-color-hover);
+	}
+
+	.evelution-minibar .title a:active,
+	.evelution-minibar .title a:focus {
+		color:rgba(var(--luna-text-background-color-hover-rgb), 0.8);
+	}
+
+
+	.evelution-minibar .counters {
+		height:var(--minibar-size);
+		padding:0 7.5px;
+		font-size:15px;
+		font-weight:500;
+		text-align:left;
+		display:flex;
+		flex-direction:column;
+		justify-content:center;
+	}
+
+	
+	.evelution-minibar .counter {
+		white-space:nowrap;
+	}
+
+
+
+	.evelution-minibar .counter .cpe-icon {
+		display:none;
+		--icon-size:0.7;
+	}
+
+
+	.evelution-minibar .counter big {
+		font-weight:bolder;
+		font-size:120%;
+	}
+
+
+.evelution-minibar .cpe-dropdown.small {
+	display:none;
+}
+
+	.evelution-minibar .link {
+		transition:color 400ms ease, background-color 300ms linear, background-image 300ms linear, transform 300ms linear, box-shadow 50ms linear;
+		padding: 0 7px;
+		height:inherit;
+		color:inherit;
+		text-decoration:none!important;
+		font-size:14px;
+		border:1px solid transparent;
+		box-sizing:border-box;
+		border-radius:var(--border-radius);
+		margin:0 0 0 -1px;
+		display:flex;
+		align-items:center;
+	}
+	.evelution-minibar .cpe-dropdown {
+		height:inherit;
+		display:inline-block;
+	}
+
+
+	.evelution-minibar .link:hover, 
+	.evelution-minibar .link:focus, 
+	.evelution-minibar .cpe-dropdown:focus > .link, 
+	.evelution-minibar .cpe-dropdown:focus-within > .link, 
+	.evelution-minibar .link.active  {
+		background-color:rgba(var(--luna-text-background-color-rgb),0.2);
+		border-color:rgba(var(--luna-text-background-color-rgb),0.1);
+		color:var(--luna-text-background-color-hover);
+	}
+
+	.evelution-minibar .link:hover, .evelution-minibar .link.active  {
+/*		box-shadow:0 0 2px 0.5px var(--minibar-background-color-hover) inset; */
+	}
+
+
+	.evelution-minibar .link:active, 
+	.evelution-minibar .link:focus, 
+	.evelution-minibar .cpe-dropdown:focus  .link, 
+	.evelution-minibar .cpe-dropdown:focus-within  .link, 
+	.evelution-minibar .link.active  {
+		background-color:rgba(var(--luna-link-color-rgb),0.4);
+		border-color:rgba(var(--luna-link-color-rgb),0.2);
+		color:var(--luna-link-color);
+
+	}
+
+	
+	.evelution-minibar .link.active {		
+	-webkit-animation: none;
+		     -o-animation: none;
+		        animation:none;    
+		cursor:inherit;
+		font-weight:bolder;
+	}
+
+
+@media only screen and (min-width:1440px) {
+	.evelution-minibar .title {
+		font-size:26px;
+	}
+
+	.evelution-minibar .counters {
+		font-size:16px;
+		padding:0 8px;
+	}
+
+}
+
+@media only screen and (max-width:1199px) {
+	.evelution-minibar .title {
+		font-size:20px;
+	}
+	
+	.evelution-minibar .link.large {
+		display:none;
+	}
+
+	.evelution-minibar .cpe-dropdown.small {
+		display:inline-block;
+	}
+	
+	.evelution-minibar .counters {
+		padding:0 7px;
+		font-size:14px;
+	}
+
+}
+
+@media only screen and (max-width:959px) {
+	.evelution-minibar .title {
+		font-size:17px;
+	}
+	
+
+	.evelution-minibar .counter .cpe-icon {
+		display:inline-block;
+		vertical-align:middle;
+	}
+
+	.evelution-minibar .counter .text {
+		display:none;
+	}
+
+	.evelution-minibar .counter big {
+		vertical-align:middle;
+	}
+
+	.evelution-minibar .counters {
+		padding:0 6.5px;
+		font-size:13px;
+	}
+
+
+}
+
+@media only screen and (max-width:749px) {
+	.evelution-minibar {
+		display:none;
+	}
+}
+
 
 /* Taken from CPE.css cpe-dropdown */
 /* Dropdowns */
