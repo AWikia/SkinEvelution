@@ -437,7 +437,7 @@
 }));
 
 // select your header or whatever element you wish
-const header = document.querySelector(".evelution-documentation");
+const header = document.querySelector("html");
 
 const headroom = new Headroom(header);
 headroom.init();
