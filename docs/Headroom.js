@@ -411,14 +411,13 @@
    * Default options
    * @type {Object}
    */
-  var ement = document.querySelector("html");
   Headroom.options = {
     tolerance: {
       up: 10,
       down: 10
     },
     offset: 90,
-    scroller: isBrowser() ? ement : null,
+    scroller: isBrowser() ? window : null,
     classes: {
       frozen: "headroom--frozen",
       pinned: "headroom--pinned",
