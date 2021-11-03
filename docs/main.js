@@ -18,14 +18,14 @@ function insertKey(key,value) {
 		insertKey('nav-full', 'true' );
 	}
 	var nav_full = getKey('nav-full');
-	$(' body').attr('nav', nav_full );
+	$('body').attr('nav', nav_full );
 })();
 
 function ToggleNav() {
-	if 	($(' body').attr('nav') == 'true') {
-		$(' body').attr('nav', 'false');
+	if 	($('body').attr('nav') == 'true') {
+		$('body').attr('nav', 'false');
 	} else {
-		$(' body').attr('nav', 'true');
+		$('body').attr('nav', 'true');
 	}
 	insertKey('nav-full', $(' body').attr('nav') );
 }
