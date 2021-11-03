@@ -411,7 +411,7 @@
    * Default options
    * @type {Object}
    */
-  var ement = window;
+  var ement = document.querySelector("html");
   Headroom.options = {
     tolerance: {
       up: 10,
