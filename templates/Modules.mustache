@@ -9,26 +9,28 @@
 								</span>
 							</h2>
 							<div class="evelution-module-content">
-								<div class="discord-id" style="display:none">{{msg-evelution-discord-module-server-id}}</div>
-								<div class="darkmode-off light discord-widget">
-									<iframe src="https://discord.com/widget?id={{msg-evelution-discord-module-server-id}}&theme=light" width="100%" height="375" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
-								</div>
-								<div class="discord-id" style="display:none">{{msg-evelution-discord-module-server-id}}</div>
-								<div class="darkmode-on light discord-widget">
-									<iframe src="https://discord.com/widget?id={{msg-evelution-discord-module-server-id}}&theme=dark" width="100%" height="375" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
-								</div>								
+								{{#has-discord-id}}
+									<div class="darkmode-off light discord-widget">
+										<iframe src="https://discord.com/widget?id={{msg-evelution-discord-module-server-id}}&theme=light" width="100%" height="375" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+									</div>
+									<div class="darkmode-on light discord-widget">
+										<iframe src="https://discord.com/widget?id={{msg-evelution-discord-module-server-id}}&theme=dark" width="100%" height="375" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+									</div>
+								{{/has-discord-id}}							
 							</div>
-							<div class="discord-id" style="display:none">{{msg-evelution-discord-module-server-id}}</div>
-							<div class="cpe-button-groups discord-widget">
-								<div class="cpe-button-group">
-									<a href="https://discord.com/register" class="cpe-button is-full-width">{{msg-createaccount}}</a>
+							{{#has-discord-id}}
+								<div class="cpe-button-groups discord-widget">
+									<div class="cpe-button-group">
+										<a href="https://discord.com/register" class="cpe-button is-full-width">{{msg-createaccount}}</a>
+									</div>
+									<div class="cpe-button-group">
+										<a href="{{html-edit-link}}/MediaWiki:Evelution-discord-module-server-id" class="cpe-button is-secondary is-full-width">{{msg-edit}}</a>
+									</div>
 								</div>
-								<div class="cpe-button-group">
-									<a href="{{html-edit-link}}/MediaWiki:Evelution-discord-module-server-id" class="cpe-button is-secondary is-full-width">{{msg-edit}}</a>
-								</div>
-							</div>
-							<div class="discord-id" style="display:none">{{msg-evelution-discord-module-server-id}}</div>
+							{{/has-discord-id}}
+							{{^has-discord-id}}
 							<a href="{{html-edit-link}}/MediaWiki:Evelution-discord-module-server-id" class="cpe-button is-secondary not-discord-widget is-full-width">{{msg-edit}}</a>
+							{{/has-discord-id}}
 						</section>
 					<div class="evelution-sticky-modules">
 						<!-- Activity Module -->

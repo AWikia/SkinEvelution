@@ -90,6 +90,7 @@ class SkinEvelution extends SkinMustache {
 		$data["html-custom-fontoo"] = $this->getConfig()->get( 'EvelutionCustomFont' );
 		$data["has-no-color-management"] = $this->getConfig()->get( 'EvelutionDisableColorManagement' );
 		$data["has-forced-full-width"] = $this->getConfig()->get ( 'EvelutionForceFullWidth' );
+		$data["has-discord-id"] =  (wfMessage( 'evelution-discord-module-server-id' )->inContentLanguage() != '');
         return $data;
     }
 
