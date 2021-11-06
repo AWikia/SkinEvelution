@@ -191,7 +191,7 @@
 	</header>
 	
     <a id="skip-to-content" href="#content">Skip to the content.</a>
-
+<!--
     <header class="page-header" role="banner">
       <h1 class="project-name">{{ page.title | default: site.title | default: site.github.repository_name }}</h1>
       <h2 class="project-tagline">{{ page.description | default: site.description | default: site.github.project_tagline }}</h2>
@@ -203,10 +203,121 @@
         <a href="{{ site.github.tar_url }}" class="btn">Download .tar.gz</a>
       {% endif %}
     </header>
-
+-->
     <main id="content" class="main-content" role="main">
-	      {{ content }}
+		<div class="evelution-superbar community-header-wrapper">
+			<section class="evelution-superbar-wrapper fandom-community-header">
+				<a class="wordmark fandom-community-header__image" href="{{link-mainpage}}">
+					<a class="wordmark" href="https://awikia.github.io/SkinEvelution">
+						<img src="Wordmark.svg">
+					</a>
+				</a>
 
+
+
+				<header class="evelution-superbar__fone">
+				<section class="title" translate="no">
+					<a href="https://awikia.github.io/SkinEvelution">{{ page.title | default: site.title | default: site.github.repository_name }}</a>
+				</section>
+				<section class="container">
+					<section class="buttons">
+						<nav class="header-buttons">
+						  <a class="link docs-github" href="https://github.com/AWikia/SkinEvelution/tree/main/docs" cpe-tooltip-position="bottom" cpe-tooltip="Docs GitHub">
+							<span class="cpe-icon chevron material-icons">
+								house
+							</span>
+						  </a>
+						  <a class="link docs-github" href="https://github.com/AWikia/SkinEvelution/discussions" cpe-tooltip-position="bottom" cpe-tooltip="Discussions">
+							<span class="cpe-icon chevron material-icons">
+								forum
+							</span>
+						  </a>
+						  <a class="link docs-github" href="https://github.com/AWikia/SkinEvelution/commits/main" cpe-tooltip-position="bottom" cpe-tooltip="Recent Commits">
+							<span class="cpe-icon chevron material-icons">
+								trending_up
+							</span>
+						  </a>
+						  <a class="link docs-github" href="https://github.com/AWikia/SkinEvelution/issues" cpe-tooltip-position="bottom" cpe-tooltip="Issues">
+							<span class="cpe-icon chevron material-icons">
+								bug_report
+							</span>
+						  </a>
+						</nav>
+						<nav class="local-navigation home-nav">
+						  {% if site.github.is_project_page %}
+							<a href="{{ site.github.repository_url }}" class="link" cpe-tooltip-position="bottom" cpe-tooltip="View on GitHub">
+								<span class="cpe-icon material-icons">
+								document
+								</span>
+							</a>
+						  {% endif %}
+
+						  {% if site.show_downloads %}
+							<a href="{{ site.github.zip_url }}" class="link" cpe-tooltip-position="bottom" cpe-tooltip="Download .zip">.zip</a>
+							<a href="{{ site.github.tar_url }}" class="link" cpe-tooltip-position="bottom" cpe-tooltip="Download .tar.gz">.tar.gz</a>
+						  {% endif %}
+							<a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}" class="link" class="link" cpe-tooltip-position="bottom" cpe-tooltip="More...">
+								<span class="cpe-icon material-icons">
+								person
+								</span>
+							</a>
+
+						</nav>
+					</section>
+				</section>
+				</header>
+				<header class="evelution-superbar__top fandom-community-header__top-container">
+						<div class="table">
+							<div class="tr">
+								<h1 class="title cell" style="text-align:left" translate="no">
+									<a href="https://awikia.github.io/SkinEvelution">{{ page.title | default: site.title | default: site.github.repository_name }}</a>
+								</h1>
+
+								  <a class="link docs-github" href="https://github.com/AWikia/SkinEvelution/tree/main/docs" cpe-tooltip-position="bottom" cpe-tooltip="Docs GitHub">
+									<span class="cpe-icon chevron material-icons">
+										house
+									</span>
+								  </a>
+								  <a class="link docs-github" href="https://github.com/AWikia/SkinEvelution/discussions" cpe-tooltip-position="bottom" cpe-tooltip="Discussions">
+									<span class="cpe-icon chevron material-icons">
+										forum
+									</span>
+								  </a>
+								  <a class="link docs-github" href="https://github.com/AWikia/SkinEvelution/commits/main" cpe-tooltip-position="bottom" cpe-tooltip="Recent Commits">
+									<span class="cpe-icon chevron material-icons">
+										trending_up
+									</span>
+								  </a>
+								  <a class="link docs-github" href="https://github.com/AWikia/SkinEvelution/issues" cpe-tooltip-position="bottom" cpe-tooltip="Issues">
+									<span class="cpe-icon chevron material-icons">
+										bug_report
+									</span>
+								  </a>
+
+							</div>
+						</div>
+				</header>
+
+				<nav class="evelution-superbar__bottom fandom-community-header__local-navigation">
+					<div class="table">
+						<div class="tr">
+						  {% if site.github.is_project_page %}
+							<a href="{{ site.github.repository_url }}" class="link">View on GitHub</a>
+						  {% endif %}
+
+						  {% if site.show_downloads %}
+							<a href="{{ site.github.zip_url }}" class="link">Download .zip</a>
+							<a href="{{ site.github.tar_url }}" class="link">Download .tar.gz</a>
+						  {% endif %}
+							<a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}" class="link">More...</a>
+						  
+						</div>
+					</div>
+			</section>
+		</div>
+			
+	    <h2 class="project-tagline">{{ page.description | default: site.description | default: site.github.project_tagline }}</h2>
+	    {{ content }}
 	      <footer class="site-footer">
 		{% if site.github.is_project_page %}
 		  <span class="site-footer-owner"><a href="{{ site.github.repository_url }}">{{ site.github.repository_name }}</a> is maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a>.</span>
