@@ -2,6 +2,9 @@
 window.MW18wikitheme = 'auto';
 window.MW18ContrastNotice = false;
 window.MW18ForcedTheme = false;
+/* Some Theming Colors */
+window.MW18PageColor = GetPageShort();
+window.MW18BgColor = GetCommunity();
 
 /* Visual Themes */
 var visualThemes = ['lite', 'basic', 'contrast', 'simple']
@@ -102,7 +105,7 @@ var visualColorNames = ['Factory', 'XP Luna', 'Windows Forced', 'Windows Forced 
 	VisualStyleCompile(); // Compiles the Contrast Options
 	VisualStyle(style_active,false);
 	VisualColor(color_active,false);
-	ContrastBanner(); // Notice
+//	ContrastBanner(); // Notice
 	$('html').addClass('theming-loaded');
 
 })();
@@ -215,10 +218,7 @@ function GetCommunityHeaderText() {
 	if (ForcedColors()) {
 		return getComputedStyle(document.querySelector('.fc-canvastext')).getPropertyValue("color");
 	} else if (getComputedStyle(document.querySelector('html')).getPropertyValue("--superbar-text-background-color") === 'auto') {
-		var color = getComputedStyle(document.querySelector('html')).getPropertyValue("--body-background-color");
-		if ( (window.MW18darkmode === true) ) {
-			var color = ColorInvert(color);
-		}
+		var color = window.MW18BgColor;
 		if (isLightColor(color)) {
 			return getComputedStyle(document.querySelector('body')).getPropertyValue("--light-theme-text-background-color");
 		} else {
@@ -243,11 +243,7 @@ function GetPage() {
 	if (ForcedColors()) {
 		return getComputedStyle(document.querySelector('.fc-canvas')).getPropertyValue("color");
 	} else {
-		var page = getComputedStyle(document.querySelector('html')).getPropertyValue("--page-background-color").trim();
-		if ( (window.MW18darkmode === true) ) {
-			var page = ColorInvertAndAdjustWhenNeeded(page, GetPageShort())
-		}
-		return page
+		return window.MW18PageColor;
 	}
 }
 
@@ -273,10 +269,7 @@ function GetPageText() {
 	if (ForcedColors()) {
 		return getComputedStyle(document.querySelector('.fc-canvastext')).getPropertyValue("color");
 	} else if (getComputedStyle(document.querySelector('html')).getPropertyValue("--page-text-background-color") === 'auto') {
-		var color = getComputedStyle(document.querySelector('html')).getPropertyValue("--page-background-color").trim();
-		if ( (window.MW18darkmode === true) ) {
-			var color = ColorInvertAndAdjustWhenNeeded(color, GetPageShort())
-		}
+		var color = window.MW18PageColor;
 		if (isLightColor(color)) {
 			return getComputedStyle(document.querySelector('body')).getPropertyValue("--light-theme-text-background-color");
 		} else {
@@ -327,6 +320,7 @@ function GetMessage() {
 
 function BestAlertColor() {
 var page = GetPage()
+var invpage = ColorInvert(page)
 if ( chroma(page).get('hsl.l') < 0.5) {
 /** V1 **/
 	var colors = ['45%', '40%', '35%', '30%', '25%', '20%', '15%', '10%', '5%', '55%', '60%', '65%', '70%', '75%', '80%', '85%', '90%', '95%']
@@ -335,6 +329,7 @@ if ( chroma(page).get('hsl.l') < 0.5) {
 	var colors = ['55%', '60%', '65%', '70%', '75%', '80%', '85%', '90%', '95%', '45%', '40%', '35%', '30%', '25%', '20%', '15%', '10%', '5%']
 }
 
+//	var colors = ['60%', '45%', '70%', '35%', '80%', '25%', '90%', '15%', '5%', '55%', '40%', '65%', '30%', '75%', '20%', '85%', '10%', '95%']
 		alerth = 360 // 360
 		warningh = 38 // 38
 		successh = 150 // 150
@@ -347,12 +342,12 @@ if ( chroma(page).get('hsl.l') < 0.5) {
 
 	for (let i = 0; i < colors.length; i++) {
 		var color = chroma('hsl(0,100%,' + colors[i] + ')').hex(); // Base Color
-		var alert = ColorTestTwin(color, ColorInvert(page), 0.15,alerth); // Alert
+		var alert = ColorTestTwin(color, invpage, 0.15,alerth); // Alert
 		var alertsat = chroma(alert).get('hsl.s'); // Saturation of Alert Color
 		var alertlight =  chroma(alert).get('hsl.l') // Lightness of Alert Color
-		var warn = chroma(ColorTestTwin(color, ColorInvert(page), 0.15,warningh)).set('hsl.s',alertsat).set('hsl.l', alertlight);  // Warning
-		var done = chroma(ColorTestTwin(color, ColorInvert(page), 0.15,successh)).set('hsl.s',alertsat).set('hsl.l', alertlight); // Success
-		var info = chroma(ColorTestTwin(color, ColorInvert(page), 0.15,messageh)).set('hsl.l', alertlight); // Message
+		var warn = chroma(ColorTestTwin(color, invpage, 0.15,warningh)).set('hsl.s',alertsat).set('hsl.l', alertlight);  // Warning
+		var done = chroma(ColorTestTwin(color, invpage, 0.15,successh)).set('hsl.s',alertsat).set('hsl.l', alertlight); // Success
+		var info = chroma(ColorTestTwin(color, invpage, 0.15,messageh)).set('hsl.l', alertlight); // Message
 		if ( ((chroma.contrast(page, alert)) >= contrastA) && ((chroma.contrast(page, warn)) >= contrastW) && ((chroma.contrast(page, done)) >= contrastS) && ((chroma.contrast(page, info)) >= contrastM) ) {
 			return [alert, warn, done, info];
 		}
@@ -360,12 +355,12 @@ if ( chroma(page).get('hsl.l') < 0.5) {
 
 	/* If no color can be found legible, fallback to specific color */	
 		var color = chroma('hsl(0,100%,' + colors[3] + ')' ).hex();
-		var alert = ColorTestTwin(color, ColorInvert(page), 0.15,alerth);
+		var alert = ColorTestTwin(color, invpage, 0.15,alerth);
 		var alertsat = chroma(alert).get('hsl.s');
 		var alertlight =  chroma(alert).get('hsl.l') // Lightness of Alert Color
-		var warn = chroma(ColorTestTwin(color, ColorInvert(page), 0.15,warningh)).set('hsl.s',alertsat).set('hsl.l', alertlight);
-		var done = chroma(ColorTestTwin(color, ColorInvert(page), 0.15,successh)).set('hsl.s',alertsat).set('hsl.l', alertlight);
-		var info = chroma(ColorTestTwin(color, ColorInvert(page), 0.15,messageh)).set('hsl.l',alertlight);
+		var warn = chroma(ColorTestTwin(color, invpage, 0.15,warningh)).set('hsl.s',alertsat).set('hsl.l', alertlight);
+		var done = chroma(ColorTestTwin(color, invpage, 0.15,successh)).set('hsl.s',alertsat).set('hsl.l', alertlight);
+		var info = chroma(ColorTestTwin(color, invpage, 0.15,messageh)).set('hsl.l',alertlight);
 		return [alert, warn, done, info];
 
  
@@ -433,7 +428,7 @@ function CheckTheme() {
 	/* Wiki theme */
 	ColorUpdate(true);
 ManagerRows();
-ContrastBanner();
+//ContrastBanner();
 }
 
 
@@ -746,6 +741,7 @@ function DownloadTheme(full=false) {
 				 '--secondary-accent-foreground-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--secondary-accent-foreground-color-hover")  + ';\n' +
 				 '--secondary-accent-foreground-color-inverted:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--secondary-accent-foreground-color-inverted")  + ';\n' +
 				 '--secondary-accent-background-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--secondary-accent-background-color-rgb")  + ';\n' +
+				 '--secondary-accent-background-color-hover-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--secondary-accent-background-color-hover-rgb")  + ';\n' +
 				 '--secondary-accent-foreground-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--secondary-accent-foreground-color-rgb")  + ';\n' +
 				 '--secondary-accent-foreground-color-hover-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--secondary-accent-foreground-color-hover-rgb")  + ';\n' +
 				 // Page Color
@@ -1095,6 +1091,8 @@ var content_color =  GetPageShort();
 if ( (window.MW18darkmode === true) ) {
 	var content_color = ColorInvertAndAdjustWhenNeeded(content_color, GetPageShort())
 }
+
+	window.MW18PageColor = content_color
 	var darkpage = isLightColor(content_color);
 
 
@@ -1247,6 +1245,8 @@ if ( (window.MW18darkmode === true) ) {
 		var head_color = ColorInvert(head_color);
 }
 
+window.MW18BgColor = head_color
+
 var headcolor1 = ColorTest(head_color,false,false,true);
 
 /** Community Header text color **/
@@ -1339,6 +1339,7 @@ if (['full','legacy'].includes(getComputedStyle(document.querySelector('html')).
 						  "--secondary-accent-foreground-color-hover:" + GetForegroundVariable(link_color,true) + ";\n" +
 						  "--secondary-accent-foreground-color-inverted:" + GetForegroundVariable(linkcolor1) + ";\n" +
 						  "--secondary-accent-background-color-rgb:" + Color2(link_color) + ";\n" +
+						  "--secondary-accent-background-color-hover-rgb:" + Color2(linkcolor1) + ";\n" +
 						  "--secondary-accent-foreground-color-rgb:" + GetForegroundVariable2(link_color) + ";\n" +
 						  "--secondary-accent-foreground-color-hover-rgb:" + GetForegroundVariable2(link_color,true) + ";\n" +
 						  "--page-border-background-color-hover:" + bordercolor1 + ";\n" +
@@ -1409,10 +1410,9 @@ if (['full','legacy'].includes(getComputedStyle(document.querySelector('html')).
 						  "--message-foreground-color-inverted:" + GetForegroundVariable(messagecolor1) + "!important;\n" +
 						  "--message-background-color-rgb:" + Color2(message_color) + "!important;\n" +
 						  "--message-foreground-color-rgb:" + GetForegroundVariable2(message_color) + "!important;\n" +
-						  "--message-foreground-color-hover-rgb:" + GetForegroundVariable2(message_color,true) + "!important;\n"
-
-/* Set Values for color-adjusted and Gradient variables */
-	var result2 = 		  "--page-background-color:" + content_color + ";\n" +
+						  "--message-foreground-color-hover-rgb:" + GetForegroundVariable2(message_color,true) + "!important;\n" +
+						  //
+						  "--page-background-color:" + content_color + ";\n" +
 						  "--page-gradient-color:" + GetGradientVariable(content_color,'page')[0] + ";\n" +
 						  "--page-gradient-color-hover:" + GetGradientVariable(content_color,'page')[1] + ";\n" +
 						  "--page-secondary-gradient-color:" + GetGradientVariable(content_color,'page-secondary')[0] + ";\n" +
@@ -1447,7 +1447,7 @@ if (['full','legacy'].includes(getComputedStyle(document.querySelector('html')).
 
 
 /* Write them to the stylesheet */
-$("head .theming").html(':root {\n' + result + '}\n' + 'body {\n' + result2 + '}');
+$("head .theming").html('body {\n' + result + '}');
 
 
 
