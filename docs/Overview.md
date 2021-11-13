@@ -223,7 +223,11 @@ Defaults to false aka Home Mode. When set to true aka Server Mode, it changes th
 Defaults to an empty string meaning Didact Gothic will be used. When set to another value, that font will be used instead
 
 ### ``$wgEvelutionStickyRail`` (Since 8.1.0)
-Defaults to true aka right rail will be sticky. When set to false, right rail will not be sticky. In order for sticky behavior of right rail to appear, browser window size must be at least 960x600.
+Defaults to true aka right rail will be sticky. When set to false, right rail will not be sticky. In order for sticky behavior of right rail to appear, browser window size must be at least 960x600. Requires ``$wgEvelutionDisableRightRail`` set to false in order for this to work
 
 ### ``$wgEvelutionForceFullWidth`` (Since 26.1.0)
 Defaults to false. When set to true, it will force Evelution to be in Full width, negating the breakpoint sizes. Use this if your wiki can't handle things in the standard size and will work exclusively with full width size.
+
+### ``$wgEvelutionDisableRightRailFromSpecificNamespaces`` (Since 27.2.0)
+Defaults to an empty array aka no additional pages will be blacklisted from having a right rail. Set this to an array of pages you want to disable right rail. Does not stack with ``$wgEvelutionDisableRightRail`` config and that will take priority over this one.
+..
