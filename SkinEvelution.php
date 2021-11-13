@@ -84,7 +84,8 @@ class SkinEvelution extends SkinMustache {
 		$data["html-avatar"] = $avatarElement;
 		$data["html-sticky-rail"] = $this->getConfig()->get( 'EvelutionStickyRail' );
 		$data["has-left-links"] = $this->getConfig()->get( 'EvelutionLeftPersonalLinks' );
-		$data["has-disabled-rail"] = $this->getConfig()->get( 'EvelutionDisableRightRail' );
+		$blacklistedPages = $this->getConfig()->get( 'EvelutionDisableRightRailFromSpecificPages' );
+		$data["has-disabled-rail"] = ($this->getConfig()->get( 'EvelutionDisableRightRail' ) || ($this->getOutput()->getTitle()->isMainPage()) || in_array( $this->getOutput()->getTitle()->getFullText(), $blacklistedPages ) );
 		$data["has-single-header"] = $this->getConfig()->get( 'EvelutionForceOneHeader' );
 		$data["has-server-mode"] = $this->getConfig()->get( 'EvelutionServerMode' );
 		$data["html-custom-fontoo"] = $this->getConfig()->get( 'EvelutionCustomFont' );
