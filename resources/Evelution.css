@@ -413,6 +413,11 @@ container > main {
 	}
 	
 	@media only screen and (min-width:750px) { /* Desktop only */
+		.evelution-sidebar::before,
+		.evelution-sidebar::after {
+			content:none;
+		}
+	
 		.evelution-sidebar .search.cpe-dropdown .cpe-dropdown__content {
 			top:-25%;
 		}
@@ -1287,6 +1292,7 @@ gap:2px;
 		-webkit-backdrop-filter:var(--backdrop-filter);
 		backdrop-filter:var(--backdrop-filter);
 	}
+	
 
 	main[nav="true"] .evelution-minibar.col-nav,
 	main[nav="false"] .evelution-minibar.full-nav  {
@@ -1301,6 +1307,7 @@ gap:2px;
 	
 
 	.evelution-minibar.col-nav {
+		--background-padding:57px;
 		width:auto;
 		margin-top:calc(0px - var(--minibar-size));
 		left:100%;
