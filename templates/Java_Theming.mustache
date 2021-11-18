@@ -974,9 +974,9 @@ function ColorInvert(color) {
 			var light = chroma(color).get('hsl.l')
 			if ( !(isSuitableColor3(page, color)) )  { // If still not legible
 				if (func) {
-					return chroma(page).set('hsl.l', light*0.5);
+					return chroma(page).set('hsl.l', light*0.6);
 				} else {
-					return chroma(page).set('hsl.l', light*2);
+					return chroma(page).set('hsl.l', light/0.6);
 				}
 			}
 			return page
@@ -1062,7 +1062,7 @@ return ((chroma.contrast(color, color2)) >= contrast) // For Border Color
 }
 
 function isSuitableColor3(color,color2) {
-var contrast = (window.matchMedia('(prefers-contrast: more)').matches) ? 2 : 1.5
+var contrast = (window.matchMedia('(prefers-contrast: more)').matches) ? 1.5 : 1.5
 return ((chroma.contrast(color, color2)) >= contrast)
 }
 
