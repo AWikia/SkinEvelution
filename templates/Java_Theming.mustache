@@ -367,9 +367,9 @@ if ( chroma(page).get('hsl.l') < 0.5) {
 		var alert = ColorTestTwin(color, invpage, 0.15,alerth);
 		var alertsat = chroma(alert).get('hsl.s');
 		var alertlight =  chroma(alert).get('hsl.l') // Lightness of Alert Color
-		var warn = chroma(ColorTestTwin(color, invpage, 0.15,warningh)).set('hsl.s',alertsat).set('hsl.l', alertlight);
-		var done = chroma(ColorTestTwin(color, invpage, 0.15,successh)).set('hsl.s',alertsat).set('hsl.l', alertlight);
-		var info = chroma(ColorTestTwin(color, invpage, 0.15,messageh)).set('hsl.l',alertlight);
+		var warn = chroma(ColorTestTwin(color, invpage, 0.1,warningh)).set('hsl.s',alertsat).set('hsl.l', alertlight);
+		var done = chroma(ColorTestTwin(color, invpage, 0.1,successh)).set('hsl.s',alertsat).set('hsl.l', alertlight);
+		var info = chroma(ColorTestTwin(color, invpage, 0.1,messageh)).set('hsl.l',alertlight);
 		return [alert, warn, done, info];
 
  
@@ -920,19 +920,6 @@ function ColorTestTwin(color1,color2,intensity=1,hue='nil') {
 	}
 }
 
-function ColorInvertAndAdjustWhenNeeded(color,color2) { // Only used for Page Background Color
-			var page = ColorInvert(color);
-			var func = (isLightColor(page));
-			var light = chroma(color).get('hsl.l')
-			if ( !(isSuitableColor3(page, color2)) )  { // If still not legible
-				if (func) {
-					return chroma(page).set('hsl.l', light*0.5);
-				} else {
-					return chroma(page).set('hsl.l', light*2);
-				}
-			}
-			return page
-}
 
 function ColorTest(color,text=false,inv=false,dledlen=false) { // Regular Colors
 	if (dledlen === true) {
@@ -982,8 +969,25 @@ function ColorInvert(color) {
 	var g = 255 - chroma(color).get('rgb.g');
 	var b = 255 - chroma(color).get('rgb.b');
 	var h = chroma(color).get('hsl.h');
-	return chroma(color).set('rgb.r', r).set('rgb.g', g).set('rgb.b', b).set('hsl.h', h);
+			var page = chroma(color).set('rgb.r', r).set('rgb.g', g).set('rgb.b', b).set('hsl.h', h);
+			var func = (isLightColor(page));
+			var light = chroma(color).get('hsl.l')
+			if ( !(isSuitableColor3(page, color)) )  { // If still not legible
+				if (func) {
+					return chroma(page).set('hsl.l', light*0.5);
+				} else {
+					return chroma(page).set('hsl.l', light*2);
+				}
+			}
+			return page
+
+
 }
+
+function ColorInvertAndAdjustWhenNeeded(color,color2) { // Only used for Page Background Color (Deprecated, not for further use)
+	return ColorInvert(color);
+}
+
 
 
 
@@ -1115,7 +1119,7 @@ var content_color =  GetPageShort();
 
 // Liatch Quirk
 if ( (window.MW18darkmode === true) ) {
-	var content_color = ColorInvertAndAdjustWhenNeeded(content_color, GetPageShort())
+	var content_color = ColorInvertAndAdjustWhenNeeded(content_color, GetPageShort()) // @FIXME: Switch to ColorInvert
 }
 
 	window.MW18PageColor = content_color
