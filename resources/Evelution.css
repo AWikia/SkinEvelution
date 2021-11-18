@@ -276,7 +276,7 @@ container > main {
 
 
 	.evelution-sidebar .link {
-		transition:background-color 400ms ease, color 400ms ease, text-shadow 400ms ease, opacity 300ms ease, padding 300ms ease, max-width 300ms ease, font-size 300ms ease;
+		transition:background-color 400ms var(--transitioner), color 400ms var(--transitioner), text-shadow 400ms var(--transitioner), opacity 300ms var(--transitioner), padding 300ms var(--transitioner), max-width 300ms var(--transitioner), font-size 300ms var(--transitioner);
 		height:var(--global-nav-size);
 		width:var(--global-nav-size);
 		color:inherit;
@@ -491,7 +491,7 @@ container > main {
 
 
 /* Personal Toolbar */
-.evelution-toolbox  {
+.evelution-taskbar  {
 	--global-nav-color:var(--luna-background-color-rgb);
 	--toolbar-link-size:var(--minibar-size);
 	--global-nav-icon-scale-factor:50;
@@ -510,12 +510,12 @@ container > main {
 	transform-origin:bottom;
 }
 
-main[toolbar="true"] .evelution-toolbox.col-toolbar,
-main[toolbar="false"] .evelution-toolbox.full-toolbar  {
+main[toolbar="true"] .evelution-taskbar.col-toolbar,
+main[toolbar="false"] .evelution-taskbar.full-toolbar  {
 	transform:scaleY(0);
 }
 
-.evelution-toolbox.col-toolbar {
+.evelution-taskbar.col-toolbar {
 	width:var(--toolbar-link-size);
 	bottom:var(--minibar-size);
 	left:calc(100% - var(--toolbar-link-size));
@@ -526,32 +526,32 @@ main[toolbar="false"] .evelution-toolbox.full-toolbar  {
 
 
 
-.evelution-toolbox:hover  {
+.evelution-taskbar:hover  {
 /*	z-index:100; */
 }
 
 
-.evelution-toolbox .link  {
+.evelution-taskbar .link  {
 	width:var(--toolbar-link-size);
 	height:var(--minibar-size);
 }
 
 
-.evelution-toolbox .upper-links {
+.evelution-taskbar .upper-links {
 	justify-content:center;
 }
 
-.evelution-toolbox.left-links .upper-links {
+.evelution-taskbar.left-links .upper-links {
 	justify-content:flex-start;
 }
 
-.evelution-toolbox .upper-links,
-.evelution-toolbox .bottom-links  {
+.evelution-taskbar .upper-links,
+.evelution-taskbar .bottom-links  {
 	flex-direction:row;
 }
 
 
-.evelution-toolbox .link.bar-switch[cpe-tooltip-position="top"][cpe-tooltip]:after,
+.evelution-taskbar .link.bar-switch[cpe-tooltip-position="top"][cpe-tooltip]:after,
 .evelution-minibar .link.nav-switch[cpe-tooltip-position="bottom"][cpe-tooltip]:after {
 	right:2px;
 }
@@ -686,7 +686,7 @@ position:relative;
 	width:calc(var(--breakpoint-size) - 45px - var(--global-nav-size) - var(--scrollbar-width));
 	margin-left:auto;
 	margin-right:auto;
-	transition:width 400ms ease;
+	transition:width 400ms var(--transitioner);
 }
 
 /* Wide */
@@ -814,7 +814,7 @@ font-weight:bold;
     position: -webkit-sticky;
     position: sticky;
     top: calc(var(--minibar-size) + 10px);
-    transition:top 400ms;
+    transition:top 400ms var(--transitioner);
 }
 
 main[nav="false"] .evelution-floating-actions-container {
@@ -1189,7 +1189,7 @@ gap:2px;
 	.evelution-superbar__fone .title a {
 		text-decoration:none;
 		color:inherit;
-		transition:color 400ms ease;
+		transition:color 400ms var(--transitioner);
 		overflow:hidden;
 		text-overflow:ellipsis;
 		width:100%;
@@ -1280,7 +1280,7 @@ gap:2px;
 		padding-top:1px;
 		height:var(--minibar-size);
 		display:flex;
-		transition:transform 400ms ease, top 400ms ease, box-shadow 400ms ease, background-color 400ms ease;
+		transition:transform 400ms var(--transitioner), top 400ms var(--transitioner), box-shadow 400ms var(--transitioner), background-color 400ms var(--transitioner);
 		width:100%;
 		max-width:var(--max-width);
 		box-shadow: 0 0 3px var(--page-text-background-color), 0 0 3px var(--page-background-color), var(--page-accent-box-shadow);
@@ -1351,6 +1351,7 @@ gap:2px;
 		transition-property:filter;
 		transition-delay:var(--logo-filter-delay,0);
 		transition-duration:var(--logo-filter-duration,300ms) ;
+		transition-timing-function:var(--transitioner);
 		filter:var(--logo-filter,none);
 		align-self:center;
 	}
@@ -1379,7 +1380,7 @@ gap:2px;
 	.evelution-minibar .title a {
 		text-decoration:none;
 		color:inherit;
-		transition:color 400ms ease;
+		transition:color 400ms var(--transitioner);
 		overflow:hidden;
 		text-overflow:ellipsis;
 		align-self:center;
@@ -1434,7 +1435,7 @@ gap:2px;
 }
 
 	.evelution-minibar .link {
-		transition:color 400ms ease, background-color 300ms linear, background-image 300ms linear, transform 300ms linear, box-shadow 50ms linear;
+		transition:color 400ms var(--transitioner), background-color 300ms var(--transitioner), background-image 300ms var(--transitioner), transform 300ms var(--transitioner), box-shadow 50ms var(--transitioner);
 		padding: 0 7px;
 		height:inherit;
 		color:inherit;
@@ -1636,6 +1637,7 @@ gap:2px;
 		transition-property: filter;
 		transition-delay: var(--logo-filter-delay,0);
 		transition-duration: var(--logo-filter-duration,300ms);
+		transition-timing-function:var(--transitioner);
 		filter: var(--logo-filter,none);
 		height: 100px;
 		object-position: bottom;
@@ -1679,7 +1681,7 @@ gap:2px;
 
 	.evelution-superbar .link {
 		cursor:var(--cpe-hand-cursor);
-		transition:color 400ms ease, background-color 300ms linear, background-image 300ms linear, transform 300ms linear, box-shadow 50ms linear;
+		transition:color 400ms var(--transitioner), background-color 300ms var(--transitioner), background-image 300ms var(--transitioner), transform 300ms var(--transitioner), box-shadow 50ms var(--transitioner);
 		padding: 0 7px;
 		height:inherit;
 		color:inherit;
@@ -1783,7 +1785,7 @@ gap:2px;
 	.evelution-superbar__top .title a {
 		text-decoration:none;
 		color:inherit;
-		transition:color 400ms ease;
+		transition:color 400ms var(--transitioner);
 		overflow:hidden;
 		text-overflow:ellipsis;
 		display:block;
@@ -2077,12 +2079,12 @@ border-top-right-radius:0;
 	display:none;
 	flex-direction:column;
     position: relative;
-    transition: margin-left 400ms ease, transform 400ms ease, padding-left 400ms ease, padding-right 400ms ease;
+    transition: margin-left 400ms var(--transitioner), transform 400ms var(--transitioner), padding-left 400ms var(--transitioner), padding-right 400ms var(--transitioner);
     transform-origin: right;
 }
 
 .evelution-content .evelution-page-header-title .toggle-rail-button {
-	transition:background-color 400ms ease, color 400ms ease, border-color 400ms ease, text-shadow 400ms ease, opacity 300ms ease, padding 300ms ease, max-width 300ms ease, font-size 300ms ease;
+	transition:background-color 400ms var(--transitioner), color 400ms var(--transitioner), border-color 400ms var(--transitioner), text-shadow 400ms var(--transitioner), opacity 300ms var(--transitioner), padding 300ms var(--transitioner), max-width 300ms var(--transitioner), font-size 300ms var(--transitioner);
 	display:none;
 	position:absolute;
 	color:var(--luna-text-background-color);
@@ -2149,7 +2151,7 @@ border-top-right-radius:0;
 			position:-webkit-sticky;
 			position:sticky;
 			top:calc(var(--minibar-size) + 15px);
-			transition:top 400ms;
+			transition:top 400ms var(--transitioner);
 		}
 		[sticky-rail="1"] main[nav="false"] .evelution-rail-wrapper .evelution-sticky-modules {
 			top:15px;

@@ -219,7 +219,7 @@ function GetCommunityHeaderText() {
 		return getComputedStyle(document.querySelector('.fc-canvastext')).getPropertyValue("color");
 	} else if (getComputedStyle(document.querySelector('html')).getPropertyValue("--superbar-text-background-color") === 'auto') {
 		var color = window.MW18BgColor;
-		if (isLightColor(color)) {
+		if (isLightColor2(color)) {
 			return getComputedStyle(document.querySelector('body')).getPropertyValue("--light-theme-text-background-color");
 		} else {
 			return getComputedStyle(document.querySelector('body')).getPropertyValue("--dark-theme-text-background-color");
@@ -270,7 +270,7 @@ function GetPageText() {
 		return getComputedStyle(document.querySelector('.fc-canvastext')).getPropertyValue("color");
 	} else if (getComputedStyle(document.querySelector('html')).getPropertyValue("--page-text-background-color") === 'auto') {
 		var color = window.MW18PageColor;
-		if (isLightColor(color)) {
+		if (isLightColor2(color)) {
 			return getComputedStyle(document.querySelector('body')).getPropertyValue("--light-theme-text-background-color");
 		} else {
 			return getComputedStyle(document.querySelector('body')).getPropertyValue("--dark-theme-text-background-color");
@@ -1006,12 +1006,29 @@ function isLightColor(color) {
 	var c2 = (chroma.contrast('#ffffff',  chroma(color)))
 	var contrast = (window.matchMedia('(prefers-contrast: more)').matches) ? 7 : 4.5
 	var contrast2 = (window.matchMedia('(prefers-contrast: more)').matches) ? 3 : 4.5
-	if (c1 > c2) {
+	return (c1 > c2);
+	/*if (c1 > c2) {
 		return (c1 >= contrast )
 	} else {
 		return (c2 < contrast2 )
 	}
+	*/
 }
+
+function isLightColor2(color) {
+	var c1 = (chroma.contrast(getComputedStyle(document.querySelector('body')).getPropertyValue("--light-theme-text-background-color"),  chroma(color)))
+	var c2 = (chroma.contrast(getComputedStyle(document.querySelector('body')).getPropertyValue("--dark-theme-text-background-color"),  chroma(color)))
+	var contrast = (window.matchMedia('(prefers-contrast: more)').matches) ? 7 : 4.5
+	var contrast2 = (window.matchMedia('(prefers-contrast: more)').matches) ? 3 : 4.5
+	return (c1 > c2);
+	/*if (c1 > c2) {
+		return (c1 >= contrast )
+	} else {
+		return (c2 < contrast2 )
+	}
+	*/
+}
+
 
 function isDarkColor(color) {
 	return !isLightColor(color)
