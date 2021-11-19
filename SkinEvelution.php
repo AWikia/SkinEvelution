@@ -38,7 +38,7 @@ class SkinEvelution extends SkinMustache {
 	 * @param array $options
 	 */
 	public function __construct( BagOStuff $localServerObjectCache, array $options ) {
-		$options['templatedirectory'] = self::TEMPLATE_DIR;
+		$options['templateDirectory'] = self::TEMPLATE_DIR;
 		parent::__construct( $options );
 
 		$this->templateParser = new TemplateParser( $this->options['templateDirectory'], $localServerObjectCache );
