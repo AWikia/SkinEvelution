@@ -344,10 +344,10 @@ if ( chroma(page).get('hsl.l') < 0.5) {
 		successh = 140 // 150
 		messageh = -1 // -1
 		
-		contrastA = (window.matchMedia('(prefers-contrast: more)').matches) ? 4.50 : 3.00
-		contrastW = (window.matchMedia('(prefers-contrast: more)').matches) ? 4.00 : 2.50
-		contrastS = (window.matchMedia('(prefers-contrast: more)').matches) ? 3.50 : 2.25
-		contrastM = (window.matchMedia('(prefers-contrast: more)').matches) ? 3.00 : 2.00
+		contrastA = (window.matchMedia('(prefers-contrast: more)').matches) ? 4.50 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 3.75 : 3.00
+		contrastW = (window.matchMedia('(prefers-contrast: more)').matches) ? 4.00 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 3.25 : 2.50
+		contrastS = (window.matchMedia('(prefers-contrast: more)').matches) ? 3.50 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 2.85 : 2.25
+		contrastM = (window.matchMedia('(prefers-contrast: more)').matches) ? 3.00 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 2.50 : 2.00
 
 	for (let i = 0; i < colors.length; i++) {
 		var color = chroma('hsl(0,100%,' + colors[i] + ')').hex(); // Base Color
@@ -963,6 +963,17 @@ function ColorTest(color,text=false,inv=false,dledlen=false) { // Regular Colors
 }
 
 
+function MiniColorTest(color) { // Regular Colors
+	var color2 = GetPage();
+	var func = (isLightColor(color2));
+	var light = chroma(color).get('hsl.l');
+	if (func) {
+		return chroma(color).set('hsl.l', light-0.1);
+	} else {
+		return chroma(color).set('hsl.l', light+0.1);
+	}
+}
+
 
 function ColorInvert(color) {
 	var r = 255 - chroma(color).get('rgb.r');
@@ -1008,29 +1019,13 @@ function Color4(color) {
 function isLightColor(color) {
 	var c1 = (chroma.contrast('#000000',  chroma(color)))
 	var c2 = (chroma.contrast('#ffffff',  chroma(color)))
-	var contrast = (window.matchMedia('(prefers-contrast: more)').matches) ? 7 : 4.5
-	var contrast2 = (window.matchMedia('(prefers-contrast: more)').matches) ? 3 : 4.5
 	return (c1 > c2);
-	/*if (c1 > c2) {
-		return (c1 >= contrast )
-	} else {
-		return (c2 < contrast2 )
-	}
-	*/
 }
 
 function isLightColor2(color) {
 	var c1 = (chroma.contrast(getComputedStyle(document.querySelector('body')).getPropertyValue("--light-theme-text-background-color"),  chroma(color)))
 	var c2 = (chroma.contrast(getComputedStyle(document.querySelector('body')).getPropertyValue("--dark-theme-text-background-color"),  chroma(color)))
-	var contrast = (window.matchMedia('(prefers-contrast: more)').matches) ? 7 : 4.5
-	var contrast2 = (window.matchMedia('(prefers-contrast: more)').matches) ? 3 : 4.5
 	return (c1 > c2);
-	/*if (c1 > c2) {
-		return (c1 >= contrast )
-	} else {
-		return (c2 < contrast2 )
-	}
-	*/
 }
 
 
@@ -1052,17 +1047,17 @@ function isSuperDarkColor(color) {
 
 
 function isSuitableColor(color,color2) {
-var contrast = (window.matchMedia('(prefers-contrast: more)').matches) ? 4.5 : 3
+var contrast = (window.matchMedia('(prefers-contrast: more)').matches) ? 4.5 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 3.75 : 3
 return ((chroma.contrast(color, color2)) >= contrast)
 }
 
 function isSuitableColor2(color,color2) {
-var contrast = (window.matchMedia('(prefers-contrast: more)').matches) ? 1.75 : 1.25
+var contrast = (window.matchMedia('(prefers-contrast: more)').matches) ? 1.75 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 1.5 : 1.25
 return ((chroma.contrast(color, color2)) >= contrast) // For Border Color
 }
 
 function isSuitableColor3(color,color2) {
-var contrast = (window.matchMedia('(prefers-contrast: more)').matches) ? 1.5 : 1.5
+var contrast = 1.5
 return ((chroma.contrast(color, color2)) >= contrast)
 }
 
@@ -1128,7 +1123,7 @@ if ( (window.MW18darkmode === true) ) {
 
 var content_color2 = ColorTest(content_color);
 
-var adjustment = (window.matchMedia('(prefers-contrast: more)').matches) ? 0.35 : 0.25
+var adjustment = (window.matchMedia('(prefers-contrast: more)').matches) ? 0.35 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 0.3 : 0.25
 
 	if (darkpage) {
 		var dropdowncolor = ColorTestTwin(content_color,"#000000",adjustment);
@@ -1157,20 +1152,10 @@ if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--page-t
 	if ( (window.MW18darkmode === true) ) {
 		var content_text = ColorInvert(content_text);
 	}
-
-		if ( !(isSuitableColor(content_text, content_color)) )  { // If still not legible
-			var content_text= ColorTest(content_text,false,false,true);
-			if ( !(isSuitableColor(content_text, content_color)) )  { // If still not legible
-				var content_text= ColorTest(content_text,false,false,true);
-				if ( !(isSuitableColor(content_text, content_color)) )  { // If still not legible
-					var content_text= ColorTest(content_text,false,false,true);
-					if ( !(isSuitableColor(content_text, content_color)) )  { // If still not legible
-						var content_text= ColorTest(content_text,false,false,true);
-					}
-				}
-			}
+	
+		while ( !(isSuitableColor(content_text, content_color)) ) {
+			var content_text= MiniColorTest(content_text,false,false,true);
 		}
-
 
 }
 
@@ -1189,18 +1174,10 @@ var button_color = GetAccent();
 if ( (window.MW18darkmode === true) ) {
 	var button_color = ColorInvert(button_color);
 }
-		if ( !(isSuitableColor2(button_color, content_color)) )  { // If still not legible
-			var button_color= ColorTest(button_color,false,false,true);
-			if ( !(isSuitableColor2(button_color, content_color)) )  { // If still not legible
-				var button_color= ColorTest(button_color,false,false,true);
-				if ( !(isSuitableColor2(button_color, content_color)) )  { // If still not legible
-					var button_color= ColorTest(button_color,false,false,true);
-					if ( !(isSuitableColor2(button_color, content_color)) )  { // If still not legible
-						var button_color= ColorTest(button_color,false,false,true);
-					}
-				}
-			}
+		while ( !(isSuitableColor2(button_color, content_color)) ) {
+			var button_color= MiniColorTest(button_color,false,false,true);
 		}
+
 
 
 var buttoncolor1 = ColorTest(button_color,false);
@@ -1214,17 +1191,9 @@ var link_color = GetSecondaryAccent();
 if ( (window.MW18darkmode === true) ) {
 	var link_color = ColorInvert(link_color);
 }
-		if ( !(isSuitableColor(link_color, content_color)) )  { // If still not legible
-			var link_color= ColorTest(link_color,false,false,true);
-			if ( !(isSuitableColor(link_color, content_color)) )  { // If still not legible
-				var link_color= ColorTest(link_color,false,false,true);
-				if ( !(isSuitableColor(link_color, content_color)) )  { // If still not legible
-					var link_color= ColorTest(link_color,false,false,true);
-					if ( !(isSuitableColor(link_color, content_color)) )  { // If still not legible
-						var link_color= ColorTest(link_color,false,false,true);
-					}
-				}
-			}
+
+		while ( !(isSuitableColor(link_color, content_color)) ) {
+			var link_color= MiniColorTest(link_color,false,false,true);
 		}
 
 var linkcolor1 = ColorTest(link_color,false,false,true);
@@ -1243,19 +1212,8 @@ if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--page-b
 		var border_color = ColorInvert(border_color);
 	}
 
-
-		if ( !(isSuitableColor2(border_color, content_color)) )  { // If still not legible
-			var border_color= ColorTest(border_color,false,false,true);
-			if ( !(isSuitableColor2(border_color, content_color)) )  { // If still not legible
-				var border_color= ColorTest(border_color,false,false,true);
-				if ( !(isSuitableColor2(border_color, content_color)) )  { // If still not legible
-					var border_color= ColorTest(border_color,false,false,true);
-					if ( !(isSuitableColor2(border_color, content_color)) )  { // If still not legible
-						var border_color= ColorTest(border_color,false,false,true);
-					}
-				}
-			}
-		}  else if ( (window.MW18darkmode === true) ) {
+		while ( !(isSuitableColor2(border_color, content_color)) ) {
+			var border_color= MiniColorTest(border_color,false,false,true);
 		}
 
 
