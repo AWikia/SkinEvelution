@@ -277,7 +277,7 @@ body .unpatrolled {
 	background-color:var(--page-background-color);
 	border-top-color:var(--page-border-background-color);
 	bottom:var(--minibar-size);
-	transition:bottom 400ms ease;
+	transition:bottom 400ms var(--transitioner);
 }
 
 main[toolbar="false"] .mw-prefs-buttons {
@@ -417,7 +417,7 @@ body .mw-ui-button:not(:disabled) {
 	--secondary-button-background-color:var(--page-background-color);
 	--secondary-button-foreground-color:var(--secondary-accent-background-color);
 	--secondary-button-foreground-color-hover:var(--secondary-accent-background-color-hover);
-    transition:background-color 200ms, border-color 200ms, outline-offset 50ms, outline-color 200ms, color 200ms, box-shadow 200ms!important;
+    transition:background-color 200ms var(--transitioner), border-color 200ms var(--transitioner), outline-offset 50ms var(--transitioner), outline-color 200ms var(--transitioner), color 200ms var(--transitioner), box-shadow 200ms var(--transitioner)!important;
     font-size:13px;
     font-family:var(--secondary-font);
     font-weight:600;
@@ -743,6 +743,7 @@ body .toc ul li a {
     text-decoration: none;
     transition-property: background-color,color;
     transition-duration:0.3s;
+    transition-timing-function:var(--transitioner);
     border:1px solid transparent;
 }
 
@@ -750,6 +751,7 @@ body .toc ul li a .tocnumber {
 	opacity:0.7;
     transition-property: opacity;
     transition-duration:0.3s;
+    transition-timing-function:var(--transitioner);
     color:inherit;
 }
 
@@ -949,7 +951,7 @@ body .mw-ui-input  {
 	--input-box-color:var(--page-background-color);
 	--input-box-focus:var(--secondary-accent-background-color-rgb);
 	--input-box-solid:var(--secondary-accent-background-color);
-    transition:background-color 200ms, border-color 200ms, outline-offset 50ms, outline-color 200ms, color 200ms, box-shadow 200ms!important;
+    transition:background-color 200ms var(--transitioner), border-color 200ms var(--transitioner), outline-offset 50ms var(--transitioner), outline-color 200ms var(--transitioner), color 200ms var(--transitioner), box-shadow 200ms var(--transitioner)!important;
     font-size:13px;
     font-family:var(--secondary-font);
     font-weight:600;
@@ -1083,7 +1085,7 @@ body .oo-ui-dropdownWidget.oo-ui-widget-disabled .oo-ui-dropdownWidget-handle {
 	--input-box-color:var(--page-background-color);
 	--input-box-focus:var(--secondary-accent-background-color-rgb);
 	--input-box-solid:var(--secondary-accent-background-color);
-    transition:background-color 200ms, border-color 200ms, outline-offset 50ms, outline-color 200ms, color 200ms, box-shadow 200ms;
+    transition:background-color 200ms var(--transitioner), border-color 200ms var(--transitioner), outline-offset 50ms var(--transitioner), outline-color 200ms var(--transitioner), color 200ms var(--transitioner), box-shadow 200ms var(--transitioner);
     font-size:13px;
     font-family:var(--secondary-font);
     font-weight:600;
@@ -1181,6 +1183,10 @@ body .editOptions {
     background-color: transparent;
     color: var(--page-text-background-color);
     border-color:transparent;
+    margin-bottom:0;
+    padding-bottom:0;
+    padding-left:0;
+    padding-right:0;
 
 }
 
@@ -1283,7 +1289,7 @@ body .uls-menu {
 	border-color:var(--page-border-background-color);
 	background-color:var(--page-background-color);
 	color:var(--page-text-background-color);
-	transition:top 400ms ease
+	transition:top 400ms var(--transitioner);
 }
 
 .headroom--not-top .uls-menu,
@@ -1884,7 +1890,7 @@ body .mw-echo-ui-notificationBadgeButtonPopupWidget-popup {
     height:calc(100vh)!important;
     display:flex;
     margin-top:0!important;
-    transition:top 400ms ease, height 400ms ease;
+    transition:top 400ms var(--transitioner), height 400ms var(--transitioner);
 }
 
 @media only screen and (min-width:750px) {

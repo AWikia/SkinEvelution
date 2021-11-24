@@ -196,10 +196,12 @@ body {
 /** Generic Colors & Color Scheme **/
 html {
 	color-scheme:light!important;
+	color-scheme:only light!important;
 }
 
 :root.theme-fandomdesktop-dark {
 	color-scheme:dark!important;
+	color-scheme:only dark!important;
 }
 
 	html {
@@ -1953,6 +1955,15 @@ background-color:var(--secondary-accent-fadeout-color);
 border-color:rgba(var(--secondary-accent-background-color-rgb),calc(var(--fadeout-opacity) * 0.5));
 color:var(--secondary-accent-background-color);
 }
+
+
+ .cpe-dropdown__content .cpe-list.is-linked>li.new.is-selected>a:not(.cpe-button),
+  .cpe-dropdown__content .cpe-list.is-linked>li.new.selected>a.new:not(.cpe-button), .cpe-dropdown__content .cpe-list.is-linked>li.new:hover>a:not(.cpe-button){
+background-color:var(--alert-fadeout-color);
+border-color:rgba(var(--alert-background-color-rgb),calc(var(--fadeout-opacity) * 0.5));
+color:var(--alert-background-color);
+}
+
 
 .cpe-dropdown__content .cpe-button {
 	--secondary-button-background-color:transparent;
