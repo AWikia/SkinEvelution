@@ -985,28 +985,49 @@ $('.wikitable #auto5').click(
 							}   
 						);
 // UpdateRangeInputs();
-	$('input[type="range"]').css( "--range-percent", function( ) {
-		return (($(this).val() * 100) / $(this).attr('max')) + '%';
+	var ranges = document.querySelectorAll('input[type="range"]');
+	ranges.forEach(function(x) {
+		x.style.setProperty("--range-percent",  (((x.value) * 100) / x.getAttribute('max')) + '%'  );
 	});
-	$("input[type='range']").on("input", function(e) { UpdateRange(); } ).change( function(e) { TestDynamicTheme(); } ); // Change
+	
+	var ranges2 = document.querySelectorAll('input[type="range"]');
+	ranges2.forEach(function(x) {
+		x.addEventListener("input", function(e) { UpdateRange(); });
+	});
+
+// Misc
 	$("input[type='color']").change( function(e) { TestDynamicTheme(); } ); // Change
 	$("input.designer-text").change( function(e) { TestDynamicTheme(); } ); // Change
 
+
 /* Select Inputs */
-$(' .cpe-dropdown.cpe-select .cpe-dropdown__content .cpe-list li:not(.cpe-dropdown-level-2)')
-.click(function(e) {
+	$(' .cpe-dropdown.cpe-select').blur(function() { TestDynamicTheme() })
+	$(' input[type="range"]').change(function() { TestDynamicTheme() })
+	var select_items = document.querySelectorAll(".cpe-dropdown.cpe-select .cpe-dropdown__content .cpe-list li:not(.cpe-dropdown-level-2)");
+	select_items.forEach(function(y) {
+		y.setAttribute('onclick','UpdateSelectValue()');
+		y.addEventListener('click', (function(e) {
 						e.preventDefault();
-						var value = $(this).attr("value");
-						$(' .cpe-dropdown.cpe-select')
-						.click(function() {
-									var content = $('.cpe-select:focus-within .cpe-dropdown__content .cpe-list li:not(.cpe-dropdown-level-2):hover > a').html();
-									$('.cpe-select:focus-within .cpe-select__value').attr("value", value);
-									$('.cpe-select:focus-within .cpe-select__value').html(content);
-									TestDynamicTheme(); // Change
-									$(this).blur();
-									$(' .cpe-dropdown.cpe-select').off( "click" );
-								});
-        });
+						var selected = this;
+
+
+		var x = document.querySelector(".cpe-dropdown.cpe-select:focus-within .cpe-dropdown__content .cpe-list li.selected");
+		if (x) {
+			x.classList.remove("selected");
+		}
+//		this.classList.add("selected");
+
+
+						var value = selected.getAttribute("value");
+						document.querySelector(' .cpe-dropdown.cpe-select:focus-within')
+						.addEventListener('click',(function() {
+									var content = selected.innerText;
+									document.querySelector('.cpe-select:focus-within .cpe-select__value').setAttribute("value", value);
+									document.querySelector('.cpe-select:focus-within .cpe-select__value').innerHTML= content;
+								}));
+        }) );
+	});
+					
 					
 
 
