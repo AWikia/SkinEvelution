@@ -95,18 +95,24 @@ var visualColorNames = ['Factory', 'XP Luna', 'Windows Forced', 'Windows Forced 
                 break;
         }
     });
-	$('html').attr('theme',theme_selected);
-	$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li").removeClass('selected');
-	$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li[data-theme-change='theme-" + theme_selected + "']").addClass('selected');
-	colortheme(color_mode,false,false)
-	SetAccent(accent_active,false)
-	$("head").append('<style class="theming"></style>');
+	document.querySelector('html').setAttribute('theme', theme_selected);
+	var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li.selected");
+		if (x) {
+			x.classList.remove("selected");
+		}
+	var y = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li[data-theme-change='theme-" + theme_selected + "']")
+		if (y) {
+			y.classList.add("selected");
+		}
+	colortheme(color_mode,false,false);
+	SetAccent(accent_active,false);
+	document.querySelector("head").insertAdjacentHTML('afterbegin','<style class="theming"></style>');
 	ManagerRows(); // For Task Manager Only
 	VisualStyleCompile(); // Compiles the Contrast Options
 	VisualStyle(style_active,false);
 	VisualColor(color_active,false);
 //	ContrastBanner(); // Notice
-	$('html').addClass('theming-loaded');
+	document.querySelector('html').classList.add('theming-loaded');
 
 })();
 
@@ -155,12 +161,16 @@ function ForcedColors() {
 /* Visual Styles */
 function VisualStyle(style,save=true) {
 	if ( (style === 'S') || (style === -1) ) { // Standard Style
-		$('html').attr("visualtheme", "standard");
+		document.querySelector('html').setAttribute("visualtheme", "standard");
 	} else {
-		$('html').attr("visualtheme", visualThemes[style]);
+		document.querySelector('html').setAttribute("visualtheme", visualThemes[style]);
 	}
-	$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-styles li").removeClass('selected');
-	$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-styles li#style" + style).addClass('selected');
+	var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-styles li.selected")
+		if (x) {
+			x.classList.remove("selected");
+		}
+	document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-styles li#style" + style).classList.add("selected");
+
 		if (save) {
 		insertKey('style-active', style );
 		}
@@ -168,18 +178,17 @@ function VisualStyle(style,save=true) {
 
 function VisualColor(style,save=true) {
 	if ( (style === 'S') || (style === -1) ) { // Standard Style
-		$('html').attr("visualcolors", "standard");
-		if ($('.preview-theme-wrapper.selection-theme').length) {
-			$('.preview-theme-wrapper.selection-theme').attr("visualcolors", "standard");
-		}
+		document.querySelector('html').setAttribute("visualcolors", "standard");
 	} else {
-		$('html').attr("visualcolors", visualColors[style]);
-		if ($('.preview-theme-wrapper.selection-theme').length) {
-			$('.preview-theme-wrapper.selection-theme').attr("visualcolors", visualColors[style]);
-		}
+		document.querySelector('html').setAttribute("visualcolors", visualColors[style]);
 	}
-	$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-colors li").removeClass('selected');
-	$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-colors li#color" + style).addClass('selected');
+	var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-colors li.selected");
+	if (x) {
+		x.classList.remove("selected");
+	}
+	document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-colors li#color" + style).classList.add("selected")
+
+
 		if (save) {
 		insertKey('color-active', style );
 		}
@@ -193,12 +202,12 @@ function VisualStyleCompile() {
 /* Visual Styles */
 	for (let i = 0; i < visualThemes.length; i++) {
 		str = '<li id="style' + i + '"><a onclick="VisualStyle(' + i + ')">' + visualThemeNames[i] + '</a></li>'
-		$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-styles").append(str);
+		document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-styles").insertAdjacentHTML('beforeend',str);
 	}
 /* Visual Colors */
 	for (let i = 0; i < visualColors.length; i++) {
 		str = '<li id="color' + i + '"><a onclick="VisualColor(' + i + ')">' + visualColorNames[i] + '</a></li>'
-		$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-colors, .skin-tunic #visual-colors .mw-portlet-body ul").append(str);
+		document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-colors, .skin-tunic #visual-colors .mw-portlet-body ul").insertAdjacentHTML('beforeend',str);
 	}
 
 
@@ -219,11 +228,7 @@ function GetCommunityHeaderText() {
 		return getComputedStyle(document.querySelector('.fc-canvastext')).getPropertyValue("color");
 	} else if (getComputedStyle(document.querySelector('html')).getPropertyValue("--superbar-text-background-color") === 'auto') {
 		var color = window.MW18BgColor;
-		if (isLightColor2(color)) {
-			return getComputedStyle(document.querySelector('body')).getPropertyValue("--light-theme-text-background-color");
-		} else {
-			return getComputedStyle(document.querySelector('body')).getPropertyValue("--dark-theme-text-background-color");
-		}
+		return GetTextVariable(color);
 	} else {
 		return getComputedStyle(document.querySelector('html')).getPropertyValue("--superbar-text-background-color").trim();
 	}
@@ -270,11 +275,7 @@ function GetPageText() {
 		return getComputedStyle(document.querySelector('.fc-canvastext')).getPropertyValue("color");
 	} else if (getComputedStyle(document.querySelector('html')).getPropertyValue("--page-text-background-color") === 'auto') {
 		var color = window.MW18PageColor;
-		if (isLightColor2(color)) {
-			return getComputedStyle(document.querySelector('body')).getPropertyValue("--light-theme-text-background-color");
-		} else {
-			return getComputedStyle(document.querySelector('body')).getPropertyValue("--dark-theme-text-background-color");
-		}
+		return GetTextVariable(color);
 	} else {
 		return getComputedStyle(document.querySelector('html')).getPropertyValue("--page-text-background-color").trim();
 	}
@@ -393,6 +394,7 @@ function GetForegroundVariable(color,hover=false) {
 	}
 }
 
+
 function GetForegroundVariable2(color,hover=false) {
 	if (hover) {
 		if (isLightColor(color)) {
@@ -408,6 +410,23 @@ function GetForegroundVariable2(color,hover=false) {
 		}
 	}
 }
+
+function GetTextVariable(color) {
+	if (isLightColor2(color)) {
+		return getComputedStyle(document.querySelector('body')).getPropertyValue("--light-theme-text-background-color");
+	} else {
+		return getComputedStyle(document.querySelector('body')).getPropertyValue("--dark-theme-text-background-color");
+	}
+}
+
+function GetTextVariable2(color) {
+	if (isLightColor2(color)) {
+		return Color2(getComputedStyle(document.querySelector('body')).getPropertyValue("--light-theme-text-background-color"));
+	} else {
+		return Color2(getComputedStyle(document.querySelector('body')).getPropertyValue("--dark-theme-text-background-color"));
+	}
+}
+
 
 /* Get Gradient Variables */
 function GetGradientVariable(color,name="page") {
@@ -446,43 +465,29 @@ ManagerRows();
 function ManagerRows() {
 
 /* For Task Manager */
-if ($("body.tskmngr").length) {
-	if ( ($("cpu").length) < 4) {
-		document.querySelector('div.heatmaps').style.setProperty("--heatmap-rows", $("cpu").length);
-	} else if ( ($("aside.heatmap:first-child cpu").length) < 6 ) {
-		document.querySelector('div.heatmaps').style.setProperty("--heatmap-rows", 2);
-	} else if ( ($("aside.heatmap:first-child cpu").length) < 13 ) {
-		document.querySelector('div.heatmaps').style.setProperty("--heatmap-rows", 3);
-	} else if ( ($("aside.heatmap:first-child cpu").length) < 30 ) {
-		document.querySelector('div.heatmaps').style.setProperty("--heatmap-rows", 4);
-	} else if ( ($("aside.heatmap:first-child cpu").length) < 64 ) {
-		document.querySelector('div.heatmaps').style.setProperty("--heatmap-rows", 6);
-	} else if ( ($("aside.heatmap:first-child cpu").length) < 99 ) {
-		document.querySelector('div.heatmaps').style.setProperty("--heatmap-rows", 8);
-	} else {
-		document.querySelector('div.heatmaps').style.setProperty("--heatmap-rows", 10);
-	}
-}
-
-
-}
-
-function ContrastBanner() {
-
-/* For Evelution */
-if  ( ($("body.skin-evelution").length) ) {
-	if ( ( window.matchMedia('(forced-colors: active)').matches ) && (window.MW18ContrastNotice === false)  && ($('html').attr("visualtheme") !== 'contrast'  ) ) {
-		window.MW18ContrastNotice = true;
-		AddFloatingBanner("You're currently using a high contrast theme on your device. You may want to use the <a onclick='RemoveBanner(); VisualStyle(" + contrastVisual + ")'>High Contrast</a> visual style so as to have a consistent high contrast experience.",'message','contrastbanner')  
-	} else {
-		if ( (!($(".top-gap #contrastbanner").length)) && ($('html').attr("visualtheme") !== 'contrast'  )) {
-			window.MW18ContrastNotice = false;
+	var x = document.querySelector("body.tskmngr")
+	if (x) {
+		var y = document.querySelectorAll("cpu");
+		var y2 = document.querySelectorAll("aside.heatmap:first-child cpu");
+		if ( (y.length) < 4) {
+			document.querySelector('div.heatmaps').style.setProperty("--heatmap-rows", y.length);
+		} else if ( (y2.length) < 6 ) {
+			document.querySelector('div.heatmaps').style.setProperty("--heatmap-rows", 2);
+		} else if  ((y2.length) < 13 ) {
+			document.querySelector('div.heatmaps').style.setProperty("--heatmap-rows", 3);
+		} else if ( (y2.length) < 30 ) {
+			document.querySelector('div.heatmaps').style.setProperty("--heatmap-rows", 4);
+		} else if ( (y2.length) < 64 ) {
+			document.querySelector('div.heatmaps').style.setProperty("--heatmap-rows", 6);
+		} else if ( (y2.length) < 99 ) {
+			document.querySelector('div.heatmaps').style.setProperty("--heatmap-rows", 8);
+		} else {
+			document.querySelector('div.heatmaps').style.setProperty("--heatmap-rows", 10);
 		}
 	}
 }
 
 
-}
 
 
 
@@ -516,8 +521,14 @@ function colortheme(theme='auto', repaint=true, save=true) {
 	if (save) {
 		insertKey('color-mode', theme );
 	}
-	$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-color-modes li").removeClass('selected');
-	$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-color-modes li[data-color-mode='" + theme + "']").addClass('selected');
+
+	var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-color-modes li.selected");
+	if (x) {
+		x.classList.remove("selected");
+	}
+	document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-color-modes li[data-color-mode='" + theme + "']").classList.add("selected")
+
+
 	if ((old_dark != window.MW18darkmode) && (repaint) ) {
 		ColorUpdate(false);
 	}
@@ -527,12 +538,12 @@ function SetAccent(tick='false',save='true') {
 		if (save) {
 			insertKey('accent-active', tick );
 		}
-		$('html').attr("accented", tick);
+		document.querySelector('html').setAttribute('accented', tick);
 }
 
 
 function ToggleAccent() {
-	if ($('html').attr("accented") === 'false') {
+	if (document.querySelector('html').getAttribute('accented') === 'false') {
 		SetAccent( 'true' )
 	} else {
 		SetAccent ( 'false')
@@ -540,161 +551,6 @@ function ToggleAccent() {
 }
 
 
-
-/* Preset Themes 
-** Themes:
-**			0  = Oasis
-**			1  = Sapphire
-**			2  = Jade
-**			3  = Babygirl
-**			4  = Sky
-**			5  = Carbon
-**			6  = Moonlight
-**			7  = Rockgarden
-**			8  = Oppulence
-**			9 = Bluesteel
-**			10 = Obession
-**			11 = Creamsicle
-**			12 = Plated
-**			13 = Beach
-**			14 = Police
-**			15 = Dragstrip
-**			16 = Aliencrate
-*/
-function PresetTheme(theme="") {
-	if (theme==="") {
-	//	var theme2= $('select.preset_theme').val();
-		var theme2= $('.cpe-select .preset_theme .cpe-select__value').attr("value");
-	} else {
-		var theme2= theme;
-	}
-	var body_bg=[ 		  // --body-background-color
-				'ffffff', // Fandom Light
-				'000000', // Fandom Dark
-				'f6f6f6', // CC
-				'2c343d', // Fansun
-				'1f1f1f', // Dark
-				'cccccc', // A Secure Light
-				'333333', // A Secure Dark
-				'7f8afe', // A Wikia
-				'ffffff', // Gamepedia Light
-				'000000', // Gamepedia Dark
-				'3D3527', // Can I Use... Light
-				'17140e', // Can I Use... Dark
-				'ffffff', // Wikimedia Colors
-				'0b284f', // Zelda Blue
-				'441177', // CPE Default
-				'BACDD8', // Oasis
-				'000000', // Windows 10
-				'017683', // FandomDesktop Light
-				'000000'  // FandomDesktop Dark
-				][theme2];
-	var body_image=[					 // --backgrounud-image
-				'Empty.png',			 // Fandom Light
-				'Empty.png',			 // Fandom Dark
-				'Empty.png',			 // CC
-				'Empty.png',			 // Fansun
-				'Empty.png',			 // Dark
-				'Empty.png',			 // A Secure Light
-				'Empty.png',			 // A Secure Dark
-				'AWikia.png',			 // A Wikia
-				'Empty.png',			 // Gamepedia Light
-				'Empty.png',			 // Gamepedia Dark
-				'Empty.png',			 // Can I Use... Light
-				'Empty.png',			 // Can I Use... Dark
-				'Empty.png',			 // Wikimedia Colors
-				'Empty.png',			 // Zelda Blue
-				'loadbg_dev.png',		 // CPE Default
-				'Empty.png',			 // Oasis
-				'Empty.png',			 // Windows 10
-				'FD Light.jfif',		 // FandomDesktop Light
-				'FD Dark.jfif'			 // FandomDesktop Dark
-				][theme2];
-	var page_bg=[		  // --page-background-color (--page-text-background-color on reversed colors)
-				'f3f5f4', // Fandom Light
-				'0e191a', // Fandom Dark
-				'ffffff', // CC
-				'39424d', // Fansun
-				'111111', // Dark
-				'f1f1f1', // A Secure Light
-				'0e0e0e', // A Secure Dark
-				'9ea4f2', // A Wikia
-				'ffffff', // Gamepedia Light
-				'0e191a', // Gamepedia Dark
-				'f2e8d5', // Can I Use... Light
-				'252017', // Can I Use... Dark
-				'ffffff', // Wikimedia Colors
-				'17456e', // Zelda Blue
-				'f1f2f3', // CPE Default
-				'FFFFFF', // Oasis
-				'ffffff', // Windows 10
-				'ffffff', // FandomDesktop Light
-				'0e191a'  // FandomDesktop Dark
-				][theme2];
-	var button_bg=[		  // --accent-background-color
-				'01cdd1', // Fandom Light
-				'01cdd1', // Fandom Dark
-				'404a57', // CC
-				'00b7e0', // Fansun
-				'343434', // Dark
-				'0009ff', // A Secure Light
-				'0009ff', // A Secure Dark
-				'848888', // A Wikia
-				'f5811f', // Gamepedia Light
-				'f5811f', // Gamepedia Dark
-				'ba2f00', // Can I Use... Light
-				'654600', // Can I Use... Dark
-				'3366cc', // Wikimedia Colors
-				'001339', // Zelda Blue
-				'dd8300', // CPE Default
-				'006CB0', // Oasis
-				'0066cc', // Windows 10
-				'005c62', // FandomDesktop Light
-				'005c62'  // FandomDesktop Dark
-				][theme2];
-	var header_bg=[		  // --minibar-background-color
-				'01cdd1', // Fandom Light
-				'01cdd1', // Fandom Dark
-				'dee7e5', // CC
-				'404a57', // Fansun
-				'232323', // Dark
-				'003fff', // A Secure Light
-				'003fff', // A Secure Dark
-				'6871e6', // A Wikia
-				'f5811f', // Gamepedia Light
-				'f5811f', // Gamepedia Dark
-				'AD6500', // Can I Use... Light
-				'654600', // Can I Use... Dark
-				'2a4b8d', // Wikimedia Colors
-				'1d578b', // Zelda Blue
-				'b88300', // CPE Default
-				'006CB0', // Oasis
-				'96b4d1', // Windows 10
-				'005558', // FandomDesktop Light
-				'058d9d'  // FandomDesktop Dark
-				][theme2];
-	var link_bg=[		  // --secondary-accent-background-color
-				'088488', // Fandom Light
-				'01cdd1', // Fandom Dark
-				'009bbe', // CC
-				'00c8e0', // Fansun
-				'4a90e2', // Dark
-				'0009ff', // A Secure Light
-				'cdd6ff', // A Secure Dark
-				'0038ff', // A Wikia
-				'd9721b', // Gamepedia Light
-				'f5811f', // Gamepedia Dark
-				'bf6f00', // Can I Use... Light
-				'D4943A', // Can I Use... Dark
-				'3366cc', // Wikimedia Colors
-				'f4f26b', // Zelda Blue
-				'dd2300', // CPE Default
-				'006CB0', // Oasis
-				'0066cc', // Windows 10
-				'088488', // FandomDesktop Light
-				'00cdd0'  // FandomDesktop Dark
-				][theme2];
-}
 
 
 /* Downloads all modificative values of the current selected theme to a file */
@@ -1095,19 +951,21 @@ if (refresh === true) {
 var content_color =  GetPageShort();
 
 /* This goes before compiling Generic Colors or else they will think the theme is light */
-	$('html').removeClass("theme-fandomdesktop-light").removeClass("theme-fandomdesktop-dark");
+
+	document.querySelector('html').classList.remove("theme-fandomdesktop-light");
+	document.querySelector('html').classList.remove("theme-fandomdesktop-dark");
 	var darkpage = isLightColor(content_color);
 	if (window.MW18darkmode) {
 		if ( darkpage ) {
-			$('html').addClass("theme-fandomdesktop-dark");
+			document.querySelector('html').classList.add("theme-fandomdesktop-dark")
 		} else {
-			$('html').addClass("theme-fandomdesktop-light");
+			document.querySelector('html').classList.add("theme-fandomdesktop-light")
 		}
 	} else {
 		if (!(darkpage)) {
-			$('html').addClass("theme-fandomdesktop-dark");
+			document.querySelector('html').classList.add("theme-fandomdesktop-dark")
 		} else {
-			$('html').addClass("theme-fandomdesktop-light");
+			document.querySelector('html').classList.add("theme-fandomdesktop-light")
 		}
 	}
 
@@ -1298,7 +1156,21 @@ if (['full','legacy'].includes(getComputedStyle(document.querySelector('html')).
 }
 
 /* Set Values for dynamical variables */
-	var result = 		  "--page-secondary-background-color:" + dropdowncolor + ";\n" + 
+	var result = 		  "--body-alternative-foreground-color:" + GetTextVariable(head_color) + ";\n" + 
+						  "--body-alternative-foreground-color-rgb:" + GetTextVariable2(head_color) + ";\n" +
+						  "--superbar-text-alternative-foreground-color:" + GetTextVariable(headertext_color) + ";\n" + 
+						  "--superbar-text-alternative-foreground-color-rgb:" + GetTextVariable2(headertext_color) + ";\n" +
+						  "--page-alternative-foreground-color:" + GetTextVariable(content_color) + ";\n" + 
+						  "--page-alternative-foreground-color-rgb:" + GetTextVariable2(content_color) + ";\n" +
+						  "--page-border-alternative-foreground-color:" + GetTextVariable(border_color) + ";\n" + 
+						  "--page-border-alternative-foreground-color-rgb:" + GetTextVariable2(border_color) + ";\n" +
+						  "--page-text-alternative-foreground-color:" + GetTextVariable(content_text) + ";\n" + 
+						  "--page-text-alternative-foreground-color-rgb:" + GetTextVariable2(content_text) + ";\n" +
+						  "--accent-alternative-foreground-color:" + GetTextVariable(button_color) + ";\n" + 
+						  "--accent-alternative-foreground-color-rgb:" + GetTextVariable2(button_color) + ";\n" +
+						  "--caret-alternative-foreground-color:" + GetTextVariable(caret_color) + ";\n" + 
+						  "--caret-alternative-foreground-color-rgb:" + GetTextVariable2(caret_color) + ";\n" +
+						  "--page-secondary-background-color:" + dropdowncolor + ";\n" + 
 						  "--page-secondary-background-color-hover:" + dropdowncolorH + ";\n" + 
 						  "--page-background-color-hover:" + content_color2 + ";\n" +
 						  "--page-foreground-color:" + GetForegroundVariable(content_color) + ";\n" +
@@ -1435,7 +1307,7 @@ if (['full','legacy'].includes(getComputedStyle(document.querySelector('html')).
 
 
 /* Write them to the stylesheet */
-$("head .theming").html('body {\n' + result + '}');
+document.querySelector("head .theming").innerHTML = 'body {\n' + result + '}';
 
 
 
@@ -1444,36 +1316,64 @@ $("head .theming").html('body {\n' + result + '}');
 /* Toggles Theme */
 function HCa() {
     var x = document.querySelector('html');
-		$('html').attr('theme','A');
+		document.querySelector('html').setAttribute('theme', 'A');
 		ColorUpdate(true);
 		insertKey('theme-selected', 'A' );
-		$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li").removeClass('selected');
-		$(".cpe-dropdown .cpe-dropdown__content .cpe-themes li[data-theme-change='theme-" + getKey('theme-selected') + "']").addClass('selected');
+		var theme_selected = getKey('theme-selected');
+		var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li.selected");
+			if (x) {
+				x.classList.remove("selected");
+			}
+		var y = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li[data-theme-change='theme-" + theme_selected + "']")
+			if (y) {
+				y.classList.add("selected");
+			}
 }
 
 function HCb() {
     var x = document.querySelector('html');
-		$('html').attr('theme','B');
+		document.querySelector('html').setAttribute('theme', 'B');
 		ColorUpdate(true);
 		insertKey('theme-selected', 'B' );
-		$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li").removeClass('selected');
-		$(".cpe-dropdown .cpe-dropdown__content .cpe-themes li[data-theme-change='theme-" + getKey('theme-selected') + "']").addClass('selected');
+		var theme_selected = getKey('theme-selected');
+		var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li.selected");
+			if (x) {
+				x.classList.remove("selected");
+			}
+		var y = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li[data-theme-change='theme-" + theme_selected + "']")
+			if (y) {
+				y.classList.add("selected");
+			}
 }
 
 function HCc() {
     var x = document.querySelector('html');
-		$('html').attr('theme','C');
+		document.querySelector('html').setAttribute('theme', 'C');
 		ColorUpdate(true);
 		insertKey('theme-selected', 'C' );
-		$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li").removeClass('selected');
-		$(".cpe-dropdown .cpe-dropdown__content .cpe-themes li[data-theme-change='theme-" + getKey('theme-selected') + "']").addClass('selected');
+		var theme_selected = getKey('theme-selected');
+		var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li.selected");
+			if (x) {
+				x.classList.remove("selected");
+			}
+		var y = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li[data-theme-change='theme-" + theme_selected + "']")
+			if (y) {
+				y.classList.add("selected");
+			}
 }
 
 function HCd() {
     var x = document.querySelector('html');
-		$('html').attr('theme','D');
+		document.querySelector('html').setAttribute('theme', 'D');
 		ColorUpdate(true);
 		insertKey('theme-selected', 'D' );
-		$(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li").removeClass('selected');
-		$(".cpe-dropdown .cpe-dropdown__content .cpe-themes li[data-theme-change='theme-" + getKey('theme-selected') + "']").addClass('selected');
+		var theme_selected = getKey('theme-selected');
+		var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li.selected");
+			if (x) {
+				x.classList.remove("selected");
+			}
+		var y = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li[data-theme-change='theme-" + theme_selected + "']")
+			if (y) {
+				y.classList.add("selected");
+			}
 }
