@@ -510,8 +510,8 @@ container > main {
 	transform-origin:bottom;
 }
 
-main[toolbar="true"] .evelution-taskbar.col-toolbar,
-main[toolbar="false"] .evelution-taskbar.full-toolbar  {
+container[toolbar="true"] .evelution-taskbar.col-toolbar,
+container[toolbar="false"] .evelution-taskbar.full-toolbar  {
 	transform:scaleY(0);
 }
 
@@ -691,28 +691,28 @@ position:relative;
 }
 
 /* Wide */
-	main[wide="true"] [responsive],
+	container[wide="true"] [responsive],
 	.forced-full [responsive] {
 		width:calc(100% - 45px);
 	}
 
-	main[wide="true"]  .top-gap .cpe-banner-notification__container#floatingbanner,
+	container[wide="true"]  .top-gap .cpe-banner-notification__container#floatingbanner,
 	.forced-full .top-gap .cpe-banner-notification__container#floatingbanner {
 		width:calc(100% - 45px - var(--global-nav-size) - var(--scrollbar-width));
 		max-width:calc(var(--max-width) - 45px - var(--global-nav-size) - var(--scrollbar-width));
 	}
 	
-	main[wide="true"] .wide-off {
+	container[wide="true"] .wide-off {
 		display:none!important;
 	}
-	main[wide="false"] .wide-on {
+	container[wide="false"] .wide-on {
 		display:none!important;
 	}
 
-	main[rail="true"] .rail-off {
+	container[rail="true"] .rail-off {
 		display:none!important;
 	}
-	main[rail="false"] .rail-on {
+	container[rail="false"] .rail-on {
 		display:none!important;
 	}
 
@@ -818,7 +818,7 @@ font-weight:bold;
     transition:top 400ms var(--transitioner);
 }
 
-main[nav="false"] .evelution-floating-actions-container {
+container[nav="false"] .evelution-floating-actions-container {
 	top:10px;
 }
 
@@ -831,11 +831,11 @@ main[nav="false"] .evelution-floating-actions-container {
 @media only screen and (min-width:750px) {
 	/* With Nav and Toolbar */
 	@media only screen and (max-height:389px) {
-		main[nav="true"][toolbar="true"] .evelution-floating-actions .cpe-floating-button {
+		container[nav="true"][toolbar="true"] .evelution-floating-actions .cpe-floating-button {
 			width:18px;
 			height:18px;
 		}
-		main[nav="true"][toolbar="true"] .evelution-floating-actions .cpe-floating-button .cpe-icon {
+		container[nav="true"][toolbar="true"] .evelution-floating-actions .cpe-floating-button .cpe-icon {
 			--icon-size:0.5;
 		}
 
@@ -844,11 +844,11 @@ main[nav="false"] .evelution-floating-actions-container {
 
 
 	@media only screen and (min-height:390px) and (max-height:479px) {
-		main[nav="true"][toolbar="true"] .evelution-floating-actions .cpe-floating-button {
+		container[nav="true"][toolbar="true"] .evelution-floating-actions .cpe-floating-button {
 			width:27px;
 			height:27px;
 		}
-		main[nav="true"][toolbar="true"] .evelution-floating-actions .cpe-floating-button .cpe-icon {
+		container[nav="true"][toolbar="true"] .evelution-floating-actions .cpe-floating-button .cpe-icon {
 			--icon-size:0.7;
 		}
 
@@ -856,14 +856,14 @@ main[nav="false"] .evelution-floating-actions-container {
 
 	/* Without Nav or Toolbar */
 	@media only screen and (max-height:339px) {
-		main[nav="false"][toolbar="true"] .evelution-floating-actions .cpe-floating-button,
-		main[nav="true"][toolbar="false"] .evelution-floating-actions .cpe-floating-button {
+		container[nav="false"][toolbar="true"] .evelution-floating-actions .cpe-floating-button,
+		container[nav="true"][toolbar="false"] .evelution-floating-actions .cpe-floating-button {
 			width:18px;
 			height:18px;
 		}
 		
-		main[nav="false"][toolbar="true"] .evelution-floating-actions .cpe-floating-button .cpe-icon,
-		main[nav="true"][toolbar="false"] .evelution-floating-actions .cpe-floating-button .cpe-icon {
+		container[nav="false"][toolbar="true"] .evelution-floating-actions .cpe-floating-button .cpe-icon,
+		container[nav="true"][toolbar="false"] .evelution-floating-actions .cpe-floating-button .cpe-icon {
 			--icon-size:0.5;
 		}
 
@@ -872,14 +872,14 @@ main[nav="false"] .evelution-floating-actions-container {
 
 
 	@media only screen and (min-height:340px) and (max-height:429px) {
-		main[nav="false"][toolbar="true"] .evelution-floating-actions .cpe-floating-button,
-		main[nav="true"][toolbar="false"] .evelution-floating-actions .cpe-floating-button {
+		container[nav="false"][toolbar="true"] .evelution-floating-actions .cpe-floating-button,
+		container[nav="true"][toolbar="false"] .evelution-floating-actions .cpe-floating-button {
 			width:27px;
 			height:27px;
 		}
 		
-		main[nav="false"][toolbar="true"] .evelution-floating-actions .cpe-floating-button .cpe-icon,
-		main[nav="true"][toolbar="false"] .evelution-floating-actions .cpe-floating-button .cpe-icon {
+		container[nav="false"][toolbar="true"] .evelution-floating-actions .cpe-floating-button .cpe-icon,
+		container[nav="true"][toolbar="false"] .evelution-floating-actions .cpe-floating-button .cpe-icon {
 			--icon-size:0.7;
 		}
 
@@ -888,11 +888,11 @@ main[nav="false"] .evelution-floating-actions-container {
 
 	/* Without Nav and Toolbar */
 	@media only screen and (max-height:289px) {
-		main[nav="false"][toolbar="false"] .evelution-floating-actions .cpe-floating-button {
+		container[nav="false"][toolbar="false"] .evelution-floating-actions .cpe-floating-button {
 			width:18px;
 			height:18px;
 		}
-		main[nav="false"][toolbar="false"] .evelution-floating-actions .cpe-floating-button .cpe-icon {
+		container[nav="false"][toolbar="false"] .evelution-floating-actions .cpe-floating-button .cpe-icon {
 			--icon-size:0.5;
 		}
 
@@ -901,11 +901,11 @@ main[nav="false"] .evelution-floating-actions-container {
 
 
 	@media only screen and (min-height:290px) and (max-height:379px) {
-		main[nav="false"][toolbar="false"] .evelution-floating-actions .cpe-floating-button {
+		container[nav="false"][toolbar="false"] .evelution-floating-actions .cpe-floating-button {
 			width:27px;
 			height:27px;
 		}
-		main[nav="false"][toolbar="false"] .evelution-floating-actions .cpe-floating-button .cpe-icon {
+		container[nav="false"][toolbar="false"] .evelution-floating-actions .cpe-floating-button .cpe-icon {
 			--icon-size:0.7;
 		}
 
@@ -916,11 +916,11 @@ main[nav="false"] .evelution-floating-actions-container {
 @media only screen and (max-width:749px) {
 	/* With Toolbar */
 	@media only screen and (max-height:389px) {
-		main[nav="true"][toolbar="true"] .evelution-floating-actions .cpe-floating-button {
+		container[nav="true"][toolbar="true"] .evelution-floating-actions .cpe-floating-button {
 			width:18px;
 			height:18px;
 		}
-		main[nav="true"][toolbar="true"] .evelution-floating-actions .cpe-floating-button .cpe-icon {
+		container[nav="true"][toolbar="true"] .evelution-floating-actions .cpe-floating-button .cpe-icon {
 			--icon-size:0.5;
 		}
 
@@ -929,11 +929,11 @@ main[nav="false"] .evelution-floating-actions-container {
 
 
 	@media only screen and (min-height:390px) and (max-height:479px) {
-		main[nav="true"][toolbar="true"] .evelution-floating-actions .cpe-floating-button {
+		container[nav="true"][toolbar="true"] .evelution-floating-actions .cpe-floating-button {
 			width:27px;
 			height:27px;
 		}
-		main[nav="true"][toolbar="true"] .evelution-floating-actions .cpe-floating-button .cpe-icon {
+		container[nav="true"][toolbar="true"] .evelution-floating-actions .cpe-floating-button .cpe-icon {
 			--icon-size:0.7;
 		}
 
@@ -941,14 +941,14 @@ main[nav="false"] .evelution-floating-actions-container {
 
 	/* Without Toolbar */
 	@media only screen and (max-height:339px) {
-		main[nav="false"][toolbar="true"] .evelution-floating-actions .cpe-floating-button,
-		main[nav="true"][toolbar="false"] .evelution-floating-actions .cpe-floating-button {
+		container[nav="false"][toolbar="true"] .evelution-floating-actions .cpe-floating-button,
+		container[nav="true"][toolbar="false"] .evelution-floating-actions .cpe-floating-button {
 			width:18px;
 			height:18px;
 		}
 		
-		main[nav="false"][toolbar="true"] .evelution-floating-actions .cpe-floating-button .cpe-icon,
-		main[nav="true"][toolbar="false"] .evelution-floating-actions .cpe-floating-button .cpe-icon {
+		container[nav="false"][toolbar="true"] .evelution-floating-actions .cpe-floating-button .cpe-icon,
+		container[nav="true"][toolbar="false"] .evelution-floating-actions .cpe-floating-button .cpe-icon {
 			--icon-size:0.5;
 		}
 
@@ -957,14 +957,14 @@ main[nav="false"] .evelution-floating-actions-container {
 
 
 	@media only screen and (min-height:340px) and (max-height:429px) {
-		main[nav="false"][toolbar="true"] .evelution-floating-actions .cpe-floating-button,
-		main[nav="true"][toolbar="false"] .evelution-floating-actions .cpe-floating-button {
+		container[nav="false"][toolbar="true"] .evelution-floating-actions .cpe-floating-button,
+		container[nav="true"][toolbar="false"] .evelution-floating-actions .cpe-floating-button {
 			width:27px;
 			height:27px;
 		}
 		
-		main[nav="false"][toolbar="true"] .evelution-floating-actions .cpe-floating-button .cpe-icon,
-		main[nav="true"][toolbar="false"] .evelution-floating-actions .cpe-floating-button .cpe-icon {
+		container[nav="false"][toolbar="true"] .evelution-floating-actions .cpe-floating-button .cpe-icon,
+		container[nav="true"][toolbar="false"] .evelution-floating-actions .cpe-floating-button .cpe-icon {
 			--icon-size:0.7;
 		}
 
@@ -1295,8 +1295,8 @@ gap:2px;
 	}
 	
 
-	main[nav="true"] .evelution-minibar.col-nav,
-	main[nav="false"] .evelution-minibar.full-nav  {
+	container[nav="true"] .evelution-minibar.col-nav,
+	container[nav="false"] .evelution-minibar.full-nav  {
 		--tr-scale:0;
 	}
 
@@ -2138,7 +2138,7 @@ border-top-right-radius:0;
 
 
 @media only screen and (min-width:960px) {
-	 main[rail="false"] .evelution-rail-wrapper {
+	 container[rail="false"] .evelution-rail-wrapper {
 		padding-left:0;
 		padding-right:0;
 		margin-left: calc(0px - var(--module-size));
@@ -2156,7 +2156,7 @@ border-top-right-radius:0;
 			top:calc(var(--minibar-size) + 15px);
 			transition:top 400ms var(--transitioner);
 		}
-		[sticky-rail="1"] main[nav="false"] .evelution-rail-wrapper .evelution-sticky-modules {
+		[sticky-rail="1"][nav="false"] .evelution-rail-wrapper .evelution-sticky-modules {
 			top:15px;
 		}
 		[sticky-rail="1"] .evelution-rail-wrapper  .evelution-sticky-modules .evelution-module-content {
