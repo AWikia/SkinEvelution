@@ -835,17 +835,9 @@ function ColorInvert(color) {
 	var r = 255 - chroma(color).get('rgb.r');
 	var g = 255 - chroma(color).get('rgb.g');
 	var b = 255 - chroma(color).get('rgb.b');
-	var h = chroma(color).get('hsl.h');
-			var page = chroma(color).set('rgb.r', r).set('rgb.g', g).set('rgb.b', b).set('hsl.h', h);
-			var func = (isLightColor(page));
-			var light = chroma(color).get('hsl.l')
-			if ( !(isSuitableColor3(page, color)) )  { // If still not legible
-				if (func) {
-					return chroma(page).set('hsl.l', light*0.6);
-				} else {
-					return chroma(page).set('hsl.l', light/0.6);
-				}
-			}
+	var h = chroma(color).get('lch.h');
+	var h2 = chroma(color).get('hsl.h');
+			var page = chroma(color).set('rgb.r', r).set('rgb.g', g).set('rgb.b', b).set('lch.h', h).set('hsl.h', h2);
 			return page
 
 
