@@ -1,0 +1,102 @@
+/* Styles for the Sevrer Segment */
+.server-mode .evelution-superbar__bottom,
+.server-mode .evelution-superbar__fone .home-nav,
+.home-mode .evelution-superbar__fone .server-nav,
+.server-mode .evelution-minibar .local-navigation,
+.server-mode .server-off,
+container:not(.server-mode) .server-on {
+	display:none;
+}
+
+.server-mode .evelution-superbar {
+	min-height:113px;
+}
+
+.server-mode .evelution-superbar .wordmark {
+	height:80px;
+	margin:12px 0 0 10px;
+}
+
+.server-mode .evelution-superbar .wordmark img {
+    max-height: 80px;
+    max-width: 174px;
+}
+
+.evelution-content .evelution-actions {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index:2;
+}
+
+.evelution-content .evelution-actions .cpe-floating-button-group {
+    padding: 18px 18px 18px 8px;
+    position: static;
+    position: -webkit-sticky;
+    position: sticky;
+    top: var(--minibar-size);
+}
+
+.server-mode .evelution-content .evelution-actions  {
+	display:flex;
+}
+
+.server-mode .evelution-content .evelution-title  {
+	font-size:33px;
+}
+
+
+/* Responsive Design */
+@media only screen and (max-width:749px) {
+	.server-mode .evelution-content .evelution-actions  {
+		display:none;
+	}
+}
+
+@media only screen and (min-width:750px) and (max-width:959px) {
+	.server-mode .evelution-superbar .wordmark img {
+		max-width: 160px;
+	}
+	.server-mode .evelution-superbar .wordmark {
+		height:80px;
+		margin-left:10px;
+	}
+	.server-mode .evelution-content, .server-mode .top-gap {
+		width:100%!important;
+	}
+
+	.server-mode .evelution-floating-actions .cpe-floating-button.toggle-size {
+		display:none!important;
+	}
+	
+	.server-mode .evelution-floating-actions {
+		transform:none;
+	}
+
+	.server-mode .evelution-content .evelution-article-wrapper {
+		--left-content-padding:38px;
+		--right-content-padding:calc(var(--left-content-padding) / 2);
+	}
+
+
+	.server-mode .evelution-rail-wrapper .evelution-module {
+		padding-left:var(--left-content-padding);
+		padding-right:var(--right-content-padding);
+	}
+	
+	.server-mode .evelution-module .evelution-module-content {
+		margin-left:calc(0px - var(--left-content-padding));		
+		margin-right:calc(0px - var(--right-content-padding));
+		padding-left:calc(10px + var(--left-content-padding));
+		padding-right:calc(10px + var(--right-content-padding));
+	}
+
+
+}
+
+@media only screen and (min-width:1440px) {
+	.server-mode .evelution-content .evelution-title  {
+		font-size:41px;
+	}
+}
