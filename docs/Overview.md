@@ -37,7 +37,7 @@ Six different Visual Colors exist:
 - Factory Pack is the OOBE color scheme. This focuses more on rounded corners and uses Ubutnu as the Secondary Font
 - Forced Packs (Two exist) is the color scheme with more emphasis on higher color contrast between elements. Four themes are light and four are dark.
 - Techno Pack is an all-green color scheme. Theme A demonstrates a light text color on a light theme while Theme D demonstrates a dark text color on a dark theme.
-- Retro Packs are four four-theme packs that uses colors dating back from the classic color schemes from Windows 95 to XP. All of them are light
+- Retro Packs are four four-theme packs that uses colors dating back from the classic color schemes from Windows 95 to XP. All of them are light and do not contain any rounded corners or logo filter
 - Neon Pack is an 100% dark color-scheme. Each theme focuses soley on a specific color with Theme A on Green, Theme B on Blue, Theme C on Pink and Theme D on Orange
 
 ## Differences of Evelution and MpistoSkin2
