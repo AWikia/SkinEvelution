@@ -18,6 +18,28 @@ When Evelution gets installed, you'll start fresh with our default themes and se
 
 Themes can easily be made through the use of ThemeDesigner tool (Not available on Miraheze Wikis) or by contacting HM100 on Discord. Themes code must be put into Evelution.css (Or to Common.css if you also have Tunic installed) in order to load. Evelution-specific CSS can go to MediaWiki:Evelution.css (For changing parts of the layout or making your wiki's design themable) as well.
 
+## Using the Different Color Modes, Visual Styles and Colors
+
+### Color Schemes
+Four color schemes exist. Solo Light and Solo dark force Light and Dark modes respectively. Duo Light uses unaltered behavior of themes while Duo Dark forces inverted colors to all themes.
+
+### Visual Styles
+Five Visual Styles exist:
+- Standard is the normal ones
+- Lite is Standard but without transparency effects
+- Basic has lesser blurred shadows and focuses on a less demanding layout
+- High Contrast is Basic but with much stricter focus to Higher Contrast themes
+- Simple has no translucency and has funner-styled containers (i.e. Dropdowns are styled soley using Secondary Accent color)
+
+### Visual Colors
+Six different Visual Colors exist:
+- Standard Pack is the normal ones. Default themes have cubes as the base background and comes with White, Pink, Black, and Dark blue variations. This color scheme can be customized by wikis using MediaWiki:Evelusion.css or MediaWiki:Common.css to make the wiki more unique
+- Factory Pack is the OOBE color scheme. This focuses more on rounded corners and uses Ubutnu as the Secondary Font
+- Forced Packs (Two exist) is the color scheme with more emphasis on higher color contrast between elements. Four themes are light and four are dark.
+- Techno Pack is an all-green color scheme. Theme A demonstrates a light text color on a light theme while Theme D demonstrates a dark text color on a dark theme.
+- Retro Packs are four four-theme packs that uses colors dating back from the classic color schemes from Windows 95 to XP. All of them are light
+- Neon Pack is an 100% dark color-scheme. Each theme focuses soley on a specific color with Theme A on Green, Theme B on Blue, Theme C on Pink and Theme D on Orange
+
 ## Differences of Evelution and MpistoSkin2
 Evelution, despite being essentially similar to MpistoSkin2 from Q.Qore, there're several differences, to name a few:
 - Evelution used to be a plain Desktop skin with official support of Screens between 705 to 1500 pixels whereas MpistoSkin2 was always a hybrid Mobile-Desktop-Desktop XL skin with support of screens between 360 to 2000 pixels. As such, no XS and XL breakpoints existed on Evelution. XL Breakpoint was added in version 3.4.0 while XS Breakpoint was added in version 3.6.0
