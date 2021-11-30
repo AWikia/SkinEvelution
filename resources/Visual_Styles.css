@@ -53,6 +53,10 @@ filter:none!important;
   display:none;
 }
 
+.lite-display {
+	display:none;
+}
+
 
 /* Lite Visual Style */
 :root[accented="true"][visualtheme="lite"] body,
@@ -206,6 +210,9 @@ filter:none!important;
 		content:none;
 	}
 
+	.lite-display {
+		display:inline!important;
+	}
 
 
 	@media only screen and (max-width:1019px) {
@@ -214,6 +221,102 @@ filter:none!important;
 		}
 	}
 }
+
+
+@supports (not ((backdrop-filter:none) or (-webkit-backdrop-filter:none))) {
+	:root[accented="true"] body {
+		--luna-text-background-color:var(--luna-foreground-color);
+		--luna-text-background-color-hover:var(--luna-foreground-color-hover);
+		--luna-text-background-color-rgb:var(--luna-foreground-color-rgb);
+		--luna-text-background-color-hover-rgb:var(--luna-foreground-color-hover-rgb);	
+		--luna-link-color:rgba(var(--luna-foreground-color-hover-rgb), 0.8);
+		--luna-link-color-rgb:var(--luna-foreground-color-hover-rgb);
+	}
+
+	.lightbox {
+		background-color:rgba(var(--page-secondary-background-color), 0.98);
+	}
+
+	.lightbox-container:target {
+		--lightbox-opacity:1!important;
+	}
+
+	.evelution-content .evelution-article-container {
+		--content-space-opacity:1!important;
+	}
+
+	.evelution-minibar {
+		--sticky-nav-opacity:1!important;
+	}
+
+	body,
+	.cpe-dropdown__content,
+	.cpe-dropdown__content .cpe-list.is-linked .cpe-dropdown-level-2 .cpe-dropdown-level-2__content {
+		--dropdown-opacity:1!important;
+		--page-accent-background-color:transparent;
+	}
+
+
+	.constructor .evelution-content .evelution-article-container::before {
+		opacity:1;
+	}
+
+	.evelution-navigation {
+		--navbar-box-shadow: 0 0 transparent;
+	}
+
+	:root {
+		--backdrop-filter:none!important;
+	}
+
+	.evelution-option-pane {
+	filter:none!important;
+	}
+
+
+	[accented="true"] .evelution-content .evelution-page-header-title a,
+	[accented="true"] .evelution-content .evelution-page-header-title a:visited {
+		color:var(--luna-foreground-color);
+	}
+
+
+	[accented="true"] .evelution-content .evelution-page-header-title a:hover,
+	[accented="true"] .evelution-content .evelution-page-header-title a:visited:hover {
+		color:var(--luna-foreground-color-hover);
+	}
+
+
+	[accented="true"] .evelution-rail-wrapper .evelution-module .cpe-button {
+		--button-background-color: var(--luna-foreground-color);
+		--button-background-color-hover: var(--luna-foreground-color-hover);
+		--button-foreground-color: var(--luna-background-color);
+		--button-foreground-color-hover: var(--luna-background-color-hover);
+		--button-foreground-color-inverted: var(--luna-background-color);
+		--secondary-button-background-color:var(--luna-background-color);
+		--secondary-button-foreground-color: var(--luna-foreground-color);
+		--secondary-button-foreground-color-hover: var(--luna-foreground-color-hover);
+	}
+
+
+	.has-daendin::before,
+	.has-daendin::after {
+		content:none;
+	}
+
+
+	.lite-display {
+		display:inline!important;
+	}
+
+
+	@media only screen and (max-width:1019px) {
+		.pane-on .evelution-article-wrapper:after {
+			opacity:1;
+		}
+	}
+
+}
+
 
 @media (prefers-reduced-motion: reduce) {
 *,:before,:after {
