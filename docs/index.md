@@ -14,12 +14,12 @@ To Run Evelution on your wiki, you must have MediaWiki 1.36 or greater. Older ve
 
 ## Browser Requirements
 Evelution requires at least one of these browsers in order to run properly:
-- Chrome 80+
-- Firefox 72+
-- Edge 80+
-- Safari 13.1+ (iOS Safari 13.3+)
+- Chrome 84+
+- Firefox 84+
+- Edge 84+
+- Safari 14+
 - Browsers based on those (Such as Opera)
-Evelution skin will not be blocked from running inside outdated browsers, however do note that we will not be patching any issue found in browsers outside the [supported ones](https://caniuse.com/?compare=firefox+72,chrome+80,safari+13.1&compareCats=all)
+Evelution skin will not be blocked from running inside outdated browsers, however do note that we will not be patching any issue found in browsers outside the [supported ones](https://caniuse.com/?compare=firefox+84,chrome+84,safari+14&compareCats=all)
 
 # Installation
 To Install Evelution, you must download the reposistory first. Make a folder called **Evelution** in **Skins** diractory where you have installed MediaWiki and extract the zipped file contents in **Evelution** folder.  Lastly, put this in **LocalSettings.php**:
