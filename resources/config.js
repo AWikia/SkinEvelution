@@ -19,17 +19,6 @@ function insertKey(key,value) {
 (function() {
     'use strict';
 	CompileVisualL10N();
-
-	if (! ( ($("#ca-edit").length) || ($("#ca-viewsource").length)  ) ) { // Remove Edit Button
-		$(".evelution-floating-actions .cpe-floating-button.edit").remove();
-	} 
-	if (! ($("#ca-edit").length) ) { // Rename to viewsource
-		$(".evelution-floating-actions .cpe-floating-button.edit").attr("cpe-tooltip", mw.msg( 'viewsource' ) );
-		$(".evelution-floating-actions .cpe-floating-button.edit .cpe-icon.material-icons").html('lock');
-	}
-	if (! ($("#ca-history").length) ) { // Remove History Button
-		$(".evelution-floating-actions .cpe-floating-button.history").remove();
-	}
 })();
 
 function CompileVisualL10N() {
