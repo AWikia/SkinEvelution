@@ -162,21 +162,21 @@ This snipset changes the floating actions to be themed according to a chosen col
     --floating-button-hover-background-color: var(--body-background-color-hover);
 }
 
-.cpe-floating-button.page-side-tool.edit {
+.cpe-floating-button.page-side-tool.accent-toggle  {
     --floating-button-color: var(--superbar-text-foreground-color);
     --floating-button-color-hover: var(--superbar-text-foreground-color);
     --floating-button-background-color: var(--superbar-text-background-color);
     --floating-button-hover-background-color: var(--superbar-text-background-color-hover);
 }
 
-.cpe-floating-button.page-side-tool.history {
+.views .cpe-floating-button.page-side-tool  {
     --floating-button-color: var(--secondary-accent-foreground-color);
     --floating-button-color-hover: var(--secondary-accent-foreground-color);
     --floating-button-background-color: var(--secondary-accent-background-color);
     --floating-button-hover-background-color: var(--secondary-accent-background-color-hover);
 }
 
-.cpe-floating-button.page-side-tool.accent-toggle {
+.contrast-modes .cpe-floating-button.page-side-tool  {
     --floating-button-color: var(--page-foreground-color);
     --floating-button-color-hover: var(--page-foreground-color);
     --floating-button-background-color: var(--page-secondary-background-color);
@@ -219,15 +219,15 @@ This snipset changes the floating actions to be themed according to a chosen col
 }
 
 .cpe-floating-button.page-side-tool.toggle-size,
-.cpe-floating-button.page-side-tool.edit {
+.cpe-floating-button.page-side-tool.accent-toggle {
     --floating-button-color: var(--alert-foreground-color);
     --floating-button-color-hover: var(--alert-foreground-color);
     --floating-button-background-color: var(--alert-background-color);
     --floating-button-hover-background-color: var(--alert-background-color-hover);
 }
 
-.cpe-floating-button.page-side-tool.history,
-.cpe-floating-button.page-side-tool.accent-toggle {
+.views .cpe-floating-button.page-side-tool,
+.contrast-modes .cpe-floating-button.page-side-tool {
     --floating-button-color: var(--warning-foreground-color);
     --floating-button-color-hover: var(--warning-foreground-color);
     --floating-button-background-color: var(--warning-background-color);
