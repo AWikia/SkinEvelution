@@ -827,9 +827,9 @@ function MiniColorTest(color) { // Regular Colors
 	var func = (isLightColor(color2));
 	var light = chroma(color).get('hsl.l');
 	if (func) {
-		return chroma(color).set('hsl.l', light-0.02);
+		return chroma(color).set('hsl.l', light-0.02).hex();
 	} else {
-		return chroma(color).set('hsl.l', light+0.1);
+		return chroma(color).set('hsl.l', light+0.1).hex();
 	}
 }
 
@@ -979,6 +979,7 @@ var content_color2 = ColorTest(content_color);
 var adjustment = (window.matchMedia('(prefers-contrast: more)').matches) ? 0.35 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 0.3 : 0.25
 
 	if (darkpage) {
+		var lightness = '#000000';
 		var dropdowncolor = ColorTestTwin(content_color,"#000000",adjustment);
 		if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--page-border-background-color") === 'auto')  ) {
 			var dropdowncolor2 = ColorTestTwin(content_color,"#000000",adjustment*2);
@@ -986,6 +987,7 @@ var adjustment = (window.matchMedia('(prefers-contrast: more)').matches) ? 0.35 
 			var dropdowncolor2 = GetPageBorder();
 		}
 	} else {
+		var lightness = '#ffffff';
 		var dropdowncolor = ColorTestTwin(content_color,"#ffffff",adjustment);
 		if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--page-border-background-color") === 'auto')  ) {
 			var dropdowncolor2 = ColorTestTwin(content_color,"#ffffff",adjustment*2);
@@ -994,8 +996,6 @@ var adjustment = (window.matchMedia('(prefers-contrast: more)').matches) ? 0.35 
 		}
 	}
 var dropdowncolorH = ColorTest(dropdowncolor,false,false,true);
-
-
 
 /** Page text color **/
 var content_text= GetPageText();
@@ -1006,7 +1006,7 @@ if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--page-t
 		var content_text = ColorInvert(content_text);
 	}
 	
-		while ( !(isSuitableColor(content_text, content_color)) ) {
+		while ( ( !(isSuitableColor(content_text, content_color)) ) && (content_text !== lightness) ) {
 			var content_text= MiniColorTest(content_text,false,false,true);
 		}
 
@@ -1027,7 +1027,7 @@ var button_color = GetAccent();
 if ( (window.MW18darkmode === true) ) {
 	var button_color = ColorInvert(button_color);
 }
-		while ( !(isSuitableColor2(button_color, content_color)) ) {
+		while ( ( !(isSuitableColor2(button_color, content_color)) ) && (button_color !== lightness)  ) {
 			var button_color= MiniColorTest(button_color,false,false,true);
 		}
 
@@ -1045,7 +1045,7 @@ if ( (window.MW18darkmode === true) ) {
 	var link_color = ColorInvert(link_color);
 }
 
-		while ( !(isSuitableColor(link_color, content_color)) ) {
+		while ( ( !(isSuitableColor(link_color, content_color)) ) && (link_color !== lightness) ) {
 			var link_color= MiniColorTest(link_color,false,false,true);
 		}
 
@@ -1065,7 +1065,7 @@ if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--page-b
 		var border_color = ColorInvert(border_color);
 	}
 
-		while ( !(isSuitableColor2(border_color, content_color)) ) {
+		while ( ( !(isSuitableColor2(border_color, content_color)) ) && (border_color !== lightness)  ) {
 			var border_color= MiniColorTest(border_color,false,false,true);
 		}
 
