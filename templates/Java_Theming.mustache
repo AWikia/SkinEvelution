@@ -5,6 +5,9 @@ window.MW18ForcedTheme = false;
 /* Some Theming Colors */
 window.MW18PageColor = GetPageShort();
 window.MW18BgColor = GetCommunity();
+/* Contrast Values */
+window.MW18lowContrast = 1.25;
+window.MW18highContrast = 3.00;
 
 /* Visual Themes */
 var visualThemes = ['lite', 'basic', 'contrast', 'simple']
@@ -345,10 +348,10 @@ if ( chroma(page).get('hsl.l') < 0.5) {
 		successh = 140 // 150
 		messageh = -1 // -1
 		
-		contrastA = (window.matchMedia('(prefers-contrast: more)').matches) ? 4.50 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 3.75 : 3.00
-		contrastW = (window.matchMedia('(prefers-contrast: more)').matches) ? 4.00 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 3.25 : 2.50
-		contrastS = (window.matchMedia('(prefers-contrast: more)').matches) ? 3.50 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 2.85 : 2.25
-		contrastM = (window.matchMedia('(prefers-contrast: more)').matches) ? 3.00 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 2.50 : 2.00
+		contrastA = (window.matchMedia('(prefers-contrast: more)').matches) ? window.MW18highContrast*2.00 : (window.matchMedia('(prefers-contrast: custom)').matches) ? window.MW18highContrast*1.50 : window.MW18highContrast*1.0
+		contrastW = (window.matchMedia('(prefers-contrast: more)').matches) ? window.MW18highContrast*1.70 : (window.matchMedia('(prefers-contrast: custom)').matches) ? window.MW18highContrast*1.27 : window.MW18highContrast*0.85
+		contrastS = (window.matchMedia('(prefers-contrast: more)').matches) ? window.MW18highContrast*1.50 : (window.matchMedia('(prefers-contrast: custom)').matches) ? window.MW18highContrast*1.12 : window.MW18highContrast*0.75
+		contrastM = (window.matchMedia('(prefers-contrast: more)').matches) ? window.MW18highContrast*1.40 : (window.matchMedia('(prefers-contrast: custom)').matches) ? window.MW18highContrast*1.05 : window.MW18highContrast*0.7
 
 	for (let i = 0; i < colors.length; i++) {
 		var color = chroma('hsl(0,100%,' + colors[i] + ')').hex(); // Base Color
@@ -824,7 +827,7 @@ function MiniColorTest(color) { // Regular Colors
 	var func = (isLightColor(color2));
 	var light = chroma(color).get('hsl.l');
 	if (func) {
-		return chroma(color).set('hsl.l', light-0.1);
+		return chroma(color).set('hsl.l', light-0.02);
 	} else {
 		return chroma(color).set('hsl.l', light+0.1);
 	}
@@ -895,12 +898,12 @@ function isSuperDarkColor(color) {
 
 
 function isSuitableColor(color,color2) {
-var contrast = (window.matchMedia('(prefers-contrast: more)').matches) ? 4.5 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 3.75 : 3
+var contrast = (window.matchMedia('(prefers-contrast: more)').matches) ? window.MW18highContrast*2 : (window.matchMedia('(prefers-contrast: custom)').matches) ? window.MW18highContrast*1.5 : window.MW18highContrast
 return ((chroma.contrast(color, color2)) >= contrast)
 }
 
 function isSuitableColor2(color,color2) {
-var contrast = (window.matchMedia('(prefers-contrast: more)').matches) ? 1.75 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 1.5 : 1.25
+var contrast = (window.matchMedia('(prefers-contrast: more)').matches) ? window.MW18lowContrast*2 : (window.matchMedia('(prefers-contrast: custom)').matches) ? window.MW18lowContrast*1.5 : window.MW18lowContrast
 return ((chroma.contrast(color, color2)) >= contrast) // For Border Color
 }
 
@@ -1152,6 +1155,8 @@ if (['full','legacy'].includes(getComputedStyle(document.querySelector('html')).
 						  "--body-alternative-foreground-color-rgb:" + GetTextVariable2(head_color) + ";\n" +
 						  "--superbar-text-alternative-foreground-color:" + GetTextVariable(headertext_color) + ";\n" + 
 						  "--superbar-text-alternative-foreground-color-rgb:" + GetTextVariable2(headertext_color) + ";\n" +
+						  "--secondary-accent-alternative-foreground-color:" + GetTextVariable(link_color) + ";\n" + 
+						  "--secondary-accent-alternative-foreground-color-rgb:" + GetTextVariable2(link_color) + ";\n" +
 						  "--page-alternative-foreground-color:" + GetTextVariable(content_color) + ";\n" + 
 						  "--page-alternative-foreground-color-rgb:" + GetTextVariable2(content_color) + ";\n" +
 						  "--page-border-alternative-foreground-color:" + GetTextVariable(border_color) + ";\n" + 
@@ -1162,6 +1167,14 @@ if (['full','legacy'].includes(getComputedStyle(document.querySelector('html')).
 						  "--accent-alternative-foreground-color-rgb:" + GetTextVariable2(button_color) + ";\n" +
 						  "--caret-alternative-foreground-color:" + GetTextVariable(caret_color) + ";\n" + 
 						  "--caret-alternative-foreground-color-rgb:" + GetTextVariable2(caret_color) + ";\n" +
+						  "--alert-alternative-foreground-color:" + GetTextVariable(alert_color) + "!important;\n" + 
+						  "--alert-alternative-foreground-color-rgb:" + GetTextVariable2(alert_color) + "!important;\n" +
+						  "--warning-alternative-foreground-color:" + GetTextVariable(warning_color) + "!important;\n" + 
+						  "--warning-alternative-foreground-color-rgb:" + GetTextVariable2(warning_color) + "!important;\n" +
+						  "--success-alternative-foreground-color:" + GetTextVariable(success_color) + "!important;\n" + 
+						  "--success-alternative-foreground-color-rgb:" + GetTextVariable2(success_color) + "!important;\n" +
+						  "--message-alternative-foreground-color:" + GetTextVariable(message_color) + "!important;\n" + 
+						  "--message-alternative-foreground-color-rgb:" + GetTextVariable2(message_color) + "!important;\n" +
 						  "--page-secondary-background-color:" + dropdowncolor + ";\n" + 
 						  "--page-secondary-background-color-hover:" + dropdowncolorH + ";\n" + 
 						  "--page-background-color-hover:" + content_color2 + ";\n" +
