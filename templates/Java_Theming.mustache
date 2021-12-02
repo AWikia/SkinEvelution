@@ -118,7 +118,7 @@ var visualColorNames = ['Factory', 'Forced', 'Forced II', 'Techno', 'Retro', 'Re
 			y.classList.add("selected");
 		}
 	colortheme(color_mode,false,false);
-	contrastmode(contrast_mode,false);
+	contrastmode(contrast_mode,false,false);
 	SetAccent(accent_active,false);
 	ManagerRows(); // For Task Manager Only
 	VisualStyleCompile(); // Compiles the Contrast Options
@@ -585,7 +585,7 @@ function colortheme(theme='auto', repaint=true, save=true) {
 	}
 }
 
-function contrastmode(theme='auto', save=true) {
+function contrastmode(theme='auto', repaint=true, save=true) {
 	window.MW18contrastmode = theme
 	if (save) {
 		insertKey('contrast-mode', theme );
@@ -598,7 +598,9 @@ function contrastmode(theme='auto', save=true) {
 	if (y) {
 		y.classList.add("selected")
 	}
-	ColorUpdate(false);
+	if (repaint) {
+		ColorUpdate(false);
+	}
 }
 
 
@@ -988,7 +990,7 @@ if (refresh === true) {
 	var theme = window.MW18wikitheme;
 	colortheme(theme, false,false);
 	var cmode = window.MW18contrastmode;
-	contrastmode(cmode, false);
+	contrastmode(cmode, false,false);
 	/** Foreground Colors 
 	document.querySelector('html').style.setProperty("--light-theme-foreground-color-hover", ColorTest(getComputedStyle(document.querySelector('html')).getPropertyValue("--light-theme-foreground-color")) );
 	document.querySelector('html').style.setProperty("--dark-theme-foreground-color-hover", ColorTest(getComputedStyle(document.querySelector('html')).getPropertyValue("--dark-theme-foreground-color")) );
