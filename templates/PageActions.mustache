@@ -10,16 +10,6 @@
 				</span>
 			</a>
 		{{/has-forced-full-width}}
-		<a class="cpe-floating-button accent edit page-side-tool page-side-edit" href="{{html-edit-link}}/{{ html-titlealt}}" cpe-tooltip="{{msg-edit}}">
-			<span class="cpe-icon material-icons">
-				edit
-			</span>
-		</a>
-		<a class="cpe-floating-button accent history page-side-tool" href="{{html-history-link}}/{{ html-titlealt}}" cpe-tooltip="{{msg-history}}">
-			<span class="cpe-icon material-icons">
-				history
-			</span>
-		</a>
 		<a class="cpe-floating-button accent accent-toggle page-side-tool" onclick="ToggleAccent()" cpe-tooltip="{{msg-evelution-toggleaccent}}">
 			<span class="cpe-icon material-icons">
 				<span class="cpe-icon material-icons accented-off">
@@ -30,6 +20,55 @@
 				</span>
 			</span>
 		</a>
+		<!-- Views -->
+		<div class="cpe-dropdown views" cpe-orient="land">				
+			<div class="cpe-floating-button accent views page-side-tool" cpe-tooltip="{{msg-views}}">
+				<span class="cpe-icon material-icons">
+					tv
+				</span>
+			</div>
+			<div class="cpe-dropdown__content cpe-visual-appearance">					
+				{{#data-portlets.data-views}}{{>Portlet2}}{{/data-portlets.data-views}}
+			</div>
+		</div>
+		<!-- Contrast Modes -->
+		<div class="cpe-dropdown contrast-modes forced-colors-off" cpe-orient="land">				
+			<div class="cpe-floating-button accent contrast-modes page-side-tool" cpe-tooltip="{{msg-evelution-contrast-modes}}">
+				<span class="cpe-icon material-icons">
+					filter_b_and_w
+				</span>
+			</div>
+			<div class="cpe-dropdown__content cpe-visual-appearance">					
+				 <ul class="cpe-list is-linked cpe-contrast-modes">						
+					<li data-contrast-mode="auto">
+						<a onclick="contrastmode('auto')">
+							{{msg-evelution-designer-auto}}
+						</a>
+					</li>
+					<li data-contrast-mode="low">
+						<a onclick="contrastmode('low')">
+							{{msg-evelution-contrast-low}}
+						</a>
+					</li>
+					<li data-contrast-mode="med">
+						<a onclick="contrastmode('med')">
+							{{msg-evelution-contrast-med}}
+						</a>
+					</li>
+					<li data-contrast-mode="hi">
+						<a onclick="contrastmode('hi')">
+							{{msg-evelution-contrast-hi}}
+						</a>
+					</li>
+					<li data-contrast-mode="vhi">
+						<a onclick="contrastmode('vhi')">
+							{{msg-evelution-contrast-vhi}}
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+
 		<!-- Color Modes -->
 		<div class="cpe-dropdown color-modes forced-colors-off" cpe-orient="land">				
 			<div class="cpe-floating-button accent color-modes page-side-tool" cpe-tooltip="{{msg-evelution-colormodes}}">

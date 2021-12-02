@@ -391,6 +391,15 @@ function RemoveEmptyMenus() {
 	}
 	document.querySelector('html').classList.remove("client-dark-mode");
 	
+
+// Remove the Views Dropdown, if no views exist
+
+	if (! (document.querySelector(".evelution-floating-actions .cpe-dropdown.views .cpe-dropdown__content .cpe-list > li")) ) {
+		var float = document.querySelector(".evelution-floating-actions .cpe-dropdown.views");
+		float.remove();
+	}
+
+
 	
 // Remove the Language Dropdown, if no languages exist
 

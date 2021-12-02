@@ -1,5 +1,6 @@
 ﻿window.MW18darkmode = false;
 window.MW18wikitheme = 'auto';
+window.MW18contrastmode = 'auto';
 window.MW18ContrastNotice = false;
 window.MW18ForcedTheme = false;
 /* Some Theming Colors */
@@ -38,6 +39,9 @@ var visualColorNames = ['Factory', 'Forced', 'Forced II', 'Techno', 'Retro', 'Re
 	if (getKey('color-mode') === '-1') {
 		insertKey('color-mode', 'auto' );
 	}
+	if (getKey('contrast-mode') === '-1') {
+		insertKey('contrast-mode', 'auto' );
+	}
 	if (getKey('accent-active') === '-1') {
 		insertKey('accent-active', 'false' );
 	}
@@ -46,6 +50,7 @@ var visualColorNames = ['Factory', 'Forced', 'Forced II', 'Techno', 'Retro', 'Re
 	var color_active = getKey('color-active');
 	var filter_active = getKey('filter-active');
 	var color_mode = getKey('color-mode');
+	var contrast_mode = getKey('contrast-mode');
 	var accent_active = getKey('accent-active');
     getParams().forEach(function (param) {
         var key = param.split("=")[0];
@@ -92,12 +97,17 @@ var visualColorNames = ['Factory', 'Forced', 'Forced II', 'Techno', 'Retro', 'Re
 				color_mode = value;
 				console.info('Color mode settings overriden');
                 break;
+            case 'usecontrastmode':
+				contrast_mode = value;
+				console.info('Contrast mode settings overriden');
+                break;
             case 'useaccent':
 				accent_active = value;
 				console.info('Accent mode settings overriden');
                 break;
         }
     });
+	document.querySelector("head").insertAdjacentHTML('afterbegin','<style class="theming"></style>');
 	document.querySelector('html').setAttribute('theme', theme_selected);
 	var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li.selected");
 		if (x) {
@@ -108,8 +118,8 @@ var visualColorNames = ['Factory', 'Forced', 'Forced II', 'Techno', 'Retro', 'Re
 			y.classList.add("selected");
 		}
 	colortheme(color_mode,false,false);
+	contrastmode(contrast_mode,false);
 	SetAccent(accent_active,false);
-	document.querySelector("head").insertAdjacentHTML('afterbegin','<style class="theming"></style>');
 	ManagerRows(); // For Task Manager Only
 	VisualStyleCompile(); // Compiles the Contrast Options
 	VisualStyle(style_active,false);
@@ -169,14 +179,16 @@ function VisualStyle(style,save=true) {
 		document.querySelector('html').setAttribute("visualtheme", visualThemes[style]);
 	}
 	var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-styles li.selected")
-		if (x) {
-			x.classList.remove("selected");
-		}
-	document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-styles li#style" + style).classList.add("selected");
-
-		if (save) {
+	if (x) {
+		x.classList.remove("selected");
+	}
+	var y = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-styles li#style" + style);
+	if (y) {
+		y.classList.add("selected");
+	}
+	if (save) {
 		insertKey('style-active', style );
-		}
+	}
 }
 
 function VisualColor(style,save=true) {
@@ -189,8 +201,10 @@ function VisualColor(style,save=true) {
 	if (x) {
 		x.classList.remove("selected");
 	}
-	document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-colors li#color" + style).classList.add("selected")
-
+	var y = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-colors li#color" + style);
+	if (y) {
+		y.classList.add("selected")
+	}
 
 		if (save) {
 		insertKey('color-active', style );
@@ -322,6 +336,38 @@ function GetMessage() {
 		return BestAlertColor()[3];
 }
 
+function ContrastRatio() {
+	if (MW18contrastmode == 'auto') {
+		return (window.matchMedia('(prefers-contrast: more)').matches) ? 2.00 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 1.50 : 1.0
+	} else if (MW18contrastmode == 'low') {
+		return 1.00
+	} else if (MW18contrastmode == 'med') {
+		return 1.50
+	} else if (MW18contrastmode == 'hi') {
+		return 2.00
+	} else if (MW18contrastmode == 'vhi') {
+		return 2.50
+	} else {
+		return (window.matchMedia('(prefers-contrast: more)').matches) ? 2.00 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 1.50 : 1.0
+	}
+}
+
+function ContrastRatio2() {
+	if (MW18contrastmode == 'auto') {
+		return (window.matchMedia('(prefers-contrast: more)').matches) ? 0.35 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 0.30 : 0.25
+	} else if (MW18contrastmode == 'low') {
+		return 0.25
+	} else if (MW18contrastmode == 'med') {
+		return 0.30
+	} else if (MW18contrastmode == 'hi') {
+		return 0.35
+	} else if (MW18contrastmode == 'vhi') {
+		return 0.40
+	} else {
+		return (window.matchMedia('(prefers-contrast: more)').matches) ? 0.35 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 0.30 : 0.25
+	}
+}
+
 function BestAlertColor() {
 var page = GetPage()
 var invpage = page // ColorInvert(page)
@@ -348,10 +394,10 @@ if ( chroma(page).get('hsl.l') < 0.5) {
 		successh = 140 // 150
 		messageh = -1 // -1
 		
-		contrastA = (window.matchMedia('(prefers-contrast: more)').matches) ? window.MW18highContrast*2.00 : (window.matchMedia('(prefers-contrast: custom)').matches) ? window.MW18highContrast*1.50 : window.MW18highContrast*1.0
-		contrastW = (window.matchMedia('(prefers-contrast: more)').matches) ? window.MW18highContrast*1.70 : (window.matchMedia('(prefers-contrast: custom)').matches) ? window.MW18highContrast*1.27 : window.MW18highContrast*0.85
-		contrastS = (window.matchMedia('(prefers-contrast: more)').matches) ? window.MW18highContrast*1.50 : (window.matchMedia('(prefers-contrast: custom)').matches) ? window.MW18highContrast*1.12 : window.MW18highContrast*0.75
-		contrastM = (window.matchMedia('(prefers-contrast: more)').matches) ? window.MW18highContrast*1.40 : (window.matchMedia('(prefers-contrast: custom)').matches) ? window.MW18highContrast*1.05 : window.MW18highContrast*0.7
+		contrastA = window.MW18highContrast*ContrastRatio()
+		contrastW = window.MW18highContrast*ContrastRatio()*0.85
+		contrastS = window.MW18highContrast*ContrastRatio()*0.75
+		contrastM = window.MW18highContrast*ContrastRatio()*0.7
 
 	for (let i = 0; i < colors.length; i++) {
 		var color = chroma('hsl(0,100%,' + colors[i] + ')').hex(); // Base Color
@@ -529,13 +575,32 @@ function colortheme(theme='auto', repaint=true, save=true) {
 	if (x) {
 		x.classList.remove("selected");
 	}
-	document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-color-modes li[data-color-mode='" + theme + "']").classList.add("selected")
-
+	var y = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-color-modes li[data-color-mode='" + theme + "']");
+	if (y) {
+		y.classList.add("selected")
+	}
 
 	if ((old_dark != window.MW18darkmode) && (repaint) ) {
 		ColorUpdate(false);
 	}
 }
+
+function contrastmode(theme='auto', save=true) {
+	window.MW18contrastmode = theme
+	if (save) {
+		insertKey('contrast-mode', theme );
+	}
+	var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-contrast-modes li.selected");
+	if (x) {
+		x.classList.remove("selected");
+	}
+	var y = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-contrast-modes li[data-contrast-mode='" + theme + "']");
+	if (y) {
+		y.classList.add("selected")
+	}
+	ColorUpdate(false);
+}
+
 
 function SetAccent(tick='false',save='true') {
 		if (save) {
@@ -898,12 +963,12 @@ function isSuperDarkColor(color) {
 
 
 function isSuitableColor(color,color2) {
-var contrast = (window.matchMedia('(prefers-contrast: more)').matches) ? window.MW18highContrast*2 : (window.matchMedia('(prefers-contrast: custom)').matches) ? window.MW18highContrast*1.5 : window.MW18highContrast
+var contrast = window.MW18highContrast*ContrastRatio()
 return ((chroma.contrast(color, color2)) >= contrast)
 }
 
 function isSuitableColor2(color,color2) {
-var contrast = (window.matchMedia('(prefers-contrast: more)').matches) ? window.MW18lowContrast*2 : (window.matchMedia('(prefers-contrast: custom)').matches) ? window.MW18lowContrast*1.5 : window.MW18lowContrast
+var contrast = window.MW18lowContrast*ContrastRatio()
 return ((chroma.contrast(color, color2)) >= contrast) // For Border Color
 }
 
@@ -922,6 +987,8 @@ function ColorUpdate(refresh=true) {
 if (refresh === true) {
 	var theme = window.MW18wikitheme;
 	colortheme(theme, false,false);
+	var cmode = window.MW18contrastmode;
+	contrastmode(cmode, false);
 	/** Foreground Colors 
 	document.querySelector('html').style.setProperty("--light-theme-foreground-color-hover", ColorTest(getComputedStyle(document.querySelector('html')).getPropertyValue("--light-theme-foreground-color")) );
 	document.querySelector('html').style.setProperty("--dark-theme-foreground-color-hover", ColorTest(getComputedStyle(document.querySelector('html')).getPropertyValue("--dark-theme-foreground-color")) );
@@ -976,7 +1043,7 @@ if ( (window.MW18darkmode === true) ) {
 
 var content_color2 = ColorTest(content_color);
 
-var adjustment = (window.matchMedia('(prefers-contrast: more)').matches) ? 0.35 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 0.3 : 0.25
+var adjustment = ContrastRatio2();
 
 	if (darkpage) {
 		var lightness = '#000000';
