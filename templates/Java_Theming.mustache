@@ -371,23 +371,13 @@ function ContrastRatio2() {
 function BestAlertColor() {
 var page = GetPage()
 var invpage = page // ColorInvert(page)
-if ( chroma(page).get('hsl.l') < 0.5) {
-/** V1 **/
-	if (chroma(page).luminance() < 0.5) {
-		var colors = ['45%', '40%', '35%', '30%', '25%', '20%', '15%', '10%', '5%', '55%', '60%', '65%', '70%', '75%', '80%', '85%', '90%', '95%']
-	} else {
-		var colors = ['55%', '60%', '65%', '70%', '75%', '80%', '85%', '90%', '95%', '45%', '40%', '35%', '30%', '25%', '20%', '15%', '10%', '5%']
-	}
-} else {
-/** V1 **/
-	if (chroma(page).luminance() > 0.5) {
-		var colors = ['45%', '40%', '35%', '30%', '25%', '20%', '15%', '10%', '5%', '55%', '60%', '65%', '70%', '75%', '80%', '85%', '90%', '95%']
-	} else {
-		var colors = ['55%', '60%', '65%', '70%', '75%', '80%', '85%', '90%', '95%', '45%', '40%', '35%', '30%', '25%', '20%', '15%', '10%', '5%']
-	}
-}
 
-//	var colors = ['60%', '45%', '70%', '35%', '80%', '25%', '90%', '15%', '5%', '55%', '40%', '65%', '30%', '75%', '20%', '85%', '10%', '95%']
+
+if (isLightColor(page)) { // ( chroma(page).get('hsl.l') < 0.5)
+	var colors = ['95%', '90%', '85%', '80%', '75%', '70%', '65%', '60%', '55%', '45%', '40%', '35%', '30%', '25%', '20%', '15%', '10%', '5%']
+} else {
+	var colors = ['5%', '10%', '15%', '20%', '25%', '30%', '35%', '40%', '45%', '55%', '60%', '65%', '70%', '75%', '80%', '85%', '90%', '95%']
+}
 
 		alerth = 352 // 360
 		warningh = 29 // 38
@@ -414,12 +404,12 @@ if ( chroma(page).get('hsl.l') < 0.5) {
 
 	/* If no color can be found legible, fallback to specific color */	
 		var color = chroma('hsl(0,100%,' + colors[17] + ')' ).hex();
-		var alert = ColorTestTwin(color, invpage, 0.15,alerth);
-		var alertsat = chroma(alert).get('hsl.s');
+		var alert = chroma(ColorTestTwin(color, invpage, 0.1,alerth)).set('hsl.s',1); // Alert
+		var alertsat = chroma(alert).get('hsl.s'); // Saturation of Alert Color
 		var alertlight =  chroma(alert).get('hsl.l') // Lightness of Alert Color
-		var warn = chroma(ColorTestTwin(color, invpage, 0.1,warningh)).set('hsl.s',alertsat).set('hsl.l', alertlight);
-		var done = chroma(ColorTestTwin(color, invpage, 0.1,successh)).set('hsl.s',alertsat).set('hsl.l', alertlight);
-		var info = chroma(ColorTestTwin(color, invpage, 0.1,messageh)).set('hsl.l',alertlight);
+		var warn = chroma(ColorTestTwin(color, invpage, 0.1,warningh)).set('hsl.s',alertsat).set('hsl.l', alertlight);  // Warning
+		var done = chroma(ColorTestTwin(color, invpage, 0.1,successh)).set('hsl.s',alertsat).set('hsl.l', alertlight); // Success
+		var info = chroma(ColorTestTwin(color, invpage, 0.1,messageh)).set('hsl.l', alertlight); // Message
 		return [alert, warn, done, info];
 
  
