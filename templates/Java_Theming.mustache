@@ -341,10 +341,16 @@ function ContrastRatio() {
 		return (window.matchMedia('(prefers-contrast: more)').matches) ? 2.00 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 1.50 : 1.0
 	} else if (MW18contrastmode == 'low') {
 		return 1.00
+	} else if (MW18contrastmode == 'med-low') {
+		return 1.25
 	} else if (MW18contrastmode == 'med') {
 		return 1.50
+	} else if (MW18contrastmode == 'med-hi') {
+		return 1.75
 	} else if (MW18contrastmode == 'hi') {
 		return 2.00
+	} else if (MW18contrastmode == 'hi-vhi') {
+		return 2.25
 	} else if (MW18contrastmode == 'vhi') {
 		return 2.50
 	} else {
@@ -357,10 +363,16 @@ function ContrastRatio2() {
 		return (window.matchMedia('(prefers-contrast: more)').matches) ? 0.35 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 0.30 : 0.25
 	} else if (MW18contrastmode == 'low') {
 		return 0.25
+	} else if (MW18contrastmode == 'med-low') {
+		return 0.275
 	} else if (MW18contrastmode == 'med') {
 		return 0.30
+	} else if (MW18contrastmode == 'med-hi') {
+		return 0.325
 	} else if (MW18contrastmode == 'hi') {
 		return 0.35
+	} else if (MW18contrastmode == 'hi-vhi') {
+		return 0.375
 	} else if (MW18contrastmode == 'vhi') {
 		return 0.40
 	} else {
@@ -886,7 +898,7 @@ function MiniColorTest(color) { // Regular Colors
 	if (func) {
 		return chroma(color).set('hsl.l', light-0.02).hex();
 	} else {
-		return chroma(color).set('hsl.l', light+0.1).hex();
+		return chroma(color).set('hsl.l', light+0.02).hex();
 	}
 }
 
