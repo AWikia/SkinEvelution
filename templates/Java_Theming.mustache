@@ -386,9 +386,9 @@ var invpage = page // ColorInvert(page)
 
 
 if (isLightColor(page)) { // ( chroma(page).get('hsl.l') < 0.5)
-	var colors = ['95%', '90%', '85%', '80%', '75%', '70%', '65%', '60%', '55%', '45%', '40%', '35%', '30%', '25%', '20%', '15%', '10%', '5%']
+	var colors = ['98%', '96%', '94%', '92%', '90%', '88%', '86%', '84%', '82%', '80%', '78%', '76%', '74%', '72%', '70%', '68%', '66%', '64%', '62%', '60%', '58%', '56%', '54%', '52%', '48%', '46%', '44%', '42%', '40%', '38%', '36%', '34%', '32%', '30%', '28%', '26%', '24%', '22%', '20%', '18%', '16%', '14%', '12%', '10%', '8%', '6%', '4%', '2%']
 } else {
-	var colors = ['5%', '10%', '15%', '20%', '25%', '30%', '35%', '40%', '45%', '55%', '60%', '65%', '70%', '75%', '80%', '85%', '90%', '95%']
+	var colors = ['2%', '4%', '6%', '8%', '10%', '12%', '14%', '16%', '18%', '20%', '22%', '24%', '26%', '28%', '30%', '32%', '34%', '36%', '38%', '40%', '42%', '44%', '46%', '48%', '52%', '54%', '56%', '58%', '60%', '62%', '64%', '66%', '68%', '70%', '72%', '74%', '76%', '78%', '80%', '82%', '84%', '86%', '88%', '90%', '92%', '94%', '96%', '98%']
 }
 
 		alerth = 352 // 360
@@ -403,12 +403,12 @@ if (isLightColor(page)) { // ( chroma(page).get('hsl.l') < 0.5)
 
 	for (let i = 0; i < colors.length; i++) {
 		var color = chroma('hsl(0,100%,' + colors[i] + ')').hex(); // Base Color
-		var alert = chroma(ColorTestTwin(color, invpage, 0.1,alerth)).set('hsl.s',1); // Alert
+		var alert = chroma(ColorTestTwin(color, invpage, 0,alerth)).set('hsl.s',1); // Alert
 		var alertsat = chroma(alert).get('hsl.s'); // Saturation of Alert Color
 		var alertlight =  chroma(alert).get('hsl.l') // Lightness of Alert Color
-		var warn = chroma(ColorTestTwin(color, invpage, 0.1,warningh)).set('hsl.s',alertsat).set('hsl.l', alertlight);  // Warning
-		var done = chroma(ColorTestTwin(color, invpage, 0.1,successh)).set('hsl.s',alertsat).set('hsl.l', alertlight); // Success
-		var info = chroma(ColorTestTwin(color, invpage, 0.1,messageh)).set('hsl.l', alertlight); // Message
+		var warn = chroma(alert).set('hsl.h',warningh).set('hsl.s',alertsat).set('hsl.l', alertlight);  // Warning
+		var done = chroma(alert).set('hsl.h',successh).set('hsl.s',alertsat).set('hsl.l', alertlight); // Success
+		var info = chroma(ColorTestTwin(color, invpage, 0,messageh)).set('hsl.l', alertlight); // Message
 		if ( ((chroma.contrast(page, alert)) >= contrastA) && ((chroma.contrast(page, warn)) >= contrastW) && ((chroma.contrast(page, done)) >= contrastS) && ((chroma.contrast(page, info)) >= contrastM) ) {
 			return [alert, warn, done, info];
 		}
@@ -416,12 +416,12 @@ if (isLightColor(page)) { // ( chroma(page).get('hsl.l') < 0.5)
 
 	/* If no color can be found legible, fallback to specific color */	
 		var color = chroma('hsl(0,100%,' + colors[17] + ')' ).hex();
-		var alert = chroma(ColorTestTwin(color, invpage, 0.1,alerth)).set('hsl.s',1); // Alert
+		var alert = chroma(ColorTestTwin(color, invpage, 0,alerth)).set('hsl.s',1); // Alert
 		var alertsat = chroma(alert).get('hsl.s'); // Saturation of Alert Color
 		var alertlight =  chroma(alert).get('hsl.l') // Lightness of Alert Color
-		var warn = chroma(ColorTestTwin(color, invpage, 0.1,warningh)).set('hsl.s',alertsat).set('hsl.l', alertlight);  // Warning
-		var done = chroma(ColorTestTwin(color, invpage, 0.1,successh)).set('hsl.s',alertsat).set('hsl.l', alertlight); // Success
-		var info = chroma(ColorTestTwin(color, invpage, 0.1,messageh)).set('hsl.l', alertlight); // Message
+		var warn = chroma(alert).set('hsl.h',warningh).set('hsl.s',alertsat).set('hsl.l', alertlight);  // Warning
+		var done = chroma(alert).set('hsl.h',successh).set('hsl.s',alertsat).set('hsl.l', alertlight); // Success
+		var info = chroma(ColorTestTwin(color, invpage, 0,messageh)).set('hsl.l', alertlight); // Message
 		return [alert, warn, done, info];
 
  
@@ -1186,11 +1186,11 @@ if ( (window.MW18darkmode === true) ) {
 
 var caretcolor1 = ColorTest(caret_color);
 
-
+var generic = BestAlertColor();
 
 /** Alert Color **/
 /* Set Vars */
-var alert_color = BestAlertColor()[0];
+var alert_color = generic[0];
 var alertcolor1 = ColorTest(alert_color,false,false,true);
 
 
@@ -1198,20 +1198,20 @@ var alertcolor1 = ColorTest(alert_color,false,false,true);
 
 /** Warning Color **/
 /* Set Vars */
-var warning_color = BestAlertColor()[1];
+var warning_color = generic[1];
 var warningcolor1 = ColorTest(warning_color,false,false,true);
 
 
 
 /** Success Color **/
 /* Set Vars */
-var success_color = BestAlertColor()[2];
+var success_color = generic[2];
 var successcolor1 = ColorTest(success_color,false,false,true);
 
 
 /** Message Color **/
 /* Set Vars */
-var message_color = BestAlertColor()[3];
+var message_color = generic[3];
 var messagecolor1 = ColorTest(message_color,false,false,true);
 
 
