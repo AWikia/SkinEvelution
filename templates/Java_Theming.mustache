@@ -90,7 +90,13 @@ var visualColorNames = ['Factory', 'Forced', 'Forced II', 'Techno', 'Retro', 'Re
 				console.info('Active visual style settings overriden')
                 break;
             case 'usevisualcolors':
-				color_active = visualColors.indexOf(value);
+				if (value === 'standard') {
+					color_active = 'S';
+				} else if (value === 'standard2') {
+					color_active = 'S2';
+				} else {
+					color_active = visualColors.indexOf(value);
+				}
 				console.info('Active visual colors settings overriden')
                 break;
             case 'usecolormode':
@@ -194,6 +200,8 @@ function VisualStyle(style,save=true) {
 function VisualColor(style,save=true) {
 	if ( (style === 'S') || (style === -1) ) { // Standard Style
 		document.querySelector('html').setAttribute("visualcolors", "standard");
+	} else if ( (style === 'S2') || (style === -2) ) { // Standard Style
+		document.querySelector('html').setAttribute("visualcolors", "standard2");
 	} else {
 		document.querySelector('html').setAttribute("visualcolors", visualColors[style]);
 	}
@@ -223,7 +231,7 @@ function VisualStyleCompile() {
 	}
 /* Visual Colors */
 	for (let i = 0; i < visualColors.length; i++) {
-		str = '<li id="color' + i + '"><a onclick="VisualColor(' + i + ')">' + visualColorNames[i] + '</a></li>'
+		str = '<li class="td-off" id="color' + i + '"><a onclick="VisualColor(' + i + ')">' + visualColorNames[i] + '</a></li>'
 		document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-colors, .skin-tunic #visual-colors .mw-portlet-body ul").insertAdjacentHTML('beforeend',str);
 	}
 

@@ -595,8 +595,10 @@ function InitDesigner() {
 	SelectInputs();
     var pageTitle = $("#firstheading > span").html();
     var title = mw.message( 'pagetitle' ).text();
-    document.title = title.replace("$1", pageTitle)
-	$("html").attr("visualcolors", "standard"); // Unset Visual Colors mode
+    document.title = title.replace("$1", pageTitle);
+    if ( ['standard','standard2'].indexOf($("html").attr("visualcolors")) === -1){
+		$("html").attr("visualcolors", "standard"); // Unset Visual Colors mode
+	}
 	ColorUpdate();
 }
 
@@ -634,7 +636,7 @@ function ApplyTheme () {
 		var customfont = $('#secondfont').val();
     }
 		result = '\n/* Community Theme */\n' +
-				 '[theme="' + $('html').attr('theme') + '"][visualcolors="standard"] {\n' + // Beginning
+				 '[theme="' + $('html').attr('theme') + '"][visualcolors="' + $('html').attr('visualcolors') + '"] {\n' + // Beginning
 				 '--body-background-image:' + image + ';\n' +
 				 '--body-background-image-opacity:' + $('#bodyimageopacity').val() + "%" + ';\n' +
 				 '--body-background-color:' + $('#bodybg').val()  + ';\n' +
@@ -717,7 +719,7 @@ function CopyTheme() {
     } else {
 		var customfont = $('#secondfont').val();
     }
-		result = '[theme="' + $('html').attr('theme') + '"][visualcolors="standard"] {\n' + // Beginning
+		result = '[theme="' + $('html').attr('theme') + '"][visualcolors="' + $('html').attr('visualcolors') + '"] {\n' + // Beginning
 				 '--body-background-image:' + image + ';\n' +
 				 '--body-background-image-opacity:' + $('#bodyimageopacity').val() + "%" + ';\n' +
 				 '--body-background-color:' + $('#bodybg').val()  + ';\n' +
