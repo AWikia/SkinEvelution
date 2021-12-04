@@ -33,7 +33,7 @@ Five Visual Styles exist:
 
 ### Visual Colors
 Six different Visual Colors exist:
-- Standard Pack is the normal ones. Default themes have cubes as the base background and comes with White, Pink, Black, and Dark blue variations. This color scheme can be customized by wikis using MediaWiki:Evelusion.css or MediaWiki:Common.css to make the wiki more unique
+- Standard Packs are the normal ones. Default themes have cubes as the base background and comes with four light and four dark themes. The first pack comes with White, Pink, Black, and Dark blue variations whereas the second ones with Yellow, Green, Orange and Red. These color schemes can be customized by wikis using MediaWiki:Evelusion.css or MediaWiki:Common.css to make the wiki more unique
 - Factory Pack is the OOBE color scheme. This focuses more on rounded corners and uses Ubutnu as the Secondary Font
 - Forced Packs (Two exist) is the color scheme with more emphasis on higher color contrast between elements. Four themes are light and four are dark.
 - Techno Pack is an all-green color scheme. Theme A demonstrates a light text color on a light theme while Theme D demonstrates a dark text color on a dark theme.
