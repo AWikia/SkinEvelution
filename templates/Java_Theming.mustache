@@ -15,8 +15,8 @@ var visualThemes = ['lite', 'basic', 'contrast', 'simple']
 var visualThemeNames = ['Lite','Basic','High Contrast','Simple'];
 var contrastVisual = 2;
 /* Visual Colors */
-var visualColors = ['factorycolors','forced','forced2','techno','retro','retro2','retro3','retro4','neon'];
-var visualColorNames = ['Factory', 'Forced', 'Forced II', 'Techno', 'Retro', 'Retro II', 'Retro III', 'Retro IV', 'Neon'];
+var visualColors = ['factorycolors','forced','techno','retro','retro2','neon'];
+var visualColorNames = ['Factory', 'Forced','Techno', 'Retro', 'Retro II', 'Neon'];
 
 (function () {
 	// Evelution Specific
@@ -79,6 +79,26 @@ var visualColorNames = ['Factory', 'Forced', 'Forced II', 'Techno', 'Retro', 'Re
 					case '3':
 						theme_selected = 'D'
 						break;
+					case 'theme-E':
+					case 'E':
+					case '4':
+						theme_selected = 'E'
+						break;
+					case 'theme-F':
+					case 'F':
+					case '5':
+						theme_selected = 'F'
+						break;
+					case 'theme-G':
+					case 'G':
+					case '6':
+						theme_selected = 'G'
+						break;
+					case 'theme-H':
+					case 'H':
+					case '7':
+						theme_selected = 'H'
+						break;
 					default:
 						theme_selected = 'A'
 						break;
@@ -93,7 +113,7 @@ var visualColorNames = ['Factory', 'Forced', 'Forced II', 'Techno', 'Retro', 'Re
 				if (value === 'standard') {
 					color_active = 'S';
 				} else if (value === 'standard2') {
-					color_active = 'S2';
+					color_active = 'S';
 				} else {
 					color_active = visualColors.indexOf(value);
 				}
@@ -1420,59 +1440,11 @@ document.querySelector("head .theming").innerHTML = 'body {\n' + result + '}';
 }
 
 /* Toggles Theme */
-function HCa() {
+function ToggleTheme(theme="A") {
     var x = document.querySelector('html');
-		document.querySelector('html').setAttribute('theme', 'A');
+		document.querySelector('html').setAttribute('theme', theme);
 		ColorUpdate(true);
-		insertKey('theme-selected', 'A' );
-		var theme_selected = getKey('theme-selected');
-		var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li.selected");
-			if (x) {
-				x.classList.remove("selected");
-			}
-		var y = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li[data-theme-change='theme-" + theme_selected + "']")
-			if (y) {
-				y.classList.add("selected");
-			}
-}
-
-function HCb() {
-    var x = document.querySelector('html');
-		document.querySelector('html').setAttribute('theme', 'B');
-		ColorUpdate(true);
-		insertKey('theme-selected', 'B' );
-		var theme_selected = getKey('theme-selected');
-		var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li.selected");
-			if (x) {
-				x.classList.remove("selected");
-			}
-		var y = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li[data-theme-change='theme-" + theme_selected + "']")
-			if (y) {
-				y.classList.add("selected");
-			}
-}
-
-function HCc() {
-    var x = document.querySelector('html');
-		document.querySelector('html').setAttribute('theme', 'C');
-		ColorUpdate(true);
-		insertKey('theme-selected', 'C' );
-		var theme_selected = getKey('theme-selected');
-		var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li.selected");
-			if (x) {
-				x.classList.remove("selected");
-			}
-		var y = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li[data-theme-change='theme-" + theme_selected + "']")
-			if (y) {
-				y.classList.add("selected");
-			}
-}
-
-function HCd() {
-    var x = document.querySelector('html');
-		document.querySelector('html').setAttribute('theme', 'D');
-		ColorUpdate(true);
-		insertKey('theme-selected', 'D' );
+		insertKey('theme-selected', theme );
 		var theme_selected = getKey('theme-selected');
 		var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li.selected");
 			if (x) {
