@@ -26,7 +26,7 @@ function CompileVisualL10N() {
 /* Visual Themes */
 var visualThemeNames_l10n = ['Lite',mw.msg( 'evelution-style-basic' ),mw.msg( 'evelution-style-contrast' ),mw.msg( 'evelution-style-simple' )];
 /* Visual Colors */
-var visualColorNames_l10n = [mw.msg( 'evelution-color-factorycolors' ), mw.msg( 'evelution-color-forced' ), mw.msg( 'evelution-color-forced' ) + ' II', mw.msg( 'evelution-color-techno' ), mw.msg( 'evelution-color-retro' ), mw.msg( 'evelution-color-retro' ) + ' II', mw.msg( 'evelution-color-retro' ) + ' III', mw.msg( 'evelution-color-retro' ) + ' IV', mw.msg( 'evelution-color-neon' )];
+var visualColorNames_l10n = [mw.msg( 'evelution-color-factorycolors' ), mw.msg( 'evelution-color-forced' ), mw.msg( 'evelution-color-techno' ), mw.msg( 'evelution-color-retro' ), mw.msg( 'evelution-color-retro' ) + ' II', mw.msg( 'evelution-color-neon' )];
 
 
 // Changes Strings into l10ned version
