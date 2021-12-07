@@ -1272,7 +1272,8 @@ if (['full','legacy'].includes(getComputedStyle(document.querySelector('html')).
 }
 
 /* Set Values for dynamical variables */
-	var result = 		  "--body-alternative-foreground-color:" + GetTextVariable(head_color) + ";\n" + 
+	var result = 		  ":root {" +
+						  "--body-alternative-foreground-color:" + GetTextVariable(head_color) + ";\n" + 
 						  "--body-alternative-foreground-color-rgb:" + GetTextVariable2(head_color) + ";\n" +
 						  "--superbar-text-alternative-foreground-color:" + GetTextVariable(headertext_color) + ";\n" + 
 						  "--superbar-text-alternative-foreground-color-rgb:" + GetTextVariable2(headertext_color) + ";\n" +
@@ -1397,7 +1398,9 @@ if (['full','legacy'].includes(getComputedStyle(document.querySelector('html')).
 						  "--message-background-color-rgb:" + Color2(message_color) + "!important;\n" +
 						  "--message-foreground-color-rgb:" + GetForegroundVariable2(message_color) + "!important;\n" +
 						  "--message-foreground-color-hover-rgb:" + GetForegroundVariable2(message_color,true) + "!important;\n" +
+						  "}" +
 						  //
+						  "body {" +
 						  "--page-background-color:" + content_color + ";\n" +
 						  "--page-gradient-color:" + GetGradientVariable(content_color,'page')[0] + ";\n" +
 						  "--page-gradient-color-hover:" + GetGradientVariable(content_color,'page')[1] + ";\n" +
@@ -1429,11 +1432,12 @@ if (['full','legacy'].includes(getComputedStyle(document.querySelector('html')).
 						  "--bg-tile-y:" + ['repeat','no-repeat'][["false", "true"].indexOf( getComputedStyle(document.querySelector('html')).getPropertyValue("--body-background-no-vertical-tiling") ) ] + ";\n" +
 						  "--bg-overlay-display:" + overlay[0] + ";\n" +
 						  "--bg-overlay-size:" + overlay[1] + ";\n" +
-						  "--invertion-filter:" + ['none','invert(1) hue-rotate(180deg)'][[false, true].indexOf(window.MW18darkmode) ] + ";\n"
+						  "--invertion-filter:" + ['none','invert(1) hue-rotate(180deg)'][[false, true].indexOf(window.MW18darkmode) ] + ";\n" +
+						  "}"
 
 
 /* Write them to the stylesheet */
-document.querySelector("head .theming").innerHTML = 'body {\n' + result + '}';
+document.querySelector("head .theming").innerHTML = result;
 
 
 
