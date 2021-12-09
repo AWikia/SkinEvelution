@@ -96,10 +96,10 @@ This snipset changes the floating actions to be themed according to a chosen col
 ### Caret
 ```css
 .cpe-floating-button.page-side-tool {
-    --floating-button-color: var(--caret-foreground-color);
-    --floating-button-color-hover: var(--caret-foreground-color);
-    --floating-button-background-color: var(--caret-background-color);
-    --floating-button-hover-background-color: var(--caret-background-color-hover);
+    --floating-button-color: var(--tertiary-accent-foreground-color);
+    --floating-button-color-hover: var(--tertiary-accent-foreground-color);
+    --floating-button-background-color: var(--tertiary-accent-background-color);
+    --floating-button-hover-background-color: var(--tertiary-accent-background-color-hover);
 	--floating-button-fadeout-opacity:0;
 }
 ```
@@ -205,10 +205,10 @@ This snipset changes the floating actions to be themed according to a chosen col
 }
 
 .themes .cpe-floating-button.page-side-tool {
-    --floating-button-color: var(--caret-foreground-color);
-    --floating-button-color-hover: var(--caret-foreground-color);
-    --floating-button-background-color: var(--caret-background-color);
-    --floating-button-hover-background-color: var(--caret-background-color-hover);
+    --floating-button-color: var(--tertiary-accent-foreground-color);
+    --floating-button-color-hover: var(--tertiary-accent-foreground-color);
+    --floating-button-background-color: var(--tertiary-accent-background-color);
+    --floating-button-hover-background-color: var(--tertiary-accent-background-color-hover);
 }
 ```
 
