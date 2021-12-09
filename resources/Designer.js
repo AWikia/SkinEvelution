@@ -472,11 +472,11 @@ function InitDesigner() {
 		// TR
 			'<tr>' +
 				'<th style="width:150px;">' + 
-					mw.msg( 'evelution-designer-anchor' ) + 
+					mw.msg( 'evelution-designer-saccent' ) + 
 				'</td>' +
 
 				'<td style="text-align:center; width:150px">' + 
-					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#1e5aa8" id="anchorcolor" list="td_colors" />' + // Page BG
+					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#1e5aa8" id="saccentcolor" list="td_colors" />' + // Page BG
 				'</td>' +
 			'</tr>' +
 		// TR
@@ -489,19 +489,31 @@ function InitDesigner() {
 					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#9dc3f7" id="accentcolor" list="td_colors" />' + // Page BG
 				'</td>' +
 			'</tr>' +
-			'<tr>' +
-				'<th colspan="2">' + mw.msg( 'evelution-designer-other' ) + '</th>' +
-			'</tr>' +
 		// TR
 			'<tr>' +
 				'<th style="width:150px;">' + 
-					mw.msg( 'evelution-designer-caret' ) + 
+					mw.msg( 'evelution-designer-taccent' ) + 
 				'</td>' +
 
 				'<td style="text-align:center; width:150px">' + 
 					'<input type="checkbox" name="auto5" id="auto5">' + '<label for="auto5">' + mw.msg( 'evelution-designer-auto' ) + '</label> <br>' +
-					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#237841" id="caretcolor" list="td_colors" />' + // Page BG
+					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#237841" id="taccentcolor" list="td_colors" />' + // Page BG
 				'</td>' +
+			'</tr>' +
+		// TR
+			'<tr>' +
+				'<th style="width:150px;">' + 
+					mw.msg( 'evelution-designer-qaccent' ) + 
+				'</td>' +
+
+				'<td style="text-align:center; width:150px">' + 
+					'<input type="checkbox" name="auto4" id="auto4">' + '<label for="auto4">' + mw.msg( 'evelution-designer-auto' ) + '</label> <br>' +
+					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#237841" id="qaccentcolor" list="td_colors" />' + // Page BG
+				'</td>' +
+			'</tr>' +
+
+			'<tr>' +
+				'<th colspan="2">' + mw.msg( 'evelution-designer-other' ) + '</th>' +
 			'</tr>' +
 		// TR
 			'<tr>' +
@@ -619,10 +631,15 @@ function ApplyTheme () {
 	} else {
 		var autocolor3 = $('#pagebg3').val();
 	}
+	if (document.querySelector('.wikitable #auto4').checked) {
+		var autocolor4 = 'auto';
+	} else {
+		var autocolor4 = $('#qaccentcolor').val();
+	}
 	if (document.querySelector('.wikitable #auto5').checked) {
 		var autocolor5 = 'auto';
 	} else {
-		var autocolor5 = $('#caretcolor').val();
+		var autocolor5 = $('#taccentcolor').val();
 	}
 	if ( ( ( $('#bodyimage').val().startsWith('url("') ) && ( $('#bodyimage').val().endsWith('")') ) ) ||
 		  ( ( $('#bodyimage').val().startsWith('url(') ) && ( $('#bodyimage').val().endsWith(')') ) ) ) {
@@ -647,12 +664,13 @@ function ApplyTheme () {
 				 '--body-background-size:' + $('.bg_size .cpe-select__value').attr('value')  + ';\n' +
 				 '--body-background-no-horizontal-tiling:' + (!( document.querySelector('input#tilingH').checked ))  + ';\n' +
 				 '--body-background-no-vertical-tiling:' + (!( document.querySelector('input#tilingV').checked ))  + ';\n' +
-				 '--secondary-accent-background-color:' + $('#anchorcolor').val() + ';\n' +
+				 '--secondary-accent-background-color:' + $('#saccentcolor').val() + ';\n' +
 				 '--page-background-color:' + $('#pagebg').val() + ';\n' +
 				 '--page-border-background-color:' + autocolor2  + ';\n' +
 				 '--page-text-background-color:' + autocolor3  + ';\n' +
 				 '--accent-background-color:' + $('#accentcolor').val() + ';\n' +
-				 '--caret-background-color:' + autocolor5  + ';\n' +
+				 '--tertiary-accent-background-color:' + autocolor5  + ';\n' +
+				 '--quaternary-accent-background-color:' + autocolor4  + ';\n' +
 				 '--custom-secondary-font:' + customfont + ';\n' +
 				 '--border-radius:' + $('#border-radius').val() + "px"  + ';\n' +
 				 '--logo-filter:' + $('#filter').val() + ';\n' +
@@ -703,10 +721,15 @@ function CopyTheme() {
 	} else {
 		var autocolor3 = $('#pagebg3').val();
 	}
+	if (document.querySelector('.wikitable #auto4').checked) {
+		var autocolor4 = 'auto';
+	} else {
+		var autocolor4 = $('#qaccentcolor').val();
+	}
 	if (document.querySelector('.wikitable #auto5').checked) {
 		var autocolor5 = 'auto';
 	} else {
-		var autocolor5 = $('#caretcolor').val();
+		var autocolor5 = $('#taccentcolor').val();
 	}
 	if ( ( ( $('#bodyimage').val().startsWith('url("') ) && ( $('#bodyimage').val().endsWith('")') ) ) ||
 		  ( ( $('#bodyimage').val().startsWith('url(') ) && ( $('#bodyimage').val().endsWith(')') ) ) ) {
@@ -730,12 +753,13 @@ function CopyTheme() {
 				 '--body-background-size:' + $('.bg_size .cpe-select__value').attr('value')  + ';\n' +
 				 '--body-background-no-horizontal-tiling:' + (!( document.querySelector('input#tilingH').checked ))  + ';\n' +
 				 '--body-background-no-vertical-tiling:' + (!( document.querySelector('input#tilingV').checked ))  + ';\n' +
-				 '--secondary-accent-background-color:' + $('#anchorcolor').val() + ';\n' +
+				 '--secondary-accent-background-color:' + $('#saccentcolor').val() + ';\n' +
 				 '--page-background-color:' + $('#pagebg').val() + ';\n' +
 				 '--page-border-background-color:' + autocolor2  + ';\n' +
 				 '--page-text-background-color:' + autocolor3  + ';\n' +
 				 '--accent-background-color:' + $('#accentcolor').val() + ';\n' +
-				 '--caret-background-color:' + autocolor5  + ';\n' +
+				 '--tertiary-accent-background-color:' + autocolor5  + ';\n' +
+				 '--quaternary-accent-background-color:' + autocolor4  + ';\n' +
 				 '--custom-secondary-font:' + customfont + ';\n' +
 				 '--border-radius:' + $('#border-radius').val() + "px"  + ';\n' +
 				 '--logo-filter:' + $('#filter').val() + ';\n' +
@@ -820,17 +844,25 @@ function PasteTheme() {
 	}
 	$('.wikitable #pagebg2').prop('disabled',(document.querySelector('.wikitable #auto2').checked) );
 	// Anchor BG
-	$('#anchorcolor').val( getComputedStyle(document.querySelector('html')).getPropertyValue("--secondary-accent-background-color") );
+	$('#saccentcolor').val( getComputedStyle(document.querySelector('html')).getPropertyValue("--secondary-accent-background-color") );
 	// Accent BG
 	$('#accentcolor').val( getComputedStyle(document.querySelector('html')).getPropertyValue("--accent-background-color") );
 	// Caret Color
-	if (getComputedStyle(document.querySelector('html')).getPropertyValue("--caret-background-color") === 'auto' ) {
+	if (getComputedStyle(document.querySelector('html')).getPropertyValue("--tertiary-accent-background-color") === 'auto' ) {
 		document.querySelector('.wikitable #auto5').checked = true;
 	} else {
 		document.querySelector('.wikitable #auto5').checked = false;
-		$('#caretcolor').val( getComputedStyle(document.querySelector('html')).getPropertyValue("--caret-background-color") );
+		$('#taccentcolor').val( getComputedStyle(document.querySelector('html')).getPropertyValue("--tertiary-accent-background-color") );
 	}
-	$('.wikitable #caretcolor').prop('disabled',(document.querySelector('.wikitable #auto5').checked) );
+	$('.wikitable #taccentcolor').prop('disabled',(document.querySelector('.wikitable #auto5').checked) );
+	// Quaternary Accent Color
+	if (getComputedStyle(document.querySelector('html')).getPropertyValue("--quaternary-accent-background-color") === 'auto' ) {
+		document.querySelector('.wikitable #auto4').checked = true;
+	} else {
+		document.querySelector('.wikitable #auto4').checked = false;
+		$('#qaccentcolor').val( getComputedStyle(document.querySelector('html')).getPropertyValue("--quaternary-accent-background-color") );
+	}
+	$('.wikitable #qaccentcolor').prop('disabled',(document.querySelector('.wikitable #auto4').checked) );
 	// Border Radius
 	$('#border-radius').val( parseInt(getComputedStyle(document.querySelector('html')).getPropertyValue("--border-radius")) );
 	// Secondary Font
@@ -855,6 +887,7 @@ function TestTheme() {
 	$("body").attr("testing", "true");
 	$(".evelution-page-header-contribution-buttons .designer-buttons2 .theme-clear-button").prop('disabled', false);
 	$(".evelution-page-header-contribution-buttons .designer-buttons2 .theme-test-button").prop('disabled', true);
+	document.querySelector('body').focus();
 	if (document.querySelector('.wikitable #auto1').checked) {
 		var autocolor1 = 'auto';
 	} else {
@@ -870,10 +903,15 @@ function TestTheme() {
 	} else {
 		var autocolor3 = $('#pagebg3').val();
 	}
+	if (document.querySelector('.wikitable #auto4').checked) {
+		var autocolor4 = 'auto';
+	} else {
+		var autocolor4 = $('#qaccentcolor').val();
+	}
 	if (document.querySelector('.wikitable #auto5').checked) {
 		var autocolor5 = 'auto';
 	} else {
-		var autocolor5 = $('#caretcolor').val();
+		var autocolor5 = $('#taccentcolor').val();
 	}
 	if ( ( ( $('#bodyimage').val().startsWith('url("') ) && ( $('#bodyimage').val().endsWith('")') ) ) ||
 		  ( ( $('#bodyimage').val().startsWith('url(') ) && ( $('#bodyimage').val().endsWith(')') ) ) ) {
@@ -894,9 +932,10 @@ function TestTheme() {
 	document.querySelector('html').style.setProperty("--page-background-color", $('#pagebg').val() );
 	document.querySelector('html').style.setProperty("--page-border-background-color", autocolor2 );
 	document.querySelector('html').style.setProperty("--page-text-background-color", autocolor3 );
-	document.querySelector('html').style.setProperty("--secondary-accent-background-color", $('#anchorcolor').val() );
+	document.querySelector('html').style.setProperty("--secondary-accent-background-color", $('#saccentcolor').val() );
 	document.querySelector('html').style.setProperty("--accent-background-color", $('#accentcolor').val() );
-	document.querySelector('html').style.setProperty("--caret-background-color", autocolor5 );
+	document.querySelector('html').style.setProperty("--tertiary-accent-background-color", autocolor5 );
+	document.querySelector('html').style.setProperty("--quaternary-accent-background-color", autocolor4 );
 	document.querySelector('html').style.setProperty("--border-radius", $('#border-radius').val() + "px" );
 	document.querySelector('html').style.setProperty("--custom-secondary-font", $('#secondfont').val() );
 	document.querySelector('html').style.setProperty("--logo-filter", $('#filter').val() );
@@ -918,6 +957,7 @@ function ClearTheme() {
 	// Tests theme
 	$(".evelution-page-header-contribution-buttons .designer-buttons2 .theme-clear-button").prop('disabled', true);
 	$(".evelution-page-header-contribution-buttons .designer-buttons2 .theme-test-button").prop('disabled', false);
+	document.querySelector('body').focus();
 	document.querySelector('html').style.removeProperty("--body-background-color");
 	document.querySelector('html').style.removeProperty("--body-background-image");
 	document.querySelector('html').style.removeProperty("--body-background-image-opacity");
@@ -933,7 +973,8 @@ function ClearTheme() {
 	document.querySelector('html').style.removeProperty("--page-text-background-color");
 	document.querySelector('html').style.removeProperty("--secondary-accent-background-color");
 	document.querySelector('html').style.removeProperty("--accent-background-color");
-	document.querySelector('html').style.removeProperty("--caret-background-color");
+	document.querySelector('html').style.removeProperty("--tertiary-accent-background-color");
+	document.querySelector('html').style.removeProperty("--quaternary-accent-background-color");
 	document.querySelector('html').style.removeProperty("--border-radius");
 	document.querySelector('html').style.removeProperty("--custom-secondary-font");
 	document.querySelector('html').style.removeProperty("--logo-filter");
@@ -979,10 +1020,17 @@ $('.wikitable #auto3').click(
 								TestDynamicTheme();
 							}   
 						);
+$('.wikitable #auto4').click(
+							function(e) {
+								e.preventDefault
+								$('.wikitable #qaccentcolor').prop('disabled',(document.querySelector('.wikitable #auto4').checked) );
+								TestDynamicTheme();
+							}   
+						);
 $('.wikitable #auto5').click(
 							function(e) {
 								e.preventDefault
-								$('.wikitable #caretcolor').prop('disabled',(document.querySelector('.wikitable #auto5').checked) );
+								$('.wikitable #taccentcolor').prop('disabled',(document.querySelector('.wikitable #auto5').checked) );
 								TestDynamicTheme();
 							}   
 						);
