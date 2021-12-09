@@ -1341,10 +1341,20 @@ gap:2px;
 		margin-top:calc(0px - var(--minibar-size));
 		box-sizing:content-box;
 		transform-origin:top;
+	}
+	
+	.evelution-minibar::after {
+		display:block;
+		position:absolute;
+		width:100%;
+		height:100%;
+		z-index:-1;
+		content:"";
+		top:0;
+		left:0;
 		-webkit-backdrop-filter:var(--backdrop-filter);
 		backdrop-filter:var(--backdrop-filter);
 	}
-	
 
 	container[nav="true"] .evelution-minibar.col-nav,
 	container[nav="false"] .evelution-minibar.full-nav  {
@@ -1366,11 +1376,6 @@ gap:2px;
 		left:100%;
 		align-self:flex-end;
 		z-index:98;
-	}
-
-
-	.evelution-minibar .cpe-dropdown__content {
-		--dropdown-opacity:0.8;
 	}
 
 	.constructor .evelution-minibar {
