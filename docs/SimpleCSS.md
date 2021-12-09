@@ -4,7 +4,7 @@ Those CSS snipsets go to MediaWiki:Evelution.css (For Sitewide Use) or to Specia
 ## Custom Page Side Tool Customization
 This snipset changes the floating actions to be themed according to a chosen color value, akin to the Simple Visual Style:
 
-### Body/Community
+### Body
 ```css
 .cpe-floating-button.page-side-tool {
     --floating-button-color: var(--body-foreground-color);
@@ -15,7 +15,7 @@ This snipset changes the floating actions to be themed according to a chosen col
 }
 ```
 
-### Superbar Text/Community Header Text
+### Superbar Text
 ```css
 .cpe-floating-button.page-side-tool {
     --floating-button-color: var(--superbar-text-foreground-color);
@@ -26,7 +26,7 @@ This snipset changes the floating actions to be themed according to a chosen col
 }
 ```
 
-### Secondary Accent/Anchor
+### Secondary Accent
 ```css
 .cpe-floating-button.page-side-tool {
     --floating-button-color: var(--secondary-accent-foreground-color);
@@ -93,13 +93,26 @@ This snipset changes the floating actions to be themed according to a chosen col
 }
 ```
 
-### Caret
+### Tertiary Accent
 ```css
 .cpe-floating-button.page-side-tool {
     --floating-button-color: var(--tertiary-accent-foreground-color);
     --floating-button-color-hover: var(--tertiary-accent-foreground-color);
     --floating-button-background-color: var(--tertiary-accent-background-color);
     --floating-button-hover-background-color: var(--tertiary-accent-background-color-hover);
+	--floating-button-fadeout-opacity:0;
+}
+```
+
+
+
+### Quaternary Accent
+```css
+.cpe-floating-button.page-side-tool {
+    --floating-button-color: var(--quaternary-accent-foreground-color);
+    --floating-button-color-hover: var(--quaternary-accent-foreground-color);
+    --floating-button-background-color: var(--quaternary-accent-background-color);
+    --floating-button-hover-background-color: var(--quaternary-accent-background-color-hover);
 	--floating-button-fadeout-opacity:0;
 }
 ```
@@ -177,38 +190,38 @@ This snipset changes the floating actions to be themed according to a chosen col
 }
 
 .contrast-modes .cpe-floating-button.page-side-tool  {
-    --floating-button-color: var(--page-foreground-color);
-    --floating-button-color-hover: var(--page-foreground-color);
-    --floating-button-background-color: var(--page-secondary-background-color);
-    --floating-button-hover-background-color: var(--page-secondary-background-color-hover);
-}
-
-.color-modes .cpe-floating-button.page-side-tool {
     --floating-button-color: var(--page-border-foreground-color);
     --floating-button-color-hover: var(--page-border-foreground-color);
     --floating-button-background-color: var(--page-border-background-color);
     --floating-button-hover-background-color: var(--page-border-background-color-hover);
 }
 
-.styles .cpe-floating-button.page-side-tool {
+.color-modes .cpe-floating-button.page-side-tool {
     --floating-button-color: var(--page-text-foreground-color);
     --floating-button-color-hover: var(--page-text-foreground-color);
     --floating-button-background-color: var(--page-text-background-color);
     --floating-button-hover-background-color: var(--page-text-background-color-hover);
 }
 
-.colors .cpe-floating-button.page-side-tool {
+.styles .cpe-floating-button.page-side-tool {
     --floating-button-color: var(--accent-foreground-color);
     --floating-button-color-hover: var(--accent-foreground-color);
     --floating-button-background-color: var(--accent-background-color);
     --floating-button-hover-background-color: var(--accent-background-color-hover);
 }
 
-.themes .cpe-floating-button.page-side-tool {
+.colors .cpe-floating-button.page-side-tool {
     --floating-button-color: var(--tertiary-accent-foreground-color);
     --floating-button-color-hover: var(--tertiary-accent-foreground-color);
     --floating-button-background-color: var(--tertiary-accent-background-color);
     --floating-button-hover-background-color: var(--tertiary-accent-background-color-hover);
+}
+
+.themes .cpe-floating-button.page-side-tool {
+    --floating-button-color: var(--quaternary-accent-foreground-color);
+    --floating-button-color-hover: var(--quaternary-accent-foreground-color);
+    --floating-button-background-color: var(--quaternary-accent-background-color);
+    --floating-button-hover-background-color: var(--quaternary-accent-background-color-hover);
 }
 ```
 
