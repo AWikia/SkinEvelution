@@ -135,6 +135,8 @@ var visualColorNames = ['Factory', 'Forced','Techno', 'Retro', 'Retro II', 'Neon
     });
 	document.querySelector("head").insertAdjacentHTML('afterbegin','<style class="theming"></style>');
 	document.querySelector('html').setAttribute('theme', theme_selected);
+	document.querySelector('body').setAttribute('tabindex',-1);; // Add the CPE button class
+	document.querySelector('body').focus();
 	var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li.selected");
 		if (x) {
 			x.classList.remove("selected");
@@ -335,14 +337,25 @@ function GetAccent() {
 	}
 }
 
-function GetCaret() {
+function GetTertiaryAccent() {
 	if (ForcedColors()) {
-		return getComputedStyle(document.querySelector('.fc-canvastext')).getPropertyValue("color");
-	} else if (getComputedStyle(document.querySelector('html')).getPropertyValue("--caret-background-color") === 'auto') {
+		return getComputedStyle(document.querySelector('.fc-highlight')).getPropertyValue("color");
+	} else if (getComputedStyle(document.querySelector('html')).getPropertyValue("--tertiary-accent-background-color") === 'auto') {
 		var color = getComputedStyle(document.querySelector('html')).getPropertyValue("--accent-background-color").trim();
 		return color
 	} else {
-		return getComputedStyle(document.querySelector('html')).getPropertyValue("--caret-background-color").trim();
+		return getComputedStyle(document.querySelector('html')).getPropertyValue("--tertiary-accent-background-color").trim();
+	}
+}
+
+function GetQuaternaryAccent() {
+	if (ForcedColors()) {
+		return getComputedStyle(document.querySelector('.fc-canvas')).getPropertyValue("color");
+	} else if (getComputedStyle(document.querySelector('html')).getPropertyValue("--quaternary-accent-background-color") === 'auto') {
+		var color = getComputedStyle(document.querySelector('html')).getPropertyValue("--page-background-color").trim();
+		return color
+	} else {
+		return getComputedStyle(document.querySelector('html')).getPropertyValue("--quaternary-accent-background-color").trim();
 	}
 }
 
@@ -777,20 +790,34 @@ function DownloadTheme(full=false) {
 				 '--accent-foreground-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--accent-foreground-color-rgb")  + ';\n' +
 				 '--accent-foreground-color-hover-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--accent-foreground-color-hover-rgb")  + ';\n' +
 				 '--accent-alternative-foreground-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--accent-alternative-foreground-color-rgb")  + ';\n' +
-				 // Caret
-				 '--caret-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--caret-background-color")  + ';\n' +
-				 '--caret-background-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--caret-background-color-hover")  + ';\n' +
-				 '--caret-fadeout-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--caret-fadeout-color")  + ';\n' +
-				 '--caret-gradient-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--caret-gradient-color")  + ';\n' +
-				 '--caret-gradient-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--caret-gradient-color-hover")  + ';\n' +
-				 '--caret-foreground-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--caret-foreground-color")  + ';\n' +
-				 '--caret-foreground-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--caret-foreground-color-hover")  + ';\n' +
-				 '--caret-foreground-color-inverted:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--caret-foreground-color-inverted")  + ';\n' +
-				 '--caret-alternative-foreground-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--caret-alternative-foreground-color")  + ';\n' +
-				 '--caret-background-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--caret-background-color-rgb")  + ';\n' +
-				 '--caret-foreground-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--caret-foreground-color-rgb")  + ';\n' +
-				 '--caret-foreground-color-hover-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--caret-foreground-color-hover-rgb")  + ';\n' +
-				 '--caret-alternative-foreground-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--caret-alternative-foreground-color-rgb")  + ';\n' +
+				 // Tertiary Accent Color
+				 '--tertiary-accent-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--tertiary-accent-background-color")  + ';\n' +
+				 '--tertiary-accent-background-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--tertiary-accent-background-color-hover")  + ';\n' +
+				 '--tertiary-accent-fadeout-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--tertiary-accent-fadeout-color")  + ';\n' +
+				 '--tertiary-accent-gradient-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--tertiary-accent-gradient-color")  + ';\n' +
+				 '--tertiary-accent-gradient-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--tertiary-accent-gradient-color-hover")  + ';\n' +
+				 '--tertiary-accent-foreground-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--tertiary-accent-foreground-color")  + ';\n' +
+				 '--tertiary-accent-foreground-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--tertiary-accent-foreground-color-hover")  + ';\n' +
+				 '--tertiary-accent-foreground-color-inverted:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--tertiary-accent-foreground-color-inverted")  + ';\n' +
+				 '--tertiary-accent-alternative-foreground-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--tertiary-accent-alternative-foreground-color")  + ';\n' +
+				 '--tertiary-accent-background-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--tertiary-accent-background-color-rgb")  + ';\n' +
+				 '--tertiary-accent-foreground-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--tertiary-accent-foreground-color-rgb")  + ';\n' +
+				 '--tertiary-accent-foreground-color-hover-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--tertiary-accent-foreground-color-hover-rgb")  + ';\n' +
+				 '--tertiary-accent-alternative-foreground-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--tertiary-accent-alternative-foreground-color-rgb")  + ';\n' +
+				 // Quaternary Accent Color
+				 '--quaternary-accent-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--quaternary-accent-background-color")  + ';\n' +
+				 '--quaternary-accent-background-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--quaternary-accent-background-color-hover")  + ';\n' +
+				 '--quaternary-accent-fadeout-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--quaternary-accent-fadeout-color")  + ';\n' +
+				 '--quaternary-accent-gradient-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--quaternary-accent-gradient-color")  + ';\n' +
+				 '--quaternary-accent-gradient-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--quaternary-accent-gradient-color-hover")  + ';\n' +
+				 '--quaternary-accent-foreground-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--quaternary-accent-foreground-color")  + ';\n' +
+				 '--quaternary-accent-foreground-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--quaternary-accent-foreground-color-hover")  + ';\n' +
+				 '--quaternary-accent-foreground-color-inverted:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--quaternary-accent-foreground-color-inverted")  + ';\n' +
+				 '--quaternary-accent-alternative-foreground-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--quaternary-accent-alternative-foreground-color")  + ';\n' +
+				 '--quaternary-accent-background-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--quaternary-accent-background-color-rgb")  + ';\n' +
+				 '--quaternary-accent-foreground-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--quaternary-accent-foreground-color-rgb")  + ';\n' +
+				 '--quaternary-accent-foreground-color-hover-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--quaternary-accent-foreground-color-hover-rgb")  + ';\n' +
+				 '--quaternary-accent-alternative-foreground-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--quaternary-accent-alternative-foreground-color-rgb")  + ';\n' +
 				 // Alert
 				 '--alert-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--alert-background-color")  + ';\n' +
 				 '--alert-background-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--alert-background-color-hover")  + ';\n' +
@@ -872,7 +899,8 @@ function DownloadTheme(full=false) {
 				 '--page-border-background-color:' + getComputedStyle(document.querySelector('html')).getPropertyValue("--page-border-background-color")  + ';\n' +
 				 '--page-text-background-color:' + getComputedStyle(document.querySelector('html')).getPropertyValue("--page-text-background-color")  + ';\n' +
 				 '--accent-background-color:' + getComputedStyle(document.querySelector('html')).getPropertyValue("--accent-background-color")  + ';\n' +
-				 '--caret-background-color:' + getComputedStyle(document.querySelector('html')).getPropertyValue("--caret-background-color")  + ';\n' +
+				 '--tertiary-accent-background-color:' + getComputedStyle(document.querySelector('html')).getPropertyValue("--tertiary-accent-background-color")  + ';\n' +
+				 '--quaternary-accent-background-color:' + getComputedStyle(document.querySelector('html')).getPropertyValue("--tertiary-accent-background-color")  + ';\n' +
 				 '--custom-secondary-font:' + getComputedStyle(document.querySelector('html')).getPropertyValue("--custom-secondary-font")  + ';\n' +
 				 '--border-radius:' + getComputedStyle(document.querySelector('html')).getPropertyValue("--border-radius")  + ';\n' +
 				 '--logo-filter:' + getComputedStyle(document.querySelector('html')).getPropertyValue("--logo-filter")  + ';\n' +
@@ -1228,7 +1256,7 @@ var headertextcolor1 = ColorTest(headertext_color,false,true,true);
 
 /** Caret Color **/
 /* Set Vars */
-var caret_color = GetCaret();
+var caret_color = GetTertiaryAccent();
 // Liatch Quirk
 if ( (window.MW18darkmode === true) ) {
 		var caret_color = ColorInvert(caret_color);
@@ -1236,6 +1264,17 @@ if ( (window.MW18darkmode === true) ) {
 
 var caretcolor1 = ColorTest(caret_color);
 
+/** Caret 2 Color **/
+/* Set Vars */
+var caret2_color = GetQuaternaryAccent();
+// Liatch Quirk
+if ( (window.MW18darkmode === true) ) {
+		var caret2_color = ColorInvert(caret2_color);
+}
+
+var caret2color1 = ColorTest(caret2_color);
+
+/* Generic Colors */
 var generic = BestAlertColor();
 
 /** Alert Color **/
@@ -1287,8 +1326,10 @@ if (['full','legacy'].includes(getComputedStyle(document.querySelector('html')).
 						  "--page-text-alternative-foreground-color-rgb:" + GetTextVariable2(content_text) + ";\n" +
 						  "--accent-alternative-foreground-color:" + GetTextVariable(button_color) + ";\n" + 
 						  "--accent-alternative-foreground-color-rgb:" + GetTextVariable2(button_color) + ";\n" +
-						  "--caret-alternative-foreground-color:" + GetTextVariable(caret_color) + ";\n" + 
-						  "--caret-alternative-foreground-color-rgb:" + GetTextVariable2(caret_color) + ";\n" +
+						  "--tertiary-accent-alternative-foreground-color:" + GetTextVariable(caret_color) + ";\n" + 
+						  "--tertiary-accent-alternative-foreground-color-rgb:" + GetTextVariable2(caret_color) + ";\n" +
+						  "--quaternary-accent-alternative-foreground-color:" + GetTextVariable(caret2_color) + ";\n" + 
+						  "--quaternary-accent-alternative-foreground-color-rgb:" + GetTextVariable2(caret2_color) + ";\n" +
 						  "--alert-alternative-foreground-color:" + GetTextVariable(alert_color) + "!important;\n" + 
 						  "--alert-alternative-foreground-color-rgb:" + GetTextVariable2(alert_color) + "!important;\n" +
 						  "--warning-alternative-foreground-color:" + GetTextVariable(warning_color) + "!important;\n" + 
@@ -1351,13 +1392,20 @@ if (['full','legacy'].includes(getComputedStyle(document.querySelector('html')).
 						  "--superbar-text-background-color-hover-rgb:" + Color2(headertextcolor1) + ";\n" +
 						  "--superbar-text-foreground-color-rgb:" + GetForegroundVariable2(headertext_color) + ";\n" +
 						  "--superbar-text-foreground-color-hover-rgb:" + GetForegroundVariable2(headertext_color,true) + ";\n" +
-						  "--caret-background-color-hover:" + caretcolor1 + ";\n" +
-						  "--caret-foreground-color:" + GetForegroundVariable(caret_color) + ";\n" +
-						  "--caret-foreground-color-hover:" + GetForegroundVariable(caret_color,true) + ";\n" +
-						  "--caret-foreground-color-inverted:" + GetForegroundVariable(caretcolor1) + ";\n" +
-						  "--caret-background-color-rgb:" + Color2( caret_color ) + ";\n" +
-						  "--caret-foreground-color-rgb:" + GetForegroundVariable2(caret_color) + ";\n" +
-						  "--caret-foreground-color-hover-rgb:" + GetForegroundVariable2(caret_color,true) + ";\n" +
+						  "--tertiary-accent-background-color-hover:" + caretcolor1 + ";\n" +
+						  "--tertiary-accent-foreground-color:" + GetForegroundVariable(caret_color) + ";\n" +
+						  "--tertiary-accent-foreground-color-hover:" + GetForegroundVariable(caret_color,true) + ";\n" +
+						  "--tertiary-accent-foreground-color-inverted:" + GetForegroundVariable(caretcolor1) + ";\n" +
+						  "--tertiary-accent-background-color-rgb:" + Color2( caret_color ) + ";\n" +
+						  "--tertiary-accent-foreground-color-rgb:" + GetForegroundVariable2(caret_color) + ";\n" +
+						  "--tertiary-accent-foreground-color-hover-rgb:" + GetForegroundVariable2(caret_color,true) + ";\n" +
+						  "--quaternary-accent-background-color-hover:" + caret2color1 + ";\n" +
+						  "--quaternary-accent-foreground-color:" + GetForegroundVariable(caret2_color) + ";\n" +
+						  "--quaternary-accent-foreground-color-hover:" + GetForegroundVariable(caret2_color,true) + ";\n" +
+						  "--quaternary-accent-foreground-color-inverted:" + GetForegroundVariable(caret2color1) + ";\n" +
+						  "--quaternary-accent-background-color-rgb:" + Color2( caret2_color ) + ";\n" +
+						  "--quaternary-accent-foreground-color-rgb:" + GetForegroundVariable2(caret2_color) + ";\n" +
+						  "--quaternary-accent-foreground-color-hover-rgb:" + GetForegroundVariable2(caret2_color,true) + ";\n" +
 						  "--alert-background-color:" + alert_color + "!important;\n" +
 						  "--alert-background-color-hover:" + alertcolor1 + "!important;\n" +
 						  "--alert-gradient-color:" + GetGradientVariable(content_color,'alert')[0] + "!important;\n" +
@@ -1424,9 +1472,12 @@ if (['full','legacy'].includes(getComputedStyle(document.querySelector('html')).
 						  "--superbar-text-background-color:" + headertext_color + ";\n" +
 						  "--superbar-text-gradient-color:" + GetGradientVariable2(content_color,'superbar-text')[0] + ";\n" +
 						  "--superbar-text-gradient-color-hover:" + GetGradientVariable2(content_color,'superbar-text')[1] + ";\n" +
-						  "--caret-background-color:" + caret_color + ";\n" +
-						  "--caret-gradient-color:" + GetGradientVariable(caret_color,'caret')[0] + ";\n" +
-						  "--caret-gradient-color-hover:" + GetGradientVariable(caret_color,'caret')[1] + ";\n" +
+						  "--tertiary-accent-background-color:" + caret_color + ";\n" +
+						  "--tertiary-accent-gradient-color:" + GetGradientVariable(caret_color,'caret')[0] + ";\n" +
+						  "--tertiary-accent-gradient-color-hover:" + GetGradientVariable(caret_color,'caret')[1] + ";\n" +
+						  "--quaternary-accent-background-color:" + caret2_color + ";\n" +
+						  "--quaternary-accent-gradient-color:" + GetGradientVariable(caret2_color,'caret2')[0] + ";\n" +
+						  "--quaternary-accent-gradient-color-hover:" + GetGradientVariable(caret2_color,'caret2')[1] + ";\n" +
 						  "--bg-size:" + ['cover','contain','100% 100%','auto'][["cover", "contain", "stretched", "full"].indexOf( getComputedStyle(document.querySelector('html')).getPropertyValue("--body-background-size") ) ] + ";\n" +
 						  "--bg-tile-x:" + ['repeat','no-repeat'][["false", "true"].indexOf( getComputedStyle(document.querySelector('html')).getPropertyValue("--body-background-no-horizontal-tiling") ) ] + ";\n" +
 						  "--bg-tile-y:" + ['repeat','no-repeat'][["false", "true"].indexOf( getComputedStyle(document.querySelector('html')).getPropertyValue("--body-background-no-vertical-tiling") ) ] + ";\n" +
