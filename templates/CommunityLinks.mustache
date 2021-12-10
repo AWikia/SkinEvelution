@@ -8,6 +8,7 @@
 								photo_library
 								</span>
 							</a>
+						{{#is-loggedin}}
 							<a class="link cell small" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-statistics}}"  href="{{html-stats-link}}">
 								<span class="cpe-icon material-icons">
 								leaderboard
@@ -28,11 +29,13 @@
 								code
 								</span>
 							</a>
-							<a class="link cell vlarge" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-allarticles}}"  href="{{html-allpages-link}}">
+						{{/is-loggedin}}
+							<a class="link cell {{#is-loggedin}}vlarge{{/is-loggedin}}" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-allarticles}}"  href="{{html-allpages-link}}">
 								<span class="cpe-icon material-icons">
 								pages
 								</span>
 							</a>
+						{{#is-loggedin}}
 							<a class="link cell vlarge" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-specialpages}}"  href="{{html-spages-link}}">
 								<span class="cpe-icon material-icons">
 								settings
@@ -67,3 +70,4 @@
 									</ul>
 								</div>
 							</div>
+						{{/is-loggedin}}
