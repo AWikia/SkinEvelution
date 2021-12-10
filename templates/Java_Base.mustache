@@ -394,9 +394,19 @@ function RemoveEmptyMenus() {
 
 // Remove the Views Dropdown, if no views exist
 
-	if (! (document.querySelector(".evelution-floating-actions .cpe-dropdown.views .cpe-dropdown__content .cpe-list > li")) ) {
-		var float = document.querySelector(".evelution-floating-actions .cpe-dropdown.views");
+	if (! (document.querySelector(".evelution-floating-actions .cpe-dropdown.views .cpe-dropdown__content .namespaces .cpe-list > li")) ) {
+		var float = document.querySelector(".evelution-floating-namespaces .cpe-dropdown-level-2.namespaces");
 		float.remove();
+	}
+
+	if (! (document.querySelector(".evelution-floating-actions .cpe-dropdown.views .cpe-dropdown__content .cpe-dropdown-level-2.views .cpe-list > li")) ) {
+		var float2 = document.querySelector(".evelution-floating-actions .cpe-dropdown-level-2.views");
+		float2.remove();
+	}
+
+	if (! (document.querySelector(".evelution-floating-actions .cpe-dropdown.views .cpe-dropdown__content .actions .cpe-list > li")) ) {
+		var float3 = document.querySelector(".evelution-floating-actions .cpe-dropdown-level-2.actions");
+		float3.remove();
 	}
 
 
