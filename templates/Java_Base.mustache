@@ -173,6 +173,7 @@ function RemoveBanner() {
 			if (!(document.querySelectorAll("#floatingbanner .cpe-banner-notification").length)) {
 				document.querySelector('#floatingbanner').remove();
 			}
+			document.querySelector('body').focus();
 		}),405);
 	
 
@@ -395,7 +396,7 @@ function RemoveEmptyMenus() {
 // Remove the Views Dropdown, if no views exist
 
 	if (! (document.querySelector(".evelution-floating-actions .cpe-dropdown.views .cpe-dropdown__content .namespaces .cpe-list > li")) ) {
-		var float = document.querySelector(".evelution-floating-namespaces .cpe-dropdown-level-2.namespaces");
+		var float = document.querySelector(".evelution-floating-actions .cpe-dropdown-level-2.namespaces");
 		float.remove();
 	}
 
