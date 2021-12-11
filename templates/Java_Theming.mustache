@@ -198,6 +198,10 @@ function ForcedColors() {
 	return ( ( window.matchMedia('(forced-colors: active)').matches ) || (document.querySelector("container.no-color-management") ) )
 }
 
+function NoColorSchemes() {
+	return ( window.matchMedia('(forced-colors: active)').matches )
+}
+
 
 /* Visual Styles */
 function VisualStyle(style,save=true) {
@@ -590,7 +594,7 @@ function ManagerRows() {
 function colortheme(theme='auto', repaint=true, save=true) {
     var body_bg =	GetPageShort();
     var old_dark = window.MW18darkmode
-    if (ForcedColors()) {
+    if (NoColorSchemes()) {
 		window.MW18darkmode = false;
 	} else if (theme === 'auto') { // Auto
 		window.MW18darkmode = ( window.matchMedia('(prefers-color-scheme: dark)').matches );
