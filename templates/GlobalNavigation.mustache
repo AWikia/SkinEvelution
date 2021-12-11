@@ -1,4 +1,4 @@
-  <header class="evelution-sidebar evelution-navigation global-navigation has-daendin">
+  <header class="evelution-sidebar evelution-navigation global-navigation mw-navigation">
 	<div class="upper-links global-navigation__top">
 		<a class="company link" cpe-tooltip-position="bottom-mobile" cpe-tooltip="{{msg-evelution-documentation}}" href="https://awikia.github.io/SkinEvelution">
             <svg xmlns="http://www.w3.org/2000/svg" class="cpe-icon server-off">
@@ -25,9 +25,11 @@
 					<li class="miraheze miraheze-only">
 						<a href="https://meta.miraheze.org/wiki/Special:MyLanguage/Miraheze">Miraheze</a>
 					</li>
+				{{#is-loggedin}}
 					<li class="discord">
 						<a href="https://discord.gg/a6FbV6zWFs">{{msg-evelution-support}}</a>
 					</li>
+				{{/is-loggedin}}
 					<hr>
 		        {{#data-footer}}
 					{{!}}{{#data-places}}{{>FooterList3}}{{/data-places}}
@@ -92,11 +94,13 @@
     <path style="fill:currentColor;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" d="M 14.968739,72.694267 36.158346,72.756587 47.12708,91.702591 36.282994,110.39931 H 14.906415 L 4,91.640276 Z" id="path4756-4-7-0-4-5" inkscape:connector-curvature="0" inkscape:transform-center-x="23.96383" inkscape:transform-center-y="-86.16407"/>
   </g>
 </svg>		</a>
+{{#is-loggedin}}
 		<a class="desktop-only discord link" cpe-tooltip-position="bottom-mobile" cpe-tooltip="{{msg-evelution-support}}" href="https://discord.gg/a6FbV6zWFs">
 				<span class="cpe-icon material-icons">
 					live_help
 				</span>
 		</a>
+{{/is-loggedin}}
 		<div class="desktop-only cpe-dropdown has-dark-shadow explore-menu" cpe-orient="land-desktop">
 			<div class="link cpe-dropdown__toggle" cpe-tooltip-position="bottom-mobile" cpe-tooltip={{msg-evelution-explore}}>
 				<span class="cpe-icon material-icons">

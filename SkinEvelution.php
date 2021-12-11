@@ -86,6 +86,7 @@ class SkinEvelution extends SkinMustache {
         $data["html-stats-link"] = SpecialPage::getTitleFor( 'Statistics' )->getLocalURL();
         $data["html-allpages-link"] = SpecialPage::getTitleFor( 'Allpages' )->getLocalURL();
         $data["html-designer-link"] =  Title::newFromText( 'CPE ThemeDesigner' )->getLocalURL(); // SpecialPage::getTitleFor( 'CPEThemeDesigner' )->getLocalURL();
+        $data["html-forum-link"] =  Title::newFromText( 'Forum:Index' )->getLocalURL(); // SpecialPage::getTitleFor( 'CPEThemeDesigner' )->getLocalURL();
         if ( class_exists( 'wAvatar' ) ) {
 			$avatar = new wAvatar( $this->getSkin()->getUser()
 				->getId(), 'l' );
@@ -105,6 +106,7 @@ class SkinEvelution extends SkinMustache {
 		$data["has-no-color-management"] = $this->getConfig()->get( 'EvelutionDisableColorManagement' );
 		$data["has-forced-full-width"] = $this->getConfig()->get ( 'EvelutionForceFullWidth' );
 		$data["has-discord-id"] =  (wfMessage( 'evelution-discord-module-server-id' )->inContentLanguage() != '');
+		$data["has-forum"] = ( defined( 'NS_FORUM' ) );
 		$data["is-loggedin"] = $this->getSkin()->getUser()->isRegistered();
         return $data;
     }
