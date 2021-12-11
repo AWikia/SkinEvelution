@@ -279,7 +279,7 @@ eval("saveFileAs(contents,\'text/"+ext+";charset=utf-8\', filename)");
 }
 
 
-
+/* Evelution Specific JS */
 
 (function () {
 
@@ -300,10 +300,12 @@ if  (imodule)  {
 
 /* Only used in one place */
 	var parser = document.querySelector('.raw-parser');
-	var c = parser.innerText;
-	parser.innerHTML=  c;
-	parser.classList.remove('raw-parser')
-	parser.classList.add('raw-parser-done');
+	if (parser) {
+		var c = parser.innerText;
+		parser.innerHTML=  c;
+		parser.classList.remove('raw-parser')
+		parser.classList.add('raw-parser-done');
+	}
 /* Avatar */
 	var avatar = document.querySelector('.evelution-navigation .mw-socialprofile-avatar');
 	if (avatar) {

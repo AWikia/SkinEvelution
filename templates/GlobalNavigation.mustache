@@ -186,11 +186,19 @@
 
 		<div class="cpe-dropdown has-dark-shadow user-profile" cpe-orient="land-desktop">
 			<div class="link cell cpe-dropdown__toggle" cpe-tooltip-position="bottom-mobile" cpe-tooltip="{{msg-personaltools}}">
-									<div class="raw-parser">{{html-avatar}}</div>
+			{{#is-loggedin}}
+				<div class="raw-parser">{{html-avatar}}</div>
+			{{/is-loggedin}}
+			{{^is-loggedin}}
+				<span class="cpe-icon material-icons">account_circle</span>
+			{{/is-loggedin}}
 								
 			</div>
 			<div class="cpe-dropdown__content is-right-aligned">
-				{{#data-portlets.data-user-menu}}{{>Portlet2}}{{/data-portlets.data-user-menu}}
+				<ul class="cpe-list cpe-is-linked mw-portlet-body" {{{html-user-language-attributes}}}>
+{{#data-portlets.data-user-interface-preferences}}{{>PortletPT}}			{{/data-portlets.data-user-interface-preferences}}				{{#data-portlets.data-user-menu}}{{>PortletPT}}{{/data-portlets.data-user-menu}}
+				</ul>
+				{{{html-after-portal}}}
 			</div>
 		</div>
 	</div>
