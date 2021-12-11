@@ -350,7 +350,7 @@ function GetTertiaryAccent() {
 
 function GetQuaternaryAccent() {
 	if (ForcedColors()) {
-		return getComputedStyle(document.querySelector('.fc-canvas')).getPropertyValue("color");
+		return getComputedStyle(document.querySelector('.fc-graytext')).getPropertyValue("color");
 	} else if (getComputedStyle(document.querySelector('html')).getPropertyValue("--quaternary-accent-background-color") === 'auto') {
 		var color = getComputedStyle(document.querySelector('html')).getPropertyValue("--page-background-color").trim();
 		return color
