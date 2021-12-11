@@ -200,10 +200,24 @@ html {
 	color-scheme:only light!important;
 }
 
-:root.theme-fandomdesktop-dark {
+@media (prefers-color-scheme:dark) {
+	html {
+		color-scheme:dark!important;
+		color-scheme:only dark!important;
+	}
+}
+
+container:not(.no-color-management) {
+	color-scheme:light!important;
+	color-scheme:only light!important;
+}
+
+
+:root.theme-fandomdesktop-dark container:not(.no-color-management) {
 	color-scheme:dark!important;
 	color-scheme:only dark!important;
 }
+
 
 	html {
 		--alert-background-color:#990000;
