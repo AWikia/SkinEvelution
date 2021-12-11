@@ -195,7 +195,7 @@ function SupportsColorContrast() {
 }
 
 function ForcedColors() {
-	return window.matchMedia('(forced-colors: active)').matches 
+	return ( ( window.matchMedia('(forced-colors: active)').matches ) || (document.querySelector("container.no-color-management") ) )
 }
 
 
@@ -252,9 +252,11 @@ function VisualStyleCompile() {
 		document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-styles").insertAdjacentHTML('beforeend',str);
 	}
 /* Visual Colors */
-	for (let i = 0; i < visualColors.length; i++) {
-		str = '<li class="td-off" id="color' + i + '"><a onclick="VisualColor(' + i + ')">' + visualColorNames[i] + '</a></li>'
-		document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-colors, .skin-tunic #visual-colors .mw-portlet-body ul").insertAdjacentHTML('beforeend',str);
+	if (! (document.querySelector("container.no-color-management") ) ) {
+		for (let i = 0; i < visualColors.length; i++) {
+			str = '<li class="td-off" id="color' + i + '"><a onclick="VisualColor(' + i + ')">' + visualColorNames[i] + '</a></li>'
+			document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-colors, .skin-tunic #visual-colors .mw-portlet-body ul").insertAdjacentHTML('beforeend',str);
+		}
 	}
 
 
