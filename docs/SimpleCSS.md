@@ -182,7 +182,7 @@ This snipset changes the floating actions to be themed according to a chosen col
     --floating-button-hover-background-color: var(--superbar-text-background-color-hover);
 }
 
-.views .cpe-floating-button.page-side-tool  {
+.ftoc .cpe-floating-button.page-side-tool  {
     --floating-button-color: var(--secondary-accent-foreground-color);
     --floating-button-color-hover: var(--secondary-accent-foreground-color);
     --floating-button-background-color: var(--secondary-accent-background-color);
@@ -239,7 +239,7 @@ This snipset changes the floating actions to be themed according to a chosen col
     --floating-button-hover-background-color: var(--alert-background-color-hover);
 }
 
-.views .cpe-floating-button.page-side-tool,
+.ftoc .cpe-floating-button.page-side-tool,
 .contrast-modes .cpe-floating-button.page-side-tool {
     --floating-button-color: var(--warning-foreground-color);
     --floating-button-color-hover: var(--warning-foreground-color);
