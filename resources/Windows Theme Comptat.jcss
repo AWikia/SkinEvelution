@@ -8,18 +8,29 @@
 	--body-background-no-vertical-tiling:([1,4].includes(?PictureStyle));
 	--body-background-multi-monitor:([5].includes(?PictureStyle));
 	--superbar-text-background-color:auto;
-	--secondary-accent-background-color:?ColorizationColor;
-	if (?AppMode === 'Light') {
-		--page-background-color:#ffffff;
-		--page-border-background-color:#7f7f7f;
-		--page-text-background-color:#000000;
+	if (?HighConttast != 0) {
+		--secondary-accent-background-color:?ColorizationColor;
+		if (?AppMode === 'Light') {
+			--page-background-color:#ffffff;
+			--page-border-background-color:#7f7f7f;
+			--page-text-background-color:#000000;
+		} else {
+			--page-background-color:#000000;
+			--page-border-background-color:#d0d0d0;
+			--page-text-background-color:#ffffff
+		}
+		--accent-background-color:?ColorizationColor; 
+		--tertiary-accent-background-color:?ColorizationColor;
+		--quaternary-accent-background-color:#ffffff;
 	} else {
-		--page-background-color:#000000;
-		--page-border-background-color:#d0d0d0;
-		--page-text-background-color:#ffffff
+		--secondary-accent-background-color:?LinkText;
+		--page-background-color:?Canvas;
+		--page-border-background-color:?GrayText;
+		--page-text-backgronud-color:?CanvasText;
+		--accent-background-color:?Highlight;
+		--tertiary-accent-background-color:?ActiveTitle;
+		--quaternary-accent-background-color:?InactiveTitle;
 	}
-	--accent-background-color:?ColorizationColor; 
-	--caret-background-color:?ColorizationColor;
 	--caret-width:?CaretSize;
 	--custom-secondary-font:"";
 	--border-radius:3px;
