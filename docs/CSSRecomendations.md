@@ -26,7 +26,7 @@ If you decide that only your own color scheme/schemes should be used on your wik
 ```
 
 ## Always check against contrast
-When picking up custom colors, you should check them to have enough contrast (By Evelution's Definition, min contrast is 3 for low contrast and 4.5 for more contrast). 
+When picking up custom colors, you should check them to have enough contrast (By Evelution's Definition, min contrast is 3 for low contrast, 3.75 for med-low contrast, 4.5 for medium contrast, 5.25 for med-high contrast, 6 for high contrast, 6.75 for hi-vhi contrast and 7.5 for very high contrast). 
 
 Using theming variables like ``var(--secondary-accent-background-color)`` as background color and ``var(--secondary-accent-foreground-color)`` as foreground color is one of the best choices you can do as you will have forced-colors support out of the box.
 
@@ -59,7 +59,8 @@ Wikis should avoid customizing any color scheme beyond the ``standard`` ones as 
 --page-border-background-color:#aaabbb; /* auto | <color> */
 --page-text-background-color:#222222; /* auto | <color> */
 --accent-background-color:#dd8300; /* <color> */
---caret-background-color:#b88300; /* auto | <color> */
+--tertiary-accent-background-color:#b88300; /* auto | <color> */
+--quaternary-accent-background-color:#b88300; /* auto | <color> */
 --custom-secondary-font:""; /* <string> */
 --border-radius:3px; /* <number> 0 to 15 */
 --logo-filter:opacity(1); /* <filter-function> */
