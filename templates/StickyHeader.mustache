@@ -1,4 +1,46 @@
-	<header class="evelution-minibar full-nav fandom-sticky-header">
+	<header class="evelution-minibar mobile-minibar fandom-sticky-header">
+		<h1 class="title cell" style="text-align:left" translate="no">
+			{{#data-logos}}
+				{{#wordmark}}
+					<div style="--height:{{height}}px; display:contents">
+						{{#src}}
+						<a href="{{link-mainpage}}" class="title-logo" style="-webkit-mask-image:url({{.}}); mask-image:url({{.}});"><span style="visibility:hidden;">Abc</span></a>
+						{{/src}}
+						{{^src}}
+						<a href="{{link-mainpage}}" class="title-logo" style="-webkit-mask-image:url({{.}}); mask-image:url({{.}});"><span style="visibility:hidden;">Abc</span></a>
+						{{/src}}
+					</div>
+				{{/wordmark}}
+				{{^wordmark}}<a href="{{link-mainpage}}">{{msg-sitetitle}}</a>{{/wordmark}}
+			{{/data-logos}}
+		</h1>
+		<div class="counters cell">
+			<div class="counter articles"><big>{{html-articlecount}}</big> <span class="cpe-icon material-icons">article</span>  <span class="text">{{msg-evelution-pages}}</span></div>
+			<div class="counter photos"><big>{{html-filecount}}</big> <span class="cpe-icon material-icons">photo</span> <span class="text">{{msg-evelution-files}}</span></div>
+		</div>
+		<div class="counters cell">
+			<div class="counter edits"><big>{{html-editcount}}</big> <span class="cpe-icon material-icons">edit</span> <span class="text">{{msg-evelution-edits}}</span></div>
+			<div class="counter users"><big>{{html-usercount}}</big> <span class="cpe-icon material-icons">person</span> <span class="text">{{msg-evelution-users}}</span></div>
+		</div>
+		{{>MobileCommunityLinks}}
+		<div class="cpe-dropdown has-reversed-nested-menus local-navigation">
+			<a class="link cell cpe-dropdown__toggle" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-navigation}}">
+				<span class="cpe-icon cpe-icon-large cpe-dropdown__toggle-chevron material-icons">
+					arrow_drop_down
+				</span>
+			</a>
+			<div class="cpe-dropdown__content is-right-aligned is-not-scrollable">
+				<ul class="cpe-list is-linked">
+							{{#data-portlets-sidebar}}
+							{{#data-portlets-first}}{{>PortletSLN2}}{{/data-portlets-first}}
+							{{#array-portlets-rest}}{{>PortletSLN2}}{{/array-portlets-rest}}
+							{{/data-portlets-sidebar}}
+				</ul>
+			</div>
+		</div>
+	</header>
+	
+	<header class="evelution-minibar desktop-minibar full-nav fandom-sticky-header">
 		{{#data-logos}}
 			{{^evelution-nostickylogo}}
 				<a class="wordmark" href="{{link-mainpage}}">
@@ -32,7 +74,7 @@
 			<div class="counter edits"><big>{{html-editcount}}</big> <span class="cpe-icon material-icons">edit</span> <span class="text">{{msg-evelution-edits}}</span></div>
 			<div class="counter users"><big>{{html-usercount}}</big> <span class="cpe-icon material-icons">person</span> <span class="text">{{msg-evelution-users}}</span></div>
 		</div>
-		<div class="cpe-dropdown local-navigation">
+		<div class="cpe-dropdown has-reversed-nested-menus local-navigation">
 			<a class="link cell cpe-dropdown__toggle" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-navigation}}">
 				<span class="cpe-icon cpe-icon-large cpe-dropdown__toggle-chevron material-icons">
 					arrow_drop_down
@@ -55,7 +97,7 @@
 	  </a>
 	</header>
 	
-	<header class="evelution-minibar col-nav fandom-sticky-header">
+	<header class="evelution-minibar desktop-minibar col-nav fandom-sticky-header">
 	  <a class="link nav-switch" onclick="ToggleNav()" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-show}}">
 		<span class="cpe-icon cpe-dropdown__toggle-chevron material-icons cpe-icon-large">
 			keyboard_arrow_down

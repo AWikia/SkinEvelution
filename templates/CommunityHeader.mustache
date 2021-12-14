@@ -29,20 +29,20 @@
 				</section>
 				<section class="container">
 					<section class="counters">
-						<div class="counter articles"><big>{{html-articlecount}}</big> <span class="cpe-icon material-icons">article</span>  <span class="text">{{msg-evelution-pages}}</span></div>
-						<div class="counter photos"><big>{{html-filecount}}</big> <span class="cpe-icon material-icons">photo</span> <span class="text">{{msg-evelution-files}}</span></div>
-						<div class="counter edits"><big>{{html-editcount}}</big> <span class="cpe-icon material-icons">edit</span> <span class="text">{{msg-evelution-edits}}</span></div>
-						<div class="counter users"><big>{{html-usercount}}</big> <span class="cpe-icon material-icons">person</span> <span class="text">{{msg-evelution-users}}</span></div>
+						<div class="counter articles"><big>{{html-articlecount}}</big> <span class="cpe-icon material-icons">article</span></div>
+						<div class="counter photos"><big>{{html-filecount}}</big> <span class="cpe-icon material-icons">photo</span></div>
+						<div class="counter edits"><big>{{html-editcount}}</big> <span class="cpe-icon material-icons">edit</span></div>
+						<div class="counter users"><big>{{html-usercount}}</big> <span class="cpe-icon material-icons">person</span></div>
 					</section>
+				</section>
+				<section class="container">
 					<section class="buttons">
-						<nav class="header-buttons">
-							{{>CommunityLinks}}
-						</nav>
 						<nav class="local-navigation home-nav">
 							{{#data-portlets-sidebar}}
-							{{#data-portlets-first}}{{>PortletMLN}}{{/data-portlets-first}}
+							{{#data-portlets-first}}{{>PortletMLN2}}{{/data-portlets-first}}
 							{{#array-portlets-rest}}{{>PortletMLN}}{{/array-portlets-rest}}
 							{{/data-portlets-sidebar}}
+							{{>MobileCommunityLinks}}
 						</nav>
 						<nav class="actions-navigation server-nav">
 							<div class="cpe-dropdown local-navigation">
@@ -51,7 +51,7 @@
 										arrow_drop_down
 									</span>
 								</a>
-								<div class="cpe-dropdown__content is-right-aligned is-not-scrollable">
+								<div class="cpe-dropdown__content is-left-aligned is-not-scrollable" style="left:0;">
 									<ul class="cpe-list is-linked">
 												{{#data-portlets-sidebar}}
 												{{#data-portlets-first}}{{>PortletSLN2}}{{/data-portlets-first}}
@@ -80,6 +80,7 @@
 								security
 								</span>
 							</a>
+							{{>MobileCommunityLinks}}
 
 						</nav>
 					</section>
