@@ -23,21 +23,4 @@ function insertKey(key,value) {
 
 function CompileVisualL10N() {
 
-/* Visual Themes */
-var visualThemeNames_l10n = ['Lite',mw.msg( 'evelution-style-basic' ),mw.msg( 'evelution-style-contrast' ),mw.msg( 'evelution-style-simple' )];
-/* Visual Colors */
-var visualColorNames_l10n = [mw.msg( 'evelution-color-factorycolors' ), mw.msg( 'evelution-color-forced' ), mw.msg( 'evelution-color-techno' ), mw.msg( 'evelution-color-retro' ), mw.msg( 'evelution-color-retro' ) + ' II', mw.msg( 'evelution-color-neon' ),'Evelution OS'];
-
-
-// Changes Strings into l10ned version
-/* Visual Styles */
-	for (let i = 0; i < visualThemeNames_l10n.length; i++) {
-		var str = '<a onclick="VisualStyle(' + i + ')">' + visualThemeNames_l10n[i] + '</a>'
-		$('li[id="style' + i + '"]').html(str);
-	}
-/* Visual Colors */
-	for (let i = 0; i < visualColorNames_l10n.length; i++) {
-		var str = '<a onclick="VisualColor(' + i + ')">' + visualColorNames_l10n[i] + '</a>'
-		$('li[id="color' + i + '"]').html(str);
-	}
 }

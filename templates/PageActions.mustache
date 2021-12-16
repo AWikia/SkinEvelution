@@ -38,47 +38,47 @@
 		<div class="cpe-dropdown contrast-modes" cpe-orient="land">				
 			<div class="cpe-floating-button accent contrast-modes page-side-tool" cpe-tooltip="{{msg-evelution-contrast-modes}}">
 				<span class="cpe-icon material-icons">
-					filter_b_and_w
+					contrast
 				</span>
 			</div>
 			<div class="cpe-dropdown__content cpe-visual-appearance">					
 				 <ul class="cpe-list is-linked cpe-contrast-modes">						
-					<li data-contrast-mode="auto" data-contrast-preset-name="Auto">
+					<li data-contrast-mode="auto" title="Auto">
 						<a onclick="contrastmode('auto')">
 							<span class="cpe-icon material-icons">brightness_auto</span>
 						</a>
 					</li>
-					<li data-contrast-mode="low" data-contrast-preset-name="Low">
+					<li data-contrast-mode="low" title="Low">
 						<a onclick="contrastmode('low')">
 							<span class="cpe-icon material-icons">brightness_1</span>
 						</a>
 					</li>
-					<li data-contrast-mode="med-low" data-contrast-preset-name="Medium-Low">
+					<li data-contrast-mode="med-low" title="Medium-Low">
 						<a onclick="contrastmode('med-low')">
 							<span class="cpe-icon material-icons">brightness_2</span>
 						</a>
 					</li>
-					<li data-contrast-mode="med" data-contrast-preset-name="Medium">
+					<li data-contrast-mode="med" title="Medium">
 						<a onclick="contrastmode('med')">
 							<span class="cpe-icon material-icons">brightness_3</span>
 						</a>
 					</li>
-					<li data-contrast-mode="med-hi" data-contrast-preset-name="Medium-High">
+					<li data-contrast-mode="med-hi" title="Medium-High">
 						<a onclick="contrastmode('med-hi')">
 							<span class="cpe-icon material-icons">brightness_4</span>
 						</a>
 					</li>
-					<li data-contrast-mode="hi" data-contrast-preset-name="High">
+					<li data-contrast-mode="hi" title="High">
 						<a onclick="contrastmode('hi')">
 							<span class="cpe-icon material-icons">brightness_5</span>
 						</a>
 					</li>
-					<li data-contrast-mode="hi-vhi" data-contrast-preset-name="High-Very High">
+					<li data-contrast-mode="hi-vhi" title="High-Very High">
 						<a onclick="contrastmode('hi-vhi')">
 							<span class="cpe-icon material-icons">brightness_6</span>
 						</a>
 					</li>
-					<li data-contrast-mode="vhi" data-contrast-preset-name="Very High">
+					<li data-contrast-mode="vhi" title="Very High">
 						<a onclick="contrastmode('vhi')">
 							<span class="cpe-icon material-icons">brightness_7</span>
 						</a>
@@ -94,44 +94,65 @@
 					hdr_auto
 				</span>
 			</div>
-			<div class="cpe-dropdown__content cpe-visual-appearance">					
+			<div class="cpe-dropdown__content cpe-visual-appearance" style="top:-75%;">					
 				 <ul class="cpe-list is-linked cpe-color-modes">						
-					<li data-color-mode="auto">
+					<li data-color-mode="auto" title="Light (Duo)">
 						<a onclick="colortheme('auto')">
 							<span class="cpe-icon material-icons">brightness_auto</span>
 						</a>
 					</li>
-					<li data-color-mode="auto-r">
+					<li data-color-mode="auto-r" title="Dark (Duo)">
 						<a onclick="colortheme('auto-r')">
 							<span class="cpe-icon material-icons">hdr_auto</span>
 						</a>
 					</li>
-					<li data-color-mode="light">
+					<li data-color-mode="light" title="Light (Solo)">
 						<a onclick="colortheme('light')">
 							<span class="cpe-icon material-icons">light_mode</span>
 						</a>
 					</li>
-					<li data-color-mode="dark">
+					<li data-color-mode="dark" title="Dark (Solo)">
 						<a onclick="colortheme('dark')">
 							<span class="cpe-icon material-icons">dark_mode</span>
 						</a>
 					</li>
-					<li data-color-mode="reversed">
-						<a onclick="colortheme('reversed')">
-							<span class="cpe-icon material-icons">invert_colors</span>
-						</a>
-					</li>
-					<li data-color-mode="gray">
+					<li data-color-mode="gray" title="White (Duo)">
 						<a onclick="colortheme('gray')">
 							<span class="cpe-icon material-icons">filter_b_and_w</span>
 						</a>
 					</li>
-					<li data-color-mode="gray-r">
+					<li data-color-mode="gray-r" title="Black (Duo)">
 						<a onclick="colortheme('gray-r')">
 							<span class="cpe-icon material-icons" style="--icon-scale:-1; transform:scaleX(var(--icon-scale)) rotate(var(--icon-rotate));">filter_b_and_w</span>
 						</a>
 					</li>
-					<li data-color-mode="yel-blk">
+					<li data-color-mode="white" title="White (Solo)">
+						<a onclick="colortheme('white')">
+							<span class="cpe-icon material-icons">check_box_outline_blank</span>
+						</a>
+					</li>
+					<li data-color-mode="black" title="Black (Solo)">
+						<a onclick="colortheme('black')">
+							<span class="cpe-icon material-icons">square</span>
+						</a>
+					</li>
+					<li data-color-mode="reversed-r" title="Light (Reversi)">
+						<a onclick="colortheme('reversed-r')">
+							<span class="cpe-icon material-icons">invert_colors_off</span>
+						</a>
+					</li>
+					<li data-color-mode="reversed" title="Dark (Reversi)">
+						<a onclick="colortheme('reversed')">
+							<span class="cpe-icon material-icons">invert_colors</span>
+						</a>
+					</li>
+
+					<li data-color-mode="blu-wht" title="Light (Tint)">
+						<a onclick="colortheme('blu-wht')">
+							<span class="cpe-icon material-icons" style="--icon-rotate:180deg;">gradient</span>
+						</a>
+					</li>
+					<li data-color-mode="yel-blk" title="Dark (Tint)">
 						<a onclick="colortheme('yel-blk')">
 							<span class="cpe-icon material-icons">gradient</span>
 						</a>
@@ -149,8 +170,12 @@
 			</div>
 			<div class="cpe-dropdown__content cpe-visual-appearance">					
 				 <ul class="cpe-list is-linked cpe-visual-styles">						
-<!--					<li id="styleA" automatic><a onclick="VisualStyle('<automatic>')">{{msg-evelution-designer-auto}}</a></li> -->
-					<li id="styleS"><a onclick="VisualStyle('S')">{{msg-evelution-standard}}<span class="lite-display"> (Lite)</span></a></li>
+					<li data-visual-style="standard" title="Standard">
+						<a onclick="VisualStyle('standard')">
+							<span class="cpe-icon material-icons">build</span>
+						</a>
+					</li>
+
 				</ul>
 			</div>
 		</div>
@@ -162,9 +187,13 @@
 					palette
 				</span>
 			</div>
-			<div class="cpe-dropdown__content is-right-aligned cpe-visual-appearance">					
+			<div class="cpe-dropdown__content cpe-visual-appearance">					
 				 <ul class="cpe-list is-linked cpe-visual-colors">						
-					<li id="colorS"><a onclick="VisualColor('S')">{{msg-evelution-standard}}</a></li>
+					<li data-visual-color="standard" title="Standard">
+						<a onclick="VisualColor('standard')">
+							<span class="cpe-icon material-icons">build</span>
+						</a>
+					</li>
 				</ul>
 			</div>
 		</div>
