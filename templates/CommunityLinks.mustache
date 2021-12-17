@@ -3,45 +3,54 @@
 								trending_up
 								</span>
 							</a>
+						{{#is-loggedin}}
 							<a class="link cell" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-evelution-newfiles}}"  href="{{html-files-link}}">
 								<span class="cpe-icon material-icons">
 								photo_library
 								</span>
 							</a>
+						{{/is-loggedin}}
+						{{#has-forum}}
+						  <a class="link forum {{#is-loggedin}}smallp{{/is-loggedin}}" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-talk}}" href="{{html-forum-link}}">
+									<span class="cpe-icon material-icons">
+										forum
+									</span>
+						  </a>
+						{{/has-forum}}
 						{{#is-loggedin}}
-							<a class="link cell small" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-statistics}}"  href="{{html-stats-link}}">
+							<a class="link cell {{#has-forum}}small{{/has-forum}}{{^has-forum}}smallp{{/has-forum}}" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-statistics}}"  href="{{html-stats-link}}">
 								<span class="cpe-icon material-icons">
 								leaderboard
 								</span>
 							</a>
-							<a class="link cell small" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-upload}}"  href="{{html-upload-link}}">
+							<a class="link cell {{#has-forum}}largep{{/has-forum}}{{^has-forum}}small{{/has-forum}}" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-upload}}"  href="{{html-upload-link}}">
 								<span class="cpe-icon material-icons">
 								file_upload
 								</span>
 							</a>
-							<a class="link cell large" cpe-tooltip-position="bottom" cpe-tooltip="CSS"  href="{{html-css-link}}">
+							<a class="link cell {{#has-forum}}large{{/has-forum}}{{^has-forum}}largep{{/has-forum}}" cpe-tooltip-position="bottom" cpe-tooltip="CSS"  href="{{html-css-link}}">
 								<span class="cpe-icon material-icons">
 								palette
 								</span>
 							</a>
-							<a class="link cell large" cpe-tooltip-position="bottom" cpe-tooltip="JS"  href="{{html-js-link}}">
+							<a class="link cell {{#has-forum}}vlargep{{/has-forum}}{{^has-forum}}large{{/has-forum}}" cpe-tooltip-position="bottom" cpe-tooltip="JS"  href="{{html-js-link}}">
 								<span class="cpe-icon material-icons">
 								code
 								</span>
 							</a>
 						{{/is-loggedin}}
-							<a class="link cell {{#is-loggedin}}vlarge{{/is-loggedin}}" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-allarticles}}"  href="{{html-allpages-link}}">
+							<a class="link cell {{#is-loggedin}}{{#has-forum}}vlarge{{/has-forum}}{{^has-forum}}vlargep{{/has-forum}}{{/is-loggedin}}" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-allarticles}}"  href="{{html-allpages-link}}">
 								<span class="cpe-icon material-icons">
 								pages
 								</span>
 							</a>
 						{{#is-loggedin}}
-							<a class="link cell vlarge" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-specialpages}}"  href="{{html-spages-link}}">
+							<a class="link cell {{#has-forum}}vlarge{{/has-forum}}{{^has-forum}}vlargep{{/has-forum}}" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-specialpages}}"  href="{{html-spages-link}}">
 								<span class="cpe-icon material-icons">
 								settings
 								</span>
 							</a>
-							<div class="cpe-dropdown small">
+							<div class="cpe-dropdown {{#has-forum}}small{{/has-forum}}{{^has-forum}}smallp{{/has-forum}}">
 								<div class="link cell" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-moredotdotdot}}">
 									<span class="cpe-icon cpe-dropdown__toggle-chevron material-icons">
 										more_vertical
@@ -49,19 +58,24 @@
 								</div>
 								<div class="cpe-dropdown__content is-right-aligned">
 									<ul class="cpe-list is-linked">
-										<li class="small">
+									{{#has-forum}}
+										<li class="smallp">
+											<a href="{{html-forum-link}}">{{msg-talk}}</a>
+										</li>
+									{{/has-forum}}
+										<li class="{{#has-forum}}small{{/has-forum}}{{^has-forum}}smallp{{/has-forum}}">
 											<a href="{{html-stats-link}}">{{msg-statistics}}</a>
 										</li>
-										<li class="small">
+										<li class="{{#has-forum}}largep{{/has-forum}}{{^has-forum}}small{{/has-forum}}">
 											<a href="{{html-upload-link}}">{{msg-upload}}</a>
 										</li>
-										<li class="large">
+										<li class="{{#has-forum}}large{{/has-forum}}{{^has-forum}}largep{{/has-forum}}">
 											<a href="{{html-css-link}}">CSS</a>
 										</li>
-										<li class="large">
+										<li class="{{#has-forum}}vlargep{{/has-forum}}{{^has-forum}}large{{/has-forum}}">
 											<a href="{{html-js-link}}">JS</a>
 										</li>
-										<li>
+										<li class="{{^has-forum}}vlargep{{/has-forum}}">
 											<a href="{{html-allpages-link}}">{{msg-allarticles}}</a>
 										</li>
 										<li>

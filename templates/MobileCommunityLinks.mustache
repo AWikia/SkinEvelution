@@ -9,9 +9,16 @@
 										<li>
 											<a href="{{html-rc-link}}">{{msg-recentchanges}}</a>
 										</li>
+									{{#is-loggedin}}
 										<li>
 											<a href="{{html-files-link}}">{{msg-evelution-newfiles}}</a>
 										</li>
+									{{/is-loggedin}}
+									{{#has-forum}}
+										<li class="smallp">
+											<a href="{{html-forum-link}}">{{msg-talk}}</a>
+										</li>
+									{{/has-forum}}
 									{{#is-loggedin}}
 										<li>
 											<a href="{{html-stats-link}}">{{msg-statistics}}</a>
