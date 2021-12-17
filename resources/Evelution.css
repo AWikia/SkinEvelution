@@ -776,10 +776,17 @@ position:relative;
 		display:none!important;
 	}
 
-	container[rail="true"] .rail-off {
+	container[right-rail="true"] .rail-off {
 		display:none!important;
 	}
-	container[rail="false"] .rail-on {
+	container[right-rail="false"] .rail-on {
+		display:none!important;
+	}
+	
+	container[left-rail="true"] .rail2-off {
+		display:none!important;
+	}
+	container[left-rail="false"] .rail2-on {
 		display:none!important;
 	}
 
@@ -871,10 +878,10 @@ font-weight:bold;
 /* Page Actions */
 .evelution-floating-actions {
     height: 100%;
-    left: 0;
     position: absolute;
     top: 20px;
-    transform: translateX(-50%);
+    left:0;
+    transform: translateX(-50%); /* Was 50 */
     z-index: 19; /* Was 200 */
 }
 
@@ -2204,21 +2211,40 @@ border-top-right-radius:0;
 }
 
 .evelution-module .cpe-button.is-full-width {
-}
-.evelution-module .cpe-button.is-full-width {
 	--secondary-button-background-color:var(--page-background-color);
 	align-self:stretch;
-	margin:10px 10px 0;
+	margin:15px 15px 0;
+	flex:1;
 }
 
 .evelution-rail-wrapper {
 	--module-size:280px;
-	padding-left:15px;
 	display:none;
 	flex-direction:column;
     position: relative;
-    transition: margin-left 400ms var(--transitioner), transform 400ms var(--transitioner), padding-left 400ms var(--transitioner), padding-right 400ms var(--transitioner);
+    transition: margin-right 400ms var(--transitioner), margin-left 400ms var(--transitioner), transform 400ms var(--transitioner), padding-left 400ms var(--transitioner), padding-right 400ms var(--transitioner);
+}
+
+.evelution-rail-wrapper.evelution-right-rail {
+	padding-left:15px;
     transform-origin: right;
+}
+
+.evelution-rail-wrapper.evelution-left-rail {
+	padding-right:15px;
+	transform-origin:left;
+}
+
+@media only screen and (max-width:1759px) {
+	.evelution-rail-wrapper.evelution-left-rail {
+		display:none!important;
+	}
+}
+
+@media only screen and (min-width:1760px) {
+	.evelution-rail-wrapper .left-module {
+		display:none;
+	}
 }
 
 .evelution-content .evelution-page-header .toggle-rail-button {
@@ -2227,7 +2253,6 @@ border-top-right-radius:0;
 	position:absolute;
 	color:var(--luna-text-background-color);
 	top:0;
-	right:0;
 	width:50px;
 	height:50px;
 	display:none;
@@ -2237,6 +2262,15 @@ border-top-right-radius:0;
 	border:1px solid transparent;
 	text-decoration:none!important;
 }
+
+.evelution-content .evelution-page-header .toggle-rail-button.toggle-right-rail-button {
+	right:0;
+}
+
+.evelution-content .evelution-page-header .toggle-rail-button.toggle-left-rail-button {
+	left:0px;
+}
+
 
 .evelution-content .evelution-page-header .toggle-rail-button:hover {
 		color:var(--luna-text-background-color-hover);
@@ -2253,10 +2287,17 @@ border-top-right-radius:0;
 
 
 @media only screen and (max-width:959px) {
-.evelution-page-header .toggle-rail-button {
+.evelution-page-header .toggle-right-rail-button {
 		display:none!important;
 	}
 }
+
+@media only screen and (max-width:1759px) {
+.evelution-page-header .toggle-left-rail-button {
+		display:none!important;
+	}
+}
+
 
 @media only screen and (max-width:1199px) {
 	.evelution-rail-wrapper {
@@ -2273,15 +2314,46 @@ border-top-right-radius:0;
 
 
 @media only screen and (min-width:960px) {
-	 container[rail="false"] .evelution-rail-wrapper {
+	 container[right-rail="false"] .evelution-rail-wrapper.evelution-right-rail {
 		padding-left:0;
 		padding-right:0;
-		margin-left: calc(0px - var(--module-size));
 		pointer-events: none;
 		transform: scalex(0);
+		margin-left: calc(0px - var(--module-size));
 	}
+	
+
+	 container[left-rail="false"] .evelution-rail-wrapper.evelution-left-rail {
+		padding-left:0;
+		padding-right:0;
+		pointer-events: none;
+		transform: scalex(0);
+		margin-right: calc(0px - var(--module-size));
+	}
+
+
 	.action-view:not(.ns--1):not(.ns-6):not(.ns-8):not(.mainpage) container:not(.no-rail) .evelution-page-header-title {
 		padding-right:55px;
+	}
+	
+
+
+	@media only screen and (min-width:1760px) /*and (max-width:1919px)*/ {
+
+		.action-view:not(.ns--1):not(.ns-6):not(.ns-8):not(.mainpage) container:not(.no-rail) #p-tb,
+		.action-view:not(.ns--1):not(.ns-6):not(.ns-8):not(.mainpage) container:not(.no-rail) .evelution-floating-actions .ftoc {
+			display:none!important;
+		}
+
+	.action-view:not(.ns--1):not(.ns-6):not(.ns-8):not(.mainpage) container:not(.no-rail) .evelution-page-header-title {
+		padding-left:55px;
+	}
+
+		container {
+		--breakpoint-size:1760px;
+	}
+
+
 	}
 	
 	@media only screen and (min-height:680px) {

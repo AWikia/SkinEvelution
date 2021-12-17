@@ -103,13 +103,17 @@ function UpdateRangeInputs() {
 	if (getKey('nav-full') === '-1') {
 		insertKey('nav-full', 'true' );
 	}
-	if (getKey('rail-full') === '-1') {
-		insertKey('rail-full', 'true' );
+	if (getKey('right-rail-full') === '-1') {
+		insertKey('right-rail-full', 'true' );
+	}
+	if (getKey('left-rail-full') === '-1') {
+		insertKey('left-rail-full', 'true' );
 	}
 	var content_full = getKey('content-full')
 	var toolbar_full = getKey('toolbar-full');
 	var nav_full = getKey('nav-full');
-	var rail_full = getKey('rail-full');
+	var right_rail_full = getKey('right-rail-full');
+	var left_rail_full = getKey('left-rail-full');
     getParams().forEach(function (param) {
         var key = param.split("=")[0];
         var value = param.split("=")[1];
@@ -128,15 +132,26 @@ function UpdateRangeInputs() {
 				console.info('Sticky navigation visibility settings overriden')
                 break;
             case 'hiderail':
-				rail_full = (value === 'false');
+				right_rail_full = (value === 'false');
+				left_rail_full = (value === 'false');
+				console.info('Pane visibility settings overriden')
+                break;
+            case 'hiderightrail':
+				right_rail_full = (value === 'false');
 				console.info('Right pane visibility settings overriden')
                 break;
+            case 'hideleftrail':
+				left_rail_full = (value === 'false');
+				console.info('Left pane visibility settings overriden')
+                break;
+
         }
     });
 	document.querySelector(' container ').setAttribute('wide', content_full );
 	document.querySelector(' container ').setAttribute('toolbar', toolbar_full );
 	document.querySelector(' container ').setAttribute('nav', nav_full );
-	document.querySelector(' container ').setAttribute('rail', rail_full );
+	document.querySelector(' container ').setAttribute('right-rail', right_rail_full );
+	document.querySelector(' container ').setAttribute('left-rail', left_rail_full );
 	UpdateRangeInputs();
 	DropDownUpdate();
 })();
@@ -363,13 +378,23 @@ function ToggleNav() {
 }
 
 function ToggleRail() {
-	if 	(document.querySelector(' container ').getAttribute('rail') == 'true') {
-		document.querySelector(' container ').setAttribute('rail', 'false');
+	if 	(document.querySelector(' container ').getAttribute('right-rail') == 'true') {
+		document.querySelector(' container ').setAttribute('right-rail', 'false');
 	} else {
-		document.querySelector(' container ').setAttribute('rail', 'true');
+		document.querySelector(' container ').setAttribute('right-rail', 'true');
 	}
-	insertKey('rail-full', document.querySelector(' container ').getAttribute('rail') );
+	insertKey('right-rail-full', document.querySelector(' container ').getAttribute('right-rail') );
 }
+
+function ToggleRail2() {
+	if 	(document.querySelector(' container ').getAttribute('left-rail') == 'true') {
+		document.querySelector(' container ').setAttribute('left-rail', 'false');
+	} else {
+		document.querySelector(' container ').setAttribute('left-rail', 'true');
+	}
+	insertKey('left-rail-full', document.querySelector(' container ').getAttribute('left-rail') );
+}
+
 
 
 
@@ -445,9 +470,18 @@ function RemoveEmptyMenus() {
 	toc = document.querySelector(".toc#toc > ul");
 	if (toc) {
 		document.querySelector(".evelution-floating-actions .ftoc .cpe-dropdown__content > .toc > .cpe-list").innerHTML = toc.innerHTML
+		document.querySelector(".evelution-rail-wrapper .toc-module .evelution-module-content > .toc > .toc").innerHTML = toc.innerHTML
 	} else {
 		document.querySelector(".evelution-floating-actions .ftoc").remove();
+		document.querySelector(".evelution-rail-wrapper .toc-module").innerHTML = remove();
 	}
+
+
+	tools = document.querySelector("#p-tb .mw-portlet-body .cpe-list");
+	if (tools) {
+		document.querySelector(".evelution-module.tools-module ul").innerHTML = tools.innerHTML
+	}
+
 	
 	if (! (document.querySelector(".evelution-page-header #ca-edit")) ) {
 		var elink = document.querySelector(".evelution-taskbar .link.edit");
