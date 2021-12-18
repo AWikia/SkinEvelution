@@ -290,7 +290,7 @@ function VisualStyleCompile() {
 /* Getting non-generic color values */
 function GetCommunity() {
 	if (ForcedColors()) {
-		return getComputedStyle(document.querySelector('.fc-canvas')).getPropertyValue("color");
+		return getComputedStyle(document.querySelector('.fc-buttonface')).getPropertyValue("color");
 	} else {
 		return getComputedStyle(document.querySelector('html')).getPropertyValue("--body-background-color").trim();
 	}
@@ -298,7 +298,7 @@ function GetCommunity() {
 
 function GetCommunityHeaderText() {
 	if (ForcedColors()) {
-		return getComputedStyle(document.querySelector('.fc-canvastext')).getPropertyValue("color");
+		return getComputedStyle(document.querySelector('.fc-buttontext')).getPropertyValue("color");
 	} else if (getComputedStyle(document.querySelector('html')).getPropertyValue("--superbar-text-background-color") === 'auto') {
 		var color = window.MW18BgColor;
 		return GetTextVariable(color);
