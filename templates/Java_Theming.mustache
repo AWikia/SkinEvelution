@@ -1,5 +1,5 @@
 ﻿window.MW18darkmode = false;
-window.MW18spdarkmode = 0; // 0 = No special behavior | 1 = Inverted Colors Dark | 2 = Grayscale | 3 = Yellow Tint | 4 = Blue Tint | 5 = Inverted Colors Light
+window.MW18spdarkmode = 0; // 0 = No special behavior | 1 = Inverted Colors Dark | 2 = Grayscale | 3 = Yellow Tint | 4 = Blue Tint | 5 = Inverted Colors Light | 6 = Temperature | 7 = Inverted Temperature
 window.MW18wikitheme = 'auto';
 window.MW18contrastmode = 'auto';
 window.MW18ContrastNotice = false;
@@ -610,7 +610,7 @@ function ManagerRows() {
 
 
 /* Changes Wiki theme style
-   Supported values: auto, auto-r, light, dark, gray, gray-r, white, black, reversed-r, reversed, blu-wht yel-blk */
+   Supported values: auto, auto-r, light, dark, gray, gray-r, white, black, reversed-r, reversed, blu-wht, yel-blk, temp, temp-r, rtemp, rtemp-r */
 function colortheme(theme='auto', repaint=true, save=true) {
     var body_bg =	GetPageShort();
     var old_dark = window.MW18darkmode;
@@ -679,6 +679,18 @@ function colortheme(theme='auto', repaint=true, save=true) {
 			window.MW18darkmode = false;
 		}
 		window.MW18spdarkmode = 3;
+	} else if (theme === 'temp') { // Temperature Light
+		window.MW18darkmode = false;
+		window.MW18spdarkmode = 6;
+	} else if (theme === 'temp-r') { // Temperature Dark
+		window.MW18darkmode = true;
+		window.MW18spdarkmode = 6;
+	} else if (theme === 'rtemp') { // Inverted Temperature Light
+		window.MW18darkmode = false;
+		window.MW18spdarkmode = 7;
+	} else if (theme === 'rtemp-r') { // Inverted Temperature Dark
+		window.MW18darkmode = true;
+		window.MW18spdarkmode = 7;
 	} else {
 		window.MW18darkmode = false;
 		window.MW18spdarkmode = 0;
@@ -1058,7 +1070,26 @@ function MiniColorTest(color) { // Regular Colors
 }
 
 
+function MiniColorTest2(color) { // Regular Colors
+	var color2 = window.MW18BgColor;
+	var func = (isLightColor(color2));
+	var light = chroma(color).get('hsl.l');
+	if (func) {
+		return chroma(color).set('hsl.l', light-0.02).hex();
+	} else {
+		return chroma(color).set('hsl.l', light+0.02).hex();
+	}
+}
+
 function ColorInvert(color) {
+	if (window.MW18spdarkmode === 6) { // Special Case
+		var color2 = color;
+		var color = chroma( chroma.temperature(chroma(color2).temperature()) ).hex();
+	}
+	if (window.MW18spdarkmode === 7) { // Special Case
+		var color2 = color;
+		var color = chroma( chroma.temperature(40000 - chroma(color2).temperature()) ).hex();
+	}
 	if ( (window.MW18darkmode === true) ) {
 		var r = 255 - chroma(color).get('rgb.r');
 		var g = 255 - chroma(color).get('rgb.g');
@@ -1069,13 +1100,13 @@ function ColorInvert(color) {
 		var b = chroma(color).get('rgb.b');
 
 	}
+	
 
-	var invcolor = chroma('rgb(' + (255 - r) + ',' + (255 - g) + ',' + (255 - b) + ')');
 	var h = chroma(color).get('lch.h');
 	var h2 = chroma(color).get('hsl.h');
+	var invcolor = chroma('rgb(' + (255 - r) + ',' + (255 - g) + ',' + (255 - b) + ')');
 	var hi = chroma(invcolor).get('lch.h');
 	var h2i = chroma(invcolor).get('hsl.h');
-
 	var page = [
 				chroma(color).set('rgb.r', r).set('rgb.g', g).set('rgb.b', b).set('lch.h', h).set('hsl.h', h2),
 				chroma(color).set('rgb.r', r).set('rgb.g', g).set('rgb.b', b),
@@ -1083,6 +1114,8 @@ function ColorInvert(color) {
 				chroma(color).set('rgb.r', r).set('rgb.g', g).set('rgb.b', b).set('lch.h', h).set('hsl.h', 60),
 				chroma(color).set('rgb.r', r).set('rgb.g', g).set('rgb.b', b).set('lch.h', h).set('hsl.h', 240),
 				chroma(color).set('rgb.r', r).set('rgb.g', g).set('rgb.b', b).set('lch.h', hi).set('hsl.h', h2i),
+				chroma(color).set('rgb.r', r).set('rgb.g', g).set('rgb.b', b).set('lch.h', h).set('hsl.h', h2),
+				chroma(color).set('rgb.r', r).set('rgb.g', g).set('rgb.b', b).set('lch.h', h).set('hsl.h', h2),
 			   ][window.MW18spdarkmode];
 	return page
 
@@ -1311,10 +1344,18 @@ var bordercolor1 = ColorTest(border_color);
 
 var head_color =	GetCommunity();
 
+	if (isLightColor(head_color)) {
+		var lightness2 = '#000000';
+	} else {
+		var lightness2 = '#ffffff';
+	}
+
+
 // Liatch Quirk
 		var head_color = ColorInvert(head_color);
 
 window.MW18BgColor = head_color
+
 
 var headcolor1 = ColorTest(head_color,false,false,true);
 
@@ -1326,8 +1367,18 @@ if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--superb
 	// Liatch Quirk
 		var headertext_color = ColorInvert(headertext_color);
 
+		if ((window.MW18spdarkmode === 6) || (window.MW18spdarkmode === 7)) {
+			while ( ( !(isSuitableColor(headertext_color, head_color)) ) && (headertext_color !== lightness2)  ) {
+				var headertext_color= MiniColorTest2(headertext_color);
+			}
+		} else {
+			while ( ( !(isSuitableColor2(headertext_color, head_color)) ) && (headertext_color !== lightness2)  ) {
+				var headertext_color= MiniColorTest2(headertext_color);
+			}
+		}
 
 }
+
 
 var headertextcolor1 = ColorTest(headertext_color,false,true,true);
 
@@ -1556,7 +1607,7 @@ if (['full','legacy'].includes(getComputedStyle(document.querySelector('html')).
 						  "--bg-tile-y:" + ['repeat','no-repeat'][["false", "true"].indexOf( getComputedStyle(document.querySelector('html')).getPropertyValue("--body-background-no-vertical-tiling") ) ] + ";\n" +
 						  "--bg-overlay-display:" + overlay[0] + ";\n" +
 						  "--bg-overlay-size:" + overlay[1] + ";\n" +
-						  "--invertion-filter:" + [['none','none','grayscale(100%)','sepia(1) hue-rotate(20deg)','sepia(1) hue-rotate(200deg)','hue-rotate(180deg)'][window.MW18spdarkmode],['invert(1) hue-rotate(180deg)','invert(1)','invert(1) grayscale(100%)','invert(1) sepia(1) hue-rotate(20deg)','invert(1) sepia(1) hue-rotate(200deg)','invert(1) hue-rotate(180deg)'][window.MW18spdarkmode]][[false, true].indexOf(window.MW18darkmode) ] + ";\n" +
+						  "--invertion-filter:" + [['none','none','grayscale(100%)','sepia(1) hue-rotate(20deg)','sepia(1) hue-rotate(200deg)','hue-rotate(180deg)','opacity(0.5) sepia(1)', 'opacity(0.5) sepia(1) hue-rotate(180deg)'][window.MW18spdarkmode],['invert(1) hue-rotate(180deg)','invert(1)','invert(1) grayscale(100%)','invert(1) sepia(1) hue-rotate(20deg)','invert(1) sepia(1) hue-rotate(200deg)','invert(1) hue-rotate(180deg)','invert(1) opacity(0.5) sepia(1)', 'invert(1) opacity(0.5) sepia(1) hue-rotate(180deg)'][window.MW18spdarkmode]][[false, true].indexOf(window.MW18darkmode) ] + ";\n" +
 						  "}"
 
 
