@@ -1,43 +1,45 @@
 :root {
-	--body-background-image:?DesktopWallpaper;
-	--body-background-color:?Background;
-	--body-background-horizontal-alignment:['center','center','center','top','center','center'][?PictureStyle];
-	--body-background-vertical-alignment:['center','center','center','left','center','center'][?PictureStyle];
-	--body-background-size:['cover','contain','stretched','full','full','cover'][?PictureStyle];
-	--body-background-no-horizontal-tiling:([1,4].includes(?PictureStyle));
-	--body-background-no-vertical-tiling:([1,4].includes(?PictureStyle));
-	--body-background-multi-monitor:([5].includes(?PictureStyle));
-	--superbar-text-background-color:auto;
+	--desktop-background-image:?DesktopWallpaper;
+	--desktop-background-image-opacity:100%;
+	--desktop-background-color:?Background;
+	--desktop-background-mode:full;
+	--desktop-background-size:['cover','contain','stretched','full','full','cover'][?PictureStyle];
+	--desktop-background-horizontal-alignment:['center','center','center','top','center','center'][?PictureStyle];
+	--desktop-background-vertical-alignment:['center','center','center','left','center','center'][?PictureStyle];
+	--desktop-background-no-horizontal-tiling:([1,4].includes(?PictureStyle));
+	--desktop-background-no-vertical-tiling:([1,4].includes(?PictureStyle));
+	--desktop-background-multi-monitor:([5].includes(?PictureStyle));
+	--desktop-text-background-color:auto;
 	if (?HighConttast != 0) {
-		--secondary-accent-background-color:?ColorizationColor;
 		if (?AppMode === 'Light') {
-			--page-background-color:#ffffff;
-			--page-border-background-color:#7f7f7f;
-			--page-text-background-color:#000000;
+			--canvas-background-color:#ffffff;
+			--inactive-text-background-color:#7f7f7f;
+			--canvas-text-background-color:#000000;
 		} else {
-			--page-background-color:#000000;
-			--page-border-background-color:#d0d0d0;
-			--page-text-background-color:#ffffff
+			--canvas-background-color:#000000;
+			--inactive-text-background-color:#d0d0d0;
+			--canvas-text-background-color:#ffffff
 		}
-		--accent-background-color:?ColorizationColor; 
-		--tertiary-accent-background-color:?ColorizationColor;
-		--quaternary-accent-background-color:#ffffff;
+		--highlight-background-color:?ColorizationColor; 
+		--hyperlink-background-color:?ColorizationColor;
+		--active-title-background-color:?ColorizationColor;
+		--inactive-title-background-color:#ffffff;
 	} else {
-		--secondary-accent-background-color:?LinkText;
-		--page-background-color:?Canvas;
-		--page-border-background-color:?GrayText;
-		--page-text-backgronud-color:?CanvasText;
-		--accent-background-color:?Highlight;
-		--tertiary-accent-background-color:?ActiveTitle;
-		--quaternary-accent-background-color:?InactiveTitle;
+		--canvas-background-color:?Canvas;
+		--inactive-text-background-color:?GrayText;
+		--canvas-text-backgronud-color:?CanvasText;
+		--highlight-background-color:?Highlight;
+		--hyperlink-background-color:?LinkText;
+		--active-title-background-color:?ActiveTitle;
+		--inactive-title-background-color:?InactiveTitle;
 	}
 	--caret-width:?CaretSize;
 	--custom-secondary-font:"";
 	--border-radius:3px;
-	--logo-filter:opacity(1);
-	--logo-filter-hover:opacity(0.8);
-	--logo-filter-duration:300ms;
-	--logo-filter-delay:0; 
+	--icon-filter:opacity(1);
+	--icon-filter-hover:opacity(0.8);
+	--icon-filter-duration:300ms;
+	--icon-filter-delay:0; 
 	if (?MSStyle === 'Aero') {
 		--system-visual-style:['lite', 'standard'][?TransaprencyLevel];
 	} else if (?HighConttast != 0) {

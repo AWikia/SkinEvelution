@@ -5,16 +5,16 @@ This documents about how to style your Wiki using the Evelution Skin and making 
 All code related to the Evelution Skin should be placed inside ``MediaWiki:Evelution.css``. It is recommended to use the theming variables to make it work across themes like:
 ```css
 .my-container {
-  background-color:var(--page-secondary-background-color);
-  color:var(--page-text-background-color);
+  background-color:var(--canvas-secondary-background-color);
+  color:var(--canvas-text-background-color);
 }
 ```
 
 You can also use ``MediaWiki:Common.css`` and scope the changes to this skin only like:
 ```css
 body.skin-evelution .my-container {
-  background-color:var(--page-secondary-background-color);
-  color:var(--page-text-background-color);
+  background-color:var(--canvas-secondary-background-color);
+  color:var(--canvas-text-background-color);
 }
 ```
 
@@ -28,7 +28,7 @@ If you decide that only your own color scheme/schemes should be used on your wik
 ## Always check against contrast
 When picking up custom colors, you should check them to have enough contrast (By Evelution's Definition, min contrast is 3 for low contrast, 3.75 for med-low contrast, 4.5 for medium contrast, 5.25 for med-high contrast, 6 for high contrast, 6.75 for hi-vhi contrast and 7.5 for very high contrast). 
 
-Using theming variables like ``var(--secondary-accent-background-color)`` as background color and ``var(--secondary-accent-foreground-color)`` as foreground color is one of the best choices you can do as you will have forced-colors support out of the box.
+Using theming variables like ``var(--hyperink-background-color)`` as background color and ``var(--hyperlink-foreground-color)`` as foreground color is one of the best choices you can do as you will have forced-colors support out of the box.
 
 If you need to use your own colors for background and foreground color, always pick the best. For instance, if you want your box to have a Lime background, always choose a legible forerground color such as Black or Dark Blue. Never pick a color such as White or Wheat as those colors don't play nice against a Lime background.
 
@@ -44,28 +44,28 @@ By default, Global Nav upper links consist of Five (Six on Miraheze Wikis) links
 Wikis should avoid customizing any color scheme beyond the ``standard`` ones as the rest of them contain color schemes for people who need accessible and different color schemes to suit their preference. Here's a theming template you can use for getting custom theme(s) for your wiki:
 ```css
 [theme="A"][visualcolors="standard"] { /* Replace [theme="A"] with either [theme="B"], [theme="C"] or [theme="D"] if you want to target the other 3 slots, otherwise don't replace [theme="A"] with anything */ 
---body-background-image:url("loadbg_dev.png"); /* <image> */
---body-background-image-opacity:100%; /* <percentage> */
---body-background-color:#441177; /* <color> */
---body-background-mode:standard; /* standard | full */
---body-background-horizontal-alignment:top; /* left | center | right */
---body-background-vertical-alignment:top; /* top | center | bottom */
---body-background-size:cover; /* cover | contain | stretched | full */
---body-background-no-horizontal-tiling:false; /* <boolean> */
---body-background-no-vertical-tiling:false; /* <boolean> */
---superbar-text-background-color:auto; /* auto | <color> */
---secondary-accent-background-color:#dd2300; /* <color> */
---page-background-color:#f1f2f3; /* <color> */
---page-border-background-color:#aaabbb; /* auto | <color> */
---page-text-background-color:#222222; /* auto | <color> */
---accent-background-color:#dd8300; /* <color> */
---tertiary-accent-background-color:#b88300; /* auto | <color> */
---quaternary-accent-background-color:#b88300; /* auto | <color> */
+--desktop-background-image:url("loadbg_dev.png"); /* <image> */
+--desktop-background-image-opacity:100%; /* <percentage> */
+--desktop-background-color:#441177; /* <color> */
+--desktop-background-mode:standard; /* standard | full */
+--desktop-background-size:cover; /* cover | contain | stretched | full */
+--desktop-background-horizontal-alignment:top; /* left | center | right */
+--desktop-background-vertical-alignment:top; /* top | center | bottom */
+--desktop-background-no-horizontal-tiling:false; /* <boolean> */
+--desktop-background-no-vertical-tiling:false; /* <boolean> */
+--desktop-text-background-color:auto; /* auto | <color> */
+--canvas-background-color:#f1f2f3; /* <color> */
+--inactive-text-background-color:#aaabbb; /* auto | <color> */
+--canvas-text-background-color:#222222; /* auto | <color> */
+--highlight-background-color:#dd8300; /* <color> */
+--hyperlink-background-color:#dd2300; /* <color> */
+--active-title-background-color:#b88300; /* auto | <color> */
+--inactive-title-background-color:#b88300; /* auto | <color> */
 --custom-secondary-font:""; /* <string> */
 --border-radius:3px; /* <number> 0 to 15 */
---logo-filter:opacity(1); /* <filter-function> */
---logo-filter-hover:opacity(0.8); /* <filter-function> */
---logo-filter-duration:300ms; /* <duration> */
---logo-filter-delay:0; /* <duration> */
+--icon-filter:opacity(1); /* <filter-function> */
+--icon-filter-hover:opacity(0.8); /* <filter-function> */
+--icon-filter-duration:300ms; /* <duration> */
+--icon-filter-delay:0; /* <duration> */
 }
 ```

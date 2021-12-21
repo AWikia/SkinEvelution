@@ -104,30 +104,58 @@ Yes. Evelution not only offers many dark themes but also an Inverted Colors Mode
 ## Can I change the themes using CSS?
 Of course. It has been tested and it works. For instance, if you want to modify the 2nd theme, paste this to ``MediaWiki:Common.css``:
 ```css
-[theme="B"][visualcolors="standard"] {
---community-background-image:url("");
---community-background-color:#e995ca;
---anchor-background-color:#058892;
---page-background-color:#ffffff;
---page-border-background-color:#ccc;
---page-text-background-color:#000000;
---accent-background-color:#18BBC5;
---sticky-header-background-color:#0000ff;
---toolbar-background-color:auto;
+[theme="B"][visualcolors="standard"] { 
+--desktop-background-image:url("loadbg_dev.png"); /* <image> */
+--desktop-background-image-opacity:100%; /* <percentage> */
+--desktop-background-color:#441177; /* <color> */
+--desktop-background-mode:standard; /* standard | full */
+--desktop-background-size:cover; /* cover | contain | stretched | full */
+--desktop-background-horizontal-alignment:top; /* left | center | right */
+--desktop-background-vertical-alignment:top; /* top | center | bottom */
+--desktop-background-no-horizontal-tiling:false; /* <boolean> */
+--desktop-background-no-vertical-tiling:false; /* <boolean> */
+--desktop-text-background-color:auto; /* auto | <color> */
+--canvas-background-color:#f1f2f3; /* <color> */
+--inactive-text-background-color:#aaabbb; /* auto | <color> */
+--canvas-text-background-color:#222222; /* auto | <color> */
+--highlight-background-color:#dd8300; /* <color> */
+--hyperlink-background-color:#dd2300; /* <color> */
+--active-title-background-color:#b88300; /* auto | <color> */
+--inactive-title-background-color:#b88300; /* auto | <color> */
+--custom-secondary-font:""; /* <string> */
+--border-radius:3px; /* <number> 0 to 15 */
+--icon-filter:opacity(1); /* <filter-function> */
+--icon-filter-hover:opacity(0.8); /* <filter-function> */
+--icon-filter-duration:300ms; /* <duration> */
+--icon-filter-delay:0; /* <duration> */
 }
 ```
 Per-page theming is also supported. If you want to use a different theme for the 1st theme on **Sample Test Page** article, paste this to ``MediaWiki:Common.css``:
 ```css
 [theme="A"][visualcolors="standard"].config-rootpage-Sample_Test_Page {
---community-background-image:url("");
---community-background-color:#e995ca;
---anchor-background-color:#058892;
---page-background-color:#ffffff;
---page-border-background-color:#ccc;
---page-text-background-color:#000000;
---accent-background-color:#18BBC5;
---sticky-header-background-color:#0000ff;
---toolbar-background-color:auto;
+--desktop-background-image:url("loadbg_dev.png"); /* <image> */
+--desktop-background-image-opacity:100%; /* <percentage> */
+--desktop-background-color:#441177; /* <color> */
+--desktop-background-mode:standard; /* standard | full */
+--desktop-background-size:cover; /* cover | contain | stretched | full */
+--desktop-background-horizontal-alignment:top; /* left | center | right */
+--desktop-background-vertical-alignment:top; /* top | center | bottom */
+--desktop-background-no-horizontal-tiling:false; /* <boolean> */
+--desktop-background-no-vertical-tiling:false; /* <boolean> */
+--desktop-text-background-color:auto; /* auto | <color> */
+--canvas-background-color:#f1f2f3; /* <color> */
+--inactive-text-background-color:#aaabbb; /* auto | <color> */
+--canvas-text-background-color:#222222; /* auto | <color> */
+--highlight-background-color:#dd8300; /* <color> */
+--hyperlink-background-color:#dd2300; /* <color> */
+--active-title-background-color:#b88300; /* auto | <color> */
+--inactive-title-background-color:#b88300; /* auto | <color> */
+--custom-secondary-font:""; /* <string> */
+--border-radius:3px; /* <number> 0 to 15 */
+--icon-filter:opacity(1); /* <filter-function> */
+--icon-filter-hover:opacity(0.8); /* <filter-function> */
+--icon-filter-duration:300ms; /* <duration> */
+--icon-filter-delay:0; /* <duration> */
 }
 ```
 
@@ -137,49 +165,49 @@ When checking your themes, you must be in Duo theme mode without inverted colors
 ## Theming Variables
 This section lists all static Theming Variables and where they're used:
 
-### ``--body-background-image`` (Accepts: ``<image>``)
+### ``--desktop-background-image`` (Accepts: ``<image>``)
 This is used as the background image of the body container. When the opposite version of that theme is being running, this will appear inverted. An empty value results in no background being shown.
 
-### ``--body-background-image-opacity`` (Accepts: ``<percentage>``)
+### ``--desktop-background-image-opacity`` (Accepts: ``<percentage>``)
 This is used as the opacity of the body background image. 0% makes it invisible, 50% makes translucent and 100% makes it visible.
 
-### ``--body-background-color`` (Accepts: ``<color>``)
+### ``--desktop-background-color`` (Accepts: ``<color>``)
 This is used as the background color of the body container and the gradient overlay shown on header backgrounds. This is also used on  ``is-headline`` inputs and ``is-alternate`` secondary buttons.
 
-### ``--superbar-text-background-color`` (Accepts: ``<color> | auto``)
+### ``--desktop-text-background-color`` (Accepts: ``<color> | auto``)
 This is used as the foreground color of the Community Header. When set to ``auto``, it autopicks the computed foreground community color.
 
-### ``--body-background-mode`` (Accepts: ``standard | full``)
+### ``--desktop-background-mode`` (Accepts: ``standard | full``)
 When set to ``standard``, community background spans to the header area only. When set to ``full``, communnity background spans to the whole screen.
 
-### ``--body-background-horizontal-alignment`` (Accepts: ``left | center | right``)
+### ``--desktop-background-horizontal-alignment`` (Accepts: ``left | center | right``)
 Sets the horizontal alignment of the background image. Accepts all standard properties ``background-position-x`` supports.
 
-### ``--body-background-vertical-alignment`` (Accepts: ``top | center | bottom``)
+### ``--desktop-background-vertical-alignment`` (Accepts: ``top | center | bottom``)
 Sets the vertical alignment of the background image. Accepts all standard properties ``background-position-y`` supports.
 
-### ``--body-background-size`` (Accepts: ``cover | contain | stretched | full``)
+### ``--desktop-background-size`` (Accepts: ``cover | contain | stretched | full``)
 When set to ``cover``, it makes the background image display on the whole screen, clipping some parts of it. When set to ``contain``, it behaves like cover except that no clipping happens in which it can reveal the community background color. When set to ``stretched``, it behaves like contain except that the background image will be stretched to remove any bg color revealance. When set to ``full``, it dispalys the background image as it is (Without changing its size).
 
-### ``--body-background-no-horizontal-tiling`` (Accepts: ``<boolean>``)
+### ``--desktop-background-no-horizontal-tiling`` (Accepts: ``<boolean>``)
 When set to ``true``, it removes background tiling on the horizontal axis
 
-### ``--body-background-no-vertical-tiling`` (Accepts: ``<boolean>``)
+### ``--desktop-background-no-vertical-tiling`` (Accepts: ``<boolean>``)
 When set to ``true``, it removes background tiling on the vertical axis
 
-### ``--secondary-accent-background-color`` (Accepts: ``<color>``)
+### ``--hyperlink-background-color`` (Accepts: ``<color>``)
 This is used as the color of the links, checkboxes and range inputs. This is also used on  ``is-alternate`` inputs, secondary buttons and on OOUI inputs.
 
-### ``--page-background-color`` (Accepts: ``<color>``)
+### ``--canvas-background-color`` (Accepts: ``<color>``)
 This is used as the background color of the page container, rail modules and many more containers.
 
-### ``--page-border-background-color`` (Accepts: ``<color> | auto``)
+### ``--inactive-text-background-color`` (Accepts: ``<color> | auto``)
 This is used as the border color of the page container, rail modules and many more containers and as the color of the toolbox.  When set to ``auto``, it autopicks a color based on page background color. This is also used on  ``is-borderline`` inputs and ``is-unaccented`` primary buttons.
 
-### ``--page-text-background-color`` (Accepts: ``<color> | auto``)
+### ``--canvas-text-background-color`` (Accepts: ``<color> | auto``)
 This is used as the text color of the page container, rail modules, many more containers.  When set to ``auto``, it autopicks either the light or dark text background color, whichever works best on the set page background color. This is also used on ``is-colorline`` inputs and ``is-unaccented`` secondary buttons.
 
-### ``--accent-background-color`` (Accepts: ``<color>``)
+### ``--highlight-background-color`` (Accepts: ``<color>``)
 This is used as the color of the buttons, sticky header, selected text in Contrast visual style, primary OOUI buttons and input styles without extra class
 
 ### ``--caret-background-color`` (Accepts: ``<color> | auto``)
@@ -191,16 +219,16 @@ This is used as the extra secondary font to be used other than the stock ones. W
 ### ``--border-radius`` (Accepts: ``<length>``)
 This is used to control the rounded corners of all supported elements. 0px removes the rounded corners entirely. Values between 0 to 15px are generally favored.
 
-### ``--logo-filter`` (Accepts: ``<filter-function>``)
+### ``--icon-filter`` (Accepts: ``<filter-function>``)
 This is used as the base filter of the logo.
 
-### ``--logo-filter-hover`` (Accepts: ``<filter-function>``)
+### ``--icon-filter-hover`` (Accepts: ``<filter-function>``)
 This is used as the base filter of the logo when hovering on it. When set to empty, it fallbacks to the base logo filter.
 
-### ``--logo-filter-duration`` (Accepts: ``<time>``)
+### ``--icon-filter-duration`` (Accepts: ``<time>``)
 This is used as the time needed to transition from the base filter to the hover filter and vice versa. 0ms removes the transition. Values between 0ms to 1000ms are generally favored.
 
-### ``--logo-filter-delay`` (Accepts: ``<time>``)
+### ``--icon-filter-delay`` (Accepts: ``<time>``)
 This is used as the time needed to start the transition from the base filter to the hover filter and vice versa. 0ms removes the delay. Values between 0ms to 1000ms are generally favored.
 
 ### Generic colors (Alert, Warning, Success, Message)

@@ -36,27 +36,28 @@ Fork this repo, add a new language code to the i18n folder (Such as fr.php). Cop
 If you want to create a new theme without using CPE Theme Designer (i.e. Due to the wiki being on Miraheze), use this template:
 ```css
 [theme="A"][visualcolors="standard"] { /* Replace [theme="A"] with either [theme="B"], [theme="C"] or [theme="D"] if you want to target the other 3 slots, otherwise don't replace [theme="A"] with anything */ 
---body-background-image:url("loadbg_dev.png"); /* <image> */
---body-background-image-opacity:100%; /* <percentage> */
---body-background-color:#441177; /* <color> */
---body-background-mode:standard; /* standard | full */
---body-background-horizontal-alignment:top; /* left | center | right */
---body-background-vertical-alignment:top; /* top | center | bottom */
---body-background-size:cover; /* cover | contain | stretched | full */
---body-background-no-horizontal-tiling:false; /* <boolean> */
---body-background-no-vertical-tiling:false; /* <boolean> */
---superbar-text-background-color:auto; /* auto | <color> */
---secondary-accent-background-color:#dd2300; /* <color> */
---page-background-color:#f1f2f3; /* <color> */
---page-border-background-color:#aaabbb; /* auto | <color> */
---page-text-background-color:#222222; /* auto | <color> */
---accent-background-color:#dd8300; /* <color> */
---caret-background-color:#b88300; /* auto | <color> */
+--desktop-background-image:url("loadbg_dev.png"); /* <image> */
+--desktop-background-image-opacity:100%; /* <percentage> */
+--desktop-background-color:#441177; /* <color> */
+--desktop-background-mode:standard; /* standard | full */
+--desktop-background-size:cover; /* cover | contain | stretched | full */
+--desktop-background-horizontal-alignment:top; /* left | center | right */
+--desktop-background-vertical-alignment:top; /* top | center | bottom */
+--desktop-background-no-horizontal-tiling:false; /* <boolean> */
+--desktop-background-no-vertical-tiling:false; /* <boolean> */
+--desktop-text-background-color:auto; /* auto | <color> */
+--canvas-background-color:#f1f2f3; /* <color> */
+--inactive-text-background-color:#aaabbb; /* auto | <color> */
+--canvas-text-background-color:#222222; /* auto | <color> */
+--highlight-background-color:#dd8300; /* <color> */
+--hyperlink-background-color:#dd2300; /* <color> */
+--active-title-background-color:#b88300; /* auto | <color> */
+--inactive-title-background-color:#b88300; /* auto | <color> */
 --custom-secondary-font:""; /* <string> */
 --border-radius:3px; /* <number> 0 to 15 */
---logo-filter:opacity(1); /* <filter-function> */
---logo-filter-hover:opacity(0.8); /* <filter-function> */
---logo-filter-duration:300ms; /* <duration> */
---logo-filter-delay:0; /* <duration> */
+--icon-filter:opacity(1); /* <filter-function> */
+--icon-filter-hover:opacity(0.8); /* <filter-function> */
+--icon-filter-duration:300ms; /* <duration> */
+--icon-filter-delay:0; /* <duration> */
 }
 ```

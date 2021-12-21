@@ -654,29 +654,29 @@ function ApplyTheme () {
     }
 		result = '\n/* Community Theme */\n' +
 				 '[theme="' + $('html').attr('theme') + '"][visualcolors="' + $('html').attr('visualcolors') + '"] {\n' + // Beginning
-				 '--body-background-image:' + image + ';\n' +
-				 '--body-background-image-opacity:' + $('#bodyimageopacity').val() + "%" + ';\n' +
-				 '--body-background-color:' + $('#bodybg').val()  + ';\n' +
-				 '--superbar-text-background-color:' + autocolor1  + ';\n' +
-				 '--body-background-mode:' + $('.bg_mode .cpe-select__value').attr('value')  + ';\n' +
-				 '--body-background-horizontal-alignment:' + $('.bg_align2 .cpe-select__value').attr('value') + ';\n' +
-				 '--body-background-vertical-alignment:' + $('.bg_align .cpe-select__value').attr('value') + ';\n' +
-				 '--body-background-size:' + $('.bg_size .cpe-select__value').attr('value')  + ';\n' +
-				 '--body-background-no-horizontal-tiling:' + (!( document.querySelector('input#tilingH').checked ))  + ';\n' +
-				 '--body-background-no-vertical-tiling:' + (!( document.querySelector('input#tilingV').checked ))  + ';\n' +
-				 '--secondary-accent-background-color:' + $('#saccentcolor').val() + ';\n' +
-				 '--page-background-color:' + $('#pagebg').val() + ';\n' +
-				 '--page-border-background-color:' + autocolor2  + ';\n' +
-				 '--page-text-background-color:' + autocolor3  + ';\n' +
-				 '--accent-background-color:' + $('#accentcolor').val() + ';\n' +
-				 '--tertiary-accent-background-color:' + autocolor5  + ';\n' +
-				 '--quaternary-accent-background-color:' + autocolor4  + ';\n' +
+				 '--desktop-background-image:' + image + ';\n' +
+				 '--desktop-background-image-opacity:' + $('#bodyimageopacity').val() + "%" + ';\n' +
+				 '--desktop-background-color:' + $('#bodybg').val()  + ';\n' +
+				 '--desktop-text-background-color:' + autocolor1  + ';\n' +
+				 '--desktop-background-mode:' + $('.bg_mode .cpe-select__value').attr('value')  + ';\n' +
+				 '--desktop-background-horizontal-alignment:' + $('.bg_align2 .cpe-select__value').attr('value') + ';\n' +
+				 '--desktop-background-vertical-alignment:' + $('.bg_align .cpe-select__value').attr('value') + ';\n' +
+				 '--desktop-background-size:' + $('.bg_size .cpe-select__value').attr('value')  + ';\n' +
+				 '--desktop-background-no-horizontal-tiling:' + (!( document.querySelector('input#tilingH').checked ))  + ';\n' +
+				 '--desktop-background-no-vertical-tiling:' + (!( document.querySelector('input#tilingV').checked ))  + ';\n' +
+				 '--hyperlink-background-color:' + $('#saccentcolor').val() + ';\n' +
+				 '--canvas-background-color:' + $('#pagebg').val() + ';\n' +
+				 '--inactive-text-background-color:' + autocolor2  + ';\n' +
+				 '--canvas-text-background-color:' + autocolor3  + ';\n' +
+				 '--highlight-background-color:' + $('#accentcolor').val() + ';\n' +
+				 '--active-title-background-color:' + autocolor5  + ';\n' +
+				 '--inactive-title-background-color:' + autocolor4  + ';\n' +
 				 '--custom-secondary-font:' + customfont + ';\n' +
 				 '--border-radius:' + $('#border-radius').val() + "px"  + ';\n' +
-				 '--logo-filter:' + $('#filter').val() + ';\n' +
-				 '--logo-filter-hover:' + $('#filter2').val()  + ';\n' +
-				 '--logo-filter-duration:' + $('#filter3').val() + "ms" + ';\n' +
-				 '--logo-filter-delay:' + $('#filter4').val() + "ms" + ';\n' +
+				 '--icon-filter:' + $('#filter').val() + ';\n' +
+				 '--icon-filter-hover:' + $('#filter2').val()  + ';\n' +
+				 '--icon-filter-duration:' + $('#filter3').val() + "ms" + ';\n' +
+				 '--icon-filter-delay:' + $('#filter4').val() + "ms" + ';\n' +
 				 '}\n' // Ending
 
 /*
@@ -743,29 +743,29 @@ function CopyTheme() {
 		var customfont = $('#secondfont').val();
     }
 		result = '[theme="' + $('html').attr('theme') + '"][visualcolors="' + $('html').attr('visualcolors') + '"] {\n' + // Beginning
-				 '--body-background-image:' + image + ';\n' +
-				 '--body-background-image-opacity:' + $('#bodyimageopacity').val() + "%" + ';\n' +
-				 '--body-background-color:' + $('#bodybg').val()  + ';\n' +
-				 '--superbar-text-background-color:' + autocolor1  + ';\n' +
-				 '--body-background-mode:' + $('.bg_mode .cpe-select__value').attr('value')  + ';\n' +
-				 '--body-background-horizontal-alignment:' + $('.bg_align2 .cpe-select__value').attr('value') + ';\n' +
-				 '--body-background-vertical-alignment:' + $('.bg_align .cpe-select__value').attr('value') + ';\n' +
-				 '--body-background-size:' + $('.bg_size .cpe-select__value').attr('value')  + ';\n' +
-				 '--body-background-no-horizontal-tiling:' + (!( document.querySelector('input#tilingH').checked ))  + ';\n' +
-				 '--body-background-no-vertical-tiling:' + (!( document.querySelector('input#tilingV').checked ))  + ';\n' +
-				 '--secondary-accent-background-color:' + $('#saccentcolor').val() + ';\n' +
-				 '--page-background-color:' + $('#pagebg').val() + ';\n' +
-				 '--page-border-background-color:' + autocolor2  + ';\n' +
-				 '--page-text-background-color:' + autocolor3  + ';\n' +
-				 '--accent-background-color:' + $('#accentcolor').val() + ';\n' +
-				 '--tertiary-accent-background-color:' + autocolor5  + ';\n' +
-				 '--quaternary-accent-background-color:' + autocolor4  + ';\n' +
+				 '--desktop-background-image:' + image + ';\n' +
+				 '--desktop-background-image-opacity:' + $('#bodyimageopacity').val() + "%" + ';\n' +
+				 '--desktop-background-color:' + $('#bodybg').val()  + ';\n' +
+				 '--desktop-text-background-color:' + autocolor1  + ';\n' +
+				 '--desktop-background-mode:' + $('.bg_mode .cpe-select__value').attr('value')  + ';\n' +
+				 '--desktop-background-horizontal-alignment:' + $('.bg_align2 .cpe-select__value').attr('value') + ';\n' +
+				 '--desktop-background-vertical-alignment:' + $('.bg_align .cpe-select__value').attr('value') + ';\n' +
+				 '--desktop-background-size:' + $('.bg_size .cpe-select__value').attr('value')  + ';\n' +
+				 '--desktop-background-no-horizontal-tiling:' + (!( document.querySelector('input#tilingH').checked ))  + ';\n' +
+				 '--desktop-background-no-vertical-tiling:' + (!( document.querySelector('input#tilingV').checked ))  + ';\n' +
+				 '--hyperlink-background-color:' + $('#saccentcolor').val() + ';\n' +
+				 '--canvas-background-color:' + $('#pagebg').val() + ';\n' +
+				 '--inactive-text-background-color:' + autocolor2  + ';\n' +
+				 '--canvas-text-background-color:' + autocolor3  + ';\n' +
+				 '--highlight-background-color:' + $('#accentcolor').val() + ';\n' +
+				 '--active-title-background-color:' + autocolor5  + ';\n' +
+				 '--inactive-title-background-color:' + autocolor4  + ';\n' +
 				 '--custom-secondary-font:' + customfont + ';\n' +
 				 '--border-radius:' + $('#border-radius').val() + "px"  + ';\n' +
-				 '--logo-filter:' + $('#filter').val() + ';\n' +
-				 '--logo-filter-hover:' + $('#filter2').val()  + ';\n' +
-				 '--logo-filter-duration:' + $('#filter3').val() + "ms" + ';\n' +
-				 '--logo-filter-delay:' + $('#filter4').val() + "ms" + ';\n' +
+				 '--icon-filter:' + $('#filter').val() + ';\n' +
+				 '--icon-filter-hover:' + $('#filter2').val()  + ';\n' +
+				 '--icon-filter-duration:' + $('#filter3').val() + "ms" + ';\n' +
+				 '--icon-filter-delay:' + $('#filter4').val() + "ms" + ';\n' +
 				 '}' // Ending
 		if (navigator.clipboard) {
 			navigator.clipboard.writeText(result).then(function() {
@@ -793,74 +793,74 @@ function CopyTheme() {
 function PasteTheme() {
 	// Pastes theme
 	// Body BG
-	$('#bodybg').val( getComputedStyle(document.querySelector('html')).getPropertyValue("--body-background-color") );
+	$('#bodybg').val( getComputedStyle(document.querySelector('html')).getPropertyValue("--desktop-background-color") );
 	// Body Header Text
-	if (getComputedStyle(document.querySelector('html')).getPropertyValue("--superbar-text-background-color") === 'auto' ) {
+	if (getComputedStyle(document.querySelector('html')).getPropertyValue("--desktop-text-background-color") === 'auto' ) {
 		document.querySelector('.wikitable #auto1').checked = true;
 	} else {
 		document.querySelector('.wikitable #auto1').checked = false;
-		$('#bodybg2').val( getComputedStyle(document.querySelector('html')).getPropertyValue("--superbar-text-background-color") );
+		$('#bodybg2').val( getComputedStyle(document.querySelector('html')).getPropertyValue("--desktop-text-background-color") );
 	}
 	$('.wikitable #bodybg2').prop('disabled',(document.querySelector('.wikitable #auto1').checked) );
 	// Body Image
-	$('#bodyimage').val( getComputedStyle(document.querySelector('html')).getPropertyValue("--body-background-image") );
+	$('#bodyimage').val( getComputedStyle(document.querySelector('html')).getPropertyValue("--desktop-background-image") );
 	// Body Image Opacity
-	$('#bodyimageopacity').val( parseInt(getComputedStyle(document.querySelector('html')).getPropertyValue("--body-background-image-opacity")) );
+	$('#bodyimageopacity').val( parseInt(getComputedStyle(document.querySelector('html')).getPropertyValue("--desktop-background-image-opacity")) );
 	// Body Image Mode
-	bg_mode = ["Standard", "Full"][["standard", "full"].indexOf( getComputedStyle(document.querySelector('html')).getPropertyValue("--body-background-mode") ) ]
-	$('.bg_mode .cpe-select__value').attr('value', getComputedStyle(document.querySelector('html')).getPropertyValue("--body-background-mode") );
+	bg_mode = ["Standard", "Full"][["standard", "full"].indexOf( getComputedStyle(document.querySelector('html')).getPropertyValue("--desktop-background-mode") ) ]
+	$('.bg_mode .cpe-select__value').attr('value', getComputedStyle(document.querySelector('html')).getPropertyValue("--desktop-background-mode") );
 	$('.bg_mode .cpe-select__value').html( bg_mode );
 	// Body Image Alignment V
-	bg_align = ["Top", "Middle", "Bottom"][["top", "center", "bottom"].indexOf( getComputedStyle(document.querySelector('html')).getPropertyValue("--body-background-vertical-alignment") ) ]
-	$('.bg_align .cpe-select__value').attr('value', getComputedStyle(document.querySelector('html')).getPropertyValue("--body-background-vertical-alignment") );
+	bg_align = ["Top", "Middle", "Bottom"][["top", "center", "bottom"].indexOf( getComputedStyle(document.querySelector('html')).getPropertyValue("--desktop-background-vertical-alignment") ) ]
+	$('.bg_align .cpe-select__value').attr('value', getComputedStyle(document.querySelector('html')).getPropertyValue("--desktop-background-vertical-alignment") );
 	$('.bg_align .cpe-select__value').html( bg_align );
 	// Body Image Alignment H
-	bg_align2 = ["Left", "Middle", "Right"][["left", "center", "right"].indexOf( getComputedStyle(document.querySelector('html')).getPropertyValue("--body-background-horizontal-alignment") ) ]
-	$('.bg_align2 .cpe-select__value').attr('value', getComputedStyle(document.querySelector('html')).getPropertyValue("--body-background-horizontal-alignment") );
+	bg_align2 = ["Left", "Middle", "Right"][["left", "center", "right"].indexOf( getComputedStyle(document.querySelector('html')).getPropertyValue("--desktop-background-horizontal-alignment") ) ]
+	$('.bg_align2 .cpe-select__value').attr('value', getComputedStyle(document.querySelector('html')).getPropertyValue("--desktop-background-horizontal-alignment") );
 	$('.bg_align2 .cpe-select__value').html( bg_align2 );
 	// Body Image Size
-	bg_size = ["Cover", "Contain", "Stretched", "Full"][["cover", "contain", "stretched", "full"].indexOf( getComputedStyle(document.querySelector('html')).getPropertyValue("--body-background-size") ) ]
-	$('.bg_size .cpe-select__value').attr('value', getComputedStyle(document.querySelector('html')).getPropertyValue("--body-background-size") )
+	bg_size = ["Cover", "Contain", "Stretched", "Full"][["cover", "contain", "stretched", "full"].indexOf( getComputedStyle(document.querySelector('html')).getPropertyValue("--desktop-background-size") ) ]
+	$('.bg_size .cpe-select__value').attr('value', getComputedStyle(document.querySelector('html')).getPropertyValue("--desktop-background-size") )
 	$('.bg_size .cpe-select__value').html( bg_size );
 	// Body Image Tiling
-	document.querySelector('input#tilingH').checked = (getComputedStyle(document.querySelector('html')).getPropertyValue("--body-background-no-horizontal-tiling") === 'false');
-	document.querySelector('input#tilingV').checked = (getComputedStyle(document.querySelector('html')).getPropertyValue("--body-background-no-vertical-tiling") === 'false');
+	document.querySelector('input#tilingH').checked = (getComputedStyle(document.querySelector('html')).getPropertyValue("--desktop-background-no-horizontal-tiling") === 'false');
+	document.querySelector('input#tilingV').checked = (getComputedStyle(document.querySelector('html')).getPropertyValue("--desktop-background-no-vertical-tiling") === 'false');
 	// Page BG
-	$('#pagebg').val( getComputedStyle(document.querySelector('html')).getPropertyValue("--page-background-color") );
+	$('#pagebg').val( getComputedStyle(document.querySelector('html')).getPropertyValue("--canvas-background-color") );
 	// Page Text BG
-	if (getComputedStyle(document.querySelector('html')).getPropertyValue("--page-text-background-color") === 'auto' ) {
+	if (getComputedStyle(document.querySelector('html')).getPropertyValue("--canvas-text-background-color") === 'auto' ) {
 		document.querySelector('.wikitable #auto3').checked = true;
 	} else {
 		document.querySelector('.wikitable #auto3').checked = false;
-		$('#pagebg3').val( getComputedStyle(document.querySelector('html')).getPropertyValue("--page-text-background-color") );
+		$('#pagebg3').val( getComputedStyle(document.querySelector('html')).getPropertyValue("--canvas-text-background-color") );
 	}
 	$('.wikitable #pagebg3').prop('disabled',(document.querySelector('.wikitable #auto3').checked) );
 	// Page Border BG
-	if (getComputedStyle(document.querySelector('html')).getPropertyValue("--page-border-background-color") === 'auto' ) {
+	if (getComputedStyle(document.querySelector('html')).getPropertyValue("--inactive-text-background-color") === 'auto' ) {
 		document.querySelector('.wikitable #auto2').checked = true;
 	} else {
 		document.querySelector('.wikitable #auto2').checked = false;
-		$('#pagebg2').val( getComputedStyle(document.querySelector('html')).getPropertyValue("--page-border-background-color") );
+		$('#pagebg2').val( getComputedStyle(document.querySelector('html')).getPropertyValue("--inactive-text-background-color") );
 	}
 	$('.wikitable #pagebg2').prop('disabled',(document.querySelector('.wikitable #auto2').checked) );
 	// Anchor BG
-	$('#saccentcolor').val( getComputedStyle(document.querySelector('html')).getPropertyValue("--secondary-accent-background-color") );
+	$('#saccentcolor').val( getComputedStyle(document.querySelector('html')).getPropertyValue("--hyperlink-background-color") );
 	// Accent BG
-	$('#accentcolor').val( getComputedStyle(document.querySelector('html')).getPropertyValue("--accent-background-color") );
+	$('#accentcolor').val( getComputedStyle(document.querySelector('html')).getPropertyValue("--highlight-background-color") );
 	// Caret Color
-	if (getComputedStyle(document.querySelector('html')).getPropertyValue("--tertiary-accent-background-color") === 'auto' ) {
+	if (getComputedStyle(document.querySelector('html')).getPropertyValue("--active-title-background-color") === 'auto' ) {
 		document.querySelector('.wikitable #auto5').checked = true;
 	} else {
 		document.querySelector('.wikitable #auto5').checked = false;
-		$('#taccentcolor').val( getComputedStyle(document.querySelector('html')).getPropertyValue("--tertiary-accent-background-color") );
+		$('#taccentcolor').val( getComputedStyle(document.querySelector('html')).getPropertyValue("--active-title-background-color") );
 	}
 	$('.wikitable #taccentcolor').prop('disabled',(document.querySelector('.wikitable #auto5').checked) );
 	// Quaternary Accent Color
-	if (getComputedStyle(document.querySelector('html')).getPropertyValue("--quaternary-accent-background-color") === 'auto' ) {
+	if (getComputedStyle(document.querySelector('html')).getPropertyValue("--inactive-title-background-color") === 'auto' ) {
 		document.querySelector('.wikitable #auto4').checked = true;
 	} else {
 		document.querySelector('.wikitable #auto4').checked = false;
-		$('#qaccentcolor').val( getComputedStyle(document.querySelector('html')).getPropertyValue("--quaternary-accent-background-color") );
+		$('#qaccentcolor').val( getComputedStyle(document.querySelector('html')).getPropertyValue("--inactive-title-background-color") );
 	}
 	$('.wikitable #qaccentcolor').prop('disabled',(document.querySelector('.wikitable #auto4').checked) );
 	// Border Radius
@@ -872,13 +872,13 @@ function PasteTheme() {
 	}
 	$('#secondfont').val( sfont );
 	// Filter
-	$('#filter').val( getComputedStyle(document.querySelector('html')).getPropertyValue("--logo-filter") );
+	$('#filter').val( getComputedStyle(document.querySelector('html')).getPropertyValue("--icon-filter") );
 	// Filter (Hover)
-	$('#filter2').val( getComputedStyle(document.querySelector('html')).getPropertyValue("--logo-filter-hover") );
+	$('#filter2').val( getComputedStyle(document.querySelector('html')).getPropertyValue("--icon-filter-hover") );
 	// Filter Duration
-	$('#filter3').val( parseInt(getComputedStyle(document.querySelector('html')).getPropertyValue("--logo-filter-duration")) );
+	$('#filter3').val( parseInt(getComputedStyle(document.querySelector('html')).getPropertyValue("--icon-filter-duration")) );
 	// Filter Delay
-	$('#filter4').val( parseInt(getComputedStyle(document.querySelector('html')).getPropertyValue("--logo-filter-delay")) );
+	$('#filter4').val( parseInt(getComputedStyle(document.querySelector('html')).getPropertyValue("--icon-filter-delay")) );
 	UpdateRangeInputs();
 }
 
@@ -919,29 +919,29 @@ function TestTheme() {
     } else {
 		var image = 'url("' + $('#bodyimage').val() + '")';
     }
-	document.querySelector('html').style.setProperty("--body-background-color", $('#bodybg').val() );
-	document.querySelector('html').style.setProperty("--body-background-image", image );
-	document.querySelector('html').style.setProperty("--body-background-image-opacity", $('#bodyimageopacity').val() + "%" );
-	document.querySelector('html').style.setProperty("--body-background-mode", $('.bg_mode .cpe-select__value').attr('value') );
-	document.querySelector('html').style.setProperty("--body-background-vertical-alignment", $('.bg_align .cpe-select__value').attr('value') );
-	document.querySelector('html').style.setProperty("--body-background-horizontal-alignment", $('.bg_align2 .cpe-select__value').attr('value') );
-	document.querySelector('html').style.setProperty("--body-background-size", $('.bg_size .cpe-select__value').attr('value') );
-	document.querySelector('html').style.setProperty("--body-background-no-horizontal-tiling", (!( document.querySelector('input#tilingH').checked )) );
-	document.querySelector('html').style.setProperty("--body-background-no-vertical-tiling", (!( document.querySelector('input#tilingV').checked )) );
-	document.querySelector('html').style.setProperty("--superbar-text-background-color", autocolor1 );
-	document.querySelector('html').style.setProperty("--page-background-color", $('#pagebg').val() );
-	document.querySelector('html').style.setProperty("--page-border-background-color", autocolor2 );
-	document.querySelector('html').style.setProperty("--page-text-background-color", autocolor3 );
-	document.querySelector('html').style.setProperty("--secondary-accent-background-color", $('#saccentcolor').val() );
-	document.querySelector('html').style.setProperty("--accent-background-color", $('#accentcolor').val() );
-	document.querySelector('html').style.setProperty("--tertiary-accent-background-color", autocolor5 );
-	document.querySelector('html').style.setProperty("--quaternary-accent-background-color", autocolor4 );
+	document.querySelector('html').style.setProperty("--desktop-background-color", $('#bodybg').val() );
+	document.querySelector('html').style.setProperty("--desktop-background-image", image );
+	document.querySelector('html').style.setProperty("--desktop-background-image-opacity", $('#bodyimageopacity').val() + "%" );
+	document.querySelector('html').style.setProperty("--desktop-background-mode", $('.bg_mode .cpe-select__value').attr('value') );
+	document.querySelector('html').style.setProperty("--desktop-background-vertical-alignment", $('.bg_align .cpe-select__value').attr('value') );
+	document.querySelector('html').style.setProperty("--desktop-background-horizontal-alignment", $('.bg_align2 .cpe-select__value').attr('value') );
+	document.querySelector('html').style.setProperty("--desktop-background-size", $('.bg_size .cpe-select__value').attr('value') );
+	document.querySelector('html').style.setProperty("--desktop-background-no-horizontal-tiling", (!( document.querySelector('input#tilingH').checked )) );
+	document.querySelector('html').style.setProperty("--desktop-background-no-vertical-tiling", (!( document.querySelector('input#tilingV').checked )) );
+	document.querySelector('html').style.setProperty("--desktop-text-background-color", autocolor1 );
+	document.querySelector('html').style.setProperty("--canvas-background-color", $('#pagebg').val() );
+	document.querySelector('html').style.setProperty("--inactive-text-background-color", autocolor2 );
+	document.querySelector('html').style.setProperty("--canvas-text-background-color", autocolor3 );
+	document.querySelector('html').style.setProperty("--hyperlink-background-color", $('#saccentcolor').val() );
+	document.querySelector('html').style.setProperty("--highlight-background-color", $('#accentcolor').val() );
+	document.querySelector('html').style.setProperty("--active-title-background-color", autocolor5 );
+	document.querySelector('html').style.setProperty("--inactive-title-background-color", autocolor4 );
 	document.querySelector('html').style.setProperty("--border-radius", $('#border-radius').val() + "px" );
 	document.querySelector('html').style.setProperty("--custom-secondary-font", $('#secondfont').val() );
-	document.querySelector('html').style.setProperty("--logo-filter", $('#filter').val() );
-	document.querySelector('html').style.setProperty("--logo-filter-hover", $('#filter2').val() );
-	document.querySelector('html').style.setProperty("--logo-filter-duration", $('#filter3').val() + "ms" );
-	document.querySelector('html').style.setProperty("--logo-filter-delay", $('#filter4').val() + "ms" );
+	document.querySelector('html').style.setProperty("--icon-filter", $('#filter').val() );
+	document.querySelector('html').style.setProperty("--icon-filter-hover", $('#filter2').val() );
+	document.querySelector('html').style.setProperty("--icon-filter-duration", $('#filter3').val() + "ms" );
+	document.querySelector('html').style.setProperty("--icon-filter-delay", $('#filter4').val() + "ms" );
 	ColorUpdate(true,true);
 }
 
@@ -958,29 +958,29 @@ function ClearTheme() {
 	$(".evelution-page-header-contribution-buttons .designer-buttons2 .theme-clear-button").prop('disabled', true);
 	$(".evelution-page-header-contribution-buttons .designer-buttons2 .theme-test-button").prop('disabled', false);
 	document.querySelector('body').focus();
-	document.querySelector('html').style.removeProperty("--body-background-color");
-	document.querySelector('html').style.removeProperty("--body-background-image");
-	document.querySelector('html').style.removeProperty("--body-background-image-opacity");
-	document.querySelector('html').style.removeProperty("--body-background-mode");
-	document.querySelector('html').style.removeProperty("--body-background-vertical-alignment");
-	document.querySelector('html').style.removeProperty("--body-background-horizontal-alignment");
-	document.querySelector('html').style.removeProperty("--body-background-size");
-	document.querySelector('html').style.removeProperty("--body-background-no-horizontal-tiling");
-	document.querySelector('html').style.removeProperty("--body-background-no-vertical-tiling");
-	document.querySelector('html').style.removeProperty("--superbar-text-background-color");
-	document.querySelector('html').style.removeProperty("--page-background-color");
-	document.querySelector('html').style.removeProperty("--page-border-background-color");
-	document.querySelector('html').style.removeProperty("--page-text-background-color");
-	document.querySelector('html').style.removeProperty("--secondary-accent-background-color");
-	document.querySelector('html').style.removeProperty("--accent-background-color");
-	document.querySelector('html').style.removeProperty("--tertiary-accent-background-color");
-	document.querySelector('html').style.removeProperty("--quaternary-accent-background-color");
+	document.querySelector('html').style.removeProperty("--desktop-background-color");
+	document.querySelector('html').style.removeProperty("--desktop-background-image");
+	document.querySelector('html').style.removeProperty("--desktop-background-image-opacity");
+	document.querySelector('html').style.removeProperty("--desktop-background-mode");
+	document.querySelector('html').style.removeProperty("--desktop-background-vertical-alignment");
+	document.querySelector('html').style.removeProperty("--desktop-background-horizontal-alignment");
+	document.querySelector('html').style.removeProperty("--desktop-background-size");
+	document.querySelector('html').style.removeProperty("--desktop-background-no-horizontal-tiling");
+	document.querySelector('html').style.removeProperty("--desktop-background-no-vertical-tiling");
+	document.querySelector('html').style.removeProperty("--desktop-text-background-color");
+	document.querySelector('html').style.removeProperty("--canvas-background-color");
+	document.querySelector('html').style.removeProperty("--inactive-text-background-color");
+	document.querySelector('html').style.removeProperty("--canvas-text-background-color");
+	document.querySelector('html').style.removeProperty("--hyperlink-background-color");
+	document.querySelector('html').style.removeProperty("--highlight-background-color");
+	document.querySelector('html').style.removeProperty("--active-title-background-color");
+	document.querySelector('html').style.removeProperty("--inactive-title-background-color");
 	document.querySelector('html').style.removeProperty("--border-radius");
 	document.querySelector('html').style.removeProperty("--custom-secondary-font");
-	document.querySelector('html').style.removeProperty("--logo-filter");
-	document.querySelector('html').style.removeProperty("--logo-filter-hover");
-	document.querySelector('html').style.removeProperty("--logo-filter-duration");
-	document.querySelector('html').style.removeProperty("--logo-filter-delay");
+	document.querySelector('html').style.removeProperty("--icon-filter");
+	document.querySelector('html').style.removeProperty("--icon-filter-hover");
+	document.querySelector('html').style.removeProperty("--icon-filter-duration");
+	document.querySelector('html').style.removeProperty("--icon-filter-delay");
 	ColorUpdate(true,true);
 
 }

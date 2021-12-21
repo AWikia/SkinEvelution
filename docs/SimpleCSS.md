@@ -4,115 +4,115 @@ Those CSS snipsets go to MediaWiki:Evelution.css (For Sitewide Use) or to Specia
 ## Custom Page Side Tool Customization
 This snipset changes the floating actions to be themed according to a chosen color value, akin to the Simple Visual Style:
 
-### Body
+### Desktop
 ```css
 .cpe-floating-button.page-side-tool {
-    --floating-button-color: var(--body-foreground-color);
-    --floating-button-color-hover: var(--body-foreground-color);
-    --floating-button-background-color: var(--body-background-color);
-    --floating-button-hover-background-color: var(--body-background-color-hover);
+    --floating-button-color: var(--desktop-foreground-color);
+    --floating-button-color-hover: var(--desktop-foreground-color);
+    --floating-button-background-color: var(--desktop-background-color);
+    --floating-button-hover-background-color: var(--desktop-background-color-hover);
 	--floating-button-fadeout-opacity:0;
 }
 ```
 
-### Superbar Text
+### Desktop Text
 ```css
 .cpe-floating-button.page-side-tool {
-    --floating-button-color: var(--superbar-text-foreground-color);
-    --floating-button-color-hover: var(--superbar-text-foreground-color);
-    --floating-button-background-color: var(--superbar-text-background-color);
-    --floating-button-hover-background-color: var(--superbar-text-background-color-hover);
+    --floating-button-color: var(--desktop-text-foreground-color);
+    --floating-button-color-hover: var(--desktop-text-foreground-color);
+    --floating-button-background-color: var(--desktop-text-background-color);
+    --floating-button-hover-background-color: var(--desktop-text-background-color-hover);
 	--floating-button-fadeout-opacity:0;
 }
 ```
 
-### Secondary Accent
+### Hyperlink
 ```css
 .cpe-floating-button.page-side-tool {
-    --floating-button-color: var(--secondary-accent-foreground-color);
-    --floating-button-color-hover: var(--secondary-accent-foreground-color);
-    --floating-button-background-color: var(--secondary-accent-background-color);
-    --floating-button-hover-background-color: var(--secondary-accent-background-color-hover);
-	--floating-button-fadeout-opacity:0;
-}
-```
-
-
-### Page
-```css
-.cpe-floating-button.page-side-tool {
-    --floating-button-color: var(--page-foreground-color);
-    --floating-button-color-hover: var(--page-foreground-color);
-    --floating-button-background-color: var(--page-background-color);
-    --floating-button-hover-background-color: var(--page-background-color-hover);
-	--floating-button-fadeout-opacity:0;
-}
-```
-
-### Page Secondary
-```css
-.cpe-floating-button.page-side-tool {
-    --floating-button-color: var(--page-foreground-color);
-    --floating-button-color-hover: var(--page-foreground-color);
-    --floating-button-background-color: var(--page-secondary-background-color);
-    --floating-button-hover-background-color: var(--page-secondary-background-color-hover);
-	--floating-button-fadeout-opacity:0;
-}
-```
-
-### Page Border
-```css
-.cpe-floating-button.page-side-tool {
-    --floating-button-color: var(--page-border-foreground-color);
-    --floating-button-color-hover: var(--page-border-foreground-color);
-    --floating-button-background-color: var(--page-border-background-color);
-    --floating-button-hover-background-color: var(--page-border-background-color-hover);
-	--floating-button-fadeout-opacity:0;
-}
-```
-
-### Page Text
-```css
-.cpe-floating-button.page-side-tool {
-    --floating-button-color: var(--page-text-foreground-color);
-    --floating-button-color-hover: var(--page-text-foreground-color);
-    --floating-button-background-color: var(--page-text-background-color);
-    --floating-button-hover-background-color: var(--page-text-background-color-hover);
-	--floating-button-fadeout-opacity:0;
-}
-```
-
-### Accent
-```css
-.cpe-floating-button.page-side-tool {
-    --floating-button-color: var(--accent-foreground-color);
-    --floating-button-color-hover: var(--accent-foreground-color);
-    --floating-button-background-color: var(--accent-background-color);
-    --floating-button-hover-background-color: var(--accent-background-color-hover);
-	--floating-button-fadeout-opacity:0;
-}
-```
-
-### Tertiary Accent
-```css
-.cpe-floating-button.page-side-tool {
-    --floating-button-color: var(--tertiary-accent-foreground-color);
-    --floating-button-color-hover: var(--tertiary-accent-foreground-color);
-    --floating-button-background-color: var(--tertiary-accent-background-color);
-    --floating-button-hover-background-color: var(--tertiary-accent-background-color-hover);
+    --floating-button-color: var(--hyperlink-foreground-color);
+    --floating-button-color-hover: var(--hyperlink-foreground-color);
+    --floating-button-background-color: var(--hyperlink-background-color);
+    --floating-button-hover-background-color: var(--hyperlink-background-color-hover);
 	--floating-button-fadeout-opacity:0;
 }
 ```
 
 
-
-### Quaternary Accent
+### Canvas
 ```css
 .cpe-floating-button.page-side-tool {
-    --floating-button-color: var(--quaternary-accent-foreground-color);
-    --floating-button-color-hover: var(--quaternary-accent-foreground-color);
-    --floating-button-background-color: var(--quaternary-accent-background-color);
-    --floating-button-hover-background-color: var(--quaternary-accent-background-color-hover);
+    --floating-button-color: var(--canvas-foreground-color);
+    --floating-button-color-hover: var(--canvas-foreground-color);
+    --floating-button-background-color: var(--canvas-background-color);
+    --floating-button-hover-background-color: var(--canvas-background-color-hover);
+	--floating-button-fadeout-opacity:0;
+}
+```
+
+### Canvas Secondary
+```css
+.cpe-floating-button.page-side-tool {
+    --floating-button-color: var(--canvas-foreground-color);
+    --floating-button-color-hover: var(--canvas-foreground-color);
+    --floating-button-background-color: var(--canvas-secondary-background-color);
+    --floating-button-hover-background-color: var(--canvas-secondary-background-color-hover);
+	--floating-button-fadeout-opacity:0;
+}
+```
+
+### Inactive Text
+```css
+.cpe-floating-button.page-side-tool {
+    --floating-button-color: var(--inactive-text-foreground-color);
+    --floating-button-color-hover: var(--inactive-text-foreground-color);
+    --floating-button-background-color: var(--inactive-text-background-color);
+    --floating-button-hover-background-color: var(--inactive-text-background-color-hover);
+	--floating-button-fadeout-opacity:0;
+}
+```
+
+### Canvas Text
+```css
+.cpe-floating-button.page-side-tool {
+    --floating-button-color: var(--canvas-text-foreground-color);
+    --floating-button-color-hover: var(--canvas-text-foreground-color);
+    --floating-button-background-color: var(--canvas-text-background-color);
+    --floating-button-hover-background-color: var(--canvas-text-background-color-hover);
+	--floating-button-fadeout-opacity:0;
+}
+```
+
+### Highlight
+```css
+.cpe-floating-button.page-side-tool {
+    --floating-button-color: var(--highlight-foreground-color);
+    --floating-button-color-hover: var(--highlight-foreground-color);
+    --floating-button-background-color: var(--highlight-background-color);
+    --floating-button-hover-background-color: var(--highlight-background-color-hover);
+	--floating-button-fadeout-opacity:0;
+}
+```
+
+### Active Title
+```css
+.cpe-floating-button.page-side-tool {
+    --floating-button-color: var(--active-title-foreground-color);
+    --floating-button-color-hover: var(--active-title-foreground-color);
+    --floating-button-background-color: var(--active-title-background-color);
+    --floating-button-hover-background-color: var(--active-title-background-color-hover);
+	--floating-button-fadeout-opacity:0;
+}
+```
+
+
+
+### Inactive Title
+```css
+.cpe-floating-button.page-side-tool {
+    --floating-button-color: var(--inactive-title-foreground-color);
+    --floating-button-color-hover: var(--inactive-title-foreground-color);
+    --floating-button-background-color: var(--inactive-title-background-color);
+    --floating-button-hover-background-color: var(--inactive-title-background-color-hover);
 	--floating-button-fadeout-opacity:0;
 }
 ```
@@ -169,59 +169,59 @@ This snipset changes the floating actions to be themed according to a chosen col
 }
 
 .cpe-floating-button.page-side-tool.toggle-size {
-    --floating-button-color: var(--body-foreground-color);
-    --floating-button-color-hover: var(--body-foreground-color);
-    --floating-button-background-color: var(--body-background-color);
-    --floating-button-hover-background-color: var(--body-background-color-hover);
+    --floating-button-color: var(--desktop-foreground-color);
+    --floating-button-color-hover: var(--desktop-foreground-color);
+    --floating-button-background-color: var(--desktop-background-color);
+    --floating-button-hover-background-color: var(--desktop-background-color-hover);
 }
 
 .cpe-floating-button.page-side-tool.accent-toggle  {
-    --floating-button-color: var(--superbar-text-foreground-color);
-    --floating-button-color-hover: var(--superbar-text-foreground-color);
-    --floating-button-background-color: var(--superbar-text-background-color);
-    --floating-button-hover-background-color: var(--superbar-text-background-color-hover);
+    --floating-button-color: var(--desktop-text-foreground-color);
+    --floating-button-color-hover: var(--desktop-text-foreground-color);
+    --floating-button-background-color: var(--desktop-text-background-color);
+    --floating-button-hover-background-color: var(--desktop-text-background-color-hover);
 }
 
 .ftoc .cpe-floating-button.page-side-tool  {
-    --floating-button-color: var(--secondary-accent-foreground-color);
-    --floating-button-color-hover: var(--secondary-accent-foreground-color);
-    --floating-button-background-color: var(--secondary-accent-background-color);
-    --floating-button-hover-background-color: var(--secondary-accent-background-color-hover);
+    --floating-button-color: var(--hyperlink-foreground-color);
+    --floating-button-color-hover: var(--hyperlink-foreground-color);
+    --floating-button-background-color: var(--hyperlink-background-color);
+    --floating-button-hover-background-color: var(--hyperlink-background-color-hover);
 }
 
 .contrast-modes .cpe-floating-button.page-side-tool  {
-    --floating-button-color: var(--page-border-foreground-color);
-    --floating-button-color-hover: var(--page-border-foreground-color);
-    --floating-button-background-color: var(--page-border-background-color);
-    --floating-button-hover-background-color: var(--page-border-background-color-hover);
+    --floating-button-color: var(--inactive-text-foreground-color);
+    --floating-button-color-hover: var(--inactive-text-foreground-color);
+    --floating-button-background-color: var(--inactive-text-background-color);
+    --floating-button-hover-background-color: var(--inactive-text-background-color-hover);
 }
 
 .color-modes .cpe-floating-button.page-side-tool {
-    --floating-button-color: var(--page-text-foreground-color);
-    --floating-button-color-hover: var(--page-text-foreground-color);
-    --floating-button-background-color: var(--page-text-background-color);
-    --floating-button-hover-background-color: var(--page-text-background-color-hover);
+    --floating-button-color: var(--canvas-text-foreground-color);
+    --floating-button-color-hover: var(--canvas-text-foreground-color);
+    --floating-button-background-color: var(--canvas-text-background-color);
+    --floating-button-hover-background-color: var(--canvas-text-background-color-hover);
 }
 
 .styles .cpe-floating-button.page-side-tool {
-    --floating-button-color: var(--accent-foreground-color);
-    --floating-button-color-hover: var(--accent-foreground-color);
-    --floating-button-background-color: var(--accent-background-color);
-    --floating-button-hover-background-color: var(--accent-background-color-hover);
+    --floating-button-color: var(--highlight-foreground-color);
+    --floating-button-color-hover: var(--highlight-foreground-color);
+    --floating-button-background-color: var(--highlight-background-color);
+    --floating-button-hover-background-color: var(--highlight-background-color-hover);
 }
 
 .colors .cpe-floating-button.page-side-tool {
-    --floating-button-color: var(--tertiary-accent-foreground-color);
-    --floating-button-color-hover: var(--tertiary-accent-foreground-color);
-    --floating-button-background-color: var(--tertiary-accent-background-color);
-    --floating-button-hover-background-color: var(--tertiary-accent-background-color-hover);
+    --floating-button-color: var(--active-title-foreground-color);
+    --floating-button-color-hover: var(--active-title-foreground-color);
+    --floating-button-background-color: var(--active-title-background-color);
+    --floating-button-hover-background-color: var(--active-title-background-color-hover);
 }
 
 .themes .cpe-floating-button.page-side-tool {
-    --floating-button-color: var(--quaternary-accent-foreground-color);
-    --floating-button-color-hover: var(--quaternary-accent-foreground-color);
-    --floating-button-background-color: var(--quaternary-accent-background-color);
-    --floating-button-hover-background-color: var(--quaternary-accent-background-color-hover);
+    --floating-button-color: var(--inactive-title-foreground-color);
+    --floating-button-color-hover: var(--inactive-title-foreground-color);
+    --floating-button-background-color: var(--inactive-title-background-color);
+    --floating-button-hover-background-color: var(--inactive-title-background-color-hover);
 }
 ```
 
