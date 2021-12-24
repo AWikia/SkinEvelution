@@ -43,9 +43,15 @@
 	if (?MSStyle === 'Aero') {
 		--system-visual-style:['lite', 'standard'][?TransaprencyLevel];
 	} else if (?HighConttast != 0) {
-		--system-visual-style:contrast;
-	} else if ( (?MSStyle === 'AeroLite') || (?MSStyle === 'Basic')) {
+		if (?MSStyle === '') { // Classic High Contrast
+			--system-visual-style:classiccontrast;
+		} else {
+			--system-visual-style:contrast;
+		}
+	} else if ( (?MSStyle === 'AeroLite') || (?MSStyle === 'Basic')) { // Basic is Aero without any DWM
 		--system-visual-style:basic;
+	} else if (?MSStyle === '') { // Empty string is the Classic Visual Style
+		--system-visual-style:classic;
 	} else {
 		--system-visual-style:simple;
 	}

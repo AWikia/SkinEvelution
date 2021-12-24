@@ -22,7 +22,9 @@ var visualStyles = [
 					['lite', 'Lite', 'opacity'],
 					['basic', 'Basic', 'inbox'],
 					['contrast', 'High Contrast', 'contrast'],
-					['simple', 'Simple', 'extension']
+					['simple', 'Simple', 'extension'],
+					['classic', 'Classic', 'smart_toy'],
+					['classiccontrast', 'Classic High Contrast', 'filter_b_and_w']
 				    ];
 var contrastVisual = 'contrast';
 
@@ -804,7 +806,9 @@ function DownloadTheme(full=false) {
 				 '--desktop-background-no-vertical-tiling:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--desktop-background-no-vertical-tiling")  + ';\n' +
 				 // Page Color
 				 '--canvas-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--canvas-background-color")  + ';\n' +
-				 '--canvas-background-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--canvas-background-color-hover")  + ';\n' +
+				 '--canvas-background-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--canvas-3d-background-color-hover")  + ';\n' +
+				 '--canvas-3d-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--canvas-3d-background-color-dark")  + ';\n' +
+				 '--canvas-3d-background-color-dark:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--canvas-background-color")  + ';\n' +
 				 '--canvas-fadeout-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--canvas-fadeout-color")  + ';\n' +
 				 '--canvas-gradient-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--canvas-gradient-color")  + ';\n' +
 				 '--canvas-gradient-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--canvas-gradient-color-hover")  + ';\n' +
@@ -1464,6 +1468,8 @@ if (['full','legacy'].includes(getComputedStyle(document.querySelector('html')).
 						  "--message-alternative-foreground-color-rgb:" + GetTextVariable2(message_color) + "!important;\n" +
 						  "--canvas-secondary-background-color:" + dropdowncolor + ";\n" + 
 						  "--canvas-secondary-background-color-hover:" + dropdowncolorH + ";\n" + 
+						  "--canvas-3d-background-color:" + ColorTestTwin(dropdowncolor,"#ffffff",0.75) + ";\n" +
+						  "--canvas-3d-background-color-dark:" + ColorTestTwin(dropdowncolor,"#000000",0.5) + ";\n" +
 						  "--canvas-background-color-hover:" + content_color2 + ";\n" +
 						  "--canvas-foreground-color:" + GetForegroundVariable(content_color) + ";\n" +
 						  "--canvas-foreground-color-hover:" + GetForegroundVariable(content_color,true) + ";\n" + 
