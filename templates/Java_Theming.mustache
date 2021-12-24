@@ -5,8 +5,8 @@ window.MW18contrastmode = 'auto';
 window.MW18ContrastNotice = false;
 window.MW18ForcedTheme = false;
 /* Some Theming Colors */
-window.MW18PageColor = GetPageShort();
-window.MW18BgColor = GetCommunity();
+window.MW18PageColor = GetCanvasShort();
+window.MW18BgColor = GetDesktop();
 /* Contrast Values */
 window.MW18lowContrast = 1.25;
 window.MW18highContrast = 3.00;
@@ -288,7 +288,7 @@ function VisualStyleCompile() {
 }
 
 /* Getting non-generic color values */
-function GetCommunity() {
+function GetDesktop() {
 	if (ForcedColors()) {
 		return getComputedStyle(document.querySelector('.fc-buttonface')).getPropertyValue("color");
 	} else {
@@ -296,7 +296,7 @@ function GetCommunity() {
 	}
 }
 
-function GetCommunityHeaderText() {
+function GetDesktopText() {
 	if (ForcedColors()) {
 		return getComputedStyle(document.querySelector('.fc-buttontext')).getPropertyValue("color");
 	} else if (getComputedStyle(document.querySelector('html')).getPropertyValue("--desktop-text-background-color") === 'auto') {
@@ -308,7 +308,7 @@ function GetCommunityHeaderText() {
 }
 
 
-function GetPageShort() { // Like GetPage() without forced colors mode you get the unaltered page background mode (Used for checking dark mode)
+function GetCanvasShort() { // Like GetCanvas() without forced colors mode you get the unaltered page background mode (Used for checking dark mode)
 	if (ForcedColors()) {
 		return getComputedStyle(document.querySelector('.fc-canvas')).getPropertyValue("color");
 	} else {
@@ -317,7 +317,7 @@ function GetPageShort() { // Like GetPage() without forced colors mode you get t
 }
 
 
-function GetPage() {
+function GetCanvas() {
 	if (ForcedColors()) {
 		return getComputedStyle(document.querySelector('.fc-canvas')).getPropertyValue("color");
 	} else {
@@ -325,7 +325,7 @@ function GetPage() {
 	}
 }
 
-function GetSecondaryAccent() {
+function GetHyperlink() {
 	if (ForcedColors()) {
 		return getComputedStyle(document.querySelector('.fc-linktext')).getPropertyValue("color");
 	} else {
@@ -334,7 +334,7 @@ function GetSecondaryAccent() {
 }
 
 
-function GetPageBorder() {
+function GetInactiveText() {
 	if (ForcedColors()) {
 		return getComputedStyle(document.querySelector('.fc-graytext')).getPropertyValue("color");
 	} else {
@@ -343,7 +343,7 @@ function GetPageBorder() {
 }
 
 
-function GetPageText() {
+function GetCanvasText() {
 	if (ForcedColors()) {
 		return getComputedStyle(document.querySelector('.fc-canvastext')).getPropertyValue("color");
 	} else if (getComputedStyle(document.querySelector('html')).getPropertyValue("--canvas-text-background-color") === 'auto') {
@@ -355,7 +355,7 @@ function GetPageText() {
 }
 
 
-function GetAccent() {
+function GetHighlight() {
 	if (ForcedColors()) {
 		return getComputedStyle(document.querySelector('.fc-highlight')).getPropertyValue("color");
 	} else {
@@ -363,7 +363,7 @@ function GetAccent() {
 	}
 }
 
-function GetTertiaryAccent() {
+function GetActiveTitle() {
 	if (ForcedColors()) {
 		return getComputedStyle(document.querySelector('.fc-highlight')).getPropertyValue("color");
 	} else if (getComputedStyle(document.querySelector('html')).getPropertyValue("--active-title-background-color") === 'auto') {
@@ -374,7 +374,7 @@ function GetTertiaryAccent() {
 	}
 }
 
-function GetQuaternaryAccent() {
+function GetInactiveTitle() {
 	if (ForcedColors()) {
 		return getComputedStyle(document.querySelector('.fc-graytext')).getPropertyValue("color");
 	} else if (getComputedStyle(document.querySelector('html')).getPropertyValue("--inactive-title-background-color") === 'auto') {
@@ -448,7 +448,7 @@ function ContrastRatio2() {
 }
 
 function BestAlertColor() {
-var page = GetPage()
+var page = GetCanvas()
 var invpage = page;
 
 
@@ -612,7 +612,7 @@ function ManagerRows() {
 /* Changes Wiki theme style
    Supported values: auto, auto-r, light, dark, gray, gray-r, white, black, reversed-r, reversed, blu-wht, yel-blk, temp, temp-r, rtemp, rtemp-r */
 function colortheme(theme='auto', repaint=true, save=true) {
-    var body_bg =	GetPageShort();
+    var body_bg =	GetCanvasShort();
     var old_dark = window.MW18darkmode;
     var old_dark2 = window.MW18spdarkmode;
     var muststay = false;
@@ -1018,7 +1018,7 @@ function ColorTestTwin(color1,color2,intensity=1,hue='nil') {
 
 function ColorTest(color,text=false,inv=false,dledlen=false) { // Regular Colors
 	if (dledlen === true) {
-		var color2 = GetPage();
+		var color2 = GetCanvas();
 	} else {
 		var color2 = color;
 	}
@@ -1059,7 +1059,7 @@ function ColorTest(color,text=false,inv=false,dledlen=false) { // Regular Colors
 
 
 function MiniColorTest(color) { // Regular Colors
-	var color2 = GetPage();
+	var color2 = GetCanvas();
 	var func = (isLightColor(color2));
 	var light = chroma(color).get('hsl.l');
 	if (func) {
@@ -1216,7 +1216,7 @@ if (refresh === true) {
 // dropdowncolor is Dropdown Bg
 // dropdowncolor2 is Content Border
 
-var content_color =  GetPageShort();
+var content_color =  GetCanvasShort();
 
 /* This goes before compiling Generic Colors or else they will think the theme is light */
 
@@ -1255,7 +1255,7 @@ var adjustment = ContrastRatio2();
 		if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--inactive-text-background-color") === 'auto')  ) {
 			var dropdowncolor2 = ColorTestTwin(content_color,"#000000",adjustment*2);
 		} else {
-			var dropdowncolor2 = GetPageBorder();
+			var dropdowncolor2 = GetInactiveText();
 		}
 	} else {
 		var lightness = '#ffffff';
@@ -1263,13 +1263,13 @@ var adjustment = ContrastRatio2();
 		if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--inactive-text-background-color") === 'auto')  ) {
 			var dropdowncolor2 = ColorTestTwin(content_color,"#ffffff",adjustment*2);
 		} else {
-			var dropdowncolor2 = GetPageBorder();
+			var dropdowncolor2 = GetInactiveText();
 		}
 	}
 var dropdowncolorH = ColorTest(dropdowncolor,false,false,true);
 
 /** Page text color **/
-var content_text= GetPageText();
+var content_text= GetCanvasText();
 
 if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--canvas-text-background-color") !== 'auto')  ) {
 	// Liatch Quirk
@@ -1290,7 +1290,7 @@ var content_text1 = ColorTest(content_text,false,true,true);
 /** Button Color **/
 /* Set Vars */
 
-var button_color = GetAccent();
+var button_color = GetHighlight();
 
 // Liatch Quirk
 	var button_color = ColorInvert(button_color);
@@ -1305,7 +1305,7 @@ var buttoncolor1 = ColorTest(button_color,false);
 
 /** Link Color **/
 /* Set Vars */
-var link_color = GetSecondaryAccent();
+var link_color = GetHyperlink();
 
 // Liatch Quirk
 	var link_color = ColorInvert(link_color);
@@ -1342,7 +1342,7 @@ var bordercolor1 = ColorTest(border_color);
 /** Body Bg **/
 /* Set Vars */
 
-var head_color =	GetCommunity();
+var head_color =	GetDesktop();
 
 	if (isLightColor(head_color)) {
 		var lightness2 = '#000000';
@@ -1361,7 +1361,7 @@ var headcolor1 = ColorTest(head_color,false,false,true);
 
 /** Community Header text color **/
 
-var headertext_color= GetCommunityHeaderText();
+var headertext_color= GetDesktopText();
 
 if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--desktop-text-background-color") !== 'auto')  ) {
 	// Liatch Quirk
@@ -1384,7 +1384,7 @@ var headertextcolor1 = ColorTest(headertext_color,false,true,true);
 
 /** Caret Color **/
 /* Set Vars */
-var caret_color = GetTertiaryAccent();
+var caret_color = GetActiveTitle();
 // Liatch Quirk
 		var caret_color = ColorInvert(caret_color);
 
@@ -1392,7 +1392,7 @@ var caretcolor1 = ColorTest(caret_color);
 
 /** Caret 2 Color **/
 /* Set Vars */
-var caret2_color = GetQuaternaryAccent();
+var caret2_color = GetInactiveTitle();
 // Liatch Quirk
 		var caret2_color = ColorInvert(caret2_color);
 
