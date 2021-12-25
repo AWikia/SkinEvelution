@@ -257,7 +257,7 @@ function InitDesigner() {
 
 			'</datalist>' +
 			'<datalist id="td_fonts">' + // Fonts
-				'<option value="Rubik">' +
+				'<option value="Exo 2">' +
 				'<option value="Work Sans">' +
 				'<option value="Lora">' +
 				'<option value="Roboto Slab">' +

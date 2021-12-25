@@ -19,7 +19,8 @@ window.MW18highContrast = 3.00;
 */
 
 var visualStyles = [
-					['lite', 'Lite', 'opacity'],
+					['formal', 'Formal', 'opacity'],
+					['lite', 'Lite', 'square'],
 					['basic', 'Basic', 'inbox'],
 					['contrast', 'High Contrast', 'contrast'],
 					['simple', 'Simple', 'extension'],
@@ -253,7 +254,6 @@ function VisualColor(style,save=true) {
 	if (y) {
 		y.classList.add("selected")
 	}
-
 		if (save) {
 		insertKey('visual-color', style );
 		}
@@ -1226,27 +1226,17 @@ var content_color =  GetCanvasShort();
 
 	document.querySelector('html').classList.remove("theme-fandomdesktop-light");
 	document.querySelector('html').classList.remove("theme-fandomdesktop-dark");
-	var darkpage = isLightColor(content_color);
-	if (window.MW18darkmode) {
-		if ( darkpage ) {
-			document.querySelector('html').classList.add("theme-fandomdesktop-dark")
-		} else {
-			document.querySelector('html').classList.add("theme-fandomdesktop-light")
-		}
-	} else {
-		if (!(darkpage)) {
-			document.querySelector('html').classList.add("theme-fandomdesktop-dark")
-		} else {
-			document.querySelector('html').classList.add("theme-fandomdesktop-light")
-		}
-	}
-
 
 // Liatch Quirk
 	var content_color = ColorInvert(content_color)
 
 	window.MW18PageColor = content_color
 	var darkpage = isLightColor(content_color);
+	if (!(darkpage)) {
+		document.querySelector('html').classList.add("theme-fandomdesktop-dark")
+	} else {
+		document.querySelector('html').classList.add("theme-fandomdesktop-light")
+	}
 
 
 var content_color2 = ColorTest(content_color);
@@ -1375,11 +1365,12 @@ if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--deskto
 			while ( ( !(isSuitableColor(headertext_color, head_color)) ) && (headertext_color !== lightness2)  ) {
 				var headertext_color= MiniColorTest2(headertext_color);
 			}
-		} else {
+		}/* else {
 			while ( ( !(isSuitableColor2(headertext_color, head_color)) ) && (headertext_color !== lightness2)  ) {
 				var headertext_color= MiniColorTest2(headertext_color);
 			}
 		}
+		*/
 
 }
 
@@ -1619,8 +1610,6 @@ if (['full','legacy'].includes(getComputedStyle(document.querySelector('html')).
 
 /* Write them to the stylesheet */
 document.querySelector("head .theming").innerHTML = result;
-
-
 
 }
 
