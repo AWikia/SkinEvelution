@@ -24,12 +24,15 @@ Themes can easily be made through the use of ThemeDesigner tool (Not available o
 Four color schemes exist. Solo Light and Solo dark force Light and Dark modes respectively. Duo Light uses unaltered behavior of themes while Duo Dark forces inverted colors to all themes.
 
 ### Visual Styles
-Five Visual Styles exist:
+Eight Visual Styles exist:
 - Standard is the normal ones
+- Formal is Standard but with transparency effects that do not rely on color mixes
 - Lite is Standard but without transparency effects
 - Basic has lesser blurred shadows and focuses on a less demanding layout
 - High Contrast is Basic but with much stricter focus to Higher Contrast themes
 - Simple has no translucency and has funner-styled containers (i.e. Dropdowns are styled soley using Secondary Accent color)
+- Classic has styling dating back to Windows 95 - 2000
+- Classic High Contrast is Classic but with much stricter focus to Higher Contrast themes (i.e. Aliases 2nd Canvas color to the 1st ones, locks the 3d colors to specific ones)
 
 ### Visual Colors
 Six different Visual Colors exist:
