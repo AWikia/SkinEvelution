@@ -2,11 +2,13 @@
 window.MW18spdarkmode = 0; // 0 = No special behavior | 1 = Inverted Colors Dark | 2 = Grayscale | 3 = Yellow Tint | 4 = Blue Tint | 5 = Inverted Colors Light | 6 = Temperature | 7 = Inverted Temperature
 window.MW18wikitheme = 'auto';
 window.MW18contrastmode = 'auto';
-window.MW18ContrastNotice = false;
-window.MW18ForcedTheme = false;
 /* Some Theming Colors */
 window.MW18PageColor = GetCanvasShort();
+window.MW18PageColorLight = true;
+window.MW18PageColorLight2 = true;
 window.MW18BgColor = GetDesktop();
+window.MW18BgColorLight = true;
+window.MW18BgColorLight2 = true;
 /* Contrast Values */
 window.MW18lowContrast = 1.25;
 window.MW18highContrast = 3.00;
@@ -163,17 +165,9 @@ var visualColors = [
         }
     });
 	document.querySelector("head").insertAdjacentHTML('afterbegin','<style class="theming"></style>');
-	document.querySelector('html').setAttribute('theme', theme_selected);
 	document.querySelector('body').setAttribute('tabindex',-1);; // Add the CPE button class
 	document.querySelector('body').focus();
-	var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li.selected");
-		if (x) {
-			x.classList.remove("selected");
-		}
-	var y = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li[data-theme-change='theme-" + theme_selected + "']")
-		if (y) {
-			y.classList.add("selected");
-		}
+	ToggleTheme(theme_selected,false,false);
 	colortheme(color_mode,false,false);
 	contrastmode(contrast_mode,false,false);
 	SetAccent(accent_active,false);
@@ -246,11 +240,11 @@ function VisualStyle(style,save=true) {
 
 function VisualColor(style,save=true) {
 	document.querySelector('html').setAttribute("visualcolors", style);
-	var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-colors li.selected");
+	var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-colors li.selected, .skin-tunic #visual-colors .mw-portlet-body ul li.selected");
 	if (x) {
 		x.classList.remove("selected");
 	}
-	var y = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-colors li[data-visual-color='" + style + "']");
+	var y = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-colors li[data-visual-color='" + style + "'], .skin-tunic #visual-colors .mw-portlet-body ul li[data-visual-color='" + style + "']");
 	if (y) {
 		y.classList.add("selected")
 	}
@@ -271,7 +265,10 @@ function VisualStyleCompile() {
 						'<span class="cpe-icon material-icons">' + visualStyles[i][2] + '</span>' +
 					'</a>' +
 				'</li>'
-		document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-styles").insertAdjacentHTML('beforeend',str);
+		var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-styles");
+		if (x) {
+			x.insertAdjacentHTML('beforeend',str);
+		}
 	}
 /* Visual Colors */
 	if (! (document.querySelector("container.no-color-management") ) ) {
@@ -281,7 +278,20 @@ function VisualStyleCompile() {
 							'<span class="cpe-icon material-icons">' + visualColors[i][2] + '</span>' +
 						'</a>' +
 					'</li>'
-			document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-colors, .skin-tunic #visual-colors .mw-portlet-body ul").insertAdjacentHTML('beforeend',str);
+			var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-colors");
+			if (x) {
+				x.insertAdjacentHTML('beforeend',str);
+			} else {
+				var x = document.querySelector(".skin-tunic #visual-colors .mw-portlet-body ul");
+				if (x) {
+					str = 	'<li data-visual-color="' + visualColors[i][0] + '">' +
+							'<a onclick="VisualColor(' + "'" + visualColors[i][0]  + "'" + ')">' +
+								'<span>' + visualColors[i][1] + '</span>' +
+							'</a>' +
+						'</li>'
+					x.insertAdjacentHTML('beforeend',str);
+				}
+			}
 		}
 	}
 
@@ -303,7 +313,7 @@ function GetDesktopText() {
 		return getComputedStyle(document.querySelector('.fc-buttontext')).getPropertyValue("color");
 	} else if (getComputedStyle(document.querySelector('html')).getPropertyValue("--desktop-text-background-color") === 'auto') {
 		var color = window.MW18BgColor;
-		return GetTextVariable(color);
+		return GetForegroundVariables(color,window.MW18BgColorLight,window.MW18BgColorLight2)[4];
 	} else {
 		return getComputedStyle(document.querySelector('html')).getPropertyValue("--desktop-text-background-color").trim();
 	}
@@ -350,7 +360,7 @@ function GetCanvasText() {
 		return getComputedStyle(document.querySelector('.fc-canvastext')).getPropertyValue("color");
 	} else if (getComputedStyle(document.querySelector('html')).getPropertyValue("--canvas-text-background-color") === 'auto') {
 		var color = window.MW18PageColor;
-		return GetTextVariable(color);
+		return GetForegroundVariables(color,window.MW18PageColorLight,window.MW18PageColorLight2)[4];
 	} else {
 		return getComputedStyle(document.querySelector('html')).getPropertyValue("--canvas-text-background-color").trim();
 	}
@@ -367,10 +377,9 @@ function GetHighlight() {
 
 function GetActiveTitle() {
 	if (ForcedColors()) {
-		return getComputedStyle(document.querySelector('.fc-highlight')).getPropertyValue("color");
+		return getComputedStyle(document.querySelector('.fc-linktext')).getPropertyValue("color");
 	} else if (getComputedStyle(document.querySelector('html')).getPropertyValue("--active-title-background-color") === 'auto') {
-		var color = getComputedStyle(document.querySelector('html')).getPropertyValue("--highlight-background-color").trim();
-		return color
+		return GetHyperlink();
 	} else {
 		return getComputedStyle(document.querySelector('html')).getPropertyValue("--active-title-background-color").trim();
 	}
@@ -380,8 +389,7 @@ function GetInactiveTitle() {
 	if (ForcedColors()) {
 		return getComputedStyle(document.querySelector('.fc-graytext')).getPropertyValue("color");
 	} else if (getComputedStyle(document.querySelector('html')).getPropertyValue("--inactive-title-background-color") === 'auto') {
-		var color = getComputedStyle(document.querySelector('html')).getPropertyValue("--canvas-background-color").trim();
-		return color
+		return GetInactiveText();
 	} else {
 		return getComputedStyle(document.querySelector('html')).getPropertyValue("--inactive-title-background-color").trim();
 	}
@@ -454,7 +462,7 @@ var page = GetCanvas()
 var invpage = page;
 
 
-if (isLightColor(page)) { // ( chroma(page).get('hsl.l') < 0.5)
+if (window.MW18PageColorLight) { // ( chroma(page).get('hsl.l') < 0.5)
 	var colors = ['96%', '94%', '92%', '90%', '88%', '86%', '84%', '82%', '80%', '78%', '76%', '74%', '72%', '70%', '68%', '66%', '64%', '62%', '60%', '58%', '56%', '54%', '46%', '44%', '42%', '40%', '38%', '36%', '34%', '32%', '30%', '28%', '26%', '24%', '22%', '20%', '18%', '16%', '14%', '12%', '10%', '8%', '6%', '4%']
 } else {
 	var colors = ['4%', '6%', '8%', '10%', '12%', '14%', '16%', '18%', '20%', '22%', '24%', '26%', '28%', '30%', '32%', '34%', '36%', '38%', '40%', '42%', '44%', '46%', '54%', '56%', '58%', '60%', '62%', '64%', '66%', '68%', '70%', '72%', '74%', '76%', '78%', '80%', '82%', '84%', '86%', '88%', '90%', '92%', '94%', '96%']
@@ -498,67 +506,53 @@ if (isLightColor(page)) { // ( chroma(page).get('hsl.l') < 0.5)
 
 /* Get Foreground Variables */
 
-function GetForegroundVariable(color,hover=false) {
-	if (hover) {
-		if (isLightColor(color)) {
-			return 'var(--light-theme-foreground-color-hover)'
-		} else {
-			return 'var(--dark-theme-foreground-color-hover)'
-		}
+function GetForegroundVariables(color,func="nil",funcB="nil") {
+	if (func == 'nil') {
+		var func1 = isLightColor(color);
 	} else {
-		if (isLightColor(color)) {
-			return 'var(--light-theme-foreground-color)'
-		} else {
-			return 'var(--dark-theme-foreground-color)'
-		}
+		func1 = func; // Custom Function For Light or Dark case
 	}
-}
-
-
-function GetForegroundVariable2(color,hover=false) {
-	if (hover) {
-		if (isLightColor(color)) {
-			return 'var(--light-theme-foreground-color-hover-rgb)'
-		} else {
-			return 'var(--dark-theme-foreground-color-hover-rgb)'
-		}
+	if (funcB == 'nil') {
+		var func2 = isLightColor2(color);
 	} else {
-		if (isLightColor(color)) {
-			return 'var(--light-theme-foreground-color-rgb)'
-		} else {
-			return 'var(--dark-theme-foreground-color-rgb)'
-		}
+		func2 = funcB; // Custom Function For Light or Dark case
 	}
-}
-
-function GetTextVariable(color) {
-	if (isLightColor2(color)) {
-		return getComputedStyle(document.querySelector('body')).getPropertyValue("--light-theme-text-background-color");
+	if (func2) {
+		var fc1 =  getComputedStyle(document.querySelector('body')).getPropertyValue("--light-theme-text-background-color");
+		var fc2 =  getComputedStyle(document.querySelector('body')).getPropertyValue("--light-theme-text-background-color-rgb");
 	} else {
-		return getComputedStyle(document.querySelector('body')).getPropertyValue("--dark-theme-text-background-color");
+		var fc1 =  getComputedStyle(document.querySelector('body')).getPropertyValue("--dark-theme-text-background-color");
+		var fc2 =  getComputedStyle(document.querySelector('body')).getPropertyValue("--dark-theme-text-background-color-rgb");
 	}
-}
-
-function GetTextVariable2(color) {
-	if (isLightColor2(color)) {
-		return Color2(getComputedStyle(document.querySelector('body')).getPropertyValue("--light-theme-text-background-color"));
+	if (func1) {
+		return ['var(--light-theme-foreground-color)', 'var(--light-theme-foreground-color-hover)', 'var(--light-theme-foreground-color-rgb)', 'var(--light-theme-foreground-color-hover-rgb)', fc1, fc2]
 	} else {
-		return Color2(getComputedStyle(document.querySelector('body')).getPropertyValue("--dark-theme-text-background-color"));
+		return ['var(--dark-theme-foreground-color)', 'var(--dark-theme-foreground-color-hover)', 'var(--dark-theme-foreground-color-rgb)', 'var(--dark-theme-foreground-color-hover-rgb)', fc1, fc2]
 	}
 }
 
 
 /* Get Gradient Variables */
-function GetGradientVariable(color,name="page") {
-	if (isLightColor(color)) {
+function GetGradientVariable(color,name="canvas", func="nil") {
+	if (func == 'nil') {
+		var func1 = isLightColor(color);
+	} else {
+		func1 = func; // Custom Function For Light or Dark case
+	}
+	if (func1) {
 		return ['var(--' + name + '-background-color)', 'var(--' + name + '-background-color-hover)']
 	} else {
 		return ['var(--' + name + '-background-color-hover)', 'var(--' + name + '-background-color)']
 	}
 }
 
-function GetGradientVariable2(color,name="page") {
-	if (isDarkColor(color)) {
+function GetGradientVariable2(color,name="canvas", func="nil") {
+	if (func == 'nil') {
+		var func1 = isLightColor(color);
+	} else {
+		func1 = func; // Custom Function For Light or Dark case
+	}
+	if (!(func1)) {
 		return ['var(--' + name + '-background-color)', 'var(--' + name + '-background-color-hover)']
 	} else {
 		return ['var(--' + name + '-background-color-hover)', 'var(--' + name + '-background-color)']
@@ -702,11 +696,11 @@ function colortheme(theme='auto', repaint=true, save=true) {
 		insertKey('color-mode', theme );
 	}
 
-	var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-color-modes li.selected");
+	var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-color-modes li.selected, .skin-tunic #color-modes .mw-portlet-body ul li.selected");
 	if (x) {
 		x.classList.remove("selected");
 	}
-	var y = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-color-modes li[data-color-mode='" + theme + "']");
+	var y = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-color-modes li[data-color-mode='" + theme + "'], .skin-tunic #color-modes .mw-portlet-body ul li[data-color-mode='" + theme + "']");
 	if (y) {
 		y.classList.add("selected")
 	}
@@ -724,11 +718,11 @@ function contrastmode(theme='auto', repaint=true, save=true) {
 	if (save) {
 		insertKey('contrast-mode', theme );
 	}
-	var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-contrast-modes li.selected");
+	var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-contrast-modes li.selected, .skin-tunic #contrast-modes .mw-portlet-body ul li.selected");
 	if (x) {
 		x.classList.remove("selected");
 	}
-	var y = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-contrast-modes li[data-contrast-mode='" + theme + "']");
+	var y = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-contrast-modes li[data-contrast-mode='" + theme + "'], .skin-tunic #contrast-modes .mw-portlet-body ul li[data-contrast-mode='" + theme + "']");
 	if (y) {
 		y.classList.add("selected")
 	}
@@ -1022,11 +1016,12 @@ function ColorTestTwin(color1,color2,intensity=1,hue='nil') {
 
 function ColorTest(color,text=false,inv=false,dledlen=false) { // Regular Colors
 	if (dledlen === true) {
-		var color2 = GetCanvas();
+//		var color2 = GetCanvas();
+		var func = 	window.MW18PageColorLight;
 	} else {
 		var color2 = color;
+		var func = (isLightColor(color2));
 	}
-	var func = (isLightColor(color2));
 	var light = chroma(color).get('hsl.l')
 	if (func) {
 		if (text === true) {
@@ -1135,11 +1130,7 @@ function ColorTest2(color,text=false) {
 
 // Conversion for R,G,B syntax
 function Color2(color) {
-	return Math.round(chroma(color).get('rgb.r') ) + ',' + Math.round(chroma(color).get('rgb.g') ) + ',' + Math.round(chroma(color).get('rgb.b') );
-}
-
-function Color4(color) {
-	return Math.round(chroma(color).get('rgb.r') ) + ' ' + Math.round(chroma(color).get('rgb.g') ) + ' ' + Math.round(chroma(color).get('rgb.b') );
+	return chroma(color).get('rgb.r') + ',' + chroma(color).get('rgb.g') + ',' + chroma(color).get('rgb.b');
 }
 
 function isLightColor(color) {
@@ -1159,19 +1150,6 @@ function isDarkColor(color) {
 	return !isLightColor(color)
 }
 
-function isSuperLightColor(color) {
-	var c1 = (chroma.contrast('#000000',  chroma(color)))
-	var contrast = (window.matchMedia('(prefers-contrast: more)').matches) ? 13 : 10
-	return (c1 >= contrast )
-}
-
-function isSuperDarkColor(color) {
-	var c1 = (chroma.contrast('#ffffff',  chroma(color)))
-	var contrast = (window.matchMedia('(prefers-contrast: more)').matches) ? 13 : 10
-	return (c1 >= contrast )
-}
-
-
 function isSuitableColor(color,color2) {
 var contrast = window.MW18highContrast*ContrastRatio()
 return ((chroma.contrast(color, color2)) >= contrast)
@@ -1181,12 +1159,6 @@ function isSuitableColor2(color,color2) {
 var contrast = window.MW18lowContrast*ContrastRatio()
 return ((chroma.contrast(color, color2)) >= contrast) // For Border Color
 }
-
-function isSuitableColor3(color,color2) {
-var contrast = 1.5
-return ((chroma.contrast(color, color2)) >= contrast)
-}
-
 
 
 
@@ -1232,6 +1204,8 @@ var content_color =  GetCanvasShort();
 
 	window.MW18PageColor = content_color
 	var darkpage = isLightColor(content_color);
+	window.MW18PageColorLight = darkpage;
+	window.MW18PageColorLight2 = isLightColor2(content_color);
 	if (!(darkpage)) {
 		document.querySelector('html').classList.add("theme-fandomdesktop-dark")
 	} else {
@@ -1338,15 +1312,18 @@ var bordercolor1 = ColorTest(border_color);
 
 var head_color =	GetDesktop();
 
-	if (isLightColor(head_color)) {
-		var lightness2 = '#000000';
-	} else {
-		var lightness2 = '#ffffff';
-	}
 
 
 // Liatch Quirk
 		var head_color = ColorInvert(head_color);
+	var lighthead = isLightColor(head_color);
+	window.MW18BgColorLight = lighthead;
+	window.MW18BgColorLight2 = isLightColor2(head_color);
+	if (lighthead) {
+		var lightness2 = '#000000';
+	} else {
+		var lightness2 = '#ffffff';
+	}
 
 window.MW18BgColor = head_color
 
@@ -1429,176 +1406,206 @@ if (['full','legacy'].includes(getComputedStyle(document.querySelector('html')).
 	var overlay = ['block', 'var(--header-size)'];
 }
 
+// Gradient Sets
+var alert_gradient= GetGradientVariable(content_color,'alert', window.MW18PageColorLight);
+var warning_gradient = GetGradientVariable(content_color,'warning', window.MW18PageColorLight);
+var success_gradient = GetGradientVariable(content_color,'success', window.MW18PageColorLight);
+var message_gradient = GetGradientVariable(content_color,'message', window.MW18PageColorLight);
+var content_color_gradient = GetGradientVariable(content_color,'canvas', window.MW18PageColorLight);
+var content_text_gradient = GetGradientVariable2(content_color,'canvas-text', window.MW18PageColorLight);
+var button_gradient = GetGradientVariable(button_color,'highlight');
+var link_gradient = GetGradientVariable(content_color,'hyperlink', window.MW18PageColorLight);
+var border_gradient = GetGradientVariable(border_color,'inactive-text');
+var head_gradient = GetGradientVariable(content_color,'desktop', window.MW18PageColorLight);
+var caret_gradient = GetGradientVariable(caret_color,'active-title');
+var caret2_gradient = GetGradientVariable(caret2_color,'inactive-title');
+
+// Foreground texts
+var alert_fg = GetForegroundVariables(alert_color);
+var warning_fg = GetForegroundVariables(warning_color);
+var success_fg = GetForegroundVariables(success_color);
+var message_fg = GetForegroundVariables(message_color);
+var content_color_fg = GetForegroundVariables(content_color, window.MW18PageColorLight, window.MW18PageColorLight2);
+var content_text_fg = GetForegroundVariables(content_text);
+var button_fg = GetForegroundVariables(button_color);
+var link_fg = GetForegroundVariables(link_color);
+var border_fg = GetForegroundVariables(border_color);
+var head_fg = GetForegroundVariables(head_color, window.MW18BgColorLight, window.MW18BgColorLight2);
+var headertext_fg = GetForegroundVariables(headertext_color);
+var caret_fg = GetForegroundVariables(caret_color);
+var caret2_fg = GetForegroundVariables(caret2_color);
+
+
 /* Set Values for dynamical variables */
 	var result = 		  ":root {" +
-						  "--desktop-alternative-foreground-color:" + GetTextVariable(head_color) + ";\n" + 
-						  "--desktop-alternative-foreground-color-rgb:" + GetTextVariable2(head_color) + ";\n" +
-						  "--desktop-text-alternative-foreground-color:" + GetTextVariable(headertext_color) + ";\n" + 
-						  "--desktop-text-alternative-foreground-color-rgb:" + GetTextVariable2(headertext_color) + ";\n" +
-						  "--hyperlink-alternative-foreground-color:" + GetTextVariable(link_color) + ";\n" + 
-						  "--hyperlink-alternative-foreground-color-rgb:" + GetTextVariable2(link_color) + ";\n" +
-						  "--canvas-alternative-foreground-color:" + GetTextVariable(content_color) + ";\n" + 
-						  "--canvas-alternative-foreground-color-rgb:" + GetTextVariable2(content_color) + ";\n" +
-						  "--inactive-text-alternative-foreground-color:" + GetTextVariable(border_color) + ";\n" + 
-						  "--inactive-text-alternative-foreground-color-rgb:" + GetTextVariable2(border_color) + ";\n" +
-						  "--canvas-text-alternative-foreground-color:" + GetTextVariable(content_text) + ";\n" + 
-						  "--canvas-text-alternative-foreground-color-rgb:" + GetTextVariable2(content_text) + ";\n" +
-						  "--highlight-alternative-foreground-color:" + GetTextVariable(button_color) + ";\n" + 
-						  "--highlight-alternative-foreground-color-rgb:" + GetTextVariable2(button_color) + ";\n" +
-						  "--active-title-alternative-foreground-color:" + GetTextVariable(caret_color) + ";\n" + 
-						  "--active-title-alternative-foreground-color-rgb:" + GetTextVariable2(caret_color) + ";\n" +
-						  "--inactive-title-alternative-foreground-color:" + GetTextVariable(caret2_color) + ";\n" + 
-						  "--inactive-title-alternative-foreground-color-rgb:" + GetTextVariable2(caret2_color) + ";\n" +
-						  "--alert-alternative-foreground-color:" + GetTextVariable(alert_color) + "!important;\n" + 
-						  "--alert-alternative-foreground-color-rgb:" + GetTextVariable2(alert_color) + "!important;\n" +
-						  "--warning-alternative-foreground-color:" + GetTextVariable(warning_color) + "!important;\n" + 
-						  "--warning-alternative-foreground-color-rgb:" + GetTextVariable2(warning_color) + "!important;\n" +
-						  "--success-alternative-foreground-color:" + GetTextVariable(success_color) + "!important;\n" + 
-						  "--success-alternative-foreground-color-rgb:" + GetTextVariable2(success_color) + "!important;\n" +
-						  "--message-alternative-foreground-color:" + GetTextVariable(message_color) + "!important;\n" + 
-						  "--message-alternative-foreground-color-rgb:" + GetTextVariable2(message_color) + "!important;\n" +
+						  "--desktop-alternative-foreground-color:" + head_fg[4] + ";\n" + 
+						  "--desktop-alternative-foreground-color-rgb:" + head_fg[5] + ";\n" +
+						  "--desktop-text-alternative-foreground-color:" + headertext_fg[4] + ";\n" + 
+						  "--desktop-text-alternative-foreground-color-rgb:" + headertext_fg[5] + ";\n" +
+						  "--hyperlink-alternative-foreground-color:" + link_fg[4] + ";\n" + 
+						  "--hyperlink-alternative-foreground-color-rgb:" + link_fg[5] + ";\n" +
+						  "--canvas-alternative-foreground-color:" + content_color_fg[4] + ";\n" + 
+						  "--canvas-alternative-foreground-color-rgb:" + content_color_fg[5] + ";\n" +
+						  "--inactive-text-alternative-foreground-color:" + border_fg[4] + ";\n" + 
+						  "--inactive-text-alternative-foreground-color-rgb:" + border_fg[5] + ";\n" +
+						  "--canvas-text-alternative-foreground-color:" + content_text_fg[4] + ";\n" + 
+						  "--canvas-text-alternative-foreground-color-rgb:" + content_text_fg[5] + ";\n" +
+						  "--highlight-alternative-foreground-color:" + button_fg[4] + ";\n" + 
+						  "--highlight-alternative-foreground-color-rgb:" + button_fg[5] + ";\n" +
+						  "--active-title-alternative-foreground-color:" + caret_fg[4] + ";\n" + 
+						  "--active-title-alternative-foreground-color-rgb:" + caret_fg[5] + ";\n" +
+						  "--inactive-title-alternative-foreground-color:" + caret2_fg[4] + ";\n" + 
+						  "--inactive-title-alternative-foreground-color-rgb:" + caret2_fg[5] + ";\n" +
+						  "--alert-alternative-foreground-color:" + alert_fg[4] + "!important;\n" + 
+						  "--alert-alternative-foreground-color-rgb:" + alert_fg[5] + "!important;\n" +
+						  "--warning-alternative-foreground-color:" + warning_fg[4] + "!important;\n" + 
+						  "--warning-alternative-foreground-color-rgb:" + warning_fg[5] + "!important;\n" +
+						  "--success-alternative-foreground-color:" + success_fg[4] + "!important;\n" + 
+						  "--success-alternative-foreground-color-rgb:" + success_fg[5] + "!important;\n" +
+						  "--message-alternative-foreground-color:" + message_fg[4] + "!important;\n" + 
+						  "--message-alternative-foreground-color-rgb:" + message_fg[5] + "!important;\n" +
 						  "--canvas-secondary-background-color:" + dropdowncolor + ";\n" + 
 						  "--canvas-secondary-background-color-hover:" + dropdowncolorH + ";\n" + 
 						  "--canvas-3d-background-color:" + ColorTestTwin(dropdowncolor,"#ffffff",0.75) + ";\n" +
 						  "--canvas-3d-background-color-dark:" + ColorTestTwin(dropdowncolor,"#000000",0.5) + ";\n" +
 						  "--canvas-background-color-hover:" + content_color2 + ";\n" +
-						  "--canvas-foreground-color:" + GetForegroundVariable(content_color) + ";\n" +
-						  "--canvas-foreground-color-hover:" + GetForegroundVariable(content_color,true) + ";\n" + 
+						  "--canvas-foreground-color:" + content_color_fg[0] + ";\n" +
+						  "--canvas-foreground-color-hover:" +  content_color_fg[1] + ";\n" + 
 						  "--canvas-secondary-background-color-rgb:" + Color2(dropdowncolor) + ";\n" + 
 						  "--canvas-background-color-rgb:" + Color2( content_color ) + ";\n" +
-						  "--canvas-foreground-color-rgb:" + GetForegroundVariable2(content_color) + ";\n" +
-						  "--canvas-foreground-color-hover-rgb:" + GetForegroundVariable2(content_color,true) + ";\n" + 
+						  "--canvas-foreground-color-rgb:" +  content_color_fg[2] + ";\n" +
+						  "--canvas-foreground-color-hover-rgb:" +  content_color_fg[3] + ";\n" + 
 						  "--canvas-text-background-color-hover:" + content_text1 + ";\n" +
-						  "--canvas-text-foreground-color:" + GetForegroundVariable(content_text) + ";\n" +
-						  "--canvas-text-foreground-color-hover:" + GetForegroundVariable(content_text,true) + ";\n" +
-						  "--canvas-text-foreground-color-inverted:" + GetForegroundVariable(content_text1) + ";\n" +
+						  "--canvas-text-foreground-color:" + content_text_fg[0] + ";\n" +
+						  "--canvas-text-foreground-color-hover:" + content_text_fg[1] + ";\n" +
+						  "--canvas-text-foreground-color-inverted:" + GetForegroundVariables(content_text1)[0] + ";\n" +
 						  "--canvas-text-background-color-rgb:" + Color2( content_text ) + ";\n" +
 						  "--canvas-text-background-color-hover-rgb:" + Color2(content_text1) + ";\n" +
-						  "--canvas-text-foreground-color-rgb:" + GetForegroundVariable2(content_text) + ";\n" +
-						  "--canvas-text-foreground-color-hover-rgb:" + GetForegroundVariable2(content_text,true) + ";\n" +
+						  "--canvas-text-foreground-color-rgb:" + content_text_fg[2] + ";\n" +
+						  "--canvas-text-foreground-color-hover-rgb:" + content_text_fg[3] + ";\n" +
 						  "--highlight-background-color-hover:" + buttoncolor1 + ";\n" +
-						  "--highlight-foreground-color:" + GetForegroundVariable(button_color) + ";\n" +
-						  "--highlight-foreground-color-hover:" + GetForegroundVariable(button_color,true) + ";\n" +
-						  "--highlight-foreground-color-inverted:" + GetForegroundVariable(buttoncolor1) + ";\n" +
+						  "--highlight-foreground-color:" + button_fg[0] + ";\n" +
+						  "--highlight-foreground-color-hover:" + button_fg[1] + ";\n" +
+						  "--highlight-foreground-color-inverted:" + GetForegroundVariables(buttoncolor1)[0] + ";\n" +
 						  "--highlight-background-color-rgb:" + Color2(button_color) + ";\n" +
-						  "--highlight-foreground-color-rgb:" + GetForegroundVariable2(button_color) + ";\n" +
-						  "--highlight-foreground-color-hover-rgb:" + GetForegroundVariable2(button_color,true) + ";\n" +
+						  "--highlight-foreground-color-rgb:" + button_fg[2] + ";\n" +
+						  "--highlight-foreground-color-hover-rgb:" + button_fg[3] + ";\n" +
 						  "--hyperlink-background-color-hover:" + linkcolor1 + ";\n" +
-						  "--hyperlink-foreground-color:" + GetForegroundVariable(link_color) + ";\n" +
-						  "--hyperlink-foreground-color-hover:" + GetForegroundVariable(link_color,true) + ";\n" +
-						  "--hyperlink-foreground-color-inverted:" + GetForegroundVariable(linkcolor1) + ";\n" +
+						  "--hyperlink-foreground-color:" + link_fg[0] + ";\n" +
+						  "--hyperlink-foreground-color-hover:" + link_fg[1] + ";\n" +
+						  "--hyperlink-foreground-color-inverted:" + GetForegroundVariables(linkcolor1)[0] + ";\n" +
 						  "--hyperlink-background-color-rgb:" + Color2(link_color) + ";\n" +
 						  "--hyperlink-background-color-hover-rgb:" + Color2(linkcolor1) + ";\n" +
-						  "--hyperlink-foreground-color-rgb:" + GetForegroundVariable2(link_color) + ";\n" +
-						  "--hyperlink-foreground-color-hover-rgb:" + GetForegroundVariable2(link_color,true) + ";\n" +
+						  "--hyperlink-foreground-color-rgb:" + link_fg[2] + ";\n" +
+						  "--hyperlink-foreground-color-hover-rgb:" + link_fg[3] + ";\n" +
 						  "--inactive-text-background-color-hover:" + bordercolor1 + ";\n" +
-						  "--inactive-text-foreground-color:" + GetForegroundVariable(border_color) + ";\n" +
-						  "--inactive-text-foreground-color-hover:" + GetForegroundVariable(border_color,true) + ";\n" +
-						  "--inactive-text-foreground-color-inverted:" + GetForegroundVariable(bordercolor1) + ";\n" +
+						  "--inactive-text-foreground-color:" + border_fg[0] + ";\n" +
+						  "--inactive-text-foreground-color-hover:" + border_fg[1] + ";\n" +
+						  "--inactive-text-foreground-color-inverted:" + GetForegroundVariables(bordercolor1)[0] + ";\n" +
 						  "--inactive-text-background-color-rgb:" + Color2(border_color) + ";\n" +
-						  "--inactive-text-foreground-color-rgb:" + GetForegroundVariable2(border_color) + ";\n" +
-						  "--inactive-text-foreground-color-hover-rgb:" + GetForegroundVariable2(border_color,true) + ";\n" +
+						  "--inactive-text-foreground-color-rgb:" + border_fg[2] + ";\n" +
+						  "--inactive-text-foreground-color-hover-rgb:" + border_fg[3] + ";\n" +
 						  "--desktop-background-color-hover:" + headcolor1 + ";\n" +
-						  "--desktop-foreground-color:" + GetForegroundVariable(head_color) + ";\n" +
-						  "--desktop-foreground-color-hover:" + GetForegroundVariable(head_color,true) + ";\n" +
-						  "--desktop-foreground-color-inverted:" + GetForegroundVariable(headcolor1) + ";\n" +
+						  "--desktop-foreground-color:" + head_fg[0] + ";\n" +
+						  "--desktop-foreground-color-hover:" + head_fg[1] + ";\n" +
+						  "--desktop-foreground-color-inverted:" + GetForegroundVariables(headcolor1)[0] + ";\n" +
 						  "--desktop-background-color-rgb:" + Color2(head_color) + ";\n" +
-						  "--desktop-foreground-color-rgb:" + GetForegroundVariable2(head_color) + ";\n" +
-						  "--desktop-foreground-color-hover-rgb:" + GetForegroundVariable2(head_color,true) + ";\n" +
+						  "--desktop-foreground-color-rgb:" + head_fg[2] + ";\n" +
+						  "--desktop-foreground-color-hover-rgb:" + head_fg[3] + ";\n" +
 						  "--desktop-text-background-color-hover:" + headertextcolor1 + ";\n" +
-						  "--desktop-text-foreground-color:" + GetForegroundVariable(headertext_color) + ";\n" +
-						  "--desktop-text-foreground-color-hover:" + GetForegroundVariable(headertext_color,true) + ";\n" +
-						  "--desktop-text-foreground-color-inverted:" + GetForegroundVariable(headertextcolor1) + ";\n" +
+						  "--desktop-text-foreground-color:" + headertext_fg[0] + ";\n" +
+						  "--desktop-text-foreground-color-hover:" + headertext_fg[1] + ";\n" +
+						  "--desktop-text-foreground-color-inverted:" + GetForegroundVariables(headertextcolor1)[0] + ";\n" +
 						  "--desktop-text-background-color-rgb:" + Color2( headertext_color ) + ";\n" +
 						  "--desktop-text-background-color-hover-rgb:" + Color2(headertextcolor1) + ";\n" +
-						  "--desktop-text-foreground-color-rgb:" + GetForegroundVariable2(headertext_color) + ";\n" +
-						  "--desktop-text-foreground-color-hover-rgb:" + GetForegroundVariable2(headertext_color,true) + ";\n" +
+						  "--desktop-text-foreground-color-rgb:" + headertext_fg[2] + ";\n" +
+						  "--desktop-text-foreground-color-hover-rgb:" + headertext_fg[2] + ";\n" +
 						  "--active-title-background-color-hover:" + caretcolor1 + ";\n" +
-						  "--active-title-foreground-color:" + GetForegroundVariable(caret_color) + ";\n" +
-						  "--active-title-foreground-color-hover:" + GetForegroundVariable(caret_color,true) + ";\n" +
-						  "--active-title-foreground-color-inverted:" + GetForegroundVariable(caretcolor1) + ";\n" +
+						  "--active-title-foreground-color:" + caret_fg[0] + ";\n" +
+						  "--active-title-foreground-color-hover:" + caret_fg[1] + ";\n" +
+						  "--active-title-foreground-color-inverted:" + GetForegroundVariables(caretcolor1)[0] + ";\n" +
 						  "--active-title-background-color-rgb:" + Color2( caret_color ) + ";\n" +
-						  "--active-title-foreground-color-rgb:" + GetForegroundVariable2(caret_color) + ";\n" +
-						  "--active-title-foreground-color-hover-rgb:" + GetForegroundVariable2(caret_color,true) + ";\n" +
+						  "--active-title-foreground-color-rgb:" + caret_fg[2] + ";\n" +
+						  "--active-title-foreground-color-hover-rgb:" + caret_fg[3] + ";\n" +
 						  "--inactive-title-background-color-hover:" + caret2color1 + ";\n" +
-						  "--inactive-title-foreground-color:" + GetForegroundVariable(caret2_color) + ";\n" +
-						  "--inactive-title-foreground-color-hover:" + GetForegroundVariable(caret2_color,true) + ";\n" +
-						  "--inactive-title-foreground-color-inverted:" + GetForegroundVariable(caret2color1) + ";\n" +
+						  "--inactive-title-foreground-color:" + caret2_fg[0] + ";\n" +
+						  "--inactive-title-foreground-color-hover:" + caret2_fg[1] + ";\n" +
+						  "--inactive-title-foreground-color-inverted:" + GetForegroundVariables(caret2color1)[0] + ";\n" +
 						  "--inactive-title-background-color-rgb:" + Color2( caret2_color ) + ";\n" +
-						  "--inactive-title-foreground-color-rgb:" + GetForegroundVariable2(caret2_color) + ";\n" +
-						  "--inactive-title-foreground-color-hover-rgb:" + GetForegroundVariable2(caret2_color,true) + ";\n" +
+						  "--inactive-title-foreground-color-rgb:" + caret2_fg[2] + ";\n" +
+						  "--inactive-title-foreground-color-hover-rgb:" + caret2_fg[3] + ";\n" +
 						  "--alert-background-color:" + alert_color + "!important;\n" +
 						  "--alert-background-color-hover:" + alertcolor1 + "!important;\n" +
-						  "--alert-gradient-color:" + GetGradientVariable(content_color,'alert')[0] + "!important;\n" +
-						  "--alert-gradient-color-hover:" + GetGradientVariable(content_color,'alert')[1] + "!important;\n" +
-						  "--alert-foreground-color:" + GetForegroundVariable(alert_color) + "!important;\n" +
-						  "--alert-foreground-color-hover:" + GetForegroundVariable(alert_color,true) + "!important;\n" +
-						  "--alert-foreground-color-inverted:" + GetForegroundVariable(alertcolor1) + "!important;\n" +
+						  "--alert-gradient-color:" + alert_gradient[0] + "!important;\n" +
+						  "--alert-gradient-color-hover:" + alert_gradient[1] + "!important;\n" +
+						  "--alert-foreground-color:" + alert_fg[0] + "!important;\n" +
+						  "--alert-foreground-color-hover:" + alert_fg[1] + "!important;\n" +
+						  "--alert-foreground-color-inverted:" + GetForegroundVariables(alertcolor1)[0] + "!important;\n" +
 						  "--alert-background-color-rgb:" + Color2(alert_color) + "!important;\n" +
-						  "--alert-foreground-color-rgb:" + GetForegroundVariable2(alert_color) + "!important;\n" +
-						  "--alert-foreground-color-hover-rgb:" + GetForegroundVariable2(alert_color,true) + "!important;\n" +
+						  "--alert-foreground-color-rgb:" + alert_fg[2] + "!important;\n" +
+						  "--alert-foreground-color-hover-rgb:" + alert_fg[3] + "!important;\n" +
 						  "--warning-background-color:" + warning_color + "!important;\n" +
 						  "--warning-background-color-hover:" + warningcolor1 + "!important;\n" +
-						  "--warning-gradient-color:" + GetGradientVariable(content_color,'warning')[0] + "!important;\n" +
-						  "--warning-gradient-color-hover:" + GetGradientVariable(content_color,'warning')[1] + "!important;\n" +
-						  "--warning-foreground-color:" + GetForegroundVariable(warning_color) + "!important;\n" +
-						  "--warning-foreground-color-hover:" + GetForegroundVariable(warning_color,true) + "!important;\n" +
-						  "--warning-foreground-color-inverted:" + GetForegroundVariable(warningcolor1) + "!important;\n" +
+						  "--warning-gradient-color:" + warning_gradient[0] + "!important;\n" +
+						  "--warning-gradient-color-hover:" + warning_gradient[1] + "!important;\n" +
+						  "--warning-foreground-color:" + warning_fg[0] + "!important;\n" +
+						  "--warning-foreground-color-hover:" + warning_fg[1] + "!important;\n" +
+						  "--warning-foreground-color-inverted:" + GetForegroundVariables(warningcolor1)[0] + "!important;\n" +
 						  "--warning-background-color-rgb:" + Color2(warning_color) + "!important;\n" +
-						  "--warning-foreground-color-rgb:" + GetForegroundVariable2(warning_color) + "!important;\n" +
-						  "--warning-foreground-color-hover-rgb:" + GetForegroundVariable2(warning_color,true) + "!important;\n" +
+						  "--warning-foreground-color-rgb:" + warning_fg[2] + "!important;\n" +
+						  "--warning-foreground-color-hover-rgb:" + warning_fg[3] + "!important;\n" +
 						  "--success-background-color:" + success_color + "!important;\n" +
 						  "--success-background-color-hover:" + successcolor1 + "!important;\n" +
-						  "--success-gradient-color:" + GetGradientVariable(content_color,'success')[0] + "!important;\n" +
-						  "--success-gradient-color-hover:" + GetGradientVariable(content_color,'success')[1] + "!important;\n" +
-						  "--success-foreground-color:" + GetForegroundVariable(success_color) + "!important;\n" +
-						  "--success-foreground-color-hover:" + GetForegroundVariable(success_color,true) + "!important;\n" +
-						  "--success-foreground-color-inverted:" + GetForegroundVariable(successcolor1) + "!important;\n" +
+						  "--success-gradient-color:" + success_gradient[0] + "!important;\n" +
+						  "--success-gradient-color-hover:" + success_gradient[1] + "!important;\n" +
+						  "--success-foreground-color:" + success_fg[0] + "!important;\n" +
+						  "--success-foreground-color-hover:" + success_fg[1] + "!important;\n" +
+						  "--success-foreground-color-inverted:" + GetForegroundVariables(successcolor1)[0] + "!important;\n" +
 						  "--success-background-color-rgb:" + Color2(success_color) + "!important;\n" +
-						  "--success-foreground-color-rgb:" + GetForegroundVariable2(success_color) + "!important;\n" +
-						  "--success-foreground-color-hover-rgb:" + GetForegroundVariable2(success_color,true) + "!important;\n" +
+						  "--success-foreground-color-rgb:" + success_fg[2] + "!important;\n" +
+						  "--success-foreground-color-hover-rgb:" + success_fg[3] + "!important;\n" +
 						  "--message-background-color:" + message_color + "!important;\n" +
 						  "--message-background-color-hover:" + messagecolor1 + "!important;\n" +
-						  "--message-gradient-color:" + GetGradientVariable(content_color,'message')[0] + "!important;\n" +
-						  "--message-gradient-color-hover:" + GetGradientVariable(content_color,'message')[1] + "!important;\n" +
-						  "--message-foreground-color:" + GetForegroundVariable(message_color) + "!important;\n" +
-						  "--message-foreground-color-hover:" + GetForegroundVariable(message_color,true) + "!important;\n" +
-						  "--message-foreground-color-inverted:" + GetForegroundVariable(messagecolor1) + "!important;\n" +
+						  "--message-gradient-color:" + message_gradient[0] + "!important;\n" +
+						  "--message-gradient-color-hover:" + message_gradient[1] + "!important;\n" +
+						  "--message-foreground-color:" + message_fg[0] + "!important;\n" +
+						  "--message-foreground-color-hover:" + message_fg[1] + "!important;\n" +
+						  "--message-foreground-color-inverted:" + GetForegroundVariables(messagecolor1)[0] + "!important;\n" +
 						  "--message-background-color-rgb:" + Color2(message_color) + "!important;\n" +
-						  "--message-foreground-color-rgb:" + GetForegroundVariable2(message_color) + "!important;\n" +
-						  "--message-foreground-color-hover-rgb:" + GetForegroundVariable2(message_color,true) + "!important;\n" +
+						  "--message-foreground-color-rgb:" + message_fg[2] + "!important;\n" +
+						  "--message-foreground-color-hover-rgb:" + message_fg[3] + "!important;\n" +
 						  "}" +
 						  //
 						  "body {" +
 						  "--canvas-background-color:" + content_color + ";\n" +
-						  "--canvas-gradient-color:" + GetGradientVariable(content_color,'canvas')[0] + ";\n" +
-						  "--canvas-gradient-color-hover:" + GetGradientVariable(content_color,'canvas')[1] + ";\n" +
+						  "--canvas-gradient-color:" + content_color_gradient[0] + ";\n" +
+						  "--canvas-gradient-color-hover:" + content_color_gradient[1] + ";\n" +
 						  "--canvas-secondary-gradient-color:" + GetGradientVariable(content_color,'canvas-secondary')[0] + ";\n" +
 						  "--canvas-secondary-gradient-color-hover:" + GetGradientVariable(content_color,'canvas-secondary')[1] + ";\n" +
 						  "--canvas-text-background-color:" + content_text + ";\n" +
-						  "--canvas-text-gradient-color:" + GetGradientVariable2(content_color,'canvas-text')[0] + ";\n" +
-						  "--canvas-text-gradient-color-hover:" + GetGradientVariable2(content_color,'canvas-text')[1] + ";\n" +
+						  "--canvas-text-gradient-color:" + content_text_gradient[0] + ";\n" +
+						  "--canvas-text-gradient-color-hover:" + content_text_gradient[1] + ";\n" +
 						  "--highlight-background-color:" + button_color + ";\n" +
-						  "--highlight-gradient-color:" + GetGradientVariable(button_color,'highlight')[0] + ";\n" +
-						  "--highlight-gradient-color-hover:" + GetGradientVariable(button_color,'highlight')[1] + ";\n" +
+						  "--highlight-gradient-color:" + button_gradient[0] + ";\n" +
+						  "--highlight-gradient-color-hover:" + button_gradient[1] + ";\n" +
 						  "--hyperlink-background-color:" + link_color + ";\n" +
-						  "--hyperlink-gradient-color:" + GetGradientVariable(content_color,'hyperlink')[0] + ";\n" +
-						  "--hyperlink-gradient-color-hover:" + GetGradientVariable(content_color,'hyperlink')[1] + ";\n" +
+						  "--hyperlink-gradient-color:" + link_gradient[0] + ";\n" +
+						  "--hyperlink-gradient-color-hover:" + link_gradient[1] + ";\n" +
 						  "--inactive-text-background-color:" + border_color + ";\n" +
-						  "--inactive-text-gradient-color:" + GetGradientVariable(border_color,'inactive-text')[0] + ";\n" +
-						  "--inactive-text-gradient-color-hover:" + GetGradientVariable(border_color,'inactive-text')[1] + ";\n" +
+						  "--inactive-text-gradient-color:" + border_gradient[0] + ";\n" +
+						  "--inactive-text-gradient-color-hover:" + border_gradient[1] + ";\n" +
 						  "--desktop-background-color:" + head_color + ";\n" +
-						  "--desktop-gradient-color:" + GetGradientVariable(content_color,'desktop')[0] + ";\n" +
+						  "--desktop-gradient-color:" + head_gradient[0] + ";\n" +
 						  "--desktop-gradient-color-hover:" + GetGradientVariable(content_color,'desktop')[1] + ";\n" +
 						  "--desktop-text-background-color:" + headertext_color + ";\n" +
 						  "--desktop-text-gradient-color:" + GetGradientVariable2(content_color,'desktop-text')[0] + ";\n" +
 						  "--desktop-text-gradient-color-hover:" + GetGradientVariable2(content_color,'desktop-text')[1] + ";\n" +
 						  "--active-title-background-color:" + caret_color + ";\n" +
-						  "--active-title-gradient-color:" + GetGradientVariable(caret_color,'active-title')[0] + ";\n" +
-						  "--active-title-gradient-color-hover:" + GetGradientVariable(caret_color,'active-title')[1] + ";\n" +
+						  "--active-title-gradient-color:" + caret_gradient[0] + ";\n" +
+						  "--active-title-gradient-color-hover:" + caret_gradient[1] + ";\n" +
 						  "--inactive-title-background-color:" + caret2_color + ";\n" +
-						  "--inactive-title-gradient-color:" + GetGradientVariable(caret2_color,'inactive-title')[0] + ";\n" +
-						  "--inactive-title-gradient-color-hover:" + GetGradientVariable(caret2_color,'inactive-title')[1] + ";\n" +
+						  "--inactive-title-gradient-color:" + caret2_gradient[0] + ";\n" +
+						  "--inactive-title-gradient-color-hover:" + caret2_gradient[1] + ";\n" +
 						  "--bg-size:" + ['cover','contain','100% 100%','auto'][["cover", "contain", "stretched", "full"].indexOf( getComputedStyle(document.querySelector('html')).getPropertyValue("--desktop-background-size") ) ] + ";\n" +
 						  "--bg-tile-x:" + ['repeat','no-repeat'][["false", "true"].indexOf( getComputedStyle(document.querySelector('html')).getPropertyValue("--desktop-background-no-horizontal-tiling") ) ] + ";\n" +
 						  "--bg-tile-y:" + ['repeat','no-repeat'][["false", "true"].indexOf( getComputedStyle(document.querySelector('html')).getPropertyValue("--desktop-background-no-vertical-tiling") ) ] + ";\n" +
@@ -1614,17 +1621,21 @@ document.querySelector("head .theming").innerHTML = result;
 }
 
 /* Toggles Theme */
-function ToggleTheme(theme="A") {
+function ToggleTheme(theme="A",repaint=true,save=true) {
     var x = document.querySelector('html');
 		document.querySelector('html').setAttribute('theme', theme);
-		ColorUpdate(true);
-		insertKey('theme-selected', theme );
-		var theme_selected = getKey('theme-selected');
-		var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li.selected");
+		if (repaint) {
+			ColorUpdate(true);
+		}
+		if (save) {
+			insertKey('theme-selected', theme );
+		}
+		var theme_selected = theme;
+		var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li.selected, .skin-tunic #wiki-themes .mw-portlet-body ul li.selected");
 			if (x) {
 				x.classList.remove("selected");
 			}
-		var y = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li[data-theme-change='theme-" + theme_selected + "']")
+		var y = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li[data-theme-change='theme-" + theme_selected + "'], .skin-tunic #wiki-themes .mw-portlet-body ul li[data-theme-change='theme-" + theme_selected + "']")
 			if (y) {
 				y.classList.add("selected");
 			}

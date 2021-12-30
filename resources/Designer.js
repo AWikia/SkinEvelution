@@ -30,7 +30,6 @@ if (($("body.page-CPE_ThemeDesigner").length) ||
 })();
 
 function InitDesigner() {
-	$("body").attr("testing", "false");
 	// Change Title
 	$(".evelution-page-header .evelution-title > span").html( mw.msg( 'evelution-designer-title' ) );
 	$(".link[designer-on]").addClass( 'active' );
@@ -104,6 +103,7 @@ function InitDesigner() {
 	// Clear out content area
 	$("#mw-content-text").empty().addClass('cpe-theme-designer').attr('style','overflow:visible');
 	$("#mw-content-text").append(
+		'<style class="theme-designer-css"></style>' +
 		'<div style="margin-bottom:10px;">' + mw.message( 'evelution-designer-notice' ).text() + '</div>' +
 		'<div class="cpe-is-hidden" style="display:none;">' +
 		// Body Background Color
@@ -577,6 +577,178 @@ function InitDesigner() {
 			'</tr>' +
 		'</table>' +
 		'<hr>' +
+
+/**/
+'<div class="preview-window-desk">' +
+	'	<div class="gradient-overlay" style="position:absolute; pointer-events:none;"></div>' +
+	'	<div class="invertion-on" style=" pointer-events: none; position: absolute; z-index: -2; width: 100%; height: 100%;"><div class="body-background fandom-community-header__background" style="position:absolute; pointer-events:none;" id="body-background"></div></div>' +
+	'	<div class="body-background-color" style="position:absolute; pointer-events:none;"></div>' +
+	'<div class="preview-window-window" force-active>' +
+		'<h2>' +
+			'<span>Active Window #1</span>' +
+			'<button class="minimize" title="Minimize">' +
+				'<span class="material-icons cpe-icon cpe-icon-tiny cpe-icon-large close">' +
+					'remove' +
+                '</span>' +
+			'</button>' +
+			'<button class="maximize" title="Maximize">' +
+				'<span class="material-icons cpe-icon cpe-icon-tiny cpe-icon-medium close">' +
+					'check_box_outline_blank' +
+                '</span>' +
+			'</button>' +
+			'<button class="close" title="Close">' +
+				'<span class="material-icons cpe-icon cpe-icon-tiny cpe-icon-large close">' +
+					'close' +
+                '</span>' +
+			'</button>' +
+		'</h2>' +
+		'<section>' +
+			'Sample Content' +
+		'</section>' +
+	'</div>' +
+
+	'<div class="preview-window-window" force-active>' +
+		'<h2>' +
+			'<span>Active Window #2</span>' +
+			'<button class="minimize" title="Minimize">' +
+				'<span class="material-icons cpe-icon cpe-icon-tiny cpe-icon-large close">' +
+					'remove' +
+                '</span>' +
+			'</button>' +
+			'<button class="maximize title="Restore">' +
+				'<span style="transform:scaleX(calc(var(--icon-scale) * -1)) scaleY(var(--icon-scale)) rotate(var(--icon-rotate))" class="material-icons cpe-icon cpe-icon-tiny cpe-icon-medium close">' +
+					'content_copy' +
+                '</span>' +
+			'</button>' +
+			'<button class="close" title="Close">' +
+				'<span class="material-icons cpe-icon cpe-icon-tiny cpe-icon-large close">' +
+					'close' +
+                '</span>' +
+			'</button>' +
+		'</h2>' +
+		'<section>' +
+			'Sample Maximized Content' +
+			'<br>' +
+			'I\'m Multiline' +
+		'</section>' +
+	'</div>' +
+
+	'<div class="preview-window-window" force-active>' +
+		'<h2>' +
+			'<span>Active Window #3</span>' +
+			'<button class="minimize" title="Minimize">' +
+				'<span class="material-icons cpe-icon cpe-icon-tiny cpe-icon-large close">' +
+					'remove' +
+                '</span>' +
+			'</button>' +
+			'<button class="fullscreen" title="Enter Fullscreen">' +
+				'<span class="material-icons cpe-icon cpe-icon-tiny cpe-icon-large close">' +
+					'fullscreen' +
+                '</span>' +
+			'</button>' +
+			'<button class="maximize" title="Maximize">' +
+				'<span class="material-icons cpe-icon cpe-icon-tiny cpe-icon-medium close">' +
+					'check_box_outline_blank' +
+                '</span>' +
+			'</button>' +
+			'<button class="close" title="Close">' +
+				'<span class="material-icons cpe-icon cpe-icon-tiny cpe-icon-large close">' +
+					'close' +
+                '</span>' +
+			'</button>' +
+		'</h2>' +
+		'<section>' +
+			'Sample Content ready for fullscreen' +
+			'<br>' +
+			'I\'m a Static Window' +
+		'</section>' +
+	'</div>' +
+
+	'<div class="preview-window-window" force-active>' +
+		'<h2>' +
+			'<span>Active Window #4</span>' +
+			'<button class="minimize" title="Minimize">' +
+				'<span class="material-icons cpe-icon cpe-icon-tiny cpe-icon-large close">' +
+					'remove' +
+                '</span>' +
+			'</button>' +
+			'<button class="fullscreen" title="Exit Fullscreen">' +
+				'<span class="material-icons cpe-icon cpe-icon-tiny cpe-icon-large close">' +
+					'fullscreen_exit' +
+                '</span>' +
+			'</button>' +
+			'<button class="close" title="Close">' +
+				'<span class="material-icons cpe-icon cpe-icon-tiny cpe-icon-large close">' +
+					'close' +
+                '</span>' +
+			'</button>' +
+		'</h2>' +
+		'<section>' +
+			'Sample Content ready for fullscreen' +
+			'<br>' +
+			'I\'m a Static Window' +
+		'</section>' +
+	'</div>' +
+
+	'<div class="preview-window-window" force-active>' +
+		'<h2>' +
+			'<span>Active Window #5</span>' +
+			'<button class="close" title="Close">' +
+				'<span class="material-icons cpe-icon cpe-icon-tiny cpe-icon-large close">' +
+					'close' +
+                '</span>' +
+			'</button>' +
+		'</h2>' +
+		'<section>' +
+			'Sample Message' +
+			'<div style="width:100%; display:flex; justify-content:center;">' +
+				'<button class="ui-button cpe-button">OK</button>' +
+			'</div>' +
+		'</section>' +
+	'</div>' +
+
+	'<div class="preview-window-window inactive" force-inactive>' +
+		'<h2>' +
+			'<span>Inactive Window</span>' +
+			'<button class="minimize" title="Minimize">' +
+				'<span class="material-icons cpe-icon cpe-icon-tiny cpe-icon-large close">' +
+					'remove' +
+                '</span>' +
+			'</button>' +
+			'<button class="maximize" title="Maximize">' +
+				'<span class="material-icons cpe-icon cpe-icon-tiny cpe-icon-medium close">' +
+					'check_box_outline_blank' +
+                '</span>' +
+			'</button>' +
+			'<button class="close" title="Close">' +
+				'<span class="material-icons cpe-icon cpe-icon-tiny cpe-icon-large close">' +
+					'close' +
+                '</span>' +
+			'</button>' +
+		'</h2>' +
+		'<section>' +
+			'Sample Content' +
+		'</section>' +
+	'</div>' +
+	
+'</div>' +
+/**/
+		'<hr>' +
+		'<div style="margin:0 auto;">' +
+			'<div class="preview-theme-wrapper custom-theme" force-active style="margin:0 auto; background-color:var(--canvas-secondary-background-color);">' +
+				'<div class="background"></div>' +
+				'<div class="window">' +
+					'<div class="header">' +
+						'<text></text>' +
+					'</div>' +
+					'<div class="content">' +
+						'<text></text>' +
+					'</div>' +
+				'</div>' +
+				'<span class="name">Custom Theme</span>' +
+			'</div>' +
+		'</div>' +
+		'<hr>' +
 		'<div class="button-testing">' +
 			'<div class="cpe-button">Base Color</div>' +
 			'<div class="cpe-button is-unaccented">Unaccented Color</div>' +
@@ -608,10 +780,6 @@ function InitDesigner() {
     var pageTitle = $("#firstheading > span").html();
     var title = mw.message( 'pagetitle' ).text();
     document.title = title.replace("$1", pageTitle);
-    if ( ['standard','standard2'].indexOf($("html").attr("visualcolors")) === -1){
-		$("html").attr("visualcolors", "standard"); // Unset Visual Colors mode
-	}
-	ColorUpdate();
 }
 
 function ApplyTheme () {
@@ -653,7 +821,7 @@ function ApplyTheme () {
 		var customfont = $('#secondfont').val();
     }
 		result = '\n/* Community Theme */\n' +
-				 '[theme="' + $('html').attr('theme') + '"][visualcolors="' + $('html').attr('visualcolors') + '"] {\n' + // Beginning
+				 '[theme="' + $('html').attr('theme') + '"][visualcolors="standard"] {\n' + // Beginning
 				 '--desktop-background-image:' + image + ';\n' +
 				 '--desktop-background-image-opacity:' + $('#bodyimageopacity').val() + "%" + ';\n' +
 				 '--desktop-background-color:' + $('#bodybg').val()  + ';\n' +
@@ -742,7 +910,7 @@ function CopyTheme() {
     } else {
 		var customfont = $('#secondfont').val();
     }
-		result = '[theme="' + $('html').attr('theme') + '"][visualcolors="' + $('html').attr('visualcolors') + '"] {\n' + // Beginning
+		result = '[theme="' + $('html').attr('theme') + '"][visualcolors="standard"] {\n' + // Beginning
 				 '--desktop-background-image:' + image + ';\n' +
 				 '--desktop-background-image-opacity:' + $('#bodyimageopacity').val() + "%" + ';\n' +
 				 '--desktop-background-color:' + $('#bodybg').val()  + ';\n' +
@@ -884,7 +1052,9 @@ function PasteTheme() {
 
 function TestTheme() {
 	// Tests theme
-	$("body").attr("testing", "true");
+	if (!($("body.td-testing-on").length)) {
+		$("body").addClass('td-testing-on');
+	}
 	$(".evelution-page-header-contribution-buttons .designer-buttons2 .theme-clear-button").prop('disabled', false);
 	$(".evelution-page-header-contribution-buttons .designer-buttons2 .theme-test-button").prop('disabled', true);
 	document.querySelector('body').focus();
@@ -919,68 +1089,56 @@ function TestTheme() {
     } else {
 		var image = 'url("' + $('#bodyimage').val() + '")';
     }
-	document.querySelector('html').style.setProperty("--desktop-background-color", $('#bodybg').val() );
-	document.querySelector('html').style.setProperty("--desktop-background-image", image );
-	document.querySelector('html').style.setProperty("--desktop-background-image-opacity", $('#bodyimageopacity').val() + "%" );
-	document.querySelector('html').style.setProperty("--desktop-background-mode", $('.bg_mode .cpe-select__value').attr('value') );
-	document.querySelector('html').style.setProperty("--desktop-background-vertical-alignment", $('.bg_align .cpe-select__value').attr('value') );
-	document.querySelector('html').style.setProperty("--desktop-background-horizontal-alignment", $('.bg_align2 .cpe-select__value').attr('value') );
-	document.querySelector('html').style.setProperty("--desktop-background-size", $('.bg_size .cpe-select__value').attr('value') );
-	document.querySelector('html').style.setProperty("--desktop-background-no-horizontal-tiling", (!( document.querySelector('input#tilingH').checked )) );
-	document.querySelector('html').style.setProperty("--desktop-background-no-vertical-tiling", (!( document.querySelector('input#tilingV').checked )) );
-	document.querySelector('html').style.setProperty("--desktop-text-background-color", autocolor1 );
-	document.querySelector('html').style.setProperty("--canvas-background-color", $('#pagebg').val() );
-	document.querySelector('html').style.setProperty("--inactive-text-background-color", autocolor2 );
-	document.querySelector('html').style.setProperty("--canvas-text-background-color", autocolor3 );
-	document.querySelector('html').style.setProperty("--hyperlink-background-color", $('#saccentcolor').val() );
-	document.querySelector('html').style.setProperty("--highlight-background-color", $('#accentcolor').val() );
-	document.querySelector('html').style.setProperty("--active-title-background-color", autocolor5 );
-	document.querySelector('html').style.setProperty("--inactive-title-background-color", autocolor4 );
-	document.querySelector('html').style.setProperty("--border-radius", $('#border-radius').val() + "px" );
-	document.querySelector('html').style.setProperty("--custom-secondary-font", $('#secondfont').val() );
-	document.querySelector('html').style.setProperty("--icon-filter", $('#filter').val() );
-	document.querySelector('html').style.setProperty("--icon-filter-hover", $('#filter2').val() );
-	document.querySelector('html').style.setProperty("--icon-filter-duration", $('#filter3').val() + "ms" );
-	document.querySelector('html').style.setProperty("--icon-filter-delay", $('#filter4').val() + "ms" );
+    if ( $('#secondfont').val().length === 0) {
+		var customfont = '""';
+    } else {
+		var customfont = $('#secondfont').val();
+    }
+		result = ':root {\n' + // Beginning
+				 '--desktop-background-image:' + image + '!important;\n' +
+				 '--desktop-background-image-opacity:' + $('#bodyimageopacity').val() + "%" + '!important;\n' +
+				 '--desktop-background-color:' + $('#bodybg').val()  + '!important;\n' +
+				 '--desktop-text-background-color:' + autocolor1  + '!important;\n' +
+				 '--desktop-background-mode:' + $('.bg_mode .cpe-select__value').attr('value')  + '!important;\n' +
+				 '--desktop-background-horizontal-alignment:' + $('.bg_align2 .cpe-select__value').attr('value') + '!important;\n' +
+				 '--desktop-background-vertical-alignment:' + $('.bg_align .cpe-select__value').attr('value') + '!important;\n' +
+				 '--desktop-background-size:' + $('.bg_size .cpe-select__value').attr('value')  + '!important;\n' +
+				 '--desktop-background-no-horizontal-tiling:' + (!( document.querySelector('input#tilingH').checked ))  + '!important;\n' +
+				 '--desktop-background-no-vertical-tiling:' + (!( document.querySelector('input#tilingV').checked ))  + '!important;\n' +
+				 '--hyperlink-background-color:' + $('#saccentcolor').val() + '!important;\n' +
+				 '--canvas-background-color:' + $('#pagebg').val() + '!important;\n' +
+				 '--inactive-text-background-color:' + autocolor2  + '!important;\n' +
+				 '--canvas-text-background-color:' + autocolor3  + '!important;\n' +
+				 '--highlight-background-color:' + $('#accentcolor').val() + '!important;\n' +
+				 '--active-title-background-color:' + autocolor5  + '!important;\n' +
+				 '--inactive-title-background-color:' + autocolor4  + '!important;\n' +
+				 '--custom-secondary-font:' + customfont + '!important;\n' +
+				 '--border-radius:' + $('#border-radius').val() + "px"  + '!important;\n' +
+				 '--icon-filter:' + $('#filter').val() + '!important;\n' +
+				 '--icon-filter-hover:' + $('#filter2').val()  + '!important;\n' +
+				 '--icon-filter-duration:' + $('#filter3').val() + "ms" + '!important;\n' +
+				 '--icon-filter-delay:' + $('#filter4').val() + "ms" + '!important;\n' +
+				 '}' // Ending
+			document.querySelector("#mw-content-text .theme-designer-css").innerHTML = result;
 	ColorUpdate(true,true);
 }
 
 function TestDynamicTheme() {
-	if ($("body").attr("testing") === "true" ) {
+	if ($("body.td-testing-on").length) {
 		TestTheme();
 	}
 }
 
 
 function ClearTheme() {
-	$("body").attr("testing", "false");
+	if ($("body.td-testing-on").length) {
+		$("body").removeClass('td-testing-on');
+	}
 	// Tests theme
 	$(".evelution-page-header-contribution-buttons .designer-buttons2 .theme-clear-button").prop('disabled', true);
 	$(".evelution-page-header-contribution-buttons .designer-buttons2 .theme-test-button").prop('disabled', false);
 	document.querySelector('body').focus();
-	document.querySelector('html').style.removeProperty("--desktop-background-color");
-	document.querySelector('html').style.removeProperty("--desktop-background-image");
-	document.querySelector('html').style.removeProperty("--desktop-background-image-opacity");
-	document.querySelector('html').style.removeProperty("--desktop-background-mode");
-	document.querySelector('html').style.removeProperty("--desktop-background-vertical-alignment");
-	document.querySelector('html').style.removeProperty("--desktop-background-horizontal-alignment");
-	document.querySelector('html').style.removeProperty("--desktop-background-size");
-	document.querySelector('html').style.removeProperty("--desktop-background-no-horizontal-tiling");
-	document.querySelector('html').style.removeProperty("--desktop-background-no-vertical-tiling");
-	document.querySelector('html').style.removeProperty("--desktop-text-background-color");
-	document.querySelector('html').style.removeProperty("--canvas-background-color");
-	document.querySelector('html').style.removeProperty("--inactive-text-background-color");
-	document.querySelector('html').style.removeProperty("--canvas-text-background-color");
-	document.querySelector('html').style.removeProperty("--hyperlink-background-color");
-	document.querySelector('html').style.removeProperty("--highlight-background-color");
-	document.querySelector('html').style.removeProperty("--active-title-background-color");
-	document.querySelector('html').style.removeProperty("--inactive-title-background-color");
-	document.querySelector('html').style.removeProperty("--border-radius");
-	document.querySelector('html').style.removeProperty("--custom-secondary-font");
-	document.querySelector('html').style.removeProperty("--icon-filter");
-	document.querySelector('html').style.removeProperty("--icon-filter-hover");
-	document.querySelector('html').style.removeProperty("--icon-filter-duration");
-	document.querySelector('html').style.removeProperty("--icon-filter-delay");
+	document.querySelector("#mw-content-text .theme-designer-css").innerHTML = '';
 	ColorUpdate(true,true);
 
 }

@@ -165,6 +165,39 @@ Per-page theming is also supported. If you want to use a different theme for the
 ## Testing your themes against color contrast
 When checking your themes, you must be in Duo theme mode without inverted colors on as Liatch (Such as Duo theme mode with Inverted Colors enabled) will modify the theme to avoid any color contrast issue
 
+## Servelution Overview
+Each release of Evelution comes with different Sevelution releases, to name a few:
+- 1.0.0 = Introduced in Ryneeeel Grooze
+- 1.1.0 = Introduced in Mpisto War 2018
+- 1.2.0 = Introduced in Mpisto War 2018 Build 63/ DBuild 1800 - Introduces the Custom Theming Engine
+- 1.3.0 = Introduced in Q.Qore Build 98
+- 1.4.0 = Introduced in Q.Qore Build 129 - Introduces Custom Scrollbars
+- 2.0.0 = Introduced in Q.Qore Build 147 - Introduces the CPE Language
+- 2.1.0 = Introduced in Q.Qore Build 200
+- 2.2.0 = Introduced in Evelution 2.0.0 - Introduces new Iconography
+- 2.3.0 = Introduced in Evelution 7.9.0 - Introduces custom header foreground color and translucent backgrounds
+- 2.4.0 = Introduced in Evelution 8.12.0 - Introduces Floating actions (Not to be confused with Server Actions which are similar but appear inside the content area)
+- 2.5.0 = Introduced in Evelution 13.0.0 - Introduces dynamic Generic Colors and Semantic Versioning 2
+- 2.6.0 = Introduced in Evelution 18.0.0 - Introduces the Accented state of Luna Theming
+- 2.7.0 = Introduced in Evelution 33.0.0 - Introduces the Inactive state of Luna Theming for CPE Language
+
+### The Luna Theming System
+Evelution comes with its own theming system, the Luna theming. It consists of Two elements, the Luna Lovit and the Luna Lavccent. Luna Lovit conists of elements below it blurred for legibility of text. Luna Lavccent is an additional color that will be mixed in addition to the Neutral Color when enabled.
+
+Luna Lovit will display as a fallback Solid Color when:
+- Running a visual style other than Standard
+- System's Reduced transparcney is enabled
+- App runs on a low-end skin (i.e. Tunic) or under Ivilution
+- App runs on a browser without support of ``backdrop-filter``
+
+In addition, only the rendering color wiil be changed while preserving transparency if the user runs the Formal Visual Style
+
+Luna Lavccent will display as a fallback neutral color (Canvas Secondary Color) when:
+- App-wide Accented Mode is disabled (And is the default ones)
+- App runs on a low-end skin (i.e. Tunic) or under Ivilution
+- Luna is in its inactive state and has the Inactive Title color set to auto (This will produce different results under different Visual Styles)
+- App runs on a Servelution version lower than 2.6.0
+
 ## Theming Variables
 This section lists all static Theming Variables and where they're used:
 

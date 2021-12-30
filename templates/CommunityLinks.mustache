@@ -28,16 +28,46 @@
 								file_upload
 								</span>
 							</a>
-							<a class="link cell {{#has-forum}}large{{/has-forum}}{{^has-forum}}largep{{/has-forum}}" cpe-tooltip-position="bottom" cpe-tooltip="CSS"  href="{{html-css-link}}">
-								<span class="cpe-icon material-icons">
-								palette
-								</span>
-							</a>
-							<a class="link cell {{#has-forum}}vlargep{{/has-forum}}{{^has-forum}}large{{/has-forum}}" cpe-tooltip-position="bottom" cpe-tooltip="JS"  href="{{html-js-link}}">
-								<span class="cpe-icon material-icons">
-								code
-								</span>
-							</a>
+							<div class="cpe-dropdown {{#has-forum}}large{{/has-forum}}{{^has-forum}}largep{{/has-forum}}">
+								<a class="link cell" cpe-tooltip-position="bottom" cpe-tooltip="CSS">
+									<span class="cpe-icon material-icons">
+									palette
+									</span>
+								</a>
+								<div class="cpe-dropdown__content">
+									<ul class="cpe-list is-linked">
+										<li>
+											<a href="{{html-css-link}}">Evelution</a>
+										</li>
+										<li>
+											<a href="{{html-css2-link}}">Common</a>
+										</li>
+										<li>
+											<a href="{{html-css3-link}}">Mobile</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="cpe-dropdown {{#has-forum}}vlargep{{/has-forum}}{{^has-forum}}large{{/has-forum}}">
+								<a class="link cell" cpe-tooltip-position="bottom" cpe-tooltip="JS">
+									<span class="cpe-icon material-icons">
+									code
+									</span>
+								</a>
+								<div class="cpe-dropdown__content">
+									<ul class="cpe-list is-linked">
+										<li>
+											<a href="{{html-js-link}}">Evelution</a>
+										</li>
+										<li>
+											<a href="{{html-js2-link}}">Common</a>
+										</li>
+										<li>
+											<a href="{{html-js3-link}}">Mobile</a>
+										</li>
+									</ul>
+								</div>
+							</div>
 						{{/is-loggedin}}
 							<a class="link cell {{#is-loggedin}}{{#has-forum}}vlarge{{/has-forum}}{{^has-forum}}vlargep{{/has-forum}}{{/is-loggedin}}" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-allarticles}}"  href="{{html-allpages-link}}">
 								<span class="cpe-icon material-icons">
@@ -50,13 +80,13 @@
 								settings
 								</span>
 							</a>
-							<div class="cpe-dropdown {{#has-forum}}small{{/has-forum}}{{^has-forum}}smallp{{/has-forum}}">
+							<div class="cpe-dropdown has-reversed-nested-menus overflow-{{#has-forum}}small{{/has-forum}}{{^has-forum}}smallp{{/has-forum}}">
 								<div class="link cell" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-moredotdotdot}}">
 									<span class="cpe-icon cpe-dropdown__toggle-chevron material-icons">
 										more_vertical
 									</span>
 								</div>
-								<div class="cpe-dropdown__content is-right-aligned">
+								<div class="cpe-dropdown__content is-right-aligned is-not-scrollable">
 									<ul class="cpe-list is-linked">
 									{{#has-forum}}
 										<li class="smallp">
@@ -69,11 +99,48 @@
 										<li class="{{#has-forum}}largep{{/has-forum}}{{^has-forum}}small{{/has-forum}}">
 											<a href="{{html-upload-link}}">{{msg-upload}}</a>
 										</li>
-										<li class="{{#has-forum}}large{{/has-forum}}{{^has-forum}}largep{{/has-forum}}">
-											<a href="{{html-css-link}}">CSS</a>
+										<li class="cpe-dropdown-level-2 {{#has-forum}}large{{/has-forum}}{{^has-forum}}largep{{/has-forum}}">
+											<a>
+												<span>CSS</span>
+												<span class="cpe-icon cpe-icon-tiny cpe-icon-large cpe-dropdown-chevron material-icons">
+													expand_more
+												</span>
+											</a>
+											<div class="cpe-dropdown-level-2__content">
+												<ul class="cpe-list is-linked">
+													<li>
+														<a href="{{html-css-link}}">Evelution</a>
+													</li>
+													<li>
+														<a href="{{html-css2-link}}">Common</a>
+													</li>
+													<li>
+														<a href="{{html-css3-link}}">Mobile</a>
+													</li>
+												</ul>
+
+											</div>
 										</li>
-										<li class="{{#has-forum}}vlargep{{/has-forum}}{{^has-forum}}large{{/has-forum}}">
-											<a href="{{html-js-link}}">JS</a>
+										<li class="cpe-dropdown-level-2 {{#has-forum}}vlargep{{/has-forum}}{{^has-forum}}large{{/has-forum}}">
+											<a>
+												<span>JS</span>
+												<span class="cpe-icon cpe-icon-tiny cpe-icon-large cpe-dropdown-chevron material-icons">
+													expand_more
+												</span>
+											</a>
+											<div class="cpe-dropdown-level-2__content">
+												<ul class="cpe-list is-linked">
+													<li>
+														<a href="{{html-js-link}}">Evelution</a>
+													</li>
+													<li>
+														<a href="{{html-js2-link}}">Common</a>
+													</li>
+													<li>
+														<a href="{{html-js3-link}}">Mobile</a>
+													</li>
+												</ul>
+											</div>
 										</li>
 										<li class="{{^has-forum}}vlargep{{/has-forum}}">
 											<a href="{{html-allpages-link}}">{{msg-allarticles}}</a>

@@ -65,7 +65,11 @@ class SkinEvelution extends SkinMustache {
         $data["html-rc-link"] = SpecialPage::getTitleFor( 'Recentchanges' )->getLocalURL();
         $data["html-files-link"] = SpecialPage::getTitleFor( 'Newimages' )->getLocalURL();
         $data["html-css-link"] = Title::newFromText( 'MediaWiki:Evelution.css' )->getLocalURL();
+        $data["html-css2-link"] = Title::newFromText( 'MediaWiki:Common.css' )->getLocalURL();
+        $data["html-css3-link"] = Title::newFromText( 'MediaWiki:Mobile.css' )->getLocalURL();
         $data["html-js-link"] = Title::newFromText( 'MediaWiki:Evelution.js' )->getLocalURL();
+        $data["html-js2-link"] = Title::newFromText( 'MediaWiki:Common.js' )->getLocalURL();
+        $data["html-js3-link"] = Title::newFromText( 'MediaWiki:Mobile.js' )->getLocalURL();
         $data["html-spages-link"] = SpecialPage::getTitleFor( 'Specialpages' )->getLocalURL();
         $data["html-notices-link"] = SpecialPage::getTitleFor( 'Notifications' )->getLocalURL();
         $data["html-logs-link"] = SpecialPage::getTitleFor( 'Log' )->getLocalURL();
