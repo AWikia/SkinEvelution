@@ -287,6 +287,16 @@ box-shadow:2px 0 0 4px rgba(var(--canvas-text-background-color-rgb),.4), 2px 0 0
 box-shadow:2px 0 0 6px rgba(var(--canvas-text-background-color-rgb),.4), 2px 0 0 6px rgba(var(--canvas-background-color-rgb),0.4)!important;
 }
 
+@media only screen and (min-width:760px) {
+	[visualtheme="contrast"] .cpe-dropdown.has-shadow[cpe-orient="land-desktop"] .cpe-dropdown__content {
+	box-shadow:2px 0 0 4px rgba(var(--canvas-text-background-color-rgb),.4), 2px 0 0 4px rgba(var(--canvas-background-color-rgb),0.4)!important;
+	}
+
+	[visualtheme="contrast"] .cpe-dropdown.has-dark-shadow[cpe-orient="land-desktop"] .cpe-dropdown__content {
+	box-shadow:2px 0 0 6px rgba(var(--canvas-text-background-color-rgb),.4), 2px 0 0 6px rgba(var(--canvas-background-color-rgb),0.4)!important;
+	}
+}
+
 [visualtheme="contrast"] .cpe-toggle__input:checked+.cpe-toggle__label::before{
 background-color:var(--highlight-foreground-color);
 }
@@ -313,7 +323,7 @@ background-color:var(--highlight-background-color);
 }
 
 [visualtheme="contrast"] .cpe-floating-button {
-	box-shadow:0 0 0 1px currentColor!important
+	box-shadow:0 0 0 1.4px currentColor!important
 }
 
 [visualtheme="contrast"] .cpe-floating-button:hover {
@@ -947,6 +957,15 @@ box-shadow:2px 0 0 4px rgba(var(--canvas-text-background-color-rgb),.4), 2px 0 0
 box-shadow:2px 0 0 6px rgba(var(--canvas-text-background-color-rgb),.4), 2px 0 0 6px rgba(var(--canvas-background-color-rgb),0.4)!important;
 }
 
+@media only screen and (min-width:760px) {
+	[visualtheme="basiccontrast"] .cpe-dropdown.has-shadow[cpe-orient="land-desktop"] .cpe-dropdown__content {
+	box-shadow:2px 0 0 4px rgba(var(--canvas-text-background-color-rgb),.4), 2px 0 0 4px rgba(var(--canvas-background-color-rgb),0.4)!important;
+	}
+
+	[visualtheme="basiccontrast"] .cpe-dropdown.has-dark-shadow[cpe-orient="land-desktop"] .cpe-dropdown__content {
+	box-shadow:2px 0 0 6px rgba(var(--canvas-text-background-color-rgb),.4), 2px 0 0 6px rgba(var(--canvas-background-color-rgb),0.4)!important;
+	}
+}
 
 
 [visualtheme="basiccontrast"] .evelution-spotlight-footer nav item {
@@ -1127,7 +1146,7 @@ background-color:var(--canvas-background-color);
 
 /* Checkboxes */
 [visualtheme="basic"] input[type="checkbox"], [visualtheme="basic"] input[type="radio"] ,
-[visualtheme="contrast"] input[type="checkbox"], [visualtheme="basic"] input[type="radio"] ,
+[visualtheme="contrast"] input[type="checkbox"], [visualtheme="contrast"] input[type="radio"] ,
 [visualtheme="basiccontrast"] input[type="checkbox"], [visualtheme="basiccontrast"] input[type="radio"],
 [visualtheme="simple"] input[type="checkbox"], [visualtheme="simple"] input[type="radio"]  {
 --checkbox-active-bg:var(--highlight-background-color);
@@ -1140,8 +1159,8 @@ background-color:var(--canvas-background-color);
 
 [visualtheme="basic"] input[type="checkbox"]:checked:not(:active):focus, [visualtheme="basic"] input[type="radio"]:checked:not(:active):focus,
 [visualtheme="basic"] .oo-ui-radioSelectWidget:focus  input[type="checkbox"]:checked:not(:active), [visualtheme="basic"] .oo-ui-radioSelectWidget:focus  input[type="radio"]:checked:not(:active),
-[visualtheme="contrast"] input[type="checkbox"]:checked:not(:active):focus, [visualtheme="basiccontrast"] input[type="radio"]:checked:not(:active):focus,
-[visualtheme="contrast"] .oo-ui-radioSelectWidget:focus  input[type="checkbox"]:checked:not(:active), [visualtheme="basiccontrast"] .oo-ui-radioSelectWidget:focus input[type="radio"]:checked:not(:active),
+[visualtheme="contrast"] input[type="checkbox"]:checked:not(:active):focus, [visualtheme="contrast"] input[type="radio"]:checked:not(:active):focus,
+[visualtheme="contrast"] .oo-ui-radioSelectWidget:focus  input[type="checkbox"]:checked:not(:active), [visualtheme="contrast"] .oo-ui-radioSelectWidget:focus input[type="radio"]:checked:not(:active),
 [visualtheme="basiccontrast"] input[type="checkbox"]:checked:not(:active):focus, [visualtheme="basiccontrast"] input[type="radio"]:checked:not(:active):focus,
 [visualtheme="basiccontrast"] .oo-ui-radioSelectWidget:focus  input[type="checkbox"]:checked:not(:active), [visualtheme="basiccontrast"] .oo-ui-radioSelectWidget:focus input[type="radio"]:checked:not(:active),
 [visualtheme="simple"] input[type="checkbox"]:checked:not(:active):focus, [visualtheme="simple"] input[type="radio"]:checked:not(:active):focus,
@@ -1230,15 +1249,30 @@ color:inherit;
 }
 
 
+	[visualtheme="basic"]  .evelution-content .evelution-page-header-title a,
+	[visualtheme="basic"]  .evelution-content .evelution-page-header-title a:visited,
+	[visualtheme="basiccontrast"]  .evelution-content .evelution-page-header-title a,
+	[visualtheme="basiccontrast"]  .evelution-content .evelution-page-header-title a:visited {
+		color:var(--luna-foreground-color);
+	}
 
 
-[visualtheme="basic"] .evelution-content .evelution-page-footer .evelution-page-header-title,
+	[visualtheme="basic"]  .evelution-content .evelution-page-header-title a:hover,
+	[visualtheme="basic"]  .evelution-content .evelution-page-header-title a:visited:hover,
+	[visualtheme="basiccontrast"]  .evelution-content .evelution-page-header-title a:hover,
+	[visualtheme="basiccontrast"]  .evelution-content .evelution-page-header-title a:visited:hover {
+		color:var(--luna-foreground-color-hover);
+	}
+
+
+
+/* Thick Borders 
 [visualtheme="basiccontrast"] .evelution-content .evelution-page-footer .evelution-page-header-title {
 	border-top:1px solid var(--luna-foreground-color);
 	border-bottom:0;
 
 }
-
+*/
 
 [visualtheme="basic"] .evelution-userpages-header,
 [visualtheme="basiccontrast"] .evelution-userpages-header {
@@ -1669,12 +1703,12 @@ color:inherit;
 [visualtheme="simple"] .evelution-content .evelution-page-header-title,
 [visualtheme="simple"] .evelution-rail-wrapper .evelution-module,
 [visualtheme="simple"] .preview-window-window {
-	--intensity:2.5;
+	--intensity:1.25;
 	background-color:var(--canvas-background-color);
 }
 
 [visualtheme="simple"] .preview-theme-wrapper .window {
-	--intensity:2.5;
+	--intensity:1.25;
 	background-color:var(--window-color);
 }
 
