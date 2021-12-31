@@ -180,9 +180,10 @@ Each release of Evelution comes with different Sevelution releases, to name a fe
 - 2.5.0 = Introduced in Evelution 13.0.0 - Introduces dynamic Generic Colors and Semantic Versioning 2
 - 2.6.0 = Introduced in Evelution 18.0.0 - Introduces the Accented state of Luna Theming
 - 2.7.0 = Introduced in Evelution 33.0.0 - Introduces the Inactive state of Luna Theming for CPE Language
+- 2.8.0 = Introduced in Evelution 43.0.0 - Introduces custom acryllic transparency along with a new Luna Theming System (Compatible with earlier Servelution Clients)
 
 ### The Luna Theming System
-Evelution comes with its own theming system, the Luna theming. It consists of Two elements, the Luna Lovit and the Luna Lavccent. Luna Lovit conists of elements below it blurred for legibility of text. Luna Lavccent is an additional color that will be mixed in addition to the Neutral Color when enabled.
+Evelution comes with its own theming system, the Luna theming. It consists of Two elements, the Luna Lovit and the Luna Lavccent. Luna Lovit conists of elements below it blurred for legibility of text. Luna Lavccent is an additional color that will replace the Neutral Color when enabled.
 
 Luna Lovit will display as a fallback Solid Color when:
 - Running a visual style other than Standard
@@ -190,7 +191,6 @@ Luna Lovit will display as a fallback Solid Color when:
 - App runs on a low-end skin (i.e. Tunic) or under Ivilution
 - App runs on a browser without support of ``backdrop-filter``
 
-In addition, only the rendering color wiil be changed while preserving transparency if the user runs the Formal Visual Style
 
 Luna Lavccent will display as a fallback neutral color (Canvas Secondary Color) when:
 - App-wide Accented Mode is disabled (And is the default ones)

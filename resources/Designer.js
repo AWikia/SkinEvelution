@@ -271,6 +271,11 @@ function InitDesigner() {
 				'<option value="75">' +
 				'<option value="100" label="100%">' +
 			'</datalist>' +
+			'<datalist id="td_aopacity">' + // Image Opacity
+				'<option value="0.4" label="40%">' +
+				'<option value="0.6" label="60%">' +
+				'<option value="0.8" label="80%">' +
+			'</datalist>' +
 			'<datalist id="td_filterdur">' + // Image Opacity
 				'<option value="0">' +
 				'<option value="300">' +
@@ -575,6 +580,17 @@ function InitDesigner() {
 					'<input type="range" class="big" style="min-width:130px; min-width:130px;" id="filter4" value="0" min="0" max="1000" step="20" list="td_filterdur" autocomplete="off"  />' + // Body Background 
 				'</td>' +
 			'</tr>' +
+		// TR
+			'<tr>' +
+				'<th style="width:150px;">' + 
+					mw.msg( 'evelution-designer-acryllic-opacity' ) + 
+				'</td>' +
+
+				'<td style="text-align:center; width:150px">' +
+					'<input type="range" class="big" style="min-width:130px; min-width:130px;" id="aopacity" value="0.6" min="0.4" max="0.8" step="0.01" list="td_aopacity" autocomplete="off" />' + // Body Background 
+				'</td>' +
+			'</tr>' +
+
 		'</table>' +
 		'<hr>' +
 
@@ -845,6 +861,7 @@ function ApplyTheme () {
 				 '--icon-filter-hover:' + $('#filter2').val()  + ';\n' +
 				 '--icon-filter-duration:' + $('#filter3').val() + "ms" + ';\n' +
 				 '--icon-filter-delay:' + $('#filter4').val() + "ms" + ';\n' +
+				 '--system-acryllic-opacity:' + $('#aopacity').val() + ';\n' +
 				 '}\n' // Ending
 
 /*
@@ -934,6 +951,7 @@ function CopyTheme() {
 				 '--icon-filter-hover:' + $('#filter2').val()  + ';\n' +
 				 '--icon-filter-duration:' + $('#filter3').val() + "ms" + ';\n' +
 				 '--icon-filter-delay:' + $('#filter4').val() + "ms" + ';\n' +
+				 '--system-acryllic-opacity:' + $('#aopacity').val() + ';\n' +
 				 '}' // Ending
 		if (navigator.clipboard) {
 			navigator.clipboard.writeText(result).then(function() {
@@ -1047,6 +1065,8 @@ function PasteTheme() {
 	$('#filter3').val( parseInt(getComputedStyle(document.querySelector('html')).getPropertyValue("--icon-filter-duration")) );
 	// Filter Delay
 	$('#filter4').val( parseInt(getComputedStyle(document.querySelector('html')).getPropertyValue("--icon-filter-delay")) );
+	// Acryllic Opacity
+	$('#aopacity').val( getComputedStyle(document.querySelector('html')).getPropertyValue("--system-acryllic-opacity") );
 	UpdateRangeInputs();
 }
 
@@ -1118,6 +1138,7 @@ function TestTheme() {
 				 '--icon-filter-hover:' + $('#filter2').val()  + '!important;\n' +
 				 '--icon-filter-duration:' + $('#filter3').val() + "ms" + '!important;\n' +
 				 '--icon-filter-delay:' + $('#filter4').val() + "ms" + '!important;\n' +
+				 '--system-acryllic-opacity:' + $('#aopacity').val() + '!important;\n' +
 				 '}' // Ending
 			document.querySelector("#mw-content-text .theme-designer-css").innerHTML = result;
 	ColorUpdate(true,true);
@@ -1195,7 +1216,7 @@ $('.wikitable #auto5').click(
 // UpdateRangeInputs();
 	var ranges = document.querySelectorAll('input[type="range"]');
 	ranges.forEach(function(x) {
-		x.style.setProperty("--range-percent",  (((x.value) * 100) / x.getAttribute('max')) + '%'  );
+		x.style.setProperty("--range-percent",  (( ((x.value) - x.getAttribute('min') ) * 100) / (x.getAttribute('max') - x.getAttribute('min')) ) + '%'  );
 	});
 	
 	var ranges2 = document.querySelectorAll('input[type="range"]');

@@ -76,7 +76,7 @@ function UpdateSelectValue() { // Handles Blurring
 function UpdateRange() {
 	var ranges = document.querySelectorAll('input[type="range"]');
 	ranges.forEach(function(x) {
-		x.style.setProperty("--range-percent",  (((x.value) * 100) / x.getAttribute('max')) + '%' );
+		x.style.setProperty("--range-percent",  (( ((x.value) - x.getAttribute('min') ) * 100) / (x.getAttribute('max') - x.getAttribute('min')) ) + '%'  );
 	});
 
 }

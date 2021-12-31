@@ -59,5 +59,6 @@ If you want to create a new theme without using CPE Theme Designer (i.e. Due to 
 --icon-filter-hover:opacity(0.8); /* <filter-function> */
 --icon-filter-duration:300ms; /* <duration> */
 --icon-filter-delay:0; /* <duration> */
+--system-acryllic-opacity:0.6; /* <number> 0.4 to 0.8 */
 }
 ```

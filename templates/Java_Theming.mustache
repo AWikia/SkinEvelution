@@ -21,10 +21,10 @@ window.MW18highContrast = 3.00;
 */
 
 var visualStyles = [
-					['formal', 'Formal', 'opacity'],
 					['lite', 'Lite', 'square'],
-					['basic', 'Basic', 'inbox'],
 					['contrast', 'High Contrast', 'contrast'],
+					['basic', 'Basic', 'inbox'],
+					['basiccontrast', 'Basic High Contrast', 'invert_colors'],
 					['simple', 'Simple', 'extension'],
 					['classic', 'Classic', 'smart_toy'],
 					['classiccontrast', 'Classic High Contrast', 'filter_b_and_w']
@@ -349,6 +349,13 @@ function GetHyperlink() {
 function GetInactiveText() {
 	if (ForcedColors()) {
 		return getComputedStyle(document.querySelector('.fc-graytext')).getPropertyValue("color");
+	} else if (getComputedStyle(document.querySelector('html')).getPropertyValue("--inactive-text-background-color") === 'auto') {
+		var adjustment = ContrastRatio2();
+		if (window.MW18PageColorLight) {
+			return ColorTestTwin(window.MW18PageColor,"#000000",adjustment*2);
+		} else {
+			return ColorTestTwin(window.MW18PageColor,"#ffffff",adjustment*2);
+		}
 	} else {
 		return getComputedStyle(document.querySelector('html')).getPropertyValue("--inactive-text-background-color").trim();
 	}
@@ -968,6 +975,7 @@ function DownloadTheme(full=false) {
 				 '--icon-filter-hover:' + wordfilter2  + ';\n' +
 				 '--icon-filter-duration:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--icon-filter-duration")  + ';\n' +
 				 '--icon-filter-delay:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--icon-filter-delay")  + ';\n' +
+				 '--system-acryllic-opacity:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--system-acryllic-opacity")  + ';\n' +
 				 '}' // Ending
 	} else { // For use with Theme Management
 		result = '[theme="A"][visualcolors="standard"] {\n' + // Beginning
@@ -994,6 +1002,7 @@ function DownloadTheme(full=false) {
 				 '--icon-filter-hover:' + wordfilter2  + ';\n' +
 				 '--icon-filter-duration:' + getComputedStyle(document.querySelector('html')).getPropertyValue("--icon-filter-duration")  + ';\n' +
 				 '--icon-filter-delay:' + getComputedStyle(document.querySelector('html')).getPropertyValue("--icon-filter-delay")  + ';\n' +
+				 '--system-acryllic-opacity:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--system-acryllic-opacity")  + ';\n' +
 				 '}' // Ending
 	}
 	alert('Once you save the file, put the stylesheet contents to MediaWiki:Common.css for use in the wiki or upload it to any website.');
@@ -1220,20 +1229,11 @@ var adjustment = ContrastRatio2();
 	if (darkpage) {
 		var lightness = '#000000';
 		var dropdowncolor = ColorTestTwin(content_color,"#000000",adjustment);
-		if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--inactive-text-background-color") === 'auto')  ) {
-			var dropdowncolor2 = ColorTestTwin(content_color,"#000000",adjustment*2);
-		} else {
-			var dropdowncolor2 = GetInactiveText();
-		}
 	} else {
 		var lightness = '#ffffff';
 		var dropdowncolor = ColorTestTwin(content_color,"#ffffff",adjustment);
-		if ((getComputedStyle(document.querySelector('html')).getPropertyValue("--inactive-text-background-color") === 'auto')  ) {
-			var dropdowncolor2 = ColorTestTwin(content_color,"#ffffff",adjustment*2);
-		} else {
-			var dropdowncolor2 = GetInactiveText();
-		}
 	}
+		var dropdowncolor2 = GetInactiveText();
 var dropdowncolorH = ColorTest(dropdowncolor,false,false,true);
 
 /** Page text color **/

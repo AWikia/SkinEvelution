@@ -158,8 +158,9 @@ font-family:Trebuchet MS;
 --desktop-background-size:cover;
 --desktop-background-no-horizontal-tiling:false;
 --desktop-background-no-vertical-tiling:false;
---backdrop-filter:blur(30px) sepia(3%) contrast(103%) invert(3%) grayscale(3%) saturate(103%) hue-rotate(0.3deg) brightness(103%);
+--backdrop-filter:blur( calc(30px * calc(1.2 - var(--system-acryllic-opacity) ) ) ) sepia(3%) contrast(103%) invert(3%) grayscale(3%) saturate(103%) hue-rotate(0.3deg) brightness(103%);
 --transitioner:cubic-bezier(0, 0, 0, 1);
+--system-acryllic-opacity:0.6;
 --system-visual-style:standard;
 /* Fonts */
 --main-fonts:"Roboto", "Inter"; /* Empty but other languages will depend on it */
@@ -197,13 +198,6 @@ font-family:Trebuchet MS;
 	}
 }
 
-
-/* Misc Colors (Complement with Luna theming) */
-body {
-/* Base Accent */
---canvas-accent-background-color:rgba(var(--canvas-secondary-background-color-rgb),0.3);
---canvas-accent-box-shadow:inset 0 0 0 100vh var(--canvas-accent-background-color);
-}
 
 /** Generic Colors & Color Scheme **/
 html {
@@ -280,6 +274,7 @@ body [force-active] {
 	--luna-contrast-selected-background-color:var(--highlight-background-color);
 	--luna-contrast-selected-background-color-rgb:var(--highlight-background-color-rgb);
 	--luna-contrast-selected-foreground-color:var(--highlight-foreground-color);
+	--luna-contrast-selected-foreground-color-rgb:var(--highlight-foreground-color-rgb);
 }
 
 /* Unaccented (Unfocused) */
@@ -298,6 +293,8 @@ body [force-inactive] {
 	--luna-foreground-color-hover:var(--canvas-foreground-color);
 	--luna-foreground-color-rgb:var(--canvas-foreground-color-hover-rgb);
 	--luna-foreground-color-hover-rgb:var(--canvas-foreground-color-rgb);
+	--luna-link-color:var(--active-title-alternative-foreground-color);
+	--luna-link-color-rgb:var(--active-title-alternative-foreground-color-rgb);
 }
 
 /* Accented (Focused) */
@@ -306,6 +303,10 @@ body [force-inactive] {
 	--luna-background-color:var(--active-title-background-color);
 	--luna-background-color-rgb:var(--active-title-background-color-rgb);
 	--luna-background-color-hover:var(--active-title-background-color-hover);
+	--luna-text-background-color:var(--luna-foreground-color);
+	--luna-text-background-color-hover:var(--luna-foreground-color-hover);
+	--luna-text-background-color-rgb:var(--luna-foreground-color-rgb);
+	--luna-text-background-color-hover-rgb:var(--luna-foreground-color-hover-rgb);	
 	--luna-border-background-color:var(--active-title-background-color-hover);
 	--luna-foreground-color:var(--active-title-foreground-color);
 	--luna-foreground-color-inverted:var(--active-title-foreground-color-inverted);
@@ -320,12 +321,18 @@ body [force-inactive] {
 	--luna-background-color:var(--inactive-title-background-color);
 	--luna-background-color-rgb:var(--inactive-title-background-color-rgb);
 	--luna-background-color-hover:var(--inactive-title-background-color-hover);
+	--luna-text-background-color:var(--luna-foreground-color);
+	--luna-text-background-color-hover:var(--luna-foreground-color-hover);
+	--luna-text-background-color-rgb:var(--luna-foreground-color-rgb);
+	--luna-text-background-color-hover-rgb:var(--luna-foreground-color-hover-rgb);	
 	--luna-border-background-color:var(--inactive-title-background-color-hover);
 	--luna-foreground-color:var(--inactive-title-foreground-color-hover);
 	--luna-foreground-color-inverted:var(--inactive-title-foreground-color-inverted);
 	--luna-foreground-color-hover:var(--inactive-title-foreground-color);
 	--luna-foreground-color-rgb:var(--inactive-title-foreground-color-hover-rgb);
 	--luna-foreground-color-hover-rgb:var(--inactive-title-foreground-color-rgb);
+	--luna-link-color:var(--inactive-title-alternative-foreground-color);
+	--luna-link-color-rgb:var(--inactive-title-alternative-foreground-color-rgb);
 }
 
 
@@ -490,7 +497,7 @@ body {
   --cpe-text-cursor:text;
   --cpe-hand-cursor:pointer;
 	scrollbar-color:var(--scrollbar-thumb-color-1) var(--scrollbar-track-color-1);
-	--dropdown-opacity:0.3;
+	--dropdown-opacity:var(--system-acryllic-opacity);
 /** Scrollbar Styling **/
 	/* Width */
 	--scrollbar-width:17px;
@@ -1859,8 +1866,6 @@ margin-left:0;
 
 /* Level A */
 .cpe-dropdown__content{
---canvas-accent-background-color:rgba(var(--canvas-secondary-background-color-rgb),0.3);
---canvas-accent-box-shadow:inset 0 0 0 100vh var(--canvas-accent-background-color);
 background-color:rgba(var(--canvas-secondary-background-color-rgb),var(--dropdown-opacity));
 color:var(--canvas-text-background-color);
 border:1px solid var(--inactive-text-background-color);
@@ -1875,7 +1880,7 @@ transition:display 300ms var(--transitioner);
 position:absolute;
 transform:translateX(-50%);
 z-index:4;
-box-shadow:0 2px 6px 0 rgba(var(--canvas-text-background-color-rgb),.2), 0 2px 6px 0 rgba(var(--canvas-background-color-rgb),0.2), var(--canvas-accent-box-shadow);
+box-shadow:0 2px 6px 0 rgba(var(--canvas-text-background-color-rgb),.2), 0 2px 6px 0 rgba(var(--canvas-background-color-rgb),0.2);
 font-size:14px;
   scrollbar-width:thin;
   scrollbar-color:var(--scrollbar-thumb-color-1) var(--scrollbar-track-color-1);
@@ -1901,7 +1906,7 @@ font-size:14px;
 }
 
 .cpe-dropdown[cpe-orient="land"] .cpe-dropdown__content {
-	box-shadow:2px 0 6px 0 rgba(var(--canvas-text-background-color-rgb),.2), 2px 0 6px 0 rgba(var(--canvas-background-color-rgb),0.2), var(--canvas-accent-box-shadow);
+	box-shadow:2px 0 6px 0 rgba(var(--canvas-text-background-color-rgb),.2), 2px 0 6px 0 rgba(var(--canvas-background-color-rgb),0.2);
 	left:100%;
 	min-width:0;
 	top:-50%;
@@ -2172,11 +2177,10 @@ top:auto;bottom:-8px
 */
 
 .cpe-dropdown__content .cpe-list.is-linked .cpe-dropdown-level-2 .cpe-dropdown-level-2__content{
-	--dropdown-opacity:0.8;
+	--dropdown-opacity:0.85;
 background-color:rgba(var(--canvas-secondary-background-color-rgb),var(--dropdown-opacity));
 border:1px solid var(--inactive-text-background-color);
 border-radius:var(--border-radius);
-box-shadow:var(--canvas-accent-box-shadow);
 display:none;
 left:100%;
 padding:7px 9px;
@@ -2306,7 +2310,7 @@ margin-right:16px;
 /* Desktop-only Landscape */
 @media only screen and (min-width:760px) {
 	.cpe-dropdown[cpe-orient="land-desktop"] .cpe-dropdown__content {
-		box-shadow:2px 0 6px 0 rgba(var(--canvas-text-background-color-rgb),.2), 2px 0 6px 0 rgba(var(--canvas-background-color-rgb),0.2), var(--canvas-accent-box-shadow);
+		box-shadow:2px 0 6px 0 rgba(var(--canvas-text-background-color-rgb),.2), 2px 0 6px 0 rgba(var(--canvas-background-color-rgb),0.2);
 		left:100%;
 		min-width:0;
 		top:-50%;
@@ -2642,10 +2646,7 @@ margin-right:16px;
 
 /* Banners */
 .cpe-banner-notification{
---canvas-accent-background-color:rgba(var(--canvas-secondary-background-color-rgb),0.3);
---canvas-accent-box-shadow:inset 0 0 0 100vh var(--canvas-accent-background-color);
 	background-color:rgba(var(--canvas-secondary-background-color-rgb),var(--dropdown-opacity));
-	box-shadow:var(--canvas-accent-box-shadow);
 	color:var(--canvas-text-background-color);
 	display:flex;
 	transition:opacity .4s var(--transitioner), transform .4s var(--transitioner); 
