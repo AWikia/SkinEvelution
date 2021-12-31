@@ -179,7 +179,7 @@ Each release of Evelution comes with different Sevelution releases, to name a fe
 - 2.4.0 = Introduced in Evelution 8.12.0 - Introduces Floating actions (Not to be confused with Server Actions which are similar but appear inside the content area)
 - 2.5.0 = Introduced in Evelution 13.0.0 - Introduces dynamic Generic Colors and Semantic Versioning 2
 - 2.6.0 = Introduced in Evelution 18.0.0 - Introduces the Accented state of Luna Theming
-- 2.7.0 = Introduced in Evelution 33.0.0 - Introduces the Inactive state of Luna Theming for CPE Language
+- 2.7.0 = Introduced in Evelution 33.0.0 - Introduces the Inactive state of Luna Theming for CPE Language and dedicated accent colors for Luna Theming
 - 2.8.0 = Introduced in Evelution 43.0.0 - Introduces custom acryllic transparency along with a new Luna Theming System (Compatible with earlier Servelution Clients)
 
 ### The Luna Theming System

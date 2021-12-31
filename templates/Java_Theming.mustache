@@ -4,11 +4,8 @@ window.MW18wikitheme = 'auto';
 window.MW18contrastmode = 'auto';
 /* Some Theming Colors */
 window.MW18PageColor = GetCanvasShort();
-window.MW18PageColorLight = true;
-window.MW18PageColorLight2 = true;
+window.MW18PageColorFG = '#000000';
 window.MW18BgColor = GetDesktop();
-window.MW18BgColorLight = true;
-window.MW18BgColorLight2 = true;
 /* Contrast Values */
 window.MW18lowContrast = 1.25;
 window.MW18highContrast = 3.00;
@@ -313,7 +310,7 @@ function GetDesktopText() {
 		return getComputedStyle(document.querySelector('.fc-buttontext')).getPropertyValue("color");
 	} else if (getComputedStyle(document.querySelector('html')).getPropertyValue("--desktop-text-background-color") === 'auto') {
 		var color = window.MW18BgColor;
-		return GetForegroundVariables(color,window.MW18BgColorLight,window.MW18BgColorLight2)[4];
+		return GetForegroundVariables(color)[4];
 	} else {
 		return getComputedStyle(document.querySelector('html')).getPropertyValue("--desktop-text-background-color").trim();
 	}
@@ -350,12 +347,7 @@ function GetInactiveText() {
 	if (ForcedColors()) {
 		return getComputedStyle(document.querySelector('.fc-graytext')).getPropertyValue("color");
 	} else if (getComputedStyle(document.querySelector('html')).getPropertyValue("--inactive-text-background-color") === 'auto') {
-		var adjustment = ContrastRatio2();
-		if (window.MW18PageColorLight) {
-			return ColorTestTwin(window.MW18PageColor,"#000000",adjustment*2);
-		} else {
-			return ColorTestTwin(window.MW18PageColor,"#ffffff",adjustment*2);
-		}
+		return ColorTestTwin(window.MW18PageColor,window.MW18PageColorFG,window.MW18FinalContrast*2);
 	} else {
 		return getComputedStyle(document.querySelector('html')).getPropertyValue("--inactive-text-background-color").trim();
 	}
@@ -367,7 +359,7 @@ function GetCanvasText() {
 		return getComputedStyle(document.querySelector('.fc-canvastext')).getPropertyValue("color");
 	} else if (getComputedStyle(document.querySelector('html')).getPropertyValue("--canvas-text-background-color") === 'auto') {
 		var color = window.MW18PageColor;
-		return GetForegroundVariables(color,window.MW18PageColorLight,window.MW18PageColorLight2)[4];
+		return GetForegroundVariables(color)[4];
 	} else {
 		return getComputedStyle(document.querySelector('html')).getPropertyValue("--canvas-text-background-color").trim();
 	}
@@ -465,11 +457,11 @@ function ContrastRatio2() {
 }
 
 function BestAlertColor() {
-var page = GetCanvas()
+var page = window.MW18PageColor;
 var invpage = page;
 
 
-if (window.MW18PageColorLight) { // ( chroma(page).get('hsl.l') < 0.5)
+if (isLightColor(page)) { // ( chroma(page).get('hsl.l') < 0.5)
 	var colors = ['96%', '94%', '92%', '90%', '88%', '86%', '84%', '82%', '80%', '78%', '76%', '74%', '72%', '70%', '68%', '66%', '64%', '62%', '60%', '58%', '56%', '54%', '46%', '44%', '42%', '40%', '38%', '36%', '34%', '32%', '30%', '28%', '26%', '24%', '22%', '20%', '18%', '16%', '14%', '12%', '10%', '8%', '6%', '4%']
 } else {
 	var colors = ['4%', '6%', '8%', '10%', '12%', '14%', '16%', '18%', '20%', '22%', '24%', '26%', '28%', '30%', '32%', '34%', '36%', '38%', '40%', '42%', '44%', '46%', '54%', '56%', '58%', '60%', '62%', '64%', '66%', '68%', '70%', '72%', '74%', '76%', '78%', '80%', '82%', '84%', '86%', '88%', '90%', '92%', '94%', '96%']
@@ -1025,12 +1017,11 @@ function ColorTestTwin(color1,color2,intensity=1,hue='nil') {
 
 function ColorTest(color,text=false,inv=false,dledlen=false) { // Regular Colors
 	if (dledlen === true) {
-//		var color2 = GetCanvas();
-		var func = 	window.MW18PageColorLight;
+		var color2 = GetCanvas();
 	} else {
 		var color2 = color;
-		var func = (isLightColor(color2));
 	}
+	var func = (isLightColor(color2));
 	var light = chroma(color).get('hsl.l')
 	if (func) {
 		if (text === true) {
@@ -1213,8 +1204,6 @@ var content_color =  GetCanvasShort();
 
 	window.MW18PageColor = content_color
 	var darkpage = isLightColor(content_color);
-	window.MW18PageColorLight = darkpage;
-	window.MW18PageColorLight2 = isLightColor2(content_color);
 	if (!(darkpage)) {
 		document.querySelector('html').classList.add("theme-fandomdesktop-dark")
 	} else {
@@ -1225,6 +1214,7 @@ var content_color =  GetCanvasShort();
 var content_color2 = ColorTest(content_color);
 
 var adjustment = ContrastRatio2();
+window.MW18FinalContrast = adjustment;
 
 	if (darkpage) {
 		var lightness = '#000000';
@@ -1233,6 +1223,7 @@ var adjustment = ContrastRatio2();
 		var lightness = '#ffffff';
 		var dropdowncolor = ColorTestTwin(content_color,"#ffffff",adjustment);
 	}
+		window.MW18PageColorFG = lightness
 		var dropdowncolor2 = GetInactiveText();
 var dropdowncolorH = ColorTest(dropdowncolor,false,false,true);
 
@@ -1317,8 +1308,6 @@ var head_color =	GetDesktop();
 // Liatch Quirk
 		var head_color = ColorInvert(head_color);
 	var lighthead = isLightColor(head_color);
-	window.MW18BgColorLight = lighthead;
-	window.MW18BgColorLight2 = isLightColor2(head_color);
 	if (lighthead) {
 		var lightness2 = '#000000';
 	} else {
@@ -1407,16 +1396,16 @@ if (['full','legacy'].includes(getComputedStyle(document.querySelector('html')).
 }
 
 // Gradient Sets
-var alert_gradient= GetGradientVariable(content_color,'alert', window.MW18PageColorLight);
-var warning_gradient = GetGradientVariable(content_color,'warning', window.MW18PageColorLight);
-var success_gradient = GetGradientVariable(content_color,'success', window.MW18PageColorLight);
-var message_gradient = GetGradientVariable(content_color,'message', window.MW18PageColorLight);
-var content_color_gradient = GetGradientVariable(content_color,'canvas', window.MW18PageColorLight);
-var content_text_gradient = GetGradientVariable2(content_color,'canvas-text', window.MW18PageColorLight);
+var alert_gradient= GetGradientVariable(content_color,'alert');
+var warning_gradient = GetGradientVariable(content_color,'warning');
+var success_gradient = GetGradientVariable(content_color,'success');
+var message_gradient = GetGradientVariable(content_color,'message');
+var content_color_gradient = GetGradientVariable(content_color,'canvas');
+var content_text_gradient = GetGradientVariable2(content_color,'canvas-text');
 var button_gradient = GetGradientVariable(button_color,'highlight');
-var link_gradient = GetGradientVariable(content_color,'hyperlink', window.MW18PageColorLight);
+var link_gradient = GetGradientVariable(content_color,'hyperlink');
 var border_gradient = GetGradientVariable(border_color,'inactive-text');
-var head_gradient = GetGradientVariable(content_color,'desktop', window.MW18PageColorLight);
+var head_gradient = GetGradientVariable(content_color,'desktop');
 var caret_gradient = GetGradientVariable(caret_color,'active-title');
 var caret2_gradient = GetGradientVariable(caret2_color,'inactive-title');
 
@@ -1425,12 +1414,12 @@ var alert_fg = GetForegroundVariables(alert_color);
 var warning_fg = GetForegroundVariables(warning_color);
 var success_fg = GetForegroundVariables(success_color);
 var message_fg = GetForegroundVariables(message_color);
-var content_color_fg = GetForegroundVariables(content_color, window.MW18PageColorLight, window.MW18PageColorLight2);
+var content_color_fg = GetForegroundVariables(content_color);
 var content_text_fg = GetForegroundVariables(content_text);
 var button_fg = GetForegroundVariables(button_color);
 var link_fg = GetForegroundVariables(link_color);
 var border_fg = GetForegroundVariables(border_color);
-var head_fg = GetForegroundVariables(head_color, window.MW18BgColorLight, window.MW18BgColorLight2);
+var head_fg = GetForegroundVariables(head_color);
 var headertext_fg = GetForegroundVariables(headertext_color);
 var caret_fg = GetForegroundVariables(caret_color);
 var caret2_fg = GetForegroundVariables(caret2_color);
