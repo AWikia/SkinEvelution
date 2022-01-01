@@ -166,6 +166,7 @@
 				</ul>
 			</div>
 		</div>
+{{#has-echo}}
 	  <!-- Notifications -->
 		<div class="link cell notice notices-menu focus-within" cpe-tooltip-position="bottom-mobile" cpe-tooltip="{{msg-tooltip-pt-notifications-alert}}">
 			<div style="position:absolute; visibility:visible; width:var(--global-nav-size);">
@@ -183,15 +184,15 @@
 				mail
 			</span>
 		</div>
-
+{{/has-echo}}
 		<div class="cpe-dropdown has-dark-shadow user-profile" cpe-orient="land-desktop">
 			<div class="link cell cpe-dropdown__toggle" cpe-tooltip-position="bottom-mobile" cpe-tooltip="{{msg-personaltools}}">
-			{{#is-loggedin}}
+			{{#has-avatar}}
 				<div class="raw-parser">{{html-avatar}}</div>
-			{{/is-loggedin}}
-			{{^is-loggedin}}
+			{{/has-avatar}}
+			{{^has-avatar}}
 				<span class="cpe-icon material-icons">account_circle</span>
-			{{/is-loggedin}}
+			{{/has-avatar}}
 								
 			</div>
 			<div class="cpe-dropdown__content is-right-aligned">

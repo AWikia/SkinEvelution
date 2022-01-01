@@ -95,8 +95,10 @@ class SkinEvelution extends SkinMustache {
 			$avatar = new wAvatar( $this->getSkin()->getUser()
 				->getId(), 'l' );
 			$avatarElement = $avatar->getAvatarURL();
+			$data["has-avatar"] = $this->getSkin()->getUser()->isRegistered();
 		} else {
 			$avatarElement = '<span class="cpe-icon material-icons">account_circle</span>';
+			$data["has-avatar"] = false;
 		}
 		$data["html-avatar"] = $avatarElement;
 		$data["html-sticky-rail"] = $this->getConfig()->get( 'EvelutionStickyRail' );
@@ -111,6 +113,8 @@ class SkinEvelution extends SkinMustache {
 		$data["has-forced-full-width"] = $this->getConfig()->get ( 'EvelutionForceFullWidth' );
 		$data["has-discord-id"] =  (wfMessage( 'evelution-discord-module-server-id' )->inContentLanguage() != '');
 		$data["has-forum"] = ( defined( 'NS_FORUM' ) );
+		$data["has-echo"] = ( (ExtensionRegistry::getInstance()->isLoaded( 'Echo' )) && ($this->getSkin()->getUser()->isRegistered()) );
+		$data["has-interlanguage-links"] = true;
 		$data["is-loggedin"] = $this->getSkin()->getUser()->isRegistered();
         return $data;
     }

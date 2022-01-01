@@ -120,38 +120,61 @@ function UpdateRangeInputs() {
 
         switch (key) {
             case 'fullwidth':
-				content_full = (value === 'true');
+				content_full = value;
 				console.info('Article width settings overriden')
                 break;
             case 'hidetoolbar':
-				toolbar_full = (value === 'false');
+				toolbar_full = value;
 				console.info('Toolbar visibility settings overriden')
                 break;
             case 'hidenavbar':
-				nav_full = (value === 'false');
+				nav_full = true;
 				console.info('Sticky navigation visibility settings overriden')
                 break;
             case 'hiderail':
-				right_rail_full = (value === 'false');
-				left_rail_full = (value === 'false');
+				if (value === 'true') {
+					right_rail_full = 'false';
+					left_rail_full = 'false';
+				} else {
+					right_rail_full = 'true';
+					left_rail_full = 'true';
+				}
 				console.info('Pane visibility settings overriden')
                 break;
             case 'hiderightrail':
-				right_rail_full = (value === 'false');
+				if (value === 'true') {
+					right_rail_full = 'false';
+				} else {
+					right_rail_full = 'true';
+				}
 				console.info('Right pane visibility settings overriden')
                 break;
             case 'hideleftrail':
-				left_rail_full = (value === 'false');
+				if (value === 'true') {
+					left_rail_full = 'false';
+				} else {
+					left_rail_full = 'true';
+				}
 				console.info('Left pane visibility settings overriden')
                 break;
 
         }
     });
-	document.querySelector(' container ').setAttribute('wide', content_full );
-	document.querySelector(' container ').setAttribute('toolbar', toolbar_full );
-	document.querySelector(' container ').setAttribute('nav', nav_full );
-	document.querySelector(' container ').setAttribute('right-rail', right_rail_full );
-	document.querySelector(' container ').setAttribute('left-rail', left_rail_full );
+    if (content_full === 'true') {
+		document.querySelector(' container ').classList.add('is-wide');
+	}
+    if (toolbar_full === 'true') {
+		document.querySelector(' container ').classList.add('has-toolbar');
+	}
+    if (nav_full === 'true') {
+		document.querySelector(' container ').classList.add('has-minibar');
+	}
+    if (right_rail_full === 'true') {
+		document.querySelector(' container ').classList.add('has-right-rail');
+	}
+    if (left_rail_full === 'true') {
+		document.querySelector(' container ').classList.add('has-left-rail');
+	}
 	UpdateRangeInputs();
 	DropDownUpdate();
 })();
@@ -350,49 +373,54 @@ RemoveEmptyMenus();
 
 /* Width Toggler */
 function ToggleWidth() {
-	if 	(document.querySelector(' container ').getAttribute('wide') == 'true') {
-		document.querySelector(' container ').setAttribute('wide', 'false');
+	if 	(document.querySelector(' container.is-wide ')) {
+		document.querySelector(' container ').classList.remove('is-wide');
+		insertKey('content-full', 'false');
 	} else {
-		document.querySelector(' container ').setAttribute('wide', 'true');
+		document.querySelector(' container ').classList.add('is-wide');
+		insertKey('content-full', 'true');
 	}
-	insertKey('content-full', document.querySelector(' container ').getAttribute('wide') );
 }
 
 function ToggleBar() {
-	if 	(document.querySelector(' container ').getAttribute('toolbar') == 'true') {
-		document.querySelector(' container ').setAttribute('toolbar', 'false');
+	if 	(document.querySelector(' container.has-toolbar ')) {
+		document.querySelector(' container ').classList.remove('has-toolbar');
+		insertKey('toolbar-full', 'false' );
 	} else {
-		document.querySelector(' container ').setAttribute('toolbar', 'true');
+		document.querySelector(' container ').classList.add('has-toolbar');
+		insertKey('toolbar-full', 'true' );
 	}
-	insertKey('toolbar-full', document.querySelector(' container ').getAttribute('toolbar') );
 }
 
 
 function ToggleNav() {
-	if 	(document.querySelector(' container ').getAttribute('nav') == 'true') {
-		document.querySelector(' container ').setAttribute('nav', 'false');
+	if 	(document.querySelector(' container.has-minibar ')) {
+		document.querySelector(' container ').classList.remove('has-minibar');
+		insertKey('nav-full', 'false' );
 	} else {
-		document.querySelector(' container ').setAttribute('nav', 'true');
+		document.querySelector(' container ').classList.add('has-minibar');
+		insertKey('nav-full', 'true' );
 	}
-	insertKey('nav-full', document.querySelector(' container ').getAttribute('nav') );
 }
 
 function ToggleRail() {
-	if 	(document.querySelector(' container ').getAttribute('right-rail') == 'true') {
-		document.querySelector(' container ').setAttribute('right-rail', 'false');
+	if 	(document.querySelector(' container.has-right-rail ')) {
+		document.querySelector(' container ').classList.remove('has-right-rail');
+		insertKey('right-rail-full', 'false' );
 	} else {
-		document.querySelector(' container ').setAttribute('right-rail', 'true');
+		document.querySelector(' container ').classList.add('has-right-rail');
+		insertKey('right-rail-full', 'true' );
 	}
-	insertKey('right-rail-full', document.querySelector(' container ').getAttribute('right-rail') );
 }
 
 function ToggleRail2() {
-	if 	(document.querySelector(' container ').getAttribute('left-rail') == 'true') {
-		document.querySelector(' container ').setAttribute('left-rail', 'false');
+	if 	(document.querySelector(' container.has-left-rail ')) {
+		document.querySelector(' container ').classList.remove('has-left-rail');
+		insertKey('left-rail-full', 'false' );
 	} else {
-		document.querySelector(' container ').setAttribute('left-rail', 'true');
+		document.querySelector(' container ').classList.add('has-left-rail');
+		insertKey('left-rail-full', 'true' );
 	}
-	insertKey('left-rail-full', document.querySelector(' container ').getAttribute('left-rail') );
 }
 
 
@@ -450,23 +478,6 @@ function RemoveEmptyMenus() {
 		if (langmenu4bN) {
 			langmenu4bN.remove();
 		}
-
-// Remove Notices and Updates Links, if none of them exist
-
-
-	if (! (document.querySelector(".evelution-navigation.evelution-sidebar .link.notices-menu .cpe-list > #pt-notifications-alert")) ) {
-		var langmenu4 = document.querySelector(".evelution-navigation.evelution-sidebar .link.notices-menu");
-		if (langmenu4) {
-			langmenu4.remove();
-		}
-	}
-
-	if (! (document.querySelector(".evelution-navigation.evelution-sidebar .link.updates-menu .cpe-list > #pt-notifications-notice")) ) {
-		var langmenu4b = document.querySelector(".evelution-navigation.evelution-sidebar .link.updates-menu");
-		if (langmenu4b) {
-			langmenu4b.remove();
-		}
-	}
 
 
 	if (! (document.querySelector(".evelution-page-header .more-actions-menu .cpe-dropdown__content .cpe-list > li")) ) {

@@ -574,8 +574,8 @@ container > main {
 	transform-origin:bottom;
 }
 
-container[toolbar="true"] .evelution-taskbar.col-toolbar,
-container[toolbar="false"] .evelution-taskbar.full-toolbar  {
+container.has-toolbar .evelution-taskbar.col-toolbar,
+container:not(.has-toolbar) .evelution-taskbar.full-toolbar  {
 	transform:scaleY(0);
 }
 
@@ -723,8 +723,8 @@ margin-bottom:-6px;
   background-color:transparent;
 }
 
-.single-header [nav="true"] .evelution-content,
-.action-edit [nav="true"] .evelution-content {
+.single-header .has-minibar .evelution-content,
+.action-edit .has-minibar .evelution-content {
 	margin-top:var(--minibar-size);
 }
 
@@ -755,35 +755,35 @@ position:relative;
 }
 
 /* Wide */
-	container[wide="true"] [responsive],
+	container.is-wide [responsive],
 	.forced-full [responsive] {
 		width:calc(100% - 45px);
 	}
 
-	container[wide="true"]  .top-gap .cpe-banner-notification__container#floatingbanner,
+	container.is-wide  .top-gap .cpe-banner-notification__container#floatingbanner,
 	.forced-full .top-gap .cpe-banner-notification__container#floatingbanner {
 		width:calc(100% - 45px - var(--global-nav-size) - var(--scrollbar-width));
 		max-width:calc(var(--max-width) - 45px - var(--global-nav-size) - var(--scrollbar-width));
 	}
 	
-	container[wide="true"] .wide-off {
+	container.is-wide .wide-off {
 		display:none!important;
 	}
-	container[wide="false"] .wide-on {
+	container:not(.is-wide) .wide-on {
 		display:none!important;
 	}
 
-	container[right-rail="true"] .rail-off {
+	container.has-right-rail .rail-off {
 		display:none!important;
 	}
-	container[right-rail="false"] .rail-on {
+	container:not(.has-right-rail) .rail-on {
 		display:none!important;
 	}
 	
-	container[left-rail="true"] .rail2-off {
+	container.has-left-rail .rail2-off {
 		display:none!important;
 	}
-	container[left-rail="false"] .rail2-on {
+	container:not(.has-left-rail) .rail2-on {
 		display:none!important;
 	}
 
@@ -893,7 +893,7 @@ font-weight:bold;
     transition:top 400ms var(--transitioner);
 }
 
-container[nav="false"] .evelution-floating-actions-container {
+container:not(.has-minibar) .evelution-floating-actions-container {
 	top:10px;
 }
 
@@ -906,11 +906,11 @@ container[nav="false"] .evelution-floating-actions-container {
 @media only screen and (min-width:760px) {
 	/* With Nav and Toolbar */
 	@media only screen and (max-height:389px) {
-		container[nav="true"][toolbar="true"] .evelution-floating-actions .cpe-floating-button {
+		container.has-minibar.has-toolbar .evelution-floating-actions .cpe-floating-button {
 			width:18px;
 			height:18px;
 		}
-		container[nav="true"][toolbar="true"] .evelution-floating-actions .cpe-floating-button .cpe-icon {
+		container.has-minibar.has-toolbar .evelution-floating-actions .cpe-floating-button .cpe-icon {
 			--icon-size:0.5;
 		}
 
@@ -919,11 +919,11 @@ container[nav="false"] .evelution-floating-actions-container {
 
 
 	@media only screen and (min-height:390px) and (max-height:479px) {
-		container[nav="true"][toolbar="true"] .evelution-floating-actions .cpe-floating-button {
+		container.has-minibar.has-toolbar .evelution-floating-actions .cpe-floating-button {
 			width:27px;
 			height:27px;
 		}
-		container[nav="true"][toolbar="true"] .evelution-floating-actions .cpe-floating-button .cpe-icon {
+		container.has-minibar.has-toolbar .evelution-floating-actions .cpe-floating-button .cpe-icon {
 			--icon-size:0.7;
 		}
 
@@ -931,14 +931,14 @@ container[nav="false"] .evelution-floating-actions-container {
 
 	/* Without Nav or Toolbar */
 	@media only screen and (max-height:339px) {
-		container[nav="false"][toolbar="true"] .evelution-floating-actions .cpe-floating-button,
-		container[nav="true"][toolbar="false"] .evelution-floating-actions .cpe-floating-button {
+		container:not(.has-minibar).has-toolbar .evelution-floating-actions .cpe-floating-button,
+		container.has-minibar:not(.has-toolbar) .evelution-floating-actions .cpe-floating-button {
 			width:18px;
 			height:18px;
 		}
 		
-		container[nav="false"][toolbar="true"] .evelution-floating-actions .cpe-floating-button .cpe-icon,
-		container[nav="true"][toolbar="false"] .evelution-floating-actions .cpe-floating-button .cpe-icon {
+		container:not(.has-minibar).has-toolbar .evelution-floating-actions .cpe-floating-button .cpe-icon,
+		container.has-minibar:not(.has-toolbar) .evelution-floating-actions .cpe-floating-button .cpe-icon {
 			--icon-size:0.5;
 		}
 
@@ -947,14 +947,14 @@ container[nav="false"] .evelution-floating-actions-container {
 
 
 	@media only screen and (min-height:340px) and (max-height:429px) {
-		container[nav="false"][toolbar="true"] .evelution-floating-actions .cpe-floating-button,
-		container[nav="true"][toolbar="false"] .evelution-floating-actions .cpe-floating-button {
+		container:not(.has-minibar).has-toolbar .evelution-floating-actions .cpe-floating-button,
+		container.has-minibar:not(.has-toolbar) .evelution-floating-actions .cpe-floating-button {
 			width:27px;
 			height:27px;
 		}
 		
-		container[nav="false"][toolbar="true"] .evelution-floating-actions .cpe-floating-button .cpe-icon,
-		container[nav="true"][toolbar="false"] .evelution-floating-actions .cpe-floating-button .cpe-icon {
+		container:not(.has-minibar).has-toolbar .evelution-floating-actions .cpe-floating-button .cpe-icon,
+		container.has-minibar:not(.has-toolbar) .evelution-floating-actions .cpe-floating-button .cpe-icon {
 			--icon-size:0.7;
 		}
 
@@ -963,11 +963,11 @@ container[nav="false"] .evelution-floating-actions-container {
 
 	/* Without Nav and Toolbar */
 	@media only screen and (max-height:289px) {
-		container[nav="false"][toolbar="false"] .evelution-floating-actions .cpe-floating-button {
+		container:not(.has-minibar):not(.has-toolbar) .evelution-floating-actions .cpe-floating-button {
 			width:18px;
 			height:18px;
 		}
-		container[nav="false"][toolbar="false"] .evelution-floating-actions .cpe-floating-button .cpe-icon {
+		container:not(.has-minibar):not(.has-toolbar) .evelution-floating-actions .cpe-floating-button .cpe-icon {
 			--icon-size:0.5;
 		}
 
@@ -976,11 +976,11 @@ container[nav="false"] .evelution-floating-actions-container {
 
 
 	@media only screen and (min-height:290px) and (max-height:379px) {
-		container[nav="false"][toolbar="false"] .evelution-floating-actions .cpe-floating-button {
+		container:not(.has-minibar):not(.has-toolbar) .evelution-floating-actions .cpe-floating-button {
 			width:27px;
 			height:27px;
 		}
-		container[nav="false"][toolbar="false"] .evelution-floating-actions .cpe-floating-button .cpe-icon {
+		container:not(.has-minibar):not(.has-toolbar) .evelution-floating-actions .cpe-floating-button .cpe-icon {
 			--icon-size:0.7;
 		}
 
@@ -991,11 +991,11 @@ container[nav="false"] .evelution-floating-actions-container {
 @media only screen and (max-width:759px) {
 	/* With Toolbar */
 	@media only screen and (max-height:389px) {
-		container[nav="true"][toolbar="true"] .evelution-floating-actions .cpe-floating-button {
+		container.has-minibar.has-toolbar .evelution-floating-actions .cpe-floating-button {
 			width:18px;
 			height:18px;
 		}
-		container[nav="true"][toolbar="true"] .evelution-floating-actions .cpe-floating-button .cpe-icon {
+		container.has-minibar.has-toolbar .evelution-floating-actions .cpe-floating-button .cpe-icon {
 			--icon-size:0.5;
 		}
 
@@ -1004,11 +1004,11 @@ container[nav="false"] .evelution-floating-actions-container {
 
 
 	@media only screen and (min-height:390px) and (max-height:479px) {
-		container[nav="true"][toolbar="true"] .evelution-floating-actions .cpe-floating-button {
+		container.has-minibar.has-toolbar .evelution-floating-actions .cpe-floating-button {
 			width:27px;
 			height:27px;
 		}
-		container[nav="true"][toolbar="true"] .evelution-floating-actions .cpe-floating-button .cpe-icon {
+		container.has-minibar.has-toolbar .evelution-floating-actions .cpe-floating-button .cpe-icon {
 			--icon-size:0.7;
 		}
 
@@ -1016,14 +1016,14 @@ container[nav="false"] .evelution-floating-actions-container {
 
 	/* Without Toolbar */
 	@media only screen and (max-height:339px) {
-		container[nav="false"][toolbar="true"] .evelution-floating-actions .cpe-floating-button,
-		container[nav="true"][toolbar="false"] .evelution-floating-actions .cpe-floating-button {
+		container:not(.has-minibar).has-toolbar .evelution-floating-actions .cpe-floating-button,
+		container.has-minibar:not(.has-toolbar) .evelution-floating-actions .cpe-floating-button {
 			width:18px;
 			height:18px;
 		}
 		
-		container[nav="false"][toolbar="true"] .evelution-floating-actions .cpe-floating-button .cpe-icon,
-		container[nav="true"][toolbar="false"] .evelution-floating-actions .cpe-floating-button .cpe-icon {
+		container:not(.has-minibar).has-toolbar .evelution-floating-actions .cpe-floating-button .cpe-icon,
+		container.has-minibar:not(.has-toolbar) .evelution-floating-actions .cpe-floating-button .cpe-icon {
 			--icon-size:0.5;
 		}
 
@@ -1032,14 +1032,14 @@ container[nav="false"] .evelution-floating-actions-container {
 
 
 	@media only screen and (min-height:340px) and (max-height:429px) {
-		container[nav="false"][toolbar="true"] .evelution-floating-actions .cpe-floating-button,
-		container[nav="true"][toolbar="false"] .evelution-floating-actions .cpe-floating-button {
+		container:not(.has-minibar).has-toolbar .evelution-floating-actions .cpe-floating-button,
+		container.has-minibar:not(.has-toolbar) .evelution-floating-actions .cpe-floating-button {
 			width:27px;
 			height:27px;
 		}
 		
-		container[nav="false"][toolbar="true"] .evelution-floating-actions .cpe-floating-button .cpe-icon,
-		container[nav="true"][toolbar="false"] .evelution-floating-actions .cpe-floating-button .cpe-icon {
+		container:not(.has-minibar).has-toolbar .evelution-floating-actions .cpe-floating-button .cpe-icon,
+		container.has-minibar:not(.has-toolbar) .evelution-floating-actions .cpe-floating-button .cpe-icon {
 			--icon-size:0.7;
 		}
 
@@ -1414,8 +1414,8 @@ gap:2px;
 	--dropdown-opacity:0.95;
 }
 
-	container[nav="true"] .evelution-minibar.col-nav,
-	container[nav="false"] .evelution-minibar.full-nav  {
+	container.has-minibar .evelution-minibar.col-nav,
+	container:not(.has-minibar) .evelution-minibar.full-nav  {
 		--tr-scale:0;
 	/* 		top:calc(-4px - var(--minibar-size))!important;
 		pointer-events:none!important;
@@ -2551,7 +2551,7 @@ border-top-right-radius:0;
 
 
 @media only screen and (min-width:1020px) {
-	 container[right-rail="false"] .evelution-rail-wrapper.evelution-right-rail {
+	 container:not(.has-right-rail) .evelution-rail-wrapper.evelution-right-rail {
 		padding-left:0;
 		padding-right:0;
 		pointer-events: none;
@@ -2560,7 +2560,7 @@ border-top-right-radius:0;
 	}
 	
 
-	 container[left-rail="false"] .evelution-rail-wrapper.evelution-left-rail {
+	 container:not(.has-left-rail) .evelution-rail-wrapper.evelution-left-rail {
 		padding-left:0;
 		padding-right:0;
 		pointer-events: none;
@@ -2595,7 +2595,7 @@ border-top-right-radius:0;
 			top:calc(var(--minibar-size) + 15px);
 			transition:top 400ms var(--transitioner);
 		}
-		[sticky-rail="1"][nav="false"] .evelution-rail-wrapper .evelution-sticky-modules {
+		[sticky-rail="1"]:not(.has-minibar) .evelution-rail-wrapper .evelution-sticky-modules {
 			top:15px;
 		}
 		[sticky-rail="1"] .evelution-rail-wrapper  .evelution-sticky-modules .evelution-module-content {
