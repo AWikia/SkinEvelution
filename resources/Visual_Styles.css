@@ -212,8 +212,14 @@ filter:none!important;
 	color:var(--global-nav-link-color-active);
 }
 
-[visualtheme="contrast"] .evelution-minibar {
+[visualtheme="contrast"] .evelution-minibar-navigation-background {
 		box-shadow:0 1px 0 0 var(--canvas-foreground-color)!important;
+}
+
+@media only screen and (min-width:760px) {
+	[visualtheme="contrast"] .evelution-minibar{
+			box-shadow:0 1px 0 0 var(--canvas-foreground-color)!important;
+	}
 }
 
 [visualtheme="contrast"] .evelution-superbar .link:hover, 
@@ -265,7 +271,7 @@ filter:none!important;
 
 
 
-[visualtheme="basiccontrast"] body.constructor .evelution-content .evelution-wrapper::before {
+[visualtheme="contrast"] body.constructor .evelution-content .evelution-wrapper::before {
 	opacity:1;
 	box-shadow:0 0 0 1000vh var(--canvas-background-color)!important;
 }
@@ -834,15 +840,22 @@ border-color:var(--luna-foreground-color);
     --button-foreground-color: var(--luna-background-color);
     --button-foreground-color-hover: var(--luna-background-color-hover);
     --button-foreground-color-inverted: var(--luna-background-color);
-    --secondary-button-background-color:var(--luna-background-color);
+    --secondary-button-background-color:transparent;
     --secondary-button-foreground-color: var(--luna-foreground-color);
     --secondary-button-foreground-color-hover: var(--luna-foreground-color-hover);
 }
 
 
-[visualtheme="basiccontrast"] .evelution-minibar {
+[visualtheme="basiccontrast"] .evelution-minibar-navigation-background {
 		box-shadow:0 1px 0 0 var(--canvas-foreground-color)!important;
 }
+
+@media only screen and (min-width:760px) {
+	[visualtheme="basiccontrast"] .evelution-minibar{
+			box-shadow:0 1px 0 0 var(--canvas-foreground-color)!important;
+	}
+}
+
 
 [visualtheme="basic"] ::-webkit-scrollbar-thumb:vertical, [visualtheme="basiccontrast"] ::-webkit-scrollbar-thumb:vertical {
 	min-height:20px;
@@ -1003,7 +1016,9 @@ background-color:var(--highlight-background-color);
 
 
 [visualtheme="basic"] .evelution-minibar,
-[visualtheme="basiccontrast"] .evelution-minibar {
+[visualtheme="basiccontrast"] .evelution-minibar,
+[visualtheme="basic"] .evelution-minibar-navigation-background,
+[visualtheme="basiccontrast"] .evelution-minibar-navigation-background {
 	background-color:var(--luna-background-color);
 }
 
@@ -1566,7 +1581,8 @@ color:inherit;
 
 
 
-[visualtheme="simple"] .evelution-minibar {
+[visualtheme="simple"] .evelution-minibar,
+[visualtheme="simple"] .evelution-minibar-navigation-background {
 	color:var(--luna-foreground-color);
 	background-color:var(--luna-background-color);
 	-webkit-backdrop-filter:none;
@@ -1614,6 +1630,17 @@ color:inherit;
 	--global-nav-opacity:2!important;
 }
 
+
+@media only screen and (max-width:759px) {
+	[visualtheme="simple"] .evelution-sidebar {
+		--global-nav-color:var(--luna-background-color-rgb)!important;
+		--global-nav-text-color:var(--luna-foreground-color)!important;
+		--global-nav-link-color-hover:var(--luna-foreground-color-inverted)!important;
+		--global-nav-link-background-hover:var(--luna-background-color-hover)!important;
+		--global-nav-link-color-active:var(--luna-foreground-color-inverted)!important;
+		--global-nav-link-background-active:var(--luna-background-color-hover)!important;
+	}
+}
 
 [visualtheme="simple"] .evelution-taskbar {
 	--canvas-accent-box-shadow:0 0 transparent;
@@ -2009,8 +2036,8 @@ box-shadow:none!important;
 	mix-blend-mode:normal!important;
 }
 
-[visualtheme="classic"] *:not(.evelution-minibar):not(.evelution-content):not(.evelution-options-content):not(.evelution-editors-content):not(.lightbox):not(.evelution-taskbar):not(body),[visualtheme="classic"] :not(.evelution-wrapper):before,[visualtheme="classic"] :not(body):after,
-[visualtheme="classiccontrast"] *:not(.evelution-minibar):not(.evelution-content):not(.evelution-options-content):not(.evelution-editors-content):not(.lightbox):not(.evelution-taskbar):not(body),[visualtheme="classiccontrast"] :not(.evelution-wrapper):before,[visualtheme="classiccontrast"] :not(body):after  {
+[visualtheme="classic"] *:not(.evelution-minibar):not(.evelution-minibar-navigation-background):not(.evelution-content):not(.evelution-options-content):not(.evelution-editors-content):not(.lightbox):not(.evelution-sidebar):not(body),[visualtheme="classic"] :not(.evelution-wrapper):before,[visualtheme="classic"] :not(body):after,
+[visualtheme="classiccontrast"] *:not(.evelution-minibar):not(.evelution-minibar-navigation-background):not(.evelution-content):not(.evelution-options-content):not(.evelution-editors-content):not(.lightbox):not(.evelution-sidebar):not(body),[visualtheme="classiccontrast"] :not(.evelution-wrapper):before,[visualtheme="classiccontrast"] :not(body):after  {
 	transition:none!important;
 }
 
@@ -2077,7 +2104,10 @@ box-shadow:none!important;
 }
 
 [visualtheme="classic"] .evelution-minibar, 
-[visualtheme="classiccontrast"] .evelution-minibar {
+[visualtheme="classic"] .evelution-minibar-navigation-background,
+/* Classic Contrast */
+[visualtheme="classiccontrast"] .evelution-minibar,
+[visualtheme="classiccontrast"] .evelution-minibar-navigation-background {
 	border-bottom:2px solid var(--canvas-3d-background-color-dark);
 }
 
@@ -2102,7 +2132,13 @@ box-shadow:none!important;
 [visualtheme="classic"] body .wikiEditor-ui-toolbar .group .tool-select .options, 
 [visualtheme="classic"] body .oo-ui-popupWidget-popup, 
 [visualtheme="classic"] body .mw-rcfilters-ui-changesListWrapperWidget .mw-changeslist-legend, 
+[visualtheme="classic"] body .mw-rcfilters-ui-filterTagMultiselectWidget.oo-ui-widget-enabled .oo-ui-tagMultiselectWidget-handle,
+[visualtheme="classic"] body .mw-rcfilters-ui-filterTagMultiselectWidget-views-select-widget.oo-ui-widget,
 [visualtheme="classic"] body .oo-ui-popupToolGroup-tools,
+[visualtheme="classic"] body .catlinks,
+[visualtheme="classic"] body div.thumbinner,
+[visualtheme="classic"] body .thumbimage,
+[visualtheme="classic"] body li.gallerybox div.thumb,
 /* Classic Contrast */
 [visualtheme="classiccontrast"] .evelution-sidebar .link,
 [visualtheme="classiccontrast"] .evelution-minibar .link,
@@ -2124,7 +2160,13 @@ box-shadow:none!important;
 [visualtheme="classiccontrast"] body .wikiEditor-ui-toolbar .group .tool-select .options, 
 [visualtheme="classiccontrast"] body .oo-ui-popupWidget-popup, 
 [visualtheme="classiccontrast"] body .mw-rcfilters-ui-changesListWrapperWidget .mw-changeslist-legend, 
-[visualtheme="classiccontrast"] body .oo-ui-popupToolGroup-tools {
+[visualtheme="classiccontrast"] body .mw-rcfilters-ui-filterTagMultiselectWidget.oo-ui-widget-enabled .oo-ui-tagMultiselectWidget-handle,
+[visualtheme="classiccontrast"] body .mw-rcfilters-ui-filterTagMultiselectWidget-views-select-widget.oo-ui-widget,
+[visualtheme="classiccontrast"] body .oo-ui-popupToolGroup-tools,
+[visualtheme="classiccontrast"] body .catlinks,
+[visualtheme="classiccontrast"] body div.thumbinner,
+[visualtheme="classiccontrast"] body .thumbimage,
+[visualtheme="classiccontrast"] body li.gallerybox div.thumb {
 	box-shadow:none!important;
 	background:var(--canvas-secondary-background-color)!important;
 	color:rgb(var(--canvas-text-background-color-rgb))!important;

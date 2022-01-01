@@ -282,7 +282,6 @@ container > main {
 	background-color:rgba(var(--global-nav-color), var(--global-nav-opacity));
 	display:flex;
 	flex-direction:column;
-	font-family:"Commissioner", var(--font-family);
 	color:var(--global-nav-text-color);
 	box-shadow: 0 0 3px var(--canvas-text-background-color), 0 0 3px var(--canvas-background-color);
 	height:100%;
@@ -298,10 +297,6 @@ container > main {
 
 .cpe-list li + li.empty {
 	display:none;
-}
-
-.serif.main .evelution-sidebar { /* Deprecated */
-	font-family:"Source Serif Pro", var(--foreign-fonts), cursive;
 }
 
 .evelution-sidebar .cpe-dropdown {
@@ -1241,6 +1236,29 @@ gap:2px;
 .evelution-page-header-contribution .views > li {
 	display:flex;
 	margin-bottom:0;
+}
+
+/* Minibar and Navigation container */
+.evelution-minibar-navigation-background {
+	position:fixed;
+	height:var(--minibar-size);
+	display:none;
+	background-color:rgba(var(--luna-background-color-rgb), var(--dropdown-opacity));
+	color:var(--luna-text-background-color);
+	-webkit-backdrop-filter:var(--backdrop-filter);
+	backdrop-filter:var(--backdrop-filter);
+	top:0;
+	transition:transform 400ms var(--transitioner), top 400ms var(--transitioner), box-shadow 400ms var(--transitioner), background-color 400ms var(--transitioner);
+	width:100%;
+	max-width:var(--max-width);
+	box-shadow: 0 0 3px var(--canvas-text-background-color), 0 0 3px var(--canvas-background-color);
+	z-index:98;
+}
+
+@media only screen and (max-width:759px) {
+	.evelution-minibar-navigation-background {
+		display:block;
+	}
 }
 
 /* Title Logo */
@@ -2387,7 +2405,7 @@ border-top-right-radius:0;
 		--button-foreground-color: var(--luna-background-color);
 		--button-foreground-color-hover: var(--luna-background-color-hover);
 		--button-foreground-color-inverted: var(--luna-background-color);
-		--secondary-button-background-color:var(--luna-background-color);
+		--secondary-button-background-color:transparent;
 		--secondary-button-foreground-color: var(--luna-foreground-color);
 		--secondary-button-foreground-color-hover: var(--luna-foreground-color-hover);
 	}
