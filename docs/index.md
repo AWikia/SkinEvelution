@@ -35,7 +35,7 @@ Fork this repo, add a new language code to the i18n folder (Such as fr.php). Cop
 # Creating new themes
 If you want to create a new theme without using CPE Theme Designer (i.e. Due to the wiki being on Miraheze), use this template:
 ```css
-[theme="A"][visualcolors="standard"] { /* Replace [theme="A"] with either [theme="B"], [theme="C"] or [theme="D"] if you want to target the other 3 slots, otherwise don't replace [theme="A"] with anything */ 
+.theme-A.visualcolors-standard { /* Replace .theme-A with either .theme-B, .theme-C, .theme-D, .theme-E, .theme-F, .theme-G, .theme-H if you want to target the other 7 slots, otherwise don't replace .theme-A with anything */ 
 --desktop-background-image:url("loadbg_dev.png"); /* <image> */
 --desktop-background-image-opacity:100%; /* <percentage> */
 --desktop-background-color:#441177; /* <color> */

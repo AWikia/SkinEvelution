@@ -825,11 +825,11 @@ function ApplyTheme () {
 	} else {
 		var autocolor5 = $('#taccentcolor').val();
 	}
-	if ( ( ( $('#bodyimage').val().startsWith('url("') ) && ( $('#bodyimage').val().endsWith('")') ) ) ||
-		  ( ( $('#bodyimage').val().startsWith('url(') ) && ( $('#bodyimage').val().endsWith(')') ) ) ) {
-		var image = $('#bodyimage').val();
+	if ( ( ( $("#bodyimage").val().startsWith('url("') ) && ( $("#bodyimage").val().endsWith('")') ) ) ||
+		  ( ( $("#bodyimage").val().startsWith('url(') ) && ( $("#bodyimage").val().endsWith(')') ) ) ) {
+		var image = $("#bodyimage").val();
     } else {
-		var image = 'url("' + $('#bodyimage').val() + '")';
+		var image = 'url("' + $("#bodyimage").val() + '")';
     }
     if ( $('#secondfont').val().length === 0) {
 		var customfont = '""';
@@ -837,7 +837,7 @@ function ApplyTheme () {
 		var customfont = $('#secondfont').val();
     }
 		result = '\n/* Community Theme */\n' +
-				 '[theme="' + $('html').attr('theme') + '"][visualcolors="standard"] {\n' + // Beginning
+				 '.theme-' + window.MW18ActiveTheme + '.visualcolors-standard {\n' + // Beginning
 				 '--desktop-background-image:' + image + ';\n' +
 				 '--desktop-background-image-opacity:' + $('#bodyimageopacity').val() + "%" + ';\n' +
 				 '--desktop-background-color:' + $('#bodybg').val()  + ';\n' +
@@ -879,13 +879,13 @@ var params = {
 		appendtext: result,
 		minor: 'true',
 		bot: 'true',
-		summary: 'Inserting Evelution Theme ' +  $('html').attr('theme'),
+		summary: 'Inserting Evelution Theme ' +  window.MW18ActiveTheme,
 		recreate: 'true',
 		format: 'json'
 	},
 	api = new mw.Api();
 
-api.postWithToken( 'csrf', params ).done( function ( data ) { AddFloatingBanner('Succesfully applied Theme '  +  $('html').attr('theme') + ' to MediaWiki:Evelution.css.','success'); } ).fail( function (data) { AddFloatingBanner('Failed to apply Theme '  +  $('html').attr('theme') + ' to MediaWiki:Evelution.css as page couldn\'t be edited.','alert'); } );
+api.postWithToken( 'csrf', params ).done( function ( data ) { AddFloatingBanner('Succesfully applied Theme '  +  window.MW18ActiveTheme + ' to MediaWiki:Evelution.css.','success'); } ).fail( function (data) { AddFloatingBanner('Failed to apply Theme '  +  window.MW18ActiveTheme + ' to MediaWiki:Evelution.css as page couldn\'t be edited.','alert'); } );
 
 }
 
@@ -916,18 +916,18 @@ function CopyTheme() {
 	} else {
 		var autocolor5 = $('#taccentcolor').val();
 	}
-	if ( ( ( $('#bodyimage').val().startsWith('url("') ) && ( $('#bodyimage').val().endsWith('")') ) ) ||
-		  ( ( $('#bodyimage').val().startsWith('url(') ) && ( $('#bodyimage').val().endsWith(')') ) ) ) {
-		var image = $('#bodyimage').val();
+	if ( ( ( $("#bodyimage").val().startsWith('url("') ) && ( $("#bodyimage").val().endsWith('")') ) ) ||
+		  ( ( $("#bodyimage").val().startsWith('url(') ) && ( $("#bodyimage").val().endsWith(')') ) ) ) {
+		var image = $("#bodyimage").val();
     } else {
-		var image = 'url("' + $('#bodyimage').val() + '")';
+		var image = 'url("' + $("#bodyimage").val() + '")';
     }
     if ( $('#secondfont').val().length === 0) {
 		var customfont = '""';
     } else {
 		var customfont = $('#secondfont').val();
     }
-		result = '[theme="' + $('html').attr('theme') + '"][visualcolors="standard"] {\n' + // Beginning
+		result = '.theme-"' + window.MW18ActiveTheme + '.visualcolors-standard {\n' + // Beginning
 				 '--desktop-background-image:' + image + ';\n' +
 				 '--desktop-background-image-opacity:' + $('#bodyimageopacity').val() + "%" + ';\n' +
 				 '--desktop-background-color:' + $('#bodybg').val()  + ';\n' +
@@ -1103,11 +1103,11 @@ function TestTheme() {
 	} else {
 		var autocolor5 = $('#taccentcolor').val();
 	}
-	if ( ( ( $('#bodyimage').val().startsWith('url("') ) && ( $('#bodyimage').val().endsWith('")') ) ) ||
-		  ( ( $('#bodyimage').val().startsWith('url(') ) && ( $('#bodyimage').val().endsWith(')') ) ) ) {
-		var image = $('#bodyimage').val();
+	if ( ( ( $("#bodyimage").val().startsWith('url("') ) && ( $("#bodyimage").val().endsWith('")') ) ) ||
+		  ( ( $("#bodyimage").val().startsWith('url(') ) && ( $("#bodyimage").val().endsWith(')') ) ) ) {
+		var image = $("#bodyimage").val();
     } else {
-		var image = 'url("' + $('#bodyimage').val() + '")';
+		var image = 'url("' + $("#bodyimage").val() + '")';
     }
     if ( $('#secondfont').val().length === 0) {
 		var customfont = '""';

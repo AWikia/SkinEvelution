@@ -296,8 +296,8 @@ body [force-inactive] {
 }
 
 /* Accented (Focused) */
-:root[accented="true"] body,
-:root[accented="true"] body [force-active] {
+:root.has-accents body,
+:root.has-accents body [force-active] {
 	--luna-background-color:var(--active-title-background-color);
 	--luna-background-color-rgb:var(--active-title-background-color-rgb);
 	--luna-background-color-hover:var(--active-title-background-color-hover);
@@ -316,8 +316,8 @@ body [force-inactive] {
 }
 
 /* Accented (Unfocused) */
-:root[accented="true"] body:not(:focus):not(:focus-within),
-:root[accented="true"] body [force-inactive] {
+:root.has-accents body:not(:focus):not(:focus-within),
+:root.has-accents body [force-inactive] {
 	--luna-background-color:var(--inactive-title-background-color);
 	--luna-background-color-rgb:var(--inactive-title-background-color-rgb);
 	--luna-background-color-hover:var(--inactive-title-background-color-hover);
@@ -468,6 +468,7 @@ body {
 		--icon-filter-hover:opacity(1)!important;
 		--icon-filter-duration:0ms!important;
 		--icon-filter-delay:0ms!important;
+		--system-visual-style:contrast;
 	}
 }
 
@@ -862,8 +863,8 @@ html.theme-fandomdesktop-light .darkmode-on {
 	display:none!important;
 }
 
-html[accented="true"] .accented-off,
-html[accented="false"] .accented-on {
+html.has-accents .accented-off,
+html:not(.has-accents) .accented-on {
 	display:none!important;
 }
 
@@ -1988,6 +1989,10 @@ max-height:152px;
     padding: 6px 9px;
 }
 
+
+.cpe-dropdown__content.cpe-visual-appearance:not(.is-not-scrollable) .cpe-list.cpe-visual-styles.cpe-auto-style li > a:not(.cpe-button) {
+	text-align:center;
+}
 
  .cpe-dropdown__content.is-not-scrollable .cpe-list{
    position:relative

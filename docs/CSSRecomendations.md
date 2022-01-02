@@ -43,7 +43,7 @@ By default, Global Nav upper links consist of Five (Six on Miraheze Wikis) links
 ## Never Customize other color schemes
 Wikis should avoid customizing any color scheme beyond the ``standard`` ones as the rest of them contain color schemes for people who need accessible and different color schemes to suit their preference. Here's a theming template you can use for getting custom theme(s) for your wiki:
 ```css
-[theme="A"][visualcolors="standard"] { /* Replace [theme="A"] with either [theme="B"], [theme="C"] or [theme="D"] if you want to target the other 3 slots, otherwise don't replace [theme="A"] with anything */ 
+.theme-A.visualcolors-standard { /* Replace .theme-A with either .theme-B, .theme-C, .theme-D, .theme-E, .theme-F, .theme-G, .theme-H if you want to target the other 7 slots, otherwise don't replace .theme-A with anything */ 
 --desktop-background-image:url("loadbg_dev.png"); /* <image> */
 --desktop-background-image-opacity:100%; /* <percentage> */
 --desktop-background-color:#441177; /* <color> */

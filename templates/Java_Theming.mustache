@@ -2,6 +2,9 @@
 window.MW18spdarkmode = 0; // 0 = No special behavior | 1 = Inverted Colors Dark | 2 = Grayscale | 3 = Yellow Tint | 4 = Blue Tint | 5 = Inverted Colors Light | 6 = Temperature | 7 = Inverted Temperature
 window.MW18wikitheme = 'auto';
 window.MW18contrastmode = 'auto';
+window.MW18ActiveTheme = 'A';
+window.MW18ActiveColors = 'standard';
+window.MW18ActiveStyle = 'standard';
 /* Some Theming Colors */
 window.MW18PageColor = GetCanvasShort();
 window.MW18PageColorFG = '#000000';
@@ -220,10 +223,14 @@ function ForcedColors() {
 	return ( ( window.matchMedia('(forced-colors: active)').matches ) || (document.querySelector("container.no-color-management") ) )
 }
 
-
 /* Visual Styles */
 function VisualStyle(style,save=true) {
-	document.querySelector('html').setAttribute("visualtheme", style);
+	vstyle = style;
+    var x = document.querySelector('html');
+	x.classList.remove('visualstyle-' + window.MW18ActiveStyle);
+	window.MW18ActiveStyle = vstyle;
+	x.classList.add('visualstyle-' + window.MW18ActiveStyle);
+
 	var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-styles li.selected")
 	if (x) {
 		x.classList.remove("selected");
@@ -238,7 +245,11 @@ function VisualStyle(style,save=true) {
 }
 
 function VisualColor(style,save=true) {
-	document.querySelector('html').setAttribute("visualcolors", style);
+    var x = document.querySelector('html');
+	x.classList.remove('visualcolors-' + window.MW18ActiveColors);
+	window.MW18ActiveColors = style;
+	x.classList.add('visualcolors-' + window.MW18ActiveColors);
+
 	var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-colors li.selected, .skin-tunic #visual-colors .mw-portlet-body ul li.selected");
 	if (x) {
 		x.classList.remove("selected");
@@ -737,15 +748,19 @@ function SetAccent(tick='false',save='true') {
 		if (save) {
 			insertKey('accent-active', tick );
 		}
-		document.querySelector('html').setAttribute('accented', tick);
+		if (tick === 'true') {
+			document.querySelector('html').classList.add('has-accents');
+		} else {
+			document.querySelector('html').classList.remove('has-accents');
+		}
 }
 
 
 function ToggleAccent() {
-	if (document.querySelector('html').getAttribute('accented') === 'false') {
-		SetAccent( 'true' )
+	if (document.querySelector('html.has-accents')) {
+		SetAccent( 'false' )
 	} else {
-		SetAccent ( 'false')
+		SetAccent ( 'true' )
 	}
 }
 
@@ -759,7 +774,7 @@ function DownloadTheme(full=false) {
 		wordfilter2 == 'initial'
 	}
 	if (full) { // For use without Theme Management
-		result = '[theme="A"][visualcolors="standard"] {\n' + // Beginning
+		result = '.theme-A[visualcolors="standard"] {\n' + // Beginning
 				// Body BG
 				 '--desktop-background-image:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--desktop-background-image")  + ';\n' +
 				 '--desktop-background-image-opacity:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--desktop-background-image-opacity")  + ';\n' +
@@ -972,7 +987,7 @@ function DownloadTheme(full=false) {
 				 '--system-acryllic-opacity:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--system-acryllic-opacity")  + ';\n' +
 				 '}' // Ending
 	} else { // For use with Theme Management
-		result = '[theme="A"][visualcolors="standard"] {\n' + // Beginning
+		result = '.theme-A[visualcolors="standard"] {\n' + // Beginning
 				 '--desktop-background-image:' + getComputedStyle(document.querySelector('html')).getPropertyValue("--desktop-background-image")  + ';\n' +
 				 '--desktop-background-image-opacity:' + getComputedStyle(document.querySelector('html')).getPropertyValue("--desktop-background-image-opacity")  + ';\n' +
 				 '--desktop-background-color:' + getComputedStyle(document.querySelector('html')).getPropertyValue("--desktop-background-color")  + ';\n' +
@@ -1197,19 +1212,22 @@ if (refresh === true) {
 var content_color =  GetCanvasShort();
 
 /* This goes before compiling Generic Colors or else they will think the theme is light */
-
-	document.querySelector('html').classList.remove("theme-fandomdesktop-light");
-	document.querySelector('html').classList.remove("theme-fandomdesktop-dark");
+	if (refresh === true) {
+		document.querySelector('html').classList.remove("theme-fandomdesktop-light");
+		document.querySelector('html').classList.remove("theme-fandomdesktop-dark");
+	}
 
 // Liatch Quirk
 	var content_color = ColorInvert(content_color)
 
 	window.MW18PageColor = content_color
 	var darkpage = isLightColor(content_color);
-	if (!(darkpage)) {
-		document.querySelector('html').classList.add("theme-fandomdesktop-dark")
-	} else {
-		document.querySelector('html').classList.add("theme-fandomdesktop-light")
+	if (refresh === true) {
+		if (!(darkpage)) {
+			document.querySelector('html').classList.add("theme-fandomdesktop-dark")
+		} else {
+			document.querySelector('html').classList.add("theme-fandomdesktop-light")
+		}
 	}
 
 
@@ -1614,12 +1632,14 @@ document.querySelector("head .theming").innerHTML = result;
 /* Toggles Theme */
 function ToggleTheme(theme="A",repaint=true,save=true) {
     var x = document.querySelector('html');
-		document.querySelector('html').setAttribute('theme', theme);
+		x.classList.remove('theme-' + window.MW18ActiveTheme);
+		window.MW18ActiveTheme = theme;
+		x.classList.add('theme-' + window.MW18ActiveTheme);
 		if (repaint) {
 			ColorUpdate(true);
 		}
 		if (save) {
-			insertKey('theme-selected', theme );
+			insertKey('theme-selected', window.MW18ActiveTheme );
 		}
 		var theme_selected = theme;
 		var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li.selected, .skin-tunic #wiki-themes .mw-portlet-body ul li.selected");
