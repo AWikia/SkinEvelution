@@ -1151,9 +1151,12 @@ function Color2(color) {
 }
 
 function isLightColor(color) {
+/*
 	var c1 = (chroma.contrast('#000000',  chroma(color)))
 	var c2 = (chroma.contrast('#ffffff',  chroma(color)))
 	return (c1 > c2);
+*/
+	return (chroma(color).get('lab.l') > 50);
 }
 
 function isLightColor2(color) {

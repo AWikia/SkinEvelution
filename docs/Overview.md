@@ -167,20 +167,20 @@ When checking your themes, you must be in Duo theme mode without inverted colors
 
 ## Servelution Overview
 Each release of Evelution comes with different Sevelution releases, to name a few:
-- 1.0.0 = Introduced in Ryneeeel Grooze
-- 1.1.0 = Introduced in Mpisto War 2018
-- 1.2.0 = Introduced in Mpisto War 2018 Build 63/ DBuild 1800 - Introduces the Custom Theming Engine
-- 1.3.0 = Introduced in Q.Qore Build 98
-- 1.4.0 = Introduced in Q.Qore Build 129 - Introduces Custom Scrollbars
-- 2.0.0 = Introduced in Q.Qore Build 147 - Introduces the CPE Language
-- 2.1.0 = Introduced in Q.Qore Build 200
-- 2.2.0 = Introduced in Evelution 2.0.0 - Introduces new Iconography
-- 2.3.0 = Introduced in Evelution 7.9.0 - Introduces custom header foreground color and translucent backgrounds
-- 2.4.0 = Introduced in Evelution 8.12.0 - Introduces Floating actions (Not to be confused with Server Actions which are similar but appear inside the content area)
-- 2.5.0 = Introduced in Evelution 13.0.0 - Introduces dynamic Generic Colors and Semantic Versioning 2
-- 2.6.0 = Introduced in Evelution 18.0.0 - Introduces the Accented state of Luna Theming
-- 2.7.0 = Introduced in Evelution 33.0.0 - Introduces the Inactive state of Luna Theming for CPE Language and dedicated accent colors for Luna Theming
-- 2.8.0 = Introduced in Evelution 43.0.0 - Introduces custom acryllic transparency along with a new Luna Theming System (Compatible with earlier Servelution Clients)
+- 1.0.0 = Codenamed RZG =  Introduced in Ryneeeel Grooze
+- 1.1.0 = Codenamed MW18 =  Introduced in Mpisto War 2018
+- 1.2.0 = Codenamed MWTD = Introduced in Mpisto War 2018 Build 63/ DBuild 1800 - Introduces the Custom Theming Engine
+- 1.3.0 = Codenamed Scandium = Introduced in Q.Qore Build 98
+- 1.4.0 = Codenamed Titanium = Introduced in Q.Qore Build 129 - Introduces Custom Scrollbars
+- 2.0.0 = Codenamed Vanadium = Introduced in Q.Qore Build 147 - Introduces the CPE Language
+- 2.1.0 = Codenamed Vibranium = Introduced in Q.Qore Build 200 (This is the Basis of Q.Qore)
+- 2.2.0 = Codenamed Manganese = Introduced in Evelution 2.0.0 - Introduces new Iconography and Dual Foreground colors
+- 2.3.0 = Codenamed Iron = Introduced in Evelution 7.9.0 - Introduces custom header foreground color and translucent backgrounds (This is the Basis of QoreTeleworks)
+- 2.4.0 = Codenamed Cobalt = Introduced in Evelution 8.12.0 - Introduces Floating actions (Not to be confused with Server Actions which are similar but appear inside the content area)
+- 2.5.0 = Codenamed Nickel = Introduced in Evelution 13.0.0 - Introduces dynamic Generic Colors and Semantic Versioning 2
+- 2.6.0 = Codenamed Cooper = Introduced in Evelution 18.0.0 - Introduces the Accented state of Luna Theming
+- 2.7.0 = Codenamed Zinc = Introduced in Evelution 33.0.0 - Introduces the Inactive state of Luna Theming for CPE Language and dedicated accent colors for Luna Theming
+- 2.8.0 = Codenamed Yttrium = Introduced in Evelution 43.0.0 - Introduces custom acryllic transparency along with a new Luna Theming System (Compatible with earlier Servelution Clients)
 
 ### The Luna Theming System
 Evelution comes with its own theming system, the Luna theming. It consists of Two elements, the Luna Lovit and the Luna Lavccent. Luna Lovit conists of elements below it blurred for legibility of text. Luna Lavccent is an additional color that will replace the Neutral Color when enabled.
@@ -289,7 +289,11 @@ If a vaild server ID is placed into ``MediaWiki:Evelution-discord-module-server-
 Defaults to false. When set to true, it allows you to align the toolbar links to the left.
 
 ### ``$wgEvelutionDisableColorManagement`` (Since 4.3.0)
-Defaults to false meaning you have color management, When set to true, it hardcodes the color scheme used on Evelution to be similar to the ones used in Vector. This setting is useful for wikis that can't adapt to the many color schemes Evelution gives.
+Defaults to false meaning you have color management, When set to true, it:
+- Hardcodes all color theming variables to System Colors
+- Hardcodes all non-color theming variables to their stock settings
+- Removes the ability to change themes, visual colors and color modes
+This setting is useful for wikis that can't adapt to the many color schemes Evelution gives. This is also the case when Forced Colors mode is active
 
 ### ``$wgEvelutionForceOneHeader`` (Since 4.3.0)
 Defaults to false. When set to true, it removes the Desktop Community Header and leaves the Desktop sticky header the only ones for Desktops. This setting does not affect Mobile Devices. This setting is useful for wikis who want a solo header layout. Sticky header is still able to be collapsed.
