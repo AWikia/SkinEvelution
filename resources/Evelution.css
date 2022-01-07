@@ -1479,6 +1479,31 @@ gap:2px;
 		filter:var(--icon-filter-hover,var(--icon-filter, none));
 	}
 
+	.evelution-minibar .wordmark .icon-logo {
+		background-color:var(--luna-text-background-color);
+		-webkit-mask-size:100%;
+		mask-size:100%; 
+		-webkit-mask-position:center;
+		mask-position:center; 
+		-webkit-mask-repeat:no-repeat; 
+		mask-repeat:no-repeat;
+		vertical-align: middle;
+		transition-property: background-color;
+		transition-duration: 400ms;
+		transition-timing-function:var(--transitioner);
+		height: 100%;
+	}
+
+	.evelution-minibar .wordmark:hover .icon-logo {
+		background-color:var(--luna-text-background-color-hover);
+	}
+
+	.evelution-minibar .wordmark:active .icon-logo,
+	.evelution-minibar .wordmark:focus .icon-logo {
+		background-color:rgba(var(--luna-text-background-color-hover-rgb),0.8);
+	}
+
+
 
 	.evelution-minibar .title {
 		flex:1;
@@ -1899,6 +1924,35 @@ gap:2px;
 		filter:var(--icon-filter-hover,var(--icon-filter, none));
 	}
 
+	.evelution-superbar .wordmark .icon-logo {
+		background-color:var(--header-foreground-color);
+		-webkit-mask-size:contain;
+		mask-size:contain; 
+		-webkit-mask-position:left bottom;
+		mask-position:left bottom; 
+		-webkit-mask-repeat:no-repeat; 
+		mask-repeat:no-repeat;
+		vertical-align: middle;
+		display: table-cell;
+		transition-property: background-color;
+		transition-duration: 400ms;
+		transition-timing-function:var(--transitioner);
+		height: 100px;
+		object-position: bottom;
+		width: auto;
+		max-width: 250px;
+		object-fit: contain;
+	}
+
+	.evelution-superbar .wordmark:hover .icon-logo {
+		background-color:var(--header-foreground-color-hover);
+	}
+
+	.evelution-superbar .wordmark:active .icon-logo,
+	.evelution-superbar .wordmark:focus .icon-logo {
+		background-color:rgba(var(--header-foreground-color-hover-rgb),0.8);
+	}
+
 	.evelution-superbar__top .counters {
 		height:50px;
 		padding:0 7.5px;
@@ -2260,7 +2314,8 @@ gap:2px;
 	}
 
 
-	.evelution-superbar .wordmark img {
+	.evelution-superbar .wordmark img,
+	.evelution-superbar .wordmark .icon-logo {
 		max-width:160px;
 	}
 

@@ -45,10 +45,30 @@
 		{{#data-logos}}
 			{{^evelution-nostickylogo}}
 				<a class="wordmark" href="{{link-mainpage}}">
-					{{#icon}}
-						<img src="{{.}}">
-					{{/icon}}
-					{{^icon}}{{#1x}}<img src="{{.}}">{{/1x}}{{/icon}}
+					{{#data-logos}}
+						{{#icon}}
+							{{#has-mono-logo}}
+								<div class="icon-logo" style="-webkit-mask-image:url({{.}}); mask-image:url({{.}})">
+									<img src="{{.}}" style="opacity:0;">
+								</div>
+							{{/has-mono-logo}}
+							{{^has-mono-logo}}
+								<img src="{{.}}">
+							{{/has-mono-logo}}
+						{{/icon}}
+						{{^icon}}
+							{{#1x}}
+								{{#has-mono-logo}}
+									<div class="icon-logo" style="-webkit-mask-image:url({{.}}); mask-image:url({{.}})">
+										<img src="{{.}}" style="opacity:0;">
+									</div>
+								{{/has-mono-logo}}
+								{{^has-mono-logo}}
+									<img src="{{.}}">
+								{{/has-mono-logo}}
+							{{/1x}}
+						{{/icon}}
+					{{/data-logos}}
 				</a>
 			{{/evelution-nostickylogo}}
 		{{/data-logos}}

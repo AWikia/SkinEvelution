@@ -321,3 +321,6 @@ Defaults to false. When set to true, it will force Evelution to be in Full width
 ### ``$wgEvelutionDisableRightRailFromSpecificPages`` (Since 27.2.0)
 Defaults to an empty array aka no additional pages will be blacklisted from having a right rail. Set this to an array of pages you want to disable right rail. Does not stack with ``$wgEvelutionDisableRightRail`` config and that will take priority over this one.
 ..
+
+### ``$wgEvelutionMonoLogo`` (Since 45.1.0)
+Defaults to false. When set to true, the Logo that appears on Desktop Superbar and Minibar will appear masked, adapting any color scheme. Use this for Flat-style logos or for Logos that are colored in either Plain Black or White. This setting is not recommended to be set to ``true`` for multicolored logos and logos without transparency.
