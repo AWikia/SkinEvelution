@@ -181,6 +181,7 @@ Each release of Evelution comes with different Sevelution releases, to name a fe
 - 2.6.0 = Codenamed Cooper = Introduced in Evelution 18.0.0 - Introduces the Accented state of Luna Theming
 - 2.7.0 = Codenamed Zinc = Introduced in Evelution 33.0.0 - Introduces the Inactive state of Luna Theming for CPE Language and dedicated accent colors for Luna Theming
 - 2.8.0 = Codenamed Yttrium = Introduced in Evelution 43.0.0 - Introduces custom acryllic transparency along with a new Luna Theming System (Compatible with earlier Servelution Clients)
+- 3.0.0 = Codenamed Zirconium = Introduced in Evelution 46.0.0 - Introduces Custom Primary font for each theme and CPE Language 2.0
 
 ### The Luna Theming System
 Evelution comes with its own theming system, the Luna theming. It consists of Two elements, the Luna Lovit and the Luna Lavccent. Luna Lovit conists of elements below it blurred for legibility of text. Luna Lavccent is an additional color that will replace the Neutral Color when enabled.
@@ -308,9 +309,6 @@ Defaults to false aka Home Mode. When set to true aka Server Mode, it changes th
 - Smaller page header title
 - Full width Small Breakpoint size 
 - No right rail on Help and Project Namespaces
-
-### ``$wgEvelutionCustomFont`` (Since 5.3.0)
-Defaults to an empty string meaning Didact Gothic will be used. When set to another value, that font will be used instead
 
 ### ``$wgEvelutionStickyRail`` (Since 8.1.0)
 Defaults to true aka right rail will be sticky. When set to false, right rail will not be sticky. In order for sticky behavior of right rail to appear, browser window size must be at least 960x600. Requires ``$wgEvelutionDisableRightRail`` set to false in order for this to work

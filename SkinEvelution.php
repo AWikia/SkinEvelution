@@ -107,8 +107,6 @@ class SkinEvelution extends SkinMustache {
 		$data["has-disabled-rail"] = ($this->getConfig()->get( 'EvelutionDisableRightRail' ) || ($this->getOutput()->getTitle()->isMainPage()) || in_array( $this->getOutput()->getTitle()->getFullText(), $blacklistedPages ) );
 		$data["has-single-header"] = $this->getConfig()->get( 'EvelutionForceOneHeader' );
 		$data["has-server-mode"] = $this->getConfig()->get( 'EvelutionServerMode' );
-		$data["html-custom-fontoo"] = $this->getConfig()->get( 'EvelutionCustomFont' );
-		$data["has-custom-font"] = ($this->getConfig()->get( 'EvelutionCustomFont' ) != "" );
 		$data["has-no-color-management"] = $this->getConfig()->get( 'EvelutionDisableColorManagement' );
 		$data["has-forced-full-width"] = $this->getConfig()->get ( 'EvelutionForceFullWidth' );
 		$data["has-discord-id"] =  (wfMessage( 'evelution-discord-module-server-id' )->inContentLanguage() != '');

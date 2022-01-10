@@ -533,6 +533,16 @@ function InitDesigner() {
 		// TR
 			'<tr>' +
 				'<th style="width:150px;">' + 
+					mw.msg( 'evelution-designer-font' ) + 
+				'</td>' +
+
+				'<td style="text-align:center; width:150px">' +
+					'<input type="text" id="firstfont" class="cpe-input designer-text" style="width:130px; min-width:130px;" placeholder="Font" autocomplete="off" />' + // Body Background 
+				'</td>' +
+			'</tr>' +
+		// TR
+			'<tr>' +
+				'<th style="width:150px;">' + 
 					mw.msg( 'evelution-designer-secondary-font' ) + 
 				'</td>' +
 
@@ -831,6 +841,11 @@ function ApplyTheme () {
     } else {
 		var image = 'url("' + $("#bodyimage").val() + '")';
     }
+    if ( $('#firstfont').val().length === 0) {
+		var customfont2 = '""';
+    } else {
+		var customfont2 = $('#firstfont').val();
+    }
     if ( $('#secondfont').val().length === 0) {
 		var customfont = '""';
     } else {
@@ -855,6 +870,7 @@ function ApplyTheme () {
 				 '--highlight-background-color:' + $('#accentcolor').val() + ';\n' +
 				 '--active-title-background-color:' + autocolor5  + ';\n' +
 				 '--inactive-title-background-color:' + autocolor4  + ';\n' +
+				 '--custom-font:' + customfont2 + ';\n' +
 				 '--custom-secondary-font:' + customfont + ';\n' +
 				 '--border-radius:' + $('#border-radius').val() + "px"  + ';\n' +
 				 '--icon-filter:' + $('#filter').val() + ';\n' +
@@ -922,6 +938,11 @@ function CopyTheme() {
     } else {
 		var image = 'url("' + $("#bodyimage").val() + '")';
     }
+    if ( $('#firstfont').val().length === 0) {
+		var customfont2 = '""';
+    } else {
+		var customfont2 = $('#firstfont').val();
+    }
     if ( $('#secondfont').val().length === 0) {
 		var customfont = '""';
     } else {
@@ -945,6 +966,7 @@ function CopyTheme() {
 				 '--highlight-background-color:' + $('#accentcolor').val() + ';\n' +
 				 '--active-title-background-color:' + autocolor5  + ';\n' +
 				 '--inactive-title-background-color:' + autocolor4  + ';\n' +
+				 '--custom-font:' + customfont2 + ';\n' +
 				 '--custom-secondary-font:' + customfont + ';\n' +
 				 '--border-radius:' + $('#border-radius').val() + "px"  + ';\n' +
 				 '--icon-filter:' + $('#filter').val() + ';\n' +
@@ -1051,6 +1073,12 @@ function PasteTheme() {
 	$('.wikitable #qaccentcolor').prop('disabled',(document.querySelector('.wikitable #auto4').checked) );
 	// Border Radius
 	$('#border-radius').val( parseInt(getComputedStyle(document.querySelector('html')).getPropertyValue("--border-radius")) );
+	// Primary Font
+	var pfont = getComputedStyle(document.querySelector('html')).getPropertyValue("--custom-font");
+	if (pfont == '""') {
+		var pfont = '';
+	}
+	$('#firstfont').val( pfont );
 	// Secondary Font
 	var sfont = getComputedStyle(document.querySelector('html')).getPropertyValue("--custom-secondary-font");
 	if (sfont == '""') {
@@ -1109,6 +1137,11 @@ function TestTheme() {
     } else {
 		var image = 'url("' + $("#bodyimage").val() + '")';
     }
+    if ( $('#firstfont').val().length === 0) {
+		var customfont2 = '""';
+    } else {
+		var customfont2 = $('#firstfont').val();
+    }
     if ( $('#secondfont').val().length === 0) {
 		var customfont = '""';
     } else {
@@ -1132,6 +1165,7 @@ function TestTheme() {
 				 '--highlight-background-color:' + $('#accentcolor').val() + '!important;\n' +
 				 '--active-title-background-color:' + autocolor5  + '!important;\n' +
 				 '--inactive-title-background-color:' + autocolor4  + '!important;\n' +
+				 '--custom-font:' + customfont2 + '!important;\n' +
 				 '--custom-secondary-font:' + customfont + '!important;\n' +
 				 '--border-radius:' + $('#border-radius').val() + "px"  + '!important;\n' +
 				 '--icon-filter:' + $('#filter').val() + '!important;\n' +
