@@ -1231,7 +1231,7 @@ select.cpe-input {
     font-family:var(--secondary-font);
     font-weight:600;
     color:var(--button-foreground-color);
-    padding:6px 11px;
+    padding:7px 11px;
     border-radius:var(--border-radius);
     display:inline-flex;
     align-items:center;
@@ -1719,6 +1719,30 @@ border-top-left-radius:0;
 margin-left:1px;
 }
 
+
+.cpe-button-group>.cpe-button:not(:first-child):not(:last-child),
+.cpe-button-group>.cpe-dropdown:not(:first-child):not(:last-child) .cpe-button,
+.cpe-button-group>label:not(:first-child):not(:last-child) .cpe-button,
+.cpe-button-group>li:not(:first-child):not(:last-child) .cpe-button {
+  margin-left:1px;
+  margin-right:1px;
+}
+
+.cpe-button-group >.cpe-button:not(:last-child),
+.cpe-button-group >.cpe-dropdown:not(:last-child) .cpe-button,
+.cpe-button-group>label:not(:last-child) .cpe-button,
+.cpe-button-group>li:not(:last-child) .cpe-button {
+margin-right:1px;
+}
+
+.cpe-button-group > .cpe-button:not(:first-child),
+.cpe-button-group > .cpe-dropdown:not(:first-child) .cpe-button,
+.cpe-button-group>  label:not(:first-child) .cpe-button,
+.cpe-button-group>  li:not(:first-child) .cpe-button {
+margin-left:1px;
+}
+
+
 /* Multiple Groups */
 .cpe-button-groups {
 align-items:stretch;
@@ -1741,20 +1765,16 @@ flex:1 1 0;
 .cpe-button-groups > .cpe-button-group:last-child:not(:first-child):not(:only-child) > .cpe-dropdown .cpe-button:not(.is-tertiary),
 .cpe-button-groups > .cpe-button-group:last-child:not(:first-child):not(:only-child) > label .cpe-button:not(.is-tertiary),
 .cpe-button-groups > .cpe-button-group:last-child:not(:first-child):not(:only-child) > li .cpe-button:not(.is-tertiary) {
-
 	border-top-left-radius:0;
 	border-top-right-radius:0;
-	margin-top:0;
 }
 
 .cpe-button-groups > .cpe-button-group:not(:last-child):first-child:not(:only-child) > .cpe-button:not(.is-tertiary),
 .cpe-button-groups > .cpe-button-group:not(:last-child):first-child:not(:only-child) > .cpe-dropdown .cpe-button:not(.is-tertiary),
 .cpe-button-groups > .cpe-button-group:not(:last-child):first-child:not(:only-child) > label .cpe-button:not(.is-tertiary),
 .cpe-button-groups > .cpe-button-group:not(:last-child):first-child:not(:only-child) > li .cpe-button:not(.is-tertiary) {
-
 	border-bottom-left-radius:0;
 	border-bottom-right-radius:0;
-	margin-bottom:0;
 }
 
 .cpe-button-groups > .cpe-button-group:not(:last-child):not(:first-child):not(:only-child) > .cpe-button:not(.is-tertiary),
@@ -1762,6 +1782,27 @@ flex:1 1 0;
 .cpe-button-groups > .cpe-button-group:not(:last-child):not(:first-child):not(:only-child) > label .cpe-button:not(.is-tertiary),
 .cpe-button-groups > .cpe-button-group:not(:last-child):not(:first-child):not(:only-child) > li .cpe-button:not(.is-tertiary) {
 	border-radius:0;
+}
+
+
+.cpe-button-groups > .cpe-button-group:last-child:not(:first-child):not(:only-child) > .cpe-button,
+.cpe-button-groups > .cpe-button-group:last-child:not(:first-child):not(:only-child) > .cpe-dropdown .cpe-button,
+.cpe-button-groups > .cpe-button-group:last-child:not(:first-child):not(:only-child) > label .cpe-button,
+.cpe-button-groups > .cpe-button-group:last-child:not(:first-child):not(:only-child) > li .cpe-button {
+	margin-top:0;
+}
+
+.cpe-button-groups > .cpe-button-group:not(:last-child):first-child:not(:only-child) > .cpe-button,
+.cpe-button-groups > .cpe-button-group:not(:last-child):first-child:not(:only-child) > .cpe-dropdown .cpe-button,
+.cpe-button-groups > .cpe-button-group:not(:last-child):first-child:not(:only-child) > label .cpe-button,
+.cpe-button-groups > .cpe-button-group:not(:last-child):first-child:not(:only-child) > li .cpe-button {
+	margin-bottom:0;
+}
+
+.cpe-button-groups > .cpe-button-group:not(:last-child):not(:first-child):not(:only-child) > .cpe-button,
+.cpe-button-groups > .cpe-button-group:not(:last-child):not(:first-child):not(:only-child) > .cpe-dropdown .cpe-button,
+.cpe-button-groups > .cpe-button-group:not(:last-child):not(:first-child):not(:only-child) > label .cpe-button,
+.cpe-button-groups > .cpe-button-group:not(:last-child):not(:first-child):not(:only-child) > li .cpe-button {
 	margin-top:0;
 	margin-bottom:0;
 }
@@ -3018,3 +3059,79 @@ input[type="range"]::-moz-range-progress {
 	scrollbar-width:none!important;
 }
 }
+
+/* Low End Skins and Interpreters */
+	/* Tunic */
+	.skin-tunic,
+	.skin-tunic .cpe-dropdown__content,
+	.skin-tunic .cpe-dropdown__content .cpe-list.is-linked .cpe-dropdown-level-2 .cpe-dropdown-level-2__content,
+	/* Ivilution */
+	.ivilution-loaded body,
+	.ivilution-loaded .cpe-dropdown__content,
+	.ivilution-loaded .cpe-dropdown__content .cpe-list.is-linked .cpe-dropdown-level-2 .cpe-dropdown-level-2__content,
+	/* Parmalution */
+	.parmalution-ready body,
+	.parmalution-ready .cpe-dropdown__content,
+	.parmalution-ready .cpe-dropdown__content .cpe-list.is-linked .cpe-dropdown-level-2 .cpe-dropdown-level-2__content   {
+		--dropdown-opacity:1!important;
+	}
+
+	.skin-tunic,
+	.ivilution-loaded,
+	.parmalution-ready /* For GTK Interpreter */ {
+		--backdrop-filter:none!important;
+	}
+
+	/* Tunic */
+	.skin-tunic,
+	.skin-tunic [force-active],
+	/* Ivilution */
+	.ivilution-loaded body,
+	.ivilution-loaded body [force-active],
+	/* Parmalution */
+	.parmalution-ready body,
+	.parmalution-ready body [force-active] {
+		--luna-background-color:var(--canvas-secondary-background-color)!important;
+		--luna-background-color-rgb:var(--canvas-secondary-background-color-rgb)!important;
+		--luna-background-color-hover:var(--canvas-secondary-background-color-hover)!important;
+		--luna-text-background-color:var(--canvas-text-background-color)!important;
+		--luna-text-background-color-hover:var(--canvas-text-background-color-hover)!important;
+		--luna-text-background-color-rgb:var(--canvas-text-background-color-rgb)!important;
+		--luna-text-background-color-hover-rgb:var(--canvas-text-background-color-hover-rgb)!important;	
+		--luna-border-background-color:var(--canvas-secondary-background-color-hover)!important;
+		--luna-foreground-color:var(--canvas-foreground-color)!important;
+		--luna-foreground-color-inverted:var(--canvas-foreground-color)!important;
+		--luna-foreground-color-hover:var(--canvas-foreground-color-hover)!important;
+		--luna-foreground-color-rgb:var(--canvas-foreground-color-rgb)!important;
+		--luna-foreground-color-hover-rgb:var(--canvas-foreground-color-hover-rgb)!important;
+		--luna-link-color:var(--hyperlink-background-color)!important;
+		--luna-link-color-rgb:var(--hyperlink-background-color-rgb)!important;
+		--luna-contrast-selected-background-color:var(--highlight-background-color)!important;
+		--luna-contrast-selected-background-color-rgb:var(--highlight-background-color-rgb)!important;
+		--luna-contrast-selected-foreground-color:var(--highlight-foreground-color)!important;
+		--luna-contrast-selected-foreground-color-rgb:var(--highlight-foreground-color-rgb)!important;
+	}
+
+	/* Tunic */
+	.skin-tunic:not(:focus):not(:focus-within),
+	.skin-tunic [force-inactive],
+	/* Ivilution */
+	.ivilution-loaded body:not(:focus):not(:focus-within),
+	.ivilution-loaded body [force-inactive],
+	/* Parmalution */
+	.parmalution-ready body:not(:focus):not(:focus-within),
+	.parmalution-ready body [force-inactive] {
+		--luna-background-color:var(--canvas-background-color)!important;
+		--luna-background-color-rgb:var(--canvas-background-color-rgb)!important;
+		--luna-background-color-hover:var(--canvas-background-color-hover)!important;
+		--luna-text-background-color:var(--canvas-text-background-color-hover)!important;
+		--luna-text-background-color-hover:var(--canvas-text-background-color)!important;
+		--luna-text-background-color-rgb:var(--canvas-text-background-color-hover-rgb)!important;
+		--luna-text-background-color-hover-rgb:var(--canvas-text-background-color-rgb)!important;	
+		--luna-border-background-color:var(--canvas-background-color-hover)!important;
+		--luna-foreground-color:var(--canvas-foreground-color-hover)!important;
+		--luna-foreground-color-inverted:var(--canvas-foreground-color-hover)!important;
+		--luna-foreground-color-hover:var(--canvas-foreground-color)!important;
+		--luna-foreground-color-rgb:var(--canvas-foreground-color-hover-rgb)!important;
+		--luna-foreground-color-hover-rgb:var(--canvas-foreground-color-rgb)!important;
+	}
