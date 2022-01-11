@@ -32,9 +32,6 @@
 						{{/1x}}
 					{{/icon}}
 				{{/data-logos}}
-
-
-
 				<header class="evelution-superbar__fone">
 				<section class="title" translate="no">
 					{{#data-logos}}
@@ -110,45 +107,47 @@
 					</section>
 				</section>
 				</header>
-				<header class="evelution-superbar__top fandom-community-header__top-container">
+				<div class="evelution-superbar__pc">
+					<header class="evelution-superbar__top fandom-community-header__top-container">
+							<div class="table">
+								<div class="tr">
+									<h1 class="title cell fandom-community-header__community-name-wrapper" style="text-align:left" translate="no">
+									{{#data-logos}}
+										{{#wordmark}}
+											<div style="--height:{{height}}px; display:contents">
+												{{#src}}
+												<a href="{{link-mainpage}}" class="title-logo fandom-community-header__community-name" style="-webkit-mask-image:url({{.}}); mask-image:url({{.}});"><span style="visibility:hidden;">Abc</span></a>
+												{{/src}}
+												{{^src}}
+												<a href="{{link-mainpage}}" class="title-logo fandom-community-header__community-name" style="-webkit-mask-image:url({{.}}); mask-image:url({{.}});"><span style="visibility:hidden;">Abc</span></a>
+												{{/src}}
+											</div>
+										{{/wordmark}}
+										{{^wordmark}}<a class="fandom-community-header__community-name" href="{{link-mainpage}}">{{msg-sitetitle}}</a>{{/wordmark}}
+									{{/data-logos}}
+									</h1>
+									<div class="counters cell">
+										<div class="counter articles page-counter"><big class="page-counter__value">{{html-articlecount}}</big> <span class="cpe-icon material-icons">article</span>  <span class="text page-counter__label">{{msg-evelution-pages}}</span></div>
+										<div class="counter photos page-counter"><big class="page-counter__value">{{html-filecount}}</big> <span class="cpe-icon material-icons">photo</span> <span class="text page-counter__label">{{msg-evelution-files}}</span></div>
+									</div>
+									<div class="counters cell">
+										<div class="counter edits page-counter"><big class="page-counter__value">{{html-editcount}}</big> <span class="cpe-icon material-icons">edit</span> <span class="text page-counter__label">{{msg-evelution-edits}}</span></div>
+										<div class="counter users page-counter"><big class="page-counter__value">{{html-usercount}}</big> <span class="cpe-icon material-icons">person</span> <span class="text page-counter__label">{{msg-evelution-users}}</span></div>
+									</div>
+									{{>CommunityLinks}}
+								</div>
+							</div>
+					</header>
+					<nav class="evelution-superbar__bottom fandom-community-header__local-navigation">
 						<div class="table">
 							<div class="tr">
-								<h1 class="title cell fandom-community-header__community-name-wrapper" style="text-align:left" translate="no">
-								{{#data-logos}}
-									{{#wordmark}}
-										<div style="--height:{{height}}px; display:contents">
-											{{#src}}
-											<a href="{{link-mainpage}}" class="title-logo fandom-community-header__community-name" style="-webkit-mask-image:url({{.}}); mask-image:url({{.}});"><span style="visibility:hidden;">Abc</span></a>
-											{{/src}}
-											{{^src}}
-											<a href="{{link-mainpage}}" class="title-logo fandom-community-header__community-name" style="-webkit-mask-image:url({{.}}); mask-image:url({{.}});"><span style="visibility:hidden;">Abc</span></a>
-											{{/src}}
-										</div>
-									{{/wordmark}}
-									{{^wordmark}}<a class="fandom-community-header__community-name" href="{{link-mainpage}}">{{msg-sitetitle}}</a>{{/wordmark}}
-								{{/data-logos}}
-								</h1>
-								<div class="counters cell">
-									<div class="counter articles page-counter"><big class="page-counter__value">{{html-articlecount}}</big> <span class="cpe-icon material-icons">article</span>  <span class="text page-counter__label">{{msg-evelution-pages}}</span></div>
-									<div class="counter photos page-counter"><big class="page-counter__value">{{html-filecount}}</big> <span class="cpe-icon material-icons">photo</span> <span class="text page-counter__label">{{msg-evelution-files}}</span></div>
-								</div>
-								<div class="counters cell">
-									<div class="counter edits page-counter"><big class="page-counter__value">{{html-editcount}}</big> <span class="cpe-icon material-icons">edit</span> <span class="text page-counter__label">{{msg-evelution-edits}}</span></div>
-									<div class="counter users page-counter"><big class="page-counter__value">{{html-usercount}}</big> <span class="cpe-icon material-icons">person</span> <span class="text page-counter__label">{{msg-evelution-users}}</span></div>
-								</div>
-								{{>CommunityLinks}}
+								{{#data-portlets-sidebar}}
+								{{#data-portlets-first}}{{>PortletLN}}{{/data-portlets-first}}
+								{{#array-portlets-rest}}{{>PortletLN}}{{/array-portlets-rest}}
+								{{/data-portlets-sidebar}}
 							</div>
 						</div>
-				</header>
-
-				<nav class="evelution-superbar__bottom fandom-community-header__local-navigation">
-					<div class="table">
-						<div class="tr">
-							{{#data-portlets-sidebar}}
-							{{#data-portlets-first}}{{>PortletLN}}{{/data-portlets-first}}
-							{{#array-portlets-rest}}{{>PortletLN}}{{/array-portlets-rest}}
-							{{/data-portlets-sidebar}}
-						</div>
-					</div>
+					</nav>
+				</div>
 			</section>
 		</div>
