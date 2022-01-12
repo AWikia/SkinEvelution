@@ -816,9 +816,9 @@ function DownloadTheme(full=false) {
 				 '--desktop-background-no-vertical-tiling:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--desktop-background-no-vertical-tiling")  + ';\n' +
 				 // Page Color
 				 '--canvas-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--canvas-background-color")  + ';\n' +
-				 '--canvas-background-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--canvas-3d-background-color-hover")  + ';\n' +
-				 '--canvas-3d-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--canvas-3d-background-color-dark")  + ';\n' +
-				 '--canvas-3d-background-color-dark:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--canvas-background-color")  + ';\n' +
+				 '--canvas-background-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--canvas-background-color-hover")  + ';\n' +
+				 '--canvas-3d-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--canvas-3d-background-color")  + ';\n' +
+				 '--canvas-3d-background-color-dark:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--canvas-3d-background-color-dark")  + ';\n' +
 				 '--canvas-fadeout-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--canvas-fadeout-color")  + ';\n' +
 				 '--canvas-gradient-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--canvas-gradient-color")  + ';\n' +
 				 '--canvas-gradient-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--canvas-gradient-color-hover")  + ';\n' +
@@ -1220,15 +1220,24 @@ var content_color =  GetCanvasShort();
 // Liatch Quirk
 	var content_color = ColorInvert(content_color)
 
-	window.MW18PageColor = content_color
+	window.MW18PageColor = content_color;
 	var darkpage = isLightColor(content_color);
 	if (refresh === true) {
 		if (!(darkpage)) {
-			document.querySelector('html').classList.add("theme-fandomdesktop-dark")
+			document.querySelector('html').classList.add("theme-fandomdesktop-dark");
 		} else {
-			document.querySelector('html').classList.add("theme-fandomdesktop-light")
+			document.querySelector('html').classList.add("theme-fandomdesktop-light");
 		}
 	}
+
+		if (!(darkpage)) {
+			var c3dlight = 0.5;
+			var c3ddark = 0.75;
+		} else {
+			var c3dlight = 0.75;
+			var c3ddark = 0.5;
+		}
+
 
 
 var content_color2 = ColorTest(content_color);
@@ -1475,8 +1484,8 @@ var caret2_fg = GetForegroundVariables(caret2_color);
 						  "--message-alternative-foreground-color-rgb:" + message_fg[5] + "!important;\n" +
 						  "--canvas-secondary-background-color:" + dropdowncolor + ";\n" + 
 						  "--canvas-secondary-background-color-hover:" + dropdowncolorH + ";\n" + 
-						  "--canvas-3d-background-color:" + ColorTestTwin(dropdowncolor,"#ffffff",0.75) + ";\n" +
-						  "--canvas-3d-background-color-dark:" + ColorTestTwin(dropdowncolor,"#000000",0.5) + ";\n" +
+						  "--canvas-3d-background-color:" + ColorTestTwin(dropdowncolor,"#ffffff",c3dlight) + ";\n" +
+						  "--canvas-3d-background-color-dark:" + ColorTestTwin(dropdowncolor,"#000000",c3ddark) + ";\n" +
 						  "--canvas-background-color-hover:" + content_color2 + ";\n" +
 						  "--canvas-foreground-color:" + content_color_fg[0] + ";\n" +
 						  "--canvas-foreground-color-hover:" +  content_color_fg[1] + ";\n" + 
