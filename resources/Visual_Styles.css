@@ -258,6 +258,16 @@ background-color:var(--highlight-background-color);
   border-color:var(--highlight-background-color);
 }
 
+.visualstyle-contrast .cpe-dropdown__content .cpe-list.is-linked>li.new.selected>a:not(.cpe-button),
+.visualstyle-contrast .cpe-dropdown__content .cpe-list.is-linked>li.new.is-selected>a:not(.cpe-button),
+.visualstyle-contrast .cpe-dropdown__content .cpe-list.is-linked>li.new:hover>a:not(.cpe-button),
+.visualstyle-contrast .cpe-dropdown__content .cpe-list.is-linked>li.new>a:focus:not(.cpe-button) {
+  background-color:var(--alert-background-color);
+  color:var(--alert-foreground-color);
+  border-color:var(--alert-background-color);
+}
+
+
 .visualstyle-contrast .oo-ui-menuOptionWidget.oo-ui-optionWidget-selected,
 .visualstyle-contrast .oo-ui-menuOptionWidget.oo-ui-optionWidget-selected.oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted, 
 .visualstyle-contrast .oo-ui-menuOptionWidget.oo-ui-optionWidget-pressed.oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted,
@@ -331,6 +341,20 @@ background-color:var(--canvas-background-color);
 	background-color:var(--luna-contrast-selected-foreground-color);
 	color:var(--luna-contrast-selected-background-color);
 	border-color:var(--luna-contrast-selected-foreground-color);
+}
+
+
+.visualstyle-contrast .preview-window-window h2 button.close:hover {
+	background-color:var(--luna-contrast-new-selected-background-color);
+	color:var(--luna-contrast-new-selected-foreground-color);
+	border-color:var(--luna-contrast-new-selected-background-color);
+}
+
+
+.visualstyle-contrast .preview-window-window h2 button.close:active {
+	background-color:var(--luna-contrast-new-selected-foreground-color);
+	color:var(--luna-contrast-new-selected-background-color);
+	border-color:var(--luna-contrast-new-selected-foreground-color);
 }
 
 
@@ -915,6 +939,16 @@ background-color:var(--highlight-background-color);
   border-color:var(--highlight-foreground-color);
 }
 
+.visualstyle-basiccontrast .cpe-dropdown__content .cpe-list.is-linked>li.new.selected>a:not(.cpe-button),
+.visualstyle-basiccontrast .cpe-dropdown__content .cpe-list.is-linked>li.new.is-selected>a:not(.cpe-button),
+.visualstyle-basiccontrast .cpe-dropdown__content .cpe-list.is-linked>li.new:hover>a:not(.cpe-button),
+.visualstyle-basiccontrast .cpe-dropdown__content .cpe-list.is-linked>li.new>a:focus:not(.cpe-button) {
+  background-color:var(--alert-background-color);
+  color:var(--alert-foreground-color);
+  border-color:var(--alert-foreground-color);
+}
+
+
 
 .visualstyle-basiccontrast .oo-ui-menuOptionWidget.oo-ui-optionWidget-selected,
 .visualstyle-basiccontrast .oo-ui-menuOptionWidget.oo-ui-optionWidget-selected.oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted, 
@@ -1197,6 +1231,13 @@ color:inherit;
 }
 
 
+.visualstyle-basiccontrast .preview-window-window h2 button.close:hover {
+	background-color:var(--luna-contrast-new-selected-background-color);
+	color:var(--luna-contrast-new-selected-foreground-color);
+	border-color:currentColor;
+}
+
+
 /* Thick Borders
 .visualstyle-basiccontrast .evelution-content .evelution-page-header {
 	border-radius:calc(var(--border-radius) + calc(var(--border-radius) / 1.25 )) calc(var(--border-radius) + calc(var(--border-radius) / 1.25 )) 0 0;
@@ -1356,7 +1397,7 @@ color:inherit;
 .visualstyle-simple	.evelution-superbar__top .title a:focus,
 .visualstyle-simple	.evelution-superbar .wordmark:hover .icon-logo,
 .visualstyle-simple	.evelution-superbar .wordmark:focus .icon-logo {
-	color:var(--desktop-foreground-color-hover);
+	color:var(--header-foreground-color-hover);
 }
 
 .visualstyle-simple	.evelution-minibar .title a:hover,
@@ -1382,25 +1423,13 @@ color:inherit;
 }
 
 .visualstyle-simple .evelution-sidebar {
-	--global-nav-color:var(--highlight-background-color-rgb)!important;
-	--global-nav-text-color:var(--highlight-foreground-color)!important;
-	--global-nav-link-color-hover:var(--highlight-foreground-color-inverted)!important;
-	--global-nav-link-background-hover:var(--highlight-background-color-hover)!important;
-	--global-nav-link-color-active:var(--highlight-foreground-color-inverted)!important;
-	--global-nav-link-background-active:var(--highlight-background-color-hover)!important;
+	--global-nav-color:var(--luna-background-color-rgb)!important;
+	--global-nav-text-color:var(--luna-foreground-color)!important;
+	--global-nav-link-color-hover:var(--luna-foreground-color-inverted)!important;
+	--global-nav-link-background-hover:var(--luna-background-color-hover)!important;
+	--global-nav-link-color-active:var(--luna-foreground-color-inverted)!important;
+	--global-nav-link-background-active:var(--luna-background-color-hover)!important;
 	--global-nav-opacity:2!important;
-}
-
-
-@media only screen and (max-width:759px) {
-	.visualstyle-simple .evelution-sidebar {
-		--global-nav-color:var(--luna-background-color-rgb)!important;
-		--global-nav-text-color:var(--luna-foreground-color)!important;
-		--global-nav-link-color-hover:var(--luna-foreground-color-inverted)!important;
-		--global-nav-link-background-hover:var(--luna-background-color-hover)!important;
-		--global-nav-link-color-active:var(--luna-foreground-color-inverted)!important;
-		--global-nav-link-background-active:var(--luna-background-color-hover)!important;
-	}
 }
 
 .visualstyle-simple .evelution-taskbar {
@@ -1416,10 +1445,8 @@ color:inherit;
 
 
 
-
-
 .visualstyle-simple .evelution-superbar {
-	color:var(--desktop-foreground-color);
+	color:var(--header-foreground-color);
 }
 
 
@@ -1507,6 +1534,13 @@ color:inherit;
 	--button-background-color:var(--luna-foreground-color-inverted);
 	border-color:transparent;
 }
+
+.visualstyle-simple .preview-window-window h2 button.close {
+	--button-background-hover:var(--alert-background-color);
+	--button-background-active:var(--alert-background-color);
+	--button-background-color:var(--alert-foreground-color);
+}
+
 
 
 
@@ -1622,6 +1656,17 @@ color:inherit;
 	color:var(--hyperlink-foreground-color-inverted);
 	border-color:transparent;
 }
+
+.visualstyle-simple .cpe-dropdown__content .cpe-list.is-linked>li.new.selected>a:not(.cpe-button),
+.visualstyle-simple .cpe-dropdown__content .cpe-list.is-linked>li.new.is-selected>a:not(.cpe-button),
+.visualstyle-simple .cpe-dropdown__content .cpe-list.is-linked>li.new:hover>a:not(.cpe-button),
+.visualstyle-simple .cpe-dropdown__content .cpe-list.is-linked>li.new>a:focus:not(.cpe-button) {
+	background-color:var(--alert-background-color);
+	color:var(--alert-foreground-color);
+	border-color:transparent;
+}
+
+
 
 .visualstyle-simple body .toc .module-toc li a:hover {
 	color:var(--canvas-foreground-color);
@@ -1741,10 +1786,10 @@ body .mw-echo-ui-notificationsListWidget:not(:hover) a,
 
 .visualstyle-simple body .evelution-sidebar #pt-notifications-alert .mw-echo-notifications-badge:after, 
 .visualstyle-simple body .evelution-sidebar #pt-notifications-notice .mw-echo-notifications-badge:after {
-	color:var(--highlight-background-color)!important;
+	color:var(--alert-background-color)!important;
 	border-radius:100px;
-	border-color:var(--highlight-alternative-foreground-color)!important;
-	background-color:var(--highlight-alternative-foreground-color)!important;
+	border-color:var(--alert-alternative-foreground-color)!important;
+	background-color:var(--alert-alternative-foreground-color)!important;
 }
 
 
@@ -2295,6 +2340,22 @@ color:var(--highlight-foreground-color);
 border-color:var(--highlight-background-color);
 }
 
+.visualstyle-classic .cpe-dropdown__content .cpe-list.is-linked>li.new.selected>a:not(.cpe-button), 
+.visualstyle-classic .cpe-dropdown__content .cpe-list.is-linked>li.new.is-selected>a:not(.cpe-button), 
+.visualstyle-classic .cpe-dropdown__content .cpe-list.is-linked>li.new:hover>a:not(.cpe-button),
+.visualstyle-classic body .toc ul li a:hover,
+/* Classic Contrast */
+.visualstyle-classiccontrast .cpe-dropdown__content .cpe-list.is-linked>li.new.selected>a:not(.cpe-button), 
+.visualstyle-classiccontrast .cpe-dropdown__content .cpe-list.is-linked>li.new.is-selected>a:not(.cpe-button), 
+.visualstyle-classiccontrast .cpe-dropdown__content .cpe-list.is-linked>li.new:hover>a:not(.cpe-button),
+.visualstyle-classiccontrast body .toc ul li a:hover {
+background-color:var(--alert-background-color);
+color:var(--alert-foreground-color);
+border-color:var(--alert-background-color);
+}
+
+
+
 
 .visualstyle-classic .evelution-content:not(.evelution-discussions-content) .evelution-article-container,
 .visualstyle-classic .evelution-options-content,
@@ -2375,6 +2436,7 @@ border-color:var(--highlight-background-color);
 /* Selection Styles per B19 */
 .visualstyle-contrast ::selection,
 .visualstyle-basiccontrast ::selection,
+.visualstyle-simple ::selection,
 .visualstyle-classic ::selection,
 .visualstyle-classiccontrast ::selection {
 color:var(--highlight-foreground-color);
@@ -2383,21 +2445,13 @@ background-color:var(--highlight-background-color);
 
 .visualstyle-contrast ::-moz-selection,
 .visualstyle-basiccontrast ::-moz-selection,
+.visualstyle-simple ::-moz-selection,
 .visualstyle-classic ::-moz-selection,
 .visualstyle-classiccontrast ::-moz-selection {
 color:var(--highlight-foreground-color);
 background-color:var(--highlight-background-color);
 }
 
-.visualstyle-simple ::selection {
-color:var(--hyperlink-foreground-color);
-background-color:var(--hyperlink-background-color);
-}
-
-.visualstyle-simple ::-moz-selection {
-color:var(--hyperlink-foreground-color);
-background-color:var(--hyperlink-background-color);
-}
 
 
 
