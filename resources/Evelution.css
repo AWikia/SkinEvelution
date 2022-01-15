@@ -572,22 +572,12 @@ container > main {
 	position:-webkit-sticky;
 	position:sticky;
 	transform-origin:bottom;
-	opacity:1;
-	transition:opacity 200ms var(--transitioner), background-color 400ms var(--transitioner), bottom 400ms var(--transitioner), top 400ms var(--transitioner);
-	transition-delay:0ms, 0ms, 0ms, 0ms;
 }
 
 container.has-toolbar .evelution-taskbar.col-toolbar,
 container:not(.has-toolbar) .evelution-taskbar.full-toolbar  {
-	opacity:0;
-	pointer-events:none;
+	transform:scaleY(0);
 }
-
-	container:not(.has-toolbar) .evelution-taskbar.col-toolbar,
-	container.has-toolbar .evelution-taskbar.full-toolbar  {
-		transition-delay:200ms, 0ms, 0ms, 0ms;
-	}
-
 
 .evelution-taskbar.col-toolbar {
 	width:var(--toolbar-link-size);
@@ -760,7 +750,7 @@ position:relative;
 	width:calc(var(--breakpoint-size) - 45px - var(--global-nav-size) - var(--scrollbar-width));
 	margin-left:auto;
 	margin-right:auto;
-	transition:width 400ms var(--transitioner), margin-top 200ms var(--transitioner) 200ms, top 200ms var(--transitioner) 200ms;
+	transition:width 400ms var(--transitioner), margin-top 400ms var(--transitioner), top 400ms var(--transitioner);
 }
 
 /* Wide */
@@ -899,7 +889,7 @@ font-weight:bold;
     position: -webkit-sticky;
     position: sticky;
     top: calc(var(--minibar-size) + 10px);
-    transition:top 200ms var(--transitioner) 200ms;
+    transition:top 400ms var(--transitioner);
 }
 
 container:not(.has-minibar) .evelution-floating-actions-container {
@@ -1258,7 +1248,7 @@ gap:2px;
 	-webkit-backdrop-filter:var(--backdrop-filter);
 	backdrop-filter:var(--backdrop-filter);
 	top:0;
-	transition:opacity 200ms var(--transitioner) 200ms, top 400ms var(--transitioner), box-shadow 400ms var(--transitioner), background-color 400ms var(--transitioner);
+	transition:transform 400ms var(--transitioner), top 400ms var(--transitioner), box-shadow 400ms var(--transitioner), background-color 400ms var(--transitioner);
 	width:100%;
 	max-width:var(--max-width);
 	box-shadow: 0 0 3px var(--canvas-text-background-color), 0 0 3px var(--canvas-background-color);
@@ -1407,8 +1397,7 @@ gap:2px;
 		padding-top:1px;
 		height:var(--minibar-size);
 		display:flex;
-		transition:opacity 200ms var(--transitioner), top 400ms var(--transitioner), box-shadow 400ms var(--transitioner), background-color 400ms var(--transitioner);
-		transition-delay:0ms, 0ms, 0ms, 0ms;
+		transition:transform 400ms var(--transitioner), top 400ms var(--transitioner), box-shadow 400ms var(--transitioner), background-color 400ms var(--transitioner);
 		width:100%;
 		max-width:var(--max-width);
 		box-shadow: 0 0 3px var(--canvas-text-background-color), 0 0 3px var(--canvas-background-color);
@@ -1419,7 +1408,6 @@ gap:2px;
 		transform-origin:top;
 		-webkit-backdrop-filter:var(--backdrop-filter);
 		backdrop-filter:var(--backdrop-filter);
-		opacity:1;
 	}
 
 .evelution-minibar .cpe-dropdown__content,
@@ -1429,17 +1417,11 @@ gap:2px;
 
 	container.has-minibar .evelution-minibar.col-nav,
 	container:not(.has-minibar) .evelution-minibar.full-nav  {
-		--tr-scale:100%;
-		opacity:0;
+		--tr-scale:0;
+	/* 		top:calc(-4px - var(--minibar-size))!important;
 		pointer-events:none!important;
+  */
 	}
-
-	container:not(.has-minibar) .evelution-minibar.col-nav,
-	container.has-minibar .evelution-minibar.full-nav  {
-		--tr-scale:100%;
-		transition-delay:200ms, 0ms, 0ms, 0ms;
-	}
-
 
 
 	.headroom--not-top .evelution-minibar.desktop-minibar,
@@ -2570,8 +2552,7 @@ margin-left:1px;
 	display:none;
 	flex-direction:column;
     position: relative;
-	opacity:1;
-    transition:opacity 200ms var(--transitioner) 200ms, margin-right 200ms var(--transitioner), margin-left 200ms var(--transitioner), padding-left 200ms var(--transitioner), padding-right 200ms var(--transitioner);
+    transition: margin-right 400ms var(--transitioner), margin-left 400ms var(--transitioner), transform 400ms var(--transitioner), padding-left 400ms var(--transitioner), padding-right 400ms var(--transitioner);
 }
 
 .evelution-rail-wrapper.evelution-right-rail {
@@ -2676,9 +2657,8 @@ margin-left:1px;
 		padding-left:0;
 		padding-right:0;
 		pointer-events: none;
+		transform: scalex(0);
 		margin-left: calc(0px - var(--module-size));
-		opacity:0;
-		transition:opacity 200ms var(--transitioner), margin-right 200ms var(--transitioner) 200ms, margin-left 200ms var(--transitioner) 200ms, padding-left 200ms var(--transitioner) 200ms, padding-right 200ms var(--transitioner) 200ms;
 	}
 	
 
@@ -2686,9 +2666,8 @@ margin-left:1px;
 		padding-left:0;
 		padding-right:0;
 		pointer-events: none;
+		transform: scalex(0);
 		margin-right: calc(0px - var(--module-size));
-		opacity:0;
-		transition:opacity 200ms var(--transitioner), margin-right 200ms var(--transitioner) 200ms, margin-left 200ms var(--transitioner) 200ms, padding-left 200ms var(--transitioner) 200ms, padding-right 200ms var(--transitioner) 200ms;
 	}
 
 
@@ -2716,7 +2695,7 @@ margin-left:1px;
 			position:-webkit-sticky;
 			position:sticky;
 			top:calc(var(--minibar-size) + 15px);
-			transition:top 200ms var(--transitioner) 200ms;
+			transition:top 400ms var(--transitioner);
 		}
 		[sticky-rail="1"]:not(.has-minibar) .evelution-rail-wrapper .evelution-sticky-modules {
 			top:15px;
