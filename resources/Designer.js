@@ -34,7 +34,7 @@ function InitDesigner() {
 	$(".evelution-page-header .evelution-title > span").html( mw.msg( 'evelution-designer-title' ) );
 	$(".link[designer-on]").addClass( 'active' );
 	// Remove the following things
-	$(".cpe-button-group.views, .cpe-button-group.actions, #catlinks, .td-off, .evelution-floating-actions .cpe-floating-button.edit, .evelution-floating-actions .cpe-floating-button.history").remove();
+	$(".evelution-page-header-contribution, #catlinks, .td-off, .evelution-floating-actions .cpe-floating-button.edit, .evelution-floating-actions .cpe-floating-button.history").remove();
 	// Put new buttons
 	$(".evelution-page-header-contribution-buttons").append(
 		'<div class="designer-buttons cpe-button-group"></div>' +

@@ -1051,15 +1051,42 @@ container:not(.has-minibar) .evelution-floating-actions-container {
 /* Page Header */
 
 .evelution-page-header {
+--intensity:0;
 display:flex;
 align-items:flex-start;
 justify-content:flex-end;
 position:relative;
 z-index:6;
 background-clip:padding-box;
-border-top:1px solid transparent;
-margin:-1px 0 0 0;
+margin:0 0 0 0;
+	box-shadow:inset 0 0 0 100vh rgba(var(--luna-background-color-rgb),calc(var(--dropdown-opacity) * var(--intensity)));
+	color:var(--luna-text-background-color);
+background-clip:padding-box;
+border-radius:calc(calc(var(--border-radius) * 2) - 1px);
+border-bottom-left-radius:0;
+border-bottom-right-radius:0;
+/*
+-webkit-backdrop-filter:var(--backdrop-filter);
+backdrop-filter:var(--backdrop-filter);
+*/
 }
+
+	.evelution-page-header::after {
+		content:"";
+		display:block;
+		width:100%;
+		height:100%;
+		top:0;
+		left:0;
+		position:absolute;
+		-webkit-backdrop-filter:var(--backdrop-filter);
+		backdrop-filter:var(--backdrop-filter);
+		z-index:-1;
+		border-radius:calc(calc(var(--border-radius) * 2) - 1px);
+		border-bottom-left-radius:0;
+		border-bottom-right-radius:0;
+	}
+
 
 .evelution-page-header-main {
 align-self: flex-end;
@@ -1087,26 +1114,17 @@ text-align:left;
 }
 
 .evelution-content .evelution-page-header-title {
---intensity:0;
 display:block;
 line-height:1.35;
 margin:0;
 padding:10px var(--r-content-padding) 10px var(--l-content-padding);
 text-align:center;
-	box-shadow:inset 0 0 0 100vh rgba(var(--luna-background-color-rgb),calc(var(--dropdown-opacity) * var(--intensity)));
-	color:var(--luna-text-background-color);
 flex-direction:column;
-background-clip:padding-box;
-border-radius:calc(calc(var(--border-radius) * 2) - 1px);
-border-bottom-left-radius:0;
-border-bottom-right-radius:0;
--webkit-backdrop-filter:var(--backdrop-filter);
-backdrop-filter:var(--backdrop-filter);
 min-height:50px;
 }
 
 	.has-accents .evelution-content .evelution-page-header-title a,
-	.has-accents .evelution-content .evelution-page-header-title a:visited {
+	.has-accents .evelution-content .evelution-page-header-tiele a:visited {
 		color:var(--luna-foreground-color);
 	}
 
@@ -1166,9 +1184,6 @@ min-height:50px;
 }
 
 .evelution-content .evelution-page-header .evelution-page-header-rest {
-	border-top:2px solid var(--canvas-background-color);
-	background-color:var(--canvas-background-color);
-	background-clip:padding-box;
 	box-sizing:border-box;
 }
 
@@ -1214,9 +1229,15 @@ gap:2px;
 	align-self:stretch;
 }
 
+.evelution-page-header-contribution:empty {
+	padding-top:0;
+	padding-bottom:0;
+}
+
 
 .evelution-page-header-contribution-buttons:empty {
 	padding-top:0;
+	padding-bottom:0;
 }
 
 @media only screen and (max-width:1019px) {
@@ -2477,7 +2498,8 @@ border-top-right-radius:0;
 	backdrop-filter:var(--backdrop-filter);
 }
 
-	.has-accents .evelution-rail-wrapper .evelution-module .cpe-button {
+	.has-accents .evelution-rail-wrapper .evelution-module .cpe-button,
+	.has-accents .evelution-page-header .cpe-button {
 		--button-background-color: var(--luna-foreground-color);
 		--button-background-color-hover: var(--luna-foreground-color-hover);
 		--button-foreground-color: var(--luna-background-color);
@@ -2486,7 +2508,24 @@ border-top-right-radius:0;
 		--secondary-button-background-color:transparent;
 		--secondary-button-foreground-color: var(--luna-foreground-color);
 		--secondary-button-foreground-color-hover: var(--luna-foreground-color-hover);
+		--tertiary-button-background-color:rgba(var(--luna-foreground-color-rgb), var(--fadeout-opacity));
+		--tertiary-button-foreground-color:var(--luna-foreground-color);
 	}
+
+
+	.has-accents  .cpe-button.is-alert-color,
+	.has-accents  li.new .cpe-button {
+		--button-background-color: var(--luna-alternative-foreground-color);
+		--button-background-color-hover: rgba(var(--luna-alternative-foreground-color-rgb),0.8);
+		--button-foreground-color: var(--luna-background-color);
+		--button-foreground-color-hover: var(--luna-background-color-hover);
+		--button-foreground-color-inverted: var(--luna-background-color);
+		--secondary-button-background-color:transparent;
+		--secondary-button-foreground-color: var(--luna-alternative-foreground-color);
+		--secondary-button-foreground-color-hover: rgba(var(--luna-alternative-foreground-color-rgb),0.8);
+		--tertiary-button-background-color:rgba(var(--luna-alternative-foreground-color-rgb), var(--fadeout-opacity));
+		--tertiary-button-foreground-color:var(--luna-alternative-foreground-color);
+}
 
 
 
