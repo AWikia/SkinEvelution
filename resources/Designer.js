@@ -885,11 +885,11 @@ function ApplyTheme () {
 				 '--desktop-background-size:' + $('.bg_size .cpe-select__value').attr('value')  + ';\n' +
 				 '--desktop-background-no-horizontal-tiling:' + (!( document.querySelector('input#tilingH').checked ))  + ';\n' +
 				 '--desktop-background-no-vertical-tiling:' + (!( document.querySelector('input#tilingV').checked ))  + ';\n' +
-				 '--hyperlink-background-color:' + $('#saccentcolor').val() + ';\n' +
 				 '--canvas-background-color:' + $('#pagebg').val() + ';\n' +
 				 '--inactive-text-background-color:' + autocolor2  + ';\n' +
 				 '--canvas-text-background-color:' + autocolor3  + ';\n' +
 				 '--highlight-background-color:' + $('#accentcolor').val() + ';\n' +
+				 '--hyperlink-background-color:' + $('#saccentcolor').val() + ';\n' +
 				 '--active-title-background-color:' + autocolor5  + ';\n' +
 				 '--inactive-title-background-color:' + autocolor4  + ';\n' +
 				 '--custom-font:' + customfont2 + ';\n' +
@@ -970,7 +970,7 @@ function CopyTheme() {
     } else {
 		var customfont = $('#secondfont').val();
     }
-		result = '.theme-"' + window.MW18ActiveTheme + '.visualcolors-standard {\n' + // Beginning
+		result = '.theme-' + window.MW18ActiveTheme + '.visualcolors-standard {\n' + // Beginning
 				 '--desktop-background-image:' + image + ';\n' +
 				 '--desktop-background-image-opacity:' + $('#bodyimageopacity').val() + "%" + ';\n' +
 				 '--desktop-background-color:' + $('#bodybg').val()  + ';\n' +
@@ -981,11 +981,11 @@ function CopyTheme() {
 				 '--desktop-background-size:' + $('.bg_size .cpe-select__value').attr('value')  + ';\n' +
 				 '--desktop-background-no-horizontal-tiling:' + (!( document.querySelector('input#tilingH').checked ))  + ';\n' +
 				 '--desktop-background-no-vertical-tiling:' + (!( document.querySelector('input#tilingV').checked ))  + ';\n' +
-				 '--hyperlink-background-color:' + $('#saccentcolor').val() + ';\n' +
 				 '--canvas-background-color:' + $('#pagebg').val() + ';\n' +
 				 '--inactive-text-background-color:' + autocolor2  + ';\n' +
 				 '--canvas-text-background-color:' + autocolor3  + ';\n' +
 				 '--highlight-background-color:' + $('#accentcolor').val() + ';\n' +
+				 '--hyperlink-background-color:' + $('#saccentcolor').val() + ';\n' +
 				 '--active-title-background-color:' + autocolor5  + ';\n' +
 				 '--inactive-title-background-color:' + autocolor4  + ';\n' +
 				 '--custom-font:' + customfont2 + ';\n' +
@@ -1180,11 +1180,11 @@ function TestTheme() {
 				 '--desktop-background-size:' + $('.bg_size .cpe-select__value').attr('value')  + '!important;\n' +
 				 '--desktop-background-no-horizontal-tiling:' + (!( document.querySelector('input#tilingH').checked ))  + '!important;\n' +
 				 '--desktop-background-no-vertical-tiling:' + (!( document.querySelector('input#tilingV').checked ))  + '!important;\n' +
-				 '--hyperlink-background-color:' + $('#saccentcolor').val() + '!important;\n' +
 				 '--canvas-background-color:' + $('#pagebg').val() + '!important;\n' +
 				 '--inactive-text-background-color:' + autocolor2  + '!important;\n' +
 				 '--canvas-text-background-color:' + autocolor3  + '!important;\n' +
 				 '--highlight-background-color:' + $('#accentcolor').val() + '!important;\n' +
+				 '--hyperlink-background-color:' + $('#saccentcolor').val() + '!important;\n' +
 				 '--active-title-background-color:' + autocolor5  + '!important;\n' +
 				 '--inactive-title-background-color:' + autocolor4  + '!important;\n' +
 				 '--custom-font:' + customfont2 + '!important;\n' +
