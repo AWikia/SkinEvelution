@@ -291,7 +291,7 @@ container > main {
 	top:0;
 }
 
-.evelution-sidebar #footer-places.cpe-list {
+.evelution-sidebar .explore-menu .cpe-list {
 	max-height:152px;
 }
 
@@ -404,16 +404,18 @@ container > main {
 	}
 	
 
-	@media only screen and (max-width:511px) { /* S+M Mobile only */
+	@media only screen and (max-width:467px) { /* S+M Mobile only */
 		.evelution-navigation .desktop-only {
 			display:none;
 		}
 	}
-	@media only screen and (min-width:512px) { /* L Mobile + Desktop only */
+	@media only screen and (min-width:468px) and (max-width:759px) { /* L Mobile only */
 		.evelution-navigation .mobile-only {
 			display:none;
 		}
 	}
+
+
 	
 	@media only screen and (max-width:759px) { /* Mobile only */
 
@@ -491,7 +493,7 @@ container > main {
 			top:-25%;
 		}
 
-		@media only screen and (max-height:384px) { /* Extra Small Icons */
+		@media only screen and (max-height:255px) { /* Extra Small Icons */
 			body {
 				--global-nav-size:28px;
 			}
@@ -512,7 +514,7 @@ container > main {
 
 		}
 
-		@media only screen and (min-height:385px) and (max-height:479px) { /* Small Icons */
+		@media only screen and (min-height:256px) and (max-height:319px) { /* Small Icons */
 			body {
 				--global-nav-size:32px;
 			}
@@ -533,7 +535,7 @@ container > main {
 
 		}
 
-		@media only screen and (min-height:480px) and (max-height:599px) { /* Medium Icons */
+		@media only screen and (min-height:320px) and (max-height:400px) { /* Medium Icons */
 			body {
 				--global-nav-size:40px;
 			}
@@ -554,6 +556,19 @@ container > main {
 
 
 		}
+
+
+		@media only screen and (min-height:600px) {
+			.evelution-navigation .mobile-only {
+				display:none;
+			}
+		}
+		@media only screen and (max-height:599px) {
+			.evelution-navigation .desktop-only {
+				display:none;
+			}
+		}
+
 
 
 }
