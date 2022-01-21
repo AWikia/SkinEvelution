@@ -705,7 +705,7 @@ line-height:16px;
 
 /* Gap */
 .top-gap {
-margin-bottom:-6px;
+margin-bottom:-10px;
 }
 
 
@@ -1413,7 +1413,7 @@ gap:2px;
 		color:var(--luna-text-background-color);
 		position:-webkit-sticky;
 		position:sticky;
-		top:calc(-4px - var(--minibar-size));
+		top:calc(-8px - var(--minibar-size));
 		z-index:99;
 		padding-top:1px;
 		height:var(--minibar-size);
@@ -1877,7 +1877,7 @@ gap:2px;
 		align-items:flex-end;
 		display:flex;
 		min-height:100px;
-		margin-top:49px;
+		margin-top:53px;
 	}
 	
 		
@@ -3152,10 +3152,9 @@ white-space:nowrap;
 	--intensity:0;
 	background-color:rgba(var(--header-color), var(--dropdown-opacity));
 	color:var(--header-text);
-	box-shadow:0 2px 6px 0 rgba(var(--canvas-text-background-color-rgb),.4), 0 2px 6px 0 rgba(var(--canvas-background-color-rgb),0.4), inset 0 0 0 100vh rgba(var(--header-color),calc(var(--dropdown-opacity) * var(--intensity))); /* On Evelution OS, canvas and canvas text color are set under a different parent */
+	box-shadow:0 2px 6px 0 rgba(var(--canvas-text-background-color-rgb),.4), 0 2px 6px 0 rgba(var(--canvas-background-color-rgb),0.4), inset 0 0 0 100vh rgba(var(--header-color),calc(var(--dropdown-opacity) * var(--intensity))), 0 0 0 1px var(--header-border); /* On Evelution OS, canvas and canvas text color are set under a different parent */
 	width:64px;
 	height:64px;
-	border:1px solid var(--header-border);
 	position:relative;
 	margin-top:20px;
 	margin-bottom:10px;
@@ -3179,7 +3178,8 @@ white-space:nowrap;
 	flex:1;
 	background-color:var(--window-color);
 	color:var(--window-text);
-	padding:8px 2px 2px 2px;
+	padding:7px 1px 1px 1px;
+	border:1px solid transparent;
 	border-radius:0 0 calc(var(--border-radius) * 2) calc(var(--border-radius) * 2);
 }
 
