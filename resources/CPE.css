@@ -1600,7 +1600,8 @@ margin-left:6px;
 
 /* Icons */
 .material-icons,
-.cpe-button.has-icon:before {
+.cpe-button.has-icon:before,
+.cpe-list li > a.has-icon:before {
 	--icon-scale:1;
 	--icon-size:1;
   font-family: 'Material Icons Round'!important;
@@ -1636,7 +1637,8 @@ margin-left:6px;
 
 .cpe-icon,
 .wds-icon,
-.cpe-button.has-icon:before {
+.cpe-button.has-icon:before,
+.cpe-list li > a.has-icon:before {
 	--icon-scale:1;
 	--icon-size:1;
     --icon-rotate:0deg;
@@ -1647,12 +1649,23 @@ margin-left:6px;
   min-height:calc(24px * var(--icon-size))!important;
   font-size:calc(24px * var(--icon-size))!important;
   transform:scale(var(--icon-scale)) rotate(var(--icon-rotate));
+  vertical-align:middle;
 }
 
 .cpe-button.has-icon:before {
 	margin-right:6px;
 	--icon-size:0.7;
 }
+
+
+.cpe-list li > a.has-icon:before {
+	margin-right:6px;
+	margin-top:-2px;
+	--icon-size:0.5;
+	--icon-scale:1.4;
+	content:"";
+}
+
 
 
 .cpe-avatar {
