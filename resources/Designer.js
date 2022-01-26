@@ -483,6 +483,8 @@ function InitDesigner() {
 				'<td style="text-align:center; width:150px">' + 
 					'<input type="checkbox" name="auto3" id="auto3">' + '<label for="auto3">' + mw.msg( 'evelution-designer-auto' ) + '</label> <br>' +
 					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#2d383a" id="pagebg3" list="td_colors" />' + // Page BG
+					'<br><label>Ration:</label> <br>' +
+					'<progress max="4.5" value="0" id="pagebg3-pagebg-test">' +
 				'</td>' +
 			'</tr>' +
 		// TR
@@ -494,6 +496,8 @@ function InitDesigner() {
 				'<td style="text-align:center; width:150px">' + 
 					'<input type="checkbox" name="auto2" id="auto2">' + '<label for="auto2">' + mw.msg( 'evelution-designer-auto' ) + '</label> <br>' +
 					'<input type="color"  class="cpe-button is-square" style="width:68px;" value="#c8c8cd" id="pagebg2" list="td_colors" />' + // Page BG
+					'<br><label>Ration:</label> <br>' +
+					'<progress max="1.875" id="pagebg2-pagebg-test">' +
 				'</td>' +
 			'</tr>' +
 		// TR
@@ -504,6 +508,8 @@ function InitDesigner() {
 
 				'<td style="text-align:center; width:150px">' + 
 					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#1e5aa8" id="saccentcolor" list="td_colors" />' + // Page BG
+					'<br><label>Ration:</label> <br>' +
+					'<progress max="4.5" value="0" id="saccentcolor-pagebg-test">' +
 				'</td>' +
 			'</tr>' +
 		// TR
@@ -514,6 +520,8 @@ function InitDesigner() {
 
 				'<td style="text-align:center; width:150px">' + 
 					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#93cceA" id="accentcolor" list="td_colors" />' + // Page BG
+					'<br><label>Ration:</label> <br>' +
+					'<progress max="1.875" value="0" id="accentcolor-pagebg-test">' +
 				'</td>' +
 			'</tr>' +
 		// TR
@@ -825,6 +833,7 @@ function InitDesigner() {
 		'<div class="theme-code"></div>'
 	);
 	SelectInputs();
+	UpdateContrastRatios();
     var pageTitle = $("#firstheading > span").html();
     var title = mw.message( 'pagetitle' ).text();
     document.title = title.replace("$1", pageTitle);
@@ -1117,6 +1126,7 @@ function PasteTheme() {
 	$('#filter4').val( parseInt(getComputedStyle(document.querySelector('html')).getPropertyValue("--icon-filter-delay")) );
 	// Acryllic Opacity
 	$('#aopacity').val( getComputedStyle(document.querySelector('html')).getPropertyValue("--system-acryllic-opacity") );
+	UpdateContrastRatios();
 	UpdateRangeInputs();
 }
 
@@ -1200,7 +1210,33 @@ function TestTheme() {
 	ColorUpdate(true,true);
 }
 
+function UpdateContrastRatios() {
+	var pagebg = $('#pagebg').val();
+	var pagebg2 = $("#pagebg2").val();
+	var pagebg3 = $("#pagebg3").val();
+	var saccentcolor = $("#saccentcolor").val();
+	var accentcolor = $("#accentcolor").val();
+	if (document.querySelector('.wikitable #auto2').checked) {
+		$('#pagebg2-pagebg-test').val('21');
+	} else {
+		$('#pagebg2-pagebg-test').val( chroma.contrast(pagebg, pagebg2)  - 1.25 );
+	}
+	if (document.querySelector('.wikitable #auto3').checked) {
+		$('#pagebg3-pagebg-test').val('21');
+	} else {
+		$('#pagebg3-pagebg-test').val( chroma.contrast(pagebg, pagebg3)  - 3 );
+	}
+	$('#saccentcolor-pagebg-test').val( chroma.contrast(pagebg, saccentcolor)  - 3 );
+	$('#accentcolor-pagebg-test').val( chroma.contrast(pagebg, accentcolor)  - 1.25 );
+	var progresses = document.querySelectorAll('progress');
+	progresses.forEach(function(x) {
+		x.style.setProperty("--range-percent",  (( ((x.getAttribute('value')) - 0 ) * 100) / (x.getAttribute('max') - 0) ) + '%'  );
+	});
+
+}
+
 function TestDynamicTheme() {
+	UpdateContrastRatios();
 	if ($("body.td-testing-on").length) {
 		TestTheme();
 	}
@@ -1274,6 +1310,12 @@ $('.wikitable #auto5').click(
 	ranges.forEach(function(x) {
 		x.style.setProperty("--range-percent",  (( ((x.value) - x.getAttribute('min') ) * 100) / (x.getAttribute('max') - x.getAttribute('min')) ) + '%'  );
 	});
+
+	var progresses = document.querySelectorAll('progress');
+	progresses.forEach(function(x) {
+		x.style.setProperty("--range-percent",  (( ((x.getAttribute('value')) - 0 ) * 100) / (x.getAttribute('max') - 0) ) + '%'  );
+	});
+
 	
 	var ranges2 = document.querySelectorAll('input[type="range"]');
 	ranges2.forEach(function(x) {

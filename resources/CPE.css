@@ -2972,6 +2972,53 @@ input[type="checkbox"]:indeterminate:active  {
   color:var(--checkbox-active-bg);
 }
 
+/* Progresses */
+progress {
+  --range-percent:0%;
+  --range-filler-color:var(--highlight-background-color);
+  color: var(--canvas-text-background-color);
+  margin: 0 auto;
+  background-color: var(--canvas-secondary-background-color);
+  background-image:linear-gradient(90deg,var(--range-filler-color) var(--range-percent),transparent var(--range-percent));
+  height: 12.5px;
+  min-width: 150px;
+  -webkit-appearance: none;
+  appearance:none;
+  cursor:inherit;
+    border:0;
+    margin:5.5px 0 11.25px;
+	border-radius:var(--border-radius);
+	box-shadow:0 0 0 1px var(--canvas-foreground-color);
+	box-sizing:border-box;
+}
+
+progress::-webkit-progress-bar {
+    border: 0;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+progress::-webkit-progress-value {
+    border: 0;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+progress::-moz-progress-bar {
+    border: 0;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
 /** Ranges **/
 
 /* Base */
@@ -2991,7 +3038,7 @@ input[type="range"] {
 input[type="range"]::-webkit-slider-thumb {
   border-radius: 50%;
   background-color: var(--highlight-background-color);
-  box-shadow:0 0 0 1px rgba(var(--canvas-secondary-background-color-rgb),0.5);
+  box-shadow:0 0 0 1px var(--canvas-foreground-color);
   border: 0;
   -webkit-appearance: none;
   appearance:none;
@@ -3005,7 +3052,7 @@ input[type="range"]::-webkit-slider-thumb {
 input[type="range"]::-moz-range-thumb {
   border-radius: 50%;
   background-color: var(--highlight-background-color);
-  box-shadow:0 0 0 1px rgba(var(--canvas-secondary-background-color-rgb),0.5);
+  box-shadow:0 0 0 1px var(--canvas-foreground-color);
   border: 0;
   -webkit-appearance: none;
   appearance:none;
@@ -3018,23 +3065,23 @@ input[type="range"]::-moz-range-thumb {
 
 input[type="range"]::-webkit-slider-thumb:hover {
   background-color: var(--highlight-background-color-hover);
-  box-shadow:0 0 0 2px rgba(var(--canvas-secondary-background-color-rgb),0.5);
+  box-shadow:0 0 0 1.5px var(--canvas-foreground-color);
 }
 
 input[type="range"]::-moz-range-thumb:hover {
   background-color: var(--highlight-background-color-hover);
-  box-shadow:0 0 0 2px rgba(var(--canvas-secondary-background-color-rgb),0.5);
+  box-shadow:0 0 0 1.5px var(--canvas-foreground-color);
 }
 
 
 input[type="range"]::-webkit-slider-thumb:active {
   background-color: var(--highlight-background-color-hover);
-  box-shadow:0 0 0 3px rgba(var(--canvas-secondary-background-color-rgb),0.5);
+  box-shadow:0 0 0 2px var(--canvas-foreground-color);
 }
 
 input[type="range"]::-moz-range-thumb:active {
   background-color: var(--highlight-background-color-hover);
-  box-shadow:0 0 0 3px rgba(var(--canvas-secondary-background-color-rgb),0.5);
+  box-shadow:0 0 0 2px var(--canvas-foreground-color);
 }
 
 
@@ -3043,30 +3090,33 @@ input[type="range"]::-webkit-slider-runnable-track {
 	--range-filler-color:var(--highlight-background-color);
   border:0;
   padding: 0;
-  background-color: var(--canvas-text-background-color);
-  background-image:linear-gradient(90deg,var(--range-filler-color) var(--range-percent),var(--canvas-text-background-color) var(--range-percent));
+  background-color: var(--canvas-secondary-background-color);
+  background-image:linear-gradient(90deg,var(--range-filler-color) var(--range-percent),transparent var(--range-percent));
   color: transparent;
   height: 12.5px;
   -webkit-appearance: none;
   appearance:none;
   vertical-align: middle;
   border-radius:var(--border-radius);
-  box-shadow:0 0 0 1px rgba(var(--canvas-secondary-background-color-rgb),0.5) inset;
+  box-shadow:0 0 0 1px var(--canvas-foreground-color);
+  box-sizing:border-box;
 }
 
 input[type="range"]::-moz-range-track {
 	--range-filler-color:var(--highlight-background-color);
-  border: 0;
+	--range-filler-color-hover:var(--highlight-background-color-hover);
+  border:0;
   padding: 0;
-  background-color: var(--canvas-text-background-color);
-  background-image:linear-gradient(90deg,var(--range-filler-color) var(--range-percent),var(--canvas-text-background-color) var(--range-percent));
+  background-color: var(--canvas-secondary-background-color);
+  background-image:linear-gradient(90deg,var(--range-filler-color) var(--range-percent),transparent var(--range-percent));
   color: transparent;
   height: 12.5px;
   -webkit-appearance: none;
   appearance:none;
   vertical-align: middle;
   border-radius:var(--border-radius);
-  box-shadow:0 0 0 1px rgba(var(--canvas-secondary-background-color-rgb),0.5) inset;
+  box-shadow:0 0 0 1px var(--canvas-foreground-color);
+  box-sizing:border-box;
 }
 
 /* Filler */

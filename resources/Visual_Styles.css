@@ -309,7 +309,7 @@ filter:none!important;
 }
 
 
-.visualstyle-contrast container *, .visualstyle-contrast container :after  {
+.visualstyle-contrast container *:not(progress), .visualstyle-contrast container :after  {
   text-shadow:none!important;
   box-shadow:none!important;
 }
@@ -739,7 +739,7 @@ background-image:linear-gradient(to left,rgba(255,255,255, 0) 200px,var(--canvas
 /* CSS configuration for Brightness */
 
 
-.visualstyle-basiccontrast container *, .visualstyle-basiccontrast container :after  {
+.visualstyle-basiccontrast container *:not(progress), .visualstyle-basiccontrast container :after  {
   text-shadow:none!important;
   box-shadow:none!important;
 }
@@ -2146,20 +2146,20 @@ box-shadow:none!important;
 
 .visualstyle-classic  input[type="range"]::-webkit-slider-runnable-track,
 .visualstyle-classiccontrast  input[type="range"]::-webkit-slider-runnable-track {
-	--range-filler-color:var(--canvas-secondary-background-color);
+	background-color:var(--canvas-background-color);
 	box-shadow:none;
 	border-width:2px!important;
 	border-style:solid!important;
-	border-color:var(--canvas-3d-background-color) var(--canvas-3d-background-color-dark) var(--canvas-3d-background-color-dark) var(--canvas-3d-background-color)!important;
+	border-color:var(--canvas-3d-background-color-dark) var(--canvas-3d-background-color) var(--canvas-3d-background-color) var(--canvas-3d-background-color-dark)!important;
 }
 
 .visualstyle-classic  input[type="range"]::-moz-range-track,
 .visualstyle-classiccontrast  input[type="range"]::-moz-range-track {
-	background-image:none!important;
+	background-color:var(--canvas-background-color);
 	box-shadow:none;
 	border-width:2px!important;
 	border-style:solid!important;
-	border-color:var(--canvas-3d-background-color) var(--canvas-3d-background-color-dark) var(--canvas-3d-background-color-dark) var(--canvas-3d-background-color)!important;
+	border-color:var(--canvas-3d-background-color-dark) var(--canvas-3d-background-color) var(--canvas-3d-background-color) var(--canvas-3d-background-color-dark)!important;
 }
 
 
@@ -2196,7 +2196,6 @@ box-shadow:none!important;
 .visualstyle-classiccontrast input[type="range"]::-moz-range-thumb:active {
 	border-color:var(--canvas-3d-background-color-dark) var(--canvas-3d-background-color) var(--canvas-3d-background-color) var(--canvas-3d-background-color-dark)!important;
 }
-
 
 .visualstyle-classic .evelution-module,
 .visualstyle-classiccontrast .evelution-module  {
@@ -2278,6 +2277,18 @@ box-shadow:none!important;
 .visualstyle-classiccontrast .mw-ui-input:focus {
 	border-style:solid!important;
 	border-color:var(--canvas-3d-background-color-dark) var(--canvas-3d-background-color) var(--canvas-3d-background-color) var(--canvas-3d-background-color-dark)!important;
+}
+
+
+.visualstyle-classic progress,
+/* Classic Contrast */
+.visualstyle-classiccontrast progress  {
+	background-color:rgb(var(--canvas-background-color-rgb))!important;
+	box-shadow:none!important;
+	border-width:2px!important;
+	border-style:solid!important;
+	border-color:var(--canvas-3d-background-color-dark) var(--canvas-3d-background-color) var(--canvas-3d-background-color) var(--canvas-3d-background-color-dark)!important;
+	outline:0!important;
 }
 
 
