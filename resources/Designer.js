@@ -1137,7 +1137,7 @@ function TestTheme() {
 	}
 	$(".evelution-page-header-contribution-buttons .designer-buttons2 .theme-clear-button").prop('disabled', false);
 	$(".evelution-page-header-contribution-buttons .designer-buttons2 .theme-test-button").prop('disabled', true);
-	document.querySelector('body').focus();
+	document.querySelector('.gradient-overlay').focus();
 	if (document.querySelector('.wikitable #auto1').checked) {
 		var autocolor1 = 'auto';
 	} else {
@@ -1250,7 +1250,7 @@ function ClearTheme() {
 	// Tests theme
 	$(".evelution-page-header-contribution-buttons .designer-buttons2 .theme-clear-button").prop('disabled', true);
 	$(".evelution-page-header-contribution-buttons .designer-buttons2 .theme-test-button").prop('disabled', false);
-	document.querySelector('body').focus();
+	document.querySelector('.gradient-overlay').focus();
 	document.querySelector("#mw-content-text .theme-designer-css").innerHTML = '';
 	ColorUpdate(true,true);
 

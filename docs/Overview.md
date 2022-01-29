@@ -84,7 +84,7 @@ Evelution gets powered up with six main sizes: 320 pixels for small phones, 375 
 
 With the inclusion of a top Sticky Navigation and a Bottom Toolbar which both can be collapsed, things can become more fun
 
-The local navigation on Evelution is fetched from ``MediaWiki:Sidebar``. It is placed as links on the ``.color-nav`` container on the static navigation and as submenus of another menu on the sticky navigation called ``.mpisto-sticky-header-container``
+The local navigation on Evelution is fetched from ``MediaWiki:Sidebar``. It is placed as links on the ``.evelution-superbar__bottom`` container on the static navigation and as submenus of another menu on the sticky navigation called ``.evelultion-minibar``
 
 ## What are the differences between the Small and Large Sizes?
 The small 705 breakpoint contains the following differences from the large 1280 ones:
@@ -287,7 +287,7 @@ Content placed in ``MediaWiki:Evelution-about-module-info`` will appear on the i
 If a vaild server ID is placed into ``MediaWiki:Evelution-discord-module-server-id``, a discord widget of the server with the corresponding server ID will appear on the Discord Module. Likewise, it also shows a create account link in the module buttons so users without a discord account can join the conversation there. Note that the server must have its server widget enabled. See [here](https://dev.fandom.com/wiki/DiscordIntegrator/instructions#Step_2:_Enable_Discord_widget) for instructions how to enable the server widget of your server.
 
 ### ``$wgEvelutionLeftPersonalLinks`` (Since 4.3.0)
-Defaults to false. When set to true, it allows you to align the toolbar links to the left.
+Defaults to false. When set to true, it allows you to align the taskbar links to the left.
 
 ### ``$wgEvelutionDisableColorManagement`` (Since 4.3.0)
 Defaults to false meaning you have color management, When set to true, it:
@@ -297,7 +297,7 @@ Defaults to false meaning you have color management, When set to true, it:
 This setting is useful for wikis that can't adapt to the many color schemes Evelution gives. This is also the case when Forced Colors mode is active
 
 ### ``$wgEvelutionForceOneHeader`` (Since 4.3.0)
-Defaults to false. When set to true, it removes the Desktop Community Header and leaves the Desktop sticky header the only ones for Desktops. This setting does not affect Mobile Devices. This setting is useful for wikis who want a solo header layout. Sticky header is still able to be collapsed.
+Defaults to false. When set to true, it removes the Community Header and keeps the Sticky header at all times, similar to while editing articles. This setting is useful for wikis who want a solo header layout. On Desktop, Sticky header is still able to be collapsed.
 
 ### ``$wgEvelutionDisableRightRail`` (Since 5.0.0)
 Defaults to false meaning that a right rail will be shown where appropriate. When set to true, no right rail will appear. If the wiki heavily relies on layouts that might break with the Right Rail on, this setting is very useful to be turned on.
