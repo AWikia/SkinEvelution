@@ -1,6 +1,6 @@
 ﻿/* Mobile Only CSS */
 if (navigator.userAgent.match("Mobile")) {
-document.querySelector("body").className += " phone"
+document.querySelector("html").className += " phone"
 }
 
 /* Local Storage */
@@ -102,9 +102,6 @@ function UpdateRangeInputs() {
 	if (getKey('content-full') === '-1') {
 		insertKey('content-full', 'false' );
 	}
-	if (getKey('toolbar-full') === '-1') {
-		insertKey('toolbar-full', 'true' );
-	}
 	if (getKey('nav-full') === '-1') {
 		insertKey('nav-full', 'true' );
 	}
@@ -115,7 +112,6 @@ function UpdateRangeInputs() {
 		insertKey('left-rail-full', 'true' );
 	}
 	var content_full = getKey('content-full')
-	var toolbar_full = getKey('toolbar-full');
 	var nav_full = getKey('nav-full');
 	var right_rail_full = getKey('right-rail-full');
 	var left_rail_full = getKey('left-rail-full');
@@ -127,10 +123,6 @@ function UpdateRangeInputs() {
             case 'fullwidth':
 				content_full = value;
 				console.info('Article width settings overriden')
-                break;
-            case 'hidetoolbar':
-				toolbar_full = value;
-				console.info('Toolbar visibility settings overriden')
                 break;
             case 'hidenavbar':
 				nav_full = true;
@@ -167,9 +159,6 @@ function UpdateRangeInputs() {
     });
     if (content_full === 'true') {
 		document.querySelector(' container ').classList.add('is-wide');
-	}
-    if (toolbar_full === 'true') {
-		document.querySelector(' container ').classList.add('has-toolbar');
 	}
     if (nav_full === 'true') {
 		document.querySelector(' container ').classList.add('has-minibar');
@@ -352,7 +341,7 @@ if  (imodule)  {
 		parser.classList.add('raw-parser-done');
 	}
 /* Avatar */
-	var avatar = document.querySelector('.evelution-navigation .mw-socialprofile-avatar');
+	var avatar = document.querySelector('.evelution-taskbar .mw-socialprofile-avatar');
 	if (avatar) {
 		avatar.classList.add('cpe-icon');
 		avatar.classList.add('cpe-avatar');
@@ -386,17 +375,6 @@ function ToggleWidth() {
 		insertKey('content-full', 'true');
 	}
 }
-
-function ToggleBar() {
-	if 	(document.querySelector(' container.has-toolbar ')) {
-		document.querySelector(' container ').classList.remove('has-toolbar');
-		insertKey('toolbar-full', 'false' );
-	} else {
-		document.querySelector(' container ').classList.add('has-toolbar');
-		insertKey('toolbar-full', 'true' );
-	}
-}
-
 
 function ToggleNav() {
 	if 	(document.querySelector(' container.has-minibar ')) {
@@ -456,8 +434,8 @@ function RemoveEmptyMenus() {
 	
 // Remove the Language Dropdown, if no languages exist
 
-	if (! (document.querySelector(".evelution-navigation.evelution-sidebar .language-menu .cpe-dropdown__content .cpe-list")) ) {
-		var langmenu = document.querySelector(".evelution-navigation.evelution-sidebar .language-menu");
+	if (! (document.querySelector(".evelution-taskbar.evelution-sidebar .language-menu .cpe-dropdown__content .cpe-list")) ) {
+		var langmenu = document.querySelector(".evelution-taskbar.evelution-sidebar .language-menu");
 		if (langmenu) {
 			langmenu.remove();
 		}
@@ -465,8 +443,8 @@ function RemoveEmptyMenus() {
 
 // Remove the Language Variants Dropdown, if no language variants exist
 	
-	if (! (document.querySelector(".evelution-navigation.evelution-sidebar .variants-menu .cpe-dropdown__content .cpe-list > li")) ) {
-		var langmenu3 = document.querySelector(".evelution-navigation.evelution-sidebar .variants-menu");
+	if (! (document.querySelector(".evelution-taskbar.evelution-sidebar .variants-menu .cpe-dropdown__content .cpe-list > li")) ) {
+		var langmenu3 = document.querySelector(".evelution-taskbar.evelution-sidebar .variants-menu");
 		if (langmenu3) {
 			langmenu3.remove();
 		}
@@ -474,8 +452,8 @@ function RemoveEmptyMenus() {
 
 // Remove duplicated Notices and Updates Dropdown
 
-	var langmenu4N = document.querySelector(".evelution-navigation.evelution-sidebar .link.notices-menu #pt-notifications-notice");
-	var langmenu4bN = document.querySelector(".evelution-navigation.evelution-sidebar .link.updates-menu #pt-notifications-alert");
+	var langmenu4N = document.querySelector(".evelution-taskbar.evelution-sidebar .link.notices-menu #pt-notifications-notice");
+	var langmenu4bN = document.querySelector(".evelution-taskbar.evelution-sidebar .link.updates-menu #pt-notifications-alert");
 		if (langmenu4N) {
 			langmenu4N.remove();	
 		}
@@ -512,17 +490,32 @@ function RemoveEmptyMenus() {
 	
 	if (! (document.querySelector(".evelution-page-header #ca-edit")) ) {
 		var elink = document.querySelector(".evelution-taskbar .link.edit");
+		var elink2 = document.querySelector(".evelution-taskbar li.edit");
 		if (elink) {
 			elink.remove();
 		}
+		if (elink2) {
+			elink2.remove();
+		}
+
 	}
 	if (! (document.querySelector(".evelution-page-header #ca-history")) ) {
 		var hlink = document.querySelector(".evelution-taskbar .link.history");
+		var hlink2 = document.querySelector(".evelution-taskbar li.history");
 		if (hlink) {
 			hlink.remove();
 		}
-	}
+		if (hlink2) {
+			hlink2.remove();
+		}
+		if (! (document.querySelector(".evelution-page-header #ca-edit")) ) {
+		var hr2 = document.querySelector(".evelution-taskbar hr.actions");	
+			if (hr2) {
+				hr2.remove();
+			}	
+		}
 
+	}
 
 
 

@@ -137,6 +137,7 @@ text-rendering:optimizeSpeed;
 touch-action:manipulation;
 font-weight:400;
 z-index:2;
+margin-bottom:var(--minibar-size);
 }
 
 #pt-darkmode-toggle {
@@ -196,9 +197,8 @@ container {
 }
 
 @media only screen and (max-width:319px) {
-	body {
+	body, html {
 		overflow-x:auto!important;
-		overflow-y:hidden!important;
 	}
 }
 
@@ -230,21 +230,20 @@ scrollbar-width:thin;
 white-space:pre-wrap;
 }
 
-.options container,
-.wiki-wizard container {
+.options,
+.wiki-wizard {
 	overflow:hidden;
 }
 
 
-container {
-	overflow-x:hidden;
+body {
 }
 
-container {
+body, container {
 	box-sizing:border-box;
 }
 
-container * {
+body * {
 box-sizing:inherit;
 -webkit-tap-highlight-color:rgba(0,0,0,0);
 }
@@ -252,11 +251,7 @@ box-sizing:inherit;
 
 /* Global Navigation */
 container > main {
-	display:flex;
-	flex-direction:row;
 	width:100%;
-	--wikispace-padding:var(--global-nav-size);
-	padding-left:var(--wikispace-padding);
 }
 
 .evelution-wikispace {
@@ -379,18 +374,13 @@ container > main {
 		border-color:rgba(var(--global-nav-link-background-active), var(--global-nav-link-opacity));
 		color:var(--global-nav-link-color-active);
 	}
-
-
-	.evelution-navigation .explore-menu .link .cpe-icon {
-		--icon-rotate:0deg;
-	}
 	
-	.evelution-navigation {
+	.evelution-sidebar {
 		-webkit-backdrop-filter:none;
 		backdrop-filter:none;
 	}
 	
-	.evelution-navigation::after {
+	.evelution-sidebar::after {
 		content:"";
 		display:block;
 		width:100%;
@@ -404,176 +394,6 @@ container > main {
 	}
 	
 
-	@media only screen and (max-width:467px) { /* S+M Mobile only */
-		.evelution-navigation .desktop-only {
-			display:none!important;
-		}
-	}
-	@media only screen and (min-width:468px) and (max-width:759px) { /* L Mobile only */
-		.evelution-navigation .mobile-only {
-			display:none!important;
-		}
-	}
-
-
-	
-	@media only screen and (max-width:759px) { /* Mobile only */
-
-		.evelution-navigation .link .cpe-icon {
-			--icon-size:0.9;
-		}
-
-		.evelution-navigation .link .cpe-icon.cpe-icon-small {
-			--icon-size:0.6;
-		}
-
-
-		.evelution-navigation .link .cpe-icon.cpe-icon-tiny {
-			--icon-size:0.4;
-		}
-
-		.evelution-navigation .link {
-			width:calc(var(--global-nav-size) * 0.78);
-		}
-
-
-		.evelution-navigation .explore-menu .link .cpe-icon {
-			--icon-rotate:90deg!important;
-		}
-		.evelution-navigation {
-			width:100%;
-/*
-			position:-webkit-sticky;
-			position:sticky;
-*/
-			height:var(--global-nav-size);
-			flex-direction:row;
-		}
-		.evelution-navigation .upper-links,
-		.evelution-navigation .bottom-links {
-			flex-direction:row;
-		}
-
-	.evelution-sidebar .user-profile .link[cpe-tooltip]:after {
-		right:2px;
-	}
-
-	.evelution-sidebar .link.company[cpe-tooltip]:after {
-		left:2px;
-	}
-
-		
-		.evelution-navigation .search .cpe-dropdown__content {
-			left: 0;
-			right: 0;
-			transform: none;
-			width: 100vw;
-		}
-
-		.evelution-navigation .cpe-dropdown.search {
-			position:static;
-		}
-
-		.evelution-navigation .cpe-dropdown.search::after {
-			display:none;
-		}
-		
-		.evelution-navigation .search .pageheader-search .cpe-input {
-			width: calc(100% - 50px);
-		}
-
-		.evelution-navigation .cpe-dropdown__content .cpe-list {
-			max-height:150px;
-		}
-
-	}
-	
-	@media only screen and (min-width:760px) { /* Desktop only */
-		.evelution-sidebar .search.cpe-dropdown .cpe-dropdown__content {
-			top:-25%;
-		}
-
-		@media only screen and (max-height:255px) { /* Extra Small Icons */
-			body {
-				--global-nav-size:28px;
-			}
-
-			.evelution-navigation {
-				--global-nav-icon-scale-factor:28;
-			}
-
-			.evelution-navigation .search.cpe-dropdown .cpe-dropdown__content {
-				top:-80%;
-			}
-
-			.evelution-navigation .languages-menu.cpe-dropdown .cpe-dropdown__content .cpe-list,
-			.evelution-navigation .variants-menu.cpe-dropdown .cpe-dropdown__content .cpe-list {
-				max-height:90px;
-			}
-
-
-		}
-
-		@media only screen and (min-height:256px) and (max-height:319px) { /* Small Icons */
-			body {
-				--global-nav-size:32px;
-			}
-
-			.evelution-navigation {
-				--global-nav-icon-scale-factor:32;
-			}
-
-			.evelution-navigation .search.cpe-dropdown .cpe-dropdown__content {
-				top:-65%;
-			}
-
-			.evelution-navigation .languages-menu.cpe-dropdown] .cpe-dropdown__content .cpe-list,
-			.evelution-navigation .variants-menu.cpe-dropdown .cpe-dropdown__content .cpe-list {
-				max-height:100px;
-			}
-
-
-		}
-
-		@media only screen and (min-height:320px) and (max-height:400px) { /* Medium Icons */
-			body {
-				--global-nav-size:40px;
-			}
-
-
-			.evelution-navigation {
-				--global-nav-icon-scale-factor:40;
-			}
-
-			.evelution-navigation .search.cpe-dropdown .cpe-dropdown__content {
-				top:-40%;
-			}
-
-			.evelution-navigation .languages-menu.cpe-dropdown .cpe-dropdown__content .cpe-list,
-			.evelution-navigation .variants-menu.cpe-dropdown .cpe-dropdown__content .cpe-list {
-				max-height:125px;
-			}
-
-
-		}
-
-
-		@media only screen and (min-height:600px) {
-			.evelution-navigation .mobile-only {
-				display:none!important;
-			}
-		}
-		@media only screen and (max-height:599px) {
-			.evelution-navigation .desktop-only {
-				display:none!important;
-			}
-		}
-
-
-
-}
-
-
 /* Personal Toolbar */
 .evelution-taskbar  {
 	--toolbar-link-size:var(--minibar-size);
@@ -582,27 +402,10 @@ container > main {
 	top:auto;
 	height:var(--minibar-size);
 	flex-direction:row;
-	z-index:99;
+	z-index:100;
 	width:calc(100%);
-	position:-webkit-sticky;
-	position:sticky;
 	transform-origin:bottom;
 }
-
-container.has-toolbar .evelution-taskbar.col-toolbar,
-container:not(.has-toolbar) .evelution-taskbar.full-toolbar  {
-	transform:scaleY(0);
-}
-
-.evelution-taskbar.col-toolbar {
-	width:var(--toolbar-link-size);
-	bottom:var(--minibar-size);
-	left:calc(100% - var(--toolbar-link-size));
-	margin-top:calc(0px - var(--minibar-size));
-	bottom:0;
-	z-index:98;
-}
-
 
 
 .evelution-taskbar:hover  {
@@ -629,12 +432,65 @@ container:not(.has-toolbar) .evelution-taskbar.full-toolbar  {
 	flex-direction:row;
 }
 
+.evelution-taskbar .bottom-links .cpe-dropdown__content.is-right-aligned {
+	right:calc(0px - var(--toolbar-link-size));
+}
 
-.evelution-taskbar .link.bar-switch[cpe-tooltip-position="top"][cpe-tooltip]:after,
+.evelution-taskbar .upper-links .search .cpe-dropdown__content.is-left-aligned {
+	left:calc(0px - var(--toolbar-link-size));
+}
+
+.evelution-taskbar .upper-links .explore-menu .cpe-dropdown__content.is-left-aligned {
+	left:calc(0px - var(--toolbar-link-size) - var(--toolbar-link-size));
+}
+
+
+
+
+.evelution-taskbar .link.purge[cpe-tooltip-position="top"][cpe-tooltip]:after,
 .evelution-minibar .link.nav-switch[cpe-tooltip-position="bottom"][cpe-tooltip]:after,
 .evelution-minibar .link.mobile-local-navigation[cpe-tooltip-position="bottom"][cpe-tooltip]:after {
 	right:2px;
 }
+
+@media only screen and (max-width:1149px) {
+	.evelution-taskbar .small-off {
+		display:none!important;
+	}
+}
+
+
+@media only screen and (min-width:1150px) {
+	.evelution-taskbar .small-on {
+		display:none!important;
+	}
+}
+
+@media only screen and (max-width:889px) {
+	.evelution-taskbar .smallp-off {
+		display:none!important;
+	}
+}
+
+@media only screen and (min-width:890px) {
+	.evelution-taskbar .smallp-on {
+		display:none!important;
+	}
+}
+
+
+@media only screen and (max-width:639px) {
+	.evelution-taskbar .mobile-off {
+		display:none!important;
+	}
+}
+
+@media only screen and (min-width:640px) {
+	.evelution-taskbar .mobile-on {
+		display:none!important;
+	}
+}
+
 
 
 /* Old Global Nav
@@ -762,7 +618,7 @@ position:relative;
 }
 
 [responsive]  {
-	width:calc(var(--breakpoint-size) - 45px - var(--global-nav-size) - var(--scrollbar-width));
+	width:calc(var(--breakpoint-size) - 60px);
 	margin-left:auto;
 	margin-right:auto;
 	transition:width 400ms var(--transitioner), margin-top 400ms var(--transitioner), top 400ms var(--transitioner);
@@ -771,13 +627,13 @@ position:relative;
 /* Wide */
 	container.is-wide [responsive],
 	.forced-full [responsive] {
-		width:calc(100% - 45px);
+		width:calc(100% - 50px);
 	}
 
 	container.is-wide  .top-gap .cpe-banner-notification__container#floatingbanner,
 	.forced-full .top-gap .cpe-banner-notification__container#floatingbanner {
-		width:calc(100% - 45px - var(--global-nav-size) - var(--scrollbar-width));
-		max-width:calc(var(--max-width) - 45px - var(--global-nav-size) - var(--scrollbar-width));
+		width:calc(100% - 50px);
+		max-width:calc(100% - 50px);
 	}
 	
 	container.is-wide .wide-off {
@@ -917,99 +773,14 @@ container:not(.has-minibar) .evelution-floating-actions-container {
 
 /* Adjust Sizing */
 
-@media only screen and (min-width:760px) {
-	/* With Nav and Toolbar */
-	@media only screen and (max-height:389px) {
-		container.has-minibar.has-toolbar .evelution-floating-actions .cpe-floating-button {
-			width:18px;
-			height:18px;
-		}
-		container.has-minibar.has-toolbar .evelution-floating-actions .cpe-floating-button .cpe-icon {
-			--icon-size:0.5;
-		}
-
-	}
-
-
-
-	@media only screen and (min-height:390px) and (max-height:479px) {
-		container.has-minibar.has-toolbar .evelution-floating-actions .cpe-floating-button {
-			width:27px;
-			height:27px;
-		}
-		container.has-minibar.has-toolbar .evelution-floating-actions .cpe-floating-button .cpe-icon {
-			--icon-size:0.7;
-		}
-
-	}
-
-	/* Without Nav or Toolbar */
-	@media only screen and (max-height:339px) {
-		container:not(.has-minibar).has-toolbar .evelution-floating-actions .cpe-floating-button,
-		container.has-minibar:not(.has-toolbar) .evelution-floating-actions .cpe-floating-button {
-			width:18px;
-			height:18px;
-		}
-		
-		container:not(.has-minibar).has-toolbar .evelution-floating-actions .cpe-floating-button .cpe-icon,
-		container.has-minibar:not(.has-toolbar) .evelution-floating-actions .cpe-floating-button .cpe-icon {
-			--icon-size:0.5;
-		}
-
-	}
-
-
-
-	@media only screen and (min-height:340px) and (max-height:429px) {
-		container:not(.has-minibar).has-toolbar .evelution-floating-actions .cpe-floating-button,
-		container.has-minibar:not(.has-toolbar) .evelution-floating-actions .cpe-floating-button {
-			width:27px;
-			height:27px;
-		}
-		
-		container:not(.has-minibar).has-toolbar .evelution-floating-actions .cpe-floating-button .cpe-icon,
-		container.has-minibar:not(.has-toolbar) .evelution-floating-actions .cpe-floating-button .cpe-icon {
-			--icon-size:0.7;
-		}
-
-	}
-
-
-	/* Without Nav and Toolbar */
-	@media only screen and (max-height:289px) {
-		container:not(.has-minibar):not(.has-toolbar) .evelution-floating-actions .cpe-floating-button {
-			width:18px;
-			height:18px;
-		}
-		container:not(.has-minibar):not(.has-toolbar) .evelution-floating-actions .cpe-floating-button .cpe-icon {
-			--icon-size:0.5;
-		}
-
-	}
-
-
-
-	@media only screen and (min-height:290px) and (max-height:379px) {
-		container:not(.has-minibar):not(.has-toolbar) .evelution-floating-actions .cpe-floating-button {
-			width:27px;
-			height:27px;
-		}
-		container:not(.has-minibar):not(.has-toolbar) .evelution-floating-actions .cpe-floating-button .cpe-icon {
-			--icon-size:0.7;
-		}
-
-	}
-}
-
-
 @media only screen and (max-width:759px) {
-	/* With Toolbar */
+	/* With Minibar */
 	@media only screen and (max-height:389px) {
-		container.has-minibar.has-toolbar .evelution-floating-actions .cpe-floating-button {
+		container.has-minibar .evelution-floating-actions .cpe-floating-button {
 			width:18px;
 			height:18px;
 		}
-		container.has-minibar.has-toolbar .evelution-floating-actions .cpe-floating-button .cpe-icon {
+		container.has-minibar .evelution-floating-actions .cpe-floating-button .cpe-icon {
 			--icon-size:0.5;
 		}
 
@@ -1018,26 +789,24 @@ container:not(.has-minibar) .evelution-floating-actions-container {
 
 
 	@media only screen and (min-height:390px) and (max-height:479px) {
-		container.has-minibar.has-toolbar .evelution-floating-actions .cpe-floating-button {
+		container.has-minibar .evelution-floating-actions .cpe-floating-button {
 			width:27px;
 			height:27px;
 		}
-		container.has-minibar.has-toolbar .evelution-floating-actions .cpe-floating-button .cpe-icon {
+		container.has-minibar .evelution-floating-actions .cpe-floating-button .cpe-icon {
 			--icon-size:0.7;
 		}
 
 	}
 
-	/* Without Toolbar */
+	/* Without Minibar */
 	@media only screen and (max-height:339px) {
-		container:not(.has-minibar).has-toolbar .evelution-floating-actions .cpe-floating-button,
-		container.has-minibar:not(.has-toolbar) .evelution-floating-actions .cpe-floating-button {
+		container:not(.has-minibar) .evelution-floating-actions .cpe-floating-button {
 			width:18px;
 			height:18px;
 		}
 		
-		container:not(.has-minibar).has-toolbar .evelution-floating-actions .cpe-floating-button .cpe-icon,
-		container.has-minibar:not(.has-toolbar) .evelution-floating-actions .cpe-floating-button .cpe-icon {
+		container:not(.has-minibar) .evelution-floating-actions .cpe-floating-button .cpe-icon{
 			--icon-size:0.5;
 		}
 
@@ -1046,14 +815,12 @@ container:not(.has-minibar) .evelution-floating-actions-container {
 
 
 	@media only screen and (min-height:340px) and (max-height:429px) {
-		container:not(.has-minibar).has-toolbar .evelution-floating-actions .cpe-floating-button,
-		container.has-minibar:not(.has-toolbar) .evelution-floating-actions .cpe-floating-button {
+		container:not(.has-minibar) .evelution-floating-actions .cpe-floating-button {
 			width:27px;
 			height:27px;
 		}
 		
-		container:not(.has-minibar).has-toolbar .evelution-floating-actions .cpe-floating-button .cpe-icon,
-		container.has-minibar:not(.has-toolbar) .evelution-floating-actions .cpe-floating-button .cpe-icon {
+		container:not(.has-minibar) .evelution-floating-actions .cpe-floating-button .cpe-icon {
 			--icon-size:0.7;
 		}
 
@@ -1286,7 +1053,6 @@ gap:2px;
 	top:0;
 	transition:transform 400ms var(--transitioner), top 400ms var(--transitioner), box-shadow 400ms var(--transitioner), background-color 400ms var(--transitioner);
 	width:100%;
-	max-width:var(--max-width);
 	box-shadow: 0 0 3px var(--canvas-text-background-color), 0 0 3px var(--canvas-background-color);
 	z-index:98;
 }
@@ -1316,7 +1082,7 @@ gap:2px;
 		justify-content:center;
 		min-height:60px;
 		flex-direction:column;
-		margin-top:var(--minibar-size);
+		margin-top:10px;
 		flex:1;
 	}
 
@@ -1426,16 +1192,14 @@ gap:2px;
 		--tr-scale:100%;
 		background-color:rgba(var(--luna-background-color-rgb), var(--minibar-opacity));
 		color:var(--luna-text-background-color);
-		position:-webkit-sticky;
-		position:sticky;
-		top:calc(-8px - var(--minibar-size));
+		position:fixed;
+		top:calc(0px - var(--minibar-size));
 		z-index:99;
 		padding-top:1px;
 		height:var(--minibar-size);
 		display:flex;
 		transition:transform 400ms var(--transitioner), top 400ms var(--transitioner), box-shadow 400ms var(--transitioner), background-color 400ms var(--transitioner);
 		width:100%;
-		max-width:var(--max-width);
 		box-shadow: 0 0 3px var(--canvas-text-background-color), 0 0 3px var(--canvas-background-color);
 		transform:scaleY(var(--tr-scale));
 		align-items:center;
@@ -1460,10 +1224,10 @@ gap:2px;
 	}
 
 
-	.headroom--not-top .evelution-minibar.desktop-minibar,
+	.headroom--not-top .evelution-minibar,
 	.single-header .evelution-minibar.desktop-minibar,
 	.action-edit .evelution-minibar.desktop-minibar {
-		top:-1px;
+		top:calc(var(--minibar-size) - 1px);
 	}
 	
 
@@ -1471,7 +1235,6 @@ gap:2px;
 		--background-padding:57px;
 		width:auto;
 		margin-top:calc(0px - var(--minibar-size));
-		left:100%;
 		align-self:flex-end;
 		z-index:98;
 	}
@@ -1848,12 +1611,6 @@ gap:2px;
 		display:none;
 	}
 
-	.headroom--unpinned .evelution-minibar.mobile-minibar {
-		top:-1px;
-	}
-	.headroom--unpinned .evelution-navigation {
-		top:calc(-4px - var(--minibar-size));
-	}
 	
 	.evelution-minibar .title {
 		font-size:14px;
@@ -2059,7 +1816,6 @@ gap:2px;
 	}
 	
 	.evelution-superbar__top .cpe-dropdown {
-		height:inherit;
 		display:inline-block;
 	}
 	
@@ -2942,6 +2698,7 @@ body .mw-cookiewarning-container {
 	min-height:50px;
 	padding:10px;
 	box-shadow:0 -2px 6px 0 rgba(var(--canvas-text-background-color-rgb),.4), 0 -2px 6px 0 rgba(var(--canvas-background-color-rgb),0.4);
+	padding-bottom:var(--minibar-size);
 }
 
 .action-edit .evelution-footer {
@@ -3154,6 +2911,7 @@ white-space:nowrap;
 	background-color:var(--bg-color);
 	background-image:var(--bg-img);
 	border:1px solid var(--bg-border);
+	opacity:var(--desktop-background-image-opacity)
 	width:100px;
 	height:62px;
 	top:4px;
@@ -3505,7 +3263,9 @@ white-space:nowrap;
 	content:"phone_android";
 }
 
-.has-icon-labels #footer-places-desktop-toggle {
+.has-icon-labels #footer-places-terms-use, 
+.has-icon-labels #footer-places-desktop-toggle, 
+.has-icon-labels #footer-places-privacy {
 	display:block;
 }
 
@@ -3558,10 +3318,6 @@ white-space:nowrap;
 		transform:rotate(90deg);
 	}
 
-}
-
-.rtl .evelution-navigation .explore-menu .link .cpe-icon {
-    --icon-rotate:180deg;
 }
 
 .rtl .evelution-article-content .cpe-icon.chevron-icon {

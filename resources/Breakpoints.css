@@ -30,11 +30,11 @@
 		}
 
 		.evelution-taskbar {
-			--toolbar-link-size:calc(var(--minibar-size) / 2);
+			--toolbar-link-size:calc(var(--minibar-size) / 1.5);
 		}
 
 		.evelution-taskbar .link .cpe-icon {
-			--icon-size:0.8;
+			--icon-size:0.9;
 		}
 
 	}
@@ -59,26 +59,33 @@
 		}
 
 		.evelution-taskbar {
-			--toolbar-link-size:calc(var(--minibar-size) / 1.75);
+			--toolbar-link-size:calc(var(--minibar-size) / 1.35);
 		}
 		
 		.evelution-taskbar .link .cpe-icon {
-			--icon-size:0.9;
+			--icon-size:1;
 		}
 
 	}
 
 	/* Large Phones */
-	@media only screen and (min-width:400px) {
+	@media only screen and (min-width:400px) and (max-width:511px) {
 	
 		.evelution-footer .logo-container > svg {
 			height:35px
 		}
-		
 		.evelution-taskbar {
-			--toolbar-link-size:calc(var(--minibar-size) / 1.5);
+			--toolbar-link-size:calc(var(--minibar-size) / 1.2);
 		}
 	}
+	
+
+		@media only screen and (max-width:639px) {
+			.evelution-taskbar .bottom-links .cpe-dropdown__content.is-right-aligned {
+				right:0!important;
+			}
+		}
+
 
 	/* All Phones */	
 	.body-background,
@@ -91,6 +98,7 @@
 	.gradient-overlay {
 /*		margin-top:var(--global-nav-size); */
 	}
+	
 
 	container > main {
 		--wikispace-padding:0!important;
@@ -130,23 +138,6 @@
 		display:none;
 	}
 	
-	:root body .evelution-navigation, 
-	.evelution-navigation, 
-	:root body .evelution-minibar, 
-	.evelution-minibar {
-		background:transparent!important;
-		box-shadow:none!important;
-		z-index:100!important;
-		border-color:transparent!important;
-		-webkit-backdrop-filter:none!important;
-		backdrop-filter:none!important;
-	}
-
-	.evelution-navigation::after {
-		-webkit-backdrop-filter:none!important;
-		backdrop-filter:none!important;
-		--backdrop-filter:none!important;
-	}	
 
 	.evelution-article {
 		padding-left:0;
@@ -172,9 +163,6 @@
 		scrollbar-width:thin;
 		scrollbar-color:var(--active-title-background-color) var(--canvas-background-color);
 		--scrollbar-width:0px!important;
-	}
-	:root {
-		--header-size:210px; 
 	}
 
 	.phone ::-webkit-scrollbar {
@@ -217,7 +205,7 @@
 	}
 
 
-	[responsive], .top-gap  /*.lightbox */ {
+	[responsive] /*.lightbox */ {
 	  width:100%!important;
 	  border-color:transparent!Important;
 	  border-width:0!important;
@@ -266,7 +254,6 @@
 	}
 
 	.top-gap {
-		margin:0!Important;
 		
 	}
 
