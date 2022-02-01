@@ -6,8 +6,8 @@ Evelution releases supported. Every time a new Seasonal Release (Major) comes, t
 
 | Version    | Supported          |
 | ---------- | ------------------ |
-| 13.x.x     | :white_check_mark: |
-| < 13.x.x   | :x:                |
+| Currnet    | :white_check_mark: |
+| Previous   | :x:                |
 
 ## Reporting a Vulnerability
 
