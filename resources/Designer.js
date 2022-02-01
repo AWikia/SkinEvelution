@@ -638,7 +638,6 @@ function InitDesigner() {
 '<div class="preview-window-desk">' +
 	'	<div class="gradient-overlay" style="position:absolute; pointer-events:none;"></div>' +
 	'	<div class="invertion-on" style=" pointer-events: none; position: absolute; z-index: -2; width: 100%; height: 100%;"><div class="body-background fandom-community-header__background" style="position:absolute; pointer-events:none;" id="body-background"></div></div>' +
-	'	<div class="body-background-color" style="position:absolute; pointer-events:none;"></div>' +
 	'<div class="preview-window-window" force-active>' +
 		'<h2>' +
 			'<span>Active Window #1</span>' +
