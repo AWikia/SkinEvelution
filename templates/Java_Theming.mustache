@@ -382,6 +382,8 @@ function GetCanvasText() {
 function GetHighlight() {
 	if (ForcedColors()) {
 		return getComputedStyle(document.querySelector('.fc-highlight')).getPropertyValue("color");
+	} else if (getComputedStyle(document.querySelector('html')).getPropertyValue("--highlight-background-color") === 'auto') {
+		return GetHyperlink();
 	} else {
 		return getComputedStyle(document.querySelector('html')).getPropertyValue("--highlight-background-color").trim();
 	}
@@ -1422,6 +1424,8 @@ var messagecolor1 = ColorTest(message_color,false,false,true);
 
 if (['full','legacy'].includes(getComputedStyle(document.querySelector('html')).getPropertyValue("--desktop-background-mode"))) {
 	var overlay = ['none', '100%'];
+} else if (['half'].includes(getComputedStyle(document.querySelector('html')).getPropertyValue("--desktop-background-mode"))) {
+	var overlay = ['block', '50%'];
 } else {
 	var overlay = ['block', 'var(--header-size)'];
 }

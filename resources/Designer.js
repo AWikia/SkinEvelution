@@ -368,6 +368,7 @@ function InitDesigner() {
 						'<div class="cpe-dropdown__content">' +
 							'<ul class="cpe-list is-linked">' +
 								'<li value="standard"><a>Standard</a></li>' +
+								'<li value="half"><a>Half</a></li>' +
 								'<li value="full"><a>Full</a></li>' +
 							'</ul>' +
 						'</div>' +
@@ -519,6 +520,7 @@ function InitDesigner() {
 				'</td>' +
 
 				'<td style="text-align:center; width:150px">' + 
+					'<input type="checkbox" name="auto6" id="auto6">' + '<label for="auto6">' + mw.msg( 'evelution-designer-auto' ) + '</label> <br>' +
 					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#93cceA" id="accentcolor" list="td_colors" />' + // Page BG
 					'<br><label>Ration:</label> <br>' +
 					'<progress max="1.875" value="0" id="accentcolor-pagebg-test">' +
@@ -636,7 +638,7 @@ function InitDesigner() {
 
 /**/
 '<div class="preview-window-desk">' +
-	'	<div class="gradient-overlay" style="position:absolute; pointer-events:none;"></div>' +
+	'	<div class="focus-overlay" style="position:absolute; pointer-events:none;"></div>' +
 	'	<div class="invertion-on" style=" pointer-events: none; position: absolute; z-index: -2; width: 100%; height: 100%;"><div class="body-background fandom-community-header__background" style="position:absolute; pointer-events:none;" id="body-background"></div></div>' +
 	'<div class="preview-window-window" force-active>' +
 		'<h2>' +
@@ -865,6 +867,11 @@ function ApplyTheme () {
 	} else {
 		var autocolor5 = $('#taccentcolor').val();
 	}
+	if (document.querySelector('.wikitable #auto6').checked) {
+		var autocolor6 = 'auto';
+	} else {
+		var autocolor6 = $('#accentcolor').val();
+	}
 	if ( ( ( $("#bodyimage").val().startsWith('url("') ) && ( $("#bodyimage").val().endsWith('")') ) ) ||
 		  ( ( $("#bodyimage").val().startsWith('url(') ) && ( $("#bodyimage").val().endsWith(')') ) ) ) {
 		var image = $("#bodyimage").val();
@@ -896,7 +903,7 @@ function ApplyTheme () {
 				 '--canvas-background-color:' + $('#pagebg').val() + ';\n' +
 				 '--inactive-text-background-color:' + autocolor2  + ';\n' +
 				 '--canvas-text-background-color:' + autocolor3  + ';\n' +
-				 '--highlight-background-color:' + $('#accentcolor').val() + ';\n' +
+				 '--highlight-background-color:' + autoclor6 + ';\n' +
 				 '--hyperlink-background-color:' + $('#saccentcolor').val() + ';\n' +
 				 '--active-title-background-color:' + autocolor5  + ';\n' +
 				 '--inactive-title-background-color:' + autocolor4  + ';\n' +
@@ -961,6 +968,11 @@ function CopyTheme() {
 		var autocolor5 = 'auto';
 	} else {
 		var autocolor5 = $('#taccentcolor').val();
+	}
+	if (document.querySelector('.wikitable #auto6').checked) {
+		var autocolor6 = 'auto';
+	} else {
+		var autocolor6 = $('#accentcolor').val();
 	}
 	if ( ( ( $("#bodyimage").val().startsWith('url("') ) && ( $("#bodyimage").val().endsWith('")') ) ) ||
 		  ( ( $("#bodyimage").val().startsWith('url(') ) && ( $("#bodyimage").val().endsWith(')') ) ) ) {
@@ -1045,7 +1057,7 @@ function PasteTheme() {
 	// Body Image Opacity
 	$('#bodyimageopacity').val( parseInt(getComputedStyle(document.querySelector('html')).getPropertyValue("--desktop-background-image-opacity")) );
 	// Body Image Mode
-	bg_mode = ["Standard", "Full"][["standard", "full"].indexOf( getComputedStyle(document.querySelector('html')).getPropertyValue("--desktop-background-mode") ) ]
+	bg_mode = ["Standard", "Half", "Full"][["standard", "half", "full"].indexOf( getComputedStyle(document.querySelector('html')).getPropertyValue("--desktop-background-mode") ) ]
 	$('.bg_mode .cpe-select__value').attr('value', getComputedStyle(document.querySelector('html')).getPropertyValue("--desktop-background-mode") );
 	$('.bg_mode .cpe-select__value').html( bg_mode );
 	// Body Image Alignment V
@@ -1084,7 +1096,13 @@ function PasteTheme() {
 	// Anchor BG
 	$('#saccentcolor').val( getComputedStyle(document.querySelector('html')).getPropertyValue("--hyperlink-background-color") );
 	// Accent BG
-	$('#accentcolor').val( getComputedStyle(document.querySelector('html')).getPropertyValue("--highlight-background-color") );
+	if (getComputedStyle(document.querySelector('html')).getPropertyValue("--highlight-background-color") === 'auto' ) {
+		document.querySelector('.wikitable #auto6').checked = true;
+	} else {
+		document.querySelector('.wikitable #auto6').checked = false;
+		$('#accentcolor').val( getComputedStyle(document.querySelector('html')).getPropertyValue("--highlight-background-color") );
+	}
+	$('.wikitable #accentcolor').prop('disabled',(document.querySelector('.wikitable #auto6').checked) );
 	// Caret Color
 	if (getComputedStyle(document.querySelector('html')).getPropertyValue("--active-title-background-color") === 'auto' ) {
 		document.querySelector('.wikitable #auto5').checked = true;
@@ -1136,7 +1154,7 @@ function TestTheme() {
 	}
 	$(".evelution-page-header-contribution-buttons .designer-buttons2 .theme-clear-button").prop('disabled', false);
 	$(".evelution-page-header-contribution-buttons .designer-buttons2 .theme-test-button").prop('disabled', true);
-	document.querySelector('.gradient-overlay').focus();
+	document.querySelector('.focus-overlay').focus();
 	if (document.querySelector('.wikitable #auto1').checked) {
 		var autocolor1 = 'auto';
 	} else {
@@ -1161,6 +1179,11 @@ function TestTheme() {
 		var autocolor5 = 'auto';
 	} else {
 		var autocolor5 = $('#taccentcolor').val();
+	}
+	if (document.querySelector('.wikitable #auto6').checked) {
+		var autocolor6 = 'auto';
+	} else {
+		var autocolor6 = $('#accentcolor').val();
 	}
 	if ( ( ( $("#bodyimage").val().startsWith('url("') ) && ( $("#bodyimage").val().endsWith('")') ) ) ||
 		  ( ( $("#bodyimage").val().startsWith('url(') ) && ( $("#bodyimage").val().endsWith(')') ) ) ) {
@@ -1192,7 +1215,7 @@ function TestTheme() {
 				 '--canvas-background-color:' + $('#pagebg').val() + '!important;\n' +
 				 '--inactive-text-background-color:' + autocolor2  + '!important;\n' +
 				 '--canvas-text-background-color:' + autocolor3  + '!important;\n' +
-				 '--highlight-background-color:' + $('#accentcolor').val() + '!important;\n' +
+				 '--highlight-background-color:' + autocolor6 + '!important;\n' +
 				 '--hyperlink-background-color:' + $('#saccentcolor').val() + '!important;\n' +
 				 '--active-title-background-color:' + autocolor5  + '!important;\n' +
 				 '--inactive-title-background-color:' + autocolor4  + '!important;\n' +
@@ -1226,7 +1249,11 @@ function UpdateContrastRatios() {
 		$('#pagebg3-pagebg-test').val( chroma.contrast(pagebg, pagebg3)  - 3 );
 	}
 	$('#saccentcolor-pagebg-test').val( chroma.contrast(pagebg, saccentcolor)  - 3 );
-	$('#accentcolor-pagebg-test').val( chroma.contrast(pagebg, accentcolor)  - 1.25 );
+	if (document.querySelector('.wikitable #auto6').checked) {
+		$('#accentcolor-pagebg-test').val('21');
+	} else {
+		$('#accentcolor-pagebg-test').val( chroma.contrast(pagebg, accentcolor)  - 1.25 );
+	}
 	var progresses = document.querySelectorAll('progress');
 	progresses.forEach(function(x) {
 		x.style.setProperty("--range-percent",  (( ((x.getAttribute('value')) - 0 ) * 100) / (x.getAttribute('max') - 0) ) + '%'  );
@@ -1249,7 +1276,7 @@ function ClearTheme() {
 	// Tests theme
 	$(".evelution-page-header-contribution-buttons .designer-buttons2 .theme-clear-button").prop('disabled', true);
 	$(".evelution-page-header-contribution-buttons .designer-buttons2 .theme-test-button").prop('disabled', false);
-	document.querySelector('.gradient-overlay').focus();
+	document.querySelector('.focus-overlay').focus();
 	document.querySelector("#mw-content-text .theme-designer-css").innerHTML = '';
 	ColorUpdate(true,true);
 
@@ -1304,6 +1331,14 @@ $('.wikitable #auto5').click(
 								TestDynamicTheme();
 							}   
 						);
+$('.wikitable #auto6').click(
+							function(e) {
+								e.preventDefault
+								$('.wikitable #accentcolor').prop('disabled',(document.querySelector('.wikitable #auto6').checked) );
+								TestDynamicTheme();
+							}   
+						);
+
 // UpdateRangeInputs();
 	var ranges = document.querySelectorAll('input[type="range"]');
 	ranges.forEach(function(x) {

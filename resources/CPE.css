@@ -125,8 +125,8 @@ Aleo = Latin
 --desktop-background-color:#441177;
 --hyperlink-background-color:#dd2300;
 --canvas-background-color:#f1f2f3;
---highlight-background-color:#dd8300;
-/*--active-title-background-color:#b88300;*/
+/*--highlight-background-color:#dd8300;
+--active-title-background-color:#b88300;*/
 }
 
 
@@ -147,6 +147,7 @@ font-family:Trebuchet MS;
     --dark-theme-foreground-color-rgb: 255,255,255!important;
     --dark-theme-foreground-color-hover-rgb: 204,204,204!important;
 /* Aliases */
+--highlight-background-color:auto;
 --inactive-text-background-color:auto;
 --canvas-text-background-color:auto;
 --desktop-background-image-opacity:100%;
@@ -588,6 +589,18 @@ container {
   image-rendering:initial;                  /* CSS4 Proposed  */
   -qq-image-blurring:tick;                  /* 4x4 Web 1-2    */
 }
+
+.focus-overlay {
+	top:0;
+	width:100%;
+	height:100%;
+	position:fixed!Important;
+	content:"";
+	z-index:-1;
+  image-rendering:initial;                  /* CSS4 Proposed  */
+  -qq-image-blurring:tick;                  /* 4x4 Web 1-2    */
+}
+
 
 
 .raw-parser {
@@ -1623,6 +1636,7 @@ margin-left:6px;
 .cpe-button.has-icon:before {
 	margin-right:6px;
 	--icon-size:0.7;
+	content:"";
 }
 
 
