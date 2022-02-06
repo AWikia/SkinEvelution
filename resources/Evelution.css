@@ -1,5 +1,6 @@
 .theme-A.visualcolors-standard {
---desktop-background-image:url("Cubes1.png");
+--desktop-background-image:url("Cubes.png");
+--desktop-background-image-filter:grayscale(100%) brightness(50%);
 --desktop-background-color:#c8c8cd;
 --desktop-text-background-color:#000000;
 --desktop-background-size:contain;
@@ -13,7 +14,8 @@
 }
 
 .theme-B.visualcolors-standard {
---desktop-background-image:url("Cubes2.png");
+--desktop-background-image:url("Cubes.png");
+--desktop-background-image-filter:hue-rotate(-20deg);
 --desktop-background-color:#fdd7e4;
 --desktop-text-background-color:#c62d42;
 --desktop-background-size:contain;
@@ -27,7 +29,8 @@
 }
 
 .theme-C.visualcolors-standard {
---desktop-background-image:url("Cubes5.png");
+--desktop-background-image:url("Cubes.png");
+--desktop-background-image-filter:hue-rotate(65deg) brightness(200%);
 --desktop-background-color:#fbe870;
 --desktop-text-background-color:#87421f;
 --desktop-background-size:contain;
@@ -41,7 +44,8 @@
 }
 
 .theme-D.visualcolors-standard {
---desktop-background-image:url("Cubes6.png");
+--desktop-background-image:url("Cubes.png");
+--desktop-background-image-filter:hue-rotate(90deg) brightness(200%);
 --desktop-background-color:#c5e17a;
 --desktop-text-background-color:#00755e;
 --desktop-background-size:contain;
@@ -55,7 +59,8 @@
 }
 
 .theme-E.visualcolors-standard {
---desktop-background-image:url("Cubes3.png");
+--desktop-background-image:url("Cubes.png");
+--desktop-background-image-filter:invert(1) grayscale(100%);
 --desktop-background-color:#2d383a;
 --desktop-text-background-color:#ddebec;
 --desktop-background-size:contain;
@@ -69,7 +74,8 @@
 }
 
 .theme-F.visualcolors-standard {
---desktop-background-image:url("Cubes4.png");
+--desktop-background-image:url("Cubes.png");
+--desktop-background-image-filter:hue-rotate(180deg) brightness(250%);
 --desktop-background-color:#003366;
 --desktop-text-background-color:#93ccea;
 --desktop-background-size:contain;
@@ -84,7 +90,8 @@
 
 
 .theme-G.visualcolors-standard {
---desktop-background-image:url("Cubes7.png");
+--desktop-background-image:url("Cubes.png");
+--desktop-background-image-filter:hue-rotate(40deg) brightness(250%);
 --desktop-background-color:#664228;
 --desktop-text-background-color:#ffb97b;
 --desktop-background-size:contain;
@@ -98,7 +105,8 @@
 }
 
 .theme-H.visualcolors-standard {
---desktop-background-image:url("Cubes8.png");
+--desktop-background-image:url("Cubes.png");
+--desktop-background-image-filter:hue-rotate(-100deg) brightness(250%);
 --desktop-background-color:#732e6c;
 --desktop-text-background-color:#c9a0dc;
 --desktop-background-size:contain;
@@ -2814,7 +2822,7 @@ body .mw-cookiewarning-container {
 }
 
 .preview-window-desk .gradient-overlay,
-.preview-window-desk .body-background {
+.preview-window-desk .desktop-background {
 	position:absolute!important;
 }
 
@@ -2948,14 +2956,19 @@ white-space:nowrap;
 
 .preview-theme-wrapper .background {
 	background-color:var(--bg-color);
-	background-image:var(--bg-img);
 	border:1px solid var(--bg-border);
-	opacity:var(--desktop-background-image-opacity);
 	width:100px;
 	height:62px;
 	top:4px;
 	right:10%;
 	position:absolute;
+}
+
+.preview-theme-wrapper .background-image {
+	background-image:var(--bg-img);
+	filter:var(--desktop-background-image-filter);
+	width:inherit;
+	height:inherit;
 	background-size:cover;
 	background-position:center;
 }

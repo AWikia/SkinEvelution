@@ -286,12 +286,16 @@ function InitDesigner() {
 				'<option value="BioRhyme">' +
 				'<option value="Inknut Antiqua">' +
 			'</datalist>' +
-			'<datalist id="td_imageopacity">' + // Image Opacity
-				'<option value="0" label="0%">' +
-				'<option value="25">' +
-				'<option value="50" label="50%">' +
-				'<option value="75">' +
-				'<option value="100" label="100%">' +
+			'<datalist id="td_imagefilter">' + // Fonts
+				'<option value="opacity(100%)">' +
+				'<option value="opacity(75%)">' +
+				'<option value="opacity(50%)">' +
+				'<option value="opacity(25%)">' +
+				'<option value="opacity(0%)">' +
+				'<option value="invert(100%)">' +
+				'<option value="invert(100%) hue-rotate(180deg)">' +
+				'<option value="invert(100%) opacity(50%)">' +
+				'<option value="invert(100%) hue-rotate(180deg) opacity(50%)">' +
 			'</datalist>' +
 			'<datalist id="td_aopacity">' + // Image Opacity
 				'<option value="0.4" label="40%">' +
@@ -306,7 +310,7 @@ function InitDesigner() {
 			'</datalist>' +
 
 		'</div>' +
-		'<table class="wikitable" style="max-width:300px; font-size:14px; margin:0 auto;">' +
+		'<table class="wikitable" style="max-width:var(--breakpoint-size); font-size:14px; margin:0 auto;">' +
 			'<tr>' +
 				'<th colspan="2">' + mw.msg( 'evelution-designer-body' ) + '</th>' +
 			'</tr>' +
@@ -338,17 +342,17 @@ function InitDesigner() {
 				'</td>' +
 
 				'<td style="text-align:center; width:150px">' +
-					'<input type="url" id="bodyimage" class="cpe-input designer-text" style="width:130px; min-width:130px;" placeholder="URL" />' + // Body Background 
+					'<input type="url" id="bodyimage" class="cpe-input designer-text" style="width:150px; min-width:150px;" placeholder="URL" />' + // Body Background 
 				'</td>' +
 			'</tr>' +
 		// TR
 			'<tr>' +
 				'<th style="width:150px;">' + 
-					mw.msg( 'evelution-designer-community-image-opacity' ) + 
+					mw.msg( 'evelution-designer-community-image-filter' ) + 
 				'</td>' +
 
 				'<td style="text-align:center; width:150px">' +
-					'<input type="range" class="big" style="min-width:130px; min-width:130px;" id="bodyimageopacity" value="100" min="0" max="100" list="td_imageopacity" autocomplete="off" />' + // Body Background 
+					'<input type="text" id="bodyimagefilter" class="cpe-input designer-text" style="width:150px; min-width:150px;" placeholder="Filter" value="opacity(1)" list="td_imagefilter" />' + // Body Background 
 				'</td>' +
 			'</tr>' +
 		// TR
@@ -359,7 +363,7 @@ function InitDesigner() {
 
 				'<td style="text-align:center; width:150px">' +
 				   '<div class="cpe-dropdown cpe-select" tabindex="-1">' +
-						'<div class="cpe-input bg_mode cpe-dropdown__toggle" style="width:130px; min-width:130px;">' +
+						'<div class="cpe-input bg_mode cpe-dropdown__toggle" style="width:150px; min-width:150px;">' +
 							'<span class="cpe-select__value" value="standard">Standard</span>' +
 							'<span class="cpe-icon cpe-icon-tiny cpe-icon-large cpe-dropdown__toggle-chevron material-icons">' +
 								'arrow_drop_down' +
@@ -383,7 +387,7 @@ function InitDesigner() {
 
 				'<td style="text-align:center; width:150px">' +
 				   '<div class="cpe-dropdown cpe-select" tabindex="-1">' +
-						'<div class="cpe-input bg_align cpe-dropdown__toggle" style="width:130px; min-width:130px;">' +
+						'<div class="cpe-input bg_align cpe-dropdown__toggle" style="width:150px; min-width:150px;">' +
 							'<span class="cpe-select__value" value="center">Middle</span>' +
 							'<span class="cpe-icon cpe-icon-tiny cpe-icon-large cpe-dropdown__toggle-chevron material-icons">' +
 								'arrow_drop_down' +
@@ -407,7 +411,7 @@ function InitDesigner() {
 
 				'<td style="text-align:center; width:150px">' +
 				   '<div class="cpe-dropdown cpe-select" tabindex="-1">' +
-						'<div class="cpe-input bg_align2 cpe-dropdown__toggle" style="width:130px; min-width:130px;">' +
+						'<div class="cpe-input bg_align2 cpe-dropdown__toggle" style="width:150px; min-width:150px;">' +
 							'<span class="cpe-select__value" value="center">Middle</span>' +
 							'<span class="cpe-icon cpe-icon-tiny cpe-icon-large cpe-dropdown__toggle-chevron material-icons">' +
 								'arrow_drop_down' +
@@ -431,7 +435,7 @@ function InitDesigner() {
 
 				'<td style="text-align:center; width:150px">' +
 				   '<div class="cpe-dropdown cpe-select" tabindex="-1">' +
-						'<div class="cpe-input bg_size cpe-dropdown__toggle" style="width:130px; min-width:130px;">' +
+						'<div class="cpe-input bg_size cpe-dropdown__toggle" style="width:150px; min-width:150px;">' +
 							'<span class="cpe-select__value" value="cover">Cover</span>' +
 							'<span class="cpe-icon cpe-icon-tiny cpe-icon-large cpe-dropdown__toggle-chevron material-icons">' +
 								'arrow_drop_down' +
@@ -559,7 +563,7 @@ function InitDesigner() {
 				'</td>' +
 
 				'<td style="text-align:center; width:150px">' +
-					'<input type="range" class="big" style="min-width:130px; min-width:130px;" id="border-radius" value="3" min="0" max="15" autocomplete="off" />' + // Body Background 
+					'<input type="range" class="big" style="min-width:150px; min-width:150px;" id="border-radius" value="3" min="0" max="15" autocomplete="off" />' + // Body Background 
 				'</td>' +
 			'</tr>' +
 		// TR
@@ -569,7 +573,7 @@ function InitDesigner() {
 				'</td>' +
 
 				'<td style="text-align:center; width:150px">' +
-					'<input type="text" id="firstfont" class="cpe-input designer-text" style="width:130px; min-width:130px;" placeholder="Font" autocomplete="off" />' + // Body Background 
+					'<input type="text" id="firstfont" class="cpe-input designer-text" style="width:150px; min-width:150px;" placeholder="Font" autocomplete="off" />' + // Body Background 
 				'</td>' +
 			'</tr>' +
 		// TR
@@ -579,7 +583,7 @@ function InitDesigner() {
 				'</td>' +
 
 				'<td style="text-align:center; width:150px">' +
-					'<input type="text" id="secondfont" class="cpe-input designer-text" style="width:130px; min-width:130px;" placeholder="Font" list="td_fonts" autocomplete="off" />' + // Body Background 
+					'<input type="text" id="secondfont" class="cpe-input designer-text" style="width:150px; min-width:150px;" placeholder="Font" list="td_fonts" autocomplete="off" />' + // Body Background 
 				'</td>' +
 			'</tr>' +
 		// TR
@@ -589,7 +593,7 @@ function InitDesigner() {
 				'</td>' +
 
 				'<td style="text-align:center; width:150px">' +
-					'<input type="text" id="filter" class="cpe-input designer-text" style="width:130px; min-width:130px;" placeholder="Filter" value="opacity(1)" />' + // Body Background 
+					'<input type="text" id="filter" class="cpe-input designer-text" style="width:150px; min-width:150px;" placeholder="Filter" value="opacity(1)" />' + // Body Background 
 				'</td>' +
 			'</tr>' +
 		// TR
@@ -599,7 +603,7 @@ function InitDesigner() {
 				'</td>' +
 
 				'<td style="text-align:center; width:150px">' +
-					'<input type="text" id="filter2" class="cpe-input designer-text" style="width:130px; min-width:130px;" placeholder="Filter" value="opacity(0.8)" />' + // Body Background 
+					'<input type="text" id="filter2" class="cpe-input designer-text" style="width:150px; min-width:150px;" placeholder="Filter" value="opacity(0.8)" />' + // Body Background 
 				'</td>' +
 			'</tr>' +
 		// TR
@@ -609,7 +613,7 @@ function InitDesigner() {
 				'</td>' +
 
 				'<td style="text-align:center; width:150px">' +
-					'<input type="range" class="big" style="min-width:130px; min-width:130px;" id="filter3" value="300" min="0" max="1000" step="20" list="td_filterdur" autocomplete="off" />' + // Body Background 
+					'<input type="range" class="big" style="min-width:150px; min-width:150px;" id="filter3" value="300" min="0" max="1000" step="20" list="td_filterdur" autocomplete="off" />' + // Body Background 
 				'</td>' +
 			'</tr>' +
 		// TR
@@ -619,7 +623,7 @@ function InitDesigner() {
 				'</td>' +
 
 				'<td style="text-align:center; width:150px">' +
-					'<input type="range" class="big" style="min-width:130px; min-width:130px;" id="filter4" value="0" min="0" max="1000" step="20" list="td_filterdur" autocomplete="off"  />' + // Body Background 
+					'<input type="range" class="big" style="min-width:150px; min-width:150px;" id="filter4" value="0" min="0" max="1000" step="20" list="td_filterdur" autocomplete="off"  />' + // Body Background 
 				'</td>' +
 			'</tr>' +
 		// TR
@@ -629,7 +633,7 @@ function InitDesigner() {
 				'</td>' +
 
 				'<td style="text-align:center; width:150px">' +
-					'<input type="range" class="big" style="min-width:130px; min-width:130px;" id="aopacity" value="0.6" min="0.4" max="0.8" step="0.01" list="td_aopacity" autocomplete="off" />' + // Body Background 
+					'<input type="range" class="big" style="min-width:150px; min-width:150px;" id="aopacity" value="0.6" min="0.4" max="0.8" step="0.01" list="td_aopacity" autocomplete="off" />' + // Body Background 
 				'</td>' +
 			'</tr>' +
 
@@ -639,7 +643,7 @@ function InitDesigner() {
 /**/
 '<div class="preview-window-desk">' +
 	'	<div class="gradient-overlay" style="position:absolute; pointer-events:none;"></div>' +
-	'	<div class="invertion-on" style=" pointer-events: none; position: absolute; z-index: -2; width: 100%; height: 100%;"><div class="body-background fandom-community-header__background" style="position:absolute; pointer-events:none;" id="body-background"></div></div>' +
+	'	<div class="invertion-on" style=" pointer-events: none; position: absolute; z-index: -2; width: 100%; height: 100%;"><div class="desktop-background fandom-community-header__background" style="position:absolute; pointer-events:none;" id="desktop-background"></div></div>' +
 	'<div class="preview-window-window" force-active>' +
 		'<h2>' +
 			'<span>Active Window #1</span>' +
@@ -793,7 +797,7 @@ function InitDesigner() {
 		'<hr>' +
 		'<div style="margin:0 auto;">' +
 			'<div class="preview-theme-wrapper custom-theme" force-active style="margin:0 auto; background-color:var(--canvas-secondary-background-color);">' +
-				'<div class="background"></div>' +
+				'<div class="background"><div class="background-image"></div></div>' +
 				'<div class="window">' +
 					'<div class="header">' +
 						'<text></text>' +
@@ -891,7 +895,7 @@ function ApplyTheme () {
 		result = '\n/* Community Theme */\n' +
 				 '.theme-' + window.MW18ActiveTheme + '.visualcolors-standard {\n' + // Beginning
 				 '--desktop-background-image:' + image + ';\n' +
-				 '--desktop-background-image-opacity:' + $('#bodyimageopacity').val() + "%" + ';\n' +
+				 '--desktop-background-image-filter:' + $('#bodyimagefilter').val() + "%" + ';\n' +
 				 '--desktop-background-color:' + $('#bodybg').val()  + ';\n' +
 				 '--desktop-text-background-color:' + autocolor1  + ';\n' +
 				 '--desktop-background-mode:' + $('.bg_mode .cpe-select__value').attr('value')  + ';\n' +
@@ -992,7 +996,7 @@ function CopyTheme() {
     }
 		result = '.theme-' + window.MW18ActiveTheme + '.visualcolors-standard {\n' + // Beginning
 				 '--desktop-background-image:' + image + ';\n' +
-				 '--desktop-background-image-opacity:' + $('#bodyimageopacity').val() + "%" + ';\n' +
+				 '--desktop-background-image-filter:' + $('#bodyimagefilter').val() + "%" + ';\n' +
 				 '--desktop-background-color:' + $('#bodybg').val()  + ';\n' +
 				 '--desktop-text-background-color:' + autocolor1  + ';\n' +
 				 '--desktop-background-mode:' + $('.bg_mode .cpe-select__value').attr('value')  + ';\n' +
@@ -1055,7 +1059,7 @@ function PasteTheme() {
 	// Body Image
 	$('#bodyimage').val( getComputedStyle(document.querySelector('html')).getPropertyValue("--desktop-background-image") );
 	// Body Image Opacity
-	$('#bodyimageopacity').val( parseInt(getComputedStyle(document.querySelector('html')).getPropertyValue("--desktop-background-image-opacity")) );
+	$('#bodyimagefilter').val( getComputedStyle(document.querySelector('html')).getPropertyValue("--desktop-background-image-filter") );
 	// Body Image Mode
 	bg_mode = ["Standard", "Half", "Full"][["standard", "half", "full"].indexOf( getComputedStyle(document.querySelector('html')).getPropertyValue("--desktop-background-mode") ) ]
 	$('.bg_mode .cpe-select__value').attr('value', getComputedStyle(document.querySelector('html')).getPropertyValue("--desktop-background-mode") );
@@ -1203,7 +1207,7 @@ function TestTheme() {
     }
 		result = ':root {\n' + // Beginning
 				 '--desktop-background-image:' + image + '!important;\n' +
-				 '--desktop-background-image-opacity:' + $('#bodyimageopacity').val() + "%" + '!important;\n' +
+				 '--desktop-background-image-filter:' + $('#bodyimagefilter').val() + '!important;\n' +
 				 '--desktop-background-color:' + $('#bodybg').val()  + '!important;\n' +
 				 '--desktop-text-background-color:' + autocolor1  + '!important;\n' +
 				 '--desktop-background-mode:' + $('.bg_mode .cpe-select__value').attr('value')  + '!important;\n' +

@@ -109,7 +109,7 @@ Of course. It has been tested and it works. For instance, if you want to modify 
 ```css
 .theme-B.visualcolors-standard { 
 --desktop-background-image:url("loadbg_dev.png"); /* <image> */
---desktop-background-image-opacity:100%; /* <percentage> */
+--desktop-background-image-filter:opacity(100%); /* <filter-function> */
 --desktop-background-color:#441177; /* <color> */
 --desktop-background-mode:standard; /* standard | full */
 --desktop-background-size:cover; /* cover | contain | stretched | full */
@@ -137,7 +137,7 @@ Per-page theming is also supported. If you want to use a different theme for the
 ```css
 .theme-A.visualcolors-standard.config-rootpage-Sample_Test_Page {
 --desktop-background-image:url("loadbg_dev.png"); /* <image> */
---desktop-background-image-opacity:100%; /* <percentage> */
+--desktop-background-image-filter:opacity(100%); /* <filter-function> */
 --desktop-background-color:#441177; /* <color> */
 --desktop-background-mode:standard; /* standard | full */
 --desktop-background-size:cover; /* cover | contain | stretched | full */
@@ -182,6 +182,7 @@ Each release of Evelution comes with different Sevelution releases, to name a fe
 - 2.7.0 = Codenamed Zinc = Introduced in Evelution 33.0.0 - Introduces the Inactive state of Luna Theming for CPE Language and dedicated accent colors for Luna Theming
 - 2.8.0 = Codenamed Yttrium = Introduced in Evelution 43.0.0 - Introduces custom acryllic transparency along with a new Luna Theming System (Compatible with earlier Servelution Clients)
 - 3.0.0 = Codenamed Zirconium = Introduced in Evelution 46.0.0 - Introduces Custom Primary font for each theme and CPE Language 2.0
+- 3.1.0 = Codenamed Niobium = Introduced in Evelution 51.0.0 - Introduces background image filters
 
 ### The Luna Theming System
 Evelution comes with its own theming system, the Luna theming. It consists of Two elements, the Luna Lovit and the Luna Lavccent. Luna Lovit conists of elements below it blurred for legibility of text. Luna Lavccent is an additional color that will replace the Neutral Color when enabled.

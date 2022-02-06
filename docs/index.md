@@ -37,7 +37,7 @@ If you want to create a new theme without using CPE Theme Designer (i.e. Due to 
 ```css
 .theme-A.visualcolors-standard { /* Replace .theme-A with either .theme-B, .theme-C, .theme-D, .theme-E, .theme-F, .theme-G, .theme-H if you want to target the other 7 slots, otherwise don't replace .theme-A with anything */ 
 --desktop-background-image:url("loadbg_dev.png"); /* <image> */
---desktop-background-image-opacity:100%; /* <percentage> */
+--desktop-background-image-filter:opacity(100%); /* <filter-function> */
 --desktop-background-color:#441177; /* <color> */
 --desktop-background-mode:standard; /* standard | full */
 --desktop-background-size:cover; /* cover | contain | stretched | full */

@@ -150,7 +150,7 @@ font-family:Trebuchet MS;
 --highlight-background-color:auto;
 --inactive-text-background-color:auto;
 --canvas-text-background-color:auto;
---desktop-background-image-opacity:100%;
+--desktop-background-image-filter:opacity(100%);
 --desktop-text-background-color:auto;
 --desktop-background-mode:standard;
 --desktop-background-alignment:var(--desktop-background-vertical-alignment) var(--desktop-background-horizontal-alignment);
@@ -418,13 +418,12 @@ body {
     --theme-message-label: var(--message-foreground-color);
 	--theme-community-header-color:var(--desktop-text-background-color);
 	--theme-community-header-color--hover:var(--desktop-text-background-color-hover);
-	--theme-background-image-opacity:var(--desktop-background-image-opacity);
+	--theme-background-image-opacity:100%;
 }
 
 
 :root:not(.theming-loaded) body {
 --transitioner:none!Important;
---desktop-background-image-opacity:100%;
 --desktop-background-color-hover:#11041E;
 --desktop-background-color-rgb:68,17,119;
 --desktop-text-background-color-hover:#FFFFFF;
@@ -461,7 +460,7 @@ body {
 	}
 	:root {
 		--desktop-background-image:url("")!important;
-		--desktop-background-image-opacity:100%!important;
+		--desktop-background-image-filter:none!important;
 		--desktop-background-color:buttonface!important;
 		--desktop-text-background-color:buttontext!important;
 		--desktop-background-mode:standard!important;
@@ -477,6 +476,7 @@ body {
 		--highlight-background-color:highlight!important;
 		--active-title-background-color:highlight!important;
 		--inactive-title-background-color:graytext!important;
+		--custom-font:""!important;
 		--custom-secondary-font:""!important;
 		--border-radius:3px!important;
 		--icon-filter:opacity(1)!important;
@@ -553,7 +553,7 @@ container {
 --foreign-fonts:"Vollkorn", "Noto Serif JP", "Song Myung", "Pridi", "Amiri", "Ramaraja", "Catamaran", "Martel", "Noto Serif SC", "Noto Serif TC", "Hind Siliguri", "David Libre", "Benne", "Hanuman", "Manjari", "Padauk", "Baloo Bhaina 2";
 }
 
- .body-background {
+ .desktop-background {
 	top:0;
 	width:100%;
 	height:var(--bg-overlay-size);
@@ -567,7 +567,7 @@ container {
 	background-image:var(--desktop-background-image);
 	background-color:transparent;
 	pointer-events:none;
-	opacity:var(--desktop-background-image-opacity);
+	filter:Var(--desktop-background-image-filter,none);
 	image-rendering:initial;                  /* CSS4 Proposed  */
 	-qq-image-blurring:tick;                  /* 4x4 Web 1-2    */
 }
