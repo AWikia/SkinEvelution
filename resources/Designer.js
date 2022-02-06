@@ -1004,7 +1004,7 @@ function CopyTheme() {
 				 '--canvas-background-color:' + $('#pagebg').val() + ';\n' +
 				 '--inactive-text-background-color:' + autocolor2  + ';\n' +
 				 '--canvas-text-background-color:' + autocolor3  + ';\n' +
-				 '--highlight-background-color:' + $('#accentcolor').val() + ';\n' +
+				 '--highlight-background-color:' + autocolor6 + ';\n' +
 				 '--hyperlink-background-color:' + $('#saccentcolor').val() + ';\n' +
 				 '--active-title-background-color:' + autocolor5  + ';\n' +
 				 '--inactive-title-background-color:' + autocolor4  + ';\n' +
