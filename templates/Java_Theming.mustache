@@ -39,13 +39,16 @@ var contrastVisual = 'contrast';
 */
 
 var visualColors = [
+					['cubes', 'Cubes', 'grid_view'],
 					['factorycolors', 'Factory', 'android'],
 					['forced', 'Forced', 'contrast'],
 					['techno', 'Techno', 'explore'],
 					['retro', 'Retro', 'smart_toy'],
 					['retro2', 'Retro II', 'smart_toy'],
-					['neon', 'Neon', 'lightbulb'],
-					['evelution', 'Evelution OS', 'computer']
+					['neonlight', 'Neon Light', 'lightbulb'],
+					['neon', 'Neon Dark', 'lightbulb'],
+					['evelution', 'Evelution OS Light', 'computer'],
+					['evelutiondark', 'Evelution OS Dark', 'computer']
 				    ];
 
 // MediaWiki
@@ -220,7 +223,7 @@ function SupportsColorContrast() {
 }
 
 function ForcedColors() {
-	return ( ( window.matchMedia('(forced-colors: active)').matches ) || (document.querySelector("container.no-color-management") ) )
+	return ( ( window.matchMedia('(forced-colors: active)').matches ) || (document.querySelector("container.no-color-management") ) || (document.querySelector("html.visualcolors-nocolormanagement")  ) )
 }
 
 /* Visual Styles */

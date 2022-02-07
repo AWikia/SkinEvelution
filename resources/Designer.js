@@ -895,7 +895,7 @@ function ApplyTheme () {
 		result = '\n/* Community Theme */\n' +
 				 '.theme-' + window.MW18ActiveTheme + '.visualcolors-standard {\n' + // Beginning
 				 '--desktop-background-image:' + image + ';\n' +
-				 '--desktop-background-image-filter:' + $('#bodyimagefilter').val() + "%" + ';\n' +
+				 '--desktop-background-image-filter:' + $('#bodyimagefilter').val() + ';\n' +
 				 '--desktop-background-color:' + $('#bodybg').val()  + ';\n' +
 				 '--desktop-text-background-color:' + autocolor1  + ';\n' +
 				 '--desktop-background-mode:' + $('.bg_mode .cpe-select__value').attr('value')  + ';\n' +
@@ -996,7 +996,7 @@ function CopyTheme() {
     }
 		result = '.theme-' + window.MW18ActiveTheme + '.visualcolors-standard {\n' + // Beginning
 				 '--desktop-background-image:' + image + ';\n' +
-				 '--desktop-background-image-filter:' + $('#bodyimagefilter').val() + "%" + ';\n' +
+				 '--desktop-background-image-filter:' + $('#bodyimagefilter').val() + ';\n' +
 				 '--desktop-background-color:' + $('#bodybg').val()  + ';\n' +
 				 '--desktop-text-background-color:' + autocolor1  + ';\n' +
 				 '--desktop-background-mode:' + $('.bg_mode .cpe-select__value').attr('value')  + ';\n' +
