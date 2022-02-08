@@ -1205,7 +1205,7 @@ function TestTheme() {
     } else {
 		var customfont = $('#secondfont').val();
     }
-		result = ':root {\n' + // Beginning
+		result = '.theme-A, .theme-B, .theme-C, .theme-D, .theme-E, .theme-F, .theme-G, .theme-H {\n' + // Beginning
 				 '--desktop-background-image:' + image + '!important;\n' +
 				 '--desktop-background-image-filter:' + $('#bodyimagefilter').val() + '!important;\n' +
 				 '--desktop-background-color:' + $('#bodybg').val()  + '!important;\n' +

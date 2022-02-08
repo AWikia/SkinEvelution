@@ -120,11 +120,35 @@ Aleo = Latin
 
 
 
-:root { /* Standard */
+.theme-A, .theme-B, .theme-C, .theme-D, .theme-E, .theme-F, .theme-G, .theme-H { /* Standard */
 --desktop-background-image:url("loadbg_dev.png");
 --desktop-background-color:#441177;
 --hyperlink-background-color:#dd2300;
 --canvas-background-color:#f1f2f3;
+/* Aliases */
+--highlight-background-color:auto;
+--inactive-text-background-color:auto;
+--canvas-text-background-color:auto;
+--desktop-background-image-filter:opacity(100%);
+--desktop-text-background-color:auto;
+--desktop-background-mode:standard;
+--desktop-background-horizontal-alignment:center;
+--desktop-background-vertical-alignment:center;
+--desktop-background-size:cover;
+--desktop-background-no-horizontal-tiling:false;
+--desktop-background-no-vertical-tiling:false;
+--active-title-background-color:auto;
+--inactive-title-background-color:auto;
+--custom-font:"Roboto";
+--custom-secondary-font:"Rubik";
+--border-radius:3px;
+--icon-filter:opacity(1);
+--icon-filter-hover:opacity(0.8);
+--icon-filter-duration:300ms;
+--icon-filter-delay:0;
+--system-acryllic-opacity:0.6;
+--system-visual-style:standard;
+
 /*--highlight-background-color:#dd8300;
 --active-title-background-color:#b88300;*/
 }
@@ -146,23 +170,12 @@ font-family:Trebuchet MS;
     --dark-theme-foreground-color-hover: #CCCCCC!important;
     --dark-theme-foreground-color-rgb: 255,255,255!important;
     --dark-theme-foreground-color-hover-rgb: 204,204,204!important;
-/* Aliases */
---highlight-background-color:auto;
---inactive-text-background-color:auto;
---canvas-text-background-color:auto;
---desktop-background-image-filter:opacity(100%);
---desktop-text-background-color:auto;
---desktop-background-mode:standard;
+/* BG Align */
 --desktop-background-alignment:var(--desktop-background-vertical-alignment) var(--desktop-background-horizontal-alignment);
---desktop-background-horizontal-alignment:center;
---desktop-background-vertical-alignment:center;
---desktop-background-size:cover;
---desktop-background-no-horizontal-tiling:false;
---desktop-background-no-vertical-tiling:false;
+/* Acryllic */
 --backdrop-filter:blur( calc(30px * calc(1.2 - var(--system-acryllic-opacity) ) ) ) sepia(3%) contrast(103%) invert(3%) grayscale(3%) saturate(103%) hue-rotate(0.3deg) brightness(103%);
+/* Transition */
 --transitioner:cubic-bezier(0.25,0.25,0,1);
---system-acryllic-opacity:0.6;
---system-visual-style:standard;
 /* Fonts */
 --main-fonts:"Roboto", "Inter"; /* Empty but other languages will depend on it */
 --foreign-fonts:"Roboto", "M PLUS 1p",  "Nanum Gothic", "Prompt", "Cairo", "Ramabhadra", "Catamaran", "Noto Sans", "Noto Sans SC", "Noto Sans TC", "Noto Sans HK", "Hind Siliguri", "Baloo Tamma 2", "Kantumruy", "Manjari", "Padauk", "Baloo Bhaina 2", "Alef";
@@ -170,26 +183,18 @@ font-family:Trebuchet MS;
 --secondary-foreign-fonts:"M PLUS Rounded 1c", "Jua", "Mitr", "NTR", "Pavanam", "Mukta", "Noto Sans SC", "Noto Sans TC", "Noto Sans HK", "Baloo Da 2", "Baloo Tamma 2", "Battambang", "Baloo Chettan 2", "Padauk", "Baloo Bhaina 2", "Exo 2";
 --main-secondary-fonts:"Rubik", "Helvetica Neue", "Helvetica", "Arial"; /* Empty but other languages will depend on it */
 --secondary-font:var(--custom-secondary-font), var(--main-secondary-fonts), var(--secondary-foreign-fonts);
---active-title-background-color:auto;
---inactive-title-background-color:auto;
---custom-font:"";
---custom-secondary-font:"";
---border-radius:3px;
---icon-filter:opacity(1);
---icon-filter-hover:opacity(0.8);
---icon-filter-duration:300ms;
---icon-filter-delay:0;
 --header-size:160px;
-/* Theme-related */
---bg-size:cover;
---bg-tile-x:no-repeat;
---bg-tile-y:no-repeat;
---bg-overlay-display:block;
---bg-overlay-size:var(--header-size);
 /* Tickboxes */
 --checkbox-checked-tick:url("Tickbox.svg");
 --checkbox-half-tick:url("Tickbox2.svg");
 --checkbox-radio-tick:url("Tickbox3.svg");
+	/* Theme-related 
+	--bg-size:cover;
+	--bg-tile-x:no-repeat;
+	--bg-tile-y:no-repeat;
+	--bg-overlay-display:block;
+	--bg-overlay-size:var(--header-size);
+*/
 /* Shapes */
 --cpe-teadrop:url("data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHdpZHRoPSI4Mi42NjY2NyIgaGVpZ2h0PSI4Mi42NjY2NyIgdmlld0JveD0iMCwwLDgyLjY2NjY3LDgyLjY2NjY3Ij4NCgk8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMTk4LjY2NjY2LC0xMzguNjY2NjYpIj4NCgkJPGcgZGF0YS1wYXBlci1kYXRhPSJ7JnF1b3Q7aXNQYWludGluZ0xheWVyJnF1b3Q7OnRydWV9IiBmaWxsPSIjMDAwMDAwIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMCIgc3Ryb2tlLWxpbmVjYXA9ImJ1dHQiIHN0cm9rZS1saW5lam9pbj0ibWl0ZXIiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgc3Ryb2tlLWRhc2hhcnJheT0iIiBzdHJva2UtZGFzaG9mZnNldD0iMCIgc3R5bGU9Im1peC1ibGVuZC1tb2RlOiBub3JtYWwiPg0KCQkJPHBhdGggZmlsbD0iIzAwMDAwMCIgZD0iTTE5OC42NjY2NywxODBjMCwtMjIuODI3NzcgNDEuMzMzMzQsLTQxLjMzMzM0IDQxLjMzMzM0LC00MS4zMzMzNGMwLDAgNDEuMzMzMzMsMTguNTA1NTcgNDEuMzMzMzMsNDEuMzMzMzRjMCwyMi44Mjc3NyAtMTguNTA1NTYsNDEuMzMzMzQgLTQxLjMzMzMzLDQxLjMzMzM0Yy0yMi44Mjc3NywwIC00MS4zMzMzNCwtMTguNTA1NTcgLTQxLjMzMzM0LC00MS4zMzMzNHoiLz4NCgkJPC9nPg0KCTwvZz4NCjwvc3ZnPg==");
 /* Scrollbar */
@@ -199,6 +204,8 @@ font-family:Trebuchet MS;
 	:root {
 	--main-fonts:"Helvectica Neue", "Helvetica", "Arial", sans-serif; /* Empty but other languages will depend on it */
 	--main-secondary-fonts:system-ui, BlinkMacSystemFont, -apple-system; /* Empty but other languages will depend on it */
+	--font-family:var(--main-fonts), sans-serif!important;
+	--secondary-font:var(--main-secondary-fonts)!important;
 	}
 }
 
@@ -460,7 +467,7 @@ body {
 	.forced-colors-off {
 		display:none!important;
 	}
-	:root {
+	.theme-A, .theme-B, .theme-C, .theme-D, .theme-E, .theme-F, .theme-G, .theme-H {
 		--desktop-background-image:url("")!important;
 		--desktop-background-image-filter:none!important;
 		--desktop-background-color:buttonface!important;
@@ -491,10 +498,14 @@ body {
 }
 
 
-	.visualcolors-nocolormanagement .color-management-on {
-		display:none!important;
-	}
-	.visualcolors-nocolormanagement {
+	.visualcolors-nocolormanagement.theme-A, 
+	.visualcolors-nocolormanagement.theme-B, 
+	.visualcolors-nocolormanagement.theme-C, 
+	.visualcolors-nocolormanagement.theme-D, 
+	.visualcolors-nocolormanagement.theme-E, 
+	.visualcolors-nocolormanagement.theme-F, 
+	.visualcolors-nocolormanagement.theme-G, 
+	.visualcolors-nocolormanagement.theme-H {
 		--desktop-background-image:url("")!important;
 		--desktop-background-image-filter:none!important;
 		--desktop-background-color:buttonface!important;
@@ -541,11 +552,11 @@ html {
 	/* Width */
 	--scrollbar-width:17px;
 	/* Track */
-	--scrollbar-track-color-1:rgb(var(--desktop-background-color-rgb));
+	--scrollbar-track-color-1:var(--desktop-background-color);
 	--scrollbar-track-color-2:var(--desktop-background-color-hover);
 	--scrollbar-track-text:var(--desktop-foreground-color);
 	/* Thumb */
-	--scrollbar-thumb-color-1:rgb(var(--desktop-text-background-color-rgb));
+	--scrollbar-thumb-color-1:var(--desktop-text-background-color);
 	--scrollbar-thumb-color-2:var(--desktop-text-background-color-hover);
 	--scrollbar-thumb-text:var(--desktop-text-foreground-color);
 	position:relative;
