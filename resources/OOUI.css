@@ -443,6 +443,12 @@ body .mw-ui-button:not(:disabled) {
 	--canvas-text-background-color-hover:var(--hyperlink-background-color-hover)!important;
 }
 
+body .oo-ui-buttonElement.oo-ui-labelElement > input.oo-ui-buttonElement-button, 
+body .oo-ui-buttonElement.oo-ui-labelElement > .oo-ui-buttonElement-button > .oo-ui-labelElement-label,
+body .oo-ui-labelElement .oo-ui-labelElement-label {
+	line-height:22px;
+}
+
 /* Destructive */
 .oo-ui-flaggedElement-destructive,
 .mw-ui-destructive  {
@@ -2048,4 +2054,60 @@ body .cnotice {
 
 .theme-fandomdesktop-dark #cnotice-toggle-box img {
 	filter:invert(1) hue-rotate(180deg);
+}
+
+/* Search Suggestion */
+body .suggestions-result,
+body .results-info {
+	color:var(--canvas-text-background-color);
+}
+
+body .suggestions-results,
+body .suggestions-special {
+	border-color:var(--inactive-text-background-color);
+	color:var(--canvas-text-background-color);
+	background-color:var(--canvas-background-color);
+}
+
+body .suggestions a.mw-searchSuggest-link, 
+body .suggestions a.mw-searchSuggest-link:hover, 
+body .suggestions a.mw-searchSuggest-link:active, 
+body .suggestions a.mw-searchSuggest-link:focus,
+body .suggestions-special .special-query {
+	color:var(--canvas-text-background-color);
+}
+
+body .suggestions-special .special-label {
+	color:var(--canvas-text-background-color-hover);
+}
+
+body .suggestions-result-current .special-label, 
+body .suggestions-result-current .special-query {
+	color:var(--highlight-foreground-color);
+}
+
+body .suggestions-result-current {
+	background-color:var(--highlight-background-color);
+	color:var(--highlight-foreground-color);
+}
+
+body.skin-evelution .suggestions {
+	top:auto!important;
+	bottom:105px!important;
+}
+
+body .mw-search-profile-tabs {
+	border-radius:var(--border-radius);
+	border-color:var(--inactive-text-background-color);
+	color:var(--canvas-text-background-color);
+	background-color:var(--canvas-secondary-background-color);
+}
+
+body .search-types .current a {
+	color:var(--canvas-text-background-color);
+	font-weight:bold;
+}
+
+body .mw-search-result-data {
+	color:var(--success-background-color);
 }
