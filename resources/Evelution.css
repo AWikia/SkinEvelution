@@ -372,7 +372,7 @@ container > main {
 		-webkit-backdrop-filter:none;
 		backdrop-filter:none;
 	}
-	
+
 	.evelution-sidebar::after {
 		content:"";
 		display:block;
@@ -586,8 +586,8 @@ margin-bottom:0px;
   background-color:transparent;
 }
 
-.single-header.has-minibar .evelution-content,
-.action-edit .has-minibar .evelution-content {
+.has-minibar .single-header .evelution-content,
+.action-edit.has-minibar .evelution-content {
 	margin-top:var(--minibar-size);
 }
 
@@ -618,34 +618,34 @@ position:relative;
 }
 
 /* Wide */
-	container.is-wide [responsive],
+	body.is-wide [responsive],
 	.forced-full [responsive] {
 		width:calc(100% - 45px);
 	}
 
-	container.is-wide  .top-gap .cpe-banner-notification__container#floatingbanner,
-	.forced-full .top-gap .cpe-banner-notification__container#floatingbanner {
+	body.is-wide  .top-gap .cpe-banner-notification__body#floatingbanner,
+	.forced-full .top-gap .cpe-banner-notification__body#floatingbanner {
 		width:calc(100% - 45px);
 	}
 	
-	container.is-wide .wide-off {
+	body.is-wide .wide-off {
 		display:none!important;
 	}
-	container:not(.is-wide) .wide-on {
+	body:not(.is-wide) .wide-on {
 		display:none!important;
 	}
 
-	container.has-right-rail .rail-off {
+	body.has-right-rail .rail-off {
 		display:none!important;
 	}
-	container:not(.has-right-rail) .rail-on {
+	body:not(.has-right-rail) .rail-on {
 		display:none!important;
 	}
 	
-	container.has-left-rail .rail2-off {
+	body.has-left-rail .rail2-off {
 		display:none!important;
 	}
-	container:not(.has-left-rail) .rail2-on {
+	body:not(.has-left-rail) .rail2-on {
 		display:none!important;
 	}
 
@@ -675,7 +675,8 @@ width:100%;
   border-radius:calc(var(--border-radius) * 2);
   width:100%;
   display:flex;
-  flex-direction:column
+  flex-direction:column;
+	position:relative;
 }
 
 
@@ -755,7 +756,7 @@ font-weight:bold;
     transition:top 400ms var(--transitioner);
 }
 
-container:not(.has-minibar) .evelution-floating-actions-container {
+body:not(.has-minibar) .evelution-floating-actions-container {
 	top:10px;
 }
 
@@ -768,12 +769,12 @@ container:not(.has-minibar) .evelution-floating-actions-container {
 @media only screen and (max-width:759px) {
 	/* With Minibar */
 	@media only screen and (max-height:339px) {
-		container .evelution-floating-actions .cpe-floating-button {
+		body .evelution-floating-actions .cpe-floating-button {
 			width:18px;
 			height:18px;
 		}
 		
-		container .evelution-floating-actions .cpe-floating-button .cpe-icon{
+		body .evelution-floating-actions .cpe-floating-button .cpe-icon{
 			--icon-size:0.5;
 		}
 
@@ -782,12 +783,12 @@ container:not(.has-minibar) .evelution-floating-actions-container {
 
 
 	@media only screen and (min-height:340px) and (max-height:429px) {
-		container .evelution-floating-actions .cpe-floating-button {
+		body .evelution-floating-actions .cpe-floating-button {
 			width:27px;
 			height:27px;
 		}
 		
-		container .evelution-floating-actions .cpe-floating-button .cpe-icon {
+		body .evelution-floating-actions .cpe-floating-button .cpe-icon {
 			--icon-size:0.7;
 		}
 
@@ -798,12 +799,12 @@ container:not(.has-minibar) .evelution-floating-actions-container {
 @media only screen and (min-width:760px) {
 	/* With Minibar */
 	@media only screen and (max-height:389px) {
-		container.has-minibar .evelution-floating-actions .cpe-floating-button {
+		body.has-minibar .evelution-floating-actions .cpe-floating-button {
 			width:18px;
 			height:18px;
 		}
 		
-		container.has-minibar .evelution-floating-actions .cpe-floating-button .cpe-icon{
+		body.has-minibar .evelution-floating-actions .cpe-floating-button .cpe-icon{
 			--icon-size:0.5;
 		}
 
@@ -812,12 +813,12 @@ container:not(.has-minibar) .evelution-floating-actions-container {
 
 
 	@media only screen and (min-height:390px) and (max-height:479px) {
-		container.has-minibar .evelution-floating-actions .cpe-floating-button {
+		body.has-minibar .evelution-floating-actions .cpe-floating-button {
 			width:27px;
 			height:27px;
 		}
 		
-		container.has-minibar .evelution-floating-actions .cpe-floating-button .cpe-icon {
+		body.has-minibar .evelution-floating-actions .cpe-floating-button .cpe-icon {
 			--icon-size:0.7;
 		}
 
@@ -825,12 +826,12 @@ container:not(.has-minibar) .evelution-floating-actions-container {
 
 	/* Without Minibar */
 	@media only screen and (max-height:339px) {
-		container:not(.has-minibar) .evelution-floating-actions .cpe-floating-button {
+		body:not(.has-minibar) .evelution-floating-actions .cpe-floating-button {
 			width:18px;
 			height:18px;
 		}
 		
-		container:not(.has-minibar) .evelution-floating-actions .cpe-floating-button .cpe-icon{
+		body:not(.has-minibar) .evelution-floating-actions .cpe-floating-button .cpe-icon{
 			--icon-size:0.5;
 		}
 
@@ -839,12 +840,12 @@ container:not(.has-minibar) .evelution-floating-actions-container {
 
 
 	@media only screen and (min-height:340px) and (max-height:429px) {
-		container:not(.has-minibar) .evelution-floating-actions .cpe-floating-button {
+		body:not(.has-minibar) .evelution-floating-actions .cpe-floating-button {
 			width:27px;
 			height:27px;
 		}
 		
-		container:not(.has-minibar) .evelution-floating-actions .cpe-floating-button .cpe-icon {
+		body:not(.has-minibar) .evelution-floating-actions .cpe-floating-button .cpe-icon {
 			--icon-size:0.7;
 		}
 
@@ -892,7 +893,6 @@ backdrop-filter:var(--backdrop-filter);
 		border-bottom-left-radius:0;
 		border-bottom-right-radius:0;
 	}
-
 
 .evelution-page-header-main {
 align-self: flex-end;
@@ -1065,27 +1065,6 @@ gap:2px;
 	margin-bottom:0;
 }
 
-/* Minibar and Navigation container */
-.evelution-minibar-navigation-background {
-	position:fixed;
-	height:var(--minibar-size);
-	display:none;
-	background-color:rgba(var(--luna-background-color-rgb), var(--dropdown-opacity));
-	color:var(--luna-text-background-color);
-	-webkit-backdrop-filter:var(--backdrop-filter);
-	backdrop-filter:var(--backdrop-filter);
-	top:0;
-	transition:transform 400ms var(--transitioner), top 400ms var(--transitioner), box-shadow 400ms var(--transitioner), background-color 400ms var(--transitioner);
-	width:100%;
-	box-shadow: 0 0 3px var(--canvas-text-background-color), 0 0 3px var(--canvas-background-color);
-	z-index:98;
-}
-
-@media only screen and (max-width:759px) {
-	.evelution-minibar-navigation-background {
-		display:block;
-	}
-}
 
 /* Title Logo */
 .title-logo {
@@ -1233,13 +1212,9 @@ gap:2px;
 		backdrop-filter:var(--backdrop-filter);
 	}
 
-.evelution-minibar .cpe-dropdown__content,
-.evelution-minibar .cpe-dropdown-level-2__content {
-	--dropdown-opacity:0.95;
-}
 
-	container.has-minibar .evelution-minibar.col-nav,
-	container:not(.has-minibar) .evelution-minibar.full-nav  {
+	body.has-minibar .evelution-minibar.col-nav,
+	body:not(.has-minibar) .evelution-minibar.full-nav  {
 		--tr-scale:0;
 	/* 		top:calc(-4px - var(--minibar-size))!important;
 		pointer-events:none!important;
@@ -2288,6 +2263,7 @@ border-top-right-radius:0;
 	margin-bottom:15px;
 	font-size:13px;
 	text-shadow:none;
+	position:relative;
 	flex-direction:column;
 	color:var(--luna-text-background-color);
 	border:1px solid var(--luna-border-background-color);
@@ -2493,7 +2469,7 @@ margin-left:1px;
 
 
 @media only screen and (min-width:1020px) {
-	 container:not(.has-right-rail) .evelution-rail-wrapper.evelution-right-rail {
+	 body:not(.has-right-rail) .evelution-rail-wrapper.evelution-right-rail {
 		padding-left:0;
 		padding-right:0;
 		pointer-events: none;
@@ -2502,7 +2478,7 @@ margin-left:1px;
 	}
 	
 
-	 container:not(.has-left-rail) .evelution-rail-wrapper.evelution-left-rail {
+	 body:not(.has-left-rail) .evelution-rail-wrapper.evelution-left-rail {
 		padding-left:0;
 		padding-right:0;
 		pointer-events: none;
@@ -2519,8 +2495,8 @@ margin-left:1px;
 
 	@media only screen and (min-width:1500px) /* was 1760 */ {
 
-		.action-view:not(.ns--1):not(.ns-6):not(.ns-8):not(.mainpage) container.has-left-rail:not(.no-rail) #p-tb,
-		.action-view:not(.ns--1):not(.ns-6):not(.ns-8):not(.mainpage) container.has-left-rail:not(.no-rail) .evelution-floating-actions .ftoc {
+		.action-view:not(.ns--1):not(.ns-6):not(.ns-8):not(.mainpage).has-left-rail container:not(.no-rail) #p-tb,
+		.action-view:not(.ns--1):not(.ns-6):not(.ns-8):not(.mainpage).has-left-rail container:not(.no-rail) .evelution-floating-actions .ftoc {
 			display:none!important;
 		}
 

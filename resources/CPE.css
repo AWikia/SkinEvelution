@@ -174,6 +174,7 @@ font-family:Trebuchet MS;
 --desktop-background-alignment:var(--desktop-background-vertical-alignment) var(--desktop-background-horizontal-alignment);
 /* Acryllic */
 --backdrop-filter:blur( calc(30px * calc(1.2 - var(--system-acryllic-opacity) ) ) ) sepia(3%) contrast(103%) invert(3%) grayscale(3%) saturate(103%) hue-rotate(0.3deg) brightness(103%);
+--super-backdrop-filter:blur( calc(40px * calc(1.2 - var(--system-acryllic-opacity) ) ) );
 /* Transition */
 --transitioner:cubic-bezier(0.25,0.25,0,1);
 /* Fonts */
@@ -300,6 +301,8 @@ body [force-active] {
 /* Unaccented (Unfocused) */
 body:not(:focus):not(:focus-within),
 body [force-inactive] {
+	--dropdown-opacity:1;
+	--mica-opacity:1;
 	--luna-background-color:var(--canvas-background-color);
 	--luna-background-color-rgb:var(--canvas-background-color-rgb);
 	--luna-background-color-hover:var(--canvas-background-color-hover);
@@ -582,6 +585,7 @@ body {
   --cpe-text-cursor:text;
   --cpe-hand-cursor:pointer;
 	--dropdown-opacity:var(--system-acryllic-opacity);
+	--mica-opacity:var(--system-acryllic-opacity);
 	accent-color:var(--highlight-background-color);
   margin:0;
 	overflow-x:hidden!important;
@@ -628,6 +632,116 @@ container {
 	image-rendering:initial;                  /* CSS4 Proposed  */
 	-qq-image-blurring:tick;                  /* 4x4 Web 1-2    */
 }
+
+ #LunaLevit {
+	top:0;
+	width:100%;
+	height:100%;
+	position:fixed!Important;
+	display:block;
+	content:"";
+	z-index:-2;
+	background-color:var(--desktop-background-color);
+	pointer-events:none;
+	image-rendering:initial;                  /* CSS4 Proposed  */
+	-qq-image-blurring:tick;                  /* 4x4 Web 1-2    */
+}
+
+	.has-levit {
+		position:relative;
+		z-index:1;
+	}
+
+
+.has-levit::after {
+		content:"";
+		display:block;
+		width:100%;
+		height:100%;
+		top:0;
+		left:0;
+		position:absolute;
+		filter:var(--super-backdrop-filter);
+		background-image:-moz-element(#LunaLevit3),-moz-element(#LunaLevit2);
+		background-image:element(#LunaLevit3),element(#LunaLevit2);
+		background-color:var(--desktop-background-color);
+		background-attachment:fixed;
+		z-index:-1;
+		opacity:calc(1 - var(--mica-opacity));
+
+}
+/*
+@supports ((backdrop-filter:none) or (-webkit-backdrop-filter:none)) {
+	.has-levit::after {
+		filter:none;
+	}
+
+	.has-levit {
+		backdrop-filter:var(--super-backdrop-filter);
+		-webkit-backdrop-filter:var(--super-backdrop-filter);
+	}	
+}
+*/
+
+/* Reduced Transparency */
+@media (prefers-reduced-transparency:reduce) {
+	body,
+	.cpe-dropdown__content,
+	.cpe-dropdown__content .cpe-list.is-linked .cpe-dropdown-level-2 .cpe-dropdown-level-2__content {
+		--dropdown-opacity:1!important;
+		--mica-opacity:1!important;
+	}
+
+	:root body {
+		--backdrop-filter:none!important;
+		--super-backdrop-filter:none!important;
+	}
+
+}
+
+
+@supports (not ((backdrop-filter:none) or (-webkit-backdrop-filter:none))) {
+	body,
+	.cpe-dropdown__content,
+	.cpe-dropdown__content .cpe-list.is-linked .cpe-dropdown-level-2 .cpe-dropdown-level-2__content {
+		--dropdown-opacity:1!important;
+	}
+
+
+	:root body {
+		--backdrop-filter:none!important;
+	}
+}
+
+
+
+@supports (not ((background-image:-moz-element(#LunaLevit)) or (background-image:element(#LunaLevit)))) {
+	body,
+	.cpe-dropdown__content,
+	.cpe-dropdown__content .cpe-list.is-linked .cpe-dropdown-level-2 .cpe-dropdown-level-2__content {
+		--mica-opacity:1!important;
+	}
+
+
+	:root body {
+		--super-backdrop-filter:none!important;
+	}
+	.has-levit::after {
+		content:none!important;
+	}
+
+}
+
+
+
+@media (prefers-reduced-motion: reduce) {
+*,:before,:after {
+	transition-property:color,background-color,border-color,column-rule-color,outline-color,fill,text-shadow,box-shadow,visibility,display, opacity!important;
+	transition-duration:0ms!important;
+	animation:none!important;
+}
+}
+
 
 
 .secondary, h1, h2, h3, h4, h5, h6 {
@@ -3318,6 +3432,7 @@ input[type="range"]::-moz-range-progress {
 	.parmalution-ready .cpe-dropdown__content,
 	.parmalution-ready .cpe-dropdown__content .cpe-list.is-linked .cpe-dropdown-level-2 .cpe-dropdown-level-2__content   {
 		--dropdown-opacity:1!important;
+		--mica-opacity:1!important;
 	}
 
 	.skin-tunic,

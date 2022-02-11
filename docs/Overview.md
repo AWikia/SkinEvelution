@@ -186,16 +186,28 @@ Each release of Evelution comes with different Sevelution releases, to name a fe
 - 2.8.0 = Codenamed Yttrium = Introduced in Evelution 43.0.0 - Introduces custom acryllic transparency along with a new Luna Theming System (Compatible with earlier Servelution Clients)
 - 3.0.0 = Codenamed Zirconium = Introduced in Evelution 46.0.0 - Introduces Custom Primary font for each theme and CPE Language 2.0
 - 3.1.0 = Codenamed Niobium = Introduced in Evelution 51.0.0 - Introduces background image filters
+- 3.2.0 = Codenamed Molybdenum = Introduced in Evelution 53.0.0 - Introduces Mica (Low-Level Acryllic)
 
 ### The Luna Theming System
-Evelution comes with its own theming system, the Luna theming. It consists of Two elements, the Luna Lovit and the Luna Lavccent. Luna Lovit conists of elements below it blurred for legibility of text. Luna Lavccent is an additional color that will replace the Neutral Color when enabled.
+Evelution comes with its own theming system, the Luna theming. It consists of three elements, the Luna Lovit, the Luna Levit and the Luna Lavccent:
+- Luna Lovit conists of elements below it blurred for legibility of text. 
+- Luna Levit conists of an opaque material that includes the background container elements (Bg color, Gradient Overlay and Background Image) below the content blurred for legibility of text. 
+- Luna Lavccent is an additional color that will replace the Neutral Color when enabled.
 
 Luna Lovit will display as a fallback Solid Color when:
 - Running a visual style other than Standard
 - System's Reduced transparcney is enabled
+- App workspace is not focused
 - App runs on a low-end skin (i.e. Tunic) or under Ivilution
 - App runs on a browser without support of ``backdrop-filter``
 
+Luna Levit will display as a fallback Solid Color when:
+- Running a visual style other than Standard
+- System's Reduced transparcney is enabled
+- App workspace is not focused or runs fullscreen
+- App runs on a low-end skin (i.e. Tunic) or under Ivilution
+- App runs on a browser without support of ``element()``
+- App runs on a Servelution version lower than 3.2.0
 
 Luna Lavccent will display as a fallback neutral color (Canvas Secondary Color) when:
 - App-wide Accented Mode is disabled (And is the default ones)

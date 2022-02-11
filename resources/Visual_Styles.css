@@ -66,50 +66,14 @@ filter:none!important;
 .visualstyle-contrast .cpe-dropdown__content,
 .visualstyle-contrast .cpe-dropdown__content .cpe-list.is-linked .cpe-dropdown-level-2 .cpe-dropdown-level-2__content {
 	--dropdown-opacity:1!important;
+	--mica-opacity:1!important;
 }
 
 
 .visualstyle-lite body,
 .visualstyle-contrast body {
 	--backdrop-filter:none!important;
-}
-
-
-/* Reduced Transparency */
-@media (prefers-reduced-transparency:reduce) {
-	body,
-	.cpe-dropdown__content,
-	.cpe-dropdown__content .cpe-list.is-linked .cpe-dropdown-level-2 .cpe-dropdown-level-2__content {
-		--dropdown-opacity:1!important;
-	}
-
-	:root body {
-		--backdrop-filter:none!important;
-	}
-
-}
-
-
-@supports (not ((backdrop-filter:none) or (-webkit-backdrop-filter:none))) {
-	body,
-	.cpe-dropdown__content,
-	.cpe-dropdown__content .cpe-list.is-linked .cpe-dropdown-level-2 .cpe-dropdown-level-2__content {
-		--dropdown-opacity:1!important;
-	}
-
-
-	:root body {
-		--backdrop-filter:none!important;
-	}
-}
-
-
-@media (prefers-reduced-motion: reduce) {
-*,:before,:after {
-	transition-property:color,background-color,border-color,column-rule-color,outline-color,fill,text-shadow,box-shadow,visibility,display, opacity!important;
-	transition-duration:0ms!important;
-	animation:none!important;
-}
+    --super-backdrop-filter:none!important;
 }
 
 /* Color Forces */
@@ -502,7 +466,18 @@ background-color:var(--canvas-background-color);
 .visualstyle-classic body,
 .visualstyle-classiccontrast body {
   --backdrop-filter:none!important;
+   --super-backdrop-filter:none!important;
 }
+
+
+.visualstyle-basic .has-levit::after,
+.visualstyle-basiccontrast .has-levit::after,
+.visualstyle-simple .has-levit::after,
+.visualstyle-classic .has-levit::after,
+.visualstyle-classiccontrast .has-levit::after {
+	content:none!important;
+}
+
 
 
 .visualstyle-lite .cpe-dropdown__content,
@@ -1030,6 +1005,7 @@ background-color:var(--highlight-background-color);
 .visualstyle-basic .cpe-dropdown__content .cpe-list.is-linked .cpe-dropdown-level-2 .cpe-dropdown-level-2__content, 
 .visualstyle-basiccontrast .cpe-dropdown__content .cpe-list.is-linked .cpe-dropdown-level-2 .cpe-dropdown-level-2__content {
 	--dropdown-opacity:1!important;
+	--mica-opacity:1!important;
 }
 
 .visualstyle-basic .cpe-banner-notification,
@@ -1469,6 +1445,7 @@ color:inherit;
 
 .visualstyle-simple container {
 	--dropdown-opacity:var(--system-acryllic-opacity)!important;
+	--mica-opacity:1!important;
 }
 
 .visualstyle-simple .cpe-floating-button {
@@ -1542,6 +1519,7 @@ color:inherit;
 
 .visualstyle-simple body {
 	--backdrop-filter:none!important;
+    --super-backdrop-filter:none!important;
 }
 
 .visualstyle-simple .evelution-sidebar {
@@ -1962,6 +1940,7 @@ body .mw-echo-ui-notificationsListWidget:not(:hover) a,
 .visualstyle-classiccontrast body {
 	--border-radius:0!important; /* Won't work with rounded corners */
 	--dropdown-opacity:1!important;
+	--mica-opacity:1!important;
 }
 
 
