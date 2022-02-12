@@ -138,7 +138,7 @@ Of course. It has been tested and it works. For instance, if you want to modify 
 ```
 Per-page theming is also supported. If you want to use a different theme for the 1st theme on **Sample Test Page** article, paste this to ``MediaWiki:Common.css``:
 ```css
-.theme-A.visualcolors-standard.config-rootpage-Sample_Test_Page {
+.rootpage-Sample_Test_Page .theme-A.visualcolors-standard {
 --desktop-background-image:url("loadbg_dev.png"); /* <image> */
 --desktop-background-image-filter:opacity(100%); /* <filter-function> */
 --desktop-background-color:#441177; /* <color> */
