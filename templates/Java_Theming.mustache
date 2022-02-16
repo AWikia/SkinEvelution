@@ -349,6 +349,15 @@ function GetDesktop() {
 	}
 }
 
+function GetDesktopImage(trimmed=false) {
+	var img = getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-image");
+	if (trimmed) {
+		return img.replace('url(', '').replace(')', '').replace('\\', '')
+	} else {
+		return img.replace('\\', '')
+	}
+}
+
 function GetDesktopText() {
 	if (ForcedColors()) {
 		return getComputedStyle(document.querySelector('.fc-buttontext')).getPropertyValue("color");
@@ -1676,7 +1685,7 @@ var caret2_fg = GetForegroundVariables(caret2_color);
 						  "--inactive-title-gradient-color:" + caret2_gradient[0] + ";\n" +
 						  "--inactive-title-gradient-color-hover:" + caret2_gradient[1] + ";\n" +
 // Misc Variables
-						'--desktop-background-image:' + getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-image")  + ';\n' +
+						'--desktop-background-image:' + GetDesktopImage()  + ';\n' +
 						'--desktop-background-image-filter:' + getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-image-filter")  + ';\n' +
 					 '--desktop-background-horizontal-alignment:' + getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-horizontal-alignment")  + ';\n' +
 					 '--desktop-background-vertical-alignment:' + getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-vertical-alignment")  + ';\n' +

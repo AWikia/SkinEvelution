@@ -390,6 +390,7 @@ container > main {
 /* Personal Toolbar */
 .evelution-taskbar  {
 	--toolbar-link-size:var(--minibar-size);
+	--explore-link-size:calc(var(--toolbar-link-size) * 2.75);
 	--global-nav-icon-scale-factor:50;
 	bottom:0;
 	top:auto;
@@ -399,6 +400,8 @@ container > main {
 	width:calc(100%);
 	transform-origin:bottom;
 }
+
+
 
 
 .evelution-taskbar:hover  {
@@ -414,10 +417,37 @@ container > main {
 
 .evelution-taskbar .upper-links {
 	justify-content:center;
+	padding-left:var(--explore-link-size);
 }
 
-.evelution-taskbar.left-links .upper-links {
+.evelution-taskbar .upper-links .explore-menu {
+	position:absolute;
+	left:0;
+}
+
+.evelution-taskbar .upper-links .explore-menu .link[cpe-tooltip-position="top"][cpe-tooltip]:after {
+	left:25%;
+}
+
+.evelution-taskbar .upper-links .explore-menu .link {
+	width:var(--explore-link-size);
 	justify-content:flex-start;
+	padding-left:11.8px;
+	padding-right:11.8px;
+}
+
+.evelution-taskbar .upper-links .explore-menu .link > div {
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	overflow:hidden;
+}
+
+.evelution-taskbar .upper-links .explore-menu .widget-text {
+	vertical-align:middle;
+	margin-left:2px;
+	overflow:hidden;
+	text-overflow:ellipsis;
 }
 
 .evelution-taskbar .upper-links,
@@ -434,8 +464,48 @@ container > main {
 }
 
 .evelution-taskbar .upper-links .explore-menu .cpe-dropdown__content.is-left-aligned {
-	left:calc(0px - var(--toolbar-link-size) - var(--toolbar-link-size));
+	left:0;
 }
+
+/* Left Aligned Taskbar */
+	.evelution-taskbar.left-links,
+	.evelution-taskbar.anon-taskbar {
+		--explore-link-size:var(--toolbar-link-size);
+	}
+
+
+	.evelution-taskbar.left-links .upper-links .explore-menu {
+		position:relative;
+	}
+
+	.evelution-taskbar.left-links .upper-links {
+		justify-content:flex-start;
+		padding-left:0;
+	}
+
+	.evelution-taskbar.left-links .upper-links .explore-menu .widget-text {
+		display:none;
+	}
+
+	.evelution-taskbar.left-links .upper-links .explore-menu .link,
+	.evelution-taskbar.anon-taskbar .upper-links .explore-menu .link {
+		justify-content:center;
+		padding-left:0;
+		padding-right:0;
+	}
+
+	.evelution-taskbar.anon-taskbar .upper-links .explore-menu .link[cpe-tooltip-position="top"][cpe-tooltip]:after {
+		left:0;
+	}
+
+
+	.evelution-taskbar.left-links .upper-links .explore-menu .link[cpe-tooltip-position="top"][cpe-tooltip]:after {
+		left:auto;
+	}
+
+	.evelution-taskbar.left-links .upper-links .explore-menu .cpe-dropdown__content.is-left-aligned {
+		left:calc(0px - var(--toolbar-link-size) - var(--toolbar-link-size));
+	}
 
 
 
@@ -445,6 +515,13 @@ container > main {
 .evelution-minibar .link.mobile-local-navigation[cpe-tooltip-position="bottom"][cpe-tooltip]:after {
 	right:2px;
 }
+
+	.evelution-taskbar.anon-taskbar .anon-off,
+	.evelution-taskbar:not(.anon-taskbar) .anon-on {
+		display:none!important;
+	}
+
+
 
 @media only screen and (max-width:1149px) {
 	.evelution-taskbar .small-off {
@@ -463,6 +540,7 @@ container > main {
 	.evelution-taskbar .smallp-off {
 		display:none!important;
 	}
+
 }
 
 @media only screen and (min-width:890px) {
@@ -476,12 +554,31 @@ container > main {
 	.evelution-taskbar .mobile-off {
 		display:none!important;
 	}
+
 }
 
 @media only screen and (min-width:640px) {
 	.evelution-taskbar .mobile-on {
 		display:none!important;
 	}
+}
+
+@media only screen and (max-width:759px) {
+
+	.evelution-taskbar {
+		--explore-link-size:var(--toolbar-link-size);
+	}
+
+	.evelution-taskbar .upper-links .explore-menu .link {
+		padding-left:0;
+		padding-right:0;
+		justify-content:center;
+	}
+
+	.evelution-taskbar .upper-links .explore-menu .link .widget-text {
+		display:none;
+	}
+
 }
 
 
@@ -3343,7 +3440,12 @@ white-space:nowrap;
 
 /** Wikifarm CSS **/
 
+/* Local Wikis */
+:root[class*="wikihost-"] .wikihost-off {
+	display:none!important;
+}
+
 /* Miraheze */
-:root:not(.miraheze-wiki-hosting) .miraheze-only {
+:root:not(.wikihost-miraheze) .miraheze-only {
 	display:none!important;
 }
