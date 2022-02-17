@@ -1,4 +1,22 @@
 	<header class="evelution-minibar mobile-minibar is-fixed-positioned fandom-sticky-header">
+		<div class="cpe-dropdown local-navigation">
+			<a class="link cell cpe-dropdown__toggle" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-navigation}}">
+				<span class="cpe-icon cpe-dropdown__toggle-chevron material-icons focused-dropdown-off">
+					menu
+				</span>
+				<span class="cpe-icon cpe-dropdown__toggle-chevron material-icons focused-dropdown-on">
+					menu_open
+				</span>
+			</a>
+			<div class="cpe-dropdown__content is-left-aligned">
+				<ul class="cpe-list">
+							{{#data-portlets-sidebar}}
+							{{#data-portlets-first}}{{>PortletSLN2}}{{/data-portlets-first}}
+							{{#array-portlets-rest}}{{>PortletSLN2}}{{/array-portlets-rest}}
+							{{/data-portlets-sidebar}}
+				</ul>
+			</div>
+		</div>
 		<h1 class="title cell" style="text-align:left" translate="no">
 			{{#data-logos}}
 				{{#wordmark}}
@@ -23,14 +41,20 @@
 			<div class="counter users"><big>{{html-usercount}}</big> <span class="cpe-icon material-icons">person</span> <span class="text">{{msg-evelution-users}}</span></div>
 		</div>
 		{{>MobileCommunityLinks}}
-		<div class="cpe-dropdown has-reversed-nested-menus local-navigation mobile-local-navigation">
-			<a class="link cell mobile-local-navigation cpe-dropdown__toggle" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-navigation}}">
-				<span class="cpe-icon cpe-icon-large cpe-dropdown__toggle-chevron material-icons">
-					arrow_drop_down
+	</header>
+	
+	<header class="evelution-minibar desktop-minibar fandom-sticky-header">
+		<div class="cpe-dropdown local-navigation">
+			<a class="link cell cpe-dropdown__toggle" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-navigation}}">
+				<span class="cpe-icon cpe-dropdown__toggle-chevron material-icons focused-dropdown-off">
+					menu
+				</span>
+				<span class="cpe-icon cpe-dropdown__toggle-chevron material-icons focused-dropdown-on">
+					menu_open
 				</span>
 			</a>
-			<div class="cpe-dropdown__content is-right-aligned is-not-scrollable has-small-content">
-				<ul class="cpe-list is-linked">
+			<div class="cpe-dropdown__content is-left-aligned">
+				<ul class="cpe-list">
 							{{#data-portlets-sidebar}}
 							{{#data-portlets-first}}{{>PortletSLN2}}{{/data-portlets-first}}
 							{{#array-portlets-rest}}{{>PortletSLN2}}{{/array-portlets-rest}}
@@ -38,9 +62,6 @@
 				</ul>
 			</div>
 		</div>
-	</header>
-	
-	<header class="evelution-minibar desktop-minibar full-nav fandom-sticky-header">
 		{{#data-logos}}
 			{{^evelution-nostickylogo}}
 					{{#data-logos}}
@@ -100,33 +121,5 @@
 			<div class="counter edits"><big>{{html-editcount}}</big> <span class="cpe-icon material-icons">edit</span> <span class="text">{{msg-evelution-edits}}</span></div>
 			<div class="counter users"><big>{{html-usercount}}</big> <span class="cpe-icon material-icons">person</span> <span class="text">{{msg-evelution-users}}</span></div>
 		</div>
-		<div class="cpe-dropdown has-reversed-nested-menus local-navigation">
-			<a class="link cell cpe-dropdown__toggle" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-navigation}}">
-				<span class="cpe-icon cpe-icon-large cpe-dropdown__toggle-chevron material-icons">
-					arrow_drop_down
-				</span>
-			</a>
-			<div class="cpe-dropdown__content is-right-aligned is-not-scrollable">
-				<ul class="cpe-list is-linked">
-							{{#data-portlets-sidebar}}
-							{{#data-portlets-first}}{{>PortletSLN2}}{{/data-portlets-first}}
-							{{#array-portlets-rest}}{{>PortletSLN2}}{{/array-portlets-rest}}
-							{{/data-portlets-sidebar}}
-				</ul>
-			</div>
-		</div>
 		{{>CommunityLinks}}
-	  <a class="link nav-switch" onclick="ToggleNav()" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-hide}}">
-		<span class="cpe-icon cpe-dropdown__toggle-chevron material-icons cpe-icon-large">
-			keyboard_arrow_up
-		</span>
-	  </a>
-	</header>
-	
-	<header class="evelution-minibar desktop-minibar col-nav fandom-sticky-header">
-	  <a class="link nav-switch" onclick="ToggleNav()" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-show}}">
-		<span class="cpe-icon cpe-dropdown__toggle-chevron material-icons cpe-icon-large">
-			keyboard_arrow_down
-		</span>
-	  </a>
 	</header>

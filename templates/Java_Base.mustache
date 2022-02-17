@@ -102,9 +102,6 @@ function UpdateRangeInputs() {
 	if (getKey('content-full') === '-1') {
 		insertKey('content-full', 'false' );
 	}
-	if (getKey('nav-full') === '-1') {
-		insertKey('nav-full', 'true' );
-	}
 	if (getKey('right-rail-full') === '-1') {
 		insertKey('right-rail-full', 'true' );
 	}
@@ -112,7 +109,6 @@ function UpdateRangeInputs() {
 		insertKey('left-rail-full', 'true' );
 	}
 	var content_full = getKey('content-full')
-	var nav_full = getKey('nav-full');
 	var right_rail_full = getKey('right-rail-full');
 	var left_rail_full = getKey('left-rail-full');
     getParams().forEach(function (param) {
@@ -123,10 +119,6 @@ function UpdateRangeInputs() {
             case 'fullwidth':
 				content_full = value;
 				console.info('Article width settings overriden')
-                break;
-            case 'hidenavbar':
-				nav_full = true;
-				console.info('Sticky navigation visibility settings overriden')
                 break;
             case 'hiderail':
 				if (value === 'true') {
@@ -159,9 +151,6 @@ function UpdateRangeInputs() {
     });
     if (content_full === 'true') {
 		document.querySelector(' body ').classList.add('is-wide');
-	}
-    if (nav_full === 'true') {
-		document.querySelector(' body ').classList.add('has-minibar');
 	}
     if (right_rail_full === 'true') {
 		document.querySelector(' body ').classList.add('has-right-rail');
@@ -371,15 +360,6 @@ function ToggleWidth() {
 	}
 }
 
-function ToggleNav() {
-	if 	(document.querySelector(' body.has-minibar ')) {
-		document.querySelector(' body ').classList.remove('has-minibar');
-		insertKey('nav-full', 'false' );
-	} else {
-		document.querySelector(' body ').classList.add('has-minibar');
-		insertKey('nav-full', 'true' );
-	}
-}
 
 function ToggleRail() {
 	if 	(document.querySelector(' body.has-right-rail ')) {
