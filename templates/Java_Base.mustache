@@ -447,12 +447,17 @@ function RemoveEmptyMenus() {
 	
 	toc = document.querySelector(".toc#toc > ul");
 	if (toc) {
-		document.querySelector(".evelution-floating-actions .ftoc .cpe-dropdown__content > .toc > .cpe-list").innerHTML = toc.innerHTML
+		document.querySelector(".evelution-minibar.desktop-minibar .toc-module .evelution-module-content > .toc > .toc").innerHTML = toc.innerHTML
+		document.querySelector(".evelution-minibar.mobile-minibar .toc-module .evelution-module-content > .toc > .toc").innerHTML = toc.innerHTML
 		document.querySelector(".evelution-rail-wrapper .toc-module .evelution-module-content > .toc > .toc").innerHTML = toc.innerHTML
 	} else {
-		var toc2 = document.querySelector(".evelution-floating-actions .ftoc")
+		var toc2 = document.querySelector(".evelution-minibar.desktop-minibar .toc-module")
+		var toc3 = document.querySelector(".evelution-minibar.mobile-minibar .toc-module")
 		if (toc2) {
 			toc2.remove();
+		}
+		if (toc3) {
+			toc3.remove();
 		}
 	}
 
