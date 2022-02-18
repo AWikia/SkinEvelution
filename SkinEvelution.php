@@ -116,6 +116,38 @@ class SkinEvelution extends SkinMustache {
 		$data["has-mono-logo"] = $this->getConfig()->get ( 'EvelutionMonoLogo' );
 		$data["has-interlanguage-links"] = true;
 		$data["is-loggedin"] = $this->getSkin()->getUser()->isRegistered();
+
+		$data["has-servelution-3.1.0"] =  ($this->getConfig()->get ( 'EvelutionServelutionRelease' ) == '3.1.0');
+		$data["has-servelution-3.0.0"] =  ($this->getConfig()->get ( 'EvelutionServelutionRelease' ) == '3.0.0');
+		$data["has-servelution-2.8.0"] =  ($this->getConfig()->get ( 'EvelutionServelutionRelease' ) == '2.8.0');
+		$data["has-servelution-2.7.0"] =  ($this->getConfig()->get ( 'EvelutionServelutionRelease' ) == '2.7.0');
+		$data["has-servelution-2.6.0"] =  ($this->getConfig()->get ( 'EvelutionServelutionRelease' ) == '2.6.0');
+		$data["has-servelution-2.5.0"] =  ($this->getConfig()->get ( 'EvelutionServelutionRelease' ) == '2.5.0');
+		$data["has-servelution-2.4.0"] =  ($this->getConfig()->get ( 'EvelutionServelutionRelease' ) == '2.4.0');
+		$data["has-servelution-2.3.0"] =  ($this->getConfig()->get ( 'EvelutionServelutionRelease' ) == '2.3.0');
+		$data["has-servelution-2.2.0"] =  ($this->getConfig()->get ( 'EvelutionServelutionRelease' ) == '2.2.0');
+		$data["has-servelution-2.1.0"] =  ($this->getConfig()->get ( 'EvelutionServelutionRelease' ) == '2.1.0');
+		// Mica/Luna Levit
+		$data["has-servelution-no-mica"] = ($data["has-servelution-2.1.0"] || $data["has-servelution-2.2.0"] || $data["has-servelution-2.3.0"] || $data["has-servelution-2.4.0"] || $data["has-servelution-2.5.0"] || $data["has-servelution-2.6.0"] || $data["has-servelution-2.7.0"] || $data["has-servelution-2.8.0"] || $data["has-servelution-3.0.0"] || $data["has-servelution-3.1.0"]);
+		// Image Filter
+		$data["has-servelution-no-imagefilter"] = ($data["has-servelution-2.1.0"] || $data["has-servelution-2.2.0"] || $data["has-servelution-2.3.0"] || $data["has-servelution-2.4.0"] || $data["has-servelution-2.5.0"] || $data["has-servelution-2.6.0"] || $data["has-servelution-2.7.0"] || $data["has-servelution-2.8.0"] || $data["has-servelution-3.0.0"]);
+		// Custom Primary Font
+		$data["has-servelution-no-customfont"] = ($data["has-servelution-2.1.0"] || $data["has-servelution-2.2.0"] || $data["has-servelution-2.3.0"] || $data["has-servelution-2.4.0"] || $data["has-servelution-2.5.0"] || $data["has-servelution-2.6.0"] || $data["has-servelution-2.7.0"] || $data["has-servelution-2.8.0"]);
+		// Custom Acryllic opacity
+		$data["has-servelution-no-customacryllic"] = ($data["has-servelution-2.1.0"] || $data["has-servelution-2.2.0"] || $data["has-servelution-2.3.0"] || $data["has-servelution-2.4.0"] || $data["has-servelution-2.5.0"] || $data["has-servelution-2.6.0"] || $data["has-servelution-2.7.0"]);
+		// Luna Accent (Unfocus)
+		$data["has-servelution-no-newluna"] = ($data["has-servelution-2.1.0"] || $data["has-servelution-2.2.0"] || $data["has-servelution-2.3.0"] || $data["has-servelution-2.4.0"] || $data["has-servelution-2.5.0"] || $data["has-servelution-2.6.0"]);
+		// Luna Accent
+		$data["has-servelution-no-accent"] = ( $data["has-servelution-2.1.0"] || $data["has-servelution-2.2.0"] || $data["has-servelution-2.3.0"] || $data["has-servelution-2.4.0"] || $data["has-servelution-2.5.0"]);
+		// Dynamic Generic Colors
+		$data["has-servelution-no-dgeneric"] = ($data["has-servelution-2.1.0"] || $data["has-servelution-2.2.0"] || $data["has-servelution-2.3.0"] || $data["has-servelution-2.4.0"]);
+		// Floating Actions
+		$data["has-servelution-no-actions"] = ($data["has-servelution-2.1.0"] || $data["has-servelution-2.2.0"] || $data["has-servelution-2.3.0"]);
+		// Custom Header Color
+		$data["has-servelution-no-headertext"] = ($data["has-servelution-2.1.0"] || $data["has-servelution-2.2.0"]);
+		// Dual Foreground Color
+		$data["has-servelution-no-dground"] = ($data["has-servelution-2.1.0"]);
+
         return $data;
     }
 

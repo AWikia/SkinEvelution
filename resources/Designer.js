@@ -1,4 +1,6 @@
-﻿(function () {
+﻿window.MW18TDTest = false;
+
+(function () {
     if ( ($("#footer-icons img[alt='Miraheze Wiki Hosting']").length) || ($("#footer-icons img[alt='Hosted by Miraheze']").length) ) { // Don't run with disabled designer or on Miraheze Wikis
 	$(".link.theme-designer").remove();
 		return
@@ -1153,9 +1155,7 @@ function PasteTheme() {
 
 function TestTheme() {
 	// Tests theme
-	if (!($("body.td-testing-on").length)) {
-		$("body").addClass('td-testing-on');
-	}
+	window.MW18TDTest = true;
 	$(".evelution-page-header-contribution-buttons .designer-buttons2 .theme-clear-button").prop('disabled', false);
 	$(".evelution-page-header-contribution-buttons .designer-buttons2 .theme-test-button").prop('disabled', true);
 	document.querySelector('.focus-overlay').focus();
@@ -1267,16 +1267,14 @@ function UpdateContrastRatios() {
 
 function TestDynamicTheme() {
 	UpdateContrastRatios();
-	if ($("body.td-testing-on").length) {
+	if (window.MW18TDTest) {
 		TestTheme();
 	}
 }
 
 
 function ClearTheme() {
-	if ($("body.td-testing-on").length) {
-		$("body").removeClass('td-testing-on');
-	}
+	window.MW18TDTest = false;
 	// Tests theme
 	$(".evelution-page-header-contribution-buttons .designer-buttons2 .theme-clear-button").prop('disabled', true);
 	$(".evelution-page-header-contribution-buttons .designer-buttons2 .theme-test-button").prop('disabled', false);

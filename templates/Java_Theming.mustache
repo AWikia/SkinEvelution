@@ -53,7 +53,7 @@ var visualColors = [
 var visualColorNames = ['standard', 'nocolormanagement'];
 
 // MediaWiki
-	var mediawiki = document.querySelector("body.mediawiki");
+	var mediawiki = document.querySelector("html:not(.ivilution-loaded) body.mediawiki");
 
 (function () {
 	// Evelution Specific
@@ -527,6 +527,17 @@ if (isLightColor(page)) { // ( chroma(page).get('hsl.l') < 0.5)
 		successh = 140 // 150
 		messageh = -1 // -1
 		
+		if (mediawiki) {
+			{{#has-servelution-no-dgeneric}}
+				if (isLightColor(page)) { // ( chroma(page).get('hsl.l') < 0.5)
+					return [chroma('hsl('+ alerth + ', 100%, 35%)'),chroma('hsl('+ warningh + ', 100%, 35%)'),chroma('hsl('+ successh + ', 100%, 35%)'),chroma('hsl('+ alerth + ', 0%, 35%)')]
+				} else {
+					return [chroma('hsl('+ alerth + ', 100%, 70%)'),chroma('hsl('+ warningh + ', 100%, 70%)'),chroma('hsl('+ successh + ', 100%, 70%)'),chroma('hsl('+ alerth + ', 0%, 70%)')]
+				}
+			{{/has-servelution-no-dgeneric}}
+		}
+
+		
 		contrastA = window.MW18highContrast*ContrastRatio()
 		contrastW = window.MW18highContrast*ContrastRatio()*0.85
 		contrastS = window.MW18highContrast*ContrastRatio()*0.75
@@ -790,10 +801,20 @@ function SetAccent(tick='false',save='true') {
 		if (save) {
 			insertKey('accent-active', tick );
 		}
-		if (tick === 'true') {
-			document.querySelector('html').classList.add('has-accents');
+		if (mediawiki) { // When Running non-ivilution (Evelution, Tunic)
+			{{^has-servelution-no-accent}}
+				if (tick === 'true') {
+					document.querySelector('html').classList.add('has-accents');
+				} else {
+					document.querySelector('html').classList.remove('has-accents');
+				}
+			{{/has-servelution-no-accent}}
 		} else {
-			document.querySelector('html').classList.remove('has-accents');
+			if (tick === 'true') {
+				document.querySelector('html').classList.add('has-accents');
+			} else {
+				document.querySelector('html').classList.remove('has-accents');
+			}
 		}
 }
 

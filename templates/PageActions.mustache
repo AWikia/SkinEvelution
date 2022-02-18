@@ -10,16 +10,18 @@
 				</span>
 			</a>
 		{{/has-forced-full-width}}
-		<a class="cpe-floating-button accent accent-toggle page-side-tool" onclick="ToggleAccent()" cpe-tooltip="{{msg-evelution-toggleaccent}}">
-			<span class="cpe-icon material-icons">
-				<span class="accented-off">
-					invert_colors
+		{{^has-servelution-no-accent}}
+			<a class="cpe-floating-button accent accent-toggle page-side-tool" onclick="ToggleAccent()" cpe-tooltip="{{msg-evelution-toggleaccent}}">
+				<span class="cpe-icon material-icons">
+					<span class="accented-off">
+						invert_colors
+					</span>
+					<span class="accented-on">
+						invert_colors_off
+					</span>
 				</span>
-				<span class="accented-on">
-					invert_colors_off
-				</span>
-			</span>
-		</a>
+			</a>
+		{{/has-servelution-no-accent}}
 		<!-- Contrast Modes -->
 		<div class="cpe-dropdown contrast-modes" cpe-orient="land">				
 			<div class="cpe-floating-button accent contrast-modes page-side-tool" cpe-tooltip="{{msg-evelution-contrast-modes}}">
