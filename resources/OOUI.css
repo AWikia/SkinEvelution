@@ -42,18 +42,57 @@ body .mw-pulsating-dot:before, body .mw-pulsating-dot:after {
 /* Icons */
 .oo-ui-iconElement-icon,
 .oo-ui-indicatorElement-indicator {
-  background:currentColor!Important;
-  -webkit-mask-size: contain;
-          mask-size: contain;
-  -webkit-mask-position: center center;
-          mask-position: center center;
-  -webkit-mask-repeat: no-repeat;
-          mask-repeat: no-repeat;
+  background:none!Important;
+  -webkit-mask-image:none!important;
+  width:24px;
+}
+
+.oo-ui-tagItemWidget.oo-ui-widget-enabled .oo-ui-buttonElement-button .oo-ui-icon-close:before {
+	--icon-size:0.3;
+	margin-top:0;
+}
+
+body .mw-echo-ui-notificationBadgeButtonPopupWidget-popup > .oo-ui-popupWidget-popup > .oo-ui-popupWidget-footer .mw-echo-ui-notificationBadgeButtonPopupWidget-footer-buttons .oo-ui-buttonElement .oo-ui-iconElement-icon {
+	top:-5px;
+}
+
+body .oo-ui-iconWidget {
+	height:100%;
+	text-indent:0px;
+	line-height:2.25;
+}
+
+body .oo-ui-iconWidget:before {
+	--icon-size:0.5;
 }
 
 .oo-ui-iconElement-icon.oo-ui-iconElement-noIcon {
 	visibility:hidden;
 }
+
+body .oo-ui-tool .oo-ui-iconElement-icon,
+body .oo-ui-tool .oo-ui-indicatorElement-indicator,
+body .oo-ui-popupToolGroup-handle .oo-ui-iconElement-icon,
+body .oo-ui-popupToolGroup-handle .oo-ui-indicatorElement-indicator {
+	top:5px;
+}
+
+body .ve-init-mw-editSwitch .oo-ui-popupToolGroup.oo-ui-iconElement .oo-ui-popupToolGroup-handle .oo-ui-iconElement-icon,
+body .ve-init-mw-editSwitch .oo-ui-popupToolGroup.oo-ui-iconElement .oo-ui-popupToolGroup-handle .oo-ui-indicatorElement-indicator {
+	top:0;
+}
+
+body .oo-ui-buttonElement-framed.oo-ui-iconElement > .oo-ui-buttonElement-button > .oo-ui-iconElement-icon {
+    left: calc(50% - 3px);
+    top:-2px;
+}
+
+body .oo-ui-buttonElement-framed.oo-ui-iconElement.oo-ui-labelElement > .oo-ui-buttonElement-button > .oo-ui-iconElement-icon, 
+body .oo-ui-buttonElement-framed.oo-ui-iconElement.oo-ui-indicatorElement > .oo-ui-buttonElement-button > .oo-ui-iconElement-icon {
+	top:0;
+}
+
+/* End Icons */
 
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled > .oo-ui-buttonElement-button:hover > .oo-ui-iconElement-icon:not(.oo-ui-image-invert), 
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled > .oo-ui-buttonElement-button:hover > .oo-ui-indicatorElement-indicator:not(.oo-ui-image-invert),
@@ -475,6 +514,25 @@ body .oo-ui-buttonSelectWidget .oo-ui-buttonOptionWidget .oo-ui-buttonElement-bu
 	margin-left:1px;
 	margin-right:1px;
 }
+
+body .oo-ui-buttonWidget.oo-ui-popupButtonWidget .oo-ui-buttonElement-button > .mw-rcfilters-ui-filterItemHighlightButton-circle {
+	margin-top:0;
+}
+
+
+body .oo-ui-buttonElement-framed.oo-ui-indicatorElement > .oo-ui-buttonElement-button {
+	line-height:22px;
+	padding-top:16px;
+	padding-bottom:16px;
+
+}
+
+
+body .oo-ui-buttonElement-framed.oo-ui-labelElement > .oo-ui-buttonElement-button {
+	padding-top:5px;
+	padding-bottom:5px;
+}
+
 
 body .mw-rcfilters-ui-liveUpdateButtonWidget.oo-ui-toggleWidget-on:after {
 	background:rgba(var(--highlight-foreground-color-rgb),0.5);

@@ -1753,7 +1753,9 @@ margin-left:5px;
 /* Icons */
 .material-icons,
 .has-icon:before,
-.cpe-list.has-icon-labels li > a:before {
+.cpe-list.has-icon-labels li > a:before,
+.oo-ui-iconElement-icon:before,
+.oo-ui-indicatorElement-indicator:before {
 	--icon-scale:1;
 	--icon-size:1;
   font-family: 'Material Icons Round'!important;
@@ -1791,7 +1793,9 @@ margin-left:5px;
 .cpe-icon,
 .wds-icon,
 .has-icon:before,
-.cpe-list.has-icon-labels li > a:before {
+.cpe-list.has-icon-labels li > a:before,
+.oo-ui-iconElement-icon:before,
+.oo-ui-indicatorElement-indicator:before {
 	--icon-scale:1;
 	--icon-size:1;
     --icon-rotate:0deg;
@@ -1803,11 +1807,22 @@ margin-left:5px;
   font-size:calc(24px * var(--icon-size))!important;
   transform:scale(var(--icon-scale)) rotate(var(--icon-rotate));
   vertical-align:middle;
+  text-indent:0;
 }
 
 .has-icon:before {
 	margin-right:5px;
 	--icon-size:0.7;
+	content:"";
+}
+
+.oo-ui-iconElement-icon:before,
+.oo-ui-indicatorElement-indicator:before {
+	margin-top:10px;
+	margin-right:4px;
+	margin-left:4px;
+	--icon-size:0.5;
+	--icon-scale:2;
 	content:"";
 }
 
