@@ -817,24 +817,30 @@ function InitDesigner() {
 			'<div class="cpe-button is-unaccented">Unaccented Color</div>' +
 			'<div class="cpe-button is-alternate">Alternate Color</div>' +
 			'<div class="cpe-button is-alert-color">Alert Background Color</div>' +
+			'<div class="cpe-button is-pause-color">Pause Background Color</div>' +
 			'<div class="cpe-button is-warning-color">Warning Background Color</div>' +
 			'<div class="cpe-button is-success-color">Success Background Color</div>' +
+			'<div class="cpe-button is-progress-color">Progress Background Color</div>' +
 			'<div class="cpe-button is-message-color">Message Background Color</div>' +
 			'<hr>' +
 			'<div class="cpe-button is-secondary">Base Color</div>' +
 			'<div class="cpe-button is-secondary is-unaccented">Unaccented Color</div>' +
 			'<div class="cpe-button is-secondary is-alternate">Alternate Color</div>' +
 			'<div class="cpe-button is-secondary is-alert-color">Alert Background Color</div>' +
+			'<div class="cpe-button is-secondary is-pause-color">Pause Background Color</div>' +
 			'<div class="cpe-button is-secondary is-warning-color">Warning Background Color</div>' +
 			'<div class="cpe-button is-secondary is-success-color">Success Background Color</div>' +
+			'<div class="cpe-button is-secondary is-progress-color">Progress Background Color</div>' +
 			'<div class="cpe-button is-secondary is-message-color">Message Background Color</div>' +
 			'<hr>' +
 			'<div class="cpe-button is-tertiary">Base Color</div>' +
 			'<div class="cpe-button is-tertiary is-unaccented">Unaccented Color</div>' +
 			'<div class="cpe-button is-tertiary is-alternate">Alternate Color</div>' +
 			'<div class="cpe-button is-tertiary is-alert-color">Alert Background Color</div>' +
+			'<div class="cpe-button is-tertiary is-pause-color">Pause Background Color</div>' +
 			'<div class="cpe-button is-tertiary is-warning-color">Warning Background Color</div>' +
 			'<div class="cpe-button is-tertiary is-success-color">Success Background Color</div>' +
+			'<div class="cpe-button is-tertiary is-progress-color">Progress Background Color</div>' +
 			'<div class="cpe-button is-tertiary is-message-color">Message Background Color</div>' +
 		'</div>' +
 		'<div class="theme-code"></div>'
@@ -848,6 +854,9 @@ function InitDesigner() {
 
 function ApplyTheme () {
 	// Copies theme to clipboard
+	$(".evelution-page-header-contribution-buttons .designer-buttons2 .theme-apply-button").prop('disabled', true);
+	AddFloatingBanner('Applying Theme '  +  window.MW18ActiveTheme + ' to MediaWiki:Evelution.css. Please wait...','progress','InProgressBanner')
+	document.querySelector('.focus-overlay').focus();
 	if (document.querySelector('.wikitable #auto1').checked) {
 		var autocolor1 = 'auto';
 	} else {
@@ -909,7 +918,7 @@ function ApplyTheme () {
 				 '--canvas-background-color:' + $('#pagebg').val() + ';\n' +
 				 '--inactive-text-background-color:' + autocolor2  + ';\n' +
 				 '--canvas-text-background-color:' + autocolor3  + ';\n' +
-				 '--highlight-background-color:' + autoclor6 + ';\n' +
+				 '--highlight-background-color:' + autocolor6 + ';\n' +
 				 '--hyperlink-background-color:' + $('#saccentcolor').val() + ';\n' +
 				 '--active-title-background-color:' + autocolor5  + ';\n' +
 				 '--inactive-title-background-color:' + autocolor4  + ';\n' +
@@ -944,11 +953,15 @@ var params = {
 	},
 	api = new mw.Api();
 
-api.postWithToken( 'csrf', params ).done( function ( data ) { AddFloatingBanner('Succesfully applied Theme '  +  window.MW18ActiveTheme + ' to MediaWiki:Evelution.css.','success'); } ).fail( function (data) { AddFloatingBanner('Failed to apply Theme '  +  window.MW18ActiveTheme + ' to MediaWiki:Evelution.css as page couldn\'t be edited.','alert'); } );
+api.postWithToken( 'csrf', params ).done( function ( data ) { $(".evelution-page-header-contribution-buttons .designer-buttons2 .theme-apply-button").prop('disabled', false); $("#InProgressBanner").remove(); /* Success */ AddFloatingBanner('Succesfully applied Theme '  +  window.MW18ActiveTheme + ' to MediaWiki:Evelution.css.','success'); } ).fail( function (data) { $(".evelution-page-header-contribution-buttons .designer-buttons2 .theme-apply-button").prop('disabled', false); $("#InProgressBanner").remove(); /* Fail */ AddFloatingBanner('Failed to apply Theme '  +  window.MW18ActiveTheme + ' to MediaWiki:Evelution.css as page couldn\'t be edited.','alert'); } );
 
 }
 
+
 function CopyTheme() {
+	$(".evelution-page-header-contribution-buttons .designer-buttons .theme-copy-button").prop('disabled', true);
+	AddFloatingBanner('Successfully copied CPE Framework theme to Clipboard. Please wait...','progress','InProgressBanner3')
+	document.querySelector('.focus-overlay').focus();
 	// Copies theme to clipboard
 	if (document.querySelector('.wikitable #auto1').checked) {
 		var autocolor1 = 'auto';
@@ -1025,8 +1038,12 @@ function CopyTheme() {
 				 '}' // Ending
 		if (navigator.clipboard) {
 			navigator.clipboard.writeText(result).then(function() {
+			 $(".evelution-page-header-contribution-buttons .designer-buttons .theme-copy-button").prop('disabled', false);
+			 $("#InProgressBanner3").remove();
 			 AddFloatingBanner('Successfully copied CPE Framework theme to Clipboard','success'); // alert('Successfully copied CPE Framework theme to Clipboard');
 			}, function() {
+			 $(".evelution-page-header-contribution-buttons .designer-buttons .theme-copy-button").prop('disabled', false);
+			 $("#InProgressBanner3").remove();
 			 AddFloatingBanner('Failed to copy CPE Framework theme to Clipboard. You can, however find the generated theme code below the Theme Designer applet so that you will be able to select it and copy that to the clipboard.','alert');
 			$("div.theme-code").empty().append(
 				'<h2>Code</h2>' +
@@ -1036,6 +1053,8 @@ function CopyTheme() {
 			);
 			});
 		} else {
+			 $(".evelution-page-header-contribution-buttons .designer-buttons .theme-copy-button").prop('disabled', false);
+			 $("#InProgressBanner3").remove();
 			 AddFloatingBanner('Failed to copy CPE Framework theme to Clipboard. You can, however find the generated theme code below the Theme Designer applet so that you will be able to select it and copy that to the clipboard.','alert');
 			$("div.theme-code").empty().append(
 				'<h2>Code</h2>' +
@@ -1048,6 +1067,9 @@ function CopyTheme() {
 
 function PasteTheme() {
 	// Pastes theme
+	$(".evelution-page-header-contribution-buttons .designer-buttons .theme-paste-button").prop('disabled', true);
+	AddFloatingBanner('Pasting theme. Please wait...','progress','InProgressBanner2')
+	document.querySelector('.focus-overlay').focus();
 	// Body BG
 	$('#bodybg').val( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-color") );
 	// Body Header Text
@@ -1151,11 +1173,16 @@ function PasteTheme() {
 	$('#aopacity').val( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--system-acryllic-opacity") );
 	UpdateContrastRatios();
 	UpdateRangeInputs();
+	$(".evelution-page-header-contribution-buttons .designer-buttons .theme-paste-button").prop('disabled', false);
+	$("#InProgressBanner2").remove();
+
 }
 
 function TestTheme() {
 	// Tests theme
-	window.MW18TDTest = true;
+	if (!window.MW18TDTest) {
+		AddFloatingBanner('Enabling theme preview. Please wait...','progress','InProgressBanner4')
+	}
 	$(".evelution-page-header-contribution-buttons .designer-buttons2 .theme-clear-button").prop('disabled', false);
 	$(".evelution-page-header-contribution-buttons .designer-buttons2 .theme-test-button").prop('disabled', true);
 	document.querySelector('.focus-overlay').focus();
@@ -1234,6 +1261,10 @@ function TestTheme() {
 				 '}' // Ending
 			document.querySelector("#mw-content-text .theme-designer-css").innerHTML = result;
 	ColorUpdate(true,true);
+	if (!window.MW18TDTest) {
+		$("#InProgressBanner4").remove();
+		window.MW18TDTest = true;
+	}
 }
 
 function UpdateContrastRatios() {

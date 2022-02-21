@@ -249,7 +249,7 @@ html,
 /* Fadeout Background Colors */
 /* Base Light */
 body {
-	--fadeout-opacity:0.225;
+	--fadeout-opacity:0.2;
 	--desktop-fadeout-color:rgba(var(--desktop-background-color-rgb),var(--fadeout-opacity));
 	--desktop-text-fadeout-color:rgba(var(--desktop-text-background-color-rgb),var(--fadeout-opacity));
 	--hyperlink-fadeout-color:rgba(var(--hyperlink-background-color-rgb),var(--fadeout-opacity));
@@ -258,12 +258,21 @@ body {
 	--inactive-text-fadeout-color:rgba(var(--inactive-text-background-color-rgb),var(--fadeout-opacity));
 	--canvas-text-fadeout-color:rgba(var(--canvas-text-background-color-rgb),var(--fadeout-opacity));
 	--highlight-fadeout-color:rgba(var(--highlight-background-color-rgb),var(--fadeout-opacity));
+	--active-title-fadeout-color:rgba(var(--active-title-background-color-rgb),var(--fadeout-opacity));
+	--inactive-title-fadeout-color:rgba(var(--inactive-title-background-color-rgb),var(--fadeout-opacity));
 	--alert-fadeout-color:rgba(var(--alert-background-color-rgb),var(--fadeout-opacity));
+	--pause-fadeout-color:rgba(var(--pause-background-color-rgb),var(--fadeout-opacity));
 	--warning-fadeout-color:rgba(var(--warning-background-color-rgb),var(--fadeout-opacity));
 	--success-fadeout-color:rgba(var(--success-background-color-rgb),var(--fadeout-opacity));
+	--progress-fadeout-color:rgba(var(--progress-background-color-rgb),var(--fadeout-opacity));
 	--message-fadeout-color:rgba(var(--message-background-color-rgb),var(--fadeout-opacity));
 }
 
+
+
+.theme-fandomdesktop-dark body {
+	--fadeout-opacity:0.3;
+}
 
 /** Luna Theming Color Sets **/
 
@@ -662,8 +671,8 @@ container {
 		left:0;
 		position:absolute;
 		filter:var(--super-backdrop-filter);
-		background-image:-moz-element(#LunaLevit3),-moz-element(#LunaLevit2);
-		background-image:element(#LunaLevit3),element(#LunaLevit2);
+		background-image:-moz-element(#LunaLevit3); /* ,-moz-element(#LunaLevit2) */
+		background-image:element(#LunaLevit3); /* ,element(#LunaLevit2) */
 		background-color:var(--desktop-background-color);
 		background-attachment:fixed;
 		z-index:-1;
@@ -1661,6 +1670,20 @@ li.new .cpe-button {
   --tertiary-button-foreground-color:var(--alert-background-color);
 }
 
+/* Pause Color */
+.cpe-button.is-pause-color {
+  --button-background-color:var(--pause-background-color);
+  --button-background-color-hover:var(--pause-background-color-hover);
+  --button-foreground-color:var(--pause-foreground-color);
+  --button-foreground-color-hover:var(--pause-foreground-color-hover);
+  --button-foreground-color-inverted:var(--pause-foreground-color-inverted);
+  --secondary-button-foreground-color:var(--pause-background-color);
+  --secondary-button-foreground-color-hover:var(--pause-background-color-hover);
+  --tertiary-button-background-color:var(--pause-fadeout-color);
+  --tertiary-button-foreground-color:var(--pause-background-color);
+}
+
+
 /* Warning Color */
 .cpe-button.is-warning-color {
   --button-background-color:var(--warning-background-color);
@@ -1685,6 +1708,20 @@ li.new .cpe-button {
   --secondary-button-foreground-color-hover:var(--success-background-color-hover);
   --tertiary-button-background-color:var(--success-fadeout-color);
   --tertiary-button-foreground-color:var(--success-background-color);
+}
+
+/* Progress Color */
+.cpe-button.is-progress-color,
+li.progress .cpe-button {
+  --button-background-color:var(--progress-background-color);
+  --button-background-color-hover:var(--progress-background-color-hover);
+  --button-foreground-color:var(--progress-foreground-color);
+  --button-foreground-color-hover:var(--progress-foreground-color-hover);
+  --button-foreground-color-inverted:var(--progress-foreground-color-inverted);
+  --secondary-button-foreground-color:var(--progress-background-color);
+  --secondary-button-foreground-color-hover:var(--progress-background-color-hover);
+  --tertiary-button-background-color:var(--progress-fadeout-color);
+  --tertiary-button-foreground-color:var(--progress-background-color);
 }
 
 /* Message Color */
@@ -2323,12 +2360,21 @@ color:var(--hyperlink-background-color);
 
 
  .cpe-dropdown__content .cpe-list.is-linked>li.new.is-selected>a:not(.cpe-button),
-  .cpe-dropdown__content .cpe-list.is-linked>li.new.selected>a.new:not(.cpe-button), .cpe-dropdown__content .cpe-list.is-linked>li.new:hover>a:not(.cpe-button),
+  .cpe-dropdown__content .cpe-list.is-linked>li.new.selected>a:not(.cpe-button), .cpe-dropdown__content .cpe-list.is-linked>li.new:hover>a:not(.cpe-button),
   .cpe-dropdown__content .cpe-list.is-linked>li.new>a:focus:not(.cpe-button){
 background-color:var(--alert-fadeout-color);
 border-color:rgba(var(--alert-background-color-rgb),calc(var(--fadeout-opacity) * 0.5));
 color:var(--alert-background-color);
 }
+
+ .cpe-dropdown__content .cpe-list.is-linked>li.stub.is-selected>a:not(.cpe-button),
+  .cpe-dropdown__content .cpe-list.is-linked>li.stub.selected>a:not(.cpe-button), .cpe-dropdown__content .cpe-list.is-linked>li.stub:hover>a:not(.cpe-button),
+  .cpe-dropdown__content .cpe-list.is-linked>li.stub>a:focus:not(.cpe-button){
+background-color:var(--progress-fadeout-color);
+border-color:rgba(var(--progress-background-color-rgb),calc(var(--fadeout-opacity) * 0.5));
+color:var(--progress-background-color);
+}
+
 
 
 .cpe-dropdown__content .cpe-button {
@@ -3051,22 +3097,32 @@ margin-right:16px;
 	width:40px;
 	border-radius:0 4px 4px 0;
 }
-.cpe-alert .cpe-banner-notification__icon{
+.is-alert .cpe-banner-notification__icon{
 	background-color:var(--alert-background-color);
 	color:var(--alert-foreground-color);
-} /* Was #d71035 and #e81a3f */
-.cpe-warning .cpe-banner-notification__icon{
+}
+.is-pause .cpe-banner-notification__icon{
+	background-color:var(--pause-background-color);
+	color:var(--pause-foreground-color);
+}
+.is-warning .cpe-banner-notification__icon{
 	background-color:var(--warning-background-color);
 	color:var(--warning-foreground-color);
-} /* Was #dfec24 and #de5e33 */
-.cpe-success .cpe-banner-notification__icon{
+}
+.is-success .cpe-banner-notification__icon{
 	background-color:var(--success-background-color);
 	color:var(--success-foreground-color);
-} /* Was #4cda9a and #018c30 */
-.cpe-message .cpe-banner-notification__icon{
+}
+.is-progress .cpe-banner-notification__icon{
+	background-color:var(--progress-background-color);
+	color:var(--progress-foreground-color);
+}
+.is-message .cpe-banner-notification__icon{
 	background-color:var(--message-background-color);
 	color:var(--message-foreground-color);
-} /* Was #460084 and #008c8f */
+}
+
+
 
 .cpe-banner-notification__text{
 	color:inherit;
@@ -3279,7 +3335,7 @@ input[type="checkbox"]:indeterminate:active  {
 /* Progresses */
 progress {
   --range-percent:0%;
-  --range-filler-color:var(--highlight-background-color);
+  --range-filler-color:var(--progress-background-color);
   color: var(--canvas-text-background-color);
   margin: 0 auto;
   background-color: var(--canvas-secondary-background-color);
@@ -3295,6 +3351,19 @@ progress {
 	box-shadow:0 0 0 1px var(--canvas-foreground-color);
 	box-sizing:border-box;
 }
+
+progress.is-halted {
+  --range-filler-color:var(--pause-background-color);
+}
+
+progress.is-done {
+  --range-filler-color:var(--success-background-color);
+}
+
+progress.is-failed {
+  --range-filler-color:var(--alert-background-color);
+}
+
 
 progress::-webkit-progress-bar {
     border: 0;

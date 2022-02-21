@@ -201,12 +201,16 @@ function RemoveBanner() {
 }
 
 function AddFloatingBanner(content='Sample Content',kind='message',extraclass='') {
-	if (kind === 'warning') {
-		var icon = 'report_problem'
-	} else if (kind === 'alert') {
+	if (kind === 'alert') {
 		var icon = 'report'
+	} else if (kind === 'pause') {
+		var icon = 'pause'
+	} else if (kind === 'warning') {
+		var icon = 'report_problem'
 	} else if (kind === 'success') {
 		var icon = 'done'
+	} else if (kind === 'progress') {
+		var icon = 'pending'
 	} else {
 		var icon = 'info'
 	}
@@ -218,7 +222,7 @@ function AddFloatingBanner(content='Sample Content',kind='message',extraclass=''
 	}
 
 	document.querySelector(".top-gap #floatingbanner").insertAdjacentHTML('beforeend', 
-			'<div class=" cpe-banner-notification cpe-' + kind + '" id="' + extraclass  + '">' +
+			'<div class=" cpe-banner-notification is-' + kind + '" id="' + extraclass  + '">' +
 			  '<div class="cpe-banner-notification__icon">' +
 				'<span class="cpe-icon cpe-icon-small material-icons">' +
 					icon + 
