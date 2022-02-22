@@ -127,6 +127,8 @@ class SkinEvelution extends SkinMustache {
 		$data["has-servelution-2.3.0"] =  ($this->getConfig()->get ( 'EvelutionServelutionRelease' ) == '2.3.0');
 		$data["has-servelution-2.2.0"] =  ($this->getConfig()->get ( 'EvelutionServelutionRelease' ) == '2.2.0');
 		$data["has-servelution-2.1.0"] =  ($this->getConfig()->get ( 'EvelutionServelutionRelease' ) == '2.1.0');
+		// Outdated Servelution
+		$data["has-servelution-old"] = ($data["has-servelution-2.1.0"] || $data["has-servelution-2.2.0"] || $data["has-servelution-2.3.0"] || $data["has-servelution-2.4.0"] || $data["has-servelution-2.5.0"] || $data["has-servelution-2.6.0"] || $data["has-servelution-2.7.0"] || $data["has-servelution-2.8.0"] || $data["has-servelution-3.0.0"] || $data["has-servelution-3.1.0"]);
 		// Mica/Luna Levit
 		$data["has-servelution-no-mica"] = ($data["has-servelution-2.1.0"] || $data["has-servelution-2.2.0"] || $data["has-servelution-2.3.0"] || $data["has-servelution-2.4.0"] || $data["has-servelution-2.5.0"] || $data["has-servelution-2.6.0"] || $data["has-servelution-2.7.0"] || $data["has-servelution-2.8.0"] || $data["has-servelution-3.0.0"] || $data["has-servelution-3.1.0"]);
 		// Image Filter
