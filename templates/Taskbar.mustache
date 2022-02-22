@@ -206,15 +206,6 @@
 						</a>
 					</li>
 					<!-- End Wiki Farm Links -->
-				{{#is-loggedin}}
-					<li class="discord">
-						<a href="https://discord.gg/a6FbV6zWFs" title="{{msg-evelution-support}}">
-							<span class="cpe-icon material-icons">
-								live_help
-							</span>						
-						</a>
-					</li>
-				{{/is-loggedin}}
 				</ul>
 				<hr>
 				<ul class="cpe-list is-linked has-icon-labels">
@@ -224,6 +215,13 @@
 				</ul>
 			</div>
 		</div>
+		{{#is-loggedin}}
+			<a href="https://discord.gg/a6FbV6zWFs" cpe-tooltip-position="top" class="link support" cpe-tooltip="{{msg-evelution-support}}">
+				<span class="cpe-icon material-icons">
+					live_help
+				</span>						
+			</a>
+		{{/is-loggedin}}
 		<!-- Tools -->
 	  <a href="{{html-edit-link}}/{{ html-titlealt}}" cpe-tooltip-position="top" class="link edit mobile-off" cpe-tooltip="{{msg-edit}}">
 				<span class="cpe-icon cpe-dropdown__toggle-chevron material-icons">
@@ -269,27 +267,9 @@
 	</div>
 	<div class="bottom-links">
 		<!-- Language Variants -->
-		<div class="cpe-dropdown is-flipped has-dark-shadow variants-menu">
-			<div class="link cell cpe-dropdown__toggle" cpe-tooltip-position="bottom-mobile" cpe-tooltip="{{msg-evelution-variants}}">
-				<span class="cpe-icon material-icons">
-					font_download
-				</span>
-			</div>
-			<div class="cpe-dropdown__content is-right-aligned">
-				{{#data-portlets.data-variants}}{{>Portlet2}}{{/data-portlets.data-variants}}
-			</div>
-		</div>
-		<!-- In other Langauges -->
-		<div class="cpe-dropdown is-flipped has-dark-shadow language-menu">
-			<div class="link cell cpe-dropdown__toggle" cpe-tooltip-position="top" cpe-tooltip="{{msg-otherlanguages}}">
-				<span class="cpe-icon material-icons">
-					translate
-				</span>
-			</div>
-			<div class="cpe-dropdown__content is-right-aligned">
-				{{#data-portlets.data-languages}}{{>Portlet2}}{{/data-portlets.data-languages}}
-			</div>
-		</div>
+		{{#data-portlets-sidebar}}
+			{{#data-portlets.data-variants}}{{>PortletVariants}}{{/data-portlets.data-variants}}
+		{{/data-portlets-sidebar}}
 		{{#has-echo}}
 			  <!-- Notifications -->
 				<div class="link cell notice notices-menu focus-within" cpe-tooltip-position="top" cpe-tooltip="{{msg-tooltip-pt-notifications-alert}}">

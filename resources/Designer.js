@@ -366,16 +366,18 @@ function InitDesigner() {
 				'<td style="text-align:center; width:150px">' +
 				   '<div class="cpe-dropdown cpe-select" tabindex="-1">' +
 						'<div class="cpe-input bg_mode cpe-dropdown__toggle" style="width:150px; min-width:150px;">' +
-							'<span class="cpe-select__value" value="standard">Standard</span>' +
+							'<span class="cpe-select__value" value="header">Header</span>' +
 							'<span class="cpe-icon cpe-icon-tiny cpe-icon-large cpe-dropdown__toggle-chevron material-icons">' +
 								'arrow_drop_down' +
 							'</span>' +
 						'</div>' +
 						'<div class="cpe-dropdown__content">' +
 							'<ul class="cpe-list is-linked">' +
-								'<li value="standard"><a>Standard</a></li>' +
-								'<li value="half"><a>Half</a></li>' +
-								'<li value="full"><a>Full</a></li>' +
+								'<li value="header"><a>Header</a></li>' +
+								'<li value="one-quarter"><a>One Quarter</a></li>' +
+								'<li value="two-quarters"><a>Two Quarters</a></li>' +
+								'<li value="three-quarters"><a>Three Quarters</a></li>' +
+								'<li value="four-quarters"><a>Four Quarters</a></li>' +
 							'</ul>' +
 						'</div>' +
 					'</div>' +
@@ -1085,8 +1087,21 @@ function PasteTheme() {
 	// Body Image Opacity
 	$('#bodyimagefilter').val( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-image-filter") );
 	// Body Image Mode
-	bg_mode = ["Standard", "Half", "Full"][["standard", "half", "full"].indexOf( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-mode") ) ]
-	$('.bg_mode .cpe-select__value').attr('value', getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-mode") );
+	if (['full','legacy','100%','four-quarters'].includes(getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-mode"))) {
+		var mode = 'four-quarters';
+	} else if (['three-quarters','75%'].includes(getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-mode"))) {
+		var mode = 'three-quarters';
+	} else if (['half','50%','two-quarters'].includes(getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-mode"))) {
+		var mode = 'two-quarters';
+	} else if (['one-quarter','25%'].includes(getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-mode"))) {
+		var mode = 'one-quarter';
+	} else {
+		var mode = 'header';
+	}
+
+
+	bg_mode = ["Header", "One Quarter", "Two Quarters", "Three Quarters", "Four Quarters"][["header", "one-quarter", "two-quarters", "thee-quarters", "four-quarters"].indexOf(mode) ]
+	$('.bg_mode .cpe-select__value').attr('value', mode );
 	$('.bg_mode .cpe-select__value').html( bg_mode );
 	// Body Image Alignment V
 	bg_align = ["Top", "Middle", "Bottom"][["top", "center", "bottom"].indexOf( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-vertical-alignment") ) ]

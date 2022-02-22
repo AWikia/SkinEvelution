@@ -9,6 +9,12 @@ You can read more about the skin [here](Overview.md). For easy to use CSS snipse
 
 Evelution uses the ``main`` branch that it is compatible with MediaWiki 1.36 to MediaWiki 1.38 so currently no separate branches for 1.36 (``REL_1.36``), 1.37 (``REL_1.37``) and 1.38 (``REL_1.38``)
 
+# Version Release
+- Evelution Family now follows [Semantic Versioning II](https://semver.org/). 
+  - When changes that will break existing 3rd-party functionality (Such as variable renaming, changing syntax, renaming classes, altering something that will require users to pay extra attention (Such as the addition of the bottom footer) and anything that will break existing things) or a new Servelution Release  happen, it will result in a new season to emerge. 
+  - When changes that will still offer compatibility with existing functionality (Such as adding new color schemes, new optional enchancemnts or changing the layout at a small degree) happen, it will result in a minor release of the existing season. 
+  - When changes that will only have bug fixes (Such as layout tweaks to avoid issues or fixing a major or minor fix that will still not break existing functionality) happen, it will result in a patch release but patch releases will still not be registered as a release or be formally announced.
+
 # Requirements
 To Run Evelution on your wiki, you must have MediaWiki 1.36 or greater. Older versions are not supported
 

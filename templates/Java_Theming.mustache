@@ -1534,12 +1534,23 @@ var message_color = generic[5];
 var messagecolor1 = ColorTest(message_color,false,false,true);
 
 
-if (['full','legacy'].includes(getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-mode"))) {
-	var overlay = ['none', '100%'];
-} else if (['half'].includes(getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-mode"))) {
-	var overlay = ['block', '50%'];
+var img = GetDesktopImage();
+
+if (['full','legacy','100%','four-quarters'].includes(getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-mode"))) {
+	var overlay = ['none', '100%','four-quarters'];
+} else if (['three-quarters','75%'].includes(getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-mode"))) {
+	var overlay = ['block', '75%','three-quarters'];
+} else if (['half','50%','two-quarters'].includes(getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-mode"))) {
+	var overlay = ['block', '50%','two-quarters'];
+} else if (['one-quarter','25%'].includes(getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-mode"))) {
+	var overlay = ['block', '25%','one-quarter'];
 } else {
-	var overlay = ['block', 'var(--header-size)'];
+	var overlay = ['block', 'var(--header-size)','header'];
+}
+
+if (img === 'url("")') {
+	overlay[0] = 'none';
+	overlay[1] = '100%';
 }
 
 // Gradient Sets
@@ -1776,8 +1787,9 @@ var caret2_fg = GetForegroundVariables(caret2_color);
 						  "--inactive-title-gradient-color:" + caret2_gradient[0] + ";\n" +
 						  "--inactive-title-gradient-color-hover:" + caret2_gradient[1] + ";\n" +
 // Misc Variables
-						'--desktop-background-image:' + GetDesktopImage()  + ';\n' +
+						'--desktop-background-image:' + img  + ';\n' +
 						'--desktop-background-image-filter:' + getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-image-filter")  + ';\n' +
+						  "--desktop-background-mode:" + overlay[2] + ";\n" +
 					 '--desktop-background-horizontal-alignment:' + getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-horizontal-alignment")  + ';\n' +
 					 '--desktop-background-vertical-alignment:' + getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-vertical-alignment")  + ';\n' +
 						 '--custom-font:' + getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--custom-font")  + ';\n' +
