@@ -113,6 +113,8 @@ class SkinEvelution extends SkinMustache {
 		$data["has-discord-id"] =  (wfMessage( 'evelution-discord-module-server-id' )->inContentLanguage() != '');
 		$data["has-forum"] = ( defined( 'NS_FORUM' ) );
 		$data["has-echo"] = ( (ExtensionRegistry::getInstance()->isLoaded( 'Echo' )) && ($this->getSkin()->getUser()->isRegistered()) );
+		$data["has-ivilution"] = ( (ExtensionRegistry::getInstance()->isLoaded( 'Ivilution' )) );
+		$data["has-smw"] = ( (ExtensionRegistry::getInstance()->isLoaded( 'SemanticMediaWiki' )) );
 		$data["has-mono-logo"] = $this->getConfig()->get ( 'EvelutionMonoLogo' );
 		$data["has-interlanguage-links"] = true;
 		$data["is-loggedin"] = $this->getSkin()->getUser()->isRegistered();

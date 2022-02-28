@@ -2,7 +2,7 @@
 	--desktop-background-image:?DesktopWallpaper;
 	--desktop-background-image-filter:opacity(100%);
 	--desktop-background-color:?Background;
-	--desktop-background-mode:full;
+	--desktop-background-mode:four-quarters;
 	--desktop-background-size:['cover','contain','stretched','full','full','cover'][?PictureStyle];
 	--desktop-background-horizontal-alignment:['center','center','center','top','center','center'][?PictureStyle];
 	--desktop-background-vertical-alignment:['center','center','center','left','center','center'][?PictureStyle];
@@ -23,7 +23,11 @@
 		--highlight-background-color:auto; 
 		--hyperlink-background-color:?ColorizationColor;
 		--active-title-background-color:auto;
-		--inactive-title-background-color:#ffffff;
+		if (?AppMode === 'Light') {
+			--inactive-title-background-color:#ffffff;
+		} else {
+			--inactive-title-background-color:#000000;
+		}
 	} else {
 		--canvas-background-color:?Canvas;
 		--inactive-text-background-color:?GrayText;

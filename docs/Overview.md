@@ -114,7 +114,7 @@ Of course. It has been tested and it works. For instance, if you want to modify 
 --desktop-background-image:url("loadbg_dev.png"); /* <image> */
 --desktop-background-image-filter:opacity(100%); /* <filter-function> */
 --desktop-background-color:#441177; /* <color> */
---desktop-background-mode:standard; /* standard | full */
+--desktop-background-mode:header; /* header | one-quarter | two-quarters | three-quarters | four-quarters */
 --desktop-background-size:cover; /* cover | contain | stretched | full */
 --desktop-background-horizontal-alignment:top; /* left | center | right */
 --desktop-background-vertical-alignment:top; /* top | center | bottom */
@@ -142,7 +142,7 @@ Per-page theming is also supported. If you want to use a different theme for the
 --desktop-background-image:url("loadbg_dev.png"); /* <image> */
 --desktop-background-image-filter:opacity(100%); /* <filter-function> */
 --desktop-background-color:#441177; /* <color> */
---desktop-background-mode:standard; /* standard | full */
+--desktop-background-mode:header; /* header | one-quarter | two-quarters | three-quarters | four-quarters */
 --desktop-background-size:cover; /* cover | contain | stretched | full */
 --desktop-background-horizontal-alignment:top; /* left | center | right */
 --desktop-background-vertical-alignment:top; /* top | center | bottom */

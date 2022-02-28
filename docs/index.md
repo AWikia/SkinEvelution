@@ -25,7 +25,8 @@ Evelution requires at least one of these browsers in order to run properly:
 - Edge 84+
 - Safari 14+
 - Browsers based on those (Such as Opera)
-Evelution skin will not be blocked from running inside outdated browsers, however do note that we will not be patching any issue found in browsers outside the [supported ones](https://caniuse.com/?compare=firefox+84,chrome+84,safari+14&compareCats=all)
+
+Evelution skin will not be blocked from running inside outdated browsers, however do note that we will not be patching any issue found in browsers outside the [supported ones](https://caniuse.com/?compare=firefox+84,chrome+84,safari+14&compareCats=all) and an unsupported browser banner will appear on skin load.
 
 # Installation
 To Install Evelution, you must download the reposistory first. Make a folder called **Evelution** in **Skins** diractory where you have installed MediaWiki and extract the zipped file contents in **Evelution** folder.  Lastly, put this in **LocalSettings.php**:
@@ -45,7 +46,7 @@ If you want to create a new theme without using CPE Theme Designer (i.e. Due to 
 --desktop-background-image:url("loadbg_dev.png"); /* <image> */
 --desktop-background-image-filter:opacity(100%); /* <filter-function> */
 --desktop-background-color:#441177; /* <color> */
---desktop-background-mode:standard; /* standard | full */
+--desktop-background-mode:header; /* header | one-quarter | two-quarters | three-quarters | four-quarters */
 --desktop-background-size:cover; /* cover | contain | stretched | full */
 --desktop-background-horizontal-alignment:top; /* left | center | right */
 --desktop-background-vertical-alignment:top; /* top | center | bottom */
