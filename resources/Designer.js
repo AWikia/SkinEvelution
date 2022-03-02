@@ -1301,7 +1301,7 @@ function TestTheme() {
     } else {
 		var customfont = $('#secondfont').val();
     }
-		result = '.theme-A, .theme-B, .theme-C, .theme-D, .theme-E, .theme-F, .theme-G, .theme-H {\n' + // Beginning
+		result = ':root .theme-A, .theme-B, .theme-C, .theme-D, .theme-E, .theme-F, .theme-G, .theme-H {\n' + // Beginning
 				 '--desktop-background-image:' + image + '!important;\n' +
 				 '--desktop-background-image-filter:' + $('#bodyimagefilter').val() + '!important;\n' +
 				 '--desktop-background-color:' + $('#bodybg').val()  + '!important;\n' +
@@ -1313,7 +1313,7 @@ function TestTheme() {
 				 '--desktop-background-no-horizontal-tiling:' + (!( document.querySelector('input#tilingH').checked ))  + '!important;\n' +
 				 '--desktop-background-no-vertical-tiling:' + (!( document.querySelector('input#tilingV').checked ))  + '!important;\n' +
 				 '--canvas-background-color:' + $('#pagebg').val() + '!important;\n' +
-				 '--canvas-secondary-background-color:' + autocolor7  + ';\n' +
+				 '--canvas-secondary-background-color:' + autocolor7  + '!important;\n' +
 				 '--inactive-text-background-color:' + autocolor2  + '!important;\n' +
 				 '--canvas-text-background-color:' + autocolor3  + '!important;\n' +
 				 '--canvas-text-secondary-background-color:' + autocolor8  + ';\n' +
