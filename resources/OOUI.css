@@ -338,7 +338,7 @@ main[toolbar="false"] .mw-prefs-buttons {
 
 body .mw-notification {
 	border-color:var(--inactive-text-background-color);
-	color:var(--canvas-text-background-color);
+	color:var(--canvas-text-secondary-background-color);
 	background-color:rgba(var(--canvas-secondary-background-color-rgb),var(--dropdown-opacity));
 	-webkit-backdrop-filter:var(--backdrop-filter);
 	backdrop-filter:var(--backdrop-filter);
@@ -368,6 +368,7 @@ body .catlinks {
 	font-size:14px;
 	border:1px solid var(--inactive-text-background-color);
 	background-color:var(--canvas-secondary-background-color);
+	color:var(--canvas-text-secondary-background-color);
 	padding:4px;
 	margin-top:4px;
 	clear:both;
@@ -380,6 +381,7 @@ body li.gallerybox div.thumb {
 	border-radius:var(--border-radius);
 	border-color:var(--inactive-text-background-color);
 	background-color:var(--canvas-secondary-background-color);
+	color:var(--canvas-text-secondary-background-color);
 }
 
 .mw-content-ltr .mw-editsection, .mw-content-rtl .mw-content-ltr .mw-editsection {
@@ -422,6 +424,7 @@ body .tux-editor-header {
 /* Tabs */
 body .oo-ui-tabSelectWidget-framed {
 	background-color:var(--canvas-secondary-background-color);
+	color:var(--canvas-text-secondary-background-color);
 }
 
 body .oo-ui-panelLayout-framed,
@@ -745,11 +748,12 @@ body .mw-ui-button.mw-ui-progressive:focus:not(:active) {
 body .oo-ui-tagMultiselectWidget.oo-ui-widget-enabled,
 body .oo-ui-tagMultiselectWidget.oo-ui-widget-enabled.oo-ui-tagMultiselectWidget-outlined {
 	background-color:var(--canvas-secondary-background-color);
+	color:var(--canvas-text-secondary-background-color);
 }
 
 body .mw-rcfilters-ui-filterTagMultiselectWidget.oo-ui-widget-enabled .oo-ui-tagMultiselectWidget-handle {
 	background-color:var(--canvas-secondary-background-color);
-	color:var(--canvas-text-background-color);
+	color:var(--canvas-text-secondary-background-color);
 	border-color:var(--inactive-text-background-color);
 }
 
@@ -775,14 +779,14 @@ body .oo-ui-popupToolGroup-tools {
 	/* Track */
 	--scrollbar-track-color-1:var(--canvas-secondary-background-color);
 	--scrollbar-track-color-2:var(--canvas-secondary-background-color-hover);
-	--scrollbar-track-text:var(--canvas-text-background-color);
+	--scrollbar-track-text:var(--canvas-text-secondary-background-color);
 	/* Thumb */
 	--scrollbar-thumb-color-1:var(--inactive-text-background-color);
 	--scrollbar-thumb-color-2:var(--inactive-text-background-color-hover);
 	--scrollbar-thumb-text:var(--inactive-text-foreground-color);
 	
 	background-color:var(--canvas-secondary-background-color);
-	color:var(--canvas-text-background-color);
+	color:var(--canvas-text-secondary-background-color);
 	border-color:var(--inactive-text-background-color);
 	border-radius:var(--border-radius);
 }
@@ -793,14 +797,14 @@ body .toc {
 	/* Track */
 	--scrollbar-track-color-1:transparent;
 	--scrollbar-track-color-2:transparent;
-	--scrollbar-track-text:var(--canvas-text-background-color);
+	--scrollbar-track-text:var(--canvas-text-secondary-background-color);
 	/* Thumb */
 	--scrollbar-thumb-color-1:var(--inactive-text-background-color);
 	--scrollbar-thumb-color-2:var(--inactive-text-background-color-hover);
 	--scrollbar-thumb-text:var(--inactive-text-foreground-color);
 	
 	background-color:rgba(var(--canvas-secondary-background-color-rgb),0.4);
-	color:var(--canvas-text-background-color);
+	color:var(--canvas-text-secondary-background-color);
 	border-color:var(--inactive-text-background-color);
 	border-radius:var(--border-radius);
 	padding:0;
@@ -813,7 +817,7 @@ body .toc .cpe-list>li {
 
 body .toc ul li a {
     border-radius: var(--border-radius);
-    color: var(--canvas-text-background-color);
+    color: var(--canvas-text-secondary-background-color);
     display: block;
     line-height: 1.75;
     padding: 2px 6px;
@@ -824,6 +828,11 @@ body .toc ul li a {
     border:1px solid transparent;
 }
 
+body .toc .module-toc li a {
+	color:var(--canvas-text-background-color);
+}
+
+
 body .toc ul li a .tocnumber {
 	opacity:0.7;
     transition-property: opacity;
@@ -833,10 +842,17 @@ body .toc ul li a .tocnumber {
 }
 
 body .toc ul li a:hover {
+	background-color:var(--hyperlink-secondary-fadeout-color);
+	border-color:rgba(var(--hyperlink-secondary-background-color-rgb),calc(var(--fadeout-opacity) * 0.5));
+    color: var(--hyperlink-secondary-background-color);
+}
+
+body .toc .module-toc li a:hover {
 	background-color:var(--hyperlink-fadeout-color);
 	border-color:rgba(var(--hyperlink-background-color-rgb),calc(var(--fadeout-opacity) * 0.5));
     color: var(--hyperlink-background-color);
 }
+
 
 body .toc ul li a:hover .tocnumber {
 	opacity:1;
@@ -863,6 +879,7 @@ body .toc > ul {
 
 body .mw-rcfilters-ui-filterMenuOptionWidget.oo-ui-flaggedElement-muted:not(.oo-ui-optionWidget-selected) {
 	background-color:var(--canvas-secondary-background-color);
+	color:var(--canvas-text-secondary-background-color);
 }
 
 body .mw-rcfilters-ui-itemMenuOptionWidget:hover,
@@ -874,7 +891,7 @@ body .oo-ui-tool.oo-ui-widget-enabled > .oo-ui-tool-link:hover,
 body .oo-ui-listToolGroup-tools .oo-ui-tool.oo-ui-widget-enabled:hover,
 body .wikiEditor-ui-toolbar .group .tool-select .menu .options .option:hover {
 	background-color:var(--canvas-secondary-background-color-hover);
-	color:var(--canvas-text-background-color);
+	color:var(--canvas-text-secondary-background-color);
 
 }
 
@@ -1016,7 +1033,7 @@ body.theme-fandomdesktop-dark .oo-ui-iconElement-icon {
 body #pagehistory li.selected {
 	background-color:var(--canvas-secondary-background-color);
 	border-color:var(--inactive-text-background-color);
-	color:var(--canvas-text-background-color);
+	color:var(--canvas-text-secondary-background-color);
 }
 
 body .oo-ui-optionWidget.oo-ui-widget-disabled {
@@ -1212,7 +1229,7 @@ body .oo-ui-windowManager-modal.oo-ui-windowManager-floating > .oo-ui-dialog > .
 
 body .oo-ui-windowManager-modal > .oo-ui-dialog > .oo-ui-window-frame {
 	background-color:var(--canvas-secondary-background-color);
-	color:var(--canvas-text-background-color);
+	color:var(--canvas-text-secondary-background-color);
 }
 
 body .oo-ui-processDialog-content .oo-ui-window-head, .oo-ui-processDialog-content .oo-ui-window-foot {
@@ -1259,7 +1276,7 @@ body .wikiEditor-ui-toolbar,
 body .editOptions,
 body #msupload-dropzone {
     background-color: var(--canvas-secondary-background-color);
-    color: var(--canvas-text-background-color);
+	color:var(--canvas-text-secondary-background-color);
     border-color:var(--inactive-text-background-color);
 }
 
@@ -1276,6 +1293,7 @@ body .editOptions {
 
 body #MsCatSelect {
 	background-color:var(--canvas-secondary-background-color-hover);
+	color:var(--canvas-text-secondary-background-color);
 }
 
 body #MsCatSelect .untercat-hinw {
@@ -1390,15 +1408,17 @@ body .uls-search,
 body #uls-settings-block {
 	border-color:var(--inactive-text-background-color);
 	background-color:var(--canvas-secondary-background-color);
+	color:var(--canvas-text-secondary-background-color);
 }
 
 body .uls-languagefilter {
 	background-color:var(--canvas-secondary-background-color);
+	color:var(--canvas-text-secondary-background-color);
 }
 
 body .uls-filtersuggestion {
 	background-color:var(--canvas-secondary-background-color);
-	color:var(--canvas-text-background-color-hover);
+	color:var(--canvas-text-secondary-background-color);
 }
 
 body .uls-lcd {
@@ -1438,11 +1458,12 @@ body #languagesettings-settings-panel {
 body .uls-input-settings .uls-input-settings-inputmethods-list,
 body .languagesettings-menu .menu-section:hover {
 	background-color:var(--canvas-secondary-background-color);
+	color:var(--canvas-text-secondary-background-color);
 }
 
 body .languagesettings-menu .menu-section.active {
 	background-color:var(--canvas-secondary-background-color);
-	color:var(--canvas-text-background-color);
+	color:var(--canvas-text-secondary-background-color);
 }
 
 
@@ -1484,13 +1505,13 @@ body #languagesettings-panels .mw-ui-pressed {
 
 body .oo-ui-selectFileWidget-dropTarget {
 	background-color:var(--canvas-secondary-background-color);
-	color:var(--canvas-text-background-color);
+	color:var(--canvas-text-secondary-background-color);
 	border-color:var(--inactive-text-background-color);
 }
 
 body .oo-ui-selectFileWidget.oo-ui-widget-enabled.oo-ui-selectFileWidget-dropTarget {
 	background-color:var(--canvas-secondary-background-color);
-	color:var(--canvas-text-background-color);
+	color:var(--canvas-text-secondary-background-color);
 }
 
 /* Progress */
@@ -1521,7 +1542,7 @@ body .ext-translate-container .tux-messagelist .tux-message-pagemode .tux-messag
 	border-left-color:var(--inactive-text-background-color);
 	border-right-color:var(--inactive-text-background-color);
 	background-color:var(--canvas-secondary-background-color);
-	color:var(--canvas-text-background-color);
+	color:var(--canvas-text-secondary-background-color);
 }
 body .ext-translate-container .tux-messagelist .tux-message-pagemode:first-child .tux-message-item-compact {
 	border-top-color:var(--inactive-text-background-color);
@@ -1555,12 +1576,13 @@ body .group-warning {
 
 body .ext-translate-container .tux-messagelist .tux-message-pagemode .tux-message-item-compact:hover {
 	background-color:var(--canvas-secondary-background-color-hover);
-	color:var(--canvas-text-background-color);
+	color:var(--canvas-text-secondary-background-color);
 }
 
 body .tux-message-item {
 	border-bottom-color:var(--inactive-text-background-color);
 	background:var(--canvas-secondary-background-color);
+	color:var(--canvas-text-secondary-background-color);
 }
 
 body .tux-message-item.translated, 
@@ -1568,10 +1590,12 @@ body .tux-message-item.translated:hover,
 body .tux-message-item.proofread, 
 body .tux-message-item.proofread:hover {
 	background:var(--canvas-secondary-background-color-hover);
+	color:var(--canvas-text-secondary-background-color);
 }
 
 body .tux-message-item:hover {
 	background:var(--canvas-secondary-background-color-hover);
+	color:var(--canvas-text-secondary-background-color);
 }
 
 body .tux-message-editor {
@@ -1610,6 +1634,7 @@ body .tux-dropdown-menu {
 
 body .grid .tux-message-editor .infocolumn-block {
 	background-color:var(--canvas-secondary-background-color);
+	color:var(--canvas-text-secondary-background-color);
 }
 
 body .tux-message-editor__caret:before {
@@ -1633,7 +1658,7 @@ body .tux-action-bar {
 body .tux-editor-editsummary-block input {
 	background-color:var(--canvas-secondary-background-color);
 	border-color:var(--inactive-text-background-color);
-	color:var(--canvas-text-background-color);
+	color:var(--canvas-text-secondary-background-color);
 }
 
 body .tux-editor-insert-buttons button {
@@ -1709,6 +1734,7 @@ body .tux-groupselector {
 @media screen and (min-height: 600px) {
 	.tux-messagetable-header.floating {
 		background: var(--canvas-secondary-background-color);
+		color:var(--canvas-text-secondary-background-color);
 		top: 50px;
 		left:50px;
 		z-index: 200;
@@ -1722,6 +1748,7 @@ body .tux-groupselector {
 
 body .mw-pt-languages-label {
 	background-color:var(--canvas-secondary-background-color);
+	color:var(--canvas-text-secondary-background-color);
 }
 
 body .mw-pt-languages {
@@ -1755,10 +1782,12 @@ body #profile-toggle-button {
 /* Flow aka Stractured Discussions */
 body .flow-topic-titlebar {
 	background-color:var(--canvas-secondary-background-color);
+	color:var(--canvas-text-secondary-background-color);
 }
 
 body .flow-topic-moderatestate-lock .flow-topic-titlebar {
 	background-color:var(--canvas-secondary-background-color-hover);
+	color:var(--canvas-text-secondary-background-color);
 }
 
 body .flow-post {
@@ -1767,6 +1796,7 @@ body .flow-post {
 
 body .flow-ui-editorWidget > .flow-ui-editorWidget-editor:not(.oo-ui-pendingElement-pending) {
 	background-color:var(--canvas-secondary-background-color);
+	color:var(--canvas-text-secondary-background-color);
 }
 
 body .flow-ui-editorWidget-focused .flow-ui-editorWidget-editor {
@@ -1785,10 +1815,12 @@ body .mw-ui-anchor.mw-ui-progressive.mw-ui-quiet:hover {
 body div > .flow-menu ul {
 	background:var(--canvas-secondary-background-color);
 	border-color:var(--inactive-text-background-color);
+	color:var(--canvas-text-secondary-background-color);
 }
 
 body .flow-component .flow-list li:hover {
 	background:var(--canvas-secondary-background-color-hover);
+	color:var(--canvas-text-secondary-background-color);
 }
 
 /* Calendar */
@@ -1798,7 +1830,7 @@ body .mw-widget-calendarWidget {
 
 body .mw-widget-dateInputWidget-calendar {
 	background-color:var(--canvas-secondary-background-color);
-	color:var(--canvas-text-background-color);
+	color:var(--canvas-text-secondary-background-color);
 }
 
 body .mw-widget-calendarWidget-day-today {
@@ -1865,7 +1897,7 @@ body .mw-mmv-post-image {
 }
 
 body .mw-mmv-image-metadata {
-	color:var(--canvas-text-background-color);
+	color:var(--canvas-text-secondary-background-color);
 	background-color:var(--canvas-secondary-background-color);
 	border-color:var(--inactive-text-background-color)
 }
@@ -1885,7 +1917,7 @@ body .mw-mmv-overlay {
 }
 
 body .mw-mmv-dialog {
-	color:var(--canvas-text-background-color);
+	color:var(--canvas-text-secondary-background-color);
 	background-color:var(--canvas-secondary-background-color);
 	border-color:var(--inactive-text-background-color);
 	box-shadow:0 2px 2px 0 var(--inactive-text-background-color-hover);
@@ -1905,6 +1937,7 @@ body .mw-mmv-options-text-body {
 
 body .mw-mmv-dialog .mw-mmv-dialog-down-arrow {
 	background-color:var(--canvas-secondary-background-color);
+	color:var(--canvas-text-secondary-background-color);
 }
 
 body .mw-mmv-title-para .mw-mmv-ttf-ellipsis {
@@ -1923,6 +1956,7 @@ body .mw-mmv-ttf-ellipsis-container:hover .mw-mmv-ttf-container .mw-mmv-ttf-elli
 body .mw-mmv-ttf-container .mw-mmv-ttf-ellipsis:active, 
 body .mw-mmv-ttf-ellipsis-container .mw-mmv-ttf-container .mw-mmv-ttf-ellipsis:active {
 	background-color:var(--canvas-secondary-background-color-hover);
+	color:var(--canvas-text-secondary-background-color);
 }
 
 /* Differences */
@@ -1953,7 +1987,7 @@ body .diff-addedline .diffchange {
 /* Echno Support */
 body .mw-echo-ui-notificationsInboxWidget-toolbarWrapper {
 	background:var(--canvas-secondary-background-color);
-	color:var(--canvas-text-background-color);
+	color:var(--canvas-text-secondary-background-color);
 	padding:6px;
 }
 
@@ -2037,7 +2071,7 @@ body .mw-echo-ui-notificationBadgeButtonPopupWidget-popup .oo-ui-clippableElemen
 
 body .mw-echo-ui-notificationItemWidget {
 	background-color:var(--canvas-secondary-background-color);
-	color:var(--canvas-text-background-color);
+	color:var(--canvas-text-secondary-background-color);
 }
 
 body .mw-echo-ui-notificationItemWidget:hover {
@@ -2172,7 +2206,7 @@ body.skin-evelution .suggestions {
 body .mw-search-profile-tabs {
 	border-radius:var(--border-radius);
 	border-color:var(--inactive-text-background-color);
-	color:var(--canvas-text-background-color);
+	color:var(--canvas-text-secondary-background-color);
 	background-color:var(--canvas-secondary-background-color);
 }
 

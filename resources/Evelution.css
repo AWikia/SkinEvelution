@@ -231,7 +231,7 @@ color:inherit;
 
 body pre, body code, body .mw-code {
 background-color:var(--canvas-secondary-background-color);
-color:var(--canvas-text-background-color);
+color:var(--canvas-text-secondary-background-color);
 border:1px dashed var(--hyperlink-background-color);
 padding:2.5px;
 border-radius:var(--border-radius);
@@ -2428,6 +2428,24 @@ border-top-right-radius:0;
 	flex:1;
 }
 
+
+	 .evelution-module .cpe-button,
+	 .evelution-page-header .cpe-button {
+		--secondary-button-foreground-color: var(--hyperlink-secondary-background-color);
+		--secondary-button-foreground-color-hover: var(--hyperlink-secondary-background-color-hover);
+		--tertiary-button-background-color:rgba(var(--hyperlink-secondary-background-color-rgb), var(--fadeout-opacity));
+		--tertiary-button-foreground-color:var(--hyperlink-secondary-background-color);
+	}
+
+	 .evelution-module .cpe-button.is-unaccented,
+	 .evelution-page-header .cpe-button.is-unaccented {
+		--secondary-button-foreground-color: var(--canvas-text-secondary-background-color);
+		--secondary-button-foreground-color-hover: var(--canvas-text-secondary-background-color-hover);
+		--tertiary-button-background-color:rgba(var(--canvas-text-secondary-background-color-rgb), var(--fadeout-opacity));
+		--tertiary-button-foreground-color:var(--canvas-text-secondary-background-color);
+	}
+
+
 	.has-accents .evelution-module .cpe-button,
 	.has-accents .evelution-page-header .cpe-button {
 		--button-background-color: var(--luna-foreground-color);
@@ -2760,6 +2778,7 @@ body .mw-datatable {
 body .mw-datatable > tr > th,
 body .mw-datatable > * > tr > th {
 	background-color:var(--canvas-secondary-background-color);
+	color:var(--canvas-text-secondary-background-color);
 	font-family:var(--secondary-font), sans-serif;
 	font-weight:900;
 	text-align:center;

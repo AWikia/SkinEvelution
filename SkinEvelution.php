@@ -119,6 +119,8 @@ class SkinEvelution extends SkinMustache {
 		$data["has-interlanguage-links"] = true;
 		$data["is-loggedin"] = $this->getSkin()->getUser()->isRegistered();
 
+
+		$data["has-servelution-3.2.0"] =  ($this->getConfig()->get ( 'EvelutionServelutionRelease' ) == '3.2.0');
 		$data["has-servelution-3.1.0"] =  ($this->getConfig()->get ( 'EvelutionServelutionRelease' ) == '3.1.0');
 		$data["has-servelution-3.0.0"] =  ($this->getConfig()->get ( 'EvelutionServelutionRelease' ) == '3.0.0');
 		$data["has-servelution-2.8.0"] =  ($this->getConfig()->get ( 'EvelutionServelutionRelease' ) == '2.8.0');
@@ -130,7 +132,9 @@ class SkinEvelution extends SkinMustache {
 		$data["has-servelution-2.2.0"] =  ($this->getConfig()->get ( 'EvelutionServelutionRelease' ) == '2.2.0');
 		$data["has-servelution-2.1.0"] =  ($this->getConfig()->get ( 'EvelutionServelutionRelease' ) == '2.1.0');
 		// Outdated Servelution
-		$data["has-servelution-old"] = ($data["has-servelution-2.1.0"] || $data["has-servelution-2.2.0"] || $data["has-servelution-2.3.0"] || $data["has-servelution-2.4.0"] || $data["has-servelution-2.5.0"] || $data["has-servelution-2.6.0"] || $data["has-servelution-2.7.0"] || $data["has-servelution-2.8.0"] || $data["has-servelution-3.0.0"] || $data["has-servelution-3.1.0"]);
+		$data["has-servelution-old"] = ($data["has-servelution-2.1.0"] || $data["has-servelution-2.2.0"] || $data["has-servelution-2.3.0"] || $data["has-servelution-2.4.0"] || $data["has-servelution-2.5.0"] || $data["has-servelution-2.6.0"] || $data["has-servelution-2.7.0"] || $data["has-servelution-2.8.0"] || $data["has-servelution-3.0.0"] || $data["has-servelution-3.1.0"] || $data["has-servelution-3.2.0"]);
+		// Custom Secondary Background and Text Color
+		$data["has-servelution-no-custom-2ndbg"] = ($data["has-servelution-2.1.0"] || $data["has-servelution-2.2.0"] || $data["has-servelution-2.3.0"] || $data["has-servelution-2.4.0"] || $data["has-servelution-2.5.0"] || $data["has-servelution-2.6.0"] || $data["has-servelution-2.7.0"] || $data["has-servelution-2.8.0"] || $data["has-servelution-3.0.0"] || $data["has-servelution-3.1.0"] || $data["has-servelution-3.2.0"]);
 		// Mica/Luna Levit
 		$data["has-servelution-no-mica"] = ($data["has-servelution-2.1.0"] || $data["has-servelution-2.2.0"] || $data["has-servelution-2.3.0"] || $data["has-servelution-2.4.0"] || $data["has-servelution-2.5.0"] || $data["has-servelution-2.6.0"] || $data["has-servelution-2.7.0"] || $data["has-servelution-2.8.0"] || $data["has-servelution-3.0.0"] || $data["has-servelution-3.1.0"]);
 		// Image Filter

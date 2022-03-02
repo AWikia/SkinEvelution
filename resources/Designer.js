@@ -481,6 +481,9 @@ function InitDesigner() {
 
 				'<td style="text-align:center; width:150px">' + 
 					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#ffffff" id="pagebg" list="td_colors" />' + // Page BG
+					'<hr>' +
+					'<input type="checkbox" name="auto7" id="auto7" checked>' + '<label for="auto7">' + mw.msg( 'evelution-designer-auto' ) + '</label> <br>' +
+					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#ffffff" id="pagebg_s" list="td_colors" disabled />' + // Page BG
 				'</td>' +
 			'</tr>' +
 		// TR
@@ -493,7 +496,10 @@ function InitDesigner() {
 					'<input type="checkbox" name="auto3" id="auto3">' + '<label for="auto3">' + mw.msg( 'evelution-designer-auto' ) + '</label> <br>' +
 					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#2d383a" id="pagebg3" list="td_colors" />' + // Page BG
 					'<br><label>Ration:</label> <br>' +
-					'<progress max="4.5" value="0" id="pagebg3-pagebg-test">' +
+					'<progress max="4.5" value="0" id="pagebg3-pagebg-test"></progress>' +
+					'<hr>' +
+					'<input type="checkbox" name="auto8" id="auto8" checked>' + '<label for="auto8">' + mw.msg( 'evelution-designer-auto' ) + '</label> <br>' +
+					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#2d383a" id="pagebg3_s" list="td_colors" disabled />' + // Page BG
 				'</td>' +
 			'</tr>' +
 		// TR
@@ -889,6 +895,16 @@ function ApplyTheme () {
 	} else {
 		var autocolor6 = $('#accentcolor').val();
 	}
+	if (document.querySelector('.wikitable #auto7').checked) {
+		var autocolor7 = 'auto';
+	} else {
+		var autocolor7 = $('#pagebg_s').val();
+	}
+	if (document.querySelector('.wikitable #auto8').checked) {
+		var autocolor8 = 'auto';
+	} else {
+		var autocolor8 = $('#pagebg3_s').val();
+	}
 	if ( ( ( $("#bodyimage").val().startsWith('url("') ) && ( $("#bodyimage").val().endsWith('")') ) ) ||
 		  ( ( $("#bodyimage").val().startsWith('url(') ) && ( $("#bodyimage").val().endsWith(')') ) ) ) {
 		var image = $("#bodyimage").val();
@@ -995,6 +1011,16 @@ function CopyTheme() {
 	} else {
 		var autocolor6 = $('#accentcolor').val();
 	}
+	if (document.querySelector('.wikitable #auto7').checked) {
+		var autocolor7 = 'auto';
+	} else {
+		var autocolor7 = $('#pagebg_s').val();
+	}
+	if (document.querySelector('.wikitable #auto8').checked) {
+		var autocolor8 = 'auto';
+	} else {
+		var autocolor8 = $('#pagebg3_s').val();
+	}
 	if ( ( ( $("#bodyimage").val().startsWith('url("') ) && ( $("#bodyimage").val().endsWith('")') ) ) ||
 		  ( ( $("#bodyimage").val().startsWith('url(') ) && ( $("#bodyimage").val().endsWith(')') ) ) ) {
 		var image = $("#bodyimage").val();
@@ -1023,8 +1049,10 @@ function CopyTheme() {
 				 '--desktop-background-no-horizontal-tiling:' + (!( document.querySelector('input#tilingH').checked ))  + ';\n' +
 				 '--desktop-background-no-vertical-tiling:' + (!( document.querySelector('input#tilingV').checked ))  + ';\n' +
 				 '--canvas-background-color:' + $('#pagebg').val() + ';\n' +
+				 '--canvas-secondary-background-color:' + autocolor7  + ';\n' +
 				 '--inactive-text-background-color:' + autocolor2  + ';\n' +
 				 '--canvas-text-background-color:' + autocolor3  + ';\n' +
+				 '--canvas-text-secondary-background-color:' + autocolor8  + ';\n' +
 				 '--highlight-background-color:' + autocolor6 + ';\n' +
 				 '--hyperlink-background-color:' + $('#saccentcolor').val() + ';\n' +
 				 '--active-title-background-color:' + autocolor5  + ';\n' +
@@ -1120,6 +1148,14 @@ function PasteTheme() {
 	document.querySelector('input#tilingV').checked = (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-no-vertical-tiling") === 'false');
 	// Page BG
 	$('#pagebg').val( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--canvas-background-color") );
+	// 2nd Page BG
+	if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--canvas-secondary-background-color") === 'auto' ) {
+		document.querySelector('.wikitable #auto7').checked = true;
+	} else {
+		document.querySelector('.wikitable #auto7').checked = false;
+		$('#pagebg_s').val( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--canvas-secondary-background-color") );
+	}
+	$('.wikitable #pagebg_s').prop('disabled',(document.querySelector('.wikitable #auto7').checked) );
 	// Page Text BG
 	if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--canvas-text-background-color") === 'auto' ) {
 		document.querySelector('.wikitable #auto3').checked = true;
@@ -1128,6 +1164,14 @@ function PasteTheme() {
 		$('#pagebg3').val( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--canvas-text-background-color") );
 	}
 	$('.wikitable #pagebg3').prop('disabled',(document.querySelector('.wikitable #auto3').checked) );
+	// 2nd Page Text BG
+	if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--canvas-text-secondary-background-color") === 'auto' ) {
+		document.querySelector('.wikitable #auto8').checked = true;
+	} else {
+		document.querySelector('.wikitable #auto8').checked = false;
+		$('#pagebg3_s').val( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--canvas-text-secondary-background-color") );
+	}
+	$('.wikitable #pagebg3_s').prop('disabled',(document.querySelector('.wikitable #auto8').checked) );
 	// Page Border BG
 	if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--inactive-text-background-color") === 'auto' ) {
 		document.querySelector('.wikitable #auto2').checked = true;
@@ -1231,6 +1275,16 @@ function TestTheme() {
 	} else {
 		var autocolor6 = $('#accentcolor').val();
 	}
+	if (document.querySelector('.wikitable #auto7').checked) {
+		var autocolor7 = 'auto';
+	} else {
+		var autocolor7 = $('#pagebg_s').val();
+	}
+	if (document.querySelector('.wikitable #auto8').checked) {
+		var autocolor8 = 'auto';
+	} else {
+		var autocolor8 = $('#pagebg3_s').val();
+	}
 	if ( ( ( $("#bodyimage").val().startsWith('url("') ) && ( $("#bodyimage").val().endsWith('")') ) ) ||
 		  ( ( $("#bodyimage").val().startsWith('url(') ) && ( $("#bodyimage").val().endsWith(')') ) ) ) {
 		var image = $("#bodyimage").val();
@@ -1259,8 +1313,10 @@ function TestTheme() {
 				 '--desktop-background-no-horizontal-tiling:' + (!( document.querySelector('input#tilingH').checked ))  + '!important;\n' +
 				 '--desktop-background-no-vertical-tiling:' + (!( document.querySelector('input#tilingV').checked ))  + '!important;\n' +
 				 '--canvas-background-color:' + $('#pagebg').val() + '!important;\n' +
+				 '--canvas-secondary-background-color:' + autocolor7  + ';\n' +
 				 '--inactive-text-background-color:' + autocolor2  + '!important;\n' +
 				 '--canvas-text-background-color:' + autocolor3  + '!important;\n' +
+				 '--canvas-text-secondary-background-color:' + autocolor8  + ';\n' +
 				 '--highlight-background-color:' + autocolor6 + '!important;\n' +
 				 '--hyperlink-background-color:' + $('#saccentcolor').val() + '!important;\n' +
 				 '--active-title-background-color:' + autocolor5  + '!important;\n' +
@@ -1383,6 +1439,20 @@ $('.wikitable #auto6').click(
 							function(e) {
 								e.preventDefault
 								$('.wikitable #accentcolor').prop('disabled',(document.querySelector('.wikitable #auto6').checked) );
+								TestDynamicTheme();
+							}   
+						);
+$('.wikitable #auto7').click(
+							function(e) {
+								e.preventDefault
+								$('.wikitable #pagebg_s').prop('disabled',(document.querySelector('.wikitable #auto7').checked) );
+								TestDynamicTheme();
+							}   
+						);
+$('.wikitable #auto8').click(
+							function(e) {
+								e.preventDefault
+								$('.wikitable #pagebg3_s').prop('disabled',(document.querySelector('.wikitable #auto8').checked) );
 								TestDynamicTheme();
 							}   
 						);

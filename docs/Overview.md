@@ -187,6 +187,7 @@ Each release of Evelution comes with different Sevelution releases, to name a fe
 - 3.0.0 = Codenamed Zirconium = Introduced in Evelution 46.0.0 - Introduces Custom Primary font for each theme and CPE Language 2.0
 - 3.1.0 = Codenamed Niobium = Introduced in Evelution 51.0.0 - Introduces background image filters
 - 3.2.0 = Codenamed Molybdenum = Introduced in Evelution 53.0.0 - Introduces Mica (Low-Level Acryllic)
+- 3.3.0 = Codenamed Technetium  = Introduced in Evelution 62.0.0 - Introduces Custom Secondary Canvas & Canvas Text Background Colors
 
 ### The Luna Theming System
 Evelution comes with its own theming system, the Luna theming. It consists of three elements, the Luna Lovit, the Luna Levit and the Luna Lavccent:

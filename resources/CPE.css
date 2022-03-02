@@ -128,7 +128,9 @@ Aleo = Latin
 /* Aliases */
 --highlight-background-color:auto;
 --inactive-text-background-color:auto;
+--canvas-secondary-background-color:auto;
 --canvas-text-background-color:auto;
+--canvas-text-secondary-background-color:auto;
 --desktop-background-image-filter:opacity(100%);
 --desktop-text-background-color:auto;
 --desktop-background-mode:header;
@@ -253,10 +255,12 @@ body {
 	--desktop-fadeout-color:rgba(var(--desktop-background-color-rgb),var(--fadeout-opacity));
 	--desktop-text-fadeout-color:rgba(var(--desktop-text-background-color-rgb),var(--fadeout-opacity));
 	--hyperlink-fadeout-color:rgba(var(--hyperlink-background-color-rgb),var(--fadeout-opacity));
+	--hyperlink-secondary-fadeout-color:rgba(var(--hyperlink-secondary-background-color-rgb),var(--fadeout-opacity));
 	--canvas-fadeout-color:rgba(var(--canvas-background-color-rgb),var(--fadeout-opacity));
 	--canvas-secondary-fadeout-color:rgba(var(--canvas-secondary-background-color-rgb),var(--fadeout-opacity));
 	--inactive-text-fadeout-color:rgba(var(--inactive-text-background-color-rgb),var(--fadeout-opacity));
 	--canvas-text-fadeout-color:rgba(var(--canvas-text-background-color-rgb),var(--fadeout-opacity));
+	--canvas-text-secondary-fadeout-color:rgba(var(--canvas-text-secondary-background-color-rgb),var(--fadeout-opacity));
 	--highlight-fadeout-color:rgba(var(--highlight-background-color-rgb),var(--fadeout-opacity));
 	--active-title-fadeout-color:rgba(var(--active-title-background-color-rgb),var(--fadeout-opacity));
 	--inactive-title-fadeout-color:rgba(var(--inactive-title-background-color-rgb),var(--fadeout-opacity));
@@ -282,20 +286,20 @@ body [force-active] {
 	--luna-background-color:var(--canvas-secondary-background-color);
 	--luna-background-color-rgb:var(--canvas-secondary-background-color-rgb);
 	--luna-background-color-hover:var(--canvas-secondary-background-color-hover);
-	--luna-text-background-color:var(--canvas-text-background-color);
-	--luna-text-background-color-hover:var(--canvas-text-background-color-hover);
-	--luna-text-background-color-rgb:var(--canvas-text-background-color-rgb);
-	--luna-text-background-color-hover-rgb:var(--canvas-text-background-color-hover-rgb);	
+	--luna-text-background-color:var(--canvas-text-secondary-background-color);
+	--luna-text-background-color-hover:var(--canvas-text-secondary-background-color-hover);
+	--luna-text-background-color-rgb:var(--canvas-text-secondary-background-color-rgb);
+	--luna-text-background-color-hover-rgb:var(--canvas-text-secondary-background-color-hover-rgb);	
 	--luna-border-background-color:var(--canvas-secondary-background-color-hover);
-	--luna-foreground-color:var(--canvas-foreground-color);
-	--luna-foreground-color-inverted:var(--canvas-foreground-color);
-	--luna-foreground-color-hover:var(--canvas-foreground-color-hover);
-	--luna-foreground-color-rgb:var(--canvas-foreground-color-rgb);
-	--luna-foreground-color-hover-rgb:var(--canvas-foreground-color-hover-rgb);
-	--luna-alternative-foreground-color:var(--canvas-alternative-foreground-color);
-	--luna-alternative-foreground-color-rgb:var(--canvas-alternative-foreground-color-rgb);
-	--luna-link-color:var(--hyperlink-background-color);
-	--luna-link-color-rgb:var(--hyperlink-background-color-rgb);
+	--luna-foreground-color:var(--canvas-secondary-foreground-color);
+	--luna-foreground-color-inverted:var(--canvas-secondary-foreground-color);
+	--luna-foreground-color-hover:var(--canvas-secondary-foreground-color-hover);
+	--luna-foreground-color-rgb:var(--canvas-secondary-foreground-color-rgb);
+	--luna-foreground-color-hover-rgb:var(--canvas-secondary-foreground-color-hover-rgb);
+	--luna-alternative-foreground-color:var(--canvas-secondary-alternative-foreground-color);
+	--luna-alternative-foreground-color-rgb:var(--canvas-secondary-alternative-foreground-color-rgb);
+	--luna-link-color:var(--hyperlink-secondary-background-color);
+	--luna-link-color-rgb:var(--hyperlink-secondary-background-color-rgb);
 	--luna-contrast-selected-background-color:var(--highlight-background-color);
 	--luna-contrast-selected-background-color-rgb:var(--highlight-background-color-rgb);
 	--luna-contrast-selected-foreground-color:var(--highlight-foreground-color);
@@ -1101,7 +1105,7 @@ font-family:"LCD", monospace;
 textarea {
 	background-color:var(--canvas-secondary-background-color);
 	border:1px solid var(--inactive-text-background-color);
-	color:var(--canvas-text-background-color);
+	color:var(--canvas-text-secondary-background-color);
 	border-radius:var(--border-radius);
 	background-image:none;
 	-webkit-appearance:none;
@@ -1138,6 +1142,7 @@ body .wikitable {
 body .wikitable > tr > th,
 body .wikitable > * > tr > th {
 	background-color:var(--canvas-secondary-background-color);
+	color:var(--canvas-text-secondary-background-color);
 	font-family:var(--secondary-font), sans-serif;
 	font-weight:900;
 	text-align:center;
@@ -2155,7 +2160,7 @@ margin-left:0;
 --dropdown-translate:-50%;
 --dropdown-scale:0.95;
 background-color:rgba(var(--canvas-secondary-background-color-rgb),var(--dropdown-opacity));
-color:var(--canvas-text-background-color);
+color:var(--canvas-text-secondary-background-color);
 border:1px solid var(--inactive-text-background-color);
 border-radius:var(--border-radius);
 display:inline-block;
@@ -2353,9 +2358,9 @@ max-height:152px;
  .cpe-dropdown__content .cpe-list.is-linked>li.is-selected>a:not(.cpe-button),
   .cpe-dropdown__content .cpe-list.is-linked>li.selected>a:not(.cpe-button), .cpe-dropdown__content .cpe-list.is-linked>li:hover>a:not(.cpe-button),
   .cpe-dropdown__content .cpe-list.is-linked>li>a:focus:not(.cpe-button) {
-background-color:var(--hyperlink-fadeout-color);
-border-color:rgba(var(--hyperlink-background-color-rgb),calc(var(--fadeout-opacity) * 0.5));
-color:var(--hyperlink-background-color);
+background-color:var(--hyperlink-secondary-fadeout-color);
+border-color:rgba(var(--hyperlink-secondary-background-color-rgb),calc(var(--fadeout-opacity) * 0.5));
+color:var(--hyperlink-secondary-background-color);
 }
 
 
@@ -3069,7 +3074,7 @@ margin-right:16px;
 /* Banners */
 .cpe-banner-notification{
 	background-color:rgba(var(--canvas-secondary-background-color-rgb),var(--dropdown-opacity));
-	color:var(--canvas-text-background-color);
+	color:var(--canvas-text-secondary-background-color);
 	display:flex;
 	transition:opacity .4s var(--transitioner), transform .4s var(--transitioner); 
 	overflow:hidden; 
@@ -3348,7 +3353,7 @@ progress {
     border:0;
     margin:5.5px 0 11.25px;
 	border-radius:var(--border-radius);
-	box-shadow:0 0 0 1px var(--canvas-foreground-color);
+	box-shadow:0 0 0 1px var(--canvas-secondary-foreground-color);
 	box-sizing:border-box;
 }
 
@@ -3471,7 +3476,7 @@ input[type="range"]::-webkit-slider-runnable-track {
   appearance:none;
   vertical-align: middle;
   border-radius:var(--border-radius);
-  box-shadow:0 0 0 1px var(--canvas-foreground-color);
+  box-shadow:0 0 0 1px var(--canvas-secondary-foreground-color);
   box-sizing:border-box;
 }
 
@@ -3488,7 +3493,7 @@ input[type="range"]::-moz-range-track {
   appearance:none;
   vertical-align: middle;
   border-radius:var(--border-radius);
-  box-shadow:0 0 0 1px var(--canvas-foreground-color);
+  box-shadow:0 0 0 1px var(--canvas-secondary-foreground-color);
   box-sizing:border-box;
 }
 
@@ -3554,20 +3559,20 @@ input[type="range"]::-moz-range-progress {
 		--luna-background-color:var(--canvas-secondary-background-color)!important;
 		--luna-background-color-rgb:var(--canvas-secondary-background-color-rgb)!important;
 		--luna-background-color-hover:var(--canvas-secondary-background-color-hover)!important;
-		--luna-text-background-color:var(--canvas-text-background-color)!important;
-		--luna-text-background-color-hover:var(--canvas-text-background-color-hover)!important;
-		--luna-text-background-color-rgb:var(--canvas-text-background-color-rgb)!important;
-		--luna-text-background-color-hover-rgb:var(--canvas-text-background-color-hover-rgb)!important;	
+		--luna-text-background-color:var(--canvas-text-secondary-background-color)!important;
+		--luna-text-background-color-hover:var(--canvas-text-secondary-background-color-hover)!important;
+		--luna-text-background-color-rgb:var(--canvas-text-secondary-background-color-rgb)!important;
+		--luna-text-background-color-hover-rgb:var(--canvas-text-secondary-background-color-hover-rgb)!important;	
 		--luna-border-background-color:var(--canvas-secondary-background-color-hover)!important;
 		--luna-foreground-color:var(--canvas-foreground-color)!important;
-		--luna-foreground-color-inverted:var(--canvas-foreground-color)!important;
-		--luna-foreground-color-hover:var(--canvas-foreground-color-hover)!important;
-		--luna-foreground-color-rgb:var(--canvas-foreground-color-rgb)!important;
-		--luna-foreground-color-hover-rgb:var(--canvas-foreground-color-hover-rgb)!important;
-		--luna-alternative-foreground-color:var(--canvas-alternative-foreground-color)!important;
-		--luna-alternative-foreground-color-rgb:var(--canvas-alternative-foreground-color-rgb)!important;
-		--luna-link-color:var(--hyperlink-background-color)!important;
-		--luna-link-color-rgb:var(--hyperlink-background-color-rgb)!important;
+		--luna-foreground-color-inverted:var(--canvas-secondary-foreground-color)!important;
+		--luna-foreground-color-hover:var(--canvas-secondary-foreground-color-hover)!important;
+		--luna-foreground-color-rgb:var(--canvas-secondary-foreground-color-rgb)!important;
+		--luna-foreground-color-hover-rgb:var(--canvas-secondary-foreground-color-hover-rgb)!important;
+		--luna-alternative-foreground-color:var(--canvas-secondary-alternative-foreground-color)!important;
+		--luna-alternative-foreground-color-rgb:var(--canvas-secondary-alternative-foreground-color-rgb)!important;
+		--luna-link-color:var(--hyperlink-secondary-background-color)!important;
+		--luna-link-color-rgb:var(--hyperlink-secondary-background-color-rgb)!important;
 		--luna-contrast-selected-background-color:var(--highlight-background-color)!important;
 		--luna-contrast-selected-background-color-rgb:var(--highlight-background-color-rgb)!important;
 		--luna-contrast-selected-foreground-color:var(--highlight-foreground-color)!important;

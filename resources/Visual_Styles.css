@@ -95,10 +95,14 @@ filter:none!important;
 --desktop-text-foreground-color-hover-rgb:var(--desktop-text-foreground-color-rgb)!important;
 /* Canvas */
 --canvas-background-color-hover:var(--canvas-background-color)!important;
---canvas-secondary-background-color-hover:var(--canvas-secondary-background-color)!important;
 --canvas-foreground-color-hover:var(--canvas-foreground-color)!important;
 --canvas-foreground-color-inverted:var(--canvas-foreground-color)!important;
 --canvas-foreground-color-hover-rgb:var(--canvas-foreground-color-rgb)!important;
+/* 2nd Canvas */
+--canvas-secondary-background-color-hover:var(--canvas-secondary-background-color)!important;
+--canvas-secondary-foreground-color-hover:var(--canvas-secondary-foreground-color)!important;
+--canvas-secondary-foreground-color-inverted:var(--canvas-secondary-foreground-color)!important;
+--canvas-secondary-foreground-color-hover-rgb:var(--canvas-secondary-foreground-color-rgb)!important;
 /* Inactive Text */
 --inactive-text-background-color-hover:var(--inactive-text-background-color)!important;
 --inactive-text-foreground-color-hover:var(--inactive-text-foreground-color)!important;
@@ -110,6 +114,12 @@ filter:none!important;
 --canvas-text-foreground-color-inverted:var(--canvas-text-foreground-color)!important;
 --canvas-text-background-color-hover-rgb:var(--canvas-text-background-color-rgb)!important;
 --canvas-text-foreground-color-hover-rgb:var(--canvas-text-foreground-color-rgb)!important;
+/* 2nd Desktop Text */
+--canvas-text-secondary-background-color-hover:var(--canvas-text-secondary-background-color)!important;
+--canvas-text-secondary-foreground-color-hover:var(--canvas-text-secondary-foreground-color)!important;
+--canvas-text-secondary-foreground-color-inverted:var(--canvas-text-secondary-foreground-color)!important;
+--canvas-text-secondary-background-color-hover-rgb:var(--canvas-text-secondary-background-color-rgb)!important;
+--canvas-text-secondary-foreground-color-hover-rgb:var(--canvas-text-secondary-foreground-color-rgb)!important;
 /* Highlight */
 --highlight-background-color-hover:var(--highlight-background-color)!important;
 --highlight-foreground-color-hover:var(--highlight-foreground-color)!important;
@@ -1093,7 +1103,7 @@ background-color:var(--highlight-background-color);
 
 .visualstyle-basiccontrast .evelution-option-pane, .visualstyle-basic .evelution-option-pane {
   background-color:var(--canvas-secondary-background-color);
-  color:var(--canvas-foreground-color);
+  color:var(--canvas-secondary-foreground-color);
   box-shadow:-1px 0 var(--canvas-secondary-background-color)!important;
   border-color:var(--luna-foreground-color);
 }
@@ -1717,7 +1727,7 @@ color:inherit;
 
 .visualstyle-simple .evelution-option-pane {
 	background-color:var(--canvas-secondary-background-color);
-	color:var(--canvas-foreground-color);
+	color:var(--canvas-secondary-foreground-color);
 }
 
 .visualstyle-simple .evelution-option-pane .option-link {
@@ -1725,7 +1735,7 @@ color:inherit;
 }
 
 .visualstyle-simple .option-link.is-active {
-	color:var(--canvas-foreground-color-hover);
+	color:var(--canvas-secondary-foreground-color-hover);
 	background-color:var(--canvas-secondary-background-color-hover);
 	border-color:var(--canvas-secondary-background-color-hover);
 }
@@ -2047,10 +2057,26 @@ body .mw-echo-ui-notificationsListWidget:not(:hover) a,
 .visualstyle-classiccontrast body {
 	--canvas-3d-background-color:#c0c0c0!important;
 	--canvas-3d-background-color-dark:#808080!important;
+	--canvas-secondary-alternative-foreground-color:var(--canvas-alternative-foreground-color)!important;
+	--canvas-secondary-alternative-foreground-color-rgb:var(--canvas-alternative-foreground-color-rgb)!important;
 	--canvas-secondary-background-color:var(--canvas-background-color)!important;
 	--canvas-secondary-background-color-hover:var(--canvas-background-color-hover)!important;
 	--canvas-secondary-background-color-rgb:var(--canvas-background-color-rgb)!important;
-
+	--canvas-secondary-foreground-color:var(--canvas-foreground-color)!important;
+	--canvas-secondary-foreground-color-hover:var(--canvas-foreground-color-hover)!important;
+	--canvas-secondary-foreground-color-inverted:var(--canvas-foreground-color-inverted)!important;
+	--canvas-secondary-foreground-color-rgb:var(--canvas-foreground-color-rgb)!important;
+	--canvas-secondary-foreground-color-hover-rgb:var(--canvas-foreground-color-hover-rgb)!important;
+	--canvas-text-secondary-alternative-foreground-color:var(--canvas-text-alternative-foreground-color)!important;
+	--canvas-text-secondary-alternative-foreground-color-rgb:var(--canvas-text-alternative-foreground-color-rgb)!important;
+	--canvas-text-secondary-background-color:var(--canvas-text-background-color)!important;
+	--canvas-text-secondary-background-color-hover:var(--canvas-text-background-color-hover)!important;
+	--canvas-text-secondary-background-color-rgb:var(--canvas-text-background-color-rgb)!important;
+	--canvas-text-secondary-foreground-color:var(--canvas-text-foreground-color)!important;
+	--canvas-text-secondary-foreground-color-hover:var(--canvas-text-foreground-color-hover)!important;
+	--canvas-text-secondary-foreground-color-inverted:var(--canvas-text-foreground-color-inverted)!important;
+	--canvas-text-secondary-foreground-color-rgb:var(--canvas-text-foreground-color-rgb)!important;
+	--canvas-text-secondary-foreground-color-hover-rgb:var(--canvas-text-foreground-color-hover-rgb)!important;
 }
 
 .visualstyle-classic *:not(body),.visualstyle-classic :not(.evelution-wrapper):before,.visualstyle-classic :not(body):after,
@@ -2091,6 +2117,7 @@ box-shadow:none!important;
 .visualstyle-classic input[type="checkbox"]:active, .visualstyle-classic input[type="radio"]:active,
 .visualstyle-classiccontrast input[type="checkbox"]:active, .visualstyle-classiccontrast input[type="radio"]:active {
 	background-color:var(--canvas-secondary-background-color)!important;
+	color:var(--canvas-text-secondary-background-color);
 }
 
 .visualstyle-classic input[type="checkbox"],
@@ -2103,6 +2130,7 @@ box-shadow:none!important;
 .visualstyle-classiccontrast .evelution-sidebar {
 	--global-nav-color:var(--canvas-secondary-background-color);
 	background-color:var(--global-nav-color);
+	color:var(--canvas-text-secondary-background-color)!important;
 	box-sizing:content-box;
 }
 
@@ -2198,7 +2226,7 @@ box-shadow:none!important;
 .visualstyle-classiccontrast body li.gallerybox div.thumb {
 	box-shadow:none!important;
 	background:var(--canvas-secondary-background-color)!important;
-	color:rgb(var(--canvas-text-background-color-rgb))!important;
+	color:var(--canvas-text-secondary-background-color)!important;
 	border-width:2px!important;
 	border-style:solid!important;
 	border-color:var(--canvas-3d-background-color) var(--canvas-3d-background-color-dark) var(--canvas-3d-background-color-dark) var(--canvas-3d-background-color)!important;
@@ -2242,6 +2270,7 @@ box-shadow:none!important;
 	width:12.5px;
 	box-shadow:none!important;
 	background-color:var(--canvas-secondary-background-color);
+	color:var(--canvas-text-secondary-background-color)!important;
 }
 
 .visualstyle-classic input[type="range"]::-webkit-slider-thumb:active,
@@ -2259,6 +2288,7 @@ box-shadow:none!important;
 	width:12.5px;
 	box-shadow:none!important;
 	background-color:var(--canvas-secondary-background-color);
+	color:var(--canvas-text-secondary-background-color)!important;
 }
 
 .visualstyle-classic input[type="range"]::-moz-range-thumb:active,
@@ -2505,7 +2535,8 @@ margin-right:0;
 .visualstyle-classiccontrast .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-buttonElement-active > .oo-ui-buttonElement-button,
 .visualstyle-classiccontrast .cpe-dropdown:focus > .cpe-floating-button,
 .visualstyle-classiccontrast .cpe-dropdown:focus-within > .cpe-floating-button {
-	background-color:var(--canvas-background-color)!important
+	background-color:var(--canvas-background-color)!important;
+	color:var(--canvas-text-background-color)!important;
 }
 
 
@@ -2649,7 +2680,7 @@ border-color:var(--progress-background-color);
 .visualstyle-classic .option-link.is-active,
 .visualstyle-classiccontrast .option-link.is-active {
 	background:var(--canvas-secondary-background-color)!important;
-	color:rgb(var(--canvas-text-background-color-rgb))!important;
+	color:var(--canvas-text-secondary-background-color)!important;
 	border-style:solid!important;
 	border-color:var(--canvas-3d-background-color-dark) var(--canvas-3d-background-color) var(--canvas-3d-background-color) var(--canvas-3d-background-color-dark)!important;
 }
@@ -2666,6 +2697,7 @@ border-color:var(--progress-background-color);
 .visualstyle-classic .lightbox footer,
 .visualstyle-classiccontrast .lightbox footer {
 	background-color:var(--canvas-secondary-background-color)!important;
+	color:var(--canvas-text-secondary-background-color)!important;
 	border-radius:0;
 }
 
@@ -2984,8 +3016,10 @@ background-color:var(--highlight-background-color);
 --desktop-background-color:#000000;
 --desktop-text-background-color:#ffffff;
 --canvas-background-color:#000000;
+--canvas-secondary-background-color:#000000;
 --inactive-text-background-color:#bee64b;
 --canvas-text-background-color:#ffeb00;
+--canvas-text-secondary-background-color:#ffffff;
 --highlight-background-color:#00755e;
 --hyperlink-background-color:#9999cc;
 --active-title-background-color:#1560bd;
@@ -2997,8 +3031,10 @@ background-color:var(--highlight-background-color);
 --desktop-background-color:#000000;
 --desktop-text-background-color:#ffffff;
 --canvas-background-color:#000000;
+--canvas-secondary-background-color:#000000;
 --inactive-text-background-color:#c8c8cd;
 --canvas-text-background-color:#bee64b;
+--canvas-text-secondary-background-color:#ffffff;
 --highlight-background-color:#0066ff;
 --hyperlink-background-color:#f653a6;
 --active-title-background-color:#2eb4e6;
@@ -3010,8 +3046,10 @@ background-color:var(--highlight-background-color);
 --desktop-background-color:#000000;
 --desktop-text-background-color:#ffffff;
 --canvas-background-color:#000000;
+--canvas-secondary-background-color:#000000;
 --inactive-text-background-color:#bee64b;
 --canvas-text-background-color:#ffffff;
+--canvas-text-secondary-background-color:#ffffff;
 --highlight-background-color:#2eb4e6;
 --hyperlink-background-color:#ffeb00;
 --active-title-background-color:#803790;
@@ -3023,8 +3061,10 @@ background-color:var(--highlight-background-color);
 --desktop-background-color:#ffffff;
 --desktop-text-background-color:#000000;
 --canvas-background-color:#ffffff;
+--canvas-secondary-background-color:#ffffff;
 --inactive-text-background-color:#b33b24;
 --canvas-text-background-color:#000000;
+--canvas-text-secondary-background-color:#000000;
 --highlight-background-color:#803790;
 --hyperlink-background-color:#1560bd;
 --active-title-background-color:#000000;
@@ -3036,8 +3076,10 @@ background-color:var(--highlight-background-color);
 --desktop-background-color:#ffffff;
 --desktop-text-background-color:#000000;
 --canvas-background-color:#ffffff;
+--canvas-secondary-background-color:#ffffff;
 --inactive-text-background-color:#9e5b40;
 --canvas-text-background-color:#803790;
+--canvas-text-secondary-background-color:#000000;
 --highlight-background-color:#ffae42;
 --hyperlink-background-color:#ed0a3f;
 --active-title-background-color:#ffeb00;
@@ -3049,8 +3091,10 @@ background-color:var(--highlight-background-color);
 --desktop-background-color:#ffffff;
 --desktop-text-background-color:#000000;
 --canvas-background-color:#ffffff;
+--canvas-secondary-background-color:#ffffff;
 --inactive-text-background-color:#614051;
 --canvas-text-background-color:#1560bd;
+--canvas-text-secondary-background-color:#000000;
 --highlight-background-color:#d92121;
 --hyperlink-background-color:#8e3179;
 --active-title-background-color:#ed0a3f;
@@ -3062,8 +3106,10 @@ background-color:var(--highlight-background-color);
 --desktop-background-color:#ffffff;
 --desktop-text-background-color:#000000;
 --canvas-background-color:#ffffff;
+--canvas-secondary-background-color:#ffffff;
 --inactive-text-background-color:#614051;
 --canvas-text-background-color:#ed0a3f;
+--canvas-text-secondary-background-color:#000000;
 --highlight-background-color:#8e3179;
 --hyperlink-background-color:#1560bd;
 --active-title-background-color:#ffae42;
@@ -3075,8 +3121,10 @@ background-color:var(--highlight-background-color);
 --desktop-background-color:#000000;
 --desktop-text-background-color:#ffffff;
 --canvas-background-color:#000000;
+--canvas-secondary-background-color:#000000;
 --inactive-text-background-color:#ed0a3f;
 --canvas-text-background-color:#2eb4e6;
+--canvas-text-secondary-background-color:#ffffff;
 --highlight-background-color:#f653a6;
 --hyperlink-background-color:#ffae42;
 --active-title-background-color:#614051;
@@ -3220,7 +3268,8 @@ background-color:var(--highlight-background-color);
 --desktop-background-image:url("");
 --desktop-background-color:#b33b24;
 --desktop-text-background-color:#ddebec;
---canvas-background-color:#c9c0bb;
+--canvas-background-color:#ffffff;
+--canvas-secondary-background-color:#c9c0bb;
 --inactive-text-background-color:#837050;
 --canvas-text-background-color:#000000;
 --highlight-background-color:#837050;
@@ -3240,7 +3289,8 @@ background-color:var(--highlight-background-color);
 --desktop-background-image:url("");
 --desktop-background-color:#b5b35c;
 --desktop-text-background-color:#000000;
---canvas-background-color:#c8c8cd;
+--canvas-background-color:#ffffff;
+--canvas-secondary-background-color:#c8c8cd;
 --inactive-text-background-color:#b5b35c;
 --canvas-text-background-color:#000000;
 --highlight-background-color:#00cccc;
@@ -3259,7 +3309,8 @@ background-color:var(--highlight-background-color);
 --desktop-background-image:url("");
 --desktop-background-color:#733380;
 --desktop-text-background-color:#ddebec;
---canvas-background-color:#63b76c;
+--canvas-background-color:#ffffff;
+--canvas-secondary-background-color:#63b76c;
 --inactive-text-background-color:#7ba05b;
 --canvas-text-background-color:#000000;
 --highlight-background-color:#7ba05b;
@@ -3279,7 +3330,8 @@ background-color:var(--highlight-background-color);
 --desktop-background-image:url("");
 --desktop-background-color:#000000;
 --desktop-text-background-color:#ddebec;
---canvas-background-color:#acace6;
+--canvas-background-color:#ffffff;
+--canvas-secondary-background-color:#acace6;
 --inactive-text-background-color:#6b3fa0;
 --canvas-text-background-color:#000000;
 --highlight-background-color:#6b3fa0;
@@ -3299,7 +3351,8 @@ background-color:var(--highlight-background-color);
 --desktop-background-image:url("");
 --desktop-background-color:#000000;
 --desktop-text-background-color:#ddebec;
---canvas-background-color:#fbe7b2;
+--canvas-background-color:#ffffff;
+--canvas-secondary-background-color:#fbe7b2;
 --inactive-text-background-color:#f2c649;
 --canvas-text-background-color:#000000;
 --highlight-background-color:#f2c649;
@@ -3319,7 +3372,8 @@ background-color:var(--highlight-background-color);
 --desktop-background-image:url("");
 --desktop-background-color:#00755e;
 --desktop-text-background-color:#ddebec;
---canvas-background-color:#8fd8d8;
+--canvas-background-color:#ddebec;
+--canvas-secondary-background-color:#8fd8d8;
 --inactive-text-background-color:#63b76c;
 --canvas-text-background-color:#000000;
 --highlight-background-color:#003366;
@@ -3338,7 +3392,8 @@ background-color:var(--highlight-background-color);
 --desktop-background-image:url("");
 --desktop-background-color:#87421f;
 --desktop-text-background-color:#ddebec;
---canvas-background-color:#b5b35c;
+--canvas-background-color:#eed9c4;
+--canvas-secondary-background-color:#b5b35c;
 --inactive-text-background-color:#926f5b;
 --canvas-text-background-color:#000000;
 --highlight-background-color:#29ab87;
@@ -3358,7 +3413,8 @@ background-color:var(--highlight-background-color);
 --desktop-background-image:url("");
 --desktop-background-color:#664228;
 --desktop-text-background-color:#ddebec;
---canvas-background-color:#e6be8a;
+--canvas-background-color:#ffffff;
+--canvas-secondary-background-color:#e6be8a;
 --inactive-text-background-color:#c88a65;
 --canvas-text-background-color:#000000;
 --highlight-background-color:#803790;
@@ -3379,7 +3435,8 @@ background-color:var(--highlight-background-color);
 --desktop-background-image:url("");
 --desktop-background-color:#000000;
 --desktop-text-background-color:#ddebec;
---canvas-background-color:#92926e;
+--canvas-background-color:#ffffff;
+--canvas-secondary-background-color:#92926e;
 --inactive-text-background-color:#8359a3;
 --canvas-text-background-color:#000000;
 --highlight-background-color:#8359a3;
@@ -3399,7 +3456,8 @@ background-color:var(--highlight-background-color);
 --desktop-background-image:url("");
 --desktop-background-color:#003366;
 --desktop-text-background-color:#ddebec;
---canvas-background-color:#c8c8cd;
+--canvas-background-color:#ffffff;
+--canvas-secondary-background-color:#c8c8cd;
 --inactive-text-background-color:#c9c0bb;
 --canvas-text-background-color:#000000;
 --highlight-background-color:#b33b24;
@@ -3419,7 +3477,8 @@ background-color:var(--highlight-background-color);
 --desktop-background-image:url("");
 --desktop-background-color:#8d90a1;
 --desktop-text-background-color:#000000;
---canvas-background-color:#ffb7d5;
+--canvas-background-color:#ffffff;
+--canvas-secondary-background-color:#ffb7d5;
 --inactive-text-background-color:#a63a79;
 --canvas-text-background-color:#000000;
 --highlight-background-color:#a63a79;
@@ -3438,7 +3497,8 @@ background-color:var(--highlight-background-color);
 --desktop-background-image:url("");
 --desktop-background-color:#614051;
 --desktop-text-background-color:#ddebec;
---canvas-background-color:#c0d5f0;
+--canvas-background-color:#ffffff;
+--canvas-secondary-background-color:#c0d5f0;
 --inactive-text-background-color:#7a89b8;
 --canvas-text-background-color:#000000;
 --highlight-background-color:#7a89b8;
@@ -3458,7 +3518,8 @@ background-color:var(--highlight-background-color);
 --desktop-background-image:url("");
 --desktop-background-color:#00755e;
 --desktop-text-background-color:#ddebec;
---canvas-background-color:#8dd9cc;
+--canvas-background-color:#ffffff;
+--canvas-secondary-background-color:#8dd9cc;
 --inactive-text-background-color:#33cc99;
 --canvas-text-background-color:#000000;
 --highlight-background-color:#33cc99;
@@ -3478,7 +3539,8 @@ background-color:var(--highlight-background-color);
 --desktop-background-image:url("");
 --desktop-background-color:#000000;
 --desktop-text-background-color:#ddebec;
---canvas-background-color:#c8c8cd;
+--canvas-background-color:#ffffff;
+--canvas-secondary-background-color:#c8c8cd;
 --inactive-text-background-color:#c9c0bb;
 --canvas-text-background-color:#000000;
 --highlight-background-color:#803790;
@@ -3498,7 +3560,8 @@ background-color:var(--highlight-background-color);
 --desktop-background-image:url("");
 --desktop-background-color:#00755e;
 --desktop-text-background-color:#ddebec;
---canvas-background-color:#c8c8cd;
+--canvas-background-color:#ffffff;
+--canvas-secondary-background-color:#c8c8cd;
 --inactive-text-background-color:#c9c0bb;
 --canvas-text-background-color:#000000;
 --highlight-background-color:#00cccc;
@@ -3518,7 +3581,8 @@ background-color:var(--highlight-background-color);
 --desktop-background-image:url("");
 --desktop-background-color:#00755e;
 --desktop-text-background-color:#ddebec;
---canvas-background-color:#fbe870;
+--canvas-background-color:#ffffff;
+--canvas-secondary-background-color:#fbe870;
 --inactive-text-background-color:#acbf60;
 --canvas-text-background-color:#000000;
 --highlight-background-color:#acbf60;
