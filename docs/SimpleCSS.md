@@ -52,8 +52,8 @@ This snipset changes the floating actions to be themed according to a chosen col
 ### Canvas Secondary
 ```css
 .cpe-floating-button.page-side-tool {
-    --floating-button-color: var(--canvas-foreground-color);
-    --floating-button-color-hover: var(--canvas-foreground-color);
+    --floating-button-color: var(--canvas-secondary-foreground-color);
+    --floating-button-color-hover: var(--canvas-secondary-foreground-color);
     --floating-button-background-color: var(--canvas-secondary-background-color);
     --floating-button-hover-background-color: var(--canvas-secondary-background-color-hover);
 	--floating-button-fadeout-opacity:0;
@@ -81,6 +81,18 @@ This snipset changes the floating actions to be themed according to a chosen col
 	--floating-button-fadeout-opacity:0;
 }
 ```
+
+### Canvas Text Secondary
+```css
+.cpe-floating-button.page-side-tool {
+    --floating-button-color: var(--canvas-text-secondary-foreground-color);
+    --floating-button-color-hover: var(--canvas-text-secondary-foreground-color);
+    --floating-button-background-color: var(--canvas-text-secondary-background-color);
+    --floating-button-hover-background-color: var(--canvas-text-secondary-background-color-hover);
+	--floating-button-fadeout-opacity:0;
+}
+```
+
 
 ### Highlight
 ```css
