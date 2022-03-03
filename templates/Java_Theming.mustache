@@ -343,7 +343,7 @@ function VisualStyleCompile() {
 /* Getting non-generic color values */
 function GetDesktop() {
 	if (ForcedColors()) {
-		if ( window.matchMedia('(forced-colors: active)').matches ) {
+		if ((navigator.userAgent.match("Chrome/"))  && ( window.matchMedia('(forced-colors: active)').matches ) ) {
 			return getComputedStyle(document.querySelector('.fc-canvas')).getPropertyValue("color");
 		} else {
 			return getComputedStyle(document.querySelector('.fc-background')).getPropertyValue("color");
@@ -457,7 +457,11 @@ function GetHighlight() {
 
 function GetActiveTitle() {
 	if (ForcedColors()) {
-		return getComputedStyle(document.querySelector('.fc-linktext')).getPropertyValue("color");
+		if ((navigator.userAgent.match("Chrome/"))  && ( window.matchMedia('(forced-colors: active)').matches ) ) {
+			return getComputedStyle(document.querySelector('.fc-linktext')).getPropertyValue("color");
+		} else {
+			return getComputedStyle(document.querySelector('.fc-activecaption')).getPropertyValue("color");
+		}
 	} else if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--active-title-background-color") === 'auto') {
 		return GetHyperlink();
 	} else {
@@ -467,7 +471,11 @@ function GetActiveTitle() {
 
 function GetInactiveTitle() {
 	if (ForcedColors()) {
-		return getComputedStyle(document.querySelector('.fc-graytext')).getPropertyValue("color");
+		if ((navigator.userAgent.match("Chrome/"))  && ( window.matchMedia('(forced-colors: active)').matches ) ) {
+			return getComputedStyle(document.querySelector('.fc-graytext')).getPropertyValue("color");
+		} else {
+			return getComputedStyle(document.querySelector('.fc-inactivecaption')).getPropertyValue("color");
+		}
 	} else if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--inactive-title-background-color") === 'auto') {
 		return GetInactiveText();
 	} else {
