@@ -727,11 +727,30 @@ container {
 }
 
 
+/* Disable Luna Lovit on Level 2- GPUs */
+	.gpu-level-0 body,
+	.gpu-level-1 body,
+	.gpu-level-2 body,
+	.gpu-level-0 .cpe-dropdown__content,
+	.gpu-level-1 .cpe-dropdown__content,
+	.gpu-level-2 .cpe-dropdown__content,
+	.gpu-level-0.cpe-dropdown__content .cpe-list.is-linked .cpe-dropdown-level-2 .cpe-dropdown-level-2__content,
+	.gpu-level-1.cpe-dropdown__content .cpe-list.is-linked .cpe-dropdown-level-2 .cpe-dropdown-level-2__content,
+	.gpu-level-2.cpe-dropdown__content .cpe-list.is-linked .cpe-dropdown-level-2 .cpe-dropdown-level-2__content {
+		--dropdown-opacity:1!important;
+	}
+
+
+	.gpu-level-0 body,
+	.gpu-level-1 body,
+	.gpu-level-2 body {
+		--backdrop-filter:none!important;
+	}
+}
+
 
 @supports (not ((background-image:-moz-element(#LunaLevit)) or (background-image:element(#LunaLevit)))) {
-	body,
-	.cpe-dropdown__content,
-	.cpe-dropdown__content .cpe-list.is-linked .cpe-dropdown-level-2 .cpe-dropdown-level-2__content {
+	body {
 		--mica-opacity:1!important;
 	}
 
@@ -746,6 +765,22 @@ container {
 }
 
 
+/* Disable Luna Levit on Level 1- GPUs */
+	.gpu-level-0 body,
+	.gpu-level-1 body {
+		--mica-opacity:1!important;
+	}
+
+
+	.gpu-level-0 body,
+	.gpu-level-1 body {
+		--super-backdrop-filter:none!important;
+	}
+	.gpu-level-0 .has-levit::after,
+	.gpu-level-1 .has-levit::after {
+		content:none!important;
+	}
+
 
 @media (prefers-reduced-motion: reduce) {
 *,:before,:after {
@@ -754,6 +789,18 @@ container {
 	animation:none!important;
 }
 }
+
+/* Disable Rounded Corners on Level 0 GPUs */
+	.gpu-level-0 .theme-A,
+	.gpu-level-0 .theme-B,
+	.gpu-level-0 .theme-C,
+	.gpu-level-0 .theme-D,
+	.gpu-level-0 .theme-E,
+	.gpu-level-0 .theme-F,
+	.gpu-level-0 .theme-G,
+	.gpu-level-0 .theme-H {
+		--border-radius:0px!important;
+	}
 
 
 

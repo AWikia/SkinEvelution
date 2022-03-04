@@ -308,11 +308,6 @@ eval("saveFileAs(contents,\'text/"+ext+";charset=utf-8\', filename)");
 
 (function () {
 
-{{#has-servelution-no-mica}}
-//	document.querySelector(' html ').classList.add('servelution__nomica');
-{{/has-servelution-no-mica}}
-
-
 var amodule = document.querySelector(".evelution-rail-wrapper .activity-module.evelution-module")
 if  (amodule)  {
 	var amodule2 = document.querySelector(".evelution-rail-wrapper .activity-module.evelution-module .evelution-module-content")
@@ -355,6 +350,10 @@ RemoveEmptyMenus();
 		
 
 	/* END DITTO */
+
+
+DetectGPU.getGPUTier().then(function(e) {document.querySelector('html').classList.add('gpu-level-' + e.tier);});
+
 
 })();
 

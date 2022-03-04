@@ -3,6 +3,7 @@ window.MW18spdarkmode = 0; // 0 = No special behavior | 1 = Inverted Colors Dark
 window.MW18wikitheme = 'auto';
 window.MW18contrastmode = 'auto';
 window.MW18ActiveTheme = 'A';
+window.MW18ActiveThemeMode = 'none';
 window.MW18ActiveColors = 'standard';
 window.MW18ActiveStyle = 'standard';
 /* Some Theming Colors */
@@ -1401,10 +1402,6 @@ if (refresh === true) {
 var content_color =  GetCanvasShort();
 
 /* This goes before compiling Generic Colors or else they will think the theme is light */
-	if (refresh === true) {
-		document.querySelector('html').classList.remove("theme-fandomdesktop-light");
-		document.querySelector('html').classList.remove("theme-fandomdesktop-dark");
-	}
 
 // Liatch Quirk
 	var content_color = ColorInvert(content_color)
@@ -1412,10 +1409,16 @@ var content_color =  GetCanvasShort();
 	window.MW18PageColor = content_color;
 	var darkpage = isLightColor(content_color);
 	if (refresh === true) {
+		var oldtheme = window.MW18ActiveThemeMode;
 		if (!(darkpage)) {
-			document.querySelector('html').classList.add("theme-fandomdesktop-dark");
+			 window.MW18ActiveThemeMode = 'dark';
 		} else {
-			document.querySelector('html').classList.add("theme-fandomdesktop-light");
+			 window.MW18ActiveThemeMode = 'light';
+		}
+		if (oldtheme === 'none') {
+			document.querySelector('html').classList.add("theme-fandomdesktop-" +  window.MW18ActiveThemeMode);
+		} else if (oldtheme != window.MW18ActiveThemeMode ) {
+			document.querySelector('html').classList.replace("theme-fandomdesktop-" +  oldtheme,"theme-fandomdesktop-" +  window.MW18ActiveThemeMode);
 		}
 	}
 
