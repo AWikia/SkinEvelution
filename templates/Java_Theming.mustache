@@ -396,7 +396,11 @@ function GetCanvas() {
 
 function GetCanvas2() { // Like GetCanvas() without forced colors mode you get the unaltered page background mode (Used for checking dark mode)
 	if (ForcedColors()) {
-		return getComputedStyle(document.querySelector('.fc-buttonface')).getPropertyValue("color");
+		if 	(CSS.supports("color","-moz-dialog")) {
+			return getComputedStyle(document.querySelector('.fc-mozbuttonface')).getPropertyValue("color");
+		} else {
+			return getComputedStyle(document.querySelector('.fc-buttonface')).getPropertyValue("color");
+		}
 	} else {
 		return getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--canvas-secondary-background-color").trim();
 	}
@@ -437,7 +441,11 @@ function GetCanvasText() {
 
 function GetCanvasText2() {
 	if (ForcedColors()) {
-		return getComputedStyle(document.querySelector('.fc-buttontext')).getPropertyValue("color");
+		if 	(CSS.supports("color","-moz-dialogtext")) {
+			return getComputedStyle(document.querySelector('.fc-mozbuttontext')).getPropertyValue("color");
+		} else {
+			return getComputedStyle(document.querySelector('.fc-buttontext')).getPropertyValue("color");
+		}
 	} else if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--canvas-text-secondary-background-color") === 'auto') {
 		return GetCanvasText();
 	} else {
@@ -1435,7 +1443,7 @@ window.MW18FinalContrast = adjustment;
 	}
 		window.MW18PageColorFG = lightness
 
-if ((getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--canvas-secondary-background-color") == 'auto')  ) {
+if ((getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--canvas-secondary-background-color") == 'auto') && (!(ForcedColors()))  ) {
 	if (darkpage) {
 		var dropdowncolor = ColorTestTwin(content_color,"#000000",adjustment);
 	} else {
