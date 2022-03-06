@@ -5,7 +5,7 @@ window.MW18contrastmode = 'auto';
 window.MW18ActiveTheme = 'A';
 window.MW18ActiveThemeMode = 'none';
 window.MW18ActiveColors = 'standard';
-window.MW18ActiveStyle = 'standard';
+window.MW18ActiveStyle = '-';
 /* Some Theming Colors */
 window.MW18PageColor = GetCanvasShort();
 window.MW18PageColorFG = '#000000';
@@ -232,10 +232,13 @@ function ForcedColors() {
 function VisualStyle(style,save=true) {
 	vstyle = style;
     var x = document.querySelector('html');
-	x.classList.remove('visualstyle-' + window.MW18ActiveStyle);
-	window.MW18ActiveStyle = vstyle;
-	x.classList.add('visualstyle-' + window.MW18ActiveStyle);
-
+		var oldstyle = window.MW18ActiveStyle;
+		window.MW18ActiveStyle = vstyle;
+		if (oldstyle === '-') {
+			document.querySelector('html').classList.add("visualstyle-" +  window.MW18ActiveStyle);
+		} else if (oldstyle != window.MW18ActiveStyle ) {
+			document.querySelector('html').classList.replace("visualstyle-" +  oldstyle,"visualstyle-" +  window.MW18ActiveStyle);
+		}
 	var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-styles li.selected")
 	if (x) {
 		x.classList.remove("selected");
