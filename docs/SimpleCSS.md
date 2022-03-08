@@ -136,10 +136,22 @@ This snipset changes the floating actions to be themed according to a chosen col
     --floating-button-color: var(--alert-foreground-color);
     --floating-button-color-hover: var(--alert-foreground-color);
     --floating-button-background-color: var(--alert-background-color);
-    --floating-button-hover-background-color: var(--alert-background-color-hover);
+    --floating-button-hover-background-color: var(--alert-background-color-hover-2);
 	--floating-button-fadeout-opacity:0;
 }
 ```
+
+### Pause
+```css
+.cpe-floating-button.page-side-tool {
+    --floating-button-color: var(--pause-foreground-color);
+    --floating-button-color-hover: var(--pause-foreground-color);
+    --floating-button-background-color: var(--pause-background-color);
+    --floating-button-hover-background-color: var(--pause-background-color-hover-2);
+	--floating-button-fadeout-opacity:0;
+}
+```
+
 
 ### Warning
 ```css
@@ -147,7 +159,7 @@ This snipset changes the floating actions to be themed according to a chosen col
     --floating-button-color: var(--warning-foreground-color);
     --floating-button-color-hover: var(--warning-foreground-color);
     --floating-button-background-color: var(--warning-background-color);
-    --floating-button-hover-background-color: var(--warning-background-color-hover);
+    --floating-button-hover-background-color: var(--warning-background-color-hover-2);
 	--floating-button-fadeout-opacity:0;
 }
 ```
@@ -158,10 +170,22 @@ This snipset changes the floating actions to be themed according to a chosen col
     --floating-button-color: var(--success-foreground-color);
     --floating-button-color-hover: var(--success-foreground-color);
     --floating-button-background-color: var(--success-background-color);
-    --floating-button-hover-background-color: var(--success-background-color-hover);
+    --floating-button-hover-background-color: var(--success-background-color-hover-2);
 	--floating-button-fadeout-opacity:0;
 }
 ```
+
+### Progress
+```css
+.cpe-floating-button.page-side-tool {
+    --floating-button-color: var(--progress-foreground-color);
+    --floating-button-color-hover: var(--progress-foreground-color);
+    --floating-button-background-color: var(--progress-background-color);
+    --floating-button-hover-background-color: var(--progress-background-color-hover-2);
+	--floating-button-fadeout-opacity:0;
+}
+```
+
 
 ### Message
 ```css
@@ -169,7 +193,7 @@ This snipset changes the floating actions to be themed according to a chosen col
     --floating-button-color: var(--message-foreground-color);
     --floating-button-color-hover: var(--message-foreground-color);
     --floating-button-background-color: var(--message-background-color);
-    --floating-button-hover-background-color: var(--message-background-color-hover);
+    --floating-button-hover-background-color: var(--message-background-color-hover-2);
 	--floating-button-fadeout-opacity:0;
 }
 ```

@@ -746,7 +746,7 @@ container {
 	.gpu-level-2 body {
 		--backdrop-filter:none!important;
 	}
-}
+
 
 
 @supports (not ((background-image:-moz-element(#LunaLevit)) or (background-image:element(#LunaLevit)))) {
@@ -758,6 +758,7 @@ container {
 	:root body {
 		--super-backdrop-filter:none!important;
 	}
+	
 	.has-levit::after {
 		content:none!important;
 	}
@@ -765,9 +766,32 @@ container {
 }
 
 
+/* Disable Luna Lovit on Level 2- GPUs */
+	.gpu-level-0 body,
+	.gpu-level-1 body,
+	.gpu-level-2 body,
+	.gpu-level-0 .cpe-dropdown__content,
+	.gpu-level-1 .cpe-dropdown__content,
+	.gpu-level-2 .cpe-dropdown__content,
+	.gpu-level-0.cpe-dropdown__content .cpe-list.is-linked .cpe-dropdown-level-2 .cpe-dropdown-level-2__content,
+	.gpu-level-1.cpe-dropdown__content .cpe-list.is-linked .cpe-dropdown-level-2 .cpe-dropdown-level-2__content,
+	.gpu-level-2.cpe-dropdown__content .cpe-list.is-linked .cpe-dropdown-level-2 .cpe-dropdown-level-2__content {
+		--dropdown-opacity:1!important;
+	}
+
+
+	.gpu-level-0 body,
+	.gpu-level-1 body,
+	.gpu-level-2 body {
+		--backdrop-filter:none!important;
+	}
+}
+
+
 /* Disable Luna Levit on Level 1- GPUs */
 	.gpu-level-0 body,
-	.gpu-level-1 body {
+	.gpu-level-1 body,
+	.gpu-level-2 body {
 		--mica-opacity:1!important;
 	}
 
@@ -777,7 +801,8 @@ container {
 		--super-backdrop-filter:none!important;
 	}
 	.gpu-level-0 .has-levit::after,
-	.gpu-level-1 .has-levit::after {
+	.gpu-level-1 .has-levit::after,
+	.gpu-level-2 .has-levit::after {
 		content:none!important;
 	}
 
@@ -791,14 +816,22 @@ container {
 }
 
 /* Disable Rounded Corners on Level 0 GPUs */
-	.gpu-level-0 .theme-A,
-	.gpu-level-0 .theme-B,
-	.gpu-level-0 .theme-C,
-	.gpu-level-0 .theme-D,
-	.gpu-level-0 .theme-E,
-	.gpu-level-0 .theme-F,
-	.gpu-level-0 .theme-G,
-	.gpu-level-0 .theme-H {
+	:root:root:root.gpu-level-0 .theme-A,
+	:root:root:root.gpu-level-0 .theme-B,
+	:root:root:root.gpu-level-0 .theme-C,
+	:root:root:root.gpu-level-0 .theme-D,
+	:root:root:root.gpu-level-0 .theme-E,
+	:root:root:root.gpu-level-0 .theme-F,
+	:root:root:root.gpu-level-0 .theme-G,
+	:root:root:root.gpu-level-0 .theme-H,
+	:root:root:root.gpu-level-1 .theme-A,
+	:root:root:root.gpu-level-1 .theme-B,
+	:root:root:root.gpu-level-1 .theme-C,
+	:root:root:root.gpu-level-1 .theme-D,
+	:root:root:root.gpu-level-1 .theme-E,
+	:root:root:root.gpu-level-1 .theme-F,
+	:root:root:root.gpu-level-1 .theme-G,
+	:root:root:root.gpu-level-1 .theme-H {
 		--border-radius:0px!important;
 	}
 
@@ -1714,7 +1747,7 @@ li.new .cpe-button {
   --button-background-color:var(--alert-background-color);
   --button-background-color-hover:var(--alert-background-color-hover);
   --button-foreground-color:var(--alert-foreground-color);
-  --button-foreground-color-hover:var(--alert-foreground-color-hover);
+  --button-foreground-color-hover:var(--alert-foreground-color-hover-2);
   --button-foreground-color-inverted:var(--alert-foreground-color-inverted);
   --secondary-button-foreground-color:var(--alert-background-color);
   --secondary-button-foreground-color-hover:var(--alert-background-color-hover);
@@ -1727,7 +1760,7 @@ li.new .cpe-button {
   --button-background-color:var(--pause-background-color);
   --button-background-color-hover:var(--pause-background-color-hover);
   --button-foreground-color:var(--pause-foreground-color);
-  --button-foreground-color-hover:var(--pause-foreground-color-hover);
+  --button-foreground-color-hover:var(--pause-foreground-color-hover-2);
   --button-foreground-color-inverted:var(--pause-foreground-color-inverted);
   --secondary-button-foreground-color:var(--pause-background-color);
   --secondary-button-foreground-color-hover:var(--pause-background-color-hover);
@@ -1742,7 +1775,7 @@ li.new .cpe-button {
   --button-background-color-hover:var(--warning-background-color-hover);
   --button-foreground-color:var(--warning-foreground-color);
   --button-foreground-color-hover:var(--warning-foreground-color-hover);
-  --button-foreground-color-inverted:var(--warning-foreground-color-inverted);
+  --button-foreground-color-inverted:var(--warning-foreground-color-inverted-2);
   --secondary-button-foreground-color:var(--warning-background-color);
   --secondary-button-foreground-color-hover:var(--warning-background-color-hover);
   --tertiary-button-background-color:var(--warning-fadeout-color);
@@ -1754,7 +1787,7 @@ li.new .cpe-button {
   --button-background-color:var(--success-background-color);
   --button-background-color-hover:var(--success-background-color-hover);
   --button-foreground-color:var(--success-foreground-color);
-  --button-foreground-color-hover:var(--success-foreground-color-hover);
+  --button-foreground-color-hover:var(--success-foreground-color-hover-2);
   --button-foreground-color-inverted:var(--success-foreground-color-inverted);
   --secondary-button-foreground-color:var(--success-background-color);
   --secondary-button-foreground-color-hover:var(--success-background-color-hover);
@@ -1768,7 +1801,7 @@ li.progress .cpe-button {
   --button-background-color:var(--progress-background-color);
   --button-background-color-hover:var(--progress-background-color-hover);
   --button-foreground-color:var(--progress-foreground-color);
-  --button-foreground-color-hover:var(--progress-foreground-color-hover);
+  --button-foreground-color-hover:var(--progress-foreground-color-hover-2);
   --button-foreground-color-inverted:var(--progress-foreground-color-inverted);
   --secondary-button-foreground-color:var(--progress-background-color);
   --secondary-button-foreground-color-hover:var(--progress-background-color-hover);
@@ -1782,7 +1815,7 @@ li.progress .cpe-button {
   --button-background-color:var(--message-background-color);
   --button-background-color-hover:var(--message-background-color-hover);
   --button-foreground-color:var(--message-foreground-color);
-  --button-foreground-color-hover:var(--message-foreground-color-hover);
+  --button-foreground-color-hover:var(--message-foreground-color-hover-2);
   --button-foreground-color-inverted:var(--message-foreground-color-inverted);
   --secondary-button-foreground-color:var(--message-background-color);
   --secondary-button-foreground-color-hover:var(--message-background-color-hover);
@@ -3024,7 +3057,7 @@ margin-right:16px;
 
 .cpe-floating-button.critical {
   --floating-button-color:var(--alert-background-color);
-  --floating-button-color-hover:var(--alert-background-color-hover);
+  --floating-button-color-hover:var(--alert-background-color-hover-2);
   --floating-button-fadeout-color:var(--alert-background-color-rgb);
 }
 

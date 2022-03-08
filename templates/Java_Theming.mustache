@@ -6,6 +6,7 @@ window.MW18ActiveTheme = 'A';
 window.MW18ActiveThemeMode = 'none';
 window.MW18ActiveColors = 'standard';
 window.MW18ActiveStyle = '-';
+window.MW18AutoAccent = '0';
 /* Some Theming Colors */
 window.MW18PageColor = GetCanvasShort();
 window.MW18PageColorFG = '#000000';
@@ -360,10 +361,44 @@ function GetDesktop() {
 function GetDesktopImage(trimmed=false) {
 	var img = getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-image");
 	if (trimmed) {
-		return img.replace('url(', '').replace(')', '').replace('\\', '')
+		return img.replace('url(', '').replace(')', '').split('\\').join('')
 	} else {
-		return img.replace('\\', '')
+		return img.split('\\').join('')
 	}
+}
+
+/*
+GetAutoColorDesktop()
+var s = window.MW18AutoAccent;
+s
+*/
+function GetAutoColorDesktop() {
+const myImg = new Image();
+myImg.crossOrigin = "Anonymous";
+myImg.onload =  () => {
+ const x = document.createElement('canvas');
+    x.width=myImg.width
+    x.height=myImg.height
+  const context = x.getContext('2d');
+  context.drawImage(myImg, 0, 0);
+  const {
+    data
+  } = context.getImageData((Math.round(myImg.width /2) - 1), (Math.round(myImg.height /2) - 1), 1, 1);
+  if (myImg.src === '""') {
+	window.MW18AutoAccent = '';
+  } else {
+	window.MW18AutoAccent = chroma('rgb(' + data[0] + ',' + data[1] + ',' + data[2] + ')').hex();
+	
+  }
+}
+
+var img = GetDesktopImage(true);
+
+if (img == '""') {
+	window.MW18AutoAccent = '';
+} else {
+	myImg.src = img;
+}
 }
 
 function GetDesktopText() {
@@ -1399,6 +1434,10 @@ if (refresh === true) {
 		var colorstyle= "\n"
 	}
 
+if (refresh) {
+//	GetAutoColorDesktop();
+//alert(window.MW18AutoAccent);
+}
 
 /** Page BG **/
 /* Set Vars */
@@ -1619,7 +1658,7 @@ var caret2_color = GetInactiveTitle();
 // Liatch Quirk
 		var caret2_color = ColorInvert(caret2_color);
 
-var caret2color1 = ColorTest(caret2_color);
+var caret2color1 = ColorTest(caret2_color,false,true);
 
 /* Generic Colors */
 var generic = BestAlertColor();
@@ -1628,32 +1667,37 @@ var generic = BestAlertColor();
 /* Set Vars */
 var alert_color = generic[0];
 var alertcolor1 = ColorTest(alert_color,false,false,true);
+var alertcolor2 = ColorTest(alert_color,false,false,false);
 
 /** Pause Color **/
 /* Set Vars */
 var pause_color = generic[1];
 var pausecolor1 = ColorTest(pause_color,false,false,true);
+var pausecolor2 = ColorTest(pause_color,false,false,false);
 
 /** Warning Color **/
 /* Set Vars */
 var warning_color = generic[2];
 var warningcolor1 = ColorTest(warning_color,false,false,true);
+var warningcolor2 = ColorTest(warning_color,false,false,false);
 
 /** Success Color **/
 /* Set Vars */
 var success_color = generic[3];
 var successcolor1 = ColorTest(success_color,false,false,true);
+var successcolor2 = ColorTest(success_color,false,false,false);
 
 /** Progress Color **/
 /* Set Vars */
 var progress_color = generic[4];
 var progresscolor1 = ColorTest(progress_color,false,false,true);
+var progresscolor2 = ColorTest(progress_color,false,false,false);
 
 /** Message Color **/
 /* Set Vars */
 var message_color = generic[5];
 var messagecolor1 = ColorTest(message_color,false,false,true);
-
+var messagecolor2 = ColorTest(message_color,false,false,false);
 
 var img = GetDesktopImage();
 
@@ -1679,7 +1723,7 @@ var alert_gradient= GetGradientVariable(content_color,'alert');
 var pause_gradient= GetGradientVariable(content_color,'pause');
 var warning_gradient = GetGradientVariable(content_color,'warning');
 var success_gradient = GetGradientVariable(content_color,'success');
-var progress_gradient = GetGradientVariable(progress_color,'progress');
+var progress_gradient = GetGradientVariable(content_color,'progress');
 var message_gradient = GetGradientVariable(content_color,'message');
 var content_color_gradient = GetGradientVariable(content_color,'canvas');
 var dropdowncolor_gradient = GetGradientVariable(content_color,'canvas-secondary');
@@ -1690,7 +1734,7 @@ var link_gradient = GetGradientVariable(content_color,'hyperlink');
 var border_gradient = GetGradientVariable(border_color,'inactive-text');
 var head_gradient = GetGradientVariable(content_color,'desktop');
 var caret_gradient = GetGradientVariable(caret_color,'active-title');
-var caret2_gradient = GetGradientVariable(caret2_color,'inactive-title');
+var caret2_gradient = GetGradientVariable2(caret2_color,'inactive-title');
 
 // Foreground texts
 var alert_fg = GetForegroundVariables(alert_color);
@@ -1837,6 +1881,7 @@ var caret2_fg = GetForegroundVariables(caret2_color);
 						  "--inactive-title-foreground-color-hover-rgb:" + caret2_fg[3] + ";\n" +
 						  "--alert-background-color:" + alert_color + "!important;\n" +
 						  "--alert-background-color-hover:" + alertcolor1 + "!important;\n" +
+						  "--alert-background-color-hover-2:" + alertcolor2 + "!important;\n" +
 						  "--alert-gradient-color:" + alert_gradient[0] + "!important;\n" +
 						  "--alert-gradient-color-hover:" + alert_gradient[1] + "!important;\n" +
 						  "--alert-foreground-color:" + alert_fg[0] + "!important;\n" +
@@ -1847,6 +1892,7 @@ var caret2_fg = GetForegroundVariables(caret2_color);
 						  "--alert-foreground-color-hover-rgb:" + alert_fg[3] + "!important;\n" +
 						  "--pause-background-color:" + pause_color + "!important;\n" +
 						  "--pause-background-color-hover:" + pausecolor1 + "!important;\n" +
+						  "--pause-background-color-hover-2:" + pausecolor2 + "!important;\n" +
 						  "--pause-gradient-color:" + pause_gradient[0] + "!important;\n" +
 						  "--pause-gradient-color-hover:" + pause_gradient[1] + "!important;\n" +
 						  "--pause-foreground-color:" + pause_fg[0] + "!important;\n" +
@@ -1857,6 +1903,7 @@ var caret2_fg = GetForegroundVariables(caret2_color);
 						  "--pause-foreground-color-hover-rgb:" + pause_fg[3] + "!important;\n" +
 						  "--warning-background-color:" + warning_color + "!important;\n" +
 						  "--warning-background-color-hover:" + warningcolor1 + "!important;\n" +
+						  "--warning-background-color-hover-2:" + warningcolor2 + "!important;\n" +
 						  "--warning-gradient-color:" + warning_gradient[0] + "!important;\n" +
 						  "--warning-gradient-color-hover:" + warning_gradient[1] + "!important;\n" +
 						  "--warning-foreground-color:" + warning_fg[0] + "!important;\n" +
@@ -1867,6 +1914,7 @@ var caret2_fg = GetForegroundVariables(caret2_color);
 						  "--warning-foreground-color-hover-rgb:" + warning_fg[3] + "!important;\n" +
 						  "--success-background-color:" + success_color + "!important;\n" +
 						  "--success-background-color-hover:" + successcolor1 + "!important;\n" +
+						  "--success-background-color-hover-2:" + successcolor2 + "!important;\n" +
 						  "--success-gradient-color:" + success_gradient[0] + "!important;\n" +
 						  "--success-gradient-color-hover:" + success_gradient[1] + "!important;\n" +
 						  "--success-foreground-color:" + success_fg[0] + "!important;\n" +
@@ -1877,6 +1925,7 @@ var caret2_fg = GetForegroundVariables(caret2_color);
 						  "--success-foreground-color-hover-rgb:" + success_fg[3] + "!important;\n" +
 						  "--progress-background-color:" + progress_color + "!important;\n" +
 						  "--progress-background-color-hover:" + progresscolor1 + "!important;\n" +
+						  "--progress-background-color-hover-2:" + progresscolor2 + "!important;\n" +
 						  "--progress-gradient-color:" + progress_gradient[0] + "!important;\n" +
 						  "--progress-gradient-color-hover:" + progress_gradient[1] + "!important;\n" +
 						  "--progress-foreground-color:" + progress_fg[0] + "!important;\n" +
@@ -1887,6 +1936,7 @@ var caret2_fg = GetForegroundVariables(caret2_color);
 						  "--progress-foreground-color-hover-rgb:" + progress_fg[3] + "!important;\n" +
 						  "--message-background-color:" + message_color + "!important;\n" +
 						  "--message-background-color-hover:" + messagecolor1 + "!important;\n" +
+						  "--message-background-color-hover-2:" + messagecolor2 + "!important;\n" +
 						  "--message-gradient-color:" + message_gradient[0] + "!important;\n" +
 						  "--message-gradient-color-hover:" + message_gradient[1] + "!important;\n" +
 						  "--message-foreground-color:" + message_fg[0] + "!important;\n" +
