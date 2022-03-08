@@ -19,8 +19,7 @@ if (mwConfig2.wgNamespaceNumber === -1 && mwConfig2.wgCanonicalSpecialPageName =
 }
 
 
-if (($("body.page-CPE_ThemeDesigner").length) ||
-	(mwConfig2.wgNamespaceNumber === -1 && mwConfig2.wgTitle === "CPEThemeDesigner") ) {
+if (mwConfig2.wgNamespaceNumber === -1 && mwConfig2.wgTitle === "CPEThemeDesigner") {
 
 	$.when( mw.loader.using( [ 'mediawiki.jqueryMsg' ] ), $.ready ).then( function() {
 	InitDesigner();
@@ -36,71 +35,59 @@ function InitDesigner() {
 	$(".evelution-page-header .evelution-title > span").html( mw.msg( 'evelution-designer-title' ) );
 	$(".link[designer-on]").addClass( 'active' );
 	// Remove the following things
-	$(".evelution-page-header-contribution, #catlinks, .td-off, .evelution-floating-actions .cpe-floating-button.edit, .evelution-floating-actions .cpe-floating-button.history").remove();
+	$("#catlinks, .td-off, .evelution-floating-actions .cpe-floating-button.edit, .evelution-floating-actions .cpe-floating-button.history").remove();
 	// Put new buttons
-	$(".evelution-page-header-contribution-buttons").append(
-		'<div class="designer-buttons cpe-button-group"></div>' +
-		'<div class="designer-buttons2 cpe-button-group"></div>'
-	);
 	// Copy theme
-	$(".evelution-page-header-contribution-buttons .designer-buttons").append(
-		'<button class="cpe-button is-tertiary theme-copy-button">' +
-		'<span class="cpe-icon cpe-icon-small material-icons">' +
-		'content_copy' +
-		'</span>' +
-		'<span>' +
-		mw.msg( 'evelution-designer-copy' ) +
-		'</span>' +
+	$(".evelution-floating-actions.extra-actions .evelution-floating-actions-container").append(
+		'<button class="cpe-floating-button accent theme-copy-button page-side-tool" cpe-tooltip-position="reverse" cpe-tooltip="' + mw.msg( 'evelution-designer-copy' ) + '">' +
+			'<span class="cpe-icon material-icons">' +
+				'content_copy' +
+			'</span>' +
 		'</button>'
 	);
-	$(".evelution-page-header-contribution-buttons .designer-buttons .theme-copy-button").click( function(e) { e.preventDefault; CopyTheme();  });
+	$(".evelution-floating-actions.extra-actions .theme-copy-button").click( function(e) { e.preventDefault; CopyTheme();  });
 	// Paste theme
-	$(".evelution-page-header-contribution-buttons .designer-buttons").append(
-		'<button class="cpe-button is-tertiary theme-paste-button">' +
-		'<span class="cpe-icon cpe-icon-small material-icons">' +
-		'content_paste' +
-		'</span>' +
-		'<span>' +
-		mw.msg( 'evelution-designer-paste' ) +
-		'</span>' +
+	$(".evelution-floating-actions.extra-actions .evelution-floating-actions-container").append(
+		'<button class="cpe-floating-button accent theme-paste-button page-side-tool" cpe-tooltip-position="reverse" cpe-tooltip="' + mw.msg( 'evelution-designer-paste' ) + '">' +
+			'<span class="cpe-icon material-icons">' +
+				'content_paste' +
+			'</span>' +
 		'</button>'
 	);
-	$(".evelution-page-header-contribution-buttons .designer-buttons .theme-paste-button").click( function(e) { e.preventDefault; PasteTheme();  });
-	// Applly theme
-	$(".evelution-page-header-contribution-buttons .designer-buttons2").append(
-		'<button class="cpe-button is-tertiary theme-apply-button">' +
-		'<span class="cpe-icon cpe-icon-small material-icons">' +
-		'verified' +
-		'</span>' +
-		'<span>' +
-		mw.msg( 'evelution-designer-apply' ) +
-		'</span>' +
+
+	$(".evelution-floating-actions.extra-actions .theme-paste-button").click( function(e) { e.preventDefault; PasteTheme();  });
+	// Apply theme
+	$(".evelution-floating-actions.extra-actions .evelution-floating-actions-container").append(
+		'<button class="cpe-floating-button critical theme-apply-button page-side-tool" cpe-tooltip-position="reverse" cpe-tooltip="' + mw.msg( 'evelution-designer-apply' ) + '">' +
+			'<span class="cpe-icon material-icons">' +
+				'verified' +
+			'</span>' +
 		'</button>'
 	);
-	$(".evelution-page-header-contribution-buttons .designer-buttons2 .theme-apply-button").click( function(e) { e.preventDefault; ApplyTheme();  });
+
+
+	$(".evelution-floating-actions.extra-actions .theme-apply-button").click( function(e) { e.preventDefault; ApplyTheme();  });
 	
-	$(".evelution-page-header-contribution-buttons .designer-buttons2").append(
-		'<button class="cpe-button is-tertiary theme-test-button">' +
-		'<span class="cpe-icon cpe-icon-small material-icons">' +
-		'build' +
-		'</span>' +
-		'<span>' +
-		mw.msg( 'evelution-designer-test' ) +
-		'</span>' +
+
+	$(".evelution-floating-actions.extra-actions .evelution-floating-actions-container").append(
+		'<button class="cpe-floating-button accent theme-test-button page-side-tool" cpe-tooltip-position="reverse" cpe-tooltip="' + mw.msg( 'evelution-designer-test' ) + '">' +
+			'<span class="cpe-icon material-icons">' +
+				'build' +
+			'</span>' +
 		'</button>'
 	);
-	$(".evelution-page-header-contribution-buttons .designer-buttons2 .theme-test-button").click( function(e) { e.preventDefault; TestTheme();  });
-	$(".evelution-page-header-contribution-buttons .designer-buttons2").append(
-		'<button class="cpe-button is-tertiary theme-clear-button">' +
-		'<span class="cpe-icon cpe-icon-small material-icons">' +
-		'undo' +
-		'</span>' +
-		'<span>' +
-		mw.msg( 'evelution-designer-clear' ) +
-		'</span>' +
+
+	$(".evelution-floating-actions.extra-actions .theme-test-button").click( function(e) { e.preventDefault; TestTheme();  });
+
+
+	$(".evelution-floating-actions.extra-actions .evelution-floating-actions-container").append(
+		'<button class="cpe-floating-button accent theme-clear-button page-side-tool" cpe-tooltip-position="reverse" cpe-tooltip="' + mw.msg( 'evelution-designer-clear' ) + '">' +
+			'<span class="cpe-icon material-icons">' +
+				'undo' +
+			'</span>' +
 		'</button>'
 	);
-	$(".evelution-page-header-contribution-buttons .designer-buttons2 .theme-clear-button").click( function(e) { e.preventDefault; ClearTheme();  }).prop('disabled', true);
+	$(".evelution-floating-actions.extra-actions .theme-clear-button").click( function(e) { e.preventDefault; ClearTheme();  }).prop('disabled', true);
 
 	// Clear out content area
 	$("#mw-content-text").empty().addClass('cpe-theme-designer').attr('style','overflow:visible');
@@ -573,7 +560,7 @@ function InitDesigner() {
 				'</td>' +
 
 				'<td style="text-align:center; width:150px">' +
-					'<input type="range" class="big" style="min-width:150px; min-width:150px;" id="border-radius" value="3" min="0" max="15" autocomplete="off" />' + // Body Background 
+					'<input type="range" class="big" style="min-width:150px; min-width:150px;" id="border-radius" value="5" min="0" max="15" autocomplete="off" />' + // Body Background 
 				'</td>' +
 			'</tr>' +
 		// TR
@@ -862,7 +849,7 @@ function InitDesigner() {
 
 function ApplyTheme () {
 	// Copies theme to clipboard
-	$(".evelution-page-header-contribution-buttons .designer-buttons2 .theme-apply-button").prop('disabled', true);
+	$(".evelution-floating-actions.extra-actions .theme-apply-button").prop('disabled', true);
 	AddFloatingBanner('Applying Theme '  +  window.MW18ActiveTheme + ' to MediaWiki:Evelution.css. Please wait...','progress','InProgressBanner')
 	document.querySelector('.focus-overlay').focus();
 	if (document.querySelector('.wikitable #auto1').checked) {
@@ -971,14 +958,14 @@ var params = {
 	},
 	api = new mw.Api();
 
-api.postWithToken( 'csrf', params ).done( function ( data ) { $(".evelution-page-header-contribution-buttons .designer-buttons2 .theme-apply-button").prop('disabled', false); $("#InProgressBanner").remove(); /* Success */ AddFloatingBanner('Succesfully applied Theme '  +  window.MW18ActiveTheme + ' to MediaWiki:Evelution.css.','success'); } ).fail( function (data) { $(".evelution-page-header-contribution-buttons .designer-buttons2 .theme-apply-button").prop('disabled', false); $("#InProgressBanner").remove(); /* Fail */ AddFloatingBanner('Failed to apply Theme '  +  window.MW18ActiveTheme + ' to MediaWiki:Evelution.css as page couldn\'t be edited.','alert'); } );
+api.postWithToken( 'csrf', params ).done( function ( data ) { $(".evelution-floating-actions.extra-actions .theme-apply-button").prop('disabled', false); $("#InProgressBanner").remove(); /* Success */ AddFloatingBanner('Succesfully applied Theme '  +  window.MW18ActiveTheme + ' to MediaWiki:Evelution.css.','success'); } ).fail( function (data) { $(".evelution-floating-actions.extra-actions .theme-apply-button").prop('disabled', false); $("#InProgressBanner").remove(); /* Fail */ AddFloatingBanner('Failed to apply Theme '  +  window.MW18ActiveTheme + ' to MediaWiki:Evelution.css as page couldn\'t be edited.','alert'); } );
 
 }
 
 
 function CopyTheme() {
-	$(".evelution-page-header-contribution-buttons .designer-buttons .theme-copy-button").prop('disabled', true);
-	AddFloatingBanner('Successfully copied CPE Framework theme to Clipboard. Please wait...','progress','InProgressBanner3')
+	$(".evelution-floating-actions.extra-actions .theme-copy-button").prop('disabled', true);
+	AddFloatingBanner('Copying CPE Framework theme to Clipboard. Please wait...','progress','InProgressBanner3')
 	document.querySelector('.focus-overlay').focus();
 	// Copies theme to clipboard
 	if (document.querySelector('.wikitable #auto1').checked) {
@@ -1068,11 +1055,11 @@ function CopyTheme() {
 				 '}' // Ending
 		if (navigator.clipboard) {
 			navigator.clipboard.writeText(result).then(function() {
-			 $(".evelution-page-header-contribution-buttons .designer-buttons .theme-copy-button").prop('disabled', false);
+			 $(".evelution-floating-actions.extra-actions .theme-copy-button").prop('disabled', false);
 			 $("#InProgressBanner3").remove();
 			 AddFloatingBanner('Successfully copied CPE Framework theme to Clipboard','success'); // alert('Successfully copied CPE Framework theme to Clipboard');
 			}, function() {
-			 $(".evelution-page-header-contribution-buttons .designer-buttons .theme-copy-button").prop('disabled', false);
+			 $(".evelution-floating-actions.extra-actions .theme-copy-button").prop('disabled', false);
 			 $("#InProgressBanner3").remove();
 			 AddFloatingBanner('Failed to copy CPE Framework theme to Clipboard. You can, however find the generated theme code below the Theme Designer applet so that you will be able to select it and copy that to the clipboard.','alert');
 			$("div.theme-code").empty().append(
@@ -1083,7 +1070,7 @@ function CopyTheme() {
 			);
 			});
 		} else {
-			 $(".evelution-page-header-contribution-buttons .designer-buttons .theme-copy-button").prop('disabled', false);
+			 $(".evelution-floating-actions.extra-actions .theme-copy-button").prop('disabled', false);
 			 $("#InProgressBanner3").remove();
 			 AddFloatingBanner('Failed to copy CPE Framework theme to Clipboard. You can, however find the generated theme code below the Theme Designer applet so that you will be able to select it and copy that to the clipboard.','alert');
 			$("div.theme-code").empty().append(
@@ -1097,7 +1084,7 @@ function CopyTheme() {
 
 function PasteTheme() {
 	// Pastes theme
-	$(".evelution-page-header-contribution-buttons .designer-buttons .theme-paste-button").prop('disabled', true);
+	$(".evelution-floating-actions.extra-actions .theme-paste-button").prop('disabled', true);
 	AddFloatingBanner('Pasting theme. Please wait...','progress','InProgressBanner2')
 	document.querySelector('.focus-overlay').focus();
 	// Body BG
@@ -1232,7 +1219,7 @@ function PasteTheme() {
 	$('#aopacity').val( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--system-acryllic-opacity") );
 	UpdateContrastRatios();
 	UpdateRangeInputs();
-	$(".evelution-page-header-contribution-buttons .designer-buttons .theme-paste-button").prop('disabled', false);
+	$(".evelution-floating-actions.extra-actions .theme-paste-button").prop('disabled', false);
 	$("#InProgressBanner2").remove();
 
 }
@@ -1242,8 +1229,8 @@ function TestTheme() {
 	if (!window.MW18TDTest) {
 		AddFloatingBanner('Enabling theme preview. Please wait...','progress','InProgressBanner4')
 	}
-	$(".evelution-page-header-contribution-buttons .designer-buttons2 .theme-clear-button").prop('disabled', false);
-	$(".evelution-page-header-contribution-buttons .designer-buttons2 .theme-test-button").prop('disabled', true);
+	$(".evelution-floating-actions.extra-actions .theme-clear-button").prop('disabled', false);
+	$(".evelution-floating-actions.extra-actions .theme-test-button").prop('disabled', true);
 	document.querySelector('.focus-overlay').focus();
 	if (document.querySelector('.wikitable #auto1').checked) {
 		var autocolor1 = 'auto';
@@ -1378,8 +1365,8 @@ function TestDynamicTheme() {
 function ClearTheme() {
 	window.MW18TDTest = false;
 	// Tests theme
-	$(".evelution-page-header-contribution-buttons .designer-buttons2 .theme-clear-button").prop('disabled', true);
-	$(".evelution-page-header-contribution-buttons .designer-buttons2 .theme-test-button").prop('disabled', false);
+	$(".evelution-floating-actions.extra-actions .theme-clear-button").prop('disabled', true);
+	$(".evelution-floating-actions.extra-actions .theme-test-button").prop('disabled', false);
 	document.querySelector('.focus-overlay').focus();
 	document.querySelector("#mw-content-text .theme-designer-css").innerHTML = '';
 	ColorUpdate(true,true);
