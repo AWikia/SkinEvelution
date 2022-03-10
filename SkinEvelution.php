@@ -155,7 +155,15 @@ class SkinEvelution extends SkinMustache {
 		$data["has-servelution-no-headertext"] = ($data["has-servelution-2.1.0"] || $data["has-servelution-2.2.0"]);
 		// Dual Foreground Color
 		$data["has-servelution-no-dground"] = ($data["has-servelution-2.1.0"]);
-
+		/* Theming Stuff */
+		$data["data-theme-A"] = $this->getConfig()->get ( 'EvelutionThemeA' );
+		$data["data-theme-B"] = $this->getConfig()->get ( 'EvelutionThemeB' );
+		$data["data-theme-C"] = $this->getConfig()->get ( 'EvelutionThemeC' );
+		$data["data-theme-D"] = $this->getConfig()->get ( 'EvelutionThemeD' );
+		$data["data-theme-E"] = $this->getConfig()->get ( 'EvelutionThemeE' );
+		$data["data-theme-F"] = $this->getConfig()->get ( 'EvelutionThemeF' );
+		$data["data-theme-G"] = $this->getConfig()->get ( 'EvelutionThemeG' );
+		$data["data-theme-H"] = $this->getConfig()->get ( 'EvelutionThemeH' );
         return $data;
     }
 

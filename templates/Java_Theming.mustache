@@ -361,9 +361,9 @@ function GetDesktop() {
 function GetDesktopImage(trimmed=false) {
 	var img = getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-image");
 	if (trimmed) {
-		return img.replace('url(', '').replace(')', '').split('\\').join('')
+		return img.replace('url(', '').replace(')', '').split('\\').join('');
 	} else {
-		return img.split('\\').join('')
+		return 'url(' + img.replace('url(', '').replace(')', '').split('\\').join('') + ')';
 	}
 }
 

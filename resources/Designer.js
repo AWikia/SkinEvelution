@@ -39,13 +39,29 @@ function InitDesigner() {
 	// Put new buttons
 	// Copy theme
 	$(".evelution-floating-actions.extra-actions .evelution-floating-actions-container").append(
-		'<button class="cpe-floating-button accent theme-copy-button page-side-tool" cpe-tooltip-position="reverse" cpe-tooltip="' + mw.msg( 'evelution-designer-copy' ) + '">' +
-			'<span class="cpe-icon material-icons">' +
+		'<button class="cpe-floating-button accent theme-copy-button page-side-tool" cpe-tooltip-position="reverse" cpe-tooltip="' + mw.msg( 'evelution-designer-copy' ) + ' (CSS)">' +
+			'<span class="cpe-icon material-icons" style="position:absolute; top:2.5px;">' +
 				'content_copy' +
+			'</span>' +
+			'<span class="cpe-icon material-icons" style="position:absolute; bottom:-5px;">' +
+				'css' +
 			'</span>' +
 		'</button>'
 	);
 	$(".evelution-floating-actions.extra-actions .theme-copy-button").click( function(e) { e.preventDefault; CopyTheme();  });
+	// Copy theme 2
+	$(".evelution-floating-actions.extra-actions .evelution-floating-actions-container").append(
+		'<button class="cpe-floating-button accent theme-copy-button-2 page-side-tool" cpe-tooltip-position="reverse" cpe-tooltip="' + mw.msg( 'evelution-designer-copy' ) + ' (PHP)">' +
+			'<span class="cpe-icon material-icons" style="position:absolute; top:2.5px;">' +
+				'content_copy' +
+			'</span>' +
+			'<span class="cpe-icon material-icons" style="position:absolute; bottom:-5px;">' +
+				'php' +
+			'</span>' +
+		'</button>'
+	);
+	$(".evelution-floating-actions.extra-actions .theme-copy-button-2").click( function(e) { e.preventDefault; CopyTheme2();  });
+
 	// Paste theme
 	$(".evelution-floating-actions.extra-actions .evelution-floating-actions-container").append(
 		'<button class="cpe-floating-button accent theme-paste-button page-side-tool" cpe-tooltip-position="reverse" cpe-tooltip="' + mw.msg( 'evelution-designer-paste' ) + '">' +
@@ -899,12 +915,12 @@ function ApplyTheme () {
 		var image = 'url("' + $("#bodyimage").val() + '")';
     }
     if ( $('#firstfont').val().length === 0) {
-		var customfont2 = '""';
+		var customfont2 = 'Rubik';
     } else {
 		var customfont2 = $('#firstfont').val();
     }
     if ( $('#secondfont').val().length === 0) {
-		var customfont = '""';
+		var customfont = 'Roboto';
     } else {
 		var customfont = $('#secondfont').val();
     }
@@ -965,6 +981,7 @@ api.postWithToken( 'csrf', params ).done( function ( data ) { $(".evelution-floa
 
 function CopyTheme() {
 	$(".evelution-floating-actions.extra-actions .theme-copy-button").prop('disabled', true);
+	$(".evelution-floating-actions.extra-actions .theme-copy-button2").prop('disabled', true);
 	AddFloatingBanner('Copying CPE Framework theme to Clipboard. Please wait...','progress','InProgressBanner3')
 	document.querySelector('.focus-overlay').focus();
 	// Copies theme to clipboard
@@ -1015,12 +1032,12 @@ function CopyTheme() {
 		var image = 'url("' + $("#bodyimage").val() + '")';
     }
     if ( $('#firstfont').val().length === 0) {
-		var customfont2 = '""';
+		var customfont2 = 'Roboto';
     } else {
 		var customfont2 = $('#firstfont').val();
     }
     if ( $('#secondfont').val().length === 0) {
-		var customfont = '""';
+		var customfont = 'Rubik';
     } else {
 		var customfont = $('#secondfont').val();
     }
@@ -1056,10 +1073,12 @@ function CopyTheme() {
 		if (navigator.clipboard) {
 			navigator.clipboard.writeText(result).then(function() {
 			 $(".evelution-floating-actions.extra-actions .theme-copy-button").prop('disabled', false);
+			 $(".evelution-floating-actions.extra-actions .theme-copy-button2").prop('disabled', false);
 			 $("#InProgressBanner3").remove();
 			 AddFloatingBanner('Successfully copied CPE Framework theme to Clipboard','success'); // alert('Successfully copied CPE Framework theme to Clipboard');
 			}, function() {
 			 $(".evelution-floating-actions.extra-actions .theme-copy-button").prop('disabled', false);
+			 $(".evelution-floating-actions.extra-actions .theme-copy-button2").prop('disabled', false);
 			 $("#InProgressBanner3").remove();
 			 AddFloatingBanner('Failed to copy CPE Framework theme to Clipboard. You can, however find the generated theme code below the Theme Designer applet so that you will be able to select it and copy that to the clipboard.','alert');
 			$("div.theme-code").empty().append(
@@ -1071,6 +1090,7 @@ function CopyTheme() {
 			});
 		} else {
 			 $(".evelution-floating-actions.extra-actions .theme-copy-button").prop('disabled', false);
+			 $(".evelution-floating-actions.extra-actions .theme-copy-button2").prop('disabled', false);
 			 $("#InProgressBanner3").remove();
 			 AddFloatingBanner('Failed to copy CPE Framework theme to Clipboard. You can, however find the generated theme code below the Theme Designer applet so that you will be able to select it and copy that to the clipboard.','alert');
 			$("div.theme-code").empty().append(
@@ -1081,6 +1101,131 @@ function CopyTheme() {
 			);
 		}
 }
+
+
+function CopyTheme2() {
+	$(".evelution-floating-actions.extra-actions .theme-copy-button").prop('disabled', true);
+	$(".evelution-floating-actions.extra-actions .theme-copy-button2").prop('disabled', true);
+	AddFloatingBanner('Copying PHP CPE Framework theme to Clipboard. Please wait...','progress','InProgressBanner3')
+	document.querySelector('.focus-overlay').focus();
+	// Copies theme to clipboard
+	if (document.querySelector('.wikitable #auto1').checked) {
+		var autocolor1 = 'auto';
+	} else {
+		var autocolor1 = $('#bodybg2').val();
+	}
+	if (document.querySelector('.wikitable #auto2').checked) {
+		var autocolor2 = 'auto';
+	} else {
+		var autocolor2 = $('#pagebg2').val();
+	}
+	if (document.querySelector('.wikitable #auto3').checked) {
+		var autocolor3 = 'auto';
+	} else {
+		var autocolor3 = $('#pagebg3').val();
+	}
+	if (document.querySelector('.wikitable #auto4').checked) {
+		var autocolor4 = 'auto';
+	} else {
+		var autocolor4 = $('#qaccentcolor').val();
+	}
+	if (document.querySelector('.wikitable #auto5').checked) {
+		var autocolor5 = 'auto';
+	} else {
+		var autocolor5 = $('#taccentcolor').val();
+	}
+	if (document.querySelector('.wikitable #auto6').checked) {
+		var autocolor6 = 'auto';
+	} else {
+		var autocolor6 = $('#accentcolor').val();
+	}
+	if (document.querySelector('.wikitable #auto7').checked) {
+		var autocolor7 = 'auto';
+	} else {
+		var autocolor7 = $('#pagebg_s').val();
+	}
+	if (document.querySelector('.wikitable #auto8').checked) {
+		var autocolor8 = 'auto';
+	} else {
+		var autocolor8 = $('#pagebg3_s').val();
+	}
+	if ( ( ( $("#bodyimage").val().startsWith('url("') ) && ( $("#bodyimage").val().endsWith('")') ) ) ||
+		  ( ( $("#bodyimage").val().startsWith('url(') ) && ( $("#bodyimage").val().endsWith(')') ) ) ) {
+		var image = $("#bodyimage").val();
+    } else {
+		var image = 'url("' + $("#bodyimage").val() + '")';
+    }
+    if ( $('#firstfont').val().length === 0) {
+		var customfont2 = 'Roboto';
+    } else {
+		var customfont2 = $('#firstfont').val();
+    }
+    if ( $('#secondfont').val().length === 0) {
+		var customfont = 'Rubik';
+    } else {
+		var customfont = $('#secondfont').val();
+    }
+		result = "$wgEvelutionTheme" + window.MW18ActiveTheme + " = [\n" + // Beginning
+				 "'desktop-background-image' => '" + image + "',\n" +
+				 "'desktop-background-image-filter' => '" + $("#bodyimagefilter").val() + "',\n" +
+				 "'desktop-background-color' => '" + $("#bodybg").val()  + "',\n" +
+				 "'desktop-text-background-color' => '" + autocolor1  + "',\n" +
+				 "'desktop-background-mode' => '" + $(".bg_mode .cpe-select__value").attr("value")  + "',\n" +
+				 "'desktop-background-horizontal-alignment' => '" + $(".bg_align2 .cpe-select__value").attr("value") + "',\n" +
+				 "'desktop-background-vertical-alignment' => '" + $(".bg_align .cpe-select__value").attr("value") + "',\n" +
+				 "'desktop-background-size' => '" + $(".bg_size .cpe-select__value").attr("value")  + "',\n" +
+				 "'desktop-background-no-horizontal-tiling' => '" + (!( document.querySelector("input#tilingH").checked ))  + "',\n" +
+				 "'desktop-background-no-vertical-tiling' => '" + (!( document.querySelector("input#tilingV").checked ))  + "',\n" +
+				 "'canvas-background-color' => '" + $("#pagebg").val() + "',\n" +
+				 "'canvas-secondary-background-color' => '" + autocolor7  + "',\n" +
+				 "'inactive-text-background-color' => '" + autocolor2  + "',\n" +
+				 "'canvas-text-background-color' => '" + autocolor3  + "',\n" +
+				 "'canvas-text-secondary-background-color' => '" + autocolor8  + "',\n" +
+				 "'highlight-background-color' => '" + autocolor6 + "',\n" +
+				 "'hyperlink-background-color' => '" + $("#saccentcolor").val() + "',\n" +
+				 "'active-title-background-color' => '" + autocolor5  + "',\n" +
+				 "'inactive-title-background-color' => '" + autocolor4  + "',\n" +
+				 "'custom-font' => '" + customfont2 + "',\n" +
+				 "'custom-secondary-font' => '" + customfont + "',\n" +
+				 "'border-radius' => '" + $("#border-radius").val() + 'px'  + "',\n" +
+				 "'icon-filter' => '" + $("#filter").val() + "',\n" +
+				 "'icon-filter-hover' => '" + $("#filter2").val()  + "',\n" +
+				 "'icon-filter-duration' => '" + $("#filter3").val() + 'ms' + "',\n" +
+				 "'icon-filter-delay' => '" + $("#filter4").val() + 'ms' + "',\n" +
+				 "'system-acryllic-opacity' => '" + $("#aopacity").val() + "',\n" +
+				 "];" // Ending
+		if (navigator.clipboard) {
+			navigator.clipboard.writeText(result).then(function() {
+			 $(".evelution-floating-actions.extra-actions .theme-copy-button").prop('disabled', false);
+			 $(".evelution-floating-actions.extra-actions .theme-copy-button2").prop('disabled', false);
+			 $("#InProgressBanner3").remove();
+			 AddFloatingBanner('Successfully copied PHP CPE Framework theme to Clipboard. Apply the copied code to LocalSettings.php','success'); // alert('Successfully copied CPE Framework theme to Clipboard');
+			}, function() {
+			 $(".evelution-floating-actions.extra-actions .theme-copy-button").prop('disabled', false);
+			 $(".evelution-floating-actions.extra-actions .theme-copy-button2").prop('disabled', false);
+			 $("#InProgressBanner3").remove();
+			 AddFloatingBanner('Failed to copy PHP CPE Framework theme to Clipboard. You can, however find the generated theme code below the Theme Designer applet so that you will be able to select, and copy that to the clipboard and apply that to LocalSettings.php.','alert');
+			$("div.theme-code").empty().append(
+				'<h2>Code</h2>' +
+				'<pre>' +
+				result +
+				'</pre>'
+			);
+			});
+		} else {
+			 $(".evelution-floating-actions.extra-actions .theme-copy-button").prop('disabled', false);
+			 $(".evelution-floating-actions.extra-actions .theme-copy-button2").prop('disabled', false);
+			 $("#InProgressBanner3").remove();
+			 AddFloatingBanner('Failed to copy PHP CPE Framework theme to Clipboard. You can, however find the generated theme code below the Theme Designer applet so that you will be able to select, and copy that to the clipboard and apply that to LocalSettings.php.','alert');
+			$("div.theme-code").empty().append(
+				'<h2>Code</h2>' +
+				'<pre>' +
+				result +
+				'</pre>'
+			);
+		}
+}
+
 
 function PasteTheme() {
 	// Pastes theme
@@ -1279,12 +1424,12 @@ function TestTheme() {
 		var image = 'url("' + $("#bodyimage").val() + '")';
     }
     if ( $('#firstfont').val().length === 0) {
-		var customfont2 = '""';
+		var customfont2 = 'Roboto';
     } else {
 		var customfont2 = $('#firstfont').val();
     }
     if ( $('#secondfont').val().length === 0) {
-		var customfont = '""';
+		var customfont = 'Rubik';
     } else {
 		var customfont = $('#secondfont').val();
     }
