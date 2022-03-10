@@ -107,15 +107,31 @@ Aleo = Latin
   font-family: 'Material Icons Round';
   font-style: normal;
   font-weight: 400;
-  src: url(https://fonts.gstatic.com/s/materialiconsround/v69/LDItaoyNOAY6Uewc665JcIzCKsKc_M9flwmP.woff2) format('woff2');
+  src: url(https://fonts.gstatic.com/s/materialiconsround/v100/LDItaoyNOAY6Uewc665JcIzCKsKc_M9flwmP.woff2) format('woff2');
 }
 
-/* Sharp */
+/* Sharp (Used on Classic Visual Styles) */
 @font-face {
   font-family: 'Material Icons Sharp';
   font-style: normal;
   font-weight: 400;
-  src: url(https://fonts.gstatic.com/s/materialiconssharp/v92/oPWQ_lt5nv4pWNJpghLP75WiFR4kLh3kvmvR.woff2) format('woff2');
+  src: url(https://fonts.gstatic.com/s/materialiconssharp/v101/oPWQ_lt5nv4pWNJpghLP75WiFR4kLh3kvmvR.woff2) format('woff2');
+}
+
+/* Filled (Used on Basic and Contrast Visual Styles) */
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/materialicons/v126/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2) format('woff2');
+}
+
+/* Outlined (Used on Simple Visual Style) */
+@font-face {
+  font-family: 'Material Icons Outlined';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/materialiconsoutlined/v101/gok-H7zzDkdnRel8-DQ6KAXJ69wP1tGnf4ZGhUce.woff2) format('woff2');
 }
 
 
@@ -600,6 +616,7 @@ body {
 	--dropdown-opacity:var(--system-acryllic-opacity);
 	--mica-opacity:var(--system-acryllic-opacity);
 	accent-color:var(--highlight-background-color);
+	--icon-font-family:'Material Icons Round';
   margin:0;
 	overflow-x:hidden!important;
   font-family:var(--font-family);
@@ -1880,7 +1897,7 @@ margin-left:5px;
 .oo-ui-indicatorElement-indicator:before {
 	--icon-scale:1;
 	--icon-size:1;
-  font-family: 'Material Icons Round'!important;
+  font-family: var(--icon-font-family)!important;
   font-weight: normal;
   font-style: normal;
   display: inline-block;

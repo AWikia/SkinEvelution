@@ -536,17 +536,9 @@ background-color:var(--canvas-background-color);
   --backdrop-filter:none!important;
 }
 
-.visualstyle-basic .material-icons,
-.visualstyle-basic .has-icon:before,
-.visualstyle-basic .has-icon-labels li > a:before,
-.visualstyle-basic .oo-ui-iconElement-icon:before,
-.visualstyle-basic .oo-ui-indicatorElement-indicator:before,
-.visualstyle-basiccontrast .material-icons,
-.visualstyle-basiccontrast .has-icon:before,
-.visualstyle-basiccontrast .has-icon-labels li > a:before,
-.visualstyle-basiccontrast .oo-ui-iconElement-icon:before,
-.visualstyle-basiccontrast .oo-ui-indicatorElement-indicator:before  {
-  font-family: 'Material Icons'!important;
+.visualstyle-basic body,
+.visualstyle-basiccontrast body {
+  --icon-font-family:'Material Icons';
 }
 
 
@@ -1505,12 +1497,8 @@ color:inherit;
 
 
 /* Simple Theme */
-.visualstyle-simple .material-icons,
-.visualstyle-simple .has-icon:before,
-.visualstyle-simple .has-icon-labels li > a:before,
-.visualstyle-simple .oo-ui-iconElement-icon:before,
-.visualstyle-simple .oo-ui-indicatorElement-indicator:before {
-  font-family: 'Material Icons Outlined'!important;
+.visualstyle-simple body {
+	--icon-font-family: 'Material Icons Outlined';
 }
 
 .visualstyle-simple {
@@ -2260,17 +2248,9 @@ body .mw-echo-ui-notificationsListWidget:not(:hover) a,
 }
 
 
-.visualstyle-classic .material-icons,
-.visualstyle-classic .has-icon:before,
-.visualstyle-classic .has-icon-labels li > a:before,
-.visualstyle-classic .oo-ui-iconElement-icon:before,
-.visualstyle-classic .oo-ui-indicatorElement-indicator:before,
-.visualstyle-classiccontrast .material-icons,
-.visualstyle-classiccontrast .has-icon:before,
-.visualstyle-classiccontrast .has-icon-labels li > a:before,
-.visualstyle-classiccontrast .oo-ui-iconElement-icon:before,
-.visualstyle-classiccontrast .oo-ui-indicatorElement-indicator:before {
-  font-family: 'Material Icons Sharp'!important;
+.visualstyle-classic body,
+.visualstyle-classiccontrast body {
+  --icon-font-family: 'Material Icons Sharp'!important;
 }
 
 .visualstyle-classiccontrast body {
@@ -2950,6 +2930,37 @@ background-color:var(--highlight-background-color);
 }
 
 
+
+/* RC Filters */
+.visualstyle-contrast body,
+.visualstyle-basiccontrast body,
+.visualstyle-classiccontrast body {
+/* Blue */
+	--rc-highlight-blue-background-color:var(--active-title-background-color);
+	--rc-highlight-blue-background-color-hover:var(--active-title-background-color-hover);
+	--rc-highlight-blue-foreground-color-inverted:var(--active-title-foreground-color-inverted);
+	--rc-highlight-blue-fadeout-color:var(--active-title-fadeout-color);
+/* Green */
+	--rc-highlight-green-background-color:var(--canvas-text-background-color);
+	--rc-highlight-green-background-color-hover:var(--canvas-text-background-color-hover);
+	--rc-highlight-green-foreground-color-inverted:var(--canvas-text-foreground-color-inverted);
+	--rc-highlight-green-fadeout-color:var(--canvas-text-fadeout-color);
+/* Yellow */
+	--rc-highlight-yellow-background-color:var(--highlight-background-color);
+	--rc-highlight-yellow-background-color-hover:var(--highlight-background-color-hover);
+	--rc-highlight-yellow-foreground-color-inverted:var(--highlight-foreground-color-inverted);
+	--rc-highlight-yellow-fadeout-color:var(--highlight-fadeout-color);
+/* Orange */
+	--rc-highlight-orange-background-color:var(--inactive-text-background-color);
+	--rc-highlight-orange-background-color-hover:var(--inactive-text-background-color-hover);
+	--rc-highlight-orange-foreground-color-inverted:var(--inactive-text-foreground-color-inverted);
+	--rc-highlight-orange-fadeout-color:var(--inactive-text-fadeout-color);
+/* Red */
+	--rc-highlight-red-background-color:var(--hyperlink-background-color);
+	--rc-highlight-red-background-color-hover:var(--hyperlink-background-color-hover);
+	--rc-highlight-red-foreground-color-inverted:var(--hyperlink-foreground-color-inverted);
+	--rc-highlight-red-fadeout-color:var(--hyperlink-fadeout-color);
+}
 
 
 /** Color Schemes **/
