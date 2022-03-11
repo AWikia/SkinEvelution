@@ -360,7 +360,9 @@ function GetDesktop() {
 
 function GetDesktopImage(trimmed=false) {
 	var img = getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-image");
-	if (trimmed) {
+	if (img === 'none') {
+		return '';
+	} else if (trimmed) {
 		return img.replace('url(', '').replace(')', '').split('\\').join('');
 	} else {
 		return 'url(' + img.replace('url(', '').replace(')', '').split('\\').join('') + ')';
