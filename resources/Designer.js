@@ -908,16 +908,16 @@ function ApplyTheme () {
 	} else {
 		var autocolor8 = $('#pagebg3_s').val();
 	}
-	var image = $("#bodyimage").val().replace('url(', '').replace(')', '').split('\\').join('');
+	var image = $("#bodyimage").val().replace('url("', '').replace('")', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("");
     if ( $('#firstfont').val().length === 0) {
 		var customfont2 = 'Rubik';
     } else {
-		var customfont2 = $('#firstfont').val();
+		var customfont2 = $('#firstfont').val().replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
     }
     if ( $('#secondfont').val().length === 0) {
 		var customfont = 'Roboto';
     } else {
-		var customfont = $('#secondfont').val();
+		var customfont = $('#secondfont').val().replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
     }
 		result = '\n/* Community Theme */\n' +
 				 '.theme-' + window.MW18ActiveTheme + '.visualcolors-standard {\n' + // Beginning
@@ -1020,16 +1020,16 @@ function CopyTheme() {
 	} else {
 		var autocolor8 = $('#pagebg3_s').val();
 	}
-	var image = $("#bodyimage").val().replace('url(', '').replace(')', '').split('\\').join('');
+	var image = $("#bodyimage").val().replace('url("', '').replace('")', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("");
     if ( $('#firstfont').val().length === 0) {
 		var customfont2 = 'Roboto';
     } else {
-		var customfont2 = $('#firstfont').val();
+		var customfont2 = $('#firstfont').val().replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
     }
     if ( $('#secondfont').val().length === 0) {
 		var customfont = 'Rubik';
     } else {
-		var customfont = $('#secondfont').val();
+		var customfont = $('#secondfont').val().replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
     }
 		result = '.theme-' + window.MW18ActiveTheme + '.visualcolors-standard {\n' + // Beginning
 				 '--desktop-background-image:' + image + ';\n' +
@@ -1139,16 +1139,16 @@ function CopyTheme2() {
 	} else {
 		var autocolor8 = $('#pagebg3_s').val();
 	}
-	var image = $("#bodyimage").val().replace('url(', '').replace(')', '').split('\\').join('');
+	var image = $("#bodyimage").val().replace('url("', '').replace('")', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("");
     if ( $('#firstfont').val().length === 0) {
 		var customfont2 = 'Roboto';
     } else {
-		var customfont2 = $('#firstfont').val();
+		var customfont2 = $('#firstfont').val().replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
     }
     if ( $('#secondfont').val().length === 0) {
 		var customfont = 'Rubik';
     } else {
-		var customfont = $('#secondfont').val();
+		var customfont = $('#secondfont').val().replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
     }
 		result = "$wgEvelutionTheme" + window.MW18ActiveTheme + " = [\n" + // Beginning
 				 "'desktop-background-image' => '" + image + "',\n" +
@@ -1228,7 +1228,7 @@ function PasteTheme() {
 	}
 	$('.wikitable #bodybg2').prop('disabled',(document.querySelector('.wikitable #auto1').checked) );
 	// Body Image
-	$('#bodyimage').val( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-image").replace('url(', '').replace(')', '').split('\\').join('') );
+	$('#bodyimage').val( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-image").replace('url("', '').replace('")', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("") );
 	// Body Image Opacity
 	$('#bodyimagefilter').val( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-image-filter") );
 	// Body Image Mode
@@ -1326,13 +1326,13 @@ function PasteTheme() {
 	// Border Radius
 	$('#border-radius').val( parseInt(getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--border-radius")) );
 	// Primary Font
-	var pfont = getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--custom-font");
+	var pfont = getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--custom-font").replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
 	if (pfont == '""') {
 		var pfont = '';
 	}
 	$('#firstfont').val( pfont );
 	// Secondary Font
-	var sfont = getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--custom-secondary-font");
+	var sfont = getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--custom-secondary-font").replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
 	if (sfont == '""') {
 		var sfont = '';
 	}
@@ -1402,16 +1402,16 @@ function TestTheme() {
 	} else {
 		var autocolor8 = $('#pagebg3_s').val();
 	}
-	var image = $("#bodyimage").val().replace('url(', '').replace(')', '').split('\\').join('');
+	var image = $("#bodyimage").val().replace('url("', '').replace('")', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("");
     if ( $('#firstfont').val().length === 0) {
 		var customfont2 = 'Roboto';
     } else {
-		var customfont2 = $('#firstfont').val();
+		var customfont2 = $('#firstfont').val().replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
     }
     if ( $('#secondfont').val().length === 0) {
 		var customfont = 'Rubik';
     } else {
-		var customfont = $('#secondfont').val();
+		var customfont = $('#secondfont').val().replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
     }
 		result = ':root .theme-A, .theme-B, .theme-C, .theme-D, .theme-E, .theme-F, .theme-G, .theme-H {\n' + // Beginning
 				 '--desktop-background-image:' + image + '!important;\n' +
