@@ -97,8 +97,8 @@ body .oo-ui-iconWidget:before {
 body .oo-ui-tool .oo-ui-iconElement-icon,
 body .oo-ui-tool .oo-ui-indicatorElement-indicator,
 body .oo-ui-popupToolGroup-handle .oo-ui-iconElement-icon,
-body .oo-ui-popupToolGroup-handle .oo-ui-indicatorElement-indicator,
-body .oo-ui-buttonElement-framed.oo-ui-iconElement > .oo-ui-buttonElement-button > .oo-ui-iconElement-icon {
+body .oo-ui-popupToolGroup-handle .oo-ui-indicatorElement-indicator/*,
+body .oo-ui-buttonElement-framed.oo-ui-iconElement > .oo-ui-buttonElement-button > .oo-ui-iconElement-icon*/ {
 	top:5px;
 }
 
@@ -109,11 +109,17 @@ body .ve-init-mw-editSwitch .oo-ui-popupToolGroup.oo-ui-iconElement .oo-ui-popup
 
 body .oo-ui-buttonElement-framed.oo-ui-iconElement > .oo-ui-buttonElement-button > .oo-ui-iconElement-icon {
     left: calc(50% - 3px);
+    top:0;
 }
 
 body .oo-ui-buttonElement-framed.oo-ui-iconElement.oo-ui-labelElement > .oo-ui-buttonElement-button > .oo-ui-iconElement-icon, 
 body .oo-ui-buttonElement-framed.oo-ui-iconElement.oo-ui-indicatorElement > .oo-ui-buttonElement-button > .oo-ui-iconElement-icon {
 	top:0;
+}
+
+body .oo-ui-textInputWidget.oo-ui-widget-enabled > .oo-ui-iconElement-icon,
+body .oo-ui-textInputWidget.oo-ui-widget-enabled > .oo-ui-indicatorElement-indicator {
+	top:2.5px;
 }
 
 /* End Icons */
@@ -556,11 +562,46 @@ body .oo-ui-buttonElement-framed.oo-ui-indicatorElement > .oo-ui-buttonElement-b
 }
 
 
+body .oo-ui-numberInputWidget-buttoned .oo-ui-buttonWidget .oo-ui-buttonElement-button {
+	min-height:36px;
+}
+
+body .oo-ui-numberInputWidget-minusButton > .oo-ui-buttonElement-button {
+	border-top-right-radius:0;
+	border-bottom-right-radius:0;
+    margin-right:0;
+}
+
+body .oo-ui-numberInputWidget-plusButton > .oo-ui-buttonElement-button {
+	border-top-left-radius:0;
+	border-bottom-left-radius:0;
+    margin-left:0;
+}
+
+body .oo-ui-buttonSelectWidget .oo-ui-buttonOptionWidget:first-child .oo-ui-buttonElement-button {
+	border-top-left-radius:var(--border-radius);
+	border-bottom-left-radius:var(--border-radius);
+}
+
+body .oo-ui-buttonSelectWidget .oo-ui-buttonOptionWidget:last-child .oo-ui-buttonElement-button {
+	border-top-right-radius:var(--border-radius);
+	border-bottom-right-radius:var(--border-radius);
+}
+
+body .oo-ui-actionFieldLayout .oo-ui-actionFieldLayout-button .oo-ui-buttonElement-framed > .oo-ui-buttonElement-button {
+	border-top-right-radius:var(--border-radius);
+	border-bottom-right-radius:var(--border-radius);
+}
+
 body .oo-ui-buttonElement-framed.oo-ui-labelElement > .oo-ui-buttonElement-button {
 	padding-top:5px;
 	padding-bottom:5px;
 }
 
+body .oo-ui-buttonElement-framed.oo-ui-iconElement > .oo-ui-buttonElement-button {
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
 
 body .mw-rcfilters-ui-liveUpdateButtonWidget.oo-ui-toggleWidget-on:after {
 	background:rgba(var(--highlight-foreground-color-rgb),0.5);
@@ -1067,7 +1108,7 @@ body .mw-ui-input  {
     font-family:var(--secondary-font);
     font-weight:600;
     color:var(--canvas-text-background-color);
-    padding:15px 11px;
+    padding:16px 11px;
     border:2px solid;
 /*    border-color:var(--inactive-text-background-color); */
     border-radius:var(--border-radius); 
@@ -1102,6 +1143,12 @@ body .oo-ui-numberInputWidget-buttoned .oo-ui-inputWidget-input {
 	margin-left:0!Important;
 	margin-right:0!important;
 	
+}
+
+body .oo-ui-comboBoxInputWidget .oo-ui-inputWidget-input {
+	border-top-right-radius:0!important;
+	border-bottom-right-radius:0!important;
+	margin-right:0!important;
 }
 
 body .oo-ui-tagMultiselectWidget.oo-ui-tagMultiselectWidget-outlined .oo-ui-inputWidget-input {
@@ -1212,7 +1259,7 @@ body .oo-ui-dropdownWidget.oo-ui-widget-disabled .oo-ui-dropdownWidget-handle {
     box-sizing:border-box;
     box-shadow:0 0 0 100vh rgba(var(--input-box-focus),0) inset;
     margin:1px;
-    padding:7px 11px;
+    padding:5px 11px;
 }
 
 
