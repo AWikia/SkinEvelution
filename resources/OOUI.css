@@ -523,7 +523,7 @@ body .oo-ui-labelElement .oo-ui-labelElement-label {
 
 /* Destructive */
 .oo-ui-flaggedElement-destructive,
-.mw-ui-destructive  {
+.mw-ui-destructive {
 /* Primary */
     --highlight-background-color: var(--alert-background-color)!important;
     --highlight-background-color-hover: var(--alert-background-color-hover-2)!important;
@@ -1098,6 +1098,7 @@ body .oo-ui-textInputWidget.oo-ui-widget-enabled .oo-ui-inputWidget-input,
 body .oo-ui-dropdownWidget.oo-ui-widget-enabled .oo-ui-dropdownWidget-handle,
 body .oo-ui-textInputWidget.oo-ui-widget-disabled .oo-ui-inputWidget-input,
 body .mw-widget-dateInputWidget-handle,
+body .mw-widgets-datetime-dateTimeInputWidget-handle,
 body .mw-ui-input  {
 	--input-box-color:var(--canvas-background-color);
 	--input-box-focus:var(--hyperlink-background-color-rgb);
@@ -1137,6 +1138,20 @@ body .oo-ui-textInputWidget.oo-ui-widget-disabled .oo-ui-inputWidget-input {
     border-color: currentColor!important;
 }
 
+body .oo-ui-textInputWidget.oo-ui-widget-enabled.oo-ui-flaggedElement-invalid .oo-ui-inputWidget-input,
+body .mw-widgets-datetime-dateTimeInputWidget.oo-ui-widget-enabled.oo-ui-flaggedElement-invalid .mw-widgets-datetime-dateTimeInputWidget-handle {
+	border-color:var(--alert-background-color);
+}
+
+body .oo-ui-textInputWidget.oo-ui-widget-enabled.oo-ui-flaggedElement-invalid .oo-ui-inputWidget-input:hover,
+body .mw-widgets-datetime-dateTimeInputWidget.oo-ui-widget-enabled.oo-ui-flaggedElement-invalid .mw-widgets-datetime-dateTimeInputWidget-handle:hover {
+	border-color:var(--alert-background-color-hover);
+}
+
+body .mw-widgets-datetime-dateTimeInputWidget.oo-ui-widget-enabled .mw-widgets-datetime-dateTimeInputWidget-editField:hover {
+	background-color:var(--canvas-background-color-hover);
+}
+
 body .oo-ui-numberInputWidget-buttoned .oo-ui-inputWidget-input {
 	border-radius:0!important;
 	margin-left:0!Important;
@@ -1170,10 +1185,14 @@ body .oo-ui-actionFieldLayout .oo-ui-actionFieldLayout-input > .oo-ui-widget .oo
 	border-radius:var(--border-radius) 0 0 var(--border-radius);
 }
 
-body .mw-ui-input:invalid,
 body .mw-widget-dateInputWidget.oo-ui-widget-enabled .mw-widget-dateInputWidget-handle {
     border-color: currentColor;
 }
+
+body .mw-ui-input:invalid {
+	border-color:var(--alert-background-color);
+}
+
 
 body .oo-ui-textInputWidget.oo-ui-iconElement .oo-ui-inputWidget-input {
     padding-left: 31.571px;
@@ -1888,6 +1907,13 @@ body .mw-widget-calendarWidget {
 body .mw-widget-dateInputWidget-calendar {
 	background-color:var(--canvas-secondary-background-color);
 	color:var(--canvas-text-secondary-background-color);
+}
+
+body .mw-widgets-datetime-calendarWidget {
+	background-color:var(--canvas-secondary-background-color);
+	color:var(--canvas-text-secondary-background-color);
+	border-color:var(--inactive-text-background-color);
+	border-radius:var(--border-radius);
 }
 
 body .mw-widget-calendarWidget-day-today {
