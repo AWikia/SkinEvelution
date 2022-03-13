@@ -908,7 +908,7 @@ function ApplyTheme () {
 	} else {
 		var autocolor8 = $('#pagebg3_s').val();
 	}
-	var image = $("#bodyimage").val().replace('url("', '').replace('")', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("");
+	var image = $("#bodyimage").val().replace('url(', '').replace(')', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("").split("\"").join("");
     if ( $('#firstfont').val().length === 0) {
 		var customfont2 = 'Rubik';
     } else {
@@ -1020,7 +1020,7 @@ function CopyTheme() {
 	} else {
 		var autocolor8 = $('#pagebg3_s').val();
 	}
-	var image = $("#bodyimage").val().replace('url("', '').replace('")', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("");
+	var image = $("#bodyimage").val().replace('url(', '').replace(')', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("").split("\"").join("");
     if ( $('#firstfont').val().length === 0) {
 		var customfont2 = 'Roboto';
     } else {
@@ -1139,7 +1139,7 @@ function CopyTheme2() {
 	} else {
 		var autocolor8 = $('#pagebg3_s').val();
 	}
-	var image = $("#bodyimage").val().replace('url("', '').replace('")', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("");
+	var image = $("#bodyimage").val().replace('url(', '').replace(')', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("").split("\"").join("");
     if ( $('#firstfont').val().length === 0) {
 		var customfont2 = 'Roboto';
     } else {
@@ -1228,7 +1228,7 @@ function PasteTheme() {
 	}
 	$('.wikitable #bodybg2').prop('disabled',(document.querySelector('.wikitable #auto1').checked) );
 	// Body Image
-	$('#bodyimage').val( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-image").replace('url("', '').replace('")', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("") );
+	$('#bodyimage').val( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-image").replace('url(', '').replace(')', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("").split("\"").join("") );
 	// Body Image Opacity
 	$('#bodyimagefilter').val( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-image-filter") );
 	// Body Image Mode
@@ -1402,7 +1402,7 @@ function TestTheme() {
 	} else {
 		var autocolor8 = $('#pagebg3_s').val();
 	}
-	var image = $("#bodyimage").val().replace('url("', '').replace('")', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("");
+	var image = $("#bodyimage").val().replace('url(', '').replace(')', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("").split("\"").join("");
     if ( $('#firstfont').val().length === 0) {
 		var customfont2 = 'Roboto';
     } else {

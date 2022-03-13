@@ -360,12 +360,12 @@ function GetDesktop() {
 
 function GetDesktopImage(trimmed=false) {
 	var img = getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-image").trim();
-	if (img === 'none') {
+	if ( (img === 'none') || (img === "'none'") || (img === '"none"')) {
 		return '';
 	} else if (trimmed) {
-		return img.replace('url("', '').replace('")', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("");
+		return img.replace('url(', '').replace(')', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("").split("\"").join("");
 	} else {
-		return 'url(' + img.replace('url("', '').replace('")', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("") + ')';
+		return 'url(' + img.replace('url(', '').replace(')', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("").split("\"").join("") + ')';
 	}
 }
 
