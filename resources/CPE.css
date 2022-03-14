@@ -3183,7 +3183,7 @@ margin-right:16px;
 	background-color:rgba(var(--canvas-secondary-background-color-rgb),var(--dropdown-opacity));
 	color:var(--canvas-text-secondary-background-color);
 	display:flex;
-	transition:opacity .4s var(--transitioner), transform .4s var(--transitioner); 
+	transition:opacity .6s var(--transitioner), transform .6s var(--transitioner); 
 	overflow:hidden; 
 	transform-origin:left;
 	position:relative;
@@ -3196,6 +3196,9 @@ margin-right:16px;
 	margin-bottom:5px;
 }
 
+.cpe-banner-notification:last-child {
+	margin-bottom:0;
+}
 
 .cpe-banner-notification.is-transparent{
 	 transform:translateX(calc(-100% - 5px));
@@ -3258,12 +3261,30 @@ margin-right:16px;
 
  #floatingbanner {
   position:fixed;
-  bottom:50px;
+  bottom:55px;
   left:5px;
   width:inherit;
   max-width:calc(100% - 10px);
   width:480px;
   z-index:19; /* Needed lower value to allow header dropdowns not to overlap */
+}
+
+ #floatingbanner .banners {
+	  scrollbar-width:thin;
+	  scrollbar-color:var(--scrollbar-thumb-color-1) var(--scrollbar-track-color-1);
+	 /** Scrollbar Styling **/
+		/* Width */
+		--scrollbar-width:8.5px;
+		/* Track */
+		--scrollbar-track-color-1:transparent;
+		--scrollbar-track-color-2:transparent;
+		--scrollbar-track-text:transparent;
+		/* Thumb */
+		--scrollbar-thumb-color-1:var(--highlight-background-color);
+		--scrollbar-thumb-color-2:var(--highlight-background-color-hover);
+		--scrollbar-thumb-text:var(--highlight-foreground-color);
+		overflow-y:scroll;
+		max-height:calc(100vh - calc(var(--minibar-size) * 2) - 45px);
 }
 
 

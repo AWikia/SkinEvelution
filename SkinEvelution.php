@@ -117,6 +117,7 @@ class SkinEvelution extends SkinMustache {
 		$data["has-smw"] = ( (ExtensionRegistry::getInstance()->isLoaded( 'SemanticMediaWiki' )) );
 		$data["has-mono-logo"] = $this->getConfig()->get ( 'EvelutionMonoLogo' );
 		$data["has-interlanguage-links"] = true;
+		$data["has-box-alias"] = $this->getConfig()->get ( 'EvelutionChangeMessageBoxesToBanners' );
 		$data["is-loggedin"] = $this->getSkin()->getUser()->isRegistered();
 
 

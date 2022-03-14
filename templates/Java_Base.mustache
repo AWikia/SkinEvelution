@@ -162,7 +162,6 @@ function UpdateRangeInputs() {
 	DropDownUpdate();
 })();
 
-
 /* Aliases all components with the .wds prefix to the ones from .cpe ones */
 function AliasFandomComponents() {
 
@@ -200,6 +199,23 @@ function RemoveBanner() {
 
 }
 
+function RemoveBanners() {
+	var banners = document.querySelectorAll('#floatingbanner .cpe-banner-notification');
+	banners.forEach(function(banner) {
+		banner.classList.add("is-transparent")
+		setTimeout(
+		(function () {
+			banner.remove();			
+			if (!(document.querySelectorAll("#floatingbanner .cpe-banner-notification").length)) {
+				document.querySelector('#floatingbanner').remove();
+			}
+			document.querySelector('.focus-overlay').focus();
+		}),405);
+
+	});
+
+}
+
 function AddFloatingBanner(content='Sample Content',kind='message',extraclass='') {
 	if (kind === 'alert') {
 		var icon = 'report'
@@ -214,14 +230,17 @@ function AddFloatingBanner(content='Sample Content',kind='message',extraclass=''
 	} else {
 		var icon = 'info'
 	}
+	var nogap = false;
 	if (!(document.querySelector(".top-gap #floatingbanner"))) {
+		var nogap = true;
 		document.querySelector(".top-gap").insertAdjacentHTML('afterbegin', 
-			  '<div class="cpe-banner-notification__container" id="floatingbanner">' +
-			  '\n</div>'
+			  '<div class="cpe-banner-notification__container" id="floatingbanner" style="pointer-events:none;">' +
+			  '<div style="display:flex; flex-flow:column;"><button style="pointer-events:auto; align-self:flex-end; margin-right:8.5px;" class="cpe-button" onclick="RemoveBanners()">Clear all</button></div>' +
+			  '\n<div class="banners" style="pointer-events:auto;"></div></div>'
 		);
 	}
 
-	document.querySelector(".top-gap #floatingbanner").insertAdjacentHTML('beforeend', 
+	document.querySelector(".top-gap #floatingbanner .banners").insertAdjacentHTML('beforeend', 
 			'<div class=" cpe-banner-notification is-' + kind + '" id="' + extraclass  + '">' +
 			  '<div class="cpe-banner-notification__icon">' +
 				'<span class="cpe-icon cpe-icon-small material-icons">' +
@@ -234,6 +253,7 @@ function AddFloatingBanner(content='Sample Content',kind='message',extraclass=''
 			  '</span>' +
 			'</div>' 
 	);
+	
 
 
 }
@@ -343,6 +363,7 @@ if  (imodule)  {
 CheckCompat();
 initializeViews();
 RemoveEmptyMenus();
+AliasBoxes();
 
 	/* DITTO */
 	document.querySelector("body").addEventListener("mouseenter", ( function(e) { CheckTheme(); } ) );
@@ -356,6 +377,32 @@ DetectGPU.getGPUTier().then(function(e) {document.querySelector('html').classLis
 
 
 })();
+
+function AliasBoxes() {
+	{{#has-box-alias}}
+		var error = document.querySelectorAll('.errorbox:not(.tux-nojs):not(.noconvert)');
+		error.forEach(function(x) {
+			AddFloatingBanner(x.innerHTML,'alert');
+			x.remove();
+		});
+		var warn = document.querySelectorAll('.warningbox:not(.tux-nojs):not(.noconvert)');
+		warn.forEach(function(x) {
+			AddFloatingBanner(x.innerHTML,'warning');
+			x.remove();
+		});
+		var success = document.querySelectorAll('.successbox:not(.tux-nojs):not(.noconvert)');
+		success.forEach(function(x) {
+			AddFloatingBanner(x.innerHTML,'success');
+			x.remove();
+		});
+		var message = document.querySelectorAll('.messagebox:not(.tux-nojs):not(.noconvert)');
+		message.forEach(function(x) {
+			AddFloatingBanner(x.innerHTML,'messagebox');
+			x.remove();
+		});
+	{{/has-box-alias}}
+}
+
 
 /* Check Compatibility */
 function CheckCompat() {
@@ -389,7 +436,6 @@ function CheckCompat() {
 
 function ResetSettings() {
 	if (confirm("Are you sure you want to reset Evelution's settings to their defaults? This can't be undone.")) {
-		AddFloatingBanner('Resetting Evelution\'s Settings. Please wait...','progress','InProgressBanner');
 		insertKey('content-full', 'false' );
 		insertKey('right-rail-full', 'true' );
 		insertKey('left-rail-full', 'true' );
@@ -404,7 +450,6 @@ function ResetSettings() {
 		insertKey('color-mode', 'auto' );
 		insertKey('contrast-mode', 'auto' );
 		insertKey('accent-active', 'false' );
-		$("#InProgressBanner").remove(); 
 		AddFloatingBanner('Succesfully resetted Evelution\'s settings to their defaults. Page will now reload.','success');
 		location.reload()
 	}
