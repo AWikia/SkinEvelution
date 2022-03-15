@@ -33,81 +33,82 @@
 					{{/icon}}
 				{{/data-logos}}
 				<header class="evelution-superbar__fone">
-				<section class="title" translate="no">
-					{{#data-logos}}
-						{{#wordmark}}
-							<div style="--height:{{height}}px; display:contents">
-								{{#src}}
-								<a href="{{link-mainpage}}" class="title-logo" style="-webkit-mask-image:url({{.}}); mask-image:url({{.}});"><span style="visibility:hidden;">Abc</span></a>
-								{{/src}}
-								{{^src}}
-								<a href="{{link-mainpage}}" class="title-logo" style="-webkit-mask-image:url({{.}}); mask-image:url({{.}});"><span style="visibility:hidden;">Abc</span></a>
-								{{/src}}
-							</div>
-						{{/wordmark}}
-						{{^wordmark}}<a href="{{link-mainpage}}">{{msg-sitetitle}}</a>{{/wordmark}}
-					{{/data-logos}}
-				</section>
-				<section class="container">
-					<section class="counters">
-						<div class="counter articles"><big>{{html-articlecount}}</big> <span class="cpe-icon material-icons">article</span></div>
-						<div class="counter photos"><big>{{html-filecount}}</big> <span class="cpe-icon material-icons">photo</span></div>
-						<div class="counter edits"><big>{{html-editcount}}</big> <span class="cpe-icon material-icons">edit</span></div>
-						<div class="counter users"><big>{{html-usercount}}</big> <span class="cpe-icon material-icons">person</span></div>
+					<section class="evelution-superbar__mobile-top">
+						<h1 class="title" translate="no">
+							{{#data-logos}}
+								{{#wordmark}}
+									<div style="--height:{{height}}px; display:contents">
+										{{#src}}
+										<a href="{{link-mainpage}}" class="title-logo" style="-webkit-mask-image:url({{.}}); mask-image:url({{.}});"><span style="visibility:hidden;">Abc</span></a>
+										{{/src}}
+										{{^src}}
+										<a href="{{link-mainpage}}" class="title-logo" style="-webkit-mask-image:url({{.}}); mask-image:url({{.}});"><span style="visibility:hidden;">Abc</span></a>
+										{{/src}}
+									</div>
+								{{/wordmark}}
+								{{^wordmark}}<a href="{{link-mainpage}}">{{msg-sitetitle}}</a>{{/wordmark}}
+							{{/data-logos}}
+						</h1>
+						<div class="counters">
+							<div class="counter articles"><big>{{html-articlecount}}</big> <span class="cpe-icon material-icons">article</span></div>
+							<div class="counter photos"><big>{{html-filecount}}</big> <span class="cpe-icon material-icons">photo</span></div>
+						</div>
+						<div class="counters">
+							<div class="counter edits"><big>{{html-editcount}}</big> <span class="cpe-icon material-icons">edit</span></div>
+							<div class="counter users"><big>{{html-usercount}}</big> <span class="cpe-icon material-icons">person</span></div>
+						</div>
+						{{>MobileCommunityLinks}}
 					</section>
-				</section>
-				<section class="container">
-					<section class="buttons">
-						<nav class="local-navigation home-nav">
-							{{#data-portlets-sidebar}}
-							{{#data-portlets-first}}{{>PortletMLN2}}{{/data-portlets-first}}
-							{{#array-portlets-rest}}{{>PortletMLN}}{{/array-portlets-rest}}
-							{{#data-portlets.data-languages}}{{>PortletMLN}}{{/data-portlets.data-languages}}
-							{{/data-portlets-sidebar}}
-							{{>MobileCommunityLinks}}
-						</nav>
-						<nav class="actions-navigation server-nav">
-							<div class="cpe-dropdown local-navigation">
-								<a class="link cell cpe-dropdown__toggle" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-navigation}}">
-									<span class="cpe-icon cpe-icon-large cpe-dropdown__toggle-chevron material-icons">
-										arrow_drop_down
+					<section class="container">
+						<section class="evelution-superbar__mobile-bottom">
+							<nav class="local-navigation home-nav has-icon-labels">
+								{{#data-portlets-sidebar}}
+								{{#data-portlets-first}}{{>PortletMLN2}}{{/data-portlets-first}}
+								{{#array-portlets-rest}}{{>PortletMLN}}{{/array-portlets-rest}}
+								{{#data-portlets.data-languages}}{{>PortletMLN}}{{/data-portlets.data-languages}}
+								{{/data-portlets-sidebar}}
+							</nav>
+							<nav class="actions-navigation server-nav">
+								<div class="cpe-dropdown local-navigation">
+									<a class="link cell cpe-dropdown__toggle" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-navigation}}">
+										<span class="cpe-icon cpe-icon-large cpe-dropdown__toggle-chevron material-icons">
+											arrow_drop_down
+										</span>
+									</a>
+									<div class="cpe-dropdown__content is-left-aligned is-not-scrollable" style="left:0;">
+										<ul class="cpe-list is-linked has-icon-labels">
+													{{#data-portlets-sidebar}}
+													{{#data-portlets-first}}{{>PortletSLN}}{{/data-portlets-first}}
+													{{#array-portlets-rest}}{{>PortletSLN}}{{/array-portlets-rest}}
+													{{#data-portlets.data-languages}}{{>PortletSLN}}{{/data-portlets.data-languages}}
+													{{/data-portlets-sidebar}}
+										</ul>
+									</div>
+								</div>
+								<a class="link cell" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-longpages}}" href="{{html-longpages-link}}">
+									<span class="cpe-icon material-icons">
+									star_border
 									</span>
 								</a>
-								<div class="cpe-dropdown__content is-left-aligned is-not-scrollable" style="left:0;">
-									<ul class="cpe-list is-linked has-icon-labels">
-												{{#data-portlets-sidebar}}
-												{{#data-portlets-first}}{{>PortletSLN}}{{/data-portlets-first}}
-												{{#array-portlets-rest}}{{>PortletSLN}}{{/array-portlets-rest}}
-												{{#data-portlets.data-languages}}{{>PortletSLN}}{{/data-portlets.data-languages}}
-												{{/data-portlets-sidebar}}
-									</ul>
-								</div>
-							</div>
-							<a class="link cell" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-longpages}}" href="{{html-longpages-link}}">
-								<span class="cpe-icon material-icons">
-								star_border
-								</span>
-							</a>
-							<a class="link cell" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-unusedtemplates}}" href="{{html-unusedtemplates-link}}">
-								<span class="cpe-icon material-icons">
-								bookmark_remove
-								</span>
-							</a>
-							<a class="link cell" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-apisandbox}}" href="{{html-apisandbox-link}}">
-								<span class="cpe-icon material-icons">
-								api
-								</span>
-							</a>
-							<a class="link cell" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-allmessages}}" href="{{html-messages-link}}">
-								<span class="cpe-icon material-icons">
-								security
-								</span>
-							</a>
-							{{>MobileCommunityLinks}}
+								<a class="link cell" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-unusedtemplates}}" href="{{html-unusedtemplates-link}}">
+									<span class="cpe-icon material-icons">
+									bookmark_remove
+									</span>
+								</a>
+								<a class="link cell" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-apisandbox}}" href="{{html-apisandbox-link}}">
+									<span class="cpe-icon material-icons">
+									api
+									</span>
+								</a>
+								<a class="link cell" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-allmessages}}" href="{{html-messages-link}}">
+									<span class="cpe-icon material-icons">
+									security
+									</span>
+								</a>
 
-						</nav>
+							</nav>
+						</section>
 					</section>
-				</section>
 				</header>
 				<div class="evelution-superbar__pc">
 					<header class="evelution-superbar__top fandom-community-header__top-container">
@@ -140,9 +141,9 @@
 								</div>
 							</div>
 					</header>
-					<nav class="evelution-superbar__bottom fandom-community-header__local-navigation">
+					<nav class="evelution-superbar__bottom home-nav fandom-community-header__local-navigation">
 						<div class="table">
-							<div class="tr">
+							<div class="tr has-icon-labels">
 								{{#data-portlets-sidebar}}
 								{{#data-portlets-first}}{{>PortletLN}}{{/data-portlets-first}}
 								{{#array-portlets-rest}}{{>PortletLN}}{{/array-portlets-rest}}

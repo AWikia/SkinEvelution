@@ -1,5 +1,34 @@
-							<div class="cpe-dropdown more-items-menu has-reversed-nested-menus">
-								<div class="link cell" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-moredotdotdot}}">
+							<a class="link cell mobile-xl" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-recentchanges}}"  href="{{html-rc-link}}">
+								<span class="cpe-icon material-icons">
+								trending_up
+								</span>
+							</a>
+						{{#is-loggedin}}
+							<a class="link cell mobile-xxl" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-evelution-newfiles}}"  href="{{html-files-link}}">
+								<span class="cpe-icon material-icons">
+								photo_library
+								</span>
+							</a>
+						{{/is-loggedin}}
+						{{^is-loggedin}}
+							{{#has-forum}}
+							  <a class="link forum mobile-xxl" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-talk}}" href="{{html-forum-link}}">
+										<span class="cpe-icon material-icons">
+											forum
+										</span>
+							  </a>
+							{{/has-forum}}
+						{{/is-loggedin}}
+						{{^is-loggedin}}
+							<a class="link cell last-action {{#has-forum}}mobile-xxl{{/has-forum}}{{^has-forum}}mobile-xl{{/has-forum}}" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-allarticles}}"  href="{{html-allpages-link}}">
+								<span class="cpe-icon material-icons">
+								pages
+								</span>
+							</a>
+						{{/is-loggedin}}
+
+							<div class="cpe-dropdown more-items-menu has-reversed-nested-menus {{^is-loggedin}}overflow-mobile-{{#has-forum}}xxl{{/has-forum}}{{^has-forum}}xl{{/has-forum}}{{/is-loggedin}}">
+								<div class="link cell last-action" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-moredotdotdot}}">
 									<span class="cpe-icon cpe-dropdown__toggle-chevron material-icons">
 										more_vertical
 									</span>
@@ -37,16 +66,16 @@
 									</ul>
 									<hr class="server-on server-actions" />
 									<ul class="cpe-list is-linked">
-										<li>
+										<li class="mobile-xl">
 											<a href="{{html-rc-link}}">{{msg-recentchanges}}</a>
 										</li>
 									{{#is-loggedin}}
-										<li>
+										<li class="mobile-xxl">
 											<a href="{{html-files-link}}">{{msg-evelution-newfiles}}</a>
 										</li>
 									{{/is-loggedin}}
 									{{#has-forum}}
-										<li class="smallp">
+										<li class="{{^is-loggedin}}mobile-xxl{{/is-loggedin}}">
 											<a href="{{html-forum-link}}">{{msg-talk}}</a>
 										</li>
 									{{/has-forum}}
@@ -101,7 +130,7 @@
 											</div>
 										</li>
 									{{/is-loggedin}}
-										<li>
+										<li class="{{^is-loggedin}}{{#has-forum}}mobile-xxl{{/has-forum}}{{^has-forum}}mobile-xl{{/has-forum}}{{/is-loggedin}}">
 											<a href="{{html-allpages-link}}">{{msg-allarticles}}</a>
 										</li>
 									{{#is-loggedin}}
