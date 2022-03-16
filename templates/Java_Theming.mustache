@@ -260,22 +260,32 @@ function VisualColor(style,save=true,repaint=true) {
 			var style='standard';
 			var save = true;
 		}
-	window.MW18ActiveColors = style;
-
-	var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-colors li.selected, .skin-tunic #visual-colors .mw-portlet-body ul li.selected");
-	if (x) {
-		x.classList.remove("selected");
-	}
-	var y = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-colors li[data-visual-color='" + style + "'], .skin-tunic #visual-colors .mw-portlet-body ul li[data-visual-color='" + style + "']");
-	if (y) {
-		y.classList.add("selected")
-	}
-		if (save) {
-		insertKey('visual-color', style );
-		}
+		oldcolors = window.MW18ActiveColors;
+	try {
+		window.MW18ActiveColors = style;
 		if (repaint) {
 			ColorUpdate(true);
 		}
+
+		var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-colors li.selected, .skin-tunic #visual-colors .mw-portlet-body ul li.selected");
+		if (x) {
+			x.classList.remove("selected");
+		}
+		var y = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-colors li[data-visual-color='" + style + "'], .skin-tunic #visual-colors .mw-portlet-body ul li[data-visual-color='" + style + "']");
+		if (y) {
+			y.classList.add("selected")
+		}
+		if (save) {
+		insertKey('visual-color', style );
+		}
+	}
+
+	catch (err) {
+		window.MW18ActiveColors = oldcolors
+		AddFloatingBanner('Failed to switch to this Visual Color Pack as theme ' + window.MW18ActiveTheme + ' had typographical errors.','alert');
+	}
+
+
 }
 
 
@@ -2032,26 +2042,32 @@ document.querySelector("head .theming").innerHTML = result;
 
 /* Toggles Theme */
 function ToggleTheme(theme="A",repaint=true,save=true) {
-    var x = document.querySelector('html');
-		if (!(['A','B','C','D','E','F','G','H'].includes(theme))) {
-			console.log("CPE Language allows you to set the theme slot only from A to H. Slot A is used as a fallback")
-			var theme='A';
-			var save = true;
-		}
-		window.MW18ActiveTheme = theme;
-		if (repaint) {
-			ColorUpdate(true);
-		}
-		if (save) {
-			insertKey('theme-selected', window.MW18ActiveTheme );
-		}
-		var theme_selected = theme;
-		var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li.selected, .skin-tunic #wiki-themes .mw-portlet-body ul li.selected");
-			if (x) {
-				x.classList.remove("selected");
+	if (!(['A','B','C','D','E','F','G','H'].includes(theme))) {
+		console.log("CPE Language allows you to set the theme slot only from A to H. Slot A is used as a fallback")
+		var theme='A';
+		var save = true;
+	}
+	try {
+		var x = document.querySelector('html');
+			window.MW18ActiveTheme = theme;
+			if (repaint) {
+				ColorUpdate(true);
 			}
-		var y = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li[data-theme-change='theme-" + theme_selected + "'], .skin-tunic #wiki-themes .mw-portlet-body ul li[data-theme-change='theme-" + theme_selected + "']")
-			if (y) {
-				y.classList.add("selected");
+			if (save) {
+				insertKey('theme-selected', window.MW18ActiveTheme );
 			}
+			var theme_selected = theme;
+			var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li.selected, .skin-tunic #wiki-themes .mw-portlet-body ul li.selected");
+				if (x) {
+					x.classList.remove("selected");
+				}
+			var y = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li[data-theme-change='theme-" + theme_selected + "'], .skin-tunic #wiki-themes .mw-portlet-body ul li[data-theme-change='theme-" + theme_selected + "']")
+				if (y) {
+					y.classList.add("selected");
+				}
+	}
+	catch (err) {
+		AddFloatingBanner('Failed to switch to Theme ' + theme + ' as it had typographical errors.','alert');
+	}
 }
+
