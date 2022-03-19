@@ -1641,7 +1641,7 @@ color:inherit;
 	background-color:var(--desktop-background-color-hover);
 	-webkit-animation:none;
 	animation:none;
-	border-color:transparent;
+	border-color:rgba(var(--canvas-foreground-color-rgb),0.2);
 	box-shadow:none;
 	color:var(--desktop-foreground-color-inverted);
 }
@@ -1656,14 +1656,19 @@ color:inherit;
 	color:var(--luna-foreground-color-inverted);
 	box-shadow:none;
 	animation:none;
-	border-color:transparent;
+	border-color:rgba(var(--canvas-foreground-color-rgb),0.2);
+}
+
+.visualstyle-simple.has-accents .evelution-minibar .link.active, 
+.visualstyle-simple.has-accents .evelution-minibar .link:hover, 
+.visualstyle-simple.has-accents .evelution-minibar .link:focus, 
+.visualstyle-simple.has-accents .evelution-minibar .cpe-dropdown:focus > .link, 
+.visualstyle-simple.has-accents .evelution-minibar .cpe-dropdown:focus-within > .link {
+	border-color:rgba(var(--luna-foreground-color-rgb),0.2);
 }
 
 
 
-.visualstyle-simple .evelution-sidebar .link {
-	border-color:transparent!important;
-}
 
 .visualstyle-simple .evelution-sidebar .link:hover, 
 .visualstyle-simple .evelution-sidebar .link:active, 
@@ -1672,7 +1677,17 @@ color:inherit;
 .visualstyle-simple .evelution-sidebar .cpe-dropdown:focus > .link,
 .visualstyle-simple .evelution-sidebar .cpe-dropdown:focus-within > .link {
 		background-color:var(--global-nav-link-background-active);
-		border-color:var(--global-nav-link-background-active);
+		border-color:rgba(var(--canvas-foreground-color-rgb),0.2);
+}
+
+
+.visualstyle-simple.has-accents .evelution-sidebar .link:hover, 
+.visualstyle-simple.has-accents .evelution-sidebar .link:active, 
+.visualstyle-simple.has-accents .evelution-sidebar .link:focus,
+.visualstyle-simple.has-accents .evelution-sidebar .link.active,
+.visualstyle-simple.has-accents .evelution-sidebar .cpe-dropdown:focus > .link,
+.visualstyle-simple.has-accents .evelution-sidebar .cpe-dropdown:focus-within > .link {
+	border-color:rgba(var(--luna-foreground-color-rgb),0.2);
 }
 
 
@@ -1710,13 +1725,23 @@ color:inherit;
 	--button-background-hover:var(--luna-background-color-hover);
 	--button-background-active:var(--luna-background-color-hover);
 	--button-background-color:var(--luna-foreground-color-inverted);
-	border-color:transparent;
+	border-color:rgba(var(--canvas-foreground-color-rgb),0.2);
 }
+
+.visualstyle-simple.has-accents .preview-window-window h2 button {
+	border-color:rgba(var(--luna-foreground-color-rgb),0.2);
+}
+
 
 .visualstyle-simple .preview-window-window h2 button.close {
 	--button-background-hover:var(--alert-background-color);
 	--button-background-active:var(--alert-background-color);
 	--button-background-color:var(--alert-foreground-color);
+	border-color:rgba(var(--canvas-foreground-color-rgb),0.2);
+}
+
+.visualstyle-simple.has-accents .preview-window-window h2 button.close {
+	border-color:rgba(var(--canvas-foreground-color-rgb),0.2);
 }
 
 
@@ -1725,9 +1750,15 @@ color:inherit;
 .visualstyle-simple .evelution-content .evelution-page-header .toggle-rail-button:hover,
 .visualstyle-simple .evelution-content .evelution-page-header .toggle-rail-button:active {
 	color:var(--luna-foreground-color-inverted);
-	border-color:var(--luna-background-color-hover);
+	border-color:rgba(var(--canvas-foreground-color-rgb),0.2);
 	background-color:var(--luna-background-color-hover);
 }
+
+.visualstyle-simple.has-accents .evelution-content .evelution-page-header .toggle-rail-button:hover,
+.visualstyle-simple.has-accents .evelution-content .evelution-page-header .toggle-rail-button:active {
+	border-color:rgba(var(--luna-foreground-color-rgb),0.2);
+}
+
 
 .visualstyle-simple .evelution-option-pane {
 	background-color:var(--canvas-secondary-background-color);
@@ -1741,7 +1772,7 @@ color:inherit;
 .visualstyle-simple .option-link.is-active {
 	color:var(--canvas-secondary-foreground-color-hover);
 	background-color:var(--canvas-secondary-background-color-hover);
-	border-color:var(--canvas-secondary-background-color-hover);
+	border-color:rgba(var(--canvas-foreground-color-rgb),0.2);
 }
 
 .visualstyle-simple .cpe-dropdown__content,
@@ -1845,7 +1876,7 @@ color:inherit;
 .visualstyle-simple body .toc ul li a:hover  {
 	background-color:var(--hyperlink-background-color-hover);
 	color:var(--hyperlink-foreground-color-inverted);
-	border-color:transparent;
+	border-color:rgba(var(--canvas-foreground-color-rgb),0.2);
 }
 
 .visualstyle-simple .cpe-dropdown__content .cpe-list.is-linked>li.new.selected>a:not(.cpe-button),
@@ -1854,7 +1885,7 @@ color:inherit;
 .visualstyle-simple .cpe-dropdown__content .cpe-list.is-linked>li.new>a:focus:not(.cpe-button) {
 	background-color:var(--alert-background-color);
 	color:var(--alert-foreground-color);
-	border-color:transparent;
+	border-color:var(--alert-background-color-hover);
 }
 
 .visualstyle-simple .cpe-dropdown__content .cpe-list.is-linked>li.stub.selected>a:not(.cpe-button),
@@ -1863,7 +1894,7 @@ color:inherit;
 .visualstyle-simple .cpe-dropdown__content .cpe-list.is-linked>li.stub>a:focus:not(.cpe-button) {
 	background-color:var(--progress-background-color);
 	color:var(--progress-foreground-color);
-	border-color:transparent;
+	border-color:var(--progress-background-color-hover);
 }
 
 
