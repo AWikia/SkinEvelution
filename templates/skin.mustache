@@ -1,3 +1,21 @@
+{{#has-servelution-unsupported}}
+	<style>
+		*, :before, :after {
+			all:initial!important;
+		}
+		*:not(html):not(body):not(.warn) {
+			display:none!important;
+		}
+		
+	</style>
+	<div class="warn">
+		Evelution can't run on this Servelution client
+		<br class="warn">
+		Please upgrade your Servelution client to one that supports the CPE Language Recompiler
+	</div>
+{{/has-servelution-unsupported}}
+
+{{^has-servelution-unsupported}}
 {{>Icons}}
 	<div style="position:absolute; z-index:-1;">
 		<span class="fc-mozbuttonface" style="color:-moz-dialog"></span>
@@ -39,7 +57,7 @@
 			</div>
 		</div>
 	</div>
-	<container class="{{^has-server-mode}}home-mode{{/has-server-mode}}{{#has-server-mode}}server-mode{{/has-server-mode}}{{#has-disabled-rail}} no-rail{{/has-disabled-rail}}{{#has-single-header}} single-header{{/has-single-header}}{{#has-forced-full-width}} forced-full{{/has-forced-full-width}}{{#has-no-color-management}} no-color-management{{/has-no-color-management}}" sticky-rail="{{{html-sticky-rail}}}"> <!--<container> -->
+	<container class="{{^has-server-mode}}home-mode{{/has-server-mode}}{{#has-server-mode}}server-mode{{/has-server-mode}}{{#has-disabled-rail}} no-rail{{/has-disabled-rail}}{{#has-single-header}} single-header{{/has-single-header}}{{#has-forced-full-width}} forced-full{{/has-forced-full-width}}{{#has-no-color-management}} no-color-management{{/has-no-color-management}}" {{^has-servelution-vanadium}}sticky-rail="{{{html-sticky-rail}}}"{{/has-servelution-vanadium}}> <!--<container> -->
 		<main class="main-container">
 			<div class="top-gap" responsive></div>
 			{{>StickyHeader}}
@@ -85,12 +103,12 @@
 		</main>
 	</container>
 
-
 <style>
 	{{>Themes}}
 	{{>OldServelutionEmulation}}
 
 </style>
+
 <!-- Base -->
 <script>
 /* Base JS */
@@ -132,3 +150,4 @@
 <link href="https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Rubik:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@100;200;300;400;500;600;700;800;900&family=Commissioner:wght@100;200;300;400;500;600;700;800&family=Roboto:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=BioRhyme:wght@200;300;400;700;800&family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&family=Lora:wght@100;300;400;500;700;900&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&family=Work+Sans:wght@100;200;300;400;500;600;700;800;900&family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+{{/has-servelution-unsupported}}

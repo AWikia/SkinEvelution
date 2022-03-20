@@ -386,41 +386,52 @@ container > main {
 
 /* Left Aligned Taskbar */
 	.evelution-taskbar.left-links,
-	.evelution-taskbar.anon-taskbar {
+	.evelution-taskbar.anon-taskbar,
+	.evelution-taskbar.v-taskbar {
 		--explore-link-size:var(--toolbar-link-size);
 	}
 
 
-	.evelution-taskbar.left-links .upper-links .explore-menu {
+	.evelution-taskbar.left-links .upper-links .explore-menu,
+	.evelution-taskbar.v-taskbar .upper-links .explore-menu {
 		position:relative;
 	}
 
 	.evelution-taskbar.left-links .upper-links {
 		justify-content:flex-start;
+	}
+
+	.evelution-taskbar.left-links .upper-links,
+	.evelution-taskbar.v-taskbar .upper-links {
 		padding-left:0;
 	}
 
-	.evelution-taskbar.left-links .upper-links .explore-menu .widget-text {
+
+	.evelution-taskbar.left-links .upper-links .explore-menu .widget-text,
+	.evelution-taskbar.v-taskbar .upper-links .explore-menu .widget-text {
 		display:none;
 	}
 
 	.evelution-taskbar.left-links .upper-links .explore-menu .link,
-	.evelution-taskbar.anon-taskbar .upper-links .explore-menu .link {
+	.evelution-taskbar.anon-taskbar .upper-links .explore-menu .link,
+	.evelution-taskbar.v-taskbar .upper-links .explore-menu .link {
 		justify-content:center;
 		padding-left:0;
 		padding-right:0;
 	}
 
-	.evelution-taskbar.anon-taskbar .upper-links .explore-menu .link[cpe-tooltip-position="top"][cpe-tooltip]:after {
+	.evelution-taskbar.anon-taskbar:not(.left-links) .upper-links .explore-menu .link[cpe-tooltip-position="top"][cpe-tooltip]:after {
 		left:0;
 	}
 
 
-	.evelution-taskbar.left-links .upper-links .explore-menu .link[cpe-tooltip-position="top"][cpe-tooltip]:after {
+	.evelution-taskbar.left-links .upper-links .explore-menu .link[cpe-tooltip-position="top"][cpe-tooltip]:after,
+	.evelution-taskbar.v-taskbar .upper-links .explore-menu .link[cpe-tooltip-position="top"][cpe-tooltip]:after {
 		left:auto;
 	}
 
-	.evelution-taskbar.left-links .upper-links .explore-menu .cpe-dropdown__content.is-left-aligned {
+	.evelution-taskbar.left-links .upper-links .explore-menu .cpe-dropdown__content.is-left-aligned,
+	.evelution-taskbar.v-taskbar .upper-links .explore-menu .cpe-dropdown__content.is-left-aligned {
 		left:calc(0px - var(--toolbar-link-size) - var(--toolbar-link-size));
 	}
 
@@ -440,7 +451,8 @@ container > main {
 
 
 	.evelution-taskbar.anon-taskbar .anon-off,
-	.evelution-taskbar:not(.anon-taskbar) .anon-on {
+	.evelution-taskbar.v-taskbar .anon-off,
+	.evelution-taskbar:not(.anon-taskbar):not(.v-taskbar) .anon-on {
 		display:none!important;
 	}
 
