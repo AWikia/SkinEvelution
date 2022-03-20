@@ -40,10 +40,10 @@ function InitDesigner() {
 	// Copy theme
 	$(".evelution-floating-actions.extra-actions .evelution-floating-actions-container").append(
 		'<button class="cpe-floating-button accent theme-copy-button page-side-tool" cpe-tooltip-position="reverse" cpe-tooltip="' + mw.msg( 'evelution-designer-copy' ) + ' (CSS)">' +
-			'<span class="cpe-icon material-icons" style="position:absolute; top:2.5px;">' +
+			'<span class="cpe-icon material-icons" style="position:absolute; top:1.5px;">' +
 				'content_copy' +
 			'</span>' +
-			'<span class="cpe-icon material-icons" style="position:absolute; bottom:-5px;">' +
+			'<span class="cpe-icon material-icons" style="position:absolute; bottom:-6px;">' +
 				'css' +
 			'</span>' +
 		'</button>'
@@ -52,10 +52,10 @@ function InitDesigner() {
 	// Copy theme 2
 	$(".evelution-floating-actions.extra-actions .evelution-floating-actions-container").append(
 		'<button class="cpe-floating-button accent theme-copy-button-2 page-side-tool" cpe-tooltip-position="reverse" cpe-tooltip="' + mw.msg( 'evelution-designer-copy' ) + ' (PHP)">' +
-			'<span class="cpe-icon material-icons" style="position:absolute; top:2.5px;">' +
+			'<span class="cpe-icon material-icons" style="position:absolute; top:1.5px;">' +
 				'content_copy' +
 			'</span>' +
-			'<span class="cpe-icon material-icons" style="position:absolute; bottom:-5px;">' +
+			'<span class="cpe-icon material-icons" style="position:absolute; bottom:-6px;">' +
 				'php' +
 			'</span>' +
 		'</button>'

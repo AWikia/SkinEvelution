@@ -9,6 +9,7 @@ window.MW18ActiveStyle = '-';
 window.MW18AutoAccent = '0';
 /* Some Theming Colors */
 window.MW18PageColor = GetCanvasShort();
+window.MW18PageTextColor = GetCanvasTextShort();
 window.MW18PageColorFG = '#000000';
 window.MW18BgColor = GetDesktop();
 /* Contrast Values */
@@ -478,6 +479,18 @@ function GetInactiveText() {
 
 
 function GetCanvasText() {
+	if (ForcedColors()) {
+		return getComputedStyle(document.querySelector('.fc-canvastext')).getPropertyValue("color");
+	} else if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--canvas-text-background-color") === 'auto') {
+		var color = window.MW18PageColor;
+		return GetForegroundVariables(color)[4];
+	} else {
+		return MW18PageTextColor;
+	}
+}
+
+
+function GetCanvasTextShort() {
 	if (ForcedColors()) {
 		return getComputedStyle(document.querySelector('.fc-canvastext')).getPropertyValue("color");
 	} else if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--canvas-text-background-color") === 'auto') {
@@ -1276,45 +1289,26 @@ function ColorTestTwin(color1,color2,intensity=1,hue='nil') {
 }
 
 
-function ColorTest(color,text=false,inv=false,dledlen=false) { // Regular Colors
+function ColorTest(color,dledlen=false,inv=false) { // Regular Colors
+	// Disable Doulgido Dledlen form VB Clients
+	if (mediawiki) { // @REMOVEME: In Ivilution, Parmalution and CPE Language
+		{{#has-servelution-no-dground}}
+			dledlen = false;
+			inv = false;
+		{{/has-servelution-no-dground}}
+	}
 	if (dledlen === true) {
-		var color2 = GetCanvas();
+		var color2 = (inv) ?  GetCanvasText() :  GetCanvas();
 	} else {
 		var color2 = color;
 	}
 	var func = (isLightColor(color2));
 	var light = chroma(color).get('hsl.l')
 	if (func) {
-		if (text === true) {
-			if (inv === false) {
-				return getComputedStyle(document.querySelector('html')).getPropertyValue("--light-theme-foreground-color"); // Was #000000 and 0e191a
-			} else {
-				return getComputedStyle(document.querySelector('html')).getPropertyValue("--dark-theme-foreground-color");
-			}
-		} else {
-			if (inv === false) {
-				return chroma(color).set('hsl.l', light-0.2);
-			} else {
-				return chroma(color).set('hsl.l', light+0.2);
-			}
-		}
+		return chroma(color).set('hsl.l', light-0.2);
 	} else {
-		if (text === true) {
-			if (inv === true) {
-				return getComputedStyle(document.querySelector('html')).getPropertyValue("--light-theme-foreground-color"); // Was #000000 and 0e191a
-			} else {
-				return getComputedStyle(document.querySelector('html')).getPropertyValue("--dark-theme-foreground-color");
-			}
-		} else {
-			if (inv === true) {
-				return chroma(color).set('hsl.l', light-0.2);
-			} else {
-				return chroma(color).set('hsl.l', light+0.2);
-			}
-		}
+		return chroma(color).set('hsl.l', light+0.2);
 	}
-
-
 }
 
 
@@ -1396,8 +1390,8 @@ function ColorInvert(color) {
 
 
 // Only used for link and header colors
-function ColorTest2(color,text=false) {
-	return Color2(ColorTest(color,text));
+function ColorTest2(color) {
+	return Color2(ColorTest(color));
 }
 
 // Conversion for R,G,B syntax
@@ -1536,23 +1530,25 @@ if ((getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + wind
 	}
 
 var dropdowncolor2 = GetInactiveText();
-var dropdowncolorH = ColorTest(dropdowncolor,false,false,true);
+var dropdowncolorH = ColorTest(dropdowncolor,true);
 
 /** Page text color **/
-var content_text= GetCanvasText();
+var content_text= GetCanvasTextShort();
 
 if ((getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--canvas-text-background-color") !== 'auto')  ) {
 	// Liatch Quirk
 		var content_text = ColorInvert(content_text);
 	
 		while ( ( !(isSuitableColor(content_text, content_color)) ) && (content_text !== lightness) ) {
-			var content_text= MiniColorTest(content_text,false,false,true);
+			var content_text= MiniColorTest(content_text);
 		}
 
 }
 
+	window.MW18PageTextColor = content_text;
 
-var content_text1 = ColorTest(content_text,false,true,true);
+
+var content_text1 = ColorTest(content_text);
 
 /** 2nd Page text color **/
 var content2_text= GetCanvasText2();
@@ -1565,7 +1561,7 @@ var content2_text= GetCanvasText2();
 		}
 
 
-var content2_text1 = ColorTest(content2_text,false,true,true);
+var content2_text1 = ColorTest(content2_text,true,true);
 
 
 
@@ -1578,12 +1574,12 @@ var button_color = GetHighlight();
 // Liatch Quirk
 	var button_color = ColorInvert(button_color);
 		while ( ( !(isSuitableColor2(button_color, content_color)) ) && (button_color !== lightness)  ) {
-			var button_color= MiniColorTest(button_color,false,false,true);
+			var button_color= MiniColorTest(button_color);
 		}
 
 
 
-var buttoncolor1 = ColorTest(button_color,false);
+var buttoncolor1 = ColorTest(button_color);
 
 
 /** Link Color **/
@@ -1595,15 +1591,15 @@ var link_color = GetHyperlink();
 	var link2_color = link_color;
 	
 		while ( ( !(isSuitableColor(link_color, content_color)) ) && (link_color !== lightness) ) {
-			var link_color= MiniColorTest(link_color,false,false,true);
+			var link_color= MiniColorTest(link_color);
 		}
 		while ( ( !(isSuitableColor(link2_color, dropdowncolor)) ) && (link2_color !== lightness3) ) {
 			var link2_color= MiniColorTest3(link2_color,dropdowncolor);
 		}
 
 
-var linkcolor1 = ColorTest(link_color,false,false,true);
-var link2color1 = ColorTest(link2_color,false,false,true);
+var linkcolor1 = ColorTest(link_color,true);
+var link2color1 = ColorTest(link2_color,true);
 
 
 
@@ -1618,7 +1614,7 @@ if ((getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + wind
 		var border_color = ColorInvert(border_color);
 
 		while ( ( !(isSuitableColor2(border_color, content_color)) ) && (border_color !== lightness)  ) {
-			var border_color= MiniColorTest(border_color,false,false,true);
+			var border_color= MiniColorTest(border_color);
 		}
 
 
@@ -1647,7 +1643,7 @@ var head_color =	GetDesktop();
 window.MW18BgColor = head_color
 
 
-var headcolor1 = ColorTest(head_color,false,false,true);
+var headcolor1 = ColorTest(head_color,true);
 
 /** Community Header text color **/
 
@@ -1671,7 +1667,7 @@ if ((getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + wind
 }
 
 
-var headertextcolor1 = ColorTest(headertext_color,false,true,true);
+var headertextcolor1 = ColorTest(headertext_color,true,true);
 
 /** Caret Color **/
 /* Set Vars */
@@ -1695,38 +1691,38 @@ var generic = BestAlertColor();
 /** Alert Color **/
 /* Set Vars */
 var alert_color = generic[0];
-var alertcolor1 = ColorTest(alert_color,false,false,true);
-var alertcolor2 = ColorTest(alert_color,false,false,false);
+var alertcolor1 = ColorTest(alert_color,true);
+var alertcolor2 = ColorTest(alert_color);
 
 /** Pause Color **/
 /* Set Vars */
 var pause_color = generic[1];
-var pausecolor1 = ColorTest(pause_color,false,false,true);
-var pausecolor2 = ColorTest(pause_color,false,false,false);
+var pausecolor1 = ColorTest(pause_color,true);
+var pausecolor2 = ColorTest(pause_color);
 
 /** Warning Color **/
 /* Set Vars */
 var warning_color = generic[2];
-var warningcolor1 = ColorTest(warning_color,false,false,true);
-var warningcolor2 = ColorTest(warning_color,false,false,false);
+var warningcolor1 = ColorTest(warning_color,true);
+var warningcolor2 = ColorTest(warning_color);
 
 /** Success Color **/
 /* Set Vars */
 var success_color = generic[3];
-var successcolor1 = ColorTest(success_color,false,false,true);
-var successcolor2 = ColorTest(success_color,false,false,false);
+var successcolor1 = ColorTest(success_color,true);
+var successcolor2 = ColorTest(success_color);
 
 /** Progress Color **/
 /* Set Vars */
 var progress_color = generic[4];
-var progresscolor1 = ColorTest(progress_color,false,false,true);
-var progresscolor2 = ColorTest(progress_color,false,false,false);
+var progresscolor1 = ColorTest(progress_color,true);
+var progresscolor2 = ColorTest(progress_color);
 
 /** Message Color **/
 /* Set Vars */
 var message_color = generic[5];
-var messagecolor1 = ColorTest(message_color,false,false,true);
-var messagecolor2 = ColorTest(message_color,false,false,false);
+var messagecolor1 = ColorTest(message_color,true);
+var messagecolor2 = ColorTest(message_color);
 
 var img = GetDesktopImage();
 

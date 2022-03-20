@@ -316,15 +316,6 @@ body [force-active] {
 	--luna-alternative-foreground-color-rgb:var(--canvas-secondary-alternative-foreground-color-rgb);
 	--luna-link-color:var(--hyperlink-secondary-background-color);
 	--luna-link-color-rgb:var(--hyperlink-secondary-background-color-rgb);
-	--luna-contrast-selected-background-color:var(--highlight-background-color);
-	--luna-contrast-selected-background-color-rgb:var(--highlight-background-color-rgb);
-	--luna-contrast-selected-foreground-color:var(--highlight-foreground-color);
-	--luna-contrast-selected-foreground-color-rgb:var(--highlight-foreground-color-rgb);
-	--luna-contrast-new-selected-background-color:var(--alert-background-color);
-	--luna-contrast-new-selected-background-color-rgb:var(--alert-background-color-rgb);
-	--luna-contrast-new-selected-foreground-color:var(--alert-foreground-color);
-	--luna-contrast-new-selected-foreground-color-rgb:var(--alert-foreground-color-rgb);
-
 }
 
 /* Unaccented (Unfocused) */
@@ -3063,21 +3054,32 @@ margin-right:16px;
 
 /* Floating Buttons */
 .cpe-floating-button {
+/** Foreground **/
   --floating-button-color:var(--canvas-text-background-color);
   --floating-button-color-hover:var(--canvas-text-background-color-hover);
   --floating-button-color-active:var(--floating-button-color-hover);
+/** Background **/
   --floating-button-background-color:var(--canvas-background-color);
-  --floating-button-hover-background-color:var(--canvas-background-color);
+  --floating-button-background-color-hover:var(--floating-button-background-color);
+  --floating-button-background-color-active:var(--floating-button-background-color-hover);
+/** Border **/
+  --floating-button-border-color:var(--floating-button-background-color);
+  --floating-button-border-color-hover:rgba(var(--floating-button-fadeout-color), var(--floating-button-fadeout-opacity));
+  --floating-button-border-color-active:var(--floating-button-border-color-hover);
+/** Fadeout **/
   --floating-button-fadeout-color:var(--canvas-text-background-color-rgb);
-  --floating-button-fadeout-opacity:0.3;
+  --floating-button-fadeout-opacity:var(--fadeout-opacity);
+/* Shadow */
+  --floating-button-shadow-blur:10px;
+  --floating-button-shadow-opacity:0.5;
   text-decoration:none!important;
   align-items: center;
   background-image:none;
   background-color:var(--floating-button-background-color);
   color:var(--floating-button-color);
-  box-shadow: 0 0 10px 0 rgba(var(--canvas-foreground-color-rgb), 0.25), 0 0 0 100vh rgba(var(--floating-button-fadeout-color),0) inset;
+  box-shadow: 0 0 var(--floating-button-shadow-blur) 0 rgba(var(--canvas-foreground-color-rgb), calc(var(--floating-button-shadow-opacity) * 0.5)), 0 0 0 100vh rgba(var(--floating-button-fadeout-color),0) inset;
   border-radius: 50%;
-  border: 0;
+  border: 1px solid var(--floating-button-border-color);
   display: flex;
   height: 38px;
   justify-content: center;
@@ -3085,7 +3087,7 @@ margin-right:16px;
   outline: none;
   padding: 0;
   transition-duration: 200ms;
-  transition-property: box-shadow, background-color, color;
+  transition-property: box-shadow, background-color, color, border-color;
   transition-timing-function:var(--transitioner);
   width: 38px;
 }
@@ -3112,11 +3114,11 @@ margin-right:16px;
 .cpe-dropdown:focus > .cpe-floating-button,
 .cpe-dropdown:focus-within > .cpe-floating-button {
   text-decoration:none;
-  box-shadow: 0 0 10px 0 rgba(var(--canvas-foreground-color-rgb), 0.5), 0 0 0 100vh rgba(var(--floating-button-fadeout-color),var(--floating-button-fadeout-opacity)) inset;
+  box-shadow: 0 0 var(--floating-button-shadow-blur) 0 rgba(var(--canvas-foreground-color-rgb), var(--floating-button-shadow-opacity)), 0 0 0 100vh rgba(var(--floating-button-fadeout-color),var(--floating-button-fadeout-opacity)) inset;
   background-image:none;
-  background-color:var(--floating-button-hover-background-color);
-  border:0;
+  background-color:var(--floating-button-background-color-hover);
   color:var(--floating-button-color-hover);
+  border-color:var(--floating-button-border-color-hover);
 }
 
 .cpe-floating-button:not([disabled]):active,
@@ -3126,6 +3128,8 @@ margin-right:16px;
 .cpe-dropdown:focus > .cpe-floating-button,
 .cpe-dropdown:focus-within > .cpe-floating-button {
   color:var(--floating-button-color-active);
+  background-color:var(--floating-button-background-color-active);
+  border-color:var(--floating-button-border-color-active);
 }
 
 
@@ -3783,14 +3787,6 @@ input[type="range"]::-moz-range-progress {
 		--luna-alternative-foreground-color-rgb:var(--canvas-secondary-alternative-foreground-color-rgb)!important;
 		--luna-link-color:var(--hyperlink-secondary-background-color)!important;
 		--luna-link-color-rgb:var(--hyperlink-secondary-background-color-rgb)!important;
-		--luna-contrast-selected-background-color:var(--highlight-background-color)!important;
-		--luna-contrast-selected-background-color-rgb:var(--highlight-background-color-rgb)!important;
-		--luna-contrast-selected-foreground-color:var(--highlight-foreground-color)!important;
-		--luna-contrast-selected-foreground-color-rgb:var(--highlight-foreground-color-rgb)!important;
-		--luna-contrast-new-selected-background-color:var(--alert-background-color)!important;
-		--luna-contrast-new-selected-background-color-rgb:var(--alert-background-color-rgb)!important;
-		--luna-contrast-new-selected-foreground-color:var(--alert-foreground-color)!important;
-		--luna-contrast-new-selected-foreground-color-rgb:var(--alert-foreground-color-rgb)!important;
 	}
 
 	/* Tunic */
