@@ -203,10 +203,6 @@ font-family:Trebuchet MS;
 --main-secondary-fonts:"Rubik", "Helvetica Neue", "Helvetica", "Arial"; /* Empty but other languages will depend on it */
 --secondary-font:var(--custom-secondary-font), var(--main-secondary-fonts), var(--secondary-foreign-fonts);
 --header-size:160px;
-/* Tickboxes */
---checkbox-checked-tick:url("Tickbox.svg");
---checkbox-half-tick:url("Tickbox2.svg");
---checkbox-radio-tick:url("Tickbox3.svg");
 	/* Theme-related 
 	--bg-size:cover;
 	--bg-tile-x:no-repeat;
@@ -567,9 +563,11 @@ body {
 	outline:0;
 }
 
+/*
 :focus-visible {
 	outline:2px solid!important;
 }
+*/
 
 container:focus-visible,
 body:focus-visible,
@@ -1917,7 +1915,8 @@ margin-left:5px;
 .has-icon:before,
 .has-icon-labels li > a:before,
 .oo-ui-iconElement-icon:before,
-.oo-ui-indicatorElement-indicator:before {
+.oo-ui-indicatorElement-indicator:before,
+input[type="checkbox"]::after, input[type="radio"]::after {
 	--icon-scale:1;
 	--icon-size:1;
   font-family: var(--icon-font-family)!important;
@@ -1957,15 +1956,16 @@ margin-left:5px;
 .has-icon:before,
 .has-icon-labels li > a:before,
 .oo-ui-iconElement-icon:before,
-.oo-ui-indicatorElement-indicator:before {
+.oo-ui-indicatorElement-indicator:before,
+input[type="checkbox"]::after, input[type="radio"]::after {
 	--icon-scale:1;
 	--icon-size:1;
     --icon-rotate:0deg;
   fill:currentColor;
-  width:calc(24px * var(--icon-size))!important;
-  height:calc(24px * var(--icon-size))!important;
-  min-width:calc(24px * var(--icon-size))!important;
-  min-height:calc(24px * var(--icon-size))!important;
+  width:1em!important;
+  height:1em!important;
+  min-width:1em!important;
+  min-height:1em!important;
   font-size:calc(24px * var(--icon-size))!important;
   transform:scale(var(--icon-scale)) rotate(var(--icon-rotate));
   vertical-align:middle;
@@ -2025,7 +2025,6 @@ margin-left:5px;
 	--icon-size:0.7;
 	--icon-scale:1;
 }
-
 
 .cpe-avatar {
 width:calc(24px * var(--icon-size, 1))!important;
@@ -3422,90 +3421,6 @@ input[type="checkbox"]:not(:checked):focus, input[type="radio"]:not(:checked):fo
 }
 
 
-input[type="checkbox"]::after, input[type="radio"]::after {
-    background-color: currentcolor;
-	display:block!important;
-	content:"";
-	position:absolute;
-	transition:opacity 200ms var(--transitioner), -webkit-mask-size 200ms var(--transitioner), mask-size 200ms var(--transitioner);
-	opacity:0;
-	top:0;
-	left:0;
-	width:100%;
-	height:100%;
-	box-sizing:content-box;
-    -webkit-mask-repeat: no-repeat;
-    -webkit-mask-position: center;
-    -webkit-mask-size:0%;
-    mask-repeat: no-repeat;
-    mask-position: center;
-    mask-size:0%;
-
-}
-
-input[type="checkbox"]::after {
-/*    
-	-webkit-mask-image: url("https://awikia.github.io/CentralProcessingEnd_Language/Tickbox.svg");
-    mask-image: url("https://awikia.github.io/CentralProcessingEnd_Language/Tickbox.svg"); 
-*/
-    -webkit-mask-image: var(--checkbox-checked-tick);
-    mask-image: var(--checkbox-checked-tick);
-
-}
-
-input[type="checkbox"]:hover::after, input[type="radio"]:hover::after {
-  opacity:0;
-}
-
-input[type="checkbox"]:active::after, input[type="radio"]:active::after {
-  opacity:0;
-}
-
-input[type="checkbox"]:indeterminate::after {
-    opacity:1;
-    -webkit-mask-size: 100%;
-    mask-size: 100%;
-}
-
-input[type="checkbox"]:indeterminate::after, input[type="checkbox"][indeterminate]:not(:checked)::after {
-/*    
-	-webkit-mask-image: url("https://awikia.github.io/CentralProcessingEnd_Language/Tickbox2.svg");
-    mask-image: url("https://awikia.github.io/CentralProcessingEnd_Language/Tickbox2.svg"); 
-*/
-    -webkit-mask-image: var(--checkbox-half-tick);
-    mask-image: var(--checkbox-half-tick);
-}
-
-
-
-input[type="radio"]::after {
-/*    
-	-webkit-mask-image: url("https://awikia.github.io/CentralProcessingEnd_Language/Tickbox3.svg");
-    mask-image: url("https://awikia.github.io/CentralProcessingEnd_Language/Tickbox3.svg"); 
-*/
-    -webkit-mask-image: var(--checkbox-radio-tick);
-    mask-image: var(--checkbox-radio-tick);
-}
-
-
-
-input[type="checkbox"]:checked::after, input[type="radio"]:checked::after {
-  opacity:1;
-}
-
-
- input[type="radio"]:checked::after {
-    -webkit-mask-size: 60%;
-    mask-size: 60%;
-}
-
-
-input[type="checkbox"]:checked::after {
-    -webkit-mask-size: 100%;
-    mask-size: 100%;
-}
-
-
 input[type="radio"] {
   border-radius:50%;
 }
@@ -3550,6 +3465,50 @@ input[type="checkbox"]:indeterminate:active  {
   background-color:var(--checkbox-active-bg);
   color:var(--checkbox-active-bg);
 }
+
+input[type="checkbox"]::after, input[type="radio"]::after {
+    --icon-scale: 0;
+    --icon-size: 1em;
+    content: "";
+    display: flex!important;
+    content: "";
+    position: absolute;
+    transition: opacity 200ms var(--transitioner),transform 200ms var(--transitioner);
+    opacity: 0;
+    top: 0;
+    left: 0;
+    width: 100%!important;
+    height: 100%!important;
+    font-size: 140%!important;
+    box-sizing: content-box;
+    align-items: center;
+    justify-content: center;
+}
+
+input[type="checkbox"]::after {
+	content:"done";
+}
+
+input[type="checkbox"]:indeterminate::after {
+	content:"minimize";
+	min-height:50%!important;
+	height:50%!important;
+	align-items:flex-end;
+}
+
+input[type="radio"]::after {
+	content:"circle";
+	font-size:100%!important;
+}
+
+
+input[type="checkbox"]:indeterminate::after,
+input[type="checkbox"]:checked::after,
+input[type="radio"]:checked::after  {
+    opacity:1;
+	--icon-scale:1;
+}
+
 
 /* Progresses */
 progress {
