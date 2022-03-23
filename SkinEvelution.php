@@ -160,6 +160,7 @@ class SkinEvelution extends SkinMustache {
 		$data["has-servelution-no-dground"] = ($data["has-servelution-2.0.0"] || $data["has-servelution-2.1.0"]);
 		// Vanadium
 		$data["has-servelution-vanadium"] = ($data["has-servelution-2.0.0"]);
+		$data["has-disabled-dynamic-widgets"] = ($data["has-servelution-2.0.0"] || $this->getConfig()->get ( 'EvelutionDisableDynamicWidgets' ));
 		/* Theming Stuff */
 		$data["data-theme-A"] = $this->getConfig()->get ( 'EvelutionThemeA' );
 		$data["data-theme-B"] = $this->getConfig()->get ( 'EvelutionThemeB' );
