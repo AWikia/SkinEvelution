@@ -911,6 +911,7 @@ border-color:var(--luna-foreground-color);
     --button-foreground-color: var(--luna-background-color);
     --button-foreground-color-hover: var(--luna-background-color-hover);
     --button-foreground-color-inverted: var(--luna-background-color);
+	--button-foreground-color-rgb:var(--luna-background-color-rgb);
     --secondary-button-background-color:transparent;
     --secondary-button-foreground-color: var(--luna-foreground-color);
     --secondary-button-foreground-color-hover: var(--luna-foreground-color-hover);
@@ -928,13 +929,14 @@ border-color:var(--luna-foreground-color);
 	.visualstyle-basiccontrast .evelution-page-header  li.new .cpe-button,
 	visualstyle-basiccontrast .evelution-page-header  li.stub .cpe-button  {
 		--button-background-color: var(--luna-alternative-foreground-color);
-		--button-background-color-hover: rgba(var(--luna-alternative-foreground-color-rgb),0.8);
+		--button-background-color-hover: var(--luna-alternative-foreground-color-hover);
 		--button-foreground-color: var(--luna-background-color);
 		--button-foreground-color-hover: var(--luna-background-color-hover);
 		--button-foreground-color-inverted: var(--luna-background-color);
+		--button-foreground-color-rgb:var(--luna-background-color-rgb);
 		--secondary-button-background-color:transparent;
 		--secondary-button-foreground-color: var(--luna-alternative-foreground-color);
-		--secondary-button-foreground-color-hover: rgba(var(--luna-alternative-foreground-color-rgb),0.8);
+		--secondary-button-foreground-color-hover: var(--luna-alternative-foreground-color-hover);
 		--tertiary-button-background-color:rgba(var(--luna-alternative-foreground-color-rgb), var(--fadeout-opacity));
 		--tertiary-button-foreground-color:var(--luna-alternative-foreground-color);
 }
@@ -1288,6 +1290,11 @@ background-color:var(--canvas-background-color);
 }
 
 
+.visualstyle-simple input[type="checkbox"], .visualstyle-simple input[type="radio"]  {
+	--checkbox-checked-shadow-hover:rgba(var(--highlight-foreground-color-rgb),0.2);
+}
+
+
 .visualstyle-basiccontrast .option-link.is-active {
   background-color:var(--highlight-background-color);
   border-color:var(--highlight-foreground-color);
@@ -1524,7 +1531,7 @@ color:inherit;
   --floating-button-border-color:var(--floating-button-background-color);
   --floating-button-border-color-hover:rgba(var(--canvas-text-foreground-color-rgb),0.2);
   --floating-button-fadeout-opacity:0;
-  --floating-button-shadow-opacity:0.33!important;
+  --floating-button-shadow-opacity:0.66!important;
   --floating-button-shadow-blur:15px!important;
 }
 
@@ -1546,6 +1553,11 @@ color:inherit;
   --floating-button-border-color-hover:rgba(var(--alert-foreground-color-rgb),0.2);
 }
 
+.visualstyle-simple .cpe-button,
+.visualstyle-simple .oo-ui-buttonElement > .oo-ui-buttonElement-button,
+.visualstyle-simple .mw-ui-button {
+	--button-border-color-hover:rgba(var(--button-foreground-color-rgb),0.2);
+}
 
 
 .visualstyle-simple .evelution-minibar,
@@ -1835,7 +1847,7 @@ color:inherit;
 	--checkbox-checked-bg:var(--hyperlink-foreground-color);
 	--checkbox-checked-bg-hover:var(--hyperlink-foreground-color-hover);
 	--checkbox-checked-shadow:var(--checkbox-checked-bg);
-	--checkbox-checked-shadow-hover:var(--checkbox-checked-bg-hover);
+	--checkbox-checked-shadow-hover:rgba(var(--hyperlink-background-color-rgb),0.2);
 	--checkbox-checked-text:var(--hyperlink-background-color);
 }
 
@@ -1928,6 +1940,7 @@ color:inherit;
     --button-foreground-color: var(--hyperlink-background-color);
     --button-foreground-color-hover: var(--hyperlink-background-color-hover);
     --button-foreground-color-inverted: var(--hyperlink-background-color);
+	--button-foreground-color-rgb:var(--hyperlink-background-color-rgb);
     --secondary-button-background-color:var(--hyperlink-background-color);
     --secondary-button-foreground-color: var(--hyperlink-foreground-color);
     --secondary-button-foreground-color-hover: var(--hyperlink-foreground-color-hover);
@@ -3914,7 +3927,7 @@ background-color:var(--highlight-background-color);
 --icon-filter-hover:sepia(1) hue-rotate(60deg) saturate(800%) brightness(125%) opacity(0.8) invert(0);
 --icon-filter-duration:300ms;
 --icon-filter-delay:0ms;
---system-acryllic-opacity:0.5;
+--system-acryllic-opacity:0.7;
 }
 
 .theme-B.visualcolors-neonlight {
@@ -3942,7 +3955,7 @@ background-color:var(--highlight-background-color);
 --icon-filter-hover:sepia(1) hue-rotate(180deg) saturate(800%) brightness(125%) opacity(0.8) invert(0);
 --icon-filter-duration:300ms;
 --icon-filter-delay:0ms;
---system-acryllic-opacity:0.5;
+--system-acryllic-opacity:0.7;
 }
 
 .theme-C.visualcolors-neonlight {
@@ -3970,7 +3983,7 @@ background-color:var(--highlight-background-color);
 --icon-filter-hover:sepia(1) hue-rotate(270deg) saturate(800%) brightness(125%) opacity(0.8) invert(0);
 --icon-filter-duration:300ms;
 --icon-filter-delay:0ms;
---system-acryllic-opacity:0.5;
+--system-acryllic-opacity:0.7;
 }
 
 .theme-D.visualcolors-neonlight {
@@ -3998,7 +4011,7 @@ background-color:var(--highlight-background-color);
 --icon-filter-hover:sepia(1) hue-rotate(0deg) saturate(800%) brightness(125%) opacity(0.8) invert(0);
 --icon-filter-duration:300ms;
 --icon-filter-delay:0ms;
---system-acryllic-opacity:0.5;
+--system-acryllic-opacity:0.7;
 }
 
 .theme-E.visualcolors-neonlight {
@@ -4026,7 +4039,7 @@ background-color:var(--highlight-background-color);
 --icon-filter-hover:sepia(1) hue-rotate(310deg) saturate(800%) brightness(125%) opacity(0.8) invert(0);
 --icon-filter-duration:300ms;
 --icon-filter-delay:0ms;
---system-acryllic-opacity:0.5;
+--system-acryllic-opacity:0.7;
 }
 
 .theme-F.visualcolors-neonlight {
@@ -4054,7 +4067,7 @@ background-color:var(--highlight-background-color);
 --icon-filter-hover:sepia(1) hue-rotate(20deg) saturate(800%) brightness(125%) opacity(0.8) invert(0);
 --icon-filter-duration:300ms;
 --icon-filter-delay:0ms;
---system-acryllic-opacity:0.5;
+--system-acryllic-opacity:0.7;
 }
 
 .theme-G.visualcolors-neonlight {
@@ -4082,7 +4095,7 @@ background-color:var(--highlight-background-color);
 --icon-filter-hover:sepia(1) hue-rotate(225deg) saturate(800%) brightness(125%) opacity(0.8) invert(0);
 --icon-filter-duration:300ms;
 --icon-filter-delay:0ms;
---system-acryllic-opacity:0.5;
+--system-acryllic-opacity:0.7;
 }
 
 .theme-H.visualcolors-neonlight {
@@ -4110,7 +4123,7 @@ background-color:var(--highlight-background-color);
 --icon-filter-hover:sepia(1) grayscale(1) saturate(800%) brightness(125%) opacity(0.8) invert(0);
 --icon-filter-duration:300ms;
 --icon-filter-delay:0ms;
---system-acryllic-opacity:0.5;
+--system-acryllic-opacity:0.7;
 }
 
 /* Dark */
@@ -4131,7 +4144,7 @@ background-color:var(--highlight-background-color);
 --icon-filter-hover:sepia(1) hue-rotate(240deg) saturate(800%) brightness(125%) opacity(0.8) invert(1);
 --icon-filter-duration:300ms;
 --icon-filter-delay:0ms;
---system-acryllic-opacity:0.5;
+--system-acryllic-opacity:0.8;
 }
 
 .theme-B.visualcolors-neon {
@@ -4151,7 +4164,7 @@ background-color:var(--highlight-background-color);
 --icon-filter-hover:sepia(1) hue-rotate(0deg) saturate(800%) brightness(125%) opacity(0.8) invert(1);
 --icon-filter-duration:300ms;
 --icon-filter-delay:0ms;
---system-acryllic-opacity:0.5;
+--system-acryllic-opacity:0.8;
 }
 
 .theme-C.visualcolors-neon {
@@ -4171,7 +4184,7 @@ background-color:var(--highlight-background-color);
 --icon-filter-hover:sepia(1) hue-rotate(90deg) saturate(800%) brightness(125%) opacity(0.8) invert(1);
 --icon-filter-duration:300ms;
 --icon-filter-delay:0ms;
---system-acryllic-opacity:0.5;
+--system-acryllic-opacity:0.8;
 }
 
 .theme-D.visualcolors-neon {
@@ -4191,7 +4204,7 @@ background-color:var(--highlight-background-color);
 --icon-filter-hover:sepia(1) hue-rotate(180deg) saturate(800%) brightness(125%) opacity(0.8) invert(1);
 --icon-filter-duration:300ms;
 --icon-filter-delay:0ms;
---system-acryllic-opacity:0.5;
+--system-acryllic-opacity:0.8;
 }
 
 .theme-E.visualcolors-neon {
@@ -4211,7 +4224,7 @@ background-color:var(--highlight-background-color);
 --icon-filter-hover:sepia(1) hue-rotate(130deg) saturate(800%) brightness(125%) opacity(0.8) invert(1);
 --icon-filter-duration:300ms;
 --icon-filter-delay:0ms;
---system-acryllic-opacity:0.5;
+--system-acryllic-opacity:0.8;
 }
 
 .theme-F.visualcolors-neon {
@@ -4231,7 +4244,7 @@ background-color:var(--highlight-background-color);
 --icon-filter-hover:sepia(1) hue-rotate(200deg) saturate(800%) brightness(125%) opacity(0.8) invert(1);
 --icon-filter-duration:300ms;
 --icon-filter-delay:0ms;
---system-acryllic-opacity:0.5;
+--system-acryllic-opacity:0.8;
 }
 
 .theme-G.visualcolors-neon {
@@ -4251,7 +4264,7 @@ background-color:var(--highlight-background-color);
 --icon-filter-hover:sepia(1) hue-rotate(45deg) saturate(800%) brightness(125%) opacity(0.8) invert(1);
 --icon-filter-duration:300ms;
 --icon-filter-delay:0ms;
---system-acryllic-opacity:0.5;
+--system-acryllic-opacity:0.8;
 }
 
 .theme-H.visualcolors-neon {
@@ -4271,7 +4284,7 @@ background-color:var(--highlight-background-color);
 --icon-filter-hover:sepia(1) grayscale(1) saturate(800%) brightness(125%) opacity(0.8) invert(1);
 --icon-filter-duration:300ms;
 --icon-filter-delay:0ms;
---system-acryllic-opacity:0.5;
+--system-acryllic-opacity:0.8;
 }
 
 /* Evelution */

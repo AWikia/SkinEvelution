@@ -1480,6 +1480,9 @@ select.cpe-input {
 	--button-foreground-color:var(--highlight-foreground-color);
 	--button-foreground-color-hover:var(--highlight-foreground-color-hover);
 	--button-foreground-color-inverted:var(--highlight-foreground-color-inverted);
+	--button-foreground-color-rgb:var(--highlight-foreground-color-rgb);
+	--button-border-color:var(--button-background-color);
+	--button-border-color-hover:var(--button-background-color-hover);
 	--secondary-button-background-color:transparent;
 	--secondary-button-foreground-color:var(--hyperlink-background-color);
 	--secondary-button-foreground-color-hover:var(--hyperlink-background-color-hover);
@@ -1498,7 +1501,7 @@ select.cpe-input {
     vertical-align:middle;
     line-height:16px;
     border:2px solid;
-    border-color:var(--button-background-color);
+    border-color:var(--button-border-color);
     background-color:var(--button-background-color);
     outline:1px solid transparent;
     outline-offset:0px;
@@ -1528,7 +1531,7 @@ a.cpe-button, button.cpe-button {
 
 
 .cpe-button:hover {
-    border-color:var(--button-background-color-hover);
+    border-color:var(--button-border-color-hover);
     background-color:var(--button-background-color-hover);
     color:var(--button-foreground-color);
     text-decoration:none;
@@ -1539,7 +1542,7 @@ a.cpe-button, button.cpe-button {
 .selected .cpe-button, 
 .cpe-dropdown:focus > .cpe-button,
 .cpe-dropdown:focus-within > .cpe-button {
-    border-color:var(--button-background-color-hover);
+    border-color:var(--button-border-color-hover);
     background-color:var(--button-background-color-hover);
     outline-color:transparent;
     outline-offset:0px;
@@ -1550,7 +1553,7 @@ a.cpe-button, button.cpe-button {
 .cpe-button:focus:not(:active):not(.is-active) {
   outline-color:currentcolor;
   outline-offset:-2px;
-  border-color:var(--button-background-color);
+  border-color:var(--button-border-color);
   color:var(--button-foreground-color-hover);
     text-decoration:none;
 }
@@ -1762,6 +1765,7 @@ a.cpe-button, button.cpe-button {
   --button-foreground-color:var(--inactive-text-foreground-color);
   --button-foreground-color-hover:var(--inactive-text-foreground-color-hover);
   --button-foreground-color-inverted:var(--inactive-text-foreground-color-inverted);
+  --button-foreground-color-rgb:var(--inactive-text-foreground-color-rgb);
   --secondary-button-foreground-color:var(--canvas-text-background-color);
   --secondary-button-foreground-color-hover:var(--canvas-text-background-color-hover);
   --tertiary-button-background-color:var(--canvas-text-fadeout-color);
@@ -1775,6 +1779,7 @@ a.cpe-button, button.cpe-button {
   --button-foreground-color:var(--active-title-foreground-color);
   --button-foreground-color-hover:var(--active-title-foreground-color-hover);
   --button-foreground-color-inverted:var(--active-title-foreground-color-inverted);
+  --button-foreground-color-rgb:var(--active-title-foreground-color-rgb);
   --secondary-button-foreground-color:var(--desktop-background-color);
   --secondary-button-foreground-color-hover:var(--desktop-background-color-hover);
   --tertiary-button-background-color:var(--desktop-fadeout-color);
@@ -1789,6 +1794,7 @@ li.new .cpe-button {
   --button-foreground-color:var(--alert-foreground-color);
   --button-foreground-color-hover:var(--alert-foreground-color-hover);
   --button-foreground-color-inverted:var(--alert-foreground-color-inverted);
+  --button-foreground-color-rgb:var(--alert-foreground-color-rgb);
   --secondary-button-foreground-color:var(--alert-background-color);
   --secondary-button-foreground-color-hover:var(--alert-background-color-hover);
   --tertiary-button-background-color:var(--alert-fadeout-color);
@@ -1802,6 +1808,7 @@ li.new .cpe-button {
   --button-foreground-color:var(--pause-foreground-color);
   --button-foreground-color-hover:var(--pause-foreground-color-hover);
   --button-foreground-color-inverted:var(--pause-foreground-color-inverted);
+  --button-foreground-color-rgb:var(--pause-foreground-color-rgb);
   --secondary-button-foreground-color:var(--pause-background-color);
   --secondary-button-foreground-color-hover:var(--pause-background-color-hover);
   --tertiary-button-background-color:var(--pause-fadeout-color);
@@ -1816,6 +1823,7 @@ li.new .cpe-button {
   --button-foreground-color:var(--warning-foreground-color);
   --button-foreground-color-hover:var(--warning-foreground-color-hover);
   --button-foreground-color-inverted:var(--warning-foreground-color-inverted);
+  --button-foreground-color-rgb:var(--warning-foreground-color-rgb);
   --secondary-button-foreground-color:var(--warning-background-color);
   --secondary-button-foreground-color-hover:var(--warning-background-color-hover);
   --tertiary-button-background-color:var(--warning-fadeout-color);
@@ -1829,6 +1837,7 @@ li.new .cpe-button {
   --button-foreground-color:var(--success-foreground-color);
   --button-foreground-color-hover:var(--success-foreground-color-hover);
   --button-foreground-color-inverted:var(--success-foreground-color-inverted);
+  --button-foreground-color-rgb:var(--success-foreground-color-rgb);
   --secondary-button-foreground-color:var(--success-background-color);
   --secondary-button-foreground-color-hover:var(--success-background-color-hover);
   --tertiary-button-background-color:var(--success-fadeout-color);
@@ -1843,6 +1852,7 @@ li.progress .cpe-button {
   --button-foreground-color:var(--progress-foreground-color);
   --button-foreground-color-hover:var(--progress-foreground-color-hover);
   --button-foreground-color-inverted:var(--progress-foreground-color-inverted);
+  --button-foreground-color-rgb:var(--progress-foreground-color-rgb);
   --secondary-button-foreground-color:var(--progress-background-color);
   --secondary-button-foreground-color-hover:var(--progress-background-color-hover);
   --tertiary-button-background-color:var(--progress-fadeout-color);
@@ -1857,6 +1867,7 @@ li.progress .cpe-button {
   --button-foreground-color:var(--message-foreground-color);
   --button-foreground-color-hover:var(--message-foreground-color-hover);
   --button-foreground-color-inverted:var(--message-foreground-color-inverted);
+  --button-foreground-color-rgb:var(--message-foreground-color-rgb);
   --secondary-button-foreground-color:var(--message-background-color);
   --secondary-button-foreground-color-hover:var(--message-background-color-hover);
   --tertiary-button-background-color:var(--message-fadeout-color);

@@ -487,6 +487,9 @@ body .mw-ui-button:not(:disabled) {
 	--button-foreground-color:var(--highlight-foreground-color);
 	--button-foreground-color-hover:var(--highlight-foreground-color-hover);
 	--button-foreground-color-inverted:var(--highlight-foreground-color-inverted);
+	--button-foreground-color-rgb:var(--highlight-foreground-color-rgb);
+	--button-border-color:var(--button-background-color);
+	--button-border-color-hover:var(--button-background-color-hover);
 	--secondary-button-background-color:var(--canvas-background-color);
 	--secondary-button-foreground-color:var(--hyperlink-background-color);
 	--secondary-button-foreground-color-hover:var(--hyperlink-background-color-hover);
@@ -531,6 +534,7 @@ body .oo-ui-labelElement .oo-ui-labelElement-label {
     --highlight-foreground-color: var(--alert-foreground-color)!important;
     --highlight-foreground-color-hover: var(--alert-foreground-color-hover)!important;
     --highlight-foreground-color-inverted: var(--alert-foreground-color-inverted)!important;
+    --highlight-foreground-color-rgb: var(--alert-foreground-color-rgb)!important;
 /* Secondary */
     --hyperlink-background-color: var(--alert-background-color)!important;
     --hyperlink-background-color-hover: var(--alert-background-color-hover)!important;
@@ -745,7 +749,7 @@ body .oo-ui-buttonSelectWidget.oo-ui-widget-enabled:focus .oo-ui-buttonOptionWid
 body .mw-ui-button.mw-ui-progressive,
 body .mw-ui-button.mw-ui-progressive:not(:disabled),
 body .mw-ui-button.mw-ui-progressive:disabled {
-    border-color:var(--button-background-color);
+    border-color:var(--button-border-color);
     background-color:var(--button-background-color);
     color:var(--button-foreground-color);
 }
@@ -754,7 +758,7 @@ body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-prima
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-destructive > .oo-ui-buttonElement-button:focus,
 body .mw-ui-button.mw-ui-progressive:not(:disabled):focus,
 body .mw-ui-button.mw-ui-progressive:focus {
-    border-color:var(--button-background-color);
+    border-color:var(--button-border-color);
     background-color:var(--button-background-color);
     color:var(--button-foreground-color);
 }
@@ -765,7 +769,7 @@ body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-buttonElement-active
 body .oo-ui-buttonSelectWidget.oo-ui-widget-enabled:focus .oo-ui-buttonOptionWidget.oo-ui-optionWidget-selected .oo-ui-buttonElement-button:hover,
 body .mw-ui-button.mw-ui-progressive:not(:disabled):hover,
 body .mw-ui-button.mw-ui-progressive:hover  {
-    border-color:var(--button-background-color-hover);
+    border-color:var(--button-border-color-hover);
     background-color:var(--button-background-color-hover);
     color:var(--button-foreground-color);
 }
@@ -779,7 +783,7 @@ body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-buttonElement-active
 body .oo-ui-buttonSelectWidget.oo-ui-widget-enabled:focus .oo-ui-buttonOptionWidget.oo-ui-optionWidget-selected .oo-ui-buttonElement-button:active,
 body .mw-ui-button.mw-ui-progressive:not(:disabled):active,
 body .mw-ui-button.mw-ui-progressive:active  {
-    border-color:var(--button-background-color-hover);
+    border-color:var(--button-border-color-hover);
     background-color:var(--button-background-color-hover);
     color:var(--button-foreground-color-inverted);
     outline-color:transparent;
@@ -791,7 +795,7 @@ body .mw-ui-button.mw-ui-progressive:not(:disabled):focus,
 body .mw-ui-button.mw-ui-progressive:focus:not(:active) {
   outline-color:currentcolor;
   outline-offset:-2px;
-  border-color:var(--button-background-color);
+  border-color:var(--button-border-color);
   color:var(--button-foreground-color-hover);
     text-decoration:none;
 }
