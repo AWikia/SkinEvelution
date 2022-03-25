@@ -32,7 +32,8 @@ if (mwConfig2.wgNamespaceNumber === -1 && mwConfig2.wgTitle === "CPEThemeDesigne
 
 function InitDesigner() {
 	// Change Title
-	$(".evelution-page-header .evelution-title > span").html( mw.msg( 'evelution-designer-title' ) );
+	$(".evelution-page-header .evelution-title > span, .evelution-minibar .namespace-and-title .title > a").html( mw.msg( 'evelution-designer-title' ) );
+
 	$(".link[designer-on]").addClass( 'active' );
 	// Remove the following things
 	$("#catlinks, .td-off, .evelution-floating-actions .cpe-floating-button.edit, .evelution-floating-actions .cpe-floating-button.history").remove();

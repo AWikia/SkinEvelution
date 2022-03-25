@@ -57,40 +57,42 @@
 			</div>
 		</div>
 	</div>
-	<container class="{{^has-server-mode}}home-mode{{/has-server-mode}}{{#has-server-mode}}server-mode{{/has-server-mode}}{{#has-disabled-rail}} no-rail{{/has-disabled-rail}}{{#has-single-header}} single-header{{/has-single-header}}{{#has-forced-full-width}} forced-full{{/has-forced-full-width}}{{#has-no-color-management}} no-color-management{{/has-no-color-management}}" {{^has-servelution-vanadium}}sticky-rail="{{{html-sticky-rail}}}"{{/has-servelution-vanadium}}> <!--<container> -->
+	<container class="{{^has-server-mode}}home-mode{{/has-server-mode}}{{#has-server-mode}}server-mode{{/has-server-mode}}{{#has-disabled-rail}} no-rail{{/has-disabled-rail}}{{#has-forced-full-width}} forced-full{{/has-forced-full-width}}{{#has-no-color-management}} no-color-management{{/has-no-color-management}}" {{^has-servelution-vanadium}}sticky-rail="{{{html-sticky-rail}}}"{{/has-servelution-vanadium}}> <!--<container> -->
 		<main class="main-container">
 			<div class="top-gap" responsive></div>
-			{{>StickyHeader}}
+			{{>CommunityHeader}}
 			<section class="evelution-content resizable-container" responsive id="mw-content" onclick="">
-				{{>CommunityHeader}}
 				<div class="evelution-wrapper page">
 					{{>PageActions}}
 					<div class="evelution-article-wrapper">
 					  <nav class="evelution-rail-wrapper evelution-left-rail page__right-rail WikiaRail">
 						{{>Modules2}}
 					  </nav>
-					  <nav class="evelution-article-container page__main">
-						{{>PageHeader}}
-						<div class="evelution-article-content">
-							  {{>ServerActions}}
-							  <!-- Begin Article -->
-							  <article class="evelution-article page-content" id="content">
-								{{>ContentBody}}
-							  </article>
-							  <!-- End Article -->
-						  </div>
-						  <!-- Begin Footer
-						<div class="evelution-page-header evelution-page-footer page-header">
-							<div class="evelution-page-header-main page-header__bottom">
-								<div class="evelution-page-header-title page-header__title-wrapper">
-									{{#data-footer}}
-									{{!}}{{#data-info}}{{>FooterList}}{{/data-info}}
-									{{/data-footer}}
+					  <div class="evelution-actions-with-article">
+						  {{>TabbedActions}}
+						  <nav class="evelution-article-container page__main">
+							{{>PageHeader}}
+							<div class="evelution-article-content">
+								  {{>ServerActions}}
+								  <!-- Begin Article -->
+								  <article class="evelution-article page-content" id="content">
+									{{>ContentBody}}
+								  </article>
+								  <!-- End Article -->
+							  </div>
+							  <!-- Begin Footer
+							<div class="evelution-page-header evelution-page-footer page-header">
+								<div class="evelution-page-header-main page-header__bottom">
+									<div class="evelution-page-header-title page-header__title-wrapper">
+										{{#data-footer}}
+										{{!}}{{#data-info}}{{>FooterList}}{{/data-info}}
+										{{/data-footer}}
+									</div>
 								</div>
 							</div>
-						</div>
-					  <!-- End Footer -->
-					  </nav>
+						  <!-- End Footer -->
+						  </nav>
+					  </div>
 					  <nav class="evelution-rail-wrapper evelution-right-rail page__right-rail WikiaRail">
 						{{>Modules}}
 					  </nav>

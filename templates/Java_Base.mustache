@@ -370,7 +370,6 @@ if  (imodule)  {
 	}
 
 CheckCompat();
-initializeViews();
 RemoveEmptyMenus();
 AliasBoxes();
 
@@ -499,17 +498,6 @@ function ToggleRail2() {
 
 
 
-function initializeViews() {
-
-	var va = document.querySelectorAll(".evelution-page-header-contribution .actions > li > a, .evelution-page-header-contribution .views > li > a");
-	
-		va.forEach(function(x) {
-			x.classList.add('cpe-button');
-		});
-
-	
-
-}
 
 function RemoveEmptyMenus() {
 // Remove Miraheze elements
@@ -545,8 +533,8 @@ function RemoveEmptyMenus() {
 		}
 
 
-	if (! (document.querySelector(".evelution-page-header .more-actions-menu .cpe-dropdown__content .cpe-list > li")) ) {
-		var langmenu2 = document.querySelector(".evelution-page-header .more-actions-menu");
+	if (! (document.querySelector(".evelution-article-actions .more-actions-menu .cpe-dropdown__content .cpe-list > li")) ) {
+		var langmenu2 = document.querySelector(".evelution-article-actions .more-actions-menu");
 		if (langmenu2) {
 			langmenu2.remove();
 		}
@@ -555,12 +543,10 @@ function RemoveEmptyMenus() {
 	
 	toc = document.querySelector(".toc#toc > ul");
 	if (toc) {
-		document.querySelector(".evelution-minibar.desktop-minibar .toc-module .evelution-module-content > .toc > .toc").innerHTML = toc.innerHTML
-		document.querySelector(".evelution-minibar.mobile-minibar .toc-module .evelution-module-content > .toc > .toc").innerHTML = toc.innerHTML
+		document.querySelector(".evelution-minibar .toc-module .evelution-module-content > .toc > .toc").innerHTML = toc.innerHTML
 		document.querySelector(".evelution-rail-wrapper .toc-module .evelution-module-content > .toc > .toc").innerHTML = toc.innerHTML
 	} else {
-		var toc2 = document.querySelector(".evelution-minibar.desktop-minibar .toc-module")
-		var toc3 = document.querySelector(".evelution-minibar.mobile-minibar .toc-module")
+		var toc2 = document.querySelector(".evelution-minibar .toc-module")
 		if (toc2) {
 			toc2.remove();
 		}
@@ -570,7 +556,7 @@ function RemoveEmptyMenus() {
 	}
 
 
-	tools = document.querySelector("#p-tb .mw-portlet-body .cpe-list");
+	tools = document.querySelector("#p-tb .evelution-module-content > div.toc > ul.toc");
 	if (tools) {
 		document.querySelector(".evelution-module.tools-module ul").innerHTML = tools.innerHTML
 	}

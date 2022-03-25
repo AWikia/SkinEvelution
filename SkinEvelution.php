@@ -106,7 +106,6 @@ class SkinEvelution extends SkinMustache {
 		$data["has-left-links"] = $this->getConfig()->get( 'EvelutionLeftPersonalLinks' );
 		$blacklistedPages = $this->getConfig()->get( 'EvelutionDisableRightRailFromSpecificPages' );
 		$data["has-disabled-rail"] = ($this->getConfig()->get( 'EvelutionDisableRightRail' ) || ($this->getOutput()->getTitle()->isMainPage()) || in_array( $this->getOutput()->getTitle()->getFullText(), $blacklistedPages ) );
-		$data["has-single-header"] = $this->getConfig()->get( 'EvelutionForceOneHeader' );
 		$data["has-server-mode"] = $this->getConfig()->get( 'EvelutionServerMode' );
 		$data["has-no-color-management"] = $this->getConfig()->get( 'EvelutionDisableColorManagement' );
 		$data["has-forced-full-width"] = $this->getConfig()->get ( 'EvelutionForceFullWidth' );

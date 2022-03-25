@@ -1,189 +1,111 @@
-		<div class="evelution-superbar community-header-wrapper">
-			<section class="evelution-superbar-wrapper fandom-community-header">
-				{{#data-logos}}
-					{{#icon}}
-						{{#has-mono-logo}}
-						<a class="wordmark fandom-community-header__image" href="{{link-mainpage}}">
-							<div class="icon-logo" style="-webkit-mask-image:url({{.}}); mask-image:url({{.}})">
-								<img src="{{.}}" style="opacity:0;">
-							</div>
-						</a>
-						{{/has-mono-logo}}
-						{{^has-mono-logo}}
-						<a class="wordmark invertion-on fandom-community-header__image" href="{{link-mainpage}}">
-							<img src="{{.}}">
-						</a>
-						{{/has-mono-logo}}
-					{{/icon}}
-					{{^icon}}
-						{{#1x}}
-							{{#has-mono-logo}}
-							<a class="wordmark fandom-community-header__image" href="{{link-mainpage}}">
-								<div class="icon-logo" style="-webkit-mask-image:url({{.}}); mask-image:url({{.}})">
-									<img src="{{.}}" style="opacity:0;">
+	<header class="evelution-minibar is-fixed-positioned fandom-sticky-header">
+		<div class="cpe-dropdown local-navigation">
+			<a class="link cell cpe-dropdown__toggle" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-navigation}}">
+				<span class="cpe-icon cpe-dropdown__toggle-chevron material-icons focused-dropdown-off">
+					menu
+				</span>
+				<span class="cpe-icon cpe-dropdown__toggle-chevron material-icons focused-dropdown-on">
+					menu_open
+				</span>
+			</a>
+			<div class="cpe-dropdown__content is-left-aligned">
+				<ul class="cpe-list">
+						<section class="evelution-module toc-module rail-module td-off">
+							<h2 class="rail-module__header">
+								<span class="cpe-icon material-icons">
+								description
+								</span>
+								<span class="module-title">
+								{{msg-toc}}
+								</span>
+							</h2>
+							<div class="evelution-module-content">
+								<div class="toc floating_toc" style="display:contents; border:0; background:transparent; display:block; color:inherit;">
+									<ul class="toc module-toc floating_toc" id="toc" style="border:0; background:transparent; display:block; color:inherit;" role="navigation">
+									</ul>
 								</div>
-							</a>
-							{{/has-mono-logo}}
-							{{^has-mono-logo}}
-							<a class="wordmark invertion-on fandom-community-header__image" href="{{link-mainpage}}">
-								<img src="{{.}}">
-							</a>
-							{{/has-mono-logo}}
-						{{/1x}}
-					{{/icon}}
-				{{/data-logos}}
-				<header class="evelution-superbar__fone">
-					<section class="evelution-superbar__mobile-top">
-						{{#data-logos}}
-							{{#icon}}
-								{{#has-mono-logo}}
-								<a class="wordmark mobile-wordmark fandom-community-header__image" href="{{link-mainpage}}">
-									<div class="icon-logo" style="-webkit-mask-image:url({{.}}); mask-image:url({{.}})">
-										<img src="{{.}}" style="opacity:0;">
-									</div>
-								</a>
-								{{/has-mono-logo}}
-								{{^has-mono-logo}}
-								<a class="wordmark mobile-wordmark invertion-on fandom-community-header__image" href="{{link-mainpage}}">
-									<img src="{{.}}">
-								</a>
-								{{/has-mono-logo}}
-							{{/icon}}
-							{{^icon}}
-								{{#1x}}
+							</div>
+						</section>
+							{{#data-portlets-sidebar}}
+							{{#data-portlets-first}}{{>PortletSLN2}}{{/data-portlets-first}}
+							{{#array-portlets-rest}}{{>PortletSLN2}}{{/array-portlets-rest}}
+							{{#data-portlets.data-languages}}{{>PortletSLN2}}{{/data-portlets.data-languages}}
+							{{/data-portlets-sidebar}}
+				</ul>
+			</div>
+		</div>
+		<div class="title-container">
+			<div class="logo-and-wordmark">
+				{{#data-logos}}
+					{{^evelution-nostickylogo}}
+							{{#data-logos}}
+								{{#icon}}
 									{{#has-mono-logo}}
-									<a class="wordmark mobile-wordmark fandom-community-header__image" href="{{link-mainpage}}">
+									<a class="wordmark" href="{{link-mainpage}}">							
 										<div class="icon-logo" style="-webkit-mask-image:url({{.}}); mask-image:url({{.}})">
 											<img src="{{.}}" style="opacity:0;">
 										</div>
 									</a>
 									{{/has-mono-logo}}
 									{{^has-mono-logo}}
-									<a class="wordmark mobile-wordmark invertion-on fandom-community-header__image" href="{{link-mainpage}}">
+									<a class="wordmark invertion-on" href="{{link-mainpage}}">							
 										<img src="{{.}}">
 									</a>
 									{{/has-mono-logo}}
-								{{/1x}}
-							{{/icon}}
-						{{/data-logos}}
-						<h1 class="title" translate="no">
-							{{#data-logos}}
-								{{#wordmark}}
-									<div style="--height:{{height}}px; display:contents">
-										{{#src}}
-										<a href="{{link-mainpage}}" class="title-logo" style="-webkit-mask-image:url({{.}}); mask-image:url({{.}});"><span style="visibility:hidden;">Abc</span></a>
-										{{/src}}
-										{{^src}}
-										<a href="{{link-mainpage}}" class="title-logo" style="-webkit-mask-image:url({{.}}); mask-image:url({{.}});"><span style="visibility:hidden;">Abc</span></a>
-										{{/src}}
-									</div>
-								{{/wordmark}}
-								{{^wordmark}}<a href="{{link-mainpage}}">{{msg-sitetitle}}</a>{{/wordmark}}
-							{{/data-logos}}
-						</h1>
-						<div class="counters">
-							<div class="counter articles"><big>{{html-articlecount}}</big> <span class="cpe-icon material-icons">article</span></div>
-							<div class="counter photos"><big>{{html-filecount}}</big> <span class="cpe-icon material-icons">photo</span></div>
-						</div>
-						<div class="counters">
-							<div class="counter edits"><big>{{html-editcount}}</big> <span class="cpe-icon material-icons">edit</span></div>
-							<div class="counter users"><big>{{html-usercount}}</big> <span class="cpe-icon material-icons">person</span></div>
-						</div>
-						{{>MobileCommunityLinks}}
-					</section>
-					<section class="container">
-						<section class="evelution-superbar__mobile-bottom">
-							<nav class="local-navigation home-nav has-icon-labels">
-								{{#data-portlets-sidebar}}
-								{{#data-portlets-first}}{{>PortletMLN2}}{{/data-portlets-first}}
-								{{#array-portlets-rest}}{{>PortletMLN}}{{/array-portlets-rest}}
-								{{#data-portlets.data-languages}}{{>PortletMLN}}{{/data-portlets.data-languages}}
-								{{/data-portlets-sidebar}}
-							</nav>
-							<nav class="actions-navigation server-nav">
-								<div class="cpe-dropdown local-navigation">
-									<a class="link cell cpe-dropdown__toggle" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-navigation}}">
-										<span class="cpe-icon cpe-icon-large cpe-dropdown__toggle-chevron material-icons">
-											arrow_drop_down
-										</span>
-									</a>
-									<div class="cpe-dropdown__content is-left-aligned is-not-scrollable" style="left:0;">
-										<ul class="cpe-list is-linked has-icon-labels">
-													{{#data-portlets-sidebar}}
-													{{#data-portlets-first}}{{>PortletSLN}}{{/data-portlets-first}}
-													{{#array-portlets-rest}}{{>PortletSLN}}{{/array-portlets-rest}}
-													{{#data-portlets.data-languages}}{{>PortletSLN}}{{/data-portlets.data-languages}}
-													{{/data-portlets-sidebar}}
-										</ul>
-									</div>
-								</div>
-								<a class="link cell" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-longpages}}" href="{{html-longpages-link}}">
-									<span class="cpe-icon material-icons">
-									star_border
-									</span>
-								</a>
-								<a class="link cell" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-unusedtemplates}}" href="{{html-unusedtemplates-link}}">
-									<span class="cpe-icon material-icons">
-									bookmark_remove
-									</span>
-								</a>
-								<a class="link cell" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-apisandbox}}" href="{{html-apisandbox-link}}">
-									<span class="cpe-icon material-icons">
-									api
-									</span>
-								</a>
-								<a class="link cell" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-allmessages}}" href="{{html-messages-link}}">
-									<span class="cpe-icon material-icons">
-									security
-									</span>
-								</a>
-
-							</nav>
-						</section>
-					</section>
-				</header>
-				<div class="evelution-superbar__pc">
-					<header class="evelution-superbar__top fandom-community-header__top-container">
-							<div class="table">
-								<div class="tr">
-									<h1 class="title cell fandom-community-header__community-name-wrapper" style="text-align:left" translate="no">
-									{{#data-logos}}
-										{{#wordmark}}
-											<div style="--height:{{height}}px; display:contents">
-												{{#src}}
-												<a href="{{link-mainpage}}" class="title-logo fandom-community-header__community-name" style="-webkit-mask-image:url({{.}}); mask-image:url({{.}});"><span style="visibility:hidden;">Abc</span></a>
-												{{/src}}
-												{{^src}}
-												<a href="{{link-mainpage}}" class="title-logo fandom-community-header__community-name" style="-webkit-mask-image:url({{.}}); mask-image:url({{.}});"><span style="visibility:hidden;">Abc</span></a>
-												{{/src}}
+								{{/icon}}
+								{{^icon}}
+									{{#1x}}
+										{{#has-mono-logo}}
+										<a class="wordmark" href="{{link-mainpage}}">							
+											<div class="icon-logo" style="-webkit-mask-image:url({{.}}); mask-image:url({{.}})">
+												<img src="{{.}}" style="opacity:0;">
 											</div>
-										{{/wordmark}}
-										{{^wordmark}}<a class="fandom-community-header__community-name" href="{{link-mainpage}}">{{msg-sitetitle}}</a>{{/wordmark}}
-									{{/data-logos}}
-									</h1>
-									<div class="counters cell">
-										<div class="counter articles page-counter"><big class="page-counter__value">{{html-articlecount}}</big> <span class="cpe-icon material-icons">article</span>  <span class="text page-counter__label">{{msg-evelution-pages}}</span></div>
-										<div class="counter photos page-counter"><big class="page-counter__value">{{html-filecount}}</big> <span class="cpe-icon material-icons">photo</span> <span class="text page-counter__label">{{msg-evelution-files}}</span></div>
-									</div>
-									<div class="counters cell">
-										<div class="counter edits page-counter"><big class="page-counter__value">{{html-editcount}}</big> <span class="cpe-icon material-icons">edit</span> <span class="text page-counter__label">{{msg-evelution-edits}}</span></div>
-										<div class="counter users page-counter"><big class="page-counter__value">{{html-usercount}}</big> <span class="cpe-icon material-icons">person</span> <span class="text page-counter__label">{{msg-evelution-users}}</span></div>
-									</div>
-									{{>CommunityLinks}}
-								</div>
+										</a>
+										{{/has-mono-logo}}
+										{{^has-mono-logo}}
+										<a class="wordmark invertion-on" href="{{link-mainpage}}">							
+											<img src="{{.}}">
+										</a>
+										{{/has-mono-logo}}
+									{{/1x}}
+								{{/icon}}
+							{{/data-logos}}
+					{{/evelution-nostickylogo}}
+				{{/data-logos}}
+				<h1 class="title cell" style="text-align:left" translate="no">
+					{{#data-logos}}
+						{{#wordmark}}
+							<div style="--height:{{height}}px; display:contents">
+								{{#src}}
+								<a href="{{link-mainpage}}" class="title-logo" style="-webkit-mask-image:url({{.}}); mask-image:url({{.}});"><span style="visibility:hidden;">Abc</span></a>
+								{{/src}}
+								{{^src}}
+								<a href="{{link-mainpage}}" class="title-logo" style="-webkit-mask-image:url({{.}}); mask-image:url({{.}});"><span style="visibility:hidden;">Abc</span></a>
+								{{/src}}
 							</div>
-					</header>
-					<nav class="evelution-superbar__bottom home-nav fandom-community-header__local-navigation">
-						<div class="table">
-							<div class="tr has-icon-labels">
-								{{#data-portlets-sidebar}}
-								{{#data-portlets-first}}{{>PortletLN}}{{/data-portlets-first}}
-								{{#array-portlets-rest}}{{>PortletLN}}{{/array-portlets-rest}}
-								{{#data-portlets.data-languages}}{{>PortletLN}}{{/data-portlets.data-languages}}
-								{{/data-portlets-sidebar}}
-							</div>
-						</div>
-					</nav>
-				</div>
-			</section>
+						{{/wordmark}}
+						{{^wordmark}}<a href="{{link-mainpage}}">{{msg-sitetitle}}</a>{{/wordmark}}
+					{{/data-logos}}
+				</h1>
+			</div>
+			<div class="namespace-and-title">
+				<h1 class="title cell" style="text-align:left" translate="no">
+					<a class="has-icon" href="{{link-mainpage}}">{{html-title}}</a>
+				</h1>
+			</div>
 		</div>
+		<div class="counters cell">
+			<div class="counter articles"><big>{{html-articlecount}}</big> <span class="cpe-icon material-icons">article</span>  <span class="text">{{msg-evelution-pages}}</span></div>
+			<div class="counter photos"><big>{{html-filecount}}</big> <span class="cpe-icon material-icons">photo</span> <span class="text">{{msg-evelution-files}}</span></div>
+		</div>
+		<div class="counters cell">
+			<div class="counter edits"><big>{{html-editcount}}</big> <span class="cpe-icon material-icons">edit</span> <span class="text">{{msg-evelution-edits}}</span></div>
+			<div class="counter users"><big>{{html-usercount}}</big> <span class="cpe-icon material-icons">person</span> <span class="text">{{msg-evelution-users}}</span></div>
+		</div>
+		<div class="desktop-links">
+			{{>CommunityLinks}}
+		</div>
+		<div class="mobile-links">
+			{{>MobileCommunityLinks}}
+		</div>
+	</header>
