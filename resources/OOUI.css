@@ -897,20 +897,23 @@ body .toc ul li a .tocnumber {
     color:inherit;
 }
 
-body .toc ul li a:hover {
+body .toc ul li a:hover,
+body .toc ul li.selected a {
 	background-color:var(--hyperlink-secondary-fadeout-color);
 	border-color:rgba(var(--hyperlink-secondary-background-color-rgb),calc(var(--fadeout-opacity) * 0.5));
     color: var(--hyperlink-secondary-background-color);
 }
 
-body .toc .module-toc li a:hover {
+body .toc .module-toc li a:hover,
+body .toc .module-toc li.selected a {
 	background-color:var(--hyperlink-fadeout-color);
 	border-color:rgba(var(--hyperlink-background-color-rgb),calc(var(--fadeout-opacity) * 0.5));
     color: var(--hyperlink-background-color);
 }
 
 
-body .toc ul li a:hover .tocnumber {
+body .toc ul li a:hover .tocnumber,
+body .toc ul li.selected a .tocnumber {
 	opacity:1;
 }
 
@@ -1472,18 +1475,15 @@ body .cpe-list.is-linked>li>.uls-trigger:not(.cpe-button) {
 
 
 body .uls-menu {
-	top:0px!important; /* Override Inline Style */
+	top:50px!important; /* Override Inline Style */
 	left:50px!important;
 	border-color:var(--inactive-text-background-color);
 	background-color:var(--canvas-background-color);
 	color:var(--canvas-text-background-color);
 	transition:top 400ms var(--transitioner);
+	position:fixed!important;
 }
 
-.headroom--not-top .uls-menu,
-.single-header .uls-menu {
-	top:50px!important; /* Override Inline Style */
-}
 
 body .uls-search,
 body #uls-settings-block {
@@ -2124,10 +2124,10 @@ body .oo-ui-optionWidget-selected .mw-echo-ui-pageNotificationsOptionWidget-labe
 
 body .mw-echo-ui-notificationBadgeButtonPopupWidget-popup {
     bottom:0px!important;
-    top:0!important;
+	top:var(--minibar-size)!important; /* Override Inline Style */
     right:0!important;
     left:auto!important;
-    height:calc(100vh - var(--minibar-size))!important;
+	height:calc(100vh - var(--minibar-size) - var(--minibar-size))!important;
     display:flex;
     margin-top:0!important;
     transition:top 400ms var(--transitioner), height 400ms var(--transitioner);
@@ -2135,8 +2135,7 @@ body .mw-echo-ui-notificationBadgeButtonPopupWidget-popup {
 }
 
 @media only screen and (min-width:760px) {
-	.headroom--not-top .mw-echo-ui-notificationBadgeButtonPopupWidget-popup,
-	.single-header .mw-echo-ui-notificationBadgeButtonPopupWidget-popup {
+	.mw-echo-ui-notificationBadgeButtonPopupWidget-popup {
 		top:var(--minibar-size)!important; /* Override Inline Style */
 		height:calc(100vh - var(--minibar-size) - var(--minibar-size))!important;
 	}
