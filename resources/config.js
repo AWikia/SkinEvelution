@@ -18,7 +18,95 @@ function insertKey(key,value) {
 
 (function() {
     'use strict';
+
+  const mwConfig2 = mw.config.get([
+    "wgNamespaceNumber",
+    "wgTitle",
+    "wgCanonicalSpecialPageName",
+    "wgArticlePath"
+  ]);
+    
+	if (mwConfig2.wgNamespaceNumber === -1 && mwConfig2.wgTitle === "EvelutionSystemBackdropTypes") {
+
+		$.when( mw.loader.using( [ 'mediawiki.jqueryMsg' ] ), $.ready ).then( function() {
+		InitSBT();
+		} );
+	}
+
+
 })();
+
+function InitSBT() {
+	// Change Title
+	$(".evelution-page-header .evelution-title > span, .evelution-minibar .namespace-and-title .title > a").html( 'System Backdrop Types' );
+
+	$("#mw-content-text").empty().attr('style','overflow:visible');
+	$("#mw-content-text").append(
+		'<button class="cpe-button" id="SBTStart">Start Test</button>'
+	);
+	$("container").append(
+		'<div style="--backdrop-opacity:var(--dropdown-opacity); position:fixed; display:flex; top:0; left:0; width:100%; height:100%; align-items:center; gap:2px; justify-content:center; background-color:rgba(var(--canvas-secondary-background-color-rgb),var(--backdrop-opacity)); color:var(--canvas-text-secondary-background-color); -webkit-backdrop-filter:var(--backdrop-filter); backdrop-filter:var(--backdrop-filter); z-index:999999999;" class="SBT">' +
+		'<section>' +
+		'<input type="checkbox" name="SBT2" id="none"></input>' +
+		'<label for="none">Disable</label>' +
+		'</section>' +
+		'<section>' +
+		'<input type="radio" name="SBT" checked id="AC"></input>' +
+		'<label for="AC">Luna Lovit</label>' +
+		'</section>' +
+		'<section>' +
+		'<input type="radio" name="SBT" id="MI"></input>' +
+		'<label for="MI">Luna Levit</label>' +
+		'</section>' +
+		'<section>' +
+		'<input type="radio" name="SBT" id="TA"></input>' +
+		'<label for="TA">Tabbed Luna Levit</label>' +
+		'</section>' +
+		'</div>'
+	);
+	
+$('#AC[name="SBT"]').click(
+							function(e) {
+								e.preventDefault
+								$('div.SBT').removeClass("has-levit").removeClass("has-tabs")
+								$('div.SBT').css("--backdrop-opacity","var(--dropdown-opacity)");
+							}   
+);
+
+$('#MI[name="SBT"]').click(
+							function(e) {
+								e.preventDefault
+								$('div.SBT').addClass("has-levit").removeClass("has-tabs")
+								$('div.SBT').css("--backdrop-opacity","1");
+							}   
+);
+
+$('#TA[name="SBT"]').click(
+							function(e) {
+								e.preventDefault
+								$('div.SBT').addClass("has-levit").addClass("has-tabs")
+								$('div.SBT').css("--backdrop-opacity","1");
+							}   
+);
+
+$('#none[name="SBT2"]').click(
+							function(e) {
+								e.preventDefault
+								$('div.SBT').remove();
+							}   
+);
+
+$('button#SBTStart').click(
+							function(e) {
+								e.preventDefault
+								InitSBT();
+							}   
+);
+
+
+}
+
+/**/
 
 mw.notify = function ( message, options ) {
 	// Lazy load
