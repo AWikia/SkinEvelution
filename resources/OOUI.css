@@ -1109,6 +1109,7 @@ body .mw-widget-dateInputWidget-handle,
 body .mw-widgets-datetime-dateTimeInputWidget-handle,
 body .mw-ui-input  {
 	--input-box-color:var(--canvas-background-color);
+	--input-box-border:currentColor;
 	--input-box-focus:var(--hyperlink-background-color-rgb);
 	--input-box-solid:var(--hyperlink-background-color);
     transition:background-color 200ms var(--transitioner), border-color 200ms var(--transitioner), outline-offset 50ms var(--transitioner), outline-color 200ms var(--transitioner), color 200ms var(--transitioner), box-shadow 200ms var(--transitioner)!important;
@@ -1117,7 +1118,7 @@ body .mw-ui-input  {
     font-weight:600;
     color:var(--canvas-text-background-color);
     padding:16px 11px;
-    border:2px solid;
+    border:2px solid var(--input-box-border);
 /*    border-color:var(--inactive-text-background-color); */
     border-radius:var(--border-radius); 
     display:inline-flex;
@@ -1143,17 +1144,18 @@ body .mw-widget-dateInputWidget-empty .mw-widget-dateInputWidget-handle {
 }
 
 body .oo-ui-textInputWidget.oo-ui-widget-disabled .oo-ui-inputWidget-input {
-    border-color: currentColor!important;
+    border-color: var(--input-box-border)!important;
 }
 
 body .oo-ui-textInputWidget.oo-ui-widget-enabled.oo-ui-flaggedElement-invalid .oo-ui-inputWidget-input,
 body .mw-widgets-datetime-dateTimeInputWidget.oo-ui-widget-enabled.oo-ui-flaggedElement-invalid .mw-widgets-datetime-dateTimeInputWidget-handle {
-	border-color:var(--alert-background-color);
+	--input-box-border:var(--alert-background-color);
+	border-color:var(--input-box-border);
 }
 
 body .oo-ui-textInputWidget.oo-ui-widget-enabled.oo-ui-flaggedElement-invalid .oo-ui-inputWidget-input:hover,
 body .mw-widgets-datetime-dateTimeInputWidget.oo-ui-widget-enabled.oo-ui-flaggedElement-invalid .mw-widgets-datetime-dateTimeInputWidget-handle:hover {
-	border-color:var(--alert-background-color-hover);
+	border-color:var(--input-box-solid);
 }
 
 body .mw-widgets-datetime-dateTimeInputWidget.oo-ui-widget-enabled .mw-widgets-datetime-dateTimeInputWidget-editField:hover {
@@ -1198,7 +1200,8 @@ body .mw-widget-dateInputWidget.oo-ui-widget-enabled .mw-widget-dateInputWidget-
 }
 
 body .mw-ui-input:invalid {
-	border-color:var(--alert-background-color);
+	--input-box-border:var(--alert-background-color);
+	border-color:var(--input-box-border);
 }
 
 
@@ -1268,6 +1271,7 @@ body .oo-ui-dropdownWidget.oo-ui-widget-disabled .oo-ui-dropdownWidget-handle {
 body .oo-ui-dropdownWidget.oo-ui-widget-enabled .oo-ui-dropdownWidget-handle,
 body .oo-ui-dropdownWidget.oo-ui-widget-disabled .oo-ui-dropdownWidget-handle {
 	--input-box-color:var(--canvas-background-color);
+	--input-box-border:currentColor;
 	--input-box-focus:var(--hyperlink-background-color-rgb);
 	--input-box-solid:var(--hyperlink-background-color);
     transition:background-color 200ms var(--transitioner), border-color 200ms var(--transitioner), outline-offset 50ms var(--transitioner), outline-color 200ms var(--transitioner), color 200ms var(--transitioner), box-shadow 200ms var(--transitioner);
@@ -1275,7 +1279,7 @@ body .oo-ui-dropdownWidget.oo-ui-widget-disabled .oo-ui-dropdownWidget-handle {
     font-family:var(--secondary-font);
     font-weight:600;
     color:var(--canvas-text-background-color);
-    border:2px solid;
+    border:2px solid var(--input-box-border);
 /*    border-color:var(--inactive-text-background-color); */
 /*    border-radius:var(--border-radius); */
     vertical-align:middle;

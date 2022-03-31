@@ -1653,6 +1653,7 @@ body .wikitable > * > tr > td {
 /* Input Boxes */
 .cpe-input {
 	--input-box-color:var(--canvas-background-color);
+	--input-box-border:currentColor;
 	--input-box-focus:var(--highlight-background-color-rgb);
 	--input-box-solid:var(--highlight-background-color);
     transition:background-color 200ms var(--transitioner), border-color 200ms var(--transitioner), outline-offset 50ms var(--transitioner), outline-color 200ms var(--transitioner), color 200ms, box-shadow 200ms var(--transitioner);
@@ -1661,7 +1662,7 @@ body .wikitable > * > tr > td {
     font-weight:600;
     color:var(--canvas-text-background-color);
     padding:8px 11px;
-    border:2px solid;
+    border:2px solid var(--input-box-border);
     border-radius:var(--border-radius);
     display:inline-flex;
     align-items:center;
@@ -1679,6 +1680,10 @@ body .wikitable > * > tr > td {
     -webkit-appearance:none;
 }
 
+
+.cpe-input:invalid {
+	--input-box-border:var(--alert-background-color);
+}
 
 .cpe-select .cpe-input {
 	justify-content:flex-start;
