@@ -61,6 +61,8 @@ color:var(--hyperlink-background-color-hover);
 
 .evelution-article a.new,
 .evelution-article a.new:visited,
+.evelution-categories a.new,
+.evelution-categories a.new:visited,
 .evelution-module-content a.new,
 .evelution-module-content a.new:visited,
 body .mw-parser-output a.new.extiw, 
@@ -71,6 +73,8 @@ text-decoration-style:dashed;
 
 .evelution-article a.new:hover,
 .evelution-article a.new:visited:hover,
+.evelution-categories a.new:hover,
+.evelution-categories a.new:visited:hover,
 .evelution-module-content a.new:hover,
 .evelution-module-content a.new:visited:hover,
 body .mw-parser-output a.new.extiw:hover, 
@@ -78,19 +82,33 @@ body .mw-parser-output a.new.external:hover {
 color:var(--alert-background-color-hover);
 }
 
+a.new,
+a.new:hover {
+text-decoration-style:dashed;
+}
+
+a.stub,
+a.stub:hover {
+text-decoration-style:dotted;
+}
+
 
 .evelution-article a.stub,
 .evelution-article a.stub:visited,
+.evelution-categories a.stub,
+.evelution-categories a.stub:visited,
 .evelution-module-content a.stub,
 .evelution-module-content a.stub:visited,
 body .mw-parser-output a.stub.extiw, 
 body .mw-parser-output a.stub.external {
 color:var(--progress-background-color);
-text-decoration-style:dashed;
+text-decoration-style:dotted;
 }
 
 .evelution-article a.stub:hover,
 .evelution-article a.stub:visited:hover,
+.evelution-categories a.stub:hover,
+.evelution-categories a.stub:visited:hover,
 .evelution-module-content a.stub:hover,
 .evelution-module-content a.stub:visited:hover,
 body .mw-parser-output a.stub.extiw:hover, 
@@ -1020,6 +1038,47 @@ margin:0;
 text-align:left;
 }
 
+.evelution-content .evelution-categories {
+	display:flex;
+	flex-direction:row-reverse;
+	align-items:center;
+	justify-content:flex-end;
+}
+
+.evelution-content .evelution-categories .in {
+	font-weight:bold;
+	vertical-align:middle;
+}
+
+.evelution-content .evelution-categories .catlinks-allhidden + .in {
+	display:none;
+}
+
+.evelution-content .evelution-categories .catlinks {
+	display:contents;
+	vertical-align:middle;
+}
+
+
+.evelution-content .evelution-categories .catlinks > div > a:first-child {
+	display:none;
+}
+
+.evelution-content .evelution-categories .catlinks li {
+	border-left:0;
+	padding-right:0;
+	padding-left:5px;
+}
+
+.evelution-content .evelution-categories .catlinks li:first-child {
+	padding-left:0;
+}
+
+.evelution-content .evelution-categories .catlinks li:not(:last-child):after {
+	content:",";
+	color:var(--luna-text-background-color);
+}
+
 /* Display an Asterisk before the article title for unsaved changes */
 .evelution-content .evelution-title.unsaved::before {
 	content:"*";
@@ -1035,6 +1094,29 @@ flex-direction:column;
 min-height:50px;
 }
 
+	.evelution-content .evelution-page-header-title a,
+	.evelution-content .evelution-page-header-tiele a:visited {
+		color:var(--hyperlink-secondary-background-color);
+	}
+
+
+	.evelution-content .evelution-page-header-title a:hover,
+	.evelution-content .evelution-page-header-title a:visited:hover {
+		color:var(--hyperlink-secondary-background-color-hover);
+	}
+
+	.evelution-content .evelution-page-header-title a.new,
+	.evelution-content .evelution-page-header-tiele a.new:visited {
+		color:var(--alert-background-color);
+	}
+
+
+	.evelution-content .evelution-page-header-title a.new:hover,
+	.evelution-content .evelution-page-header-title a.new:visited:hover {
+		color:var(--alert-background-color-hover);
+	}
+
+
 	.has-accents .evelution-content .evelution-page-header-title a,
 	.has-accents .evelution-content .evelution-page-header-tiele a:visited {
 		color:var(--hyperlink-tertiary-background-color);
@@ -1045,6 +1127,18 @@ min-height:50px;
 	.has-accents .evelution-content .evelution-page-header-title a:visited:hover {
 		color:var(--hyperlink-tertiary-background-color-hover);
 	}
+
+	.has-accents .evelution-content .evelution-page-header-title a.new,
+	.has-accents .evelution-content .evelution-page-header-tiele a.new:visited {
+		color:var(--luna-alternative-foreground-color);
+	}
+
+
+	.has-accents .evelution-content .evelution-page-header-title a.new:hover,
+	.has-accents .evelution-content .evelution-page-header-title a.new:visited:hover {
+		color:var(--luna-alternative-foreground-color-hover);
+	}
+
 
 .evelution-title-with-indicators {
 	display:flex;
