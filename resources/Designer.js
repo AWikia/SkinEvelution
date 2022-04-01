@@ -35,8 +35,9 @@ function InitDesigner() {
 	$(".evelution-page-header .evelution-title > span, .evelution-minibar .namespace-and-title .title > a").html( mw.msg( 'evelution-designer-title' ) );
 
 	$(".link[designer-on]").addClass( 'active' );
+	document.querySelector("body").classList.replace("mw-invalidspecialpage","mw-special-cpethemedesigner");
 	// Remove the following things
-	$("#catlinks, .td-off, .evelution-floating-actions .cpe-floating-button.edit, .evelution-floating-actions .cpe-floating-button.history").remove();
+	$(".evelution-article #catlinks, .td-off, .evelution-floating-actions .cpe-floating-button.edit, .evelution-floating-actions .cpe-floating-button.history").remove();
 	// Put new buttons
 	// Copy theme
 	$(".evelution-floating-actions.extra-actions .evelution-floating-actions-container").append(

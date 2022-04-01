@@ -1038,6 +1038,10 @@ margin:0;
 text-align:left;
 }
 
+.evelution-content .evelution-title > span{
+	vertical-align:middle;
+}
+
 .evelution-content .evelution-categories {
 	display:flex;
 	flex-direction:row-reverse;
@@ -1355,8 +1359,8 @@ gap:2px;
 }
 
 
-.evelution-minibar .logo-and-wordmark,
-.evelution-minibar .namespace-and-title {
+.evelution-minibar .logo-with-wordmark,
+.evelution-minibar .namespace-with-title {
 	transition:transform 400ms var(--transitioner);
 	display:flex;
 	align-items:center;
@@ -1365,30 +1369,30 @@ gap:2px;
 	flex:1;
 }
 
-.evelution-minibar .namespace-and-title {
+.evelution-minibar .namespace-with-title {
 	transform:translateY(0%);
 }
 
 
-.headroom .evelution-minibar .logo-and-wordmark,
-.headroom .evelution-minibar .namespace-and-title {
+.headroom .evelution-minibar .logo-with-wordmark,
+.headroom .evelution-minibar .namespace-with-title {
 	transition:transform 400ms var(--transitioner);
 }
 
-.evelution-minibar .namespace-and-title .has-icon:before {
+.namespace-with-title .has-icon:before {
     margin-right: 0px;
     --icon-size: 2;
     content: "article";
     --icon-scale: 0.8;
+    vertical-align:middle;
 }
 
-.headroom:not(.action-view) .evelution-minibar .logo-and-wordmark,
-.headroom--top.action-view .evelution-minibar .logo-and-wordmark {
+.headroom--top .evelution-minibar .logo-with-wordmark {
 	transform:translateY(0%);
 }
 
 
-.headroom--not-top.action-view .evelution-minibar .namespace-and-title {
+.headroom--not-top .evelution-minibar .namespace-with-title {
 	transform:translateY(100%);
 }
 
@@ -2660,16 +2664,17 @@ white-space:nowrap;
 
 /** Page Header Icons **/
 
+
 /* Namespaces */
 
 .has-icon-labels #ca-talk > :before,
-.ns-talk .evelution-minibar .namespace-and-title .has-icon:before {
+.ns-talk .namespace-with-title .has-icon:before {
 	content:"chat_bubble";
 }
 
 .has-icon-labels #ca-translate > :before, 
 .has-icon-labels #ca-nstab-translations > :before,
-.ns-1198 .evelution-minibar .namespace-and-title .has-icon:before {
+.ns-1198 .namespace-with-title .has-icon:before {
 	content:"translate";
 }
 
@@ -2687,15 +2692,15 @@ white-space:nowrap;
 
 .has-icon-labels #ca-nstab-project > :before,
 .has-icon-labels #ca-nstab-page > :before,
-.ns-4 .evelution-minibar .namespace-and-title .has-icon:before  {
+.ns-4 .namespace-with-title .has-icon:before  {
 	content:"description";
 }
 
 .has-icon-labels #ca-nstab-special > :before,
 .has-icon-labels #ca-nstab-mediawiki > :before,
 .has-icon-labels #ca-nstab-extension > :before,
-.ns-special .evelution-minibar .namespace-and-title .has-icon:before,
-.ns-8 .evelution-minibar .namespace-and-title .has-icon:before  {
+.ns--1 .namespace-with-title .has-icon:before,
+.ns-8 .namespace-with-title .has-icon:before  {
 	content:"settings";
 }
 
@@ -2706,32 +2711,32 @@ white-space:nowrap;
 .has-icon-labels #ca-nstab-user > :before,
 .has-icon-labels #ca-nstab-user-profile > :before,
 .has-icon-labels #ca-nstab-userwiki > :before,
-.ns-2 .evelution-minibar .namespace-and-title .has-icon:before,
-.ns-200 .evelution-minibar .namespace-and-title .has-icon:before,
-.ns-202 .evelution-minibar .namespace-and-title .has-icon:before   {
+.ns-2 .namespace-with-title .has-icon:before,
+.ns-200 .namespace-with-title .has-icon:before,
+.ns-202 .namespace-with-title .has-icon:before   {
 	content:"person";
 }
 
 .has-icon-labels #ca-nstab-image > :before,
 .has-icon-labels #ca-proofreadPageScanLink > :before,
-.ns-6 .evelution-minibar .namespace-and-title .has-icon:before  {
+.ns-6 .namespace-with-title .has-icon:before  {
 	content:"image";
 }
 
 .has-icon-labels #ca-nstab-help > :before,
-.ns-12 .evelution-minibar .namespace-and-title .has-icon:before  {
+.ns-12 .namespace-with-title .has-icon:before  {
 	content:"help";
 }
 
 .has-icon-labels #ca-nstab-template > :before,
 .has-icon-labels #ca-nstab-module > :before,
-.ns-10 .evelution-minibar .namespace-and-title .has-icon:before, 
-.ns-828 .evelution-minibar .namespace-and-title .has-icon:before {
+.ns-10 .namespace-with-title .has-icon:before, 
+.ns-828 .namespace-with-title .has-icon:before {
 	content:"bookmark";
 }
 
 .has-icon-labels #ca-nstab-category > :before,
-.ns-14 .evelution-minibar .namespace-and-title .has-icon:before  {
+.ns-14 .namespace-with-title .has-icon:before  {
 	content:"grid_view";
 }
 
@@ -2746,10 +2751,10 @@ white-space:nowrap;
 .has-icon-labels #ca-nstab-commentstreams > :before,
 .has-icon-labels #ca-nstab-message_wall > :before,
 .has-icon-labels #ca-nstab-user_blog_comment > :before,
-.ns-90 .evelution-minibar .namespace-and-title .has-icon:before,
-.ns-110 .evelution-minibar .namespace-and-title .has-icon:before,
-.ns-844 .evelution-minibar .namespace-and-title .has-icon:before,
-.ns-2600 .evelution-minibar .namespace-and-title .has-icon:before {
+.ns-90 .namespace-with-title .has-icon:before,
+.ns-110 .namespace-with-title .has-icon:before,
+.ns-844 .namespace-with-title .has-icon:before,
+.ns-2600 .namespace-with-title .has-icon:before {
 	content:"question_answer";
 }
 
@@ -2762,25 +2767,25 @@ white-space:nowrap;
 .has-icon-labels #ca-nstab-blog > :before,
 .has-icon-labels #ca-nstab-user-blog > :before,
 .has-icon-labels #ca-nstab-user_blog > :before,
-.ns-500 .evelution-minibar .namespace-and-title .has-icon:before,
-.ns-502 .evelution-minibar .namespace-and-title .has-icon:before,
-.ns-1502 .evelution-minibar .namespace-and-title .has-icon:before,
-.ns-5500 .evelution-minibar .namespace-and-title .has-icon:before {
+.ns-500 .namespace-with-title .has-icon:before,
+.ns-502 .namespace-with-title .has-icon:before,
+.ns-1502 .namespace-with-title .has-icon:before,
+.ns-5500 .namespace-with-title .has-icon:before {
 	content:"feed";
 }
 
 .has-icon-labels #ca-nstab-widget > :before,
-.ns-280 .evelution-minibar .namespace-and-title .has-icon:before {
+.ns-280 .namespace-with-title .has-icon:before {
 	content:"widgets";
 }
 
 .has-icon-labels #ca-nstab-poll > :before,
-.ns-300 .evelution-minibar .namespace-and-title .has-icon:before {
+.ns-300 .namespace-with-title .has-icon:before {
 	content:"leaderboard";
 }
 
 .has-icon-labels #ca-nstab-video > :before,
-.ns-400.evelution-minibar .namespace-and-title .has-icon:before {
+.ns-400 .namespace-with-title .has-icon:before {
 	content:"videocam";
 }
 
@@ -2789,7 +2794,7 @@ white-space:nowrap;
 }
 
 .has-icon-labels #ca-nstab-draft > :before,
-.ns-620 .evelution-minibar .namespace-and-title .has-icon:before {
+.ns-620 .namespace-with-title .has-icon:before {
 	content:"drafts";
 }
 
@@ -2828,7 +2833,8 @@ white-space:nowrap;
 .has-icon-labels #ca-edit > :before,
 .has-icon-labels #ca-ve-edit > :before,
 .has-icon-labels #ca-create > :before,
-.has-icon-labels #ca-formedit > :before {
+.has-icon-labels #ca-formedit > :before,
+.action-edit .namespace-with-title .has-icon:before {
 	content:"edit";
 }
 
@@ -2851,7 +2857,8 @@ white-space:nowrap;
 	content:"flag";
 }
 
-.has-icon-labels #ca-history > :before {
+.has-icon-labels #ca-history > :before,
+.action-history .namespace-with-title .has-icon:before {
 	content:"history";
 }
 
@@ -2874,7 +2881,8 @@ white-space:nowrap;
 }
 
 /* Actions */
-.has-icon-labels #ca-delete > a:before {
+.has-icon-labels #ca-delete > a:before,
+.action-delete .namespace-with-title .has-icon:before {
 	content:"delete";
 }
 
@@ -2882,7 +2890,8 @@ white-space:nowrap;
 	content:"open_with";
 }
 
-.has-icon-labels #ca-protect > a:before {
+.has-icon-labels #ca-protect > a:before,
+.action-protect .namespace-with-title .has-icon:before {
 	content:"lock";
 }
 
@@ -2894,7 +2903,8 @@ white-space:nowrap;
 	content:"star_border";
 }
 
-.has-icon-labels #ca-unwatch > a:before {
+.has-icon-labels #ca-unwatch > a:before,
+.action-watch .namespace-with-title .has-icon:before {
 	content:"star";
 }
 
@@ -2902,12 +2912,17 @@ white-space:nowrap;
 	content:"add";
 }
 
-.has-icon-labels #ca-purge > a:before {
+.has-icon-labels #ca-purge > a:before,
+.action-purge .namespace-with-title .has-icon:before {
 	content:"refresh";
 }
 
 .has-icon-labels #ca-copy > a:before {
 	content:"content_copy";
+}
+
+.action-info .namespace-with-title .has-icon:before {
+	content:"help";
 }
 
 /* Personal Tools */
@@ -3147,6 +3162,339 @@ white-space:nowrap;
 
 #p-variants .has-icon-labels li > a:before {
 	content:"font_download"
+}
+
+/** Special Pages **/
+/* Evelution */
+.mw-special-cpethemedesigner .namespace-with-title .has-icon:before {
+	content:"brush";
+}
+
+/* Standard */
+.mw-special-Deadendpages .namespace-with-title .has-icon:before {
+	content:"insert_page_break";
+}
+
+.mw-special-Unusedcategories .namespace-with-title .has-icon:before,
+.mw-special-Uncategorizedcategories .namespace-with-title .has-icon:before,
+.mw-special-Wantedcategories .namespace-with-title .has-icon:before,
+.mw-special-Categories .namespace-with-title .has-icon:before,
+.mw-special-TrackingCategories .namespace-with-title .has-icon:before,
+.mw-special-Mostcategories .namespace-with-title .has-icon:before,
+.mw-special-Mostlinkedcategories .namespace-with-title .has-icon:before {
+	content:"grid_view";
+}
+
+.mw-special-Uncategorizedimages .namespace-with-title .has-icon:before,
+.mw-special-Unusedimages .namespace-with-title .has-icon:before,
+.mw-special-Wantedfiles .namespace-with-title .has-icon:before,
+.mw-special-Newimages .namespace-with-title .has-icon:before,
+.mw-special-ListDuplicatedFiles .namespace-with-title .has-icon:before,
+.mw-special-Listfiles .namespace-with-title .has-icon:before {
+	content:"collections";
+}
+
+.mw-special-BrokenRedirects .namespace-with-title .has-icon:before,
+.mw-special-Listredirects .namespace-with-title .has-icon:before,
+.mw-special-Redirect .namespace-with-title .has-icon:before {
+	content:"subdirectory_arrow_right";
+}
+
+.mw-special-Uncategorizedtemplates .namespace-with-title .has-icon:before,
+.mw-special-Wantedtemplates .namespace-with-title .has-icon:before {
+	content:"bookmark_border";
+}
+
+.mw-special-Uncategorizedpages .namespace-with-title .has-icon:before,
+.mw-special-Lonelypages .namespace-with-title .has-icon:before,
+.mw-special-Wantedpages .namespace-with-title .has-icon:before,
+.mw-special-Allpages .namespace-with-title .has-icon:before,
+.mw-special-Prefixindex .namespace-with-title .has-icon:before,
+.mw-special-Mostlinked .namespace-with-title .has-icon:before {
+	content:"pages";
+}
+
+.mw-special-Unwatchedpages .namespace-with-title .has-icon:before {
+	content:"star_border";
+}
+
+.mw-special-Unusedtemplates .namespace-with-title .has-icon:before {
+	content:"bookmark_remove";
+}
+
+.mw-special-Ancientpages .namespace-with-title .has-icon:before {
+	content:"trending_down";
+}
+
+.mw-special-DoubleRedirects .namespace-with-title .has-icon:before {
+	content:"double_arrow";
+}
+
+.mw-special-Protectedpages .namespace-with-title .has-icon:before,
+.mw-special-Protectedtitles .namespace-with-title .has-icon:before {
+	content:"lock";
+}
+
+.mw-special-Longpages .namespace-with-title .has-icon:before {
+	content:"arrow_upward";
+}
+
+.mw-special-Fewestrevisions .namespace-with-title .has-icon:before {
+	content:"update";
+}
+
+.mw-special-Withoutinterwiki .namespace-with-title .has-icon:before,
+.mw-special-Mostinterwikis .namespace-with-title .has-icon:before,
+.mw-special-Translate .namespace-with-title .has-icon:before,
+.mw-special-PagePreparation .namespace-with-title .has-icon:before,
+.mw-special-PageTranslation .namespace-with-title .has-icon:before,
+.mw-special-SupportedLanguages .namespace-with-title .has-icon:before {
+	content:"translate";
+}
+
+.mw-special-Shortpages .namespace-with-title .has-icon:before {
+	content:"arrow_downward";
+}
+
+.mw-special-Search .namespace-with-title .has-icon:before {
+	content:"search";
+}
+
+.mw-special-LinkSearch .namespace-with-title .has-icon:before,
+.mw-special-SearchTranslations .namespace-with-title .has-icon:before {
+	content:"travel_explore";
+}
+
+.mw-special-PagesWithProp .namespace-with-title .has-icon:before {
+	content:"category";
+}
+
+.mw-special-CreateAccount .namespace-with-title .has-icon:before,
+.mw-special-Activeusers .namespace-with-title .has-icon:before,
+.mw-special-Listusers .namespace-with-title .has-icon:before {
+	content:"person";
+}
+
+.mw-special-Userlogin .namespace-with-title .has-icon:before {
+	content:"login";
+}
+
+.mw-special-Userlogout .namespace-with-title .has-icon:before {
+	content:"logout";
+}
+
+.mw-special-UserActivity .namespace-with-title .has-icon:before {
+	content:"trending_up";
+}
+
+.mw-special-PasswordReset .namespace-with-title .has-icon:before,
+.mw-special-ChangeCredentials .namespace-with-title .has-icon:before,
+.mw-special-PasswordPolicies .namespace-with-title .has-icon:before,
+.mw-special-BotPasswords .namespace-with-title .has-icon:before {
+	content:"password";
+}
+
+.mw-special-ChangeEmail .namespace-with-title .has-icon:before {
+	content:"mail";
+}
+
+.mw-special-ResetTokens .namespace-with-title .has-icon:before {
+	content:"token";
+}
+
+.mw-special-BlockList .namespace-with-title .has-icon:before,
+.mw-special-AutoblockList .namespace-with-title .has-icon:before,
+.mw-special-Block .namespace-with-title .has-icon:before {
+	content:"block";
+}
+
+.mw-special-Unblock .namespace-with-title .has-icon:before,
+.mw-special-RemoveAvatar .namespace-with-title .has-icon:before,
+.mw-special-RemoveCredentials .namespace-with-title .has-icon:before {
+	content:"remove_circle";
+}
+
+.mw-special-Listgrants .namespace-with-title .has-icon:before,
+.mw-special-Listgrouprights .namespace-with-title .has-icon:before,
+.mw-special-Userrights .namespace-with-title .has-icon:before {
+	content:"shield";
+}
+
+.mw-special-DeletedContributions .namespace-with-title .has-icon:before {
+	content:"delete";
+}
+
+.mw-special-ViewGifts .namespace-with-title .has-icon:before,
+.mw-special-GiveGift .namespace-with-title .has-icon:before,
+.mw-special-GiftManager .namespace-with-title .has-icon:before,
+.mw-special-SystemGiftManager .namespace-with-title .has-icon:before,
+.mw-special-ViewSystemGifts .namespace-with-title .has-icon:before {
+	content:"card_giftcard";
+}
+
+.mw-special-Contributions .namespace-with-title .has-icon:before,
+.mw-special-EditWatchlist .namespace-with-title .has-icon:before,
+.mw-special-EditPage .namespace-with-title .has-icon:before {
+	content:"edit";
+}
+
+.mw-special-ViewRelationships .namespace-with-title .has-icon:before {
+	content:"people";
+}
+
+.mw-special-ViewRelationshipRequests .namespace-with-title .has-icon:before {
+	content:"people_outline";
+}
+
+.mw-special-Notifications .namespace-with-title .has-icon:before {
+	content:"notifications";
+}
+
+.mw-special-Tags .namespace-with-title .has-icon:before {
+	content:"sell";
+}
+
+.mw-special-Log .namespace-with-title .has-icon:before {
+	content:"visibility";
+}
+
+.mw-special-Recentchanges .namespace-with-title .has-icon:before,
+.mw-special-Recentchangeslinked .namespace-with-title .has-icon:before,
+.mw-special-TranslationStats .namespace-with-title .has-icon:before,
+.mw-special-MessageGroupStats .namespace-with-title .has-icon:before {
+	content:"trending_up";
+}
+
+.mw-special-Watchlist .namespace-with-title .has-icon:before {
+	content:"star";
+}
+
+.mw-special-Newpages .namespace-with-title .has-icon:before {
+	content:"note_add";
+}
+
+.mw-special-Upload .namespace-with-title .has-icon:before {
+	content:"upload";
+}
+
+.mw-special-MIMEsearch .namespace-with-title .has-icon:before {
+	content:"youtube_searched_for";
+}
+
+.mw-special-FileDuplicateSearch .namespace-with-title .has-icon:before {
+	content:"pageview";
+}
+
+.mw-special-Version .namespace-with-title .has-icon:before {
+	content:"info";
+}
+
+.mw-special-ExpandTemplates .namespace-with-title .has-icon:before,
+.mw-special-Mostlinkedtemplates .namespace-with-title .has-icon:before {
+	content:"bookmark";
+}
+
+.mw-special-ApiSandbox .namespace-with-title .has-icon:before {
+	content:"api";
+}
+
+.mw-special-Allmessages .namespace-with-title .has-icon:before {
+	content:"security";
+}
+
+.mw-special-Booksources .namespace-with-title .has-icon:before {
+	content:"book";
+}
+
+.mw-special-Interwiki .namespace-with-title .has-icon:before {
+	content:"open_in_new";
+}
+
+
+.mw-special-Statistics .namespace-with-title .has-icon:before,
+.mw-special-MediaStatistics .namespace-with-title .has-icon:before,
+.mw-special-TopUsers .namespace-with-title .has-icon:before {
+	content:"leaderboard";
+}
+
+.mw-special-PageInfo .namespace-with-title .has-icon:before {
+	content:"help";
+}
+
+.mw-special-Diff .namespace-with-title .has-icon:before {
+	content:"difference";
+}
+
+.mw-special-Purge .namespace-with-title .has-icon:before {
+	content:"refresh";
+}
+
+.mw-special-PageHistory .namespace-with-title .has-icon:before,
+.mw-special-Mostrevisions .namespace-with-title .has-icon:before {
+	content:"history";
+}
+
+.mw-special-RandomInCategory .namespace-with-title .has-icon:before {
+	content:"shuffle";
+}
+
+.mw-special-NewSection .namespace-with-title .has-icon:before {
+	content:"add";
+}
+
+.mw-special-Mostimages .namespace-with-title .has-icon:before {
+	content:"image";
+}
+
+.mw-special-ChangeContentModel .namespace-with-title .has-icon:before {
+	content:"build";
+}
+
+.mw-special-MergeHistory .namespace-with-title .has-icon:before {
+	content:"merge";
+}
+
+.mw-special-Undelete .namespace-with-title .has-icon:before {
+	content:"delete_outline";
+}
+
+.mw-special-ComparePages .namespace-with-title .has-icon:before {
+	content:"compare";
+}
+
+.mw-special-Import .namespace-with-title .has-icon:before,
+.mw-special-ImportTranslations .namespace-with-title .has-icon:before {
+	content:"file_upload";
+}
+
+.mw-special-Whatlinkshere .namespace-with-title .has-icon:before {
+	content:"insert_link";
+}
+
+.mw-special-Export .namespace-with-title .has-icon:before,
+.mw-special-ExportTranslations .namespace-with-title .has-icon:before  {
+	content:"file_download";
+}
+
+.mw-special-Translations .namespace-with-title .has-icon:before {
+	content:"font_download";
+}
+
+.mw-special-ManageMessageGroups .namespace-with-title .has-icon:before {
+	content:"dashboard";
+}
+
+.mw-special-LanguageStats .namespace-with-title .has-icon:before {
+	content:"flag";
+}
+
+.mw-special-AggregateGroups .namespace-with-title .has-icon:before {
+	content:"group_work";
+}
+
+.mw-special-PageMigration .namespace-with-title .has-icon:before,
+.mw-special-Movepage .namespace-with-title .has-icon:before {
+	content:"open_with";
 }
 
 
