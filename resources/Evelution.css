@@ -791,6 +791,7 @@ width:100%;
 .evelution-content .evelution-article-wrapper .evelution-article-actions .cpe-dropdown {
 	margin-bottom:0;
 	position:relative;
+	display:flex;
 }
 
 .evelution-content .evelution-article-wrapper .evelution-article-actions .cactions >li > a,
@@ -3190,13 +3191,16 @@ white-space:nowrap;
 .mw-special-Wantedfiles .namespace-with-title .has-icon:before,
 .mw-special-Newimages .namespace-with-title .has-icon:before,
 .mw-special-ListDuplicatedFiles .namespace-with-title .has-icon:before,
-.mw-special-Listfiles .namespace-with-title .has-icon:before {
+.mw-special-Listfiles .namespace-with-title .has-icon:before,
+.mw-special-GlobalNewFiles .namespace-with-title .has-icon:before {
 	content:"collections";
 }
 
 .mw-special-BrokenRedirects .namespace-with-title .has-icon:before,
 .mw-special-Listredirects .namespace-with-title .has-icon:before,
-.mw-special-Redirect .namespace-with-title .has-icon:before {
+.mw-special-Redirect .namespace-with-title .has-icon:before,
+.mw-special-SoftRedirectPageLinks .namespace-with-title .has-icon:before,
+.mw-special-SoftRedirectPages .namespace-with-title .has-icon:before {
 	content:"subdirectory_arrow_right";
 }
 
@@ -3270,10 +3274,17 @@ white-space:nowrap;
 }
 
 .mw-special-CreateAccount .namespace-with-title .has-icon:before,
-.mw-special-Activeusers .namespace-with-title .has-icon:before,
-.mw-special-Listusers .namespace-with-title .has-icon:before {
+.mw-special-UserBoard .namespace-with-title .has-icon:before {
 	content:"person";
 }
+
+.mw-special-Activeusers .namespace-with-title .has-icon:before,
+.mw-special-Listusers .namespace-with-title .has-icon:before,
+.mw-special-ViewRelationships .namespace-with-title .has-icon:before,
+.mw-special-GlobalUsers .namespace-with-title .has-icon:before {
+	content:"people";
+}
+
 
 .mw-special-Userlogin .namespace-with-title .has-icon:before {
 	content:"login";
@@ -3288,11 +3299,19 @@ white-space:nowrap;
 }
 
 .mw-special-PasswordReset .namespace-with-title .has-icon:before,
-.mw-special-ChangeCredentials .namespace-with-title .has-icon:before,
 .mw-special-PasswordPolicies .namespace-with-title .has-icon:before,
 .mw-special-BotPasswords .namespace-with-title .has-icon:before {
 	content:"password";
 }
+
+.mw-special-ChangeCredentials .namespace-with-title .has-icon:before,
+.mw-special-OAuthManageMyGrants .namespace-with-title .has-icon:before,
+.mw-special-OAuthConsumerRegistration .namespace-with-title .has-icon:before,
+.mw-special-CentralAuth .namespace-with-title .has-icon:before,
+.mw-special-OATHManage .namespace-with-title .has-icon:before {
+	content:"manage_accounts";
+}
+
 
 .mw-special-ChangeEmail .namespace-with-title .has-icon:before {
 	content:"mail";
@@ -3316,11 +3335,15 @@ white-space:nowrap;
 
 .mw-special-Listgrants .namespace-with-title .has-icon:before,
 .mw-special-Listgrouprights .namespace-with-title .has-icon:before,
-.mw-special-Userrights .namespace-with-title .has-icon:before {
+.mw-special-Userrights .namespace-with-title .has-icon:before,
+.mw-special-GlobalGroupPermissions .namespace-with-title .has-icon:before,
+.mw-special-GlobalGroupMembership .namespace-with-title .has-icon:before,
+.mw-special-ManageWikiDefaultPermissions .namespace-with-title .has-icon:before {
 	content:"shield";
 }
 
-.mw-special-DeletedContributions .namespace-with-title .has-icon:before {
+.mw-special-DeletedContributions .namespace-with-title .has-icon:before,
+.mw-special-DeletedWikis .namespace-with-title .has-icon:before {
 	content:"delete";
 }
 
@@ -3338,23 +3361,22 @@ white-space:nowrap;
 	content:"edit";
 }
 
-.mw-special-ViewRelationships .namespace-with-title .has-icon:before {
-	content:"people";
-}
-
 .mw-special-ViewRelationshipRequests .namespace-with-title .has-icon:before {
 	content:"people_outline";
 }
 
-.mw-special-Notifications .namespace-with-title .has-icon:before {
-	content:"notifications";
+.mw-special-Notifications .namespace-with-title .has-icon:before,
+.mw-special-CentralNotice .namespace-with-title .has-icon:before,
+.mw-special-CreateMassMessageList .namespace-with-title .has-icon:before {
+	content:"inbox";
 }
 
 .mw-special-Tags .namespace-with-title .has-icon:before {
 	content:"sell";
 }
 
-.mw-special-Log .namespace-with-title .has-icon:before {
+.mw-special-Log .namespace-with-title .has-icon:before,
+.mw-special-AbuseLog .namespace-with-title .has-icon:before {
 	content:"visibility";
 }
 
@@ -3369,7 +3391,8 @@ white-space:nowrap;
 	content:"star";
 }
 
-.mw-special-Newpages .namespace-with-title .has-icon:before {
+.mw-special-Newpages .namespace-with-title .has-icon:before,
+.mw-special-RequestWiki .namespace-with-title .has-icon:before {
 	content:"note_add";
 }
 
@@ -3398,7 +3421,8 @@ white-space:nowrap;
 	content:"api";
 }
 
-.mw-special-Allmessages .namespace-with-title .has-icon:before {
+.mw-special-Allmessages .namespace-with-title .has-icon:before,
+.mw-special-OAuthListConsumers .namespace-with-title .has-icon:before {
 	content:"security";
 }
 
@@ -3406,14 +3430,19 @@ white-space:nowrap;
 	content:"book";
 }
 
-.mw-special-Interwiki .namespace-with-title .has-icon:before {
+.mw-special-Interwiki .namespace-with-title .has-icon:before,
+.mw-special-CiteThisPage .namespace-with-title .has-icon:before {
 	content:"open_in_new";
 }
 
 
 .mw-special-Statistics .namespace-with-title .has-icon:before,
 .mw-special-MediaStatistics .namespace-with-title .has-icon:before,
-.mw-special-TopUsers .namespace-with-title .has-icon:before {
+.mw-special-TopUsers .namespace-with-title .has-icon:before,
+.mw-special-GadgetUsage .namespace-with-title .has-icon:before,
+.mw-special-Editcount .namespace-with-title .has-icon:before,
+.mw-special-MathStatus .namespace-with-title .has-icon:before,
+.mw-special-Analytics .namespace-with-title .has-icon:before {
 	content:"leaderboard";
 }
 
@@ -3442,7 +3471,8 @@ white-space:nowrap;
 	content:"add";
 }
 
-.mw-special-Mostimages .namespace-with-title .has-icon:before {
+.mw-special-Mostimages .namespace-with-title .has-icon:before,
+.mw-special-GlobalUsage .namespace-with-title .has-icon:before {
 	content:"image";
 }
 
@@ -3450,7 +3480,8 @@ white-space:nowrap;
 	content:"build";
 }
 
-.mw-special-MergeHistory .namespace-with-title .has-icon:before {
+.mw-special-MergeHistory .namespace-with-title .has-icon:before,
+.mw-special-CategoryTree .namespace-with-title .has-icon:before {
 	content:"merge";
 }
 
@@ -3467,7 +3498,8 @@ white-space:nowrap;
 	content:"file_upload";
 }
 
-.mw-special-Whatlinkshere .namespace-with-title .has-icon:before {
+.mw-special-Whatlinkshere .namespace-with-title .has-icon:before,
+.mw-special-RottenLinks .namespace-with-title .has-icon:before {
 	content:"insert_link";
 }
 
@@ -3493,8 +3525,56 @@ white-space:nowrap;
 }
 
 .mw-special-PageMigration .namespace-with-title .has-icon:before,
-.mw-special-Movepage .namespace-with-title .has-icon:before {
+.mw-special-Movepage .namespace-with-title .has-icon:before,
+.mw-special-GlobalRenameRequest .namespace-with-title .has-icon:before {
 	content:"open_with";
+}
+
+.mw-special-OrphanedTalkPages .namespace-with-title .has-icon:before {
+	content:"chat_bubble";
+}
+
+.mw-special-ListErrors .namespace-with-title .has-icon:before {
+	content:"error";
+}
+
+.mw-special-DisambiguationPages .namespace-with-title .has-icon:before,
+.mw-special-DisambiguationPageLinks .namespace-with-title .has-icon:before {
+	content:"assistant";
+}
+
+.mw-special-DataDump .namespace-with-title .has-icon:before {
+	content:"save";
+}
+
+.mw-special-AbuseFilter .namespace-with-title .has-icon:before {
+	content:"filter_alt";
+}
+
+.mw-special-GraphSandbox .namespace-with-title .has-icon:before {
+	content:"view_timeline";
+}
+
+.mw-special-WikiSets .namespace-with-title .has-icon:before,
+.mw-special-WikiDiscover .namespace-with-title .has-icon:before {
+	content:"groups";
+}
+
+.mw-special-UrlShortener .namespace-with-title .has-icon:before {
+	content:"public";
+}
+
+.mw-special-RequestWikiQueue .namespace-with-title .has-icon:before,
+.mw-special-GlobalRenameProgress .namespace-with-title .has-icon:before {
+	content:"pending";
+}
+
+.mw-special-MirahezeSurvey .namespace-with-title .has-icon:before {
+	content:"hive";
+}
+
+.mw-special-IncidentReports .namespace-with-title .has-icon:before {
+	content:"report";
 }
 
 
