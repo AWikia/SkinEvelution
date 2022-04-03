@@ -108,12 +108,8 @@ function UpdateRangeInputs() {
 	if (getKey('right-rail-full') === '-1') {
 		insertKey('right-rail-full', 'true' );
 	}
-	if (getKey('left-rail-full') === '-1') {
-		insertKey('left-rail-full', 'true' );
-	}
 	var content_full = getKey('content-full')
 	var right_rail_full = getKey('right-rail-full');
-	var left_rail_full = getKey('left-rail-full');
     getParams().forEach(function (param) {
         var key = param.split("=")[0];
         var value = param.split("=")[1];
@@ -126,10 +122,8 @@ function UpdateRangeInputs() {
             case 'hiderail':
 				if (value === 'true') {
 					right_rail_full = 'false';
-					left_rail_full = 'false';
 				} else {
 					right_rail_full = 'true';
-					left_rail_full = 'true';
 				}
 				console.info('Pane visibility settings overriden')
                 break;
@@ -141,14 +135,6 @@ function UpdateRangeInputs() {
 				}
 				console.info('Right pane visibility settings overriden')
                 break;
-            case 'hideleftrail':
-				if (value === 'true') {
-					left_rail_full = 'false';
-				} else {
-					left_rail_full = 'true';
-				}
-				console.info('Left pane visibility settings overriden')
-                break;
 
         }
     });
@@ -157,15 +143,6 @@ function UpdateRangeInputs() {
 	}
     if (right_rail_full === 'true') {
 		document.querySelector(' body ').classList.add('has-right-rail');
-	}
-	var leftrail = true
-	if (mediawiki) { // @REMOVEME: In Ivilution, Parmalution and CPE Language
-		{{#has-servelution-vanadium}}
-			leftrail = false;
-		{{/has-servelution-vanadium}}
-	}
-    if ( (left_rail_full === 'true') && (leftrail)) {
-		document.querySelector(' body ').classList.add('has-left-rail');
 	}
 	UpdateRangeInputs();
 	DropDownUpdate();
@@ -446,7 +423,6 @@ function ResetSettings() {
 	if (confirm("Are you sure you want to reset Evelution's settings to their defaults? This can't be undone.")) {
 		insertKey('content-full', 'false' );
 		insertKey('right-rail-full', 'true' );
-		insertKey('left-rail-full', 'true' );
 		insertKey('theme-selected', 'A' );
 		if ( ( window.matchMedia('(forced-colors: active)').matches ) ) {
 			insertKey('visual-style', 'contrast' );
@@ -485,19 +461,6 @@ function ToggleRail() {
 	}
 }
 
-function ToggleRail2() {
-	if 	(document.querySelector(' body.has-left-rail ')) {
-		document.querySelector(' body ').classList.remove('has-left-rail');
-		insertKey('left-rail-full', 'false' );
-	} else {
-		document.querySelector(' body ').classList.add('has-left-rail');
-		insertKey('left-rail-full', 'true' );
-	}
-}
-
-
-
-
 
 function RemoveEmptyMenus() {
 // Remove Miraheze elements
@@ -535,7 +498,6 @@ function RemoveEmptyMenus() {
 	toc = document.querySelector(".toc#toc > ul");
 	if (toc) {
 		document.querySelector(".evelution-minibar .toc-module .evelution-module-content > .toc > .toc").innerHTML = toc.innerHTML
-		document.querySelector(".evelution-rail-wrapper .toc-module .evelution-module-content > .toc > .toc").innerHTML = toc.innerHTML
 	} else {
 		var toc2 = document.querySelector(".evelution-minibar .toc-module")
 		if (toc2) {
@@ -543,11 +505,6 @@ function RemoveEmptyMenus() {
 		}
 	}
 
-
-	tools = document.querySelector("#p-tb .evelution-module-content > div.toc > ul.toc");
-	if (tools) {
-		document.querySelector(".evelution-module.tools-module ul").innerHTML = tools.innerHTML
-	}
 
 	
 	if (! (document.querySelector(".evelution-article-actions #ca-edit")) ) {

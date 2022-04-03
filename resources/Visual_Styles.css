@@ -311,7 +311,8 @@ filter:none!important;
 	}
 }
 
-.visualstyle-contrast .evelution-minibar .link:hover {
+.visualstyle-contrast .evelution-minibar .link:hover,
+.visualstyle-contrast .evelution-top-actions .link:hover {
 	-webkit-animation:none;
 	animation:none;
 	color:var(--highlight-foreground-color);
@@ -323,7 +324,12 @@ filter:none!important;
 .visualstyle-contrast .evelution-minibar .link:focus, 
 .visualstyle-contrast .evelution-minibar .cpe-dropdown:focus > .link, 
 .visualstyle-contrast .evelution-minibar .cpe-dropdown:focus-within > .link, 
-.visualstyle-contrast .evelution-minibar .link.active {
+.visualstyle-contrast .evelution-minibar .link.active,
+.visualstyle-contrast .evelution-top-actions .link:active, 
+.visualstyle-contrast .evelution-top-actions .link:focus, 
+.visualstyle-contrast .evelution-top-actions .cpe-dropdown:focus > .link, 
+.visualstyle-contrast .evelution-top-actions .cpe-dropdown:focus-within > .link, 
+.visualstyle-contrast .evelution-top-actions .link.active {
 	-webkit-animation:none;
 	animation:none;
 	color:var(--highlight-background-color);
@@ -641,7 +647,8 @@ background-image:linear-gradient(to left,rgba(255,255,255, 0) 200px,var(--canvas
 
 
 
-.visualstyle-basic .evelution-minibar .link {
+.visualstyle-basic .evelution-minibar .link,
+.visualstyle-basic .evelution-top-actions .link {
 	transition:background-color 400ms var(--transitioner) 0ms;
 }
 
@@ -652,6 +659,7 @@ background-image:linear-gradient(to left,rgba(255,255,255, 0) 200px,var(--canvas
 }
 
 
+
 .visualstyle-basic .evelution-minibar .link:hover  {
 		background-color:rgba(var(--luna-hyperlink-background-color-rgb),0.2);
 		color:var(--luna-text-background-color-hover);
@@ -660,16 +668,6 @@ background-image:linear-gradient(to left,rgba(255,255,255, 0) 200px,var(--canvas
 }
 
 
-.visualstyle-basic .evelution-minibar .link.active, 
-.visualstyle-basic .evelution-minibar .link:active, 
-.visualstyle-basic .evelution-minibar .link:focus, 
-.visualstyle-basic .evelution-minibar .cpe-dropdown:focus > .link,
-.visualstyle-basic .evelution-minibar .cpe-dropdown:focus-within > .link {
-		border:1px solid var(--header-foreground-color-hover);
-		background-color:rgba(var(--hyperlink-background-color-rgb),0.4);
-		color:rgba(var(--header-foreground-color-hover-rgb),0.8);
-		box-shadow:none;
-}
 
 .visualstyle-basic .evelution-minibar .link.active, 
 .visualstyle-basic .evelution-minibar .link:active, 
@@ -681,6 +679,31 @@ background-image:linear-gradient(to left,rgba(255,255,255, 0) 200px,var(--canvas
 		color:rgba(var(--luna-text-background-color-hover-rgb),0.8);
 		box-shadow:none;
 }
+
+.visualstyle-basic .evelution-top-actions .link {
+    border:1px solid var(--header-foreground-color);
+}
+
+.visualstyle-basic .evelution-top-actions .link:hover  {
+		background-color:rgba(var(--hyperlink-background-color-rgb),0.2);
+		color:var(--header-foreground-color-hover);
+		box-shadow:none;
+		border:1px solid var(--header-foreground-color-hover);
+}
+
+
+.visualstyle-basic .evelution-top-actions .link.active, 
+.visualstyle-basic .evelution-top-actions .link:active, 
+.visualstyle-basic .evelution-top-actions .link:focus, 
+.visualstyle-basic .evelution-top-actions .cpe-dropdown:focus > .link,
+.visualstyle-basic .evelution-top-actions .cpe-dropdown:focus-within > .link {
+		border:1px solid var(--header-foreground-color-hover);
+		background-color:rgba(var(--hyperlink-background-color-rgb),0.4);
+		color:rgba(var(--header-foreground-color-hover-rgb),0.8);
+		box-shadow:none;
+}
+
+
 
 
 .visualstyle-basic ::-webkit-scrollbar-thumb {
@@ -931,7 +954,8 @@ linear-gradient(90deg, transparent 0%, transparent calc(50% - -3px), currentColo
 
 
 
-.visualstyle-basiccontrast .evelution-minibar .link {
+.visualstyle-basiccontrast .evelution-minibar .link,
+.visualstyle-basiccontrast .evelution-top-actions .link {
 	transition:background-color 400ms var(--transitioner) 0ms, color 10ms var(--transitioner) 10ms, border-color 10ms var(--transitioner) 10ms, transform 200ms var(--transitioner) 0ms;
 }
 
@@ -939,7 +963,7 @@ linear-gradient(90deg, transparent 0%, transparent calc(50% - -3px), currentColo
 
 
 .visualstyle-basiccontrast .evelution-minibar .link,
-.visualstyle-basiccontrast .evelution-sidebar .link {
+.visualstyle-basiccontrast .evelution-top-actions .link {
 	background-clip:padding-box;
 	background-color:var(--canvas-background-color);
 	color:var(--canvas-text-background-color);
@@ -951,7 +975,12 @@ linear-gradient(90deg, transparent 0%, transparent calc(50% - -3px), currentColo
 .visualstyle-basiccontrast .evelution-minibar .link:focus, 
 .visualstyle-basiccontrast .evelution-minibar .cpe-dropdown:focus > .link, 
 .visualstyle-basiccontrast .evelution-minibar .cpe-dropdown:focus-within > .link, 
-.visualstyle-basiccontrast .evelution-minibar .link.active {
+.visualstyle-basiccontrast .evelution-minibar .link.active,
+.visualstyle-basiccontrast .evelution-top-actions .link:hover, 
+.visualstyle-basiccontrast .evelution-top-actions .link:focus, 
+.visualstyle-basiccontrast .evelution-top-actions .cpe-dropdown:focus > .link, 
+.visualstyle-basiccontrast .evelution-top-actions .cpe-dropdown:focus-within > .link, 
+.visualstyle-basiccontrast .evelution-top-actions .link.active {
 	-webkit-animation:none;
 	animation:none;
 	color:var(--highlight-foreground-color);
@@ -1581,6 +1610,17 @@ color:inherit;
 	border-color:rgba(var(--luna-foreground-color-rgb),0.2);
 }
 
+.visualstyle-simple .evelution-top-actions .link.active, 
+.visualstyle-simple .evelution-top-actions .link:hover, 
+.visualstyle-simple .evelution-top-actions .link:focus, 
+.visualstyle-simple .evelution-top-actions .cpe-dropdown:focus > .link, 
+.visualstyle-simple .evelution-top-actions .cpe-dropdown:focus-within > .link {
+	background-color:var(--desktop-background-color-hover);
+	color:var(--desktop-foreground-color-inverted);
+	box-shadow:none;
+	animation:none;
+	border-color:rgba(var(--canvas-foreground-color-rgb),0.2);
+}
 
 
 
@@ -2311,6 +2351,7 @@ box-shadow:none!important;
 
 
 .visualstyle-classic .evelution-sidebar .link,
+.visualstyle-classic .evelution-top-actions .link,
 .visualstyle-classic .evelution-minibar .link,
 .visualstyle-classic .cpe-button:not(.is-text),
 .visualstyle-classic .toggle-rail-button,
@@ -2339,6 +2380,7 @@ box-shadow:none!important;
 .visualstyle-classic .cpe-banner-notification,
 /* Classic Contrast */
 .visualstyle-classiccontrast .evelution-sidebar .link,
+.visualstyle-classiccontrast .evelution-top-actions .link,
 .visualstyle-classiccontrast .evelution-minibar .link,
 .visualstyle-classiccontrast .cpe-button:not(.is-text),
 .visualstyle-classiccontrast .toggle-rail-button,
@@ -2607,6 +2649,8 @@ margin-right:0;
 
 .visualstyle-classic .evelution-sidebar .link:active,
 .visualstyle-classic .evelution-sidebar .link.active,
+.visualstyle-classic .evelution-top-actions .link:active,
+.visualstyle-classic .evelution-top-actions .link.active,
 .visualstyle-classic .evelution-minibar .link:active,
 .visualstyle-classic .evelution-minibar .link.active,
 .visualstyle-classic .cpe-dropdown:focus > .link,
@@ -2630,6 +2674,8 @@ margin-right:0;
 /* Classic Contrast */
 .visualstyle-classiccontrast .evelution-sidebar .link:active,
 .visualstyle-classiccontrast .evelution-sidebar .link.active,
+.visualstyle-classiccontrast .evelution-top-actions .link:active,
+.visualstyle-classiccontrast .evelution-top-actions .link.active,
 .visualstyle-classiccontrast .evelution-minibar .link:active,
 .visualstyle-classiccontrast .evelution-minibar .link.active,
 .visualstyle-classiccontrast .cpe-dropdown:focus > .link,
@@ -2656,6 +2702,7 @@ margin-right:0;
 
 
 .visualstyle-classic .evelution-sidebar .link.active,
+.visualstyle-classic .evelution-top-actions .link.active,
 .visualstyle-classic .evelution-minibar .link.active,
 .visualstyle-classic .cpe-dropdown:focus > .link,
 .visualstyle-classic .cpe-dropdown:focus-within > .link,
@@ -2668,6 +2715,7 @@ margin-right:0;
 .visualstyle-classic .cpe-dropdown:focus-within > .cpe-floating-button,
 /* Classic Contrast */
 .visualstyle-classiccontrast .evelution-sidebar .link.active,
+.visualstyle-classiccontrast .evelution-top-actions .link.active,
 .visualstyle-classiccontrast .evelution-minibar .link.active,
 .visualstyle-classiccontrast .cpe-dropdown:focus > .link,
 .visualstyle-classiccontrast .cpe-dropdown:focus-within > .link,
@@ -2697,8 +2745,10 @@ margin-right:0;
 }
 
 
+.visualstyle-classic .evelution-top-actions .link,
 .visualstyle-classic .evelution-minibar .link,
 /* Classic Contrast */
+.visualstyle-classiccontrast .evelution-top-actions .link,
 .visualstyle-classiccontrast .evelution-minibar .link {
 	padding:0 5px;
 	margin-left:1px;
