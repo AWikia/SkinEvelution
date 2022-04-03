@@ -169,7 +169,8 @@ var visualColorNames = ['standard', 'nocolormanagement'];
                 break;
         }
     });
-	document.querySelector("head").insertAdjacentHTML('afterbegin','<style class="theming"></style>');
+    var themes = {{>Themes}} // @REMOVEME: In Ivilution, Parmalution and CPE Language (Change to Empty String instead)
+	document.querySelector("head").insertAdjacentHTML('afterbegin','<style class="themes">' + themes + '</style><style class="theming"></style>');
 	document.querySelector('body').setAttribute('tabindex',-1);; // Add the CPE button class
 	document.querySelector('body').focus();
 	ToggleTheme(theme_selected,false,false);
