@@ -838,6 +838,7 @@ position:relative;
 word-wrap: break-word;
 font-size:14px;
 min-height:240px; /* Required for Floating actions not to overlap */
+overflow-x:auto;
 }
 
 .evelution-article .cpe-button {
@@ -2283,6 +2284,15 @@ margin-left:1px;
  .action-view:not(.ns--1):not(.ns-6):not(.ns-8):not(.mainpage) container:not(.no-rail) .evelution-rail-wrapper,
  .action-view:not(.ns--1):not(.ns-6):not(.ns-8):not(.mainpage) container:not(.no-rail) .evelution-page-header .toggle-rail-button {
 	display:flex;
+}
+
+:not(.action-view).ns--1 .evelution-wrapper .evelution-article-wrapper,
+:not(.action-view).ns-6 .evelution-wrapper .evelution-article-wrapper,
+:not(.action-view).ns-8 .evelution-wrapper .evelution-article-wrapper,
+:not(.action-view).mainpage .evelution-wrapper .evelution-article-wrapper,
+:not(.action-view) container.no-rail .evelution-wrapper .evelution-article-wrapper {
+		flex-direction:column;
+		flex-wrap:nowrap;
 }
 
 .activity-module .mw-changeslist-legend,
