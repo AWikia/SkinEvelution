@@ -577,6 +577,14 @@ function GetCustomFont2() {
 
 
 function ContrastRatio() {
+
+	if (mediawiki) { // @REMOVEME: In Ivilution, Parmalution and CPE Language
+		{{#has-servelution-vanadium}}
+			return (window.matchMedia('(prefers-contrast: more)').matches) ? 2.00 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 1.50 : 1.0
+		{{/has-servelution-vanadium}}
+	}
+
+
 	if (MW18contrastmode == 'auto') {
 		return (window.matchMedia('(prefers-contrast: more)').matches) ? 2.00 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 1.50 : 1.0
 	} else if (MW18contrastmode == 'low') {
@@ -599,6 +607,13 @@ function ContrastRatio() {
 }
 
 function ContrastRatio2() {
+	if (mediawiki) { // @REMOVEME: In Ivilution, Parmalution and CPE Language
+		{{#has-servelution-vanadium}}
+			return (window.matchMedia('(prefers-contrast: more)').matches) ? 0.35 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 0.30 : 0.25
+		{{/has-servelution-vanadium}}
+	}
+
+
 	if (MW18contrastmode == 'auto') {
 		return (window.matchMedia('(prefers-contrast: more)').matches) ? 0.35 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 0.30 : 0.25
 	} else if (MW18contrastmode == 'low') {
@@ -1305,13 +1320,13 @@ function ColorTestTwin(color1,color2,intensity=1,hue='nil') {
 
 
 function ColorTest(color,color2) { // Regular Colors
+	var dledlen = (color2 != undefined) ? true : false; // Disable Doulgido Dledlen
 	// Disable Doulgido Dledlen form VB Clients
 	if (mediawiki) { // @REMOVEME: In Ivilution, Parmalution and CPE Language
 		{{#has-servelution-no-dground}}
-			dledlen = false;
+			var dledlen = false;
 		{{/has-servelution-no-dground}}
 	}
-	var dledlen = (color2 != undefined) ? true : false; // Disable Doulgido Dledlen
 	if (dledlen === false) {
 		var color2 = color;
 	}
@@ -1563,12 +1578,16 @@ var content_text1 = ColorTest(content_text);
 /** 2nd Page text color **/
 var content2_text= GetCanvasText2();
 
+
+if ((getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--canvas-text-background-color") == 'auto') && (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--canvas-text-secondary-background-color") == 'auto')  ) {
+} else {
 	// Liatch Quirk
 		var content2_text = ColorInvert(content2_text);
 	
 		while ( ( !(isSuitableColor(content2_text, dropdowncolor)) ) && (content2_text !== lightness3) ) {
 			var content2_text= MiniColorTest3(content2_text,dropdowncolor);
 		}
+}
 
 
 var content2_text1 = ColorTest(content2_text,content_text);
