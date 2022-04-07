@@ -53,6 +53,8 @@
 	} else if (?HighConttast != 0) {
 		if (?MSStyle === '') { // Classic High Contrast
 			--system-visual-style:classiccontrast;
+		} else if ( (?MSStyle === 'AeroLite') || (?MSStyle === 'Basic')) { // Basic is Aero without any DWM
+			--system-visual-style:basiccontrast;			
 		} else {
 			--system-visual-style:contrast;
 		}
@@ -61,7 +63,7 @@
 	} else if (?MSStyle === '') { // Empty string is the Classic Visual Style
 		--system-visual-style:classic;
 	} else {
-		--system-visual-style:simple;
+		--system-visual-style:['simplelite', 'simple'][?TransaprencyLevel];
 	}
 	--system-cursor-scheme:?CursorScheme;
 	--system-cursor-theme:auto;
