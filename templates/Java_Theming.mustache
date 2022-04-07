@@ -1,6 +1,7 @@
 ﻿window.MW18darkmode = false;
 window.MW18spdarkmode = 0; // 0 = No special behavior | 1 = Inverted Colors Dark | 2 = Grayscale | 3 = Yellow Tint | 4 = Blue Tint | 5 = Inverted Colors Light | 6 = Temperature | 7 = Inverted Temperature
-window.MW18wikitheme = 'auto';
+window.MW18devicetheme = 'light';
+window.MW18wikitheme = 'standard';
 window.MW18contrastmode = 'auto';
 window.MW18ActiveTheme = 'A';
 window.MW18ActiveThemeMode = 'none';
@@ -69,11 +70,11 @@ var visualColorNames = ['standard', 'nocolormanagement'];
 	if (getKey('visual-color') === '-1') {
 		insertKey('visual-color', 'standard' );
 	}
-	if (getKey('filter-active') === '-1') {
-		insertKey('filter-active', 'standard' );
+	if (getKey('device-theme') === '-1') {
+		insertKey('device-theme', 'light' );
 	}
-	if (getKey('color-mode') === '-1') {
-		insertKey('color-mode', 'auto' );
+	if (getKey('color-style') === '-1') {
+		insertKey('color-style', 'standard' );
 	}
 	if (getKey('contrast-mode') === '-1') {
 		insertKey('contrast-mode', 'auto' );
@@ -84,8 +85,8 @@ var visualColorNames = ['standard', 'nocolormanagement'];
 	var theme_selected = getKey('theme-selected');
 	var visual_style = getKey('visual-style');
 	var visual_color = getKey('visual-color');
-	var filter_active = getKey('filter-active');
-	var color_mode = getKey('color-mode');
+	var device_theme = getKey('device-theme');
+	var color_style = getKey('color-style');
 	var contrast_mode = getKey('contrast-mode');
 	var accent_active = getKey('accent-active');
     getParams().forEach(function (param) {
@@ -155,9 +156,13 @@ var visualColorNames = ['standard', 'nocolormanagement'];
 				}
 				console.info('Active visual colors settings overriden')
                 break;
-            case 'usecolormode':
-				color_mode = value;
-				console.info('Color mode settings overriden');
+            case 'usecolorstyle':
+				color_style = value;
+				console.info('Color style settings overriden');
+                break;
+            case 'usedevicetheme':
+				device_theme = value;
+				console.info('Device theme settings overriden');
                 break;
             case 'usecontrastmode':
 				contrast_mode = value;
@@ -170,11 +175,11 @@ var visualColorNames = ['standard', 'nocolormanagement'];
         }
     });
     var themes = {{>Themes}} // @REMOVEME: In Ivilution, Parmalution and CPE Language (Change to Empty String instead)
-	document.querySelector("head").insertAdjacentHTML('afterbegin','<style class="themes">' + themes + '</style><style class="theming"></style>');
+	document.querySelector("head").insertAdjacentHTML('afterbegin','<style class="devicetheme"></style><style class="themes">' + themes + '</style><style class="theming"></style>');
 	document.querySelector('body').setAttribute('tabindex',-1);; // Add the CPE button class
 	document.querySelector('body').focus();
 	ToggleTheme(theme_selected,false,false);
-	colortheme(color_mode,false,false);
+	colortheme(color_style,device_theme,false,false);
 	contrastmode(contrast_mode,false,false);
 	SetAccent(accent_active,false);
 	ManagerRows(); // For Task Manager Only
@@ -788,8 +793,14 @@ function ManagerRows() {
 
 
 /* Changes Wiki theme style
-   Supported values: auto, auto-r, light, dark, gray, gray-r, white, black, reversed-r, reversed, blu-wht, yel-blk, temp, temp-r, rtemp, rtemp-r */
-function colortheme(theme='auto', repaint=true, save=true) {
+   Supported values: standard, single, grayscale, singlegrayscale, reversi, singlecolor, hottemperature, coldtemperature */
+function colortheme(style='match-parent', theme='match-parent', repaint=true, save=true) {
+	if (style === 'match-parent') {
+		style = window.MW18wikitheme;
+	}
+	if (theme === 'match-parent') {
+		theme = window.MW18devicetheme;
+	}
     var body_bg =	GetCanvasShort();
     var old_dark = window.MW18darkmode;
     var old_dark2 = window.MW18spdarkmode;
@@ -797,95 +808,118 @@ function colortheme(theme='auto', repaint=true, save=true) {
     if (ForcedColors()) {
 		window.MW18darkmode = false;
 		window.MW18spdarkmode = 0;
-	} else if (theme === 'auto') { // Auto
-		window.MW18darkmode = false
-		window.MW18spdarkmode = 0;
-	} else if (theme === 'auto-r') { // Auto-Dark
-		window.MW18darkmode = true
-		window.MW18spdarkmode = 0;
-	} else if (theme === 'light') { // Light
-		if (isLightColor(body_bg)) {
-			window.MW18darkmode = false;
-		} else {
-			window.MW18darkmode = true;
-		}
-		window.MW18spdarkmode = 0;
-	} else if (theme === 'dark') { // Dark
-		if (isLightColor(body_bg)) {
-			window.MW18darkmode = true;
-		} else {
-			window.MW18darkmode = false;
-		}
-		window.MW18spdarkmode = 0;
-	} else if (theme === 'gray') { // Gray
-		window.MW18darkmode = false;
-		window.MW18spdarkmode = 2;
-	} else if (theme === 'gray-r') { // Gray-Dark
-		window.MW18darkmode = true
-		window.MW18spdarkmode = 2;
-	} else if (theme === 'white') { // Light
-		if (isLightColor(body_bg)) {
-			window.MW18darkmode = false;
-		} else {
-			window.MW18darkmode = true;
-		}
-		window.MW18spdarkmode = 2;
-	} else if (theme === 'black') { // Dark
-		if (isLightColor(body_bg)) {
-			window.MW18darkmode = true;
-		} else {
-			window.MW18darkmode = false;
-		}
-		window.MW18spdarkmode = 2;
-	} else if (theme === 'reversed-r') { // Inverted Colors
-		window.MW18darkmode = false;
-		window.MW18spdarkmode = 5;
-	} else if (theme === 'reversed') { // Inverted Colors-Dark
-		window.MW18darkmode = true;
-		window.MW18spdarkmode = 1;
-	} else if (theme === 'blu-wht') { // Blue-White
-		if (isLightColor(body_bg)) {
-			window.MW18darkmode = false;
-		} else {
-			window.MW18darkmode = true;
-		}
-		window.MW18spdarkmode = 4;
-	} else if (theme === 'yel-blk') { // Yellow-Black
-		if (isLightColor(body_bg)) {
-			window.MW18darkmode = true;
-		} else {
-			window.MW18darkmode = false;
-		}
-		window.MW18spdarkmode = 3;
-	} else if (theme === 'temp') { // Temperature Light
-		window.MW18darkmode = false;
-		window.MW18spdarkmode = 6;
-	} else if (theme === 'temp-r') { // Temperature Dark
-		window.MW18darkmode = true;
-		window.MW18spdarkmode = 6;
-	} else if (theme === 'rtemp') { // Inverted Temperature Light
-		window.MW18darkmode = false;
-		window.MW18spdarkmode = 7;
-	} else if (theme === 'rtemp-r') { // Inverted Temperature Dark
-		window.MW18darkmode = true;
-		window.MW18spdarkmode = 7;
 	} else {
-		window.MW18darkmode = false;
-		window.MW18spdarkmode = 0;
+		if (theme == 'light') {
+			document.querySelector('head .devicetheme').innerHTML = '.lightdevice-off { display:none!important }' ;
+			if (style == 'standard') {
+				window.MW18darkmode = false
+				window.MW18spdarkmode = 0;
+			} else if (style == 'single') {
+				if (isLightColor(body_bg)) {
+					window.MW18darkmode = false;
+				} else {
+					window.MW18darkmode = true;
+				}
+				window.MW18spdarkmode = 0;
+			} else if (style == 'grayscale') {
+				window.MW18darkmode = false;
+				window.MW18spdarkmode = 2;
+			} else if (style == 'singlegrayscale') {
+				if (isLightColor(body_bg)) {
+					window.MW18darkmode = false;
+				} else {
+					window.MW18darkmode = true;
+				}
+				window.MW18spdarkmode = 2;
+			} else if (style == 'reversi') {
+				window.MW18darkmode = false;
+				window.MW18spdarkmode = 5;
+			} else if (style == 'singlecolor') {
+				if (isLightColor(body_bg)) {
+					window.MW18darkmode = false;
+				} else {
+					window.MW18darkmode = true;
+				}
+				window.MW18spdarkmode = 4;
+			} else if (style == 'hottemperature') {
+				window.MW18darkmode = false;
+				window.MW18spdarkmode = 6;
+			} else if (style == 'coldtemperature') {
+				window.MW18darkmode = false;
+				window.MW18spdarkmode = 7;
+			} else {
+				window.MW18darkmode = false
+				window.MW18spdarkmode = 0;
+			}
+			
+		} else {
+			document.querySelector('head .devicetheme').innerHTML = '.darkdevice-off { display:none!important }' ;
+			if (style == 'standard') {
+				window.MW18darkmode = true
+				window.MW18spdarkmode = 0;
+			} else if (style == 'single') {
+				if (isLightColor(body_bg)) {
+					window.MW18darkmode = true;
+				} else {
+					window.MW18darkmode = false;
+				}
+				window.MW18spdarkmode = 0;
+			} else if (style == 'grayscale') {
+				window.MW18darkmode = true
+				window.MW18spdarkmode = 2;
+			} else if (style == 'singlegrayscale') {
+				if (isLightColor(body_bg)) {
+					window.MW18darkmode = true;
+				} else {
+					window.MW18darkmode = false;
+				}
+				window.MW18spdarkmode = 2;
+			} else if (style == 'reversi') {
+				window.MW18darkmode = true;
+				window.MW18spdarkmode = 1;
+			} else if (style == 'singlecolor') {
+				if (isLightColor(body_bg)) {
+					window.MW18darkmode = true;
+				} else {
+					window.MW18darkmode = false;
+				}
+				window.MW18spdarkmode = 3;
+			} else if (style == 'hottemperature') {
+				window.MW18darkmode = true;
+				window.MW18spdarkmode = 6;
+			} else if (style == 'coldtemperature') {
+				window.MW18darkmode = true;
+				window.MW18spdarkmode = 7;
+			} else {
+				window.MW18darkmode = true
+				window.MW18spdarkmode = 0;
+			}
+		}
 	}
-	window.MW18wikitheme = theme
+	window.MW18devicetheme = theme
+	window.MW18wikitheme = style
 	if (save) {
-		insertKey('color-mode', theme );
+		insertKey('device-theme', theme );
+		insertKey('color-style', style );
 	}
 
-	var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-color-modes li.selected, .skin-tunic #color-modes .mw-portlet-body ul li.selected");
+	var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-color-styles li.selected, .skin-tunic #color-styles .mw-portlet-body ul li.selected");
 	if (x) {
 		x.classList.remove("selected");
 	}
-	var y = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-color-modes li[data-color-mode='" + theme + "'], .skin-tunic #color-modes .mw-portlet-body ul li[data-color-mode='" + theme + "']");
+	var y = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-color-styles li[data-color-style='" + style + "'], .skin-tunic #color-styles .mw-portlet-body ul li[data-color-style='" + style + "']");
 	if (y) {
 		y.classList.add("selected")
 	}
+	var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-device-themes li.selected, .skin-tunic #device-themes .mw-portlet-body ul li.selected");
+	if (x) {
+		x.classList.remove("selected");
+	}
+	var y = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-device-themes li[data-device-theme='" + theme + "'], .skin-tunic #device-themes .mw-portlet-body ul li[data-device-theme='" + theme + "']");
+	if (y) {
+		y.classList.add("selected")
+	}
+
 	if ((old_dark == window.MW18darkmode) && (old_dark2 == window.MW18spdarkmode) ) {
 		var muststay = true;
 	}
@@ -1462,7 +1496,8 @@ return ((chroma.contrast(color, color2)) >= contrast) // For Border Color
 function ColorUpdate(refresh=true) {
 if (refresh === true) {
 	var theme = window.MW18wikitheme;
-	colortheme(theme, false,false);
+	var style = window.MW18devicetheme;
+	colortheme(theme, style, false,false);
 	var cmode = window.MW18contrastmode;
 	contrastmode(cmode, false,false);
 	/** Foreground Colors 

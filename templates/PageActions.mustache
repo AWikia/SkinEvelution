@@ -91,91 +91,69 @@
 					hdr_auto
 				</span>
 			</div>
-			<div class="cpe-dropdown__content cpe-visual-appearance" style="top:-100%;">					
-				 <ul class="cpe-list is-linked cpe-color-modes has-icons">						
-					<li data-color-mode="auto" title="{{msg-evelution-lightmode}} (Duo)">
-						<a onclick="colortheme('auto')">
-							<span class="cpe-icon material-icons">brightness_auto</span>
-						</a>
-					</li>
-					<li data-color-mode="auto-r" title="{{msg-evelution-darkmode}} (Duo)">
-						<a onclick="colortheme('auto-r')">
-							<span class="cpe-icon material-icons">hdr_auto</span>
-						</a>
-					</li>
-					<li data-color-mode="light" title="{{msg-evelution-lightmode}} (Solo)">
-						<a onclick="colortheme('light')">
+			<div class="cpe-dropdown__content cpe-visual-appearance" style="top:-76%;">
+				<ul class="cpe-list is-linked cpe-device-themes has-icons">
+					<li data-device-theme="light" title="{{msg-evelution-lightmode}}">
+						<a onclick="colortheme('match-parent','light')">
 							<span class="cpe-icon material-icons">light_mode</span>
 						</a>
 					</li>
-					<li data-color-mode="dark" title="{{msg-evelution-darkmode}} (Solo)">
-						<a onclick="colortheme('dark')">
+					<li data-device-theme="dark" title="{{msg-evelution-darkmode}}">
+						<a onclick="colortheme('match-parent','dark')">
 							<span class="cpe-icon material-icons">dark_mode</span>
 						</a>
 					</li>
-					<li data-color-mode="gray" title="{{msg-evelution-whitemode}} (Duo)">
-						<a onclick="colortheme('gray')">
-							<span class="cpe-icon material-icons">filter_b_and_w</span>
-						</a>
-					</li>
-					<li data-color-mode="gray-r" title="{{msg-evelution-blackmode}} (Duo)">
-						<a onclick="colortheme('gray-r')">
-							<span class="cpe-icon material-icons" style="--icon-scale:-1; transform:scaleX(var(--icon-scale)) rotate(var(--icon-rotate));">filter_b_and_w</span>
-						</a>
-					</li>
-					<li data-color-mode="white" title="{{msg-evelution-whitemode}} (Solo)">
-						<a onclick="colortheme('white')">
-							<span class="cpe-icon material-icons">check_box_outline_blank</span>
-						</a>
-					</li>
-					<li data-color-mode="black" title="{{msg-evelution-blackmode}} (Solo)">
-						<a onclick="colortheme('black')">
-							<span class="cpe-icon material-icons">square</span>
-						</a>
-					</li>
-					<li data-color-mode="reversed-r" title="{{msg-evelution-lightmode}} (Reversi)">
-						<a onclick="colortheme('reversed-r')">
-							<span class="cpe-icon material-icons">invert_colors_off</span>
-						</a>
-					</li>
-					<li data-color-mode="reversed" title="{{msg-evelution-darkmode}} (Reversi)">
-						<a onclick="colortheme('reversed')">
-							<span class="cpe-icon material-icons">invert_colors</span>
-						</a>
-					</li>
-
-					<li data-color-mode="blu-wht" title="{{msg-evelution-lightmode}} (Tint)">
-						<a onclick="colortheme('blu-wht')">
-							<span class="cpe-icon material-icons" style="--icon-rotate:180deg;">gradient</span>
-						</a>
-					</li>
-					<li data-color-mode="yel-blk" title="{{msg-evelution-darkmode}} (Tint)">
-						<a onclick="colortheme('yel-blk')">
-							<span class="cpe-icon material-icons">gradient</span>
-						</a>
-					</li>
-					<li data-color-mode="temp" title="{{msg-evelution-lightmode}} (Temperature)">
-						<a onclick="colortheme('temp')">
-							<span class="cpe-icon material-icons">thermostat</span>
-						</a>
-					</li>
-					<li data-color-mode="temp-r" title="{{msg-evelution-darkmode}} (Temperature)">
-						<a onclick="colortheme('temp-r')">
-							<span class="cpe-icon material-icons" style="--icon-rotate:180deg;">thermostat</span>
-						</a>
-					</li>
-					<li data-color-mode="rtemp" title="{{msg-evelution-lightmode}} (Reversi Temperature)">
-						<a onclick="colortheme('rtemp')">
-							<span class="cpe-icon material-icons">ac_unit</span>
-						</a>
-					</li>
-					<li data-color-mode="rtemp-r" title="{{msg-evelution-darkmode}} (Reversi Temperature)">
-						<a onclick="colortheme('rtemp-r')">
-							<span class="cpe-icon material-icons">storm</span>
-						</a>
-					</li>
-
 				</ul>
+				<hr>
+				<ul class="cpe-list is-linked cpe-color-styles has-icons">
+					<li data-color-style="standard" title="{{msg-evelution-standard}}">
+						<a onclick="colortheme('standard')">
+							<span class="cpe-icon material-icons darkdevice-off">brightness_auto</span>
+							<span class="cpe-icon material-icons lightdevice-off">hdr_auto</span>
+						</a>
+					</li>
+					<li data-color-style="single" title="{{msg-evelution-colorstyle-single}}">
+						<a onclick="colortheme('single')">
+							<span class="cpe-icon material-icons darkdevice-off">light_mode</span>
+							<span class="cpe-icon material-icons lightdevice-off">dark_mode</span>
+						</a>
+					</li>
+					<li data-color-style="grayscale" title="{{msg-evelution-colorstyle-grayscale}}">
+						<a onclick="colortheme('grayscale')">
+							<span class="cpe-icon material-icons darkdevice-off">filter_b_and_w</span>
+							<span class="cpe-icon material-icons lightdevice-off"  style="--icon-scale:-1; transform:scaleX(var(--icon-scale)) rotate(var(--icon-rotate));">filter_b_and_w</span>
+						</a>
+					</li>
+					<li data-color-style="singlegrayscale" title="{{msg-evelution-colorstyle-singlegrayscale}}">
+						<a onclick="colortheme('singlegrayscale')">
+							<span class="cpe-icon material-icons darkdevice-off">check_box_outline_blank</span>
+							<span class="cpe-icon material-icons lightdevice-off">square</span>
+						</a>
+					</li>
+					<li data-color-style="reversi" title="{{msg-evelution-colorstyle-reversi}}">
+						<a onclick="colortheme('reversi')">
+							<span class="cpe-icon material-icons darkdevice-off">invert_colors_off</span>
+							<span class="cpe-icon material-icons lightdevice-off">invert_colors</span>
+						</a>
+					</li>
+					<li data-color-style="singlecolor" title="{{msg-evelution-colorstyle-singlecolor}}">
+						<a onclick="colortheme('singlecolor')">
+							<span class="cpe-icon material-icons darkdevice-off" style="--icon-rotate:180deg;">gradient</span>
+							<span class="cpe-icon material-icons lightdevice-off">gradient</span>
+						</a>
+					</li>
+					<li data-color-style="hottemperature" title="{{msg-evelution-colorstyle-hottemperature}}">
+						<a onclick="colortheme('hottemperature')">
+							<span class="cpe-icon material-icons darkdevice-off">thermostat</span>
+							<span class="cpe-icon material-icons lightdevice-off" style="--icon-rotate:180deg;">thermostat</span>
+						</a>
+					</li>
+					<li data-color-style="coldtemperature" title="{{msg-evelution-colorstyle-coldtemperature}}">
+						<a onclick="colortheme('coldtemperature')">
+							<span class="cpe-icon material-icons darkdevice-off">ac_unit</span>
+							<span class="cpe-icon material-icons lightdevice-off">storm</span>
+						</a>
+					</li>				</ul>
 			</div>
 		</div>
 	{{/has-no-color-management}}
