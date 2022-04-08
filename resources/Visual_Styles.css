@@ -67,7 +67,10 @@ filter:none!important;
 .visualstyle-contrast .cpe-dropdown__content .cpe-list.is-linked .cpe-dropdown-level-2 .cpe-dropdown-level-2__content,
 .visualstyle-simplelite body,
 .visualstyle-simplelite .cpe-dropdown__content,
-.visualstyle-simplelite .cpe-dropdown__content .cpe-list.is-linked .cpe-dropdown-level-2 .cpe-dropdown-level-2__content {
+.visualstyle-simplelite .cpe-dropdown__content .cpe-list.is-linked .cpe-dropdown-level-2 .cpe-dropdown-level-2__content,
+.visualstyle-simplecontrast body,
+.visualstyle-simplecontrast .cpe-dropdown__content,
+.visualstyle-simplecontrast .cpe-dropdown__content .cpe-list.is-linked .cpe-dropdown-level-2 .cpe-dropdown-level-2__content {
 	--dropdown-opacity:1!important;
 	--mica-opacity:1!important;
 	--simple-fallback-color:var(--canvas-background-color);
@@ -75,7 +78,9 @@ filter:none!important;
 
 
 .visualstyle-lite body,
-.visualstyle-contrast body {
+.visualstyle-contrast body,
+.visualstyle-simplelite body,
+.visualstyle-simplecontrast body {
 	--backdrop-filter:none!important;
     --super-backdrop-filter:none!important;
 	--super-backdrop-filter-2:none!important;
@@ -85,6 +90,7 @@ filter:none!important;
 /* Color Forces */
 .visualstyle-contrast body,
 .visualstyle-basiccontrast body,
+.visualstyle-simplecontrast body,
 .visualstyle-classiccontrast body {
 /* Luna Colors */
 --luna-border-background-color:var(--luna-foreground-color)!important;
@@ -260,9 +266,11 @@ filter:none!important;
 
 .visualstyle-contrast body [force-active],
 .visualstyle-basiccontrast body [force-active],
+.visualstyle-simplecontrast body [force-active],
 .visualstyle-classiccontrast body [force-active],
 .visualstyle-contrast body [force-inactive],
 .visualstyle-basiccontrast body [force-inactive],
+.visualstyle-simplecontrast body [force-inactive],
 .visualstyle-classiccontrast body [force-inactive] {
 /* Luna Colors */
 --luna-border-background-color:var(--luna-foreground-color)!important;
@@ -524,6 +532,7 @@ background-color:var(--canvas-background-color);
 .visualstyle-basic body,
 .visualstyle-basiccontrast body,
 .visualstyle-simplelite body,
+.visualstyle-simplecontrast body,
 .visualstyle-classic body,
 .visualstyle-classiccontrast body {
   --backdrop-filter:none!important;
@@ -536,6 +545,7 @@ background-color:var(--canvas-background-color);
 .visualstyle-basic .has-levit::after,
 .visualstyle-basiccontrast .has-levit::after,
 .visualstyle-simplelite .has-levit::after,
+.visualstyle-simplecontrast .has-levit::after,
 .visualstyle-classic .has-levit::after,
 .visualstyle-classiccontrast .has-levit::after {
 	content:none!important;
@@ -547,6 +557,7 @@ background-color:var(--canvas-background-color);
 .visualstyle-basic .cpe-dropdown__content,
 .visualstyle-basiccontrast .cpe-dropdown__content,
 .visualstyle-simplelite .cpe-dropdown__content,
+.visualstyle-simplecontrast .cpe-dropdown__content,
 .visualstyle-classic .cpe-dropdown__content,
 .visualstyle-classiccontrast .cpe-dropdown__content {
   --backdrop-filter:none!important;
@@ -894,7 +905,6 @@ border-color:var(--luna-foreground-color);
     --button-background-color: var(--luna-foreground-color);
     --button-background-color-hover: var(--luna-foreground-color-hover);
     --button-foreground-color: var(--luna-background-color);
-    --button-foreground-color-hover: var(--luna-background-color-hover);
     --button-foreground-color-inverted: var(--luna-background-color);
 	--button-foreground-color-rgb:var(--luna-background-color-rgb);
     --secondary-button-background-color:transparent;
@@ -916,7 +926,6 @@ border-color:var(--luna-foreground-color);
 		--button-background-color: var(--luna-alternative-foreground-color);
 		--button-background-color-hover: var(--luna-alternative-foreground-color-hover);
 		--button-foreground-color: var(--luna-background-color);
-		--button-foreground-color-hover: var(--luna-background-color-hover);
 		--button-foreground-color-inverted: var(--luna-background-color);
 		--button-foreground-color-rgb:var(--luna-background-color-rgb);
 		--secondary-button-background-color:transparent;
@@ -1225,6 +1234,17 @@ background-color:var(--canvas-background-color);
 	--checkbox-checked-text:var(--highlight-foreground-color);
 }
 
+.visualstyle-simplecontrast input[type="checkbox"], .visualstyle-simplecontrast input[type="radio"]  {
+--checkbox-active-bg:var(--highlight-background-color);
+	--checkbox-checked-bg:var(--highlight-background-color);
+	--checkbox-checked-bg-hover:var(--checkbox-checked-text);
+	--checkbox-checked-shadow:var(--checkbox-checked-bg);
+	--checkbox-checked-shadow-hover:var(--checkbox-checked-bg-hover);
+	--checkbox-checked-text:var(--highlight-foreground-color);
+	--checkbox-checked-text-hover:var(--checkbox-checked-bg);
+}
+
+
 .visualstyle-basic input[type="checkbox"]:checked:not(:active):focus, .visualstyle-basic input[type="radio"]:checked:not(:active):focus,
 .visualstyle-basic .oo-ui-radioSelectWidget:focus  input[type="checkbox"]:checked:not(:active), .visualstyle-basic .oo-ui-radioSelectWidget:focus  input[type="radio"]:checked:not(:active),
 .visualstyle-contrast input[type="checkbox"]:checked:not(:active):focus, .visualstyle-contrast input[type="radio"]:checked:not(:active):focus,
@@ -1234,7 +1254,9 @@ background-color:var(--canvas-background-color);
 .visualstyle-simple input[type="checkbox"]:checked:not(:active):focus, .visualstyle-simple input[type="radio"]:checked:not(:active):focus,
 .visualstyle-simple .oo-ui-radioSelectWidget:focus  input[type="checkbox"]:checked:not(:active), .visualstyle-simple .oo-ui-radioSelectWidget:focus  input[type="radio"]:checked:not(:active),
 .visualstyle-simplelite input[type="checkbox"]:checked:not(:active):focus, .visualstyle-simplelite input[type="radio"]:checked:not(:active):focus,
-.visualstyle-simplelite .oo-ui-radioSelectWidget:focus  input[type="checkbox"]:checked:not(:active), .visualstyle-simplelite .oo-ui-radioSelectWidget:focus  input[type="radio"]:checked:not(:active) {
+.visualstyle-simplelite .oo-ui-radioSelectWidget:focus  input[type="checkbox"]:checked:not(:active), .visualstyle-simplelite .oo-ui-radioSelectWidget:focus  input[type="radio"]:checked:not(:active),
+.visualstyle-simplecontrast input[type="checkbox"]:checked:not(:active):focus, .visualstyle-simplecontrast input[type="radio"]:checked:not(:active):focus,
+.visualstyle-simplecontrast .oo-ui-radioSelectWidget:focus  input[type="checkbox"]:checked:not(:active), .visualstyle-simplecontrast .oo-ui-radioSelectWidget:focus  input[type="radio"]:checked:not(:active) {
 	--checkbox-focused-shadow:var(--checkbox-checked-text);
 }
 
@@ -1269,6 +1291,11 @@ background-color:var(--canvas-background-color);
 .visualstyle-simple input[type="checkbox"], .visualstyle-simple input[type="radio"],
 .visualstyle-simplelite input[type="checkbox"], .visualstyle-simplelite input[type="radio"]  {
 	--checkbox-checked-shadow-hover:rgba(var(--highlight-foreground-color-rgb),0.2);
+}
+
+
+.visualstyle-simplecontrast input[type="checkbox"], .visualstyle-simplecontrast input[type="radio"]  {
+	--checkbox-checked-shadow-hover:rgba(var(--highlight-background-color-rgb),0.5);
 }
 
 
@@ -1502,13 +1529,14 @@ color:inherit;
 
 /* Simple Theme */
 .visualstyle-simple body,
-.visualstyle-simplelite body {
+.visualstyle-simplelite body,
+.visualstyle-simplecontrast body {
 	--icon-font-family: 'Material Icons Outlined';
 }
 
 
 .visualstyle-simple .cpe-floating-button,
-.visualstyle-simplelite .cpe-floating-button {
+.visualstyle-simplelite .cpe-floating-button{
   --floating-button-background-color:var(--canvas-text-background-color);
   --floating-button-background-color-hover:var(--canvas-text-background-color-hover);
   --floating-button-color:var(--canvas-text-foreground-color);
@@ -1542,6 +1570,32 @@ color:inherit;
 }
 
 
+.visualstyle-simplecontrast .cpe-floating-button {
+  --floating-button-background-color:var(--canvas-text-background-color);
+  --floating-button-background-color-hover:var(--floating-button-color);
+  --floating-button-color:var(--canvas-text-foreground-color);
+  --floating-button-color-hover:var(--floating-button-background-color);
+  --floating-button-border-color:var(--floating-button-background-color);
+  --floating-button-border-color-hover:rgba(var(--canvas-text-background-color-rgb),0.5);
+  --floating-button-fadeout-opacity:0;
+  --floating-button-shadow-opacity:0.66!important;
+  --floating-button-shadow-blur:15px!important;
+}
+
+.visualstyle-simplecontrast .cpe-floating-button.accent {
+  --floating-button-background-color:var(--highlight-background-color);
+  --floating-button-color:var(--highlight-foreground-color);
+  --floating-button-border-color-hover:rgba(var(--highlight-background-color-rgb),0.5);
+}
+
+.visualstyle-simplecontrast .cpe-floating-button.critical {
+  --floating-button-background-color:var(--alert-background-color);
+  --floating-button-color:var(--alert-foreground-color);
+  --floating-button-border-color-hover:rgba(var(--alert-background-color-rgb),0.5);
+}
+
+
+
 .visualstyle-simple .cpe-button,
 .visualstyle-simple .oo-ui-buttonElement > .oo-ui-buttonElement-button,
 .visualstyle-simple .mw-ui-button,
@@ -1552,8 +1606,40 @@ color:inherit;
 }
 
 
-.visualstyle-simple .evelution-minibar,
-.visualstyle-simple .evelution-minibar-navigation-background {
+.visualstyle-simplecontrast .cpe-button,
+.visualstyle-simplecontrast .oo-ui-buttonElement > .oo-ui-buttonElement-button,
+.visualstyle-simplecontrast .mw-ui-button {
+	--button-background-color-hover:var(--button-foreground-color);
+	--button-foreground-color-hover:var(--button-background-color);
+	--button-foreground-color-inverted:var(--button-background-color);
+	--button-border-color-hover:rgba(var(--button-background-color-rgb),0.5);
+}
+
+/* Buttons */
+/* Tertiary */
+.visualstyle-simplecontrast .cpe-button.is-tertiary:hover,
+.visualstyle-simplecontrast .cpe-button.is-tertiary:active, 
+.visualstyle-simplecontrast .cpe-button.is-tertiary:focus:not(:active), 
+.visualstyle-simplecontrast .cpe-button.is-tertiary.is-active, 
+.visualstyle-simplecontrast .selected .cpe-button.is-tertiary,
+.visualstyle-simplecontrast .cpe-dropdown:focus > .cpe-button.is-tertiary,
+.visualstyle-simplecontrast .cpe-dropdown:focus-within > .cpe-button.is-tertiary,
+/* Forced */
+.visualstyle-simplecontrast .force-tertiary .cpe-button:not(.is-primary):not(.is-secondary):not(.is-text):hover,
+.visualstyle-simplecontrast .force-tertiary .cpe-button:not(.is-primary):not(.is-secondary):not(.is-text):active, 
+.visualstyle-simplecontrast .force-tertiary .cpe-button:not(.is-primary):not(.is-secondary):not(.is-text):focus:not(:active), 
+.visualstyle-simplecontrast .force-tertiary .cpe-button:not(.is-primary):not(.is-secondary):not(.is-text).is-active, 
+.visualstyle-simplecontrast .force-tertiary .selected .cpe-button:not(.is-primary):not(.is-secondary):not(.is-text),
+.visualstyle-simplecontrast .force-tertiary .cpe-dropdown:focus > .cpe-button:not(.is-primary):not(.is-secondary):not(.is-text),
+.visualstyle-simplecontrast .force-tertiary .cpe-dropdown:focus-within > .cpe-button:not(.is-primary):not(.is-secondary):not(.is-text) {
+    border-color:var(--button-background-color)!important;
+    color:var(--button-foreground-color)!important;
+    background-color:var(--button-background-color)!important;
+}
+
+
+
+.visualstyle-simple .evelution-minibar {
 	color:var(--luna-foreground-color);
 	background-color:rgba(var(--luna-background-color-rgb),var(--dropdown-opacity));
 	-webkit-backdrop-filter:none;
@@ -1562,7 +1648,7 @@ color:inherit;
 
 
 .visualstyle-simplelite .evelution-minibar,
-.visualstyle-simplelite .evelution-minibar-navigation-background {
+.visualstyle-simplecontrast .evelution-minibar  {
 	color:var(--luna-foreground-color);
 	background-color:var(--luna-background-color);
 	-webkit-backdrop-filter:none;
@@ -1579,12 +1665,17 @@ color:inherit;
 .visualstyle-simplelite	.evelution-minibar .title a:hover,
 .visualstyle-simplelite	.evelution-minibar .title a:focus,
 .visualstyle-simplelite	.evelution-minibar .wordmark:hover .icon-logo,
-.visualstyle-simplelite	.evelution-minibar .wordmark:focus .icon-logo {
+.visualstyle-simplelite	.evelution-minibar .wordmark:focus .icon-logo,
+.visualstyle-simplecontrast	.evelution-minibar .title a:hover,
+.visualstyle-simplecontrast	.evelution-minibar .title a:focus,
+.visualstyle-simplecontrast	.evelution-minibar .wordmark:hover .icon-logo,
+.visualstyle-simplecontrast	.evelution-minibar .wordmark:focus .icon-logo {
 	color:var(--luna-foreground-color-hover);
 }
 
 
-.visualstyle-simplelite body {
+.visualstyle-simplelite body,
+.visualstyle-simplecontrast body {
 	--backdrop-filter:none!important;
     --super-backdrop-filter:none!important;
 	--super-backdrop-filter-2:none!important;
@@ -1599,6 +1690,16 @@ color:inherit;
 	--global-nav-link-background-hover:var(--luna-background-color-hover)!important;
 	--global-nav-link-color-active:var(--luna-foreground-color-inverted)!important;
 	--global-nav-link-background-active:var(--luna-background-color-hover)!important;
+}
+
+.visualstyle-simplecontrast .evelution-sidebar  {
+	--global-nav-color:var(--luna-background-color-rgb)!important;
+	--global-nav-text-color:var(--luna-foreground-color)!important;
+	--global-nav-link-color-hover:rgb(var(--global-nav-color))!important;
+	--global-nav-link-background-hover:var(--global-nav-text-color)!important;
+	--global-nav-link-color-active:rgb(var(--global-nav-color))!important;
+	--global-nav-link-background-active:var(--global-nav-text-color)!important;
+	--global-nav-opacity:2!important;
 }
 
 
@@ -1639,6 +1740,19 @@ color:inherit;
 }
 
 
+.visualstyle-simplecontrast .evelution-minibar .link.active, 
+.visualstyle-simplecontrast .evelution-minibar .link:hover, 
+.visualstyle-simplecontrast .evelution-minibar .link:focus, 
+.visualstyle-simplecontrast .evelution-minibar .cpe-dropdown:focus > .link, 
+.visualstyle-simplecontrast .evelution-minibar .cpe-dropdown:focus-within > .link {
+	background-color:var(--luna-foreground-color);
+	color:var(--luna-background-color);
+	box-shadow:none;
+	animation:none;
+	border-color:rgba(var(--luna-background-color-rgb),0.5);
+}
+
+
 .visualstyle-simple.has-accents .evelution-minibar .link.active, 
 .visualstyle-simple.has-accents .evelution-minibar .link:hover, 
 .visualstyle-simple.has-accents .evelution-minibar .link:focus, 
@@ -1671,6 +1785,19 @@ color:inherit;
 }
 
 
+.visualstyle-simplecontrast .evelution-top-actions .link.active, 
+.visualstyle-simplecontrast .evelution-top-actions .link:hover, 
+.visualstyle-simplecontrast .evelution-top-actions .link:focus, 
+.visualstyle-simplecontrast .evelution-top-actions .cpe-dropdown:focus > .link, 
+.visualstyle-simplecontrast .evelution-top-actions .cpe-dropdown:focus-within > .link {
+	background-color:var(--desktop-foreground-color);
+	color:var(--desktop-background-color);
+	box-shadow:none;
+	animation:none;
+	border-color:rgba(var(--desktop-background-color-rgb),0.5);
+}
+
+
 
 
 .visualstyle-simple .evelution-sidebar .link:hover, 
@@ -1690,6 +1817,15 @@ color:inherit;
 }
 
 
+.visualstyle-simplecontrast .evelution-sidebar .link:hover, 
+.visualstyle-simplecontrast .evelution-sidebar .link:active, 
+.visualstyle-simplecontrast .evelution-sidebar .link:focus,
+.visualstyle-simplecontrast .evelution-sidebar .link.active,
+.visualstyle-simplecontrast .evelution-sidebar .cpe-dropdown:focus > .link,
+.visualstyle-simplecontrast .evelution-sidebar .cpe-dropdown:focus-within > .link {
+		background-color:var(--global-nav-link-background-active);
+		border-color:rgba(var(--global-nav-color),0.5);
+}
 
 .visualstyle-simple.has-accents .evelution-sidebar .link:hover, 
 .visualstyle-simple.has-accents .evelution-sidebar .link:active, 
@@ -1713,7 +1849,9 @@ color:inherit;
 .visualstyle-simple .evelution-content .evelution-page-header .evelution-title, 
 .visualstyle-simple .evelution-option-way h1,
 .visualstyle-simplelite .evelution-content .evelution-page-header .evelution-title, 
-.visualstyle-simplelite .evelution-option-way h1 {
+.visualstyle-simplelite .evelution-option-way h1,
+.visualstyle-simplecontrast .evelution-content .evelution-page-header .evelution-title, 
+.visualstyle-simplecontrast .evelution-option-way h1 {
 	text-shadow:none;
 	color:inherit;
 }
@@ -1724,7 +1862,10 @@ color:inherit;
 .visualstyle-simple .evelution-userpages-header,
 .visualstyle-simplelite .editor-header,
 .visualstyle-simplelite .evelution-option-way h1,
-.visualstyle-simplelite .evelution-userpages-header {
+.visualstyle-simplelite .evelution-userpages-header,
+.visualstyle-simplecontrast .editor-header,
+.visualstyle-simplecontrast .evelution-option-way h1,
+.visualstyle-simplecontrast .evelution-userpages-header {
 	background-image:none;
 	background-color:rgba(var(--luna-background-color-rgb),0.75);
 }
@@ -1737,13 +1878,18 @@ color:inherit;
 .visualstyle-simplelite .evelution-content .evelution-article-container,
 .visualstyle-simplelite .evelution-module,
 .visualstyle-simplelite .preview-window-window,
-.visualstyle-simplelite .evelution-content .evelution-article-wrapper .evelution-article-actions .cactions >li.selected > a  {
+.visualstyle-simplelite .evelution-content .evelution-article-wrapper .evelution-article-actions .cactions >li.selected > a,
+.visualstyle-simplecontrast .evelution-content .evelution-article-container,
+.visualstyle-simplecontrast .evelution-module,
+.visualstyle-simplecontrast .preview-window-window,
+.visualstyle-simplecontrast .evelution-content .evelution-article-wrapper .evelution-article-actions .cactions >li.selected > a  {
 	--intensity:1.25;
 	background-color:var(--simple-fallback-color);
 }
 
 .visualstyle-simple .preview-theme-wrapper .window,
-.visualstyle-simplelite .preview-theme-wrapper .window {
+.visualstyle-simplelite .preview-theme-wrapper .window,
+.visualstyle-simplecontrast .preview-theme-wrapper .window {
 	--intensity:1.25;
 	background-color:var(--simple-fallback-color); /* Not --window-color */
 }
@@ -1756,6 +1902,14 @@ color:inherit;
 	--button-background-color:var(--luna-foreground-color-inverted);
 	border-color:rgba(var(--canvas-foreground-color-rgb),0.2);
 }
+
+.visualstyle-simplecontrast .preview-window-window h2 button {
+	--button-background-hover:var(--luna-foreground-color);
+	--button-background-active:var(--luna-foreground-color);
+	--button-background-color:var(--luna-background-color);
+	border-color:rgba(var(--luna-background-color-rgb),0.5);
+}
+
 
 .visualstyle-simple.has-accents .preview-window-window h2 button,
 .visualstyle-simplelite.has-accents .preview-window-window h2 button {
@@ -1789,6 +1943,14 @@ color:inherit;
 }
 
 
+.visualstyle-simplecontrast .evelution-content .evelution-page-header .toggle-rail-button:hover,
+.visualstyle-simplecontrast .evelution-content .evelution-page-header .toggle-rail-button:active {
+	color:var(--luna-background-color);
+	border-color:rgba(var(--luna-foreground-color-rgb),0.5);
+	background-color:var(--luna-foreground-color);
+}
+
+
 .visualstyle-simple.has-accents .evelution-content .evelution-page-header .toggle-rail-button:hover,
 .visualstyle-simple.has-accents .evelution-content .evelution-page-header .toggle-rail-button:active,
 .visualstyle-simplelite.has-accents .evelution-content .evelution-page-header .toggle-rail-button:hover,
@@ -1798,13 +1960,15 @@ color:inherit;
 
 
 .visualstyle-simple .evelution-option-pane,
-.visualstyle-simplelite .evelution-option-pane {
+.visualstyle-simplelite .evelution-option-pane,
+.visualstyle-simplecontrast .evelution-option-pane {
 	background-color:var(--canvas-secondary-background-color);
 	color:var(--canvas-secondary-foreground-color);
 }
 
 .visualstyle-simple .evelution-option-pane .option-link,
-.visualstyle-simplelite .evelution-option-pane .option-link {
+.visualstyle-simplelite .evelution-option-pane .option-link,
+.visualstyle-simplecontrast .evelution-option-pane .option-link {
 	color:inherit;
 }
 
@@ -1814,6 +1978,13 @@ color:inherit;
 	background-color:var(--canvas-secondary-background-color-hover);
 	border-color:rgba(var(--canvas-foreground-color-rgb),0.2);
 }
+
+.visualstyle-contrast .option-link.is-active {
+	color:var(--canvas-secondary-background-color);
+	background-color:var(--canvas-secondary-foreground-color);
+	border-color:rgba(var(--canvas-secondary-background-color-rgb),0.5);
+}
+
 
 .visualstyle-simple .cpe-dropdown,
 .visualstyle-simplelite .cpe-dropdown {
@@ -1827,6 +1998,18 @@ color:inherit;
 --dropdown-hyperlink-text-color:var(--hyperlink-foreground-color-inverted);
 }
 
+.visualstyle-simplecontrast .cpe-dropdown {
+/* Base Styling */
+--dropdown-background-color:var(--hyperlink-background-color-rgb);
+--dropdown-border-color:var(--canvas-foreground-color);
+--dropdown-text-color:var(--hyperlink-foreground-color);
+/* Link Styling */
+--dropdown-hyperlink-background-color:var(--dropdown-text-color);
+--dropdown-hyperlink-border-color:rgba(var(--dropdown-background-color),0.5);
+--dropdown-hyperlink-text-color:rgb(var(--dropdown-background-color));
+}
+
+
 .visualstyle-simple body .mw-rcfilters-ui-filterMenuOptionWidget.oo-ui-flaggedElement-muted:not(.oo-ui-optionWidget-selected),
 .visualstyle-simple body .toc,
 .visualstyle-simplelite body .mw-rcfilters-ui-filterMenuOptionWidget.oo-ui-flaggedElement-muted:not(.oo-ui-optionWidget-selected),
@@ -1836,15 +2019,26 @@ color:inherit;
 	background-color:var(--hyperlink-background-color);
 }
 
+.visualstyle-simplecontrast body .mw-rcfilters-ui-filterMenuOptionWidget.oo-ui-flaggedElement-muted:not(.oo-ui-optionWidget-selected),
+.visualstyle-simplecontrast body .toc {
+	border-color:var(--canvas-foreground-color);
+	color:var(--hyperlink-foreground-color);
+	background-color:var(--hyperlink-background-color);
+}
+
+
 .visualstyle-simple .cpe-dropdown__content a,
-.visualstyle-simplelite .cpe-dropdown__content a {
+.visualstyle-simplelite .cpe-dropdown__content a,
+.visualstyle-simplecontrast .cpe-dropdown__content a {
 	color:var(--hyperlink-foreground-color);
 }
 
 .visualstyle-simple .cpe-dropdown__content a:hover,
 .visualstyle-simple .cpe-dropdown__content a:focus,
 .visualstyle-simplelite .cpe-dropdown__content a:hover,
-.visualstyle-simplelite .cpe-dropdown__content a:focus {
+.visualstyle-simplelite .cpe-dropdown__content a:focus,
+.visualstyle-simplecontrast .cpe-dropdown__content a:hover,
+.visualstyle-simplecontrast .cpe-dropdown__content a:focus {
 	color:var(--hyperlink-foreground-color-hover);
 }
 
@@ -1852,12 +2046,15 @@ color:inherit;
 .visualstyle-simple .cpe-dropdown__content:after,
 .visualstyle-simple .cpe-dropdown__content .cpe-list.is-linked .cpe-dropdown-level-2 .cpe-dropdown-level-2__content:after,
 .visualstyle-simplelite .cpe-dropdown__content:after,
-.visualstyle-simplelite .cpe-dropdown__content .cpe-list.is-linked .cpe-dropdown-level-2 .cpe-dropdown-level-2__content:after {
+.visualstyle-simplelite .cpe-dropdown__content .cpe-list.is-linked .cpe-dropdown-level-2 .cpe-dropdown-level-2__content:after,
+.visualstyle-simplecontrast .cpe-dropdown__content:after,
+.visualstyle-simplecontrast .cpe-dropdown__content .cpe-list.is-linked .cpe-dropdown-level-2 .cpe-dropdown-level-2__content:after {
 	display:none!important;
 }
 
 .visualstyle-simple body .oo-ui-menuOptionWidget.oo-ui-widget-enabled.oo-ui-optionWidget,
-.visualstyle-simplelite body .oo-ui-menuOptionWidget.oo-ui-widget-enabled.oo-ui-optionWidget {
+.visualstyle-simplelite body .oo-ui-menuOptionWidget.oo-ui-widget-enabled.oo-ui-optionWidget,
+.visualstyle-simplecontrast body .oo-ui-menuOptionWidget.oo-ui-widget-enabled.oo-ui-optionWidget {
 	color:var(--hyperlink-foreground-color);
 }
 
@@ -1881,6 +2078,23 @@ color:inherit;
     background-color: var(--hyperlink-background-color);
     color: var(--hyperlink-foreground-color);
     border-color: var(--hyperlink-background-color-hover);
+}
+
+.visualstyle-simplecontrast body .oo-ui-menuSelectWidget, 
+.visualstyle-simplecontrast body .wikiEditor-ui-toolbar .group .tool-select .options, 
+.visualstyle-simplecontrast body .oo-ui-popupWidget-popup, 
+.visualstyle-simplecontrast body .mw-rcfilters-ui-changesListWrapperWidget .mw-changeslist-legend, 
+.visualstyle-simplecontrast body .oo-ui-popupToolGroup-tools {
+    scrollbar-color: var(--scrollbar-thumb-color-1) var(--scrollbar-track-color-1);
+    --scrollbar-track-color-1: var(--hyperlink-background-color);
+    --scrollbar-track-color-2: var(--hyperlink-background-color-hover);
+    --scrollbar-track-text: var(--hyperlink-foreground-color);
+    --scrollbar-thumb-color-1: var(--hyperlink-foreground-color);
+    --scrollbar-thumb-color-2: var(--hyperlink-foreground-color-hover);
+    --scrollbar-thumb-text: var(--hyperlink-foreground-color);
+    background-color: var(--hyperlink-background-color);
+    color: var(--hyperlink-foreground-color);
+    border-color: var(--canvas-foreground-color);
 }
 
 
@@ -1915,14 +2129,35 @@ color:inherit;
 }
 
 
+.visualstyle-simplecontrast body .oo-ui-menuSelectWidget input[type="checkbox"], 
+.visualstyle-simplecontrast body .oo-ui-menuSelectWidget input[type="radio"],
+.visualstyle-simplecontrast body .wikiEditor-ui-toolbar .group .tool-select .options input[type="checkbox"], 
+.visualstyle-simplecontrast body .wikiEditor-ui-toolbar .group .tool-select .options input[type="radio"],
+.visualstyle-simplecontrast body .oo-ui-popupWidget-popup input[type="checkbox"], 
+.visualstyle-simplecontrast body .oo-ui-popupWidget-popup input[type="radio"],
+.visualstyle-simplecontrast body .mw-rcfilters-ui-changesListWrapperWidget .mw-changeslist-legend input[type="checkbox"], 
+.visualstyle-simplecontrast body .mw-rcfilters-ui-changesListWrapperWidget .mw-changeslist-legend input[type="radio"],
+.visualstyle-simplecontrast body .oo-ui-popupToolGroup-tools input[type="checkbox"], 
+.visualstyle-simplecontrast body .oo-ui-popupToolGroup-tools input[type="radio"] {
+	--checkbox-unchecked-shadow:rgba(var(--hyperlink-foreground-color-rgb), 0.5);
+	--checkbox-active-bg:var(--hyperlink-background-color);
+	--checkbox-checked-bg:var(--hyperlink-foreground-color);
+	--checkbox-checked-shadow:var(--checkbox-checked-bg);
+	--checkbox-checked-shadow-hover:rgba(var(--hyperlink-foreground-color-rgb),0.5);
+	--checkbox-checked-text:var(--hyperlink-background-color);
+}
+
+
 .visualstyle-simple body .toc ul li a,
-.visualstyle-simplelite body .toc ul li a {
+.visualstyle-simplelite body .toc ul li a,
+.visualstyle-simplecontrast body .toc ul li a {
 	color:var(--hyperlink-foreground-color);
 }
 
 
 .visualstyle-simple body .toc .module-toc li a,
-.visualstyle-simplelite body .toc .module-toc li a {
+.visualstyle-simplelite body .toc .module-toc li a,
+.visualstyle-simplecontrast body .toc .module-toc li a {
 	color:var(--canvas-foreground-color);
 }
 
@@ -1962,6 +2197,25 @@ color:inherit;
 	border-color:rgba(var(--canvas-foreground-color-rgb),0.2);
 }
 
+.visualstyle-simplecontrast body .oo-ui-menuOptionWidget.oo-ui-optionWidget-selected,
+.visualstyle-simplecontrast body .oo-ui-menuOptionWidget.oo-ui-optionWidget-selected.oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted, 
+.visualstyle-simplecontrast body .oo-ui-menuOptionWidget.oo-ui-optionWidget-pressed.oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted,
+.visualstyle-simplecontrast body .oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted,
+.visualstyle-simplecontrast body .mw-rcfilters-ui-itemMenuOptionWidget:hover, 
+.visualstyle-simplecontrast body .mw-rcfilters-ui-filterMenuOptionWidget.oo-ui-flaggedElement-muted.oo-ui-optionWidget-highlighted, 
+.visualstyle-simplecontrast body .oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted, 
+.visualstyle-simplecontrast body .mw-rcfilters-ui-filterMenuHeaderWidget-header, 
+.visualstyle-simplecontrast body .mw-rcfilters-ui-menuSelectWidget-footer, 
+.visualstyle-simplecontrast body .oo-ui-tool.oo-ui-widget-enabled > .oo-ui-tool-link:hover, 
+.visualstyle-simplecontrast body .oo-ui-listToolGroup-tools .oo-ui-tool.oo-ui-widget-enabled:hover, 
+.visualstyle-simplecontrast body .wikiEditor-ui-toolbar .group .tool-select .menu .options .option:hover,
+.visualstyle-simplecontrast body .toc ul li a:hover,
+.visualstyle-simplecontrast body .toc ul li.selected a  {
+	background-color:var(--hyperlink-foreground-color);
+	color:var(--hyperlink-background-color)!Important;
+	border-color:rgba(var(--hyperlink-background-color-rgb),0.5);
+}
+
 
 
 .visualstyle-simple body .toc .module-toc li a:hover,
@@ -1972,25 +2226,36 @@ color:inherit;
 	background-color:var(--canvas-background-color-hover);
 }
 
+.visualstyle-simplecontrast body .toc .module-toc li a:hover,
+.visualstyle-simplecontrast body .toc .module-toc li.selected a {
+	color:var(--canvas-background-color)!important;
+	background-color:var(--canvas-foreground-color);
+	border-color:rgba(var(--canvas-background-color-rgb),0.5);
+}
+
 
 .visualstyle-simple body .toctogglelabel,
-.visualstyle-simplelite body .toctogglelabel {
+.visualstyle-simplelite body .toctogglelabel,
+.visualstyle-simplecontrast body .toctogglelabel {
 	color:inherit;
 }
 
 .visualstyle-simple body .toc .toctitle,
-.visualstyle-simplelite body .toc .toctitle {
+.visualstyle-simplelite body .toc .toctitle,
+.visualstyle-simplecontrast body .toc .toctitle {
 	border-bottom-color:currentColor;
 }
 
 .visualstyle-simple body .oo-ui-menuSectionOptionWidget,
-.visualstyle-simplelite body .oo-ui-menuSectionOptionWidget {
+.visualstyle-simplelite body .oo-ui-menuSectionOptionWidget,
+.visualstyle-simplecontrast body .oo-ui-menuSectionOptionWidget {
 	color:var(--hyperlink-foreground-color-hover);
 	background-color:var(--hyperlink-background-color);
 }
 
 .visualstyle-simple body .mw-rcfilters-ui-filterMenuSectionOptionWidget,
-.visualstyle-simplelite body .mw-rcfilters-ui-filterMenuSectionOptionWidget {
+.visualstyle-simplelite body .mw-rcfilters-ui-filterMenuSectionOptionWidget,
+.visualstyle-simplecontrast body .mw-rcfilters-ui-filterMenuSectionOptionWidget {
 	background-color:rgba(var(--hyperlink-foreground-color-rgb),0.125);
 }
 
@@ -2007,6 +2272,7 @@ color:inherit;
 .visualstyle-simplelite body .oo-ui-popupToolGroup-tools .oo-ui-buttonElement > .oo-ui-buttonElement-button,
 .visualstyle-simplelite body .mw-echo-ui-notificationsInboxWidget-toolbarWrapper .oo-ui-buttonElement > .oo-ui-buttonElement-button {
     --button-background-color: var(--hyperlink-foreground-color);
+    --button-background-color-rgb: var(--hyperlink-foreground-color-rgb);
     --button-background-color-hover: var(--hyperlink-foreground-color-hover);
     --button-foreground-color: var(--hyperlink-background-color);
     --button-foreground-color-hover: var(--hyperlink-background-color-hover);
@@ -2017,21 +2283,42 @@ color:inherit;
     --secondary-button-foreground-color-hover: var(--hyperlink-foreground-color-hover);
 }
 
+.visualstyle-simplecontrast body .oo-ui-menuSelectWidget .oo-ui-buttonElement > .oo-ui-buttonElement-button,
+.visualstyle-simplecontrast body .wikiEditor-ui-toolbar .group .tool-select .options .oo-ui-buttonElement > .oo-ui-buttonElement-button, 
+.visualstyle-simplecontrast body .oo-ui-popupWidget-popup .oo-ui-buttonElement > .oo-ui-buttonElement-button, 
+.visualstyle-simplecontrast body .mw-rcfilters-ui-changesListWrapperWidget .mw-changeslist-legend .oo-ui-buttonElement > .oo-ui-buttonElement-button, 
+.visualstyle-simplecontrast body .oo-ui-popupToolGroup-tools .oo-ui-buttonElement > .oo-ui-buttonElement-button,
+.visualstyle-simplecontrast body .mw-echo-ui-notificationsInboxWidget-toolbarWrapper .oo-ui-buttonElement > .oo-ui-buttonElement-button {
+    --button-background-color: var(--hyperlink-foreground-color);
+    --button-background-color-rgb: var(--hyperlink-foreground-color-rgb);
+    --button-foreground-color: var(--hyperlink-background-color);
+	--button-foreground-color-rgb:var(--hyperlink-background-color-rgb);
+    --secondary-button-background-color:var(--hyperlink-background-color);
+    --secondary-button-foreground-color: var(--hyperlink-foreground-color);
+    --secondary-button-foreground-color-hover: var(--hyperlink-foreground-color-hover);
+}
+
+
 .visualstyle-simple body .oo-ui-popupWidget-popup .oo-ui-buttonElement-frameless.oo-ui-widget-enabled > .oo-ui-buttonElement-button,
-.visualstyle-simplelite body .oo-ui-popupWidget-popup .oo-ui-buttonElement-frameless.oo-ui-widget-enabled > .oo-ui-buttonElement-button {
+.visualstyle-simplelite body .oo-ui-popupWidget-popup .oo-ui-buttonElement-frameless.oo-ui-widget-enabled > .oo-ui-buttonElement-button,
+.visualstyle-simplecontrast body .oo-ui-popupWidget-popup .oo-ui-buttonElement-frameless.oo-ui-widget-enabled > .oo-ui-buttonElement-button {
 	color:var(--secondary-button-foreground-color);
 }
 
 
 .visualstyle-simple body .oo-ui-popupWidget-popup .oo-ui-buttonElement-frameless.oo-ui-widget-enabled > .oo-ui-buttonElement-button:hover,
-.visualstyle-simplelite body .oo-ui-popupWidget-popup .oo-ui-buttonElement-frameless.oo-ui-widget-enabled > .oo-ui-buttonElement-button:hover {
+.visualstyle-simplelite body .oo-ui-popupWidget-popup .oo-ui-buttonElement-frameless.oo-ui-widget-enabled > .oo-ui-buttonElement-button:hover,
+.visualstyle-simplecontrast body .oo-ui-popupWidget-popup .oo-ui-buttonElement-frameless.oo-ui-widget-enabled > .oo-ui-buttonElement-button:hover {
 	color:var(--secondary-button-foreground-color-hover);
 }
 
 .visualstyle-simple body .oo-ui-popupWidget-popup .oo-ui-buttonElement-frameless.oo-ui-widget-enabled.oo-ui-buttonElement-pressed > input.oo-ui-buttonElement-button, 
 .visualstyle-simple body .oo-ui-popupWidget-popup .oo-ui-buttonElement-frameless.oo-ui-widget-enabled > .oo-ui-buttonElement-button:active,
 .visualstyle-simplelite body .oo-ui-popupWidget-popup .oo-ui-buttonElement-frameless.oo-ui-widget-enabled.oo-ui-buttonElement-pressed > input.oo-ui-buttonElement-button, 
-.visualstyle-simplelite body .oo-ui-popupWidget-popup .oo-ui-buttonElement-frameless.oo-ui-widget-enabled > .oo-ui-buttonElement-button:active {
+.visualstyle-simplelite body .oo-ui-popupWidget-popup .oo-ui-buttonElement-frameless.oo-ui-widget-enabled > .oo-ui-buttonElement-button:active,
+.visualstyle-simplecontrast body .oo-ui-popupWidget-popup .oo-ui-buttonElement-frameless.oo-ui-widget-enabled.oo-ui-buttonElement-pressed > input.oo-ui-buttonElement-button, 
+.visualstyle-simplecontrast body .oo-ui-popupWidget-popup .oo-ui-buttonElement-frameless.oo-ui-widget-enabled > .oo-ui-buttonElement-button:active {
+
 	color:var(--secondary-button-foreground-color-hover);
 }
 
@@ -2050,14 +2337,30 @@ color:inherit;
 	color:var(--hyperlink-foreground-color-hover);
 }
 
+.visualstyle-simplecontrast body .mw-rcfilters-ui-itemMenuOptionWidget-label-desc, 
+.visualstyle-simplecontrast body .mw-rcfilters-ui-filterMenuOptionWidget.oo-ui-flaggedElement-muted .mw-rcfilters-ui-itemMenuOptionWidget-label-title, 
+.visualstyle-simplecontrast body .mw-rcfilters-ui-filterMenuOptionWidget.oo-ui-flaggedElement-muted .mw-rcfilters-ui-itemMenuOptionWidget-label-desc, 
+.visualstyle-simplecontrast body .mw-rcfilters-ui-datePopupWidget .mw-rcfilters-ui-valuePickerWidget-title, 
+.visualstyle-simplecontrast body .mw-rcfilters-ui-savedLinksListWidget-placeholder.oo-ui-optionWidget .oo-ui-labelElement-label {
+
+	color:inherit;
+}
+
+
 .visualstyle-simple body .mw-rcfilters-ui-itemMenuOptionWidget-label-title,
 .visualstyle-simplelite body .mw-rcfilters-ui-itemMenuOptionWidget-label-title {
 	color:var(--hyperlink-foreground-color);
 }
 
 
+.visualstyle-simplecontrast body .mw-rcfilters-ui-itemMenuOptionWidget-label-title {
+	color:inherit;
+}
+
+
 .visualstyle-simple body .mw-echo-ui-notificationsInboxWidget-toolbarWrapper,
-.visualstyle-simplelite body .mw-echo-ui-notificationsInboxWidget-toolbarWrapper {
+.visualstyle-simplelite body .mw-echo-ui-notificationsInboxWidget-toolbarWrapper,
+.visualstyle-simplecontrast body .mw-echo-ui-notificationsInboxWidget-toolbarWrapper {
 	background:var(--hyperlink-background-color);
 	color:var(--hyperlink-foreground-color);
 }
@@ -2068,6 +2371,12 @@ color:inherit;
 	background-color:var(--hyperlink-background-color-hover);
 }
 
+.visualstyle-simplecontrast body .mw-echo-ui-pageNotificationsOptionWidget.oo-ui-optionWidget-selected {
+	color:var(--hyperlink-background-color)!important;
+	background-color:var(--hyperlink-foreground-color)!important;
+}
+
+
 .visualstyle-simple body .mw-echo-ui-pageNotificationsOptionWidget.oo-ui-optionWidget-selected.mw-echo-ui-pageNotificationsOptionWidget.oo-ui-optionWidget-highlighted, 
 .visualstyle-simple body .mw-echo-ui-pageNotificationsOptionWidget.oo-ui-optionWidget-pressed.mw-echo-ui-pageNotificationsOptionWidget.oo-ui-optionWidget-highlighted,
 .visualstyle-simplelite body .mw-echo-ui-pageNotificationsOptionWidget.oo-ui-optionWidget-selected.mw-echo-ui-pageNotificationsOptionWidget.oo-ui-optionWidget-highlighted, 
@@ -2076,13 +2385,22 @@ color:inherit;
 	background-color:var(--hyperlink-background-color-hover);
 }
 
+.visualstyle-simplecontrast body .mw-echo-ui-pageNotificationsOptionWidget.oo-ui-optionWidget-selected.mw-echo-ui-pageNotificationsOptionWidget.oo-ui-optionWidget-highlighted, 
+.visualstyle-simplecontrast body .mw-echo-ui-pageNotificationsOptionWidget.oo-ui-optionWidget-pressed.mw-echo-ui-pageNotificationsOptionWidget.oo-ui-optionWidget-highlighted {
+	color:var(--hyperlink-background-color);
+	background-color:var(--hyperlink-foreground-color);
+}
+
+
 .visualstyle-simple body .oo-ui-optionWidget-selected .mw-echo-ui-pageNotificationsOptionWidget-label-count,
-.visualstyle-simplelite body .oo-ui-optionWidget-selected .mw-echo-ui-pageNotificationsOptionWidget-label-count {
+.visualstyle-simplelite body .oo-ui-optionWidget-selected .mw-echo-ui-pageNotificationsOptionWidget-label-count,
+.visualstyle-simplecontrast body .oo-ui-optionWidget-selected .mw-echo-ui-pageNotificationsOptionWidget-label-count {
 	color:var(--hyperlink-foreground-color);
 }
 
 .visualstyle-simple body .mw-echo-ui-notificationItemWidget,
-.visualstyle-simplelite body .mw-echo-ui-notificationItemWidget {
+.visualstyle-simplelite body .mw-echo-ui-notificationItemWidget,
+.visualstyle-simplecontrast body .mw-echo-ui-notificationItemWidget {
 	background-color:var(--hyperlink-background-color);
 	color:var(--hyperlink-foreground-color);
 }
@@ -2093,11 +2411,18 @@ color:inherit;
 	color:var(--hyperlink-foreground-color-inverted);
 }
 
+.visualstyle-simplecontrast body .mw-echo-ui-notificationItemWidget:hover {
+	background-color:var(--hyperlink-foreground-color);
+	color:var(--hyperlink-background-color);
+}
+
 
 .visualstyle-simple body .mw-echo-ui-notificationItemWidget-unread,
 .visualstyle-simple body .mw-echo-ui-placeholderItemWidget,
 .visualstyle-simplelite body .mw-echo-ui-notificationItemWidget-unread,
-.visualstyle-simplelite body .mw-echo-ui-placeholderItemWidget  {
+.visualstyle-simplelite body .mw-echo-ui-placeholderItemWidget,
+.visualstyle-simplecontrast body .mw-echo-ui-notificationItemWidget-unread,
+.visualstyle-simplecontrast body .mw-echo-ui-placeholderItemWidget  {
 	background-color:var(--hyperlink-background-color);
 	color:var(--hyperlink-foreground-color);
 }
@@ -2108,6 +2433,12 @@ color:inherit;
 	color:var(--hyperlink-foreground-color-inverted);
 }
 
+.visualstyle-simplelite body .mw-echo-ui-notificationItemWidget-unread:hover {
+	background-color:var(--hyperlink-foreground-color);
+	color:var(--hyperlink-background-color);
+}
+
+
 .visualstyle-simple body .mw-echo-ui-notificationsListWidget:not(:hover) a, 
 .visualstyle-simple body #p-personal .mw-echo-ui-notificationsListWidget:not(:hover) a.new,
 .visualstyle-simple body #p-personal .mw-echo-ui-notificationsListWidget:not(:hover) a.stub,
@@ -2115,26 +2446,26 @@ color:inherit;
 .visualstyle-simplelite body .mw-echo-ui-notificationsListWidget:not(:hover) a, 
 .visualstyle-simplelite body #p-personal .mw-echo-ui-notificationsListWidget:not(:hover) a.new,
 .visualstyle-simplelite body #p-personal .mw-echo-ui-notificationsListWidget:not(:hover) a.stub,
-.visualstyle-simplelite body .mw-echo-ui-notificationItemWidget-content-message-header {
+.visualstyle-simplelite body .mw-echo-ui-notificationItemWidget-content-message-header,
+.visualstyle-simplecontrast body .mw-echo-ui-notificationsListWidget:not(:hover) a, 
+.visualstyle-simplecontrast body #p-personal .mw-echo-ui-notificationsListWidget:not(:hover) a.new,
+.visualstyle-simplecontrast body #p-personal .mw-echo-ui-notificationsListWidget:not(:hover) a.stub,
+.visualstyle-simplecontrast body .mw-echo-ui-notificationItemWidget-content-message-header {
 	color:var(--hyperlink-foreground-color);
 }
 
 .visualstyle-simple body .evelution-sidebar #pt-notifications-alert .mw-echo-notifications-badge:after, 
 .visualstyle-simple body .evelution-sidebar #pt-notifications-notice .mw-echo-notifications-badge:after,
 .visualstyle-simplelite body .evelution-sidebar #pt-notifications-alert .mw-echo-notifications-badge:after, 
-.visualstyle-simplelite body .evelution-sidebar #pt-notifications-notice .mw-echo-notifications-badge:after {
+.visualstyle-simplelite body .evelution-sidebar #pt-notifications-notice .mw-echo-notifications-badge:after,
+.visualstyle-simplecontrast body .evelution-sidebar #pt-notifications-alert .mw-echo-notifications-badge:after, 
+.visualstyle-simplecontrast body .evelution-sidebar #pt-notifications-notice .mw-echo-notifications-badge:after {
 	color:var(--alert-background-color)!important;
 	border-radius:100px;
 	border-color:var(--alert-alternative-foreground-color)!important;
 	background-color:var(--alert-alternative-foreground-color)!important;
 }
 
-
-
-.visualstyle-simple .cpe-dropdown::after,
-.visualstyle-simplelite .cpe-dropdown::after {
-	border-bottom-color:var(--hyperlink-background-color-hover);
-}
 
 
 .visualstyle-simple  .notification.cpe-dropdown__content .cpe-list > li:not(:last-child):not(.empty) a:hover:after,
@@ -2144,15 +2475,25 @@ color:inherit;
 	background-color:var(--hyperlink-background-color-hover);
 }
 
+.visualstyle-simplecontrast  .notification.cpe-dropdown__content .cpe-list > li:not(:last-child):not(.empty) a:hover:after {
+	opacity:1;
+	color:var(--hyperlink-background-color);
+	background-color:var(--hyperlink-foreground-color);
+}
+
+
 .visualstyle-simple .notification.cpe-dropdown__content .cpe-list > li:not(:last-child) a div h3,
 .visualstyle-simple .notification.cpe-dropdown__content .cpe-list > li:not(:last-child) div h6,
 .visualstyle-simplelite .notification.cpe-dropdown__content .cpe-list > li:not(:last-child) a div h3,
-.visualstyle-simplelite .notification.cpe-dropdown__content .cpe-list > li:not(:last-child) div h6 {
+.visualstyle-simplelite .notification.cpe-dropdown__content .cpe-list > li:not(:last-child) div h6,
+.visualstyle-simplecontrast .notification.cpe-dropdown__content .cpe-list > li:not(:last-child) a div h3,
+.visualstyle-simplecontrast .notification.cpe-dropdown__content .cpe-list > li:not(:last-child) div h6 {
 	color:var(--hyperlink-foreground-color);
 }
 
 .visualstyle-simple .notification.cpe-dropdown__content .cpe-list > li:last-child  a,
-.visualstyle-simplelite .notification.cpe-dropdown__content .cpe-list > li:last-child  a {
+.visualstyle-simplelite .notification.cpe-dropdown__content .cpe-list > li:last-child  a,
+.visualstyle-simplecontrast .notification.cpe-dropdown__content .cpe-list > li:last-child  a {
 	color:var(--hyperlink-foreground-color);
 }
 
@@ -2169,12 +2510,23 @@ color:inherit;
 	background-color:var(--hyperlink-background-color);
 }
 
+.visualstyle-simplecontrast body .mw-notification {
+	border-color:var(--hyperlink-background-color);
+	color:var(--hyperlink-foreground-color);
+	background-color:var(--canvas-text-background-color);
+}
+
 
 .visualstyle-simple body .mw-notification a,
 .visualstyle-simple body .mw-notification a:visited,
 .visualstyle-simplelite body .mw-notification a,
 .visualstyle-simplelite body .mw-notification a:visited {
 	color:rgba(var(--hyperlink-alternative-foreground-color-rgb),0.8);
+}
+
+.visualstyle-simplecontrast body .mw-notification a,
+.visualstyle-simplecontrast body .mw-notification a:visited {
+	color:rgb(var(--hyperlink-alternative-foreground-color-rgb))!important;
 }
 
 .visualstyle-simple body .mw-notification a:hover,
@@ -2226,12 +2578,24 @@ color:inherit;
 }
 
 
+.visualstyle-simplecontrast body .mw-notification.mw-notification-type-success {
+	color:var(--canvas-text-foreground-color);
+	background-color:var(--canvas-text-background-color);
+}
+
+
 .visualstyle-simple body .mw-notification.mw-notification-type-success a,
 .visualstyle-simple body .mw-notification.mw-notification-type-success a:visited,
 .visualstyle-simplelite body .mw-notification.mw-notification-type-success a,
 .visualstyle-simplelite body .mw-notification.mw-notification-type-success a:visited {
 	color:rgba(var(--success-alternative-foreground-color-rgb),0.8);
 }
+
+.visualstyle-simplecontrast body .mw-notification.mw-notification-type-success a,
+.visualstyle-simplecontrast body .mw-notification.mw-notification-type-success a:visited {
+	color:rgb(var(--canvas-text-alternative-foreground-color-rgb))!important;
+}
+
 
 .visualstyle-simple body .mw-notification.mw-notification-type-success a:hover,
 .visualstyle-simple body .mw-notification.mw-notification-type-success a:hover:visited,
@@ -2255,6 +2619,12 @@ color:inherit;
 
 }
 
+.visualstyle-simplecontrast body .mw-notification.mw-notification-type-warn {
+	color:var(--highlight-foreground-color);
+	background-color:var(--highlight-background-color);
+
+}
+
 
 .visualstyle-simple body .mw-notification.mw-notification-type-warn a,
 .visualstyle-simple body .mw-notification.mw-notification-type-warn a:visited,
@@ -2262,6 +2632,12 @@ color:inherit;
 .visualstyle-simplelite body .mw-notification.mw-notification-type-warn a:visited {
 	color:rgba(var(--warning-alternative-foreground-color-rgb),0.8);
 }
+
+.visualstyle-simplecontrast body .mw-notification.mw-notification-type-warn a,
+.visualstyle-simplecontrast body .mw-notification.mw-notification-type-warn a:visited {
+	color:rgb(var(--highlight-alternative-foreground-color-rgb))!important;
+}
+
 
 .visualstyle-simple body .mw-notification.mw-notification-type-warn a:hover,
 .visualstyle-simple body .mw-notification.mw-notification-type-warn a:hover:visited,
@@ -2282,12 +2658,25 @@ color:inherit;
 	border-color:var(--hyperlink-background-color);
 }
 
+.visualstyle-simplecontrast .cpe-banner-notification {
+	color:var(--hyperlink-foreground-color);
+	background-color:var(--hyperlink-background-color);
+	border-color:var(--canvas-foreground-color);
+}
+
+
 .visualstyle-simple .cpe-banner-notification a,
 .visualstyle-simple .cpe-banner-notification a:visited,
 .visualstyle-simplelite .cpe-banner-notification a,
 .visualstyle-simplelite .cpe-banner-notification a:visited {
 	color:rgba(var(--hyperlink-alternative-foreground-color-rgb),0.8);
 }
+
+.visualstyle-simplecontrast .cpe-banner-notification a,
+.visualstyle-simplecontrast .cpe-banner-notification a:visited {
+	color:rgba(var(--hyperlink-alternative-foreground-color-rgb))!important;
+}
+
 
 .visualstyle-simple .cpe-banner-notification a:hover,
 .visualstyle-simple .cpe-banner-notification a:hover:visited,
@@ -2297,7 +2686,8 @@ color:inherit;
 }
 
 .visualstyle-simple .cpe-banner-notification__icon,
-.visualstyle-simplelite .cpe-banner-notification__icon {
+.visualstyle-simplelite .cpe-banner-notification__icon,
+.visualstyle-simplecontrast .cpe-banner-notification__icon {
 	color:var(--hyperlink-background-color);
 	background-color:var(--hyperlink-alternative-foreground-color);
 }
@@ -2348,12 +2738,24 @@ color:inherit;
 	border-color:var(--pause-background-color-hover);
 }
 
+.visualstyle-simplecontrast .is-pause.cpe-banner-notification {
+	color:var(--inactive-text-foreground-color);
+	background-color:var(--inactive-text-background-color);
+}
+
+
 .visualstyle-simple .is-pause.cpe-banner-notification a,
 .visualstyle-simple .is-pause.cpe-banner-notification a:visited,
 .visualstyle-simplelite .is-pause.cpe-banner-notification a,
 .visualstyle-simplelite .is-pause.cpe-banner-notification a:visited {
 	color:rgba(var(--pause-alternative-foreground-color-rgb),0.8);
 }
+
+.visualstyle-simplecontrast .is-pause.cpe-banner-notification a,
+.visualstyle-simplecontrast .is-pause.cpe-banner-notification a:visited {
+	color:rgb(var(--pause-alternative-foreground-color-rgb),1)!important;
+}
+
 
 .visualstyle-simple .is-pause.cpe-banner-notification a:hover,
 .visualstyle-simple .is-pause.cpe-banner-notification a:hover:visited,
@@ -2366,6 +2768,12 @@ color:inherit;
 .visualstyle-simplelite .is-pause .cpe-banner-notification__icon {
 	color:var(--pause-background-color);
 	background-color:var(--pause-alternative-foreground-color);
+}
+
+
+.visualstyle-simplecontrast .is-pause .cpe-banner-notification__icon {
+	color:var(--inactive-text-background-color);
+	background-color:var(--inactive-text-alternative-foreground-color);
 }
 
 
@@ -2382,12 +2790,24 @@ color:inherit;
 }
 
 
+.visualstyle-simplecontrast .is-warning.cpe-banner-notification {
+	color:var(--highlight-foreground-color);
+	background-color:var(--highlight-background-color);
+}
+
+
 .visualstyle-simple .is-warning.cpe-banner-notification a,
 .visualstyle-simple .is-warning.cpe-banner-notification a:visited,
 .visualstyle-simplelite .is-warning.cpe-banner-notification a,
 .visualstyle-simplelite .is-warning.cpe-banner-notification a:visited {
 	color:rgba(var(--warning-alternative-foreground-color-rgb),0.8);
 }
+
+.visualstyle-simplecontrast .is-warning.cpe-banner-notification a,
+.visualstyle-simplecontrast .is-warning.cpe-banner-notification a:visited {
+	color:rgb(var(--highlight-alternative-foreground-color-rgb))!important;
+}
+
 
 .visualstyle-simple .is-warning.cpe-banner-notification a:hover,
 .visualstyle-simple .is-warning.cpe-banner-notification a:hover:visited,
@@ -2400,6 +2820,11 @@ color:inherit;
 .visualstyle-simplelite .is-warning .cpe-banner-notification__icon {
 	color:var(--warning-background-color);
 	background-color:var(--warning-alternative-foreground-color);
+}
+
+.visualstyle-simplecontrast .is-warning .cpe-banner-notification__icon {
+	color:var(--highlight-background-color);
+	background-color:var(--highlight-alternative-foreground-color);
 }
 
 
@@ -2416,12 +2841,24 @@ color:inherit;
 }
 
 
+.visualstyle-simplecontrast .is-success.cpe-banner-notification {
+	color:var(--canvas-text-foreground-color);
+	background-color:var(--canvas-text-background-color);
+}
+
+
 .visualstyle-simple .is-success.cpe-banner-notification a,
 .visualstyle-simple .is-success.cpe-banner-notification a:visited,
 .visualstyle-simplelite .is-success.cpe-banner-notification a,
 .visualstyle-simplelite .is-success.cpe-banner-notification a:visited {
 	color:rgba(var(--success-alternative-foreground-color-rgb),0.8);
 }
+
+.visualstyle-simplecontrast .is-success.cpe-banner-notification a,
+.visualstyle-simplecontrast .is-success.cpe-banner-notification a:visited {
+	color:rgb(var(--canvas-text-alternative-foreground-color-rgb))!important;
+}
+
 
 .visualstyle-simple .is-success.cpe-banner-notification a:hover,
 .visualstyle-simple .is-success.cpe-banner-notification a:hover:visited,
@@ -2437,11 +2874,18 @@ color:inherit;
 }
 
 
+.visualstyle-simplecontrast .is-success .cpe-banner-notification__icon {
+	color:var(--canvas-text-background-color);
+	background-color:var(--canvas-text-alternative-foreground-color);
+}
+
+
 .visualstyle-simple .is-progress.cpe-banner-notification {
 	color:var(--progress-foreground-color);
 	background-color:rgba(var(--progress-background-color-rgb),var(--dropdown-opacity));
 	border-color:var(--progress-background-color-hover);
 }
+
 
 .visualstyle-simplelite .is-progress.cpe-banner-notification {
 	color:var(--progress-foreground-color);
@@ -2450,12 +2894,23 @@ color:inherit;
 }
 
 
+.visualstyle-simplecontrast .is-progress.cpe-banner-notification {
+	color:var(--active-title-foreground-color);
+	background-color:var(--active-title-background-color);
+}
+
 .visualstyle-simple .is-progress.cpe-banner-notification a,
 .visualstyle-simple .is-progress.cpe-banner-notification a:visited,
 .visualstyle-simplelite .is-progress.cpe-banner-notification a,
 .visualstyle-simplelite .is-progress.cpe-banner-notification a:visited {
 	color:rgba(var(--progress-alternative-foreground-color-rgb),0.8);
 }
+
+.visualstyle-simplecontrast .is-progress.cpe-banner-notification a,
+.visualstyle-simplecontrast .is-progress.cpe-banner-notification a:visited {
+	color:rgb(var(--active-title-alternative-foreground-color-rgb))!important;
+}
+
 
 .visualstyle-simple .is-progress.cpe-banner-notification a:hover,
 .visualstyle-simple .is-progress.cpe-banner-notification a:hover:visited,
@@ -2470,6 +2925,12 @@ color:inherit;
 	background-color:var(--progress-alternative-foreground-color);
 }
 
+.visualstyle-simplecontrast .is-progress .cpe-banner-notification__icon {
+	color:var(--active-title-background-color);
+	background-color:var(--active-title-alternative-foreground-color);
+}
+
+
 .visualstyle-simple .is-message.cpe-banner-notification {
 	color:var(--message-foreground-color);
 	background-color:rgba(var(--message-background-color-rgb),var(--dropdown-opacity));
@@ -2483,11 +2944,22 @@ color:inherit;
 }
 
 
+.visualstyle-simplecontrast .is-message.cpe-banner-notification {
+	color:var(--inactive-title-foreground-color);
+	background-color:var(--inactive-title-background-color);
+}
+
+
 .visualstyle-simple .is-message.cpe-banner-notification a,
 .visualstyle-simple .is-message.cpe-banner-notification a:visited,
 .visualstyle-simplelite .is-message.cpe-banner-notification a,
 .visualstyle-simplelite .is-message.cpe-banner-notification a:visited {
 	color:rgba(var(--message-alternative-foreground-color-rgb),0.8);
+}
+
+.visualstyle-simplecontrast .is-message.cpe-banner-notification a,
+.visualstyle-simplecontrast .is-message.cpe-banner-notification a:visited {
+	color:rgb(var(--inactive-title-alternative-foreground-color-rgb))!important;
 }
 
 .visualstyle-simple .is-message.cpe-banner-notification a:hover,
@@ -2501,6 +2973,12 @@ color:inherit;
 .visualstyle-simplelite .is-message .cpe-banner-notification__icon {
 	color:var(--message-background-color);
 	background-color:var(--message-alternative-foreground-color);
+}
+
+
+.visualstyle-simplecontrast .is-message .cpe-banner-notification__icon {
+	color:var(--inactive-title-background-color);
+	background-color:var(--inactive-title-alternative-foreground-color);
 }
 
 
@@ -3209,6 +3687,7 @@ border-color:var(--highlight-background-color);
 .visualstyle-basiccontrast ::selection,
 .visualstyle-simple ::selection,
 .visualstyle-simplelite ::selection,
+.visualstyle-simplecontrast ::selection,
 .visualstyle-classic ::selection,
 .visualstyle-classiccontrast ::selection {
 color:var(--highlight-foreground-color);
@@ -3221,6 +3700,7 @@ background-color:var(--highlight-background-color);
 /* RC Filters */
 .visualstyle-contrast body,
 .visualstyle-basiccontrast body,
+.visualstyle-simplecontrast body,
 .visualstyle-classiccontrast body {
 /* Blue */
 	--rc-highlight-blue-background-color:var(--active-title-background-color);
