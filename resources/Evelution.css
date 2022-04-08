@@ -728,12 +728,14 @@ position:relative;
 	
 
 .evelution-article-wrapper {
-  --l-content-padding:28px;
-  --r-content-padding:var(--l-content-padding);
-display:flex;
-position:relative;
-justify-content:space-between;
-width:100%;
+  --l-content-padding: 28px;
+  --r-content-padding: var(--l-content-padding);
+  display: grid;
+  position: relative;
+  justify-content: space-between;
+  width: 100%;
+  grid-template-columns: minmax(0,1fr) min-content;
+  grid-template-rows: max-content;
 }
 
 .evelution-article-content {
@@ -1415,6 +1417,11 @@ gap:2px;
 	.evelution-minibar .local-navigation .emptyPortlet {
 		display:none!important;
 	}
+
+	.evelution-minibar .local-navigation .toc > #toc {
+		display:block!important;
+	}
+
 
 
 .evelution-minibar .title-container {
@@ -2196,7 +2203,7 @@ margin-left:1px;
 	}
 	
 
-	.action-view:not(.ns--1):not(.ns-6):not(.ns-8):not(.mainpage) container:not(.no-rail) .evelution-page-header-title {
+	.action-view:not(.ns--1):not(.ns-8):not(.mainpage) container:not(.no-rail) .evelution-page-header-title {
 		padding-right:55px;
 	}
 	
@@ -2278,18 +2285,17 @@ margin-left:1px;
 }
 
 
- .action-view:not(.ns--1):not(.ns-6):not(.ns-8):not(.mainpage) container:not(.no-rail) .evelution-rail-wrapper,
- .action-view:not(.ns--1):not(.ns-6):not(.ns-8):not(.mainpage) container:not(.no-rail) .evelution-page-header .toggle-rail-button {
+ .action-view:not(.ns--1):not(.ns-8):not(.mainpage) container:not(.no-rail) .evelution-rail-wrapper,
+ .action-view:not(.ns--1):not(.ns-8):not(.mainpage) container:not(.no-rail) .evelution-page-header .toggle-rail-button {
 	display:flex;
 }
 
-:not(.action-view).ns--1 .evelution-wrapper .evelution-article-wrapper,
-:not(.action-view).ns-6 .evelution-wrapper .evelution-article-wrapper,
-:not(.action-view).ns-8 .evelution-wrapper .evelution-article-wrapper,
-:not(.action-view).mainpage .evelution-wrapper .evelution-article-wrapper,
-:not(.action-view) container.no-rail .evelution-wrapper .evelution-article-wrapper {
-		flex-direction:column;
-		flex-wrap:nowrap;
+body:not(.action-view) .evelution-wrapper .evelution-article-wrapper,
+.ns--1 .evelution-wrapper .evelution-article-wrapper,
+.ns-8 .evelution-wrapper .evelution-article-wrapper,
+.mainpage .evelution-wrapper .evelution-article-wrapper,
+container.no-rail .evelution-wrapper .evelution-article-wrapper {
+	grid-template-columns:100%;
 }
 
 .activity-module .mw-changeslist-legend,
