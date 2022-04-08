@@ -65,6 +65,9 @@ filter:none!important;
 .visualstyle-contrast body,
 .visualstyle-contrast .cpe-dropdown__content,
 .visualstyle-contrast .cpe-dropdown__content .cpe-list.is-linked .cpe-dropdown-level-2 .cpe-dropdown-level-2__content,
+.visualstyle-generallite body,
+.visualstyle-generallite .cpe-dropdown__content,
+.visualstyle-generallite .cpe-dropdown__content .cpe-list.is-linked .cpe-dropdown-level-2 .cpe-dropdown-level-2__content,
 .visualstyle-simplelite body,
 .visualstyle-simplelite .cpe-dropdown__content,
 .visualstyle-simplelite .cpe-dropdown__content .cpe-list.is-linked .cpe-dropdown-level-2 .cpe-dropdown-level-2__content,
@@ -79,6 +82,7 @@ filter:none!important;
 
 .visualstyle-lite body,
 .visualstyle-contrast body,
+.visualstyle-generallite body,
 .visualstyle-simplelite body,
 .visualstyle-simplecontrast body {
 	--backdrop-filter:none!important;
@@ -315,12 +319,6 @@ filter:none!important;
 
 .visualstyle-contrast .evelution-minibar-navigation-background {
 		box-shadow:0 1px 0 0 var(--canvas-foreground-color)!important;
-}
-
-@media only screen and (min-width:760px) {
-	.visualstyle-contrast .evelution-minibar{
-			box-shadow:0 1px 0 0 var(--canvas-foreground-color)!important;
-	}
 }
 
 .visualstyle-contrast .evelution-minibar .link:hover,
@@ -1223,6 +1221,8 @@ background-color:var(--canvas-background-color);
 /* Checkboxes */
 .visualstyle-basic input[type="checkbox"], .visualstyle-basic input[type="radio"] ,
 .visualstyle-contrast input[type="checkbox"], .visualstyle-contrast input[type="radio"] ,
+.visualstyle-general input[type="checkbox"], .visualstyle-contrast input[type="radio"] ,
+.visualstyle-generallite input[type="checkbox"], .visualstyle-contrast input[type="radio"] ,
 .visualstyle-basiccontrast input[type="checkbox"], .visualstyle-basiccontrast input[type="radio"],
 .visualstyle-simple input[type="checkbox"], .visualstyle-simple input[type="radio"],
 .visualstyle-simplelite input[type="checkbox"], .visualstyle-simplelite input[type="radio"]  {
@@ -1249,6 +1249,10 @@ background-color:var(--canvas-background-color);
 .visualstyle-basic .oo-ui-radioSelectWidget:focus  input[type="checkbox"]:checked:not(:active), .visualstyle-basic .oo-ui-radioSelectWidget:focus  input[type="radio"]:checked:not(:active),
 .visualstyle-contrast input[type="checkbox"]:checked:not(:active):focus, .visualstyle-contrast input[type="radio"]:checked:not(:active):focus,
 .visualstyle-contrast .oo-ui-radioSelectWidget:focus  input[type="checkbox"]:checked:not(:active), .visualstyle-contrast .oo-ui-radioSelectWidget:focus input[type="radio"]:checked:not(:active),
+.visualstyle-general input[type="checkbox"]:checked:not(:active):focus, .visualstyle-general input[type="radio"]:checked:not(:active):focus,
+.visualstyle-general .oo-ui-radioSelectWidget:focus  input[type="checkbox"]:checked:not(:active), .visualstyle-general .oo-ui-radioSelectWidget:focus input[type="radio"]:checked:not(:active),
+.visualstyle-generallite input[type="checkbox"]:checked:not(:active):focus, .visualstyle-generallite input[type="radio"]:checked:not(:active):focus,
+.visualstyle-generallite .oo-ui-radioSelectWidget:focus  input[type="checkbox"]:checked:not(:active), .visualstyle-generallite .oo-ui-radioSelectWidget:focus input[type="radio"]:checked:not(:active),
 .visualstyle-basiccontrast input[type="checkbox"]:checked:not(:active):focus, .visualstyle-basiccontrast input[type="radio"]:checked:not(:active):focus,
 .visualstyle-basiccontrast .oo-ui-radioSelectWidget:focus  input[type="checkbox"]:checked:not(:active), .visualstyle-basiccontrast .oo-ui-radioSelectWidget:focus input[type="radio"]:checked:not(:active),
 .visualstyle-simple input[type="checkbox"]:checked:not(:active):focus, .visualstyle-simple input[type="radio"]:checked:not(:active):focus,
@@ -3682,6 +3686,201 @@ border-color:var(--highlight-background-color);
 	background-color:transparent;
 }
 
+/* General Visual Style */
+
+.visualstyle-general .evelution-content .evelution-page-header .toggle-rail-button:hover,
+.visualstyle-generallite .evelution-content .evelution-page-header .toggle-rail-button:hover {
+	background-color:var(--hyperlink-background-color);
+	border-color:var(--hyperlink-background-color);
+	color:var(--hyperlink-foreground-color);
+}
+
+.visualstyle-general .evelution-content .evelution-page-header .toggle-rail-button:active,
+.visualstyle-generallite .evelution-content .evelution-page-header .toggle-rail-button:active {
+	background-color:var(--hyperlink-background-color-hover);
+	border-color:var(--hyperlink-background-color-hover);
+	color:var(--hyperlink-foreground-color-inverted);
+}
+
+
+.visualstyle-general .evelution-sidebar,
+.visualstyle-generallite .evelution-sidebar {
+	--global-nav-link-color-hover:var(--hyperlink-foreground-color)!important;
+	--global-nav-link-background-hover:var(--hyperlink-background-color)!important;
+	--global-nav-link-color-active:var(--hyperlink-foreground-color-inverted)!important;
+	--global-nav-link-background-active:var(--hyperlink-background-color-hover)!important;
+}
+
+	.visualstyle-general .evelution-sidebar .link:hover,
+	.visualstyle-generallite .evelution-sidebar .link:hover {
+	background-color:var(--global-nav-link-background-hover);
+	border-color:var(--global-nav-link-background-hover);
+	color:var(--global-nav-link-color-hover);
+}
+
+	.visualstyle-general .evelution-sidebar .link:active, 
+	.visualstyle-general .evelution-sidebar .link:focus, 
+	.visualstyle-general .evelution-sidebar .link.active,
+	.visualstyle-general .evelution-sidebar .cpe-dropdown:focus > .link,
+	.visualstyle-general .evelution-sidebar .cpe-dropdown:focus-within > .link,
+	.visualstyle-generallite .evelution-sidebar .link:active, 
+	.visualstyle-generallite .evelution-sidebar .link:focus, 
+	.visualstyle-generallite .evelution-sidebar .link.active,
+	.visualstyle-generallite .evelution-sidebar .cpe-dropdown:focus > .link,
+	.visualstyle-generallite .evelution-sidebar .cpe-dropdown:focus-within > .link {
+	background-color:var(--global-nav-link-background-active);
+	border-color:var(--global-nav-link-background-active);
+	color:var(--global-nav-link-color-active);
+}
+
+.visualstyle-general .evelution-minibar .link:hover,
+.visualstyle-general .evelution-top-actions .link:hover,
+.visualstyle-generallite .evelution-minibar .link:hover,
+.visualstyle-generallite .evelution-top-actions .link:hover {
+	-webkit-animation:none;
+	animation:none;
+	color:var(--hyperlink-foreground-color);
+	border-color:var(--hyperlink-background-color);
+	background-color:var(--hyperlink-background-color);
+}
+
+.visualstyle-general .evelution-minibar .link:active, 
+.visualstyle-general .evelution-minibar .link:focus, 
+.visualstyle-general .evelution-minibar .cpe-dropdown:focus > .link, 
+.visualstyle-general .evelution-minibar .cpe-dropdown:focus-within > .link, 
+.visualstyle-general .evelution-minibar .link.active,
+.visualstyle-general .evelution-top-actions .link:active, 
+.visualstyle-general .evelution-top-actions .link:focus, 
+.visualstyle-general .evelution-top-actions .cpe-dropdown:focus > .link, 
+.visualstyle-general .evelution-top-actions .cpe-dropdown:focus-within > .link, 
+.visualstyle-general .evelution-top-actions .link.active,
+.visualstyle-generallite .evelution-minibar .link:active, 
+.visualstyle-generallite .evelution-minibar .link:focus, 
+.visualstyle-generallite .evelution-minibar .cpe-dropdown:focus > .link, 
+.visualstyle-generallite .evelution-minibar .cpe-dropdown:focus-within > .link, 
+.visualstyle-generallite .evelution-minibar .link.active,
+.visualstyle-generallite .evelution-top-actions .link:active, 
+.visualstyle-generallite .evelution-top-actions .link:focus, 
+.visualstyle-generallite .evelution-top-actions .cpe-dropdown:focus > .link, 
+.visualstyle-generallite .evelution-top-actions .cpe-dropdown:focus-within > .link, 
+.visualstyle-generallite .evelution-top-actions .link.active {
+	-webkit-animation:none;
+	animation:none;
+	color:var(--hyperlink-foreground-color-inverted);
+	border-color:var(--hyperlink-background-color-hover);
+	background-color:var(--hyperlink-background-color-hover);
+}
+
+.visualstyle-general .cpe-toggle__input:checked+.cpe-toggle__label::before,
+.visualstyle-generallite .cpe-toggle__input:checked+.cpe-toggle__label::before{
+background-color:var(--hyperlink-background-color-hover);
+}
+.visualstyle-general .cpe-toggle__input:checked+.cpe-toggle__label::after,
+.visualstyle-generallite .cpe-toggle__input:checked+.cpe-toggle__label::after {
+background-color:var(--hyperlink-background-color);
+}
+
+.visualstyle-general .cpe-dropdown,
+.visualstyle-generallite .cpe-dropdown {
+/* Link Styling */
+--dropdown-hyperlink-background-color:var(--hyperlink-background-color);
+--dropdown-hyperlink-border-color:transparent;
+--dropdown-hyperlink-text-color:var(--hyperlink-foreground-color);
+}
+
+.visualstyle-general body .toc ul li a:hover,
+.visualstyle-general body .toc ul li.selected a,
+.visualstyle-generallite body .toc ul li a:hover,
+.visualstyle-generallite body .toc ul li.selected a {
+  background-color:var(--hyperlink-background-color);
+  color:var(--hyperlink-foreground-color);
+  border-color:var(--hyperlink-background-color);
+}
+
+.visualstyle-general .oo-ui-menuOptionWidget.oo-ui-optionWidget-selected,
+.visualstyle-general .oo-ui-menuOptionWidget.oo-ui-optionWidget-selected.oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted, 
+.visualstyle-general .oo-ui-menuOptionWidget.oo-ui-optionWidget-pressed.oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted,
+.visualstyle-general .wikiEditor-ui-toolbar .booklet > .index > .current,
+.visualstyle-generallite .oo-ui-menuOptionWidget.oo-ui-optionWidget-selected,
+.visualstyle-generallite .oo-ui-menuOptionWidget.oo-ui-optionWidget-selected.oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted, 
+.visualstyle-generallite .oo-ui-menuOptionWidget.oo-ui-optionWidget-pressed.oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted,
+.visualstyle-generallite .wikiEditor-ui-toolbar .booklet > .index > .current {
+  background-color:var(--hyperlink-background-color);
+  color:var(--hyperlink-foreground-color)!important;
+}
+
+.visualstyle-general .cpe-floating-button,
+.visualstyle-generallite .cpe-floating-button {
+  --floating-button-color-hover:var(--canvas-text-foreground-color);
+  --floating-button-color-active:var(--canvas-text-foreground-color-inverted);
+  --floating-button-background-color-hover:var(--canvas-text-background-color);
+  --floating-button-background-color-active:var(--canvas-text-background-color-hover);
+  --floating-button-border-color-hover:var(--floating-button-background-color-hover);
+  --floating-button-border-color-active:var(--floating-button-background-color-active);
+}
+
+
+.visualstyle-general .cpe-floating-button.accent,
+.visualstyle-generallite .cpe-floating-button.accent {
+  --floating-button-color-hover:var(--hyperlink-foreground-color);
+  --floating-button-color-active:var(--hyperlink-foreground-color-inverted);
+  --floating-button-background-color-hover:var(--hyperlink-background-color);
+  --floating-button-background-color-active:var(--hyperlink-background-color-hover);
+}
+
+.visualstyle-general .cpe-floating-button.critical,
+.visualstyle-generallite .cpe-floating-button.critical {
+  --floating-button-color-hover:var(--alert-foreground-color);
+  --floating-button-color-active:var(--alert-foreground-color-inverted);
+  --floating-button-background-color-hover:var(--alert-background-color);
+  --floating-button-background-color-active:var(--alert-background-color-hover);
+}
+
+.visualstyle-general mark,
+.visualstyle-generallite mark {
+color:var(--hyperlink-foreground-color);
+background-color:var(--hyperlink-background-color);
+}
+
+.visualstyle-general .option-link.is-active,
+.visualstyle-generallite .option-link.is-active {
+  background-color:var(--hyperlink-background-color);
+  border-color:var(--hyperlink-background-color);
+  color:var(--hyperlink-foreground-color);
+}
+
+.visualstyle-general .preview-window-window h2 button:hover,
+.visualstyle-generallite .preview-window-window h2 button:hover {
+	background-color:var(--hyperlink-background-color);
+	color:var(--hyperlink-foreground-color);
+	border-color:var(--hyperlink-background-color);
+}
+
+
+.visualstyle-general .preview-window-window h2 button:active,
+.visualstyle-generallite .preview-window-window h2 button:active {
+	background-color:var(--hyperlink-background-color-hover);
+	color:var(--hyperlink-foreground-color-inverted);
+	border-color:var(--hyperlink-background-color-hover);
+}
+
+
+.visualstyle-general .preview-window-window h2 button.close:hover,
+.visualstyle-generallite .preview-window-window h2 button.close:hover {
+  background-color:var(--alert-background-color);
+  border-color:var(--alert-background-color);
+  color:var(--alert-foreground-color);
+}
+
+
+.visualstyle-general .preview-window-window h2 button.close:active,
+.visualstyle-generallite .preview-window-window h2 button.close:active {
+  background-color:var(--alert-background-color-hover);
+  border-color:var(--alert-background-color-hover);
+  color:var(--alert-foreground-color-inverted);
+}
+
+
 /* Selection Styles per B19 */
 .visualstyle-contrast ::selection,
 .visualstyle-basiccontrast ::selection,
@@ -3692,6 +3891,12 @@ border-color:var(--highlight-background-color);
 .visualstyle-classiccontrast ::selection {
 color:var(--highlight-foreground-color);
 background-color:var(--highlight-background-color);
+}
+
+.visualstyle-general ::selection,
+.visualstyle-generallite ::selection {
+color:var(--hyperlink-foreground-color);
+background-color:var(--hyperlink-background-color);
 }
 
 

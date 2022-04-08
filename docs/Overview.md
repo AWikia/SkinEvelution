@@ -196,7 +196,7 @@ Evelution comes with its own theming system, the Luna theming. It consists of th
 - Luna Lavccent is an additional color that will replace the Neutral Color when enabled.
 
 Luna Lovit will display as a fallback Solid Color when:
-- Running a visual style other than Standard
+- Running a visual style that does not support transparency effects
 - System's Reduced transparcney is enabled
 - GPUs level is lower than 3
 - App workspace is not focused
@@ -204,7 +204,7 @@ Luna Lovit will display as a fallback Solid Color when:
 - App runs on a browser without support of ``backdrop-filter``
 
 Luna Levit will display as a fallback Solid Color when:
-- Running a visual style other than Standard
+- Running a visual style that does not support transparency effects
 - System's Reduced transparcney is enabled
 - GPUs level is lower than 2
 - App workspace is not focused or runs fullscreen
