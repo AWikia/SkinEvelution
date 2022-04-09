@@ -415,17 +415,22 @@ function CheckCompat() {
 
 	/* Hack */
 	if (window.oldBrowser || window.oldchrome || window.oldfox || window.oldSafari) {
-		AddFloatingBanner("Browser requirements are not met and experience with Evelution on this browser will not be optimal.", "warning");
+		document.querySelector('body').innerHTML='<style> *, :before, :after {all:initial!important;}*:not(html):not(body):not(.warn) {display:none!important;}</style><div class="warn">Unsupported Configuration</div>';
+		console.error('Browser requirements are not met and Evelution can\'t run. Please upgrade your browser to latest');
+//		AddFloatingBanner("Browser requirements are not met and experience with Evelution on this browser will not be optimal.", "warning");
 	} else {
 		window.newbrowser = (CSS.supports("color","var(--color)") || CSS.supports("color:var(--color)") ) 
 		if (!window.newbrowser ) {
-			AddFloatingBanner("Browser requirements are not met and experience with Evelution on this browser will not be optimal.", "warning");
+//			AddFloatingBanner("Browser requirements are not met and experience with Evelution on this browser will not be optimal.", "warning");
+			document.querySelector('body').innerHTML='<style> *, :before, :after {all:initial!important;}*:not(html):not(body):not(.warn) {display:none!important;}</style><div class="warn">Unsupported Configuration</div>';
+			console.error('Browser requirements are not met and Evelution can\'t run. Please upgrade your browser to latest')
 		}
 	}
 	{{#has-servelution-old}}
 	AddFloatingBanner("The following features have been paused as they are incompatible with the current Servelution client:{{#has-servelution-no-custom-2ndbg}} Custom Secondary Background Color{{/has-servelution-no-custom-2ndbg}}{{#has-servelution-no-mica}}, Luna Levit{{/has-servelution-no-mica}}{{#has-servelution-no-imagefilter}}, Background Image Filters{{/has-servelution-no-imagefilter}}{{#has-servelution-no-customfont}}, Custom Primary Font{{/has-servelution-no-customfont}}{{#has-servelution-no-customacryllic}}, Custom Elements Opacity{{/has-servelution-no-customacryllic}}{{#has-servelution-no-newluna}}, Dynamic Luna State{{/has-servelution-no-newluna}}{{#has-servelution-no-accent}}, Luna Lavccent{{/has-servelution-no-accent}}{{#has-servelution-no-dgeneric}}, Dynamic Generic Colors{{/has-servelution-no-dgeneric}}{{#has-servelution-no-actions}}, Sticky Page Actions{{/has-servelution-no-actions}}{{#has-servelution-no-headertext}}, Custom Desktop Text Color{{/has-servelution-no-headertext}}{{#has-servelution-no-dground}}, Dual Foreground Colors{{/has-servelution-no-dground}}{{#has-servelution-vanadium}}, Sticky Rail, Manual Contrast Level, Custom Dynamic Content{{/has-servelution-vanadium}}.<br>Please upgrade your Servelution client to enable those missing features","pause")
 	{{/has-servelution-old}}
 }
+
 
 function ResetSettings() {
 	if (confirm("Are you sure you want to reset Evelution's settings to their defaults? This can't be undone.")) {

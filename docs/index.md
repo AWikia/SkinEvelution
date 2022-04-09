@@ -26,7 +26,10 @@ Evelution requires at least one of these browsers in order to run properly:
 - Safari 14+
 - Browsers based on those (Such as Opera)
 
-Evelution skin will not be blocked from running inside outdated browsers, however do note that we will not be patching any issue found in browsers outside the [supported ones](https://caniuse.com/?compare=firefox+84,chrome+84,safari+14&compareCats=all) and an unsupported browser banner will appear on skin load.
+Evelution skin will die if it is found to be running on unsupported browsers with the **Unsupported Configuration** error
+
+## Servelution Requirements
+Evelution requires at least a Servelution Client with the CPE Language Recompiler (2.0.0+). Evelution will die if it is found to be running on a Servelution Client without the CPE Language Recompiler
 
 # Installation
 To Install Evelution, you must download the reposistory first. Make a folder called **Evelution** in **Skins** diractory where you have installed MediaWiki and extract the zipped file contents in **Evelution** folder.  Lastly, put this in **LocalSettings.php**:
