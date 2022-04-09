@@ -195,9 +195,10 @@ container > main {
 	--global-nav-text-color:var(--luna-text-background-color);
 	--global-nav-link-color-hover:var(--luna-text-background-color-hover);
 	--global-nav-link-background-hover:var(--luna-text-background-color-rgb);
-	--global-nav-link-color-active:var(--luna-hyperlink-background-color);
-	--global-nav-link-background-active:var(--luna-hyperlink-background-color-rgb);
-	--global-nav-link-opacity:0.2;
+	--global-nav-link-color-active:var(--luna-foreground-color-inverted);
+	--global-nav-link-background-active:var(--luna-background-color-hover);
+	--global-nav-link-border-active:rgba(var(--luna-background-color-rgb),0.5);
+	--global-nav-link-opacity:0.3;
 	--global-nav-icon-scale-factor:50;
 	--global-nav-opacity:var(--dropdown-opacity);
 	-webkit-backdrop-filter:var(--backdrop-filter);
@@ -298,8 +299,8 @@ container > main {
 	.evelution-sidebar .link.active, 
 	.evelution-sidebar .cpe-dropdown:focus > .link,
 	.evelution-sidebar .cpe-dropdown:focus-within > .link {
-		background-color:rgba(var(--global-nav-link-background-active), calc(var(--global-nav-link-opacity) * 2));
-		border-color:rgba(var(--global-nav-link-background-active), var(--global-nav-link-opacity));
+		background-color:var(--global-nav-link-background-active);
+		border-color:var(--global-nav-link-border-active);
 		color:var(--global-nav-link-color-active);
 	}
 	
@@ -1317,8 +1318,8 @@ gap:2px;
 	.evelution-top-actions .cpe-dropdown:focus > .link, 
 	.evelution-top-actions .cpe-dropdown:focus-within > .link, 
 	.evelution-top-actions .link.active  {
-		background-color:rgba(var(--header-foreground-color-rgb),0.2);
-		border-color:rgba(var(--header-foreground-color-rgb),0.1);
+		background-color:rgba(var(--header-foreground-color-rgb),0.3);
+		border-color:rgba(var(--header-foreground-color-rgb),0.15);
 		color:var(--header-foreground-color-hover);
 	}
 
@@ -1332,9 +1333,9 @@ gap:2px;
 	.evelution-top-actions .cpe-dropdown:focus  .link, 
 	.evelution-top-actions .cpe-dropdown:focus-within  .link, 
 	.evelution-top-actions .link.active  {
-		background-color:rgba(var(--header-foreground-color-hover-rgb),0.4);
-		border-color:rgba(var(--header-foreground-color-hover-rgb),0.2);
-		color:rgba(var(--header-foreground-color-hover-rgb),0.8);
+		background-color:var(--desktop-background-color-hover);
+		border-color:rgba(var(--desktop-background-color-rgb),0.5);
+		color:var(--desktop-foreground-color-hover);
 
 	}
 
@@ -1651,8 +1652,8 @@ gap:2px;
 	.evelution-minibar .cpe-dropdown:focus > .link, 
 	.evelution-minibar .cpe-dropdown:focus-within > .link, 
 	.evelution-minibar .link.active  {
-		background-color:rgba(var(--luna-text-background-color-rgb),0.2);
-		border-color:rgba(var(--luna-text-background-color-rgb),0.1);
+		background-color:rgba(var(--luna-text-background-color-rgb),0.3);
+		border-color:rgba(var(--luna-text-background-color-rgb),0.15);
 		color:var(--luna-text-background-color-hover);
 	}
 
@@ -1666,9 +1667,9 @@ gap:2px;
 	.evelution-minibar .cpe-dropdown:focus  .link, 
 	.evelution-minibar .cpe-dropdown:focus-within  .link, 
 	.evelution-minibar .link.active  {
-		background-color:rgba(var(--luna-hyperlink-background-color-rgb),0.4);
-		border-color:rgba(var(--luna-hyperlink-background-color-rgb),0.2);
-		color:var(--luna-hyperlink-background-color);
+		background-color:var(--luna-background-color-hover);
+		border-color:rgba(var(--luna-background-color-rgb),0.5);
+		color:var(--luna-foreground-color-inverted);
 
 	}
 
@@ -2146,15 +2147,15 @@ margin-left:1px;
 
 .evelution-content .evelution-page-header .toggle-rail-button:hover {
 		color:var(--luna-text-background-color-hover);
-		background-color:rgba(var(--luna-text-background-color-hover-rgb), 0.2);
-		border-color:rgba(var(--luna-text-background-color-hover-rgb), 0.1);
+		background-color:rgba(var(--luna-text-background-color-hover-rgb), 0.3);
+		border-color:rgba(var(--luna-text-background-color-hover-rgb), 0.15);
 
 }
 
 .evelution-content .evelution-page-header .toggle-rail-button:active {
-		color:var(--luna-hyperlink-background-color);
-		background-color:rgba(var(--luna-hyperlink-background-color-rgb), 0.4);
-		border-color:rgba(var(--luna-hyperlink-background-color-rgb), 0.2);
+		color:var(--luna-foreground-color-inverted);
+		background-color:var(--luna-background-color-hover);
+		border-color:rgba(var(--luna-background-color-rgb), 0.5);
 }
 
 
@@ -2551,11 +2552,12 @@ white-space:nowrap;
 }
 
 .preview-window-window h2 button {
-	--button-background-hover:rgba(var(--luna-text-background-color-rgb),0.2);
-	--button-background-active:rgba(var(--luna-text-background-color-rgb),0.4);
-	--button-border-hover:rgba(var(--luna-text-background-color-rgb),0.1);
-	--button-border-active:rgba(var(--luna-text-background-color-rgb),0.2);
+	--button-background-hover:rgba(var(--luna-text-background-color-rgb),0.3);
+	--button-background-active:var(--luna-background-color-hover);
+	--button-border-hover:rgba(var(--luna-text-background-color-rgb),0.15);
+	--button-border-active:rgba(var(--luna-background-color-rgb),0.5);
 	--button-background-color:inherit;
+	--button-background-color-active:var(--button-background-color);
 	background-color:transparent;
 	background-image:none;
 	color:inherit;
@@ -2576,10 +2578,11 @@ white-space:nowrap;
 }
 
 .preview-window-window h2 button.close {
-	--button-background-hover:rgba(var(--alert-background-color-rgb),0.2);
-	--button-background-active:rgba(var(--alert-background-color-rgb),0.4);
-	--button-border-hover:rgba(var(--alert-background-color-rgb),0.1);
-	--button-border-active:rgba(var(--alert-background-color-rgb),0.2);
+	--button-background-hover:rgba(var(--alert-background-color-rgb),0.3);
+	--button-background-active:var(--alert-background-color-hover-2);
+	--button-border-hover:rgba(var(--alert-background-color-rgb),0.15);
+	--button-border-active:rgba(var(--alert-background-color-rgb),0.5);
+	--button-background-color-active:var(--alert-foreground-color);
 	border-top-right-radius:calc(var(--border-radius) * 2);
 }
 
@@ -2592,7 +2595,7 @@ white-space:nowrap;
 .preview-window-window h2 button:active {
 	background-color:var(--button-background-active);
 	border-color:var(--button-border-active);
-	color:var(--button-background-color);
+	color:var(--button-background-color-active);
 }
 
 

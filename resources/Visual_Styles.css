@@ -297,25 +297,12 @@ filter:none!important;
 .visualstyle-contrast .evelution-sidebar {
 	--global-nav-link-color-hover:var(--highlight-foreground-color)!important;
 	--global-nav-link-background-hover:var(--highlight-background-color-rgb)!important;
-	--global-nav-link-color-active:var(--highlight-background-color)!important;
-	--global-nav-link-background-active:var(--highlight-foreground-color-rgb)!important;
+	--global-nav-link-color-active:rgb(var(--global-nav-link-background-hover))!important;
+	--global-nav-link-background-active:var(--global-nav-link-color-hover)!important;
+	--global-nav-link-border-active:var(--global-nav-link-background-active)!important;
+	--global-nav-link-opacity:2!important;
 }
 
-	.visualstyle-contrast .evelution-sidebar .link:hover {
-	background-color:rgb(var(--global-nav-link-background-hover));
-	border-color:rgb(var(--global-nav-link-background-hover));
-	color:var(--global-nav-link-color-hover);
-}
-
-	.visualstyle-contrast .evelution-sidebar .link:active, 
-	.visualstyle-contrast .evelution-sidebar .link:focus, 
-	.visualstyle-contrast .evelution-sidebar .link.active,
-	.visualstyle-contrast .evelution-sidebar .cpe-dropdown:focus > .link,
-	.visualstyle-contrast .evelution-sidebar .cpe-dropdown:focus-within > .link {
-	background-color:rgb(var(--global-nav-link-background-active));
-	border-color:rgb(var(--global-nav-link-background-active));
-	color:var(--global-nav-link-color-active);
-}
 
 .visualstyle-contrast .evelution-minibar-navigation-background {
 		box-shadow:0 1px 0 0 var(--canvas-foreground-color)!important;
@@ -636,19 +623,25 @@ background-color:var(--canvas-background-color);
 
 .visualstyle-basic .cpe-dropdown {
 /* Link Styling */
+--dropdown-hyperlink-background-color:var(--hyperlink-secondary-fadeout-color);
 --dropdown-hyperlink-border-color:var(--dropdown-hyperlink-text-color);
+--dropdown-hyperlink-text-color:var(--hyperlink-secondary-background-color);
 }
 
 
 .visualstyle-basic body .toc ul li a:hover,
 .visualstyle-basic body .toc ul li.selected a {
+  background-color:var(--hyperlink-secondary-fadeout-color);
   border-color:var(--hyperlink-secondary-background-color);
+  color: var(--hyperlink-secondary-background-color);
 }
 
 
 .visualstyle-basic body .toc .module-toc li a:hover,
 .visualstyle-basic body .toc .module-toc li.selected a {
+  background-color:var(--hyperlink-fadeout-color);
   border-color:var(--hyperlink-background-color);
+  color: var(--hyperlink-background-color);
 }
 
 
@@ -3880,6 +3873,7 @@ background-color:var(--hyperlink-background-color);
   --floating-button-background-color-active:var(--canvas-text-background-color-hover);
   --floating-button-border-color-hover:var(--floating-button-background-color-hover);
   --floating-button-border-color-active:var(--floating-button-background-color-active);
+  --floating-button-fadeout-opacity:0;
 }
 
 
