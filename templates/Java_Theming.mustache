@@ -306,9 +306,14 @@ function VisualStyleCompile() {
 						'<span class="cpe-icon material-icons">' + visualStyles[i][2] + '</span>' +
 					'</a>' +
 				'</li>'
-		var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-styles");
+		var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-styles > .base-visual-style");
 		if (x) {
-			x.insertAdjacentHTML('beforeend',str);
+			x.insertAdjacentHTML('beforebegin',str);
+		} else {
+			var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-styles");
+			if (x) {
+				x.insertAdjacentHTML('beforeend',str);
+			}
 		}
 	}
 /* Visual Colors */
