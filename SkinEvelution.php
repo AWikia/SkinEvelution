@@ -117,6 +117,7 @@ class SkinEvelution extends SkinMustache {
 		$data["has-mono-logo"] = $this->getConfig()->get ( 'EvelutionMonoLogo' );
 		$data["has-interlanguage-links"] = true;
 		$data["has-box-alias"] = $this->getConfig()->get ( 'EvelutionChangeMessageBoxesToBanners' );
+		$data["has-classic-forced"] = $this->getConfig()->get ( 'EvelutionClassicDisabledColorManagement' );
 		$data["is-loggedin"] = $this->getSkin()->getUser()->isRegistered();
 
 

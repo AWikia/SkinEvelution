@@ -236,6 +236,15 @@ function ForcedColors() {
 	return ( ( window.matchMedia('(forced-colors: active)').matches ) || (document.querySelector("container.no-color-management") ) ||  (window.MW18ActiveColors === 'nocolormanagement') )
 }
 
+function ClassicForcedColorMode() {
+	if (mediawiki) { // @REMOVEME: In Ivilution, Parmalution and CPE Language
+		{{#has-classic-forced}}
+			return true;
+		{{/has-classic-forced}}
+	}
+	return ((navigator.userAgent.match("Chrome/"))  && ( window.matchMedia('(forced-colors: active)').matches ) );
+}
+
 /* Visual Styles */
 function VisualStyle(style,save=true) {
 	vstyle = style;
@@ -370,7 +379,7 @@ function VisualStyleCompile() {
 /* Getting non-generic color values */
 function GetDesktop() {
 	if (ForcedColors()) {
-		if ((navigator.userAgent.match("Chrome/"))  && ( window.matchMedia('(forced-colors: active)').matches ) ) {
+		if ((ClassicForcedColorMode())) {
 			return getComputedStyle(document.querySelector('.fc-canvas')).getPropertyValue("color");
 		} else {
 			return getComputedStyle(document.querySelector('.fc-background')).getPropertyValue("color");
@@ -528,7 +537,7 @@ function GetHighlight() {
 
 function GetActiveTitle() {
 	if (ForcedColors()) {
-		if ((navigator.userAgent.match("Chrome/"))  && ( window.matchMedia('(forced-colors: active)').matches ) ) {
+		if ((ClassicForcedColorMode())) {
 			return getComputedStyle(document.querySelector('.fc-linktext')).getPropertyValue("color");
 		} else {
 			return getComputedStyle(document.querySelector('.fc-activecaption')).getPropertyValue("color");
@@ -542,7 +551,7 @@ function GetActiveTitle() {
 
 function GetInactiveTitle() {
 	if (ForcedColors()) {
-		if ((navigator.userAgent.match("Chrome/"))  && ( window.matchMedia('(forced-colors: active)').matches ) ) {
+		if ((ClassicForcedColorMode())) {
 			return getComputedStyle(document.querySelector('.fc-graytext')).getPropertyValue("color");
 		} else {
 			return getComputedStyle(document.querySelector('.fc-inactivecaption')).getPropertyValue("color");
