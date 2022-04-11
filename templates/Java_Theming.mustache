@@ -8,6 +8,7 @@ window.MW18ActiveThemeMode = 'none';
 window.MW18ActiveColors = 'standard';
 window.MW18ActiveStyle = '-';
 window.MW18AutoAccent = '0';
+window.MW18ClassicDCM = 'false';
 /* Some Theming Colors */
 window.MW18PageColor = GetCanvasShort();
 window.MW18PageColorFG = '#000000';
@@ -86,6 +87,9 @@ var visualColorNames = ['standard', 'nocolormanagement'];
 	if (getKey('accent-active') === '-1') {
 		insertKey('accent-active', 'false' );
 	}
+	if (getKey('classic-dcm') === '-1') {
+		insertKey('classic-dcm', 'false' );
+	}
 	var theme_selected = getKey('theme-selected');
 	var visual_style = getKey('visual-style');
 	var visual_color = getKey('visual-color');
@@ -93,6 +97,7 @@ var visualColorNames = ['standard', 'nocolormanagement'];
 	var color_style = getKey('color-style');
 	var contrast_mode = getKey('contrast-mode');
 	var accent_active = getKey('accent-active');
+	var classic_dcm = getKey('classic-dcm');
     getParams().forEach(function (param) {
         var key = param.split("=")[0];
         var value = param.split("=")[1];
@@ -176,6 +181,10 @@ var visualColorNames = ['standard', 'nocolormanagement'];
 				accent_active = value;
 				console.info('Accent mode settings overriden');
                 break;
+            case 'useclassicdcm':
+				classic_dcm = value;
+				console.info('Classic DCM mode settings overriden');
+                break;
         }
     });
     var themes = {{>Themes}} // @REMOVEME: In Ivilution, Parmalution and CPE Language (Change to Empty String instead)
@@ -186,6 +195,7 @@ var visualColorNames = ['standard', 'nocolormanagement'];
 	colortheme(color_style,device_theme,false,false);
 	contrastmode(contrast_mode,false,false);
 	SetAccent(accent_active,false);
+	SetDCM(classic_dcm,false,false);
 	ManagerRows(); // For Task Manager Only
 	VisualStyleCompile(); // Compiles the Contrast Options
 	VisualStyle(visual_style,false);
@@ -242,7 +252,7 @@ function ClassicForcedColorMode() {
 			return true;
 		{{/has-classic-forced}}
 	}
-	return ((navigator.userAgent.match("Chrome/"))  && ( window.matchMedia('(forced-colors: active)').matches ) );
+	return ( (window.MW18ClassicDCM === 'true') || ((navigator.userAgent.match("Chrome/"))  && ( window.matchMedia('(forced-colors: active)').matches ) ));
 }
 
 /* Visual Styles */
@@ -996,6 +1006,29 @@ function ToggleAccent() {
 	}
 }
 
+function SetDCM(tick='false',save='true',repaint='true') {
+		if (save) {
+			insertKey('classic-dcm', tick );
+		}
+		if (tick === 'true') {
+			window.MW18ClassicDCM = 'true';
+		} else {
+			window.MW18ClassicDCM = 'false';
+		}
+		if (repaint) {
+			ColorUpdate(false);
+		}
+
+}
+
+function ToggleDCM() {
+	if (window.MW18ClassicDCM === 'true') {
+		SetDCM('false');
+	} else {
+		SetDCM('true');
+	}
+}
+
 
 
 
@@ -1534,8 +1567,16 @@ if (refresh === true) {
 //	VisualColor(window.MW18ActiveColors,false,false);
 	if (window.MW18ActiveColors === 'nocolormanagement') {
 		var colorstyle =".color-management-on { display:none!important;}\n"
+		if ( ((navigator.userAgent.match("Chrome/"))  && ( window.matchMedia('(forced-colors: active)').matches ) ) ) {
+			var colorstyle = colorstyle + ".classic-forced-off { display:none!important;}\n";
+		}
 	} else {
-		var colorstyle= "\n"
+		var colorstyle= ".color-management-off { display:none!important;}\n"
+	}
+	if (window.MW18ClassicDCM === 'true') {
+		var colorstyle = colorstyle + ".classic_dcm-on { display:none!important;}\n";
+	} else {
+		var colorstyle = colorstyle + ".classic_dcm-off { display:none!important;}\n";
 	}
 
 if (refresh) {
