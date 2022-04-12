@@ -232,27 +232,13 @@ font-family:Trebuchet MS;
 
 
 /** Generic Colors & Color Scheme **/
-html,
-.visualcolors-nocolormanagement {
-	color-scheme:light!important;
-	color-scheme:only light!important;
-}
-
-@media (prefers-color-scheme:dark) {
-	html,
-	.visualcolors-nocolormanagement {
-		color-scheme:dark!important;
-		color-scheme:only dark!important;
-	}
-}
-
-:root:not(.visualcolors-nocolormanagement) container:not(.no-color-management) {
+:root container {
 	color-scheme:light!important;
 	color-scheme:only light!important;
 }
 
 
-:root:not(.visualcolors-nocolormanagement).theme-fandomdesktop-dark container:not(.no-color-management) {
+:root.theme-fandomdesktop-dark container {
 	color-scheme:dark!important;
 	color-scheme:only dark!important;
 }
@@ -783,6 +769,9 @@ body {
 		--icon-filter-delay:0ms!important;
 		--system-visual-style:contrast;
 		--system-acryllic-opacity:0.6!important;
+	}
+	.cpe-system-colors {
+		color-scheme:normal!important;
 	}
 }
 

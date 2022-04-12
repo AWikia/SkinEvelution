@@ -833,94 +833,106 @@ function colortheme(style='match-parent', theme='match-parent', repaint=true, sa
     var old_dark = window.MW18darkmode;
     var old_dark2 = window.MW18spdarkmode;
     var muststay = false;
-    if (ForcedColors()) {
+    if (( window.matchMedia('(forced-colors: active)').matches )) {
 		window.MW18darkmode = false;
 		window.MW18spdarkmode = 0;
 	} else {
 		if (theme == 'light') {
-			document.querySelector('head .devicetheme').innerHTML = '.lightdevice-off { display:none!important }' ;
-			if (style == 'standard') {
-				window.MW18darkmode = false
+			if (ForcedColors()) {
+				window.MW18darkmode = false;
 				window.MW18spdarkmode = 0;
-			} else if (style == 'single') {
-				if (isLightColor(body_bg)) {
-					window.MW18darkmode = false;
-				} else {
-					window.MW18darkmode = true;
-				}
-				window.MW18spdarkmode = 0;
-			} else if (style == 'grayscale') {
-				window.MW18darkmode = false;
-				window.MW18spdarkmode = 2;
-			} else if (style == 'singlegrayscale') {
-				if (isLightColor(body_bg)) {
-					window.MW18darkmode = false;
-				} else {
-					window.MW18darkmode = true;
-				}
-				window.MW18spdarkmode = 2;
-			} else if (style == 'reversi') {
-				window.MW18darkmode = false;
-				window.MW18spdarkmode = 5;
-			} else if (style == 'singlecolor') {
-				if (isLightColor(body_bg)) {
-					window.MW18darkmode = false;
-				} else {
-					window.MW18darkmode = true;
-				}
-				window.MW18spdarkmode = 4;
-			} else if (style == 'hottemperature') {
-				window.MW18darkmode = false;
-				window.MW18spdarkmode = 6;
-			} else if (style == 'coldtemperature') {
-				window.MW18darkmode = false;
-				window.MW18spdarkmode = 7;
+				document.querySelector('head .devicetheme').innerHTML = '.lightdevice-off { display:none!important } .cpe-system-colors { color-scheme:light; color-scheme:only light; } .cpe-dropdown.color-modes .cpe-dropdown__content.cpe-visual-appearance { top:0%!important;}' ;
 			} else {
-				window.MW18darkmode = false
-				window.MW18spdarkmode = 0;
+				document.querySelector('head .devicetheme').innerHTML = '.lightdevice-off { display:none!important }' ;
+				if (style == 'standard') {
+					window.MW18darkmode = false
+					window.MW18spdarkmode = 0;
+				} else if (style == 'single') {
+					if (isLightColor(body_bg)) {
+						window.MW18darkmode = false;
+					} else {
+						window.MW18darkmode = true;
+					}
+					window.MW18spdarkmode = 0;
+				} else if (style == 'grayscale') {
+					window.MW18darkmode = false;
+					window.MW18spdarkmode = 2;
+				} else if (style == 'singlegrayscale') {
+					if (isLightColor(body_bg)) {
+						window.MW18darkmode = false;
+					} else {
+						window.MW18darkmode = true;
+					}
+					window.MW18spdarkmode = 2;
+				} else if (style == 'reversi') {
+					window.MW18darkmode = false;
+					window.MW18spdarkmode = 5;
+				} else if (style == 'singlecolor') {
+					if (isLightColor(body_bg)) {
+						window.MW18darkmode = false;
+					} else {
+						window.MW18darkmode = true;
+					}
+					window.MW18spdarkmode = 4;
+				} else if (style == 'hottemperature') {
+					window.MW18darkmode = false;
+					window.MW18spdarkmode = 6;
+				} else if (style == 'coldtemperature') {
+					window.MW18darkmode = false;
+					window.MW18spdarkmode = 7;
+				} else {
+					window.MW18darkmode = false
+					window.MW18spdarkmode = 0;
+				}
 			}
 			
 		} else {
-			document.querySelector('head .devicetheme').innerHTML = '.darkdevice-off { display:none!important }' ;
-			if (style == 'standard') {
-				window.MW18darkmode = true
+			if (ForcedColors()) {
+				window.MW18darkmode = false;
 				window.MW18spdarkmode = 0;
-			} else if (style == 'single') {
-				if (isLightColor(body_bg)) {
-					window.MW18darkmode = true;
-				} else {
-					window.MW18darkmode = false;
-				}
-				window.MW18spdarkmode = 0;
-			} else if (style == 'grayscale') {
-				window.MW18darkmode = true
-				window.MW18spdarkmode = 2;
-			} else if (style == 'singlegrayscale') {
-				if (isLightColor(body_bg)) {
-					window.MW18darkmode = true;
-				} else {
-					window.MW18darkmode = false;
-				}
-				window.MW18spdarkmode = 2;
-			} else if (style == 'reversi') {
-				window.MW18darkmode = true;
-				window.MW18spdarkmode = 1;
-			} else if (style == 'singlecolor') {
-				if (isLightColor(body_bg)) {
-					window.MW18darkmode = true;
-				} else {
-					window.MW18darkmode = false;
-				}
-				window.MW18spdarkmode = 3;
-			} else if (style == 'hottemperature') {
-				window.MW18darkmode = true;
-				window.MW18spdarkmode = 6;
-			} else if (style == 'coldtemperature') {
-				window.MW18darkmode = true;
-				window.MW18spdarkmode = 7;
+				document.querySelector('head .devicetheme').innerHTML = '.darkdevice-off { display:none!important } .cpe-system-colors { color-scheme:dark; color-scheme:only dark; } .cpe-dropdown.color-modes .cpe-dropdown__content.cpe-visual-appearance { top:0%!important;}' ;
 			} else {
-				window.MW18darkmode = true
-				window.MW18spdarkmode = 0;
+				document.querySelector('head .devicetheme').innerHTML = '.darkdevice-off { display:none!important }' ;
+				if (style == 'standard') {
+					window.MW18darkmode = true
+					window.MW18spdarkmode = 0;
+				} else if (style == 'single') {
+					if (isLightColor(body_bg)) {
+						window.MW18darkmode = true;
+					} else {
+						window.MW18darkmode = false;
+					}
+					window.MW18spdarkmode = 0;
+				} else if (style == 'grayscale') {
+					window.MW18darkmode = true
+					window.MW18spdarkmode = 2;
+				} else if (style == 'singlegrayscale') {
+					if (isLightColor(body_bg)) {
+						window.MW18darkmode = true;
+					} else {
+						window.MW18darkmode = false;
+					}
+					window.MW18spdarkmode = 2;
+				} else if (style == 'reversi') {
+					window.MW18darkmode = true;
+					window.MW18spdarkmode = 1;
+				} else if (style == 'singlecolor') {
+					if (isLightColor(body_bg)) {
+						window.MW18darkmode = true;
+					} else {
+						window.MW18darkmode = false;
+					}
+					window.MW18spdarkmode = 3;
+				} else if (style == 'hottemperature') {
+					window.MW18darkmode = true;
+					window.MW18spdarkmode = 6;
+				} else if (style == 'coldtemperature') {
+					window.MW18darkmode = true;
+					window.MW18spdarkmode = 7;
+				} else {
+					window.MW18darkmode = true
+					window.MW18spdarkmode = 0;
+				}
 			}
 		}
 	}
@@ -949,7 +961,7 @@ function colortheme(style='match-parent', theme='match-parent', repaint=true, sa
 	}
 
 	if ((old_dark == window.MW18darkmode) && (old_dark2 == window.MW18spdarkmode) ) {
-		var muststay = true;
+		var muststay = !(ForcedColors());
 	}
 
 	if ((repaint) && !(muststay)) {
