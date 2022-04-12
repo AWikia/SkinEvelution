@@ -195,10 +195,10 @@ font-family:Trebuchet MS;
 /* BG Align */
 --desktop-background-alignment:var(--desktop-background-vertical-alignment) var(--desktop-background-horizontal-alignment);
 /* Acryllic */
---backdrop-filter:blur( calc(30px * calc(1.2 - var(--system-acryllic-opacity) ) ) ) sepia(3%) contrast(103%) invert(3%) grayscale(3%) saturate(103%) hue-rotate(0.3deg) brightness(103%);
---super-backdrop-filter:blur(calc(160px * calc(1.2 - var(--system-acryllic-opacity)))) brightness(125%) contrast(125%) opacity(0.7);
---super-backdrop-filter-2:blur( calc(160px * calc(1.2 - var(--system-acryllic-opacity) ) ) ) contrast(75%) brightness(125%) saturate(125%);
---super-backdrop-filter-2-dark:blur(calc(160px * calc(1.2 - var(--system-acryllic-opacity)))) contrast(150%) brightness(50%) saturate(150%);
+--acryllic-filter:blur( calc(30px * calc(1.2 - var(--system-acryllic-opacity) ) ) ) ;
+--mica-filter:blur(calc(160px * calc(1.2 - var(--system-acryllic-opacity)))) brightness(125%) contrast(125%) opacity(0.7);
+--tabbed-filter:blur( calc(160px * calc(1.2 - var(--system-acryllic-opacity) ) ) ) contrast(75%) brightness(125%) saturate(125%);
+--tabbed-filter-dark:blur(calc(160px * calc(1.2 - var(--system-acryllic-opacity)))) contrast(150%) brightness(50%) saturate(150%);
 /* Transition */
 --transitioner:cubic-bezier(0.25,0.25,0,1);
 /* Fonts */
@@ -943,7 +943,7 @@ container {
 		top:0;
 		left:0;
 		position:absolute;
-		filter:var(--super-backdrop-filter);
+		filter:var(--mica-filter);
 		background-image:-moz-element(#LunaLevit3); /* ,-moz-element(#LunaLevit2) */
 		background-image:element(#LunaLevit3); /* ,element(#LunaLevit2) */
 		background-color:var(--desktop-background-color);
@@ -954,12 +954,12 @@ container {
 }
 
 .has-levit.has-tabs::after {
-		filter:var(--super-backdrop-filter-2);
+		filter:var(--tabbed-filter);
 		opacity:calc(1 - calc(var(--mica-opacity) * 0.7) );
 }
 
 .theme-fandomdesktop-dark .has-levit.has-tabs::after {
-		filter:var(--super-backdrop-filter-2-dark);
+		filter:var(--tabbed-filter-dark);
 		opacity:calc(1 - calc(var(--mica-opacity) * 1.05) );
 }
 
@@ -972,8 +972,8 @@ container {
 	}
 
 	.has-levit {
-		backdrop-filter:var(--super-backdrop-filter);
-		-webkit-backdrop-filter:var(--super-backdrop-filter);
+		backdrop-filter:var(--mica-filter);
+		-webkit-backdrop-filter:var(--mica-filter);
 	}	
 }
 */
@@ -989,10 +989,10 @@ container {
 	}
 
 	:root body {
-		--backdrop-filter:none!important;
-		--super-backdrop-filter:none!important;
-		--super-backdrop-filter-2:none!important;
-		--super-backdrop-filter-2-dark:none!important;
+		--acryllic-filter:none!important;
+		--mica-filter:none!important;
+		--tabbed-filter:none!important;
+		--tabbed-filter-dark:none!important;
 	}
 
 }
@@ -1008,7 +1008,7 @@ container {
 
 
 	:root body {
-		--backdrop-filter:none!important;
+		--acryllic-filter:none!important;
 	}
 }
 
@@ -1020,9 +1020,9 @@ container {
 
 
 	:root body {
-		--super-backdrop-filter:none!important;
-		--super-backdrop-filter-2:none!important;
-		--super-backdrop-filter-2-dark:none!important;
+		--mica-filter:none!important;
+		--tabbed-filter:none!important;
+		--tabbed-filter-dark:none!important;
 	}
 	
 	.has-levit::after {
@@ -1050,7 +1050,7 @@ container {
 	.gpu-level-0 body,
 	.gpu-level-1 body,
 	.gpu-level-2 body {
-		--backdrop-filter:none!important;
+		--acryllic-filter:none!important;
 	}
 }
 
@@ -1065,9 +1065,9 @@ container {
 
 	.gpu-level-0 body,
 	.gpu-level-1 body {
-		--super-backdrop-filter:none!important;
-		--super-backdrop-filter-2:none!important;
-		--super-backdrop-filter-2-dark:none!important;
+		--mica-filter:none!important;
+		--tabbed-filter:none!important;
+		--tabbed-filter-dark:none!important;
 	}
 	
 	.gpu-level-0 .has-levit::after,
@@ -2909,8 +2909,8 @@ body .cpe-dropdown:focus {
   display:inline-block; 
   opacity:1; 
   pointer-events:all;
-  -webkit-backdrop-filter:var(--backdrop-filter);
-  backdrop-filter:var(--backdrop-filter);
+  -webkit-backdrop-filter:var(--acryllic-filter);
+  backdrop-filter:var(--acryllic-filter);
 }
 
 .cpe-dropdown:focus .cpe-dropdown__toggle-chevron, .cpe-dropdown:focus-within .cpe-dropdown__toggle-chevron {    --icon-rotate:180deg;}
@@ -3012,8 +3012,8 @@ font-size:12px
 display:block; 
 opacity:1;
  pointer-events:all;
- -webkit-backdrop-filter:var(--backdrop-filter);
- backdrop-filter:var(--backdrop-filter);
+ -webkit-backdrop-filter:var(--acryllic-filter);
+ backdrop-filter:var(--acryllic-filter);
 }
 
 
@@ -3551,8 +3551,8 @@ margin-right:16px;
 	transform-origin:left;
 	position:relative;
 	min-height:40px;
-    -webkit-backdrop-filter:var(--backdrop-filter);
-    backdrop-filter:var(--backdrop-filter);
+    -webkit-backdrop-filter:var(--acryllic-filter);
+    backdrop-filter:var(--acryllic-filter);
     border-radius:var(--border-radius);
 	box-shadow:0 0 6px 0 rgba(var(--canvas-text-background-color-rgb),.2), 0 0 6px 0 rgba(var(--canvas-background-color-rgb),0.4);
 	border:1px solid var(--inactive-text-background-color);
@@ -4005,7 +4005,7 @@ input[type="range"]::-moz-range-progress {
 	.skin-tunic,
 	.ivilution-loaded,
 	.parmalution-ready /* For GTK Interpreter */ {
-		--backdrop-filter:none!important;
+		--acryllic-filter:none!important;
 	}
 
 	/* Tunic */

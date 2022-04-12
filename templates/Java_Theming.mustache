@@ -731,18 +731,8 @@ if (isLightColor(page)) { // ( chroma(page).get('hsl.l') < 0.5)
 
 /* Get Foreground Variables */
 
-function GetForegroundVariables(color,func="nil",funcB="nil") {
-	if (func == 'nil') {
-		var func1 = isLightColor(color);
-	} else {
-		func1 = func; // Custom Function For Light or Dark case
-	}
-	if (funcB == 'nil') {
-		var func2 = isLightColor2(color);
-	} else {
-		func2 = funcB; // Custom Function For Light or Dark case
-	}
-	if (func2) {
+function GetForegroundVariables(color) {
+	if (isSemiLightColor(color)) {
 		var fc1 =  getComputedStyle(document.querySelector('body')).getPropertyValue("--light-theme-text-background-color");
 		var fc2 =  getComputedStyle(document.querySelector('body')).getPropertyValue("--light-theme-text-background-color-rgb");
 		var fc3 =  getComputedStyle(document.querySelector('body')).getPropertyValue("--light-theme-text-background-color-hover");
@@ -753,7 +743,7 @@ function GetForegroundVariables(color,func="nil",funcB="nil") {
 		var fc3 =  getComputedStyle(document.querySelector('body')).getPropertyValue("--dark-theme-text-background-color-hover");
 		var fc4 =  getComputedStyle(document.querySelector('body')).getPropertyValue("--dark-theme-text-background-color-hover-rgb");
 	}
-	if (func1) {
+	if (isLightColor(color)) {
 		return ['var(--light-theme-foreground-color)', 'var(--light-theme-foreground-color-hover)', 'var(--light-theme-foreground-color-rgb)', 'var(--light-theme-foreground-color-hover-rgb)', fc1, fc2, fc3, fc4]
 	} else {
 		return ['var(--dark-theme-foreground-color)', 'var(--dark-theme-foreground-color-hover)', 'var(--dark-theme-foreground-color-rgb)', 'var(--dark-theme-foreground-color-hover-rgb)', fc1, fc2, fc3, fc4]
@@ -762,13 +752,8 @@ function GetForegroundVariables(color,func="nil",funcB="nil") {
 
 
 /* Get Gradient Variables */
-function GetGradientVariable(color,name="canvas", func="nil") {
-	if (func == 'nil') {
-		var func1 = isLightColor(color);
-	} else {
-		func1 = func; // Custom Function For Light or Dark case
-	}
-	if (func1) {
+function GetGradientVariable(color,name="canvas") {
+	if (isLightColor(color)) {
 		return ['var(--' + name + '-background-color)', 'var(--' + name + '-background-color-hover)']
 	} else {
 		return ['var(--' + name + '-background-color-hover)', 'var(--' + name + '-background-color)']
@@ -1531,12 +1516,15 @@ function Color2(color) {
 }
 
 function isLightColor(color) {
+/*
 	var c1 = (chroma.contrast('#000000',  chroma(color)))
 	var c2 = (chroma.contrast('#ffffff',  chroma(color)))
 	return (c1 > c2);
+*/
+ return chroma(color).lch()[0] >= 50
 }
 
-function isLightColor2(color) {
+function isSemiLightColor(color) {
 	var c1 = (chroma.contrast(getComputedStyle(document.querySelector('body')).getPropertyValue("--light-theme-text-background-color"),  chroma(color)))
 	var c2 = (chroma.contrast(getComputedStyle(document.querySelector('body')).getPropertyValue("--dark-theme-text-background-color"),  chroma(color)))
 	return (c1 > c2);
@@ -1621,7 +1609,6 @@ var content_color =  GetCanvasShort();
 
 	window.MW18PageColor = content_color;
 	var darkpage = isLightColor(content_color);
-	if (refresh === true) {
 		var oldtheme = window.MW18ActiveThemeMode;
 		if (!(darkpage)) {
 			 window.MW18ActiveThemeMode = 'dark';
@@ -1633,7 +1620,6 @@ var content_color =  GetCanvasShort();
 		} else if (oldtheme != window.MW18ActiveThemeMode ) {
 			document.querySelector('html').classList.replace("theme-fandomdesktop-" +  oldtheme,"theme-fandomdesktop-" +  window.MW18ActiveThemeMode);
 		}
-	}
 
 
 var content_color2 = ColorTest(content_color);
