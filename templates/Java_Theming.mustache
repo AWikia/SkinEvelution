@@ -1,5 +1,5 @@
 ﻿window.MW18darkmode = false;
-window.MW18spdarkmode = 0; // 0 = No special behavior | 1 = Inverted Colors Dark | 2 = Grayscale | 3 = Yellow Tint | 4 = Blue Tint | 5 = Inverted Colors Light | 6 = Temperature | 7 = Inverted Temperature
+window.MW18spdarkmode = 0; // 0 = No special behavior | 1 = Inverted Colors Dark | 2 = Grayscale | 3 = Yellow Tint | 4 = Blue Tint | 5 = Inverted Colors Light | 6 = Temperature | 7 = Inverted Temperature | 8 = Red Tint | 9 = Green Tint
 window.MW18devicetheme = 'light';
 window.MW18wikitheme = 'standard';
 window.MW18contrastmode = 'auto';
@@ -806,7 +806,7 @@ function ManagerRows() {
 
 
 /* Changes Wiki theme style
-   Supported values: standard, single, grayscale, singlegrayscale, reversi, singlecolor, hottemperature, coldtemperature */
+   Supported values: standard, single, grayscale, singlegrayscale, reversi, singlereversi, singlecolor_r, singlecolor_g, singlecolor_b, singlecolor, hottemperature, coldtemperature */
 function colortheme(style='match-parent', theme='match-parent', repaint=true, save=true) {
 	if (style === 'match-parent') {
 		style = window.MW18wikitheme;
@@ -858,13 +858,42 @@ function colortheme(style='match-parent', theme='match-parent', repaint=true, sa
 				} else if (style == 'reversi') {
 					window.MW18darkmode = false;
 					window.MW18spdarkmode = 5;
-				} else if (style == 'singlecolor') {
+				} else if (style == 'singlereversi') {
+					if (isLightColor(body_bg)) {
+						window.MW18darkmode = false;
+						window.MW18spdarkmode = 5;
+					} else {
+						window.MW18darkmode = true;
+						window.MW18spdarkmode = 1;
+					}
+				} else if (style == 'singlecolor_r') {
+					if (isLightColor(body_bg)) {
+						window.MW18darkmode = false;
+					} else {
+						window.MW18darkmode = true;
+					}
+					window.MW18spdarkmode = 8;
+				} else if (style == 'singlecolor_g') {
+					if (isLightColor(body_bg)) {
+						window.MW18darkmode = false;
+					} else {
+						window.MW18darkmode = true;
+					}
+					window.MW18spdarkmode = 9;
+				} else if (style == 'singlecolor_b') {
 					if (isLightColor(body_bg)) {
 						window.MW18darkmode = false;
 					} else {
 						window.MW18darkmode = true;
 					}
 					window.MW18spdarkmode = 4;
+				} else if (style == 'singlecolor') {
+					if (isLightColor(body_bg)) {
+						window.MW18darkmode = false;
+					} else {
+						window.MW18darkmode = true;
+					}
+					window.MW18spdarkmode = 3;
 				} else if (style == 'hottemperature') {
 					window.MW18darkmode = false;
 					window.MW18spdarkmode = 6;
@@ -907,6 +936,21 @@ function colortheme(style='match-parent', theme='match-parent', repaint=true, sa
 				} else if (style == 'reversi') {
 					window.MW18darkmode = true;
 					window.MW18spdarkmode = 1;
+				} else if (style == 'singlereversi') {
+					if (isLightColor(body_bg)) {
+						window.MW18darkmode = true;
+						window.MW18spdarkmode = 1;
+					} else {
+						window.MW18darkmode = false;
+						window.MW18spdarkmode = 5;
+					}
+				} else if (style == 'singlecolor_b') {
+					if (isLightColor(body_bg)) {
+						window.MW18darkmode = true;
+					} else {
+						window.MW18darkmode = false;
+					}
+					window.MW18spdarkmode = 4;
 				} else if (style == 'singlecolor') {
 					if (isLightColor(body_bg)) {
 						window.MW18darkmode = true;
@@ -914,6 +958,27 @@ function colortheme(style='match-parent', theme='match-parent', repaint=true, sa
 						window.MW18darkmode = false;
 					}
 					window.MW18spdarkmode = 3;
+				} else if (style == 'singlecolor_r') {
+					if (isLightColor(body_bg)) {
+						window.MW18darkmode = true;
+					} else {
+						window.MW18darkmode = false;
+					}
+					window.MW18spdarkmode = 8;
+				} else if (style == 'singlecolor_g') {
+					if (isLightColor(body_bg)) {
+						window.MW18darkmode = true;
+					} else {
+						window.MW18darkmode = false;
+					}
+					window.MW18spdarkmode = 9;
+				} else if (style == 'singlecolor_b') {
+					if (isLightColor(body_bg)) {
+						window.MW18darkmode = true;
+					} else {
+						window.MW18darkmode = false;
+					}
+					window.MW18spdarkmode = 4;
 				} else if (style == 'hottemperature') {
 					window.MW18darkmode = true;
 					window.MW18spdarkmode = 6;
@@ -1489,14 +1554,16 @@ function ColorInvert(color) {
 	var hi = chroma(invcolor).get('lch.h');
 	var h2i = chroma(invcolor).get('hsl.h');
 	var page = [
-				chroma(color).set('rgb.r', r).set('rgb.g', g).set('rgb.b', b).set('lch.h', h).set('hsl.h', h2),
-				chroma(color).set('rgb.r', r).set('rgb.g', g).set('rgb.b', b),
-				chroma(color).set('rgb.r', r).set('rgb.g', g).set('rgb.b', b).set('lch.c', 0).set('hsl.s', 0),
-				chroma(color).set('rgb.r', r).set('rgb.g', g).set('rgb.b', b).set('lch.h', h).set('hsl.h', 60),
-				chroma(color).set('rgb.r', r).set('rgb.g', g).set('rgb.b', b).set('lch.h', h).set('hsl.h', 240),
-				chroma(color).set('rgb.r', r).set('rgb.g', g).set('rgb.b', b).set('lch.h', hi).set('hsl.h', h2i),
-				chroma(color).set('rgb.r', r).set('rgb.g', g).set('rgb.b', b).set('lch.h', h).set('hsl.h', h2),
-				chroma(color).set('rgb.r', r).set('rgb.g', g).set('rgb.b', b).set('lch.h', h).set('hsl.h', h2),
+				chroma(color).set('rgb.r', r).set('rgb.g', g).set('rgb.b', b).set('lch.h', h).set('hsl.h', h2),   // Sp Dark Mode 0 (Normal)
+				chroma(color).set('rgb.r', r).set('rgb.g', g).set('rgb.b', b),									  // Sp Dark Mode 1 (Reversi Dark)
+				chroma(color).set('rgb.r', r).set('rgb.g', g).set('rgb.b', b).set('lch.c', 0).set('hsl.s', 0),    // Sp Dark Mode 2 (Grayscale)
+				chroma(color).set('rgb.r', r).set('rgb.g', g).set('rgb.b', b).set('lch.h', h).set('hsl.h', 60),   // Sp Dark Mode 3 (Yellow Tint)
+				chroma(color).set('rgb.r', r).set('rgb.g', g).set('rgb.b', b).set('lch.h', h).set('hsl.h', 240),  // Sp Dark Mode 4 (Blue Tint)
+				chroma(color).set('rgb.r', r).set('rgb.g', g).set('rgb.b', b).set('lch.h', hi).set('hsl.h', h2i), // Sp Dark Mode 5 (Reversi Light)
+				chroma(color).set('rgb.r', r).set('rgb.g', g).set('rgb.b', b).set('lch.h', h).set('hsl.h', h2),   // Sp Dark Mode 6 (Hot Temperature)
+				chroma(color).set('rgb.r', r).set('rgb.g', g).set('rgb.b', b).set('lch.h', h).set('hsl.h', h2),   // Sp Dark Mode 7 (Cold Temperature)
+				chroma(color).set('rgb.r', r).set('rgb.g', g).set('rgb.b', b).set('lch.h', h).set('hsl.h', 0),    // Sp Dark Mode 8 (Red Tint)
+				chroma(color).set('rgb.r', r).set('rgb.g', g).set('rgb.b', b).set('lch.h', h).set('hsl.h', 120),  // Sp Dark Mode 9 (Green Tint)
 			   ][window.MW18spdarkmode];
 	return page
 
@@ -1974,6 +2041,18 @@ var caret2_fg = GetForegroundVariables(caret2_color);
 		wordfilter2 == 'initial'
 	}
 
+var invfilters = [
+					['none', 'invert(1) hue-rotate(180deg)'],															  // Sp Dark Mode 0 (Normal)
+					['none', 'invert(1)'],					 															  // Sp Dark Mode 1 (Reversi Dark)
+					['graysclae(100%)', 'invert(1) grayscale(100%)'],						  							  // Sp Dark Mode 2 (Grayscale)
+					['sepia(1) hue-rotate(20deg)', 'invert(1) sepia(1) hue-rotate(20deg)'],  							  // Sp Dark Mode 3 (Yellow Tint)
+					['sepia(1) hue-rotate(200deg)', 'invert(1) sepia(1) hue-rotate(200deg)'], 							  // Sp Dark Mode 4 (Blue Tint)
+					['hue-rotate(180deg)','invert(1) hue-rotate(180deg)'],												  // Sp Dark Mode 5 (Reversi Light)
+					['opacity(0.5) sepia(1)', 'invert(1) opacity(0.5) sepia(1)'], 										  // Sp Dark Mode 6 (Hot Temperature)
+					['opacity(0.5) sepia(1) hue-rotate(180deg)', 'invert(1) opacity(0.5) sepia(1) hue-rotate(180deg)'],   // Sp Dark Mode 7 (Cold Temperature)
+					['sepia(1) hue-rotate(320deg)', 'invert(1) sepia(1) hue-rotate(320deg)'], 							  // Sp Dark Mode 8 (Red Tint)
+					['sepia(1) hue-rotate(80deg)', 'invert(1) sepia(1) hue-rotate(80deg)'], 							  // Sp Dark Mode 9 (Green Tint)
+				 ];
 /* Set Values for dynamical variables */
 	var result = 		  colorstyle +
 						  ":root {" +
@@ -2251,7 +2330,7 @@ var caret2_fg = GetForegroundVariables(caret2_color);
 						  "--bg-tile-y:" + ['repeat','no-repeat'][["false", "true"].indexOf( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-no-vertical-tiling") ) ] + ";\n" +
 						  "--bg-overlay-display:" + overlay[0] + ";\n" +
 						  "--bg-overlay-size:" + overlay[1] + ";\n" +
-						  "--invertion-filter:" + [['none','none','grayscale(100%)','sepia(1) hue-rotate(20deg)','sepia(1) hue-rotate(200deg)','hue-rotate(180deg)','opacity(0.5) sepia(1)', 'opacity(0.5) sepia(1) hue-rotate(180deg)'][window.MW18spdarkmode],['invert(1) hue-rotate(180deg)','invert(1)','invert(1) grayscale(100%)','invert(1) sepia(1) hue-rotate(20deg)','invert(1) sepia(1) hue-rotate(200deg)','invert(1) hue-rotate(180deg)','invert(1) opacity(0.5) sepia(1)', 'invert(1) opacity(0.5) sepia(1) hue-rotate(180deg)'][window.MW18spdarkmode]][[false, true].indexOf(window.MW18darkmode) ] + ";\n" +
+						  "--invertion-filter:" + invfilters[window.MW18spdarkmode][[false, true].indexOf(window.MW18darkmode) ] + ";\n" +
 						  "}"
 
 
