@@ -35,7 +35,7 @@ function getParams() {
 function DropDownUpdate() {
 	var dropdowns = document.querySelectorAll(".cpe-dropdown");
 	dropdowns.forEach(function(x) {
-		x.setAttribute('tabindex',-1);; // Add the CPE button class
+		x.setAttribute('tabindex',-1); // Add the CPE button class
 	});
 
 
@@ -365,11 +365,21 @@ AliasBoxes();
 
 	/* END DITTO */
 
+	var level = 1;
 
-DetectGPU.getGPUTier().then(function(e) {document.querySelector('html').classList.add('gpu-level-' + e.tier);});
-
+DetectGPU.getGPUTier().then(function(e) { level = (e.fps == undefined) ? 1 : (e.fps >= 60) ? 4 : (e.fps >= 45) ? 3 : (e.fps >= 11) ? 2 : 0;  document.querySelector('html').classList.add('gpu-level-' + level); CheckHardware(level)});
 
 })();
+
+function CheckHardware(level) {
+		if (level === 0) {
+			document.querySelector('body').innerHTML='<style> *, :before, :after {all:initial!important;}*:not(html):not(body):not(.warn) {display:none!important;}</style><div class="warn">Unsupported Configuration</div>';
+			console.error('Hardware requirements are not met and Evelution can\'t run. Please upgrade your hardware');
+		} else if (level === 1) {
+			AddFloatingBanner("Hardware Acceleration is not available and experience with Evelution on this browser will not be optimal.", "warning");
+		}
+
+}
 
 function AliasBoxes() {
 	{{#has-box-alias}}

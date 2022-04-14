@@ -1587,14 +1587,19 @@ function isLightColor(color) {
 	var c1 = (chroma.contrast('#000000',  chroma(color)))
 	var c2 = (chroma.contrast('#ffffff',  chroma(color)))
 	return (c1 > c2);
-*/
+
  return chroma(color).lch()[0] >= 50
+*/
+	return chroma.deltaE('#000000', color) > chroma.deltaE('#ffffff', color);
 }
 
 function isSemiLightColor(color) {
+/*
 	var c1 = (chroma.contrast(getComputedStyle(document.querySelector('body')).getPropertyValue("--light-theme-text-background-color"),  chroma(color)))
 	var c2 = (chroma.contrast(getComputedStyle(document.querySelector('body')).getPropertyValue("--dark-theme-text-background-color"),  chroma(color)))
 	return (c1 > c2);
+*/
+	return chroma.deltaE('#e6e6e6', color) > chroma.deltaE('#3a3a3a', color);
 }
 
 

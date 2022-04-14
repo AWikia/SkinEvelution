@@ -31,6 +31,11 @@ Evelution skin will die if it is found to be running on unsupported browsers wit
 ## Servelution Requirements
 Evelution requires at least a Servelution Client with the CPE Language Recompiler (2.0.0+). Evelution will die if it is found to be running on a Servelution Client without the CPE Language Recompiler
 
+## Hardware Requirements
+If hardware acceleration is present, the GPU test must end with at least 11 FPS. Evelution skin will die if the GPU test ends with less than 11 FPS with the **Unsupported Configuration** error
+
+If no hardware acceleration is present, then Evelution will load properly (But without Rounded corners or Transparency Effects)
+
 # Installation
 To Install Evelution, you must download the reposistory first. Make a folder called **Evelution** in **Skins** diractory where you have installed MediaWiki and extract the zipped file contents in **Evelution** folder.  Lastly, put this in **LocalSettings.php**:
 ```php
