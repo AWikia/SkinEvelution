@@ -865,9 +865,9 @@ body .toc {
 	--scrollbar-thumb-color-2:var(--inactive-text-background-color-hover);
 	--scrollbar-thumb-text:var(--inactive-text-foreground-color);
 	
-	background-color:var(--canvas-secondary-background-color);
-	color:var(--canvas-text-secondary-background-color);
-	border-color:var(--inactive-text-background-color);
+	background-color:rgb(var(--dropdown-background-color));
+	color:var(--dropdown-text-color);
+	border-color:var(--dropdown-border-color);
 	border-radius:calc(var(--border-radius) * 0.6);
 	padding:0;
 }
@@ -879,7 +879,7 @@ body .toc .cpe-list>li {
 
 body .toc ul li a {
     border-radius: calc(var(--border-radius) * 0.6);
-    color: var(--canvas-text-secondary-background-color);
+    color: var(--dropdown-text-color);
     display: block;
     line-height: 1.75;
     padding: 2px 6px;
@@ -904,16 +904,18 @@ body .toc ul li a .tocnumber {
 }
 
 body .toc ul li a:hover,
+body .toc ul li a:focus,
 body .toc ul li.selected a {
-	background-color:var(--canvas-secondary-background-color-hover);
-	border-color:rgba(var(--canvas-secondary-background-color-rgb),0.5);
-    color: var(--canvas-secondary-foreground-color);
+	background-color:var(--dropdown-hyperlink-background-color);
+	border-color:var(--dropdown-hyperlink-border-color);
+    color: var(--dropdown-hyperlink-text-color);
 }
 
 body .toc .module-toc li a:hover,
+body .toc .module-toc li a:focus,
 body .toc .module-toc li.selected a {
-	background-color:var(--canvas-background-color-hover);
-	border-color:rgba(var(--canvas-background-color-rgb),0.5);
+	background-color:rgba(var(--hyperlink-background-color-rgb),0.5);
+	border-color:rgba(var(--hyperlink-background-color-rgb),0.15);
     color: var(--canvas-foreground-color);
 }
 
