@@ -121,6 +121,7 @@ class SkinEvelution extends SkinMustache {
 		$data["is-loggedin"] = $this->getSkin()->getUser()->isRegistered();
 
 
+		$data["has-servelution-3.3.0"] =  ($this->getConfig()->get ( 'EvelutionServelutionRelease' ) == '3.3.0');
 		$data["has-servelution-3.2.0"] =  ($this->getConfig()->get ( 'EvelutionServelutionRelease' ) == '3.2.0');
 		$data["has-servelution-3.1.0"] =  ($this->getConfig()->get ( 'EvelutionServelutionRelease' ) == '3.1.0');
 		$data["has-servelution-3.0.0"] =  ($this->getConfig()->get ( 'EvelutionServelutionRelease' ) == '3.0.0');
