@@ -22,18 +22,6 @@
 				</span>
 			</button>
 		{{/has-servelution-no-accent}}
-		{{^has-classic-forced}}
-			<button class="cpe-floating-button accent dcm-toggle {{^has-no-color-management}}color-management-off{{/has-no-color-management}} classic-forced-off page-side-tool" onclick="ToggleDCM()" cpe-tooltip="{{msg-evelution-toggledcmmode}}">
-				<span class="cpe-icon material-icons">
-					<span class="classic_dcm-on">
-						smart_toy
-					</span>
-					<span class="classic_dcm-off">
-						colorize
-					</span>
-				</span>
-			</button>
-		{{/has-classic-forced}}
 		{{^has-servelution-vanadium}}
 		<!-- Contrast Modes -->
 		<div class="cpe-dropdown contrast-modes" cpe-orient="land">				
@@ -95,7 +83,6 @@
 			</div>
 		</div>
 	{{/has-servelution-vanadium}}
-	{{^has-no-color-management}}
 		<!-- Color Modes -->
 		<div class="cpe-dropdown color-modes forced-colors-off" cpe-orient="land">				
 			<div class="cpe-floating-button accent color-modes page-side-tool" cpe-tooltip="{{msg-evelution-colormodes}}">
@@ -199,10 +186,10 @@
 							<span class="cpe-icon material-icons darkdevice-off">ac_unit</span>
 							<span class="cpe-icon material-icons lightdevice-off">storm</span>
 						</a>
-					</li>				</ul>
+					</li>
+				</ul>
 			</div>
 		</div>
-	{{/has-no-color-management}}
 		<!-- Styles -->
 		<div class="cpe-dropdown styles" cpe-orient="land">				
 			<div class="cpe-floating-button accent styles page-side-tool" cpe-tooltip="{{msg-evelution-visual-styles}}">
@@ -267,6 +254,40 @@
 				</ul>
 			</div>
 		</div>
+	{{/has-no-color-management}}
+		<!-- Disabled Color Management Modes -->
+		<div class="cpe-dropdown dcm-modes color-management-off" cpe-orient="land">
+			<div class="cpe-floating-button accent dcm-toggle page-side-tool" cpe-tooltip="{{msg-evelution-dcmmodes}}">
+				<span class="cpe-icon material-icons">
+					colorize
+				</span>
+			</div>
+			<div class="cpe-dropdown__content cpe-visual-appearance" style="top:-0%;">
+				<ul class="cpe-list is-linked cpe-dcm-modes has-icons">
+					<li data-dcm-mode="standard" title="{{msg-evelution-standard}}">
+						<a onclick="SetDCM('standard')">
+							<span class="cpe-icon material-icons">build</span>
+						</a>
+					</li>
+					<li data-dcm-mode="basic" title="{{msg-evelution-style-basic}}">
+						<a onclick="SetDCM('basic')">
+							<span class="cpe-icon material-icons">invert_colors</span>
+						</a>
+					</li>
+					<li data-dcm-mode="simple" title="{{msg-evelution-style-simple}}">
+						<a onclick="SetDCM('simple')">
+							<span class="cpe-icon material-icons">brush</span>
+						</a>
+					</li>
+					<li data-dcm-mode="classic" title="{{msg-evelution-style-classic}}">
+						<a onclick="SetDCM('classic')">
+							<span class="cpe-icon material-icons">smart_toy</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	{{^has-no-color-management}}
 		<!-- Themes -->
 		<div class="cpe-dropdown themes color-management-on forced-colors-off" cpe-orient="land">
 			<div class="cpe-floating-button accent themes page-side-tool" cpe-tooltip="{{msg-evelution-themes}}">

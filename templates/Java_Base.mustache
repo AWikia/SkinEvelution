@@ -9,7 +9,7 @@ document.querySelector("html").className += " phone"
 /* Local Storage */
 function getKey(key) {
 var str = window.localStorage,
-    result = str.getItem('-evelution-pref-'+key);
+    result = str.getItem('-evelution-preference-'+key);
 if (!result) {
    return '-1';
 }
@@ -17,7 +17,7 @@ return result;
 }
 
 function insertKey(key,value) {
-	window.localStorage.setItem('-evelution-pref-' + key, '' + value);
+	window.localStorage.setItem('-evelution-preference-' + key, '' + value);
 }
 
 function getParams() {
@@ -437,7 +437,7 @@ function CheckCompat() {
 		}
 	}
 	{{#has-servelution-old}}
-	AddFloatingBanner("The following features have been paused as they are incompatible with the current Servelution client:{{#has-servelution-no-custom-2ndbg}} Custom Secondary Background Color{{/has-servelution-no-custom-2ndbg}}{{#has-servelution-no-mica}}, Luna Levit{{/has-servelution-no-mica}}{{#has-servelution-no-imagefilter}}, Background Image Filters{{/has-servelution-no-imagefilter}}{{#has-servelution-no-customfont}}, Custom Primary Font{{/has-servelution-no-customfont}}{{#has-servelution-no-customacryllic}}, Custom Elements Opacity{{/has-servelution-no-customacryllic}}{{#has-servelution-no-newluna}}, Dynamic Luna State{{/has-servelution-no-newluna}}{{#has-servelution-no-accent}}, Luna Lavccent{{/has-servelution-no-accent}}{{#has-servelution-no-dgeneric}}, Dynamic Generic Colors{{/has-servelution-no-dgeneric}}{{#has-servelution-no-actions}}, Sticky Page Actions{{/has-servelution-no-actions}}{{#has-servelution-no-headertext}}, Custom Desktop Text Color{{/has-servelution-no-headertext}}{{#has-servelution-no-dground}}, Dual Foreground Colors{{/has-servelution-no-dground}}{{#has-servelution-vanadium}}, Sticky Rail, Manual Contrast Level, Custom Dynamic Content{{/has-servelution-vanadium}}.<br>Please upgrade your Servelution client to enable those missing features","pause")
+	AddFloatingBanner("The following features have been paused as they are incompatible with the current Servelution client:{{#has-servelution-no-gchs}} Generic Color Hue Shift{{/has-servelution-no-gchs}}{{#has-servelution-no-custom-2ndbg}}, Custom Secondary Background Color{{/has-servelution-no-custom-2ndbg}}{{#has-servelution-no-mica}}, Luna Levit{{/has-servelution-no-mica}}{{#has-servelution-no-imagefilter}}, Background Image Filters{{/has-servelution-no-imagefilter}}{{#has-servelution-no-customfont}}, Custom Primary Font{{/has-servelution-no-customfont}}{{#has-servelution-no-customacryllic}}, Custom Elements Opacity{{/has-servelution-no-customacryllic}}{{#has-servelution-no-newluna}}, Dynamic Luna State{{/has-servelution-no-newluna}}{{#has-servelution-no-accent}}, Luna Lavccent{{/has-servelution-no-accent}}{{#has-servelution-no-dgeneric}}, Dynamic Generic Colors{{/has-servelution-no-dgeneric}}{{#has-servelution-no-actions}}, Sticky Page Actions{{/has-servelution-no-actions}}{{#has-servelution-no-headertext}}, Custom Desktop Text Color{{/has-servelution-no-headertext}}{{#has-servelution-no-dground}}, Dual Foreground Colors{{/has-servelution-no-dground}}{{#has-servelution-vanadium}}, Sticky Rail, Manual Contrast Level, Custom Dynamic Content{{/has-servelution-vanadium}}.<br>Please upgrade your Servelution client to enable those missing features","pause")
 	{{/has-servelution-old}}
 }
 
@@ -459,7 +459,11 @@ function ResetSettings() {
 		insertKey('color-style', 'standard' );
 		insertKey('contrast-mode', 'auto' );
 		insertKey('accent-active', 'false' );
-		insertKey('classic-dcm', 'false' );
+		if ( ( window.matchMedia('(forced-colors: active)').matches ) ) {
+			insertKey('dcm-mode', 'classic' );
+		} else {
+			insertKey('dcm-mode', 'standard' );
+		}
 		AddFloatingBanner('Succesfully resetted Evelution\'s settings to their defaults. Page will now reload.','success');
 		location.reload()
 	}

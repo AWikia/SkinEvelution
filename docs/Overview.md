@@ -188,6 +188,7 @@ Each release of Evelution comes with different Sevelution releases, to name a fe
 - 3.1.0 = Codenamed Niobium = Introduced in Evelution 51.0.0 - Introduces background image filters
 - 3.2.0 = Codenamed Molybdenum = Introduced in Evelution 53.0.0 - Introduces Mica (Low-Level Acryllic)
 - 3.3.0 = Codenamed Technetium  = Introduced in Evelution 62.0.0 - Introduces Custom Secondary Canvas & Canvas Text Background Colors
+- 4.0.0 = Codenamed Ruthenium  = Introduced in Evelution 81.0.0 - Introduces Generic Color Hue Shift and CPE Language 3.0
 
 ### The Luna Theming System
 Evelution comes with its own theming system, the Luna theming. It consists of three elements, the Luna Lovit, the Luna Levit and the Luna Lavccent:
@@ -209,7 +210,6 @@ Luna Levit will display as a fallback Solid Color when:
 - GPUs level is lower than 2
 - App workspace is not focused or runs fullscreen
 - App runs on a low-end skin (i.e. Tunic) or under Ivilution
-- App runs on a browser without support of ``element()``
 - App runs on a Servelution version lower than 3.2.0
 
 Luna Lavccent will display as a fallback neutral color (Canvas Secondary Color) when:
@@ -314,10 +314,6 @@ Defaults to false meaning you have color management, When set to true, it:
 - Hardcodes all non-color theming variables to their stock settings
 - Removes the ability to change themes, visual colors and color modes
 This setting is useful for wikis that can't adapt to the many color schemes Evelution gives. This is also the case when Forced Colors mode is active
-
-### ``$wgEvelutionForceOneHeader`` (Since 4.3.0)
-Defaults to false. When set to true, it removes the Community Header and keeps the Sticky header at all times, similar to while editing articles. This setting is useful for wikis who want a solo header layout. On Desktop, Sticky header is still able to be collapsed.
-
 ### ``$wgEvelutionDisableRightRail`` (Since 5.0.0)
 Defaults to false meaning that a right rail will be shown where appropriate. When set to true, no right rail will appear. If the wiki heavily relies on layouts that might break with the Right Rail on, this setting is very useful to be turned on.
 
@@ -337,7 +333,6 @@ Defaults to false. When set to true, it will force Evelution to be in Full width
 
 ### ``$wgEvelutionDisableRightRailFromSpecificPages`` (Since 27.2.0)
 Defaults to an empty array aka no additional pages will be blacklisted from having a right rail. Set this to an array of pages you want to disable right rail. Does not stack with ``$wgEvelutionDisableRightRail`` config and that will take priority over this one.
-..
 
 ### ``$wgEvelutionMonoLogo`` (Since 45.1.0)
 Defaults to false. When set to true, the Logo that appears on Desktop Superbar and Minibar will appear masked, adapting any color scheme. Use this for Flat-style logos or for Logos that are colored in either Plain Black or White. This setting is not recommended to be set to ``true`` for multicolored logos and logos without transparency.

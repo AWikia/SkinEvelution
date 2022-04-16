@@ -88,7 +88,7 @@ function InitDesigner() {
 	
 
 	$(".evelution-floating-actions.extra-actions .evelution-floating-actions-container").append(
-		'<button class="cpe-floating-button accent theme-test-button page-side-tool" cpe-tooltip-position="reverse" cpe-tooltip="' + mw.msg( 'evelution-designer-test' ) + '">' +
+		'<button class="cpe-floating-button good theme-test-button page-side-tool" cpe-tooltip-position="reverse" cpe-tooltip="' + mw.msg( 'evelution-designer-test' ) + '">' +
 			'<span class="cpe-icon material-icons">' +
 				'build' +
 			'</span>' +
@@ -309,6 +309,11 @@ function InitDesigner() {
 				'<option value="0.6" label="60%">' +
 				'<option value="0.8" label="80%">' +
 			'</datalist>' +
+			'<datalist id="td_gchs">' + // Image Opacity
+				'<option value="-10" label="-10deg">' +
+				'<option value="0" label="0deg">' +
+				'<option value="10" label="10deg">' +
+			'</datalist>' +
 			'<datalist id="td_filterdur">' + // Image Opacity
 				'<option value="0">' +
 				'<option value="300">' +
@@ -349,7 +354,7 @@ function InitDesigner() {
 				'</td>' +
 
 				'<td style="text-align:center; width:150px">' +
-					'<input type="url" id="bodyimage" class="cpe-input designer-text" style="width:150px; min-width:150px;" placeholder="URL" />' + // Body Background 
+					'<input type="text" id="bodyimage" class="cpe-input designer-text" style="width:150px; min-width:150px;" placeholder="URL" />' + // Body Background 
 				'</td>' +
 			'</tr>' +
 		// TR
@@ -360,32 +365,6 @@ function InitDesigner() {
 
 				'<td style="text-align:center; width:150px">' +
 					'<input type="text" id="bodyimagefilter" class="cpe-input designer-text" style="width:150px; min-width:150px;" placeholder="Filter" value="opacity(1)" list="td_imagefilter" />' + // Body Background 
-				'</td>' +
-			'</tr>' +
-		// TR
-			'<tr>' +
-				'<th style="width:150px;">' + 
-					mw.msg( 'evelution-designer-community-image-mode' ) + 
-				'</td>' +
-
-				'<td style="text-align:center; width:150px">' +
-				   '<div class="cpe-dropdown cpe-select" tabindex="-1">' +
-						'<div class="cpe-input bg_mode cpe-dropdown__toggle" style="width:150px; min-width:150px;">' +
-							'<span class="cpe-select__value" value="header">Header</span>' +
-							'<span class="cpe-icon cpe-icon-tiny cpe-icon-large cpe-dropdown__toggle-chevron material-icons">' +
-								'arrow_drop_down' +
-							'</span>' +
-						'</div>' +
-						'<div class="cpe-dropdown__content">' +
-							'<ul class="cpe-list is-linked">' +
-								'<li value="header"><a>Header</a></li>' +
-								'<li value="one-quarter"><a>One Quarter</a></li>' +
-								'<li value="two-quarters"><a>Two Quarters</a></li>' +
-								'<li value="three-quarters"><a>Three Quarters</a></li>' +
-								'<li value="four-quarters"><a>Four Quarters</a></li>' +
-							'</ul>' +
-						'</div>' +
-					'</div>' +
 				'</td>' +
 			'</tr>' +
 		// TR
@@ -649,6 +628,16 @@ function InitDesigner() {
 
 				'<td style="text-align:center; width:150px">' +
 					'<input type="range" class="big" style="min-width:150px; min-width:150px;" id="aopacity" value="0.6" min="0.4" max="0.8" step="0.01" list="td_aopacity" autocomplete="off" />' + // Body Background 
+				'</td>' +
+			'</tr>' +
+		// TR
+			'<tr>' +
+				'<th style="width:150px;">' + 
+					mw.msg( 'evelution-designer-gchs' ) + 
+				'</td>' +
+
+				'<td style="text-align:center; width:150px">' +
+					'<input type="range" class="big" style="min-width:150px; min-width:150px;" id="gchs" value="0" min="-10" max="10" step="1" list="td_gchs" autocomplete="off" />' + // Body Background 
 				'</td>' +
 			'</tr>' +
 
@@ -927,7 +916,6 @@ function ApplyTheme () {
 				 '--desktop-background-image-filter:' + $('#bodyimagefilter').val() + ';\n' +
 				 '--desktop-background-color:' + $('#bodybg').val()  + ';\n' +
 				 '--desktop-text-background-color:' + autocolor1  + ';\n' +
-				 '--desktop-background-mode:' + $('.bg_mode .cpe-select__value').attr('value')  + ';\n' +
 				 '--desktop-background-horizontal-alignment:' + $('.bg_align2 .cpe-select__value').attr('value') + ';\n' +
 				 '--desktop-background-vertical-alignment:' + $('.bg_align .cpe-select__value').attr('value') + ';\n' +
 				 '--desktop-background-size:' + $('.bg_size .cpe-select__value').attr('value')  + ';\n' +
@@ -948,6 +936,7 @@ function ApplyTheme () {
 				 '--icon-filter-duration:' + $('#filter3').val() + "ms" + ';\n' +
 				 '--icon-filter-delay:' + $('#filter4').val() + "ms" + ';\n' +
 				 '--system-acryllic-opacity:' + $('#aopacity').val() + ';\n' +
+				 '--system-generic-color-hue-shift:' + $('#gchs').val() + ';\n' +
 				 '}\n' // Ending
 
 /*
@@ -1038,7 +1027,6 @@ function CopyTheme() {
 				 '--desktop-background-image-filter:' + $('#bodyimagefilter').val() + ';\n' +
 				 '--desktop-background-color:' + $('#bodybg').val()  + ';\n' +
 				 '--desktop-text-background-color:' + autocolor1  + ';\n' +
-				 '--desktop-background-mode:' + $('.bg_mode .cpe-select__value').attr('value')  + ';\n' +
 				 '--desktop-background-horizontal-alignment:' + $('.bg_align2 .cpe-select__value').attr('value') + ';\n' +
 				 '--desktop-background-vertical-alignment:' + $('.bg_align .cpe-select__value').attr('value') + ';\n' +
 				 '--desktop-background-size:' + $('.bg_size .cpe-select__value').attr('value')  + ';\n' +
@@ -1061,6 +1049,7 @@ function CopyTheme() {
 				 '--icon-filter-duration:' + $('#filter3').val() + "ms" + ';\n' +
 				 '--icon-filter-delay:' + $('#filter4').val() + "ms" + ';\n' +
 				 '--system-acryllic-opacity:' + $('#aopacity').val() + ';\n' +
+				 '--system-generic-color-hue-shift:' + $('#gchs').val() + ';\n' +
 				 '}' // Ending
 		if (navigator.clipboard) {
 			navigator.clipboard.writeText(result).then(function() {
@@ -1157,7 +1146,6 @@ function CopyTheme2() {
 				 "'desktop-background-image-filter' => '" + $("#bodyimagefilter").val() + "',\n" +
 				 "'desktop-background-color' => '" + $("#bodybg").val()  + "',\n" +
 				 "'desktop-text-background-color' => '" + autocolor1  + "',\n" +
-				 "'desktop-background-mode' => '" + $(".bg_mode .cpe-select__value").attr("value")  + "',\n" +
 				 "'desktop-background-horizontal-alignment' => '" + $(".bg_align2 .cpe-select__value").attr("value") + "',\n" +
 				 "'desktop-background-vertical-alignment' => '" + $(".bg_align .cpe-select__value").attr("value") + "',\n" +
 				 "'desktop-background-size' => '" + $(".bg_size .cpe-select__value").attr("value")  + "',\n" +
@@ -1180,6 +1168,7 @@ function CopyTheme2() {
 				 "'icon-filter-duration' => '" + $("#filter3").val() + 'ms' + "',\n" +
 				 "'icon-filter-delay' => '" + $("#filter4").val() + 'ms' + "',\n" +
 				 "'system-acryllic-opacity' => '" + $("#aopacity").val() + "',\n" +
+				 "'system-generic-color-hue-shift' => '" + $("#gchs").val() + "',\n" +
 				 "];" // Ending
 		if (navigator.clipboard) {
 			navigator.clipboard.writeText(result).then(function() {
@@ -1233,23 +1222,6 @@ function PasteTheme() {
 	$('#bodyimage').val( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-image").replace('url(', '').replace(')', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("").split("\"").join("") );
 	// Body Image Opacity
 	$('#bodyimagefilter').val( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-image-filter") );
-	// Body Image Mode
-	if (['full','legacy','100%','four-quarters'].includes(getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-mode"))) {
-		var mode = 'four-quarters';
-	} else if (['three-quarters','75%'].includes(getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-mode"))) {
-		var mode = 'three-quarters';
-	} else if (['half','50%','two-quarters'].includes(getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-mode"))) {
-		var mode = 'two-quarters';
-	} else if (['one-quarter','25%'].includes(getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-mode"))) {
-		var mode = 'one-quarter';
-	} else {
-		var mode = 'header';
-	}
-
-
-	bg_mode = ["Header", "One Quarter", "Two Quarters", "Three Quarters", "Four Quarters"][["header", "one-quarter", "two-quarters", "thee-quarters", "four-quarters"].indexOf(mode) ]
-	$('.bg_mode .cpe-select__value').attr('value', mode );
-	$('.bg_mode .cpe-select__value').html( bg_mode );
 	// Body Image Alignment V
 	bg_align = ["Top", "Middle", "Bottom"][["top", "center", "bottom"].indexOf( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-vertical-alignment") ) ]
 	$('.bg_align .cpe-select__value').attr('value', getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-vertical-alignment") );
@@ -1349,6 +1321,8 @@ function PasteTheme() {
 	$('#filter4').val( parseInt(getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--icon-filter-delay")) );
 	// Acryllic Opacity
 	$('#aopacity').val( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--system-acryllic-opacity") );
+	// Acryllic Opacity
+	$('#gchs').val( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--system-generic-color-hue-shift") );
 	UpdateContrastRatios();
 	UpdateRangeInputs();
 	$(".evelution-floating-actions.extra-actions .theme-paste-button").prop('disabled', false);
@@ -1424,7 +1398,6 @@ function TestTheme(banner=false) {
 				 '--desktop-background-image-filter:' + $('#bodyimagefilter').val() + '!important;\n' +
 				 '--desktop-background-color:' + $('#bodybg').val()  + '!important;\n' +
 				 '--desktop-text-background-color:' + autocolor1  + '!important;\n' +
-				 '--desktop-background-mode:' + $('.bg_mode .cpe-select__value').attr('value')  + '!important;\n' +
 				 '--desktop-background-horizontal-alignment:' + $('.bg_align2 .cpe-select__value').attr('value') + '!important;\n' +
 				 '--desktop-background-vertical-alignment:' + $('.bg_align .cpe-select__value').attr('value') + '!important;\n' +
 				 '--desktop-background-size:' + $('.bg_size .cpe-select__value').attr('value')  + '!important;\n' +
@@ -1447,6 +1420,7 @@ function TestTheme(banner=false) {
 				 '--icon-filter-duration:' + $('#filter3').val() + "ms" + '!important;\n' +
 				 '--icon-filter-delay:' + $('#filter4').val() + "ms" + '!important;\n' +
 				 '--system-acryllic-opacity:' + $('#aopacity').val() + '!important;\n' +
+				 '--system-generic-color-hue-shift:' + $('#gchs').val() + '!important;\n' +
 				 '}' // Ending
 			document.querySelector("#mw-content-text .theme-designer-css").innerHTML = result;
 			try {

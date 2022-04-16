@@ -97,6 +97,7 @@ filter:none!important;
     --mica-filter:none!important;
 	--tabbed-filter:none!important;
 	--tabbed-filter-dark:none!important;
+	--mica-content:none;
 }
 
 /* Color Forces */
@@ -522,32 +523,22 @@ background-color:var(--canvas-background-color);
 /* Basic Theme */
 
 .visualstyle-lite body,
+.visualstyle-generallite body,
 .visualstyle-basic body,
 .visualstyle-basiccontrast body,
 .visualstyle-simplelite body,
 .visualstyle-simplecontrast body,
 .visualstyle-classic body,
-.visualstyle-classiccontrast body {
-  --acryllic-filter:none!important;
-   --mica-filter:none!important;
+.visualstyle-classiccontrast body,
+.visualstyle-custom-3 body,
+.visualstyle-custom-4 body {
+	--acryllic-filter:none!important;
+    --mica-filter:none!important;
 	--tabbed-filter:none!important;
 	--tabbed-filter-dark:none!important;
+	--mica-content:none;
 }
 
-
-.visualstyle-lite .has-levit::after,
-.visualstyle-contrast .has-levit::after,
-.visualstyle-generallite .has-levit::after,
-.visualstyle-basic .has-levit::after,
-.visualstyle-basiccontrast .has-levit::after,
-.visualstyle-simplelite .has-levit::after,
-.visualstyle-simplecontrast .has-levit::after,
-.visualstyle-classic .has-levit::after,
-.visualstyle-classiccontrast .has-levit::after,
-.visualstyle-custom_3 .has-levit::after
-.visualstyle-custom_4 .has-levit::after {
-	content:none!important;
-}
 
 
 
@@ -1571,11 +1562,13 @@ color:inherit;
 .visualstyle-simplelite .cpe-floating-button{
   --floating-button-background-color:var(--canvas-text-background-color);
   --floating-button-background-color-hover:var(--canvas-text-background-color-hover);
+  --floating-button-background-color-active:var(--floating-button-background-color-hover);
   --floating-button-color:var(--canvas-text-foreground-color);
   --floating-button-color-hover:var(--floating-button-color);
   --floating-button-color-active:var(--canvas-text-foreground-color-inverted);
   --floating-button-border-color:var(--floating-button-background-color);
   --floating-button-border-color-hover:rgba(var(--canvas-text-foreground-color-rgb),0.2);
+  --floating-button-border-color-active:var(--floating-button-border-color-hover);
   --floating-button-fadeout-opacity:0;
   --floating-button-shadow-opacity:0.66!important;
   --floating-button-shadow-blur:15px!important;
@@ -1601,14 +1594,27 @@ color:inherit;
   --floating-button-border-color-hover:rgba(var(--alert-foreground-color-rgb),0.2);
 }
 
+.visualstyle-simple .cpe-floating-button.good,
+.visualstyle-simplelite .cpe-floating-button.good {
+  --floating-button-background-color:var(--success-background-color);
+  --floating-button-background-color-hover:var(--success-background-color-hover-2);
+  --floating-button-color:var(--success-foreground-color);
+  --floating-button-color-hover:var(--floating-button-color);
+  --floating-button-color-active:var(--success-foreground-color-inverted);
+  --floating-button-border-color-hover:rgba(var(--success-foreground-color-rgb),0.2);
+}
+
 
 .visualstyle-simplecontrast .cpe-floating-button {
   --floating-button-background-color:var(--canvas-text-background-color);
   --floating-button-background-color-hover:var(--floating-button-color);
+  --floating-button-background-color-active:var(--floating-button-background-color-hover);
   --floating-button-color:var(--canvas-text-foreground-color);
   --floating-button-color-hover:var(--floating-button-background-color);
+  --floating-button-color-active:var(--floating-button-color-hover);
   --floating-button-border-color:var(--floating-button-background-color);
   --floating-button-border-color-hover:rgba(var(--canvas-text-background-color-rgb),0.5);
+  --floating-button-border-color-active:var(--floating-button-border-color-hover);
   --floating-button-fadeout-opacity:0;
   --floating-button-shadow-opacity:0.66!important;
   --floating-button-shadow-blur:15px!important;
@@ -1624,6 +1630,12 @@ color:inherit;
   --floating-button-background-color:var(--alert-background-color);
   --floating-button-color:var(--alert-foreground-color);
   --floating-button-border-color-hover:rgba(var(--alert-background-color-rgb),0.5);
+}
+
+.visualstyle-simplecontrast .cpe-floating-button.good {
+  --floating-button-background-color:var(--success-background-color);
+  --floating-button-color:var(--success-foreground-color);
+  --floating-button-border-color-hover:rgba(var(--success-background-color-rgb),0.5);
 }
 
 
@@ -4043,7 +4055,7 @@ background-color:var(--hyperlink-background-color);
 /* Cubes */
 .theme-A.visualcolors-cubes {
 --desktop-background-image:url("Cubes.png");
---desktop-background-image-filter:grayscale(100%) brightness(50%);
+--desktop-background-image-filter:grayscale(100%) brightness(50%) opacity(50%);
 --desktop-background-color:#c8c8cd;
 --desktop-text-background-color:#000000;
 --desktop-background-size:contain;
@@ -4058,7 +4070,7 @@ background-color:var(--hyperlink-background-color);
 
 .theme-B.visualcolors-cubes {
 --desktop-background-image:url("Cubes.png");
---desktop-background-image-filter:hue-rotate(-20deg);
+--desktop-background-image-filter:hue-rotate(-20deg) opacity(50%);
 --desktop-background-color:#fdd7e4;
 --desktop-text-background-color:#c62d42;
 --desktop-background-size:contain;
@@ -4073,7 +4085,7 @@ background-color:var(--hyperlink-background-color);
 
 .theme-C.visualcolors-cubes {
 --desktop-background-image:url("Cubes.png");
---desktop-background-image-filter:hue-rotate(65deg) brightness(200%);
+--desktop-background-image-filter:hue-rotate(65deg) brightness(200%) opacity(50%);
 --desktop-background-color:#fbe870;
 --desktop-text-background-color:#87421f;
 --desktop-background-size:contain;
@@ -4088,7 +4100,7 @@ background-color:var(--hyperlink-background-color);
 
 .theme-D.visualcolors-cubes {
 --desktop-background-image:url("Cubes.png");
---desktop-background-image-filter:hue-rotate(90deg) brightness(200%);
+--desktop-background-image-filter:hue-rotate(90deg) brightness(200%) opacity(50%);
 --desktop-background-color:#c5e17a;
 --desktop-text-background-color:#00755e;
 --desktop-background-size:contain;
@@ -4103,7 +4115,7 @@ background-color:var(--hyperlink-background-color);
 
 .theme-E.visualcolors-cubes {
 --desktop-background-image:url("Cubes.png");
---desktop-background-image-filter:invert(1) grayscale(100%);
+--desktop-background-image-filter:invert(1) grayscale(100%) opacity(50%);
 --desktop-background-color:#2d383a;
 --desktop-text-background-color:#ddebec;
 --desktop-background-size:contain;
@@ -4118,7 +4130,7 @@ background-color:var(--hyperlink-background-color);
 
 .theme-F.visualcolors-cubes {
 --desktop-background-image:url("Cubes.png");
---desktop-background-image-filter:hue-rotate(180deg) brightness(250%);
+--desktop-background-image-filter:hue-rotate(180deg) brightness(250%) opacity(50%);
 --desktop-background-color:#003366;
 --desktop-text-background-color:#93ccea;
 --desktop-background-size:contain;
@@ -4134,7 +4146,7 @@ background-color:var(--hyperlink-background-color);
 
 .theme-G.visualcolors-cubes {
 --desktop-background-image:url("Cubes.png");
---desktop-background-image-filter:hue-rotate(40deg) brightness(250%);
+--desktop-background-image-filter:hue-rotate(40deg) brightness(250%) opacity(50%);
 --desktop-background-color:#664228;
 --desktop-text-background-color:#ffb97b;
 --desktop-background-size:contain;
@@ -4149,7 +4161,7 @@ background-color:var(--hyperlink-background-color);
 
 .theme-H.visualcolors-cubes {
 --desktop-background-image:url("Cubes.png");
---desktop-background-image-filter:hue-rotate(-100deg) brightness(250%);
+--desktop-background-image-filter:hue-rotate(-100deg) brightness(250%) opacity(50%);
 --desktop-background-color:#732e6c;
 --desktop-text-background-color:#c9a0dc;
 --desktop-background-size:contain;
