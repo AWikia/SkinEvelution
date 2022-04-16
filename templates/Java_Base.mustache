@@ -367,7 +367,7 @@ AliasBoxes();
 
 	var level = 1;
 
-DetectGPU.getGPUTier().then(function(e) { level = (e.fps == undefined) ? 1 : (e.fps >= 60) ? 4 : (e.fps >= 45) ? 3 : (e.fps >= 11) ? 2 : 0;  document.querySelector('html').classList.add('gpu-level-' + level); CheckHardware(level);});
+DetectGPU.getGPUTier().then(function(e) { level = (e.fps == undefined) ? 1 : (e.fps >= 60) ? 4 : (e.fps >= 45) ? 3 : (e.fps >= 5) ? 2 : 0;  document.querySelector('html').classList.add('gpu-level-' + level); CheckHardware(level);});
 
 })();
 
