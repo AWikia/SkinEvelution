@@ -195,10 +195,12 @@ font-family:Trebuchet MS;
 /* BG Align */
 --desktop-background-alignment:var(--desktop-background-vertical-alignment) var(--desktop-background-horizontal-alignment);
 /* Acryllic */
---acryllic-filter:blur( calc(30px * calc(1.2 - var(--system-acryllic-opacity) ) ) ) ;
---mica-filter:blur(calc(160px * calc(1.2 - var(--system-acryllic-opacity)))) brightness(125%) contrast(125%) opacity(0.7);
---tabbed-filter:blur( calc(160px * calc(1.2 - var(--system-acryllic-opacity) ) ) ) contrast(75%) brightness(125%) saturate(125%);
---tabbed-filter-dark:blur(calc(160px * calc(1.2 - var(--system-acryllic-opacity)))) contrast(150%) brightness(50%) saturate(150%);
+--acryllic-filter:blur( calc(30px * calc(1.2 - var(--system-acryllic-opacity) ) ) ) saturate(125%);
+--mica-filter:blur( calc(160px * calc(1.2 - var(--system-acryllic-opacity) ) ) ) brightness(125%) contrast(125%) saturate(125%);
+--mica-filter-dark:blur( calc(160px * calc(1.2 - var(--system-acryllic-opacity) ) ) ) brightness(50%) contrast(125%) saturate(125%) opacity(0.8);
+
+--tabbed-filter:blur( calc(160px * calc(1.2 - var(--system-acryllic-opacity) ) ) ) saturate(125%);
+--tabbed-filter-dark:blur(calc(160px * calc(1.2 - var(--system-acryllic-opacity)))) brightness(45%) contrast(190%) saturate(125%);
 /* Transition */
 --transitioner:cubic-bezier(0.25,0.25,0,1);
 /* Fonts */
@@ -311,7 +313,7 @@ body [force-active] {
 body:not(:focus):not(:focus-within),
 body [force-inactive] {
 	--dropdown-opacity:1;
-	--mica-opacity:1;
+	--mica-opacity:2;
 	--simple-fallback-color:var(--canvas-background-color)!important;
 	--luna-background-color:var(--canvas-background-color);
 	--luna-background-color-rgb:var(--canvas-background-color-rgb);
@@ -894,6 +896,7 @@ container {
     position: relative;
     display: block;
     height: 100vh;
+    height: 100dvh;
     z-index: 1;
     top: 0;
     width: 100%;
@@ -955,7 +958,6 @@ container {
 		filter:var(--mica-filter);
 		background-color:rgba(var(--desktop-background-color-rgb), calc(1 - var(--mica-opacity)));
 		z-index:-2;
-
 }
 
 
@@ -976,20 +978,33 @@ container {
 		background-repeat:var(--bg-tile-x) var(--bg-tile-y);
 		z-index:-1;
 		opacity:calc(1 - var(--mica-opacity));
+		mix-blend-mode:color;
 
 }
 
+.theme-fandomdesktop-dark .has-levit::after {
+		filter:var(--desktop-background-image-filter) var(--invertion-filter)  var(--mica-filter-dark);
+		opacity:calc(1 - calc(var(--mica-opacity) * 1.05) );
+	
+}
 
 
 .has-levit.has-tabs::after {
 		filter:var(--desktop-background-image-filter) var(--invertion-filter)  var(--tabbed-filter);
 		opacity:calc(1 - calc(var(--mica-opacity) * 0.7) );
+		mix-blend-mode:normal;
 }
 
 .theme-fandomdesktop-dark .has-levit.has-tabs::after {
 		filter:var(--desktop-background-image-filter) var(--invertion-filter)  var(--tabbed-filter-dark);
 		opacity:calc(1 - calc(var(--mica-opacity) * 1.05) );
 }
+
+.theme-fandomdesktop-dark .has-levit::before {
+		filter:var(--mica-filter-dark);
+		background-color:rgba(var(--desktop-background-color-rgb), calc(1 - calc(var(--mica-opacity) * 1.05)) );
+}
+
 
 .has-levit.has-tabs::before {
 		filter:var(--tabbed-filter);
@@ -1022,13 +1037,14 @@ container {
 	.cpe-dropdown__content,
 	.cpe-dropdown__content .cpe-list.is-linked .cpe-dropdown-level-2 .cpe-dropdown-level-2__content {
 		--dropdown-opacity:1!important;
-		--mica-opacity:1!important;
+		--mica-opacity:2!important;
 		--simple-fallback-color:var(--canvas-background-color)!important;
 	}
 
 	:root body {
 		--acryllic-filter:none!important;
 		--mica-filter:none!important;
+		--mica-filter-dark:none!important;
 		--tabbed-filter:none!important;
 		--tabbed-filter-dark:none!important;
 		--mica-content:none;
@@ -1060,6 +1076,7 @@ container {
 
 	:root body {
 		--mica-filter:none!important;
+		--mica-filter-dark:none!important;
 		--tabbed-filter:none!important;
 		--tabbed-filter-dark:none!important;
 	}
@@ -1103,7 +1120,7 @@ container {
 	.gpu-level-0 body,
 	.gpu-level-1 body,
 	.gpu-level-2 body {
-		--mica-opacity:1!important;
+		--mica-opacity:2!important;
 	}
 
 
@@ -1111,6 +1128,7 @@ container {
 	.gpu-level-1 body,
 	.gpu-level-2 body {
 		--mica-filter:none!important;
+		--mica-filter-dark:none!important;
 		--tabbed-filter:none!important;
 		--tabbed-filter-dark:none!important;
 		--mica-content:none!important;
@@ -3056,13 +3074,14 @@ margin-right:16px;
 
 /* Disable Luna Levit on Dropdowns */
 	.cpe-dropdown__content .has-levit {
-		--mica-opacity:1!important;
+		--mica-opacity:2!important;
 		--mica-content:none;
 	}
 
 
 	.cpe-dropdown__content .has-levit {
 		--mica-filter:none!important;
+		--mica-filter-dark:none!important;
 		--tabbed-filter:none!important;
 		--tabbed-filter-dark:none!important;
 	}
@@ -3338,7 +3357,7 @@ margin-right:16px;
 
 /* Lists */
 
-.cpe-list{list-style-type:none;margin:0;padding:8px 18px}
+.cpe-list{list-style:none;margin:0;padding:8px 18px}
 
 .cpe-list>li{font-size:14px;font-weight:400;line-height:1em;padding:12px 0} /* Was 12px 0 */
 
@@ -3739,6 +3758,7 @@ margin-right:16px;
 		--scrollbar-thumb-text:var(--highlight-foreground-color);
 		overflow-y:scroll;
 		max-height:calc(100vh - calc(var(--minibar-size) * 2) - 45px);
+		max-height:calc(100dvh - calc(var(--minibar-size) * 2) - 45px);
 }
 
 
@@ -4076,10 +4096,6 @@ input[type="range"]::-moz-range-progress {
 }
 
 /* Low End Skins and Interpreters */
-	/* Tunic */
-	.skin-tunic,
-	.skin-tunic .cpe-dropdown__content,
-	.skin-tunic .cpe-dropdown__content .cpe-list.is-linked .cpe-dropdown-level-2 .cpe-dropdown-level-2__content,
 	/* Ivilution */
 	.ivilution-loaded body,
 	.ivilution-loaded .cpe-dropdown__content,
@@ -4089,19 +4105,15 @@ input[type="range"]::-moz-range-progress {
 	.parmalution-ready .cpe-dropdown__content,
 	.parmalution-ready .cpe-dropdown__content .cpe-list.is-linked .cpe-dropdown-level-2 .cpe-dropdown-level-2__content   {
 		--dropdown-opacity:1!important;
-		--mica-opacity:1!important;
+		--mica-opacity:2!important;
 		--simple-fallback-color:var(--canvas-background-color)!important;
 	}
 
-	.skin-tunic,
 	.ivilution-loaded,
 	.parmalution-ready /* For GTK Interpreter */ {
 		--acryllic-filter:none!important;
 	}
 
-	/* Tunic */
-	.skin-tunic,
-	.skin-tunic [force-active],
 	/* Ivilution */
 	.ivilution-loaded body,
 	.ivilution-loaded body [force-active],
@@ -4128,9 +4140,6 @@ input[type="range"]::-moz-range-progress {
 		--luna-hyperlink-background-color-rgb:var(--hyperlink-secondary-background-color-rgb)!important;
 	}
 
-	/* Tunic */
-	.skin-tunic:not(:focus):not(:focus-within),
-	.skin-tunic [force-inactive],
 	/* Ivilution */
 	.ivilution-loaded body:not(:focus):not(:focus-within),
 	.ivilution-loaded body [force-inactive],
