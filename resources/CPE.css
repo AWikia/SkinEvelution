@@ -200,7 +200,7 @@ font-family:Trebuchet MS;
 --mica-filter-dark:blur( calc(160px * calc(1.2 - var(--system-acryllic-opacity) ) ) ) brightness(50%) contrast(125%) saturate(125%) opacity(0.8);
 
 --tabbed-filter:blur( calc(160px * calc(1.2 - var(--system-acryllic-opacity) ) ) ) saturate(125%);
---tabbed-filter-dark:blur(calc(160px * calc(1.2 - var(--system-acryllic-opacity)))) brightness(45%) contrast(190%) saturate(125%);
+--tabbed-filter-dark:blur( calc(160px * calc(1.2 - var(--system-acryllic-opacity) ) ) ) brightness(45%) contrast(150%) saturate(125%);
 /* Transition */
 --transitioner:cubic-bezier(0.25,0.25,0,1);
 /* Fonts */
@@ -958,6 +958,7 @@ container {
 		filter:var(--mica-filter);
 		background-color:rgba(var(--desktop-background-color-rgb), calc(1 - var(--mica-opacity)));
 		z-index:-2;
+		mix-blend-mode:color;
 }
 
 
@@ -991,29 +992,32 @@ container {
 
 .has-levit.has-tabs::after {
 		filter:var(--desktop-background-image-filter) var(--invertion-filter)  var(--tabbed-filter);
-		opacity:calc(1 - calc(var(--mica-opacity) * 0.7) );
+		opacity:calc(1 - calc(var(--mica-opacity) * 1.05) );
 		mix-blend-mode:normal;
 }
 
 .theme-fandomdesktop-dark .has-levit.has-tabs::after {
 		filter:var(--desktop-background-image-filter) var(--invertion-filter)  var(--tabbed-filter-dark);
 		opacity:calc(1 - calc(var(--mica-opacity) * 1.05) );
+		mix-blend-mode:soft-light;
 }
 
 .theme-fandomdesktop-dark .has-levit::before {
 		filter:var(--mica-filter-dark);
-		background-color:rgba(var(--desktop-background-color-rgb), calc(1 - calc(var(--mica-opacity) * 1.05)) );
+		background-color:rgba(var(--desktop-background-color-rgb), calc(1 - calc(var(--mica-opacity) * 0.75)) );
 }
 
 
 .has-levit.has-tabs::before {
 		filter:var(--tabbed-filter);
-		background-color:rgba(var(--desktop-background-color-rgb), calc(1 - calc(var(--mica-opacity) * 0.7)) );
+		background-color:rgba(var(--desktop-background-color-rgb), calc(1 - calc(var(--mica-opacity) * 1.05)) );
+		mix-blend-mode:normal;
 }
 
 .theme-fandomdesktop-dark .has-levit.has-tabs::before {
 		filter:var(--tabbed-filter-dark);
-		background-color:rgba(var(--desktop-background-color-rgb), calc(1 - calc(var(--mica-opacity) * 1.05)) );
+		background-color:rgba(var(--desktop-background-color-rgb), calc(1 - calc(var(--mica-opacity) * 0.75)) );
+		mix-blend-mode:soft-light;
 }
 
 

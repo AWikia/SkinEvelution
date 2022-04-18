@@ -901,12 +901,12 @@ function ApplyTheme () {
 	}
 	var image = $("#bodyimage").val().replace('url(', '').replace(')', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("").split("\"").join("");
     if ( $('#firstfont').val().length === 0) {
-		var customfont2 = 'Rubik';
+		var customfont2 = 'Roboto';
     } else {
 		var customfont2 = $('#firstfont').val().replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
     }
     if ( $('#secondfont').val().length === 0) {
-		var customfont = 'Roboto';
+		var customfont = 'Rubik';
     } else {
 		var customfont = $('#secondfont').val().replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
     }
