@@ -137,14 +137,12 @@
 	}
 	
 
-	.evelution-rail-wrapper .evelution-module {
-		padding-left:var(--l-content-padding);
-		padding-right:var(--r-content-padding);
+	.evelution-rail-wrapper .evelution-module .module-container {
+		padding-left:calc(10px + var(--l-content-padding));
+		padding-right:calc(10px + var(--r-content-padding));
 	}
 	
 	.evelution-module .evelution-module-content {
-		margin-left:calc(0px - var(--l-content-padding));		
-		margin-right:calc(0px - var(--r-content-padding));
 		padding-left:calc(10px + var(--l-content-padding));
 		padding-right:calc(10px + var(--r-content-padding));
 	}
@@ -414,13 +412,15 @@
 	@media only screen and (min-width:760px) and (max-width:1019px) {
 		.evelution-rail-wrapper .evelution-module {
 			width:100%;
-			padding-left:calc(var(--l-content-padding) / 2);
-			padding-right:calc(var(--r-content-padding) / 2);
 		}
+
+		.evelution-rail-wrapper .evelution-module .module-container {
+			padding-left:calc(10px + calc(var(--l-content-padding) / 2));
+			padding-right:calc(10px + calc(var(--r-content-padding) / 2));
+		}
+
 		
 		.evelution-module .evelution-module-content {
-			margin-left:calc(0px - calc(var(--l-content-padding) / 2));		
-			margin-right:calc(0px - calc(var(--r-content-padding) / 2));
 			padding-left:calc(10px + calc(var(--l-content-padding) / 2));
 			padding-right:calc(10px + calc(var(--r-content-padding) / 2));
 		}

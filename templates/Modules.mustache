@@ -1,8 +1,8 @@
 						<!-- Discord Module -->
 					{{#is-loggedin}}
 						<section class="evelution-module discord-module rail-module">
-							<div class="lunalevit disables-on-accent"></div>
-							<h2 class="rail-module__header">
+							<h2 class="module-container rail-module__header">
+								<div class="lunalevit disables-on-accent"></div>
 								<span class="cpe-icon material-icons">
 								forum
 								</span>
@@ -20,26 +20,29 @@
 									</div>
 								{{/has-discord-id}}							
 							</div>
-							{{#has-discord-id}}
-								<div class="cpe-button-groups discord-widget">
-									<div class="cpe-button-group">
-										<a href="https://discord.com/register" class="cpe-button is-full-width">{{msg-createaccount}}</a>
+							<div class="buttons module-container">
+								<div class="lunalevit disables-on-accent"></div>
+								{{#has-discord-id}}
+									<div class="cpe-button-groups discord-widget">
+										<div class="cpe-button-group">
+											<a href="https://discord.com/register" class="cpe-button is-full-width">{{msg-createaccount}}</a>
+										</div>
+										<div class="cpe-button-group">
+											<a href="{{html-edit-link}}/MediaWiki:Evelution-discord-module-server-id" class="cpe-button is-secondary is-full-width">{{msg-edit}}</a>
+										</div>
 									</div>
-									<div class="cpe-button-group">
-										<a href="{{html-edit-link}}/MediaWiki:Evelution-discord-module-server-id" class="cpe-button is-secondary is-full-width">{{msg-edit}}</a>
-									</div>
-								</div>
-							{{/has-discord-id}}
-							{{^has-discord-id}}
-							<a href="{{html-edit-link}}/MediaWiki:Evelution-discord-module-server-id" class="cpe-button is-secondary not-discord-widget is-full-width">{{msg-edit}}</a>
-							{{/has-discord-id}}
+								{{/has-discord-id}}
+								{{^has-discord-id}}
+								<a href="{{html-edit-link}}/MediaWiki:Evelution-discord-module-server-id" class="cpe-button is-secondary not-discord-widget is-full-width">{{msg-edit}}</a>
+								{{/has-discord-id}}
+							</div>
 						</section>
 					{{/is-loggedin}}
 					<div class="evelution-sticky-modules">
 						<!-- Activity Module -->
 						<section class="evelution-module activity-module rail-module">
-							<div class="lunalevit disables-on-accent"></div>
-							<h2 class="rail-module__header">
+							<h2 class="module-container rail-module__header">
+								<div class="lunalevit disables-on-accent"></div>
 								<span class="cpe-icon material-icons">
 								trending_up
 								</span>
@@ -50,12 +53,15 @@
 							<div class="evelution-module-content">
 								{{msg-evelution-activity-module}}
 							</div>
-							<a href="{{html-rc-link}}" class="cpe-button is-secondary is-full-width">{{msg-moredotdotdot}}</a>
+							<div class="buttons module-container">
+								<div class="lunalevit disables-on-accent"></div>
+								<a href="{{html-rc-link}}" class="cpe-button is-secondary is-full-width">{{msg-moredotdotdot}}</a>
+							</div>
 						</section>
 						<!-- Info Module -->
 						<section class="evelution-module info-module rail-module">
-							<div class="lunalevit disables-on-accent"></div>
-							<h2 class="rail-module__header">
+							<h2 class="module-container rail-module__header">
+								<div class="lunalevit disables-on-accent"></div>
 								<span class="cpe-icon material-icons">
 								info
 								</span>
@@ -66,6 +72,9 @@
 							<div class="evelution-module-content">
 								{{msg-evelution-about-module-info}}
 							</div>
-							<a href="{{html-edit-link}}/MediaWiki:Evelution-about-module-info" class="cpe-button is-secondary is-full-width">{{msg-edit}}</a>
+							<div class="buttons module-container">
+								<div class="lunalevit disables-on-accent"></div>
+								<a href="{{html-edit-link}}/MediaWiki:Evelution-about-module-info" class="cpe-button is-secondary is-full-width">{{msg-edit}}</a>
+							</div>
 						</section>
 					</div>
