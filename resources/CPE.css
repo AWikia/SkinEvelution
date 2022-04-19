@@ -941,21 +941,21 @@ container {
 
 
 
-	.lunalevit {
-		position:absolute;
-		z-index:-1;
-		width:100%;
-		height:100%;
-		display:block;
-		top:0;
-		left:0;
-		opacity:calc(1 - var(--mica-opacity));	
-		overflow:hidden;
-		pointer-events:none;
-		mix-blend-mode:color;
-		border-radius:inherit;
-		filter:saturate(125%);
-	}
+.lunalevit {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    display: block;
+    top: 0;
+    left: 0;
+    opacity: calc(1 - calc( var(--mica-opacity) * 1));
+    overflow: hidden;
+    pointer-events: none;
+    mix-blend-mode: color;
+    border-radius: inherit;
+    filter: saturate(150%);
+}
 
 .has-accents .lunalevit.disables-on-accent,
 .lunalevit.hidden {
@@ -977,22 +977,22 @@ container {
 
 
 .lunalevit::after {
-		content:var(--mica-content);
-		display:block;
-		width:100%;
-		height:100%;
-		top:0;
-		left:0;
-		position:absolute;
-		filter:var(--desktop-background-image-filter) var(--invertion-filter) var(--mica-filter);
-		background-position:var(--desktop-background-alignment);
-		background-size:var(--bg-size);
-		background-image:var(--desktop-background-image);
-		background-color:transparent;
-		background-attachment:fixed;
-		background-repeat:var(--bg-tile-x) var(--bg-tile-y);
-		z-index:-1;
-
+    content: var(--mica-content);
+    display: block;
+    width: calc(100% + 100px);
+    height: calc(100% + 100px);
+    top: -50px;
+    left: -50px;
+    position: absolute;
+    filter: var(--desktop-background-image-filter) var(--invertion-filter) var(--mica-filter);
+    background-position: var(--desktop-background-alignment);
+    background-size: var(--bg-size);
+    background-image: var(--desktop-background-image);
+    background-color: transparent;
+    background-attachment: fixed;
+    background-repeat: var(--bg-tile-x) var(--bg-tile-y);
+    z-index: -1;
+    overflow: hidden;
 }
 
 
