@@ -1464,8 +1464,6 @@ gap:2px;
 	}
 
 	.evelution-minibar .local-navigation .cpe-dropdown__content .cpe-list .evelution-module .evelution-module-content {
-		border-bottom-left-radius:calc(var(--border-radius) + calc(var(--border-radius) / 1.25 ));
-		border-bottom-right-radius:calc(var(--border-radius) + calc(var(--border-radius) / 1.25 ));
 		overflow-y:scroll;
 		max-height:175px;
 	}
@@ -2058,6 +2056,8 @@ border-top-right-radius:0;
 	color:var(--canvas-text-background-color);
 	padding:0 10px;
 	border:1px solid transparent;
+	border-bottom-left-radius:calc(var(--border-radius) + calc(var(--border-radius) / 1.25 ));
+	border-bottom-right-radius:calc(var(--border-radius) + calc(var(--border-radius) / 1.25 ));
 	  scrollbar-width:thin;
 	  scrollbar-color:var(--scrollbar-thumb-color-1) var(--scrollbar-track-color-1);
 	 /** Scrollbar Styling **/
@@ -2074,10 +2074,11 @@ border-top-right-radius:0;
 }
 
 .evelution-module .module-container {
-	padding:10px;
+	padding:10px 0 10px 10px;
 	position:relative;
 	background-color:var(--luna-background-color);
 	z-index:1;
+	box-sizing:border-box;
 }
 
 .evelution-module h2 {
@@ -2085,11 +2086,26 @@ border-top-right-radius:0;
 	margin:0;
 	border-top-left-radius:inherit;
 	border-top-right-radius:inherit;
+	display:flex;
+	align-items:center;
+	min-height:50px;
+	gap:5px;
 	
+}
+
+.evelution-module h2 .rail-buttons {
+	display:flex;
+	flex-direction:row-reverse;
+	align-self:flex-start;
+	margin:-10px 0;
 }
 
 .evelution-module h2 .cpe-icon {
 	vertical-align:top;
+}
+
+.evelution-module h2 .module-title {
+	flex:1;
 }
 
 .evelution-module .cpe-button.is-full-width {
@@ -2197,15 +2213,14 @@ margin-left:1px;
 }
 
 
-.evelution-content .evelution-page-header .toggle-rail-button {
+.evelution-content .evelution-page-header .toggle-rail-button,
+.evelution-content .evelution-module .rail-button {
 	transition:background-color 400ms var(--transitioner), color 400ms var(--transitioner), border-color 400ms var(--transitioner), text-shadow 400ms var(--transitioner), opacity 300ms var(--transitioner), padding 300ms var(--transitioner), max-width 300ms var(--transitioner), font-size 300ms var(--transitioner);
-	display:none;
-	position:absolute;
+	display:flex;
 	color:var(--luna-text-background-color);
 	top:0;
 	width:50px;
 	height:50px;
-	display:none;
 	align-items:center;
 	justify-content:center;
 	border:1px solid transparent;
@@ -2214,20 +2229,34 @@ margin-left:1px;
 	z-index:10;
 }
 
+
+.evelution-content .evelution-page-header .toggle-rail-button {
+	display:none;
+	position:absolute;
+	top:0;
+}
+
+
 .evelution-content .evelution-page-header .toggle-rail-button.toggle-right-rail-button {
 	right:0;
 	border-top-right-radius:calc(var(--border-radius) + var(--border-radius) - 1px );
 }
 
+.evelution-content .evelution-module .rail-buttons .rail-button:first-child {
+	border-top-right-radius:calc(var(--border-radius) + var(--border-radius) - 1px );
+}
 
-.evelution-content .evelution-page-header .toggle-rail-button:hover {
+.evelution-content .evelution-page-header .toggle-rail-button:hover,
+.evelution-content .evelution-module .rail-button:hover {
+
 		color:var(--luna-text-background-color-hover);
 		background-color:rgba(var(--luna-text-background-color-hover-rgb), 0.3);
 		border-color:rgba(var(--luna-text-background-color-hover-rgb), 0.15);
 
 }
 
-.evelution-content .evelution-page-header .toggle-rail-button:active {
+.evelution-content .evelution-page-header .toggle-rail-button:active,
+.evelution-content .evelution-module .rail-button:active {
 		color:var(--luna-foreground-color);
 		background-color:rgba(var(--luna-hyperlink-background-color-rgb),0.5);
 		border-color:rgba(var(--luna-hyperlink-background-color-rgb), 0.15);
@@ -2303,62 +2332,62 @@ margin-left:1px;
 
 		@media only screen and (min-height:530px) {
 			[sticky-rail="1"] .evelution-rail-wrapper .evelution-sticky-modules .evelution-module-content {
-				max-height:75px;
+				max-height:90px;
 			}
 		}
 		@media only screen and (min-height:580px) {
 			[sticky-rail="1"] .evelution-rail-wrapper .evelution-sticky-modules .evelution-module-content {
-				max-height:100px;
+				max-height:115px;
 			}
 		}
 		@media only screen and (min-height:630px) {
 			[sticky-rail="1"] .evelution-rail-wrapper .evelution-sticky-modules .evelution-module-content {
-				max-height:125px;
+				max-height:140px;
 			}
 		}
 		@media only screen and (min-height:680px) {
 			[sticky-rail="1"] .evelution-rail-wrapper .evelution-sticky-modules .evelution-module-content {
-				max-height:150px;
+				max-height:165px;
 			}
 		}
 		@media only screen and (min-height:730px) {
 			[sticky-rail="1"] .evelution-rail-wrapper .evelution-sticky-modules .evelution-module-content {
-				max-height:175px;
+				max-height:190px;
 			}
 		}
 		@media only screen and (min-height:780px) {
 			[sticky-rail="1"] .evelution-rail-wrapper .evelution-sticky-modules .evelution-module-content {
-				max-height:200px;
+				max-height:215px;
 			}
 		}
 		@media only screen and (min-height:830px) {
 			[sticky-rail="1"] .evelution-rail-wrapper .evelution-sticky-modules .evelution-module-content {
-				max-height:225px;
+				max-height:240px;
 			}
 		}
 		@media only screen and (min-height:880px) {
 			[sticky-rail="1"] .evelution-rail-wrapper .evelution-sticky-modules .evelution-module-content {
-				max-height:250px;
+				max-height:265px;
 			}
 		}
 		@media only screen and (min-height:930px) {
 			[sticky-rail="1"] .evelution-rail-wrapper .evelution-sticky-modules .evelution-module-content {
-				max-height:275px;
+				max-height:290px;
 			}
 		}
 		@media only screen and (min-height:980px) {
 			[sticky-rail="1"] .evelution-rail-wrapper .evelution-sticky-modules .evelution-module-content {
-				max-height:300px;
+				max-height:315px;
 			}
 		}
 		@media only screen and (min-height:1030px) {
 			[sticky-rail="1"] .evelution-rail-wrapper .evelution-sticky-modules .evelution-module-content {
-				max-height:325px;
+				max-height:340px;
 			}
 		}
 		@media only screen and (min-height:1080px) {
 			[sticky-rail="1"] .evelution-rail-wrapper .evelution-sticky-modules .evelution-module-content {
-				max-height:350px;
+				max-height:365px;
 			}
 		}
 	}
