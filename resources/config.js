@@ -46,6 +46,7 @@ function InitSBT() {
 	);
 	$("container").append(
 		'<div style="--backdrop-opacity:var(--dropdown-opacity); position:fixed; display:flex; top:0; left:0; width:100%; height:100%; align-items:center; gap:2px; justify-content:center; background-color:rgba(var(--canvas-secondary-background-color-rgb),var(--backdrop-opacity)); color:var(--canvas-text-secondary-background-color); -webkit-backdrop-filter:var(--acryllic-filter); backdrop-filter:var(--acryllic-filter); z-index:999999999;" class="SBT">' +
+		'<div class="lunalevit sbtll hidden"></div>' +
 		'<section>' +
 		'<input type="checkbox" name="SBT2" id="none"></input>' +
 		'<label for="none">Disable</label>' +
@@ -68,7 +69,7 @@ function InitSBT() {
 $('#AC[name="SBT"]').click(
 							function(e) {
 								e.preventDefault
-								$('div.SBT').removeClass("has-levit").removeClass("has-tabs")
+								$('div.sbtll').addClass("hidden").removeClass("has-tabs")
 								$('div.SBT').css("--backdrop-opacity","var(--dropdown-opacity)");
 							}   
 );
@@ -76,7 +77,7 @@ $('#AC[name="SBT"]').click(
 $('#MI[name="SBT"]').click(
 							function(e) {
 								e.preventDefault
-								$('div.SBT').addClass("has-levit").removeClass("has-tabs")
+								$('div.sbtll').removeClass("hidden").removeClass("has-tabs")
 								$('div.SBT').css("--backdrop-opacity","1");
 							}   
 );
@@ -84,7 +85,7 @@ $('#MI[name="SBT"]').click(
 $('#TA[name="SBT"]').click(
 							function(e) {
 								e.preventDefault
-								$('div.SBT').addClass("has-levit").addClass("has-tabs")
+								$('div.sbtll').removeClass("hidden").addClass("has-tabs")
 								$('div.SBT').css("--backdrop-opacity","1");
 							}   
 );

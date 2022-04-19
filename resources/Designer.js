@@ -646,9 +646,8 @@ function InitDesigner() {
 
 /**/
 '<div class="preview-window-desk">' +
-	'	<div class="gradient-overlay" style="position:absolute; pointer-events:none;"></div>' +
-	'	<div class="invertion-on" style=" pointer-events: none; position: absolute; z-index: -2; width: 100%; height: 100%;"><div class="desktop-background fandom-community-header__background" style="position:absolute; pointer-events:none;" id="desktop-background"></div></div>' +
 	'<div class="preview-window-window" force-active>' +
+		'<div class="lunalevit disables-on-accent"></div>' +
 		'<h2>' +
 			'<span>Active Window #1</span>' +
 			'<button class="minimize" title="Minimize">' +
@@ -673,6 +672,7 @@ function InitDesigner() {
 	'</div>' +
 
 	'<div class="preview-window-window" force-active>' +
+		'<div class="lunalevit disables-on-accent"></div>' +
 		'<h2>' +
 			'<span>Active Window #2</span>' +
 			'<button class="minimize" title="Minimize">' +
@@ -699,6 +699,7 @@ function InitDesigner() {
 	'</div>' +
 
 	'<div class="preview-window-window" force-active>' +
+		'<div class="lunalevit disables-on-accent"></div>' +
 		'<h2>' +
 			'<span>Active Window #3</span>' +
 			'<button class="minimize" title="Minimize">' +
@@ -730,6 +731,7 @@ function InitDesigner() {
 	'</div>' +
 
 	'<div class="preview-window-window" force-active>' +
+		'<div class="lunalevit disables-on-accent"></div>' +
 		'<h2>' +
 			'<span>Active Window #4</span>' +
 			'<button class="minimize" title="Minimize">' +
@@ -756,6 +758,7 @@ function InitDesigner() {
 	'</div>' +
 
 	'<div class="preview-window-window" force-active>' +
+		'<div class="lunalevit disables-on-accent"></div>' +
 		'<h2>' +
 			'<span>Active Window #5</span>' +
 			'<button class="close" title="Close">' +
@@ -773,6 +776,7 @@ function InitDesigner() {
 	'</div>' +
 
 	'<div class="preview-window-window inactive" force-inactive>' +
+		'<div class="lunalevit disables-on-accent"></div>' +
 		'<h2>' +
 			'<span>Inactive Window</span>' +
 			'<button class="minimize" title="Minimize">' +
