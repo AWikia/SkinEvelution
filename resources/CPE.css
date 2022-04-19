@@ -196,11 +196,7 @@ font-family:Trebuchet MS;
 --desktop-background-alignment:var(--desktop-background-vertical-alignment) var(--desktop-background-horizontal-alignment);
 /* Acryllic */
 --acryllic-filter:blur( calc(30px * calc(1.2 - var(--system-acryllic-opacity) ) ) ) saturate(125%);
---mica-filter:blur( calc(160px * calc(1.2 - var(--system-acryllic-opacity) ) ) );
---mica-filter-dark:var(--tabbed-filter);
-
---tabbed-filter:blur( calc(160px * calc(1.2 - var(--system-acryllic-opacity) ) ) );
---tabbed-filter-dark:var(--mica-filter);
+--mica-filter:blur( calc(100px * calc(1.2 - var(--system-acryllic-opacity) ) ) );
 /* Transition */
 --transitioner:cubic-bezier(0.25,0.25,0,1);
 /* Fonts */
@@ -958,27 +954,13 @@ container {
 		pointer-events:none;
 		mix-blend-mode:color;
 		border-radius:inherit;
+		filter:saturate(125%);
 	}
 
 .has-accents .lunalevit.disables-on-accent,
 .lunalevit.hidden {
 	display:none!important;
 }
-
-.theme-fandomdesktop-dark .lunalevit {
-		mix-blend-mode:normal;	
-}
-
-
-.lunalevit.has-tabs {
-		mix-blend-mode:normal;
-		filter:saturate(150%);
-}
-
-.theme-fandomdesktop-dark .lunalevit.has-tabs {
-		mix-blend-mode:color;
-}
-
 
 
 .lunalevit::before {
@@ -1013,19 +995,6 @@ container {
 
 }
 
-.theme-fandomdesktop-dark .lunalevit::after {
-		filter:var(--desktop-background-image-filter) var(--invertion-filter) var(--mica-filter-dark);
-}
-
-
-.lunalevit.has-tabs::after {
-		filter:var(--desktop-background-image-filter) var(--invertion-filter) var(--tabbed-filter);
-}
-
-.theme-fandomdesktop-dark .lunalevit.has-tabs::after {
-		filter:var(--desktop-background-image-filter) var(--invertion-filter) var(--tabbed-filter-dark);
-}
-
 
 /*
 @supports ((backdrop-filter:none) or (-webkit-backdrop-filter:none)) {
@@ -1053,9 +1022,6 @@ container {
 	:root body {
 		--acryllic-filter:none!important;
 		--mica-filter:none!important;
-		--mica-filter-dark:none!important;
-		--tabbed-filter:none!important;
-		--tabbed-filter-dark:none!important;
 		--mica-content:none;
 	}
 
@@ -1085,9 +1051,6 @@ container {
 
 	:root body {
 		--mica-filter:none!important;
-		--mica-filter-dark:none!important;
-		--tabbed-filter:none!important;
-		--tabbed-filter-dark:none!important;
 	}
 	
 	.lunalevit::before,
@@ -1137,9 +1100,6 @@ container {
 	.gpu-level-1 body,
 	.gpu-level-2 body {
 		--mica-filter:none!important;
-		--mica-filter-dark:none!important;
-		--tabbed-filter:none!important;
-		--tabbed-filter-dark:none!important;
 		--mica-content:none!important;
 	}
 	
@@ -3090,9 +3050,6 @@ margin-right:16px;
 
 	.cpe-dropdown__content .lunalevit {
 		--mica-filter:none!important;
-		--mica-filter-dark:none!important;
-		--tabbed-filter:none!important;
-		--tabbed-filter-dark:none!important;
 	}
 	
 	.cpe-dropdown__content .lunalevit::before,

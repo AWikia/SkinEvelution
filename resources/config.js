@@ -59,10 +59,6 @@ function InitSBT() {
 		'<input type="radio" name="SBT" id="MI"></input>' +
 		'<label for="MI">Luna Levit</label>' +
 		'</section>' +
-		'<section>' +
-		'<input type="radio" name="SBT" id="TA"></input>' +
-		'<label for="TA">Tabbed Luna Levit</label>' +
-		'</section>' +
 		'</div>'
 	);
 	
@@ -78,14 +74,6 @@ $('#MI[name="SBT"]').click(
 							function(e) {
 								e.preventDefault
 								$('div.sbtll').removeClass("hidden").removeClass("has-tabs")
-								$('div.SBT').css("--backdrop-opacity","1");
-							}   
-);
-
-$('#TA[name="SBT"]').click(
-							function(e) {
-								e.preventDefault
-								$('div.sbtll').removeClass("hidden").addClass("has-tabs")
 								$('div.SBT').css("--backdrop-opacity","1");
 							}   
 );
