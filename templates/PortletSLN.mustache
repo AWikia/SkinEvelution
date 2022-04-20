@@ -1,15 +1,20 @@
-<li role="navigation" id="{{id}}" class="cpe-dropdown-level-2 {{class}}" title="{{html-tooltip}}"
-    aria-labelledby="{{id}}-label" tabindex="-1">
-    <a>
-    <span id="{{id}}-label" {{{html-user-language-attributes}}}>{{label}}</span>
-				<span class="cpe-icon cpe-icon-tiny cpe-icon-large cpe-dropdown-chevron material-icons">
-					expand_more
+<section role="navigation" id="{{id}}" class="evelution-module has-levit {{class}}" aria-labelledby="{{id}}-label">
+	<h2 id="{{id}}-label" class="has-icon module-container rail-module__header" {{{html-user-language-attributes}}}>
+	<span class="module-title">{{label}}</span>
+		<div class="rail-buttons">
+			<a href="{{html-edit-link}}/MediaWiki:Sidebar" class="rail-button" title="{{msg-edit}}">
+				<span class="cpe-icon material-icons">
+					edit
 				</span>
-    </a>
-    <div class="mw-portlet-body cpe-dropdown-level-2__content">
-        <ul class="cpe-list is-linked has-icon-labels" {{{html-user-language-attributes}}}>
-            {{{html-items}}}
-        </ul>
-        {{{html-after-portal}}}
-    </div>
-</li>
+			</a>
+		</div>
+	</h2>
+	<div class="mw-portlet-body evelution-module-content">
+		<div class="toc floating_toc" style="display:contents; border:0; background:transparent; display:block; color:inherit;">
+			<ul class="toc module-toc floating_toc has-icon-labels" id="toc" style="border:0; background:transparent; display:block; color:inherit;" {{{html-user-language-attributes}}}>
+				{{{html-items}}}
+				{{{html-after-portal}}}
+			</ul>
+		</div>
+	</div>
+</section>
