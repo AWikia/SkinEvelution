@@ -206,6 +206,7 @@ filter:none!important;
 --alert-background-color-rgb:var(--hyperlink-background-color-rgb)!important;
 --alert-foregrouund-color-rgb:var(--hyperlink-foreground-color-rgb)!important;
 --alert-foreground-color-hover-rgb:var(--hyperlink-foreground-color-hover-rgb)!important;
+--alert-secondary-background-color-hover:var(--alert-secondary-background-color)!important;
 /* Pause */
 --pause-alternative-foreground-color:var(--canvas-text-alternative-foreground-color)!important;
 --pause-alternative-foreground-color-rgb:var(--canvas-text-alternative-foreground-color-rgb)!important;
@@ -220,6 +221,7 @@ filter:none!important;
 --pause-background-color-rgb:var(--canvas-text-background-color-rgb)!important;
 --pause-foregrouund-color-rgb:var(--canvas-text-foreground-color-rgb)!important;
 --pause-foreground-color-hover-rgb:var(--canvas-text-foreground-color-hover-rgb)!important;
+--pause-secondary-background-color-hover:var(--pause-secondary-background-color)!important;
 /* Warning */
 --warning-alternative-foreground-color:var(--hyperlink-alternative-foreground-color)!important;
 --warning-alternative-foreground-color-rgb:var(--hyperlink-alternative-foreground-color-rgb)!important;
@@ -234,6 +236,7 @@ filter:none!important;
 --warning-background-color-rgb:var(--hyperlink-background-color-rgb)!important;
 --warning-foregrouund-color-rgb:var(--hyperlink-foreground-color-rgb)!important;
 --warning-foreground-color-hover-rgb:var(--hyperlink-foreground-color-hover-rgb)!important;
+--warning-secondary-background-color-hover:var(--warning-secondary-background-color)!important;
 /* Success */
 --success-alternative-foreground-color:var(--canvas-text-alternative-foreground-color)!important;
 --success-alternative-foreground-color-rgb:var(--canvas-text-alternative-foreground-color-rgb)!important;
@@ -248,6 +251,7 @@ filter:none!important;
 --success-background-color-rgb:var(--canvas-text-background-color-rgb)!important;
 --success-foregrouund-color-rgb:var(--canvas-text-foreground-color-rgb)!important;
 --success-foreground-color-hover-rgb:var(--canvas-text-foreground-color-hover-rgb)!important;
+--success-secondary-background-color-hover:var(--success-secondary-background-color)!important;
 /* Progress */
 --progress-alternative-foreground-color:var(--hyperlink-alternative-foreground-color)!important;
 --progress-alternative-foreground-color-rgb:var(--hyperlink-alternative-foreground-color-rgb)!important;
@@ -262,6 +266,7 @@ filter:none!important;
 --progress-background-color-rgb:var(--hyperlink-background-color-rgb)!important;
 --progress-foregrouund-color-rgb:var(--hyperlink-foreground-color-rgb)!important;
 --progress-foreground-color-hover-rgb:var(--hyperlink-foreground-color-hover-rgb)!important;
+--progress-secondary-background-color-hover:var(--progress-secondary-background-color)!important;
 /* Message */
 --message-alternative-foreground-color:var(--canvas-text-alternative-foreground-color)!important;
 --message-alternative-foreground-color-rgb:var(--canvas-text-alternative-foreground-color-rgb)!important;
@@ -276,6 +281,7 @@ filter:none!important;
 --message-background-color-rgb:var(--canvas-text-background-color-rgb)!important;
 --message-foregrouund-color-rgb:var(--canvas-text-foreground-color-rgb)!important;
 --message-foreground-color-hover-rgb:var(--canvas-text-foreground-color-hover-rgb)!important;
+--message-secondary-background-color-hover:var(--message-secondary-background-color)!important;
 }
 
 .visualstyle-contrast body [force-active],
@@ -292,14 +298,14 @@ filter:none!important;
 
 /* New High Contrast */
 .visualstyle-contrast .evelution-content .evelution-page-header .toggle-rail-button:hover,
-.visualstyle-contrast .evelution-module .rail-button:hover {
+.visualstyle-contrast .evelution-module .rail-buttons .rail-button:hover {
 	background-color:var(--highlight-background-color);
 	border-color:var(--highlight-background-color);
 	color:var(--highlight-foreground-color);
 }
 
 .visualstyle-contrast .evelution-content .evelution-page-header .toggle-rail-button:active,
-.visualstyle-contrast .evelution-module .rail-button:active {
+.visualstyle-contrast .evelution-module .rail-buttons .rail-button:active {
 
 	background-color:var(--highlight-foreground-color);
 	border-color:var(--highlight-foreground-color);
@@ -322,6 +328,7 @@ filter:none!important;
 }
 
 .visualstyle-contrast .evelution-minibar .link:hover,
+.visualstyle-contrast .evelution-content .evelution-page-header .evelution-middle-actions a:hover,
 .visualstyle-contrast .evelution-top-actions .link:hover {
 	-webkit-animation:none;
 	animation:none;
@@ -335,6 +342,9 @@ filter:none!important;
 .visualstyle-contrast .evelution-minibar .cpe-dropdown:focus > .link, 
 .visualstyle-contrast .evelution-minibar .cpe-dropdown:focus-within > .link, 
 .visualstyle-contrast .evelution-minibar .link.active,
+.visualstyle-contrast .evelution-content .evelution-page-header .evelution-middle-actions a:active, 
+.visualstyle-contrast .evelution-content .evelution-page-header .evelution-middle-actions a:focus, 
+.visualstyle-contrast .evelution-content .evelution-page-header .evelution-middle-actions .selected a, 
 .visualstyle-contrast .evelution-top-actions .link:active, 
 .visualstyle-contrast .evelution-top-actions .link:focus, 
 .visualstyle-contrast .evelution-top-actions .cpe-dropdown:focus > .link, 
@@ -564,21 +574,21 @@ background-color:var(--canvas-background-color);
 
 
 .visualstyle-basic .evelution-content .evelution-page-header .toggle-rail-button,
-.visualstyle-basic .evelution-module .rail-button {
+.visualstyle-basic .evelution-module .rail-buttons .rail-button {
 	border-color:var(--luna-foreground-color);
 	color:var(--luna-foreground-color);
 }
 
 
-.visualstyle-basic .evelution-content .evelution-page-header .toggle-rail-button:hover.
-.visualstyle-basic .evelution-module .rail-button:hover {
+.visualstyle-basic .evelution-content .evelution-page-header .toggle-rail-button:hover,
+.visualstyle-basic .evelution-module .rail-buttons .rail-button:hover {
 	color:var(--luna-foreground-color-hover);
 	border-color:var(--luna-foreground-color-hover);
 	background-color:rgba(var(--luna-hyperlink-background-color-rgb),0.2);
 }
 
 .visualstyle-basic .evelution-content .evelution-page-header .toggle-rail-button:active,
-.visualstyle-basic .evelution-module .rail-button:active {
+.visualstyle-basic .evelution-module .rail-buttons .rail-button:active {
 	color:var(--luna-foreground-color-hover);
 	border-color:var(--luna-foreground-color-hover);
 	background-color:rgba(var(--luna-hyperlink-background-color-rgb),0.4);
@@ -586,7 +596,7 @@ background-color:var(--canvas-background-color);
 
 
 .visualstyle-basiccontrast .evelution-content .evelution-page-header .toggle-rail-button,
-.visualstyle-basiccontrast .evelution-module .rail-button {
+.visualstyle-basiccontrast .evelution-module .rail-buttons .rail-button {
 	background-clip:padding-box;
 	background-color:var(--canvas-background-color);
 	color:var(--canvas-text-background-color);
@@ -594,8 +604,8 @@ background-color:var(--canvas-background-color);
 
 .visualstyle-basiccontrast .evelution-content .evelution-page-header .toggle-rail-button:hover,
 .visualstyle-basiccontrast .evelution-content .evelution-page-header .toggle-rail-button:active,
-.visualstyle-basiccontrast .evelution-module .rail-button:hover,
-.visualstyle-basiccontrast .evelution-module .rail-button:active {
+.visualstyle-basiccontrast .evelution-module .rail-buttons .rail-button:hover,
+.visualstyle-basiccontrast .evelution-module .rail-buttons .rail-button:active {
 	background-color:var(--highlight-background-color);
 	border-color:var(--highlight-foreground-color);
 	color:var(--highlight-foreground-color);
@@ -659,9 +669,48 @@ background-color:var(--canvas-background-color);
 background-image:linear-gradient(to left,rgba(255,255,255, 0) 200px,var(--canvas-secondary-background-color) 430px);
 }
 
+	.visualstyle-basic  .evelution-content .evelution-page-header a,
+	.visualstyle-basic  .evelution-content .evelution-page-header a:visited,
+	.visualstyle-basiccontrast  .evelution-content .evelution-page-header a,
+	.visualstyle-basiccontrast  .evelution-content .evelution-page-header a:visited {
+		color:var(--luna-foreground-color);
+	}
+
+
+	.visualstyle-basic  .evelution-content .evelution-page-header a:hover,
+	.visualstyle-basic  .evelution-content .evelution-page-header a:visited:hover,
+	.visualstyle-basiccontrast  .evelution-content .evelution-page-header a:hover,
+	.visualstyle-basiccontrast  .evelution-content .evelution-page-header a:visited:hover {
+		color:var(--luna-foreground-color-hover);
+	}
+
+
+	.visualstyle-basic  .evelution-content .evelution-page-header a.new,
+	.visualstyle-basic  .evelution-content .evelution-page-header a.new:visited,
+	.visualstyle-basic  .evelution-content .evelution-page-header .new a,
+	.visualstyle-basic  .evelution-content .evelution-page-header .new a:visited,
+	.visualstyle-basiccontrast  .evelution-content .evelution-page-header a.new,
+	.visualstyle-basiccontrast  .evelution-content .evelution-page-header a.new:visited,
+	.visualstyle-basiccontrast  .evelution-content .evelution-page-header .new a,
+	.visualstyle-basiccontrast  .evelution-content .evelution-page-header .new a:visited {
+		color:var(--luna-alternative-foreground-color);
+	}
+
+
+	.visualstyle-basic  .evelution-content .evelution-page-header a.new:hover,
+	.visualstyle-basic  .evelution-content .evelution-page-header a.new:visited:hover,
+	.visualstyle-basic  .evelution-content .evelution-page-header .new a:hover,
+	.visualstyle-basic  .evelution-content .evelution-page-header .new a:visited:hover,
+	.visualstyle-basiccontrast  .evelution-content .evelution-page-header a.new:hover,
+	.visualstyle-basiccontrast  .evelution-content .evelution-page-header a.new:visited:hover,
+	.visualstyle-basiccontrast  .evelution-content .evelution-page-header .new a:hover,
+	.visualstyle-basiccontrast  .evelution-content .evelution-page-header .new a:visited:hover {
+		color:var(--luna-alternative-foreground-color-hover);
+	}
 
 
 .visualstyle-basic .evelution-minibar .link,
+.visualstyle-basic .evelution-content .evelution-page-header .evelution-middle-actions a,
 .visualstyle-basic .evelution-top-actions .link {
 	transition:background-color 400ms var(--transitioner) 0ms;
 }
@@ -672,13 +721,24 @@ background-image:linear-gradient(to left,rgba(255,255,255, 0) 200px,var(--canvas
     border:1px solid var(--luna-text-background-color);
 }
 
+.visualstyle-basic .evelution-content .evelution-page-header .evelution-middle-actions a {
+    border:1px solid var(--luna-foreground-color);
+}
 
 
-.visualstyle-basic .evelution-minibar .link:hover  {
+
+.visualstyle-basic .evelution-minibar .link:hover {
 		background-color:rgba(var(--luna-hyperlink-background-color-rgb),0.2);
 		color:var(--luna-text-background-color-hover);
 		box-shadow:none;
 		border:1px solid var(--luna-text-background-color-hover);
+}
+
+.visualstyle-basic .evelution-content .evelution-page-header .evelution-middle-actions a:hover  {
+		background-color:rgba(var(--luna-hyperlink-background-color-rgb),0.2);
+		color:var(--luna-foreground-color-hover);
+		box-shadow:none;
+		border:1px solid var(--luna-foreground-color-hover);
 }
 
 
@@ -693,6 +753,17 @@ background-image:linear-gradient(to left,rgba(255,255,255, 0) 200px,var(--canvas
 		color:rgba(var(--luna-text-background-color-hover-rgb),0.8);
 		box-shadow:none;
 }
+
+
+.visualstyle-basic .evelution-content .evelution-page-header .evelution-middle-actions a:active, 
+.visualstyle-basic .evelution-content .evelution-page-header .evelution-middle-actions a:focus,
+.visualstyle-basic .evelution-content .evelution-page-header .evelution-middle-actions .selected a {
+		border:1px solid var(--luna-foreground-color-hover);
+		background-color:rgba(var(--luna-hyperlink-background-color-rgb),0.4);
+		color:rgba(var(--luna-foreground-color-hover-rgb),0.8);
+		box-shadow:none;
+}
+
 
 .visualstyle-basic .evelution-top-actions .link {
     border:1px solid var(--header-foreground-color);
@@ -974,9 +1045,8 @@ linear-gradient(90deg, transparent 0%, transparent calc(50% - -3px), currentColo
 }
 
 
-
-
 .visualstyle-basiccontrast .evelution-minibar .link,
+.visualstyle-basiccontrast .evelution-content .evelution-page-header .evelution-middle-actions a,
 .visualstyle-basiccontrast .evelution-top-actions .link {
 	transition:background-color 400ms var(--transitioner) 0ms, color 10ms var(--transitioner) 10ms, border-color 10ms var(--transitioner) 10ms, transform 200ms var(--transitioner) 0ms;
 }
@@ -985,6 +1055,7 @@ linear-gradient(90deg, transparent 0%, transparent calc(50% - -3px), currentColo
 
 
 .visualstyle-basiccontrast .evelution-minibar .link,
+.visualstyle-basiccontrast .evelution-content .evelution-page-header .evelution-middle-actions a,
 .visualstyle-basiccontrast .evelution-top-actions .link {
 	background-clip:padding-box;
 	background-color:var(--canvas-background-color);
@@ -998,6 +1069,9 @@ linear-gradient(90deg, transparent 0%, transparent calc(50% - -3px), currentColo
 .visualstyle-basiccontrast .evelution-minibar .cpe-dropdown:focus > .link, 
 .visualstyle-basiccontrast .evelution-minibar .cpe-dropdown:focus-within > .link, 
 .visualstyle-basiccontrast .evelution-minibar .link.active,
+.visualstyle-basiccontrast .evelution-content .evelution-page-header .evelution-middle-actions a:hover, 
+.visualstyle-basiccontrast .evelution-content .evelution-page-header .evelution-middle-actions a:focus, 
+.visualstyle-basiccontrast .evelution-content .evelution-page-header .evelution-middle-actions .selected a, 
 .visualstyle-basiccontrast .evelution-top-actions .link:hover, 
 .visualstyle-basiccontrast .evelution-top-actions .link:focus, 
 .visualstyle-basiccontrast .evelution-top-actions .cpe-dropdown:focus > .link, 
@@ -1368,37 +1442,6 @@ color:inherit;
 
 }
 
-
-	.visualstyle-basic  .evelution-content .evelution-page-header-title a,
-	.visualstyle-basic  .evelution-content .evelution-page-header-title a:visited,
-	.visualstyle-basiccontrast  .evelution-content .evelution-page-header-title a,
-	.visualstyle-basiccontrast  .evelution-content .evelution-page-header-title a:visited {
-		color:var(--luna-foreground-color);
-	}
-
-
-	.visualstyle-basic  .evelution-content .evelution-page-header-title a:hover,
-	.visualstyle-basic  .evelution-content .evelution-page-header-title a:visited:hover,
-	.visualstyle-basiccontrast  .evelution-content .evelution-page-header-title a:hover,
-	.visualstyle-basiccontrast  .evelution-content .evelution-page-header-title a:visited:hover {
-		color:var(--luna-foreground-color-hover);
-	}
-
-
-	.visualstyle-basic  .evelution-content .evelution-page-header-title a.new,
-	.visualstyle-basic  .evelution-content .evelution-page-header-title a.new:visited,
-	.visualstyle-basiccontrast  .evelution-content .evelution-page-header-title a.new,
-	.visualstyle-basiccontrast  .evelution-content .evelution-page-header-title a.new:visited {
-		color:var(--luna-alternative-foreground-color);
-	}
-
-
-	.visualstyle-basic  .evelution-content .evelution-page-header-title a:hover,
-	.visualstyle-basic  .evelution-content .evelution-page-header-title a:visited:hover,
-	.visualstyle-basiccontrast  .evelution-content .evelution-page-header-title a:hover,
-	.visualstyle-basiccontrast  .evelution-content .evelution-page-header-title a:visited:hover {
-		color:var(--luna-alternative-foreground-color-hover);
-	}
 
 
 
@@ -1802,11 +1845,17 @@ color:inherit;
 .visualstyle-simple .evelution-minibar .link:focus, 
 .visualstyle-simple .evelution-minibar .cpe-dropdown:focus > .link, 
 .visualstyle-simple .evelution-minibar .cpe-dropdown:focus-within > .link,
+.visualstyle-simple .evelution-content .evelution-page-header .evelution-middle-actions a:hover, 
+.visualstyle-simple .evelution-content .evelution-page-header .evelution-middle-actions a:focus, 
+.visualstyle-simple .evelution-content .evelution-page-header .evelution-middle-actions .selected a, 
 .visualstyle-simplelite .evelution-minibar .link.active, 
 .visualstyle-simplelite .evelution-minibar .link:hover, 
 .visualstyle-simplelite .evelution-minibar .link:focus, 
 .visualstyle-simplelite .evelution-minibar .cpe-dropdown:focus > .link, 
-.visualstyle-simplelite .evelution-minibar .cpe-dropdown:focus-within > .link {
+.visualstyle-simplelite .evelution-minibar .cpe-dropdown:focus-within > .link,
+.visualstyle-simplelite .evelution-content .evelution-page-header .evelution-middle-actions a:hover, 
+.visualstyle-simplelite .evelution-content .evelution-page-header .evelution-middle-actions a:focus,
+.visualstyle-simplelite .evelution-content .evelution-page-header .evelution-middle-actions .selected a {
 	background-color:var(--luna-background-color-hover);
 	color:var(--luna-foreground-color-inverted);
 	box-shadow:none;
@@ -1819,7 +1868,10 @@ color:inherit;
 .visualstyle-simplecontrast .evelution-minibar .link:hover, 
 .visualstyle-simplecontrast .evelution-minibar .link:focus, 
 .visualstyle-simplecontrast .evelution-minibar .cpe-dropdown:focus > .link, 
-.visualstyle-simplecontrast .evelution-minibar .cpe-dropdown:focus-within > .link {
+.visualstyle-simplecontrast .evelution-minibar .cpe-dropdown:focus-within > .link,
+.visualstyle-simplecontrast .evelution-content .evelution-page-header .evelution-middle-actions a:hover, 
+.visualstyle-simplecontrast .evelution-content .evelution-page-header .evelution-middle-actions a:focus,
+.visualstyle-simplecontrast .evelution-content .evelution-page-header .evelution-middle-actions .selected a {
 	background-color:var(--luna-foreground-color);
 	color:var(--luna-background-color);
 	box-shadow:none;
@@ -1833,11 +1885,17 @@ color:inherit;
 .visualstyle-simple.has-accents .evelution-minibar .link:focus, 
 .visualstyle-simple.has-accents .evelution-minibar .cpe-dropdown:focus > .link, 
 .visualstyle-simple.has-accents .evelution-minibar .cpe-dropdown:focus-within > .link,
+.visualstyle-simple.has-accents .evelution-content .evelution-page-header .evelution-middle-actions a:hover, 
+.visualstyle-simple.has-accents .evelution-content .evelution-page-header .evelution-middle-actions a:focus, 
+.visualstyle-simple.has-accents .evelution-content .evelution-page-header .evelution-middle-actions .selected a, 
 .visualstyle-simplelite.has-accents .evelution-minibar .link.active, 
 .visualstyle-simplelite.has-accents .evelution-minibar .link:hover, 
 .visualstyle-simplelite.has-accents .evelution-minibar .link:focus, 
 .visualstyle-simplelite.has-accents .evelution-minibar .cpe-dropdown:focus > .link, 
-.visualstyle-simplelite.has-accents .evelution-minibar .cpe-dropdown:focus-within > .link {
+.visualstyle-simplelite.has-accents .evelution-minibar .cpe-dropdown:focus-within > .link,
+.visualstyle-simplelite.has-accents .evelution-content .evelution-page-header .evelution-middle-actions a:hover, 
+.visualstyle-simplelite.has-accents .evelution-content .evelution-page-header .evelution-middle-actions a:focus, 
+.visualstyle-simplelite.has-accents .evelution-content .evelution-page-header .evelution-middle-actions .selected a {
 	border-color:rgba(var(--luna-foreground-color-rgb),0.2);
 }
 
@@ -1987,12 +2045,12 @@ color:inherit;
 
 .visualstyle-simple .evelution-content .evelution-page-header .toggle-rail-button:hover,
 .visualstyle-simple .evelution-content .evelution-page-header .toggle-rail-button:active,
-.visualstyle-simple .evelution-module .rail-button:hover,
-.visualstyle-simple .evelution-module .rail-button:active,
+.visualstyle-simple .evelution-module .rail-buttons .rail-button:hover,
+.visualstyle-simple .evelution-module .rail-buttons .rail-button:active,
 .visualstyle-simplelite .evelution-content .evelution-page-header .toggle-rail-button:hover,
 .visualstyle-simplelite .evelution-content .evelution-page-header .toggle-rail-button:active,
-.visualstyle-simplelite .evelution-module .rail-button:hover,
-.visualstyle-simplelite .evelution-module .rail-button:active {
+.visualstyle-simplelite .evelution-module .rail-buttons .rail-button:hover,
+.visualstyle-simplelite .evelution-module .rail-buttons .rail-button:active {
 	color:var(--luna-foreground-color-inverted);
 	border-color:rgba(var(--canvas-foreground-color-rgb),0.2);
 	background-color:var(--luna-background-color-hover);
@@ -2001,8 +2059,8 @@ color:inherit;
 
 .visualstyle-simplecontrast .evelution-content .evelution-page-header .toggle-rail-button:hover,
 .visualstyle-simplecontrast .evelution-content .evelution-page-header .toggle-rail-button:active,
-.visualstyle-simplecontrast .evelution-module .rail-button:hover,
-.visualstyle-simplecontrast .evelution-module .rail-button:active {
+.visualstyle-simplecontrast .evelution-module .rail-buttons .rail-button:hover,
+.visualstyle-simplecontrast .evelution-module .rail-buttons .rail-button:active {
 	color:var(--luna-background-color);
 	border-color:rgba(var(--luna-foreground-color-rgb),0.5);
 	background-color:var(--luna-foreground-color);
@@ -2011,12 +2069,12 @@ color:inherit;
 
 .visualstyle-simple.has-accents .evelution-content .evelution-page-header .toggle-rail-button:hover,
 .visualstyle-simple.has-accents .evelution-content .evelution-page-header .toggle-rail-button:active,
-.visualstyle-simple.has-accents .evelution-module .rail-button:hover,
-.visualstyle-simple.has-accents .evelution-module .rail-button:active,
+.visualstyle-simple.has-accents .evelution-module .rail-buttons .rail-button:hover,
+.visualstyle-simple.has-accents .evelution-module .rail-buttons .rail-button:active,
 .visualstyle-simplelite.has-accents .evelution-content .evelution-page-header .toggle-rail-button:hover,
 .visualstyle-simplelite.has-accents .evelution-content .evelution-page-header .toggle-rail-button:active,
-.visualstyle-simplelite.has-accents .evelution-module .rail-button:hover,
-.visualstyle-simplelite.has-accents .evelution-module .rail-button:active {
+.visualstyle-simplelite.has-accents .evelution-module .rail-buttons .rail-button:hover,
+.visualstyle-simplelite.has-accents .evelution-module .rail-buttons .rail-button:active {
 	border-color:rgba(var(--luna-foreground-color-rgb),0.2);
 }
 
@@ -3206,9 +3264,10 @@ box-shadow:none!important;
 .visualstyle-classic .evelution-sidebar .link,
 .visualstyle-classic .evelution-top-actions .link,
 .visualstyle-classic .evelution-minibar .link,
+.visualstyle-classic .evelution-content .evelution-page-header .evelution-middle-actions a,
 .visualstyle-classic .cpe-button:not(.is-text),
 .visualstyle-classic .toggle-rail-button,
-.visualstyle-classic .evelution-module .rail-button,
+.visualstyle-classic .evelution-module .rail-buttons .rail-button,
 .visualstyle-classic .mw-ui-button,
 .visualstyle-classic .oo-ui-buttonElement:not(.oo-ui-buttonElement-frameless) > .oo-ui-buttonElement-button,
 .visualstyle-classic .cpe-floating-button,
@@ -3236,9 +3295,10 @@ box-shadow:none!important;
 .visualstyle-classiccontrast .evelution-sidebar .link,
 .visualstyle-classiccontrast .evelution-top-actions .link,
 .visualstyle-classiccontrast .evelution-minibar .link,
+.visualstyle-classiccontrast .evelution-content .evelution-page-header .evelution-middle-actions a,
 .visualstyle-classiccontrast .cpe-button:not(.is-text),
 .visualstyle-classiccontrast .toggle-rail-button,
-.visualstyle-classiccontrast .evelution-module .rail-button,
+.visualstyle-classiccontrast .evelution-module .rail-buttons .rail-button,
 .visualstyle-classiccontrast .mw-ui-button,
 .visualstyle-classiccontrast .oo-ui-buttonElement:not(.oo-ui-buttonElement-frameless) > .oo-ui-buttonElement-button,
 .visualstyle-classiccontrast .cpe-floating-button,
@@ -3510,10 +3570,12 @@ margin-right:0;
 .visualstyle-classic .evelution-minibar .link.active,
 .visualstyle-classic .cpe-dropdown:focus > .link,
 .visualstyle-classic .cpe-dropdown:focus-within > .link,
+.visualstyle-classic .evelution-content .evelution-page-header .evelution-middle-actions a:active,
+.visualstyle-classic .evelution-content .evelution-page-header .evelution-middle-actions .selected a,
 .visualstyle-classic .cpe-button:not(.is-text):active,
 .visualstyle-classic .cpe-button:not(.is-text).is-active,
 .visualstyle-classic .toggle-rail-button:active,
-.visualstyle-classic .evelution-module .rail-button:active,
+.visualstyle-classic .evelution-module .rail-buttons .rail-button:active,
 .visualstyle-classic .selected .cpe-button:not(.is-text),
 .visualstyle-classic .cpe-dropdown:focus > .cpe-button,
 .visualstyle-classic .cpe-dropdown:focus-within > .cpe-button,
@@ -3534,12 +3596,14 @@ margin-right:0;
 .visualstyle-classiccontrast .evelution-top-actions .link.active,
 .visualstyle-classiccontrast .evelution-minibar .link:active,
 .visualstyle-classiccontrast .evelution-minibar .link.active,
+.visualstyle-classiccontrast .evelution-content .evelution-page-header .evelution-middle-actions a:active,
+.visualstyle-classiccontrast .evelution-content .evelution-page-header .evelution-middle-actions .selected a,
 .visualstyle-classiccontrast .cpe-dropdown:focus > .link,
 .visualstyle-classiccontrast .cpe-dropdown:focus-within > .link,
 .visualstyle-classiccontrast .cpe-button:not(.is-text):active,
 .visualstyle-classiccontrast .cpe-button:not(.is-text).is-active,
 .visualstyle-classiccontrast .toggle-rail-button:active,
-.visualstyle-classiccontrast .evelution-module .rail-button:active,
+.visualstyle-classiccontrast .evelution-module .rail-buttons .rail-button:active,
 .visualstyle-classiccontrast .selected .cpe-button:not(.is-text),
 .visualstyle-classiccontrast .cpe-dropdown:focus > .cpe-button,
 .visualstyle-classiccontrast .cpe-dropdown:focus-within > .cpe-button,
@@ -3561,6 +3625,7 @@ margin-right:0;
 .visualstyle-classic .evelution-sidebar .link.active,
 .visualstyle-classic .evelution-top-actions .link.active,
 .visualstyle-classic .evelution-minibar .link.active,
+.visualstyle-classic .evelution-content .evelution-page-header .evelution-middle-actions .selected a,
 .visualstyle-classic .cpe-dropdown:focus > .link,
 .visualstyle-classic .cpe-dropdown:focus-within > .link,
 .visualstyle-classic .cpe-button:not(.is-text).is-active,
@@ -3574,6 +3639,7 @@ margin-right:0;
 .visualstyle-classiccontrast .evelution-sidebar .link.active,
 .visualstyle-classiccontrast .evelution-top-actions .link.active,
 .visualstyle-classiccontrast .evelution-minibar .link.active,
+.visualstyle-classiccontrast .evelution-content .evelution-page-header .evelution-middle-actions .selected a,
 .visualstyle-classiccontrast .cpe-dropdown:focus > .link,
 .visualstyle-classiccontrast .cpe-dropdown:focus-within > .link,
 .visualstyle-classiccontrast .cpe-button:not(.is-text).is-active,
@@ -3610,6 +3676,15 @@ margin-right:0;
 	padding:0 5px;
 	margin-left:1px;
 }
+
+.visualstyle-classic .evelution-content .evelution-page-header .evelution-middle-actions a,
+/* Classic Contrast */
+.visualstyle-classiccontrast .evelution-content .evelution-page-header .evelution-middle-actions a {
+	padding:0 7px;
+	margin-left:1px;
+}
+
+
 
 .visualstyle-classic ::-webkit-scrollbar,
 .visualstyle-classiccontrast ::-webkit-scrollbar {
@@ -3821,18 +3896,18 @@ border-color:var(--highlight-background-color);
 
 
 .visualstyle-general .evelution-content .evelution-page-header .toggle-rail-button:hover,
-.visualstyle-general .evelution-module .rail-button:hover,
+.visualstyle-general .evelution-module .rail-buttons .rail-button:hover,
 .visualstyle-generallite .evelution-content .evelution-page-header .toggle-rail-button:hover,
-.visualstyle-generallite .evelution-module .rail-button:hover {
+.visualstyle-generallite .evelution-module .rail-buttons .rail-button:hover {
 	background-color:var(--hyperlink-background-color);
 	border-color:var(--hyperlink-background-color);
 	color:var(--hyperlink-foreground-color);
 }
 
 .visualstyle-general .evelution-content .evelution-page-header .toggle-rail-button:active,
-.visualstyle-general .evelution-module .rail-button:active,
+.visualstyle-general .evelution-module .rail-buttons .rail-button:active,
 .visualstyle-generallite .evelution-content .evelution-page-header .toggle-rail-button:active,
-.visualstyle-generallite .evelution-module .rail-button:active {
+.visualstyle-generallite .evelution-module .rail-buttons .rail-button:active {
 	background-color:var(--hyperlink-background-color-hover);
 	border-color:var(--hyperlink-background-color-hover);
 	color:var(--hyperlink-foreground-color-inverted);
@@ -3870,8 +3945,10 @@ border-color:var(--highlight-background-color);
 }
 
 .visualstyle-general .evelution-minibar .link:hover,
+.visualstyle-general .evelution-content .evelution-page-header .evelution-middle-actions a:hover,
 .visualstyle-general .evelution-top-actions .link:hover,
 .visualstyle-generallite .evelution-minibar .link:hover,
+.visualstyle-generallite .evelution-content .evelution-page-header .evelution-middle-actions a:hover,
 .visualstyle-generallite .evelution-top-actions .link:hover {
 	-webkit-animation:none;
 	animation:none;
@@ -3885,6 +3962,9 @@ border-color:var(--highlight-background-color);
 .visualstyle-general .evelution-minibar .cpe-dropdown:focus > .link, 
 .visualstyle-general .evelution-minibar .cpe-dropdown:focus-within > .link, 
 .visualstyle-general .evelution-minibar .link.active,
+.visualstyle-general .evelution-content .evelution-page-header .evelution-middle-actions a:active, 
+.visualstyle-general .evelution-content .evelution-page-header .evelution-middle-actions a:focus, 
+.visualstyle-general .evelution-content .evelution-page-header .evelution-middle-actions .selected a, 
 .visualstyle-general .evelution-top-actions .link:active, 
 .visualstyle-general .evelution-top-actions .link:focus, 
 .visualstyle-general .evelution-top-actions .cpe-dropdown:focus > .link, 
@@ -3895,6 +3975,9 @@ border-color:var(--highlight-background-color);
 .visualstyle-generallite .evelution-minibar .cpe-dropdown:focus > .link, 
 .visualstyle-generallite .evelution-minibar .cpe-dropdown:focus-within > .link, 
 .visualstyle-generallite .evelution-minibar .link.active,
+.visualstyle-generallite .evelution-content .evelution-page-header .evelution-middle-actions a:active, 
+.visualstyle-generallite .evelution-content .evelution-page-header .evelution-middle-actions a:focus, 
+.visualstyle-generallite .evelution-content .evelution-page-header .evelution-middle-actions .selected a, 
 .visualstyle-generallite .evelution-top-actions .link:active, 
 .visualstyle-generallite .evelution-top-actions .link:focus, 
 .visualstyle-generallite .evelution-top-actions .cpe-dropdown:focus > .link, 

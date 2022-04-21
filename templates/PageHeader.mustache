@@ -7,6 +7,7 @@
 		    {{>TabbedActions}}
 		  </div>
 		  <div class="evelution-page-header-main page-header__bottom">
+			{{#data-portlets.data-actions}}{{>PortletMA}}{{/data-portlets.data-actions}}
 			<button class="toggle-rail-button toggle-right-rail-button" onclick="ToggleRail()" cpe-tooltip-position="reverse" cpe-tooltip="{{msg-evelution-togglesize}}">
 				<span class="cpe-icon material-icons rail-on">
 					check_box_outline_blank
@@ -16,12 +17,6 @@
 				</span>
 			</button>
 			<div class="evelution-page-header-title page-header__title-wrapper">
-<!--
-				<div class="evelution-categories page-header__categories">
-					html-categories
-					<span class="in page-header__categories-in">in</span>
-				</div>
--->
 				<div class="evelution-title-with-indicators namespace-with-title">
 					<h1 class="evelution-title has-icon page-header__title" id="firstheading"><span>{{html-title}}</span></h1>
 					<div class="mw-indicators">{{#array-indicators}}<span id="{{{id}}}" class="{{{class}}}">{{{html}}}</span>{{/array-indicators}}</div>

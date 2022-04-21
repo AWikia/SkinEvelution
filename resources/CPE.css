@@ -286,7 +286,8 @@ body {
 body,
 body [force-active] {
 	--luna-background-color:var(--canvas-secondary-background-color);
-	--luna-mica-background-color:transparent;
+	--luna-mica-background-color:var(--canvas-secondary-background-color);
+	--luna-mica-background-color-2:transparent;
 	--luna-background-color-rgb:var(--canvas-secondary-background-color-rgb);
 	--luna-background-color-hover:var(--canvas-secondary-background-color-hover);
 	--luna-text-background-color:var(--canvas-text-secondary-background-color);
@@ -312,8 +313,7 @@ body [force-inactive] {
 	--dropdown-opacity:1;
 	--mica-opacity:2;
 	--simple-fallback-color:var(--canvas-background-color)!important;
-	--luna-background-color:var(--canvas-secondary-background-color);
-	--luna-mica-background-color:var(--luna-background-color);
+	--luna-background-color:var(--canvas-background-color);
 	--luna-background-color-rgb:var(--canvas-background-color-rgb);
 	--luna-background-color-hover:var(--canvas-background-color-hover);
 	--luna-text-background-color:var(--canvas-text-background-color-hover);
@@ -335,6 +335,7 @@ body [force-inactive] {
 :root.has-accents body [force-active] {
 	--luna-background-color:var(--active-title-background-color);
 	--luna-mica-background-color:var(--luna-background-color);
+	--luna-mica-background-color-2:var(--luna-background-color);
 	--luna-background-color-rgb:var(--active-title-background-color-rgb);
 	--luna-background-color-hover:var(--active-title-background-color-hover);
 	--luna-text-background-color:var(--active-title-alternative-foreground-color);
@@ -407,11 +408,13 @@ body {
     --theme-body-text-color--rgb: var(--desktop-foreground-color-rgb);
     --theme-body-text-color--hover: var(--desktop-foreground-color-hover);
     --theme-sticky-nav-background-color: var(--active-title-background-color);
+    --theme-sticky-nav-background-color--rgb: var(--active-title-background-color-rgb);
     --theme-sticky-nav-text-color: var(--active-title-foreground-color);
     --theme-sticky-nav-text-color--hover: var(--active-title-foreground-color-hover);
     --theme-page-background-color: var(--canvas-background-color);
     --theme-page-background-color--rgb: var(--canvas-background-color-rgb);
     --theme-page-background-color--secondary: var(--canvas-secondary-background-color);
+    --theme-page-background-color--secondary--rgb: var(--canvas-secondary-background-color-rgb);
     --theme-page-text-color: var(--canvas-text-background-color);
     --theme-page-text-color--rgb: var(--canvas-text-background-color-rgb);
     --theme-page-text-color--hover: var(--canvas-text-background-color-hover);
@@ -432,18 +435,23 @@ body {
     --theme-alert-color: var(--alert-background-color);
     --theme-alert-color--rgb: var(--alert-background-color-rgb);
     --theme-alert-color--hover: var(--alert-background-color-hover);
+    --theme-alert-color--secondary: var(--alert-secondary-background-color);
     --theme-alert-label: var(--alert-foreground-color);
     --theme-warning-color: var(--warning-background-color);
     --theme-warning-color--rgb: var(--warning-background-color-rgb);
+    --theme-warning-color--secondary: var(--warning-secondary-background-color);
     --theme-warning-label: var(--warning-foreground-color);
     --theme-success-color:  var(--success-background-color);
     --theme-success-color--rgb: var(--success-background-color-rgb);
+    --theme-success-color--secondary: var(--success-secondary-background-color);
     --theme-success-label: var(--success-foreground-color);
     --theme-message-color: var(--message-background-color);
     --theme-message-label: var(--message-foreground-color);
 	--theme-community-header-color:var(--desktop-text-background-color);
 	--theme-community-header-color--hover:var(--desktop-text-background-color-hover);
 	--theme-background-image-opacity:100%;
+    --theme-page-text-opacity-factor: 0.85;
+    --theme-body-text-opacity-factor: 0.85;
 }
 
 

@@ -53,20 +53,32 @@
 			--toolbar-link-size:calc(var(--minibar-size) / 1.05);
 		}
 	}
-	
-	@media only screen and (max-width:511px) {		
-		/* No Rules */
 
-	}
-	
 
-		@media only screen and (max-width:639px) {
+	@media only screen and (max-width:639px) {
 			.evelution-taskbar .bottom-links .cpe-dropdown__content.is-right-aligned {
 				right:0!important;
 			}
 
+			.evelution-content .evelution-page-header .evelution-middle-actions a {
+				font-size:12px;
+			}
+	}
+	
+	@media only screen and (max-width:511px) {		
+		
+			.evelution-content .evelution-page-header .evelution-middle-actions a {
+				font-size:0;
+				width:34px;
+				justify-content:center;
+			}
 
-		}
+			.evelution-content .evelution-page-header .evelution-middle-actions a:before {
+				margin-right:0;
+			}
+
+	}
+	
 
 		@media only screen and (min-width:640px) {
 			/* No Rules */
@@ -102,11 +114,11 @@
 	}
 
 	.evelution-article-actions .cactions > li:not(#ca-addsection) > a {
-		font-size:0;
+			font-size:0;
 	}
 
 	.evelution-article-actions .cactions > li > a:before {
-		margin-right:0;
+			margin-right:0;
 	}
 
 	.evelution-page-header-contribution-buttons .cpe-button .cpe-icon + span {

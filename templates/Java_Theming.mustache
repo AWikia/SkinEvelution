@@ -577,27 +577,27 @@ function GetInactiveTitle() {
 
 
 function GetAlert() {
-		return BestAlertColor()[0];
+		return BestAlertColor(window.MW18PageColor)[0];
 }
 
 function GetPause() {
-		return BestAlertColor()[1];
+		return BestAlertColor(window.MW18PageColor)[1];
 }
 
 function GetWarning() {
-		return BestAlertColor()[2];
+		return BestAlertColor(window.MW18PageColor)[2];
 }
 
 function GetSuccess() {
-		return BestAlertColor()[3];
+		return BestAlertColor(window.MW18PageColor)[3];
 }
 
 function GetProgress() {
-		return BestAlertColor()[4];
+		return BestAlertColor(window.MW18PageColor)[4];
 }
 
 function GetMessage() {
-		return BestAlertColor()[5];
+		return BestAlertColor(window.MW18PageColor)[5];
 }
 
 function GetCustomFont() {
@@ -670,8 +670,8 @@ function ContrastRatio2() {
 	}
 }
 
-function BestAlertColor() {
-var page = window.MW18PageColor;
+function BestAlertColor(color) {
+var page = color;
 var invpage = page;
 hueshift =  parseInt(getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--system-generic-color-hue-shift"));
 
@@ -734,16 +734,17 @@ if (isLightColor(page)) { // ( chroma(page).get('hsl.l') < 0.5)
 /* Get Foreground Variables */
 
 function GetForegroundVariables(color) {
+	var body = document.querySelector('body');
 	if (isSemiLightColor(color)) {
-		var fc1 =  getComputedStyle(document.querySelector('body')).getPropertyValue("--light-theme-text-background-color");
-		var fc2 =  getComputedStyle(document.querySelector('body')).getPropertyValue("--light-theme-text-background-color-rgb");
-		var fc3 =  getComputedStyle(document.querySelector('body')).getPropertyValue("--light-theme-text-background-color-hover");
-		var fc4 =  getComputedStyle(document.querySelector('body')).getPropertyValue("--light-theme-text-background-color-hover-rgb");
+		var fc1 =  getComputedStyle(body).getPropertyValue("--light-theme-text-background-color");
+		var fc2 =  getComputedStyle(body).getPropertyValue("--light-theme-text-background-color-rgb");
+		var fc3 =  getComputedStyle(body).getPropertyValue("--light-theme-text-background-color-hover");
+		var fc4 =  getComputedStyle(body).getPropertyValue("--light-theme-text-background-color-hover-rgb");
 	} else {
-		var fc1 =  getComputedStyle(document.querySelector('body')).getPropertyValue("--dark-theme-text-background-color");
-		var fc2 =  getComputedStyle(document.querySelector('body')).getPropertyValue("--dark-theme-text-background-color-rgb");
-		var fc3 =  getComputedStyle(document.querySelector('body')).getPropertyValue("--dark-theme-text-background-color-hover");
-		var fc4 =  getComputedStyle(document.querySelector('body')).getPropertyValue("--dark-theme-text-background-color-hover-rgb");
+		var fc1 =  getComputedStyle(body).getPropertyValue("--dark-theme-text-background-color");
+		var fc2 =  getComputedStyle(body).getPropertyValue("--dark-theme-text-background-color-rgb");
+		var fc3 =  getComputedStyle(body).getPropertyValue("--dark-theme-text-background-color-hover");
+		var fc4 =  getComputedStyle(body).getPropertyValue("--dark-theme-text-background-color-hover-rgb");
 	}
 	if (isLightColor(color)) {
 		return ['var(--light-theme-foreground-color)', 'var(--light-theme-foreground-color-hover)', 'var(--light-theme-foreground-color-rgb)', 'var(--light-theme-foreground-color-hover-rgb)', fc1, fc2, fc3, fc4]
@@ -1902,42 +1903,57 @@ var headertextcolor1 = ColorTest(headertext_color,content_text);
 
 
 /* Generic Colors */
-var generic = BestAlertColor();
+var generic = BestAlertColor(window.MW18PageColor);
+var generic2 = BestAlertColor(dropdowncolor);
+
 
 /** Alert Color **/
 /* Set Vars */
 var alert_color = generic[0];
+var alert2_color = generic2[0];
 var alertcolor1 = ColorTest(alert_color,content_color);
+var alert2color1 = ColorTest(alert2_color,content_color);
 var alertcolor2 = ColorTest(alert_color);
+
 
 /** Pause Color **/
 /* Set Vars */
 var pause_color = generic[1];
+var pause2_color = generic2[1];
 var pausecolor1 = ColorTest(pause_color,content_color);
+var pause2color1 = ColorTest(pause2_color,content_color);
 var pausecolor2 = ColorTest(pause_color);
 
 /** Warning Color **/
 /* Set Vars */
 var warning_color = generic[2];
+var warning2_color = generic2[2];
 var warningcolor1 = ColorTest(warning_color,content_color);
+var warning2color1 = ColorTest(warning2_color,content_color);
 var warningcolor2 = ColorTest(warning_color);
 
 /** Success Color **/
 /* Set Vars */
 var success_color = generic[3];
+var success2_color = generic2[3];
 var successcolor1 = ColorTest(success_color,content_color);
+var success2color1 = ColorTest(success2_color,content_color);
 var successcolor2 = ColorTest(success_color);
 
 /** Progress Color **/
 /* Set Vars */
 var progress_color = generic[4];
+var progress2_color = generic2[4];
 var progresscolor1 = ColorTest(progress_color,content_color);
+var progress2color1 = ColorTest(progress2_color,content_color);
 var progresscolor2 = ColorTest(progress_color);
 
 /** Message Color **/
 /* Set Vars */
 var message_color = generic[5];
+var message2_color = generic2[5];
 var messagecolor1 = ColorTest(message_color,content_color);
+var message2color1 = ColorTest(message2_color,content_color);
 var messagecolor2 = ColorTest(message_color);
 
 var img = GetDesktopImage();
@@ -2108,12 +2124,18 @@ var invfilters = [
 						  "--message-alternative-foreground-color-hover:" + message_fg[6] + "!important;\n" + 
 						  "--message-alternative-foreground-color-rgb:" + message_fg[5] + "!important;\n" +
 						  "--message-alternative-foreground-color-hover-rgb:" + message_fg[7] + "!important;\n" +
+						  "--canvas-secondary-background-color:" + dropdowncolor + ";\n" + 
 						  "--canvas-secondary-background-color-hover:" + dropdowncolorH + ";\n" + 
+						  "--canvas-secondary-gradient-color:" + dropdowncolor_gradient[0] + ";\n" +
+						  "--canvas-secondary-gradient-color-hover:" + dropdowncolor_gradient[1] + ";\n" +
 						  "--canvas-secondary-foreground-color:" + dropdowncolor_fg[0] + ";\n" +
 						  "--canvas-secondary-foreground-color-hover:" +  dropdowncolor_fg[1] + ";\n" + 
 						  "--canvas-3d-background-color:" + ColorTestTwin(dropdowncolor,"#ffffff",c3dlight) + ";\n" +
 						  "--canvas-3d-background-color-dark:" + ColorTestTwin(dropdowncolor,"#000000",c3ddark) + ";\n" +
+						  "--canvas-background-color:" + content_color + ";\n" +
 						  "--canvas-background-color-hover:" + content_color2 + ";\n" +
+						  "--canvas-gradient-color:" + content_color_gradient[0] + ";\n" +
+						  "--canvas-gradient-color-hover:" + content_color_gradient[1] + ";\n" +
 						  "--canvas-foreground-color:" + content_color_fg[0] + ";\n" +
 						  "--canvas-foreground-color-hover:" +  content_color_fg[1] + ";\n" + 
 						  "--canvas-secondary-background-color-rgb:" + Color2(dropdowncolor) + ";\n" + 
@@ -2122,7 +2144,10 @@ var invfilters = [
 						  "--canvas-background-color-rgb:" + Color2( content_color ) + ";\n" +
 						  "--canvas-foreground-color-rgb:" +  content_color_fg[2] + ";\n" +
 						  "--canvas-foreground-color-hover-rgb:" +  content_color_fg[3] + ";\n" + 
+						  "--canvas-text-background-color:" + content_text + ";\n" +
 						  "--canvas-text-background-color-hover:" + content_text1 + ";\n" +
+						  "--canvas-text-gradient-color:" + content_text_gradient[0] + ";\n" +
+						  "--canvas-text-gradient-color-hover:" + content_text_gradient[1] + ";\n" +
 						  "--canvas-text-foreground-color:" + content_text_fg[0] + ";\n" +
 						  "--canvas-text-foreground-color-hover:" + content_text_fg[1] + ";\n" +
 						  "--canvas-text-foreground-color-inverted:" + GetForegroundVariables(content_text1)[0] + ";\n" +
@@ -2130,7 +2155,12 @@ var invfilters = [
 						  "--canvas-text-background-color-hover-rgb:" + Color2(content_text1) + ";\n" +
 						  "--canvas-text-foreground-color-rgb:" + content_text_fg[2] + ";\n" +
 						  "--canvas-text-foreground-color-hover-rgb:" + content_text_fg[3] + ";\n" +
+						  "--canvas-text-secondary-background-color:" + content2_text + ";\n" +
 						  "--canvas-text-secondary-background-color-hover:" + content2_text1 + ";\n" +
+						  "--canvas-text-secondary-gradient-color:" + content2_text_gradient[0] + ";\n" +
+						  "--canvas-text-secondary-gradient-color-hover:" + content2_text_gradient[1] + ";\n" +
+						  "--canvas-text-secondary-gradient-color:" + content2_text_gradient[0] + ";\n" +
+						  "--canvas-text-secondary-gradient-color-hover:" + content2_text_gradient[1] + ";\n" +
 						  "--canvas-text-secondary-foreground-color:" + content2_text_fg[0] + ";\n" +
 						  "--canvas-text-secondary-foreground-color-hover:" + content2_text_fg[1] + ";\n" +
 						  "--canvas-text-secondary-foreground-color-inverted:" + GetForegroundVariables(content2_text1)[0] + ";\n" +
@@ -2138,14 +2168,20 @@ var invfilters = [
 						  "--canvas-text-secondary-background-color-hover-rgb:" + Color2(content2_text1) + ";\n" +
 						  "--canvas-text-secondary-foreground-color-rgb:" + content2_text_fg[2] + ";\n" +
 						  "--canvas-text-secondary-foreground-color-hover-rgb:" + content2_text_fg[3] + ";\n" +
+						  "--highlight-background-color:" + button_color + ";\n" +
 						  "--highlight-background-color-hover:" + buttoncolor1 + ";\n" +
+						  "--highlight-gradient-color:" + button_gradient[0] + ";\n" +
+						  "--highlight-gradient-color-hover:" + button_gradient[1] + ";\n" +
 						  "--highlight-foreground-color:" + button_fg[0] + ";\n" +
 						  "--highlight-foreground-color-hover:" + button_fg[1] + ";\n" +
 						  "--highlight-foreground-color-inverted:" + GetForegroundVariables(buttoncolor1)[0] + ";\n" +
 						  "--highlight-background-color-rgb:" + Color2(button_color) + ";\n" +
 						  "--highlight-foreground-color-rgb:" + button_fg[2] + ";\n" +
 						  "--highlight-foreground-color-hover-rgb:" + button_fg[3] + ";\n" +
+						  "--hyperlink-background-color:" + link_color + ";\n" +
 						  "--hyperlink-background-color-hover:" + linkcolor1 + ";\n" +
+						  "--hyperlink-gradient-color:" + link_gradient[0] + ";\n" +
+						  "--hyperlink-gradient-color-hover:" + link_gradient[1] + ";\n" +
 						  "--hyperlink-foreground-color:" + link_fg[0] + ";\n" +
 						  "--hyperlink-foreground-color-hover:" + link_fg[1] + ";\n" +
 						  "--hyperlink-foreground-color-inverted:" + GetForegroundVariables(linkcolor1)[0] + ";\n" +
@@ -2159,21 +2195,30 @@ var invfilters = [
 						  "--hyperlink-tertiary-background-color:" + link3_color + ";\n" +
 						  "--hyperlink-tertiary-background-color-hover:" + link3color1 + ";\n" +
 						  "--hyperlink-tertiary-background-color-rgb:" + Color2(link3_color) + ";\n" +
+						  "--inactive-text-background-color:" + border_color + ";\n" +
 						  "--inactive-text-background-color-hover:" + bordercolor1 + ";\n" +
+						  "--inactive-text-gradient-color:" + border_gradient[0] + ";\n" +
+						  "--inactive-text-gradient-color-hover:" + border_gradient[1] + ";\n" +
 						  "--inactive-text-foreground-color:" + border_fg[0] + ";\n" +
 						  "--inactive-text-foreground-color-hover:" + border_fg[1] + ";\n" +
 						  "--inactive-text-foreground-color-inverted:" + GetForegroundVariables(bordercolor1)[0] + ";\n" +
 						  "--inactive-text-background-color-rgb:" + Color2(border_color) + ";\n" +
 						  "--inactive-text-foreground-color-rgb:" + border_fg[2] + ";\n" +
 						  "--inactive-text-foreground-color-hover-rgb:" + border_fg[3] + ";\n" +
+						  "--desktop-background-color:" + head_color + ";\n" +
 						  "--desktop-background-color-hover:" + headcolor1 + ";\n" +
+						  "--desktop-gradient-color:" + head_gradient[0] + ";\n" +
+						  "--desktop-gradient-color-hover:" + head_gradient[1] + ";\n" +
 						  "--desktop-foreground-color:" + head_fg[0] + ";\n" +
 						  "--desktop-foreground-color-hover:" + head_fg[1] + ";\n" +
 						  "--desktop-foreground-color-inverted:" + GetForegroundVariables(headcolor1)[0] + ";\n" +
 						  "--desktop-background-color-rgb:" + Color2(head_color) + ";\n" +
 						  "--desktop-foreground-color-rgb:" + head_fg[2] + ";\n" +
 						  "--desktop-foreground-color-hover-rgb:" + head_fg[3] + ";\n" +
+						  "--desktop-text-background-color:" + headertext_color + ";\n" +
 						  "--desktop-text-background-color-hover:" + headertextcolor1 + ";\n" +
+						  "--desktop-text-gradient-color:" + headertext_gradient[0] + ";\n" +
+						  "--desktop-text-gradient-color-hover:" + headertext_gradient[1] + ";\n" +
 						  "--desktop-text-foreground-color:" + headertext_fg[0] + ";\n" +
 						  "--desktop-text-foreground-color-hover:" + headertext_fg[1] + ";\n" +
 						  "--desktop-text-foreground-color-inverted:" + GetForegroundVariables(headertextcolor1)[0] + ";\n" +
@@ -2181,14 +2226,20 @@ var invfilters = [
 						  "--desktop-text-background-color-hover-rgb:" + Color2(headertextcolor1) + ";\n" +
 						  "--desktop-text-foreground-color-rgb:" + headertext_fg[2] + ";\n" +
 						  "--desktop-text-foreground-color-hover-rgb:" + headertext_fg[2] + ";\n" +
+						  "--active-title-background-color:" + caret_color + ";\n" +
 						  "--active-title-background-color-hover:" + caretcolor1 + ";\n" +
+						  "--active-title-gradient-color:" + caret_gradient[0] + ";\n" +
+						  "--active-title-gradient-color-hover:" + caret_gradient[1] + ";\n" +
 						  "--active-title-foreground-color:" + caret_fg[0] + ";\n" +
 						  "--active-title-foreground-color-hover:" + caret_fg[1] + ";\n" +
 						  "--active-title-foreground-color-inverted:" + GetForegroundVariables(caretcolor1)[0] + ";\n" +
 						  "--active-title-background-color-rgb:" + Color2( caret_color ) + ";\n" +
 						  "--active-title-foreground-color-rgb:" + caret_fg[2] + ";\n" +
 						  "--active-title-foreground-color-hover-rgb:" + caret_fg[3] + ";\n" +
+						  "--inactive-title-background-color:" + caret2_color + ";\n" +
 						  "--inactive-title-background-color-hover:" + caret2color1 + ";\n" +
+						  "--inactive-title-gradient-color:" + caret2_gradient[0] + ";\n" +
+						  "--inactive-title-gradient-color-hover:" + caret2_gradient[1] + ";\n" +
 						  "--inactive-title-foreground-color:" + caret2_fg[0] + ";\n" +
 						  "--inactive-title-foreground-color-hover:" + caret2_fg[1] + ";\n" +
 						  "--inactive-title-foreground-color-inverted:" + GetForegroundVariables(caret2color1)[0] + ";\n" +
@@ -2206,6 +2257,9 @@ var invfilters = [
 						  "--alert-background-color-rgb:" + Color2(alert_color) + "!important;\n" +
 						  "--alert-foreground-color-rgb:" + alert_fg[2] + "!important;\n" +
 						  "--alert-foreground-color-hover-rgb:" + alert_fg[3] + "!important;\n" +
+						  "--alert-secondary-background-color:" + alert2_color + "!important;\n" +
+						  "--alert-secondary-background-color-hover:" + alert2color1 + "!important;\n" +
+						  "--alert-secondary-background-color-rgb:" + Color2(alert2_color) + "!important;\n" +
 						  "--pause-background-color:" + pause_color + "!important;\n" +
 						  "--pause-background-color-hover:" + pausecolor1 + "!important;\n" +
 						  "--pause-background-color-hover-2:" + pausecolor2 + "!important;\n" +
@@ -2217,6 +2271,9 @@ var invfilters = [
 						  "--pause-background-color-rgb:" + Color2(pause_color) + "!important;\n" +
 						  "--pause-foreground-color-rgb:" + pause_fg[2] + "!important;\n" +
 						  "--pause-foreground-color-hover-rgb:" + pause_fg[3] + "!important;\n" +
+						  "--pause-secondary-background-color:" + pause2_color + "!important;\n" +
+						  "--pause-secondary-background-color-hover:" + pause2color1 + "!important;\n" +
+						  "--pause-secondary-background-color-rgb:" + Color2(pause2_color) + "!important;\n" +
 						  "--warning-background-color:" + warning_color + "!important;\n" +
 						  "--warning-background-color-hover:" + warningcolor1 + "!important;\n" +
 						  "--warning-background-color-hover-2:" + warningcolor2 + "!important;\n" +
@@ -2228,6 +2285,9 @@ var invfilters = [
 						  "--warning-background-color-rgb:" + Color2(warning_color) + "!important;\n" +
 						  "--warning-foreground-color-rgb:" + warning_fg[2] + "!important;\n" +
 						  "--warning-foreground-color-hover-rgb:" + warning_fg[3] + "!important;\n" +
+						  "--warning-secondary-background-color:" + warning2_color + "!important;\n" +
+						  "--warning-secondary-background-color-hover:" + warning2color1 + "!important;\n" +
+						  "--warning-secondary-background-color-rgb:" + Color2(warning2_color) + "!important;\n" +
 						  "--success-background-color:" + success_color + "!important;\n" +
 						  "--success-background-color-hover:" + successcolor1 + "!important;\n" +
 						  "--success-background-color-hover-2:" + successcolor2 + "!important;\n" +
@@ -2239,6 +2299,9 @@ var invfilters = [
 						  "--success-background-color-rgb:" + Color2(success_color) + "!important;\n" +
 						  "--success-foreground-color-rgb:" + success_fg[2] + "!important;\n" +
 						  "--success-foreground-color-hover-rgb:" + success_fg[3] + "!important;\n" +
+						  "--success-secondary-background-color:" + success2_color + "!important;\n" +
+						  "--success-secondary-background-color-hover:" + success2color1 + "!important;\n" +
+						  "--success-secondary-background-color-rgb:" + Color2(success2_color) + "!important;\n" +
 						  "--progress-background-color:" + progress_color + "!important;\n" +
 						  "--progress-background-color-hover:" + progresscolor1 + "!important;\n" +
 						  "--progress-background-color-hover-2:" + progresscolor2 + "!important;\n" +
@@ -2250,6 +2313,9 @@ var invfilters = [
 						  "--progress-background-color-rgb:" + Color2(progress_color) + "!important;\n" +
 						  "--progress-foreground-color-rgb:" + progress_fg[2] + "!important;\n" +
 						  "--progress-foreground-color-hover-rgb:" + progress_fg[3] + "!important;\n" +
+						  "--progress-secondary-background-color:" + progress2_color + "!important;\n" +
+						  "--progress-secondary-background-color-hover:" + progress2color1 + "!important;\n" +
+						  "--progress-secondary-background-color-rgb:" + Color2(progress2_color) + "!important;\n" +
 						  "--message-background-color:" + message_color + "!important;\n" +
 						  "--message-background-color-hover:" + messagecolor1 + "!important;\n" +
 						  "--message-background-color-hover-2:" + messagecolor2 + "!important;\n" +
@@ -2261,42 +2327,9 @@ var invfilters = [
 						  "--message-background-color-rgb:" + Color2(message_color) + "!important;\n" +
 						  "--message-foreground-color-rgb:" + message_fg[2] + "!important;\n" +
 						  "--message-foreground-color-hover-rgb:" + message_fg[3] + "!important;\n" +
-						  "}" +
-						  //
-						  ":root {" +
-						  "--canvas-background-color:" + content_color + ";\n" +
-						  "--canvas-secondary-background-color:" + dropdowncolor + ";\n" + 
-						  "--canvas-gradient-color:" + content_color_gradient[0] + ";\n" +
-						  "--canvas-gradient-color-hover:" + content_color_gradient[1] + ";\n" +
-						  "--canvas-secondary-gradient-color:" + dropdowncolor_gradient[0] + ";\n" +
-						  "--canvas-secondary-gradient-color-hover:" + dropdowncolor_gradient[1] + ";\n" +
-						  "--canvas-text-background-color:" + content_text + ";\n" +
-						  "--canvas-text-gradient-color:" + content_text_gradient[0] + ";\n" +
-						  "--canvas-text-gradient-color-hover:" + content_text_gradient[1] + ";\n" +
-						  "--canvas-text-secondary-background-color:" + content2_text + ";\n" +
-						  "--canvas-text-secondary-gradient-color:" + content2_text_gradient[0] + ";\n" +
-						  "--canvas-text-secondary-gradient-color-hover:" + content2_text_gradient[1] + ";\n" +
-						  "--highlight-background-color:" + button_color + ";\n" +
-						  "--highlight-gradient-color:" + button_gradient[0] + ";\n" +
-						  "--highlight-gradient-color-hover:" + button_gradient[1] + ";\n" +
-						  "--hyperlink-background-color:" + link_color + ";\n" +
-						  "--hyperlink-gradient-color:" + link_gradient[0] + ";\n" +
-						  "--hyperlink-gradient-color-hover:" + link_gradient[1] + ";\n" +
-						  "--inactive-text-background-color:" + border_color + ";\n" +
-						  "--inactive-text-gradient-color:" + border_gradient[0] + ";\n" +
-						  "--inactive-text-gradient-color-hover:" + border_gradient[1] + ";\n" +
-						  "--desktop-background-color:" + head_color + ";\n" +
-						  "--desktop-gradient-color:" + head_gradient[0] + ";\n" +
-						  "--desktop-gradient-color-hover:" + head_gradient[1] + ";\n" +
-						  "--desktop-text-background-color:" + headertext_color + ";\n" +
-						  "--desktop-text-gradient-color:" + headertext_gradient[0] + ";\n" +
-						  "--desktop-text-gradient-color-hover:" + headertext_gradient[1] + ";\n" +
-						  "--active-title-background-color:" + caret_color + ";\n" +
-						  "--active-title-gradient-color:" + caret_gradient[0] + ";\n" +
-						  "--active-title-gradient-color-hover:" + caret_gradient[1] + ";\n" +
-						  "--inactive-title-background-color:" + caret2_color + ";\n" +
-						  "--inactive-title-gradient-color:" + caret2_gradient[0] + ";\n" +
-						  "--inactive-title-gradient-color-hover:" + caret2_gradient[1] + ";\n" +
+						  "--message-secondary-background-color:" + message2_color + "!important;\n" +
+						  "--message-secondary-background-color-hover:" + message2color1 + "!important;\n" +
+						  "--message-secondary-background-color-rgb:" + Color2(message2_color) + "!important;\n" +
 // Misc Variables
 						'--desktop-background-image:' + img  + ';\n' +
 						'--desktop-background-image-filter:' + imgfilter  + ';\n' +
@@ -2319,6 +2352,7 @@ var invfilters = [
 						  "--bg-tile-y:" + ['repeat','no-repeat'][["false", "true"].indexOf( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-no-vertical-tiling") ) ] + ";\n" +
 						  "--invertion-filter:" + invfilters[window.MW18spdarkmode][[false, true].indexOf(window.MW18darkmode) ] + ";\n" +
 						  "}"
+						  //
 
 
 /* Write them to the stylesheet */
