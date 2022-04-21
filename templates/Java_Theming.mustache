@@ -1676,17 +1676,6 @@ var content_color =  GetCanvasShort();
 
 	window.MW18PageColor = content_color;
 	var darkpage = isLightColor(content_color);
-		var oldtheme = window.MW18ActiveThemeMode;
-		if (!(darkpage)) {
-			 window.MW18ActiveThemeMode = 'dark';
-		} else {
-			 window.MW18ActiveThemeMode = 'light';
-		}
-		if (oldtheme === 'none') {
-			document.querySelector('html').classList.add("theme-fandomdesktop-" +  window.MW18ActiveThemeMode);
-		} else if (oldtheme != window.MW18ActiveThemeMode ) {
-			document.querySelector('html').classList.replace("theme-fandomdesktop-" +  oldtheme,"theme-fandomdesktop-" +  window.MW18ActiveThemeMode);
-		}
 
 
 var content_color2 = ColorTest(content_color);
@@ -2357,6 +2346,20 @@ var invfilters = [
 
 /* Write them to the stylesheet */
 document.querySelector("head .theming").innerHTML = result;
+
+		/* Theme Mode */
+		var oldtheme = window.MW18ActiveThemeMode;
+		if (!(darkpage)) {
+			 window.MW18ActiveThemeMode = 'dark';
+		} else {
+			 window.MW18ActiveThemeMode = 'light';
+		}
+		if (oldtheme === 'none') {
+			document.querySelector('html').classList.add("theme-fandomdesktop-" +  window.MW18ActiveThemeMode);
+		} else if (oldtheme != window.MW18ActiveThemeMode ) {
+			document.querySelector('html').classList.replace("theme-fandomdesktop-" +  oldtheme,"theme-fandomdesktop-" +  window.MW18ActiveThemeMode);
+		}
+
 
 }
 
