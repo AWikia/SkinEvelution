@@ -2213,11 +2213,6 @@ box-shadow:2px 0 0 6px rgba(var(--canvas-text-background-color-rgb),.4), 2px 0 0
 
 .visualstyle-classic body {
 	--border-radius:0!important; /* Won't work with rounded corners */
-	--dropdown-opacity:1!important;
-	--mica-opacity:1!important;
-	--simple-fallback-color:var(--canvas-background-color);
-	--mica-filter:none;
-	--acryllic-filter:none;
 }
 
 
@@ -2252,12 +2247,10 @@ box-shadow:2px 0 0 6px rgba(var(--canvas-text-background-color-rgb),.4), 2px 0 0
 
 .visualstyle-classic *:not(body),.visualstyle-classic :not(.evelution-wrapper):before,.visualstyle-classic :not(body):after {
 box-shadow:none!important;
-  backdrop-filter:none!important;
-  -webkit-backdrop-filter:none!important;
 }
 
 
-.visualstyle-classic *:not(.evelution-minibar):not(.evelution-minibar-navigation-background):not(.evelution-content):not(.evelution-options-content):not(.evelution-editors-content):not(.lightbox):not(.evelution-sidebar):not(body),.visualstyle-classic :not(.evelution-wrapper):before,.visualstyle-classic :not(body):after {
+.visualstyle-classic *:not(.evelution-minibar):not(.evelution-content):not(.evelution-options-content):not(.evelution-editors-content):not(.lightbox):not(.evelution-sidebar):not(.cpe-banner-notification):not(body),.visualstyle-classic :not(.evelution-wrapper):before,.visualstyle-classic :not(body):after {
 	transition:none!important;
 }
 
@@ -2293,9 +2286,6 @@ box-shadow:none!important;
 
 
 .visualstyle-classic .evelution-sidebar {
-	--global-nav-color:var(--canvas-secondary-background-color);
-	background-color:var(--global-nav-color);
-	color:var(--canvas-text-secondary-background-color)!important;
 	box-sizing:content-box;
 }
 
@@ -2337,7 +2327,6 @@ box-shadow:none!important;
 .visualstyle-classic ::-webkit-scrollbar-thumb,
 .visualstyle-classic ::-webkit-scrollbar-button,
 .visualstyle-classic .fieldset,
-.visualstyle-classic .evelution-module,
 .visualstyle-classic .toc:not(.floating_toc),
 .visualstyle-classic [cpe-tooltip]:after,
 .visualstyle-classic body .wikitable,
@@ -2351,10 +2340,33 @@ box-shadow:none!important;
 .visualstyle-classic body .catlinks,
 .visualstyle-classic body div.thumbinner,
 .visualstyle-classic body .thumbimage,
-.visualstyle-classic body li.gallerybox div.thumb,
-.visualstyle-classic .cpe-banner-notification {
+.visualstyle-classic body li.gallerybox div.thumb {
 	box-shadow:none!important;
 	background:var(--canvas-secondary-background-color)!important;
+	color:var(--canvas-text-secondary-background-color)!important;
+	border-width:2px!important;
+	border-style:solid!important;
+	border-color:var(--canvas-3d-background-color) var(--canvas-3d-background-color-dark) var(--canvas-3d-background-color-dark) var(--canvas-3d-background-color)!important;
+	outline:0!important;
+	box-sizing:border-box;
+}
+
+
+.visualstyle-classic .evelution-module {
+	box-shadow:none!important;
+	background:var(--luna-background-color)!important;
+	color:var(--canvas-text-secondary-background-color)!important;
+	border-width:2px!important;
+	border-style:solid!important;
+	border-color:var(--canvas-3d-background-color) var(--canvas-3d-background-color-dark) var(--canvas-3d-background-color-dark) var(--canvas-3d-background-color)!important;
+	outline:0!important;
+	box-sizing:border-box;
+}
+
+
+.visualstyle-classic .cpe-banner-notification {
+	box-shadow:none!important;
+	background:rgba(var(--canvas-secondary-background-color-rgb),var(--dropdown-opacity))!important;
 	color:var(--canvas-text-secondary-background-color)!important;
 	border-width:2px!important;
 	border-style:solid!important;
@@ -2625,7 +2637,6 @@ margin-right:0;
 
 .visualstyle-classic .cpe-dropdown__content,
 .visualstyle-classic .cpe-dropdown-level-2__content {
-	--dropdown-opacity:1!important;
 	box-shadow:none!important;
 	border-width:2px!important;
 	border-style:solid!important;
