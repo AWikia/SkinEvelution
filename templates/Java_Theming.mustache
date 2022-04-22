@@ -1,13 +1,21 @@
-﻿window.MW18darkmode = false;
+﻿/* Color Modes */
+window.MW18darkmode = false;
 window.MW18spdarkmode = 0; // 0 = No special behavior | 1 = Inverted Colors Dark | 2 = Grayscale | 3 = Yellow Tint | 4 = Blue Tint | 5 = Inverted Colors Light | 6 = Temperature | 7 = Inverted Temperature | 8 = Red Tint | 9 = Green Tint
 window.MW18devicetheme = 'light';
 window.MW18wikitheme = 'standard';
+/* Contrast Modes */
 window.MW18contrastmode = 'auto';
+/* Active Theme */
 window.MW18ActiveTheme = 'A';
 window.MW18ActiveThemeMode = 'none';
+/* Visual Colors */
 window.MW18ActiveColors = 'standard';
+/* Visual Styles */
 window.MW18ActiveStyle = '-';
+window.MW18ActiveStyleMode = '-';
+/* Auto Accent (Unused for now) */
 window.MW18AutoAccent = '0';
+/* DCM Modes */
 window.MW18DCMMode = 'standard';
 /* Some Theming Colors */
 window.MW18PageColor = GetCanvasShort();
@@ -20,24 +28,22 @@ window.MW18highContrast = 3.00;
 /*
 **
 ** Visual Styles
-** Each item is an array. First item of a subarray should be the visualcolor class name to be used, Second item should be the narrative name done in Yorkbook Digital Professional (title) and Third item should be the material icon to be used
+** Each item is an array. 
+** First item of a subarray should be the visualcolor class name to be used.
+** Second item should be the narrative name done in Yorkbook Digital Professional (title) 
+** Third item should be an arry of three items with material icons to be used
+**** First item should be the icon for the Standard Visual Mode
+**** Second item should be the icon for the Lite Visual Mode
+**** Third item should be the icon for the Contrast Visual Mode
 **
 */
 
 var visualStyles = [
-					['lite', 'Lite', 'square'],
-					['contrast', '{{msg-evelution-style-contrast}}', 'contrast'],
-					['general', '{{msg-evelution-style-general}}', 'bookmark_border'],
-					['generallite', '{{msg-evelution-style-general}}Lite', 'bookmark'],
-					['basic', '{{msg-evelution-style-basic}}', 'inbox'],
-					['basiccontrast', '{{msg-evelution-style-basiccontrast}}', 'invert_colors'],
-					['simple', '{{msg-evelution-style-simple}}', 'opacity'],
-					['simplelite', '{{msg-evelution-style-simple}}Lite', 'brush'],
-					['simplecontrast', '{{msg-evelution-style-simplecontrast}}', 'filter_alt'],
-					['classic', '{{msg-evelution-style-classic}}', 'smart_toy'],
-					['classiccontrast', '{{msg-evelution-style-classiccontrast}}', 'filter_b_and_w']
+					['general', '{{msg-evelution-style-general}}', ['computer', 'smartphone','monochrome_photos']],
+					['basic', '{{msg-evelution-style-basic}}', ['home', 'inbox', 'invert_colors']],
+					['simple', '{{msg-evelution-style-simple}}', ['opacity', 'brush', 'filter_alt']],
+					['classic', '{{msg-evelution-style-classic}}', ['smart_toy', 'smart_toy', 'filter_b_and_w']]
 				    ];
-var contrastVisual = 'contrast';
 
 /*
 **
@@ -65,12 +71,15 @@ var visualColorNames = ['standard', 'nocolormanagement'];
 	if (getKey('theme-selected') === '-1') {
 		insertKey('theme-selected', 'A' );
 	}
-	if (getKey('visual-style') === '-1') {
+	if (getKey('visual-appearance-mode') === '-1') {
 		if ( ( window.matchMedia('(forced-colors: active)').matches ) ) {
-			insertKey('visual-style', contrastVisual );
+			insertKey('visual-appearance-mode', 'contrast' );
 		} else {
-			insertKey('visual-style', 'standard' );
+			insertKey('visual-appearance-mode', 'standard' );
 		}
+	}
+	if (getKey('visual-appearance-style') === '-1') {
+		insertKey('visual-appearance-style', 'standard' );
 	}
 	if (getKey('visual-color') === '-1') {
 		insertKey('visual-color', 'standard' );
@@ -95,7 +104,8 @@ var visualColorNames = ['standard', 'nocolormanagement'];
 		}
 	}
 	var theme_selected = getKey('theme-selected');
-	var visual_style = getKey('visual-style');
+	var visual_mode = getKey('visual-appearance-mode');
+	var visual_style = getKey('visual-appearance-style');
 	var visual_color = getKey('visual-color');
 	var device_theme = getKey('device-theme');
 	var color_style = getKey('color-style');
@@ -155,6 +165,10 @@ var visualColorNames = ['standard', 'nocolormanagement'];
 				}
 				console.info('Active theme settings overriden')
                 break;
+            case 'usevisualmode':
+				visual_mode = value;
+				console.info('Active visual mode settings overriden')
+                break;
             case 'usevisualstyle':
 				visual_style = value;
 				console.info('Active visual style settings overriden')
@@ -202,6 +216,7 @@ var visualColorNames = ['standard', 'nocolormanagement'];
 	SetDCM(dcm_mode,false,false);
 	ManagerRows(); // For Task Manager Only
 	VisualStyleCompile(); // Compiles the Contrast Options
+	VisualMode(visual_mode,false);
 	VisualStyle(visual_style,false);
 	VisualColor(visual_color,false);
 //	ContrastBanner(); // Notice
@@ -256,6 +271,29 @@ function ForcedColorMode() {
 }
 
 /* Visual Styles */
+function VisualMode(mode,save=true) {
+	vmode = mode;
+    var x = document.querySelector('html');
+		var oldmode = window.MW18ActiveStyleMode;
+		window.MW18ActiveStyleMode = vmode;
+		if (oldmode === '-') {
+			document.querySelector('html').classList.add("visualmode-" +  window.MW18ActiveStyleMode);
+		} else if (oldmode != window.MW18ActiveStyleMode ) {
+			document.querySelector('html').classList.replace("visualmode-" +  oldmode,"visualmode-" +  window.MW18ActiveStyleMode);
+		}
+	var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-modes li.selected")
+	if (x) {
+		x.classList.remove("selected");
+	}
+	var y = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-modes li[data-visual-mode='" + mode + "']");
+	if (y) {
+		y.classList.add("selected");
+	}
+	if (save) {
+		insertKey('visual-appearance-mode', mode );
+	}
+}
+
 function VisualStyle(style,save=true) {
 	vstyle = style;
     var x = document.querySelector('html');
@@ -275,9 +313,10 @@ function VisualStyle(style,save=true) {
 		y.classList.add("selected");
 	}
 	if (save) {
-		insertKey('visual-style', style );
+		insertKey('visual-appearance-style', style );
 	}
 }
+
 
 function VisualColor(style,save=true,repaint=true) {
     var x = document.querySelector('html');
@@ -322,7 +361,9 @@ function VisualStyleCompile() {
 	for (let i = 0; i < visualStyles.length; i++) {
 		str = 	'<li data-visual-style="' + visualStyles[i][0] + '" title="' + visualStyles[i][1] + '">' +
 					'<a onclick="VisualStyle(' + "'" + visualStyles[i][0]  + "'" + ')">' +
-						'<span class="cpe-icon material-icons">' + visualStyles[i][2] + '</span>' +
+						'<span class="cpe-icon material-icons standard-on">' + visualStyles[i][2][0] + '</span>' +
+						'<span class="cpe-icon material-icons lite-on">' + visualStyles[i][2][1] + '</span>' +
+						'<span class="cpe-icon material-icons contrast-on">' + visualStyles[i][2][2] + '</span>' +
 					'</a>' +
 				'</li>'
 		var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-styles > .base-visual-style");
