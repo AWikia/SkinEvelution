@@ -174,6 +174,7 @@ class SkinEvelution extends SkinMustache {
 		$data["data-theme-F"] = $this->getConfig()->get ( 'EvelutionThemeF' );
 		$data["data-theme-G"] = $this->getConfig()->get ( 'EvelutionThemeG' );
 		$data["data-theme-H"] = $this->getConfig()->get ( 'EvelutionThemeH' );
+		$data["html-testing"] = $this->getConfig()->get ( 'ScriptPath' );
         return $data;
     }
 
