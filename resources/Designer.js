@@ -719,7 +719,7 @@ function InitDesigner() {
                 '</span>' +
 			'</button>' +
 			'<button class="maximize title="Restore">' +
-				'<span style="transform:scaleX(calc(var(--icon-scale) * -1)) scaleY(var(--icon-scale)) rotate(var(--icon-rotate))" class="material-icons cpe-icon cpe-icon-tiny cpe-icon-medium close">' +
+				'<span class="material-icons cpe-icon cpe-icon-tiny cpe-icon-medium close">' +
 					'content_copy' +
                 '</span>' +
 			'</button>' +
