@@ -59,6 +59,10 @@ function InitSBT() {
 		'<input type="radio" name="SBT" id="MI"></input>' +
 		'<label for="MI">Luna Levit</label>' +
 		'</section>' +
+		'<section>' +
+		'<input type="radio" name="SBT" id="TA"></input>' +
+		'<label for="TA">Tabbed Luna Levit</label>' +
+		'</section>' +
 		'</div>'
 	);
 	
@@ -67,6 +71,7 @@ $('#AC[name="SBT"]').click(
 								e.preventDefault
 								$('div.sbtll').addClass("hidden").removeClass("has-tabs")
 								$('div.SBT').css("--backdrop-opacity","var(--dropdown-opacity)");
+								$('div.SBT').css("background-color","rgba(var(--canvas-secondary-background-color-rgb),var(--dropdown-opacity))");
 							}   
 );
 
@@ -75,8 +80,19 @@ $('#MI[name="SBT"]').click(
 								e.preventDefault
 								$('div.sbtll').removeClass("hidden").removeClass("has-tabs")
 								$('div.SBT').css("--backdrop-opacity","1");
+								$('div.SBT').css("background-color","var(--mica-background-color)");
 							}   
 );
+
+$('#TA[name="SBT"]').click(
+							function(e) {
+								e.preventDefault
+								$('div.sbtll').removeClass("hidden").addClass("has-tabs")
+								$('div.SBT').css("--backdrop-opacity","1");
+								$('div.SBT').css("background-color","var(--tabbed-background-color)");
+							}   
+);
+
 
 $('#none[name="SBT2"]').click(
 							function(e) {

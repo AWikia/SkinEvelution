@@ -1466,6 +1466,10 @@ function DownloadTheme(full=false) {
 				 '--icon-filter-delay:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--icon-filter-delay")  + ';\n' +
 				 '--system-acryllic-opacity:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--system-acryllic-opacity")  + ';\n' +
 				 '--system-generic-color-hue-shift:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--system-generic-color-hue-shift")  + ';\n' +
+				 '--mica-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--mica-background-color")  + ';\n' +
+				 '--tabbed-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--tabbed-background-color")  + ';\n' +
+				 '--mica-blend-mode:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--mica-blend-mode")  + ';\n' +
+				 '--tabbed-blend-mode:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--tabbed-blend-mode")  + ';\n' +
 				 '}' // Ending
 	} else { // For use with Theme Management
 		result = '.visualcolors-standard.theme-A {\n' + // Beginning
@@ -2077,6 +2081,18 @@ var caret2_fg = GetForegroundVariables(caret2_color);
 	if ( wordfilter2 == "" ) {
 		wordfilter2 == 'initial'
 	}
+	
+	var tdbg = ColorTestTwin(dropdowncolor,"#ffffff",c3dlight);
+	var tdbg2 = ColorTestTwin(dropdowncolor,"#000000",c3ddark);
+	
+	if (darkpage) { // Light theme
+		micabg = [ColorTestTwin(dropdowncolor,"#ffffff",0.25),'color'];
+		tabbedbg = [dropdowncolor,'normal'];
+	} else {
+		micabg = [dropdowncolor,'normal'];
+		tabbedbg = [ColorTestTwin(dropdowncolor,"#000000",0.25),'color'];
+	}
+	
 
 var invfilters = [
 					['opacity(1)', 'opacity(1) invert(1) hue-rotate(180deg)'],											  // Sp Dark Mode 0 (Normal)
@@ -2163,8 +2179,8 @@ var invfilters = [
 						  "--canvas-secondary-gradient-color-hover:" + dropdowncolor_gradient[1] + ";\n" +
 						  "--canvas-secondary-foreground-color:" + dropdowncolor_fg[0] + ";\n" +
 						  "--canvas-secondary-foreground-color-hover:" +  dropdowncolor_fg[1] + ";\n" + 
-						  "--canvas-3d-background-color:" + ColorTestTwin(dropdowncolor,"#ffffff",c3dlight) + ";\n" +
-						  "--canvas-3d-background-color-dark:" + ColorTestTwin(dropdowncolor,"#000000",c3ddark) + ";\n" +
+						  "--canvas-3d-background-color:" + tdbg + ";\n" +
+						  "--canvas-3d-background-color-dark:" + tdbg2 + ";\n" +
 						  "--canvas-background-color:" + content_color + ";\n" +
 						  "--canvas-background-color-hover:" + content_color2 + ";\n" +
 						  "--canvas-gradient-color:" + content_color_gradient[0] + ";\n" +
@@ -2363,6 +2379,11 @@ var invfilters = [
 						  "--message-secondary-background-color:" + message2_color + "!important;\n" +
 						  "--message-secondary-background-color-hover:" + message2color1 + "!important;\n" +
 						  "--message-secondary-background-color-rgb:" + Color2(message2_color) + "!important;\n" +
+// Luna Levit
+						  "--mica-background-color:" + micabg[0] + ";\n" +
+						  "--tabbed-background-color:" + tabbedbg[0] + ";\n" +
+						  "--mica-blend-mode:" + micabg[1] + ";\n" +
+						  "--tabbed-blend-mode:" + tabbedbg[1] + ";\n" +
 // Misc Variables
 						'--desktop-background-image:' + img  + ';\n' +
 						'--desktop-background-image-filter:' + imgfilter  + ';\n' +

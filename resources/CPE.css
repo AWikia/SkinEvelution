@@ -280,8 +280,10 @@ body {
 body,
 body [force-active] {
 	--luna-background-color:var(--canvas-secondary-background-color);
-	--luna-mica-background-color:var(--canvas-secondary-background-color);
+	--luna-mica-background-color:var(--mica-background-color);
 	--luna-mica-background-color-2:transparent;
+	--luna-tabbed-background-color:var(--tabbed-background-color);
+	--luna-tabbed-background-color-2:transparent;
 	--luna-background-color-rgb:var(--canvas-secondary-background-color-rgb);
 	--luna-background-color-hover:var(--canvas-secondary-background-color-hover);
 	--luna-text-background-color:var(--canvas-text-secondary-background-color);
@@ -330,6 +332,8 @@ body [force-inactive] {
 	--luna-background-color:var(--active-title-background-color);
 	--luna-mica-background-color:var(--luna-background-color);
 	--luna-mica-background-color-2:var(--luna-background-color);
+	--luna-tabbed-background-color:var(--luna-background-color);
+	--luna-tabbed-background-color-2:var(--luna-background-color);
 	--luna-background-color-rgb:var(--active-title-background-color-rgb);
 	--luna-background-color-hover:var(--active-title-background-color-hover);
 	--luna-text-background-color:var(--active-title-alternative-foreground-color);
@@ -957,9 +961,13 @@ container {
     opacity: calc(1 - calc( var(--mica-opacity) * 1));
     overflow: hidden;
     pointer-events: none;
-    mix-blend-mode: color;
+    mix-blend-mode: var(--mica-blend-mode);
     border-radius: inherit;
     filter: saturate(150%);
+}
+
+.lunalevit.has-tabs {
+    mix-blend-mode: var(--tabbed-blend-mode);
 }
 
 .has-accents .lunalevit.disables-on-accent,
