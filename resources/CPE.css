@@ -190,7 +190,7 @@ font-family:Trebuchet MS;
 --desktop-background-alignment:var(--desktop-background-vertical-alignment) var(--desktop-background-horizontal-alignment);
 /* Acryllic */
 --acryllic-filter:blur( calc(30px * calc(1.2 - var(--system-acryllic-opacity) ) ) ) saturate(125%);
---mica-filter:blur( calc(150px * calc(1.2 - var(--system-acryllic-opacity) ) ) );
+--mica-filter:blur( calc(120px * calc(1.2 - var(--system-acryllic-opacity) ) ) );
 /* Transition */
 --transitioner:cubic-bezier(0.25,0.25,0,1);
 /* Fonts */
@@ -304,8 +304,6 @@ body [force-active] {
 /* Unaccented (Unfocused) */
 body:not(:focus):not(:focus-within),
 body [force-inactive] {
-/* @TODO: Move to different pose */
-/* End @TODO */
 	--dropdown-opacity:1;
 	--mica-opacity:2;
 	--simple-fallback-color:var(--canvas-background-color)!important;
@@ -4127,6 +4125,8 @@ html:not(.visualmode-contrast) .contrast-on {
 
 /* Contrast */
 .visualmode-contrast body {
+/* Mica */
+--mica-background-color:var(--canvas-secondary-background-color);
 /* Luna Colors */
 --luna-border-background-color:var(--luna-foreground-color)!important;
 /* Desktop */
