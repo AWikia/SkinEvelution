@@ -1467,9 +1467,6 @@ function DownloadTheme(full=false) {
 				 '--system-acryllic-opacity:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--system-acryllic-opacity")  + ';\n' +
 				 '--system-generic-color-hue-shift:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--system-generic-color-hue-shift")  + ';\n' +
 				 '--mica-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--mica-background-color")  + ';\n' +
-				 '--tabbed-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--tabbed-background-color")  + ';\n' +
-				 '--mica-blend-mode:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--mica-blend-mode")  + ';\n' +
-				 '--tabbed-blend-mode:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--tabbed-blend-mode")  + ';\n' +
 				 '}' // Ending
 	} else { // For use with Theme Management
 		result = '.visualcolors-standard.theme-A {\n' + // Beginning
@@ -2084,16 +2081,9 @@ var caret2_fg = GetForegroundVariables(caret2_color);
 	
 	var tdbg = ColorTestTwin(dropdowncolor,"#ffffff",c3dlight);
 	var tdbg2 = ColorTestTwin(dropdowncolor,"#000000",c3ddark);
-	
-	if (darkpage) { // Light theme
-		micabg = [ColorTestTwin(dropdowncolor,"#ffffff",0.25),'color'];
-		tabbedbg = [dropdowncolor,'normal'];
-	} else {
-		micabg = [dropdowncolor,'normal'];
-		tabbedbg = [ColorTestTwin(dropdowncolor,"#000000",0.25),'color'];
-	}
-	
 
+	micabg = [ColorTestTwin(dropdowncolor,content_color,0.75),'color'];
+	
 var invfilters = [
 					['opacity(1)', 'opacity(1) invert(1) hue-rotate(180deg)'],											  // Sp Dark Mode 0 (Normal)
 					['opacity(1)', 'opacity(1) invert(1)'],					 											  // Sp Dark Mode 1 (Reversi Dark)
@@ -2381,9 +2371,6 @@ var invfilters = [
 						  "--message-secondary-background-color-rgb:" + Color2(message2_color) + "!important;\n" +
 // Luna Levit
 						  "--mica-background-color:" + micabg[0] + ";\n" +
-						  "--tabbed-background-color:" + tabbedbg[0] + ";\n" +
-						  "--mica-blend-mode:" + micabg[1] + ";\n" +
-						  "--tabbed-blend-mode:" + tabbedbg[1] + ";\n" +
 // Misc Variables
 						'--desktop-background-image:' + img  + ';\n' +
 						'--desktop-background-image-filter:' + imgfilter  + ';\n' +

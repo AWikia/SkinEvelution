@@ -190,7 +190,7 @@ font-family:Trebuchet MS;
 --desktop-background-alignment:var(--desktop-background-vertical-alignment) var(--desktop-background-horizontal-alignment);
 /* Acryllic */
 --acryllic-filter:blur( calc(30px * calc(1.2 - var(--system-acryllic-opacity) ) ) ) saturate(125%);
---mica-filter:blur( calc(100px * calc(1.2 - var(--system-acryllic-opacity) ) ) );
+--mica-filter:blur( calc(150px * calc(1.2 - var(--system-acryllic-opacity) ) ) );
 /* Transition */
 --transitioner:cubic-bezier(0.25,0.25,0,1);
 /* Fonts */
@@ -282,8 +282,6 @@ body [force-active] {
 	--luna-background-color:var(--canvas-secondary-background-color);
 	--luna-mica-background-color:var(--mica-background-color);
 	--luna-mica-background-color-2:transparent;
-	--luna-tabbed-background-color:var(--tabbed-background-color);
-	--luna-tabbed-background-color-2:transparent;
 	--luna-background-color-rgb:var(--canvas-secondary-background-color-rgb);
 	--luna-background-color-hover:var(--canvas-secondary-background-color-hover);
 	--luna-text-background-color:var(--canvas-text-secondary-background-color);
@@ -306,6 +304,8 @@ body [force-active] {
 /* Unaccented (Unfocused) */
 body:not(:focus):not(:focus-within),
 body [force-inactive] {
+/* @TODO: Move to different pose */
+/* End @TODO */
 	--dropdown-opacity:1;
 	--mica-opacity:2;
 	--simple-fallback-color:var(--canvas-background-color)!important;
@@ -332,8 +332,6 @@ body [force-inactive] {
 	--luna-background-color:var(--active-title-background-color);
 	--luna-mica-background-color:var(--luna-background-color);
 	--luna-mica-background-color-2:var(--luna-background-color);
-	--luna-tabbed-background-color:var(--luna-background-color);
-	--luna-tabbed-background-color-2:var(--luna-background-color);
 	--luna-background-color-rgb:var(--active-title-background-color-rgb);
 	--luna-background-color-hover:var(--active-title-background-color-hover);
 	--luna-text-background-color:var(--active-title-alternative-foreground-color);
@@ -870,7 +868,7 @@ body {
 	--dropdown-opacity:var(--system-acryllic-opacity);
 	--simple-fallback-color:transparent;
 	--simple-fallback-opacity:var(--system-acryllic-opacity);
-	--mica-opacity:var(--system-acryllic-opacity);
+	--mica-opacity:calc(var(--system-acryllic-opacity) * 1.01);
 	accent-color:var(--highlight-background-color);
 	--icon-font-family:'Material Icons Round';
 	--mica-content:"";
@@ -961,15 +959,10 @@ container {
     opacity: calc(1 - calc( var(--mica-opacity) * 1));
     overflow: hidden;
     pointer-events: none;
-    mix-blend-mode: var(--mica-blend-mode);
+    mix-blend-mode:color;
     border-radius: inherit;
     filter: saturate(150%);
 }
-
-.lunalevit.has-tabs {
-    mix-blend-mode: var(--tabbed-blend-mode);
-}
-
 .has-accents .lunalevit.disables-on-accent,
 .lunalevit.hidden {
 	display:none!important;
@@ -2795,7 +2788,10 @@ max-height:152px;
    position:relative
 }
 
- .cpe-dropdown__content .cpe-list{padding:0 9px; margin:0 -9px;}
+ .cpe-dropdown__content .cpe-list {
+	padding:0 9px; 
+	margin:0 -9px;
+}
 
  .cpe-dropdown__content .cpe-list>li{
 	 margin:0;
@@ -4116,7 +4112,7 @@ html:not(.visualmode-contrast) .contrast-on {
 .visualmode-contrast .cpe-dropdown__content,
 .visualmode-contrast .cpe-dropdown__content .cpe-list.is-linked .cpe-dropdown-level-2 .cpe-dropdown-level-2__content {
 	--dropdown-opacity:1!important;
-	--mica-opacity:1!important;
+	--mica-opacity:2!important;
 	--simple-fallback-color:var(--canvas-background-color);
 }
 
@@ -4125,9 +4121,6 @@ html:not(.visualmode-contrast) .contrast-on {
 .visualmode-contrast body {
 	--acryllic-filter:none!important;
     --mica-filter:none!important;
-	--mica-filter-dark:none!important;
-	--tabbed-filter:none!important;
-	--tabbed-filter-dark:none!important;
 	--mica-content:none;
 }
 

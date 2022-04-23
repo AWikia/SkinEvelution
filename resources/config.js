@@ -59,10 +59,6 @@ function InitSBT() {
 		'<input type="radio" name="SBT" id="MI"></input>' +
 		'<label for="MI">Luna Levit</label>' +
 		'</section>' +
-		'<section>' +
-		'<input type="radio" name="SBT" id="TA"></input>' +
-		'<label for="TA">Tabbed Luna Levit</label>' +
-		'</section>' +
 		'</div>'
 	);
 	
