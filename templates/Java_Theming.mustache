@@ -1154,6 +1154,7 @@ function DownloadTheme(full=false) {
 				// Body BG
 				 '--desktop-background-image:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--desktop-background-image")  + ';\n' +
 				 '--desktop-background-image-filter:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--desktop-background-image-filter")  + ';\n' +
+				 '--desktop-background-image-blend-mode:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--desktop-background-image-blend-mode")  + ';\n' +
 				// Body Color
 				 '--desktop-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--desktop-background-color")  + ';\n' +
 				 '--desktop-background-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--desktop-background-color-hover")  + ';\n' +
@@ -1470,6 +1471,7 @@ function DownloadTheme(full=false) {
 		result = '.visualcolors-standard.theme-A {\n' + // Beginning
 				 '--desktop-background-image:' + GetDesktopImage()  + ';\n' +
 				 '--desktop-background-image-filter:' + getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-image-filter")  + ';\n' +
+				 '--desktop-background-image-blend-mode:' + getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-image-blend-mode")  + ';\n' +
 				 '--desktop-background-color:' + getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-color")  + ';\n' +
 				 '--desktop-text-background-color:' + getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-text-background-color")  + ';\n' +
 				 '--desktop-background-size:' + getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-size")  + ';\n' +
@@ -1909,13 +1911,15 @@ var headcolor1 = ColorTest(head_color,content_color);
 
 /** Community Header text color **/
 
+var img = GetDesktopImage();
+
 var headertext_color= GetDesktopText();
 
 if ((getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-text-background-color") !== 'auto')  ) {
 	// Liatch Quirk
 		var headertext_color = ColorInvert(headertext_color);
 
-		if ((window.MW18spdarkmode === 6) || (window.MW18spdarkmode === 7)) {
+		if ((window.MW18spdarkmode === 6) || (window.MW18spdarkmode === 7) || (img === '')) {
 			while ( ( !(isSuitableColor(headertext_color, head_color)) ) && (headertext_color !== lightness2)  ) {
 				var headertext_color= MiniColorTest2(headertext_color);
 			}
@@ -1986,7 +1990,6 @@ var messagecolor1 = ColorTest(message_color,content_color);
 var message2color1 = ColorTest(message2_color,content_color);
 var messagecolor2 = ColorTest(message_color);
 
-var img = GetDesktopImage();
 var imgfilter = getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-image-filter");
 
 if (imgfilter == 'none') {
@@ -2363,8 +2366,9 @@ var invfilters = [
 // Misc Variables
 						'--desktop-background-image:' + img  + ';\n' +
 						'--desktop-background-image-filter:' + imgfilter  + ';\n' +
-					 '--desktop-background-horizontal-alignment:' + getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-horizontal-alignment")  + ';\n' +
-					 '--desktop-background-vertical-alignment:' + getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-vertical-alignment")  + ';\n' +
+						'--desktop-background-image-blend-mode:' + getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-image-blend-mode")  + ';\n' +
+						'--desktop-background-horizontal-alignment:' + getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-horizontal-alignment")  + ';\n' +
+						'--desktop-background-vertical-alignment:' + getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-vertical-alignment")  + ';\n' +
 						 '--custom-font:' + GetCustomFont()  + ';\n' +
 						 '--custom-secondary-font:' + GetCustomFont2()  + ';\n' +
 						 '--border-radius:' + getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--border-radius")  + ';\n' +

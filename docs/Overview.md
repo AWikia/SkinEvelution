@@ -185,10 +185,11 @@ Each release of Evelution comes with different Sevelution releases, to name a fe
 - 2.7.0 = Codenamed Zinc = Introduced in Evelution 33.0.0 - Introduces the Inactive state of Luna Theming for CPE Language and dedicated accent colors for Luna Theming
 - 2.8.0 = Codenamed Yttrium = Introduced in Evelution 43.0.0 - Introduces custom acryllic transparency along with a new Luna Theming System (Compatible with earlier Servelution Clients)
 - 3.0.0 = Codenamed Zirconium = Introduced in Evelution 46.0.0 - Introduces Custom Primary font for each theme and CPE Language 2.0
-- 3.1.0 = Codenamed Niobium = Introduced in Evelution 51.0.0 - Introduces background image filters
+- 3.1.0 = Codenamed Niobium = Introduced in Evelution 51.0.0 - Introduces Background image filters
 - 3.2.0 = Codenamed Molybdenum = Introduced in Evelution 53.0.0 - Introduces Mica (Low-Level Acryllic)
 - 3.3.0 = Codenamed Technetium  = Introduced in Evelution 62.0.0 - Introduces Custom Secondary Canvas & Canvas Text Background Colors
 - 4.0.0 = Codenamed Ruthenium  = Introduced in Evelution 81.0.0 - Introduces Generic Color Hue Shift and CPE Language 3.0
+- 4.1.0 = Codenamed Rhodium = Introduced in Evelution 85.0.0 - Introduces Background Image Blend Modes
 
 ### The Luna Theming System
 Evelution comes with its own theming system, the Luna theming. It consists of three elements, the Luna Lovit, the Luna Levit and the Luna Lavccent:

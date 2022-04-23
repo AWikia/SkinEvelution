@@ -370,6 +370,44 @@ function InitDesigner() {
 		// TR
 			'<tr>' +
 				'<th style="width:150px;">' + 
+					mw.msg( 'evelution-designer-community-image-blend-mode' ) + 
+				'</td>' +
+
+				'<td style="text-align:center; width:150px">' +
+				   '<div class="cpe-dropdown cpe-select" tabindex="-1">' +
+						'<div class="cpe-input blend_mode cpe-dropdown__toggle" style="width:150px; min-width:150px;">' +
+							'<span class="cpe-select__value" value="normal">Normal</span>' +
+							'<span class="cpe-icon cpe-icon-tiny cpe-icon-large cpe-dropdown__toggle-chevron material-icons">' +
+								'arrow_drop_down' +
+							'</span>' +
+						'</div>' +
+						'<div class="cpe-dropdown__content">' +
+							'<ul class="cpe-list is-linked">' +
+								'<li value="normal"><a>Normal</a></li>' +
+								'<li value="multiply"><a>Multiply</a></li>' +
+								'<li value="screen"><a>Screen</a></li>' +
+								'<li value="overlay"><a>Overlay</a></li>' +
+								'<li value="darken"><a>Darken</a></li>' +
+								'<li value="lighten"><a>Lighten</a></li>' +
+								'<li value="color-dodge"><a>Color Dodge</a></li>' +
+								'<li value="color-burn"><a>Color Burn</a></li>' +
+								'<li value="hard-light"><a>Hard Light</a></li>' +
+								'<li value="soft-light"><a>Soft Light</a></li>' +
+								'<li value="difference"><a>Difference</a></li>' +
+								'<li value="exclusion"><a>Exclusion</a></li>' +
+								'<li value="hue"><a>Hue</a></li>' +
+								'<li value="saturation"><a>Saturation</a></li>' +
+								'<li value="color"><a>Color</a></li>' +
+								'<li value="luminosity"><a>Luminosity</a></li>' +
+							'</ul>' +
+						'</div>' +
+					'</div>' +
+				'</td>' +
+			'</tr>' +
+		// TR
+		// TR
+			'<tr>' +
+				'<th style="width:150px;">' + 
 					mw.msg( 'evelution-designer-community-image-alignment' ) + 
 				'</td>' +
 
@@ -918,6 +956,7 @@ function ApplyTheme () {
 				 '.theme-' + window.MW18ActiveTheme + '.visualcolors-standard {\n' + // Beginning
 				 '--desktop-background-image:' + image + ';\n' +
 				 '--desktop-background-image-filter:' + $('#bodyimagefilter').val() + ';\n' +
+				 '--desktop-background-image-blend-mode:' + $('.blend_mode .cpe-select__value').attr('value') + ';\n' +
 				 '--desktop-background-color:' + $('#bodybg').val()  + ';\n' +
 				 '--desktop-text-background-color:' + autocolor1  + ';\n' +
 				 '--desktop-background-horizontal-alignment:' + $('.bg_align2 .cpe-select__value').attr('value') + ';\n' +
@@ -1029,6 +1068,7 @@ function CopyTheme() {
 		result = '.theme-' + window.MW18ActiveTheme + '.visualcolors-standard {\n' + // Beginning
 				 '--desktop-background-image:' + image + ';\n' +
 				 '--desktop-background-image-filter:' + $('#bodyimagefilter').val() + ';\n' +
+				 '--desktop-background-image-blend-mode:' + $('.blend_mode .cpe-select__value').attr('value') + ';\n' +
 				 '--desktop-background-color:' + $('#bodybg').val()  + ';\n' +
 				 '--desktop-text-background-color:' + autocolor1  + ';\n' +
 				 '--desktop-background-horizontal-alignment:' + $('.bg_align2 .cpe-select__value').attr('value') + ';\n' +
@@ -1148,6 +1188,7 @@ function CopyTheme2() {
 		result = "$wgEvelutionTheme" + window.MW18ActiveTheme + " = [\n" + // Beginning
 				 "'desktop-background-image' => '" + image + "',\n" +
 				 "'desktop-background-image-filter' => '" + $("#bodyimagefilter").val() + "',\n" +
+				 "'desktop-background-image-blend-mode' => '" + $('.blend_mode .cpe-select__value').attr('value') + "',\n" +
 				 "'desktop-background-color' => '" + $("#bodybg").val()  + "',\n" +
 				 "'desktop-text-background-color' => '" + autocolor1  + "',\n" +
 				 "'desktop-background-horizontal-alignment' => '" + $(".bg_align2 .cpe-select__value").attr("value") + "',\n" +
@@ -1224,8 +1265,15 @@ function PasteTheme() {
 	$('.wikitable #bodybg2').prop('disabled',(document.querySelector('.wikitable #auto1').checked) );
 	// Body Image
 	$('#bodyimage').val( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-image").replace('url(', '').replace(')', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("").split("\"").join("") );
-	// Body Image Opacity
+	// Body Image Filter
 	$('#bodyimagefilter').val( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-image-filter") );
+
+	// Body Image Blend Mode
+	blend_mode = ['Normal', 'Multiply', 'Screen', 'Overlay', 'Darken', 'Lighten', 'Color Dodge', 'Color Burn', 'Hard Light', 'Soft Light', 'Difference', 'Exclusion', 'Hue', 'Saturation', 'Color', 'Luminosity'][['normal','multiply','screen','overlay','darken','lighten','color-dodge','color-burn','hard-light','soft-light','difference','exclusion','hue','saturation','color','luminosity'].indexOf( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-image-blend-mode") ) ]
+	$('.blend_mode .cpe-select__value').attr('value', getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-image-blend-mode") );
+	$('.blend_mode .cpe-select__value').html( blend_mode );
+
+
 	// Body Image Alignment V
 	bg_align = ["Top", "Middle", "Bottom"][["top", "center", "bottom"].indexOf( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-vertical-alignment") ) ]
 	$('.bg_align .cpe-select__value').attr('value', getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-vertical-alignment") );
@@ -1333,6 +1381,7 @@ function PasteTheme() {
 	$("#InProgressBanner2").remove();
 	AddFloatingBanner('Successfully pasted active theme to Theme Designer','success'); // alert('Successfully copied CPE Framework theme to Clipboard');
 
+
 }
 
 function TestTheme(banner=false) {
@@ -1400,6 +1449,7 @@ function TestTheme(banner=false) {
 		result = ':root .theme-A, .theme-B, .theme-C, .theme-D, .theme-E, .theme-F, .theme-G, .theme-H {\n' + // Beginning
 				 '--desktop-background-image:' + image + '!important;\n' +
 				 '--desktop-background-image-filter:' + $('#bodyimagefilter').val() + '!important;\n' +
+				 '--desktop-background-image-blend-mode:' + $('.blend_mode .cpe-select__value').attr('value') + '!important;\n' +
 				 '--desktop-background-color:' + $('#bodybg').val()  + '!important;\n' +
 				 '--desktop-text-background-color:' + autocolor1  + '!important;\n' +
 				 '--desktop-background-horizontal-alignment:' + $('.bg_align2 .cpe-select__value').attr('value') + '!important;\n' +
@@ -1614,9 +1664,12 @@ $('.wikitable #auto8').click(
 						var value = selected.getAttribute("value");
 						document.querySelector(' .cpe-dropdown.cpe-select:focus-within')
 						.addEventListener('click',(function() {
-									var content = selected.innerText;
-									document.querySelector('.cpe-select:focus-within .cpe-select__value').setAttribute("value", value);
-									document.querySelector('.cpe-select:focus-within .cpe-select__value').innerHTML= content;
+									if (selected != undefined) {
+										var content = selected.innerText;
+										document.querySelector('.cpe-select:focus-within .cpe-select__value').setAttribute("value", value);
+										document.querySelector('.cpe-select:focus-within .cpe-select__value').innerHTML= content;
+										selected = undefined;
+									}
 								}));
         }) );
 	});

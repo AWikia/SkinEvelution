@@ -58,10 +58,13 @@ function DropDownUpdate() {
 						var value = selected.getAttribute("value");
 						document.querySelector(' .cpe-dropdown.cpe-select:focus-within')
 						.addEventListener('click',(function() {
-									var content = selected.innerText;
-									document.querySelector('.cpe-select:focus-within .cpe-select__value').setAttribute("value", value);
-									document.querySelector('.cpe-select:focus-within .cpe-select__value').innerHTML= content;
-//									TestDynamicTheme(); // Change
+									if (selected != undefined) {
+										var content = selected.innerText;
+										document.querySelector('.cpe-select:focus-within .cpe-select__value').setAttribute("value", value);
+										document.querySelector('.cpe-select:focus-within .cpe-select__value').innerHTML= content;
+										selected = undefined;
+//										TestDynamicTheme(); // Change
+									}
 								}));
         }) );
 	});
@@ -437,7 +440,7 @@ function CheckCompat() {
 		}
 	}
 	{{#has-servelution-old}}
-	AddFloatingBanner("The following features have been paused as they are incompatible with the current Servelution client:{{#has-servelution-no-gchs}} Generic Color Hue Shift{{/has-servelution-no-gchs}}{{#has-servelution-no-custom-2ndbg}}, Custom Secondary Background Color{{/has-servelution-no-custom-2ndbg}}{{#has-servelution-no-mica}}, Luna Levit{{/has-servelution-no-mica}}{{#has-servelution-no-imagefilter}}, Background Image Filters{{/has-servelution-no-imagefilter}}{{#has-servelution-no-customfont}}, Custom Primary Font{{/has-servelution-no-customfont}}{{#has-servelution-no-customacryllic}}, Custom Elements Opacity{{/has-servelution-no-customacryllic}}{{#has-servelution-no-newluna}}, Dynamic Luna State{{/has-servelution-no-newluna}}{{#has-servelution-no-accent}}, Luna Lavccent{{/has-servelution-no-accent}}{{#has-servelution-no-dgeneric}}, Dynamic Generic Colors{{/has-servelution-no-dgeneric}}{{#has-servelution-no-actions}}, Sticky Page Actions{{/has-servelution-no-actions}}{{#has-servelution-no-headertext}}, Custom Desktop Text Color{{/has-servelution-no-headertext}}{{#has-servelution-no-dground}}, Dual Foreground Colors{{/has-servelution-no-dground}}{{#has-servelution-vanadium}}, Sticky Rail, Manual Contrast Level, Custom Dynamic Content{{/has-servelution-vanadium}}.<br>Please upgrade your Servelution client to enable those missing features","pause")
+	AddFloatingBanner("The following features have been paused as they are incompatible with the current Servelution client::{{#has-servelution-no-imageblend}} Background Image Blend Mode{{/has-servelution-no-imageblend}}{{#has-servelution-no-gchs}}, Generic Color Hue Shift{{/has-servelution-no-gchs}}{{#has-servelution-no-custom-2ndbg}}, Custom Secondary Background Color{{/has-servelution-no-custom-2ndbg}}{{#has-servelution-no-mica}}, Luna Levit{{/has-servelution-no-mica}}{{#has-servelution-no-imagefilter}}, Background Image Filters{{/has-servelution-no-imagefilter}}{{#has-servelution-no-customfont}}, Custom Primary Font{{/has-servelution-no-customfont}}{{#has-servelution-no-customacryllic}}, Custom Elements Opacity{{/has-servelution-no-customacryllic}}{{#has-servelution-no-newluna}}, Dynamic Luna State{{/has-servelution-no-newluna}}{{#has-servelution-no-accent}}, Luna Lavccent{{/has-servelution-no-accent}}{{#has-servelution-no-dgeneric}}, Dynamic Generic Colors{{/has-servelution-no-dgeneric}}{{#has-servelution-no-actions}}, Sticky Page Actions{{/has-servelution-no-actions}}{{#has-servelution-no-headertext}}, Custom Desktop Text Color{{/has-servelution-no-headertext}}{{#has-servelution-no-dground}}, Dual Foreground Colors{{/has-servelution-no-dground}}{{#has-servelution-vanadium}}, Sticky Rail, Manual Contrast Level, Custom Dynamic Content{{/has-servelution-vanadium}}.<br>Please upgrade your Servelution client to enable those missing features","pause")
 	{{/has-servelution-old}}
 }
 
