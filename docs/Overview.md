@@ -21,29 +21,32 @@ Themes can easily be made through the use of ThemeDesigner tool (Not available o
 ## Using the Different Color Modes, Visual Styles and Colors
 
 ### Color Schemes
-Four color schemes exist. Solo Light and Solo dark force Light and Dark modes respectively. Duo Light uses unaltered behavior of themes while Duo Dark forces inverted colors to all themes.
+Twelve Color Schemes exist, in both Light and Dark modes.
+
+### Visual Modes
+Three Visual Modes exist:
+- Standard is the normal ones
+- Lite has no transparency effects in it
+- High Contrast has high emphasis on people with disabilities and disables certain effects such as blurred shadows and hover states of generated colors
 
 ### Visual Styles
-Eight Visual Styles exist:
+Five Visual Styles exist:
 - Standard is the normal ones
-- Formal is Standard but with transparency effects that do not rely on color mixes
-- Lite is Standard but without transparency effects
+- General has styling more akin to Mobile Devices
 - Basic has lesser blurred shadows and focuses on a less demanding layout
-- High Contrast is Basic but with much stricter focus to Higher Contrast themes
-- Simple has no translucency and has funner-styled containers (i.e. Dropdowns are styled soley using Secondary Accent color)
+- Simple has funner-styled containers (i.e. Dropdowns are styled soley using Secondary Accent color)
 - Classic has styling dating back to Windows 95 - 2000
-- Classic High Contrast is Classic but with much stricter focus to Higher Contrast themes (i.e. Aliases 2nd Canvas color to the 1st ones, locks the 3d colors to specific ones)
 
 ### Visual Colors
 Nine different Visual Colors exist:
 - Standard Pack is the normal ones.
 - No Color Management pack disables all color-related settings (Themes and Color Modes) and forces System Colors, similar to the High Contrast Mode and having color management disabled
-- Cubes Pack is a multicolored colro scheme. Default themes have cubes as the base background and comes with four light and four dark themes. This pack comes with White, Pink, Yellow, Green, Black, Dark blue, Orange and Red variations. This color scheme can be customized by wikis using MediaWiki:Evelusion.css or MediaWiki:Common.css to make the wiki more unique
+- Cubes Pack is a multicolored color scheme. Default themes have cubes as the base background and comes with four light and four dark themes. This pack comes with White, Pink, Yellow, Green, Black, Dark blue, Orange and Red variations. This color scheme can be customized by wikis using MediaWiki:Evelusion.css or MediaWiki:Common.css to make the wiki more unique
 - Factory Pack is the OOBE color scheme. This focuses more on rounded corners and uses Ubutnu as the Secondary Font
 - Forced Packs is the color scheme with more emphasis on higher color contrast between elements. Four themes are light and four are dark.
 - Techno Pack is an all-green color scheme. Theme A demonstrates a light text color on a light theme while Theme D demonstrates a dark text color on a dark theme.
 - Retro Packs are two four-theme packs that uses colors dating back from the classic color schemes from Windows 95 to XP. All of them are light and do not contain any rounded corners or logo filter
-- Neon Packs is a color-scheme with eight light and eight dark schemes. Each theme focuses soley on a specific color with Theme A on Green, Theme B on Blue, Theme C on Pink, Theme D on Orange, Theme E on Red, Theme F on Yellow, Theme G on Purple and Theme H on Grayscale. All of them have special logo filter that turns the logo into a specific color when hovered on it.
+- Neon Packs are color-schemes with eight light and eight dark schemes. Each theme focuses soley on a specific color with Theme A on Green, Theme B on Blue, Theme C on Pink, Theme D on Orange, Theme E on Red, Theme F on Yellow, Theme G on Purple and Theme H on Grayscale. All of them have special logo filter that turns the logo into a specific color when hovered on it.
 - Evelution Color Packs are the System Color Schemes. Eight light and eight dark schemes exist
 
 ## Differences of Evelution and MpistoSkin2
@@ -198,7 +201,7 @@ Evelution comes with its own theming system, the Luna theming. It consists of th
 - Luna Lavccent is an additional color that will replace the Neutral Color when enabled.
 
 Luna Lovit will display as a fallback Solid Color when:
-- Running a visual style that does not support transparency effects
+- Running a visual mode other than Standard
 - System's Reduced transparcney is enabled
 - GPUs level is lower than 4
 - App workspace is not focused
@@ -206,7 +209,7 @@ Luna Lovit will display as a fallback Solid Color when:
 - App runs on a browser without support of ``backdrop-filter``
 
 Luna Levit will display as a fallback Solid Color when:
-- Running a visual style that does not support transparency effects
+- Running a visual mode other than Standard
 - System's Reduced transparcney is enabled
 - GPUs level is lower than 2
 - App workspace is not focused or runs fullscreen

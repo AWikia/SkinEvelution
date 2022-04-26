@@ -777,14 +777,14 @@ body {
 }
 
 
-	.visualcolors-nocolormanagement.theme-A, 
-	.visualcolors-nocolormanagement.theme-B, 
-	.visualcolors-nocolormanagement.theme-C, 
-	.visualcolors-nocolormanagement.theme-D, 
-	.visualcolors-nocolormanagement.theme-E, 
-	.visualcolors-nocolormanagement.theme-F, 
-	.visualcolors-nocolormanagement.theme-G, 
-	.visualcolors-nocolormanagement.theme-H {
+	:root .visualcolors-nocolormanagement.theme-A, 
+	:root .visualcolors-nocolormanagement.theme-B, 
+	:root .visualcolors-nocolormanagement.theme-C, 
+	:root .visualcolors-nocolormanagement.theme-D, 
+	:root .visualcolors-nocolormanagement.theme-E, 
+	:root .visualcolors-nocolormanagement.theme-F, 
+	:root .visualcolors-nocolormanagement.theme-G, 
+	:root .visualcolors-nocolormanagement.theme-H {
 		--desktop-background-image:url("")!important;
 		--desktop-background-image-filter:none!important;
 		--desktop-background-color:background!important;
@@ -961,7 +961,7 @@ container {
     border-radius: inherit;
     filter: saturate(150%);
 }
-.has-accents .lunalevit.disables-on-accent,
+
 .lunalevit.hidden {
 	display:none!important;
 }
@@ -1016,6 +1016,10 @@ container {
 
 /* Reduced Transparency */
 @media (prefers-reduced-transparency:reduce) {
+	.lite-display {
+		display:inline-block!important;
+	}
+
 	body,
 	.cpe-dropdown__content,
 	.cpe-dropdown__content .cpe-list.is-linked .cpe-dropdown-level-2 .cpe-dropdown-level-2__content {
@@ -1032,8 +1036,15 @@ container {
 
 }
 
+.lite-display {
+	display:none!important;
+}
 
 @supports (not ((backdrop-filter:none) or (-webkit-backdrop-filter:none))) {
+	.lite-display {
+		display:inline-block!important;
+	}
+
 	body,
 	.cpe-dropdown__content,
 	.cpe-dropdown__content .cpe-list.is-linked .cpe-dropdown-level-2 .cpe-dropdown-level-2__content {
@@ -1108,6 +1119,14 @@ container {
 		--mica-content:none!important;
 	}
 	
+	.gpu-level-0 .lite-display,
+	.gpu-level-1 .lite-display,
+	.gpu-level-2 .lite-display,	
+	.gpu-level-3 .lite-display {
+		display:inline-block!important;
+	}
+
+
 
 
 @media (prefers-reduced-motion: reduce) {
@@ -2758,6 +2777,7 @@ max-height:152px;
 .cpe-dropdown__content .cpe-list.is-linked.has-icons li > a {
 	display:flex;
 	justify-content:center;
+	position:relative;
 }
 
 .cpe-dropdown__content.cpe-visual-appearance .cpe-list.is-linked.cpe-themes > li,
