@@ -83,7 +83,7 @@ class SkinEvelution extends SkinMustache {
         $data["html-longpages-link"] = SpecialPage::getTitleFor( 'Longpages' )->getLocalURL();
         $data["html-unusedtemplates-link"] = SpecialPage::getTitleFor( 'Unusedtemplates' )->getLocalURL();
         $data["html-apisandbox-link"] = SpecialPage::getTitleFor( 'ApiSandbox' )->getLocalURL();
-        $data["html-messages-link"] = SpecialPage::getTitleFor( 'Allmessages' )->getLocalURL();
+        $data["html-allmessages-link"] = SpecialPage::getTitleFor( 'Allmessages' )->getLocalURL();
         $data["html-linkedactivity-link"] = SpecialPage::getTitleFor( 'Recentchangeslinked' )->getLocalURL();
         $data["html-export-link"] = SpecialPage::getTitleFor( 'Export' )->getLocalURL();
         $data["html-import-link"] = SpecialPage::getTitleFor( 'Import' )->getLocalURL();
@@ -106,7 +106,6 @@ class SkinEvelution extends SkinMustache {
 		$data["has-left-links"] = $this->getConfig()->get( 'EvelutionLeftPersonalLinks' );
 		$blacklistedPages = $this->getConfig()->get( 'EvelutionDisableRightRailFromSpecificPages' );
 		$data["has-disabled-rail"] = ($this->getConfig()->get( 'EvelutionDisableRightRail' ) || ($this->getOutput()->getTitle()->isMainPage()) || in_array( $this->getOutput()->getTitle()->getFullText(), $blacklistedPages ) );
-		$data["has-server-mode"] = $this->getConfig()->get( 'EvelutionServerMode' );
 		$data["has-no-color-management"] = $this->getConfig()->get( 'EvelutionDisableColorManagement' );
 		$data["has-forced-full-width"] = $this->getConfig()->get ( 'EvelutionForceFullWidth' );
 		$data["has-discord-id"] =  (wfMessage( 'evelution-discord-module-server-id' )->inContentLanguage() != '');

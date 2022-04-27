@@ -443,7 +443,15 @@ container > main {
 
 .evelution-taskbar .upper-links .explore-menu .widget-text {
 	vertical-align:middle;
-	margin-left:2px;
+	margin-left:4px;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	display:flex;
+	flex-flow:column nowrap;
+}
+
+.evelution-taskbar .upper-links .explore-menu .widget-text .upper-text,
+.evelution-taskbar .upper-links .explore-menu .widget-text .bottom-text {
 	overflow:hidden;
 	text-overflow:ellipsis;
 }
@@ -467,7 +475,6 @@ container > main {
 
 /* Left Aligned Taskbar */
 	.evelution-taskbar.left-links,
-	.evelution-taskbar.anon-taskbar,
 	.evelution-taskbar.v-taskbar {
 		--explore-link-size:var(--toolbar-link-size);
 	}
@@ -498,6 +505,14 @@ container > main {
 	.evelution-taskbar.left-links .upper-links .explore-menu .widget-text {
 		position: absolute;
 		top: 0;
+		width: calc(var(--explore-link-size) - 2px);
+		height: 100%;
+   	}
+
+	.evelution-taskbar.left-links .upper-links .explore-menu .widget-text .upper-text,
+	.evelution-taskbar.left-links .upper-links .explore-menu .widget-text .bottom-text {
+		position: absolute;
+		top: 0;
 		border-radius: 500px;
 		width: calc(var(--explore-link-size) - 2px);
 		margin-left: 0px;
@@ -508,19 +523,18 @@ container > main {
 		box-sizing: border-box;
 		text-align: center;
 	}
+	
+	.evelution-taskbar.left-links .upper-links .explore-menu .link .widget-text .bottom-text {
+		top:auto;
+		bottom:0;
+	}
 
 	.evelution-taskbar.left-links .upper-links .explore-menu .link,
-	.evelution-taskbar.anon-taskbar .upper-links .explore-menu .link,
 	.evelution-taskbar.v-taskbar .upper-links .explore-menu .link {
 		justify-content:center;
 		padding-left:0;
 		padding-right:0;
 	}
-
-	.evelution-taskbar.anon-taskbar:not(.left-links) .upper-links .explore-menu .link[cpe-tooltip-position="top"][cpe-tooltip]:after {
-		left:0;
-	}
-
 
 	.evelution-taskbar.left-links .upper-links .explore-menu .link[cpe-tooltip-position="top"][cpe-tooltip]:after,
 	.evelution-taskbar.v-taskbar .upper-links .explore-menu .link[cpe-tooltip-position="top"][cpe-tooltip]:after {
@@ -613,7 +627,15 @@ container > main {
 		overflow:visible;
 	}
 
-	.evelution-taskbar .upper-links .explore-menu .link .widget-text {
+	.evelution-taskbar .upper-links .explore-menu .widget-text {
+		position: absolute;
+		top: 0;
+		width: calc(var(--explore-link-size) - 2px);
+		height: 100%;
+   	}
+
+	.evelution-taskbar .upper-links .explore-menu .widget-text .upper-text,
+	.evelution-taskbar .upper-links .explore-menu .widget-text .bottom-text {
 		position: absolute;
 		top: 0;
 		border-radius: 500px;
@@ -625,6 +647,11 @@ container > main {
 		font-size: 9px;
 		box-sizing: border-box;
 		text-align: center;
+	}
+	
+	.evelution-taskbar .upper-links .explore-menu .link .widget-text .bottom-text {
+		top:auto;
+		bottom:0;
 	}
 
 	.evelution-taskbar .mobile-off {
@@ -1687,13 +1714,15 @@ gap:2px;
 	}
 
 
-.evelution-minibar .link.vlarge,
-.evelution-minibar .cpe-dropdown.vlarge,
+.evelution-minibar .link.xlarge,
+.evelution-minibar .cpe-dropdown.xlarge,
 .evelution-minibar .cpe-dropdown__content li.smallp,
 .evelution-minibar .cpe-dropdown__content li.small,
 .evelution-minibar .cpe-dropdown__content li.largep,
 .evelution-minibar .cpe-dropdown__content li.large,
-.evelution-minibar .cpe-dropdown__content li.vlargep {
+.evelution-minibar .cpe-dropdown__content li.vlargep,
+.evelution-minibar .cpe-dropdown__content li.vlarge,
+.evelution-minibar .cpe-dropdown__content li.xlargep {
 	display:none;
 }
 
@@ -1758,13 +1787,62 @@ gap:2px;
 	}
 
 
+@media only screen and (min-width:1760px) {
+	.evelution-minibar .cpe-dropdown.overflow-small {
+		display:none;
+	}
+
+	.evelution-minibar .link.xlarge,
+	.evelution-minibar .cpe-dropdown.xlarge {
+		display:flex;
+	}
+
+}
+
+@media only screen and (max-width:1629px) {
+	.evelution-minibar .link.xlargep,
+	.evelution-minibar .cpe-dropdown.xlargep {
+		display:none;
+	}
+	
+	.evelution-minibar .cpe-dropdown__content li.xlargep {
+		display:block;
+	}
+	
+
+
+}
+
+
+@media only screen and (min-width:1630px) {
+	.evelution-minibar .cpe-dropdown.overflow-smallp {
+		display:none;
+	}
+
+	.evelution-minibar .link.xlargep,
+	.evelution-minibar .cpe-dropdown.xlargep {
+		display:flex;
+	}
+
+}
+
+@media only screen and (max-width:1499px) {
+	.evelution-minibar .link.vlarge,
+	.evelution-minibar .cpe-dropdown.vlarge {
+		display:none;
+	}
+	
+	.evelution-minibar .cpe-dropdown__content li.vlarge {
+		display:block;
+	}
+	
+
+}
+
+
 @media only screen and (min-width:1500px) {
 	.evelution-minibar .title {
 		font-size:26px;
-	}
-
-	.evelution-minibar .cpe-dropdown.overflow-small {
-		display:none;
 	}
 
 	.evelution-minibar .link.vlarge,
@@ -1791,13 +1869,6 @@ gap:2px;
 	}
 	
 
-
-}
-
-@media only screen and (min-width:1390px) {
-	.evelution-minibar .cpe-dropdown.overflow-smallp {
-		display:none;
-	}
 
 }
 

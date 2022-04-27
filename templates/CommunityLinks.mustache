@@ -75,7 +75,17 @@
 								</span>
 							</a>
 						{{#is-loggedin}}
-							<a class="link cell last-action {{#has-forum}}vlarge{{/has-forum}}{{^has-forum}}vlargep{{/has-forum}}" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-specialpages}}"  href="{{html-spages-link}}">
+							<a class="link cell {{#has-forum}}xlargep{{/has-forum}}{{^has-forum}}vlarge{{/has-forum}}" cpe-tooltip="{{msg-apisandbox}}" cpe-tooltip-position="bottom" href="{{html-apisandbox-link}}">
+								<span class="cpe-icon material-icons">
+								api
+								</span>
+							</a>
+							<a class="link cell {{#has-forum}}xlarge{{/has-forum}}{{^has-forum}}xlargep{{/has-forum}}" cpe-tooltip="{{msg-allmessages}}" cpe-tooltip-position="bottom" href="{{html-allmessages-link}}">
+								<span class="cpe-icon material-icons">
+								security
+								</span>
+							</a>
+							<a class="link cell last-action {{#has-forum}}xlarge{{/has-forum}}{{^has-forum}}xlargep{{/has-forum}}" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-specialpages}}"  href="{{html-spages-link}}">
 								<span class="cpe-icon material-icons">
 								app_shortcut
 								</span>
@@ -142,8 +152,14 @@
 												</ul>
 											</div>
 										</li>
-										<li class="{{^has-forum}}vlargep{{/has-forum}}">
+										<li class="{{#has-forum}}vlarge{{/has-forum}}{{^has-forum}}vlargep{{/has-forum}}">
 											<a href="{{html-allpages-link}}">{{msg-allarticles}}</a>
+										</li>
+										<li class="{{#has-forum}}xlargep{{/has-forum}}{{^has-forum}}vlarge{{/has-forum}}">
+											<a href="{{html-apisandbox-link}}">{{msg-apisandbox}}</a>
+										</li>
+										<li class="{{^has-forum}}xlargep{{/has-forum}}">
+											<a href="{{html-allmessages-link}}">{{msg-allmessages}}</a>
 										</li>
 										<li>
 											<a href="{{html-spages-link}}">{{msg-specialpages}}</a>
