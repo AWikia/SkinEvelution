@@ -62,6 +62,7 @@ class SkinEvelution extends SkinMustache {
         $data["msg-evelution-activity-module"] = wfMessage( 'evelution-activity-module' )->inContentLanguage()->parseAsBlock(); // Additional JS is used
         $data["msg-evelution-about-module-info"] = wfMessage( 'evelution-about-module-info' )->inContentLanguage()->parseAsBlock();
         $data["msg-evelution-discord-module-server-id"] = wfMessage( 'evelution-discord-module-server-id' )->inContentLanguage();
+		$data["html-revision"] = '0';
         $data["html-rc-link"] = SpecialPage::getTitleFor( 'Recentchanges' )->getLocalURL();
         $data["html-files-link"] = SpecialPage::getTitleFor( 'Newimages' )->getLocalURL();
         $data["html-css-link"] = Title::newFromText( 'MediaWiki:Evelution.css' )->getLocalURL();
@@ -90,6 +91,7 @@ class SkinEvelution extends SkinMustache {
         $data["html-stats-link"] = SpecialPage::getTitleFor( 'Statistics' )->getLocalURL();
         $data["html-allpages-link"] = SpecialPage::getTitleFor( 'Allpages' )->getLocalURL();
         $data["html-designer-link"] =  Title::newFromText( 'CPE ThemeDesigner' )->getLocalURL(); // SpecialPage::getTitleFor( 'CPEThemeDesigner' )->getLocalURL();
+        $data["html-plink-link"] = SpecialPage::getTitleFor( 'PermanentLink' )->getLocalURL();
         $data["html-forum-link"] =  Title::newFromText( 'Forum:Index' )->getLocalURL(); // SpecialPage::getTitleFor( 'CPEThemeDesigner' )->getLocalURL();
         $data["html-purge-link"] = SpecialPage::getTitleFor( 'Purge' )->getLocalURL();
         if ( class_exists( 'wAvatar' ) ) {

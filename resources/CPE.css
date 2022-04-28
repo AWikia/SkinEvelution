@@ -2761,15 +2761,12 @@ max-height:152px;
 	grid:auto-flow / repeat(4, 1fr);
 }
 
-.explore-menu .cpe-dropdown__content .cpe-list.is-linked.has-icons,
-.user-profile .cpe-dropdown__content .cpe-list.is-linked.has-icons {
+.cpe-dropdown__content .cpe-list.is-linked.has-icons.is-single-row {
 	grid:repeat(1,0fr) / auto-flow; /* Unlimited columns in one row */
 	justify-content:flex-start;
 }
 
-.cpe-dropdown__content .cpe-list.cpe-device-themes.is-linked.has-icons,
 .cpe-dropdown__content .cpe-list.cpe-visual-modes.is-linked.has-icons {
-	grid:repeat(1,0fr) / auto-flow; /* Unlimited columns in one row */
 	justify-content:center;
 }
 
@@ -3437,7 +3434,9 @@ margin-right:16px;
   width: 38px;
 }
 
-/* Various Styles */
+/** Various Styles **/
+
+/* Alert Background Color */
 .cpe-floating-button.critical {
   --floating-button-color:var(--alert-background-color);
   --floating-button-color-hover:var(--alert-background-color-hover);
@@ -3446,6 +3445,16 @@ margin-right:16px;
   --floating-button-fadeout-color:var(--alert-background-color-rgb);
 }
 
+/* Pause Background Color */
+.cpe-floating-button.halt {
+  --floating-button-color:var(--pause-background-color);
+  --floating-button-color-hover:var(--pause-background-color-hover);
+  --floating-button-color-active:var(--pause-foreground-color);
+  --floating-button-background-color-active:var(--pause-background-color);
+  --floating-button-fadeout-color:var(--pause-background-color-rgb);
+}
+
+/* Success Background Color */
 .cpe-floating-button.good {
   --floating-button-color:var(--success-background-color);
   --floating-button-color-hover:var(--success-background-color-hover);
@@ -3454,7 +3463,7 @@ margin-right:16px;
   --floating-button-fadeout-color:var(--success-background-color-rgb);
 }
 
-
+/* Accented */
 .cpe-floating-button.accent {
   --floating-button-color:var(--hyperlink-background-color);
   --floating-button-color-hover:var(--hyperlink-background-color-hover);

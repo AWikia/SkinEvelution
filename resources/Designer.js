@@ -99,7 +99,7 @@ function InitDesigner() {
 
 
 	$(".evelution-floating-actions.extra-actions .evelution-floating-actions-container").append(
-		'<button class="cpe-floating-button accent theme-clear-button page-side-tool" cpe-tooltip-position="reverse" cpe-tooltip="' + mw.msg( 'evelution-designer-clear' ) + '">' +
+		'<button class="cpe-floating-button halt theme-clear-button page-side-tool" cpe-tooltip-position="reverse" cpe-tooltip="' + mw.msg( 'evelution-designer-clear' ) + '">' +
 			'<span class="cpe-icon material-icons">' +
 				'undo' +
 			'</span>' +

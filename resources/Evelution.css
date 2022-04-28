@@ -136,7 +136,7 @@ color:var(--progress-background-color-hover);
 
 body,
 container {
-	min-width:315px;
+	min-width:320px;
 }
 
 @media only screen and (max-width:319px) {
@@ -507,6 +507,7 @@ container > main {
 		top: 0;
 		width: calc(var(--explore-link-size) - 2px);
 		height: 100%;
+		margin-left:0;
    	}
 
 	.evelution-taskbar.left-links .upper-links .explore-menu .widget-text .upper-text,
@@ -568,6 +569,20 @@ container > main {
 		display:none!important;
 	}
 
+
+
+@media only screen and (max-width:1279px) {
+	.evelution-taskbar .large-off {
+		display:none!important;
+	}
+}
+
+
+@media only screen and (min-width:1280px) {
+	.evelution-taskbar .large-on {
+		display:none!important;
+	}
+}
 
 
 @media only screen and (max-width:1149px) {
@@ -632,6 +647,7 @@ container > main {
 		top: 0;
 		width: calc(var(--explore-link-size) - 2px);
 		height: 100%;
+		margin-left:0;
    	}
 
 	.evelution-taskbar .upper-links .explore-menu .widget-text .upper-text,
@@ -1356,7 +1372,7 @@ gap:2px;
 
 	.evelution-top-actions .link {
 		transition:color 400ms var(--transitioner), background-color 300ms var(--transitioner), background-image 300ms var(--transitioner), transform 300ms var(--transitioner), box-shadow 50ms var(--transitioner);
-		padding: 0 7px;
+		padding: 0 3.5px;
 		height:inherit;
 		color:inherit;
 		text-decoration:none!important;
@@ -1557,6 +1573,7 @@ gap:2px;
     content: "article";
     --icon-scale: 0.8;
     vertical-align:middle;
+    font-weight:inherit;
 }
 
 .headroom--top .evelution-minibar .logo-with-wordmark {
@@ -3110,7 +3127,7 @@ white-space:nowrap;
 
 .has-icon-labels #ca-mstats > :before,
 .has-icon-labels #ca-translationstats > :before {
-	content:"trending_up";
+	content:"leaderboard";
 }
 
 .has-icon-labels #ca-supportedlanguages > :before {
@@ -3319,7 +3336,7 @@ white-space:nowrap;
 }
 
 .has-icon-labels #n-recentchanges > a:before {
-	content:"trending_up";
+	content:"timeline";
 }
 
 .has-icon-labels #n-randompage > a:before {
@@ -3382,7 +3399,7 @@ white-space:nowrap;
 
 
 .has-icon-labels #t-recentchangeslinked > a:before {
-	content:"trending_up";
+	content:"timeline";
 }
 
 .has-icon-labels #t-upload > a:before {
@@ -3569,13 +3586,16 @@ white-space:nowrap;
 	content:"logout";
 }
 
+.mw-special-NewestPages .namespace-with-title .has-icon:before {
+	content:"trending_up";
+}
+
 .mw-special-UserActivity .namespace-with-title .has-icon:before,
 .mw-special-Recentchanges .namespace-with-title .has-icon:before,
 .mw-special-Recentchangeslinked .namespace-with-title .has-icon:before,
 .mw-special-TranslationStats .namespace-with-title .has-icon:before,
-.mw-special-MessageGroupStats .namespace-with-title .has-icon:before,
-.mw-special-NewestPages .namespace-with-title .has-icon:before {
-	content:"trending_up";
+.mw-special-MessageGroupStats .namespace-with-title .has-icon:before {
+	content:"timeline";
 }
 
 .mw-special-PasswordReset .namespace-with-title .has-icon:before,
@@ -3778,10 +3798,14 @@ white-space:nowrap;
 }
 
 .mw-special-Whatlinkshere .namespace-with-title .has-icon:before,
-.mw-special-RottenLinks .namespace-with-title .has-icon:before,
-.mw-special-PermanentLink .namespace-with-title .has-icon:before {
+.mw-special-RottenLinks .namespace-with-title .has-icon:before {
 	content:"insert_link";
 }
+
+.mw-special-PermanentLink .namespace-with-title .has-icon:before {
+	content:"attachment";
+}
+
 
 .mw-special-Export .namespace-with-title .has-icon:before,
 .mw-special-ExportTranslations .namespace-with-title .has-icon:before  {

@@ -1118,14 +1118,14 @@ color:inherit;
 
 
 .visualstyle-simple .cpe-floating-button {
-  --floating-button-background-color:var(--canvas-text-background-color);
-  --floating-button-background-color-hover:var(--canvas-text-background-color-hover);
+  --floating-button-background-color:var(--inactive-text-background-color);
+  --floating-button-background-color-hover:var(--inactive-text-background-color-hover);
   --floating-button-background-color-active:var(--floating-button-background-color-hover);
-  --floating-button-color:var(--canvas-text-foreground-color);
+  --floating-button-color:var(--inactive-text-foreground-color);
   --floating-button-color-hover:var(--floating-button-color);
-  --floating-button-color-active:var(--canvas-text-foreground-color-inverted);
+  --floating-button-color-active:var(--inactive-text-foreground-color-inverted);
   --floating-button-border-color:var(--floating-button-background-color);
-  --floating-button-border-color-hover:rgba(var(--canvas-text-foreground-color-rgb),0.2);
+  --floating-button-border-color-hover:rgba(var(--inactive-text-foreground-color-rgb),0.2);
   --floating-button-border-color-active:var(--floating-button-border-color-hover);
   --floating-button-fadeout-opacity:0;
   --floating-button-shadow-opacity:0.66!important;
@@ -1150,6 +1150,16 @@ color:inherit;
   --floating-button-border-color-hover:rgba(var(--alert-foreground-color-rgb),0.2);
 }
 
+.visualstyle-simple .cpe-floating-button.halt {
+  --floating-button-background-color:var(--pause-background-color);
+  --floating-button-background-color-hover:var(--pause-background-color-hover-2);
+  --floating-button-color:var(--pause-foreground-color);
+  --floating-button-color-hover:var(--floating-button-color);
+  --floating-button-color-active:var(--pause-foreground-color-inverted);
+  --floating-button-border-color-hover:rgba(var(--pause-foreground-color-rgb),0.2);
+}
+
+
 .visualstyle-simple .cpe-floating-button.good {
   --floating-button-background-color:var(--success-background-color);
   --floating-button-background-color-hover:var(--success-background-color-hover-2);
@@ -1165,7 +1175,7 @@ color:inherit;
   --floating-button-background-color-active:var(--floating-button-background-color-hover);
   --floating-button-color-hover:var(--floating-button-background-color);
   --floating-button-color-active:var(--floating-button-color-hover);
-  --floating-button-border-color-hover:rgba(var(--canvas-text-background-color-rgb),0.5);
+  --floating-button-border-color-hover:rgba(var(--inactive-text-background-color-rgb),0.5);
   --floating-button-border-color-active:var(--floating-button-border-color-hover);
 }
 
@@ -1176,6 +1186,11 @@ color:inherit;
 .visualstyle-simple.visualmode-contrast .cpe-floating-button.critical {
   --floating-button-border-color-hover:rgba(var(--alert-background-color-rgb),0.5);
 }
+
+.visualstyle-simple.visualmode-contrast .cpe-floating-button.halt {
+  --floating-button-border-color-hover:rgba(var(--pause-background-color-rgb),0.5);
+}
+
 
 .visualstyle-simple.visualmode-contrast .cpe-floating-button.good {
   --floating-button-border-color-hover:rgba(var(--success-background-color-rgb),0.5);
@@ -2453,6 +2468,11 @@ box-shadow:none!important;
 	color:var(--alert-secondary-background-color)!important;
 }
 
+.visualstyle-classic .cpe-floating-button.halt {
+	color:var(--pause-secondary-background-color)!important;
+}
+
+
 .visualstyle-classic .cpe-floating-button.good {
 	color:var(--success-secondary-background-color)!important;
 }
@@ -2632,7 +2652,7 @@ margin-right:0;
 
 .visualstyle-classic .evelution-top-actions .link,
 .visualstyle-classic .evelution-minibar .link {
-	padding:0 5px;
+	padding:0 2.5px;
 	margin-left:1px;
 }
 
@@ -2937,6 +2957,14 @@ background-color:var(--hyperlink-background-color);
   --floating-button-background-color-hover:var(--alert-background-color);
   --floating-button-background-color-active:var(--alert-background-color-hover);
 }
+
+.visualstyle-general .cpe-floating-button.halt {
+  --floating-button-color-hover:var(--pause-foreground-color);
+  --floating-button-color-active:var(--pause-foreground-color-inverted);
+  --floating-button-background-color-hover:var(--pause-background-color);
+  --floating-button-background-color-active:var(--pause-background-color-hover);
+}
+
 
 .visualstyle-general .cpe-floating-button.good {
   --floating-button-color-hover:var(--success-foreground-color);
