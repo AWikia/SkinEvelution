@@ -121,6 +121,8 @@ class SkinEvelution extends SkinMustache {
 		$data["has-box-alias"] = $this->getConfig()->get ( 'EvelutionChangeMessageBoxesToBanners' );
 		$data["has-css"] = $this->getConfig()->get( 'AllowUserCss' );
 		$data["has-js"] = $this->getConfig()->get( 'AllowUserJs' );
+		$data["has-mf"] = (ExtensionRegistry::getInstance()->isLoaded( 'MobileFrontend' ));
+
 		$data["is-loggedin"] = $this->getSkin()->getUser()->isRegistered();
 
 
