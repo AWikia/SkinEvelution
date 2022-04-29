@@ -306,22 +306,22 @@ body:not(:focus):not(:focus-within),
 body [force-inactive] {
 	--dropdown-opacity:1;
 	--mica-opacity:2;
-	--simple-fallback-color:var(--canvas-background-color)!important;
-	--luna-background-color:var(--canvas-background-color);
-	--luna-background-color-rgb:var(--canvas-background-color-rgb);
-	--luna-background-color-hover:var(--canvas-background-color-hover);
-	--luna-text-background-color:var(--canvas-text-background-color-hover);
-	--luna-text-background-color-hover:var(--canvas-text-background-color);
-	--luna-text-background-color-rgb:var(--canvas-text-background-color-hover-rgb);
-	--luna-text-background-color-hover-rgb:var(--canvas-text-background-color-rgb);	
-	--luna-border-background-color:var(--canvas-background-color-hover);
-	--luna-foreground-color:var(--canvas-foreground-color-hover);
-	--luna-foreground-color-inverted:var(--canvas-foreground-color-hover);
-	--luna-foreground-color-hover:var(--canvas-foreground-color);
-	--luna-foreground-color-rgb:var(--canvas-foreground-color-hover-rgb);
-	--luna-foreground-color-hover-rgb:var(--canvas-foreground-color-rgb);
-	--luna-alternative-foreground-color:var(--canvas-alternative-foreground-color);
-	--luna-alternative-foreground-color-hover:var(--canvas-alternative-foreground-color-hover);
+	--simple-fallback-color:var(--canvas-secondary-background-color)!important;
+	--luna-background-color:var(--canvas-secondary-background-color);
+	--luna-background-color-rgb:var(--canvas-secondary-background-color-rgb);
+	--luna-background-color-hover:var(--canvas-secondary-background-color-hover);
+	--luna-text-background-color:var(--canvas-secondary-text-background-color-hover);
+	--luna-text-background-color-hover:var(--canvas-text-secondary-background-color);
+	--luna-text-background-color-rgb:var(--canvas-text-secondary-background-color-hover-rgb);
+	--luna-text-background-color-hover-rgb:var(--canvas-text-secondary-background-color-rgb);	
+	--luna-border-background-color:var(--canvas-secondary-background-color-hover);
+	--luna-foreground-color:var(--canvas-secondary-foreground-color-hover);
+	--luna-foreground-color-inverted:var(--canvas-secondary-foreground-color-hover);
+	--luna-foreground-color-hover:var(--canvas-secondary-foreground-color);
+	--luna-foreground-color-rgb:var(--canvas-secondary-foreground-color-hover-rgb);
+	--luna-foreground-color-hover-rgb:var(--canvas-secondary-foreground-color-rgb);
+	--luna-alternative-foreground-color:var(--canvas-secondary-alternative-foreground-color);
+	--luna-alternative-foreground-color-hover:var(--canvas-secondary-alternative-foreground-color-hover);
 }
 
 /* Accented (Focused) */
@@ -2252,7 +2252,7 @@ input[type="checkbox"]::after, input[type="radio"]::after {
 	--icon-scale:1;
 	--icon-size:1;
   font-family: var(--icon-font-family)!important;
-  font-weight: normal;
+  font-weight: inherit;
   font-style: normal;
   display: inline-block;
   cursor:inherit;
@@ -2776,6 +2776,15 @@ max-height:152px;
 	justify-content:center;
 	position:relative;
 }
+
+.cpe-dropdown__content .cpe-list.is-linked.has-icons > li > a .cpe-icon-badge {
+	position:absolute; 
+	top:0; 
+	right:0; 
+	z-index:1;
+	font-variation-settings:'FILL' 1;
+}
+
 
 .cpe-dropdown__content.cpe-visual-appearance .cpe-list.is-linked.cpe-themes > li,
 .cpe-dropdown__content.cpe-visual-appearance .cpe-list.is-linked.cpe-visual-styles > .custom {

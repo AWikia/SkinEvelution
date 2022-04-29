@@ -94,6 +94,7 @@ class SkinEvelution extends SkinMustache {
         $data["html-plink-link"] = SpecialPage::getTitleFor( 'PermanentLink' )->getLocalURL();
         $data["html-forum-link"] =  Title::newFromText( 'Forum:Index' )->getLocalURL(); // SpecialPage::getTitleFor( 'CPEThemeDesigner' )->getLocalURL();
         $data["html-purge-link"] = SpecialPage::getTitleFor( 'Purge' )->getLocalURL();
+        $data["html-mypage-link"] = SpecialPage::getTitleFor( 'MyPage' )->getLocalURL();
         if ( class_exists( 'wAvatar' ) ) {
 			$avatar = new wAvatar( $this->getSkin()->getUser()
 				->getId(), 'l' );
@@ -118,6 +119,8 @@ class SkinEvelution extends SkinMustache {
 		$data["has-mono-logo"] = $this->getConfig()->get ( 'EvelutionMonoLogo' );
 		$data["has-interlanguage-links"] = true;
 		$data["has-box-alias"] = $this->getConfig()->get ( 'EvelutionChangeMessageBoxesToBanners' );
+		$data["has-css"] = $this->getConfig()->get( 'AllowUserCss' );
+		$data["has-js"] = $this->getConfig()->get( 'AllowUserJs' );
 		$data["is-loggedin"] = $this->getSkin()->getUser()->isRegistered();
 
 
