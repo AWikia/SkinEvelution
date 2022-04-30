@@ -142,7 +142,8 @@
 	{{#has-servelution-no-newluna}}
 	/* Unaccented (Unfocused) */
 	:root:root:root body:not(:focus):not(:focus-within),
-	:root:root:root body [force-inactive] {
+	:root:root:root body [force-inactive],
+	:root:root:root body:not(:focus):not(:focus-within) [force-unaccented] {
 		--dropdown-opacity:var(--system-acryllic-opacity);
 		--luna-background-color:var(--canvas-secondary-background-color);
 		--luna-mica-background-color:var(--mica-background-color);
@@ -163,6 +164,7 @@
 		--luna-alternative-foreground-color-hover:var(--canvas-secondary-alternative-foreground-color-hover);
 		--luna-alternative-foreground-color-rgb:var(--canvas-alternative-foreground-color-rgb);
 		--luna-hyperlink-background-color:var(--hyperlink-secondary-background-color);
+		--luna-hyperlink-background-color-hover:var(--hyperlink-secondary-background-color-hover);
 		--luna-hyperlink-background-color-rgb:var(--hyperlink-secondary-background-color-rgb);
 	}
 
@@ -189,6 +191,7 @@
 		--luna-alternative-foreground-color-hover:var(--highlight-alternative-foreground-color-hover);
 		--luna-alternative-foreground-color-rgb:var(--highlight-alternative-foreground-color-rgb);
 		--luna-hyperlink-background-color:var(--hyperlink-tertiary-background-color);
+		--luna-hyperlink-background-color-hover:var(--hyperlink-tertiary-background-color-hover);
 		--luna-hyperlink-background-color-rgb:var(--hyperlink-tertiary-background-color-rgb);
 	}
 
@@ -214,6 +217,7 @@
 		--luna-alternative-foreground-color-hover:var(--highlight-alternative-foreground-color-hover);
 		--luna-alternative-foreground-color-rgb:var(--highlight-alternative-foreground-color-rgb);
 		--luna-hyperlink-background-color:var(--hyperlink-tertiary-background-color);
+		--luna-hyperlink-background-color-hover:var(--hyperlink-tertiary-background-color-hover);
 		--luna-hyperlink-background-color-rgb:var(--hyperlink-tertiary-background-color-rgb);
 	}
 
@@ -221,6 +225,7 @@
 	
 	{{#has-servelution-no-accent}}
 	/* Unaccented (Unfocused) */
+	:root:root:root body,
 	:root:root:root body,
 	:root:root:root body {
 		--dropdown-opacity:var(--system-acryllic-opacity);
@@ -243,6 +248,7 @@
 		--luna-alternative-foreground-color-hover:var(--canvas-secondary-alternative-foreground-color-hover);
 		--luna-alternative-foreground-color-rgb:var(--canvas-alternative-foreground-color-rgb);
 		--luna-hyperlink-background-color:var(--hyperlink-secondary-background-color);
+		--luna-hyperlink-background-color-hover:var(--hyperlink-secondary-background-color-hover);
 		--luna-hyperlink-background-color-rgb:var(--hyperlink-secondary-background-color-rgb);
 	}
 	{{/has-servelution-no-accent}}
