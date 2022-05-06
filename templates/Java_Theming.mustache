@@ -17,6 +17,7 @@ window.MW18ActiveStyleMode = '-';
 window.MW18AutoAccent = '0';
 /* DCM Modes */
 window.MW18DCMMode = 'standard';
+window.MW18DCMType = 'standard';
 /* Some Theming Colors */
 window.MW18PageColor = GetCanvasShort();
 window.MW18PageColorFG = '#000000';
@@ -103,6 +104,10 @@ var visualColorNames = ['standard', 'nocolormanagement'];
 			insertKey('dcm-mode', 'standard' );
 		}
 	}
+	if (getKey('dcm-type') === '-1') {
+		insertKey('dcm-type', 'standard' );
+	}
+
 	var theme_selected = getKey('theme-selected');
 	var visual_mode = getKey('visual-appearance-mode');
 	var visual_style = getKey('visual-appearance-style');
@@ -112,6 +117,7 @@ var visualColorNames = ['standard', 'nocolormanagement'];
 	var contrast_mode = getKey('contrast-mode');
 	var accent_active = getKey('accent-active');
 	var dcm_mode = getKey('dcm-mode');
+	var dcm_type = getKey('dcm-type');
     getParams().forEach(function (param) {
         var key = param.split("=")[0];
         var value = param.split("=")[1];
@@ -203,6 +209,10 @@ var visualColorNames = ['standard', 'nocolormanagement'];
 				dcm_mode = value;
 				console.info('DCM mode settings overriden');
                 break;
+            case 'usedcmtype':
+				dcm_type = value;
+				console.info('DCM type settings overriden');
+                break;
         }
     });
     var themes = {{>Themes}} // @REMOVEME: In Ivilution, Parmalution and CPE Language (Change to Empty String instead)
@@ -213,7 +223,7 @@ var visualColorNames = ['standard', 'nocolormanagement'];
 	colortheme(color_style,device_theme,false,false);
 	contrastmode(contrast_mode,false,false);
 	SetAccent(accent_active,false);
-	SetDCM(dcm_mode,false,false);
+	SetDCM(dcm_type,dcm_mode,false,false);
 	ManagerRows(); // For Task Manager Only
 	VisualStyleCompile(); // Compiles the Contrast Options
 	VisualMode(visual_mode,false);
@@ -331,11 +341,11 @@ function VisualColor(style,save=true,repaint=true) {
 			ColorUpdate(true);
 		}
 
-		var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-colors li.selected, .skin-tunic #visual-colors .mw-portlet-body ul li.selected");
+		var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-colors li.selected");
 		if (x) {
 			x.classList.remove("selected");
 		}
-		var y = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-colors li[data-visual-color='" + style + "'], .skin-tunic #visual-colors .mw-portlet-body ul li[data-visual-color='" + style + "']");
+		var y = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-colors li[data-visual-color='" + style + "']");
 		if (y) {
 			y.classList.add("selected")
 		}
@@ -398,26 +408,6 @@ function VisualStyleCompile() {
 			var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-colors");
 			if (x) {
 				x.insertAdjacentHTML('beforeend',str);
-			} else {
-				var x = document.querySelector(".skin-tunic #visual-colors .mw-portlet-body ul");
-				if (x) {
-					str = 	'<li data-visual-color="' + visualColors[i][0] + '">' +
-							'<a onclick="VisualColor(' + "'" + visualColors[i][0]  + "'" + ')">' +
-								'<span>' + visualColors[i][1] + '</span>' +
-							'</a>' +
-							'<div style="position:absolute; z-index:-1; pointer-events:none; opacity:0;">' +
-								'<div class="cpe-theming visualcolors-' + visualColors[i][0] + ' theme-A"></div>' +
-								'<div class="cpe-theming visualcolors-' + visualColors[i][0] + ' theme-B"></div>' +
-								'<div class="cpe-theming visualcolors-' + visualColors[i][0] + ' theme-C"></div>' +
-								'<div class="cpe-theming visualcolors-' + visualColors[i][0] + ' theme-D"></div>' +
-								'<div class="cpe-theming visualcolors-' + visualColors[i][0] + ' theme-E"></div>' +
-								'<div class="cpe-theming visualcolors-' + visualColors[i][0] + ' theme-F"></div>' +
-								'<div class="cpe-theming visualcolors-' + visualColors[i][0] + ' theme-G"></div>' +
-								'<div class="cpe-theming visualcolors-' + visualColors[i][0] + ' theme-H"></div>' +
-							'</div>' +
-						'</li>'
-					x.insertAdjacentHTML('beforeend',str);
-				}
 			}
 		}
 	}
@@ -430,11 +420,11 @@ function VisualStyleCompile() {
 function GetDesktop() {
 	if (ForcedColors()) {
 		if 	(CSS.supports("color","-moz-dialog")) {
-			var button = getComputedStyle(document.querySelector('.fc-mozbuttonface')).getPropertyValue("color");
+			var button = getComputedStyle(document.querySelector('.dcm-' + window.MW18DCMType + ' .fc-mozbuttonface')).getPropertyValue("color");
 		} else {
-			var button = getComputedStyle(document.querySelector('.fc-buttonface')).getPropertyValue("color");
+			var button = getComputedStyle(document.querySelector('.dcm-' + window.MW18DCMType + ' .fc-buttonface')).getPropertyValue("color");
 		}
-		return [getComputedStyle(document.querySelector('.fc-background')).getPropertyValue("color"), button, getComputedStyle(document.querySelector('.fc-activecaption')).getPropertyValue("color"), getComputedStyle(document.querySelector('.fc-canvas')).getPropertyValue("color")][ForcedColorMode()];
+		return [getComputedStyle(document.querySelector('.dcm-' + window.MW18DCMType + ' .fc-background')).getPropertyValue("color"), button, getComputedStyle(document.querySelector('.dcm-' + window.MW18DCMType + ' .fc-activecaption')).getPropertyValue("color"), getComputedStyle(document.querySelector('.dcm-' + window.MW18DCMType + ' .fc-canvas')).getPropertyValue("color")][ForcedColorMode()];
 	} else {
 		return getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-color").trim();
 	}
@@ -487,7 +477,7 @@ if (img == '""') {
 
 function GetDesktopText() {
 	if (ForcedColors()) {
-//		return getComputedStyle(document.querySelector('.fc-buttontext')).getPropertyValue("color");
+//		return getComputedStyle(document.querySelector('.dcm-' + window.MW18DCMType + ' .fc-buttontext')).getPropertyValue("color");
 		var color = window.MW18BgColor;
 		return GetForegroundVariables(color)[4];
 	} else if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-text-background-color") === 'auto') {
@@ -501,7 +491,7 @@ function GetDesktopText() {
 
 function GetCanvasShort() { // Like GetCanvas() without forced colors mode you get the unaltered page background mode (Used for checking dark mode)
 	if (ForcedColors()) {
-		return getComputedStyle(document.querySelector('.fc-canvas')).getPropertyValue("color");
+		return getComputedStyle(document.querySelector('.dcm-' + window.MW18DCMType + ' .fc-canvas')).getPropertyValue("color");
 	} else {
 		return getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--canvas-background-color").trim();
 	}
@@ -510,7 +500,7 @@ function GetCanvasShort() { // Like GetCanvas() without forced colors mode you g
 
 function GetCanvas() {
 	if (ForcedColors()) {
-		return getComputedStyle(document.querySelector('.fc-canvas')).getPropertyValue("color");
+		return getComputedStyle(document.querySelector('.dcm-' + window.MW18DCMType + ' .fc-canvas')).getPropertyValue("color");
 	} else {
 		return window.MW18PageColor;
 	}
@@ -519,9 +509,9 @@ function GetCanvas() {
 function GetCanvas2() { // Like GetCanvas() without forced colors mode you get the unaltered page background mode (Used for checking dark mode)
 	if (ForcedColors()) {
 		if 	(CSS.supports("color","-moz-dialog")) {
-			return getComputedStyle(document.querySelector('.fc-mozbuttonface')).getPropertyValue("color");
+			return getComputedStyle(document.querySelector('.dcm-' + window.MW18DCMType + ' .fc-mozbuttonface')).getPropertyValue("color");
 		} else {
-			return getComputedStyle(document.querySelector('.fc-buttonface')).getPropertyValue("color");
+			return getComputedStyle(document.querySelector('.dcm-' + window.MW18DCMType + ' .fc-buttonface')).getPropertyValue("color");
 		}
 	} else {
 		return getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--canvas-secondary-background-color").trim();
@@ -531,7 +521,7 @@ function GetCanvas2() { // Like GetCanvas() without forced colors mode you get t
 
 function GetHyperlink() {
 	if (ForcedColors()) {
-		return getComputedStyle(document.querySelector('.fc-linktext')).getPropertyValue("color");
+		return getComputedStyle(document.querySelector('.dcm-' + window.MW18DCMType + ' .fc-linktext')).getPropertyValue("color");
 	} else {
 		return getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--hyperlink-background-color").trim();
 	}
@@ -540,7 +530,7 @@ function GetHyperlink() {
 
 function GetInactiveText() {
 	if (ForcedColors()) {
-		return getComputedStyle(document.querySelector('.fc-graytext')).getPropertyValue("color");
+		return getComputedStyle(document.querySelector('.dcm-' + window.MW18DCMType + ' .fc-graytext')).getPropertyValue("color");
 	} else if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--inactive-text-background-color") === 'auto') {
 		return ColorTestTwin(window.MW18PageColor,window.MW18PageColorFG,window.MW18FinalContrast*2);
 	} else {
@@ -551,7 +541,7 @@ function GetInactiveText() {
 
 function GetCanvasText() {
 	if (ForcedColors()) {
-		return getComputedStyle(document.querySelector('.fc-canvastext')).getPropertyValue("color");
+		return getComputedStyle(document.querySelector('.dcm-' + window.MW18DCMType + ' .fc-canvastext')).getPropertyValue("color");
 	} else if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--canvas-text-background-color") === 'auto') {
 		var color = window.MW18PageColor;
 		return GetForegroundVariables(color)[4];
@@ -564,9 +554,9 @@ function GetCanvasText() {
 function GetCanvasText2() {
 	if (ForcedColors()) {
 		if 	(CSS.supports("color","-moz-dialogtext")) {
-			return getComputedStyle(document.querySelector('.fc-mozbuttontext')).getPropertyValue("color");
+			return getComputedStyle(document.querySelector('.dcm-' + window.MW18DCMType + ' .fc-mozbuttontext')).getPropertyValue("color");
 		} else {
-			return getComputedStyle(document.querySelector('.fc-buttontext')).getPropertyValue("color");
+			return getComputedStyle(document.querySelector('.dcm-' + window.MW18DCMType + ' .fc-buttontext')).getPropertyValue("color");
 		}
 	} else if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--canvas-text-secondary-background-color") === 'auto') {
 		return GetCanvasText();
@@ -578,7 +568,7 @@ function GetCanvasText2() {
 
 function GetHighlight() {
 	if (ForcedColors()) {
-		return [getComputedStyle(document.querySelector('.fc-highlight')).getPropertyValue("color"),getComputedStyle(document.querySelector('.fc-linktext')).getPropertyValue("color"),getComputedStyle(document.querySelector('.fc-highlight')).getPropertyValue("color"),getComputedStyle(document.querySelector('.fc-highlight')).getPropertyValue("color")][ForcedColorMode()];
+		return [getComputedStyle(document.querySelector('.dcm-' + window.MW18DCMType + ' .fc-highlight')).getPropertyValue("color"),getComputedStyle(document.querySelector('.dcm-' + window.MW18DCMType + ' .fc-linktext')).getPropertyValue("color"),getComputedStyle(document.querySelector('.dcm-' + window.MW18DCMType + ' .fc-highlight')).getPropertyValue("color"),getComputedStyle(document.querySelector('.dcm-' + window.MW18DCMType + ' .fc-highlight')).getPropertyValue("color")][ForcedColorMode()];
 	} else if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--highlight-background-color") === 'auto') {
 		return GetHyperlink();
 	} else {
@@ -589,11 +579,11 @@ function GetHighlight() {
 function GetActiveTitle() {
 	if (ForcedColors()) {
 		if 	(CSS.supports("color","-moz-dialog")) {
-			var button = getComputedStyle(document.querySelector('.fc-mozbuttontext')).getPropertyValue("color");
+			var button = getComputedStyle(document.querySelector('.dcm-' + window.MW18DCMType + ' .fc-mozbuttontext')).getPropertyValue("color");
 		} else {
-			var button = getComputedStyle(document.querySelector('.fc-buttontext')).getPropertyValue("color");
+			var button = getComputedStyle(document.querySelector('.dcm-' + window.MW18DCMType + ' .fc-buttontext')).getPropertyValue("color");
 		}
-		return [getComputedStyle(document.querySelector('.fc-activecaption')).getPropertyValue("color"),getComputedStyle(document.querySelector('.fc-linktext')).getPropertyValue("color"),button,getComputedStyle(document.querySelector('.fc-linktext')).getPropertyValue("color")][ForcedColorMode()];
+		return [getComputedStyle(document.querySelector('.dcm-' + window.MW18DCMType + ' .fc-activecaption')).getPropertyValue("color"),getComputedStyle(document.querySelector('.dcm-' + window.MW18DCMType + ' .fc-linktext')).getPropertyValue("color"),button,getComputedStyle(document.querySelector('.dcm-' + window.MW18DCMType + ' .fc-linktext')).getPropertyValue("color")][ForcedColorMode()];
 
 
 	} else if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--active-title-background-color") === 'auto') {
@@ -605,7 +595,7 @@ function GetActiveTitle() {
 
 function GetInactiveTitle() {
 	if (ForcedColors()) {
-		return [getComputedStyle(document.querySelector('.fc-inactivecaption')).getPropertyValue("color"),getComputedStyle(document.querySelector('.fc-canvas')).getPropertyValue("color"),getComputedStyle(document.querySelector('.fc-canvastext')).getPropertyValue("color"),getComputedStyle(document.querySelector('.fc-graytext')).getPropertyValue("color")][ForcedColorMode()];
+		return [getComputedStyle(document.querySelector('.dcm-' + window.MW18DCMType + ' .fc-inactivecaption')).getPropertyValue("color"),getComputedStyle(document.querySelector('.dcm-' + window.MW18DCMType + ' .fc-canvas')).getPropertyValue("color"),getComputedStyle(document.querySelector('.dcm-' + window.MW18DCMType + ' .fc-canvastext')).getPropertyValue("color"),getComputedStyle(document.querySelector('.dcm-' + window.MW18DCMType + ' .fc-graytext')).getPropertyValue("color")][ForcedColorMode()];
 
 
 	} else if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--inactive-title-background-color") === 'auto') {
@@ -1042,19 +1032,19 @@ function colortheme(style='match-parent', theme='match-parent', repaint=true, sa
 		insertKey('color-style', style );
 	}
 
-	var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-color-styles li.selected, .skin-tunic #color-styles .mw-portlet-body ul li.selected");
+	var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-color-styles li.selected");
 	if (x) {
 		x.classList.remove("selected");
 	}
-	var y = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-color-styles li[data-color-style='" + style + "'], .skin-tunic #color-styles .mw-portlet-body ul li[data-color-style='" + style + "']");
+	var y = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-color-styles li[data-color-style='" + style + "']");
 	if (y) {
 		y.classList.add("selected")
 	}
-	var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-device-themes li.selected, .skin-tunic #device-themes .mw-portlet-body ul li.selected");
+	var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-device-themes li.selected");
 	if (x) {
 		x.classList.remove("selected");
 	}
-	var y = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-device-themes li[data-device-theme='" + selected_theme + "'], .skin-tunic #device-themes .mw-portlet-body ul li[data-device-theme='" + selected_theme + "']");
+	var y = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-device-themes li[data-device-theme='" + selected_theme + "']");
 	if (y) {
 		y.classList.add("selected")
 	}
@@ -1073,11 +1063,11 @@ function contrastmode(theme='auto', repaint=true, save=true) {
 	if (save) {
 		insertKey('contrast-mode', theme );
 	}
-	var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-contrast-modes li.selected, .skin-tunic #contrast-modes .mw-portlet-body ul li.selected");
+	var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-contrast-modes li.selected");
 	if (x) {
 		x.classList.remove("selected");
 	}
-	var y = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-contrast-modes li[data-contrast-mode='" + theme + "'], .skin-tunic #contrast-modes .mw-portlet-body ul li[data-contrast-mode='" + theme + "']");
+	var y = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-contrast-modes li[data-contrast-mode='" + theme + "']");
 	if (y) {
 		y.classList.add("selected")
 	}
@@ -1117,16 +1107,33 @@ function ToggleAccent() {
 	}
 }
 
-function SetDCM(tick='false',save='true',repaint='true') {
+function SetDCM(type='match-parent',tick='match-parent',save='true',repaint='true') {
+	if (type === 'match-parent') {
+		type = window.MW18DCMType;
+	}
+	if (tick === 'match-parent') {
+		tick = window.MW18DCMMode;
+	}
+
 		if (save) {
 			insertKey('dcm-mode', tick );
+			insertKey('dcm-type', type );
 		}
 		window.MW18DCMMode = tick;
-		var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-dcm-modes li.selected, .skin-tunic #dcm-modes .mw-portlet-body ul li.selected");
+		var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-dcm-modes li.selected");
 		if (x) {
 			x.classList.remove("selected");
 		}
-		var y = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-dcm-modes li[data-dcm-mode='" + tick + "'], .skin-tunic #dcm-modes .mw-portlet-body ul li[data-dcm-mode='" + tick + "']");
+		var y = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-dcm-modes li[data-dcm-mode='" + tick + "']");
+		if (y) {
+			y.classList.add("selected")
+		}
+		window.MW18DCMType = type;
+		var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-dcm-types li.selected");
+		if (x) {
+			x.classList.remove("selected");
+		}
+		var y = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-dcm-types li[data-dcm-type='" + type + "']");
 		if (y) {
 			y.classList.add("selected")
 		}
@@ -2432,11 +2439,11 @@ function ToggleTheme(theme="A",repaint=true,save=true) {
 				insertKey('theme-selected', window.MW18ActiveTheme );
 			}
 			var theme_selected = theme;
-			var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li.selected, .skin-tunic #wiki-themes .mw-portlet-body ul li.selected");
+			var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li.selected");
 				if (x) {
 					x.classList.remove("selected");
 				}
-			var y = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li[data-theme-change='theme-" + theme_selected + "'], .skin-tunic #wiki-themes .mw-portlet-body ul li[data-theme-change='theme-" + theme_selected + "']")
+			var y = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li[data-theme-change='theme-" + theme_selected + "']")
 				if (y) {
 					y.classList.add("selected");
 				}

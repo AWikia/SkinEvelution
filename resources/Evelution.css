@@ -1453,7 +1453,6 @@ gap:2px;
 /* Community Header */
 	.evelution-minibar {
 		--minibar-opacity:1;
-		--dropdown-opacity:1;
 		background-color:var(--luna-mica-background-color);
 		color:var(--luna-text-background-color);
 		position:fixed;
@@ -1470,6 +1469,31 @@ gap:2px;
 		transform-origin:top;
 		border-bottom:1px solid var(--luna-border-background-color);
 	}
+
+
+ .evelution-minibar .background {
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	position:absolute!Important;
+	display:block;
+	content:"";
+	z-index:-2;
+	background-color:var(--luna-mica-background-color);
+	pointer-events:none;
+	image-rendering:initial;                  /* CSS4 Proposed  */
+	-qq-image-blurring:tick;                  /* 4x4 Web 1-2    */
+	overflow:hidden;
+}
+
+ .evelution-minibar .background .lunalevit {
+	top:-50px;
+	left:-50px;
+ 	width:calc(100% + 100px);
+	height:calc(100% + 100px);
+ }
+
 
 
 	.evelution-minibar .local-navigation .cpe-dropdown__content {
