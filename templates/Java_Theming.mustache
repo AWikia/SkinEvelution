@@ -13,6 +13,7 @@ window.MW18ActiveColors = 'standard';
 /* Visual Styles */
 window.MW18ActiveStyle = '-';
 window.MW18ActiveStyleMode = '-';
+window.MW18ActiveStyleMode2 = '-';
 /* Auto Accent (Unused for now) */
 window.MW18AutoAccent = '0';
 /* DCM Modes */
@@ -276,19 +277,37 @@ function ForcedColors() {
 
 function ForcedColorMode() {
 	mode = ['standard','basic','simple','classic'].indexOf(window.MW18DCMMode);
-	return (mode == -1) ? 0 : mode;
+	return (( window.matchMedia('(forced-colors: active)').matches )) ? 3 : (mode == -1) ? 0 : mode;
 }
 
+function ForcedColorType() {
+	return (( window.matchMedia('(forced-colors: active)').matches )) ? 'standard' : window.MW18DCMType
+}
+
+
+
 /* Visual Styles */
+function getVisualMode() {
+	if (( window.matchMedia('(forced-colors: active)').matches )) {
+		return 'contrast';
+	} else {
+		return window.MW18ActiveStyleMode
+	}
+}
+
 function VisualMode(mode,save=true) {
+	if (save) {
+		insertKey('visual-appearance-mode', mode );
+	}
 	vmode = mode;
     var x = document.querySelector('html');
-		var oldmode = window.MW18ActiveStyleMode;
+		var oldmode = window.MW18ActiveStyleMode2;
 		window.MW18ActiveStyleMode = vmode;
+		window.MW18ActiveStyleMode2 = getVisualMode();
 		if (oldmode === '-') {
-			document.querySelector('html').classList.add("visualmode-" +  window.MW18ActiveStyleMode);
-		} else if (oldmode != window.MW18ActiveStyleMode ) {
-			document.querySelector('html').classList.replace("visualmode-" +  oldmode,"visualmode-" +  window.MW18ActiveStyleMode);
+			document.querySelector('html').classList.add("visualmode-" +  window.MW18ActiveStyleMode2);
+		} else if (oldmode != getVisualMode() ) {
+			document.querySelector('html').classList.replace("visualmode-" +  oldmode,"visualmode-" +  window.MW18ActiveStyleMode2);
 		}
 	var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-modes li.selected")
 	if (x) {
@@ -297,9 +316,6 @@ function VisualMode(mode,save=true) {
 	var y = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-modes li[data-visual-mode='" + mode + "']");
 	if (y) {
 		y.classList.add("selected");
-	}
-	if (save) {
-		insertKey('visual-appearance-mode', mode );
 	}
 }
 
@@ -417,14 +433,15 @@ function VisualStyleCompile() {
 }
 
 /* Getting non-generic color values */
+
 function GetDesktop() {
 	if (ForcedColors()) {
 		if 	(CSS.supports("color","-moz-dialog")) {
-			var button = getComputedStyle(document.querySelector('.dcm-' + window.MW18DCMType + ' .fc-mozbuttonface')).getPropertyValue("color");
+			var button = getComputedStyle(document.querySelector('.dcm-' + ForcedColorType() + ' .fc-mozbuttonface')).getPropertyValue("color");
 		} else {
-			var button = getComputedStyle(document.querySelector('.dcm-' + window.MW18DCMType + ' .fc-buttonface')).getPropertyValue("color");
+			var button = getComputedStyle(document.querySelector('.dcm-' + ForcedColorType() + ' .fc-buttonface')).getPropertyValue("color");
 		}
-		return [getComputedStyle(document.querySelector('.dcm-' + window.MW18DCMType + ' .fc-background')).getPropertyValue("color"), button, getComputedStyle(document.querySelector('.dcm-' + window.MW18DCMType + ' .fc-activecaption')).getPropertyValue("color"), getComputedStyle(document.querySelector('.dcm-' + window.MW18DCMType + ' .fc-canvas')).getPropertyValue("color")][ForcedColorMode()];
+		return [getComputedStyle(document.querySelector('.dcm-' + ForcedColorType() + ' .fc-background')).getPropertyValue("color"), button, getComputedStyle(document.querySelector('.dcm-' + ForcedColorType() + ' .fc-activecaption')).getPropertyValue("color"), getComputedStyle(document.querySelector('.dcm-' + ForcedColorType() + ' .fc-canvas')).getPropertyValue("color")][ForcedColorMode()];
 	} else {
 		return getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-color").trim();
 	}
@@ -477,7 +494,7 @@ if (img == '""') {
 
 function GetDesktopText() {
 	if (ForcedColors()) {
-//		return getComputedStyle(document.querySelector('.dcm-' + window.MW18DCMType + ' .fc-buttontext')).getPropertyValue("color");
+//		return getComputedStyle(document.querySelector('.dcm-' + ForcedColorType() + ' .fc-buttontext')).getPropertyValue("color");
 		var color = window.MW18BgColor;
 		return GetForegroundVariables(color)[4];
 	} else if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-text-background-color") === 'auto') {
@@ -491,7 +508,7 @@ function GetDesktopText() {
 
 function GetCanvasShort() { // Like GetCanvas() without forced colors mode you get the unaltered page background mode (Used for checking dark mode)
 	if (ForcedColors()) {
-		return getComputedStyle(document.querySelector('.dcm-' + window.MW18DCMType + ' .fc-canvas')).getPropertyValue("color");
+		return getComputedStyle(document.querySelector('.dcm-' + ForcedColorType() + ' .fc-canvas')).getPropertyValue("color");
 	} else {
 		return getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--canvas-background-color").trim();
 	}
@@ -500,7 +517,7 @@ function GetCanvasShort() { // Like GetCanvas() without forced colors mode you g
 
 function GetCanvas() {
 	if (ForcedColors()) {
-		return getComputedStyle(document.querySelector('.dcm-' + window.MW18DCMType + ' .fc-canvas')).getPropertyValue("color");
+		return getComputedStyle(document.querySelector('.dcm-' + ForcedColorType() + ' .fc-canvas')).getPropertyValue("color");
 	} else {
 		return window.MW18PageColor;
 	}
@@ -509,9 +526,9 @@ function GetCanvas() {
 function GetCanvas2() { // Like GetCanvas() without forced colors mode you get the unaltered page background mode (Used for checking dark mode)
 	if (ForcedColors()) {
 		if 	(CSS.supports("color","-moz-dialog")) {
-			return getComputedStyle(document.querySelector('.dcm-' + window.MW18DCMType + ' .fc-mozbuttonface')).getPropertyValue("color");
+			return getComputedStyle(document.querySelector('.dcm-' + ForcedColorType() + ' .fc-mozbuttonface')).getPropertyValue("color");
 		} else {
-			return getComputedStyle(document.querySelector('.dcm-' + window.MW18DCMType + ' .fc-buttonface')).getPropertyValue("color");
+			return getComputedStyle(document.querySelector('.dcm-' + ForcedColorType() + ' .fc-buttonface')).getPropertyValue("color");
 		}
 	} else {
 		return getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--canvas-secondary-background-color").trim();
@@ -521,7 +538,7 @@ function GetCanvas2() { // Like GetCanvas() without forced colors mode you get t
 
 function GetHyperlink() {
 	if (ForcedColors()) {
-		return getComputedStyle(document.querySelector('.dcm-' + window.MW18DCMType + ' .fc-linktext')).getPropertyValue("color");
+		return getComputedStyle(document.querySelector('.dcm-' + ForcedColorType() + ' .fc-linktext')).getPropertyValue("color");
 	} else {
 		return getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--hyperlink-background-color").trim();
 	}
@@ -530,7 +547,7 @@ function GetHyperlink() {
 
 function GetInactiveText() {
 	if (ForcedColors()) {
-		return getComputedStyle(document.querySelector('.dcm-' + window.MW18DCMType + ' .fc-graytext')).getPropertyValue("color");
+		return getComputedStyle(document.querySelector('.dcm-' + ForcedColorType() + ' .fc-graytext')).getPropertyValue("color");
 	} else if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--inactive-text-background-color") === 'auto') {
 		return ColorTestTwin(window.MW18PageColor,window.MW18PageColorFG,window.MW18FinalContrast*2);
 	} else {
@@ -541,7 +558,7 @@ function GetInactiveText() {
 
 function GetCanvasText() {
 	if (ForcedColors()) {
-		return getComputedStyle(document.querySelector('.dcm-' + window.MW18DCMType + ' .fc-canvastext')).getPropertyValue("color");
+		return getComputedStyle(document.querySelector('.dcm-' + ForcedColorType() + ' .fc-canvastext')).getPropertyValue("color");
 	} else if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--canvas-text-background-color") === 'auto') {
 		var color = window.MW18PageColor;
 		return GetForegroundVariables(color)[4];
@@ -554,9 +571,9 @@ function GetCanvasText() {
 function GetCanvasText2() {
 	if (ForcedColors()) {
 		if 	(CSS.supports("color","-moz-dialogtext")) {
-			return getComputedStyle(document.querySelector('.dcm-' + window.MW18DCMType + ' .fc-mozbuttontext')).getPropertyValue("color");
+			return getComputedStyle(document.querySelector('.dcm-' + ForcedColorType() + ' .fc-mozbuttontext')).getPropertyValue("color");
 		} else {
-			return getComputedStyle(document.querySelector('.dcm-' + window.MW18DCMType + ' .fc-buttontext')).getPropertyValue("color");
+			return getComputedStyle(document.querySelector('.dcm-' + ForcedColorType() + ' .fc-buttontext')).getPropertyValue("color");
 		}
 	} else if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--canvas-text-secondary-background-color") === 'auto') {
 		return GetCanvasText();
@@ -568,7 +585,7 @@ function GetCanvasText2() {
 
 function GetHighlight() {
 	if (ForcedColors()) {
-		return [getComputedStyle(document.querySelector('.dcm-' + window.MW18DCMType + ' .fc-highlight')).getPropertyValue("color"),getComputedStyle(document.querySelector('.dcm-' + window.MW18DCMType + ' .fc-linktext')).getPropertyValue("color"),getComputedStyle(document.querySelector('.dcm-' + window.MW18DCMType + ' .fc-highlight')).getPropertyValue("color"),getComputedStyle(document.querySelector('.dcm-' + window.MW18DCMType + ' .fc-highlight')).getPropertyValue("color")][ForcedColorMode()];
+		return [getComputedStyle(document.querySelector('.dcm-' + ForcedColorType() + ' .fc-highlight')).getPropertyValue("color"),getComputedStyle(document.querySelector('.dcm-' + ForcedColorType() + ' .fc-linktext')).getPropertyValue("color"),getComputedStyle(document.querySelector('.dcm-' + ForcedColorType() + ' .fc-highlight')).getPropertyValue("color"),getComputedStyle(document.querySelector('.dcm-' + ForcedColorType() + ' .fc-highlight')).getPropertyValue("color")][ForcedColorMode()];
 	} else if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--highlight-background-color") === 'auto') {
 		return GetHyperlink();
 	} else {
@@ -579,11 +596,11 @@ function GetHighlight() {
 function GetActiveTitle() {
 	if (ForcedColors()) {
 		if 	(CSS.supports("color","-moz-dialog")) {
-			var button = getComputedStyle(document.querySelector('.dcm-' + window.MW18DCMType + ' .fc-mozbuttontext')).getPropertyValue("color");
+			var button = getComputedStyle(document.querySelector('.dcm-' + ForcedColorType() + ' .fc-mozbuttontext')).getPropertyValue("color");
 		} else {
-			var button = getComputedStyle(document.querySelector('.dcm-' + window.MW18DCMType + ' .fc-buttontext')).getPropertyValue("color");
+			var button = getComputedStyle(document.querySelector('.dcm-' + ForcedColorType() + ' .fc-buttontext')).getPropertyValue("color");
 		}
-		return [getComputedStyle(document.querySelector('.dcm-' + window.MW18DCMType + ' .fc-activecaption')).getPropertyValue("color"),getComputedStyle(document.querySelector('.dcm-' + window.MW18DCMType + ' .fc-linktext')).getPropertyValue("color"),button,getComputedStyle(document.querySelector('.dcm-' + window.MW18DCMType + ' .fc-linktext')).getPropertyValue("color")][ForcedColorMode()];
+		return [getComputedStyle(document.querySelector('.dcm-' + ForcedColorType() + ' .fc-activecaption')).getPropertyValue("color"),getComputedStyle(document.querySelector('.dcm-' + ForcedColorType() + ' .fc-linktext')).getPropertyValue("color"),button,getComputedStyle(document.querySelector('.dcm-' + ForcedColorType() + ' .fc-linktext')).getPropertyValue("color")][ForcedColorMode()];
 
 
 	} else if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--active-title-background-color") === 'auto') {
@@ -595,7 +612,7 @@ function GetActiveTitle() {
 
 function GetInactiveTitle() {
 	if (ForcedColors()) {
-		return [getComputedStyle(document.querySelector('.dcm-' + window.MW18DCMType + ' .fc-inactivecaption')).getPropertyValue("color"),getComputedStyle(document.querySelector('.dcm-' + window.MW18DCMType + ' .fc-canvas')).getPropertyValue("color"),getComputedStyle(document.querySelector('.dcm-' + window.MW18DCMType + ' .fc-canvastext')).getPropertyValue("color"),getComputedStyle(document.querySelector('.dcm-' + window.MW18DCMType + ' .fc-graytext')).getPropertyValue("color")][ForcedColorMode()];
+		return [getComputedStyle(document.querySelector('.dcm-' + ForcedColorType() + ' .fc-inactivecaption')).getPropertyValue("color"),getComputedStyle(document.querySelector('.dcm-' + ForcedColorType() + ' .fc-canvas')).getPropertyValue("color"),getComputedStyle(document.querySelector('.dcm-' + ForcedColorType() + ' .fc-canvastext')).getPropertyValue("color"),getComputedStyle(document.querySelector('.dcm-' + ForcedColorType() + ' .fc-graytext')).getPropertyValue("color")][ForcedColorMode()];
 
 
 	} else if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--inactive-title-background-color") === 'auto') {
@@ -2418,6 +2435,8 @@ document.querySelector("head .theming").innerHTML = result;
 		} else if (oldtheme != window.MW18ActiveThemeMode ) {
 			document.querySelector('html').classList.replace("theme-fandomdesktop-" +  oldtheme,"theme-fandomdesktop-" +  window.MW18ActiveThemeMode);
 		}
+		/* Forced Colors */
+		VisualMode(window.MW18ActiveStyleMode,false);
 
 
 }
