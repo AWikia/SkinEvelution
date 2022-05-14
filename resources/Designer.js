@@ -32,7 +32,7 @@ if (mwConfig2.wgNamespaceNumber === -1 && mwConfig2.wgTitle === "CPEThemeDesigne
 
 function InitDesigner() {
 	// Change Title
-	$(".evelution-page-header .evelution-title > span, .evelution-minibar .namespace-with-title .title > a").html( mw.msg( 'evelution-designer-title' ) );
+	$(".evelution-page-header .evelution-title > span, .evelution-header .namespace-with-title .title > a").html( mw.msg( 'evelution-designer-title' ) );
 
 	$(".link[designer-on]").addClass( 'active' );
 	document.querySelector("body").classList.replace("mw-invalidspecialpage","mw-special-cpethemedesigner");
@@ -324,58 +324,67 @@ function InitDesigner() {
 		'</div>' +
 		'<table class="wikitable" style="max-width:var(--breakpoint-size); font-size:14px; margin:0 auto;">' +
 			'<tr>' +
-				'<th colspan="2">' + mw.msg( 'evelution-designer-body' ) + '</th>' +
+				'<th colspan="3">' + mw.msg( 'evelution-designer-body' ) + '</th>' +
 			'</tr>' +
+			'<tr>' +
+				'<th rowspan="2" style="width:150px;">' + 
+					mw.msg( 'evelution-designer-community' ) + 
+				'</th>' +
+				'<th><span class="cpe-icon material-icons">format_color_fill</span></th>' +
+				'<th><span class="cpe-icon material-icons">format_color_text</span></th>' +
+			'</tr>' +
+
 		// TR
 			'<tr>' +
-				'<th style="width:150px;">' + 
-					mw.msg( 'evelution-designer-community' ) + 
-				'</td>' +
-
 				'<td style="text-align:center; width:150px">' + 
+					'<span style="visibility:hidden; pointer-events:none;"><input type="checkbox" name="autoDDR" id="autoDDR">' + '<label for="autoDDR">' + mw.msg( 'evelution-designer-auto' ) + '</label></span> <br>' +
+
 					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#ffcba4" id="bodybg" list="td_colors" />' + // Body Background 
 				'</td>' +
-			'</tr>' +
-		// TR
-			'<tr>' +
-				'<th style="width:150px;">' + 
-					mw.msg( 'evelution-designer-community-text-color' ) + 
-				'</td>' +
-
 				'<td style="text-align:center; width:150px">' +
 					'<input type="checkbox" name="auto1" id="auto1">' + '<label for="auto1">' + mw.msg( 'evelution-designer-auto' ) + '</label> <br>' +
 					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#2d383a" id="bodybg2" list="td_colors" />' + // Body Background 
 				'</td>' +
+
 			'</tr>' +
 		// TR
 			'<tr>' +
-				'<th style="width:150px;">' + 
+				'<th rowspan="2" style="width:150px;">' + 
 					mw.msg( 'evelution-designer-community-image' ) + 
-				'</td>' +
+				'</th>' +
+				'<th colspan=2><span class="cpe-icon material-icons">image</span></th>' +
+			'</tr>' +
 
-				'<td style="text-align:center; width:150px">' +
-					'<input type="text" id="bodyimage" class="cpe-input designer-text" style="width:150px; min-width:150px;" placeholder="URL" />' + // Body Background 
+			'<tr>' +
+				'<td style="text-align:center; width:300px" colspan="2">' +
+					'<input type="text" id="bodyimage" class="cpe-input designer-text" style="width:300px; min-width:300px;" placeholder="URL" />' + // Body Background 
 				'</td>' +
 			'</tr>' +
 		// TR
 			'<tr>' +
-				'<th style="width:150px;">' + 
+				'<th rowspan="2" style="width:150px;">' + 
 					mw.msg( 'evelution-designer-community-image-filter' ) + 
-				'</td>' +
+				'</th>' +
+				'<th colspan=2><span class="cpe-icon material-icons">photo_filter</span></th>' +
+			'</tr>' +
 
-				'<td style="text-align:center; width:150px">' +
-					'<input type="text" id="bodyimagefilter" class="cpe-input designer-text" style="width:150px; min-width:150px;" placeholder="Filter" value="opacity(1)" list="td_imagefilter" />' + // Body Background 
+			'<tr>' +
+				'<td style="text-align:center; width:300px" colspan=2>' +
+					'<input type="text" id="bodyimagefilter" class="cpe-input designer-text" style="width:300px; min-width:300px;" placeholder="Filter" value="opacity(1)" list="td_imagefilter" />' + // Body Background 
 				'</td>' +
 			'</tr>' +
 		// TR
 			'<tr>' +
-				'<th style="width:150px;">' + 
+				'<th rowspan="2" style="width:150px;">' + 
 					mw.msg( 'evelution-designer-community-image-blend-mode' ) + 
-				'</td>' +
+				'</th>' +
+				'<th colspan=2><span class="cpe-icon material-icons">gradient</span></th>' +
+			'</tr>' +
 
-				'<td style="text-align:center; width:150px">' +
+			'<tr>' +
+				'<td style="text-align:center; width:300px" colspan=2>' +
 				   '<div class="cpe-dropdown cpe-select" tabindex="-1">' +
-						'<div class="cpe-input blend_mode cpe-dropdown__toggle" style="width:150px; min-width:150px;">' +
+						'<div class="cpe-input blend_mode cpe-dropdown__toggle" style="width:300px; min-width:300px;">' +
 							'<span class="cpe-select__value" value="normal">Normal</span>' +
 							'<span class="cpe-icon cpe-icon-tiny cpe-icon-large cpe-dropdown__toggle-chevron material-icons">' +
 								'arrow_drop_down' +
@@ -407,8 +416,30 @@ function InitDesigner() {
 		// TR
 		// TR
 			'<tr>' +
-				'<th style="width:150px;">' + 
+				'<th rowspan="2" style="width:150px;">' + 
 					mw.msg( 'evelution-designer-community-image-alignment' ) + 
+				'</th>' +
+				'<th><span class="cpe-icon material-icons">align_horizontal_center</span></th>' +
+				'<th><span class="cpe-icon material-icons">align_vertical_center</span></th>' +
+			'</tr>' +
+
+			'<tr>' +
+				'<td style="text-align:center; width:150px">' +
+				   '<div class="cpe-dropdown cpe-select" tabindex="-1">' +
+						'<div class="cpe-input bg_align2 cpe-dropdown__toggle" style="width:150px; min-width:150px;">' +
+							'<span class="cpe-select__value" value="center">Middle</span>' +
+							'<span class="cpe-icon cpe-icon-tiny cpe-icon-large cpe-dropdown__toggle-chevron material-icons">' +
+								'arrow_drop_down' +
+							'</span>' +
+						'</div>' +
+						'<div class="cpe-dropdown__content">' +
+							'<ul class="cpe-list is-linked">' +
+								'<li value="left"><a>Left</a></li>' +
+								'<li value="center"><a>Middle</a></li>' +
+								'<li value="right"><a>Right</a></li>' +
+							'</ul>' +
+						'</div>' +
+					'</div>' +
 				'</td>' +
 
 				'<td style="text-align:center; width:150px">' +
@@ -428,40 +459,21 @@ function InitDesigner() {
 						'</div>' +
 					'</div>' +
 				'</td>' +
-			'</tr>' +
-		// TR
-			'<tr>' +
-				'<th style="width:150px;">' + 
-					mw.msg( 'evelution-designer-community-image-alignment2' ) + 
-				'</td>' +
 
-				'<td style="text-align:center; width:150px">' +
-				   '<div class="cpe-dropdown cpe-select" tabindex="-1">' +
-						'<div class="cpe-input bg_align2 cpe-dropdown__toggle" style="width:150px; min-width:150px;">' +
-							'<span class="cpe-select__value" value="center">Middle</span>' +
-							'<span class="cpe-icon cpe-icon-tiny cpe-icon-large cpe-dropdown__toggle-chevron material-icons">' +
-								'arrow_drop_down' +
-							'</span>' +
-						'</div>' +
-						'<div class="cpe-dropdown__content">' +
-							'<ul class="cpe-list is-linked">' +
-								'<li value="left"><a>Left</a></li>' +
-								'<li value="center"><a>Middle</a></li>' +
-								'<li value="right"><a>Right</a></li>' +
-							'</ul>' +
-						'</div>' +
-					'</div>' +
-				'</td>' +
+
 			'</tr>' +
 		// TR
 			'<tr>' +
-				'<th style="width:150px;">' + 
+				'<th rowspan="2" style="width:150px;">' + 
 					mw.msg( 'evelution-designer-community-image-size' ) + 
-				'</td>' +
+				'</th>' +
+				'<th colspan="2"><span class="cpe-icon material-icons">aspect_ratio</span></th>' +
+			'</tr>' +
 
-				'<td style="text-align:center; width:150px">' +
+			'<tr>' +
+				'<td style="text-align:center; width:300px" colspan=2>' +
 				   '<div class="cpe-dropdown cpe-select" tabindex="-1">' +
-						'<div class="cpe-input bg_size cpe-dropdown__toggle" style="width:150px; min-width:150px;">' +
+						'<div class="cpe-input bg_size cpe-dropdown__toggle" style="width:300px; min-width:300px;">' +
 							'<span class="cpe-select__value" value="cover">Cover</span>' +
 							'<span class="cpe-icon cpe-icon-tiny cpe-icon-large cpe-dropdown__toggle-chevron material-icons">' +
 								'arrow_drop_down' +
@@ -481,44 +493,47 @@ function InitDesigner() {
 
 		// TR
 			'<tr>' +
-				'<th style="width:150px;">' + 
+				'<th rowspan="2" style="width:150px;">' + 
 					mw.msg( 'evelution-designer-community-image-tiling' ) + 
+				'</th>' +
+				'<th><span class="cpe-icon material-icons">align_horizontal_center</span></th>' +
+				'<th><span class="cpe-icon material-icons">align_vertical_center</span></th>' +
+			'</tr>' +
+
+			'<tr>' +
+				'<td style="text-align:center; width:150px">' +
+					'<div style="display:inline-block"><span styke="vertical-align:middle">X:</span> <input type="checkbox" name="tiling" id="tilingH" checked></div>' +
+				'</td>' +
+				'<td style="text-align:center; width:150px">' +
+					'<div style="display:inline-block"><span styke="vertical-align:middle">Y:</span> <input type="checkbox" name="tiling" id="tilingV" checked></div>' +
 				'</td>' +
 
-				'<td style="text-align:center; width:150px">' +
-					'<div><span styke="vertical-align:middle">X:</span> <input type="checkbox" name="tiling" id="tilingH" checked></div>' +
-					'<div><span styke="vertical-align:middle">Y:</span> <input type="checkbox" name="tiling" id="tilingV" checked></div>' +
-				'</td>' +
 			'</tr>' +
 
 
 			'<tr>' +
-				'<th colspan="2">' + mw.msg( 'nstab-main' ) + '</th>' +
+				'<th colspan="3">' + mw.msg( 'nstab-main' ) + '</th>' +
 			'</tr>' +
 		// TR
 			'<tr>' +
-				'<th style="width:150px;">' + 
+				'<th rowspan="2" style="width:150px;">' + 
 					mw.msg( 'evelution-designer-page' ) + 
-				'</td>' +
+				'</th>' +
+				'<th><span class="cpe-icon material-icons">format_color_fill</span></th>' +
+				'<th><span class="cpe-icon material-icons">format_color_text</span></th>' +
+			'</tr>' +
 
+			'<tr>' +
 				'<td style="text-align:center; width:150px">' + 
+					'<span style="visibility:hidden; pointer-events:none;"><input type="checkbox" name="autoDDR" id="autoDDR">' + '<label for="autoDDR">' + mw.msg( 'evelution-designer-auto' ) + '</label></span> <br>' +
 					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#ffffff" id="pagebg" list="td_colors" />' + // Page BG
 					'<hr>' +
 					'<input type="checkbox" name="auto7" id="auto7" checked>' + '<label for="auto7">' + mw.msg( 'evelution-designer-auto' ) + '</label> <br>' +
 					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#ffffff" id="pagebg_s" list="td_colors" disabled />' + // Page BG
 				'</td>' +
-			'</tr>' +
-		// TR
-			'<tr>' +
-				'<th style="width:150px;">' + 
-					mw.msg( 'evelution-designer-page-text' ) + 
-				'</td>' +
-
 				'<td style="text-align:center; width:150px">' + 
 					'<input type="checkbox" name="auto3" id="auto3">' + '<label for="auto3">' + mw.msg( 'evelution-designer-auto' ) + '</label> <br>' +
 					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#2d383a" id="pagebg3" list="td_colors" />' + // Page BG
-					'<br><label>Ration:</label> <br>' +
-					'<progress max="4.5" value="0" id="pagebg3-pagebg-test"></progress>' +
 					'<hr>' +
 					'<input type="checkbox" name="auto8" id="auto8" checked>' + '<label for="auto8">' + mw.msg( 'evelution-designer-auto' ) + '</label> <br>' +
 					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#2d383a" id="pagebg3_s" list="td_colors" disabled />' + // Page BG
@@ -526,156 +541,183 @@ function InitDesigner() {
 			'</tr>' +
 		// TR
 			'<tr>' +
-				'<th style="width:150px;">' + 
+				'<th rowspan="2" style="width:150px;">' + 
 					mw.msg( 'evelution-designer-page-border' ) + 
-				'</td>' +
+				'</th>' +
+				'<th colspan="2"><span class="cpe-icon material-icons">format_color_fill</span></th>' +
+			'</tr>' +
 
-				'<td style="text-align:center; width:150px">' + 
+			'<tr>' +
+				'<td style="text-align:center; width:300px" colspan=2>' + 
 					'<input type="checkbox" name="auto2" id="auto2">' + '<label for="auto2">' + mw.msg( 'evelution-designer-auto' ) + '</label> <br>' +
 					'<input type="color"  class="cpe-button is-square" style="width:68px;" value="#c8c8cd" id="pagebg2" list="td_colors" />' + // Page BG
-					'<br><label>Ration:</label> <br>' +
-					'<progress max="1.875" id="pagebg2-pagebg-test">' +
 				'</td>' +
 			'</tr>' +
 		// TR
 			'<tr>' +
-				'<th style="width:150px;">' + 
+				'<th rowspan="2" style="width:150px;">' + 
 					mw.msg( 'evelution-designer-saccent' ) + 
-				'</td>' +
-
-				'<td style="text-align:center; width:150px">' + 
+				'</th>' +
+				'<th colspan="2"><span class="cpe-icon material-icons">format_color_fill</span></th>' +
+			'</tr>' +
+			'<tr>' +
+				'<td style="text-align:center; width:300px" colspan=2>' + 
+/*					'<span style="visibility:hidden; pointer-events:none;"><input type="checkbox" name="autoDDR" id="autoDDR">' + '<label for="autoDDR">' + mw.msg( 'evelution-designer-auto' ) + '</label></span> <br>' +*/
 					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#1e5aa8" id="saccentcolor" list="td_colors" />' + // Page BG
-					'<br><label>Ration:</label> <br>' +
-					'<progress max="4.5" value="0" id="saccentcolor-pagebg-test">' +
 				'</td>' +
 			'</tr>' +
 		// TR
 			'<tr>' +
-				'<th style="width:150px;">' + 
+				'<th rowspan="2" style="width:150px;">' + 
 					mw.msg( 'evelution-designer-accent' ) + 
-				'</td>' +
+				'</th>' +
+				'<th><span class="cpe-icon material-icons">format_color_fill</span></th>' +
+				'<th><span class="cpe-icon material-icons">format_color_text</span></th>' +
+			'</tr>' +
 
+			'<tr>' +
 				'<td style="text-align:center; width:150px">' + 
 					'<input type="checkbox" name="auto6" id="auto6">' + '<label for="auto6">' + mw.msg( 'evelution-designer-auto' ) + '</label> <br>' +
 					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#93cceA" id="accentcolor" list="td_colors" />' + // Page BG
-					'<br><label>Ration:</label> <br>' +
-					'<progress max="1.875" value="0" id="accentcolor-pagebg-test">' +
+				'</td>' +
+				'<td style="text-align:center; width:150px">' + 
+					'<input type="checkbox" name="auto9" id="auto9" checked>' + '<label for="auto9">' + mw.msg( 'evelution-designer-auto' ) + '</label> <br>' +
+					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#000000" id="accenttextcolor" list="td_colors" disabled />' + // Page BG
 				'</td>' +
 			'</tr>' +
 		// TR
 			'<tr>' +
-				'<th style="width:150px;">' + 
+				'<th rowspan="2" style="width:150px;">' + 
 					mw.msg( 'evelution-designer-taccent' ) + 
-				'</td>' +
+				'</th>' +
+				'<th><span class="cpe-icon material-icons">format_color_fill</span></th>' +
+				'<th><span class="cpe-icon material-icons">format_color_text</span></th>' +
+			'</tr>' +
 
+			'<tr>' +
 				'<td style="text-align:center; width:150px">' + 
 					'<input type="checkbox" name="auto5" id="auto5">' + '<label for="auto5">' + mw.msg( 'evelution-designer-auto' ) + '</label> <br>' +
 					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#00755e" id="taccentcolor" list="td_colors" />' + // Page BG
 				'</td>' +
+				'<td style="text-align:center; width:150px">' + 
+					'<input type="checkbox" name="auto10" id="auto10" checked>' + '<label for="auto10">' + mw.msg( 'evelution-designer-auto' ) + '</label> <br>' +
+					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#ffffff" id="taccenttextcolor" list="td_colors" disabled />' + // Page BG
+				'</td>' +
 			'</tr>' +
 		// TR
 			'<tr>' +
-				'<th style="width:150px;">' + 
+				'<th rowspan="2" style="width:150px;">' + 
 					mw.msg( 'evelution-designer-qaccent' ) + 
-				'</td>' +
+				'</th>' +
+				'<th><span class="cpe-icon material-icons">format_color_fill</span></th>' +
+				'<th><span class="cpe-icon material-icons">format_color_text</span></th>' +
+			'</tr>' +
 
+			'<tr>' +
 				'<td style="text-align:center; width:150px">' + 
 					'<input type="checkbox" name="auto4" id="auto4">' + '<label for="auto4">' + mw.msg( 'evelution-designer-auto' ) + '</label> <br>' +
 					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#01786f" id="qaccentcolor" list="td_colors" />' + // Page BG
 				'</td>' +
+				'<td style="text-align:center; width:150px">' + 
+					'<input type="checkbox" name="auto11" id="auto11" checked>' + '<label for="auto11">' + mw.msg( 'evelution-designer-auto' ) + '</label> <br>' +
+					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#ffffff" id="qaccenttextcolor" list="td_colors" disabled />' + // Page BG
+				'</td>' +
 			'</tr>' +
-
 			'<tr>' +
-				'<th colspan="2">' + mw.msg( 'evelution-designer-other' ) + '</th>' +
+				'<th colspan="3">' + mw.msg( 'evelution-designer-other' ) + '</th>' +
 			'</tr>' +
 		// TR
 			'<tr>' +
-				'<th style="width:150px;">' + 
+				'<th rowspan="2" style="width:150px;">' + 
 					mw.msg( 'evelution-designer-border-radius' ) + 
-				'</td>' +
+				'</th>' +
+				'<th colspan="2"><span class="cpe-icon material-icons">rounded_corner</span></th>' +
+			'</tr>' +
 
-				'<td style="text-align:center; width:150px">' +
-					'<input type="range" class="big" style="min-width:150px; min-width:150px;" id="border-radius" value="5" min="0" max="15" autocomplete="off" />' + // Body Background 
+			'<tr>' +
+				'<td style="text-align:center; width:300px" colspan=2>' +
+					'<input type="range" class="big" style="min-width:300px; min-width:300px;" id="border-radius" value="5" min="0" max="15" autocomplete="off" />' + // Body Background 
 				'</td>' +
 			'</tr>' +
 		// TR
 			'<tr>' +
-				'<th style="width:150px;">' + 
+				'<th rowspan="2" style="width:150px;">' + 
 					mw.msg( 'evelution-designer-font' ) + 
-				'</td>' +
+				'</th>' +
+				'<th><span class="cpe-icon material-icons">title</span></th>' +
+				'<th><span class="cpe-icon material-icons">text_fields</span></th>' +
+			'</tr>' +
 
+
+			'<tr>' +
 				'<td style="text-align:center; width:150px">' +
 					'<input type="text" id="firstfont" class="cpe-input designer-text" style="width:150px; min-width:150px;" placeholder="Font" autocomplete="off" />' + // Body Background 
-				'</td>' +
-			'</tr>' +
-		// TR
-			'<tr>' +
-				'<th style="width:150px;">' + 
-					mw.msg( 'evelution-designer-secondary-font' ) + 
 				'</td>' +
 
 				'<td style="text-align:center; width:150px">' +
 					'<input type="text" id="secondfont" class="cpe-input designer-text" style="width:150px; min-width:150px;" placeholder="Font" list="td_fonts" autocomplete="off" />' + // Body Background 
 				'</td>' +
+
+
 			'</tr>' +
 		// TR
 			'<tr>' +
-				'<th style="width:150px;">' + 
+				'<th rowspan="4" style="width:150px;">' + 
 					mw.msg( 'evelution-designer-filter' ) + 
-				'</td>' +
+				'</th>' +
+				'<th><span class="cpe-icon material-icons">invert_colors_off</span></th>' +
+				'<th><span class="cpe-icon material-icons">invert_colors</span></th>' +
+			'</tr>' +
 
+			'<tr>' +
 				'<td style="text-align:center; width:150px">' +
 					'<input type="text" id="filter" class="cpe-input designer-text" style="width:150px; min-width:150px;" placeholder="Filter" value="opacity(1)" />' + // Body Background 
 				'</td>' +
-			'</tr>' +
-		// TR
-			'<tr>' +
-				'<th style="width:150px;">' + 
-					mw.msg( 'evelution-designer-filter-hover' ) + 
-				'</td>' +
-
 				'<td style="text-align:center; width:150px">' +
 					'<input type="text" id="filter2" class="cpe-input designer-text" style="width:150px; min-width:150px;" placeholder="Filter" value="opacity(0.8)" />' + // Body Background 
 				'</td>' +
 			'</tr>' +
-		// TR
-			'<tr>' +
-				'<th style="width:150px;">' + 
-					mw.msg( 'evelution-designer-filter-duration' ) + 
-				'</td>' +
 
+			'<tr>' +
+				'<th><span class="cpe-icon material-icons">timer</span></th>' +
+				'<th><span class="cpe-icon material-icons">snooze</span></th>' +
+			'</tr>' +
+
+			'<tr>' +
 				'<td style="text-align:center; width:150px">' +
 					'<input type="range" class="big" style="min-width:150px; min-width:150px;" id="filter3" value="300" min="0" max="1000" step="20" list="td_filterdur" autocomplete="off" />' + // Body Background 
 				'</td>' +
-			'</tr>' +
-		// TR
-			'<tr>' +
-				'<th style="width:150px;">' + 
-					mw.msg( 'evelution-designer-filter-delay' ) + 
-				'</td>' +
-
 				'<td style="text-align:center; width:150px">' +
 					'<input type="range" class="big" style="min-width:150px; min-width:150px;" id="filter4" value="0" min="0" max="1000" step="20" list="td_filterdur" autocomplete="off"  />' + // Body Background 
 				'</td>' +
 			'</tr>' +
+
+
 		// TR
 			'<tr>' +
-				'<th style="width:150px;">' + 
+				'<th rowspan="2" style="width:150px;">' + 
 					mw.msg( 'evelution-designer-acryllic-opacity' ) + 
-				'</td>' +
+				'</th>' +
+				'<th colspan="2"><span class="cpe-icon material-icons">opacity</span></th>' +
+			'</tr>' +
 
-				'<td style="text-align:center; width:150px">' +
-					'<input type="range" class="big" style="min-width:150px; min-width:150px;" id="aopacity" value="0.6" min="0.4" max="0.8" step="0.01" list="td_aopacity" autocomplete="off" />' + // Body Background 
+			'<tr>' +
+				'<td style="text-align:center; width:300px" colspan="2">' +
+					'<input type="range" class="big" style="min-width:300px; min-width:300px;" id="aopacity" value="0.6" min="0.4" max="0.8" step="0.01" list="td_aopacity" autocomplete="off" />' + // Body Background 
 				'</td>' +
 			'</tr>' +
 		// TR
 			'<tr>' +
-				'<th style="width:150px;">' + 
+				'<th rowspan="2" style="width:150px;">' + 
 					mw.msg( 'evelution-designer-gchs' ) + 
-				'</td>' +
+				'</th>' +
+				'<th colspan="2"><span class="cpe-icon material-icons">palette</span></th>' +
+			'</tr>' +
 
-				'<td style="text-align:center; width:150px">' +
-					'<input type="range" class="big" style="min-width:150px; min-width:150px;" id="gchs" value="0" min="-10" max="10" step="1" list="td_gchs" autocomplete="off" />' + // Body Background 
+
+			'<tr>' +
+				'<td style="text-align:center; width:300px"  colspan=2>' +
+					'<input type="range" class="big" style="min-width:300px; min-width:300px;" id="gchs" value="0" min="-10" max="10" step="1" list="td_gchs" autocomplete="off" />' + // Body Background 
 				'</td>' +
 			'</tr>' +
 
@@ -941,6 +983,23 @@ function ApplyTheme () {
 	} else {
 		var autocolor8 = $('#pagebg3_s').val();
 	}
+	if (document.querySelector('.wikitable #auto9').checked) {
+		var autocolor9 = 'auto';
+	} else {
+		var autocolor9 = $('#accenttextcolor').val();
+	}
+	if (document.querySelector('.wikitable #auto10').checked) {
+		var autocolor10 = 'auto';
+	} else {
+		var autocolor10 = $('#taccenttextcolor').val();
+	}
+
+	if (document.querySelector('.wikitable #auto11').checked) {
+		var autocolor11 = 'auto';
+	} else {
+		var autocolor11 = $('#qaccenttextcolor').val();
+	}
+
 	var image = $("#bodyimage").val().replace('url(', '').replace(')', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("").split("\"").join("");
     if ( $('#firstfont').val().length === 0) {
 		var customfont2 = 'Roboto';
@@ -968,9 +1027,12 @@ function ApplyTheme () {
 				 '--inactive-text-background-color:' + autocolor2  + ';\n' +
 				 '--canvas-text-background-color:' + autocolor3  + ';\n' +
 				 '--highlight-background-color:' + autocolor6 + ';\n' +
+				 '--highlight-text-background-color:' + autocolor9 + ';\n' +
 				 '--hyperlink-background-color:' + $('#saccentcolor').val() + ';\n' +
 				 '--active-title-background-color:' + autocolor5  + ';\n' +
+				 '--active-title-text-background-color:' + autocolor10  + ';\n' +
 				 '--inactive-title-background-color:' + autocolor4  + ';\n' +
+				 '--inactive-title-text-background-color:' + autocolor11  + ';\n' +
 				 '--custom-font:' + customfont2 + ';\n' +
 				 '--custom-secondary-font:' + customfont + ';\n' +
 				 '--border-radius:' + $('#border-radius').val() + "px"  + ';\n' +
@@ -1054,6 +1116,22 @@ function CopyTheme() {
 	} else {
 		var autocolor8 = $('#pagebg3_s').val();
 	}
+	if (document.querySelector('.wikitable #auto9').checked) {
+		var autocolor9 = 'auto';
+	} else {
+		var autocolor9 = $('#accenttextcolor').val();
+	}
+	if (document.querySelector('.wikitable #auto10').checked) {
+		var autocolor10 = 'auto';
+	} else {
+		var autocolor10 = $('#taccenttextcolor').val();
+	}
+
+	if (document.querySelector('.wikitable #auto11').checked) {
+		var autocolor11 = 'auto';
+	} else {
+		var autocolor11 = $('#qaccenttextcolor').val();
+	}
 	var image = $("#bodyimage").val().replace('url(', '').replace(')', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("").split("\"").join("");
     if ( $('#firstfont').val().length === 0) {
 		var customfont2 = 'Roboto';
@@ -1082,9 +1160,12 @@ function CopyTheme() {
 				 '--canvas-text-background-color:' + autocolor3  + ';\n' +
 				 '--canvas-text-secondary-background-color:' + autocolor8  + ';\n' +
 				 '--highlight-background-color:' + autocolor6 + ';\n' +
+				 '--highlight-text-background-color:' + autocolor9 + ';\n' +
 				 '--hyperlink-background-color:' + $('#saccentcolor').val() + ';\n' +
 				 '--active-title-background-color:' + autocolor5  + ';\n' +
+				 '--active-title-text-background-color:' + autocolor10  + ';\n' +
 				 '--inactive-title-background-color:' + autocolor4  + ';\n' +
+				 '--inactive-title-text-background-color:' + autocolor11  + ';\n' +
 				 '--custom-font:' + customfont2 + ';\n' +
 				 '--custom-secondary-font:' + customfont + ';\n' +
 				 '--border-radius:' + $('#border-radius').val() + "px"  + ';\n' +
@@ -1174,6 +1255,22 @@ function CopyTheme2() {
 	} else {
 		var autocolor8 = $('#pagebg3_s').val();
 	}
+	if (document.querySelector('.wikitable #auto9').checked) {
+		var autocolor9 = 'auto';
+	} else {
+		var autocolor9 = $('#accenttextcolor').val();
+	}
+	if (document.querySelector('.wikitable #auto10').checked) {
+		var autocolor10 = 'auto';
+	} else {
+		var autocolor10 = $('#taccenttextcolor').val();
+	}
+
+	if (document.querySelector('.wikitable #auto11').checked) {
+		var autocolor11 = 'auto';
+	} else {
+		var autocolor11 = $('#qaccenttextcolor').val();
+	}
 	var image = $("#bodyimage").val().replace('url(', '').replace(')', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("").split("\"").join("");
     if ( $('#firstfont').val().length === 0) {
 		var customfont2 = 'Roboto';
@@ -1202,9 +1299,12 @@ function CopyTheme2() {
 				 "'canvas-text-background-color' => '" + autocolor3  + "',\n" +
 				 "'canvas-text-secondary-background-color' => '" + autocolor8  + "',\n" +
 				 "'highlight-background-color' => '" + autocolor6 + "',\n" +
+				 "'highlight-text-background-color' => '" + autocolor9 + "',\n" +
 				 "'hyperlink-background-color' => '" + $("#saccentcolor").val() + "',\n" +
 				 "'active-title-background-color' => '" + autocolor5  + "',\n" +
+				 "'active-title-text-background-color' => '" + autocolor10  + "',\n" +
 				 "'inactive-title-background-color' => '" + autocolor4  + "',\n" +
+				 "'inactive-title-text-background-color' => '" + autocolor11  + "',\n" +
 				 "'custom-font' => '" + customfont2 + "',\n" +
 				 "'custom-secondary-font' => '" + customfont + "',\n" +
 				 "'border-radius' => '" + $("#border-radius").val() + 'px'  + "',\n" +
@@ -1333,6 +1433,17 @@ function PasteTheme() {
 		$('#accentcolor').val( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--highlight-background-color") );
 	}
 	$('.wikitable #accentcolor').prop('disabled',(document.querySelector('.wikitable #auto6').checked) );
+
+	// Accent Text BG
+	if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--highlight-text-background-color") === 'auto' ) {
+		document.querySelector('.wikitable #auto9').checked = true;
+	} else {
+		document.querySelector('.wikitable #auto9').checked = false;
+		$('#accenttextcolor').val( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--highlight-text-background-color") );
+	}
+	$('.wikitable #accenttextcolor').prop('disabled',(document.querySelector('.wikitable #auto9').checked) );
+
+
 	// Caret Color
 	if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--active-title-background-color") === 'auto' ) {
 		document.querySelector('.wikitable #auto5').checked = true;
@@ -1341,6 +1452,17 @@ function PasteTheme() {
 		$('#taccentcolor').val( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--active-title-background-color") );
 	}
 	$('.wikitable #taccentcolor').prop('disabled',(document.querySelector('.wikitable #auto5').checked) );
+
+	// Active Title BG
+	if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--active-title-text-background-color") === 'auto' ) {
+		document.querySelector('.wikitable #auto10').checked = true;
+	} else {
+		document.querySelector('.wikitable #auto10').checked = false;
+		$('#taccenttextcolor').val( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--active-title-text-background-color") );
+	}
+	$('.wikitable #taccenttextcolor').prop('disabled',(document.querySelector('.wikitable #auto10').checked) );
+
+
 	// Quaternary Accent Color
 	if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--inactive-title-background-color") === 'auto' ) {
 		document.querySelector('.wikitable #auto4').checked = true;
@@ -1349,6 +1471,17 @@ function PasteTheme() {
 		$('#qaccentcolor').val( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--inactive-title-background-color") );
 	}
 	$('.wikitable #qaccentcolor').prop('disabled',(document.querySelector('.wikitable #auto4').checked) );
+
+	// Quaternary Accent Text
+	if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--inactive-title-text-background-color") === 'auto' ) {
+		document.querySelector('.wikitable #auto11').checked = true;
+	} else {
+		document.querySelector('.wikitable #auto11').checked = false;
+		$('#qaccenttextcolor').val( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--inactive-title-text-background-color") );
+	}
+	$('.wikitable #qaccenttextcolor').prop('disabled',(document.querySelector('.wikitable #auto11').checked) );
+
+
 	// Border Radius
 	$('#border-radius').val( parseInt(getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--border-radius")) );
 	// Primary Font
@@ -1434,6 +1567,22 @@ function TestTheme(banner=false) {
 	} else {
 		var autocolor8 = $('#pagebg3_s').val();
 	}
+	if (document.querySelector('.wikitable #auto9').checked) {
+		var autocolor9 = 'auto';
+	} else {
+		var autocolor9 = $('#accenttextcolor').val();
+	}
+	if (document.querySelector('.wikitable #auto10').checked) {
+		var autocolor10 = 'auto';
+	} else {
+		var autocolor10 = $('#taccenttextcolor').val();
+	}
+
+	if (document.querySelector('.wikitable #auto11').checked) {
+		var autocolor11 = 'auto';
+	} else {
+		var autocolor11 = $('#qaccenttextcolor').val();
+	}
 	var image = $("#bodyimage").val().replace('url(', '').replace(')', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("").split("\"").join("");
     if ( $('#firstfont').val().length === 0) {
 		var customfont2 = 'Roboto';
@@ -1463,9 +1612,12 @@ function TestTheme(banner=false) {
 				 '--canvas-text-background-color:' + autocolor3  + '!important;\n' +
 				 '--canvas-text-secondary-background-color:' + autocolor8  + ';\n' +
 				 '--highlight-background-color:' + autocolor6 + '!important;\n' +
+				 '--highlight-text-background-color:' + autocolor9 + ';\n' +
 				 '--hyperlink-background-color:' + $('#saccentcolor').val() + '!important;\n' +
 				 '--active-title-background-color:' + autocolor5  + '!important;\n' +
+				 '--active-title-text-background-color:' + autocolor10  + ';\n' +
 				 '--inactive-title-background-color:' + autocolor4  + '!important;\n' +
+				 '--inactive-title-text-background-color:' + autocolor11  + ';\n' +
 				 '--custom-font:' + customfont2 + '!important;\n' +
 				 '--custom-secondary-font:' + customfont + '!important;\n' +
 				 '--border-radius:' + $('#border-radius').val() + "px"  + '!important;\n' +
@@ -1503,31 +1655,6 @@ function TestTheme(banner=false) {
 }
 
 function UpdateContrastRatios() {
-	var pagebg = $('#pagebg').val();
-	var pagebg2 = $("#pagebg2").val();
-	var pagebg3 = $("#pagebg3").val();
-	var saccentcolor = $("#saccentcolor").val();
-	var accentcolor = $("#accentcolor").val();
-	if (document.querySelector('.wikitable #auto2').checked) {
-		$('#pagebg2-pagebg-test').val('21');
-	} else {
-		$('#pagebg2-pagebg-test').val( chroma.contrast(pagebg, pagebg2)  - 1.25 );
-	}
-	if (document.querySelector('.wikitable #auto3').checked) {
-		$('#pagebg3-pagebg-test').val('21');
-	} else {
-		$('#pagebg3-pagebg-test').val( chroma.contrast(pagebg, pagebg3)  - 3 );
-	}
-	$('#saccentcolor-pagebg-test').val( chroma.contrast(pagebg, saccentcolor)  - 3 );
-	if (document.querySelector('.wikitable #auto6').checked) {
-		$('#accentcolor-pagebg-test').val('21');
-	} else {
-		$('#accentcolor-pagebg-test').val( chroma.contrast(pagebg, accentcolor)  - 1.25 );
-	}
-	var progresses = document.querySelectorAll('progress');
-	progresses.forEach(function(x) {
-		x.style.setProperty("--range-percent",  (( ((x.getAttribute('value')) - 0 ) * 100) / (x.getAttribute('max') - 0) ) + '%'  );
-	});
 
 }
 
@@ -1617,6 +1744,28 @@ $('.wikitable #auto8').click(
 							function(e) {
 								e.preventDefault
 								$('.wikitable #pagebg3_s').prop('disabled',(document.querySelector('.wikitable #auto8').checked) );
+								TestDynamicTheme();
+							}   
+						);
+$('.wikitable #auto9').click(
+							function(e) {
+								e.preventDefault
+								$('.wikitable #accenttextcolor').prop('disabled',(document.querySelector('.wikitable #auto9').checked) );
+								TestDynamicTheme();
+							}   
+						);
+$('.wikitable #auto10').click(
+							function(e) {
+								e.preventDefault
+								$('.wikitable #taccenttextcolor').prop('disabled',(document.querySelector('.wikitable #auto10').checked) );
+								TestDynamicTheme();
+							}   
+						);
+
+$('.wikitable #auto11').click(
+							function(e) {
+								e.preventDefault
+								$('.wikitable #qaccenttextcolor').prop('disabled',(document.querySelector('.wikitable #auto11').checked) );
 								TestDynamicTheme();
 							}   
 						);
