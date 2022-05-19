@@ -979,6 +979,7 @@ container {
     mix-blend-mode:color;
     border-radius: inherit;
     filter: saturate(150%);
+    transition:opacity 400ms var(--transitioner);
 }
 
 .lunalevit.hidden {
@@ -996,6 +997,7 @@ container {
 		position:absolute;
 		background-color:rgba(var(--desktop-background-color-rgb), 1);
 		z-index:-2;
+    transition:background-color 400ms var(--transitioner), background-image 400ms var(--transitioner);
 }
 
 
@@ -1017,6 +1019,7 @@ container {
     z-index: -1;
     overflow: hidden;
 	mix-blend-mode:var(--desktop-background-image-blend-mode);
+    transition:background-color 400ms var(--transitioner), background-image 400ms var(--transitioner);
 }
 
 
@@ -2311,7 +2314,6 @@ input[type="checkbox"]::after, input[type="radio"]::after {
 .has-icon-labels li > a:before,
 .oo-ui-iconElement-icon:before,
 .oo-ui-indicatorElement-indicator:before,
-.mw-specialpagesgroup:before,
 input[type="checkbox"]::after, input[type="radio"]::after {
 	--icon-scale:1;
 	--icon-grow:1;
@@ -2356,17 +2358,6 @@ input[type="checkbox"]::after, input[type="radio"]::after {
 	--icon-size:0.5;
 	--icon-scale:1.4;
 	content:"";
-}
-
-.mw-specialpagesgroup:before {
-	margin-right:5px;
-	--icon-size:1;
-	content:"app_shortcut";
-	vertical-align:middle;
-}
-
-.mw-specialpagesgroup > * {
-	vertical-align:middle;
 }
 
 .cpe-button.has-icon:before,
