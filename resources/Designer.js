@@ -385,29 +385,29 @@ function InitDesigner() {
 				'<td style="text-align:center; width:300px" colspan=2>' +
 				   '<div class="cpe-dropdown cpe-select" tabindex="-1">' +
 						'<div class="cpe-input blend_mode cpe-dropdown__toggle" style="width:300px; min-width:300px;">' +
-							'<span class="cpe-select__value" value="normal">Normal</span>' +
+							'<span class="cpe-select__value" value="normal">'+mw.msg ('evelution-designer-setting-normal')+'</span>' +
 							'<span class="cpe-icon cpe-icon-tiny cpe-icon-large cpe-dropdown__toggle-chevron material-icons">' +
 								'arrow_drop_down' +
 							'</span>' +
 						'</div>' +
 						'<div class="cpe-dropdown__content">' +
 							'<ul class="cpe-list is-linked">' +
-								'<li value="normal"><a>Normal</a></li>' +
-								'<li value="multiply"><a>Multiply</a></li>' +
-								'<li value="screen"><a>Screen</a></li>' +
-								'<li value="overlay"><a>Overlay</a></li>' +
-								'<li value="darken"><a>Darken</a></li>' +
-								'<li value="lighten"><a>Lighten</a></li>' +
-								'<li value="color-dodge"><a>Color Dodge</a></li>' +
-								'<li value="color-burn"><a>Color Burn</a></li>' +
-								'<li value="hard-light"><a>Hard Light</a></li>' +
-								'<li value="soft-light"><a>Soft Light</a></li>' +
-								'<li value="difference"><a>Difference</a></li>' +
-								'<li value="exclusion"><a>Exclusion</a></li>' +
-								'<li value="hue"><a>Hue</a></li>' +
-								'<li value="saturation"><a>Saturation</a></li>' +
-								'<li value="color"><a>Color</a></li>' +
-								'<li value="luminosity"><a>Luminosity</a></li>' +
+								'<li value="normal"><a>'+mw.msg ('evelution-designer-setting-normal')+'</a></li>' +
+								'<li value="multiply"><a>'+mw.msg ('evelution-designer-setting-multiply')+'</a></li>' +
+								'<li value="screen"><a>'+mw.msg ('evelution-designer-setting-screen')+'</a></li>' +
+								'<li value="overlay"><a>'+mw.msg ('evelution-designer-setting-overlay')+'</a></li>' +
+								'<li value="darken"><a>'+mw.msg ('evelution-designer-setting-darken')+'</a></li>' +
+								'<li value="lighten"><a>'+mw.msg ('evelution-designer-setting-lighten')+'</a></li>' +
+								'<li value="color-dodge"><a>'+mw.msg ('evelution-designer-setting-colordodge')+'</a></li>' +
+								'<li value="color-burn"><a>'+mw.msg ('evelution-designer-setting-colorburn')+'</a></li>' +
+								'<li value="hard-light"><a>'+mw.msg ('evelution-designer-setting-hardlight')+'</a></li>' +
+								'<li value="soft-light"><a>'+mw.msg ('evelution-designer-setting-softlight')+'</a></li>' +
+								'<li value="difference"><a>'+mw.msg ('evelution-designer-setting-difference')+'</a></li>' +
+								'<li value="exclusion"><a>'+mw.msg ('evelution-designer-setting-exclusion')+'</a></li>' +
+								'<li value="hue"><a>'+mw.msg ('evelution-designer-setting-hue')+'</a></li>' +
+								'<li value="saturation"><a>'+mw.msg ('evelution-designer-setting-saturation')+'</a></li>' +
+								'<li value="color"><a>'+mw.msg ('evelution-designer-setting-color')+'</a></li>' +
+								'<li value="luminosity"><a>'+mw.msg ('evelution-designer-setting-luminosity')+'</a></li>' +
 							'</ul>' +
 						'</div>' +
 					'</div>' +
@@ -427,16 +427,16 @@ function InitDesigner() {
 				'<td style="text-align:center; width:150px">' +
 				   '<div class="cpe-dropdown cpe-select" tabindex="-1">' +
 						'<div class="cpe-input bg_align2 cpe-dropdown__toggle" style="width:150px; min-width:150px;">' +
-							'<span class="cpe-select__value" value="center">Middle</span>' +
+							'<span class="cpe-select__value" value="center">'+mw.msg ('evelution-designer-setting-middle')+'</span>' +
 							'<span class="cpe-icon cpe-icon-tiny cpe-icon-large cpe-dropdown__toggle-chevron material-icons">' +
 								'arrow_drop_down' +
 							'</span>' +
 						'</div>' +
 						'<div class="cpe-dropdown__content">' +
 							'<ul class="cpe-list is-linked">' +
-								'<li value="left"><a>Left</a></li>' +
-								'<li value="center"><a>Middle</a></li>' +
-								'<li value="right"><a>Right</a></li>' +
+								'<li value="left"><a>'+mw.msg ('evelution-designer-setting-left')+'</a></li>' +
+								'<li value="center"><a>'+mw.msg ('evelution-designer-setting-middle')+'</a></li>' +
+								'<li value="right"><a>'+mw.msg ('evelution-designer-setting-right')+'</a></li>' +
 							'</ul>' +
 						'</div>' +
 					'</div>' +
@@ -445,16 +445,16 @@ function InitDesigner() {
 				'<td style="text-align:center; width:150px">' +
 				   '<div class="cpe-dropdown cpe-select" tabindex="-1">' +
 						'<div class="cpe-input bg_align cpe-dropdown__toggle" style="width:150px; min-width:150px;">' +
-							'<span class="cpe-select__value" value="center">Middle</span>' +
+							'<span class="cpe-select__value" value="center">'+mw.msg ('evelution-designer-setting-middle')+'</span>' +
 							'<span class="cpe-icon cpe-icon-tiny cpe-icon-large cpe-dropdown__toggle-chevron material-icons">' +
 								'arrow_drop_down' +
 							'</span>' +
 						'</div>' +
 						'<div class="cpe-dropdown__content">' +
 							'<ul class="cpe-list is-linked">' +
-								'<li value="top"><a>Top</a></li>' +
-								'<li value="center"><a>Middle</a></li>' +
-								'<li value="bottom"><a>Bottom</a></li>' +
+								'<li value="top"><a>'+mw.msg ('evelution-designer-setting-top')+'</a></li>' +
+								'<li value="center"><a>'+mw.msg ('evelution-designer-setting-middle')+'</a></li>' +
+								'<li value="bottom"><a>'+mw.msg ('evelution-designer-setting-bottom')+'</a></li>' +
 							'</ul>' +
 						'</div>' +
 					'</div>' +
@@ -474,17 +474,17 @@ function InitDesigner() {
 				'<td style="text-align:center; width:300px" colspan=2>' +
 				   '<div class="cpe-dropdown cpe-select" tabindex="-1">' +
 						'<div class="cpe-input bg_size cpe-dropdown__toggle" style="width:300px; min-width:300px;">' +
-							'<span class="cpe-select__value" value="cover">Cover</span>' +
+							'<span class="cpe-select__value" value="cover">'+mw.msg ('evelution-designer-setting-cover')+'</span>' +
 							'<span class="cpe-icon cpe-icon-tiny cpe-icon-large cpe-dropdown__toggle-chevron material-icons">' +
 								'arrow_drop_down' +
 							'</span>' +
 						'</div>' +
 						'<div class="cpe-dropdown__content">' +
 							'<ul class="cpe-list is-linked">' +
-								'<li value="cover"><a>Cover</a></li>' +
-								'<li value="contain"><a>Contain</a></li>' +
-								'<li value="stretched"><a>Stretched</a></li>' +
-								'<li value="full"><a>Full</a></li>' +
+								'<li value="cover"><a>'+mw.msg ('evelution-designer-setting-cover')+'</a></li>' +
+								'<li value="contain"><a>'+mw.msg ('evelution-designer-setting-contain')+'</a></li>' +
+								'<li value="stretched"><a>'+mw.msg ('evelution-designer-setting-stretched')+'</a></li>' +
+								'<li value="full"><a>'+mw.msg ('evelution-designer-setting-full')+'</a></li>' +
 							'</ul>' +
 						'</div>' +
 					'</div>' +
@@ -1369,21 +1369,21 @@ function PasteTheme() {
 	$('#bodyimagefilter').val( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-image-filter") );
 
 	// Body Image Blend Mode
-	blend_mode = ['Normal', 'Multiply', 'Screen', 'Overlay', 'Darken', 'Lighten', 'Color Dodge', 'Color Burn', 'Hard Light', 'Soft Light', 'Difference', 'Exclusion', 'Hue', 'Saturation', 'Color', 'Luminosity'][['normal','multiply','screen','overlay','darken','lighten','color-dodge','color-burn','hard-light','soft-light','difference','exclusion','hue','saturation','color','luminosity'].indexOf( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-image-blend-mode") ) ]
+	blend_mode = [mw.msg ('evelution-designer-setting-normal'), mw.msg ('evelution-designer-setting-multiply'), mw.msg ('evelution-designer-setting-screen'), mw.msg ('evelution-designer-setting-overlay'), mw.msg ('evelution-designer-setting-darken'), mw.msg ('evelution-designer-setting-lighten'), mw.msg ('evelution-designer-setting-colordodge'), mw.msg ('evelution-designer-setting-colorburn'), mw.msg ('evelution-designer-setting-hardlight'), mw.msg ('evelution-designer-setting-softlight'), mw.msg ('evelution-designer-setting-difference'), mw.msg ('evelution-designer-setting-exclusion'), mw.msg ('evelution-designer-setting-hue'), mw.msg ('evelution-designer-setting-saturation'), mw.msg ('evelution-designer-setting-color'), mw.msg ('evelution-designer-setting-luminosity')][['normal','multiply','screen','overlay','darken','lighten','color-dodge','color-burn','hard-light','soft-light','difference','exclusion','hue','saturation','color','luminosity'].indexOf( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-image-blend-mode") ) ]
 	$('.blend_mode .cpe-select__value').attr('value', getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-image-blend-mode") );
 	$('.blend_mode .cpe-select__value').html( blend_mode );
 
 
 	// Body Image Alignment V
-	bg_align = ["Top", "Middle", "Bottom"][["top", "center", "bottom"].indexOf( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-vertical-alignment") ) ]
+	bg_align = [mw.msg ('evelution-designer-setting-top'), mw.msg ('evelution-designer-setting-middle'), mw.msg ('evelution-designer-setting-bottom')][["top", "center", "bottom"].indexOf( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-vertical-alignment") ) ]
 	$('.bg_align .cpe-select__value').attr('value', getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-vertical-alignment") );
 	$('.bg_align .cpe-select__value').html( bg_align );
 	// Body Image Alignment H
-	bg_align2 = ["Left", "Middle", "Right"][["left", "center", "right"].indexOf( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-horizontal-alignment") ) ]
+	bg_align2 = [mw.msg ('evelution-designer-setting-left'), mw.msg ('evelution-designer-setting-middle'), mw.msg ('evelution-designer-setting-right')][["left", "center", "right"].indexOf( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-horizontal-alignment") ) ]
 	$('.bg_align2 .cpe-select__value').attr('value', getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-horizontal-alignment") );
 	$('.bg_align2 .cpe-select__value').html( bg_align2 );
 	// Body Image Size
-	bg_size = ["Cover", "Contain", "Stretched", "Full"][["cover", "contain", "stretched", "full"].indexOf( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-size") ) ]
+	bg_size = [mw.msg ('evelution-designer-setting-cover'), mw.msg ('evelution-designer-setting-contain'), mw.msg ('evelution-designer-setting-stretched'), mw.msg ('evelution-designer-setting-full')][["cover", "contain", "stretched", "full"].indexOf( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-size") ) ]
 	$('.bg_size .cpe-select__value').attr('value', getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-size") )
 	$('.bg_size .cpe-select__value').html( bg_size );
 	// Body Image Tiling
