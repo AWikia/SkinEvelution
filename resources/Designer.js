@@ -725,6 +725,163 @@ function InitDesigner() {
 		'<hr>' +
 
 /**/
+'<div class="qortex-updater">' +
+	'<div id="LunaLevit" style=" pointer-events: none; position: absolute; z-index: -2; width: 100%; height: 100%;">' +
+		'<div class="invertion-on" style=" pointer-events: none; position: absolute; z-index: -2; width: 100%; height: 100%;">' +
+			'<div id="LunaLevit3" class="desktop-background fandom-community-header__background" style="position:absolute; pointer-events:none;" id="desktop-background">' +
+			'</div>' +
+		'</div>' +
+	'</div>' +
+	'<div class="container">' +
+		'<div class="evelution-floating-actions page-side-tools__wrapper">' +
+			'<div class="evelution-floating-actions-container cpe-floating-button-group is-vertical page-side-tools">' +
+				'<button class="cpe-floating-button accent check-for-updates page-side-tool"  cpe-tooltip="Check for updates">' +
+					'<span class="cpe-icon material-icons">' +
+							'update' +
+					'</span>' +
+				'</button>' +
+				'<button class="cpe-floating-button halt pause-automatic-updates page-side-tool"  cpe-tooltip="Pause automatic updates">' +
+					'<span class="cpe-icon material-icons">' +
+							'pause' +
+					'</span>' +
+				'</button>' +
+				'<button class="cpe-floating-button good install-all-updates page-side-tool"  cpe-tooltip="Install all updates">' +
+					'<span class="cpe-icon material-icons">' +
+							'system_update_alt' +
+					'</span>' +
+				'</button>' +
+				'<button class="cpe-floating-button qora-qore-overview page-side-tool"  cpe-tooltip="Qora Qore Overview">' +
+					'<span class="cpe-icon material-icons">' +
+							'stadia_controller' +
+					'</span>' +
+				'</button>' +
+				'<button class="cpe-floating-button qora-qore-overview page-side-tool"  cpe-tooltip="Updater Settings">' +
+					'<span class="cpe-icon material-icons">' +
+							'settings' +
+					'</span>' +
+				'</button>' +
+				'<button class="cpe-floating-button about-updater page-side-tool"  cpe-tooltip="About Updater">' +
+					'<span class="cpe-icon material-icons">' +
+							'info' +
+					'</span>' +
+				'</button>' +
+			'</div>' +
+		'</div>' +
+		'<section class="scroll">' +
+		/**/
+			'<div class="update-card">' +
+				'<div class="logo">' +
+					'<svg xmlns="http://www.w3.org/2000/svg">' +
+						'<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#qoreLogo_dev" />' +
+					'</svg>' +		
+				'</div>' +
+				'<div class="info">' +
+					'<h3> Cumulative Update to Fifth Developer Preview of Q.Qore, season ΙΨ </h3>' +
+					'<div class="actions">' +
+						'<button class="cpe-button">' +
+							'<span class="cpe-icon cpe-icon-small material-icons">' +
+								'system_update_alt' +
+							'</span>' +
+							'<span> Install Update </span>' +
+						'</button>' +
+					'</div>' +
+				'</div>' +
+			'</div>' +
+		/**/
+			'<div class="update-card">' +
+				'<div class="logo">' +
+					'<svg xmlns="http://www.w3.org/2000/svg">' +
+						'<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#qoreLogo_stable" />' +
+					'</svg>' +		
+				'</div>' +
+				'<div class="info">' +
+					'<h3> Feature Update to Q.Qore, version 22H1 </h3>' +
+					'<div class="actions">' +
+						'<div class="progress">' +
+							'<span>Installing...  (40%)</span>' +
+							'<progress max="100" value="40" ></progress>' +
+						'</div>' +
+						'<div class="cpe-button-group">' +
+							'<button class="cpe-button is-pause-color is-square">' +
+								'<span class="cpe-icon cpe-icon-small material-icons">' +
+									'pause' +
+								'</span>' +
+							'</button>' +
+							'<button class="cpe-button is-alert-color is-square">' +
+								'<span class="cpe-icon cpe-icon-small material-icons">' +
+									'stop' +
+								'</span>' +
+							'</button>' +
+						'</div>' +
+					'</div>' +
+				'</div>' +
+			'</div>' +
+		/**/
+			'<div class="update-card">' +
+				'<div class="logo">' +
+					'<svg xmlns="http://www.w3.org/2000/svg">' +
+						'<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#qoreLogo_canary" />' +
+					'</svg>' +		
+				'</div>' +
+				'<div class="info">' +
+					'<h3> Early Preview to Qora Qore of 21/5/2022, season ΙΨ </h3>' +
+					'<div class="actions">' +
+						'<div class="progress">' +
+							'<span>Paused...  (77%)</span>' +
+							'<progress class="is-halted" max="100" value="77" ></progress>' +
+						'</div>' +
+						'<div class="cpe-button-group">' +
+							'<button class="cpe-button is-pause-color is-square">' +
+								'<span class="cpe-icon cpe-icon-small material-icons">' +
+									'play_arrow' +
+								'</span>' +
+							'</button>' +
+							'<button class="cpe-button is-alert-color is-square">' +
+								'<span class="cpe-icon cpe-icon-small material-icons">' +
+									'stop' +
+								'</span>' +
+							'</button>' +
+						'</div>' +
+					'</div>' +
+				'</div>' +
+			'</div>' +
+		/**/
+		/**/
+			'<div class="update-card">' +
+				'<div class="logo">' +
+					'<svg xmlns="http://www.w3.org/2000/svg">' +
+						'<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#qoreLogo_beta" />' +
+					'</svg>' +		
+				'</div>' +
+				'<div class="info">' +
+					'<h3>  Cumulative Update of Qora Qore, season ΙΨ </h3>' +
+					'<div class="actions">' +
+						'<div class="progress">' +
+							'<span>Failed...  (27%)</span>' +
+							'<progress class="is-failed" max="100" value="27" ></progress>' +
+						'</div>' +
+						'<div class="cpe-button-group">' +
+							'<button class="cpe-button is-square">' +
+								'<span class="cpe-icon cpe-icon-small material-icons">' +
+									'refresh' +
+								'</span>' +
+							'</button>' +
+							'<button class="cpe-button is-alert-color is-square">' +
+								'<span class="cpe-icon cpe-icon-small material-icons">' +
+									'stop' +
+								'</span>' +
+							'</button>' +
+						'</div>' +
+					'</div>' +
+				'</div>' +
+			'</div>' +
+		/**/
+
+		'</section>' +
+	'</div>' +
+'</div>' +
+/**/
+'<hr>' +
 '<div class="preview-window-desk">' +
 	'<div class="preview-window-window" force-active>' +
 		'<div class="lunalevit disables-on-accent"></div>' +
