@@ -310,9 +310,9 @@ function InitDesigner() {
 				'<option value="0.8" label="80%">' +
 			'</datalist>' +
 			'<datalist id="td_gchs">' + // Image Opacity
-				'<option value="-10" label="-10deg">' +
+				'<option value="-12" label="-12deg">' +
 				'<option value="0" label="0deg">' +
-				'<option value="10" label="10deg">' +
+				'<option value="12" label="12deg">' +
 			'</datalist>' +
 			'<datalist id="td_filterdur">' + // Image Opacity
 				'<option value="0">' +
@@ -717,7 +717,7 @@ function InitDesigner() {
 
 			'<tr>' +
 				'<td style="text-align:center; width:300px"  colspan=2>' +
-					'<input type="range" class="big" style="min-width:300px; min-width:300px;" id="gchs" value="0" min="-10" max="10" step="1" list="td_gchs" autocomplete="off" />' + // Body Background 
+					'<input type="range" class="big" style="min-width:300px; min-width:300px;" id="gchs" value="0" min="-12" max="12" step="1" list="td_gchs" autocomplete="off" />' + // Body Background 
 				'</td>' +
 			'</tr>' +
 
