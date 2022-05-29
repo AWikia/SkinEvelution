@@ -1769,12 +1769,12 @@ function TestTheme(banner=false) {
 				 '--canvas-text-background-color:' + autocolor3  + '!important;\n' +
 				 '--canvas-text-secondary-background-color:' + autocolor8  + ';\n' +
 				 '--highlight-background-color:' + autocolor6 + '!important;\n' +
-				 '--highlight-text-background-color:' + autocolor9 + ';\n' +
+				 '--highlight-text-background-color:' + autocolor9 + '!important;\n' +
 				 '--hyperlink-background-color:' + $('#saccentcolor').val() + '!important;\n' +
 				 '--active-title-background-color:' + autocolor5  + '!important;\n' +
-				 '--active-title-text-background-color:' + autocolor10  + ';\n' +
+				 '--active-title-text-background-color:' + autocolor10  + '!important;\n' +
 				 '--inactive-title-background-color:' + autocolor4  + '!important;\n' +
-				 '--inactive-title-text-background-color:' + autocolor11  + ';\n' +
+				 '--inactive-title-text-background-color:' + autocolor11  + '!important;\n' +
 				 '--custom-font:' + customfont2 + '!important;\n' +
 				 '--custom-secondary-font:' + customfont + '!important;\n' +
 				 '--border-radius:' + $('#border-radius').val() + "px"  + '!important;\n' +
