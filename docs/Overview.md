@@ -116,27 +116,35 @@ Of course. It has been tested and it works. For instance, if you want to modify 
 .theme-B.visualcolors-standard { 
 --desktop-background-image:url("loadbg_dev.png"); /* <image> */
 --desktop-background-image-filter:opacity(100%); /* <filter-function> */
+--desktop-background-image-blend-mode:normal; /* <blend-mode> */
 --desktop-background-color:#441177; /* <color> */
---desktop-background-mode:header; /* header | one-quarter | two-quarters | three-quarters | four-quarters */
 --desktop-background-size:cover; /* cover | contain | stretched | full */
---desktop-background-horizontal-alignment:top; /* left | center | right */
+--desktop-background-horizontal-alignment:left; /* left | center | right */
 --desktop-background-vertical-alignment:top; /* top | center | bottom */
 --desktop-background-no-horizontal-tiling:false; /* <boolean> */
 --desktop-background-no-vertical-tiling:false; /* <boolean> */
 --desktop-text-background-color:auto; /* auto | <color> */
 --canvas-background-color:#f1f2f3; /* <color> */
+--canvas-secondary-background-color:auto; /* auto | <color> */
 --inactive-text-background-color:#aaabbb; /* auto | <color> */
 --canvas-text-background-color:#222222; /* auto | <color> */
+--canvas-text-secondary-background-color:auto; /* auto | <color> */
 --highlight-background-color:#dd8300; /* <color> */
+--highlight-text-background-color:auto; /* auto |<color> */
 --hyperlink-background-color:#dd2300; /* <color> */
 --active-title-background-color:#b88300; /* auto | <color> */
+--active-title-text-background-color:auto; /* auto |<color> */
 --inactive-title-background-color:#b88300; /* auto | <color> */
+--inactive-title-text-background-color:auto; /* auto |<color> */
+--custom-font:""; /* <string> */
 --custom-secondary-font:""; /* <string> */
 --border-radius:3px; /* <number> 0 to 15 */
 --icon-filter:opacity(1); /* <filter-function> */
 --icon-filter-hover:opacity(0.8); /* <filter-function> */
 --icon-filter-duration:300ms; /* <duration> */
 --icon-filter-delay:0; /* <duration> */
+--system-acryllic-opacity:0.6; /* <number> 0.4 to 0.8 */
+--system-generic-color-hue-shift:1; /* <number> -12 to 12 */
 }
 ```
 Per-page theming is also supported. If you want to use a different theme for the 1st theme on **Sample Test Page** article, paste this to ``MediaWiki:Common.css``:
@@ -144,27 +152,35 @@ Per-page theming is also supported. If you want to use a different theme for the
 .rootpage-Sample_Test_Page .theme-A.visualcolors-standard {
 --desktop-background-image:url("loadbg_dev.png"); /* <image> */
 --desktop-background-image-filter:opacity(100%); /* <filter-function> */
+--desktop-background-image-blend-mode:normal; /* <blend-mode> */
 --desktop-background-color:#441177; /* <color> */
---desktop-background-mode:header; /* header | one-quarter | two-quarters | three-quarters | four-quarters */
 --desktop-background-size:cover; /* cover | contain | stretched | full */
---desktop-background-horizontal-alignment:top; /* left | center | right */
+--desktop-background-horizontal-alignment:left; /* left | center | right */
 --desktop-background-vertical-alignment:top; /* top | center | bottom */
 --desktop-background-no-horizontal-tiling:false; /* <boolean> */
 --desktop-background-no-vertical-tiling:false; /* <boolean> */
 --desktop-text-background-color:auto; /* auto | <color> */
 --canvas-background-color:#f1f2f3; /* <color> */
+--canvas-secondary-background-color:auto; /* auto | <color> */
 --inactive-text-background-color:#aaabbb; /* auto | <color> */
 --canvas-text-background-color:#222222; /* auto | <color> */
+--canvas-text-secondary-background-color:auto; /* auto | <color> */
 --highlight-background-color:#dd8300; /* <color> */
+--highlight-text-background-color:auto; /* auto |<color> */
 --hyperlink-background-color:#dd2300; /* <color> */
 --active-title-background-color:#b88300; /* auto | <color> */
+--active-title-text-background-color:auto; /* auto |<color> */
 --inactive-title-background-color:#b88300; /* auto | <color> */
+--inactive-title-text-background-color:auto; /* auto |<color> */
+--custom-font:""; /* <string> */
 --custom-secondary-font:""; /* <string> */
 --border-radius:3px; /* <number> 0 to 15 */
 --icon-filter:opacity(1); /* <filter-function> */
 --icon-filter-hover:opacity(0.8); /* <filter-function> */
 --icon-filter-duration:300ms; /* <duration> */
 --icon-filter-delay:0; /* <duration> */
+--system-acryllic-opacity:0.6; /* <number> 0.4 to 0.8 */
+--system-generic-color-hue-shift:1; /* <number> -12 to 12 */
 }
 ```
 

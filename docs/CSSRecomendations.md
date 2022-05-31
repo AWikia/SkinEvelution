@@ -47,10 +47,10 @@ Wikis should avoid customizing any color scheme beyond the ``standard`` ones as 
 .theme-A.visualcolors-standard { /* Replace .theme-A with either .theme-B, .theme-C, .theme-D, .theme-E, .theme-F, .theme-G, .theme-H if you want to target the other 7 slots, otherwise don't replace .theme-A with anything */ 
 --desktop-background-image:url("loadbg_dev.png"); /* <image> */
 --desktop-background-image-filter:opacity(100%); /* <filter-function> */
+--desktop-background-image-blend-mode:normal; /* <blend-mode> */
 --desktop-background-color:#441177; /* <color> */
---desktop-background-mode:header; /* header | one-quarter | two-quarters | three-quarters | four-quarters */
 --desktop-background-size:cover; /* cover | contain | stretched | full */
---desktop-background-horizontal-alignment:top; /* left | center | right */
+--desktop-background-horizontal-alignment:left; /* left | center | right */
 --desktop-background-vertical-alignment:top; /* top | center | bottom */
 --desktop-background-no-horizontal-tiling:false; /* <boolean> */
 --desktop-background-no-vertical-tiling:false; /* <boolean> */
@@ -61,17 +61,21 @@ Wikis should avoid customizing any color scheme beyond the ``standard`` ones as 
 --canvas-text-background-color:#222222; /* auto | <color> */
 --canvas-text-secondary-background-color:auto; /* auto | <color> */
 --highlight-background-color:#dd8300; /* <color> */
+--highlight-text-background-color:auto; /* auto |<color> */
 --hyperlink-background-color:#dd2300; /* <color> */
 --active-title-background-color:#b88300; /* auto | <color> */
+--active-title-text-background-color:auto; /* auto |<color> */
 --inactive-title-background-color:#b88300; /* auto | <color> */
---custom-font:"Roboto"; /* <string> */
---custom-secondary-font:"Rubik"; /* <string> */
+--inactive-title-text-background-color:auto; /* auto |<color> */
+--custom-font:""; /* <string> */
+--custom-secondary-font:""; /* <string> */
 --border-radius:3px; /* <number> 0 to 15 */
 --icon-filter:opacity(1); /* <filter-function> */
 --icon-filter-hover:opacity(0.8); /* <filter-function> */
 --icon-filter-duration:300ms; /* <duration> */
 --icon-filter-delay:0; /* <duration> */
 --system-acryllic-opacity:0.6; /* <number> 0.4 to 0.8 */
+--system-generic-color-hue-shift:1; /* <number> -12 to 12 */
 }
 ```
 
@@ -80,10 +84,10 @@ Wikis should avoid customizing any color scheme beyond the ``standard`` ones as 
 $wgEvelutionThemeA = [/* Replace $wgEvelutionThemeA with either $wgEvelutionThemeB, $wgEvelutionThemeC, $wgEvelutionThemeD, $wgEvelutionThemeE, $wgEvelutionThemeF, $wgEvelutionThemeG, $wgEvelutionThemeH if you want to target the other 7 slots, otherwise don't replace $wgEvelutionThemeA with anything */ 
 'desktop-background-image' => 'url("loadbg_dev.png")', /* <image> */
 'desktop-background-image-filter' => 'opacity(100%)', /* <filter-function> */
+'desktop-background-image-blend-mode' => 'normal', /* <blend-mode> */
 'desktop-background-color' => '#441177', /* <color> */
-'desktop-background-mode' => 'header', /* header | one-quarter | two-quarters | three-quarters | four-quarters */
 'desktop-background-size' => 'cover', /* cover | contain | stretched | full */
-'desktop-background-horizontal-alignment' => 'top', /* left | center | right */
+'desktop-background-horizontal-alignment' => 'left', /* left | center | right */
 'desktop-background-vertical-alignment' => 'top', /* top | center | bottom */
 'desktop-background-no-horizontal-tiling' => 'false', /* <boolean> */
 'desktop-background-no-vertical-tiling' => 'false', /* <boolean> */
@@ -94,17 +98,21 @@ $wgEvelutionThemeA = [/* Replace $wgEvelutionThemeA with either $wgEvelutionThem
 'canvas-text-background-color' => '#222222', /* auto | <color> */
 'canvas-text-secondary-background-color' => 'auto', /* auto | <color> */
 'highlight-background-color' => '#dd8300', /* <color> */
+'highlight-text-background-color' => 'auto', /* auto |<color> */
 'hyperlink-background-color' => '#dd2300', /* <color> */
 'active-title-background-color' => '#b88300', /* auto | <color> */
+'active-title-text-background-color' => 'auto', /* auto |<color> */
 'inactive-title-background-color' => '#b88300', /* auto | <color> */
-'custom-font' => 'Roboto', /* <string> */
-'custom-secondary-font' => 'Rubik', /* <string> */
+'inactive-title-text-background-color' => 'auto', /* auto |<color> */
+'custom-font' => '""', /* <string> */
+'custom-secondary-font' => '""', /* <string> */
 'border-radius' => '3px', /* <number> 0 to 15 */
 'icon-filter' => 'opacity(1)', /* <filter-function> */
 'icon-filter-hover' => 'opacity(0.8)', /* <filter-function> */
 'icon-filter-duration' => '300ms', /* <duration> */
 'icon-filter-delay' => '0', /* <duration> */
 'system-acryllic-opacity' => '0.6', /* <number> 0.4 to 0.8 */
+'system-generic-color-hue-shift' => '1', /* <number> -12 to 12 */
 ];
 
 ```
