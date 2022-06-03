@@ -806,6 +806,8 @@ function BestAlertColor(color) {
 var page = color;
 var invpage = page;
 hueshift =  parseInt(getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--system-generic-color-hue-shift"));
+saturation =  parseInt(getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--system-generic-color-saturation")) + "%";
+
 
 if (isLightColor(page)) { // ( chroma(page).get('hsl.l') < 0.5)
 	var colors = ['96%', '94%', '92%', '90%', '88%', '86%', '84%', '82%', '80%', '78%', '76%', '74%', '72%', '70%', '68%', '66%', '64%', '62%', '60%', '58%', '56%', '54%', '46%', '44%', '42%', '40%', '38%', '36%', '34%', '32%', '30%', '28%', '26%', '24%', '22%', '20%', '18%', '16%', '14%', '12%', '10%', '8%', '6%', '4%']
@@ -818,7 +820,7 @@ if (isLightColor(page)) { // ( chroma(page).get('hsl.l') < 0.5)
 		warningh = 45
 		successh = 167
 		progressh = 220
-		messageh = -1
+//		messageh = -1
 		
 		if (mediawiki) { // @REMOVEME: In Ivilution, Parmalution and CPE Language
 			{{#has-servelution-no-dgeneric}}
@@ -831,24 +833,17 @@ if (isLightColor(page)) { // ( chroma(page).get('hsl.l') < 0.5)
 		}
 
 		
-		contrastA = window.MW18highContrast*ContrastRatio()*1
-		contrastP = window.MW18highContrast*ContrastRatio()*1
-		contrastW = window.MW18highContrast*ContrastRatio()*1
-		contrastS = window.MW18highContrast*ContrastRatio()*1
-		contrastP = window.MW18highContrast*ContrastRatio()*1
-		contrastM = window.MW18highContrast*ContrastRatio()*1
+		contrast = window.MW18highContrast*ContrastRatio()*1
 
 	for (let i = 0; i < colors.length; i++) {
-		var color = chroma('hsl(0,100%,' + colors[i] + ')').hex(); // Base Color
-		var alert = chroma(ColorTestTwin(color, invpage, 0,alerth+hueshift)).set('hsl.s',1); // Alert
-		var alertsat = chroma(alert).get('hsl.s'); // Saturation of Alert Color
-		var alertlight =  chroma(alert).get('hsl.l') // Lightness of Alert Color
-		var pause = chroma(alert).set('hsl.h',pauseh+hueshift).set('hsl.s',alertsat).set('hsl.l', alertlight);  // Pause
-		var warn = chroma(alert).set('hsl.h',warningh+hueshift).set('hsl.s',alertsat).set('hsl.l', alertlight);  // Warning
-		var done = chroma(alert).set('hsl.h',successh+hueshift).set('hsl.s',alertsat).set('hsl.l', alertlight); // Success
-		var progress = chroma(alert).set('hsl.h',progressh+hueshift).set('hsl.s',alertsat).set('hsl.l', alertlight); // Progress
-		var info = chroma(ColorTestTwin(color, invpage, 0,messageh)).set('hsl.l', alertlight); // Message
-		if ( ((chroma.contrast(page, alert)) >= contrastA) && ((chroma.contrast(page, pause)) >= contrastP) && ((chroma.contrast(page, warn)) >= contrastW) && ((chroma.contrast(page, done)) >= contrastS) && ((chroma.contrast(page, progress)) >= contrastP) && ((chroma.contrast(page, info)) >= contrastM) ) {
+		var color = chroma('hsl(0,' + saturation + ',' + colors[i] + ')').hex(); // Base Color
+		var alert = chroma(color).set('hsl.h',alerth+hueshift); // Alert
+		var pause = chroma(color).set('hsl.h',pauseh+hueshift);  // Pause
+		var warn = chroma(color).set('hsl.h',warningh+hueshift);  // Warning
+		var done = chroma(color).set('hsl.h',successh+hueshift); // Success
+		var progress = chroma(color).set('hsl.h',progressh+hueshift); // Progress
+		var info = chroma(color).set('hsl.s',0); // Message
+		if ( ((chroma.contrast(page, alert)) >= contrast) && ((chroma.contrast(page, pause)) >= contrast) && ((chroma.contrast(page, warn)) >= contrast) && ((chroma.contrast(page, done)) >= contrast) && ((chroma.contrast(page, progress)) >= contrast) && ((chroma.contrast(page, info)) >= contrast) ) {
 			return [alert, pause, warn, done, progress, info];
 		}
 	}
@@ -1619,6 +1614,7 @@ function DownloadTheme(full=false) {
 				 '--icon-filter-delay:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--icon-filter-delay")  + ';\n' +
 				 '--system-acryllic-opacity:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--system-acryllic-opacity")  + ';\n' +
 				 '--system-generic-color-hue-shift:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--system-generic-color-hue-shift")  + ';\n' +
+				 '--system-generic-color-saturation:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--system-generic-color-saturation")  + ';\n' +
 				 '--mica-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--mica-background-color")  + ';\n' +
 				 '}' // Ending
 	} else { // For use with Theme Management
@@ -1654,6 +1650,7 @@ function DownloadTheme(full=false) {
 				 '--icon-filter-delay:' + getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--icon-filter-delay")  + ';\n' +
 				 '--system-acryllic-opacity:' + getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--system-acryllic-opacity")  + ';\n' +
 				 '--system-generic-color-hue-shift:' + getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--system-generic-color-hue-shift")  + ';\n' +
+				 '--system-generic-color-saturation:' + getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--system-generic-color-hue-shift")  + ';\n' +
 
 				 '}' // Ending
 	}
@@ -2676,6 +2673,7 @@ var invfilters = [
 						 '--icon-filter-delay:' + getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--icon-filter-delay")  + ';\n' +
 						 '--system-acryllic-opacity:' + getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--system-acryllic-opacity")  + ';\n' +
 						 '--system-generic-color-hue-shift:' + getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--system-generic-color-hue-shift")  + ';\n' +
+						 '--system-generic-color-saturation:' + getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--system-generic-color-saturation")  + ';\n' +
 
 
 // Misc Background Settings

@@ -83,6 +83,7 @@ If you want to create a new theme without using CPE Theme Designer (i.e. Due to 
 --icon-filter-delay:0; /* <duration> */
 --system-acryllic-opacity:0.6; /* <number> 0.4 to 0.8 */
 --system-generic-color-hue-shift:1; /* <number> -12 to 12 */
+--system-generic-color-saturation:100%; /* <number> 20% to 100% */
 }
 ```
 
@@ -120,6 +121,7 @@ $wgEvelutionThemeA = [/* Replace $wgEvelutionThemeA with either $wgEvelutionThem
 'icon-filter-delay' => '0', /* <duration> */
 'system-acryllic-opacity' => '0.6', /* <number> 0.4 to 0.8 */
 'system-generic-color-hue-shift' => '1', /* <number> -12 to 12 */
+'system-generic-color-saturation' => '100%', /* <number> 20% to 100% */
 ];
 
 ```

@@ -310,9 +310,16 @@ function InitDesigner() {
 				'<option value="0.8" label="80%">' +
 			'</datalist>' +
 			'<datalist id="td_gchs">' + // Image Opacity
-				'<option value="-12" label="-12deg">' +
+				'<option value="-15" label="-15deg">' +
 				'<option value="0" label="0deg">' +
-				'<option value="12" label="12deg">' +
+				'<option value="15" label="15deg">' +
+			'</datalist>' +
+			'<datalist id="td_gcs">' + // Image Opacity
+				'<option value="20" label="20%">' +
+				'<option value="40" label="40%">' +
+				'<option value="60" label="60%">' +
+				'<option value="80" label="80%">' +
+				'<option value="100" label="100%">' +
 			'</datalist>' +
 			'<datalist id="td_filterdur">' + // Image Opacity
 				'<option value="0">' +
@@ -685,10 +692,10 @@ function InitDesigner() {
 
 			'<tr>' +
 				'<td style="text-align:center; width:150px">' +
-					'<input type="range" class="big" style="min-width:150px; min-width:150px;" id="filter3" value="300" min="0" max="1000" step="20" list="td_filterdur" autocomplete="off" />' + // Body Background 
+					'<input type="range" class="big" style="min-width:150px;" id="filter3" value="300" min="0" max="1000" step="20" list="td_filterdur" autocomplete="off" />' + // Body Background 
 				'</td>' +
 				'<td style="text-align:center; width:150px">' +
-					'<input type="range" class="big" style="min-width:150px; min-width:150px;" id="filter4" value="0" min="0" max="1000" step="20" list="td_filterdur" autocomplete="off"  />' + // Body Background 
+					'<input type="range" class="big" style="min-width:150px;" id="filter4" value="0" min="0" max="1000" step="20" list="td_filterdur" autocomplete="off"  />' + // Body Background 
 				'</td>' +
 			'</tr>' +
 
@@ -711,13 +718,17 @@ function InitDesigner() {
 				'<th rowspan="2" style="width:150px;">' + 
 					mw.msg( 'evelution-designer-gchs' ) + 
 				'</th>' +
-				'<th colspan="2"><span class="cpe-icon material-icons">palette</span></th>' +
+				'<th><span class="cpe-icon material-icons">palette</span></th>' +
+				'<th><span class="cpe-icon material-icons">tonality</span></th>' +
 			'</tr>' +
 
 
 			'<tr>' +
-				'<td style="text-align:center; width:300px"  colspan=2>' +
-					'<input type="range" class="big" style="min-width:300px; min-width:300px;" id="gchs" value="0" min="-12" max="12" step="1" list="td_gchs" autocomplete="off" />' + // Body Background 
+				'<td style="text-align:center; width:150px">' +
+					'<input type="range" class="big" style="min-width:150px;" id="gchs" value="0" min="-15" max="15" step="1" list="td_gchs" autocomplete="off" />' + // Body Background 
+				'</td>' +
+				'<td style="text-align:center; width:150px">' +
+					'<input type="range" class="big" style="min-width:150px;" id="gcs" value="100" min="20" max="100" step="5" list="td_gcs" autocomplete="off" />' + // Body Background 
 				'</td>' +
 			'</tr>' +
 
@@ -1227,6 +1238,7 @@ function ApplyTheme () {
 				 '--icon-filter-delay:' + $('#filter4').val() + "ms" + ';\n' +
 				 '--system-acryllic-opacity:' + $('#aopacity').val() + ';\n' +
 				 '--system-generic-color-hue-shift:' + $('#gchs').val() + ';\n' +
+				 '--system-generic-color-saturation:' + $('#gcs').val() + "%" + ';\n' +
 				 '}\n' // Ending
 
 /*
@@ -1360,6 +1372,7 @@ function CopyTheme() {
 				 '--icon-filter-delay:' + $('#filter4').val() + "ms" + ';\n' +
 				 '--system-acryllic-opacity:' + $('#aopacity').val() + ';\n' +
 				 '--system-generic-color-hue-shift:' + $('#gchs').val() + ';\n' +
+				 '--system-generic-color-saturation:' + $('#gcs').val() + "%" + ';\n' +
 				 '}' // Ending
 		if (navigator.clipboard) {
 			navigator.clipboard.writeText(result).then(function() {
@@ -1499,6 +1512,7 @@ function CopyTheme2() {
 				 "'icon-filter-delay' => '" + $("#filter4").val() + 'ms' + "',\n" +
 				 "'system-acryllic-opacity' => '" + $("#aopacity").val() + "',\n" +
 				 "'system-generic-color-hue-shift' => '" + $("#gchs").val() + "',\n" +
+				 "'system-generic-color-saturation' => '" + $("#gcs").val() + '%' + "',\n" +
 				 "];" // Ending
 		if (navigator.clipboard) {
 			navigator.clipboard.writeText(result).then(function() {
@@ -1693,6 +1707,8 @@ function PasteTheme() {
 	$('#aopacity').val( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--system-acryllic-opacity") );
 	// Acryllic Opacity
 	$('#gchs').val( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--system-generic-color-hue-shift") );
+	$('#gcs').val( parseInt(getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--system-generic-color-saturation")) );
+
 	UpdateContrastRatios();
 	UpdateRangeInputs();
 	$(".evelution-floating-actions.extra-actions .theme-paste-button").prop('disabled', false);
@@ -1812,6 +1828,7 @@ function TestTheme(banner=false) {
 				 '--icon-filter-delay:' + $('#filter4').val() + "ms" + '!important;\n' +
 				 '--system-acryllic-opacity:' + $('#aopacity').val() + '!important;\n' +
 				 '--system-generic-color-hue-shift:' + $('#gchs').val() + '!important;\n' +
+				 '--system-generic-color-saturation:' + $('#gcs').val() + "%" + '!important;\n' +
 				 '}' // Ending
 			document.querySelector("#mw-content-text .theme-designer-css").innerHTML = result;
 			try {
