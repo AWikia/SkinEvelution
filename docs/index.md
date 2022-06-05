@@ -1,4 +1,4 @@
-Evelution is a Next Gen Skin for MediaWiki. Designed to improve reading has four different thems that you can use them on a page-basis. With the inclusion of a Dark Mode, you can read pages with fewer eye stress.
+﻿Evelution is a Next Gen Skin for MediaWiki. Designed to improve reading has four different thems that you can use them on a page-basis. With the inclusion of a Dark Mode, you can read pages with fewer eye stress.
 
 
 With the inclusion of Sticky sidebars and Sticky Community Header, you can have many of the known tools MediaWiki following you.
@@ -35,6 +35,15 @@ Evelution requires at least a Servelution Client with the CPE Language Recompile
 If hardware acceleration is present, the GPU test must end with at least 5 FPS. Evelution skin will die if the GPU test ends with less than 5 FPS with the **Unsupported Configuration** error
 
 If no hardware acceleration is present, then Evelution will load properly (But without Rounded corners or Transparency Effects)
+
+## Version Lifecycle
+List of MediaWiki versions and what Evelution version can be installed at most. Green tick means the latest one can be used:
+
+| MediaWiki  | Maximum Supported Release |
+| ---------- | ------------------------- |
+| 1.38.x     | ✅                        |
+| 1.37.x     | ✅                        |
+| 1.36.x     | 89.2.0                    |
 
 # Installation
 To Install Evelution, you must download the reposistory first. Make a folder called **Evelution** in **Skins** diractory where you have installed MediaWiki and extract the zipped file contents in **Evelution** folder.  Lastly, put this in **LocalSettings.php**:
