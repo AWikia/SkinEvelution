@@ -2419,6 +2419,23 @@ border-radius:50%;
 	--icon-size:0.5;
 }
 
+/* Icon Scales */
+.link .cpe-icon{
+	--icon-grow:1;
+	transition:transform 400ms var(--transitioner);
+}
+
+
+.link:not([disabled]):active .cpe-icon,
+.link:not(.is-disabled):active .cpe-icon,
+.link:not([disabled]):focus .cpe-icon,
+.link:not(.is-disabled):focus .cpe-icon,
+.cpe-dropdown:focus > .link .cpe-icon,
+.cpe-dropdown:focus-within > .link .cpe-icon {
+	--icon-grow:1.1;
+}
+
+
 /* Button Groups */
 .cpe-button-group{
 align-items:stretch;
