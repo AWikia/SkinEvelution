@@ -39,11 +39,11 @@ If no hardware acceleration is present, then Evelution will load properly (But w
 ## Version Lifecycle
 List of MediaWiki versions and what Evelution version can be installed at most. Green tick means the latest one can be used:
 
-| MediaWiki  | Maximum Supported Release |
-| ---------- | ------------------------- |
-| 1.38.x     | ✅                        |
-| 1.37.x     | ✅                        |
-| 1.36.x     | 89.2.0                    |
+| MediaWiki  | Maximum Supported Release | End of Support |
+| ---------- | ------------------------- | -------------- |
+| 1.38.x     | ✅                        | June 2023       |
+| 1.37.x     | ✅                        | December 2022   |
+| 1.36.x     | 89.2.0                    | June 2022      |
 
 # Installation
 To Install Evelution, you must download the reposistory first. Make a folder called **Evelution** in **Skins** diractory where you have installed MediaWiki and extract the zipped file contents in **Evelution** folder.  Lastly, put this in **LocalSettings.php**:
