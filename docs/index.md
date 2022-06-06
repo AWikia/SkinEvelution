@@ -74,6 +74,7 @@ If you want to create a new theme without using CPE Theme Designer (i.e. Due to 
 --canvas-background-color:#f1f2f3; /* <color> */
 --canvas-secondary-background-color:auto; /* auto | <color> */
 --inactive-text-background-color:#aaabbb; /* auto | <color> */
+--active-text-background-color:auto; /* auto | <color> */
 --canvas-text-background-color:#222222; /* auto | <color> */
 --canvas-text-secondary-background-color:auto; /* auto | <color> */
 --highlight-background-color:#dd8300; /* <color> */
@@ -113,6 +114,7 @@ $wgEvelutionThemeA = [/* Replace $wgEvelutionThemeA with either $wgEvelutionThem
 'canvas-background-color' => '#f1f2f3', /* <color> */
 'canvas-secondary-background-color' => 'auto', /* auto | <color> */
 'inactive-text-background-color' => '#aaabbb', /* auto | <color> */
+'active-text-background-color' => 'auto', /* auto | <color> */
 'canvas-text-background-color' => '#222222', /* auto | <color> */
 'canvas-text-secondary-background-color' => 'auto', /* auto | <color> */
 'highlight-background-color' => '#dd8300', /* <color> */

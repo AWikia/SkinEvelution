@@ -138,6 +138,7 @@ Aleo = Latin
 --highlight-background-color:auto;
 --highlight-text-background-color:auto;
 --inactive-text-background-color:auto;
+--active-text-background-color:auto;
 --visited-hyperlink-background-color:auto;
 --canvas-secondary-background-color:auto;
 --canvas-text-background-color:auto;
@@ -257,9 +258,13 @@ body {
 	--desktop-text-fadeout-color:rgba(var(--desktop-text-background-color-rgb),var(--fadeout-opacity));
 	--hyperlink-fadeout-color:rgba(var(--hyperlink-background-color-rgb),var(--fadeout-opacity));
 	--hyperlink-secondary-fadeout-color:rgba(var(--hyperlink-secondary-background-color-rgb),var(--fadeout-opacity));
+	--visited-hyperlink-fadeout-color:rgba(var(--visited-hyperlink-background-color-rgb),var(--fadeout-opacity));
+	--visited-hyperlink-secondary-fadeout-color:rgba(var(--visited-hyperlink-secondary-background-color-rgb),var(--fadeout-opacity));
 	--canvas-fadeout-color:rgba(var(--canvas-background-color-rgb),var(--fadeout-opacity));
 	--canvas-secondary-fadeout-color:rgba(var(--canvas-secondary-background-color-rgb),var(--fadeout-opacity));
 	--inactive-text-fadeout-color:rgba(var(--inactive-text-background-color-rgb),var(--fadeout-opacity));
+	--active-text-fadeout-color:rgba(var(--active-text-background-color-rgb),var(--fadeout-opacity));
+	--active-text-secondary-fadeout-color:rgba(var(--active-text-secondary-background-color-rgb),var(--fadeout-opacity));
 	--canvas-text-fadeout-color:rgba(var(--canvas-text-background-color-rgb),var(--fadeout-opacity));
 	--canvas-text-secondary-fadeout-color:rgba(var(--canvas-text-secondary-background-color-rgb),var(--fadeout-opacity));
 	--highlight-fadeout-color:rgba(var(--highlight-background-color-rgb),var(--fadeout-opacity));
@@ -309,6 +314,9 @@ body [force-unaccented] {
 	--luna-visited-hyperlink-background-color:var(--visited-hyperlink-secondary-background-color);
 	--luna-visited-hyperlink-background-color-hover:var(--visited-hyperlink-secondary-background-color-hover);
 	--luna-visited-hyperlink-background-color-rgb:var(--visited-hyperlink-secondary-background-color-rgb);
+	--luna-active-text-background-color:var(--active-text-secondary-background-color);
+	--luna-active-text-background-color-hover:var(--active-text-secondary-background-color-hover);
+	--luna-active-text-background-color-rgb:var(--active-text-secondary-background-color-rgb);
 
 
 }
@@ -364,6 +372,9 @@ body:not(:focus):not(:focus-within) [force-unaccented] {
 	--luna-visited-hyperlink-background-color:var(--visited-hyperlink-tertiary-background-color);
 	--luna-visited-hyperlink-background-color-hover:var(--visited-hyperlink-tertiary-background-color-hover);
 	--luna-visited-hyperlink-background-color-rgb:var(--visited-hyperlink-tertiary-background-color-rgb);
+	--luna-active-text-background-color:var(--active-text-tertiary-background-color);
+	--luna-active-text-background-color-hover:var(--active-text-tertiary-background-color-hover);
+	--luna-active-text-background-color-rgb:var(--active-text-tertiary-background-color-rgb);
 
 }
 
@@ -1427,6 +1438,14 @@ color:var(--visited-hyperlink-background-color-hover);
 }
 
 
+a:active,
+body a:active,
+a:visited:active,
+body a:visited:active {
+color:var(--active-text-background-color);
+}
+
+
 a.new {
 color:var(--alert-background-color);
 text-decoration-style:dashed;
@@ -2139,10 +2158,10 @@ a.cpe-button, button.cpe-button {
   --button-foreground-color:var(--active-title-foreground-color);
   --button-foreground-color-inverted:var(--active-title-foreground-color-inverted);
   --button-foreground-color-rgb:var(--active-title-foreground-color-rgb);
-  --secondary-button-foreground-color:var(--desktop-background-color);
-  --secondary-button-foreground-color-hover:var(--desktop-background-color-hover);
-  --tertiary-button-background-color:var(--desktop-fadeout-color);
-  --tertiary-button-foreground-color:var(--desktop-background-color);
+  --secondary-button-foreground-color:var(--active-text-background-color);
+  --secondary-button-foreground-color-hover:var(--active-text-background-color-hover);
+  --tertiary-button-background-color:var(--active-text-fadeout-color);
+  --tertiary-button-foreground-color:var(--active-text-background-color);
 }
 
 /* Alert Color */
@@ -3849,6 +3868,10 @@ color:var(--luna-hyperlink-background-color-hover);
 color:var(--luna-visited-hyperlink-background-color-hover);
 }
 
+.cpe-banner-notification a:active {
+color:var(--luna-active-text-background-color-hover);
+}
+
 
 
 .cpe-banner-notification__close{
@@ -4301,6 +4324,17 @@ html:not(.visualmode-contrast) .contrast-on {
 --inactive-text-foreground-color-inverted:var(--inactive-text-foreground-color)!important;
 --inactive-text-foreground-color-hover-rgb:var(--inactive-text-foreground-color-rgb)!important;
 --inactive-text-alternative-foreground-color-hover-rgb:var(--inactive-text-alternative-foreground-color-rgb)!important;
+/* Active Text */
+--active-text-background-color-hover:var(--active-text-background-color)!important;
+--active-text-foreground-color-hover:var(--active-text-foreground-color)!important;
+--active-text-alternative-foreground-color-hover:var(--active-text-alternative-foreground-color)!important;
+--active-text-foreground-color-inverted:var(--active-text-foreground-color)!important;
+--active-text-background-color-hover-rgb:var(--active-text-background-color-rgb)!important;
+--active-text-foreground-color-hover-rgb:var(--active-text-foreground-color-rgb)!important;
+--active-text-alternative-foreground-color-hover-rgb:var(--active-text-alternative-foreground-color-rgb)!important;
+/* Active Text */
+--active-text-secondary-background-color-hover:var(--active-text-secondary-background-color)!important;
+--active-text-tertiary-background-color-hover:var(--active-text-tertiary-background-color)!important;
 /* Desktop Text */
 --canvas-text-background-color-hover:var(--canvas-text-background-color)!important;
 --canvas-text-foreground-color-hover:var(--canvas-text-foreground-color)!important;
@@ -4821,6 +4855,9 @@ background-color:var(--highlight-background-color);
 		--luna-visited-hyperlink-background-color:var(--visited-hyperlink-secondary-background-color)!important;
 		--luna-visited-hyperlink-background-color-hover:var(--visited-hyperlink-secondary-background-color-hover)!important;
 		--luna-visited-hyperlink-background-color-rgb:var(--visited-hyperlink-secondary-background-color-rgb)!important;
+		--luna-active-text-background-color:var(--active-text-secondary-background-color)!important;
+		--luna-active-text-background-color-hover:var(--active-text-secondary-background-color-hover)!important;
+		--luna-active-text-background-color-rgb:var(--active-text-secondary-background-color-rgb)!important;
 
 
 	}

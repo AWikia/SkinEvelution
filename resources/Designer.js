@@ -551,14 +551,20 @@ function InitDesigner() {
 				'<th rowspan="2" style="width:150px;">' + 
 					mw.msg( 'evelution-designer-page-border' ) + 
 				'</th>' +
-				'<th colspan="2"><span class="cpe-icon material-icons">format_color_fill</span></th>' +
+				'<th><span class="cpe-icon material-icons">font_download_off</span></th>' +
+				'<th><span class="cpe-icon material-icons">font_download</span></th>' +
 			'</tr>' +
 
 			'<tr>' +
-				'<td style="text-align:center; width:300px" colspan=2>' + 
+				'<td style="text-align:center; width:150px">' + 
 					'<input type="checkbox" name="auto2" id="auto2">' + '<label for="auto2">' + mw.msg( 'evelution-designer-auto' ) + '</label> <br>' +
 					'<input type="color"  class="cpe-button is-square" style="width:68px;" value="#c8c8cd" id="pagebg2" list="td_colors" />' + // Page BG
 				'</td>' +
+				'<td style="text-align:center; width:150px">' + 
+					'<span><input type="checkbox" name="auto13" id="auto13">' + '<label for="auto13">' + mw.msg( 'evelution-designer-auto' ) + '</label></span> <br>' +
+					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#c62d42" id="saaccentcolor" list="td_colors" />' + // Page BG
+				'</td>' +
+
 			'</tr>' +
 		// TR
 			'<tr>' +
@@ -746,7 +752,10 @@ function InitDesigner() {
 			'<block class="td-block" title="Inactive Text" style="background-color:var(--canvas-background-color); color:var(--inactive-text-background-color);">A</block>' +
 			'<block class="td-block" title="Hyperlink" style="background-color:var(--canvas-background-color); color:var(--hyperlink-background-color);">A</block>' +
 			'<block class="td-block" title="Visited Hyperlink" style="background-color:var(--canvas-background-color); color:var(--visited-hyperlink-background-color);">A</block>' +
+			'<block class="td-block" title="Active Text" style="background-color:var(--canvas-background-color); color:var(--active-text-background-color);">A</block>' +
 			'<block class="td-block" title="Secondary Hyperlink" style="background-color:var(--canvas-secondary-background-color); color:var(--hyperlink-secondary-background-color);">A</block>' +
+			'<block class="td-block" title="Secondary Visited Hyperlink" style="background-color:var(--canvas-secondary-background-color); color:var(--visited-hyperlink-secondary-background-color);">A</block>' +
+			'<block class="td-block" title="Secondary Active Text" style="background-color:var(--canvas-secondary-background-color); color:var(--active-text-secondary-background-color);">A</block>' +
 			'<block class="td-block" title="Highlight" style="background-color:var(--highlight-background-color); color:var(--highlight-text-background-color);">A</block>' +
 			'<block class="td-block" title="Active Caption" style="background-color:var(--active-title-background-color); color:var(--active-title-text-background-color);">A</block>' +
 			'<block class="td-block" title="Inactive Caption" style="background-color:var(--inactive-title-background-color); color:var(--inactive-title-text-background-color);">A</block>' +
@@ -1208,7 +1217,13 @@ function ApplyTheme () {
 		var autocolor12 = $('#svaccentcolor').val();
 	}
 
+	if (document.querySelector('.wikitable #auto13').checked) {
+		var autocolor13 = 'auto';
+	} else {
+		var autocolor13 = $('#saaccentcolor').val();
+	}
 
+	
 	var image = $("#bodyimage").val().replace('url(', '').replace(')', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("").split("\"").join("");
     if ( $('#firstfont').val().length === 0) {
 		var customfont2 = 'Roboto';
@@ -1234,6 +1249,7 @@ function ApplyTheme () {
 				 '--desktop-background-no-vertical-tiling:' + (!( document.querySelector('input#tilingV').checked ))  + ';\n' +
 				 '--canvas-background-color:' + $('#pagebg').val() + ';\n' +
 				 '--inactive-text-background-color:' + autocolor2  + ';\n' +
+				 '--active-text-background-color:' + autocolor13  + ';\n' +
 				 '--canvas-text-background-color:' + autocolor3  + ';\n' +
 				 '--highlight-background-color:' + autocolor6 + ';\n' +
 				 '--highlight-text-background-color:' + autocolor9 + ';\n' +
@@ -1350,6 +1366,12 @@ function CopyTheme() {
 		var autocolor12 = $('#svaccentcolor').val();
 	}
 
+	if (document.querySelector('.wikitable #auto13').checked) {
+		var autocolor13 = 'auto';
+	} else {
+		var autocolor13 = $('#saaccentcolor').val();
+	}
+
 
 	var image = $("#bodyimage").val().replace('url(', '').replace(')', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("").split("\"").join("");
     if ( $('#firstfont').val().length === 0) {
@@ -1376,6 +1398,7 @@ function CopyTheme() {
 				 '--canvas-background-color:' + $('#pagebg').val() + ';\n' +
 				 '--canvas-secondary-background-color:' + autocolor7  + ';\n' +
 				 '--inactive-text-background-color:' + autocolor2  + ';\n' +
+				 '--active-text-background-color:' + autocolor13  + ';\n' +
 				 '--canvas-text-background-color:' + autocolor3  + ';\n' +
 				 '--canvas-text-secondary-background-color:' + autocolor8  + ';\n' +
 				 '--highlight-background-color:' + autocolor6 + ';\n' +
@@ -1499,6 +1522,13 @@ function CopyTheme2() {
 		var autocolor12 = $('#svaccentcolor').val();
 	}
 
+	if (document.querySelector('.wikitable #auto13').checked) {
+		var autocolor13 = 'auto';
+	} else {
+		var autocolor13 = $('#saaccentcolor').val();
+	}
+
+
 	var image = $("#bodyimage").val().replace('url(', '').replace(')', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("").split("\"").join("");
     if ( $('#firstfont').val().length === 0) {
 		var customfont2 = 'Roboto';
@@ -1524,6 +1554,7 @@ function CopyTheme2() {
 				 "'canvas-background-color' => '" + $("#pagebg").val() + "',\n" +
 				 "'canvas-secondary-background-color' => '" + autocolor7  + "',\n" +
 				 "'inactive-text-background-color' => '" + autocolor2  + "',\n" +
+				 "'active-text-background-color' => '" + autocolor13  + "',\n" +
 				 "'canvas-text-background-color' => '" + autocolor3  + "',\n" +
 				 "'canvas-text-secondary-background-color' => '" + autocolor8  + "',\n" +
 				 "'highlight-background-color' => '" + autocolor6 + "',\n" +
@@ -1653,6 +1684,17 @@ function PasteTheme() {
 		$('#pagebg2').val( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--inactive-text-background-color") );
 	}
 	$('.wikitable #pagebg2').prop('disabled',(document.querySelector('.wikitable #auto2').checked) );
+
+	// Visited BG
+	if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--active-text-background-color") === 'auto' ) {
+		document.querySelector('.wikitable #auto13').checked = true;
+	} else {
+		document.querySelector('.wikitable #auto13').checked = false;
+		$('#saaccentcolor').val( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--active-text-background-color") );
+	}
+	$('.wikitable #saaccentcolor').prop('disabled',(document.querySelector('.wikitable #auto13').checked) );
+
+
 	// Anchor BG
 	$('#saccentcolor').val( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--hyperlink-background-color") );
 	// Visited BG
@@ -1832,6 +1874,12 @@ function TestTheme(banner=false) {
 		var autocolor12 = $('#svaccentcolor').val();
 	}
 
+	if (document.querySelector('.wikitable #auto13').checked) {
+		var autocolor13 = 'auto';
+	} else {
+		var autocolor13 = $('#saaccentcolor').val();
+	}
+
 
 	var image = $("#bodyimage").val().replace('url(', '').replace(')', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("").split("\"").join("");
     if ( $('#firstfont').val().length === 0) {
@@ -1859,6 +1907,7 @@ function TestTheme(banner=false) {
 				 '--canvas-background-color:' + $('#pagebg').val() + '!important;\n' +
 				 '--canvas-secondary-background-color:' + autocolor7  + '!important;\n' +
 				 '--inactive-text-background-color:' + autocolor2  + '!important;\n' +
+				 '--active-text-background-color:' + autocolor13  + '!important;\n' +
 				 '--canvas-text-background-color:' + autocolor3  + '!important;\n' +
 				 '--canvas-text-secondary-background-color:' + autocolor8  + ';\n' +
 				 '--highlight-background-color:' + autocolor6 + '!important;\n' +
@@ -2025,6 +2074,13 @@ $('.wikitable #auto12').click(
 							function(e) {
 								e.preventDefault
 								$('.wikitable #svaccentcolor').prop('disabled',(document.querySelector('.wikitable #auto12').checked) );
+								TestDynamicTheme();
+							}   
+						);
+$('.wikitable #auto13').click(
+							function(e) {
+								e.preventDefault
+								$('.wikitable #saaccentcolor').prop('disabled',(document.querySelector('.wikitable #auto13').checked) );
 								TestDynamicTheme();
 							}   
 						);

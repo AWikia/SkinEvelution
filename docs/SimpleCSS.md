@@ -41,6 +41,19 @@ This snipset changes the floating actions to be themed according to a chosen col
 ```
 
 
+### Visited Hyperlink
+```css
+.cpe-floating-button.page-side-tool {
+    --floating-button-color: var(--visited-hyperlink-foreground-color);
+    --floating-button-color-hover: var(--visited-hyperlink-foreground-color);
+    --floating-button-background-color: var(--visited-hyperlink-background-color);
+    --floating-button-background-color-hover: var(--visited-hyperlink-background-color-hover);
+	--floating-button-border-color-hover:var(--floating-button-background-color-hover);
+	--floating-button-fadeout-opacity:0;
+}
+```
+
+
 ### Canvas
 ```css
 .cpe-floating-button.page-side-tool {
@@ -76,6 +89,19 @@ This snipset changes the floating actions to be themed according to a chosen col
 	--floating-button-fadeout-opacity:0;
 }
 ```
+
+### Active Text
+```css
+.cpe-floating-button.page-side-tool {
+    --floating-button-color: var(--active-text-foreground-color);
+    --floating-button-color-hover: var(--active-text-foreground-color);
+    --floating-button-background-color: var(--active-text-background-color);
+    --floating-button-background-color-hover: var(--active-text-background-color-hover);
+	--floating-button-border-color-hover:var(--floating-button-background-color-hover);
+	--floating-button-fadeout-opacity:0;
+}
+```
+
 
 ### Canvas Text
 ```css
@@ -114,6 +140,19 @@ This snipset changes the floating actions to be themed according to a chosen col
 }
 ```
 
+### Highlight Text
+```css
+.cpe-floating-button.page-side-tool {
+    --floating-button-color: var(--highlight-text-foreground-color);
+    --floating-button-color-hover: var(--highlight-text-foreground-color);
+    --floating-button-background-color: var(--highlight-text-background-color);
+    --floating-button-background-color-hover: var(--highlight-text-background-color-hover);
+	--floating-button-border-color-hover:var(--floating-button-background-color-hover);
+	--floating-button-fadeout-opacity:0;
+}
+```
+
+
 ### Active Title
 ```css
 .cpe-floating-button.page-side-tool {
@@ -121,6 +160,18 @@ This snipset changes the floating actions to be themed according to a chosen col
     --floating-button-color-hover: var(--active-title-foreground-color);
     --floating-button-background-color: var(--active-title-background-color);
     --floating-button-background-color-hover: var(--active-title-background-color-hover);
+	--floating-button-border-color-hover:var(--floating-button-background-color-hover);
+	--floating-button-fadeout-opacity:0;
+}
+```
+
+### Active Title Text
+```css
+.cpe-floating-button.page-side-tool {
+    --floating-button-color: var(--active-title-text-foreground-color);
+    --floating-button-color-hover: var(--active-title-text-foreground-color);
+    --floating-button-background-color: var(--active-title-text-background-color);
+    --floating-button-background-color-hover: var(--active-title-text-background-color-hover);
 	--floating-button-border-color-hover:var(--floating-button-background-color-hover);
 	--floating-button-fadeout-opacity:0;
 }
@@ -135,6 +186,18 @@ This snipset changes the floating actions to be themed according to a chosen col
     --floating-button-color-hover: var(--inactive-title-foreground-color);
     --floating-button-background-color: var(--inactive-title-background-color);
     --floating-button-background-color-hover: var(--inactive-title-background-color-hover);
+	--floating-button-border-color-hover:var(--floating-button-background-color-hover);
+	--floating-button-fadeout-opacity:0;
+}
+```
+
+### Inctive Title Text
+```css
+.cpe-floating-button.page-side-tool {
+    --floating-button-color: var(--inactive-title-text-foreground-color);
+    --floating-button-color-hover: var(--inactive-title-text-foreground-color);
+    --floating-button-background-color: var(--inactive-title-text-background-color);
+    --floating-button-background-color-hover: var(--inactive-title-text-background-color-hover);
 	--floating-button-border-color-hover:var(--floating-button-background-color-hover);
 	--floating-button-fadeout-opacity:0;
 }
