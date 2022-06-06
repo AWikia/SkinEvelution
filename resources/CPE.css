@@ -138,6 +138,7 @@ Aleo = Latin
 --highlight-background-color:auto;
 --highlight-text-background-color:auto;
 --inactive-text-background-color:auto;
+--visited-hyperlink-background-color:auto;
 --canvas-secondary-background-color:auto;
 --canvas-text-background-color:auto;
 --canvas-text-secondary-background-color:auto;
@@ -305,6 +306,11 @@ body [force-unaccented] {
 	--luna-hyperlink-background-color:var(--hyperlink-secondary-background-color);
 	--luna-hyperlink-background-color-hover:var(--hyperlink-secondary-background-color-hover);
 	--luna-hyperlink-background-color-rgb:var(--hyperlink-secondary-background-color-rgb);
+	--luna-visited-hyperlink-background-color:var(--visited-hyperlink-secondary-background-color);
+	--luna-visited-hyperlink-background-color-hover:var(--visited-hyperlink-secondary-background-color-hover);
+	--luna-visited-hyperlink-background-color-rgb:var(--visited-hyperlink-secondary-background-color-rgb);
+
+
 }
 
 /* Unaccented (Unfocused) */
@@ -355,6 +361,10 @@ body:not(:focus):not(:focus-within) [force-unaccented] {
 	--luna-hyperlink-background-color:var(--hyperlink-tertiary-background-color);
 	--luna-hyperlink-background-color-hover:var(--hyperlink-tertiary-background-color-hover);
 	--luna-hyperlink-background-color-rgb:var(--hyperlink-tertiary-background-color-rgb);
+	--luna-visited-hyperlink-background-color:var(--visited-hyperlink-tertiary-background-color);
+	--luna-visited-hyperlink-background-color-hover:var(--visited-hyperlink-tertiary-background-color-hover);
+	--luna-visited-hyperlink-background-color-rgb:var(--visited-hyperlink-tertiary-background-color-rgb);
+
 }
 
 /* Accented (Unfocused) */
@@ -1402,14 +1412,18 @@ background-color:transparent;
 }
 
 body a:visited {
-color:var(--hyperlink-background-color);
+color:var(--visited-hyperlink-background-color);
 }
 
 a:hover,
-body a:hover,
-body a:visited:hover {
+body a:hover {
 color:var(--hyperlink-background-color-hover);
 cursor:var(--cpe-hand-cursor);
+}
+
+
+body a:visited:hover {
+color:var(--visited-hyperlink-background-color-hover);
 }
 
 
@@ -3818,15 +3832,23 @@ margin-right:16px;
 	padding:13px 12px;
 }
 
-.cpe-banner-notification a,
-.cpe-banner-notification a:visited {
+.cpe-banner-notification a {
 color:var(--luna-hyperlink-background-color);
 }
 
-.cpe-banner-notification a:hover,
-.cpe-banner-notification a:hover:visited {
+.cpe-banner-notification a:visited {
+color:var(--luna-visited-hyperlink-background-color);
+}
+
+
+.cpe-banner-notification a:hover {
 color:var(--luna-hyperlink-background-color-hover);
 }
+
+.cpe-banner-notification a:hover:visited {
+color:var(--luna-visited-hyperlink-background-color-hover);
+}
+
 
 
 .cpe-banner-notification__close{
@@ -4320,6 +4342,19 @@ html:not(.visualmode-contrast) .contrast-on {
 /* Hyperlink */
 --hyperlink-secondary-background-color-hover:var(--hyperlink-secondary-background-color)!important;
 --hyperlink-tertiary-background-color-hover:var(--hyperlink-tertiary-background-color)!important;
+/* Visited Hyperlink */
+--visited-hyperlink-background-color-hover:var(--visited-hyperlink-background-color)!important;
+--visited-hyperlink-foreground-color-hover:var(--visited-hyperlink-foreground-color)!important;
+--visited-hyperlink-alternative-foreground-color-hover:var(--visited-hyperlink-alternative-foreground-color)!important;
+--visited-hyperlink-foreground-color-inverted:var(--visited-hyperlink-foreground-color)!important;
+--visited-hyperlink-background-color-hover-rgb:var(--visited-hyperlink-background-color-rgb)!important;
+--visited-hyperlink-foreground-color-hover-rgb:var(--visited-hyperlink-foreground-color-rgb)!important;
+--visited-hyperlink-alternative-foreground-color-hover-rgb:var(--visited-hyperlink-alternative-foreground-color-rgb)!important;
+/* Visited Hyperlink */
+--visited-hyperlink-secondary-background-color-hover:var(--visited-hyperlink-secondary-background-color)!important;
+--visited-hyperlink-tertiary-background-color-hover:var(--visited-hyperlink-tertiary-background-color)!important;
+
+
 /* Active Title */
 --active-title-background-color-hover:var(--active-title-background-color)!important;
 --active-title-foreground-color-hover:var(--active-title-foreground-color)!important;
@@ -4783,6 +4818,11 @@ background-color:var(--highlight-background-color);
 		--luna-hyperlink-background-color:var(--hyperlink-secondary-background-color)!important;
 		--luna-hyperlink-background-color-hover:var(--hyperlink-secondary-background-color-hover)!important;
 		--luna-hyperlink-background-color-rgb:var(--hyperlink-secondary-background-color-rgb)!important;
+		--luna-visited-hyperlink-background-color:var(--visited-hyperlink-secondary-background-color)!important;
+		--luna-visited-hyperlink-background-color-hover:var(--visited-hyperlink-secondary-background-color-hover)!important;
+		--luna-visited-hyperlink-background-color-rgb:var(--visited-hyperlink-secondary-background-color-rgb)!important;
+
+
 	}
 
 	/* Ivilution */

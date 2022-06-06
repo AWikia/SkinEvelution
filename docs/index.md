@@ -79,6 +79,7 @@ If you want to create a new theme without using CPE Theme Designer (i.e. Due to 
 --highlight-background-color:#dd8300; /* <color> */
 --highlight-text-background-color:auto; /* auto |<color> */
 --hyperlink-background-color:#dd2300; /* <color> */
+--visited-hyperlink-background-color:auto; /* auto | <color> */
 --active-title-background-color:#b88300; /* auto | <color> */
 --active-title-text-background-color:auto; /* auto |<color> */
 --inactive-title-background-color:#b88300; /* auto | <color> */
@@ -117,6 +118,7 @@ $wgEvelutionThemeA = [/* Replace $wgEvelutionThemeA with either $wgEvelutionThem
 'highlight-background-color' => '#dd8300', /* <color> */
 'highlight-text-background-color' => 'auto', /* auto |<color> */
 'hyperlink-background-color' => '#dd2300', /* <color> */
+'visited-hyperlink-background-color' => 'auto', /* auto | <color> */
 'active-title-background-color' => '#b88300', /* auto | <color> */
 'active-title-text-background-color' => 'auto', /* auto |<color> */
 'inactive-title-background-color' => '#b88300', /* auto | <color> */

@@ -557,6 +557,17 @@ function GetHyperlink() {
 }
 
 
+function GetVisitedHyperlink() {
+	if (ForcedColors()) {
+		return getComputedStyle(document.querySelector('.dcm-' + ForcedColorType() + ' .fc-visitedtext')).getPropertyValue("color");
+	} else if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--visited-hyperlink-background-color") === 'auto') {
+		return GetHyperlink();
+	} else {
+		return getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--visited-hyperlink-background-color").trim();
+	}
+}
+
+
 function GetInactiveText() {
 	if (ForcedColors()) {
 		return getComputedStyle(document.querySelector('.dcm-' + ForcedColorType() + ' .fc-graytext')).getPropertyValue("color");
@@ -1435,6 +1446,32 @@ function DownloadTheme(full=false) {
 				 '--hyperlink-tertiary-background-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--hyperlink-tertiary-background-color-hover")  + ';\n' +
 				 '--hyperlink-tertiary-background-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--hyperlink-tertiary-background-color-rgb")  + ';\n' +
 
+				 // Secondary Visited Accent Color
+				 '--visited-hyperlink-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--visited-hyperlink-background-color")  + ';\n' +
+				 '--visited-hyperlink-background-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--visited-hyperlink-background-color-hover")  + ';\n' +
+				 '--visited-hyperlink-fadeout-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--visited-hyperlink-fadeout-color")  + ';\n' +
+				 '--visited-hyperlink-gradient-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--visited-hyperlink-gradient-color")  + ';\n' +
+				 '--visited-hyperlink-gradient-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--visited-hyperlink-gradient-color-hover")  + ';\n' +
+				 '--visited-hyperlink-foreground-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--visited-hyperlink-foreground-color")  + ';\n' +
+				 '--visited-hyperlink-foreground-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--visited-hyperlink-foreground-color-hover")  + ';\n' +
+				 '--visited-hyperlink-foreground-color-inverted:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--visited-hyperlink-foreground-color-inverted")  + ';\n' +
+				 '--visited-hyperlink-alternative-foreground-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--visited-hyperlink-alternative-foreground-color")  + ';\n' +
+				 '--visited-hyperlink-alternative-foreground-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--visited-hyperlink-alternative-foreground-color-hover")  + ';\n' +
+				 '--visited-hyperlink-background-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--visited-hyperlink-background-color-rgb")  + ';\n' +
+				 '--visited-hyperlink-background-color-hover-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--visited-hyperlink-background-color-hover-rgb")  + ';\n' +
+				 '--visited-hyperlink-foreground-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--visited-hyperlink-foreground-color-rgb")  + ';\n' +
+				 '--visited-hyperlink-foreground-color-hover-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--visited-hyperlink-foreground-color-hover-rgb")  + ';\n' +
+				 '--visited-hyperlink-alternative-foreground-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--visited-hyperlink-alternative-foreground-color-rgb")  + ';\n' +
+				 '--visited-hyperlink-alternative-foreground-color-hover-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--visited-hyperlink-alternative-foreground-color-hover-rgb")  + ';\n' +
+				 // 2nd Secondary Visited Accent Color
+				 '--visited-hyperlink-secondary-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--visited-hyperlink-secondary-background-color")  + ';\n' +
+				 '--visited-hyperlink-secondary-background-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--visited-hyperlink-secondary-background-color-hover")  + ';\n' +
+				 '--visited-hyperlink-secondary-background-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--visited-hyperlink-secondary-background-color-rgb")  + ';\n' +
+				 // 3rd Secondary Visited Accent Color
+				 '--visited-hyperlink-tertiary-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--visited-hyperlink-tertiary-background-color")  + ';\n' +
+				 '--visited-hyperlink-tertiary-background-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--visited-hyperlink-tertiary-background-color-hover")  + ';\n' +
+				 '--visited-hyperlink-tertiary-background-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--visited-hyperlink-tertiary-background-color-rgb")  + ';\n' +
+
 				 // Tertiary Accent Color
 				 '--active-title-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--active-title-background-color")  + ';\n' +
 				 '--active-title-background-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--active-title-background-color-hover")  + ';\n' +
@@ -1637,6 +1674,7 @@ function DownloadTheme(full=false) {
 				 '--highlight-background-color:' + getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--highlight-background-color")  + ';\n' +
 				 '--highlight-text-background-color:' + getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--highlight-text-background-color")  + ';\n' +
 				 '--hyperlink-background-color:' + getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--hyperlink-background-color")  + ';\n' +
+				 '--visited-hyperlink-background-color:' + getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--visited-hyperlink-background-color")  + ';\n' +
 				 '--active-title-background-color:' + getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--active-title-background-color")  + ';\n' +
 				 '--active-title-text-background-color:' + getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--active-title-text-background-color")  + ';\n' +
 				 '--inactive-title-background-color:' + getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--inactive-title-background-color")  + ';\n' +
@@ -2104,6 +2142,31 @@ var link2color1 = ColorTest(link2_color,content_color);
 var link3color1 = ColorTest(link3_color,lunacolor);
 
 
+/** Visited Link Color **/
+/* Set Vars */
+var vlink_color = GetVisitedHyperlink();
+
+// Liatch Quirk
+	var vlink_color = ColorInvert(vlink_color);
+	var vlink2_color = vlink_color;
+	var vlink3_color = vlink_color;
+	
+		while ( ( !(isSuitableColor(vlink_color, content_color)) ) && (vlink_color !== lightness) ) {
+			var vlink_color= MiniColorTest(vlink_color);
+		}
+		while ( ( !(isSuitableColor(vlink2_color, dropdowncolor)) ) && (vlink2_color !== lightness3) ) {
+			var vlink2_color= MiniColorTest3(vlink2_color,dropdowncolor);
+		}
+		while ( ( !(isSuitableColor(vlink3_color, lunacolor)) ) && (vlink3_color !== lightness4) ) {
+			var vlink3_color= MiniColorTest3(vlink3_color,lunacolor);
+		}
+
+
+var vlinkcolor1 = ColorTest(vlink_color,content_color);
+var vlink2color1 = ColorTest(vlink2_color,content_color);
+var vlink3color1 = ColorTest(vlink3_color,lunacolor);
+
+
 /** Content Border **/
 /* Set Vars */
 
@@ -2247,6 +2310,7 @@ if (imgfilter == 'none') {
 			var dropdowncolor_gradient = GetGradientVariable(dropdowncolor,'canvas-secondary');
 			var head_gradient = GetGradientVariable(head_color,'desktop');
 			var link_gradient = GetGradientVariable(link_color,'hyperlink');
+			var vlink_gradient = GetGradientVariable(vlink_color,'visited-hyperlink');
 
 			// Inverted Dledlen
 			var content2_text_gradient = GetGradientVariable(content2_text,'canvas-text-secondary');
@@ -2263,6 +2327,7 @@ if (imgfilter == 'none') {
 			var dropdowncolor_gradient = GetGradientVariable(content_color,'canvas-secondary');
 			var head_gradient = GetGradientVariable(content_color,'desktop');
 			var link_gradient = GetGradientVariable(content_color,'hyperlink');
+			var vlink_gradient = GetGradientVariable(content_color,'visited-hyperlink');
 
 			// Inverted Dledlen
 			var content2_text_gradient = GetGradientVariable(content_text,'canvas-text-secondary');
@@ -2279,6 +2344,7 @@ if (imgfilter == 'none') {
 		var dropdowncolor_gradient = GetGradientVariable(content_color,'canvas-secondary');
 		var head_gradient = GetGradientVariable(content_color,'desktop');
 		var link_gradient = GetGradientVariable(content_color,'hyperlink');
+		var vlink_gradient = GetGradientVariable(content_color,'visited-hyperlink');
 
 		// Inverted Dledlen
 		var content2_text_gradient = GetGradientVariable(content_text,'canvas-text-secondary');
@@ -2308,6 +2374,7 @@ var content2_text_fg = GetForegroundVariables(content2_text);
 var button_fg = GetForegroundVariables(button_color);
 var buttontext_fg = GetForegroundVariables(buttontext_color);
 var link_fg = GetForegroundVariables(link_color);
+var vlink_fg = GetForegroundVariables(vlink_color);
 var border_fg = GetForegroundVariables(border_color);
 var head_fg = GetForegroundVariables(head_color);
 var headertext_fg = GetForegroundVariables(headertext_color);
@@ -2353,6 +2420,10 @@ var invfilters = [
 						  "--hyperlink-alternative-foreground-color-hover:" + link_fg[6] + ";\n" + 
 						  "--hyperlink-alternative-foreground-color-rgb:" + link_fg[5] + ";\n" +
 						  "--hyperlink-alternative-foreground-color-hover-rgb:" + link_fg[7] + ";\n" +
+						  "--visited-hyperlink-alternative-foreground-color:" + vlink_fg[4] + ";\n" + 
+						  "--visited-hyperlink-alternative-foreground-color-hover:" + vlink_fg[6] + ";\n" + 
+						  "--visited-hyperlink-alternative-foreground-color-rgb:" + vlink_fg[5] + ";\n" +
+						  "--visited-hyperlink-alternative-foreground-color-hover-rgb:" + vlink_fg[7] + ";\n" +
 						  "--canvas-alternative-foreground-color:" + content_color_fg[4] + ";\n" + 
 						  "--canvas-alternative-foreground-color-hover:" + content_color_fg[6] + ";\n" + 
 						  "--canvas-alternative-foreground-color-rgb:" + content_color_fg[5] + ";\n" +
@@ -2499,6 +2570,23 @@ var invfilters = [
 						  "--hyperlink-tertiary-background-color:" + link3_color + ";\n" +
 						  "--hyperlink-tertiary-background-color-hover:" + link3color1 + ";\n" +
 						  "--hyperlink-tertiary-background-color-rgb:" + Color2(link3_color) + ";\n" +
+						  "--visited-hyperlink-background-color:" + vlink_color + ";\n" +
+						  "--visited-hyperlink-background-color-hover:" + vlinkcolor1 + ";\n" +
+						  "--visited-hyperlink-gradient-color:" + vlink_gradient[0] + ";\n" +
+						  "--visited-hyperlink-gradient-color-hover:" + vlink_gradient[1] + ";\n" +
+						  "--visited-hyperlink-foreground-color:" + vlink_fg[0] + ";\n" +
+						  "--visited-hyperlink-foreground-color-hover:" + vlink_fg[1] + ";\n" +
+						  "--visited-hyperlink-foreground-color-inverted:" + GetForegroundVariables(vlinkcolor1)[0] + ";\n" +
+						  "--visited-hyperlink-background-color-rgb:" + Color2(vlink_color) + ";\n" +
+						  "--visited-hyperlink-background-color-hover-rgb:" + Color2(vlinkcolor1) + ";\n" +
+						  "--visited-hyperlink-foreground-color-rgb:" + vlink_fg[2] + ";\n" +
+						  "--visited-hyperlink-foreground-color-hover-rgb:" + vlink_fg[3] + ";\n" +
+						  "--visited-hyperlink-secondary-background-color:" + vlink2_color + ";\n" +
+						  "--visited-hyperlink-secondary-background-color-hover:" + vlink2color1 + ";\n" +
+						  "--visited-hyperlink-secondary-background-color-rgb:" + Color2(vlink2_color) + ";\n" +
+						  "--visited-hyperlink-tertiary-background-color:" + vlink3_color + ";\n" +
+						  "--visited-hyperlink-tertiary-background-color-hover:" + vlink3color1 + ";\n" +
+						  "--visited-hyperlink-tertiary-background-color-rgb:" + Color2(vlink3_color) + ";\n" +
 						  "--inactive-text-background-color:" + border_color + ";\n" +
 						  "--inactive-text-background-color-hover:" + bordercolor1 + ";\n" +
 						  "--inactive-text-gradient-color:" + border_gradient[0] + ";\n" +

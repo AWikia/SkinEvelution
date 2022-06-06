@@ -132,6 +132,7 @@ Of course. It has been tested and it works. For instance, if you want to modify 
 --highlight-background-color:#dd8300; /* <color> */
 --highlight-text-background-color:auto; /* auto |<color> */
 --hyperlink-background-color:#dd2300; /* <color> */
+--visited-hyperlink-background-color:auto; /* auto | <color> */
 --active-title-background-color:#b88300; /* auto | <color> */
 --active-title-text-background-color:auto; /* auto |<color> */
 --inactive-title-background-color:#b88300; /* auto | <color> */
@@ -169,6 +170,7 @@ Per-page theming is also supported. If you want to use a different theme for the
 --highlight-background-color:#dd8300; /* <color> */
 --highlight-text-background-color:auto; /* auto |<color> */
 --hyperlink-background-color:#dd2300; /* <color> */
+--visited-hyperlink-background-color:auto; /* auto | <color> */
 --active-title-background-color:#b88300; /* auto | <color> */
 --active-title-text-background-color:auto; /* auto |<color> */
 --inactive-title-background-color:#b88300; /* auto | <color> */

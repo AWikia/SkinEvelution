@@ -565,12 +565,17 @@ function InitDesigner() {
 				'<th rowspan="2" style="width:150px;">' + 
 					mw.msg( 'evelution-designer-saccent' ) + 
 				'</th>' +
-				'<th colspan="2"><span class="cpe-icon material-icons">format_color_fill</span></th>' +
+				'<th><span class="cpe-icon material-icons">link_off</span></th>' +
+				'<th><span class="cpe-icon material-icons">link</span></th>' +
 			'</tr>' +
 			'<tr>' +
-				'<td style="text-align:center; width:300px" colspan=2>' + 
-/*					'<span style="visibility:hidden; pointer-events:none;"><input type="checkbox" name="autoDDR" id="autoDDR">' + '<label for="autoDDR">' + mw.msg( 'evelution-designer-auto' ) + '</label></span> <br>' +*/
+				'<td style="text-align:center; width:150px">' + 
+					'<span style="visibility:hidden; pointer-events:none;"><input type="checkbox" name="autoDDR" id="autoDDR">' + '<label for="autoDDR">' + mw.msg( 'evelution-designer-auto' ) + '</label></span> <br>' +
 					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#1e5aa8" id="saccentcolor" list="td_colors" />' + // Page BG
+				'</td>' +
+				'<td style="text-align:center; width:150px">' + 
+					'<span><input type="checkbox" name="auto12" id="auto12">' + '<label for="auto12">' + mw.msg( 'evelution-designer-auto' ) + '</label></span> <br>' +
+					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#733380" id="svaccentcolor" list="td_colors" />' + // Page BG
 				'</td>' +
 			'</tr>' +
 		// TR
@@ -740,6 +745,7 @@ function InitDesigner() {
 			'<block class="td-block" title="Secondary Canvas" style="background-color:var(--canvas-secondary-background-color); color:var(--canvas-text-secondary-background-color);">A</block>' +
 			'<block class="td-block" title="Inactive Text" style="background-color:var(--canvas-background-color); color:var(--inactive-text-background-color);">A</block>' +
 			'<block class="td-block" title="Hyperlink" style="background-color:var(--canvas-background-color); color:var(--hyperlink-background-color);">A</block>' +
+			'<block class="td-block" title="Visited Hyperlink" style="background-color:var(--canvas-background-color); color:var(--visited-hyperlink-background-color);">A</block>' +
 			'<block class="td-block" title="Secondary Hyperlink" style="background-color:var(--canvas-secondary-background-color); color:var(--hyperlink-secondary-background-color);">A</block>' +
 			'<block class="td-block" title="Highlight" style="background-color:var(--highlight-background-color); color:var(--highlight-text-background-color);">A</block>' +
 			'<block class="td-block" title="Active Caption" style="background-color:var(--active-title-background-color); color:var(--active-title-text-background-color);">A</block>' +
@@ -1196,6 +1202,13 @@ function ApplyTheme () {
 		var autocolor11 = $('#qaccenttextcolor').val();
 	}
 
+	if (document.querySelector('.wikitable #auto12').checked) {
+		var autocolor12 = 'auto';
+	} else {
+		var autocolor12 = $('#svaccentcolor').val();
+	}
+
+
 	var image = $("#bodyimage").val().replace('url(', '').replace(')', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("").split("\"").join("");
     if ( $('#firstfont').val().length === 0) {
 		var customfont2 = 'Roboto';
@@ -1225,6 +1238,7 @@ function ApplyTheme () {
 				 '--highlight-background-color:' + autocolor6 + ';\n' +
 				 '--highlight-text-background-color:' + autocolor9 + ';\n' +
 				 '--hyperlink-background-color:' + $('#saccentcolor').val() + ';\n' +
+				 '--visited-hyperlink-background-color:' + autoclor12 + ';\n' +
 				 '--active-title-background-color:' + autocolor5  + ';\n' +
 				 '--active-title-text-background-color:' + autocolor10  + ';\n' +
 				 '--inactive-title-background-color:' + autocolor4  + ';\n' +
@@ -1329,6 +1343,14 @@ function CopyTheme() {
 	} else {
 		var autocolor11 = $('#qaccenttextcolor').val();
 	}
+
+	if (document.querySelector('.wikitable #auto12').checked) {
+		var autocolor12 = 'auto';
+	} else {
+		var autocolor12 = $('#svaccentcolor').val();
+	}
+
+
 	var image = $("#bodyimage").val().replace('url(', '').replace(')', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("").split("\"").join("");
     if ( $('#firstfont').val().length === 0) {
 		var customfont2 = 'Roboto';
@@ -1359,6 +1381,7 @@ function CopyTheme() {
 				 '--highlight-background-color:' + autocolor6 + ';\n' +
 				 '--highlight-text-background-color:' + autocolor9 + ';\n' +
 				 '--hyperlink-background-color:' + $('#saccentcolor').val() + ';\n' +
+				 '--visited-hyperlink-background-color:' + autoclor12 + ';\n' +
 				 '--active-title-background-color:' + autocolor5  + ';\n' +
 				 '--active-title-text-background-color:' + autocolor10  + ';\n' +
 				 '--inactive-title-background-color:' + autocolor4  + ';\n' +
@@ -1469,6 +1492,13 @@ function CopyTheme2() {
 	} else {
 		var autocolor11 = $('#qaccenttextcolor').val();
 	}
+
+	if (document.querySelector('.wikitable #auto12').checked) {
+		var autocolor12 = 'auto';
+	} else {
+		var autocolor12 = $('#svaccentcolor').val();
+	}
+
 	var image = $("#bodyimage").val().replace('url(', '').replace(')', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("").split("\"").join("");
     if ( $('#firstfont').val().length === 0) {
 		var customfont2 = 'Roboto';
@@ -1499,6 +1529,7 @@ function CopyTheme2() {
 				 "'highlight-background-color' => '" + autocolor6 + "',\n" +
 				 "'highlight-text-background-color' => '" + autocolor9 + "',\n" +
 				 "'hyperlink-background-color' => '" + $("#saccentcolor").val() + "',\n" +
+				 "'visited-hyperlink-background-color' => '" + autocolor12 + "',\n" +
 				 "'active-title-background-color' => '" + autocolor5  + "',\n" +
 				 "'active-title-text-background-color' => '" + autocolor10  + "',\n" +
 				 "'inactive-title-background-color' => '" + autocolor4  + "',\n" +
@@ -1624,6 +1655,16 @@ function PasteTheme() {
 	$('.wikitable #pagebg2').prop('disabled',(document.querySelector('.wikitable #auto2').checked) );
 	// Anchor BG
 	$('#saccentcolor').val( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--hyperlink-background-color") );
+	// Visited BG
+	if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--visited-hyperlink-background-color") === 'auto' ) {
+		document.querySelector('.wikitable #auto12').checked = true;
+	} else {
+		document.querySelector('.wikitable #auto12').checked = false;
+		$('#svaccentcolor').val( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--visited-hyperlink-background-color") );
+	}
+	$('.wikitable #svaccentcolor').prop('disabled',(document.querySelector('.wikitable #auto12').checked) );
+
+
 	// Accent BG
 	if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--highlight-background-color") === 'auto' ) {
 		document.querySelector('.wikitable #auto6').checked = true;
@@ -1784,6 +1825,14 @@ function TestTheme(banner=false) {
 	} else {
 		var autocolor11 = $('#qaccenttextcolor').val();
 	}
+
+	if (document.querySelector('.wikitable #auto12').checked) {
+		var autocolor12 = 'auto';
+	} else {
+		var autocolor12 = $('#svaccentcolor').val();
+	}
+
+
 	var image = $("#bodyimage").val().replace('url(', '').replace(')', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("").split("\"").join("");
     if ( $('#firstfont').val().length === 0) {
 		var customfont2 = 'Roboto';
@@ -1815,6 +1864,7 @@ function TestTheme(banner=false) {
 				 '--highlight-background-color:' + autocolor6 + '!important;\n' +
 				 '--highlight-text-background-color:' + autocolor9 + '!important;\n' +
 				 '--hyperlink-background-color:' + $('#saccentcolor').val() + '!important;\n' +
+				 '--visited-hyperlink-background-color:' + autocolor12 + '!important;\n' +
 				 '--active-title-background-color:' + autocolor5  + '!important;\n' +
 				 '--active-title-text-background-color:' + autocolor10  + '!important;\n' +
 				 '--inactive-title-background-color:' + autocolor4  + '!important;\n' +
@@ -1968,6 +2018,13 @@ $('.wikitable #auto11').click(
 							function(e) {
 								e.preventDefault
 								$('.wikitable #qaccenttextcolor').prop('disabled',(document.querySelector('.wikitable #auto11').checked) );
+								TestDynamicTheme();
+							}   
+						);
+$('.wikitable #auto12').click(
+							function(e) {
+								e.preventDefault
+								$('.wikitable #svaccentcolor').prop('disabled',(document.querySelector('.wikitable #auto12').checked) );
 								TestDynamicTheme();
 							}   
 						);
