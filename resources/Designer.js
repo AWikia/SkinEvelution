@@ -1254,7 +1254,7 @@ function ApplyTheme () {
 				 '--highlight-background-color:' + autocolor6 + ';\n' +
 				 '--highlight-text-background-color:' + autocolor9 + ';\n' +
 				 '--hyperlink-background-color:' + $('#saccentcolor').val() + ';\n' +
-				 '--visited-hyperlink-background-color:' + autoclor12 + ';\n' +
+				 '--visited-hyperlink-background-color:' + autocolor12 + ';\n' +
 				 '--active-title-background-color:' + autocolor5  + ';\n' +
 				 '--active-title-text-background-color:' + autocolor10  + ';\n' +
 				 '--inactive-title-background-color:' + autocolor4  + ';\n' +
@@ -1404,7 +1404,7 @@ function CopyTheme() {
 				 '--highlight-background-color:' + autocolor6 + ';\n' +
 				 '--highlight-text-background-color:' + autocolor9 + ';\n' +
 				 '--hyperlink-background-color:' + $('#saccentcolor').val() + ';\n' +
-				 '--visited-hyperlink-background-color:' + autoclor12 + ';\n' +
+				 '--visited-hyperlink-background-color:' + autocolor12 + ';\n' +
 				 '--active-title-background-color:' + autocolor5  + ';\n' +
 				 '--active-title-text-background-color:' + autocolor10  + ';\n' +
 				 '--inactive-title-background-color:' + autocolor4  + ';\n' +
