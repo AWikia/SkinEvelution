@@ -413,26 +413,32 @@ container > .main {
 
 .evelution-taskbar .upper-links {
 	justify-content:center;
-	padding-left:var(--explore-link-size);
+	padding-left:calc(var(--explore-link-size) * 2);
 }
 
-.evelution-taskbar .upper-links .explore-menu {
+.evelution-taskbar .upper-links .is-widget-style { /* This will cause issues when more are added. Be sure to add additional code when adding a new widget-style entry point which makes it align to the left */
 	position:absolute;
 	left:0;
 }
 
-.evelution-taskbar .upper-links .explore-menu .link[cpe-tooltip-position="top"][cpe-tooltip]:after {
+.evelution-taskbar .upper-links .explore-menu {
+	left:var(--explore-link-size);
+}
+
+
+.evelution-taskbar .upper-links .explore-menu .link[cpe-tooltip-position="top"][cpe-tooltip]:after,
+.evelution-taskbar .upper-links .search .link[cpe-tooltip-position="top"][cpe-tooltip]:after {
 	left:25%;
 }
 
-.evelution-taskbar .upper-links .explore-menu .link {
+.evelution-taskbar .upper-links .is-widget-style .link {
 	width:var(--explore-link-size);
 	justify-content:flex-start;
 	padding-left:11.8px;
 	padding-right:11.8px;
 }
 
-.evelution-taskbar .upper-links .explore-menu .link > div {
+.evelution-taskbar .upper-links .is-widget-style .link > div {
 	display:flex;
 	align-items:center;
 	justify-content:center;
@@ -440,7 +446,7 @@ container > .main {
 	height:inherit;
 }
 
-.evelution-taskbar .upper-links .explore-menu .widget-text {
+.evelution-taskbar .upper-links .is-widget-style .widget-text {
 	vertical-align:middle;
 	margin-left:4px;
 	overflow:hidden;
@@ -449,8 +455,8 @@ container > .main {
 	flex-flow:column nowrap;
 }
 
-.evelution-taskbar .upper-links .explore-menu .widget-text .upper-text,
-.evelution-taskbar .upper-links .explore-menu .widget-text .bottom-text {
+.evelution-taskbar .upper-links .is-widget-style .widget-text .upper-text,
+.evelution-taskbar .upper-links .is-widget-style .widget-text .bottom-text {
 	overflow:hidden;
 	text-overflow:ellipsis;
 }
@@ -464,13 +470,14 @@ container > .main {
 	right:calc(0px - var(--toolbar-link-size));
 }
 
-.evelution-taskbar .upper-links .search .cpe-dropdown__content.is-left-aligned {
-	left:calc(0px - var(--toolbar-link-size));
+.evelution-taskbar .upper-links .is-widget-style .cpe-dropdown__content.is-left-aligned {
+	left:0;
 }
 
 .evelution-taskbar .upper-links .explore-menu .cpe-dropdown__content.is-left-aligned {
-	left:0;
+	left:calc(0px - var(--toolbar-link-size));
 }
+
 
 /* Left Aligned Taskbar */
 	.evelution-taskbar.left-links,
@@ -479,9 +486,10 @@ container > .main {
 	}
 
 
-	.evelution-taskbar.left-links .upper-links .explore-menu,
-	.evelution-taskbar.v-taskbar .upper-links .explore-menu {
+	.evelution-taskbar.left-links .upper-links .is-widget-style,
+	.evelution-taskbar.v-taskbar .upper-links .is-widget-style {
 		position:relative;
+		left:0;
 	}
 
 	.evelution-taskbar.left-links .upper-links {
@@ -493,15 +501,15 @@ container > .main {
 		padding-left:0;
 	}
 
-	.evelution-taskbar.v-taskbar .upper-links .explore-menu .widget-text {
+	.evelution-taskbar.v-taskbar .upper-links .is-widget-style .widget-text {
 		display:none;
 	}
 
-	.evelution-taskbar.left-links .upper-links .explore-menu {
+	.evelution-taskbar.left-links .upper-links .is-widget-style {
 		overflow:visible;
 	}
 	
-	.evelution-taskbar.left-links .upper-links .explore-menu .widget-text {
+	.evelution-taskbar.left-links .upper-links .is-widget-style .widget-text {
 		position: absolute;
 		top: 0;
 		width: calc(var(--explore-link-size) - 2px);
@@ -509,8 +517,8 @@ container > .main {
 		margin-left:0;
    	}
 
-	.evelution-taskbar.left-links .upper-links .explore-menu .widget-text .upper-text,
-	.evelution-taskbar.left-links .upper-links .explore-menu .widget-text .bottom-text {
+	.evelution-taskbar.left-links .upper-links .is-widget-style .widget-text .upper-text,
+	.evelution-taskbar.left-links .upper-links .is-widget-style .widget-text .bottom-text {
 		position: absolute;
 		top: 0;
 		border-radius: 500px;
@@ -524,26 +532,31 @@ container > .main {
 		text-align: center;
 	}
 	
-	.evelution-taskbar.left-links .upper-links .explore-menu .link .widget-text .bottom-text {
+	.evelution-taskbar.left-links .upper-links .is-widget-style .link .widget-text .bottom-text {
 		top:auto;
 		bottom:0;
 	}
 
-	.evelution-taskbar.left-links .upper-links .explore-menu .link,
-	.evelution-taskbar.v-taskbar .upper-links .explore-menu .link {
+	.evelution-taskbar.left-links .upper-links .is-widget-style .link,
+	.evelution-taskbar.v-taskbar .upper-links .is-widget-style .link {
 		justify-content:center;
 		padding-left:0;
 		padding-right:0;
 	}
 
-	.evelution-taskbar.left-links .upper-links .explore-menu .link[cpe-tooltip-position="top"][cpe-tooltip]:after,
-	.evelution-taskbar.v-taskbar .upper-links .explore-menu .link[cpe-tooltip-position="top"][cpe-tooltip]:after {
+	.evelution-taskbar.left-links .upper-links .is-widget-style .link[cpe-tooltip-position="top"][cpe-tooltip]:after,
+	.evelution-taskbar.v-taskbar .upper-links .is-widget-style .link[cpe-tooltip-position="top"][cpe-tooltip]:after {
 		left:auto;
 	}
 
-	.evelution-taskbar.left-links .upper-links .explore-menu .cpe-dropdown__content.is-left-aligned,
-	.evelution-taskbar.v-taskbar .upper-links .explore-menu .cpe-dropdown__content.is-left-aligned {
+	.evelution-taskbar.left-links .upper-links .is-widget-style .cpe-dropdown__content.is-left-aligned,
+	.evelution-taskbar.v-taskbar .upper-links .is-widget-style .cpe-dropdown__content.is-left-aligned {
 		left:calc(0px - var(--toolbar-link-size) - var(--toolbar-link-size));
+	}
+
+	.evelution-taskbar.left-links .upper-links .search .cpe-dropdown__content.is-left-aligned,
+	.evelution-taskbar.v-taskbar .upper-links .search .cpe-dropdown__content.is-left-aligned {
+		left:calc(0px - var(--toolbar-link-size));
 	}
 
 
@@ -563,6 +576,7 @@ container > .main {
 
 	.evelution-taskbar.anon-taskbar .anon-off,
 	.evelution-taskbar.v-taskbar .anon-off,
+	.evelution-taskbar.v-taskbar .dyna-on,
 	.evelution-taskbar:not(.v-taskbar) .v-on,
 	.evelution-taskbar:not(.anon-taskbar) .anon-on {
 		display:none!important;
@@ -624,24 +638,41 @@ container > .main {
 	}
 }
 
+@media only screen and (max-width:759px) {
+	.evelution-taskbar {
+		--explore-link-size:calc(var(--toolbar-link-size) * 2.25)
+	}
+	.evelution-taskbar .vsmall-off {
+		display:none!important;
+	}
+
+}
+
+@media only screen and (min-width:760px) {
+	.evelution-taskbar .vsmall-on {
+		display:none!important;
+	}
+}
+
+
 
 @media only screen and (max-width:639px) {
 	.evelution-taskbar {
 		--explore-link-size:var(--toolbar-link-size);
 	}
 
-	.evelution-taskbar .upper-links .explore-menu .link {
+	.evelution-taskbar .upper-links .is-widget-style .link {
 		padding-left:0;
 		padding-right:0;
 		justify-content:center;
 	}
 
 
-	.evelution-taskbar .upper-links .explore-menu {
+	.evelution-taskbar .upper-links .is-widget-style {
 		overflow:visible;
 	}
 
-	.evelution-taskbar .upper-links .explore-menu .widget-text {
+	.evelution-taskbar .upper-links .is-widget-style .widget-text {
 		position: absolute;
 		top: 0;
 		width: calc(var(--explore-link-size) - 2px);
@@ -649,8 +680,8 @@ container > .main {
 		margin-left:0;
    	}
 
-	.evelution-taskbar .upper-links .explore-menu .widget-text .upper-text,
-	.evelution-taskbar .upper-links .explore-menu .widget-text .bottom-text {
+	.evelution-taskbar .upper-links .is-widget-style .widget-text .upper-text,
+	.evelution-taskbar .upper-links .is-widget-style .widget-text .bottom-text {
 		position: absolute;
 		top: 0;
 		border-radius: 500px;
@@ -664,7 +695,7 @@ container > .main {
 		text-align: center;
 	}
 	
-	.evelution-taskbar .upper-links .explore-menu .link .widget-text .bottom-text {
+	.evelution-taskbar .upper-links .is-widget-style .link .widget-text .bottom-text {
 		top:auto;
 		bottom:0;
 	}
@@ -680,21 +711,6 @@ container > .main {
 		display:none!important;
 	}
 }
-
-
-@media only screen and (max-width:759px) {
-	.evelution-taskbar .vsmall-off {
-		display:none!important;
-	}
-
-}
-
-@media only screen and (min-width:760px) {
-	.evelution-taskbar .vsmall-on {
-		display:none!important;
-	}
-}
-
 
 /* Old Global Nav
 ** Commented styles are the ones used in the old version
