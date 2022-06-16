@@ -1078,8 +1078,8 @@ body .mw-widgets-datetime-dateTimeInputWidget-handle,
 body .mw-ui-input  {
 	--input-box-color:var(--canvas-background-color);
 	--input-box-border:currentColor;
-	--input-box-focus:var(--hyperlink-background-color-rgb);
-	--input-box-solid:var(--hyperlink-background-color);
+	--input-box-focus:var(--highlight-background-color-rgb);
+	--input-box-solid:var(--highlight-background-color);
     transition:background-color 200ms var(--transitioner), border-color 200ms var(--transitioner), outline-offset 50ms var(--transitioner), outline-color 200ms var(--transitioner), color 200ms var(--transitioner), box-shadow 200ms var(--transitioner)!important;
     font-size:13px;
     font-family:var(--secondary-font);
@@ -1100,6 +1100,12 @@ body .mw-ui-input  {
     box-sizing:border-box;
     box-shadow:0 0 0 100vh rgba(var(--input-box-focus),0) inset;
     margin:1px;
+}
+
+body .oo-ui-numberInputWidget-buttoned  .oo-ui-inputWidget-input,
+body .oo-ui-numberInputWidget-buttoned.oo-ui-widget-enabled  .oo-ui-inputWidget-input {
+	--input-box-focus:var(--hyperlink-background-color-rgb);
+	--input-box-solid:var(--hyperlink-background-color);
 }
 
 body .mw-ui-input  {
@@ -1178,7 +1184,6 @@ body .oo-ui-textInputWidget.oo-ui-iconElement .oo-ui-inputWidget-input {
     margin: 0;
     border-radius: 0;
     border: 2px solid var(--inactive-text-background-color);
-    box-shadow: none!important;
     box-sizing: content-box;
     padding-top: 0;
     padding-bottom: 0;
@@ -1240,8 +1245,8 @@ body .oo-ui-dropdownWidget.oo-ui-widget-enabled .oo-ui-dropdownWidget-handle,
 body .oo-ui-dropdownWidget.oo-ui-widget-disabled .oo-ui-dropdownWidget-handle {
 	--input-box-color:var(--canvas-background-color);
 	--input-box-border:currentColor;
-	--input-box-focus:var(--hyperlink-background-color-rgb);
-	--input-box-solid:var(--hyperlink-background-color);
+	--input-box-focus:var(--highlight-background-color-rgb);
+	--input-box-solid:var(--highlight-background-color);
     transition:background-color 200ms var(--transitioner), border-color 200ms var(--transitioner), outline-offset 50ms var(--transitioner), outline-color 200ms var(--transitioner), color 200ms var(--transitioner), box-shadow 200ms var(--transitioner);
     font-size:13px;
     font-family:var(--secondary-font);

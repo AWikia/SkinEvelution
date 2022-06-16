@@ -111,7 +111,7 @@ class SkinEvelution extends SkinMustache {
 		$data["has-mf"] = (ExtensionRegistry::getInstance()->isLoaded( 'MobileFrontend' ));
 
 		$data["is-loggedin"] = $this->getSkin()->getUser()->isRegistered();
-
+		$data["is-outdated"] = ( version_compare( MW_VERSION, '1.38', '<' ) );
 
 		$data["has-servelution-4.0.0"] =  ($this->getConfig()->get ( 'EvelutionServelutionRelease' ) == '4.0.0');
 		$data["has-servelution-3.3.0"] =  ($this->getConfig()->get ( 'EvelutionServelutionRelease' ) == '3.3.0');

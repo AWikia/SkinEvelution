@@ -7,7 +7,7 @@ Evelution Desktop Skin in three different main Breakpoint Sizes, 705px, 1280px &
 
 You can read more about the skin [here](Overview.md). For easy to use CSS snipsets, go [here](SimpleCSS.md). More topics can be found at the Explore Menu on the Navigation
 
-Evelution uses the ``main`` branch that it is compatible with MediaWiki 1.37 to MediaWiki 1.38 so currently no separate branches for 1.37 (``REL_1.37``) and 1.38 (``REL_1.38``)
+Evelution uses the ``main`` branch that it is compatible with MediaWiki 1.36 to MediaWiki 1.38 so currently no separate branches for 1.37 (``REL_1.37``) and 1.38 (``REL_1.38``)
 
 # Version Release
 - Evelution Family now follows [Semantic Versioning II](https://semver.org/). 
@@ -16,7 +16,7 @@ Evelution uses the ``main`` branch that it is compatible with MediaWiki 1.37 to 
   - When changes that will only have bug fixes (Such as layout tweaks to avoid issues or fixing a major or minor fix that will still not break existing functionality) happen, it will result in a patch release but patch releases will still not be registered as a release or be formally announced.
 
 # Requirements
-To Run Evelution on your wiki, you must have MediaWiki 1.37 or greater. Older versions are not supported
+To Run Evelution on your wiki, you must have MediaWiki 1.36 or greater. Older versions are not supported. Note that running on 1.36 is not recommended and support will be dropped in a future release
 
 ## Browser Requirements
 Evelution requires at least one of these browsers in order to run properly:
@@ -39,11 +39,11 @@ If no hardware acceleration is present, then Evelution will load properly (But w
 ## Version Lifecycle
 List of MediaWiki versions and what Evelution version can be installed at most. Green tick means the latest one can be used:
 
-| MediaWiki  | Maximum Supported Release | End of Support |
-| ---------- | ------------------------- | -------------- |
-| 1.38.x     | ✅                        | June 2023       |
-| 1.37.x     | ✅                        | December 2022   |
-| 1.36.x     | 89.2.0                    | June 2022      |
+| MediaWiki  | Supported Releases        |
+| ---------- | ------------------------- |
+| 1.38.x     | ~✅                       |
+| 1.37.x     | ~✅                       |
+| 1.36.x     | ~89.2.0, 91.0.0-✅        |
 
 # Installation
 To Install Evelution, you must download the reposistory first. Make a folder called **Evelution** in **Skins** diractory where you have installed MediaWiki and extract the zipped file contents in **Evelution** folder.  Lastly, put this in **LocalSettings.php**:

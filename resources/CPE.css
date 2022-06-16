@@ -1245,7 +1245,7 @@ button, input {
 	box-shadow:none;
 	text-shadow:none;
 	cursor:var(--cpe-text-cursor);
-	caret-color:var(--active-title-background-color);
+	caret-color:var(--active-text-background-color);
 }
 
 input[type="submit"], input[type="reset"], input[type="button"], button {
@@ -1419,7 +1419,7 @@ text-decoration:none;
 color:var(--hyperlink-background-color);
 cursor:var(--cpe-hand-cursor);
 background-color:transparent;
-	caret-color:var(--active-title-background-color);
+	caret-color:var(--active-text-background-color);
 }
 
 body a:visited {
@@ -1535,7 +1535,7 @@ html[she-she="false"] .she-she-on {
 
 
 textarea, [contenteditable] {
-	caret-color:var(--active-title-background-color);
+	caret-color:var(--active-text-background-color);
   cursor:var(--cpe-text-cursor);
   scrollbar-width:thin;
   scrollbar-color:var(--scrollbar-thumb-color-1) var(--scrollbar-track-color-1);
@@ -1818,37 +1818,61 @@ select.cpe-input {
 
 
 
-.cpe-input.is-alternate {
+.cpe-input.is-secondary {
   --input-box-solid:var(--hyperlink-background-color);
   --input-box-focus:var(--hyperlink-background-color-rgb);
 }
 
 
-.cpe-input.is-borderline {
+.cpe-input.is-unaccented {
   --input-box-solid:var(--inactive-text-background-color);
   --input-box-focus:var(--inactive-text-background-color-rgb);
 }
 
-.cpe-input.is-headline {
-  --input-box-solid:var(--desktop-background-color);
-  --input-box-focus:var(--desktop-background-color-rgb);
-}
-
-.cpe-input.is-colorline {
+.cpe-input.is-unaccented.is-secondary {
   --input-box-solid:var(--canvas-text-background-color-hover);
   --input-box-focus:var(--canvas-text-background-color-rgb);
 }
 
-.cpe-input.is-titleline {
+.cpe-input.is-alternate {
   --input-box-solid:var(--active-title-background-color);
   --input-box-focus:var(--active-title-background-color-rgb);
 }
 
-.cpe-input.is-intitleline {
-  --input-box-solid:var(--inactive-title-background-color);
-  --input-box-focus:var(--inactive-title-background-color-rgb);
+.cpe-input.is-secondary.is-alternate {
+  --input-box-solid:var(--active-text-background-color);
+  --input-box-focus:var(--active-text-background-color-rgb);
 }
 
+.cpe-input.is-alert-color {
+  --input-box-solid:var(--alert-background-color);
+  --input-box-focus:var(--alert-background-color-rgb);
+}
+
+.cpe-input.is-pause-color {
+  --input-box-solid:var(--pause-background-color);
+  --input-box-focus:var(--pause-background-color-rgb);
+}
+
+.cpe-input.is-warning-color {
+  --input-box-solid:var(--warning-background-color);
+  --input-box-focus:var(--warning-background-color-rgb);
+}
+
+.cpe-input.is-success-color {
+  --input-box-solid:var(--success-background-color);
+  --input-box-focus:var(--success-background-color-rgb);
+}
+
+.cpe-input.is-progress-color {
+  --input-box-solid:var(--progress-background-color);
+  --input-box-focus:var(--progress-background-color-rgb);
+}
+
+.cpe-input.is-message-color {
+  --input-box-solid:var(--message-background-color);
+  --input-box-focus:var(--message-background-color-rgb);
+}
 
 /** Buttons **/
 /* Primary */
@@ -2238,7 +2262,6 @@ li.stub .cpe-button {
 }
 
 /* Message Color */
-.cpe-button.is-info-color,
 .cpe-button.is-message-color {
   --button-background-color:var(--message-background-color);
   --button-background-color-rgb:var(--message-background-color-rgb);
@@ -3928,7 +3951,7 @@ input[type="checkbox"], input[type="radio"] {
   box-shadow:inset 0 0 0 1px var(--checkbox-focused-shadow);
   background-color:var(--checkbox-unchecked-bg);
   color:var(--checkbox-active-bg);
-  border-radius:26%;
+  border-radius:calc(var(--border-radius) * 0.6);
   position:relative;
   transition:background-color 200ms var(--transitioner), box-shadow 200ms var(--transitioner), color 200ms var(--transitioner), opacity 200ms var(--transitioner), -webkit-mask-size 200ms var(--transitioner), mask-size 200ms var(--transitioner), border-color 200ms var(--transitioner);
   height:1.66em;
