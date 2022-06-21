@@ -811,16 +811,6 @@ box-shadow:2px 0 0 6px rgba(var(--canvas-text-background-color-rgb),.4), 2px 0 0
 	color:var(--canvas-text-background-color);
 }
 
-.visualstyle-basic.visualmode-contrast .cpe-toggle__input:checked+.cpe-toggle__label::before{
-background-color:var(--highlight-foreground-color);
-}
-.visualstyle-basic.visualmode-contrast .cpe-toggle__input:checked+.cpe-toggle__label::after{
-background-color:var(--highlight-background-color);
-}
-
-
-
-
 .visualstyle-basic .evelution-header {
 	color:var(--luna-foreground-color);
 }
@@ -949,17 +939,8 @@ background-color:var(--canvas-background-color);
 }
 
 /* Checkboxes */
-.visualstyle-basic input[type="checkbox"], .visualstyle-basic input[type="radio"] ,
-.visualstyle-simple input[type="checkbox"], .visualstyle-simple input[type="radio"]  {
---checkbox-active-bg:var(--highlight-background-color);
-	--checkbox-checked-bg:var(--highlight-background-color);
-	--checkbox-checked-bg-hover:var(--highlight-background-color-hover);
-	--checkbox-checked-shadow:var(--checkbox-checked-bg);
-	--checkbox-checked-shadow-hover:var(--checkbox-checked-bg-hover);
-	--checkbox-checked-text:var(--highlight-foreground-color);
-}
 
-.visualstyle-general input[type="checkbox"], .visualstyle-general input[type="radio"] {
+.visualstyle-general body {
 	--checkbox-active-bg:var(--hyperlink-background-color);
 	--checkbox-checked-bg:var(--hyperlink-background-color);
 	--checkbox-checked-bg-hover:var(--hyperlink-background-color-hover);
@@ -968,7 +949,7 @@ background-color:var(--canvas-background-color);
 	--checkbox-checked-text:var(--hyperlink-foreground-color);
 }
 
-.visualstyle-general.visualmode-contrast input[type="checkbox"], .visualstyle-general.visualmode-contrast input[type="radio"] {
+.visualstyle-general.visualmode-contrast body {
 	--checkbox-active-bg:var(--hyperlink-background-color);
 	--checkbox-checked-bg:var(--hyperlink-background-color);
 	--checkbox-checked-bg-hover:var(--checkbox-checked-text);
@@ -980,7 +961,7 @@ background-color:var(--canvas-background-color);
 
 
 
-.visualstyle-simple.visualmode-contrast input[type="checkbox"], .visualstyle-simple.visualmode-contrast input[type="radio"]  {
+.visualstyle-simple.visualmode-contrast body  {
 --checkbox-active-bg:var(--highlight-background-color);
 	--checkbox-checked-bg:var(--highlight-background-color);
 	--checkbox-checked-bg-hover:var(--checkbox-checked-text);
@@ -991,23 +972,13 @@ background-color:var(--canvas-background-color);
 }
 
 
-.visualstyle-basic input[type="checkbox"]:checked:not(:active):focus, .visualstyle-basic input[type="radio"]:checked:not(:active):focus,
-.visualstyle-basic .oo-ui-radioSelectWidget:focus  input[type="checkbox"]:checked:not(:active), .visualstyle-basic .oo-ui-radioSelectWidget:focus  input[type="radio"]:checked:not(:active),
-.visualstyle-general input[type="checkbox"]:checked:not(:active):focus, .visualstyle-general input[type="radio"]:checked:not(:active):focus,
-.visualstyle-general .oo-ui-radioSelectWidget:focus  input[type="checkbox"]:checked:not(:active), .visualstyle-general .oo-ui-radioSelectWidget:focus input[type="radio"]:checked:not(:active),
-.visualstyle-simple input[type="checkbox"]:checked:not(:active):focus, .visualstyle-simple input[type="radio"]:checked:not(:active):focus,
-.visualstyle-simple .oo-ui-radioSelectWidget:focus  input[type="checkbox"]:checked:not(:active), .visualstyle-simple .oo-ui-radioSelectWidget:focus  input[type="radio"]:checked:not(:active) {
-	--checkbox-focused-shadow:var(--checkbox-checked-text);
-}
 
-
-
-.visualstyle-simple input[type="checkbox"], .visualstyle-simple input[type="radio"]  {
+.visualstyle-simple body  {
 	--checkbox-checked-shadow-hover:rgba(var(--highlight-foreground-color-rgb),0.2);
 }
 
 
-.visualstyle-simple.visualmode-contrast input[type="checkbox"], .visualstyle-simple.visualmode-contrast input[type="radio"]  {
+.visualstyle-simple.visualmode-contrast body {
 	--checkbox-checked-shadow-hover:rgba(var(--highlight-background-color-rgb),0.5);
 }
 
@@ -1686,16 +1657,11 @@ color:inherit;
 
 
 /* Checkboxes */
-.visualstyle-simple body .oo-ui-menuSelectWidget input[type="checkbox"], 
-.visualstyle-simple body .oo-ui-menuSelectWidget input[type="radio"],
-.visualstyle-simple body .wikiEditor-ui-toolbar .group .tool-select .options input[type="checkbox"], 
-.visualstyle-simple body .wikiEditor-ui-toolbar .group .tool-select .options input[type="radio"],
-.visualstyle-simple body .oo-ui-popupWidget-popup input[type="checkbox"], 
-.visualstyle-simple body .oo-ui-popupWidget-popup input[type="radio"],
-.visualstyle-simple body .mw-rcfilters-ui-changesListWrapperWidget .mw-changeslist-legend input[type="checkbox"], 
-.visualstyle-simple body .mw-rcfilters-ui-changesListWrapperWidget .mw-changeslist-legend input[type="radio"],
-.visualstyle-simple body .oo-ui-popupToolGroup-tools input[type="checkbox"], 
-.visualstyle-simple body .oo-ui-popupToolGroup-tools input[type="radio"] {
+.visualstyle-simple body .oo-ui-menuSelectWidget, 
+.visualstyle-simple body .wikiEditor-ui-toolbar .group .tool-select .options, 
+.visualstyle-simple body .oo-ui-popupWidget-popup, 
+.visualstyle-simple body .mw-rcfilters-ui-changesListWrapperWidget .mw-changeslist-legend, 
+.visualstyle-simple body .oo-ui-popupToolGroup-tools {
 	--checkbox-unchecked-shadow:rgba(var(--hyperlink-foreground-color-rgb), 0.5);
 	--checkbox-active-bg:var(--hyperlink-foreground-color);
 	--checkbox-checked-bg:var(--hyperlink-foreground-color);
@@ -1706,16 +1672,11 @@ color:inherit;
 }
 
 
-.visualstyle-simple.visualmode-contrast body .oo-ui-menuSelectWidget input[type="checkbox"], 
-.visualstyle-simple.visualmode-contrast body .oo-ui-menuSelectWidget input[type="radio"],
-.visualstyle-simple.visualmode-contrast body .wikiEditor-ui-toolbar .group .tool-select .options input[type="checkbox"], 
-.visualstyle-simple.visualmode-contrast body .wikiEditor-ui-toolbar .group .tool-select .options input[type="radio"],
-.visualstyle-simple.visualmode-contrast body .oo-ui-popupWidget-popup input[type="checkbox"], 
-.visualstyle-simple.visualmode-contrast body .oo-ui-popupWidget-popup input[type="radio"],
-.visualstyle-simple.visualmode-contrast body .mw-rcfilters-ui-changesListWrapperWidget .mw-changeslist-legend input[type="checkbox"], 
-.visualstyle-simple.visualmode-contrast body .mw-rcfilters-ui-changesListWrapperWidget .mw-changeslist-legend input[type="radio"],
-.visualstyle-simple.visualmode-contrast body .oo-ui-popupToolGroup-tools input[type="checkbox"], 
-.visualstyle-simple.visualmode-contrast body .oo-ui-popupToolGroup-tools input[type="radio"] {
+.visualstyle-simple.visualmode-contrast body .oo-ui-menuSelectWidget,
+.visualstyle-simple.visualmode-contrast body .wikiEditor-ui-toolbar .group .tool-select .options,
+.visualstyle-simple.visualmode-contrast body .oo-ui-popupWidget-popup,
+.visualstyle-simple.visualmode-contrast body .mw-rcfilters-ui-changesListWrapperWidget .mw-changeslist-legend,
+.visualstyle-simple.visualmode-contrast body .oo-ui-popupToolGroup-tools {
 	--checkbox-active-bg:var(--hyperlink-background-color);
 	--checkbox-checked-shadow-hover:rgba(var(--hyperlink-foreground-color-rgb),0.5);
 }
@@ -2411,7 +2372,8 @@ box-shadow:none!important;
 
 
 
-.visualstyle-classic input[type="checkbox"], .visualstyle-classic input[type="radio"] {
+.visualstyle-classic input[type="checkbox"], .visualstyle-classic input[type="radio"],
+.visualstyle-classic .cpe-toggle__label::before, .visualstyle-classic body .oo-ui-toggleSwitchWidget {
 	background-color:rgb(var(--canvas-background-color-rgb))!important;
 	color:rgb(var(--canvas-text-background-color-rgb))!important;
 	border-color:var(--canvas-3d-background-color-dark) var(--canvas-3d-background-color) var(--canvas-3d-background-color) var(--canvas-3d-background-color-dark)!important;
@@ -2419,9 +2381,23 @@ box-shadow:none!important;
 	border-style:solid!important;
 }
 
-.visualstyle-classic input[type="checkbox"]:active, .visualstyle-classic input[type="radio"]:active {
+.visualstyle-classic input[type="checkbox"]:active, .visualstyle-classic input[type="radio"]:active,
+.visualstyle-classic .cpe-toggle__label:active::before, .visualstyle-classic body .oo-ui-toggleSwitchWidget:active {
+
 	background-color:var(--canvas-secondary-background-color)!important;
 	color:var(--canvas-text-secondary-background-color);
+}
+
+.visualstyle-classic .cpe-toggle__label::after,
+.visualstyle-classic  body .oo-ui-toggleSwitchWidget.oo-ui-widget-enabled .oo-ui-toggleSwitchWidget-grip {
+	color:var(--canvas-text-background-color)!important;
+	border-color:currentColor!important;
+	background-color:transparent!important
+}
+
+.visualstyle-classic .cpe-toggle__input:checked + .cpe-toggle__label::before,
+.visualstyle-classic body .oo-ui-toggleSwitchWidget.oo-ui-widget-enabled.oo-ui-toggleWidget-on .oo-ui-toggleSwitchWidget-grip {
+	background-color:currentColor!important
 }
 
 .visualstyle-classic input[type="checkbox"] {
@@ -3017,14 +2993,6 @@ border-color:var(--highlight-background-color);
 	color:var(--hyperlink-background-color);
 	border-color:var(--hyperlink-foreground-color);
 	background-color:var(--hyperlink-foreground-color);
-}
-
-
-.visualstyle-general .cpe-toggle__input:checked+.cpe-toggle__label::before {
-background-color:var(--hyperlink-background-color-hover);
-}
-.visualstyle-general .cpe-toggle__input:checked+.cpe-toggle__label::after {
-background-color:var(--hyperlink-background-color);
 }
 
 

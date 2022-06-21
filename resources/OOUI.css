@@ -1587,11 +1587,140 @@ body .oo-ui-progressBarWidget:not( .oo-ui-pendingElement-pending ) {
 
 body .oo-ui-progressBarWidget.oo-ui-widget-enabled .oo-ui-progressBarWidget-bar,
 body .oo-ui-progressBarWidget.oo-ui-widget-disabled .oo-ui-progressBarWidget-bar {
-	background-color:var(--hyperlink-background-color);
+	background-color:var(--highlight-background-color);
 }
 
 body .oo-ui-pendingElement-pending {
 	background-color:var(--inactive-text-fadeout-color)!important;
+}
+
+/* Toggle Inputs */
+body .oo-ui-toggleSwitchWidget {
+	border-radius:1.66em;
+	width:2.90em;
+	height:1.66em;
+	min-height:auto;
+	background-color:var(--checkbox-unchecked-bg);
+	border-width:2px;
+	border-color:var(--checkbox-unchecked-shadow);
+	box-shadow:none!important;
+	transition:transform,background-color,border-color,color;
+	transition-duration:.3s;
+	transition-timing-function:var(--transitioner);
+}
+
+body .oo-ui-toggleSwitchWidget.oo-ui-widget-enabled .oo-ui-toggleSwitchWidget-grip {
+	background-color:var(--checkbox-unchecked-bg);
+	border-width:2px;
+	border-color:var(--checkbox-unchecked-shadow)
+}
+
+body .oo-ui-toggleSwitchWidget.oo-ui-widget-enabled:focus,
+body .oo-ui-toggleSwitchWidget.oo-ui-widget-enabled:focus .oo-ui-toggleSwitchWidget-grip {
+	border-color:var(--checkbox-unchecked-shadow);
+}
+
+
+body .oo-ui-toggleSwitchWidget.oo-ui-widget-enabled:hover,
+body .oo-ui-toggleSwitchWidget.oo-ui-widget-enabled:hover .oo-ui-toggleSwitchWidget-grip {
+	background-color:var(--checkbox-unchecked-bg);
+	border-color:var(--checkbox-active-bg)
+	
+}
+
+
+body .oo-ui-toggleSwitchWidget.oo-ui-widget-enabled:active,
+body .oo-ui-toggleSwitchWidget.oo-ui-widget-enabled:active .oo-ui-toggleSwitchWidget-grip,
+body .oo-ui-toggleSwitchWidget.oo-ui-widget-enabled:active:focus,
+body .oo-ui-toggleSwitchWidget.oo-ui-widget-enabled:active:focus .oo-ui-toggleSwitchWidget-grip {
+  border-color:var(--checkbox-active-bg);
+  background-color:var(--checkbox-active-bg);
+  color:var(--checkbox-active-bg);
+  box-shadow:none;
+}
+
+
+body .oo-ui-toggleSwitchWidget.oo-ui-widget-enabled.oo-ui-toggleWidget-on {
+  border-color:var(--checkbox-checked-shadow);
+  background-color:var(--checkbox-checked-bg);
+  color:var(--checkbox-checked-text);
+}
+
+body .oo-ui-toggleSwitchWidget.oo-ui-widget-enabled.oo-ui-toggleWidget-on .oo-ui-toggleSwitchWidget-grip {
+	  border-color:var(--checkbox-checked-text);
+	  background-color:var(--checkbox-checked-text);
+	  color:var(--checkbox-checked-bg);
+	  box-shadow:none!important;
+}
+
+body .oo-ui-toggleSwitchWidget.oo-ui-widget-enabled.oo-ui-toggleWidget-on:focus {
+	border-color:var(--checkbox-checked-shadow);
+}
+
+body .oo-ui-toggleSwitchWidget.oo-ui-widget-enabled.oo-ui-toggleWidget-on:focus .oo-ui-toggleSwitchWidget-grip {
+	border-color:var(--checkbox-checked-text);
+}
+
+
+body .oo-ui-toggleSwitchWidget.oo-ui-widget-enabled.oo-ui-toggleWidget-on:hover {
+  border-color:var(--checkbox-checked-shadow-hover);
+  background-color:var(--checkbox-checked-bg-hover);
+  color:var(--checkbox-checked-text-hover);
+
+}
+
+body .oo-ui-toggleSwitchWidget.oo-ui-widget-enabled.oo-ui-toggleWidget-on:hover .oo-ui-toggleSwitchWidget-grip {
+  border-color:var(--checkbox-checked-text-hover);
+  background-color:var(--checkbox-checked-text-hover);
+  color:var(--checkbox-checked-bg-hover);
+}
+
+
+body .oo-ui-toggleSwitchWidget.oo-ui-widget-enabled.oo-ui-toggleWidget-on:active,
+body .oo-ui-toggleSwitchWidget.oo-ui-widget-enabled.oo-ui-toggleWidget-on:active .oo-ui-toggleSwitchWidget-grip,
+body .oo-ui-toggleSwitchWidget.oo-ui-widget-enabled.oo-ui-toggleWidget-on:active:focus,
+body .oo-ui-toggleSwitchWidget.oo-ui-widget-enabled.oo-ui-toggleWidget-on:active:focus .oo-ui-toggleSwitchWidget-grip {
+  border-color:var(--checkbox-active-bg);
+  background-color:var(--checkbox-active-bg);
+  color:var(--checkbox-active-bg);
+  box-shadow:none;
+}
+
+
+
+
+body .oo-ui-toggleSwitchWidget:before {
+	border-width:0!important;
+}
+
+body .oo-ui-toggleSwitchWidget-grip {
+    top: 0.09em;
+    min-width: 1.2em;
+    width: 1.2em;
+    min-height: 1.2em;
+    height: 1.2em;
+    border-radius: 1.66em;
+    margin-left:-2px;
+    left:0.35714286em;
+    transform:translateX(-5%);
+	transition:transform,background-color,border-color,color,margin-left;
+	transition-duration:.3s;
+	transition-timing-function:var(--transitioner);
+}
+
+body .oo-ui-toggleSwitchWidget.oo-ui-toggleWidget-off .oo-ui-toggleSwitchWidget-grip {
+    margin-left:-2px;
+}
+
+body .oo-ui-toggleSwitchWidget.oo-ui-toggleWidget-on .oo-ui-toggleSwitchWidget-grip {
+    left:0.35714286em;
+    transform:translateX(80%);
+}
+
+body .mw-apisandbox-toolbar {
+	background-color:var(--canvas-background-color);
+	top:var(--minibar-size);
+	border-bottom:1px solid var(--inactive-text-background-color);
 }
 
 /* Translate Extension */
