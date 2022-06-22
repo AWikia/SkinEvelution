@@ -735,13 +735,6 @@ function GetCustomFont2() {
 
 function ContrastRatio() { // Used for Text
 
-	if (mediawiki) { // @REMOVEME: In Ivilution, Parmalution and CPE Language
-		{{#has-servelution-vanadium}}
-			return (window.matchMedia('(prefers-contrast: more)').matches) ? 1.55 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 1.275 : 1.0
-		{{/has-servelution-vanadium}}
-	}
-
-
 	if (MW18contrastmode == 'auto') {
 		return (window.matchMedia('(prefers-contrast: more)').matches) ? 1.55 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 1.275 : 1.0
 	} else if (MW18contrastmode == 'low') { // 4.5
@@ -764,12 +757,6 @@ function ContrastRatio() { // Used for Text
 }
 
 function ContrastRatio2() { // Used For Dropdown
-	if (mediawiki) { // @REMOVEME: In Ivilution, Parmalution and CPE Language
-		{{#has-servelution-vanadium}}
-			return (window.matchMedia('(prefers-contrast: more)').matches) ? 0.35 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 0.30 : 0.25
-		{{/has-servelution-vanadium}}
-	}
-
 
 	if (MW18contrastmode == 'auto') {
 		return (window.matchMedia('(prefers-contrast: more)').matches) ? 0.35 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 0.30 : 0.25
@@ -793,13 +780,6 @@ function ContrastRatio2() { // Used For Dropdown
 }
 
 function ContrastRatio3() { // Used for Form Controls
-
-	if (mediawiki) { // @REMOVEME: In Ivilution, Parmalution and CPE Language
-		{{#has-servelution-vanadium}}
-			return (window.matchMedia('(prefers-contrast: more)').matches) ? 1.5 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 1.25 : 1.0
-		{{/has-servelution-vanadium}}
-	}
-
 
 	if (MW18contrastmode == 'auto') {
 		return (window.matchMedia('(prefers-contrast: more)').matches) ? 1.5 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 1.25 : 1.0
@@ -842,17 +822,6 @@ if (isLightColor(page)) { // ( chroma(page).get('hsl.l') < 0.5)
 		successh = 167
 		progressh = 220
 //		messageh = -1
-		
-		if (mediawiki) { // @REMOVEME: In Ivilution, Parmalution and CPE Language
-			{{#has-servelution-no-dgeneric}}
-				if (isLightColor(page)) { // ( chroma(page).get('hsl.l') < 0.5)
-					return [chroma('hsl('+ alerth + ', 100%, 35%)'),chroma('hsl('+ pauseh + ', 100%, 35%)'),chroma('hsl('+ warningh + ', 100%, 35%)'),chroma('hsl('+ successh + ', 100%, 35%)'),chroma('hsl('+ progressh + ', 100%, 35%)'),chroma('hsl('+ alerth + ', 0%, 35%)')]
-				} else {
-					return [chroma('hsl('+ alerth + ', 100%, 70%)'),chroma('hsl('+ pauseh + ', 100%, 70%)'),chroma('hsl('+ warningh + ', 100%, 70%)'),chroma('hsl('+ successh + ', 100%, 70%)'),chroma('hsl('+ progressh + ', 100%, 70%)'),chroma('hsl('+ alerth + ', 0%, 70%)')]
-				}
-			{{/has-servelution-no-dgeneric}}
-		}
-
 		
 		contrast = window.MW18highContrast*ContrastRatio()*1
 
@@ -1194,20 +1163,10 @@ function SetAccent(tick='false',save='true') {
 		if (save) {
 			insertKey('accent-active', tick );
 		}
-		if (mediawiki) {  // @REMOVEME: In Ivilution, Parmalution and CPE Language 
-			{{^has-servelution-no-accent}}
-				if (tick === 'true') {
-					document.querySelector('html').classList.add('has-accents');
-				} else {
-					document.querySelector('html').classList.remove('has-accents');
-				}
-			{{/has-servelution-no-accent}}
+		if (tick === 'true') {
+			document.querySelector('html').classList.add('has-accents');
 		} else {
-			if (tick === 'true') {
-				document.querySelector('html').classList.add('has-accents');
-			} else {
-				document.querySelector('html').classList.remove('has-accents');
-			}
+			document.querySelector('html').classList.remove('has-accents');
 		}
 }
 
@@ -1750,12 +1709,6 @@ function ColorTestTwin(color1,color2,intensity=1,hue='nil') {
 
 function ColorTest(color,color2) { // Regular Colors
 	var dledlen = (color2 != undefined) ? true : false; // Disable Doulgido Dledlen
-	// Disable Doulgido Dledlen form VB Clients
-	if (mediawiki) { // @REMOVEME: In Ivilution, Parmalution and CPE Language
-		{{#has-servelution-no-dground}}
-			var dledlen = false;
-		{{/has-servelution-no-dground}}
-	}
 	if (dledlen === false) {
 		var color2 = color;
 	}
@@ -2138,16 +2091,7 @@ if ((getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + wind
 var buttontextcolor1 = ColorTest(buttontext_color);
 
 
-if (mediawiki) { // @REMOVEME: In Ivilution, Parmalution and CPE Language
-	{{^has-servelution-no-newluna}}
-		lunacolor = caret_color
-	{{/has-servelution-no-newluna}}
-	{{#has-servelution-no-newluna}}
-		lunacolor = button_color
-	{{/has-servelution-no-newluna}}
-} else {
-	lunacolor = caret_color
-}
+lunacolor = caret_color
 var lightcaret = isLightColor(lunacolor);
 if (lightcaret) {
 	var lightness4 = '#000000';
@@ -2361,44 +2305,6 @@ if (imgfilter == 'none') {
 
 
 // Gradient Sets
-	if (mediawiki) { // @REMOVEME: In Ivilution, Parmalution and CPE Language
-		{{#has-servelution-no-dground}}
-			// Dledlen
-			var alert_gradient= GetGradientVariable(alert_color,'alert');
-			var pause_gradient= GetGradientVariable(pause_color,'pause');
-			var warning_gradient = GetGradientVariable(warning_color,'warning');
-			var success_gradient = GetGradientVariable(success_color,'success');
-			var progress_gradient = GetGradientVariable(progress_color,'progress');
-			var message_gradient = GetGradientVariable(message_color,'message');
-			var dropdowncolor_gradient = GetGradientVariable(dropdowncolor,'canvas-secondary');
-			var head_gradient = GetGradientVariable(head_color,'desktop');
-			var link_gradient = GetGradientVariable(link_color,'hyperlink');
-			var vlink_gradient = GetGradientVariable(vlink_color,'visited-hyperlink');
-			var alink_gradient = GetGradientVariable(alink_color,'active-text');
-
-			// Inverted Dledlen
-			var content2_text_gradient = GetGradientVariable(content2_text,'canvas-text-secondary');
-			var headertext_gradient = GetGradientVariable(headertext_color,'desktop-text')
-		{{/has-servelution-no-dground}}
-		{{^has-servelution-no-dground}}
-			// Dledlen
-			var alert_gradient= GetGradientVariable(content_color,'alert');
-			var pause_gradient= GetGradientVariable(content_color,'pause');
-			var warning_gradient = GetGradientVariable(content_color,'warning');
-			var success_gradient = GetGradientVariable(content_color,'success');
-			var progress_gradient = GetGradientVariable(content_color,'progress');
-			var message_gradient = GetGradientVariable(content_color,'message');
-			var dropdowncolor_gradient = GetGradientVariable(content_color,'canvas-secondary');
-			var head_gradient = GetGradientVariable(content_color,'desktop');
-			var link_gradient = GetGradientVariable(content_color,'hyperlink');
-			var vlink_gradient = GetGradientVariable(content_color,'visited-hyperlink');
-			var alink_gradient = GetGradientVariable(content_color,'active-text');
-
-			// Inverted Dledlen
-			var content2_text_gradient = GetGradientVariable(content_text,'canvas-text-secondary');
-			var headertext_gradient = GetGradientVariable(content_text,'desktop-text');
-		{{/has-servelution-no-dground}}
-	} else {
 		// Dledlen
 		var alert_gradient= GetGradientVariable(content_color,'alert');
 		var pause_gradient= GetGradientVariable(content_color,'pause');
@@ -2415,7 +2321,6 @@ if (imgfilter == 'none') {
 		// Inverted Dledlen
 		var content2_text_gradient = GetGradientVariable(content_text,'canvas-text-secondary');
 		var headertext_gradient = GetGradientVariable(content_text,'desktop-text')[0]
-	}
 var content_color_gradient = GetGradientVariable(content_color,'canvas');
 var content_text_gradient = GetGradientVariable(content_text,'canvas-text');
 var button_gradient = GetGradientVariable(button_color,'highlight');

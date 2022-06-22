@@ -111,55 +111,9 @@ class SkinEvelution extends SkinMustache {
 		$data["has-mf"] = (ExtensionRegistry::getInstance()->isLoaded( 'MobileFrontend' ));
 
 		$data["is-loggedin"] = $this->getSkin()->getUser()->isRegistered();
-		$data["is-outdated"] = ( version_compare( MW_VERSION, '1.38', '<' ) );
+		$data["is-outdated"] = ( version_compare( MW_VERSION, '1.37', '<' ) );
 
-		$data["has-servelution-4.0.0"] =  ($this->getConfig()->get ( 'EvelutionServelutionRelease' ) == '4.0.0');
-		$data["has-servelution-3.3.0"] =  ($this->getConfig()->get ( 'EvelutionServelutionRelease' ) == '3.3.0');
-		$data["has-servelution-3.2.0"] =  ($this->getConfig()->get ( 'EvelutionServelutionRelease' ) == '3.2.0');
-		$data["has-servelution-3.1.0"] =  ($this->getConfig()->get ( 'EvelutionServelutionRelease' ) == '3.1.0');
-		$data["has-servelution-3.0.0"] =  ($this->getConfig()->get ( 'EvelutionServelutionRelease' ) == '3.0.0');
-		$data["has-servelution-2.8.0"] =  ($this->getConfig()->get ( 'EvelutionServelutionRelease' ) == '2.8.0');
-		$data["has-servelution-2.7.0"] =  ($this->getConfig()->get ( 'EvelutionServelutionRelease' ) == '2.7.0');
-		$data["has-servelution-2.6.0"] =  ($this->getConfig()->get ( 'EvelutionServelutionRelease' ) == '2.6.0');
-		$data["has-servelution-2.5.0"] =  ($this->getConfig()->get ( 'EvelutionServelutionRelease' ) == '2.5.0');
-		$data["has-servelution-2.4.0"] =  ($this->getConfig()->get ( 'EvelutionServelutionRelease' ) == '2.4.0');
-		$data["has-servelution-2.3.0"] =  ($this->getConfig()->get ( 'EvelutionServelutionRelease' ) == '2.3.0');
-		$data["has-servelution-2.2.0"] =  ($this->getConfig()->get ( 'EvelutionServelutionRelease' ) == '2.2.0');
-		$data["has-servelution-2.1.0"] =  ($this->getConfig()->get ( 'EvelutionServelutionRelease' ) == '2.1.0');
-		$data["has-servelution-2.0.0"] =  ($this->getConfig()->get ( 'EvelutionServelutionRelease' ) == '2.0.0');
-		$data["has-servelution-unsupported"] =  ( in_array($this->getConfig()->get ( 'EvelutionServelutionRelease' ), ['1.0.0','1.1.0','1.2.0','1.3.0','1.4.0'] ) );
-		// Outdated Servelution
-		$data["has-servelution-old"] = ($data["has-servelution-2.0.0"] || $data["has-servelution-2.1.0"] || $data["has-servelution-2.2.0"] || $data["has-servelution-2.3.0"] || $data["has-servelution-2.4.0"] || $data["has-servelution-2.5.0"] || $data["has-servelution-2.6.0"] || $data["has-servelution-2.7.0"] || $data["has-servelution-2.8.0"] || $data["has-servelution-3.0.0"] || $data["has-servelution-3.1.0"] || $data["has-servelution-3.2.0"] || $data["has-servelution-3.1.0"] || $data["has-servelution-3.3.0"] || $data["has-servelution-4.0.0"]);
-		// Image Blending
-		$data["has-servelution-no-imageblend"] = ($data["has-servelution-2.0.0"] || $data["has-servelution-2.1.0"] || $data["has-servelution-2.2.0"] || $data["has-servelution-2.3.0"] || $data["has-servelution-2.4.0"] || $data["has-servelution-2.5.0"] || $data["has-servelution-2.6.0"] || $data["has-servelution-2.7.0"] || $data["has-servelution-2.8.0"] || $data["has-servelution-3.0.0"] || $data["has-servelution-3.1.0"] || $data["has-servelution-3.2.0"] || $data["has-servelution-3.1.0"] || $data["has-servelution-3.3.0"] || $data["has-servelution-4.0.0"]);
-		//  Generic Color Hue Shift
-		$data["has-servelution-no-gchs"] = ($data["has-servelution-2.0.0"] || $data["has-servelution-2.1.0"] || $data["has-servelution-2.2.0"] || $data["has-servelution-2.3.0"] || $data["has-servelution-2.4.0"] || $data["has-servelution-2.5.0"] || $data["has-servelution-2.6.0"] || $data["has-servelution-2.7.0"] || $data["has-servelution-2.8.0"] || $data["has-servelution-3.0.0"] || $data["has-servelution-3.1.0"] || $data["has-servelution-3.2.0"] || $data["has-servelution-3.1.0"] || $data["has-servelution-3.3.0"]);
-
-		// Custom Secondary Background and Text Color
-		$data["has-servelution-no-custom-2ndbg"] = ($data["has-servelution-2.0.0"] || $data["has-servelution-2.1.0"] || $data["has-servelution-2.2.0"] || $data["has-servelution-2.3.0"] || $data["has-servelution-2.4.0"] || $data["has-servelution-2.5.0"] || $data["has-servelution-2.6.0"] || $data["has-servelution-2.7.0"] || $data["has-servelution-2.8.0"] || $data["has-servelution-3.0.0"] || $data["has-servelution-3.1.0"] || $data["has-servelution-3.2.0"]);
-		// Mica/Luna Levit
-		$data["has-servelution-no-mica"] = ($data["has-servelution-2.0.0"] || $data["has-servelution-2.1.0"] || $data["has-servelution-2.2.0"] || $data["has-servelution-2.3.0"] || $data["has-servelution-2.4.0"] || $data["has-servelution-2.5.0"] || $data["has-servelution-2.6.0"] || $data["has-servelution-2.7.0"] || $data["has-servelution-2.8.0"] || $data["has-servelution-3.0.0"] || $data["has-servelution-3.1.0"]);
-		// Image Filter
-		$data["has-servelution-no-imagefilter"] = ($data["has-servelution-2.0.0"] || $data["has-servelution-2.1.0"] || $data["has-servelution-2.2.0"] || $data["has-servelution-2.3.0"] || $data["has-servelution-2.4.0"] || $data["has-servelution-2.5.0"] || $data["has-servelution-2.6.0"] || $data["has-servelution-2.7.0"] || $data["has-servelution-2.8.0"] || $data["has-servelution-3.0.0"]);
-		// Custom Primary Font
-		$data["has-servelution-no-customfont"] = ($data["has-servelution-2.0.0"] || $data["has-servelution-2.1.0"] || $data["has-servelution-2.2.0"] || $data["has-servelution-2.3.0"] || $data["has-servelution-2.4.0"] || $data["has-servelution-2.5.0"] || $data["has-servelution-2.6.0"] || $data["has-servelution-2.7.0"] || $data["has-servelution-2.8.0"]);
-		// Custom Acryllic opacity
-		$data["has-servelution-no-customacryllic"] = ($data["has-servelution-2.0.0"] || $data["has-servelution-2.1.0"] || $data["has-servelution-2.2.0"] || $data["has-servelution-2.3.0"] || $data["has-servelution-2.4.0"] || $data["has-servelution-2.5.0"] || $data["has-servelution-2.6.0"] || $data["has-servelution-2.7.0"]);
-		// Luna Accent (Unfocus)
-		$data["has-servelution-no-newluna"] = ($data["has-servelution-2.0.0"] || $data["has-servelution-2.1.0"] || $data["has-servelution-2.2.0"] || $data["has-servelution-2.3.0"] || $data["has-servelution-2.4.0"] || $data["has-servelution-2.5.0"] || $data["has-servelution-2.6.0"]);
-		// Luna Accent
-		$data["has-servelution-no-accent"] = ($data["has-servelution-2.0.0"] || $data["has-servelution-2.1.0"] || $data["has-servelution-2.2.0"] || $data["has-servelution-2.3.0"] || $data["has-servelution-2.4.0"] || $data["has-servelution-2.5.0"]);
-		// Dynamic Generic Colors
-		$data["has-servelution-no-dgeneric"] = ($data["has-servelution-2.0.0"] || $data["has-servelution-2.1.0"] || $data["has-servelution-2.2.0"] || $data["has-servelution-2.3.0"] || $data["has-servelution-2.4.0"]);
-		// Floating Actions
-		$data["has-servelution-no-actions"] = ($data["has-servelution-2.0.0"] || $data["has-servelution-2.1.0"] || $data["has-servelution-2.2.0"] || $data["has-servelution-2.3.0"]);
-		// Custom Header Color
-		$data["has-servelution-no-headertext"] = ($data["has-servelution-2.0.0"] || $data["has-servelution-2.1.0"] || $data["has-servelution-2.2.0"]);
-		// Dual Foreground Color
-		$data["has-servelution-no-dground"] = ($data["has-servelution-2.0.0"] || $data["has-servelution-2.1.0"]);
-		// Vanadium
-		$data["has-servelution-vanadium"] = ($data["has-servelution-2.0.0"]);
-		$data["has-disabled-dynamic-widgets"] = ($data["has-servelution-2.0.0"] || $this->getConfig()->get ( 'EvelutionDisableDynamicWidgets' ));
+		$data["has-disabled-dynamic-widgets"] = $this->getConfig()->get ( 'EvelutionDisableDynamicWidgets' );
 		/* Theming Stuff */
 		$data["data-theme-A"] = $this->getConfig()->get ( 'EvelutionThemeA' );
 		$data["data-theme-B"] = $this->getConfig()->get ( 'EvelutionThemeB' );
