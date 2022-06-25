@@ -445,18 +445,13 @@ function VisualStyleCompile() {
 }
 
 /* Getting non-generic color values */
-function GetSystemColor(color='background') { // System Colors
+function GetSystemColor(color='canvas') { // System Colors
 	return getComputedStyle(document.querySelector('.dcm-' + ForcedColorType() + ' .fc-' + color)).getPropertyValue("color")
 }
 
 function GetDesktop() {
 	if (ForcedColors()) {
-		if 	(CSS.supports("color","-moz-dialog")) {
-			var button = GetSystemColor('mozbuttonface');
-		} else {
-			var button = GetSystemColor('buttonface');
-		}
-		return [GetSystemColor('background'),GetSystemColor('graytext'),GetSystemColor('canvas'), button, GetSystemColor('activecaption'), GetSystemColor('canvas'), GetSystemColor('canvas'),GetSystemColor('highlight')][ForcedColorMode()];
+		return [GetSystemColor('field'),GetSystemColor('graytext'),GetSystemColor('canvas'), GetSystemColor('buttonface'), GetSystemColor('canvastext'), GetSystemColor('canvas'), GetSystemColor('canvas'),GetSystemColor('highlight')][ForcedColorMode()];
 	} else {
 		return getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-color").trim();
 	}
@@ -509,15 +504,7 @@ if (img == '""') {
 
 function GetDesktopText() {
 	if (ForcedColors()) {
-//		return GetSystemColor('buttontext');
-		var color = window.MW18BgColor;
-		fg = GetForegroundVariables(color)[4]
-		if 	(CSS.supports("color","-moz-dialog")) {
-			var button = GetSystemColor('mozbuttontext');
-		} else {
-			var button = GetSystemColor('buttontext');
-		}
-		return [fg,GetSystemColor('canvas'),GetSystemColor('accentcolor'),button,GetSystemColor('captiontext'),GetSystemColor('canvastext'), GetSystemColor('canvastext'),GetSystemColor('highlighttext')][ForcedColorMode()];
+		return [GetSystemColor('fieldtext'),GetSystemColor('canvas'),GetSystemColor('accentcolor'),GetSystemColor('buttontext'),GetSystemColor('canvas'),GetSystemColor('canvastext'), GetSystemColor('canvastext'),GetSystemColor('highlighttext')][ForcedColorMode()];
 	} else if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-text-background-color") === 'auto') {
 		var color = window.MW18BgColor;
 		return GetForegroundVariables(color)[4];
@@ -546,12 +533,7 @@ function GetCanvas() {
 
 function GetCanvas2() { // Like GetCanvas() without forced colors mode you get the unaltered page background mode (Used for checking dark mode)
 	if (ForcedColors()) {
-		if 	(CSS.supports("color","-moz-dialog")) {
-			var button = GetSystemColor('mozbuttonface');
-		} else {
-			var button = GetSystemColor('buttonface');
-		}
-		return [button,button,button,button,button,button,GetSystemColor('canvas'),GetSystemColor('canvas')][ForcedColorMode()]
+		return [GetSystemColor('buttonface'),GetSystemColor('buttonface'),GetSystemColor('buttonface'),GetSystemColor('buttonface'),GetSystemColor('buttonface'),GetSystemColor('buttonface'),GetSystemColor('canvas'),GetSystemColor('field')][ForcedColorMode()]
 	} else {
 		return getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--canvas-secondary-background-color").trim();
 	}
@@ -613,12 +595,7 @@ function GetCanvasText() {
 
 function GetCanvasText2() {
 	if (ForcedColors()) {
-		if 	(CSS.supports("color","-moz-dialogtext")) {
-			var button = GetSystemColor('mozbuttontext');
-		} else {
-			var button = GetSystemColor('buttontext');
-		}
-		return [button,button,button,button,button,button,GetSystemColor('canvastext'),GetSystemColor('canvastext')][ForcedColorMode()]
+		return [GetSystemColor('buttontext'),GetSystemColor('buttonborder'),GetSystemColor('buttontext'),GetSystemColor('buttontext'),GetSystemColor('buttontext'),GetSystemColor('buttontext'),GetSystemColor('canvastext'),GetSystemColor('fieldtext')][ForcedColorMode()]
 	} else if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--canvas-text-secondary-background-color") === 'auto') {
 		return GetCanvasText();
 	} else {
@@ -629,7 +606,7 @@ function GetCanvasText2() {
 
 function GetHighlight() {
 	if (ForcedColors()) {
-		return [GetSystemColor('highlight'),GetSystemColor('highlight'),GetSystemColor('accentcolor'),GetSystemColor('linktext'),GetSystemColor('highlight'),GetSystemColor('highlight'),GetSystemColor('highlight'),GetSystemColor('canvastext')][ForcedColorMode()];
+		return [GetSystemColor('highlight'),GetSystemColor('highlight'),GetSystemColor('accentcolor'),GetSystemColor('linktext'),GetSystemColor('selecteditem'),GetSystemColor('highlight'),GetSystemColor('highlight'),GetSystemColor('canvastext')][ForcedColorMode()];
 	} else if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--highlight-background-color") === 'auto') {
 		return GetHyperlink();
 	} else {
@@ -639,7 +616,7 @@ function GetHighlight() {
 
 function GetHighlightText() {
 	if (ForcedColors()) {
-		return [GetSystemColor('highlighttext'),GetSystemColor('highlighttext'),GetSystemColor('accentcolortext'),GetSystemColor('canvas'),GetSystemColor('highlighttext'),GetSystemColor('highlighttext'),GetSystemColor('highlighttext'),GetSystemColor('canvas')][ForcedColorMode()];
+		return [GetSystemColor('highlighttext'),GetSystemColor('highlighttext'),GetSystemColor('accentcolortext'),GetSystemColor('canvas'),GetSystemColor('selecteditemtext'),GetSystemColor('highlighttext'),GetSystemColor('highlighttext'),GetSystemColor('canvas')][ForcedColorMode()];
 	} else if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--highlight-text-background-color") === 'auto') {
 		var color = window.MW18HLColor;
 		return GetForegroundVariables(color)[4];
@@ -651,17 +628,7 @@ function GetHighlightText() {
 
 function GetActiveTitle() {
 	if (ForcedColors()) {
-		if 	(CSS.supports("color","-moz-dialog")) {
-			var button = GetSystemColor('mozbuttontext');
-		} else {
-			var button = GetSystemColor('buttontext');
-		}
-		if 	(CSS.supports("color","-moz-dialog")) {
-			var button2 = GetSystemColor('mozbuttonface');
-		} else {
-			var button2 = GetSystemColor('buttonface');
-		}
-		return [GetSystemColor('activecaption'),GetSystemColor('canvastext'),GetSystemColor('accentcolor'),GetSystemColor('linktext'),button,GetSystemColor('linktext'),button2,GetSystemColor('graytext')][ForcedColorMode()];
+		return [GetSystemColor('fieldtext'),GetSystemColor('canvastext'),GetSystemColor('accentcolor'),GetSystemColor('linktext'),GetSystemColor('buttontext'),GetSystemColor('linktext'),GetSystemColor('buttonface'),GetSystemColor('graytext')][ForcedColorMode()];
 
 
 	} else if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--active-title-background-color") === 'auto') {
@@ -673,18 +640,7 @@ function GetActiveTitle() {
 
 function GetActiveTitleText() {
 	if (ForcedColors()) {
-		if 	(CSS.supports("color","-moz-dialog")) {
-			var button = GetSystemColor('mozbuttonface');
-		} else {
-			var button = GetSystemColor('buttonface');
-		}
-		if 	(CSS.supports("color","-moz-dialog")) {
-			var button2 = GetSystemColor('mozbuttontext');
-		} else {
-			var button2 = GetSystemColor('buttontext');
-		}
-
-		return [GetSystemColor('captiontext'),GetSystemColor('canvas'),GetSystemColor('accentcolortext'),GetSystemColor('canvas'),button,GetSystemColor('canvas'),button2,GetSystemColor('canvas')][ForcedColorMode()];
+		return [GetSystemColor('field'),GetSystemColor('canvas'),GetSystemColor('accentcolortext'),GetSystemColor('canvas'),GetSystemColor('buttonface'),GetSystemColor('canvas'),GetSystemColor('buttontext'),GetSystemColor('canvas')][ForcedColorMode()];
 	} else if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--active-title-text-background-color") === 'auto') {
 		var color = window.MW18ATColor;
 		return GetForegroundVariables(color)[4];
@@ -696,12 +652,7 @@ function GetActiveTitleText() {
 
 function GetInactiveTitle() {
 	if (ForcedColors()) {
-		if 	(CSS.supports("color","-moz-dialog")) {
-			var button = GetSystemColor('mozbuttonface');
-		} else {
-			var button = GetSystemColor('buttonface');
-		}
-		return [GetSystemColor('inactivecaption'),GetSystemColor('canvas'),button,GetSystemColor('canvas'),GetSystemColor('canvastext'),GetSystemColor('graytext'),GetSystemColor('canvas'),GetSystemColor('canvas')][ForcedColorMode()];
+		return [GetSystemColor('canvas'),GetSystemColor('canvas'),GetSystemColor('buttonface'),GetSystemColor('canvas'),GetSystemColor('canvastext'),GetSystemColor('graytext'),GetSystemColor('canvas'),GetSystemColor('canvas')][ForcedColorMode()];
 
 
 	} else if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--inactive-title-background-color") === 'auto') {
@@ -713,7 +664,7 @@ function GetInactiveTitle() {
 
 function GetInactiveTitleText() {
 	if (ForcedColors()) {
-		return [GetSystemColor('inactivecaptiontext'),GetSystemColor('canvastext'),GetSystemColor('graytext'),GetSystemColor('canvastext'),GetSystemColor('canvas'),GetSystemColor('canvas'),GetSystemColor('graytext'),GetSystemColor('graytext')][ForcedColorMode()];
+		return [GetSystemColor('graytext'),GetSystemColor('canvastext'),GetSystemColor('graytext'),GetSystemColor('canvastext'),GetSystemColor('canvas'),GetSystemColor('canvas'),GetSystemColor('graytext'),GetSystemColor('graytext')][ForcedColorMode()];
 
 	} else if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--inactive-title-text-background-color") === 'auto') {
 		var color = window.MW18ITColor;
