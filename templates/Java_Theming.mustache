@@ -284,11 +284,11 @@ function ForcedColors() {
 
 function ForcedColorMode() {
 	mode = ['standard','lite','general','basic','simple','classic','contrast','retro'].indexOf(window.MW18DCMMode);
-	return (( window.matchMedia('(forced-colors: active)').matches )) ? 5 : (mode == -1) ? 0 : mode;
+	return (mode == -1) ? 0 : mode;
 }
 
 function ForcedColorType() {
-	return (( window.matchMedia('(forced-colors: active)').matches )) ? 'standard' : window.MW18DCMType
+	return window.MW18DCMType
 }
 
 
