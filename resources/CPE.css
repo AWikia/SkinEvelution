@@ -1096,6 +1096,7 @@ container {
 	display:none!important;
 }
 
+/* Disable Acryllic on browsers without backdrop-filter support */
 @supports (not ((backdrop-filter:none) or (-webkit-backdrop-filter:none))) {
 	.lite-display {
 		display:inline-block!important;
@@ -1112,6 +1113,24 @@ container {
 	:root body {
 		--acryllic-filter:none!important;
 	}
+}
+
+/* Disable Mica on browsers without mix-blend-mode support */
+@supports (not (mix-blend-mode:color)) {
+	.lite-display {
+		display:inline-block!important;
+	}
+	body {
+		--mica-opacity:2!important;
+	}
+
+
+	:root body {
+		--mica-filter:none!important;
+		--mica-content:none!important;
+	}
+	
+
 }
 
 /*
@@ -2967,7 +2986,6 @@ max-height:152px;
 .cpe-dropdown__content .cpe-list.cpe-dcm-types.is-linked.has-icons {
 	justify-content:center;
 }
-
 
 .cpe-dropdown__content .cpe-list.is-linked.has-icons li > a {
 	display:flex;
