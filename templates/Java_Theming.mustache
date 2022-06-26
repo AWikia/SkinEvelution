@@ -451,7 +451,7 @@ function GetSystemColor(color='canvas') { // System Colors
 
 function GetDesktop() {
 	if (ForcedColors()) {
-		return [GetSystemColor('field'),GetSystemColor('graytext'),GetSystemColor('canvas'), GetSystemColor('buttonface'), GetSystemColor('canvastext'), GetSystemColor('canvas'), GetSystemColor('canvas'),GetSystemColor('highlight')][ForcedColorMode()];
+		return [GetSystemColor('field'),GetSystemColor('graytext'),GetSystemColor('canvas'), GetSystemColor('buttonface'), GetSystemColor('buttonborder'), GetSystemColor('canvas'), GetSystemColor('canvas'),GetSystemColor('highlight')][ForcedColorMode()];
 	} else {
 		return getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-color").trim();
 	}
@@ -504,7 +504,7 @@ if (img == '""') {
 
 function GetDesktopText() {
 	if (ForcedColors()) {
-		return [GetSystemColor('fieldtext'),GetSystemColor('canvas'),GetSystemColor('accentcolor'),GetSystemColor('buttontext'),GetSystemColor('canvas'),GetSystemColor('canvastext'), GetSystemColor('canvastext'),GetSystemColor('highlighttext')][ForcedColorMode()];
+		return [GetSystemColor('fieldtext'),GetSystemColor('canvas'),GetSystemColor('accentcolor'),GetSystemColor('buttontext'),GetSystemColor('buttonface'),GetSystemColor('canvastext'), GetSystemColor('canvastext'),GetSystemColor('highlighttext')][ForcedColorMode()];
 	} else if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-text-background-color") === 'auto') {
 		var color = window.MW18BgColor;
 		return GetForegroundVariables(color)[4];
@@ -595,7 +595,7 @@ function GetCanvasText() {
 
 function GetCanvasText2() {
 	if (ForcedColors()) {
-		return [GetSystemColor('buttontext'),GetSystemColor('buttonborder'),GetSystemColor('buttontext'),GetSystemColor('buttontext'),GetSystemColor('buttontext'),GetSystemColor('buttontext'),GetSystemColor('canvastext'),GetSystemColor('fieldtext')][ForcedColorMode()]
+		return [GetSystemColor('buttontext'),GetSystemColor('buttontext'),GetSystemColor('buttontext'),GetSystemColor('buttontext'),GetSystemColor('buttontext'),GetSystemColor('buttontext'),GetSystemColor('canvastext'),GetSystemColor('fieldtext')][ForcedColorMode()]
 	} else if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--canvas-text-secondary-background-color") === 'auto') {
 		return GetCanvasText();
 	} else {
