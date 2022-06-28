@@ -34,6 +34,7 @@ Eight DCM Modes Exist along with two types (Standard and Reversi):
 - High Contrast has unified Primary and Secondary Canvas Color, unified link stylings and use of ButtonFace as Active Title background color.
 - Retro has some styling that it is akin to the ancient era of Windows
 
+
 ### Visual Modes
 Three Visual Modes exist:
 - Standard is the normal ones
@@ -261,17 +262,17 @@ This section lists all static Theming Variables and where they're used:
 ### ``--desktop-background-image`` (Accepts: ``<image>``)
 This is used as the background image of the body container. When the opposite version of that theme is being running, this will appear inverted. An empty value results in no background being shown.
 
-### ``--desktop-background-image-opacity`` (Accepts: ``<percentage>``)
-This is used as the opacity of the body background image. 0% makes it invisible, 50% makes translucent and 100% makes it visible.
+### ``--desktop-background-image-filter`` (Accepts: ``<filter-function>``)
+This is used as the filter of the body background image.
+
+### ``--desktop-background-image-blend-mode`` (Accepts: ``<filter-function>``)
+This is used as the bledning mode of the body background image.
 
 ### ``--desktop-background-color`` (Accepts: ``<color>``)
 This is used as the background color of the body container and the gradient overlay shown on header backgrounds. This is also used on  ``is-headline`` inputs and ``is-alternate`` secondary buttons.
 
 ### ``--desktop-text-background-color`` (Accepts: ``<color> | auto``)
 This is used as the foreground color of the Community Header. When set to ``auto``, it autopicks the computed foreground community color.
-
-### ``--desktop-background-mode`` (Accepts: ``standard | full``)
-When set to ``standard``, community background spans to the header area only. When set to ``full``, communnity background spans to the whole screen.
 
 ### ``--desktop-background-horizontal-alignment`` (Accepts: ``left | center | right``)
 Sets the horizontal alignment of the background image. Accepts all standard properties ``background-position-x`` supports.
@@ -288,29 +289,58 @@ When set to ``true``, it removes background tiling on the horizontal axis
 ### ``--desktop-background-no-vertical-tiling`` (Accepts: ``<boolean>``)
 When set to ``true``, it removes background tiling on the vertical axis
 
-### ``--hyperlink-background-color`` (Accepts: ``<color>``)
-This is used as the color of the links, checkboxes and range inputs. This is also used on  ``is-alternate`` inputs, secondary buttons and on OOUI inputs.
-
 ### ``--canvas-background-color`` (Accepts: ``<color>``)
 This is used as the background color of the page container, rail modules and many more containers.
 
+### ``--canvas-secondary-background-color`` (Accepts: ``<color>``)
+This is used as the background color of the dropdowns and neutral-colored containers.
+
 ### ``--inactive-text-background-color`` (Accepts: ``<color> | auto``)
-This is used as the border color of the page container, rail modules and many more containers and as the color of the toolbox.  When set to ``auto``, it autopicks a color based on page background color. This is also used on  ``is-borderline`` inputs and ``is-unaccented`` primary buttons.
+This is used as the border color of the various containers and the color of certain inactive elements.  When set to ``auto``, it autopicks a color based on page background color. This is also used on unaccented primary form controls (Mostly those with ``is-unaccented`` class). In High Contrast Mode, it substitutes the Pause Generic Color.
+
+### ``--active-text-background-color`` (Accepts: ``<color> | auto``)
+This is used as the color of the active links in addition of being used as a color for the insertation caret. This is also used on alternate secondary form controls (Mostly those with ``is-alternate`` class).
 
 ### ``--canvas-text-background-color`` (Accepts: ``<color> | auto``)
-This is used as the text color of the page container, rail modules, many more containers.  When set to ``auto``, it autopicks either the light or dark text background color, whichever works best on the set page background color. This is also used on ``is-colorline`` inputs and ``is-unaccented`` secondary buttons.
+This is used as the foreground color of the page container, rail modules and many more containers.  When set to ``auto``, it autopicks either the light or dark text background color, whichever works best on the set page background color. This is also used on unaccented secondary form controls (Mostly those with ``is-unaccented`` class). In High Contrast Mode, it substitutes the Success Generic Color.
 
-### ``--highlight-background-color`` (Accepts: ``<color>``)
-This is used as the color of the buttons, sticky header, selected text in Contrast visual style, primary OOUI buttons and input styles without extra class
+### ``--canvas-text-secondary-background-color`` (Accepts: ``<color> | auto``)
+This is used as the foreground color of the dropdowns and neutral-colored containers.  When set to ``auto``, it autopicks either the light or dark text background color, whichever works best on the set secondary page background color.
 
-### ``--caret-background-color`` (Accepts: ``<color> | auto``)
-This is used as the color of the insertation caret.  When set to ``auto``, it autopicks the computed accent background color. This is also used on ``is-cartline`` inputs and ``is-alternate`` primary buttons.
+
+### ``--highlight-background-color`` (Accepts: ``<color> | auto``)
+This is used as the background color of selected text in High Contrast mode and primary form controls. In High Contrast Mode, it substitutes the Warning Generic Color.
+
+### ``--highlight-text-background-color`` (Accepts: ``<color> | auto``)
+This is used as the foreground color of selected text in High Contrast mode and primary form controls.
+
+### ``--hyperlink-background-color`` (Accepts: ``<color>``)
+This is used as the color of the links and secondary form controls. In High Contrast Mode, it substitutes the Alert Generic Color.
+
+### ``--visited-hyperlink-background-color`` (Accepts: ``<color> | auto``)
+This is used as the color of the visited links.
+
+
+### ``--active-title-background-color`` (Accepts: ``<color> | auto``)
+This is used as the background color of accent-colored elements in active Luna state. This is also used on alternate primary form controls (Mostly those with ``is-alternate`` class). In High Contrast Mode, it substitutes the Progress Generic Color.
+
+### ``--active-title-text-background-color`` (Accepts: ``<color> | auto``)
+This is used as the foreground color of accent-colored elements in active Luna state.
+
+### ``--inactive-title-background-color`` (Accepts: ``<color> | auto``)
+This is used as the background color of accent-colored elements in inactive Luna state. In High Contrast Mode, it substitutes the Message Generic Color.
+
+### ``--inactive-title-text-background-color`` (Accepts: ``<color> | auto``)
+This is used as the foreground color of accent-colored elements in inactive Luna state.
+
+### ``--custom-font`` (Accepts: ``<family-name>``)
+This is used as the extra primary font to be used other than the stock ones. When set to an empty quoted string, no special extra font is used.
 
 ### ``--custom-secondary-font`` (Accepts: ``<family-name>``)
 This is used as the extra secondary font to be used other than the stock ones. When set to an empty quoted string, no special extra font is used.
 
 ### ``--border-radius`` (Accepts: ``<length>``)
-This is used to control the rounded corners of all supported elements. 0px removes the rounded corners entirely. Values between 0 to 15px are generally favored.
+This is used to control the rounded corners of all supported elements. 0px removes the rounded corners entirely. Values between 0 to 15px are generally favored. When Hardware acceleration is missing or access to the GPU Benchmarks list site (Found at ``unpkg.com``) is denied, this property is completely ignored.
 
 ### ``--icon-filter`` (Accepts: ``<filter-function>``)
 This is used as the base filter of the logo.
@@ -324,8 +354,17 @@ This is used as the time needed to transition from the base filter to the hover 
 ### ``--icon-filter-delay`` (Accepts: ``<time>``)
 This is used as the time needed to start the transition from the base filter to the hover filter and vice versa. 0ms removes the delay. Values between 0ms to 1000ms are generally favored.
 
-### Generic colors (Alert, Warning, Success, Message)
-Those four colors are not user customizable but they're rather picked automatically based on contrast with Page Background Color. ``--alert-background-color`` is always a red color and is used on new links, destructive buttons and errorboxes. ``--warning-background-color`` is always an orange color and is used on warningboxes. ``--success-background-color`` is always an green color and is used on constructive buttons and successboxes. ``--message-background-color`` is always a grayscale color and is used on neutral buttons and messageboxes. All four colors will share the same lightness so there'll be no inconsistancy between them and those are not matched for a specific color scheme aka the same color can be used in both light and dark themes.
+### ``--system-acryllic-opacity`` (Accepts: ``<length>``)
+This is used to control the transparency of all elements that use Luna Lovit or Luna Levit. Values between 0.4 to 0.8 are generally favored. When Hardware acceleration is missing, device's performance isn't strong enough or access to the GPU Benchmarks list site (Found at ``unpkg.com``) is denied, this property is completely ignored.
+
+### ``--system-generic-color-hue-shift`` (Accepts: ``<length>``)
+This is used to control the additional hue shift that will be applied to generic colors. Values between -15 to 15 are generally favored. Under High Contrast Mode, this property is completely ignored.
+
+### ``--system-generic-color-saturation`` (Accepts: ``<percentage>``)
+This is used to control the HSL Saturation that will be applied to generic colors. Values between 20% to 100% that are multiple of 5 are generally favored. Under High Contrast Mode, this property is completely ignored.
+
+### Generic colors (Alert, Pause, Warning, Success, Progress Message)
+Those six colors are user customizable using the ``--system-generic-color-hue-shift`` and ``--system-generic-color-saturation`` properties (Except for the Message Color) but the base colors are rather picked automatically based on contrast with Page Background Color. ``--alert-background-color`` is always a red color and is used on new links, destructive buttons and errorboxes. ``--pause-background-color`` is always an orange color and is used on halted elements.  ``--warning-background-color`` is always a yellow color and is used on warningboxes. ``--success-background-color`` is always an green color and is used on constructive buttons and successboxes. ``--progress-background-color`` is always a blue color and is used on progressive buttons and in-progress actions. ``--message-background-color`` is always a grayscale color and is used on neutral buttons and messageboxes. All six colors will share the same lightness so there'll be no inconsistancy between them and those are not matched for a specific color scheme aka the same color can be used in both light and dark themes.
 
 ## Configuring Evelution
 Evelution, being a Mustache-powered MW skin, does support a few configurations, standard and non-standard, to name a few:
