@@ -451,7 +451,16 @@ function GetSystemColor(color='canvas') { // System Colors
 
 function GetDesktop() {
 	if (ForcedColors()) {
-		return [GetSystemColor('field'),GetSystemColor('graytext'),GetSystemColor('canvas'), GetSystemColor('buttonface'), GetSystemColor('buttonborder'), GetSystemColor('canvas'), GetSystemColor('canvas'),GetSystemColor('highlight')][ForcedColorMode()];
+		return [
+				GetSystemColor('field'),			// Standard
+				GetSystemColor('graytext'),			// Lite
+				GetSystemColor('canvas'),	 		// General
+				GetSystemColor('buttonface'), 		// Basic
+				GetSystemColor('buttonborder'), 	// Simple
+				GetSystemColor('canvas'), 			// Classic
+				GetSystemColor('canvas'),			// High Contrast
+				GetSystemColor('highlight')			// Retro
+				][ForcedColorMode()];
 	} else {
 		return getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-color").trim();
 	}
@@ -504,7 +513,16 @@ if (img == '""') {
 
 function GetDesktopText() {
 	if (ForcedColors()) {
-		return [GetSystemColor('fieldtext'),GetSystemColor('canvas'),GetSystemColor('accentcolor'),GetSystemColor('buttontext'),GetSystemColor('buttonface'),GetSystemColor('canvastext'), GetSystemColor('canvastext'),GetSystemColor('highlighttext')][ForcedColorMode()];
+		return [
+				GetSystemColor('fieldtext'),		// Standard
+				GetSystemColor('canvas'),			// Lite
+				GetSystemColor('accentcolor'), 		// General
+				GetSystemColor('buttontext'), 		// Basic
+				GetSystemColor('buttonface'), 		// Simple
+				GetSystemColor('linktext'), 		// Classic
+				GetSystemColor('canvastext'),		// High Contrast
+				GetSystemColor('highlighttext')		// Retro
+				][ForcedColorMode()];
 	} else if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-text-background-color") === 'auto') {
 		var color = window.MW18BgColor;
 		return GetForegroundVariables(color)[4];
@@ -525,7 +543,7 @@ function GetCanvasShort() { // Like GetCanvas() without forced colors mode you g
 
 function GetCanvas() {
 	if (ForcedColors()) {
-		return GetSystemColor('canvas');
+		return GetSystemColor('canvas');			// All Modes
 	} else {
 		return window.MW18PageColor;
 	}
@@ -533,7 +551,16 @@ function GetCanvas() {
 
 function GetCanvas2() { // Like GetCanvas() without forced colors mode you get the unaltered page background mode (Used for checking dark mode)
 	if (ForcedColors()) {
-		return [GetSystemColor('buttonface'),GetSystemColor('buttonface'),GetSystemColor('buttonface'),GetSystemColor('buttonface'),GetSystemColor('buttonface'),GetSystemColor('buttonface'),GetSystemColor('canvas'),GetSystemColor('field')][ForcedColorMode()]
+		return [
+				GetSystemColor('buttonface'),		// Standard
+				GetSystemColor('buttonface'),		// Lite
+				GetSystemColor('buttonface'), 		// General
+				GetSystemColor('buttonface'), 		// Basic
+				GetSystemColor('buttonface'), 		// Simple
+				GetSystemColor('buttonface'), 		// Classic
+				GetSystemColor('canvas'),			// High Contrast
+				GetSystemColor('field')				// Retro
+				][ForcedColorMode()];
 	} else {
 		return getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--canvas-secondary-background-color").trim();
 	}
@@ -542,7 +569,16 @@ function GetCanvas2() { // Like GetCanvas() without forced colors mode you get t
 
 function GetHyperlink() {
 	if (ForcedColors()) {
-		return [GetSystemColor('linktext'),GetSystemColor('highlight'),GetSystemColor('accentcolor'),GetSystemColor('linktext'),GetSystemColor('linktext'),GetSystemColor('linktext'), GetSystemColor('linktext'),GetSystemColor('linktext')][ForcedColorMode()];
+		return [
+				GetSystemColor('linktext'),			// Standard
+				GetSystemColor('highlight'),		// Lite
+				GetSystemColor('accentcolor'), 		// General
+				GetSystemColor('linktext'), 		// Basic
+				GetSystemColor('linktext'), 		// Simple
+				GetSystemColor('linktext'), 		// Classic
+				GetSystemColor('linktext'),			// High Contrast
+				GetSystemColor('linktext')			// Retro
+				][ForcedColorMode()];
 	} else {
 		return getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--hyperlink-background-color").trim();
 	}
@@ -551,7 +587,16 @@ function GetHyperlink() {
 
 function GetVisitedHyperlink() {
 	if (ForcedColors()) {
-		return [GetSystemColor('visitedtext'),GetSystemColor('highlight'),GetSystemColor('accentcolor'),GetSystemColor('visitedtext'),GetSystemColor('visitedtext'),GetSystemColor('visitedtext'), GetSystemColor('linktext'),GetSystemColor('linktext')][ForcedColorMode()];
+		return [
+				GetSystemColor('visitedtext'),		// Standard
+				GetSystemColor('highlight'),		// Lite
+				GetSystemColor('accentcolor'), 		// General
+				GetSystemColor('visitedtext'), 		// Basic
+				GetSystemColor('visitedtext'), 		// Simple
+				GetSystemColor('visitedtext'), 		// Classic
+				GetSystemColor('linktext'),			// High Contrast
+				GetSystemColor('linktext')			// Retro
+				][ForcedColorMode()];
 	} else if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--visited-hyperlink-background-color") === 'auto') {
 		return GetHyperlink();
 	} else {
@@ -562,7 +607,7 @@ function GetVisitedHyperlink() {
 
 function GetInactiveText() {
 	if (ForcedColors()) {
-		return GetSystemColor('graytext');
+		return GetSystemColor('graytext');			// All Modes
 	} else if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--inactive-text-background-color") === 'auto') {
 		return ColorTestTwin(window.MW18PageColor,window.MW18PageColorFG,window.MW18FinalContrast*2);
 	} else {
@@ -572,7 +617,16 @@ function GetInactiveText() {
 
 function GetActiveText() {
 	if (ForcedColors()) {
-		return [GetSystemColor('activetext'),GetSystemColor('highlight'),GetSystemColor('accentcolor'),GetSystemColor('activetext'),GetSystemColor('activetext'),GetSystemColor('activetext'), GetSystemColor('linktext'),GetSystemColor('graytext')][ForcedColorMode()];
+		return [
+				GetSystemColor('activetext'),		// Standard
+				GetSystemColor('highlight'),		// Lite
+				GetSystemColor('accentcolor'), 		// General
+				GetSystemColor('activetext'), 		// Basic
+				GetSystemColor('activetext'),	 	// Simple
+				GetSystemColor('activetext'), 		// Classic
+				GetSystemColor('linktext'),			// High Contrast
+				GetSystemColor('graytext')			// Retro
+				][ForcedColorMode()];
 	} else if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--active-text-background-color") === 'auto') {
 		return GetHyperlink();
 	} else {
@@ -583,7 +637,7 @@ function GetActiveText() {
 
 function GetCanvasText() {
 	if (ForcedColors()) {
-		return GetSystemColor('canvastext');
+		return GetSystemColor('canvastext');		// All Modes
 	} else if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--canvas-text-background-color") === 'auto') {
 		var color = window.MW18PageColor;
 		return GetForegroundVariables(color)[4];
@@ -595,7 +649,16 @@ function GetCanvasText() {
 
 function GetCanvasText2() {
 	if (ForcedColors()) {
-		return [GetSystemColor('buttontext'),GetSystemColor('buttontext'),GetSystemColor('buttontext'),GetSystemColor('buttontext'),GetSystemColor('buttontext'),GetSystemColor('buttontext'),GetSystemColor('canvastext'),GetSystemColor('fieldtext')][ForcedColorMode()]
+		return [
+				GetSystemColor('buttontext'),		// Standard
+				GetSystemColor('buttontext'),		// Lite
+				GetSystemColor('buttontext'), 		// General
+				GetSystemColor('buttontext'), 		// Basic
+				GetSystemColor('buttontext'),	 	// Simple
+				GetSystemColor('buttontext'), 		// Classic
+				GetSystemColor('canvastext'),		// High Contrast
+				GetSystemColor('fieldtext')			// Retro
+				][ForcedColorMode()];
 	} else if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--canvas-text-secondary-background-color") === 'auto') {
 		return GetCanvasText();
 	} else {
@@ -606,7 +669,16 @@ function GetCanvasText2() {
 
 function GetHighlight() {
 	if (ForcedColors()) {
-		return [GetSystemColor('highlight'),GetSystemColor('highlight'),GetSystemColor('accentcolor'),GetSystemColor('linktext'),GetSystemColor('selecteditem'),GetSystemColor('highlight'),GetSystemColor('highlight'),GetSystemColor('canvastext')][ForcedColorMode()];
+		return [
+				GetSystemColor('highlight'),		// Standard
+				GetSystemColor('highlight'),		// Lite
+				GetSystemColor('accentcolor'), 		// General
+				GetSystemColor('linktext'), 		// Basic
+				GetSystemColor('selecteditem'),	 	// Simple
+				GetSystemColor('highlight'), 		// Classic
+				GetSystemColor('highlight'),		// High Contrast
+				GetSystemColor('canvastext')		// Retro
+				][ForcedColorMode()];
 	} else if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--highlight-background-color") === 'auto') {
 		return GetHyperlink();
 	} else {
@@ -616,7 +688,16 @@ function GetHighlight() {
 
 function GetHighlightText() {
 	if (ForcedColors()) {
-		return [GetSystemColor('highlighttext'),GetSystemColor('highlighttext'),GetSystemColor('accentcolortext'),GetSystemColor('canvas'),GetSystemColor('selecteditemtext'),GetSystemColor('highlighttext'),GetSystemColor('highlighttext'),GetSystemColor('canvas')][ForcedColorMode()];
+		return [
+				GetSystemColor('highlighttext'),	// Standard
+				GetSystemColor('highlighttext'),	// Lite
+				GetSystemColor('accentcolortext'), 	// General
+				GetSystemColor('canvas'),	 		// Basic
+				GetSystemColor('selecteditemtext'), // Simple
+				GetSystemColor('highlighttext'),	// Classic
+				GetSystemColor('highlighttext'),	// High Contrast
+				GetSystemColor('canvas')			// Retro
+				][ForcedColorMode()];
 	} else if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--highlight-text-background-color") === 'auto') {
 		var color = window.MW18HLColor;
 		return GetForegroundVariables(color)[4];
@@ -628,9 +709,16 @@ function GetHighlightText() {
 
 function GetActiveTitle() {
 	if (ForcedColors()) {
-		return [GetSystemColor('fieldtext'),GetSystemColor('canvastext'),GetSystemColor('accentcolor'),GetSystemColor('linktext'),GetSystemColor('buttontext'),GetSystemColor('linktext'),GetSystemColor('buttonface'),GetSystemColor('graytext')][ForcedColorMode()];
-
-
+		return [
+				GetSystemColor('fieldtext'),		// Standard
+				GetSystemColor('canvastext'),		// Lite
+				GetSystemColor('accentcolor'),	 	// General
+				GetSystemColor('linktext'),	 		// Basic
+				GetSystemColor('buttontext'),		// Simple
+				GetSystemColor('linktext'),			// Classic
+				GetSystemColor('buttonface'),		// High Contrast
+				GetSystemColor('graytext')			// Retro
+				][ForcedColorMode()];
 	} else if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--active-title-background-color") === 'auto') {
 		return GetHyperlink();
 	} else {
@@ -640,7 +728,16 @@ function GetActiveTitle() {
 
 function GetActiveTitleText() {
 	if (ForcedColors()) {
-		return [GetSystemColor('field'),GetSystemColor('canvas'),GetSystemColor('accentcolortext'),GetSystemColor('canvas'),GetSystemColor('buttonface'),GetSystemColor('canvas'),GetSystemColor('buttontext'),GetSystemColor('canvas')][ForcedColorMode()];
+		return [
+				GetSystemColor('field'),			// Standard
+				GetSystemColor('canvas'),			// Lite
+				GetSystemColor('accentcolortext'), 	// General
+				GetSystemColor('canvas'), 			// Basic
+				GetSystemColor('buttonface'),		// Simple
+				GetSystemColor('canvas'),			// Classic
+				GetSystemColor('buttontext'),		// High Contrast
+				GetSystemColor('canvas')			// Retro
+				][ForcedColorMode()];
 	} else if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--active-title-text-background-color") === 'auto') {
 		var color = window.MW18ATColor;
 		return GetForegroundVariables(color)[4];
@@ -652,9 +749,16 @@ function GetActiveTitleText() {
 
 function GetInactiveTitle() {
 	if (ForcedColors()) {
-		return [GetSystemColor('canvas'),GetSystemColor('canvas'),GetSystemColor('buttonface'),GetSystemColor('canvas'),GetSystemColor('canvastext'),GetSystemColor('graytext'),GetSystemColor('canvas'),GetSystemColor('canvas')][ForcedColorMode()];
-
-
+		return [
+				GetSystemColor('canvas'),			// Standard
+				GetSystemColor('canvas'),			// Lite
+				GetSystemColor('buttonface'),	 	// General
+				GetSystemColor('canvas'), 			// Basic
+				GetSystemColor('canvastext'),		// Simple
+				GetSystemColor('graytext'),			// Classic
+				GetSystemColor('canvas'),			// High Contrast
+				GetSystemColor('canvas')			// Retro
+				][ForcedColorMode()];
 	} else if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--inactive-title-background-color") === 'auto') {
 		return GetInactiveText();
 	} else {
@@ -664,8 +768,16 @@ function GetInactiveTitle() {
 
 function GetInactiveTitleText() {
 	if (ForcedColors()) {
-		return [GetSystemColor('graytext'),GetSystemColor('canvastext'),GetSystemColor('graytext'),GetSystemColor('canvastext'),GetSystemColor('canvas'),GetSystemColor('canvas'),GetSystemColor('graytext'),GetSystemColor('graytext')][ForcedColorMode()];
-
+		return [
+				GetSystemColor('graytext'),			// Standard
+				GetSystemColor('canvastext'),		// Lite
+				GetSystemColor('graytext'),		 	// General
+				GetSystemColor('canvastext'), 		// Basic
+				GetSystemColor('canvas'),			// Simple
+				GetSystemColor('canvas'),			// Classic
+				GetSystemColor('graytext'),			// High Contrast
+				GetSystemColor('graytext')			// Retro
+				][ForcedColorMode()];
 	} else if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--inactive-title-text-background-color") === 'auto') {
 		var color = window.MW18ITColor;
 		return GetForegroundVariables(color)[4];
