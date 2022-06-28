@@ -94,27 +94,42 @@ filter:none!important;
 
 .visualmode-contrast .evelution-content .evelution-page-header .toggle-rail-button:hover,
 .visualmode-contrast .evelution-module .rail-buttons .rail-button:hover {
+	background-color:var(--highlight-text-background-color);
+	border-color:var(--highlight-background-color);
+	color:var(--highlight-background-color);
+}
+
+.visualmode-contrast .evelution-content .evelution-page-header .toggle-rail-button:active,
+.visualmode-contrast .evelution-module .rail-buttons .rail-button:active {
 	background-color:var(--highlight-background-color);
 	border-color:var(--highlight-background-color);
 	color:var(--highlight-text-background-color);
 }
 
-.visualmode-contrast .evelution-content .evelution-page-header .toggle-rail-button:active,
-.visualmode-contrast .evelution-module .rail-buttons .rail-button:active {
-	background-color:var(--highlight-text-background-color);
-	border-color:var(--highlight-text-background-color);
-	color:var(--highlight-background-color);
-}
-
 
 .visualmode-contrast .evelution-sidebar {
-	--global-nav-link-color-hover:var(--highlight-text-background-color);
-	--global-nav-link-background-hover:var(--highlight-background-color-rgb);
-	--global-nav-link-color-active:rgb(var(--global-nav-link-background-hover));
-	--global-nav-link-background-active:var(--global-nav-link-color-hover);
+/* Colors */
+	--global-nav-link-color-active:var(--highlight-text-background-color);
+	--global-nav-link-background-active:var(--highlight-background-color);
+/* Automated */
+	--global-nav-link-color-hover:var(--global-nav-link-background-active);
+	--global-nav-link-background-hover:var(--global-nav-link-color-active);
 	--global-nav-link-border-active:var(--global-nav-link-background-active);
 	--global-nav-link-opacity:2!important;
 }
+
+
+.visualmode-contrast .evelution-sidebar .link:hover {
+	background-color:var(--global-nav-link-background-hover);
+}
+
+.visualmode-contrast .evelution-sidebar .link:active, 
+.visualmode-contrast .evelution-sidebar .link:focus, 
+.visualmode-contrast .evelution-sidebar .link.active, 
+.visualmode-contrast .evelution-sidebar .cpe-dropdown:focus > .link,
+.visualmode-contrast .evelution-sidebar .cpe-dropdown:focus-within > .link {
+		background-color:var(--global-nav-link-background-active);
+	}
 
 
 .visualmode-contrast .evelution-header-navigation-background {
@@ -126,9 +141,9 @@ filter:none!important;
 .visualmode-contrast .evelution-top-actions .link:hover {
 	-webkit-animation:none;
 	animation:none;
-	color:var(--highlight-text-background-color);
+	color:var(--highlight-background-color);
 	border-color:var(--highlight-background-color);
-	background-color:var(--highlight-background-color);
+	background-color:var(--highlight-text-background-color);
 }
 
 .visualmode-contrast .evelution-header .link:active, 
@@ -146,9 +161,9 @@ filter:none!important;
 .visualmode-contrast .evelution-top-actions .link.active {
 	-webkit-animation:none;
 	animation:none;
-	color:var(--highlight-background-color);
-	border-color:var(--highlight-text-background-color);
-	background-color:var(--highlight-text-background-color);
+	color:var(--highlight-text-background-color);
+	border-color:var(--highlight-background-color);
+	background-color:var(--highlight-background-color);
 }
 
 .visualmode-contrast .evelution-taskbar {
@@ -196,30 +211,30 @@ background-color:var(--canvas-background-color);
 }
 
 .visualmode-contrast .preview-window-window h2 button:hover {
-	background-color:var(--highlight-background-color);
-	color:var(--highlight-text-background-color);
+	background-color:var(--highlight-text-background-color);
+	color:var(--highlight-background-color);
 	border-color:var(--highlight-background-color);
 }
 
 
 .visualmode-contrast .preview-window-window h2 button:active {
-	background-color:var(--highlight-text-background-color);
-	color:var(--highlight-background-color);
-	border-color:var(--highlight-text-background-color);
-}
-
-
-.visualmode-contrast .preview-window-window h2 button.close:hover {
 	background-color:var(--highlight-background-color);
 	color:var(--highlight-text-background-color);
 	border-color:var(--highlight-background-color);
 }
 
 
-.visualmode-contrast .preview-window-window h2 button.close:active {
+.visualmode-contrast .preview-window-window h2 button.close:hover {
 	background-color:var(--highlight-text-background-color);
 	color:var(--highlight-background-color);
-	border-color:var(--highlight-text-background-color);
+	border-color:var(--highlight-background-color);
+}
+
+
+.visualmode-contrast .preview-window-window h2 button.close:active {
+	background-color:var(--highlight-background-color);
+	color:var(--highlight-text-background-color);
+	border-color:var(--highlight-background-color);
 }
 
 
@@ -2906,25 +2921,12 @@ border-color:var(--highlight-background-color);
 	color:var(--hyperlink-foreground-color-inverted);
 }
 
-.visualstyle-general.visualmode-contrast .evelution-content .evelution-page-header .toggle-rail-button:active,
-.visualstyle-general.visualmode-contrast .evelution-module .rail-buttons .rail-button:active {
-	background-color:var(--hyperlink-foreground-color);
-	border-color:var(--hyperlink-foreground-color);
-	color:var(--hyperlink-background-color);
-}
-
 
 .visualstyle-general .evelution-sidebar {
 	--global-nav-link-color-hover:var(--hyperlink-foreground-color);
 	--global-nav-link-background-hover:var(--hyperlink-background-color);
 	--global-nav-link-color-active:var(--hyperlink-foreground-color-inverted);
 	--global-nav-link-background-active:var(--hyperlink-background-color-hover);
-}
-
-
-.visualstyle-general.visualmode-contrast .evelution-sidebar {
-	--global-nav-link-color-active:var(--global-nav-link-background-hover);
-	--global-nav-link-background-active:var(--global-nav-link-color-hover);
 }
 
 
@@ -2943,6 +2945,7 @@ border-color:var(--highlight-background-color);
 	border-color:var(--global-nav-link-background-active);
 	color:var(--global-nav-link-color-active);
 }
+
 
 .visualstyle-general .evelution-header .link:hover,
 .visualstyle-general .evelution-content .evelution-page-header .evelution-middle-actions a:hover,
@@ -2972,27 +2975,6 @@ border-color:var(--highlight-background-color);
 	color:var(--hyperlink-foreground-color-inverted);
 	border-color:var(--hyperlink-background-color-hover);
 	background-color:var(--hyperlink-background-color-hover);
-}
-
-
-.visualstyle-general.visualmode-contrast .evelution-header .link:active, 
-.visualstyle-general.visualmode-contrast .evelution-header .link:focus, 
-.visualstyle-general.visualmode-contrast .evelution-header .cpe-dropdown:focus > .link, 
-.visualstyle-general.visualmode-contrast .evelution-header .cpe-dropdown:focus-within > .link, 
-.visualstyle-general.visualmode-contrast .evelution-header .link.active,
-.visualstyle-general.visualmode-contrast .evelution-content .evelution-page-header .evelution-middle-actions a:active, 
-.visualstyle-general.visualmode-contrast .evelution-content .evelution-page-header .evelution-middle-actions a:focus, 
-.visualstyle-general.visualmode-contrast .evelution-content .evelution-page-header .evelution-middle-actions .selected a, 
-.visualstyle-general.visualmode-contrast .evelution-top-actions .link:active, 
-.visualstyle-general.visualmode-contrast .evelution-top-actions .link:focus, 
-.visualstyle-general.visualmode-contrast .evelution-top-actions .cpe-dropdown:focus > .link, 
-.visualstyle-general.visualmode-contrast .evelution-top-actions .cpe-dropdown:focus-within > .link, 
-.visualstyle-general.visualmode-contrast .evelution-top-actions .link.active {
-	-webkit-animation:none;
-	animation:none;
-	color:var(--hyperlink-background-color);
-	border-color:var(--hyperlink-foreground-color);
-	background-color:var(--hyperlink-foreground-color);
 }
 
 
@@ -3059,11 +3041,6 @@ border-color:var(--highlight-background-color);
   --floating-button-background-color-active:var(--success-background-color-hover);
 }
 
-.visualstyle-general.visualmode-contrast .cpe-floating-button {
-  --floating-button-color-active:var(--floating-button-background-color-hover);
-  --floating-button-background-color-active:var(--floating-button-color-hover);
-}
-
 
 .visualstyle-general mark {
 color:var(--hyperlink-foreground-color);
@@ -3089,11 +3066,6 @@ background-color:var(--hyperlink-background-color);
 	border-color:var(--hyperlink-background-color-hover);
 }
 
-.visualstyle-general.visualmode-contrast .preview-window-window h2 button:active {
-	background-color:var(--hyperlink-foreground-color);
-	color:var(--hyperlink-background-color);
-	border-color:var(--hyperlink-foreground-color);
-}
 
 
 .visualstyle-general .preview-window-window h2 button.close:hover {
@@ -3117,9 +3089,9 @@ background-color:var(--hyperlink-background-color);
 
 
 .visualstyle-general.visualmode-contrast .preview-window-window h2 button.close:active {
-	background-color:var(--hyperlink-foreground-color);
-	color:var(--hyperlink-background-color);
-	border-color:var(--hyperlink-foreground-color);
+	background-color:var(--hyperlink-background-color);
+	color:var(--hyperlink-foreground-color);
+	border-color:var(--hyperlink-background-color);
 }
 
 
