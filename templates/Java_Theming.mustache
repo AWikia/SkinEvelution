@@ -609,7 +609,7 @@ function GetInactiveText() {
 	if (ForcedColors()) {
 		return GetSystemColor('graytext');			// All Modes
 	} else if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--inactive-text-background-color") === 'auto') {
-		return ColorTestTwin(window.MW18PageColor,window.MW18PageColorFG,window.MW18FinalContrast*2);
+		return ColorTestTwin(window.MW18PageColor,window.MW18PageColorFG,window.MW18FinalContrast);
 	} else {
 		return getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--inactive-text-background-color").trim();
 	}
@@ -854,7 +854,7 @@ function ContrastRatio2() { // Used For Dropdown
 	} else if (MW18contrastmode == 'med-low') {
 		return 0.275
 	} else if (MW18contrastmode == 'med') {
-		return 0.30
+		return 0.3
 	} else if (MW18contrastmode == 'med-hi') {
 		return 0.325
 	} else if (MW18contrastmode == 'hi') {
@@ -862,7 +862,7 @@ function ContrastRatio2() { // Used For Dropdown
 	} else if (MW18contrastmode == 'hi-vhi') {
 		return 0.375
 	} else if (MW18contrastmode == 'vhi') {
-		return 0.40
+		return 0.4
 	} else {
 		return (window.matchMedia('(prefers-contrast: more)').matches) ? 0.35 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 0.30 : 0.25
 	}
@@ -890,6 +890,30 @@ function ContrastRatio3() { // Used for Form Controls
 		return (window.matchMedia('(prefers-contrast: more)').matches) ? 1.5 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 1.25 : 1.0
 	}
 }
+
+function ContrastRatio4() { // Used For Inactive Text
+
+	if (MW18contrastmode == 'auto') {
+		return (window.matchMedia('(prefers-contrast: more)').matches) ? 0.86 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 0.78 : 0.7
+	} else if (MW18contrastmode == 'low') {
+		return 0.7
+	} else if (MW18contrastmode == 'med-low') {
+		return 0.74
+	} else if (MW18contrastmode == 'med') {
+		return 0.78
+	} else if (MW18contrastmode == 'med-hi') {
+		return 0.82
+	} else if (MW18contrastmode == 'hi') {
+		return 0.86
+	} else if (MW18contrastmode == 'hi-vhi') {
+		return 0.9
+	} else if (MW18contrastmode == 'vhi') {
+		return 0.94
+	} else {
+		return (window.matchMedia('(prefers-contrast: more)').matches) ? 0.86 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 0.78 : 0.7
+	}
+}
+
 
 
 function BestAlertColor(color) {
@@ -1901,14 +1925,15 @@ function Color2(color) {
 }
 
 function isLightColor(color) {
-/*
 	var c1 = (chroma.contrast('#000000',  chroma(color)))
 	var c2 = (chroma.contrast('#ffffff',  chroma(color)))
 	return (c1 > c2);
 
+/*
  return chroma(color).lch()[0] >= 50
+ return chroma.deltaE('#000000', color) >= 50;
 */
-	return chroma.deltaE('#000000', color) >= 50;
+
 }
 
 function isSemiLightColor(color) {
@@ -1996,7 +2021,7 @@ var content_color =  GetCanvasShort();
 var content_color2 = ColorTest(content_color);
 
 var adjustment = ContrastRatio2();
-window.MW18FinalContrast = adjustment;
+window.MW18FinalContrast = ContrastRatio4();
 
 	if (darkpage) {
 		var lightness = '#000000';
@@ -2272,13 +2297,13 @@ if ((getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + wind
 	// Liatch Quirk
 
 		var border_color = ColorInvert(border_color);
+}
 
 		while ( ( !(isSuitableColor2(border_color, content_color)) ) && (border_color !== lightness)  ) {
 			var border_color= MiniColorTest(border_color);
 		}
 
 
-}
 
 
 var bordercolor1 = ColorTest(border_color);
