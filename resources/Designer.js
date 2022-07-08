@@ -1931,7 +1931,7 @@ function TestTheme(banner=false) {
 				 '}' // Ending
 			document.querySelector("#mw-content-text .theme-designer-css").innerHTML = result;
 			try {
-				ColorUpdate(true,true)
+				CompileThemingEngine(true,true)
 				if (!window.MW18TDTest) {
 					if (banner) {
 						$("#InProgressBanner4").remove();
@@ -1945,7 +1945,7 @@ function TestTheme(banner=false) {
 						$("#InProgressBanner4").remove();
 						AddFloatingBanner('Failed to  enable theme preview as typographic errors have been found. The latest working version has been loaded instead.','alert'); // alert('Successfully copied CPE Framework theme to Clipboard');
 						result = oldhtml;
-						ColorUpdate(true,true);
+						CompileThemingEngine(true,true);
 					}
 				}
 			}
@@ -1974,7 +1974,7 @@ function ClearTheme() {
 	$(".evelution-floating-actions.extra-actions .theme-test-button").prop('disabled', false);
 	document.querySelector('.focus-overlay').focus();
 	document.querySelector("#mw-content-text .theme-designer-css").innerHTML = '';
-	ColorUpdate(true,true);
+	CompileThemingEngine(true,true);
 
 }
 

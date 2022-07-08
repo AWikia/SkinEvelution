@@ -761,7 +761,7 @@ function GetInactiveTitle() {
 				GetSystemColor('canvas')			// Retro
 				][ForcedColorMode()];
 	} else if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--inactive-title-background-color") === 'auto') {
-		return GetInactiveText();
+		return ColorMix(window.MW18ATColor,window.MW18PageColor,1.5);
 	} else {
 		return getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--inactive-title-background-color").trim();
 	}
