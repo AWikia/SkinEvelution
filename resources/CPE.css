@@ -3645,19 +3645,19 @@ margin-right:16px;
 /* Floating Buttons */
 .cpe-floating-button {
 /** Foreground **/
-  --floating-button-color:var(--canvas-text-background-color);
-  --floating-button-color-hover:var(--canvas-text-background-color-hover);
-  --floating-button-color-active:var(--canvas-text-foreground-color);
+  --floating-button-color:var(--hyperlink-background-color);
+  --floating-button-color-hover:var(--hyperlink-background-color-hover);
+  --floating-button-color-active:var(--hyperlink-foreground-color);
 /** Background **/
   --floating-button-background-color:var(--canvas-background-color);
   --floating-button-background-color-hover:var(--floating-button-background-color);
-  --floating-button-background-color-active:var(--canvas-text-background-color);
+  --floating-button-background-color-active:var(--hyperlink-background-color);
 /** Border **/
   --floating-button-border-color:var(--floating-button-background-color);
   --floating-button-border-color-hover:rgba(var(--floating-button-fadeout-color), var(--floating-button-fadeout-opacity));
   --floating-button-border-color-active:var(--floating-button-background-color-active);
 /** Fadeout **/
-  --floating-button-fadeout-color:var(--canvas-text-background-color-rgb);
+  --floating-button-fadeout-color:var(--hyperlink-background-color-rgb);
   --floating-button-fadeout-opacity:var(--fadeout-opacity);
 /* Shadow */
   --floating-button-shadow-blur:10px;
@@ -3684,8 +3684,26 @@ margin-right:16px;
 
 /** Various Styles **/
 
+/* Unaccented */
+.cpe-floating-button.is-unaccented {
+  --floating-button-color:var(--canvas-text-background-color);
+  --floating-button-color-hover:var(--canvas-text-background-color-hover);
+  --floating-button-color-active:var(--canvas-text-foreground-color);
+  --floating-button-background-color-active:var(--canvas-text-background-color);
+  --floating-button-fadeout-color:var(--canvas-text-background-color-rgb);
+}
+
+/* Alternate Accented */
+.cpe-floating-button.is-alternate {
+  --floating-button-color:var(--active-text-background-color);
+  --floating-button-color-hover:var(--active-text-background-color-hover);
+  --floating-button-color-active:var(--active-text-foreground-color);
+  --floating-button-background-color-active:var(--active-text-background-color);
+  --floating-button-fadeout-color:var(--active-text-background-color-rgb);
+}
+
 /* Alert Background Color */
-.cpe-floating-button.critical {
+.cpe-floating-button.is-alert-color {
   --floating-button-color:var(--alert-background-color);
   --floating-button-color-hover:var(--alert-background-color-hover);
   --floating-button-color-active:var(--alert-foreground-color);
@@ -3694,7 +3712,7 @@ margin-right:16px;
 }
 
 /* Pause Background Color */
-.cpe-floating-button.halt {
+.cpe-floating-button.is-pause-color {
   --floating-button-color:var(--pause-background-color);
   --floating-button-color-hover:var(--pause-background-color-hover);
   --floating-button-color-active:var(--pause-foreground-color);
@@ -3702,8 +3720,17 @@ margin-right:16px;
   --floating-button-fadeout-color:var(--pause-background-color-rgb);
 }
 
+/* Pause Background Color */
+.cpe-floating-button.is-warning-color {
+  --floating-button-color:var(--warning-background-color);
+  --floating-button-color-hover:var(--warning-background-color-hover);
+  --floating-button-color-active:var(--warning-foreground-color);
+  --floating-button-background-color-active:var(--warning-background-color);
+  --floating-button-fadeout-color:var(--warning-background-color-rgb);
+}
+
 /* Success Background Color */
-.cpe-floating-button.good {
+.cpe-floating-button.is-success-color {
   --floating-button-color:var(--success-background-color);
   --floating-button-color-hover:var(--success-background-color-hover);
   --floating-button-color-active:var(--success-foreground-color);
@@ -3711,13 +3738,22 @@ margin-right:16px;
   --floating-button-fadeout-color:var(--success-background-color-rgb);
 }
 
-/* Accented */
-.cpe-floating-button.accent {
-  --floating-button-color:var(--hyperlink-background-color);
-  --floating-button-color-hover:var(--hyperlink-background-color-hover);
-  --floating-button-color-active:var(--hyperlink-foreground-color);
-  --floating-button-background-color-active:var(--hyperlink-background-color);
-  --floating-button-fadeout-color:var(--hyperlink-background-color-rgb);
+/* Progress Background Color */
+.cpe-floating-button.is-progress-color {
+  --floating-button-color:var(--progress-background-color);
+  --floating-button-color-hover:var(--progress-background-color-hover);
+  --floating-button-color-active:var(--progress-foreground-color);
+  --floating-button-background-color-active:var(--progress-background-color);
+  --floating-button-fadeout-color:var(--progress-background-color-rgb);
+}
+
+/* Message Background Color */
+.cpe-floating-button.is-message-color {
+  --floating-button-color:var(--message-background-color);
+  --floating-button-color-hover:var(--message-background-color-hover);
+  --floating-button-color-active:var(--message-foreground-color);
+  --floating-button-background-color-active:var(--message-background-color);
+  --floating-button-fadeout-color:var(--message-background-color-rgb);
 }
 
 

@@ -41,7 +41,7 @@ function InitDesigner() {
 	// Put new buttons
 	// Copy theme
 	$(".evelution-floating-actions.extra-actions .evelution-floating-actions-container").append(
-		'<button class="cpe-floating-button accent theme-copy-button page-side-tool" cpe-tooltip-position="reverse" cpe-tooltip="' + mw.msg( 'evelution-designer-copy' ) + ' (CSS)">' +
+		'<button class="cpe-floating-button theme-copy-button page-side-tool" cpe-tooltip-position="reverse" cpe-tooltip="' + mw.msg( 'evelution-designer-copy' ) + ' (CSS)">' +
 			'<span class="cpe-icon material-icons" style="position:absolute; top:1.5px;">' +
 				'content_copy' +
 			'</span>' +
@@ -53,7 +53,7 @@ function InitDesigner() {
 	$(".evelution-floating-actions.extra-actions .theme-copy-button").click( function(e) { e.preventDefault; CopyTheme();  });
 	// Copy theme 2
 	$(".evelution-floating-actions.extra-actions .evelution-floating-actions-container").append(
-		'<button class="cpe-floating-button accent theme-copy-button-2 page-side-tool" cpe-tooltip-position="reverse" cpe-tooltip="' + mw.msg( 'evelution-designer-copy' ) + ' (PHP)">' +
+		'<button class="cpe-floating-button theme-copy-button-2 page-side-tool" cpe-tooltip-position="reverse" cpe-tooltip="' + mw.msg( 'evelution-designer-copy' ) + ' (PHP)">' +
 			'<span class="cpe-icon material-icons" style="position:absolute; top:1.5px;">' +
 				'content_copy' +
 			'</span>' +
@@ -66,7 +66,7 @@ function InitDesigner() {
 
 	// Paste theme
 	$(".evelution-floating-actions.extra-actions .evelution-floating-actions-container").append(
-		'<button class="cpe-floating-button accent theme-paste-button page-side-tool" cpe-tooltip-position="reverse" cpe-tooltip="' + mw.msg( 'evelution-designer-paste' ) + '">' +
+		'<button class="cpe-floating-button is-alternate theme-paste-button page-side-tool" cpe-tooltip-position="reverse" cpe-tooltip="' + mw.msg( 'evelution-designer-paste' ) + '">' +
 			'<span class="cpe-icon material-icons">' +
 				'content_paste' +
 			'</span>' +
@@ -76,7 +76,7 @@ function InitDesigner() {
 	$(".evelution-floating-actions.extra-actions .theme-paste-button").click( function(e) { e.preventDefault; PasteTheme();  });
 	// Apply theme
 	$(".evelution-floating-actions.extra-actions .evelution-floating-actions-container").append(
-		'<button class="cpe-floating-button critical theme-apply-button page-side-tool" cpe-tooltip-position="reverse" cpe-tooltip="' + mw.msg( 'evelution-designer-apply' ) + '">' +
+		'<button class="cpe-floating-button is-alert-color theme-apply-button page-side-tool" cpe-tooltip-position="reverse" cpe-tooltip="' + mw.msg( 'evelution-designer-apply' ) + '">' +
 			'<span class="cpe-icon material-icons">' +
 				'verified' +
 			'</span>' +
@@ -88,7 +88,7 @@ function InitDesigner() {
 	
 
 	$(".evelution-floating-actions.extra-actions .evelution-floating-actions-container").append(
-		'<button class="cpe-floating-button good theme-test-button page-side-tool" cpe-tooltip-position="reverse" cpe-tooltip="' + mw.msg( 'evelution-designer-test' ) + '">' +
+		'<button class="cpe-floating-button is-success-color theme-test-button page-side-tool" cpe-tooltip-position="reverse" cpe-tooltip="' + mw.msg( 'evelution-designer-test' ) + '">' +
 			'<span class="cpe-icon material-icons">' +
 				'build' +
 			'</span>' +
@@ -99,7 +99,7 @@ function InitDesigner() {
 
 
 	$(".evelution-floating-actions.extra-actions .evelution-floating-actions-container").append(
-		'<button class="cpe-floating-button halt theme-clear-button page-side-tool" cpe-tooltip-position="reverse" cpe-tooltip="' + mw.msg( 'evelution-designer-clear' ) + '">' +
+		'<button class="cpe-floating-button is-pause-color theme-clear-button page-side-tool" cpe-tooltip-position="reverse" cpe-tooltip="' + mw.msg( 'evelution-designer-clear' ) + '">' +
 			'<span class="cpe-icon material-icons">' +
 				'undo' +
 			'</span>' +
@@ -789,32 +789,32 @@ function InitDesigner() {
 	'<div class="container">' +
 		'<div class="evelution-floating-actions page-side-tools__wrapper">' +
 			'<div class="evelution-floating-actions-container cpe-floating-button-group is-vertical page-side-tools">' +
-				'<button class="cpe-floating-button accent check-for-updates page-side-tool"  cpe-tooltip="Check for updates">' +
+				'<button class="cpe-floating-button check-for-updates page-side-tool"  cpe-tooltip="Check for updates">' +
 					'<span class="cpe-icon material-icons">' +
 							'update' +
 					'</span>' +
 				'</button>' +
-				'<button class="cpe-floating-button halt pause-automatic-updates page-side-tool"  cpe-tooltip="Pause automatic updates">' +
+				'<button class="cpe-floating-button is-pause-color pause-automatic-updates page-side-tool"  cpe-tooltip="Pause automatic updates">' +
 					'<span class="cpe-icon material-icons">' +
 							'pause' +
 					'</span>' +
 				'</button>' +
-				'<button class="cpe-floating-button good install-all-updates page-side-tool"  cpe-tooltip="Install all updates">' +
+				'<button class="cpe-floating-button is-success-color install-all-updates page-side-tool"  cpe-tooltip="Install all updates">' +
 					'<span class="cpe-icon material-icons">' +
 							'system_update_alt' +
 					'</span>' +
 				'</button>' +
-				'<button class="cpe-floating-button qora-qore-overview page-side-tool"  cpe-tooltip="Qora Qore Overview">' +
+				'<button class="cpe-floating-button is-unaccented qora-qore-overview page-side-tool"  cpe-tooltip="Qora Qore Overview">' +
 					'<span class="cpe-icon material-icons">' +
 							'stadia_controller' +
 					'</span>' +
 				'</button>' +
-				'<button class="cpe-floating-button qora-qore-overview page-side-tool"  cpe-tooltip="Updater Settings">' +
+				'<button class="cpe-floating-button is-unaccented qora-qore-overview page-side-tool"  cpe-tooltip="Updater Settings">' +
 					'<span class="cpe-icon material-icons">' +
 							'settings' +
 					'</span>' +
 				'</button>' +
-				'<button class="cpe-floating-button about-updater page-side-tool"  cpe-tooltip="About Updater">' +
+				'<button class="cpe-floating-button is-unaccented about-updater page-side-tool"  cpe-tooltip="About Updater">' +
 					'<span class="cpe-icon material-icons">' +
 							'info' +
 					'</span>' +
