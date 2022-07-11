@@ -2086,7 +2086,7 @@ $('.wikitable #auto13').click(
 						);
 
 // UpdateRangeInputs();
-	var ranges = document.querySelectorAll('input[type="range"]');
+	var ranges = document.querySelectorAll('.cpe-theme-designer input[type="range"]');
 	ranges.forEach(function(x) {
 		x.style.setProperty("--range-percent",  (( ((x.value) - x.getAttribute('min') ) * 100) / (x.getAttribute('max') - x.getAttribute('min')) ) + '%'  );
 	});
