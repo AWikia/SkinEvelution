@@ -413,7 +413,7 @@ container > .main {
 
 .evelution-taskbar .upper-links {
 	justify-content:center;
-	padding-left:calc(var(--explore-link-size) * 2);
+	padding-left:calc(var(--explore-link-size) * 1);
 }
 
 .evelution-taskbar .upper-links .is-widget-style { /* This will cause issues when more are added. Be sure to add additional code when adding a new widget-style entry point which makes it align to the left */
@@ -421,14 +421,18 @@ container > .main {
 	left:0;
 }
 
+/*
 .evelution-taskbar .upper-links .explore-menu {
 	left:var(--explore-link-size);
 }
+*/
 
-
-.evelution-taskbar .upper-links .explore-menu .link[cpe-tooltip-position="top"][cpe-tooltip]:after,
-.evelution-taskbar .upper-links .search .link[cpe-tooltip-position="top"][cpe-tooltip]:after {
+.evelution-taskbar .upper-links .explore-menu .link[cpe-tooltip-position="top"][cpe-tooltip]:after {
 	left:25%;
+}
+
+.evelution-taskbar .upper-links .search .cpe-dropdown__content {
+	left:calc(0px - var(--toolbar-link-size));
 }
 
 .evelution-taskbar .upper-links .is-widget-style .link {
@@ -474,9 +478,11 @@ container > .main {
 	left:0;
 }
 
+/*
 .evelution-taskbar .upper-links .explore-menu .cpe-dropdown__content.is-left-aligned {
 	left:calc(0px - var(--toolbar-link-size));
 }
+*/
 
 
 /* Left Aligned Taskbar */
@@ -552,11 +558,6 @@ container > .main {
 	.evelution-taskbar.left-links .upper-links .is-widget-style .cpe-dropdown__content.is-left-aligned,
 	.evelution-taskbar.v-taskbar .upper-links .is-widget-style .cpe-dropdown__content.is-left-aligned {
 		left:calc(0px - var(--toolbar-link-size) - var(--toolbar-link-size));
-	}
-
-	.evelution-taskbar.left-links .upper-links .search .cpe-dropdown__content.is-left-aligned,
-	.evelution-taskbar.v-taskbar .upper-links .search .cpe-dropdown__content.is-left-aligned {
-		left:calc(0px - var(--toolbar-link-size));
 	}
 
 
@@ -661,6 +662,7 @@ container > .main {
 		--explore-link-size:var(--toolbar-link-size);
 	}
 
+	/* Most code taken from left-aligned taskbar behavior */
 	.evelution-taskbar .upper-links .is-widget-style .link {
 		padding-left:0;
 		padding-right:0;
