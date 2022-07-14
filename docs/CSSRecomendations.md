@@ -48,14 +48,14 @@ Wikis should avoid customizing any color scheme beyond the ``standard`` ones as 
 --desktop-background-image:url("loadbg_dev.png"); /* <image> */
 --desktop-background-image-filter:opacity(100%); /* <filter-function> */
 --desktop-background-image-blend-mode:normal; /* <blend-mode> */
---desktop-background-color:#441177; /* <color> */
+--desktop-background-color:#441177; /* auto | <color> */
 --desktop-background-size:cover; /* cover | contain | stretched | full */
 --desktop-background-horizontal-alignment:left; /* left | center | right */
 --desktop-background-vertical-alignment:top; /* top | center | bottom */
 --desktop-background-no-horizontal-tiling:false; /* <boolean> */
 --desktop-background-no-vertical-tiling:false; /* <boolean> */
 --desktop-text-background-color:auto; /* auto | <color> */
---canvas-background-color:#f1f2f3; /* <color> */
+--canvas-background-color:#f1f2f3; /* auto | <color> */
 --canvas-secondary-background-color:auto; /* auto | <color> */
 --inactive-text-background-color:#aaabbb; /* auto | <color> */
 --active-text-background-color:auto; /* auto | <color> */
@@ -88,14 +88,14 @@ $wgEvelutionThemeA = [/* Replace $wgEvelutionThemeA with either $wgEvelutionThem
 'desktop-background-image' => 'url("loadbg_dev.png")', /* <image> */
 'desktop-background-image-filter' => 'opacity(100%)', /* <filter-function> */
 'desktop-background-image-blend-mode' => 'normal', /* <blend-mode> */
-'desktop-background-color' => '#441177', /* <color> */
+'desktop-background-color' => '#441177', /* auto | <color> */
 'desktop-background-size' => 'cover', /* cover | contain | stretched | full */
 'desktop-background-horizontal-alignment' => 'left', /* left | center | right */
 'desktop-background-vertical-alignment' => 'top', /* top | center | bottom */
 'desktop-background-no-horizontal-tiling' => 'false', /* <boolean> */
 'desktop-background-no-vertical-tiling' => 'false', /* <boolean> */
 'desktop-text-background-color' => 'auto', /* auto | <color> */
-'canvas-background-color' => '#f1f2f3', /* <color> */
+'canvas-background-color' => '#f1f2f3', /* auto | <color> */
 'canvas-secondary-background-color' => 'auto', /* auto | <color> */
 'inactive-text-background-color' => '#aaabbb', /* auto | <color> */
 'active-text-background-color' => 'auto', /* auto | <color> */

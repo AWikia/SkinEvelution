@@ -129,14 +129,14 @@ Of course. It has been tested and it works. For instance, if you want to modify 
 --desktop-background-image:url("loadbg_dev.png"); /* <image> */
 --desktop-background-image-filter:opacity(100%); /* <filter-function> */
 --desktop-background-image-blend-mode:normal; /* <blend-mode> */
---desktop-background-color:#441177; /* <color> */
+--desktop-background-color:#441177; /* auto | <color> */
 --desktop-background-size:cover; /* cover | contain | stretched | full */
 --desktop-background-horizontal-alignment:left; /* left | center | right */
 --desktop-background-vertical-alignment:top; /* top | center | bottom */
 --desktop-background-no-horizontal-tiling:false; /* <boolean> */
 --desktop-background-no-vertical-tiling:false; /* <boolean> */
---desktop-text-background-color:auto; /* auto | <color> */
---canvas-background-color:#f1f2f3; /* <color> */
+--desktop-text-background-color:auto; /* auto  <color> */
+--canvas-background-color:#f1f2f3; /* auto | <color> */
 --canvas-secondary-background-color:auto; /* auto | <color> */
 --inactive-text-background-color:#aaabbb; /* auto | <color> */
 --active-text-background-color:auto; /* auto | <color> */
@@ -168,14 +168,14 @@ Per-page theming is also supported. If you want to use a different theme for the
 --desktop-background-image:url("loadbg_dev.png"); /* <image> */
 --desktop-background-image-filter:opacity(100%); /* <filter-function> */
 --desktop-background-image-blend-mode:normal; /* <blend-mode> */
---desktop-background-color:#441177; /* <color> */
+--desktop-background-color:#441177; /* auto | <color> */
 --desktop-background-size:cover; /* cover | contain | stretched | full */
 --desktop-background-horizontal-alignment:left; /* left | center | right */
 --desktop-background-vertical-alignment:top; /* top | center | bottom */
 --desktop-background-no-horizontal-tiling:false; /* <boolean> */
 --desktop-background-no-vertical-tiling:false; /* <boolean> */
---desktop-text-background-color:auto; /* auto | <color> */
---canvas-background-color:#f1f2f3; /* <color> */
+--desktop-text-background-color:auto; /* auto  <color> */
+--canvas-background-color:#f1f2f3; /* auto | <color> */
 --canvas-secondary-background-color:auto; /* auto | <color> */
 --inactive-text-background-color:#aaabbb; /* auto | <color> */
 --active-text-background-color:auto; /* auto | <color> */
@@ -227,6 +227,8 @@ Each release of Evelution comes with different Sevelution releases, to name a fe
 - 3.3.0 = Codenamed Technetium  = Introduced in Evelution 62.0.0 - Introduces Custom Secondary Canvas & Canvas Text Background Colors
 - 4.0.0 = Codenamed Ruthenium  = Introduced in Evelution 81.0.0 - Introduces Generic Color Shift (Hue Shift & Saturation) and CPE Language 3.0
 - 4.1.0 = Codenamed Rhodium = Introduced in Evelution 85.0.0 - Introduces Background Image Blend Modes
+- 4.2.0 = Codenamed Palladium = Introduced in Evelution 99.0.0 - Introduces Dynamic Canvas Color
+
 
 ### The Luna Theming System
 Evelution comes with its own theming system, the Luna theming. It consists of three elements, the Luna Lovit, the Luna Levit and the Luna Lavccent:
@@ -269,7 +271,7 @@ This is used as the filter of the body background image.
 This is used as the bledning mode of the body background image.
 
 ### ``--desktop-background-color`` (Accepts: ``<color>``)
-This is used as the background color of the body container and the gradient overlay shown on header backgrounds. This is also used on  ``is-headline`` inputs and ``is-alternate`` secondary buttons.
+This is used as the background color of the body container and the gradient overlay shown on header backgrounds. This is also used on  ``is-headline`` inputs and ``is-alternate`` secondary buttons. When set to ``auto``, it picks the Canvas Color.
 
 ### ``--desktop-text-background-color`` (Accepts: ``<color> | auto``)
 This is used as the foreground color of the Community Header. When set to ``auto``, it autopicks the computed foreground community color.
@@ -290,7 +292,7 @@ When set to ``true``, it removes background tiling on the horizontal axis
 When set to ``true``, it removes background tiling on the vertical axis
 
 ### ``--canvas-background-color`` (Accepts: ``<color>``)
-This is used as the background color of the page container, rail modules and many more containers.
+This is used as the background color of the page container, rail modules and many more containers. When set to ``auto``, it autopicks a color based on a mix of 20% Hyperlink Color and 80% of either black or white .
 
 ### ``--canvas-secondary-background-color`` (Accepts: ``<color>``)
 This is used as the background color of the dropdowns and neutral-colored containers.
@@ -299,7 +301,7 @@ This is used as the background color of the dropdowns and neutral-colored contai
 This is used as the border color of the various containers and the color of certain inactive elements.  When set to ``auto``, it autopicks a color based on page background color. This is also used on unaccented primary form controls (Mostly those with ``is-unaccented`` class). In High Contrast Mode, it substitutes the Pause Generic Color.
 
 ### ``--active-text-background-color`` (Accepts: ``<color> | auto``)
-This is used as the color of the active links in addition of being used as a color for the insertation caret. This is also used on alternate secondary form controls (Mostly those with ``is-alternate`` class).
+This is used as the color of the active links in addition of being used as a color for the insertation caret. This is also used on alternate secondary form controls (Mostly those with ``is-alternate`` class). When set to ``auto``, it picks the hyperlink color.
 
 ### ``--canvas-text-background-color`` (Accepts: ``<color> | auto``)
 This is used as the foreground color of the page container, rail modules and many more containers.  When set to ``auto``, it autopicks either the light or dark text background color, whichever works best on the set page background color. This is also used on unaccented secondary form controls (Mostly those with ``is-unaccented`` class). In High Contrast Mode, it substitutes the Success Generic Color.
@@ -309,7 +311,7 @@ This is used as the foreground color of the dropdowns and neutral-colored contai
 
 
 ### ``--highlight-background-color`` (Accepts: ``<color> | auto``)
-This is used as the background color of selected text in High Contrast mode and primary form controls. In High Contrast Mode, it substitutes the Warning Generic Color.
+This is used as the background color of selected text in High Contrast mode and primary form controls. When set to ``auto``, it picks the hyperlink color. In High Contrast Mode, it substitutes the Warning Generic Color.
 
 ### ``--highlight-text-background-color`` (Accepts: ``<color> | auto``)
 This is used as the foreground color of selected text in High Contrast mode and primary form controls.
@@ -318,17 +320,17 @@ This is used as the foreground color of selected text in High Contrast mode and 
 This is used as the color of the links and secondary form controls. In High Contrast Mode, it substitutes the Alert Generic Color.
 
 ### ``--visited-hyperlink-background-color`` (Accepts: ``<color> | auto``)
-This is used as the color of the visited links.
+This is used as the color of the visited links. When set to ``auto``, it picks the hyperlink color.
 
 
 ### ``--active-title-background-color`` (Accepts: ``<color> | auto``)
-This is used as the background color of accent-colored elements in active Luna state. This is also used on alternate primary form controls (Mostly those with ``is-alternate`` class). In High Contrast Mode, it substitutes the Progress Generic Color.
+This is used as the background color of accent-colored elements in active Luna state. This is also used on alternate primary form controls (Mostly those with ``is-alternate`` class). When set to ``auto``, it picks the hyperlink color. In High Contrast Mode, it substitutes the Progress Generic Color.
 
 ### ``--active-title-text-background-color`` (Accepts: ``<color> | auto``)
 This is used as the foreground color of accent-colored elements in active Luna state.
 
 ### ``--inactive-title-background-color`` (Accepts: ``<color> | auto``)
-This is used as the background color of accent-colored elements in inactive Luna state. In High Contrast Mode, it substitutes the Message Generic Color.
+This is used as the background color of accent-colored elements in inactive Luna state. When set to ``auto``, it autopicks a color based on a mix of 25% Active Title Color and 75% Canvas Color. In High Contrast Mode, it substitutes the Message Generic Color.
 
 ### ``--inactive-title-text-background-color`` (Accepts: ``<color> | auto``)
 This is used as the foreground color of accent-colored elements in inactive Luna state.

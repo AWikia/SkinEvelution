@@ -20,7 +20,7 @@ window.MW18AutoAccent = '0';
 window.MW18DCMMode = 'standard';
 window.MW18DCMType = 'standard';
 /* Some Theming Colors */
-window.MW18PageColor = GetCanvasShort();
+window.MW18PageColor = GetCanvas();
 window.MW18PageColorFG = '#000000';
 window.MW18BgColor = GetDesktop();
 window.MW18HLColor = GetHighlight();
@@ -474,6 +474,9 @@ function GetDesktop() {
 				GetSystemColor('canvas'),			// High Contrast
 				GetSystemColor('highlight')			// Retro
 				][ForcedColorMode()];
+	} else if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-color") === 'auto') {
+		return GetCanvas();
+
 	} else {
 		return getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-color").trim();
 	}
@@ -545,24 +548,19 @@ function GetDesktopText() {
 }
 
 
-function GetCanvasShort() { // Like GetCanvas() without forced colors mode you get the unaltered page background mode (Used for checking dark mode)
+function GetCanvas() {
 	if (DisabledColorManagement()) {
 		return GetSystemColor('canvas');
+	} else if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--canvas-background-color") === 'auto') {
+		var color = GetHyperlink();
+		return ColorMix(color,GetForegroundVariables(color)[0],1.6);
 	} else {
 		return getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--canvas-background-color").trim();
 	}
 }
 
 
-function GetCanvas() {
-	if (DisabledColorManagement()) {
-		return GetSystemColor('canvas');			// All Modes
-	} else {
-		return window.MW18PageColor;
-	}
-}
-
-function GetCanvas2() { // Like GetCanvas() without forced colors mode you get the unaltered page background mode (Used for checking dark mode)
+function GetCanvas2() {
 	if (DisabledColorManagement()) {
 		return [
 				GetSystemColor('buttonface'),		// Standard
@@ -1032,11 +1030,19 @@ function GetForegroundVariables(color) {
 		var fc3 =  getComputedStyle(body).getPropertyValue("--dark-theme-text-background-color-hover");
 		var fc4 =  getComputedStyle(body).getPropertyValue("--dark-theme-text-background-color-hover-rgb");
 	}
+
 	if (isLightColor(color)) {
-		return ['var(--light-theme-foreground-color)', 'var(--light-theme-foreground-color-hover)', 'var(--light-theme-foreground-color-rgb)', 'var(--light-theme-foreground-color-hover-rgb)', fc1, fc2, fc3, fc4]
+		var f1 =  getComputedStyle(body).getPropertyValue("--light-theme-foreground-color");
+		var f2 =  getComputedStyle(body).getPropertyValue("--light-theme-foreground-color-hover");
+		var f3 =  getComputedStyle(body).getPropertyValue("--light-theme-foreground-color-rgb");
+		var f4 =  getComputedStyle(body).getPropertyValue("--light-theme-foreground-color-hover-rgb");
 	} else {
-		return ['var(--dark-theme-foreground-color)', 'var(--dark-theme-foreground-color-hover)', 'var(--dark-theme-foreground-color-rgb)', 'var(--dark-theme-foreground-color-hover-rgb)', fc1, fc2, fc3, fc4]
+		var f1 =  getComputedStyle(body).getPropertyValue("--dark-theme-foreground-color");
+		var f2 =  getComputedStyle(body).getPropertyValue("--dark-theme-foreground-color-hover");
+		var f3 =  getComputedStyle(body).getPropertyValue("--dark-theme-foreground-color-rgb");
+		var f4 =  getComputedStyle(body).getPropertyValue("--dark-theme-foreground-color-hover-rgb");
 	}
+	return [f1, f2, f3, f4, fc1, fc2, fc3, fc4]
 }
 
 
@@ -1109,7 +1115,7 @@ function colortheme(style='match-parent', theme='match-parent', repaint=true, sa
 	} else if (selected_theme === 'auto-dark') {
 		theme = ( window.matchMedia('(prefers-color-scheme: dark)').matches ) ? 'light' : 'dark';
 	}
-    var body_bg =	GetCanvasShort();
+    var body_bg =	GetCanvas();
     var old_dark = window.MW18darkmode;
     var old_dark2 = window.MW18spdarkmode;
     var muststay = false;
@@ -1914,7 +1920,7 @@ function ColorHover(color,color2) { // Regular Colors
 }
 
 function ColorAdjust(color,dark=false) { // Regular Colors
-	var color2 = GetCanvas();
+	var color2 = window.MW18PageColor;
 	var func = dark ? (isDarkColor(color2)) : (isLightColor(color2));
 	var light = chroma(color).get('hsl.l');
 	if (func) {
@@ -2087,7 +2093,7 @@ if (refresh) {
 // dropdowncolor is Dropdown Bg
 // dropdowncolor2 is Content Border
 
-var content_color =  GetCanvasShort();
+var content_color =  GetCanvas();
 
 /* This goes before compiling Generic Colors or else they will think the theme is light */
 
