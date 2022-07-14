@@ -274,7 +274,7 @@ This is used as the bledning mode of the body background image.
 This is used as the background color of the body container and the gradient overlay shown on header backgrounds. This is also used on  ``is-headline`` inputs and ``is-alternate`` secondary buttons. When set to ``auto``, it picks the Canvas Color.
 
 ### ``--desktop-text-background-color`` (Accepts: ``<color> | auto``)
-This is used as the foreground color of the Community Header. When set to ``auto``, it autopicks the computed foreground community color.
+This is used as the foreground color of the Community Header. When set to ``auto``, it autopicks the inverted version of desktop background color.
 
 ### ``--desktop-background-horizontal-alignment`` (Accepts: ``left | center | right``)
 Sets the horizontal alignment of the background image. Accepts all standard properties ``background-position-x`` supports.
@@ -304,14 +304,14 @@ This is used as the border color of the various containers and the color of cert
 This is used as the color of the active links in addition of being used as a color for the insertation caret. This is also used on alternate secondary form controls (Mostly those with ``is-alternate`` class). When set to ``auto``, it picks the hyperlink color.
 
 ### ``--canvas-text-background-color`` (Accepts: ``<color> | auto``)
-This is used as the foreground color of the page container, rail modules and many more containers.  When set to ``auto``, it autopicks either the light or dark text background color, whichever works best on the set page background color. This is also used on unaccented secondary form controls (Mostly those with ``is-unaccented`` class). In High Contrast Mode, it substitutes the Success Generic Color.
+This is used as the foreground color of the page container, rail modules and many more containers.  When set to ``auto``, it autopicks the inverted version of page background color. This is also used on unaccented secondary form controls (Mostly those with ``is-unaccented`` class). In High Contrast Mode, it substitutes the Success Generic Color.
 
 ### ``--canvas-text-secondary-background-color`` (Accepts: ``<color> | auto``)
 This is used as the foreground color of the dropdowns and neutral-colored containers.  When set to ``auto``, it autopicks either the light or dark text background color, whichever works best on the set secondary page background color.
 
 
 ### ``--highlight-background-color`` (Accepts: ``<color> | auto``)
-This is used as the background color of selected text in High Contrast mode and primary form controls. When set to ``auto``, it picks the hyperlink color. In High Contrast Mode, it substitutes the Warning Generic Color.
+This is used as the background color of selected text in High Contrast mode and primary form controls. When set to ``auto``, it autopicks a color based on a mix of 60% Hyperlink Color and 40% of either black or white. In High Contrast Mode, it substitutes the Warning Generic Color.
 
 ### ``--highlight-text-background-color`` (Accepts: ``<color> | auto``)
 This is used as the foreground color of selected text in High Contrast mode and primary form controls.
@@ -324,7 +324,7 @@ This is used as the color of the visited links. When set to ``auto``, it picks t
 
 
 ### ``--active-title-background-color`` (Accepts: ``<color> | auto``)
-This is used as the background color of accent-colored elements in active Luna state. This is also used on alternate primary form controls (Mostly those with ``is-alternate`` class). When set to ``auto``, it picks the hyperlink color. In High Contrast Mode, it substitutes the Progress Generic Color.
+This is used as the background color of accent-colored elements in active Luna state. This is also used on alternate primary form controls (Mostly those with ``is-alternate`` class). When set to ``auto``, it autopicks a color based on a mix of 80% Hyperlink Color and 20% of either black or white. In High Contrast Mode, it substitutes the Progress Generic Color.
 
 ### ``--active-title-text-background-color`` (Accepts: ``<color> | auto``)
 This is used as the foreground color of accent-colored elements in active Luna state.
