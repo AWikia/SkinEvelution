@@ -311,7 +311,7 @@ This is used as the foreground color of the dropdowns and neutral-colored contai
 
 
 ### ``--highlight-background-color`` (Accepts: ``<color> | auto``)
-This is used as the background color of selected text in High Contrast mode and primary form controls. When set to ``auto``, it autopicks a color based on a mix of 60% Hyperlink Color and 40% of either black or white. In High Contrast Mode, it substitutes the Warning Generic Color.
+This is used as the background color of selected text in High Contrast mode and primary form controls. When set to ``auto``, it autopicks a color based on a mix of 80% Hyperlink Color and 20% of either black or white. In High Contrast Mode, it substitutes the Warning Generic Color.
 
 ### ``--highlight-text-background-color`` (Accepts: ``<color> | auto``)
 This is used as the foreground color of selected text in High Contrast mode and primary form controls.
