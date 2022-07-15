@@ -301,7 +301,7 @@ This is used as the background color of the dropdowns and neutral-colored contai
 This is used as the border color of the various containers and the color of certain inactive elements.  When set to ``auto``, it autopicks a color based on page background color. This is also used on unaccented primary form controls (Mostly those with ``is-unaccented`` class). In High Contrast Mode, it substitutes the Pause Generic Color.
 
 ### ``--active-text-background-color`` (Accepts: ``<color> | auto``)
-This is used as the color of the active links in addition of being used as a color for the insertation caret. This is also used on alternate secondary form controls (Mostly those with ``is-alternate`` class). When set to ``auto``, it picks the hyperlink color.
+This is used as the color of the active links in addition of being used as a color for the insertation caret. This is also used on alternate secondary form controls (Mostly those with ``is-alternate`` class). When set to ``auto``, it autopicks a color based on a mix of 60% Hyperlink Color and 40% of either black or white.
 
 ### ``--canvas-text-background-color`` (Accepts: ``<color> | auto``)
 This is used as the foreground color of the page container, rail modules and many more containers.  When set to ``auto``, it autopicks the inverted version of page background color. This is also used on unaccented secondary form controls (Mostly those with ``is-unaccented`` class). In High Contrast Mode, it substitutes the Success Generic Color.

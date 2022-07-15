@@ -638,7 +638,9 @@ function GetActiveText() {
 				GetSystemColor('graytext')			// Retro
 				][ForcedColorMode()];
 	} else if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--active-text-background-color") === 'auto') {
-		return GetHyperlink();
+		var color = GetHyperlink();
+		var color2 = GetForegroundVariables(GetCanvas())[0]
+		return ColorMix(color2,color,1.2);
 	} else {
 		return getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--active-text-background-color").trim();
 	}
@@ -2255,7 +2257,7 @@ var caret2text_color= GetInactiveTitleText();
 	// Liatch Quirk
 		var caret2text_color = ColorStyleAdjust(caret2text_color);
 
-			while ( ( !(isSuitableColorText(caret2text_color, caret2_color)) ) && (caret2text_color !== lightnessIT)  ) {
+			while ( ( !(isSuitableColorFormControls(caret2text_color, caret2_color)) ) && (caret2text_color !== lightnessIT)  ) {
 				var caret2text_color= ColorAdjust3(caret2text_color,caret2_color);
 			}
 
