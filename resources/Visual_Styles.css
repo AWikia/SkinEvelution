@@ -1173,6 +1173,39 @@ color:inherit;
 	--simple-fallback-color:var(--luna-background-color)!important;
 }
 
+.visualstyle-simple body .oo-ui-menuOptionWidget.oo-ui-optionWidget-selected,
+.visualstyle-simple body .oo-ui-menuOptionWidget.oo-ui-optionWidget-selected.oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted, 
+.visualstyle-simple body .oo-ui-menuOptionWidget.oo-ui-optionWidget-pressed.oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted,
+.visualstyle-simple body .oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted,
+.visualstyle-simple body .mw-rcfilters-ui-itemMenuOptionWidget:hover, 
+.visualstyle-simple body .mw-rcfilters-ui-filterMenuOptionWidget.oo-ui-flaggedElement-muted.oo-ui-optionWidget-highlighted, 
+.visualstyle-simple body .oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted, 
+.visualstyle-simple body .mw-rcfilters-ui-filterMenuHeaderWidget-header, 
+.visualstyle-simple body .mw-rcfilters-ui-menuSelectWidget-footer, 
+.visualstyle-simple body .oo-ui-tool.oo-ui-widget-enabled > .oo-ui-tool-link:hover, 
+.visualstyle-simple body .oo-ui-listToolGroup-tools .oo-ui-tool.oo-ui-widget-enabled:hover, 
+.visualstyle-simple body .wikiEditor-ui-toolbar .group .tool-select .menu .options .option:hover {
+	background-color:var(--canvas-secondary-background-color-hover);
+	border-color:rgba(var(--canvas-foreground-color-rgb),0.2);
+}
+
+.visualstyle-simple.visualmode-contrast body .oo-ui-menuOptionWidget.oo-ui-optionWidget-selected,
+.visualstyle-simple.visualmode-contrast body .oo-ui-menuOptionWidget.oo-ui-optionWidget-selected.oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted, 
+.visualstyle-simple.visualmode-contrast body .oo-ui-menuOptionWidget.oo-ui-optionWidget-pressed.oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted,
+.visualstyle-simple.visualmode-contrast body .oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted,
+.visualstyle-simple.visualmode-contrast body .mw-rcfilters-ui-itemMenuOptionWidget:hover, 
+.visualstyle-simple.visualmode-contrast body .mw-rcfilters-ui-filterMenuOptionWidget.oo-ui-flaggedElement-muted.oo-ui-optionWidget-highlighted, 
+.visualstyle-simple.visualmode-contrast body .oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted, 
+.visualstyle-simple.visualmode-contrast body .mw-rcfilters-ui-filterMenuHeaderWidget-header, 
+.visualstyle-simple.visualmode-contrast body .mw-rcfilters-ui-menuSelectWidget-footer, 
+.visualstyle-simple.visualmode-contrast body .oo-ui-tool.oo-ui-widget-enabled > .oo-ui-tool-link:hover, 
+.visualstyle-simple.visualmode-contrast body .oo-ui-listToolGroup-tools .oo-ui-tool.oo-ui-widget-enabled:hover, 
+.visualstyle-simple.visualmode-contrast body .wikiEditor-ui-toolbar .group .tool-select .menu .options .option:hover {
+	background-color:var(--canvas-secondary-foreground-color);
+	color:var(--canvas-secondary-background-color);
+	border-color:rgba(var(--canvas-secondary-background-color-rgb),0.5);
+}
+
 
 .visualstyle-simple .cpe-floating-button {
   --floating-button-background-color:var(--highlight-background-color);
@@ -1322,14 +1355,16 @@ color:inherit;
 
 .visualstyle-simple .cpe-button,
 .visualstyle-simple .oo-ui-buttonElement > .oo-ui-buttonElement-button,
-.visualstyle-simple .mw-ui-button {
+.visualstyle-simple .mw-ui-button,
+.visualstyle-simple body .oo-ui-tool.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive > .oo-ui-tool-link {
 	--button-border-color-hover:rgba(var(--button-foreground-color-rgb),0.2);
 }
 
 
 .visualstyle-simple.visualmode-contrast .cpe-button,
 .visualstyle-simple.visualmode-contrast .oo-ui-buttonElement > .oo-ui-buttonElement-button,
-.visualstyle-simple.visualmode-contrast .mw-ui-button {
+.visualstyle-simple.visualmode-contrast .mw-ui-button,
+.visualstyle-simple.visualmode-contrast .oo-ui-tool.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive > .oo-ui-tool-link {
 	--button-background-color-hover:var(--button-foreground-color);
 	--button-foreground-color-hover:var(--button-background-color);
 	--button-foreground-color-inverted:var(--button-background-color);
@@ -1382,8 +1417,10 @@ color:inherit;
 .visualstyle-simple.visulmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive > .oo-ui-buttonElement-button:focus:not(:active),
 .visualstyle-simple.visulmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-destructive > .oo-ui-buttonElement-button:focus:not(:active),
 .visualstyle-simple.visulmode-contrast body .mw-ui-button.mw-ui-progressive:not(:disabled):focus,
-.visualstyle-simple.visulmode-contrast body .mw-ui-button.mw-ui-progressive:focus:not(:active)  {
-
+.visualstyle-simple.visulmode-contrast body .mw-ui-button.mw-ui-progressive:focus:not(:active),
+.visualstyle-simple.visualmode-contrast body .oo-ui-tool.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive > .oo-ui-tool-link:hover,
+.visualstyle-simple.visualmode-contrast body .oo-ui-tool.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive > .oo-ui-tool-link:active,
+.visualstyle-simple.visualmode-contrast body .oo-ui-tool.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive > .oo-ui-tool-link:focus {
     border-color:var(--button-border-color-hover);
     color:var(--button-foreground-color-hover);
     background-color:var(--button-background-color-hover);
@@ -1802,40 +1839,6 @@ color:inherit;
 
 
 
-
-.visualstyle-simple body .oo-ui-menuOptionWidget.oo-ui-optionWidget-selected,
-.visualstyle-simple body .oo-ui-menuOptionWidget.oo-ui-optionWidget-selected.oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted, 
-.visualstyle-simple body .oo-ui-menuOptionWidget.oo-ui-optionWidget-pressed.oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted,
-.visualstyle-simple body .oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted,
-.visualstyle-simple body .mw-rcfilters-ui-itemMenuOptionWidget:hover, 
-.visualstyle-simple body .mw-rcfilters-ui-filterMenuOptionWidget.oo-ui-flaggedElement-muted.oo-ui-optionWidget-highlighted, 
-.visualstyle-simple body .oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted, 
-.visualstyle-simple body .mw-rcfilters-ui-filterMenuHeaderWidget-header, 
-.visualstyle-simple body .mw-rcfilters-ui-menuSelectWidget-footer, 
-.visualstyle-simple body .oo-ui-tool.oo-ui-widget-enabled > .oo-ui-tool-link:hover, 
-.visualstyle-simple body .oo-ui-listToolGroup-tools .oo-ui-tool.oo-ui-widget-enabled:hover, 
-.visualstyle-simple body .wikiEditor-ui-toolbar .group .tool-select .menu .options .option:hover {
-	background-color:var(--hyperlink-background-color-hover);
-	color:var(--hyperlink-foreground-color-inverted);
-	border-color:rgba(var(--canvas-foreground-color-rgb),0.2);
-}
-
-.visualstyle-simple.visualmode-contrast body .oo-ui-menuOptionWidget.oo-ui-optionWidget-selected,
-.visualstyle-simple.visualmode-contrast body .oo-ui-menuOptionWidget.oo-ui-optionWidget-selected.oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted, 
-.visualstyle-simple.visualmode-contrast body .oo-ui-menuOptionWidget.oo-ui-optionWidget-pressed.oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted,
-.visualstyle-simple.visualmode-contrast body .oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted,
-.visualstyle-simple.visualmode-contrast body .mw-rcfilters-ui-itemMenuOptionWidget:hover, 
-.visualstyle-simple.visualmode-contrast body .mw-rcfilters-ui-filterMenuOptionWidget.oo-ui-flaggedElement-muted.oo-ui-optionWidget-highlighted, 
-.visualstyle-simple.visualmode-contrast body .oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted, 
-.visualstyle-simple.visualmode-contrast body .mw-rcfilters-ui-filterMenuHeaderWidget-header, 
-.visualstyle-simple.visualmode-contrast body .mw-rcfilters-ui-menuSelectWidget-footer, 
-.visualstyle-simple.visualmode-contrast body .oo-ui-tool.oo-ui-widget-enabled > .oo-ui-tool-link:hover, 
-.visualstyle-simple.visualmode-contrast body .oo-ui-listToolGroup-tools .oo-ui-tool.oo-ui-widget-enabled:hover, 
-.visualstyle-simple.visualmode-contrast body .wikiEditor-ui-toolbar .group .tool-select .menu .options .option:hover {
-	background-color:var(--hyperlink-foreground-color);
-	color:var(--hyperlink-background-color)!Important;
-	border-color:rgba(var(--hyperlink-background-color-rgb),0.5);
-}
 
 
 
@@ -2554,6 +2557,7 @@ box-shadow:none!important;
 .visualstyle-classic .toggle-rail-button,
 .visualstyle-classic .evelution-module .rail-buttons .rail-button,
 .visualstyle-classic .mw-ui-button,
+.visualstyle-classic .oo-ui-tool.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive > .oo-ui-tool-link,
 .visualstyle-classic .oo-ui-buttonElement:not(.oo-ui-buttonElement-frameless) > .oo-ui-buttonElement-button,
 .visualstyle-classic .cpe-floating-button,
 .visualstyle-classic .preview-window-window h2 button,
@@ -2818,6 +2822,7 @@ margin-right:0;
 .visualstyle-classic .cpe-dropdown:focus > .cpe-button,
 .visualstyle-classic .cpe-dropdown:focus-within > .cpe-button,
 .visualstyle-classic .mw-ui-button:active,
+.visualstyle-classic .oo-ui-tool.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive > .oo-ui-tool-link:active,
 .visualstyle-classic .oo-ui-buttonElement-framed.oo-ui-widget-enabled:not(.oo-ui-buttonElement-frameless) > .oo-ui-buttonElement-button:active, 
 .visualstyle-classic .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-buttonElement-pressed:not(.oo-ui-buttonElement-frameless) > .oo-ui-buttonElement-button,
 .visualstyle-classic .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-buttonElement-active > .oo-ui-buttonElement-button,
