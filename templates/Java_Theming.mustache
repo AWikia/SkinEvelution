@@ -265,6 +265,14 @@ function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
 }
 
+function getColorContrastOfAnElement(elem,bg="Background Color",fg="Text Color") {
+	if (elem) {
+	elembg = getComputedStyle(elem).getPropertyValue("background-color");
+	elemfg = getComputedStyle(elem).getPropertyValue("color");
+	contrast = chroma.contrast(elemfg,elembg)
+	alert("Color contrast of " + fg + " on " + bg + " is " + contrast);
+	}
+}
 
 function SupportsColorMix() {
 	return CSS.supports("color","color-mix(in srgb, #34c9eb 70%, white)") || CSS.supports("color:color-mix(in srgb, #34c9eb 70%, white)") 
