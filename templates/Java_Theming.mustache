@@ -2223,8 +2223,9 @@ var caretcolor1 = ColorHover(caret_color);
 var carettext_color= GetActiveTitleText();
 
 	// Liatch Quirk
+if ((getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--active-title-text-background-color") != 'auto') ) { // Only run Liatch quirk if not in autocolorization
 		var carettext_color = ColorStyleAdjust(carettext_color);
-
+}
 			while ( ( !(isSuitableColorText(carettext_color, caret_color)) ) && (carettext_color !== lightnessAT)  ) {
 				var carettext_color= ColorAdjust3(carettext_color,caret_color);
 			}
@@ -2237,7 +2238,9 @@ var carettextcolor1 = ColorHover(carettext_color);
 /* Set Vars */
 var caret2_color = GetInactiveTitle();
 // Liatch Quirk
+if ((getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--inactive-title-background-color") != 'auto') ) { // Only run Liatch quirk if not in autocolorization
 		var caret2_color = ColorStyleAdjust(caret2_color);
+}
 			while ( ( isSuitableColorFormControls(caret2_color, content_color) ) && (caret2_color !== lightnessR)  ) {
 			var caret2_color= ColorAdjust(caret2_color,true);
 		}
@@ -2263,7 +2266,9 @@ var caret2color1 = ColorHover(caret2_color);
 var caret2text_color= GetInactiveTitleText();
 
 	// Liatch Quirk
+if ((getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--inactive-title-text-background-color") != 'auto') ) { // Only run Liatch quirk if not in autocolorization
 		var caret2text_color = ColorStyleAdjust(caret2text_color);
+}
 
 			while ( ( !(isSuitableColorFormControls(caret2text_color, caret2_color)) ) && (caret2text_color !== lightnessIT)  ) {
 				var caret2text_color= ColorAdjust3(caret2text_color,caret2_color);
@@ -2304,8 +2309,9 @@ var buttoncolor1 = ColorHover(button_color);
 var buttontext_color= GetHighlightText();
 
 	// Liatch Quirk
+if ((getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--highlight-text-background-color") != 'auto') ) { // Only run Liatch quirk if not in autocolorization
 		var buttontext_color = ColorStyleAdjust(buttontext_color);
-
+}
 			while ( ( !(isSuitableColorText(buttontext_color, button_color)) ) && (buttontext_color !== lightnessBTN)  ) {
 				var buttontext_color= ColorAdjust3(buttontext_color,button_color);
 			}
