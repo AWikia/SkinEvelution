@@ -1,7 +1,7 @@
 ﻿window.MW18TDTest = false;
 
 (function () {
-    if ( ($("#footer-icons img[alt='Miraheze Wiki Hosting']").length) || ($("#footer-icons img[alt='Hosted by Miraheze']").length) ) { // Don't run with disabled designer or on Miraheze Wikis
+    if ( ($("#footer-icons img[alt='Miraheze Wiki Hosting']").length) || ($("#footer-icons img[alt='Hosted by Miraheze']").length) || ($("#footer-icons img[alt='7 years of Miraheze!']").length) ) { // Don't run with disabled designer or on Miraheze Wikis
 	$(".link.theme-designer").remove();
 		return
     }
