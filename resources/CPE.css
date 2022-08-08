@@ -194,8 +194,8 @@ font-family:Trebuchet MS;
     --dark-theme-foreground-color-hover-rgb: 204,204,204!important;
 /* BG Align */
 --desktop-background-alignment:var(--desktop-background-vertical-alignment) var(--desktop-background-horizontal-alignment);
-/* Acryllic */
---acryllic-filter:blur( calc(30px * calc(1.2 - var(--system-acryllic-opacity) ) ) ) saturate(125%);
+/* acrylic */
+--acrylic-filter:blur( calc(30px * calc(1.2 - var(--system-acryllic-opacity) ) ) ) saturate(125%);
 --mica-filter:blur( calc(120px * calc(1.2 - var(--system-acryllic-opacity) ) ) );
 /* Transition */
 --transitioner:cubic-bezier(0.25,0.25,0,1);
@@ -290,11 +290,14 @@ body {
 body,
 body [force-active],
 body [force-unaccented] {
+	--acrylic-opacity:var(--system-acryllic-opacity);
+	--mica-opacity:var(--system-acryllic-opacity);
 	--luna-background-color:var(--canvas-secondary-background-color);
 	--luna-mica-background-color:var(--mica-background-color);
 	--luna-mica-background-color-2:transparent;
-	--luna-background-color-rgb:var(--canvas-secondary-background-color-rgb);
 	--luna-background-color-hover:var(--canvas-secondary-background-color-hover);
+	--luna-background-color-rgb:var(--canvas-secondary-background-color-rgb);
+	--luna-background-color-hover-rgb:var(--canvas-secondary-background-color-hover-rgb);
 	--luna-text-background-color:var(--canvas-text-secondary-background-color);
 	--luna-text-background-color-hover:var(--canvas-text-secondary-background-color-hover);
 	--luna-text-background-color-rgb:var(--canvas-text-secondary-background-color-rgb);
@@ -325,12 +328,13 @@ body [force-unaccented] {
 body:not(:focus):not(:focus-within),
 body [force-inactive],
 body:not(:focus):not(:focus-within) [force-unaccented] {
-	--dropdown-opacity:1;
-	--mica-opacity:2;
+	--acrylic-opacity:1;
+	--mica-opacity:1;
 	--simple-fallback-color:var(--canvas-secondary-background-color)!important;
 	--luna-background-color:var(--canvas-secondary-background-color);
-	--luna-background-color-rgb:var(--canvas-secondary-background-color-rgb);
 	--luna-background-color-hover:var(--canvas-secondary-background-color-hover);
+	--luna-background-color-rgb:var(--canvas-secondary-background-color-rgb);
+	--luna-background-color-hover-rgb:var(--canvas-secondary-background-color-hover-rgb);
 	--luna-text-background-color:var(--canvas-text-secondary-background-color);
 	--luna-text-background-color-hover:var(--canvas-text-secondary-background-color-hover);
 	--luna-text-background-color-rgb:var(--canvas-text-secondary-background-color-rgb);
@@ -351,8 +355,9 @@ body:not(:focus):not(:focus-within) [force-unaccented] {
 	--luna-background-color:var(--active-title-background-color);
 	--luna-mica-background-color:var(--luna-background-color);
 	--luna-mica-background-color-2:var(--luna-background-color);
-	--luna-background-color-rgb:var(--active-title-background-color-rgb);
 	--luna-background-color-hover:var(--active-title-background-color-hover);
+	--luna-background-color-rgb:var(--active-title-background-color-rgb);
+	--luna-background-color-hover-rgb:var(--active-title-background-color-hover-rgb);
 	--luna-text-background-color:var(--active-title-text-background-color);
 	--luna-text-background-color-hover:var(--active-title-text-background-color-hover);
 	--luna-text-background-color-rgb:var(--active-title-text-background-color-rgb);
@@ -384,8 +389,9 @@ body:not(:focus):not(:focus-within) [force-unaccented] {
 	--luna-background-color:var(--inactive-title-background-color);
 	--luna-mica-background-color:var(--luna-background-color);
 	--luna-mica-background-color-2:var(--luna-background-color);
-	--luna-background-color-rgb:var(--inactive-title-background-color-rgb);
 	--luna-background-color-hover:var(--inactive-title-background-color-hover);
+	--luna-background-color-rgb:var(--inactive-title-background-color-rgb);
+	--luna-background-color-hover-rgb:var(--inactive-title-background-color-hover-rgb);
 	--luna-text-background-color:var(--inactive-title-text-background-color);
 	--luna-text-background-color-hover:var(--inactive-title-text-background-color-hover);
 	--luna-text-background-color-rgb:var(--inactive-title-text-background-color-rgb);
@@ -922,10 +928,10 @@ body {
   --cpe-help-cursor:help;
   --cpe-text-cursor:text;
   --cpe-hand-cursor:pointer;
-	--dropdown-opacity:var(--system-acryllic-opacity);
+	--acrylic-opacity:var(--system-acryllic-opacity);
 	--simple-fallback-color:transparent;
 	--simple-fallback-opacity:var(--system-acryllic-opacity);
-	--mica-opacity:calc(var(--system-acryllic-opacity) * 1.01);
+	--mica-opacity:var(--system-acryllic-opacity);
 	accent-color:var(--highlight-background-color);
 	--icon-font-family:'Material Icons Round';
 	--mica-content:"";
@@ -1095,13 +1101,13 @@ container {
 	body,
 	.cpe-dropdown__content,
 	.cpe-dropdown__content .cpe-list.is-linked .cpe-dropdown-level-2 .cpe-dropdown-level-2__content {
-		--dropdown-opacity:1!important;
-		--mica-opacity:2!important;
+		--acrylic-opacity:1!important;
+		--mica-opacity:1!important;
 		--simple-fallback-color:var(--canvas-background-color)!important;
 	}
 
 	:root body {
-		--acryllic-filter:none!important;
+		--acrylic-filter:none!important;
 		--mica-filter:none!important;
 		--mica-content:none;
 	}
@@ -1112,7 +1118,7 @@ container {
 	display:none!important;
 }
 
-/* Disable Acryllic on browsers without backdrop-filter support */
+/* Disable acrylic on browsers without backdrop-filter support */
 @supports (not ((backdrop-filter:none) or (-webkit-backdrop-filter:none))) {
 	.lite-display {
 		display:inline-block!important;
@@ -1121,13 +1127,13 @@ container {
 	body,
 	.cpe-dropdown__content,
 	.cpe-dropdown__content .cpe-list.is-linked .cpe-dropdown-level-2 .cpe-dropdown-level-2__content {
-		--dropdown-opacity:1!important;
+		--acrylic-opacity:1!important;
 		--simple-fallback-color:var(--canvas-background-color)!important;
 	}
 
 
 	:root body {
-		--acryllic-filter:none!important;
+		--acrylic-filter:none!important;
 	}
 }
 
@@ -1137,7 +1143,7 @@ container {
 		display:inline-block!important;
 	}
 	body {
-		--mica-opacity:2!important;
+		--mica-opacity:1!important;
 	}
 
 
@@ -1181,7 +1187,7 @@ container {
 	.gpu-level-1.cpe-dropdown__content .cpe-list.is-linked .cpe-dropdown-level-2 .cpe-dropdown-level-2__content,
 	.gpu-level-2.cpe-dropdown__content .cpe-list.is-linked .cpe-dropdown-level-2 .cpe-dropdown-level-2__content,
 	.gpu-level-3.cpe-dropdown__content .cpe-list.is-linked .cpe-dropdown-level-2 .cpe-dropdown-level-2__content {
-		--dropdown-opacity:1!important;
+		--acrylic-opacity:1!important;
 		--simple-fallback-color:var(--canvas-background-color)!important;
 	}
 
@@ -1190,7 +1196,7 @@ container {
 	.gpu-level-1 body,
 	.gpu-level-2 body,
 	.gpu-level-3 body {
-		--acryllic-filter:none!important;
+		--acrylic-filter:none!important;
 	}
 }
 
@@ -1199,7 +1205,7 @@ container {
 	.gpu-level-0 body,
 	.gpu-level-1 body,
 	.gpu-level-2 body {
-		--mica-opacity:2!important;
+		--mica-opacity:1!important;
 	}
 
 
@@ -1791,6 +1797,7 @@ body .wikitable > * > tr > td {
 /* Input Boxes */
 .cpe-input {
 	--input-box-color:var(--canvas-background-color);
+	--input-box-text:var(--canvas-text-background-color);
 	--input-box-border:currentColor;
 	--input-box-focus:var(--highlight-background-color-rgb);
 	--input-box-solid:var(--highlight-background-color);
@@ -1798,7 +1805,7 @@ body .wikitable > * > tr > td {
     font-size:13px;
     font-family:var(--secondary-font);
     font-weight:600;
-    color:var(--canvas-text-background-color);
+    color:var(--input-box-text);
     padding:8px 11px;
     border:2px solid var(--input-box-border);
     border-radius:var(--border-radius);
@@ -1857,7 +1864,7 @@ select.cpe-input {
 }
 
 .cpe-input::placeholder { /* Standard */
-  color:var(--canvas-text-background-color);
+  color:var(--input-box-text);
   opacity:0.8;
 }
 
@@ -2890,7 +2897,7 @@ margin-left:0;
 .cpe-dropdown__content {
 --dropdown-translate:-50%;
 --dropdown-scale:0.95;
-background-color:rgba(var(--dropdown-background-color),var(--dropdown-opacity));
+background-color:rgba(var(--dropdown-background-color),var(--acrylic-opacity));
 color:var(--dropdown-text-color);
 border:1px solid var(--dropdown-border-color);
 border-radius:calc(var(--border-radius) * 0.6);
@@ -3217,8 +3224,8 @@ body .cpe-dropdown:focus {
   display:inline-block; 
   opacity:1; 
   pointer-events:all;
-  -webkit-backdrop-filter:var(--acryllic-filter);
-  backdrop-filter:var(--acryllic-filter);
+  -webkit-backdrop-filter:var(--acrylic-filter);
+  backdrop-filter:var(--acrylic-filter);
 }
 
 .cpe-dropdown:focus .cpe-dropdown__toggle-chevron, .cpe-dropdown:focus-within .cpe-dropdown__toggle-chevron {    --icon-rotate:180deg;}
@@ -3285,8 +3292,8 @@ top:auto;bottom:-8px
 */
 
 .cpe-dropdown__content .cpe-list.is-linked .cpe-dropdown-level-2 .cpe-dropdown-level-2__content{
-	--dropdown-opacity:1;
-background-color:rgba(var(--dropdown-background-color),var(--dropdown-opacity));
+	--acrylic-opacity:1;
+background-color:rgba(var(--dropdown-background-color),var(--acrylic-opacity));
 border:1px solid var(--dropdown-border-color);
 color:var(--dropdown-text-color);
 border-radius:calc(var(--border-radius) * 0.6);
@@ -3320,8 +3327,8 @@ font-size:12px
 display:block; 
 opacity:1;
  pointer-events:all;
- -webkit-backdrop-filter:var(--acryllic-filter);
- backdrop-filter:var(--acryllic-filter);
+ -webkit-backdrop-filter:var(--acrylic-filter);
+ backdrop-filter:var(--acrylic-filter);
 }
 
 
@@ -3353,7 +3360,7 @@ margin-right:16px;
 
 /* Disable Luna Levit on Dropdowns 
 	.cpe-dropdown__content .lunalevit:not(.backdrop) {
-		--mica-opacity:2!important;
+		--mica-opacity:1!important;
 		--mica-content:none;
 	}
 
@@ -3977,7 +3984,7 @@ margin-right:16px;
 
 /* Banners */
 .cpe-banner-notification{
-	background-color:rgba(var(--luna-background-color-rgb),var(--dropdown-opacity));
+	background-color:rgba(var(--luna-background-color-rgb),var(--acrylic-opacity));
 	color:var(--luna-text-background-color);
 	display:flex;
 	transition:opacity .6s var(--transitioner), transform .6s var(--transitioner); 
@@ -3985,8 +3992,8 @@ margin-right:16px;
 	transform-origin:left;
 	position:relative;
 	min-height:40px;
-    -webkit-backdrop-filter:var(--acryllic-filter);
-    backdrop-filter:var(--acryllic-filter);
+    -webkit-backdrop-filter:var(--acrylic-filter);
+    backdrop-filter:var(--acrylic-filter);
     border-radius:var(--border-radius);
 	box-shadow:0 0 6px 0 rgba(var(--canvas-text-background-color-rgb),.2), 0 0 6px 0 rgba(var(--canvas-background-color-rgb),0.4);
 	border:1px solid var(--luna-border-background-color);
@@ -4453,15 +4460,15 @@ html:not(.visualmode-contrast) .contrast-on {
 .visualmode-contrast body,
 .visualmode-contrast .cpe-dropdown__content,
 .visualmode-contrast .cpe-dropdown__content .cpe-list.is-linked .cpe-dropdown-level-2 .cpe-dropdown-level-2__content {
-	--dropdown-opacity:1!important;
-	--mica-opacity:2!important;
+	--acrylic-opacity:1!important;
+	--mica-opacity:1!important;
 	--simple-fallback-color:var(--canvas-background-color);
 }
 
 
 .visualmode-lite body,
 .visualmode-contrast body {
-	--acryllic-filter:none!important;
+	--acrylic-filter:none!important;
     --mica-filter:none!important;
 	--mica-content:none;
 }
@@ -4480,6 +4487,7 @@ html:not(.visualmode-contrast) .contrast-on {
 --desktop-alternative-foreground-color:var(--desktop-text-background-color)!important;
 --desktop-alternative-foreground-color-hover:var(--desktop-text-background-color)!important;
 --desktop-foreground-color-inverted:var(--desktop-text-background-color)!important;
+--desktop-background-color-hover-rgb:var(--desktop-background-color-rgb)!important;
 --desktop-foreground-color-rgb:var(--desktop-text-background-color-rgb)!important;
 --desktop-foreground-color-hover-rgb:var(--desktop-text-background-color-rgb)!important;
 --desktop-alternative-foreground-color-rgb:var(--desktop-text-background-color-rgb)!important;
@@ -4503,6 +4511,7 @@ html:not(.visualmode-contrast) .contrast-on {
 --canvas-alternative-foreground-color:var(--canvas-text-background-color)!important;
 --canvas-alternative-foreground-color-hover:var(--canvas-text-background-color)!important;
 --canvas-foreground-color-inverted:var(--canvas-text-background-color)!important;
+--canvas-background-color-hover-rgb:var(--canvas-background-color-rgb)!important;
 --canvas-foreground-color-rgb:var(--canvas-text-background-color-rgb)!important;
 --canvas-foreground-color-hover-rgb:var(--canvas-text-background-color-rgb)!important;
 --canvas-alternative-foreground-color-rgb:var(--canvas-text-background-color-rgb)!important;
@@ -4514,6 +4523,7 @@ html:not(.visualmode-contrast) .contrast-on {
 --canvas-secondary-alternative-foreground-color:var(--canvas-text-secondary-background-color)!important;
 --canvas-secondary-alternative-foreground-color-hover:var(--canvas-text-secondary-background-color)!important;
 --canvas-secondary-foreground-color-inverted:var(--canvas-text-secondary-background-color)!important;
+--canvas-secondary-background-color-hover-rgb:var(--canvas-secondary-background-color-rgb)!important;
 --canvas-secondary-foreground-color-rgb:var(--canvas-text-secondary-background-color-rgb)!important;
 --canvas-secondary-foreground-color-hover-rgb:var(--canvas-text-secondary-background-color-rgb)!important;
 --canvas-secondary-alternative-foreground-color-rgb:var(--canvas-text-secondary-background-color-rgb)!important;
@@ -4525,6 +4535,7 @@ html:not(.visualmode-contrast) .contrast-on {
 --inactive-text-alternative-foreground-color:var(--canvas-background-color)!important;
 --inactive-text-alternative-foreground-color-hover:var(--canvas-background-color)!important;
 --inactive-text-foreground-color-inverted:var(--canvas-background-color)!important;
+--inactive-text-background-color-hover-rgb:var(--inactive-text-background-color-rgb)!important;
 --inactive-text-foreground-color-rgb:var(--canvas-background-color-rgb)!important;
 --inactive-text-foreground-color-hover-rgb:var(--canvas-background-color-rgb)!important;
 --inactive-text-alternative-foreground-color-rgb:var(--canvas-background-color-rgb)!important;
@@ -4536,6 +4547,7 @@ html:not(.visualmode-contrast) .contrast-on {
 --active-text-alternative-foreground-color:var(--canvas-background-color)!important;
 --active-text-alternative-foreground-color-hover:var(--canvas-background-color)!important;
 --active-text-foreground-color-inverted:var(--canvas-background-color)!important;
+--active-text-background-color-hover-rgb:var(--active-text-background-color-rgb)!important;
 --active-text-foreground-color-rgb:var(--canvas-background-color-rgb)!important;
 --active-text-foreground-color-hover-rgb:var(--canvas-background-color-rgb)!important;
 --active-text-alternative-foreground-color-rgb:var(--canvas-background-color-rgb)!important;
@@ -4574,6 +4586,7 @@ html:not(.visualmode-contrast) .contrast-on {
 --highlight-alternative-foreground-color:var(--highlight-text-background-color)!important;
 --highlight-alternative-foreground-color-hover:var(--highlight-text-background-color)!important;
 --highlight-foreground-color-inverted:var(--highlight-text-background-color)!important;
+--highlight-background-color-hover-rgb:var(--highlight-background-color-rgb)!important;
 --highlight-foreground-color-rgb:var(--highlight-text-background-color-rgb)!important;
 --highlight-foreground-color-hover-rgb:var(--highlight-text-background-color-rgb)!important;
 --highlight-alternative-foreground-color-rgb:var(--highlight-text-background-color-rgb)!important;
@@ -4620,14 +4633,13 @@ html:not(.visualmode-contrast) .contrast-on {
 /* Visited Hyperlink */
 --visited-hyperlink-secondary-background-color-hover:var(--visited-hyperlink-secondary-background-color)!important;
 --visited-hyperlink-tertiary-background-color-hover:var(--visited-hyperlink-tertiary-background-color)!important;
-
-
 /* Active Title */
 --active-title-background-color-hover:var(--active-title-background-color)!important;
 --active-title-foreground-color:var(--active-title-text-background-color)!important;
 --active-title-foreground-color-hover:var(--active-title-text-background-color)!important;
 --active-title-alternative-foreground-color:var(--active-title-text-background-color)!important;
 --active-title-alternative-foreground-color-hover:var(--active-title-text-background-color)!important;
+--active-title-background-color-hover-rgb:var(--active-title-background-color-rgb)!important;
 --active-title-foreground-color-inverted:var(--active-title-text-background-color)!important;
 --active-title-foreground-color-rgb:var(--active-title-text-background-color-rgb)!important;
 --active-title-foreground-color-hover-rgb:var(--active-title-text-background-color-rgb)!important;
@@ -4652,6 +4664,7 @@ html:not(.visualmode-contrast) .contrast-on {
 --inactive-title-alternative-foreground-color:var(--inactive-title-text-background-color)!important;
 --inactive-title-alternative-foreground-color-hover:var(--inactive-title-text-background-color)!important;
 --inactive-title-foreground-color-inverted:var(--inactive-title-text-background-color)!important;
+--inactive-title-background-color-hover-rgb:var(--inactive-title-background-color-rgb)!important;
 --inactive-title-foreground-color-rgb:var(--inactive-title-text-background-color-rgb)!important;
 --inactive-title-foreground-color-hover-rgb:var(--inactive-title-text-background-color-rgb)!important;
 --inactive-title-alternative-foreground-color-rgb:var(--inactive-title-text-background-color-rgb)!important;
@@ -5061,14 +5074,14 @@ background-color:var(--highlight-background-color);
 	.parmalution-ready body,
 	.parmalution-ready .cpe-dropdown__content,
 	.parmalution-ready .cpe-dropdown__content .cpe-list.is-linked .cpe-dropdown-level-2 .cpe-dropdown-level-2__content   {
-		--dropdown-opacity:1!important;
-		--mica-opacity:2!important;
+		--acrylic-opacity:1!important;
+		--mica-opacity:1!important;
 		--simple-fallback-color:var(--canvas-background-color)!important;
 	}
 
 	.ivilution-loaded,
 	.parmalution-ready /* For GTK Interpreter */ {
-		--acryllic-filter:none!important;
+		--acrylic-filter:none!important;
 	}
 
 	/* Ivilution */
@@ -5077,32 +5090,34 @@ background-color:var(--highlight-background-color);
 	/* Parmalution */
 	.parmalution-ready body,
 	.parmalution-ready body [force-active] {
-		--luna-background-color:var(--canvas-secondary-background-color)!important;
-		--luna-mica-background-color:transparent;
-		--luna-background-color-rgb:var(--canvas-secondary-background-color-rgb)!important;
-		--luna-background-color-hover:var(--canvas-secondary-background-color-hover)!important;
-		--luna-text-background-color:var(--canvas-text-secondary-background-color)!important;
-		--luna-text-background-color-hover:var(--canvas-text-secondary-background-color-hover)!important;
-		--luna-text-background-color-rgb:var(--canvas-text-secondary-background-color-rgb)!important;
-		--luna-text-background-color-hover-rgb:var(--canvas-text-secondary-background-color-hover-rgb)!important;	
-		--luna-border-background-color:var(--canvas-secondary-background-color-hover)!important;
-		--luna-foreground-color:var(--canvas-foreground-color)!important;
-		--luna-foreground-color-inverted:var(--canvas-secondary-foreground-color)!important;
-		--luna-foreground-color-hover:var(--canvas-secondary-foreground-color-hover)!important;
-		--luna-foreground-color-rgb:var(--canvas-secondary-foreground-color-rgb)!important;
-		--luna-foreground-color-hover-rgb:var(--canvas-secondary-foreground-color-hover-rgb)!important;
-		--luna-alternative-foreground-color:var(--canvas-secondary-alternative-foreground-color)!important;
+		--luna-background-color:var(--canvas-secondary-background-color);
+		--luna-mica-background-color:var(--mica-background-color);
+		--luna-mica-background-color-2:transparent;
+		--luna-background-color-hover:var(--canvas-secondary-background-color-hover);
+		--luna-background-color-rgb:var(--canvas-secondary-background-color-rgb);
+		--luna-background-color-hover-rgb:var(--canvas-secondary-background-color-hover-rgb);
+		--luna-text-background-color:var(--canvas-text-secondary-background-color);
+		--luna-text-background-color-hover:var(--canvas-text-secondary-background-color-hover);
+		--luna-text-background-color-rgb:var(--canvas-text-secondary-background-color-rgb);
+		--luna-text-background-color-hover-rgb:var(--canvas-text-secondary-background-color-hover-rgb);	
+		--luna-border-background-color:var(--canvas-secondary-background-color-hover);
+		--luna-foreground-color:var(--canvas-secondary-foreground-color);
+		--luna-foreground-color-inverted:var(--canvas-secondary-foreground-color);
+		--luna-foreground-color-hover:var(--canvas-secondary-foreground-color-hover);
+		--luna-foreground-color-rgb:var(--canvas-secondary-foreground-color-rgb);
+		--luna-foreground-color-hover-rgb:var(--canvas-secondary-foreground-color-hover-rgb);
+		--luna-alternative-foreground-color:var(--canvas-secondary-alternative-foreground-color);
 		--luna-alternative-foreground-color-hover:var(--canvas-secondary-alternative-foreground-color-hover);
-		--luna-alternative-foreground-color-rgb:var(--canvas-secondary-alternative-foreground-color-rgb)!important;
-		--luna-hyperlink-background-color:var(--hyperlink-secondary-background-color)!important;
-		--luna-hyperlink-background-color-hover:var(--hyperlink-secondary-background-color-hover)!important;
-		--luna-hyperlink-background-color-rgb:var(--hyperlink-secondary-background-color-rgb)!important;
-		--luna-visited-hyperlink-background-color:var(--visited-hyperlink-secondary-background-color)!important;
-		--luna-visited-hyperlink-background-color-hover:var(--visited-hyperlink-secondary-background-color-hover)!important;
-		--luna-visited-hyperlink-background-color-rgb:var(--visited-hyperlink-secondary-background-color-rgb)!important;
-		--luna-active-text-background-color:var(--active-text-secondary-background-color)!important;
-		--luna-active-text-background-color-hover:var(--active-text-secondary-background-color-hover)!important;
-		--luna-active-text-background-color-rgb:var(--active-text-secondary-background-color-rgb)!important;
+		--luna-alternative-foreground-color-rgb:var(--canvas-secondary-alternative-foreground-color-rgb);
+		--luna-hyperlink-background-color:var(--hyperlink-secondary-background-color);
+		--luna-hyperlink-background-color-hover:var(--hyperlink-secondary-background-color-hover);
+		--luna-hyperlink-background-color-rgb:var(--hyperlink-secondary-background-color-rgb);
+		--luna-visited-hyperlink-background-color:var(--visited-hyperlink-secondary-background-color);
+		--luna-visited-hyperlink-background-color-hover:var(--visited-hyperlink-secondary-background-color-hover);
+		--luna-visited-hyperlink-background-color-rgb:var(--visited-hyperlink-secondary-background-color-rgb);
+		--luna-active-text-background-color:var(--active-text-secondary-background-color);
+		--luna-active-text-background-color-hover:var(--active-text-secondary-background-color-hover);
+		--luna-active-text-background-color-rgb:var(--active-text-secondary-background-color-rgb);
 
 
 	}
@@ -5113,18 +5128,20 @@ background-color:var(--highlight-background-color);
 	/* Parmalution */
 	.parmalution-ready body:not(:focus):not(:focus-within),
 	.parmalution-ready body [force-inactive] {
-		--luna-background-color:var(--canvas-background-color)!important;
-		--luna-mica-background-color:var(--canvas-background-color);
-		--luna-background-color-rgb:var(--canvas-background-color-rgb)!important;
-		--luna-background-color-hover:var(--canvas-background-color-hover)!important;
-		--luna-text-background-color:var(--canvas-text-background-color-hover)!important;
-		--luna-text-background-color-hover:var(--canvas-text-background-color)!important;
-		--luna-text-background-color-rgb:var(--canvas-text-background-color-hover-rgb)!important;
-		--luna-text-background-color-hover-rgb:var(--canvas-text-background-color-rgb)!important;	
-		--luna-border-background-color:var(--canvas-background-color-hover)!important;
-		--luna-foreground-color:var(--canvas-foreground-color-hover)!important;
-		--luna-foreground-color-inverted:var(--canvas-foreground-color-hover)!important;
-		--luna-foreground-color-hover:var(--canvas-foreground-color)!important;
-		--luna-foreground-color-rgb:var(--canvas-foreground-color-hover-rgb)!important;
-		--luna-foreground-color-hover-rgb:var(--canvas-foreground-color-rgb)!important;
+		--luna-background-color:var(--canvas-secondary-background-color);
+		--luna-background-color-hover:var(--canvas-secondary-background-color-hover);
+		--luna-background-color-rgb:var(--canvas-secondary-background-color-rgb);
+		--luna-background-color-hover-rgb:var(--canvas-secondary-background-color-hover-rgb);
+		--luna-text-background-color:var(--canvas-text-secondary-background-color);
+		--luna-text-background-color-hover:var(--canvas-text-secondary-background-color-hover);
+		--luna-text-background-color-rgb:var(--canvas-text-secondary-background-color-rgb);
+		--luna-text-background-color-hover-rgb:var(--canvas-text-secondary-background-color-hover-rgb);	
+		--luna-border-background-color:var(--canvas-secondary-background-color-hover);
+		--luna-foreground-color:var(--canvas-secondary-foreground-color);
+		--luna-foreground-color-inverted:var(--canvas-secondary-foreground-color);
+		--luna-foreground-color-hover:var(--canvas-secondary-foreground-color-hover);
+		--luna-foreground-color-rgb:var(--canvas-secondary-foreground-color-rgb);
+		--luna-foreground-color-hover-rgb:var(--canvas-secondary-foreground-color-hover-rgb);
+		--luna-alternative-foreground-color:var(--canvas-secondary-alternative-foreground-color);
+		--luna-alternative-foreground-color-hover:var(--canvas-secondary-alternative-foreground-color-hover);
 	}

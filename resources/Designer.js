@@ -725,7 +725,7 @@ function InitDesigner() {
 		// TR
 			'<tr>' +
 				'<th rowspan="2" style="width:150px;">' + 
-					mw.msg( 'evelution-designer-acryllic-opacity' ) + 
+					mw.msg( 'evelution-designer-acrylic-opacity' ) + 
 				'</th>' +
 				'<th colspan="2"><span class="cpe-icon material-icons">opacity</span></th>' +
 			'</tr>' +
@@ -1836,9 +1836,9 @@ function PasteTheme() {
 	$('#filter3').val( parseInt(getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--icon-filter-duration")) );
 	// Filter Delay
 	$('#filter4').val( parseInt(getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--icon-filter-delay")) );
-	// Acryllic Opacity
+	// acrylic Opacity
 	$('#aopacity').val( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--system-acryllic-opacity") );
-	// Acryllic Opacity
+	// acrylic Opacity
 	$('#gchs').val( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--system-generic-color-hue-shift") );
 	$('#gcs').val( parseInt(getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--system-generic-color-saturation")) );
 
@@ -2213,7 +2213,7 @@ $('.wikitable #auto15').click(
 function InitSBT() {
 	// Change Title
 	$("container").append(
-		'<div style="--backdrop-opacity:var(--dropdown-opacity); position:fixed; display:flex; top:0; left:0; width:100%; height:100%; align-items:center; gap:2px; justify-content:center; background-color:rgba(var(--canvas-secondary-background-color-rgb),var(--backdrop-opacity)); color:var(--canvas-text-secondary-background-color); -webkit-backdrop-filter:var(--acryllic-filter); backdrop-filter:var(--acryllic-filter); z-index:999999999;" class="SBT">' +
+		'<div style="--backdrop-opacity:var(--dropdown-opacity); position:fixed; display:flex; top:0; left:0; width:100%; height:100%; align-items:center; gap:2px; justify-content:center; background-color:rgba(var(--canvas-secondary-background-color-rgb),var(--backdrop-opacity)); color:var(--canvas-text-secondary-background-color); -webkit-backdrop-filter:var(--acrylic-filter); backdrop-filter:var(--acrylic-filter); z-index:999999999;" class="SBT">' +
 		'<div class="lunalevit sbtll hidden"></div>' +
 		'<section>' +
 		'<input type="checkbox" name="SBT2" id="none"></input>' +
