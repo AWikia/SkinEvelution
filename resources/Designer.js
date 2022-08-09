@@ -2212,8 +2212,10 @@ $('.wikitable #auto15').click(
 
 function InitSBT() {
 	// Change Title
+
+
 	$("container").append(
-		'<div style="--backdrop-opacity:var(--dropdown-opacity); position:fixed; display:flex; top:0; left:0; width:100%; height:100%; align-items:center; gap:2px; justify-content:center; background-color:rgba(var(--canvas-secondary-background-color-rgb),var(--backdrop-opacity)); color:var(--canvas-text-secondary-background-color); -webkit-backdrop-filter:var(--acrylic-filter); backdrop-filter:var(--acrylic-filter); z-index:999999999;" class="SBT">' +
+		'<div style="--backdrop-opacity:var(--acrylic-opacity); position:fixed; display:flex; top:0; left:0; width:100%; height:100%; align-items:center; gap:2px; justify-content:center; background-color:rgba(var(--canvas-secondary-background-color-rgb),var(--acrylic-opacity)); color:var(--canvas-text-secondary-background-color); -webkit-backdrop-filter:var(--acrylic-filter); backdrop-filter:var(--acrylic-filter); z-index:999999999;" class="SBT">' +
 		'<div class="lunalevit sbtll hidden"></div>' +
 		'<section>' +
 		'<input type="checkbox" name="SBT2" id="none"></input>' +
@@ -2229,13 +2231,14 @@ function InitSBT() {
 		'</section>' +
 		'</div>'
 	);
+
 	
 $('#AC[name="SBT"]').click(
 							function(e) {
 								e.preventDefault
 								$('div.sbtll').addClass("hidden").removeClass("has-tabs")
-								$('div.SBT').css("--backdrop-opacity","var(--dropdown-opacity)");
-								$('div.SBT').css("background-color","rgba(var(--canvas-secondary-background-color-rgb),var(--dropdown-opacity))");
+								$('div.SBT').css("--backdrop-opacity","var(--acrylic-opacity)");
+								$('div.SBT').css("background-color","rgba(var(--canvas-secondary-background-color-rgb),var(--acrylic-opacity))");
 							}   
 );
 
