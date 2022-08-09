@@ -221,20 +221,21 @@ var visualColorNames = ['standard', 'nocolormanagement'];
     });
     var themes = {{>Themes}} // @REMOVEME: In Ivilution, Parmalution and CPE Language (Change to Empty String instead)
 	document.querySelector("head").insertAdjacentHTML('afterbegin','<style class="devicetheme"></style><style class="themes">' + themes + '</style><style class="theming"></style>');
-	document.querySelector('body').setAttribute('tabindex',-1);; // Add the CPE button class
-	document.querySelector('body').focus();
 	ToggleTheme(theme_selected,false,false);
 	colortheme(color_style,device_theme,false,false);
 	contrastmode(contrast_mode,false,false);
-	SetAccent(accent_active,false);
 	SetDCM(dcm_type,dcm_mode,false,false);
+	VisualColorCompile(); // Compiles the Contrast Options
+	VisualColor(visual_color,false);
+
+/* The Following were prior to the Theme Compiling but were moved to improve performance */
+	SetAccent(accent_active,false);
 	ManagerRows(); // For Task Manager Only
 	VisualStyleCompile(); // Compiles the Contrast Options
 	VisualMode(visual_mode,false);
 	VisualStyle(visual_style,false);
-	VisualColor(visual_color,false);
-//	ContrastBanner(); // Notice
-	document.querySelector('html').classList.add('theming-loaded');
+	document.querySelector('body').setAttribute('tabindex',-1);; // Add the CPE button class
+	document.querySelector('body').focus();
 
 })();
 
@@ -309,6 +310,38 @@ function ForcedColorType() {
 	} else {
 		return 'standard';
 	}
+}
+
+
+/* Copied from Base JS */
+function UpdateSelectValue() { // Handles Blurring
+		setTimeout(
+		(function() { document.querySelector(' .cpe-dropdown.cpe-select:focus-within').blur(); 	document.querySelector('.focus-overlay').focus(); } )
+	,0)
+}
+
+
+function UpdateRange() {
+	var ranges = document.querySelectorAll('input[type="range"]');
+	ranges.forEach(function(x) {
+		x.style.setProperty("--range-percent",  (( ((x.value) - x.getAttribute('min') ) * 100) / (x.getAttribute('max') - x.getAttribute('min')) ) + '%'  );
+	});
+
+	var progresses = document.querySelectorAll('progress');
+	progresses.forEach(function(x) {
+		x.style.setProperty("--range-percent",  (( ((x.getAttribute('value')) - 0 ) * 100) / (x.getAttribute('max') - 0) ) + '%'  );
+	});
+
+}
+
+function UpdateRangeInputs() {
+	UpdateRange();
+
+	var ranges2 = document.querySelectorAll('input[type="range"]');
+	ranges2.forEach(function(x) {
+		x.addEventListener("input", function(e) { UpdateRange(); });
+	});
+
 }
 
 
@@ -429,6 +462,10 @@ function VisualStyleCompile() {
 			}
 		}
 	}
+}
+
+function VisualColorCompile() {
+// Puts new options
 /* Visual Colors */
 	if (! (document.querySelector("container.no-color-management") ) ) {
 		var length = visualColorNames.length
@@ -464,6 +501,7 @@ function VisualStyleCompile() {
 
 // In the Visual Styles Options
 }
+
 
 /* Getting non-generic color values */
 function GetSystemColor(color='canvas') { // System Colors
@@ -1074,7 +1112,6 @@ function CheckTheme() {
 	/* Wiki theme */
 	CompileThemingEngine(true);
 ManagerRows();
-//ContrastBanner();
 }
 
 

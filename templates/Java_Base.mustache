@@ -72,6 +72,8 @@ function DropDownUpdate() {
 					
 }
 
+
+/* Range Inputs and Selects */
 function UpdateSelectValue() { // Handles Blurring
 		setTimeout(
 		(function() { document.querySelector(' .cpe-dropdown.cpe-select:focus-within').blur(); 	document.querySelector('.focus-overlay').focus(); } )
@@ -157,6 +159,7 @@ function UpdateRangeInputs() {
 						y2.focus();
         }) );
 	}
+
 })();
 
 /* Aliases all components with the .wds prefix to the ones from .cpe ones */
@@ -364,6 +367,7 @@ AliasBoxes();
 	/* DITTO */
 	document.querySelector("body").addEventListener("mouseenter", ( function(e) { CheckTheme(); } ) );
 	document.querySelector("body").addEventListener("mouseleave", ( function(e) { DropDownUpdate(); CheckTheme(); } ) );
+	document.querySelector('html').classList.add('theming-loaded');
 		
 
 	/* END DITTO */
