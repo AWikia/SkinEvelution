@@ -82,6 +82,7 @@ class SkinEvelution extends SkinMustache {
         $data["html-forum-link"] =  Title::newFromText( 'Forum:Index' )->getLocalURL(); // SpecialPage::getTitleFor( 'CPEThemeDesigner' )->getLocalURL();
         $data["html-purge-link"] = SpecialPage::getTitleFor( 'Purge' )->getLocalURL();
         $data["html-mypage-link"] = SpecialPage::getTitleFor( 'MyPage' )->getLocalURL();
+        $data["html-discord-link"] = Title::newFromText( 'Project:Discord' )->getLocalURL();
         if ( class_exists( 'wAvatar' ) ) {
 			$avatar = new wAvatar( $this->getSkin()->getUser()
 				->getId(), 'l' );
@@ -109,7 +110,7 @@ class SkinEvelution extends SkinMustache {
 		$data["has-css"] = $this->getConfig()->get( 'AllowUserCss' );
 		$data["has-js"] = $this->getConfig()->get( 'AllowUserJs' );
 		$data["has-mf"] = (ExtensionRegistry::getInstance()->isLoaded( 'MobileFrontend' ));
-
+		$data["has-no-skinlinks"] = $this->getConfig()->get( 'EvelutionDisableRepoLinks' );
 		$data["is-loggedin"] = $this->getSkin()->getUser()->isRegistered();
 		$data["is-outdated"] = ( version_compare( MW_VERSION, '1.37', '<' ) );
 
