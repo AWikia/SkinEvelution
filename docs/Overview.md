@@ -52,14 +52,14 @@ Five Visual Styles exist:
 ### Visual Colors
 Nine different Visual Colors exist:
 - Standard Pack is the normal ones.
-- No Color Management pack disables all color-related settings (Themes and Color Modes) and forces System Colors, similar to the High Contrast Mode and having color management disabled
-- Cubes Pack is a multicolored color scheme. Default themes have cubes as the base background and comes with four light and four dark themes. This pack comes with White, Pink, Yellow, Green, Black, Dark blue, Orange and Red variations. This color scheme can be customized by wikis using MediaWiki:Evelusion.css or MediaWiki:Common.css to make the wiki more unique
-- Factory Pack is the OOBE color scheme. This focuses more on rounded corners and uses Ubutnu as the Secondary Font
-- Forced Packs is the color scheme with more emphasis on higher color contrast between elements. Four themes are light and four are dark.
-- Techno Pack is an all-green color scheme. Theme A demonstrates a light text color on a light theme while Theme D demonstrates a dark text color on a dark theme.
-- Retro Packs are two four-theme packs that uses colors dating back from the classic color schemes from Windows 95 to XP. All of them are light and do not contain any rounded corners or logo filter
-- Neon Packs are color-schemes with eight light and eight dark schemes. Each theme focuses soley on a specific color with Theme A on Green, Theme B on Blue, Theme C on Pink, Theme D on Orange, Theme E on Red, Theme F on Yellow, Theme G on Purple and Theme H on Grayscale. All of them have special logo filter that turns the logo into a specific color when hovered on it.
-- Evelution Color Packs are the System Color Schemes. Eight light and eight dark schemes exist
+- No Color Management Pack disables all color-related settings (Themes and Color Modes) and forces System Colors, similar to the High Contrast Mode and having color management disabled.
+- Forced Pack contains eight high contrast-optimized themes. Six are light and two are dark with the first four resembling the ones from Windows 10 while the last four resembling the ones from Windows 11.
+- Evelution Packs contain eight light and eight dark themes. The first eight themes are standard and the other are dynamic versions of the afromentioned ones. All of them use Roboto Slab as the headings font.
+- Colors Packs contain eight light and eight dark themes. Each theme use different background image. Those images are inverted in the dark themes. No rounded corners is applied into them and they use lower elements opacity.
+- Pokémon Colors Pack contain eight different themes with the latter four being dark. The First and fifth themes contain colors from Let's Go Pikachu and Eevee, the Second and Sixth from Sword and Shield, the Third and Seventh from Isle of Armor and Crown Tundra and the Fourth and Eigth from Scarlet and Violet. This color pack is also considered a variant of the Colors Theme Pack.
+- Android Pack contains eight dynamic themes based on the basic accent colors you can choose on an Android 12 device in both Light and Dark Mode. This theme pack focuses more on Rounded Corners and is using Roboto as Headings font in addition to as main font.
+- Qora Qore Pack contains four light and four dark themes, each representing the Stable, Beta, Dev and Canary channel of the afromentioned game. Light and Dark themes use Light Gray and Dark Gray as Canvas color respectively. Didact Gothic is the main font.
+- Dynamic Packs contain Eight Light and Eight Dark themes that are made by only setting the Hyperlink Color. The first theme of the light version is the same as the Factory CPE Language Theme. All of them use Ubuntu as both Primary and Secondary font.
 
 ## Differences of Evelution and MpistoSkin2
 Evelution, despite being essentially similar to MpistoSkin2 from Q.Qore, there're several differences, to name a few:
