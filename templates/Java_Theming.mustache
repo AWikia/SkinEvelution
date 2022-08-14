@@ -62,16 +62,16 @@ var visualStyles = [
 */
 
 var visualColors = [
-					['cubes', '{{msg-evelution-color-cubes}}', 'grid_view'],
-					['factorycolors', '{{msg-evelution-color-factory}}', 'android'],
 					['forced', '{{msg-evelution-color-forced}}', 'contrast'],
-					['techno', '{{msg-evelution-color-techno}}', 'explore'],
-					['retro', '{{msg-evelution-color-retro}}', 'smart_toy'],
-					['retro2', '{{msg-evelution-color-retro}} (II)', 'smart_toy'],
-					['neonlight', '{{msg-evelution-color-neon}} ({{msg-evelution-lightmode}})', 'lightbulb', 'light_mode'],
-					['neon', '{{msg-evelution-color-neon}} ({{msg-evelution-darkmode}})', 'lightbulb', 'dark_mode'],
-					['evelution', 'Evelution OS ({{msg-evelution-lightmode}})', 'computer', 'light_mode'],
-					['evelutiondark', 'Evelution OS ({{msg-evelution-darkmode}})', 'computer', 'dark_mode']
+					['evelution', 'Evelution ({{msg-evelution-standard}})', 'evelution', 'build'],
+					['evelution__dyna', 'Evelution ({{msg-evelution-color-dynamic}})', 'evelution', 'colorize'],
+					['colors', '{{msg-evelution-color-colors}} ({{msg-evelution-lightmode}})', 'format_paint', 'light_mode'],
+					['colors__dark', '{{msg-evelution-color-colors}} ({{msg-evelution-darkmode}})', 'format_paint', 'dark_mode'],
+					['colors__pokemon', '{{msg-evelution-color-pokemoncolors}}', 'format_paint', 'pets'],
+					['android', 'Android', 'android'],
+					['qqore', 'Qora Qore', 'qqore'],
+					['dynamic', '{{msg-evelution-color-dynamic}} ({{msg-evelution-lightmode}})', 'colorize', 'light_mode'],
+					['dynamic__dark', '{{msg-evelution-color-dynamic}} ({{msg-evelution-darkmode}})', 'colorize', 'dark_mode'],
 				    ];
 var visualColorNames = ['standard', 'nocolormanagement'];
 
@@ -472,13 +472,21 @@ function VisualColorCompile() {
 		for (let i = 0; i < visualColors.length; i++) {
 			visualColorNames[i+length] =  visualColors[i][0];
 			badge = ''
+			iconfinal = visualColors[i][2];
+			if (iconfinal === 'evelution') {
+				icon = '<svg xmlns="http://www.w3.org/2000/svg" class="cpe-icon"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#evelution-logo" /> </svg>'
+			} else 	if (iconfinal === 'qqore') {
+				icon = '<svg xmlns="http://www.w3.org/2000/svg" class="cpe-icon"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#qoreLogo" /> </svg>'
+			} else {
+				icon = '<span class="cpe-icon material-icons">' + iconfinal + '</span>'
+			}
 			if (visualColors[i][3] != undefined) {
 				badge ='<span class="cpe-icon cpe-icon-small material-icons cpe-icon-badge">'+ visualColors[i][3] +'</span>'
 			}
 			str = 	'<li data-visual-color="' + visualColors[i][0] + '" title="' + visualColors[i][1] + '">' +
 						'<a onclick="VisualColor(' + "'" + visualColors[i][0]  + "'" + ')">' +
 							badge +
-							'<span class="cpe-icon material-icons">' + visualColors[i][2] + '</span>' +
+							icon +
 						'</a>' +
 						'<div style="position:absolute; z-index:-1; pointer-events:none;">' +
 							'<div class="cpe-theming visualcolors-' + visualColors[i][0] + ' theme-A"></div>' +
