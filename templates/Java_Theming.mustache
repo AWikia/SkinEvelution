@@ -2146,7 +2146,7 @@ if (refresh === true) {
 //	ToggleTheme(window.MW18ActiveTheme,false,false);
 //	VisualColor(window.MW18ActiveColors,false,false);
 	if (DisabledColorManagement()) {
-		var colorstyle =".color-management-on { display:none!important;} .pale-moon .color-modes { display:none!important }\n"
+		var colorstyle =".color-management-on { display:none!important;} @supports (not (color-scheme:normal)) { .color-modes { display:none!important } }\n"
 	} else {
 		var colorstyle= ".color-management-off { display:none!important;}\n"
 	}

@@ -529,11 +529,13 @@ body {
 		--system-generic-color-saturation:100%!important;
 	}
 	
-	.fc-selecteditem {
+	.fc-selecteditem,
+	.fc-accentcolor {
 		color:highlight!important
 	}
 
-	.fc-selecteditemtext {
+	.fc-selecteditemtext,
+	.fc-accentcolortext {
 		color:highlighttext!important
 	}
 
@@ -960,7 +962,16 @@ container {
 		--border-radius:0px!important;
 	}
 
+/* Remove DCM lite display on supported browsers */
 
+
+@media (prefers-color-scheme: light), (prefers-color-scheme: dark) {
+	@supports ( (color:linktext) and  (color:visitedtext) and (color:activetext) and (color:field)  and (color:fieldtext) and (color-scheme:normal) ) {
+		.dcm-limited {
+			display:none!important;
+		}
+	}
+}
 
 .secondary, h1, h2, h3, h4, h5, h6 {
   font-family:var(--secondary-font), sans-serif;
