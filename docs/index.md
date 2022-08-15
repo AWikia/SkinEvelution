@@ -20,6 +20,7 @@ To Run Evelution on your wiki, you must have MediaWiki 1.36 or greater. Older ve
 
 ## Browser Requirements
 Evelution requires at least one of these browsers in order to run properly:
+
 | Browser    | Supported Releases        | Notes																						   |
 | ---------- | ------------------------- | ----------------------------------------------------------------------------------------------- |
 | Chrome     | 84+                       | Has customized scrollbar styling.															   |
