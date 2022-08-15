@@ -261,6 +261,7 @@ container > .main {
 	--global-nav-link-background-active:rgba(var(--luna-hyperlink-background-color-rgb),0.4);
 	--global-nav-link-border-active:rgba(var(--luna-hyperlink-background-color-rgb),0.2);
 	--global-nav-link-opacity:0.2;
+	--global-nav-link-border-opacity:0.1;
 	--global-nav-icon-scale-factor:50;
 	--global-nav-opacity:var(--acrylic-opacity);
 	-webkit-backdrop-filter:var(--acrylic-filter);
@@ -353,7 +354,7 @@ container > .main {
 	.evelution-sidebar .link:hover {
 		color:var(--global-nav-link-color-hover);
 		background-color:rgba(var(--global-nav-link-background-hover), var(--global-nav-link-opacity));
-		border-color:rgba(var(--global-nav-link-background-hover), calc(var(--global-nav-link-opacity) * 0.5));
+		border-color:rgba(var(--global-nav-link-background-hover), var(--global-nav-link-border-opacity));
 	}
 
 	.evelution-sidebar .link:active, 
@@ -1745,6 +1746,7 @@ gap:2px;
 		font-family:var(--secondary-font), sans-serif;
 		overflow:hidden;
 		display:flex;
+		margin:2px 0;
 	}
 
 	.evelution-header .title .title-logo {

@@ -417,36 +417,51 @@ function AliasBoxes() {
 /* Check Compatibility */
 function CheckCompat() {
 	// Some old Fox Versions
-	window.oldSafari=false
+	var ua_agent = navigator.userAgent
 
-	if ( (navigator.userAgent.match("Safari/")) && !( (navigator.userAgent.match("Chrome/")) || (navigator.userAgent.match("YNGT")) ) ) {
-	window.oldSafari=( (navigator.userAgent.match("Version/1\\.")) || (navigator.userAgent.match("Version/2\\.")) || (navigator.userAgent.match("Version/3\\.")) || (navigator.userAgent.match("Version/4\\.")) || (navigator.userAgent.match("Version/5\\.")) || (navigator.userAgent.match("Version/6\\.")) || (navigator.userAgent.match("Version/7\\.")) || (navigator.userAgent.match("Version/8\\.")) || (navigator.userAgent.match("Version/9\\.")) || (navigator.userAgent.match("Version/10\\.")) || (navigator.userAgent.match("Version/11\\.")) || (navigator.userAgent.match("Version/12\\.")) || (navigator.userAgent.match("Version/13\\.")) )
+	if ( (ua_agent.match("Safari/")) && !( (ua_agent.match("Chrome/")) || (ua_agent.match("YNGT")) ) ) { // Safari
+		window.oldBrowser = ua_agent.match(/Version\/(\d+)/)[1] < 14
 	}
 
-	window.oldfox = ( (navigator.userAgent.match("Firefox/21\\.")) || (navigator.userAgent.match("Firefox/20\\.")) || (navigator.userAgent.match("Firefox/19\\.")) || (navigator.userAgent.match("Firefox/18\\.")) || (navigator.userAgent.match("Firefox/17\\.")) || (navigator.userAgent.match("Firefox/16\\.")) || (navigator.userAgent.match("Firefox/15\\.")) || (navigator.userAgent.match("Firefox/14\\.")) || (navigator.userAgent.match("Firefox/13\\.")) || (navigator.userAgent.match("Firefox/12\\.")) || (navigator.userAgent.match("Firefox/11\\.")) || (navigator.userAgent.match("Firefox/10\\.")) || (navigator.userAgent.match("Firefox/9\\.")) || (navigator.userAgent.match("Firefox/8\\.")) || (navigator.userAgent.match("Firefox/7\\.")) || (navigator.userAgent.match("Firefox/6\\.")) || (navigator.userAgent.match("Firefox/5\\.")) || (navigator.userAgent.match("Firefox/4\\.")) || (navigator.userAgent.match("Firefox/3\\.")) || (navigator.userAgent.match("Firefox/2\\.")) || (navigator.userAgent.match("Firefox/1\\.")) || (navigator.userAgent.match("Firefox/31\\.")) || (navigator.userAgent.match("Firefox/32\\.")) || (navigator.userAgent.match("Firefox/33\\.")) || (navigator.userAgent.match("Firefox/34\\.")) || (navigator.userAgent.match("Firefox/35\\.")) || (navigator.userAgent.match("Firefox/36\\.")) || (navigator.userAgent.match("Firefox/37\\.")) || (navigator.userAgent.match("Firefox/38\\.")) || (navigator.userAgent.match("Firefox/39\\.")) || (navigator.userAgent.match("Firefox/40\\.")) || (navigator.userAgent.match("Firefox/41\\.")) || (navigator.userAgent.match("Firefox/42\\.")) || (navigator.userAgent.match("Firefox/43\\.")) || (navigator.userAgent.match("Firefox/44\\.")) || (navigator.userAgent.match("Firefox/45\\.")) || (navigator.userAgent.match("Firefox/46\\.")) || (navigator.userAgent.match("Firefox/47\\.")) || (navigator.userAgent.match("Firefox/48\\.")) || (navigator.userAgent.match("Firefox/49\\.")) || (navigator.userAgent.match("Firefox/50\\.")) || (navigator.userAgent.match("Firefox/51\\.")) || (navigator.userAgent.match("Firefox/52\\.")) || (navigator.userAgent.match("Firefox/53\\.")) || (navigator.userAgent.match("Firefox/54\\.")) || (navigator.userAgent.match("Firefox/55\\.")) || (navigator.userAgent.match("Firefox/56\\.")) || (navigator.userAgent.match("Firefox/57\\.")) || (navigator.userAgent.match("Firefox/58\\.")) || (navigator.userAgent.match("Firefox/59\\.")) || (navigator.userAgent.match("Firefox/60\\.")) || (navigator.userAgent.match("Firefox/61\\.")) || (navigator.userAgent.match("Firefox/62\\.")) || (navigator.userAgent.match("Firefox/63\\.")) || (navigator.userAgent.match("Firefox/64\\.")) || (navigator.userAgent.match("Firefox/65\\.")) || (navigator.userAgent.match("Firefox/66\\.")) || (navigator.userAgent.match("Firefox/67\\.")) || (navigator.userAgent.match("Firefox/68\\.")) || (navigator.userAgent.match("Firefox/69\\.")) || (navigator.userAgent.match("Firefox/70\\.")) || (navigator.userAgent.match("Firefox/71\\.")) || (navigator.userAgent.match("Firefox/72\\.")) || (navigator.userAgent.match("Firefox/73\\.")) || (navigator.userAgent.match("Firefox/74\\.")) || (navigator.userAgent.match("Firefox/75\\.")) || (navigator.userAgent.match("Firefox/76\\.")) || (navigator.userAgent.match("Firefox/77\\.")) || (navigator.userAgent.match("Firefox/78\\.")) || (navigator.userAgent.match("Firefox/79\\.")) || (navigator.userAgent.match("Firefox/80\\.")) || (navigator.userAgent.match("Firefox/81\\.")) || (navigator.userAgent.match("Firefox/82\\.")) || (navigator.userAgent.match("Firefox/83\\.")) )
+	if ( (ua_agent.match("Firefox/")) && !( (ua_agent.match("PaleMoon/")) ) ) { // Mozilla Firefox
+		window.oldBrowser = ua_agent.match(/Firefox\/(\d+)/)[1] < 84
+	}
 
-	// Some old Google Versions
-	window.oldchrome =  ( (navigator.userAgent.match("Chrome/27\\.")) || (navigator.userAgent.match("Chrome/26\\.")) || (navigator.userAgent.match("Chrome/25\\.")) || (navigator.userAgent.match("Chrome/24\\.")) || (navigator.userAgent.match("Chrome/23\\.")) || (navigator.userAgent.match("Chrome/22\\.")) || (navigator.userAgent.match("Chrome/21\\.")) || (navigator.userAgent.match("Chrome/20\\.")) || (navigator.userAgent.match("Chrome/19\\.")) || (navigator.userAgent.match("Chrome/18\\.")) || (navigator.userAgent.match("Chrome/17\\.")) || (navigator.userAgent.match("Chrome/16\\.")) || (navigator.userAgent.match("Chrome/15\\.")) || (navigator.userAgent.match("Chrome/14\\.")) || (navigator.userAgent.match("Chrome/13\\.")) || (navigator.userAgent.match("Chrome/12\\.")) || (navigator.userAgent.match("Chrome/11\\.")) || (navigator.userAgent.match("Chrome/10\\.")) || (navigator.userAgent.match("Chrome/9\\.")) || (navigator.userAgent.match("Chrome/8\\.")) || (navigator.userAgent.match("Chrome/7\\.")) || (navigator.userAgent.match("Chrome/6\\.")) || (navigator.userAgent.match("Chrome/5\\.")) || (navigator.userAgent.match("Chrome/4\\.")) || (navigator.userAgent.match("Chrome/3\\.")) || (navigator.userAgent.match("Chrome/2\\.")) || (navigator.userAgent.match("Chrome/1\\.")) || (navigator.userAgent.match("Chrome/48\\.")) || (navigator.userAgent.match("Chrome/49\\.")) || (navigator.userAgent.match("Chrome/50\\.")) || (navigator.userAgent.match("Chrome/51\\.")) || (navigator.userAgent.match("Chrome/52\\.")) || (navigator.userAgent.match("Chrome/53\\.")) || (navigator.userAgent.match("Chrome/54\\.")) || (navigator.userAgent.match("Chrome/55\\.")) || (navigator.userAgent.match("Chrome/56\\.")) || (navigator.userAgent.match("Chrome/57\\.")) || (navigator.userAgent.match("Chrome/58\\.")) || (navigator.userAgent.match("Chrome/59\\.")) || (navigator.userAgent.match("Chrome/60\\.")) || (navigator.userAgent.match("Chrome/61\\.")) || (navigator.userAgent.match("Chrome/62\\.")) || (navigator.userAgent.match("Chrome/63\\.")) || (navigator.userAgent.match("Chrome/64\\.")) || (navigator.userAgent.match("Chrome/65\\.")) || (navigator.userAgent.match("Chrome/66\\.")) || (navigator.userAgent.match("Chrome/67\\.")) || (navigator.userAgent.match("Chrome/68\\.")) || (navigator.userAgent.match("Chrome/69\\.")) || (navigator.userAgent.match("Chrome/70\\.")) || (navigator.userAgent.match("Chrome/71\\.")) || (navigator.userAgent.match("Chrome/72\\.")) || (navigator.userAgent.match("Chrome/73\\.")) || (navigator.userAgent.match("Chrome/74\\.")) || (navigator.userAgent.match("Chrome/75\\.")) || (navigator.userAgent.match("Chrome/76\\.")) || (navigator.userAgent.match("Chrome/77\\.")) || (navigator.userAgent.match("Chrome/78\\.")) || (navigator.userAgent.match("Chrome/79\\.")) || (navigator.userAgent.match("Chrome/80\\.")) || (navigator.userAgent.match("Chrome/81\\.")) || (navigator.userAgent.match("Chrome/82\\.")) || (navigator.userAgent.match("Chrome/83\\.")) )
+	if ( (ua_agent.match("PaleMoon/")) ) { // Pale Moon
+		window.oldBrowser = ua_agent.match(/PaleMoon\/(\d+)/)[1] < 29
+	document.querySelector('html').classList.add('pale-moon')
+	}
 
-	window.oldBrowser =( (navigator.userAgent.match("Trident")) || (navigator.userAgent.match("Presto")) || (navigator.userAgent.match("Tessera")) || (navigator.userAgent.match("MINERVOULA")) || (navigator.userAgent.match("Silk")) || (navigator.userAgent.match("PLAYSTATION 3")) || (navigator.userAgent.match("Nintendo DSi")) || (navigator.userAgent.match("Nintendo 3DS")) || (navigator.userAgent.match("PLAYSTATION PORTABLE")) || (navigator.userAgent.match("Edge")) || (navigator.userAgent.match("BlackBerry")) || (navigator.userAgent.match("IEMobile")) )
 
-	/* Hack */
-	if (window.oldBrowser || window.oldchrome || window.oldfox || window.oldSafari) {
+	if ( (ua_agent.match("Chrome/")) && !( (ua_agent.match("Edge/")) ) ) { // Google Chrome
+		window.oldBrowser = ua_agent.match(/Chrome\/(\d+)/)[1] < 84
+	}
+	
+
+	window.oldBrowser =( 
+						(window.oldBrowser) ||						    // Old Chrome, Firefox, Safari and Pale Moon
+						(ua_agent.match("Trident")) ||					// Internet Explorer 				
+						(ua_agent.match("Presto")) || 					// Classic Opera
+						(ua_agent.match("Tessera")) || 					// 4x4 Browser
+						(ua_agent.match("MINERVOULA")) || 				// Older mInerva
+						(ua_agent.match("Silk")) || 					// Amazon Silk
+						(ua_agent.match("PLAYSTATION 3")) || 			// PS3 Browser
+						(ua_agent.match("Nintendo DSi")) || 			// Nintendo DSi Browser
+						(ua_agent.match("Nintendo 3DS")) || 			// Nintendo 3DS Browser
+						(ua_agent.match("PLAYSTATION PORTABLE")) || 	// PSP Browser
+						(ua_agent.match("Edge")) || 					// Classic Microsoft Edge
+						(ua_agent.match("BlackBerry")) || 				// Blackberry Browser
+						(ua_agent.match("IEMobile")) 					// Phone Internet Explorer
+						)
+	
+	if (window.oldBrowser) {
 		document.querySelector('body').innerHTML='<style> *, :before, :after {all:initial!important;}*:not(html):not(body):not(.warn) {display:none!important;}</style><div class="warn">Unsupported Configuration</div>';
 		console.error('Browser requirements are not met and Evelution can\'t run. Please upgrade your browser to latest');
 //		AddFloatingBanner("Browser requirements are not met and experience with Evelution on this browser will not be optimal.", "warning");
-	} else {
-		window.newbrowser = (CSS.supports("color","var(--color)") || CSS.supports("color:var(--color)") ) 
-		if (!window.newbrowser ) {
-//			AddFloatingBanner("Browser requirements are not met and experience with Evelution on this browser will not be optimal.", "warning");
-			document.querySelector('body').innerHTML='<style> *, :before, :after {all:initial!important;}*:not(html):not(body):not(.warn) {display:none!important;}</style><div class="warn">Unsupported Configuration</div>';
-			console.error('Browser requirements are not met and Evelution can\'t run. Please upgrade your browser to latest')
-		}
 	}
 	{{#is-outdated}}
 	AddFloatingBanner("We're dropping support for this MediaWiki version soon. Please make sure to update MediaWiki as soon as possible so as to keep enjoying the latest Evelution improvements","warning")
 	{{/is-outdated}}
-
 }
 
 

@@ -195,8 +195,8 @@ font-family:Trebuchet MS;
 /* BG Align */
 --desktop-background-alignment:var(--desktop-background-vertical-alignment) var(--desktop-background-horizontal-alignment);
 /* acrylic */
---acrylic-filter:blur( calc(30px * calc(1.2 - var(--system-acryllic-opacity) ) ) ) saturate(125%);
---mica-filter:blur( calc(120px * calc(1.2 - var(--system-acryllic-opacity) ) ) );
+--acrylic-filter:blur( 20px ) saturate(125%);
+--mica-filter:blur( 80px );
 /* Transition */
 --transitioner:cubic-bezier(0.25,0.25,0,1);
 /* Fonts */
@@ -2146,7 +2146,7 @@ input[type="checkbox"]::after, input[type="radio"]::after {
   min-width:1em!important;
   min-height:1em!important;
   font-size:calc(24px * var(--icon-size))!important;
-  transform:scale(calc(var(--icon-scale) * var(--icon-grow)))  rotate(var(--icon-rotate));
+  transform:scale(var(--icon-scale)) scale(var(--icon-grow))  rotate(var(--icon-rotate));
   vertical-align:middle;
   text-indent:0;
 }
@@ -3393,13 +3393,14 @@ margin-right:16px;
   --floating-button-fadeout-opacity:var(--fadeout-opacity);
 /* Shadow */
   --floating-button-shadow-blur:10px;
-  --floating-button-shadow-opacity:0.5;
+  --floating-button-shadow-opacity:0.25;
+  --floating-button-shadow-opacity-hover:0.5;
   text-decoration:none!important;
   align-items: center;
   background-image:none;
   background-color:var(--floating-button-background-color);
   color:var(--floating-button-color);
-  box-shadow: 0 0 var(--floating-button-shadow-blur) 0 rgba(var(--canvas-foreground-color-rgb), calc(var(--floating-button-shadow-opacity) * 0.5)), 0 0 0 100vh rgba(var(--floating-button-fadeout-color),0) inset;
+  box-shadow: 0 0 var(--floating-button-shadow-blur) 0 rgba(var(--canvas-foreground-color-rgb), var(--floating-button-shadow-opacity)), 0 0 0 100vh rgba(var(--floating-button-fadeout-color),0) inset;
   border-radius: var(--border-radius);
   border: 1px solid var(--floating-button-border-color);
   display: flex;
@@ -3511,7 +3512,7 @@ margin-right:16px;
 .cpe-dropdown:focus > .cpe-floating-button,
 .cpe-dropdown:focus-within > .cpe-floating-button {
   text-decoration:none;
-  box-shadow: 0 0 var(--floating-button-shadow-blur) 0 rgba(var(--canvas-foreground-color-rgb), var(--floating-button-shadow-opacity)), 0 0 0 100vh rgba(var(--floating-button-fadeout-color),var(--floating-button-fadeout-opacity)) inset;
+  box-shadow: 0 0 var(--floating-button-shadow-blur) 0 rgba(var(--canvas-foreground-color-rgb), var(--floating-button-shadow-opacity-hover)), 0 0 0 100vh rgba(var(--floating-button-fadeout-color),var(--floating-button-fadeout-opacity)) inset;
   background-image:none;
   background-color:var(--floating-button-background-color-hover);
   color:var(--floating-button-color-hover);

@@ -1193,7 +1193,8 @@ color:inherit;
   --floating-button-border-color-hover:rgba(var(--highlight-foreground-color-rgb),0.2);
   --floating-button-border-color-active:var(--floating-button-border-color-hover);
   --floating-button-fadeout-opacity:0;
-  --floating-button-shadow-opacity:0.66!important;
+  --floating-button-shadow-opacity:0.33!important;
+  --floating-button-shadow-opacity-hover:0.66!important;
   --floating-button-shadow-blur:15px!important;
 }
 
@@ -1679,9 +1680,10 @@ color:inherit;
 --dropdown-text-color:var(--hyperlink-foreground-color);
 /* Link Styling */
 --dropdown-hyperlink-background-color:rgba(var(--hyperlink-background-color-hover-rgb),var(--acrylic-opacity));
---dropdown-hyperlink-border-color:rgba(var(--canvas-foreground-color-rgb),calc(0.2 * var(--acrylic-opacity) ));
+--dropdown-hyperlink-border-color:rgba(var(--canvas-foreground-color-rgb),0.2));
 --dropdown-hyperlink-text-color:var(--hyperlink-foreground-color-inverted);
 }
+
 
 .visualstyle-simple.visualmode-contrast body,
 .visualstyle-simple.visualmode-contrast body .toc {
@@ -2549,8 +2551,6 @@ box-shadow:none!important;
 .visualstyle-classic .oo-ui-buttonElement:not(.oo-ui-buttonElement-frameless) > .oo-ui-buttonElement-button,
 .visualstyle-classic .cpe-floating-button,
 .visualstyle-classic .preview-window-window h2 button,
-.visualstyle-classic ::-webkit-scrollbar-thumb,
-.visualstyle-classic ::-webkit-scrollbar-button,
 .visualstyle-classic .fieldset,
 .visualstyle-classic .toc:not(.floating_toc),
 .visualstyle-classic [cpe-tooltip]:after,
@@ -2575,6 +2575,19 @@ box-shadow:none!important;
 	outline:0!important;
 	box-sizing:border-box;
 }
+
+.visualstyle-classic ::-webkit-scrollbar-thumb,
+.visualstyle-classic ::-webkit-scrollbar-button {
+	box-shadow:none!important;
+	background:var(--canvas-secondary-background-color)!important;
+	color:var(--canvas-text-secondary-background-color)!important;
+	border-width:2px!important;
+	border-style:solid!important;
+	border-color:var(--canvas-3d-background-color) var(--canvas-3d-background-color-dark) var(--canvas-3d-background-color-dark) var(--canvas-3d-background-color)!important;
+	outline:0!important;
+	box-sizing:border-box;
+}
+
 
 
 .visualstyle-classic .evelution-module {

@@ -20,11 +20,14 @@ To Run Evelution on your wiki, you must have MediaWiki 1.36 or greater. Older ve
 
 ## Browser Requirements
 Evelution requires at least one of these browsers in order to run properly:
-- Chrome 84+
-- Firefox 84+
-- Edge 84+
-- Safari 14+
-- Browsers based on those (Such as Opera)
+| Browser    | Supported Releases        | Notes																						   |
+| ---------- | ------------------------- | ----------------------------------------------------------------------------------------------- |
+| Chrome     | 84+                       | Has customized scrollbar styling.															   |
+| Firefox    | 84+                       | Most versions will not show all transparency effects.										   |
+| Edge       | 84+				         | EdgeHTML version is not supported. Has customized scrollbar styling.							   |
+| Safari     | 14+				         | Only on Apple Devices.					  													   |
+| Pale Moon  | 29+				         | Not Recommended. Performance will be degraded and certain functionlity will not work correctly. |
+
 
 Evelution skin will die if it is found to be running on unsupported browsers with the **Unsupported Configuration** error
 
