@@ -1908,6 +1908,7 @@ function DownloadTheme(full=false) {
 				 '--icon-filter-duration:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--icon-filter-duration")  + ';\n' +
 				 '--icon-filter-delay:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--icon-filter-delay")  + ';\n' +
 				 '--system-acryllic-opacity:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--system-acryllic-opacity")  + ';\n' +
+				 '--system-mica-opacity:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--system-mica-opacity")  + ';\n' +
 				 '--system-generic-color-hue-shift:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--system-generic-color-hue-shift")  + ';\n' +
 				 '--system-generic-color-saturation:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--system-generic-color-saturation")  + ';\n' +
 				 '--mica-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--mica-background-color")  + ';\n' +
@@ -2578,6 +2579,7 @@ if (imgfilter == 'none') {
 	var imgfilter = 'opacity(1)';
 }
 
+aopacity = getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--system-acryllic-opacity");
 
 // Gradient Sets
 		// Dledlen
@@ -3034,7 +3036,8 @@ var invfilters = [
 						 '--icon-filter-hover:' + wordfilter2  + ';\n' +
 						 '--icon-filter-duration:' + getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--icon-filter-duration")  + ';\n' +
 						 '--icon-filter-delay:' + getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--icon-filter-delay")  + ';\n' +
-						 '--system-acryllic-opacity:' + getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--system-acryllic-opacity")  + ';\n' +
+						 '--system-acryllic-opacity:' + aopacity  + ';\n' +
+						 '--system-mica-opacity:' + (1 - aopacity)  + ';\n' +
 						 '--system-generic-color-hue-shift:' + getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--system-generic-color-hue-shift")  + ';\n' +
 						 '--system-generic-color-saturation:' + getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--system-generic-color-saturation")  + ';\n' +
 

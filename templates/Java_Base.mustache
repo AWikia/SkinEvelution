@@ -113,8 +113,12 @@ function UpdateRangeInputs() {
 	if (getKey('right-rail-full') === '-1') {
 		insertKey('right-rail-full', 'true' );
 	}
+	if (getKey('left-nav-full') === '-1') {
+		insertKey('left-nav-full', 'true' );
+	}
 	var content_full = getKey('content-full')
 	var right_rail_full = getKey('right-rail-full');
+	var left_nav_full = getKey('left-nav-full');
     getParams().forEach(function (param) {
         var key = param.split("=")[0];
         var value = param.split("=")[1];
@@ -140,6 +144,14 @@ function UpdateRangeInputs() {
 				}
 				console.info('Right pane visibility settings overriden')
                 break;
+            case 'hideleftnav':
+				if (value === 'true') {
+					left_nav_full = 'false';
+				} else {
+					left_nav_full = 'true';
+				}
+				console.info('Left navigation for large screens visibility settings overriden')
+                break;
 
         }
     });
@@ -149,6 +161,10 @@ function UpdateRangeInputs() {
     if (right_rail_full === 'true') {
 		document.querySelector(' body ').classList.add('has-right-rail');
 	}
+    if (left_nav_full === 'true') {
+		document.querySelector(' body ').classList.add('has-left-nav');
+	}
+
 	UpdateRangeInputs();
 	DropDownUpdate();
 	var y = document.querySelector('.evelution-taskbar .cpe-dropdown.search:not(:focus) .link');
@@ -469,6 +485,7 @@ function ResetSettings() {
 	if (confirm("Are you sure you want to reset Evelution's settings to their defaults? This can't be undone.")) {
 		insertKey('content-full', 'false' );
 		insertKey('right-rail-full', 'true' );
+		insertKey('left-nav-full', 'true' );
 		insertKey('theme-selected', 'A' );
 		if ( ( window.matchMedia('(forced-colors: active)').matches ) ) {
 			insertKey('visual-appearance-mode', 'contrast' );
@@ -514,6 +531,17 @@ function ToggleRail() {
 		insertKey('right-rail-full', 'true' );
 	}
 }
+
+function ToggleNav() {
+	if 	(document.querySelector(' body.has-left-nav ')) {
+		document.querySelector(' body ').classList.remove('has-left-nav');
+		insertKey('left-nav-full', 'false');
+	} else {
+		document.querySelector(' body ').classList.add('has-left-nav');
+		insertKey('left-nav-full', 'true');
+	}
+}
+
 
 
 function RemoveEmptyMenus() {
