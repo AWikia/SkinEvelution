@@ -296,13 +296,44 @@ function InitDesigner() {
 				'<option value="#FFAE42">' +
 
 			'</datalist>' +
+			'<datalist id="td_fonts2">' + // Fonts
+				'<option value="\'Arimo\'">' + 
+				'<option value="\'Commissioner\'">' +
+				'<option value="\'Didact Gothic\'">' +
+				'<option value="\'Inter\'">' +
+				'<option value="\'Noto Sans\'">' +
+				'<option value="\'Roboto\'">' +
+				'<option value="\'Roboto Condensed\'">' + // NEW
+				'<option value="\'Roboto Flex\'">' + // NEW
+				'<option value="\'Ubuntu\'">' +
+				'<option value="\'Ubuntu Condensed\'">' + // NEW
+			'</datalist>' +
 			'<datalist id="td_fonts">' + // Fonts
-				'<option value="Exo 2">' +
-				'<option value="Work Sans">' +
-				'<option value="Lora">' +
-				'<option value="Roboto Slab">' +
-				'<option value="BioRhyme">' +
-				'<option value="Inknut Antiqua">' +
+				'<option value="\'BioRhyme\'">' +
+				'<option value="\'BioRhyme Expanded\'">' + // NEW
+				'<option value="\'Chango\'">' + // NEW
+				'<option value="\'Comic Neue\'">' +
+				'<option value="\'Exo 2\'">' +
+				'<option value="\'Inknut Antiqua\'">' +
+				'<option value="\'Lora\'">' +
+				'<option value="\'Roboto Serif\'">' + // NEW
+				'<option value="\'Roboto Slab\'">' +
+				'<option value="\'Rubik\'">' +
+				'<option value="\'Rubik Beastly\'">' + // NEW
+				'<option value="\'Rubik Bubbles\'">' + // NEW
+				'<option value="\'Rubik Burned\'">' + // NEW
+				'<option value="\'Rubik Dirt\'">' + // NEW
+				'<option value="\'Rubik Distressed\'">' + // NEW
+				'<option value="\'Rubik Glitch\'">' + // NEW
+				'<option value="\'Rubik Iso\'">' + // NEW
+				'<option value="\'Rubik Maker Hatch\'">' + // NEW
+				'<option value="\'Rubik Maze\'">' + // NEW
+				'<option value="\'Rubik Microbe\'">' + // NEW
+				'<option value="\'Rubik Moonrocks\'">' + // NEW
+				'<option value="\'Rubik Puddles\'">' + // NEW
+				'<option value="\'Rubik Wet Paint\'">' + // NEW
+				'<option value="\'Style Script\'">' + // NEW
+				'<option value="\'Work Sans\'">' +
 			'</datalist>' +
 			'<datalist id="td_imagefilter">' + // Fonts
 				'<option value="opacity(100%)">' +
@@ -680,7 +711,7 @@ function InitDesigner() {
 
 			'<tr>' +
 				'<td style="text-align:center; width:150px">' +
-					'<input type="text" id="firstfont" class="cpe-input designer-text" style="width:150px; min-width:150px;" placeholder="Font" autocomplete="off" />' + // Body Background 
+					'<input type="text" id="firstfont" class="cpe-input designer-text" style="width:150px; min-width:150px;" placeholder="Font" list="td_fonts2" autocomplete="off" />' + // Body Background 
 				'</td>' +
 
 				'<td style="text-align:center; width:150px">' +
