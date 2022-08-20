@@ -110,7 +110,6 @@ class SkinEvelution extends SkinMustache {
 		$data["has-css"] = $this->getConfig()->get( 'AllowUserCss' );
 		$data["has-js"] = $this->getConfig()->get( 'AllowUserJs' );
 		$data["has-mf"] = (ExtensionRegistry::getInstance()->isLoaded( 'MobileFrontend' ));
-		$data["has-no-skinlinks"] = $this->getConfig()->get( 'EvelutionDisableRepoLinks' );
 		$data["is-loggedin"] = $this->getSkin()->getUser()->isRegistered();
 		$data["is-outdated"] = ( version_compare( MW_VERSION, '1.37', '<' ) );
 
