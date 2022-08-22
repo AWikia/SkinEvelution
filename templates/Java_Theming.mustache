@@ -1984,38 +1984,15 @@ function ColorHover(color,color2) { // Regular Colors
 	}
 }
 
-function ColorAdjust(color,dark=false) { // Regular Colors
-	var color2 = window.MW18PageColor;
+
+function ColorAdjust(color,color2,dark=false) { // Regular Colors
 	var func = dark ? (isDarkColor(color2)) : (isLightColor(color2));
 	var light = chroma(color).get('hsl.l');
+	var hue = chroma(color).get('hsl.h');
 	if (func) {
-		return chroma(color).set('hsl.l', light-0.01).hex();
+		return chroma(color).set('hsl.l', light-0.01).set('hsl.h', hue).hex();
 	} else {
-		return chroma(color).set('hsl.l', light+0.01).hex();
-	}
-
-}
-
-
-function ColorAdjust2(color,dark=false) { // Regular Colors
-	var color2 = window.MW18BgColor;
-	var func = dark ? (isDarkColor(color2)) : (isLightColor(color2));
-	var light = chroma(color).get('hsl.l');
-	if (func) {
-		return chroma(color).set('hsl.l', light-0.01).hex();
-	} else {
-		return chroma(color).set('hsl.l', light+0.01).hex();
-	}
-}
-
-
-function ColorAdjust3(color,color2,dark=false) { // Regular Colors
-	var func = dark ? (isDarkColor(color2)) : (isLightColor(color2));
-	var light = chroma(color).get('hsl.l');
-	if (func) {
-		return chroma(color).set('hsl.l', light-0.01).hex();
-	} else {
-		return chroma(color).set('hsl.l', light+0.01).hex();
+		return chroma(color).set('hsl.l', light+0.01).set('hsl.h', hue).hex();
 	}
 }
 
@@ -2203,7 +2180,7 @@ if ((getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + wind
 	var dropdowncolor = ColorStyleAdjust(dropdowncolor);
 
 	while ( ( isSuitableColorFormControls(dropdowncolor, content_color) ) && (dropdowncolor !== lightnessR)  ) {
-		var dropdowncolor= ColorAdjust(dropdowncolor,true);
+		var dropdowncolor= ColorAdjust(dropdowncolor,window.MW18PageColor,true);
 	}
 
 
@@ -2229,7 +2206,7 @@ var content_text= GetCanvasText();
 		var content_text = ColorStyleAdjust(content_text);
 	
 		while ( ( !(isSuitableColorText(content_text, content_color)) ) && (content_text !== lightness) ) {
-			var content_text= ColorAdjust(content_text);
+			var content_text= ColorAdjust(content_text,window.MW18PageColor);
 		}
 
 var content_text1 = ColorHover(content_text);
@@ -2243,7 +2220,7 @@ var content2_text = ColorStyleAdjust(content2_text);
 
 	
 while ( ( !(isSuitableColorText(content2_text, dropdowncolor)) ) && (content2_text !== lightness3) ) {
-	var content2_text= ColorAdjust3(content2_text,dropdowncolor);
+	var content2_text= ColorAdjust(content2_text,dropdowncolor);
 }
 
 
@@ -2256,7 +2233,7 @@ var caret_color = GetActiveTitle();
 // Liatch Quirk
 		var caret_color = ColorStyleAdjust(caret_color);
 		while ( ( !(isSuitableColorFormControls(caret_color, content_color)) ) && (caret_color !== lightness)  ) {
-			var caret_color= ColorAdjust(caret_color);
+			var caret_color= ColorAdjust(caret_color,window.MW18PageColor);
 		}
 
 
@@ -2283,7 +2260,7 @@ if ((getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + wind
 		var carettext_color = ColorStyleAdjust(carettext_color);
 }
 			while ( ( !(isSuitableColorText(carettext_color, caret_color)) ) && (carettext_color !== lightnessAT)  ) {
-				var carettext_color= ColorAdjust3(carettext_color,caret_color);
+				var carettext_color= ColorAdjust(carettext_color,caret_color);
 			}
 
 
@@ -2298,7 +2275,7 @@ if ((getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + wind
 		var caret2_color = ColorStyleAdjust(caret2_color);
 }
 			while ( ( isSuitableColorFormControls(caret2_color, content_color) ) && (caret2_color !== lightnessR)  ) {
-			var caret2_color= ColorAdjust(caret2_color,true);
+			var caret2_color= ColorAdjust(caret2_color,window.MW18PageColor,true);
 		}
 
 
@@ -2327,7 +2304,7 @@ if ((getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + wind
 }
 
 			while ( ( !(isSuitableColorFormControls(caret2text_color, caret2_color)) ) && (caret2text_color !== lightnessIT)  ) {
-				var caret2text_color= ColorAdjust3(caret2text_color,caret2_color);
+				var caret2text_color= ColorAdjust(caret2text_color,caret2_color);
 			}
 
 
@@ -2342,7 +2319,7 @@ var button_color = GetHighlight();
 // Liatch Quirk
 	var button_color = ColorStyleAdjust(button_color);
 		while ( ( !(isSuitableColorFormControls(button_color, content_color)) ) && (button_color !== lightness)  ) {
-			var button_color= ColorAdjust(button_color);
+			var button_color= ColorAdjust(button_color,window.MW18PageColor);
 		}
 
 	var lightbutton = isLightColor(button_color);
@@ -2369,7 +2346,7 @@ if ((getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + wind
 		var buttontext_color = ColorStyleAdjust(buttontext_color);
 }
 			while ( ( !(isSuitableColorText(buttontext_color, button_color)) ) && (buttontext_color !== lightnessBTN)  ) {
-				var buttontext_color= ColorAdjust3(buttontext_color,button_color);
+				var buttontext_color= ColorAdjust(buttontext_color,button_color);
 			}
 
 
@@ -2394,13 +2371,13 @@ var link_color = GetHyperlink();
 	var link3_color = link_color;
 	
 		while ( ( !(isSuitableColorText(link_color, content_color)) ) && (link_color !== lightness) ) {
-			var link_color= ColorAdjust(link_color);
+			var link_color= ColorAdjust(link_color,window.MW18PageColor);
 		}
 		while ( ( !(isSuitableColorText(link2_color, dropdowncolor)) ) && (link2_color !== lightness3) ) {
-			var link2_color= ColorAdjust3(link2_color,dropdowncolor);
+			var link2_color= ColorAdjust(link2_color,dropdowncolor);
 		}
 		while ( ( !(isSuitableColorText(link3_color, lunacolor)) ) && (link3_color !== lightness4) ) {
-			var link3_color= ColorAdjust3(link3_color,lunacolor);
+			var link3_color= ColorAdjust(link3_color,lunacolor);
 		}
 
 
@@ -2419,13 +2396,13 @@ var vlink_color = GetVisitedHyperlink();
 	var vlink3_color = vlink_color;
 	
 		while ( ( !(isSuitableColorText(vlink_color, content_color)) ) && (vlink_color !== lightness) ) {
-			var vlink_color= ColorAdjust(vlink_color);
+			var vlink_color= ColorAdjust(vlink_color,window.MW18PageColor);
 		}
 		while ( ( !(isSuitableColorText(vlink2_color, dropdowncolor)) ) && (vlink2_color !== lightness3) ) {
-			var vlink2_color= ColorAdjust3(vlink2_color,dropdowncolor);
+			var vlink2_color= ColorAdjust(vlink2_color,dropdowncolor);
 		}
 		while ( ( !(isSuitableColorText(vlink3_color, lunacolor)) ) && (vlink3_color !== lightness4) ) {
-			var vlink3_color= ColorAdjust3(vlink3_color,lunacolor);
+			var vlink3_color= ColorAdjust(vlink3_color,lunacolor);
 		}
 
 
@@ -2444,13 +2421,13 @@ var alink_color = GetActiveText();
 	var alink3_color = alink_color;
 	
 		while ( ( !(isSuitableColorText(alink_color, content_color)) ) && (alink_color !== lightness) ) {
-			var alink_color= ColorAdjust(alink_color);
+			var alink_color= ColorAdjust(alink_color,window.MW18PageColor);
 		}
 		while ( ( !(isSuitableColorText(alink2_color, dropdowncolor)) ) && (alink2_color !== lightness3) ) {
-			var alink2_color= ColorAdjust3(alink2_color,dropdowncolor);
+			var alink2_color= ColorAdjust(alink2_color,dropdowncolor);
 		}
 		while ( ( !(isSuitableColorText(alink3_color, lunacolor)) ) && (alink3_color !== lightness4) ) {
-			var alink3_color= ColorAdjust3(alink3_color,lunacolor);
+			var alink3_color= ColorAdjust(alink3_color,lunacolor);
 		}
 
 
@@ -2471,7 +2448,7 @@ if ((getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + wind
 }
 
 		while ( ( !(isSuitableColorFormControls(border_color, content_color)) ) && (border_color !== lightness)  ) {
-			var border_color= ColorAdjust(border_color);
+			var border_color= ColorAdjust(border_color,window.MW18PageColor);
 		}
 
 
@@ -2511,7 +2488,7 @@ var headertext_color= GetDesktopText();
 		var headertext_color = ColorStyleAdjust(headertext_color);
 	
 		while ( ( !(isSuitableColorText(headertext_color, head_color)) ) && (headertext_color !== lightness2)  ) {
-			var headertext_color= ColorAdjust2(headertext_color);
+			var headertext_color= ColorAdjust(headertext_color,window.MW18BgColor);
 		}
 
 
