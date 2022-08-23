@@ -92,7 +92,7 @@
 					hdr_auto
 				</span>
 			</div>
-			<div class="cpe-dropdown__content cpe-visual-appearance" style="top:-126%;">
+			<div class="cpe-dropdown__content cpe-visual-appearance" style="top:-134%;">
 				<ul class="cpe-list is-linked cpe-device-themes has-icons">
 					<li data-device-theme="auto" title="{{msg-evelution-designer-auto}}">
 						<a onclick="colortheme('match-parent','auto')">
@@ -115,6 +115,21 @@
 						</a>
 					</li>
 				</ul>
+				<hr class="color-management-on">
+				 <ul class="cpe-list cpe-colorhue-range color-management-on">
+					<li>
+						<datalist id="colorhues" class="is-hidden">
+							<option value="0"    label="0deg">
+							<option value="60"   label="60deg">
+							<option value="120"  label="120deg">
+							<option value="180"  label="180deg">
+							<option value="240"  label="240deg">
+							<option value="300"  label="300deg">
+							<option value="360"  label="360deg">
+						</datalist>
+						<input type="range" min="0" max="360" value="0" step="5" class="colorhue" list="colorhues" onchange="SliderColorHue()"></input>
+					</li>
+				 </ul>
 				<hr class="color-management-on">
 				<ul class="cpe-list is-linked cpe-color-styles has-icons color-management-on">
 					<li data-color-style="standard" title="{{msg-evelution-standard}}">
@@ -141,40 +156,16 @@
 							<span class="cpe-icon material-icons lightdevice-off">square</span>
 						</a>
 					</li>
-					<li data-color-style="reversi" title="{{msg-evelution-colorstyle-reversi}}">
-						<a onclick="colortheme('reversi')">
-							<span class="cpe-icon material-icons darkdevice-off">invert_colors_off</span>
-							<span class="cpe-icon material-icons lightdevice-off">invert_colors</span>
-						</a>
-					</li>
-					<li data-color-style="singlereversi" title="{{msg-evelution-colorstyle-singlereversi}}">
-						<a onclick="colortheme('singlereversi')">
-							<span class="cpe-icon material-icons darkdevice-off">bedtime_off</span>
-							<span class="cpe-icon material-icons lightdevice-off">bedtime</span>
-						</a>
-					</li>
-					<li data-color-style="singlecolor_r" title="{{msg-evelution-colorstyle-singlecolor}} ({{msg-evelution-color-red}})">
-						<a onclick="colortheme('singlecolor_r')">
+					<li data-color-style="colorscale" title="{{msg-evelution-colorstyle-colorscale}}">
+						<a onclick="colortheme('colorscale')">
 							<span class="cpe-icon material-icons darkdevice-off" style="--icon-rotate:-90deg;">gradient</span>
 							<span class="cpe-icon material-icons lightdevice-off" style="--icon-rotate:90deg;">gradient</span>
 						</a>
 					</li>
-					<li data-color-style="singlecolor_g" title="{{msg-evelution-colorstyle-singlecolor}} ({{msg-evelution-color-green}})">
-						<a onclick="colortheme('singlecolor_g')">
-							<span class="cpe-icon material-icons darkdevice-off" style="--icon-rotate:90deg;">gradient</span>
-							<span class="cpe-icon material-icons lightdevice-off" style="--icon-rotate:-90deg;">gradient</span>
-						</a>
-					</li>
-					<li data-color-style="singlecolor_b" title="{{msg-evelution-colorstyle-singlecolor}} ({{msg-evelution-color-blue}})">
-						<a onclick="colortheme('singlecolor_b')">
-							<span class="cpe-icon material-icons darkdevice-off">gradient</span>
-							<span class="cpe-icon material-icons lightdevice-off" style="--icon-rotate:180deg;">gradient</span>
-						</a>
-					</li>
-					<li data-color-style="singlecolor" title="{{msg-evelution-colorstyle-singlecolor}} ({{msg-evelution-color-yellow}})">
-						<a onclick="colortheme('singlecolor')">
-							<span class="cpe-icon material-icons darkdevice-off" style="--icon-rotate:180deg;">gradient</span>
-							<span class="cpe-icon material-icons lightdevice-off">gradient</span>
+					<li data-color-style="singlecolorscale" title="{{msg-evelution-colorstyle-singlecolorscale}}">
+						<a onclick="colortheme('singlecolorscale')">
+							<span class="cpe-icon material-icons darkdevice-off">invert_colors</span>
+							<span class="cpe-icon material-icons lightdevice-off"  style="--icon-scale:-1; transform:scaleX(var(--icon-scale)) rotate(var(--icon-rotate));">invert_colors</span>
 						</a>
 					</li>
 					<li data-color-style="hottemperature" title="{{msg-evelution-colorstyle-hottemperature}}">
