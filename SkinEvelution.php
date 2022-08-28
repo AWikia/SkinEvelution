@@ -49,6 +49,8 @@ class SkinEvelution extends SkinMustache {
         $data["msg-evelution-activity-module"] = wfMessage( 'evelution-activity-module' )->inContentLanguage()->parseAsBlock(); // Additional JS is used
         $data["msg-evelution-about-module-info"] = wfMessage( 'evelution-about-module-info' )->inContentLanguage()->parseAsBlock();
         $data["msg-evelution-discord-module-server-id"] = wfMessage( 'evelution-discord-module-server-id' )->inContentLanguage();
+        $data["msg-policy-link"] =  Title::newFromText( 'Project:Rules' )->getLocalURL();
+
 		$data["html-revision"] = '0';
         $data["html-rc-link"] = SpecialPage::getTitleFor( 'Recentchanges' )->getLocalURL();
         $data["html-files-link"] = SpecialPage::getTitleFor( 'Newimages' )->getLocalURL();
@@ -83,6 +85,9 @@ class SkinEvelution extends SkinMustache {
         $data["html-purge-link"] = SpecialPage::getTitleFor( 'Purge' )->getLocalURL();
         $data["html-mypage-link"] = SpecialPage::getTitleFor( 'MyPage' )->getLocalURL();
         $data["html-discord-link"] = Title::newFromText( 'Project:Discord' )->getLocalURL();
+        $data["html-categories-link"] = SpecialPage::getTitleFor( 'Categories' )->getLocalURL();
+        $data["html-drediercts-link"] = SpecialPage::getTitleFor( 'DoubleRedirects' )->getLocalURL();
+        $data["html-sandbox-link"] = Title::newFromText( 'Project:Sandbox' )->getLocalURL();
         if ( class_exists( 'wAvatar' ) ) {
 			$avatar = new wAvatar( $this->getSkin()->getUser()
 				->getId(), 'l' );
