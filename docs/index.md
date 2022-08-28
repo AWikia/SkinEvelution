@@ -62,7 +62,10 @@ Fork this repo, add a new language code to the i18n folder (Such as fr.php). Cop
 
 # Creating new themes
 If you want to create a new theme without using CPE Theme Designer (i.e. Due to the wiki being on Miraheze), use this template:
-## CSS Way (Apply it to MediaWiki:Common.css or MediaWiki:Evelution.css)
+
+## Enabled Color Management (Standard Color Scheme)
+
+### CSS Way (Apply it to MediaWiki:Common.css or MediaWiki:Evelution.css)
 ```css
 .theme-A.visualcolors-standard { /* Replace .theme-A with either .theme-B, .theme-C, .theme-D, .theme-E, .theme-F, .theme-G, .theme-H if you want to target the other 7 slots, otherwise don't replace .theme-A with anything */ 
 --desktop-background-image:url("loadbg_dev.png"); /* <image> */
@@ -102,7 +105,7 @@ If you want to create a new theme without using CPE Theme Designer (i.e. Due to 
 }
 ```
 
-## PHP Way (Apply it to LocalSettings.php)
+### PHP Way (Apply it to LocalSettings.php)
 ```php
 $wgEvelutionThemeA = [/* Replace $wgEvelutionThemeA with either $wgEvelutionThemeB, $wgEvelutionThemeC, $wgEvelutionThemeD, $wgEvelutionThemeE, $wgEvelutionThemeF, $wgEvelutionThemeG, $wgEvelutionThemeH if you want to target the other 7 slots, otherwise don't replace $wgEvelutionThemeA with anything */ 
 'desktop-background-image' => 'url("loadbg_dev.png")', /* <image> */
@@ -141,4 +144,50 @@ $wgEvelutionThemeA = [/* Replace $wgEvelutionThemeA with either $wgEvelutionThem
 'system-generic-color-saturation' => '100%', /* <number> 20% to 100% */
 ];
 
+```
+
+## Disabled Color Management (Custom DCM Modes)
+
+### CSS Way (Apply it to MediaWiki:Common.css or MediaWiki:Evelution.css)
+```css
+.visualcolors-nocolormanagement.dcmmode-custom_1 { /* Replace .custom_1 with either .custom_2, .custom_3 or .custom_4 if you want to target the other 4 custom slots, otherwise don't replace .custom_1 with anything */ 
+	--desktop-background-color:field; /* <system-color> */
+	--desktop-text-background-color:fieldtext; /* <system-color> */
+	--canvas-background-color:canvas; /* <system-color> */
+	--canvas-secondary-background-color:buttonface; /* <system-color> */
+	--hyperlink-background-color:linktext; /* <system-color> */
+	--visited-hyperlink-background-color:visitedtext; /* <system-color> */
+	--inactive-text-background-color:graytext; /* <system-color> */
+	--active-text-background-color:activetext; /* <system-color> */
+	--canvas-text-background-color:canvastext; /* <system-color> */
+	--canvas-text-secondary-background-color:buttontext; /* <system-color> */
+	--highlight-background-color:highlight; /* <system-color> */
+	--highlight-text-background-color:highlighttext; /* <system-color> */
+	--active-title-background-color:fieldtext; /* <system-color> */
+	--active-title-text-background-color:field; /* <system-color> */
+	--inactive-title-background-color:canvas; /* <system-color> */
+	--inactive-title-text-background-color:graytext; /* <system-color> */
+}
+```
+
+### PHP Way (Apply it to LocalSettings.php)
+```php
+$wgEvelutionCustomDCMMode1 = [ /* Replace $wgEvelutionCustomDCMMode1 with either $wgEvelutionCustomDCMMode2, $wgEvelutionCustomDCMMode3 or $wgEvelutionCustomDCMMode4 if you want to target the other 4 custom slots, otherwise don't replace $wgEvelutionCustomDCMMode1 with anything */ 
+	'desktop-background-color' => 'field', /* <system-color> */
+	'desktop-text-background-color' => 'fieldtext', /* <system-color> */
+	'canvas-background-color' => 'canvas', /* <system-color> */
+	'canvas-secondary-background-color' => 'buttonface', /* <system-color> */
+	'hyperlink-background-color' => 'linktext', /* <system-color> */
+	'visited-hyperlink-background-color' => 'visitedtext', /* <system-color> */
+	'inactive-text-background-color' => 'graytext', /* <system-color> */
+	'active-text-background-color' => 'activetext', /* <system-color> */
+	'canvas-text-background-color' => 'canvastext', /* <system-color> */
+	'canvas-text-secondary-background-color' => 'buttontext', /* <system-color> */
+	'highlight-background-color' => 'highlight', /* <system-color> */
+	'highlight-text-background-color' => 'highlighttext', /* <system-color> */
+	'active-title-background-color' => 'fieldtext', /* <system-color> */
+	'active-title-text-background-color' => 'field', /* <system-color> */
+	'inactive-title-background-color' => 'canvas', /* <system-color> */
+	'inactive-title-text-background-color' => 'graytext', /* <system-color> */
+];
 ```

@@ -41,7 +41,14 @@ When styling the Evelution Skin with CSS, make sure that the layout will still b
 By default, Global Nav upper links consist of Five (Six on Miraheze Wikis) links. While you can hide them using Sitewide CSS, it can result in important information being lost (Such as the Link to the Evelution Documentation). Those customizations are allowed, unlike in Fandom
 
 ## Never Customize other color schemes
-Wikis should avoid customizing any color scheme beyond the ``standard`` ones as the rest of them contain color schemes for people who need accessible and different color schemes to suit their preference. Here's a theming template you can use for getting custom theme(s) for your wiki:
+Wikis should avoid customizing any color scheme beyond the ``standard`` ones as the rest of them contain color schemes for people who need accessible and different color schemes to suit their preference.
+
+For DCM Modes, avoid customizing any DCM Modes beyond the ``custom_1``, ``custom_2``, ``custom_3`` and ``custom_4`` as the rest provide the base DCM Functionality
+
+Here's a theming template you can use for getting custom theme(s) for your wiki:
+
+## Enabled Color Management (Standard Color Scheme)
+
 ### CSS Way (Apply it to MediaWiki:Common.css or MediaWiki:Evelution.css)
 ```css
 .theme-A.visualcolors-standard { /* Replace .theme-A with either .theme-B, .theme-C, .theme-D, .theme-E, .theme-F, .theme-G, .theme-H if you want to target the other 7 slots, otherwise don't replace .theme-A with anything */ 
@@ -121,4 +128,50 @@ $wgEvelutionThemeA = [/* Replace $wgEvelutionThemeA with either $wgEvelutionThem
 'system-generic-color-saturation' => '100%', /* <number> 20% to 100% */
 ];
 
+```
+
+## Disabled Color Management (Custom DCM Modes)
+
+### CSS Way (Apply it to MediaWiki:Common.css or MediaWiki:Evelution.css)
+```css
+.visualcolors-nocolormanagement.dcmmode-custom_1 { /* Replace .custom_1 with either .custom_2, .custom_3 or .custom_4 if you want to target the other 4 custom slots, otherwise don't replace .custom_1 with anything */ 
+	--desktop-background-color:field; /* <system-color> */
+	--desktop-text-background-color:fieldtext; /* <system-color> */
+	--canvas-background-color:canvas; /* <system-color> */
+	--canvas-secondary-background-color:buttonface; /* <system-color> */
+	--hyperlink-background-color:linktext; /* <system-color> */
+	--visited-hyperlink-background-color:visitedtext; /* <system-color> */
+	--inactive-text-background-color:graytext; /* <system-color> */
+	--active-text-background-color:activetext; /* <system-color> */
+	--canvas-text-background-color:canvastext; /* <system-color> */
+	--canvas-text-secondary-background-color:buttontext; /* <system-color> */
+	--highlight-background-color:highlight; /* <system-color> */
+	--highlight-text-background-color:highlighttext; /* <system-color> */
+	--active-title-background-color:fieldtext; /* <system-color> */
+	--active-title-text-background-color:field; /* <system-color> */
+	--inactive-title-background-color:canvas; /* <system-color> */
+	--inactive-title-text-background-color:graytext; /* <system-color> */
+}
+```
+
+### PHP Way (Apply it to LocalSettings.php)
+```php
+$wgEvelutionCustomDCMMode1 = [ /* Replace $wgEvelutionCustomDCMMode1 with either $wgEvelutionCustomDCMMode2, $wgEvelutionCustomDCMMode3 or $wgEvelutionCustomDCMMode4 if you want to target the other 4 custom slots, otherwise don't replace $wgEvelutionCustomDCMMode1 with anything */ 
+	'desktop-background-color' => 'field', /* <system-color> */
+	'desktop-text-background-color' => 'fieldtext', /* <system-color> */
+	'canvas-background-color' => 'canvas', /* <system-color> */
+	'canvas-secondary-background-color' => 'buttonface', /* <system-color> */
+	'hyperlink-background-color' => 'linktext', /* <system-color> */
+	'visited-hyperlink-background-color' => 'visitedtext', /* <system-color> */
+	'inactive-text-background-color' => 'graytext', /* <system-color> */
+	'active-text-background-color' => 'activetext', /* <system-color> */
+	'canvas-text-background-color' => 'canvastext', /* <system-color> */
+	'canvas-text-secondary-background-color' => 'buttontext', /* <system-color> */
+	'highlight-background-color' => 'highlight', /* <system-color> */
+	'highlight-text-background-color' => 'highlighttext', /* <system-color> */
+	'active-title-background-color' => 'fieldtext', /* <system-color> */
+	'active-title-text-background-color' => 'field', /* <system-color> */
+	'inactive-title-background-color' => 'canvas', /* <system-color> */
+	'inactive-title-text-background-color' => 'graytext', /* <system-color> */
+];
 ```

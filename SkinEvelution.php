@@ -143,6 +143,12 @@ class SkinEvelution extends SkinMustache {
 		$data["data-theme-F"] = $this->getConfig()->get ( 'EvelutionThemeF' );
 		$data["data-theme-G"] = $this->getConfig()->get ( 'EvelutionThemeG' );
 		$data["data-theme-H"] = $this->getConfig()->get ( 'EvelutionThemeH' );
+		$data["data-theme-H"] = $this->getConfig()->get ( 'EvelutionThemeH' );
+		$data["data-dcmmode-1"] = $this->getConfig()->get ( 'EvelutionCustomDCMMode1' );
+		$data["data-dcmmode-2"] = $this->getConfig()->get ( 'EvelutionCustomDCMMode2' );
+		$data["data-dcmmode-3"] = $this->getConfig()->get ( 'EvelutionCustomDCMMode3' );
+		$data["data-dcmmode-4"] = $this->getConfig()->get ( 'EvelutionCustomDCMMode4' );
+
 		$data["html-testing"] = $this->getConfig()->get ( 'ScriptPath' );
         return $data;
     }
