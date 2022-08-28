@@ -88,6 +88,13 @@ class SkinEvelution extends SkinMustache {
         $data["html-categories-link"] = SpecialPage::getTitleFor( 'Categories' )->getLocalURL();
         $data["html-drediercts-link"] = SpecialPage::getTitleFor( 'DoubleRedirects' )->getLocalURL();
         $data["html-sandbox-link"] = Title::newFromText( 'Project:Sandbox' )->getLocalURL();
+        $data["html-af-link"] = SpecialPage::getTitleFor( 'AbuseFilter' )->getLocalURL();
+        $data["html-chat-link"] = SpecialPage::getTitleFor( 'Chat' )->getLocalURL();
+        $data["html-gadgets-link"] = SpecialPage::getTitleFor( 'Gadgets' )->getLocalURL();
+        $data["html-translate-link"] = SpecialPage::getTitleFor( 'Translate' )->getLocalURL();
+        $data["html-cpage-link"] = SpecialPage::getTitleFor( 'CreatePage' )->getLocalURL();
+        $data["html-contact-link"] = SpecialPage::getTitleFor( 'Contact' )->getLocalURL();
+
         if ( class_exists( 'wAvatar' ) ) {
 			$avatar = new wAvatar( $this->getSkin()->getUser()
 				->getId(), 'l' );
@@ -119,6 +126,14 @@ class SkinEvelution extends SkinMustache {
 		$data["is-outdated"] = ( version_compare( MW_VERSION, '1.37', '<' ) );
 
 		$data["has-disabled-dynamic-widgets"] = $this->getConfig()->get ( 'EvelutionDisableDynamicWidgets' );
+
+		$data["has-af"] = ( (ExtensionRegistry::getInstance()->isLoaded( 'AbuseFilter' )) );
+		$data["has-chat"] = ( (ExtensionRegistry::getInstance()->isLoaded( 'MediaWikiChat' )) );
+		$data["has-gadgets"] = ( (ExtensionRegistry::getInstance()->isLoaded( 'Gadgets' )) );
+		$data["has-translate"] = ( (ExtensionRegistry::getInstance()->isLoaded( 'Translate' )) );
+		$data["has-cpage"] = ( (ExtensionRegistry::getInstance()->isLoaded( 'CreateAPage' )) );
+		$data["has-contact"] = ( (ExtensionRegistry::getInstance()->isLoaded( 'ContactPage' )) );
+
 		/* Theming Stuff */
 		$data["data-theme-A"] = $this->getConfig()->get ( 'EvelutionThemeA' );
 		$data["data-theme-B"] = $this->getConfig()->get ( 'EvelutionThemeB' );
