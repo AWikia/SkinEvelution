@@ -14,18 +14,16 @@ function insertKey(key,value) {
 
 /* Enable New Global Navigation - No exception for now */
 (function () {
-	if (getKey('nav-full') === '-1') {
-		insertKey('nav-full', 'true' );
+	if (getKey('theme') === '-1') {
+		insertKey('theme', 'standard' );
 	}
-	var nav_full = getKey('nav-full');
-	$('body').attr('nav', nav_full );
+	var theme = getKey('theme');
+	Theme(theme);
 })();
 
-function ToggleNav() {
-	if 	($('body').attr('nav') == 'true') {
-		$('body').attr('nav', 'false');
-	} else {
-		$('body').attr('nav', 'true');
-	}
-	insertKey('nav-full', $(' body').attr('nav') );
+function Theme(theme="standard") {
+	insertKey('theme', theme );
+	$('html').attr('theme', theme );
+	$('.themes li.selected').removeClass('selected');
+	$('.themes li[data-theme="' + theme + '"]').addClass('selected');
 }

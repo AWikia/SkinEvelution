@@ -416,7 +416,7 @@
       up: 10,
       down: 10
     },
-    offset: 90,
+    offset: 120,
     scroller: isBrowser() ? window : null,
     classes: {
       frozen: "headroom--frozen",
