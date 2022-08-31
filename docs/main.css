@@ -68,6 +68,63 @@ container {
 	margin-bottom:var(--minibar-size)!important;
 }
 
+.responsive {
+	border:0px solid transparent;
+	box-shadow:0 2px 6px 0 rgba(var(--canvas-text-background-color-rgb),.4),0 2px 6px 0 rgba(var(--canvas-background-color-rgb),0.4);
+	color:var(--canvas-text-background-color);
+	background-color:var(--canvas-background-color);
+}
+	
+body {
+  color: var(--canvas-text-background-color);
+  background-color:var(--canvas-background-color);
+  font-family:var(--custom-font), sans-serif;
+}
+
+
+
+@media (min-width: 64em) {
+
+	.main-content {
+		max-width:100%;
+	}
+	
+	body {
+	  color: var(--desktop-text-background-color);
+	  background-color:var(--desktop-background-color);
+	}
+
+	
+	.responsive {
+		margin:70px auto;
+		max-width:64rem;
+		border:1px solid var(--luna-border-background-color);
+		border-radius:calc(var(--border-radius) * 2);
+	}
+	
+	.page-header {
+		border-top-left-radius:calc( calc(var(--border-radius) * 2) - 1px);
+		border-top-right-radius:calc( calc(var(--border-radius) * 2) - 1px);
+	}
+
+	html {
+		scrollbar-color:var(--scrollbar-thumb-color-1) var(--scrollbar-track-color-1);
+	/** Scrollbar Styling **/
+		/* Width */
+		--scrollbar-width:17px;
+		/* Track */
+		--scrollbar-track-color-1:var(--desktop-background-color);
+		--scrollbar-track-color-2:var(--desktop-background-color-hover);
+		--scrollbar-track-text:var(--desktop-foreground-color);
+		/* Thumb */
+		--scrollbar-thumb-color-1:var(--desktop-text-background-color);
+		--scrollbar-thumb-color-2:var(--desktop-text-background-color-hover);
+		--scrollbar-thumb-text:var(--desktop-text-foreground-color);
+	}
+
+
+}
+
 /* Taken from CPE.css cpe-icon */
 /* Icons */
 .material-icons,
@@ -2860,18 +2917,16 @@ fieldset {
   background-color: var(--canvas-secondary-background-color);
 }
 
-body {
-  color: var(--canvas-text-background-color);
-  background-color:var(--canvas-background-color);
-}
 #skip-to-content:focus {
   background: var(--active-text-background-color);
   outline: thick solid var(--active-text-background-color);
 }
+
 a {
   color: var(--hyperlink-background-color);
   transition:color 400ms var(--transitioner);
 }
+
 a:hover {
   text-decoration: underline;
   color:var(--hyperlink-background-color-hover);
@@ -2881,11 +2936,27 @@ a:active {
   color:var(--active-text-background-color);
 }
 
+
+:visited {
+  color: var(--visited-hyperlink-background-color);
+}
+
+:visited:hover {
+  color:var(--visited-hyperlink-background-color-hover);
+}
+
+:visited:active {
+  color:var(--active-text-background-color);
+}
+
+
 .btn {
   color: rgba(var(--highlight-foreground-color-rgb), 0.7);
   background-color: rgba(var(--highlight-foreground-color-rgb), 0.08);
   border-color: rgba(var(--highlight-foreground-color-rgb), 0.2);
+  border-radius:var(--border-radius);
 }
+
 .btn:hover {
   color: rgba(var(--highlight-foreground-color-rgb), 0.8);
   background-color: rgba(var(--highlight-foreground-color-rgb), 0.2);
@@ -2914,17 +2985,29 @@ a:active {
 .main-content h5,
 .main-content h6 {
   color: var(--highlight-background-color);
+  font-family:var(--custom-secondary-font), sans-serif;
 }
+
+.main-content h3,
+.main-content h4,
+.main-content h5,
+.main-content h6 {
+	font-weight:bold;
+}
+
 
 .main-content code {
   color: var(--canvas-text-secondary-background-color);
   background-color: var(--canvas-secondary-background-color);
+  border:1px solid var(--canvas-secondary-background-color-hover);
+  border-radius:var(--border-radius);
 }
 
 .main-content pre {
   color: var(--canvas-text-secondary-background-color);
   background-color: var(--canvas-secondary-background-color);
   border-color: var(--canvas-secondary-background-color-hover);
+  border-radius:var(--border-radius);
 }
 
 .main-content pre > code {
@@ -2943,6 +3026,7 @@ a:active {
 
 .main-content table th {
   background-color:var(--canvas-secondary-background-color);
+  color:var(--canvas-text-secondary-background-color);
 }
 
 

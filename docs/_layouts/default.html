@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
 
 {% seo %}
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style" type="text/css" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;500;600;700&family=BioRhyme+Expanded:wght@200;300;400;700;800&family=BioRhyme:wght@200;300;400;700;800&family=Chango&family=Comic+Neue:wght@300;400;700&family=Commissioner:wght@100;200;300;400;500;600;700;800;900&family=Didact+Gothic&family=Exo+2:wght@100;200;300;400;500;600;700;800;900&family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Lora:wght@400;500;600;700&family=Noto+Sans:wght@100;200;300;400;500;600;700;800;900&family=Roboto+Condensed:wght@300;400;700&family=Roboto+Flex:opsz,wght@8..144,100;8..144,200;8..144,300;8..144,400;8..144,500;8..144,600;8..144,700;8..144,800;8..144,900;8..144,1000&family=Roboto+Serif:opsz,wght@8..144,100;8..144,200;8..144,300;8..144,400;8..144,500;8..144,600;8..144,700;8..144,800;8..144,900&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&family=Rubik+Beastly&family=Rubik+Bubbles&family=Rubik+Burned&family=Rubik+Dirt&family=Rubik+Distressed&family=Rubik+Glitch&family=Rubik+Iso&family=Rubik+Marker+Hatch&family=Rubik+Maze&family=Rubik+Microbe&family=Rubik+Moonrocks&family=Rubik+Puddles&family=Rubik+Wet+Paint&family=Rubik:wght@300;400;500;600;700;800;900&family=Style+Script&family=Ubuntu+Condensed&family=Ubuntu:wght@300;400;500;700&family=Work+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
 /* Rounded */
 @font-face {
@@ -52,7 +52,7 @@
 					live_help
 				</span>
 		</a>
-		<div class="cpe-dropdown has-dark-shadow explore-menu is-flipped" tabindex="-1">
+		<div class="cpe-dropdown has-dark-shadow contents-menu is-flipped" tabindex="-1">
 			<div class="link cpe-dropdown__toggle" cpe-tooltip-position="top" cpe-tooltip="Contents">
 				<span class="cpe-icon material-icons">
 					description
@@ -68,6 +68,9 @@
 					</li>
 					<li class="local-nav-link">
 						<a href="https://awikia.github.io/SkinEvelution/CSSRecomendations.html">Evelution CSS Best Practices</a>
+					</li>
+					<li class="local-nav-link">
+						<a href="https://awikia.github.io/SkinEvelution/EvelutionDocs.html">EvelutionDocs Skin Information</a>
 					</li>
 				</ul>
 			</div>
@@ -145,10 +148,13 @@
 						palette
 					</span>
 				</a>
-				<div class="cpe-dropdown__content is-left-aligned themes" style="left:0;">
+				<div class="cpe-dropdown__content is-left-aligned is-not-scrollable themes" style="left:0;">
 					<ul class="cpe-list is-linked">
 						<li data-theme="standard">
 							<a onclick="Theme('standard')">Cayman</a>
+						</li>
+						<li data-theme="dynamic_r">
+							<a onclick="Theme('dynamic_r')">Dynamic Red</a>
 						</li>
 						<li data-theme="dynamic_g">
 							<a onclick="Theme('dynamic_g')">Dynamic Green</a>
@@ -161,6 +167,12 @@
 						</li>
 						<li data-theme="cpe-language">
 							<a onclick="Theme('cpe-language')">CPE Language</a>
+						</li>
+						<li data-theme="contrast">
+							<a onclick="Theme('contrast')">High Contrast</a>
+						</li>
+						<li data-theme="contrast2">
+							<a onclick="Theme('contrast2')">Classic High Contrast</a>
 						</li>
 
 					</ul>
@@ -279,30 +291,31 @@
 		</div>
 
 	</header>
-		
-    <a id="skip-to-content" href="#content">Skip to the content.</a>
-    <header class="page-header" role="banner">
-      <h1 class="project-name">{{ page.title | default: site.title | default: site.github.repository_name }}</h1>
-      <h2 class="project-tagline">{{ page.description | default: site.description | default: site.github.project_tagline }}</h2>
-      {% if site.github.is_project_page %}
-        <a href="{{ site.github.repository_url }}" class="btn">View on GitHub</a>
-      {% endif %}
-      {% if site.show_downloads %}
-        <a href="{{ site.github.zip_url }}" class="btn">Download .zip</a>
-        <a href="{{ site.github.tar_url }}" class="btn">Download .tar.gz</a>
-      {% endif %}
-    </header>
-    <main id="content" class="main-content" role="main">
-			
-<!--	    <h2 class="project-tagline">{{ page.description | default: site.description | default: site.github.project_tagline }}</h2>-->
-	    {{ content }}
-	      <footer class="site-footer">
-		{% if site.github.is_project_page %}
-		  <span class="site-footer-owner"><a href="{{ site.github.repository_url }}">{{ site.github.repository_name }}</a> is maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a>.</span>
-		{% endif %}
-		<span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</span>
-	      </footer>
-    </main>
+	<div class="responsive">
+		<a id="skip-to-content" href="#content">Skip to the content.</a>
+		<header class="page-header" role="banner">
+		  <h1 class="project-name">{{ page.title | default: site.title | default: site.github.repository_name }}</h1>
+		  <h2 class="project-tagline">{{ page.description | default: site.description | default: site.github.project_tagline }}</h2>
+		  {% if site.github.is_project_page %}
+			<a href="{{ site.github.repository_url }}" class="btn">View on GitHub</a>
+		  {% endif %}
+		  {% if site.show_downloads %}
+			<a href="{{ site.github.zip_url }}" class="btn">Download .zip</a>
+			<a href="{{ site.github.tar_url }}" class="btn">Download .tar.gz</a>
+		  {% endif %}
+		</header>
+		<main id="content" class="main-content" role="main">
+				
+	<!--	    <h2 class="project-tagline">{{ page.description | default: site.description | default: site.github.project_tagline }}</h2>-->
+			{{ content }}
+			  <footer class="site-footer">
+			{% if site.github.is_project_page %}
+			  <span class="site-footer-owner"><a href="{{ site.github.repository_url }}">{{ site.github.repository_name }}</a> is maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a>.</span>
+			{% endif %}
+			<span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</span>
+			  </footer>
+		</main>
+	</div>
 </container>
   </body>
   
