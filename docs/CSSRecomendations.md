@@ -26,13 +26,27 @@ If you decide that only your own color scheme/schemes should be used on your wik
 ```
 
 ## Always check against contrast
-When picking up custom colors, you should check them to have enough contrast (By Evelution's Definition, min contrast is 3 for low contrast, 3.75 for med-low contrast, 4.5 for medium contrast, 5.25 for med-high contrast, 6 for high contrast, 6.75 for hi-vhi contrast and 7.5 for very high contrast). 
+When picking up custom colors, you should check them to have enough contrast. Below is a table with the list of Contrast Ratios used by Evelution Skin:
+
+| Property 										 	    | Low Contrast  	        | High Contrast |
+| ----------------------------------------------------- | ------------------------- | ------------- |
+| Text       									   	    | 4.50+                     | 7.00+         |
+| XL Text <br> Inactive Text <br> Active Elements       | 3.00+                     | 4.50+         |
+| Neutral Color	<br> Inactive Elements			   	 	| 3.00-                     | 4.50-         |
+| Document Canvas <br> Solid Background Image			| 0.00+                     | 0.00+         |
+
+
+Contrast rations that end with ``+`` mean that a color is acceptable if contrast ratio of the color against another color like Canvas is equals or greater than the specified ratio (``--hyperlink-background-color`` for instance). Contrast rations that end with ``-`` mean that a color is acceptable if contrast ratio of the color against another color like Canvas is less than the specified ratio ( ``--canvas-secondary-background-color`` for instance).
+
+Text in size over 20 pixels is considered to be **XL Text**, meaning it can have fewer contrast than small ones, which is the same as the non-notable Small ones. Buttons are considered to be **Active Elements**.
 
 Using theming variables like ``var(--hyperink-background-color)`` as background color and ``var(--hyperlink-foreground-color)`` as foreground color is one of the best choices you can do as you will have forced-colors support out of the box.
 
 If you need to use your own colors for background and foreground color, always pick the best. For instance, if you want your box to have a Lime background, always choose a legible forerground color such as Black or Dark Blue. Never pick a color such as White or Wheat as those colors don't play nice against a Lime background.
 
-On no account will you expect contrast issues when using the theming variables properly as Evelution automatically adjusts offending themes (Those with low contrast) to be as great as possible.
+On no account will you expect contrast issues when using the theming variables properly as Evelution automatically adjusts offending themes (Those with low contrast) to be as great as possible. This means that creating a theme with all color variables set to the same color (Such as red) will not create an illegible theme. If you're still not satisfied with the color contrast, you can increase contrast level by using the Contrast Modes dropdown and either move the slider more to the right or pick one of the eight Contrast Mode presets (The first one is automatic to match your system preferences).
+
+Evelution also provides Hyperlink, Visited Hyperlink and Active Text colors variables that can be paired either with the neutral color ( ``-*-secondary-background-color-*`` like ``active-text-secondary-background-color`` ) which also apply to the Generic Colors or the Luna Lavccent color aka the Active Caption color ( ``-*-tertiary-background-color-*`` like ``hyperlink-tertiary-background-color`` )
 
 ## Avoid destroying the layout
 When styling the Evelution Skin with CSS, make sure that the layout will still be usable and will not cause any distorts. This is also the case for many other skins.
