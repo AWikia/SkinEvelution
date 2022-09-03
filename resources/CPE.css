@@ -165,6 +165,7 @@ Aleo = Latin
 --system-acryllic-opacity:0.6;
 --system-generic-color-hue-shift:0;
 --system-generic-color-saturation:100%;
+--system-visual-mode:standard;
 --system-visual-style:standard;
 
 /*--highlight-background-color:#dd8300;
@@ -534,6 +535,8 @@ body {
 		--system-acryllic-opacity:0.6!important;
 		--system-generic-color-hue-shift:0!important;
 		--system-generic-color-saturation:100%!important;
+		--system-visual-mode:contrast;
+		--system-visual-style:standard;
 	}
 	
 	.fc-selecteditem,
@@ -595,6 +598,8 @@ body {
 		--system-acryllic-opacity:0.6!important;
 		--system-generic-color-hue-shift:0!important;
 		--system-generic-color-saturation:100%!important;
+		--system-visual-mode:standard;
+		--system-visual-style:standard;
 	}
 	
 /* Custom */
@@ -2965,13 +2970,24 @@ max-height:152px;
 }
 
 
-.cpe-dropdown__content.cpe-visual-appearance .cpe-list.cpe-contrast-range > li > input[type="range"],
-.cpe-dropdown__content.cpe-visual-appearance .cpe-list.cpe-colorhue-range > li > input[type="range"] {
+.cpe-dropdown__content.cpe-visual-appearance .cpe-list.cpe-contrast-range > li > input[type="range"] {
 	min-width:152px;
 	height:30px;
 }
 
+.cpe-dropdown__content.cpe-visual-appearance .cpe-list.cpe-colorhue-range > .slider-with-icon {
+	display:flex;
+}
 
+.cpe-dropdown__content.cpe-visual-appearance .cpe-list.cpe-colorhue-range > .slider-with-icon > .cpe-icon {
+	align-self:center;
+	margin-right:5px;
+}
+
+.cpe-dropdown__content.cpe-visual-appearance .cpe-list.cpe-colorhue-range > .slider-with-icon > input[type="range"] {
+	min-width:auto;
+	height:30px;
+}
 
 .cpe-dropdown__content .cpe-list.is-linked.has-icons li > a:not(.cpe-button){
     padding: 6px;

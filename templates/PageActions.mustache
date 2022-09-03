@@ -92,7 +92,7 @@
 					hdr_auto
 				</span>
 			</div>
-			<div class="cpe-dropdown__content cpe-visual-appearance" style="top:-134%;">
+			<div class="cpe-dropdown__content cpe-visual-appearance" style="top:-122%;">
 				<ul class="cpe-list is-linked cpe-device-themes has-icons">
 					<li data-device-theme="auto" title="{{msg-evelution-designer-auto}}">
 						<a onclick="colortheme('match-parent','auto')">
@@ -117,7 +117,7 @@
 				</ul>
 				<hr class="color-management-on">
 				 <ul class="cpe-list cpe-colorhue-range color-management-on">
-					<li>
+					<li class="slider-with-icon">
 						<datalist id="colorhues" class="is-hidden">
 							<option value="0"    label="0deg">
 							<option value="60"   label="60deg">
@@ -127,7 +127,19 @@
 							<option value="300"  label="300deg">
 							<option value="360"  label="360deg">
 						</datalist>
+						<span class="cpe-icon material-icons">palette</span>
 						<input type="range" min="0" max="360" value="0" step="5" class="colorhue" list="colorhues" onchange="SliderColorHue()"></input>
+					</li>
+					<li class="slider-with-icon">
+						<datalist id="colorsats" class="is-hidden">
+							<option value="0"    label="0%">
+							<option value="25"   label="25%">
+							<option value="50"   label="50%">
+							<option value="75"   label="75%">
+							<option value="100"  label="100%">
+						</datalist>
+						<span class="cpe-icon material-icons">tonality</span>
+						<input type="range" min="0" max="100" value="100" step="5" class="colorsat" list="colorsats" onchange="SliderColorSaturation()"></input>
 					</li>
 				 </ul>
 				<hr class="color-management-on">
@@ -138,34 +150,10 @@
 							<span class="cpe-icon material-icons lightdevice-off">hdr_auto</span>
 						</a>
 					</li>
-					<li data-color-style="single" title="{{msg-evelution-colorstyle-single}}">
-						<a onclick="colortheme('single')">
-							<span class="cpe-icon material-icons darkdevice-off">light_mode</span>
-							<span class="cpe-icon material-icons lightdevice-off">dark_mode</span>
-						</a>
-					</li>
-					<li data-color-style="grayscale" title="{{msg-evelution-colorstyle-grayscale}}">
-						<a onclick="colortheme('grayscale')">
-							<span class="cpe-icon material-icons darkdevice-off">filter_b_and_w</span>
-							<span class="cpe-icon material-icons lightdevice-off"  style="--icon-scale:-1; transform:scaleX(var(--icon-scale)) rotate(var(--icon-rotate));">filter_b_and_w</span>
-						</a>
-					</li>
-					<li data-color-style="singlegrayscale" title="{{msg-evelution-colorstyle-singlegrayscale}}">
-						<a onclick="colortheme('singlegrayscale')">
-							<span class="cpe-icon material-icons darkdevice-off">check_box_outline_blank</span>
-							<span class="cpe-icon material-icons lightdevice-off">square</span>
-						</a>
-					</li>
 					<li data-color-style="colorscale" title="{{msg-evelution-colorstyle-colorscale}}">
 						<a onclick="colortheme('colorscale')">
 							<span class="cpe-icon material-icons darkdevice-off" style="--icon-rotate:-90deg;">gradient</span>
 							<span class="cpe-icon material-icons lightdevice-off" style="--icon-rotate:90deg;">gradient</span>
-						</a>
-					</li>
-					<li data-color-style="singlecolorscale" title="{{msg-evelution-colorstyle-singlecolorscale}}">
-						<a onclick="colortheme('singlecolorscale')">
-							<span class="cpe-icon material-icons darkdevice-off">invert_colors</span>
-							<span class="cpe-icon material-icons lightdevice-off"  style="--icon-scale:-1; transform:scaleX(var(--icon-scale)) rotate(var(--icon-rotate));">invert_colors</span>
 						</a>
 					</li>
 					<li data-color-style="hottemperature" title="{{msg-evelution-colorstyle-hottemperature}}">
