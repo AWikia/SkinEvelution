@@ -1886,10 +1886,10 @@ function ColorStyleAdjust(color) {
 
 
 	var page = [
-				chroma(color3).set('lch.c', s * sata).set('hsl.s', s2 * sata),						// Sp Dark Mode 0 (Normal)
-				chroma(color3).set('hsl.h', huea).set('lch.c', s * sata).set('hsl.s', s2 * sata),	// Sp Dark Mode 1 (Colorscale)
-				chroma(color3).set('lch.c', s * sata).set('hsl.s', s2 * sata),						// Sp Dark Mode 2 (Hot Temperature)
-				chroma(color3).set('lch.c', s * sata).set('hsl.s', s2 * sata),						// Sp Dark Mode 3 (Cold Temperature)
+				chroma(color3).set('lch.c', s * sata).set('hsl.s', s2 * sata).set('hsl.h', h2+ huea),	// Sp Dark Mode 0 (Normal)
+				chroma(color3).set('lch.c', s * sata).set('hsl.s', s2 * sata).set('hsl.h', huea),		// Sp Dark Mode 1 (Colorscale)
+				chroma(color3).set('lch.c', s * sata).set('hsl.s', s2 * sata).set('hsl.h', h2+ huea),	// Sp Dark Mode 2 (Hot Temperature)
+				chroma(color3).set('lch.c', s * sata).set('hsl.s', s2 * sata).set('hsl.h', h2+ huea),	// Sp Dark Mode 3 (Cold Temperature)
 			   ][window.MW18spdarkmode];
 	return page
 
