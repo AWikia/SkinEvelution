@@ -1878,7 +1878,9 @@ function ColorStyleAdjust(color) {
 	var h = chroma(color).get('lch.h');
 	var h2 = chroma(color).get('hsl.h');
 	var huea = GetHueShift();
-	color3 = chroma(color).set('rgb.r', r).set('rgb.g', g).set('rgb.b', b).set('lch.h', h + huea).set('hsl.h', h2 + huea)	
+	var adjusth = (h + huea) % 360
+	var adjusth2 = (h2 + huea) % 360
+	color3 = chroma(color).set('rgb.r', r).set('rgb.g', g).set('rgb.b', b).set('lch.h', adjusth).set('hsl.h', adjusth2)	
 
 	var s = chroma(color3).get('lch.c');
 	var s2 = chroma(color3).get('hsl.s');
@@ -1886,10 +1888,10 @@ function ColorStyleAdjust(color) {
 
 
 	var page = [
-				chroma(color3).set('lch.c', s * sata).set('hsl.s', s2 * sata).set('hsl.h', h2+ huea),	// Sp Dark Mode 0 (Normal)
+				chroma(color3).set('lch.c', s * sata).set('hsl.s', s2 * sata).set('hsl.h', adjusth2),	// Sp Dark Mode 0 (Normal)
 				chroma(color3).set('lch.c', s * sata).set('hsl.s', s2 * sata).set('hsl.h', huea),		// Sp Dark Mode 1 (Colorscale)
-				chroma(color3).set('lch.c', s * sata).set('hsl.s', s2 * sata).set('hsl.h', h2+ huea),	// Sp Dark Mode 2 (Hot Temperature)
-				chroma(color3).set('lch.c', s * sata).set('hsl.s', s2 * sata).set('hsl.h', h2+ huea),	// Sp Dark Mode 3 (Cold Temperature)
+				chroma(color3).set('lch.c', s * sata).set('hsl.s', s2 * sata).set('hsl.h', adjusth2),	// Sp Dark Mode 2 (Hot Temperature)
+				chroma(color3).set('lch.c', s * sata).set('hsl.s', s2 * sata).set('hsl.h', adjusth2),	// Sp Dark Mode 3 (Cold Temperature)
 			   ][window.MW18spdarkmode];
 	return page
 
