@@ -886,7 +886,7 @@ position:relative;
   box-shadow:0 2px 6px 0 rgba(var(--canvas-text-background-color-rgb),.4), 0 2px 6px 0 rgba(var(--canvas-background-color-rgb),0.4);
   border:1px solid var(--luna-border-background-color);
   background-color:var(--canvas-secondary-background-color);
-  border-radius:calc(var(--border-radius) * 2);
+  border-radius:var(--window-border-radius);
   width:100%;
   display:flex;
   flex-direction:column;
@@ -939,7 +939,7 @@ position:relative;
 	border-color:transparent transparent var(--border-color);
 	border-width:0 0 1px;
 	padding:7px 12px;
-	border-radius:calc(var(--border-radius) * 2) calc(var(--border-radius) * 2) 0 0;
+	border-radius:var(--window-border-radius) var(--window-border-radius) 0 0;
 	min-height:38px;
 	font-size:16px;
 	display:inline-flex;
@@ -1143,7 +1143,7 @@ background-color:var(--luna-mica-background-color);
 transition:background-color 400ms var(--transitioner), background-image 400ms var(--transitioner);
 	color:var(--luna-text-background-color);
 background-clip:padding-box;
-border-radius:calc(calc(var(--border-radius) * 2) - 1px);
+border-radius:calc(var(--window-border-radius) - 1px);
 border-bottom-left-radius:0;
 border-bottom-right-radius:0;
 /*
@@ -1227,11 +1227,11 @@ min-height:50px;
 	.evelution-content .evelution-page-header a.new:visited,
 	.evelution-content .evelution-page-header .new a,
 	.evelution-content .evelution-page-header .new a:visited {
-		--hyperlink-color:var(--alert-secondary-background-color);
-		--hyperlink-color-hover:var(--alert-secondary-background-color-hover);
-		--hyperlink-color-active:var(--alert-secondary-background-color-hover);
-		--visited-hyperlink-color:var(--alert-secondary-background-color);
-		--visited-hyperlink-color-hover:var(--alert-secondary-background-color-hover);
+		--hyperlink-color:var(--luna-alert-background-color);
+		--hyperlink-color-hover:var(--luna-alert-background-color-hover);
+		--hyperlink-color-active:var(--luna-alert-background-color-hover);
+		--visited-hyperlink-color:var(--luna-alert-background-color);
+		--visited-hyperlink-color-hover:var(--luna-alert-background-color-hover);
 
 		color:var(--hyperlink-color);
 	}
@@ -1244,19 +1244,6 @@ min-height:50px;
 		color:var(--hyperlink-color-hover);
 	}
 
-
-
-
-	.has-accents .evelution-content .evelution-page-header a.new,
-	.has-accents .evelution-content .evelution-page-header a.new:visited,
-	.has-accents .evelution-content .evelution-page-header .new a,
-	.has-accents .evelution-content .evelution-page-header .new a:visited {
-		--hyperlink-color:var(--luna-alternative-foreground-color);
-		--hyperlink-color-hover:var(--luna-alternative-foreground-color-hover);
-		--hyperlink-color-active:var(--luna-alternative-foreground-color-hover);
-		--visited-hyperlink-color:var(--luna-alternative-foreground-color);
-		--visited-hyperlink-color-hover:var(--luna-alternative-foreground-color-hover);
-	}
 
 
 
@@ -2208,14 +2195,14 @@ gap:2px;
 .evelution-content .evelution-page-footer {
 	z-index:0;
 	border-radius:0;
-	border-bottom-left-radius:calc(var(--border-radius) * 2);
-	border-bottom-right-radius:calc(var(--border-radius) * 2);
+	border-bottom-left-radius:var(--window-border-radius);
+	border-bottom-right-radius:var(--window-border-radius);
 }
 
 .evelution-content .evelution-page-footer .lunalevit {
 	border-radius:0;
-	border-bottom-left-radius:calc(var(--border-radius) * 2);
-	border-bottom-right-radius:calc(var(--border-radius) * 2);
+	border-bottom-left-radius:var(--window-border-radius);
+	border-bottom-right-radius:var(--window-border-radius);
 }
 
 .evelution-content .evelution-page-footer .evelution-page-header-main {
@@ -2223,7 +2210,7 @@ gap:2px;
 }
 
 .evelution-content .evelution-page-footer .evelution-page-header-title {
-border-radius:calc(calc(var(--border-radius) * 2) - 1px);
+border-radius:calc(var(--window-border-radius) - 1px);
 border-top-left-radius:0;
 border-top-right-radius:0;
 }
@@ -2247,7 +2234,7 @@ border-top-right-radius:0;
 	box-shadow:0 2px 6px 0 rgba(var(--canvas-text-background-color-rgb),.4), 0 2px 6px 0 rgba(var(--canvas-background-color-rgb),0.4);
 	background-color:var(--luna-mica-background-color);
     transition:background-color 400ms var(--transitioner), background-image 400ms var(--transitioner);
-	border-radius:calc(var(--border-radius) * 2);
+	border-radius:var(--window-border-radius);
 	width:var(--module-size);
 	margin-bottom:15px;
 	font-size:13px;
@@ -2337,51 +2324,91 @@ border-top-right-radius:0;
 }
 
 
+/* Button Styling Tweaks for Page Header and Modules */
 	 .evelution-module .cpe-button,
 	 .evelution-page-header .cpe-button {
-		--secondary-button-foreground-color: var(--hyperlink-secondary-background-color);
-		--secondary-button-foreground-color-hover: var(--hyperlink-secondary-background-color-hover);
-		--tertiary-button-background-color:rgba(var(--hyperlink-secondary-background-color-rgb), var(--fadeout-opacity));
-		--tertiary-button-foreground-color:var(--hyperlink-secondary-background-color);
+		--secondary-button-foreground-color: var(--luna-hyperlink-background-color);
+		--secondary-button-foreground-color-hover: var(--luna-hyperlink-background-color-hover);
+		--tertiary-button-background-color:rgba(var(--luna-hyperlink-background-color-rgb), var(--fadeout-opacity));
+		--tertiary-button-foreground-color:var(--luna-hyperlink-background-color);
 	}
 
 	 .evelution-module .cpe-button.is-unaccented,
 	 .evelution-page-header .cpe-button.is-unaccented {
-		--secondary-button-foreground-color: var(--canvas-text-secondary-background-color);
-		--secondary-button-foreground-color-hover: var(--canvas-text-secondary-background-color-hover);
-		--tertiary-button-background-color:rgba(var(--canvas-text-secondary-background-color-rgb), var(--fadeout-opacity));
-		--tertiary-button-foreground-color:var(--canvas-text-secondary-background-color);
+		--secondary-button-foreground-color: var(--luna-text-background-color);
+		--secondary-button-foreground-color-hover: var(--luna-text-background-color-hover);
+		--tertiary-button-background-color:rgba(var(--luna-text-background-color-rgb), var(--fadeout-opacity));
+		--tertiary-button-foreground-color:var(--luna-text-background-color);
 	}
+
+	 .evelution-module .cpe-button.is-alternate,
+	 .evelution-page-header .cpe-button.is-alternate {
+		--secondary-button-foreground-color: var(--luna-active-text-background-color);
+		--secondary-button-foreground-color-hover: var(--luna-active-text-background-color-hover);
+		--tertiary-button-background-color:rgba(var(--luna-active-text-background-color-rgb), var(--fadeout-opacity));
+		--tertiary-button-foreground-color:var(--luna-active-text-background-color);
+	}
+
+
+	 .evelution-module .cpe-button.is-alert-color,
+	 .evelution-page-header .cpe-button.is-alert-color,
+	 .evelution-page-header li.new .cpe-button {
+		--secondary-button-foreground-color: var(--luna-alert-background-color);
+		--secondary-button-foreground-color-hover: var(--luna-alert-background-color-hover);
+		--tertiary-button-background-color:rgba(var(--luna-alert-background-color-rgb), var(--fadeout-opacity));
+		--tertiary-button-foreground-color:var(--luna-alert-background-color);
+	}
+
+	 .evelution-module .cpe-button.is-pause-color,
+	 .evelution-page-header .cpe-button.is-pause-color {
+		--secondary-button-foreground-color: var(--luna-pause-background-color);
+		--secondary-button-foreground-color-hover: var(--luna-pause-background-color-hover);
+		--tertiary-button-background-color:rgba(var(--luna-pause-background-color-rgb), var(--fadeout-opacity));
+		--tertiary-button-foreground-color:var(--luna-pause-background-color);
+	}
+
+	 .evelution-module .cpe-button.is-warning-color,
+	 .evelution-page-header .cpe-button.is-warning-color {
+		--secondary-button-foreground-color: var(--luna-warning-background-color);
+		--secondary-button-foreground-color-hover: var(--luna-warning-background-color-hover);
+		--tertiary-button-background-color:rgba(var(--luna-warning-background-color-rgb), var(--fadeout-opacity));
+		--tertiary-button-foreground-color:var(--luna-warning-background-color);
+	}
+
+	 .evelution-module .cpe-button.is-success-color,
+	 .evelution-page-header .cpe-button.is-success-color {
+		--secondary-button-foreground-color: var(--luna-success-background-color);
+		--secondary-button-foreground-color-hover: var(--luna-success-background-color-hover);
+		--tertiary-button-background-color:rgba(var(--luna-success-background-color-rgb), var(--fadeout-opacity));
+		--tertiary-button-foreground-color:var(--luna-success-background-color);
+	}
+	
+	 .evelution-module .cpe-button.is-progress-color,
+	 .evelution-page-header .cpe-button.is-progress-color,
+	 .evelution-page-header li.stub .cpe-button {
+		--secondary-button-foreground-color: var(--luna-progress-background-color);
+		--secondary-button-foreground-color-hover: var(--luna-progress-background-color-hover);
+		--tertiary-button-background-color:rgba(var(--luna-progress-background-color-rgb), var(--fadeout-opacity));
+		--tertiary-button-foreground-color:var(--luna-progress-background-color);
+	}
+
+	 .evelution-module .cpe-button.is-message-color,
+	 .evelution-page-header .cpe-button.is-message-color {
+		--secondary-button-foreground-color: var(--luna-message-background-color);
+		--secondary-button-foreground-color-hover: var(--luna-message-background-color-hover);
+		--tertiary-button-background-color:rgba(var(--luna-message-background-color-rgb), var(--fadeout-opacity));
+		--tertiary-button-foreground-color:var(--luna-message-background-color);
+	}
+
 
 
 	.has-accents .evelution-page-header .cpe-button {
-		--button-background-color: var(--hyperlink-tertiary-background-color);
-		--button-background-color-hover: var(--hyperlink-tertiary-background-color-hover);
+		--button-background-color: var(--secondary-button-foreground-color);
+		--button-background-color-hover: var(--secondary-button-foreground-color-hover);
 		--button-foreground-color: var(--luna-background-color);
 		--button-foreground-color-inverted: var(--luna-background-color);
 		--button-foreground-color-rgb:var(--luna-background-color-rgb);
-		--secondary-button-background-color:transparent;
-		--secondary-button-foreground-color: var(--hyperlink-tertiary-background-color);
-		--secondary-button-foreground-color-hover: var(--hyperlink-tertiary-background-color-hover);
-		--tertiary-button-background-color:rgba(var(--hyperlink-tertiary-background-color-rgb), var(--fadeout-opacity));
-		--tertiary-button-foreground-color:var(--hyperlink-tertiary-background-color);
 	}
-
-
-	.has-accents .evelution-page-header .cpe-button.is-alert-color,
-	.has-accents .evelution-page-header .cpe-button.is-progress-color,
-	.has-accents .evelution-page-header li.new .cpe-button,
-	.has-accents .evelution-page-header li.stub .cpe-button {
-		--button-background-color: var(--luna-alternative-foreground-color);
-		--button-background-color-hover: rgba(var(--luna-alternative-foreground-color-rgb),0.8);
-		--button-foreground-color: var(--luna-background-color);
-		--button-foreground-color-inverted: var(--luna-background-color);
-		--secondary-button-background-color:transparent;
-		--secondary-button-foreground-color: var(--luna-alternative-foreground-color);
-		--secondary-button-foreground-color-hover: rgba(var(--luna-alternative-foreground-color-rgb),0.8);
-		--tertiary-button-background-color:rgba(var(--luna-alternative-foreground-color-rgb), var(--fadeout-opacity));
-		--tertiary-button-foreground-color:var(--luna-alternative-foreground-color);
-}
 
 
 /* Copy from CPE.css */
@@ -2809,7 +2836,7 @@ body .mw-cookiewarning-container {
 /* Base Container */
 	--desk-background:var(--desktop-background-color);
 	--desk-image-display:block;
-	--desk-border-radius:10px;
+	--desk-border-radius:var(--window-border-radius);
 /* Smoke Backplate */
 	--smoke-background:rgba(var(--canvas-background-color-rgb),var(--acrylic-opacity));
 	--smoke-text:var(--canvas-text-background-color);
@@ -2969,7 +2996,7 @@ body .mw-cookiewarning-container {
     transition:background-color 400ms var(--transitioner), background-image 400ms var(--transitioner);
 	color:var(--luna-text-background-color);
 	box-shadow:0px 0px 0 1px var(--luna-border-background-color), 0 2px 6px 0 rgba(var(--canvas-text-background-color-rgb),.4), 0 2px 6px 0 rgba(var(--canvas-background-color-rgb),0.4);
-	border-radius:calc(var(--border-radius) * 2);
+	border-radius:var(--window-border-radius);
 	z-index:1;
 }
 
@@ -3040,7 +3067,7 @@ white-space:nowrap;
 	--button-border-hover:rgba(var(--alert-background-color-rgb),0.1);
 	--button-border-active:rgba(var(--alert-background-color-rgb),0.2);
 	--button-background-color-active:var(--alert-background-color);
-	border-top-right-radius:calc(var(--border-radius) * 2);
+	border-top-right-radius:var(--window-border-radius);
 }
 
 .preview-window-window h2 button:hover {
@@ -3063,8 +3090,8 @@ white-space:nowrap;
 	padding:4px;
 	font-size:12px;
 	flex:1;
-	border-bottom-left-radius:calc(var(--border-radius) * 2);
-	border-bottom-right-radius:calc(var(--border-radius) * 2);
+	border-bottom-left-radius:var(--window-border-radius);
+	border-bottom-right-radius:var(--window-border-radius);
 }
 
 /* Individual Theme (Single) */
@@ -3120,7 +3147,7 @@ white-space:nowrap;
 	margin-bottom:10px;
 	display:flex;
 	flex-direction:column;
-	border-radius:calc(var(--border-radius) * 2);
+	border-radius:var(--window-border-radius);
 	-webkit-backdrop-filter:var(--acrylic-filter);
 	backdrop-filter:var(--acrylic-filter);
 }
@@ -3140,7 +3167,7 @@ white-space:nowrap;
 	color:var(--window-text);
 	padding:7px 1px 1px 1px;
 	border:1px solid transparent;
-	border-radius:0 0 calc(var(--border-radius) * 2) calc(var(--border-radius) * 2);
+	border-radius:0 0 var(--window-border-radius) var(--window-border-radius);
 }
 
 .preview-theme-wrapper .window text {
