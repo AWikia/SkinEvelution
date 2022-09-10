@@ -628,17 +628,17 @@ body .mw-ui-button.mw-ui-quiet:active {
 
 
 body .oo-ui-buttonElement-frameless.oo-ui-widget-enabled > .oo-ui-buttonElement-button {
-	color:var(--canvas-text-background-color);
+	color:var(--canvas-text-secondary-background-color);
 }
 
 
 body .oo-ui-buttonElement-frameless.oo-ui-widget-enabled > .oo-ui-buttonElement-button:hover {
-	color:var(--canvas-text-background-color-hover);
+	color:var(--canvas-text-secondary-background-color-hover);
 }
 
 body .oo-ui-buttonElement-frameless.oo-ui-widget-enabled.oo-ui-buttonElement-pressed > input.oo-ui-buttonElement-button, 
 body .oo-ui-buttonElement-frameless.oo-ui-widget-enabled > .oo-ui-buttonElement-button:active {
-	color:var(--canvas-text-background-color-hover);
+	color:var(--canvas-text-secondary-background-color-hover);
 }
 
 /* Framelsss Primary */
@@ -834,6 +834,18 @@ body .oo-ui-popupToolGroup-tools {
 	border-radius:var(--border-radius);
 }
 
+body .oo-ui-menuSelectWidget,
+body .oo-ui-popupWidget-popup {
+	background-color:rgba(var(--canvas-secondary-background-color-rgb),var(--acrylic-opacity));
+	-webkit-backdrop-filter:var(--acrylic-filter);
+	backdrop-filter:var(--acrylic-filter);
+	box-shadow:0 2px 2px rgba(var(--canvas-foreground-color-rgb),0.2);
+}
+
+body .oo-ui-popupWidget {
+	filter:none;
+}
+
 body .oo-ui-popupWidget-body {
     font-size: 15px;
 }
@@ -948,16 +960,25 @@ body .wikiEditor-ui-toolbar .group .tool-select .menu .options .option:hover {
 
 }
 
+body .mw-rcfilters-ui-itemMenuOptionWidget:hover,
+body .mw-rcfilters-ui-filterMenuOptionWidget.oo-ui-flaggedElement-muted.oo-ui-optionWidget-highlighted,
+body .oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted,
+body .mw-rcfilters-ui-filterMenuHeaderWidget-header,
+body .mw-rcfilters-ui-menuSelectWidget-footer {
+	background-color:rgba(var(--canvas-secondary-background-color-hover-rgb),var(--acrylic-opacity));
+}
+
+
 body .mw-rcfilters-ui-itemMenuOptionWidget-label-desc,
 body .mw-rcfilters-ui-filterMenuOptionWidget.oo-ui-flaggedElement-muted .mw-rcfilters-ui-itemMenuOptionWidget-label-title, 
 body .mw-rcfilters-ui-filterMenuOptionWidget.oo-ui-flaggedElement-muted .mw-rcfilters-ui-itemMenuOptionWidget-label-desc,
 body .mw-rcfilters-ui-datePopupWidget .mw-rcfilters-ui-valuePickerWidget-title,
 body .mw-rcfilters-ui-savedLinksListWidget-placeholder.oo-ui-optionWidget .oo-ui-labelElement-label {
-	color:var(--canvas-text-background-color-hover);
+	color:var(--canvas-text-secondary-background-color-hover);
 }
 
 body .mw-rcfilters-ui-itemMenuOptionWidget-label-title {
-	color:var(--canvas-text-background-color);
+	color:var(--canvas-text-secondary-background-color);
 }
 
 
@@ -1040,23 +1061,24 @@ body .oo-ui-tagItemWidget.oo-ui-widget-enabled:focus {
 
 body .oo-ui-buttonElement-frameless.oo-ui-widget-enabled > .oo-ui-buttonElement-button:hover {
 	background-color:rgba(var(--canvas-text-background-color-rgb),0.02745098);
-	color:var(--canvas-text-background-color-hover);
+	color:var(--canvas-text-secondary-background-color-hover);
 }
 
 
 body .oo-ui-tagItemWidget.oo-ui-widget-enabled .oo-ui-buttonElement-button {
 	padding:0;
 	margin:0;
+	color:var(--canvas-text-background-color);
 }
 
 body .oo-ui-tagItemWidget.oo-ui-widget-enabled .oo-ui-buttonElement-button:hover {
 	background-color:var(--canvas-background-color);
-	color:var(--canvas-text-background-color);
+	color:var(--canvas-text-background-color-hover);
 }
 
 body .oo-ui-buttonElement-frameless.oo-ui-widget-enabled > .oo-ui-buttonElement-button:active {
 	background-color:rgba(var(--canvas-text-background-color-rgb),0.08235294);
-	color:var(--canvas-text-background-color);
+	color:var(--canvas-text-secondary-background-color);
 }
 
 
@@ -1410,6 +1432,7 @@ body #MsCatSelect .row2 input {
 body .oo-ui-popupToolGroup.oo-ui-widget-enabled > .oo-ui-popupToolGroup-handle:hover,
 body .oo-ui-tool.oo-ui-widget-enabled > .oo-ui-tool-link:hover {
 	background-color:var(--canvas-background-color);
+	color:var(--canvas-text-background-color);
 }
 
 body .oo-ui-popupToolGroup.oo-ui-widget-enabled > .oo-ui-popupToolGroup-handle:active,
@@ -1427,11 +1450,11 @@ body .wikiEditor-ui-toolbar .tabs span.tab a.current:visited,
 body .wikiEditor-ui-toolbar .group .tool-select .label,
 body .wikiEditor-ui-toolbar .group .label,
 body .wikiEditor-ui-toolbar .group .tool-select .options .option {
-	color:var(--canvas-text-background-color);
+	color:var(--canvas-text-secondary-background-color);
 }
 
 body .wikiEditor-ui-toolbar .tabs span.tab a {
-	color:var(--hyperlink-background-color);
+	color:var(--hyperlink-secondary-background-color);
 }
 
 body .wikiEditor-ui-toolbar .page-characters div span {
@@ -1442,11 +1465,11 @@ body .wikiEditor-ui-toolbar .page-characters div span {
 }
 
 body .wikiEditor-ui-toolbar .page-table th {
-	color:var(--canvas-text-background-color);
+	color:var(--canvas-text-secondary-background-color);
 }
 
 body .wikiEditor-ui-toolbar .page-table td {
-	color:var(--canvas-text-background-color);
+	color:var(--canvas-text-secondary-background-color);
 	border-color:var(--inactive-text-background-color);
 }
 
