@@ -92,6 +92,7 @@ Here's a theming template you can use for getting custom theme(s) for your wiki:
 --inactive-title-text-background-color:auto; /* auto |<color> */
 --custom-font:""; /* <string> */
 --custom-secondary-font:""; /* <string> */
+--custom-code-font:""; /* <string> */
 --border-radius:3px; /* <number> 0 to 15 */
 --icon-filter:opacity(1); /* <filter-function> */
 --icon-filter-hover:opacity(0.8); /* <filter-function> */
@@ -132,6 +133,7 @@ $wgEvelutionThemeA = [/* Replace $wgEvelutionThemeA with either $wgEvelutionThem
 'inactive-title-text-background-color' => 'auto', /* auto |<color> */
 'custom-font' => '""', /* <string> */
 'custom-secondary-font' => '""', /* <string> */
+'custom-code-font' => '""', /* <string> */
 'border-radius' => '3px', /* <number> 0 to 15 */
 'icon-filter' => 'opacity(1)', /* <filter-function> */
 'icon-filter-hover' => 'opacity(0.8)', /* <filter-function> */

@@ -152,6 +152,7 @@ Of course. It has been tested and it works. For instance, if you want to modify 
 --inactive-title-text-background-color:auto; /* auto |<color> */
 --custom-font:""; /* <string> */
 --custom-secondary-font:""; /* <string> */
+--custom-code-font:""; /* <string> */
 --border-radius:3px; /* <number> 0 to 15 */
 --icon-filter:opacity(1); /* <filter-function> */
 --icon-filter-hover:opacity(0.8); /* <filter-function> */
@@ -191,6 +192,7 @@ Per-page theming is also supported. If you want to use a different theme for the
 --inactive-title-text-background-color:auto; /* auto |<color> */
 --custom-font:""; /* <string> */
 --custom-secondary-font:""; /* <string> */
+--custom-code-font:""; /* <string> */
 --border-radius:3px; /* <number> 0 to 15 */
 --icon-filter:opacity(1); /* <filter-function> */
 --icon-filter-hover:opacity(0.8); /* <filter-function> */
@@ -340,6 +342,9 @@ This is used as the extra primary font to be used other than the stock ones. Whe
 
 ### ``--custom-secondary-font`` (Accepts: ``<family-name>``)
 This is used as the extra secondary font to be used other than the stock ones. When set to an empty quoted string, no special extra font is used.
+
+### ``--custom-code-font`` (Accepts: ``<family-name>``)
+This is used as the extra code font to be used other than the stock ones. When set to an empty quoted string, no special extra font is used.
 
 ### ``--border-radius`` (Accepts: ``<length>``)
 This is used to control the rounded corners of all supported elements. 0px removes the rounded corners entirely. Values between 0 to 15px are generally favored. When Hardware acceleration is missing or access to the GPU Benchmarks list site (Found at ``unpkg.com``) is denied, this property is completely ignored.

@@ -414,7 +414,16 @@ function InitDesigner() {
 				'<option value="#847545">' +
 				'<option value="#7e735f">' +
 			'</datalist>' +
-			'<datalist id="td_fonts2">' + // Fonts
+			'<datalist id="td_fonts3">' + // Fonts (7)
+				'<option value="\'Anonymous Pro\'">' + 
+				'<option value="\'Courier Prime\'">' +
+				'<option value="\'Cousine\'">' +
+				'<option value="\'Cutive Mono\'">' +
+				'<option value="\'Inconsolata\'">' +
+				'<option value="\'Roboto Mono\'">' +
+				'<option value="\'Ubuntu Mono\'">' + // NEW
+			'</datalist>' +
+			'<datalist id="td_fonts2">' + // Fonts (10)
 				'<option value="\'Arimo\'">' + 
 				'<option value="\'Commissioner\'">' +
 				'<option value="\'Didact Gothic\'">' +
@@ -426,7 +435,7 @@ function InitDesigner() {
 				'<option value="\'Ubuntu\'">' +
 				'<option value="\'Ubuntu Condensed\'">' + // NEW
 			'</datalist>' +
-			'<datalist id="td_fonts">' + // Fonts
+			'<datalist id="td_fonts">' + // Fonts (25)
 				'<option value="\'BioRhyme\'">' +
 				'<option value="\'BioRhyme Expanded\'">' + // NEW
 				'<option value="\'Chango\'">' + // NEW
@@ -819,7 +828,7 @@ function InitDesigner() {
 			'</tr>' +
 		// TR
 			'<tr>' +
-				'<th rowspan="2" style="width:150px;">' + 
+				'<th rowspan="4" style="width:150px;">' + 
 					mw.msg( 'evelution-designer-font' ) + 
 				'</th>' +
 				'<th><span class="cpe-icon material-icons">title</span></th>' +
@@ -838,6 +847,19 @@ function InitDesigner() {
 
 
 			'</tr>' +
+
+			'<tr>' +
+				'<th colspan="2"><span class="cpe-icon material-icons">code</span></th>' +
+			'</tr>' +
+
+			'<tr>' +
+				'<td colspan="2" style="text-align:center; width:150px">' +
+					'<input type="text" id="thirdfont" class="cpe-input designer-text" style="width:300px; min-width:300px;" placeholder="Font" list="td_fonts3" autocomplete="off" />' + // Body Background 
+				'</td>' +
+
+
+			'</tr>' +
+
 		// TR
 			'<tr>' +
 				'<th rowspan="4" style="width:150px;">' + 
@@ -1395,7 +1417,7 @@ function ApplyTheme () {
 	
 	var image = $("#bodyimage").val().replace('url(', '').replace(')', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("").split("\"").join("");
     if ( $('#firstfont').val().length === 0) {
-		var customfont2 = 'Roboto';
+		var customfont2 = 'Roboto Flex';
     } else {
 		var customfont2 = $('#firstfont').val().replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
     }
@@ -1404,6 +1426,12 @@ function ApplyTheme () {
     } else {
 		var customfont = $('#secondfont').val().replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
     }
+    if ( $('#thirdfont').val().length === 0) {
+		var customfont3 = 'Inconsolata';
+    } else {
+		var customfont3 = $('#thirdfont').val().replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
+    }
+
 		result = '\n/* Community Theme */\n' +
 				 '.theme-' + window.MW18ActiveTheme + '.visualcolors-standard {\n' + // Beginning
 				 '--desktop-background-image:' + image + ';\n' +
@@ -1430,6 +1458,7 @@ function ApplyTheme () {
 				 '--inactive-title-text-background-color:' + autocolor11  + ';\n' +
 				 '--custom-font:' + customfont2 + ';\n' +
 				 '--custom-secondary-font:' + customfont + ';\n' +
+				 '--custom-code-font:' + customfont3 + ';\n' +
 				 '--border-radius:' + $('#border-radius').val() + "px"  + ';\n' +
 				 '--icon-filter:' + $('#filter').val() + ';\n' +
 				 '--icon-filter-hover:' + $('#filter2').val()  + ';\n' +
@@ -1553,7 +1582,7 @@ function CopyTheme() {
 
 	var image = $("#bodyimage").val().replace('url(', '').replace(')', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("").split("\"").join("");
     if ( $('#firstfont').val().length === 0) {
-		var customfont2 = 'Roboto';
+		var customfont2 = 'Roboto Flex';
     } else {
 		var customfont2 = $('#firstfont').val().replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
     }
@@ -1562,6 +1591,12 @@ function CopyTheme() {
     } else {
 		var customfont = $('#secondfont').val().replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
     }
+    if ( $('#thirdfont').val().length === 0) {
+		var customfont3 = 'Inconsolata';
+    } else {
+		var customfont3 = $('#thirdfont').val().replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
+    }
+
 		result = '.theme-' + window.MW18ActiveTheme + '.visualcolors-standard {\n' + // Beginning
 				 '--desktop-background-image:' + image + ';\n' +
 				 '--desktop-background-image-filter:' + $('#bodyimagefilter').val() + ';\n' +
@@ -1589,6 +1624,7 @@ function CopyTheme() {
 				 '--inactive-title-text-background-color:' + autocolor11  + ';\n' +
 				 '--custom-font:' + customfont2 + ';\n' +
 				 '--custom-secondary-font:' + customfont + ';\n' +
+				 '--custom-code-font:' + customfont3 + ';\n' +
 				 '--border-radius:' + $('#border-radius').val() + "px"  + ';\n' +
 				 '--icon-filter:' + $('#filter').val() + ';\n' +
 				 '--icon-filter-hover:' + $('#filter2').val()  + ';\n' +
@@ -1718,7 +1754,7 @@ function CopyTheme2() {
 
 	var image = $("#bodyimage").val().replace('url(', '').replace(')', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("").split("\"").join("");
     if ( $('#firstfont').val().length === 0) {
-		var customfont2 = 'Roboto';
+		var customfont2 = 'Roboto Flex';
     } else {
 		var customfont2 = $('#firstfont').val().replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
     }
@@ -1726,6 +1762,11 @@ function CopyTheme2() {
 		var customfont = 'Rubik';
     } else {
 		var customfont = $('#secondfont').val().replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
+    }
+    if ( $('#thirdfont').val().length === 0) {
+		var customfont3 = 'Inconsolata';
+    } else {
+		var customfont3 = $('#thirdfont').val().replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
     }
 		result = "$wgEvelutionTheme" + window.MW18ActiveTheme + " = [\n" + // Beginning
 				 "'desktop-background-image' => '" + image + "',\n" +
@@ -1754,6 +1795,7 @@ function CopyTheme2() {
 				 "'inactive-title-text-background-color' => '" + autocolor11  + "',\n" +
 				 "'custom-font' => '" + customfont2 + "',\n" +
 				 "'custom-secondary-font' => '" + customfont + "',\n" +
+				 "'custom-code-font' => '" + customfont3 + "',\n" +
 				 "'border-radius' => '" + $("#border-radius").val() + 'px'  + "',\n" +
 				 "'icon-filter' => '" + $("#filter").val() + "',\n" +
 				 "'icon-filter-hover' => '" + $("#filter2").val()  + "',\n" +
@@ -1977,6 +2019,13 @@ function PasteTheme() {
 		var sfont = '';
 	}
 	$('#secondfont').val( sfont );
+	// Code Font
+	var tfont = getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--custom-code-font").replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
+	if (tfont == '""') {
+		var sfont = '';
+	}
+	$('#thirdfont').val( tfont );
+
 	// Filter
 	$('#filter').val( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--icon-filter") );
 	// Filter (Hover)
@@ -2090,7 +2139,7 @@ function TestTheme(banner=false) {
 
 	var image = $("#bodyimage").val().replace('url(', '').replace(')', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("").split("\"").join("");
     if ( $('#firstfont').val().length === 0) {
-		var customfont2 = 'Roboto';
+		var customfont2 = 'Roboto Flex';
     } else {
 		var customfont2 = $('#firstfont').val().replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
     }
@@ -2098,6 +2147,11 @@ function TestTheme(banner=false) {
 		var customfont = 'Rubik';
     } else {
 		var customfont = $('#secondfont').val().replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
+    }
+    if ( $('#thirdfont').val().length === 0) {
+		var customfont3 = 'Inconsolata';
+    } else {
+		var customfont3 = $('#thirdfont').val().replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
     }
 		oldhtml = document.querySelector("#mw-content-text .theme-designer-css").innerHTML;
 		result = ':root .theme-A, .theme-B, .theme-C, .theme-D, .theme-E, .theme-F, .theme-G, .theme-H {\n' + // Beginning
@@ -2127,6 +2181,7 @@ function TestTheme(banner=false) {
 				 '--inactive-title-text-background-color:' + autocolor11  + '!important;\n' +
 				 '--custom-font:' + customfont2 + '!important;\n' +
 				 '--custom-secondary-font:' + customfont + '!important;\n' +
+				 '--custom-code-font:' + customfont3 + '!important;\n' +
 				 '--border-radius:' + $('#border-radius').val() + "px"  + '!important;\n' +
 				 '--icon-filter:' + $('#filter').val() + '!important;\n' +
 				 '--icon-filter-hover:' + $('#filter2').val()  + '!important;\n' +
