@@ -185,9 +185,6 @@ filter:none!important;
 }
 
 
-.visualmode-contrast .oo-ui-menuOptionWidget.oo-ui-optionWidget-selected,
-.visualmode-contrast .oo-ui-menuOptionWidget.oo-ui-optionWidget-selected.oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted, 
-.visualmode-contrast .oo-ui-menuOptionWidget.oo-ui-optionWidget-pressed.oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted,
 .visualmode-contrast .wikiEditor-ui-toolbar .booklet > .index > .current,
 .visualmode-contrast .oo-ui-outlineOptionWidget.oo-ui-optionWidget-pressed, 
 .visualmode-contrast .oo-ui-outlineOptionWidget.oo-ui-optionWidget-selected,
@@ -290,6 +287,13 @@ background-color:var(--canvas-background-color);
 .visualmode-contrast .warningbox a.new:visited, 
 .visualmode-contrast .successbox a.new:visited {
 	color:var(--alert-secondary-background-color);
+}
+
+
+.visualmode-contrast .mw-rcfilters-ui-filterMenuHeaderWidget-header,
+.visualmode-contrast .mw-rcfilters-ui-menuSelectWidget-footer {
+	background-color:rgba(var(--dropdown-background-color),var(--acrylic-opacity));
+	color:rgb(var(--dropdown-text-color));
 }
 
 
@@ -858,6 +862,10 @@ box-shadow:2px 0 0 6px rgba(var(--canvas-text-background-color-rgb),.4), 2px 0 0
 
 
 .visualstyle-basic.visualmode-contrast body {
+/* Secondary Styling (Used in OOUI) */
+--dropdown-background-color-2:var(--highlight-background-color-rgb);
+--dropdown-text-color-2:var(--highlight-text-background-color-rgb);
+--dropdown-text-color-hover-2:var(--highlight-text-background-color-rgb);
 /* Link Styling */
 --dropdown-hyperlink-background-color:var(--highlight-background-color);
 --dropdown-hyperlink-border-color:var(--dropdown-hyperlink-text-color);
@@ -876,9 +884,6 @@ box-shadow:2px 0 0 6px rgba(var(--canvas-text-background-color-rgb),.4), 2px 0 0
 
 
 
-.visualstyle-basic.visualmode-contrast .oo-ui-menuOptionWidget.oo-ui-optionWidget-selected,
-.visualstyle-basic.visualmode-contrast .oo-ui-menuOptionWidget.oo-ui-optionWidget-selected.oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted, 
-.visualstyle-basic.visualmode-contrast .oo-ui-menuOptionWidget.oo-ui-optionWidget-pressed.oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted,
 .visualstyle-basic.visualmode-contrast .wikiEditor-ui-toolbar .booklet > .index > .current {
   background-color:var(--highlight-background-color);
   color:var(--highlight-text-background-color)!important;
@@ -1160,6 +1165,7 @@ color:inherit;
 	--simple-luna-foreground-color:var(--canvas-secondary-foreground-color);
 	--simple-luna-foreground-color-hover:var(--canvas-secondary-foreground-color-hover);
 	--simple-luna-foreground-color-inverted:var(--canvas-secondary-foreground-color-inverted);
+	--simple-luna-foreground-color-inverted-rgb:var(--canvas-secondary-foreground-color-inverted-rgb);
 	--simple-luna-foreground-color-rgb:var(--canvas-secondary-foreground-color-rgb);
 	--simple-luna-foreground-color-hover-rgb:var(--canvas-secondary-foreground-color-hover-rgb);
 	--simple-luna-alternative-foreground-color:var(--canvas-secondary-alternative-foreground-color);
@@ -1176,6 +1182,7 @@ color:inherit;
 	--simple-luna-foreground-color:var(--hyperlink-foreground-color);
 	--simple-luna-foreground-color-hover:var(--hyperlink-foreground-color-hover);
 	--simple-luna-foreground-color-inverted:var(--hyperlink-foreground-color-inverted);
+	--simple-luna-foreground-color-inverted-rgb:var(--hyperlink-foreground-color-inverted-rgb);
 	--simple-luna-foreground-color-rgb:var(--hyperlink-foreground-color-rgb);
 	--simple-luna-foreground-color-hover-rgb:var(--hyperlink-foreground-color-hover-rgb);
 	--simple-luna-alternative-foreground-color:var(--hyperlink-alternative-foreground-color);
@@ -1198,29 +1205,26 @@ color:inherit;
 	box-shadow:0 0px 0 2px inset var(--scrollbar-thumb-color-1)!important;
 }
 
-.visualstyle-simple body .mw-rcfilters-ui-itemMenuOptionWidget:hover, 
-.visualstyle-simple body .mw-rcfilters-ui-filterMenuOptionWidget.oo-ui-flaggedElement-muted.oo-ui-optionWidget-highlighted, 
-.visualstyle-simple body .mw-rcfilters-ui-filterMenuHeaderWidget-header, 
-.visualstyle-simple body .mw-rcfilters-ui-menuSelectWidget-footer, 
 .visualstyle-simple body .oo-ui-tool.oo-ui-widget-enabled > .oo-ui-tool-link:hover, 
-.visualstyle-simple body .oo-ui-listToolGroup-tools .oo-ui-tool.oo-ui-widget-enabled:hover, 
 .visualstyle-simple body .wikiEditor-ui-toolbar .group .tool-select .menu .options .option:hover {
 	background-color:var(--canvas-secondary-background-color-hover);
 	color:var(--canvas-secondary-foreground-color-inverted);
 	border-color:rgba(var(--canvas-foreground-color-rgb),0.2);
 }
 
-.visualstyle-simple.visualmode-contrast body .mw-rcfilters-ui-itemMenuOptionWidget:hover, 
-.visualstyle-simple.visualmode-contrast body .mw-rcfilters-ui-filterMenuOptionWidget.oo-ui-flaggedElement-muted.oo-ui-optionWidget-highlighted, 
-.visualstyle-simple.visualmode-contrast body .mw-rcfilters-ui-filterMenuHeaderWidget-header, 
-.visualstyle-simple.visualmode-contrast body .mw-rcfilters-ui-menuSelectWidget-footer, 
 .visualstyle-simple.visualmode-contrast body .oo-ui-tool.oo-ui-widget-enabled > .oo-ui-tool-link:hover, 
-.visualstyle-simple.visualmode-contrast body .oo-ui-listToolGroup-tools .oo-ui-tool.oo-ui-widget-enabled:hover, 
 .visualstyle-simple.visualmode-contrast body .wikiEditor-ui-toolbar .group .tool-select .menu .options .option:hover {
 	background-color:var(--canvas-secondary-foreground-color);
 	color:var(--canvas-secondary-background-color);
 	border-color:rgba(var(--canvas-secondary-background-color-rgb),0.5);
 }
+
+.visualstyle-simple.visualmode-contrast body .oo-ui-listToolGroup-tools .oo-ui-tool.oo-ui-widget-enabled > .oo-ui-tool-link:hover,
+.visualstyle-simple.visualmode-contrast body .oo-ui-popupToolGroup-tools .oo-ui-tool.oo-ui-widget-enabled > .oo-ui-tool-link:hover {
+	background-color:rgb(var(--dropdown-background-color-2));
+	color:rgb(var(--dropdown-text-color-2));
+}
+
 
 
 .visualstyle-simple .cpe-floating-button {
@@ -1718,7 +1722,16 @@ color:inherit;
 /* Base Styling */
 --dropdown-background-color:var(--simple-luna-background-color-rgb);
 --dropdown-border-color:var(--simple-luna-background-color-hover);
---dropdown-text-color:var(--simple-luna-foreground-color);
+--dropdown-text-color:var(--simple-luna-foreground-color-rgb);
+--dropdown-text-color-hover:var(--simple-luna-foreground-color-hover-rgb);
+--dropdown-inactive-text-color:var(--simple-luna-foreground-color-hover-rgb);
+/* Secondary Styling (Used in OOUI) */
+--dropdown-background-color-2:var(--simple-luna-background-color-hover-rgb);
+--dropdown-text-color-2:var(--simple-luna-foreground-color-inverted-rgb);
+--dropdown-text-color-hover-2:var(--simple-luna-foreground-color-inverted-rgb);
+/* Header Styling */
+--dropdown-header-background-color:rgba(var(--dropdown-text-color),0.125);
+--dropdown-header-text-color:var(--simple-luna-foreground-color-hover);
 /* Link Styling */
 --dropdown-hyperlink-background-color:rgba(var(--simple-luna-background-color-hover-rgb),var(--acrylic-opacity));
 --dropdown-hyperlink-border-color:rgba(var(--canvas-foreground-color-rgb),0.2);
@@ -1730,16 +1743,17 @@ color:inherit;
 .visualstyle-simple.visualmode-contrast body .toc {
 /* Base Styling */
 --dropdown-border-color:var(--canvas-foreground-color);
+/* Secondary Styling (Used in OOUI) */
+--dropdown-background-color-2:var(--dropdown-text-color);
+--dropdown-text-color-2:var(--dropdown-background-color);
+--dropdown-text-color-hover-2:var(--dropdown-background-color);
 /* Link Styling */
---dropdown-hyperlink-background-color:var(--dropdown-text-color);
+--dropdown-hyperlink-background-color:rgb(var(--dropdown-text-color));
 --dropdown-hyperlink-border-color:rgba(var(--dropdown-background-color),0.5);
 --dropdown-hyperlink-text-color:rgb(var(--dropdown-background-color));
 }
 
 
-.visualstyle-simple .oo-ui-menuOptionWidget.oo-ui-optionWidget-selected,
-.visualstyle-simple .oo-ui-menuOptionWidget.oo-ui-optionWidget-selected.oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted, 
-.visualstyle-simple .oo-ui-menuOptionWidget.oo-ui-optionWidget-pressed.oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted,
 .visualstyle-simple .wikiEditor-ui-toolbar .booklet > .index > .current,
 .visualstyle-simple .oo-ui-popupToolGroup.oo-ui-widget-enabled > .oo-ui-popupToolGroup-handle:active, 
 .visualstyle-simple .oo-ui-popupToolGroup.oo-ui-popupToolGroup-active > .oo-ui-popupToolGroup-handle, 
@@ -1758,15 +1772,12 @@ color:inherit;
   color:var(--canvas-foreground-color-inverted);
 }
 
-.visualstyle-simple.visualmode-contrast .oo-ui-menuOptionWidget.oo-ui-optionWidget-selected,
-.visualstyle-simple.visualmode-contrast .oo-ui-menuOptionWidget.oo-ui-optionWidget-selected.oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted, 
-.visualstyle-simple.visualmode-contrast .oo-ui-menuOptionWidget.oo-ui-optionWidget-pressed.oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted,
 .visualstyle-simple.visualmode-contrast .wikiEditor-ui-toolbar .booklet > .index > .current,
 .visualstyle-simple.visualmode-contrast .oo-ui-popupToolGroup.oo-ui-widget-enabled > .oo-ui-popupToolGroup-handle:active, 
 .visualstyle-simple.visualmode-contrast .oo-ui-popupToolGroup.oo-ui-popupToolGroup-active > .oo-ui-popupToolGroup-handle, 
 .visualstyle-simple.visualmode-contrast .oo-ui-popupToolGroup.oo-ui-popupToolGroup-active > .oo-ui-popupToolGroup-handle:hover, 
 .visualstyle-simple.visualmode-contrast .oo-ui-tool.oo-ui-widget-enabled > .oo-ui-tool-link:active, 
-.visualstyle-simple.visualmode-contrast .oo-ui-tool.oo-ui-widget-enabled.oo-ui-tool-active > .oo-ui-tool-link, 
+/* .visualstyle-simple.visualmode-contrast .oo-ui-tool.oo-ui-widget-enabled.oo-ui-tool-active > .oo-ui-tool-link,*/
 .visualstyle-simple.visualmode-contrast .oo-ui-tool.oo-ui-widget-enabled.oo-ui-popupToolGroup-active > .oo-ui-tool-link {
   background-color:var(--canvas-secondary-foreground-color);
   color:var(--canvas-secondary-background-color);
@@ -1780,18 +1791,7 @@ color:inherit;
 
 
 
-.visualstyle-simple body .mw-rcfilters-ui-filterMenuOptionWidget.oo-ui-flaggedElement-muted:not(.oo-ui-optionWidget-selected) {
-	border-color:var(--simple-luna-background-color-hover);
-	color:var(--simple-luna-foreground-color);
-	background-color:var(--simple-luna-background-color);
-}
 
-
-.visualstyle-simple.visualmode-contrast body .mw-rcfilters-ui-filterMenuOptionWidget.oo-ui-flaggedElement-muted:not(.oo-ui-optionWidget-selected) {
-	border-color:var(--canvas-foreground-color);
-	color:var(--simple-luna-foreground-color);
-	background-color:var(--simple-luna-background-color);
-}
 
 
 .visualstyle-simple .cpe-dropdown__content .cpe-list a {
@@ -1815,42 +1815,6 @@ color:inherit;
   --range-filler-color-hover:var(--canvas-alternative-foreground-color-hover);
 }
 
-
-
-
-.visualstyle-simple body .oo-ui-menuOptionWidget.oo-ui-widget-enabled.oo-ui-optionWidget {
-	color:var(--simple-luna-foreground-color);
-}
-
-.visualstyle-simple body .oo-ui-menuSelectWidget, 
-.visualstyle-simple body .wikiEditor-ui-toolbar .group .tool-select .options, 
-.visualstyle-simple body .oo-ui-popupWidget-popup, 
-.visualstyle-simple body .mw-rcfilters-ui-changesListWrapperWidget .mw-changeslist-legend {
-    scrollbar-color: var(--scrollbar-thumb-color-1) var(--scrollbar-track-color-1);
-    --scrollbar-track-color-1: var(--simple-luna-background-color);
-    --scrollbar-track-color-2: var(--simple-luna-background-color-hover);
-    --scrollbar-track-text: var(--simple-luna-foreground-color);
-    --scrollbar-thumb-color-1: var(--simple-luna-foreground-color);
-    --scrollbar-thumb-color-2: var(--simple-luna-foreground-color-hover);
-    --scrollbar-thumb-text: var(--simple-luna-foreground-color);
-    background-color: var(--simple-luna-background-color);
-    color: var(--simple-luna-foreground-color);
-    border-color: var(--simple-luna-background-color-hover);
-}
-
-.visualstyle-simple body .oo-ui-popupWidget-popup,
-.visualstyle-simple body .oo-ui-menuSelectWidget {
-    background-color: rgba(var(--simple-luna-background-color-rgb),var(--acrylic-opacity));
-}
-
-
-.visualstyle-simple.visualmode-contrast body .oo-ui-menuSelectWidget, 
-.visualstyle-simple.visualmode-contrast body .wikiEditor-ui-toolbar .group .tool-select .options, 
-.visualstyle-simple.visualmode-contrast body .oo-ui-popupWidget-popup, 
-.visualstyle-simple.visualmode-contrast body .mw-rcfilters-ui-changesListWrapperWidget .mw-changeslist-legend, 
-.visualstyle-simple.visualmode-contrast body .oo-ui-popupToolGroup-tools {
-    border-color: var(--canvas-foreground-color);
-}
 
 
 /* Checkboxes */
@@ -1913,14 +1877,6 @@ color:inherit;
 	border-bottom-color:currentColor;
 }
 
-.visualstyle-simple body .oo-ui-menuSectionOptionWidget {
-	color:var(--simple-luna-foreground-color-hover);
-	background-color:var(--simple-luna-background-color);
-}
-
-.visualstyle-simple body .mw-rcfilters-ui-filterMenuSectionOptionWidget {
-	background-color:rgba(var(--simple-luna-foreground-color-rgb),0.125);
-}
 
 .visualstyle-simple body .oo-ui-menuSelectWidget .oo-ui-buttonElement > .oo-ui-buttonElement-button,
 .visualstyle-simple body .wikiEditor-ui-toolbar .group .tool-select .options .oo-ui-buttonElement > .oo-ui-buttonElement-button, 
@@ -1980,135 +1936,6 @@ color:inherit;
 .visualstyle-simple body .oo-ui-popupWidget-popup .oo-ui-buttonElement-frameless.oo-ui-widget-enabled.oo-ui-buttonElement-pressed > input.oo-ui-buttonElement-button, 
 .visualstyle-simple body .oo-ui-popupWidget-popup .oo-ui-buttonElement-frameless.oo-ui-widget-enabled > .oo-ui-buttonElement-button:active {
 	color:var(--secondary-button-foreground-color-hover);
-}
-
-
-
-.visualstyle-simple body .mw-rcfilters-ui-itemMenuOptionWidget-label-desc, 
-.visualstyle-simple body .mw-rcfilters-ui-filterMenuOptionWidget.oo-ui-flaggedElement-muted .mw-rcfilters-ui-itemMenuOptionWidget-label-title, 
-.visualstyle-simple body .mw-rcfilters-ui-filterMenuOptionWidget.oo-ui-flaggedElement-muted .mw-rcfilters-ui-itemMenuOptionWidget-label-desc, 
-.visualstyle-simple body .mw-rcfilters-ui-datePopupWidget .mw-rcfilters-ui-valuePickerWidget-title, 
-.visualstyle-simple body .mw-rcfilters-ui-savedLinksListWidget-placeholder.oo-ui-optionWidget .oo-ui-labelElement-label {
-	color:var(--simple-luna-foreground-color-hover);
-}
-
-.visualstyle-simple.visualmode-contrast body .mw-rcfilters-ui-itemMenuOptionWidget-label-desc, 
-.visualstyle-simple.visualmode-contrast body .mw-rcfilters-ui-filterMenuOptionWidget.oo-ui-flaggedElement-muted .mw-rcfilters-ui-itemMenuOptionWidget-label-title, 
-.visualstyle-simple.visualmode-contrast body .mw-rcfilters-ui-filterMenuOptionWidget.oo-ui-flaggedElement-muted .mw-rcfilters-ui-itemMenuOptionWidget-label-desc, 
-.visualstyle-simple.visualmode-contrast body .mw-rcfilters-ui-datePopupWidget .mw-rcfilters-ui-valuePickerWidget-title, 
-.visualstyle-simple.visualmode-contrast body .mw-rcfilters-ui-savedLinksListWidget-placeholder.oo-ui-optionWidget .oo-ui-labelElement-label {
-
-	color:inherit;
-}
-
-
-.visualstyle-simple body .mw-rcfilters-ui-itemMenuOptionWidget-label-title {
-	color:var(--simple-luna-foreground-color);
-}
-
-
-.visualstyle-simple.visualmode-contrast body .mw-rcfilters-ui-itemMenuOptionWidget-label-title {
-	color:inherit;
-}
-
-
-.visualstyle-simple body .mw-echo-ui-notificationsInboxWidget-toolbarWrapper {
-	background:var(--simple-luna-background-color);
-	color:var(--simple-luna-foreground-color);
-}
-
-
-.visualstyle-simple body .oo-ui-menuOptionWidget.oo-ui-optionWidget-selected,
-.visualstyle-simple body .oo-ui-menuOptionWidget.oo-ui-optionWidget-selected.oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted, 
-.visualstyle-simple body .oo-ui-menuOptionWidget.oo-ui-optionWidget-pressed.oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted,
-.visualstyle-simple body .oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted,
-.visualstyle-simple body .oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted, 
-.visualstyle-simple body .mw-echo-ui-pageNotificationsOptionWidget.oo-ui-optionWidget-selected,
-.visualstyle-simple body .mw-rcfilters-ui-filterMenuHeaderWidget-header, 
-.visualstyle-simple body .mw-rcfilters-ui-menuSelectWidget-footer {
-	color:var(--simple-luna-foreground-color-inverted);
-	background-color:var(--simple-luna-background-color-hover);
-}
-
-
-.visualstyle-simple body .mw-rcfilters-ui-itemMenuOptionWidget:hover,
-.visualstyle-simple body .mw-rcfilters-ui-filterMenuOptionWidget.oo-ui-flaggedElement-muted.oo-ui-optionWidget-highlighted,
-.visualstyle-simple body .oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted,
-.visualstyle-simple body .mw-rcfilters-ui-filterMenuHeaderWidget-header,
-.visualstyle-simple body .mw-rcfilters-ui-menuSelectWidget-footer {
-	background-color:rgba(var(--simple-luna-background-color-hover-rgb),var(--acrylic-opacity));
-	color:var(--simple-luna-foreground-color-inverted);
-}
-
-
-.visualstyle-simple.visualmode-contrast body .oo-ui-menuOptionWidget.oo-ui-optionWidget-selected,
-.visualstyle-simple.visualmode-contrast body .oo-ui-menuOptionWidget.oo-ui-optionWidget-selected.oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted, 
-.visualstyle-simple.visualmode-contrast body .oo-ui-menuOptionWidget.oo-ui-optionWidget-pressed.oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted,
-.visualstyle-simple.visualmode-contrast body .oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted,
-.visualstyle-simple.visualmode-contrast body .oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted, 
-.visualstyle-simple.visualmode-contrast body .mw-echo-ui-pageNotificationsOptionWidget.oo-ui-optionWidget-selected,
-.visualstyle-simple.visualmode-contrast body .mw-rcfilters-ui-filterMenuHeaderWidget-header, 
-.visualstyle-simple.visualmode-contrast body .mw-rcfilters-ui-menuSelectWidget-footer {
-	color:var(--simple-luna-background-color)!important;
-	background-color:var(--simple-luna-foreground-color)!important;
-}
-
-
-.visualstyle-simple body .mw-echo-ui-pageNotificationsOptionWidget.oo-ui-optionWidget-selected.mw-echo-ui-pageNotificationsOptionWidget.oo-ui-optionWidget-highlighted, 
-.visualstyle-simple body .mw-echo-ui-pageNotificationsOptionWidget.oo-ui-optionWidget-pressed.mw-echo-ui-pageNotificationsOptionWidget.oo-ui-optionWidget-highlighted {
-	color:var(--simple-luna-foreground-color-hover);
-	background-color:var(--simple-luna-background-color-hover);
-}
-
-.visualstyle-simple.visualmode-contrast body .mw-echo-ui-pageNotificationsOptionWidget.oo-ui-optionWidget-selected.mw-echo-ui-pageNotificationsOptionWidget.oo-ui-optionWidget-highlighted, 
-.visualstyle-simple.visualmode-contrast body .mw-echo-ui-pageNotificationsOptionWidget.oo-ui-optionWidget-pressed.mw-echo-ui-pageNotificationsOptionWidget.oo-ui-optionWidget-highlighted {
-	color:var(--simple-luna-background-color);
-	background-color:var(--simple-luna-foreground-color);
-}
-
-
-.visualstyle-simple body .oo-ui-optionWidget-selected .mw-echo-ui-pageNotificationsOptionWidget-label-count {
-	color:var(--simple-luna-foreground-color);
-}
-
-.visualstyle-simple body .mw-echo-ui-notificationItemWidget {
-	background-color:var(--simple-luna-background-color);
-	color:var(--simple-luna-foreground-color);
-}
-
-.visualstyle-simple body .mw-echo-ui-notificationItemWidget:hover {
-	background-color:var(--simple-luna-background-color-hover);
-	color:var(--simple-luna-foreground-color-inverted);
-}
-
-.visualstyle-simple.visualmode-contrast body .mw-echo-ui-notificationItemWidget:hover {
-	background-color:var(--simple-luna-foreground-color);
-	color:var(--simple-luna-background-color);
-}
-
-
-.visualstyle-simple body .mw-echo-ui-notificationItemWidget-unread,
-.visualstyle-simple body .mw-echo-ui-placeholderItemWidget  {
-	background-color:var(--simple-luna-background-color);
-	color:var(--simple-luna-foreground-color);
-}
-
-.visualstyle-simple body .mw-echo-ui-notificationItemWidget-unread:hover {
-	background-color:var(--simple-luna-background-color-hover);
-	color:var(--simple-luna-foreground-color-inverted);
-}
-
-.visualstyle-simple.visualmode-contrast body .mw-echo-ui-notificationItemWidget-unread:hover {
-	background-color:var(--simple-luna-foreground-color);
-	color:var(--simple-luna-background-color);
-}
-
-
-.visualstyle-simple body .mw-echo-ui-notificationsListWidget:not(:hover) a, 
-.visualstyle-simple body #p-personal .mw-echo-ui-notificationsListWidget:not(:hover) a.new,
-.visualstyle-simple body #p-personal .mw-echo-ui-notificationsListWidget:not(:hover) a.stub,
-.visualstyle-simple body .mw-echo-ui-notificationItemWidget-content-message-header{
-	color:var(--simple-luna-foreground-color);
 }
 
 .visualstyle-simple body .evelution-sidebar #pt-notifications-alert .mw-echo-notifications-badge:after, 
@@ -2529,7 +2356,14 @@ color:inherit;
 	--border-radius:0!important; /* Won't work with rounded corners */
 	--window-border-radius:0!important; /* Won't work with rounded corners */
 	--menu-border-radius:0!important; /* Won't work with rounded corners */
+
+/* Link Styling */
+--dropdown-hyperlink-background-color:var(--highlight-background-color);
+--dropdown-hyperlink-border-color:transparent;
+--dropdown-hyperlink-text-color:var(--highlight-text-background-color);
+
 }
+
 
 
 .visualstyle-classic body {
@@ -3088,9 +2922,6 @@ border-color:var(--highlight-background-color);
 
 
 
-.visualstyle-classic .oo-ui-menuOptionWidget.oo-ui-optionWidget-selected,
-.visualstyle-classic .oo-ui-menuOptionWidget.oo-ui-optionWidget-selected.oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted, 
-.visualstyle-classic .oo-ui-menuOptionWidget.oo-ui-optionWidget-pressed.oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted,
 .visualstyle-classic .wikiEditor-ui-toolbar .booklet > .index > .current,
 .visualstyle-classic .oo-ui-outlineOptionWidget.oo-ui-optionWidget-pressed, 
 .visualstyle-classic .oo-ui-outlineOptionWidget.oo-ui-optionWidget-selected {
@@ -3259,6 +3090,13 @@ border-color:var(--highlight-background-color);
 --dropdown-hyperlink-text-color:var(--hyperlink-foreground-color);
 }
 
+.visualstyle-general.visualmode-contrast body {
+/* Secondary Styling (Used in OOUI) */
+--dropdown-background-color-2:var(--hyperlink-background-color-rgb);
+--dropdown-text-color-2:var(--hyperlink-foreground-color-rgb);
+--dropdown-text-color-hover-2:var(--hyperlink-foreground-color-rgb);
+}
+
 .visualstyle-general body .toc .module-toc li a:hover,
 .visualstyle-general body .toc .module-toc li a:focus,
 .visualstyle-general body .toc .module-toc li.selected a {
@@ -3267,9 +3105,6 @@ border-color:var(--highlight-background-color);
   border-color:var(--dropdown-hyperlink-border-color);
 }
 
-.visualstyle-general .oo-ui-menuOptionWidget.oo-ui-optionWidget-selected,
-.visualstyle-general .oo-ui-menuOptionWidget.oo-ui-optionWidget-selected.oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted, 
-.visualstyle-general .oo-ui-menuOptionWidget.oo-ui-optionWidget-pressed.oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted,
 .visualstyle-general .wikiEditor-ui-toolbar .booklet > .index > .current,
 .visualstyle-general .oo-ui-popupToolGroup.oo-ui-widget-enabled > .oo-ui-popupToolGroup-handle:active, 
 .visualstyle-general .oo-ui-popupToolGroup.oo-ui-popupToolGroup-active > .oo-ui-popupToolGroup-handle, 
@@ -3278,7 +3113,7 @@ border-color:var(--highlight-background-color);
 .visualstyle-general .oo-ui-tool.oo-ui-widget-enabled.oo-ui-tool-active > .oo-ui-tool-link, 
 .visualstyle-general .oo-ui-tool.oo-ui-widget-enabled.oo-ui-popupToolGroup-active > .oo-ui-tool-link {
   background-color:var(--hyperlink-background-color);
-  color:var(--hyperlink-foreground-color)!important;
+  color:var(--hyperlink-foreground-color);
 }
 
 .visualstyle-general .cpe-floating-button {
@@ -3402,9 +3237,6 @@ background-color:var(--hyperlink-background-color);
 	border-color:var(--hyperlink-background-color);
 }
 
-.visualstyle-general .oo-ui-menuOptionWidget.oo-ui-optionWidget-selected,
-.visualstyle-general .oo-ui-menuOptionWidget.oo-ui-optionWidget-selected.oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted, 
-.visualstyle-general .oo-ui-menuOptionWidget.oo-ui-optionWidget-pressed.oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted,
 .visualstyle-general .wikiEditor-ui-toolbar .booklet > .index > .current,
 .visualstyle-general .oo-ui-outlineOptionWidget.oo-ui-optionWidget-pressed, 
 .visualstyle-general .oo-ui-outlineOptionWidget.oo-ui-optionWidget-selected {

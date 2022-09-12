@@ -844,7 +844,16 @@ body {
 /* Base Styling */
 --dropdown-background-color:var(--canvas-secondary-background-color-rgb);
 --dropdown-border-color:var(--inactive-text-background-color);
---dropdown-text-color:var(--canvas-text-secondary-background-color);
+--dropdown-text-color:var(--canvas-text-secondary-background-color-rgb);
+--dropdown-text-color-hover:var(--canvas-text-secondary-background-color-hover-rgb);
+--dropdown-inactive-text-color:var(--inactive-text-background-color-rgb);
+/* Secondary Styling (Used in OOUI) */
+--dropdown-background-color-2:var(--canvas-secondary-background-color-hover-rgb);
+--dropdown-text-color-2:var(--dropdown-text-color);
+--dropdown-text-color-hover-2:var(--dropdown-text-color-hover);
+/* Header Styling */
+--dropdown-header-background-color:var(--inactive-text-background-color);
+--dropdown-header-text-color:var(--inactive-text-foreground-color);
 /* Link Styling */
 --dropdown-hyperlink-background-color:rgba(var(--hyperlink-secondary-background-color-rgb),0.4);
 --dropdown-hyperlink-border-color:rgba(var(--hyperlink-secondary-background-color-rgb),0.2);
@@ -868,6 +877,28 @@ body {
 	position:relative;
 	background-color:var(--desktop-background-color);
     color: var(--desktop-foreground-color);
+}
+
+/** Image Rendering **/
+
+/* Webkit */
+@media  (-webkit-min-device-pixel-ratio: 2) {
+	img, canvas, video {
+		image-rendering:-moz-crisp-edges;
+		image-rendering:crisp-edges;
+		image-rendering:pixelated;
+		
+	}
+}
+
+/* Standard */
+@media (min-resolution: 2dppx) {
+	img, canvas, video {
+		image-rendering:-moz-crisp-edges;
+		image-rendering:crisp-edges;
+		image-rendering:pixelated;
+		
+	}
 }
 
 
@@ -903,8 +934,7 @@ container {
 	background-color:transparent;
 	pointer-events:none;
 	filter:var(--desktop-background-image-filter,none);
-	image-rendering:initial;                  /* CSS4 Proposed  */
-	-qq-image-blurring:tick;                  /* 4x4 Web 1-2    */
+
 }
 
  #LunaLevit {
@@ -917,8 +947,6 @@ container {
 	z-index:-2;
 	background-color:var(--desktop-background-color);
 	pointer-events:none;
-	image-rendering:initial;                  /* CSS4 Proposed  */
-	-qq-image-blurring:tick;                  /* 4x4 Web 1-2    */
 }
 
 
@@ -1186,8 +1214,6 @@ container {
 	position:fixed!Important;
 	content:"";
 	z-index:-1;
-  image-rendering:initial;                  /* CSS4 Proposed  */
-  -qq-image-blurring:tick;                  /* 4x4 Web 1-2    */
 }
 
 
@@ -2449,7 +2475,6 @@ border:calc(2px * var(--icon-size, 1)) solid currentcolor;
 -webkit-box-decoration-break:clone;
 box-decoration-break:clone;
 border-radius:50%;
-  image-rendering:initial;                  /* CSS4 Proposed  */
   box-sizing:border-box;
 }
 
@@ -2847,7 +2872,7 @@ body:not(.has-left-nav) .switched-nav-on {
 --dropdown-translate:-50%;
 --dropdown-scale:0.95;
 background-color:rgba(var(--dropdown-background-color),var(--acrylic-opacity));
-color:var(--dropdown-text-color);
+color:rgb(var(--dropdown-text-color));
 border:1px solid var(--dropdown-border-color);
 border-radius:var(--menu-border-radius);
 display:inline-block;
@@ -3258,7 +3283,7 @@ top:auto;bottom:-8px
 	--acrylic-opacity:1;
 background-color:rgba(var(--dropdown-background-color),var(--acrylic-opacity));
 border:1px solid var(--dropdown-border-color);
-color:var(--dropdown-text-color);
+color:rgb(var(--dropdown-text-color));
 border-radius:var(--menu-border-radius);
 display:none;
 left:100%;
@@ -4476,6 +4501,7 @@ html:not(.visualmode-contrast) .contrast-on {
 --desktop-alternative-foreground-color:var(--desktop-text-background-color)!important;
 --desktop-alternative-foreground-color-hover:var(--desktop-text-background-color)!important;
 --desktop-foreground-color-inverted:var(--desktop-text-background-color)!important;
+--desktop-foreground-color-inverted-rgb:var(--desktop-text-background-color-rgb)!important;
 --desktop-background-color-hover-rgb:var(--desktop-background-color-rgb)!important;
 --desktop-foreground-color-rgb:var(--desktop-text-background-color-rgb)!important;
 --desktop-foreground-color-hover-rgb:var(--desktop-text-background-color-rgb)!important;
@@ -4488,6 +4514,7 @@ html:not(.visualmode-contrast) .contrast-on {
 --desktop-text-alternative-foreground-color:var(--desktop-background-color)!important;
 --desktop-text-alternative-foreground-color-hover:var(--desktop-background-color)!important;
 --desktop-text-foreground-color-inverted:var(--desktop-background-color)!important;
+--desktop-text-foreground-color-inverted-rgb:var(--desktop-background-color-rgb)!important;
 --desktop-text-background-color-hover-rgb:var(--desktop-text-background-color-rgb)!important;
 --desktop-text-foreground-color-rgb:var(--desktop-background-color-rgb)!important;
 --desktop-text-foreground-color-hover-rgb:var(--desktop-background-color-rgb)!important;
@@ -4500,6 +4527,7 @@ html:not(.visualmode-contrast) .contrast-on {
 --canvas-alternative-foreground-color:var(--canvas-text-background-color)!important;
 --canvas-alternative-foreground-color-hover:var(--canvas-text-background-color)!important;
 --canvas-foreground-color-inverted:var(--canvas-text-background-color)!important;
+--canvas-foreground-color-inverted-rgb:var(--canvas-text-background-color-rgb)!important;
 --canvas-background-color-hover-rgb:var(--canvas-background-color-rgb)!important;
 --canvas-foreground-color-rgb:var(--canvas-text-background-color-rgb)!important;
 --canvas-foreground-color-hover-rgb:var(--canvas-text-background-color-rgb)!important;
@@ -4512,6 +4540,7 @@ html:not(.visualmode-contrast) .contrast-on {
 --canvas-secondary-alternative-foreground-color:var(--canvas-text-secondary-background-color)!important;
 --canvas-secondary-alternative-foreground-color-hover:var(--canvas-text-secondary-background-color)!important;
 --canvas-secondary-foreground-color-inverted:var(--canvas-text-secondary-background-color)!important;
+--canvas-secondary-foreground-color-inverted-rgb:var(--canvas-text-secondary-background-color-rgb)!important;
 --canvas-secondary-background-color-hover-rgb:var(--canvas-secondary-background-color-rgb)!important;
 --canvas-secondary-foreground-color-rgb:var(--canvas-text-secondary-background-color-rgb)!important;
 --canvas-secondary-foreground-color-hover-rgb:var(--canvas-text-secondary-background-color-rgb)!important;
@@ -4524,6 +4553,7 @@ html:not(.visualmode-contrast) .contrast-on {
 --inactive-text-alternative-foreground-color:var(--canvas-background-color)!important;
 --inactive-text-alternative-foreground-color-hover:var(--canvas-background-color)!important;
 --inactive-text-foreground-color-inverted:var(--canvas-background-color)!important;
+--inactive-text-foreground-color-inverted-rgb:var(--canvas-background-color-rgb)!important;
 --inactive-text-background-color-hover-rgb:var(--inactive-text-background-color-rgb)!important;
 --inactive-text-foreground-color-rgb:var(--canvas-background-color-rgb)!important;
 --inactive-text-foreground-color-hover-rgb:var(--canvas-background-color-rgb)!important;
@@ -4536,6 +4566,7 @@ html:not(.visualmode-contrast) .contrast-on {
 --active-text-alternative-foreground-color:var(--canvas-background-color)!important;
 --active-text-alternative-foreground-color-hover:var(--canvas-background-color)!important;
 --active-text-foreground-color-inverted:var(--canvas-background-color)!important;
+--active-text-foreground-color-inverted-rgb:var(--canvas-background-color-rgb)!important;
 --active-text-background-color-hover-rgb:var(--active-text-background-color-rgb)!important;
 --active-text-foreground-color-rgb:var(--canvas-background-color-rgb)!important;
 --active-text-foreground-color-hover-rgb:var(--canvas-background-color-rgb)!important;
@@ -4551,6 +4582,7 @@ html:not(.visualmode-contrast) .contrast-on {
 --canvas-text-alternative-foreground-color:var(--canvas-background-color)!important;
 --canvas-text-alternative-foreground-color-hover:var(--canvas-background-color)!important;
 --canvas-text-foreground-color-inverted:var(--canvas-background-color)!important;
+--canvas-text-foreground-color-inverted-rgb:var(--canvas-background-color-rgb)!important;
 --canvas-text-background-color-hover-rgb:var(--canvas-text-background-color-rgb)!important;
 --canvas-text-foreground-color-hover:var(--canvas-background-color-rgb)!important;
 --canvas-text-foreground-color-hover-rgb:var(--canvas-background-color-rgb)!important;
@@ -4563,6 +4595,7 @@ html:not(.visualmode-contrast) .contrast-on {
 --canvas-text-secondary-alternative-foreground-color:var(--canvas-secondary-background-color)!important;
 --canvas-text-secondary-alternative-foreground-color-hover:var(--canvas-secondary-background-color)!important;
 --canvas-text-secondary-foreground-color-inverted:var(--canvas-secondary-background-color)!important;
+--canvas-text-secondary-foreground-color-inverted-rgb:var(--canvas-secondary-background-color-rgb)!important;
 --canvas-text-secondary-background-color-hover-rgb:var(--canvas-text-secondary-background-color-rgb)!important;
 --canvas-text-secondary-foreground-color-hover:var(--canvas-secondary-background-color-rgb)!important;
 --canvas-text-secondary-foreground-color-hover-rgb:var(--canvas-secondary-background-color-rgb)!important;
@@ -4575,6 +4608,7 @@ html:not(.visualmode-contrast) .contrast-on {
 --highlight-alternative-foreground-color:var(--highlight-text-background-color)!important;
 --highlight-alternative-foreground-color-hover:var(--highlight-text-background-color)!important;
 --highlight-foreground-color-inverted:var(--highlight-text-background-color)!important;
+--highlight-foreground-color-inverted-rgb:var(--highlight-text-background-color-rgb)!important;
 --highlight-background-color-hover-rgb:var(--highlight-background-color-rgb)!important;
 --highlight-foreground-color-rgb:var(--highlight-text-background-color-rgb)!important;
 --highlight-foreground-color-hover-rgb:var(--highlight-text-background-color-rgb)!important;
@@ -4587,6 +4621,7 @@ html:not(.visualmode-contrast) .contrast-on {
 --highlight-text-alternative-foreground-color:var(--highlight-background-color)!important;
 --highlight-text-alternative-foreground-color-hover:var(--highlight-background-color)!important;
 --highlight-text-foreground-color-inverted:var(--highlight-background-color)!important;
+--highlight-text-foreground-color-inverted-rgb:var(--highlight-background-color-rgb)!important;
 --highlight-text-background-color-hover-rgb:var(--highlight-text-backround-color-rgb)!important;
 --highlight-text-foreground-color-rgb:var(--highlight-background-color-rgb)!important;
 --highlight-text-foreground-color-hover-rgb:var(--highlight-background-color-rgb)!important;
@@ -4599,6 +4634,7 @@ html:not(.visualmode-contrast) .contrast-on {
 --hyperlink-alternative-foreground-color:var(--canvas-background-color)!important;
 --hyperlink-alternative-foreground-color-hover:var(--canvas-background-color)!important;
 --hyperlink-foreground-color-inverted:var(--canvas-background-color)!important;
+--hyperlink-foreground-color-inverted-rgb:var(--canvas-background-color-rgb)!important;
 --hyperlink-background-color-hover-rgb:var(--hyperlink-background-color-rgb)!important;
 --hyperlink-foreground-color-rgb:var(--canvas-background-color-rgb)!important;
 --hyperlink-foreground-color-hover-rgb:var(--canvas-background-color-rgb)!important;
@@ -4614,6 +4650,7 @@ html:not(.visualmode-contrast) .contrast-on {
 --visited-hyperlink-alternative-foreground-color:var(--canvas-background-color)!important;
 --visited-hyperlink-alternative-foreground-color-hover:var(--canvas-background-color)!important;
 --visited-hyperlink-foreground-color-inverted:var(--canvas-background-color)!important;
+--visited-hyperlink-foreground-color-inverted-rgb:var(--canvas-background-color-rgb)!important;
 --visited-hyperlink-background-color-hover-rgb:var(--visited-hyperlink-background-color-rgb)!important;
 --visited-hyperlink-foreground-color-rgb:var(--canvas-background-color-rgb)!important;
 --visited-hyperlink-foreground-color-hover-rgb:var(--canvas-background-color-rgb)!important;
@@ -4630,6 +4667,7 @@ html:not(.visualmode-contrast) .contrast-on {
 --active-title-alternative-foreground-color-hover:var(--active-title-text-background-color)!important;
 --active-title-background-color-hover-rgb:var(--active-title-background-color-rgb)!important;
 --active-title-foreground-color-inverted:var(--active-title-text-background-color)!important;
+--active-title-foreground-color-inverted-rgb:var(--active-title-text-background-color-rgb)!important;
 --active-title-foreground-color-rgb:var(--active-title-text-background-color-rgb)!important;
 --active-title-foreground-color-hover-rgb:var(--active-title-text-background-color-rgb)!important;
 --active-title-alternative-foreground-color-rgb:var(--active-title-text-background-color-rgb)!important;
@@ -4641,6 +4679,7 @@ html:not(.visualmode-contrast) .contrast-on {
 --active-title-text-alternative-foreground-color:var(--active-title-background-color)!important;
 --active-title-text-alternative-foreground-color-hover:var(--active-title-background-color)!important;
 --active-title-text-foreground-color-inverted:var(--active-title-background-color)!important;
+--active-title-text-foreground-color-inverted-rgb:var(--active-title-background-color-rgb)!important;
 --active-title-text-background-color-hover-rgb:var(--active-title-text-background-color-rgb)!important;
 --active-title-text-foreground-color-rgb:var(--active-title-background-color-rgb)!important;
 --active-title-text-foreground-color-hover-rgb:var(--active-title-background-color-rgb)!important;
@@ -4653,6 +4692,7 @@ html:not(.visualmode-contrast) .contrast-on {
 --inactive-title-alternative-foreground-color:var(--inactive-title-text-background-color)!important;
 --inactive-title-alternative-foreground-color-hover:var(--inactive-title-text-background-color)!important;
 --inactive-title-foreground-color-inverted:var(--inactive-title-text-background-color)!important;
+--inactive-title-foreground-color-inverted-rgb:var(--inactive-title-text-background-color-rgb)!important;
 --inactive-title-background-color-hover-rgb:var(--inactive-title-background-color-rgb)!important;
 --inactive-title-foreground-color-rgb:var(--inactive-title-text-background-color-rgb)!important;
 --inactive-title-foreground-color-hover-rgb:var(--inactive-title-text-background-color-rgb)!important;
@@ -4665,6 +4705,7 @@ html:not(.visualmode-contrast) .contrast-on {
 --inactive-title-text-alternative-foreground-color:var(--inactive-title-background-color)!important;
 --inactive-title-text-alternative-foreground-color-hover:var(--inactive-title-background-color)!important;
 --inactive-title-text-foreground-color-inverted:var(--inactive-title-background-color)!important;
+--inactive-title-text-foreground-color-inverted-rgb:var(--inactive-title-background-color-rgb)!important;
 --inactive-title-text-background-color-hover-rgb:var(--inactive-title-text-background-color-rgb)!important;
 --inactive-title-text-foreground-color-rgb:var(--inactive-title-background-color-rgb)!important;
 --inactive-title-text-foreground-color-hover-rgb:var(--inactive-title-background-color-rgb)!important;
@@ -4853,6 +4894,12 @@ box-shadow:2px 0 0 6px rgba(var(--canvas-text-background-color-rgb),.4), 2px 0 0
 }
 
 .visualmode-contrast body {
+/* Base Styling */
+--dropdown-inactive-text-color:var(--dropdown-text-color);
+/* Secondary Styling (Used in OOUI) */
+--dropdown-background-color-2:var(--highlight-text-background-color-rgb);
+--dropdown-text-color-2:var(--highlight-background-color-rgb);
+--dropdown-text-color-hover-2:var(--highlight-background-color-rgb);
 /* Link Styling */
 --dropdown-hyperlink-background-color:var(--highlight-background-color);
 --dropdown-hyperlink-border-color:transparent;

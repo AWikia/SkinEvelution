@@ -820,23 +820,23 @@ body .oo-ui-popupToolGroup-tools {
 	scrollbar-color:var(--scrollbar-thumb-color-1) var(--scrollbar-track-color-1);
 /** Scrollbar Styling **/
 	/* Track */
-	--scrollbar-track-color-1:var(--canvas-secondary-background-color);
-	--scrollbar-track-color-2:var(--canvas-secondary-background-color-hover);
-	--scrollbar-track-text:var(--canvas-text-secondary-background-color);
+	--scrollbar-track-color-1:rgb(var(--dropdown-background-color));
+	--scrollbar-track-color-2:rgb(var(--dropdown-background-color-2));
+	--scrollbar-track-text:rgb(var(--dropdown-text-color));
 	/* Thumb */
-	--scrollbar-thumb-color-1:var(--inactive-text-background-color);
-	--scrollbar-thumb-color-2:var(--inactive-text-background-color-hover);
-	--scrollbar-thumb-text:var(--inactive-text-foreground-color);
+	--scrollbar-thumb-color-1:rgb(var(--dropdown-text-color));
+	--scrollbar-thumb-color-2:rgb(var(--dropdown-text-color-hover));
+	--scrollbar-thumb-text:rgb(var(--dropdown-background-color));
 	
-	background-color:var(--canvas-secondary-background-color);
-	color:var(--canvas-text-secondary-background-color);
-	border-color:var(--inactive-text-background-color);
+	background-color:rgb(var(--dropdown-background-color));
+	color:rgb(var(--dropdown-text-color));
+	border-color:var(--dropdown-border-color);
 	border-radius:var(--border-radius);
 }
 
 body .oo-ui-menuSelectWidget,
 body .oo-ui-popupWidget-popup {
-	background-color:rgba(var(--canvas-secondary-background-color-rgb),var(--acrylic-opacity));
+	background-color:rgba(var(--dropdown-background-color),var(--acrylic-opacity));
 	-webkit-backdrop-filter:var(--acrylic-filter);
 	backdrop-filter:var(--acrylic-filter);
 	box-shadow:0 2px 2px rgba(var(--canvas-foreground-color-rgb),0.2);
@@ -942,30 +942,35 @@ body .toc > ul {
 	margin:0;
 }
 
-body .mw-rcfilters-ui-filterMenuOptionWidget.oo-ui-flaggedElement-muted:not(.oo-ui-optionWidget-selected) {
-	background-color:var(--canvas-secondary-background-color);
-	color:var(--canvas-text-secondary-background-color);
+body .oo-ui-menuOptionWidget.oo-ui-widget-enabled.oo-ui-optionWidget  {
+	color:rgb(var(--dropdown-text-color));
 }
 
-body .mw-rcfilters-ui-itemMenuOptionWidget:hover,
-body .mw-rcfilters-ui-filterMenuOptionWidget.oo-ui-flaggedElement-muted.oo-ui-optionWidget-highlighted,
-body .oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted,
-body .mw-rcfilters-ui-filterMenuHeaderWidget-header,
-body .mw-rcfilters-ui-menuSelectWidget-footer,
+
+body .mw-rcfilters-ui-filterMenuOptionWidget.oo-ui-flaggedElement-muted:not(.oo-ui-optionWidget-selected) {
+	background-color:transparent;
+	color:rgba(var(--dropdown-text-color),var(--acrylic-opacity));
+	opacity:0.8;
+}
+
 body .oo-ui-tool.oo-ui-widget-enabled > .oo-ui-tool-link:hover,
-body .oo-ui-listToolGroup-tools .oo-ui-tool.oo-ui-widget-enabled:hover,
 body .wikiEditor-ui-toolbar .group .tool-select .menu .options .option:hover {
 	background-color:var(--canvas-secondary-background-color-hover);
 	color:var(--canvas-text-secondary-background-color);
 
 }
 
+
+
 body .mw-rcfilters-ui-itemMenuOptionWidget:hover,
 body .mw-rcfilters-ui-filterMenuOptionWidget.oo-ui-flaggedElement-muted.oo-ui-optionWidget-highlighted,
 body .oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted,
+body .oo-ui-menuOptionWidget.oo-ui-widget-enabled.oo-ui-optionWidget-highlighted,
+
 body .mw-rcfilters-ui-filterMenuHeaderWidget-header,
 body .mw-rcfilters-ui-menuSelectWidget-footer {
-	background-color:rgba(var(--canvas-secondary-background-color-hover-rgb),var(--acrylic-opacity));
+	background-color:rgba(var(--dropdown-background-color-2),var(--acrylic-opacity));
+	color:rgb(var(--dropdown-text-color-2));
 }
 
 
@@ -974,16 +979,29 @@ body .mw-rcfilters-ui-filterMenuOptionWidget.oo-ui-flaggedElement-muted .mw-rcfi
 body .mw-rcfilters-ui-filterMenuOptionWidget.oo-ui-flaggedElement-muted .mw-rcfilters-ui-itemMenuOptionWidget-label-desc,
 body .mw-rcfilters-ui-datePopupWidget .mw-rcfilters-ui-valuePickerWidget-title,
 body .mw-rcfilters-ui-savedLinksListWidget-placeholder.oo-ui-optionWidget .oo-ui-labelElement-label {
-	color:var(--canvas-text-secondary-background-color-hover);
+	color:rgb(var(--dropdown-text-color-hover));
+}
+
+/* Helper for Simple Visual Style */
+body .mw-rcfilters-ui-filterMenuOptionWidget:hover .mw-rcfilters-ui-itemMenuOptionWidget-label-desc,
+body .mw-rcfilters-ui-filterMenuOptionWidget.oo-ui-flaggedElement-muted:hover .mw-rcfilters-ui-itemMenuOptionWidget-label-title, 
+body .mw-rcfilters-ui-filterMenuOptionWidget.oo-ui-flaggedElement-muted:hover .mw-rcfilters-ui-itemMenuOptionWidget-label-desc,
+body .mw-rcfilters-ui-filterMenuOptionWidget:hover  .mw-rcfilters-ui-datePopupWidget .mw-rcfilters-ui-valuePickerWidget-title,
+body .mw-rcfilters-ui-filterMenuOptionWidget:hover  .mw-rcfilters-ui-savedLinksListWidget-placeholder.oo-ui-optionWidget .oo-ui-labelElement-label {
+	color:rgb(var(--dropdown-text-color-hover-2));
 }
 
 body .mw-rcfilters-ui-itemMenuOptionWidget-label-title {
-	color:var(--canvas-text-secondary-background-color);
+	color:rgb(var(--dropdown-text-color));
+}
+
+body .mw-rcfilters-ui-filterMenuOptionWidget:hover .mw-rcfilters-ui-itemMenuOptionWidget-label-title {
+	color:rgb(var(--dropdown-text-color-2));
 }
 
 
 body .oo-ui-menuSectionOptionWidget {
-	color:var(--inactive-text-background-color);
+	color:rgb(var(--dropdown-inactive-text-color));
 }
 
 body .oo-ui-listToolGroup-tools .oo-ui-tool-active.oo-ui-widget-enabled,
@@ -991,34 +1009,44 @@ body .oo-ui-listToolGroup-tools .oo-ui-tool.oo-ui-widget-enabled:hover {
 	background-color:transparent;
 }
 
+body .oo-ui-listToolGroup-tools .oo-ui-tool.oo-ui-widget-enabled:hover {
+	color:rgb(var(--dropdown-text-color-2));
+}
+
+
 body .oo-ui-listToolGroup-tools .oo-ui-tool-active.oo-ui-widget-enabled .oo-ui-tool-link .oo-ui-tool-title {
 	color:inherit;
 }
 
-body .oo-ui-menuOptionWidget.oo-ui-optionWidget-selected {
-	background-color:var(--hyperlink-fadeout-color);
-	color:var(--hyperlink-background-color);
+
+body .oo-ui-menuOptionWidget.oo-ui-optionWidget-selected,
+body .oo-ui-menuOptionWidget.oo-ui-widget-enabled.oo-ui-optionWidget-selected {
+	background-color:var(--dropdown-hyperlink-background-color);
+	color:var(--dropdown-hyperlink-text-color);
 }
 
 body .mw-rcfilters-ui-itemMenuOptionWidget.oo-ui-optionWidget-selected {
-	background-color:var(--hyperlink-fadeout-color);
-	color:var(--hyperlink-background-color);
+	background-color:var(--dropdown-hyperlink-background-color);
+	color:var(--dropdown-hyperlink-text-color);
 }
 
-body .oo-ui-menuOptionWidget.oo-ui-widget-enabled.oo-ui-optionWidget  {
-	color:var(--canvas-text-background-color);
+body .mw-rcfilters-ui-itemMenuOptionWidget.oo-ui-optionWidget-selected  .mw-rcfilters-ui-itemMenuOptionWidget-label-title,
+body .mw-rcfilters-ui-itemMenuOptionWidget.oo-ui-optionWidget-selected .mw-rcfilters-ui-itemMenuOptionWidget-label-desc {
+	color:inherit;
 }
+
+
 
 body .oo-ui-menuOptionWidget.oo-ui-optionWidget-selected.oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted,
 body .oo-ui-menuOptionWidget.oo-ui-optionWidget-pressed.oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted {
-	background-color:var(--hyperlink-fadeout-color);
-	color:var(--hyperlink-background-color);
+	background-color:var(--dropdown-hyperlink-background-color);
+	color:var(--dropdown-hyperlink-text-color);
 }
 
 
 body .mw-rcfilters-ui-filterMenuSectionOptionWidget {
-	color:var(--inactive-text-foreground-color);
-	background-color:var(--inactive-text-background-color);
+	color:var(--dropdown-header-text-color);
+	background-color:var(--dropdown-header-background-color);
 }
 
 body .mw-rcfilters-ui-filterMenuSectionOptionWidget-header-title.oo-ui-labelElement-label {
@@ -1435,6 +1463,13 @@ body .oo-ui-tool.oo-ui-widget-enabled > .oo-ui-tool-link:hover {
 	color:var(--canvas-text-background-color);
 }
 
+body .oo-ui-popupToolGroup-tools .oo-ui-tool.oo-ui-widget-enabled > .oo-ui-tool-link:hover {
+	background-color:rgb(var(--dropdown-background-color-2));
+	color:rgb(var(--dropdown-text-color-2));
+
+}
+
+
 body .oo-ui-popupToolGroup.oo-ui-widget-enabled > .oo-ui-popupToolGroup-handle:active,
 body .oo-ui-popupToolGroup.oo-ui-popupToolGroup-active > .oo-ui-popupToolGroup-handle,
 body .oo-ui-popupToolGroup.oo-ui-popupToolGroup-active > .oo-ui-popupToolGroup-handle:hover,
@@ -1444,6 +1479,15 @@ body .oo-ui-tool.oo-ui-widget-enabled.oo-ui-popupToolGroup-active > .oo-ui-tool-
 	background-color:var(--hyperlink-fadeout-color);
 	color:var(--hyperlink-background-color);
 }
+
+body .oo-ui-listToolGroup-tools .oo-ui-tool.oo-ui-widget-enabled > .oo-ui-tool-link:active, 
+body .oo-ui-listToolGroup-tools .oo-ui-tool.oo-ui-widget-enabled.oo-ui-tool-active > .oo-ui-tool-link, 
+body .oo-ui-listToolGroup-tools .oo-ui-tool.oo-ui-widget-enabled.oo-ui-popupToolGroup-active > .oo-ui-tool-link {
+	background-color:var(--dropdown-hyperlink-background-color);
+	color:var(--dropdown-hyperlink-text-color);
+}
+
+
 
 body .wikiEditor-ui-toolbar .tabs span.tab a.current, 
 body .wikiEditor-ui-toolbar .tabs span.tab a.current:visited,
@@ -1782,7 +1826,7 @@ body .oo-ui-toggleSwitchWidget.oo-ui-toggleWidget-on .oo-ui-toggleSwitchWidget-g
 
 body .mw-apisandbox-toolbar {
 	background-color:var(--canvas-background-color);
-	top:var(--luna-size);
+	top:var(--minibar-size);
 	border-bottom:1px solid var(--inactive-text-background-color);
 }
 
@@ -2271,32 +2315,32 @@ body .diff-addedline .diffchange {
 
 /* Echno Support */
 body .mw-echo-ui-notificationsInboxWidget-toolbarWrapper {
-	background:var(--canvas-secondary-background-color);
-	color:var(--canvas-text-secondary-background-color);
+	background:rgb(var(--dropdown-background-color));
+	color:rgb(var(--dropdown-text-color));
 	padding:6px;
 }
 
 body .mw-echo-ui-pageNotificationsOptionWidget.oo-ui-optionWidget-selected {
-	color:var(--hyperlink-background-color);
-	background-color:var(--hyperlink-fadeout-color);
+	background-color:var(--dropdown-hyperlink-background-color);
+	color:var(--dropdown-hyperlink-text-color);
 }
 
 body .mw-echo-ui-pageNotificationsOptionWidget.oo-ui-optionWidget-selected.mw-echo-ui-pageNotificationsOptionWidget.oo-ui-optionWidget-highlighted, 
 body .mw-echo-ui-pageNotificationsOptionWidget.oo-ui-optionWidget-pressed.mw-echo-ui-pageNotificationsOptionWidget.oo-ui-optionWidget-highlighted {
-	color:var(--hyperlink-background-color);
-	background-color:rgba(var(--hyperlink-background-color-rgb),0.1);
+	background-color:var(--dropdown-hyperlink-background-color);
+	color:var(--dropdown-hyperlink-text-color);
 }
 
 body .oo-ui-optionWidget-selected .mw-echo-ui-pageNotificationsOptionWidget-label-count {
-	color:var(--hyperlink-background-color);
+	color:var(--dropdown-hyperlink-text-color);
 }
 
 body .mw-echo-ui-notificationBadgeButtonPopupWidget-popup {
     bottom:0px!important;
-	top:var(--luna-size)!important; /* Override Inline Style */
+	top:var(--minibar-size)!important; /* Override Inline Style */
     right:0!important;
     left:auto!important;
-	height:calc(100vh - var(--luna-size) - var(--luna-size))!important;
+	height:calc(100vh - var(--minibar-size) - var(--minibar-size))!important;
     display:flex;
     margin-top:0!important;
     transition:top 400ms var(--transitioner), height 400ms var(--transitioner);
@@ -2305,8 +2349,8 @@ body .mw-echo-ui-notificationBadgeButtonPopupWidget-popup {
 
 @media only screen and (min-width:760px) {
 	.mw-echo-ui-notificationBadgeButtonPopupWidget-popup {
-		top:var(--luna-size)!important; /* Override Inline Style */
-		height:calc(100vh - var(--luna-size) - var(--luna-size))!important;
+		top:var(--minibar-size)!important; /* Override Inline Style */
+		height:calc(100vh - var(--minibar-size) - var(--minibar-size))!important;
 	}
 }
 
@@ -2337,7 +2381,7 @@ body .mw-echo-ui-notificationBadgeButtonPopupWidget-popup .oo-ui-clippableElemen
 .evelution-sidebar #pt-notifications-alert .mw-echo-notifications-badge, 
 .evelution-sidebar #pt-notifications-notice .mw-echo-notifications-badge {
     width: var(--toolbar-link-size)!important;
-    height: var(--luna-size)!important;
+    height: var(--minibar-size)!important;
     margin: 0 calc(0 - var(--toolbar-link-size) )!important;
     background-image: none!important;
     -webkit-mask-image: none!important;
@@ -2354,28 +2398,39 @@ body .mw-echo-ui-notificationBadgeButtonPopupWidget-popup .oo-ui-clippableElemen
 }
 
 body .mw-echo-ui-notificationItemWidget {
-	background-color:var(--canvas-secondary-background-color);
-	color:var(--canvas-text-secondary-background-color);
+	background-color:rgb(var(--dropdown-background-color));
+	color:rgb(var(--dropdown-text-color));
 }
 
 body .mw-echo-ui-notificationItemWidget:hover {
-	background-color:var(--canvas-secondary-background-color-hover);
+	background-color:rgb(var(--dropdown-background-color-2));
+	color:rgb(var(--dropdown-text-color-2));
 }
 
 
 body .mw-echo-ui-notificationItemWidget-unread,
 body .mw-echo-ui-placeholderItemWidget  {
-	background-color:var(--canvas-background-color);
-	color:var(--canvas-text-background-color);
+	background-color:rgb(var(--dropdown-background-color));
+	color:rgb(var(--dropdown-text-background-color));
 }
+
+body .mw-echo-ui-notificationItemWidget-unread  {
+	box-shadow:6px 0 inset;
+}
+
+.visualmode-contrast body .mw-echo-ui-notificationItemWidget-unread  {
+	box-shadow:6px 0 inset;
+}
+
 
 body .mw-echo-ui-notificationItemWidget-unread:hover {
-	background-color:var(--canvas-background-color-hover);
+	background-color:rgb(var(--dropdown-background-color-2));
 }
 
-body .mw-echo-ui-notificationsListWidget:not(:hover) a, body #p-personal .mw-echo-ui-notificationsListWidget:not(:hover) a.new,
+body .mw-echo-ui-notificationsListWidget:not(:hover) a, 
+body #p-personal .mw-echo-ui-notificationsListWidget:not(:hover) a.new,
 body .mw-echo-ui-notificationItemWidget-content-message-header {
-	color:var(--canvas-text-background-color);
+	color:rgb(var(--dropdown-text-color));
 }
 
 body .evelution-sidebar #pt-notifications-alert .mw-echo-notifications-badge:after, 
@@ -2405,8 +2460,8 @@ body .mw-echo-ui-notificationBadgeButtonPopupWidget-footer {
 
 	.mw-echo-ui-overlay .oo-ui-popupWidget-popup {
 		width: 100%!important;
-		top:var(--luna-size)!important; /* Override Inline Style */
-		height:calc(100vh - var(--luna-size) - var(--luna-size))!important;
+		top:var(--minibar-size)!important; /* Override Inline Style */
+		height:calc(100vh - var(--minibar-size) - var(--minibar-size))!important;
 	}
 
 	body .mw-echo-ui-overlay .mw-echo-ui-notificationBadgeButtonPopupWidget-popup {
@@ -2414,7 +2469,7 @@ body .mw-echo-ui-notificationBadgeButtonPopupWidget-footer {
 		right:auto!important;
 		width: calc(100%)!important;
 		top:0!important;
-		height:calc(100vh - var(--luna-size) - var(--luna-size))!important;
+		height:calc(100vh - var(--minibar-size) - var(--minibar-size))!important;
 	}
 
 	.mw-echo-ui-overlay .oo-ui-clippableElement-clippable {
