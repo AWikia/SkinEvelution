@@ -1470,9 +1470,9 @@ gap:2px;
 	.evelution-top-actions .cpe-dropdown:focus  .link, 
 	.evelution-top-actions .cpe-dropdown:focus-within  .link, 
 	.evelution-top-actions .link.active  {
-		background-color:rgba(var(--header-foreground-color-hover-rgb),0.4);
-		border-color:rgba(var(--header-foreground-color-hover-rgb),0.2);
-		color:var(--header-foreground-color);
+		background-color:rgba(var(--hyperlink-quaternary-background-color-rgb),0.4);
+		border-color:rgba(var(--hyperlink-quaternary-background-color-rgb),0.2);
+		color:var(--hyperlink-quaternary-background-color);
 
 	}
 
@@ -2338,7 +2338,6 @@ border-top-right-radius:0;
 
 
 /* Button Styling Tweaks for Page Header and Modules */
-	 .evelution-module .cpe-button,
 	 .evelution-page-header .cpe-button {
 		--secondary-button-foreground-color: var(--luna-hyperlink-background-color);
 		--secondary-button-foreground-color-hover: var(--luna-hyperlink-background-color-hover);
@@ -2346,7 +2345,6 @@ border-top-right-radius:0;
 		--tertiary-button-foreground-color:var(--luna-hyperlink-background-color);
 	}
 
-	 .evelution-module .cpe-button.is-unaccented,
 	 .evelution-page-header .cpe-button.is-unaccented {
 		--secondary-button-foreground-color: var(--luna-text-background-color);
 		--secondary-button-foreground-color-hover: var(--luna-text-background-color-hover);
@@ -2354,7 +2352,6 @@ border-top-right-radius:0;
 		--tertiary-button-foreground-color:var(--luna-text-background-color);
 	}
 
-	 .evelution-module .cpe-button.is-alternate,
 	 .evelution-page-header .cpe-button.is-alternate {
 		--secondary-button-foreground-color: var(--luna-active-text-background-color);
 		--secondary-button-foreground-color-hover: var(--luna-active-text-background-color-hover);
@@ -2363,7 +2360,6 @@ border-top-right-radius:0;
 	}
 
 
-	 .evelution-module .cpe-button.is-alert-color,
 	 .evelution-page-header .cpe-button.is-alert-color,
 	 .evelution-page-header li.new .cpe-button {
 		--secondary-button-foreground-color: var(--luna-alert-background-color);
@@ -2372,7 +2368,6 @@ border-top-right-radius:0;
 		--tertiary-button-foreground-color:var(--luna-alert-background-color);
 	}
 
-	 .evelution-module .cpe-button.is-pause-color,
 	 .evelution-page-header .cpe-button.is-pause-color {
 		--secondary-button-foreground-color: var(--luna-pause-background-color);
 		--secondary-button-foreground-color-hover: var(--luna-pause-background-color-hover);
@@ -2380,7 +2375,6 @@ border-top-right-radius:0;
 		--tertiary-button-foreground-color:var(--luna-pause-background-color);
 	}
 
-	 .evelution-module .cpe-button.is-warning-color,
 	 .evelution-page-header .cpe-button.is-warning-color {
 		--secondary-button-foreground-color: var(--luna-warning-background-color);
 		--secondary-button-foreground-color-hover: var(--luna-warning-background-color-hover);
@@ -2388,7 +2382,6 @@ border-top-right-radius:0;
 		--tertiary-button-foreground-color:var(--luna-warning-background-color);
 	}
 
-	 .evelution-module .cpe-button.is-success-color,
 	 .evelution-page-header .cpe-button.is-success-color {
 		--secondary-button-foreground-color: var(--luna-success-background-color);
 		--secondary-button-foreground-color-hover: var(--luna-success-background-color-hover);
@@ -2396,7 +2389,6 @@ border-top-right-radius:0;
 		--tertiary-button-foreground-color:var(--luna-success-background-color);
 	}
 	
-	 .evelution-module .cpe-button.is-progress-color,
 	 .evelution-page-header .cpe-button.is-progress-color,
 	 .evelution-page-header li.stub .cpe-button {
 		--secondary-button-foreground-color: var(--luna-progress-background-color);
@@ -2405,7 +2397,6 @@ border-top-right-radius:0;
 		--tertiary-button-foreground-color:var(--luna-progress-background-color);
 	}
 
-	 .evelution-module .cpe-button.is-message-color,
 	 .evelution-page-header .cpe-button.is-message-color {
 		--secondary-button-foreground-color: var(--luna-message-background-color);
 		--secondary-button-foreground-color-hover: var(--luna-message-background-color-hover);
@@ -2414,13 +2405,34 @@ border-top-right-radius:0;
 	}
 
 
-
 	.has-accents .evelution-page-header .cpe-button {
-		--button-background-color: var(--secondary-button-foreground-color);
-		--button-background-color-hover: var(--secondary-button-foreground-color-hover);
+		--button-background-color: var(--luna-highlight-background-color);
+		--button-background-color-hover: var(--luna-highlight-background-color-hover);
 		--button-foreground-color: var(--luna-background-color);
 		--button-foreground-color-inverted: var(--luna-background-color);
 		--button-foreground-color-rgb:var(--luna-background-color-rgb);
+	}
+
+	.has-accents .evelution-page-header .cpe-button.is-unaccented {
+		--button-background-color: var(--luna-inactive-text-background-color);
+		--button-background-color-hover: var(--luna-inactive-text-background-color-hover);
+	}
+
+	.has-accents .evelution-page-header .cpe-button.is-alternate {
+		--button-background-color: var(--luna-active-title-background-color);
+		--button-background-color-hover: var(--luna-active-title-background-color-hover);
+	}
+
+	.has-accents .evelution-page-header .cpe-button.is-alert-color,
+	.has-accents .evelution-page-header .cpe-button.is-pause-color,
+	.has-accents .evelution-page-header .cpe-button.is-warning-color,
+	.has-accents .evelution-page-header .cpe-button.is-success-color,
+	.has-accents .evelution-page-header .cpe-button.is-progress-color,
+	.has-accents .evelution-page-header .cpe-button.is-message-color,
+	.has-accents .evelution-page-header li.new .cpe-button,
+	.has-accents .evelution-page-header li.stub .cpe-button {
+		--button-background-color: var(--secondary-button-foreground-color);
+		--button-background-color-hover: var(--secondary-button-foreground-color-hover);
 	}
 
 

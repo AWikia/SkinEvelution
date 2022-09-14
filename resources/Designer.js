@@ -931,6 +931,24 @@ function InitDesigner() {
 			'<div style="display:flex; gap:5px; align-items:center; align-content:center; justify-content:center; flex-wrap:wrap;">' +
 	/// Desktop
 				'<block class="td-block" title="Desktop" onclick="getColorContrastOfAnElement(this,\'Desktop\',\'Desktop Text\')" style="background-color:var(--desktop-background-color); color:var(--desktop-text-background-color);">A</block>' +
+	// Others
+				'<block class="td-block" title="Quaternary Inactive Text" onclick="getColorContrastOfAnElement(this,\'Desktop\',\'Quaternary Inactive Text\')" style="background-color:var(--desktop-background-color); color:var(--inactive-text-quaternary-background-color);">A</block>' +
+				'<block class="td-block" title="Quaternary Hyperlink" onclick="getColorContrastOfAnElement(this,\'Desktop\',\'Quaternary Hyperlink\')" style="background-color:var(--desktop-background-color); color:var(--hyperlink-quaternary-background-color);">A</block>' +
+				'<block class="td-block" title="Quaternary Visited Hyperlink" onclick="getColorContrastOfAnElement(this,\'Desktop\',\'Quaternary Visited Hyperlink\')" style="background-color:var(--desktop-background-color); color:var(--visited-hyperlink-quaternary-background-color);">A</block>' +
+				'<block class="td-block" title="Quaternary Active Text" onclick="getColorContrastOfAnElement(this,\'Desktop\',\'Quaternary Active Text\')" style="background-color:var(--desktop-background-color); color:var(--active-text-quaternary-background-color);">A</block>' +
+				'<block class="td-block" title="Quaternary Highlight" onclick="getColorContrastOfAnElement(this,\'Desktop\',\'Quaternary Highlight\')" style="background-color:var(--desktop-background-color); color:var(--highlight-quaternary-background-color);">A</block>' +
+				'<block class="td-block" title="Quaternary Active Caption" onclick="getColorContrastOfAnElement(this,\'Desktop\',\'Quaternary Active Caption\')" style="background-color:var(--desktop-background-color); color:var(--active-title-quaternary-background-color);">A</block>' +
+
+	// Generic Colors
+				'<block class="td-block" title="Quaternary Alert" onclick="getColorContrastOfAnElement(this,\'Desktop\',\'Quaternary Alert\')" style="background-color:var(--desktop-background-color); color:var(--alert-quaternary-background-color);">A</block>' +
+				'<block class="td-block" title="Quaternary Pause" onclick="getColorContrastOfAnElement(this,\'Desktop\',\'Quaternary Pause\')" style="background-color:var(--desktop-background-color); color:var(--pause-quaternary-background-color);">A</block>' +
+				'<block class="td-block" title="Quaternary Warning" onclick="getColorContrastOfAnElement(this,\'Desktop\',\'Quaternary Warning\')" style="background-color:var(--desktop-background-color); color:var(--warning-quaternary-background-color);">A</block>' +
+				'<block class="td-block" title="Quaternary Success" onclick="getColorContrastOfAnElement(this,\'Desktop\',\'Quaternary Success\')" style="background-color:var(--desktop-background-color); color:var(--success-quaternary-background-color);">A</block>' +
+				'<block class="td-block" title="Quaternary Progress" onclick="getColorContrastOfAnElement(this,\'Desktop\',\'Quaternary Progress\')" style="background-color:var(--desktop-background-color); color:var(--progress-quaternary-background-color);">A</block>' +
+				'<block class="td-block" title="Quaternary Message" onclick="getColorContrastOfAnElement(this,\'Desktop\',\'Quaternary Message\')" style="background-color:var(--desktop-background-color); color:var(--message-quaternary-background-color);">A</block>' +
+			'</div><br>' +
+
+			'<div style="display:flex; gap:5px; align-items:center; align-content:center; justify-content:center; flex-wrap:wrap;">' +
 	/// Canvas
 				'<block class="td-block" title="Canvas" onclick="getColorContrastOfAnElement(this,\'Canvas\',\'Canvas Text\')" style="background-color:var(--canvas-background-color); color:var(--canvas-text-background-color);">A</block>' +
 	// Others
@@ -939,7 +957,7 @@ function InitDesigner() {
 				'<block class="td-block" title="Visited Hyperlink" onclick="getColorContrastOfAnElement(this,\'Canvas\',\'Visited Hyperlink\')" style="background-color:var(--canvas-background-color); color:var(--visited-hyperlink-background-color);">A</block>' +
 				'<block class="td-block" title="Active Text" onclick="getColorContrastOfAnElement(this,\'Canvas\',\'Active Text\')" style="background-color:var(--canvas-background-color); color:var(--active-text-background-color);">A</block>' +
 				'<block class="td-block" title="Highlight" onclick="getColorContrastOfAnElement(this,\'Canvas\',\'Highlight\')" style="background-color:var(--canvas-background-color); color:var(--highlight-background-color);">A</block>' +
-				'<block class="td-block" title="Active Title" onclick="getColorContrastOfAnElement(this,\'Canvas\',\'Active Title\')" style="background-color:var(--canvas-background-color); color:var(--active-title-background-color);">A</block>' +
+				'<block class="td-block" title="Active Caption" onclick="getColorContrastOfAnElement(this,\'Canvas\',\'Active Caption\')" style="background-color:var(--canvas-background-color); color:var(--active-title-background-color);">A</block>' +
 
 	// Generic Colors
 				'<block class="td-block" title="Alert" onclick="getColorContrastOfAnElement(this,\'Canvas\',\'Alert\')" style="background-color:var(--canvas-background-color); color:var(--alert-background-color);">A</block>' +
@@ -968,14 +986,15 @@ function InitDesigner() {
 				'<block class="td-block" title="Secondary Message" onclick="getColorContrastOfAnElement(this,\'Secondary Canvas\',\'Secondary Message\')" style="background-color:var(--canvas-secondary-background-color); color:var(--message-secondary-background-color);">A</block>' +
 			'</div><br>' +
 			'<div style="display:flex; gap:5px; align-items:center; align-content:center; justify-content:center; flex-wrap:wrap;">' +
-	/// Highlight
-				'<block class="td-block" title="Highlight" onclick="getColorContrastOfAnElement(this,\'Highlight\',\'Highlight Text\')" style="background-color:var(--highlight-background-color); color:var(--highlight-text-background-color);">A</block>' +
 	/// Active Caption
 				'<block class="td-block" title="Active Caption" onclick="getColorContrastOfAnElement(this,\'Active Caption\',\'Active Caption Text\')" style="background-color:var(--active-title-background-color); color:var(--active-title-text-background-color);">A</block>' +
 	// Others
+				'<block class="td-block" title="Tertiary Inactive Text" onclick="getColorContrastOfAnElement(this,\'Active Caption\',\'Tertiary Inactive Text\')" style="background-color:var(--active-title-background-color); color:var(--inactive-text-tertiary-background-color);">A</block>' +
 				'<block class="td-block" title="Tertiary Hyperlink" onclick="getColorContrastOfAnElement(this,\'Active Caption\',\'Tertiary Hyperlink\')" style="background-color:var(--active-title-background-color); color:var(--hyperlink-tertiary-background-color);">A</block>' +
 				'<block class="td-block" title="Tertiary Visited Hyperlink" onclick="getColorContrastOfAnElement(this,\'Active Caption\',\'Tertiary Visited Hyperlink\')" style="background-color:var(--active-title-background-color); color:var(--visited-hyperlink-tertiary-background-color);">A</block>' +
 				'<block class="td-block" title="Tertiary Active Text" onclick="getColorContrastOfAnElement(this,\'Active Caption\',\'Tertiary Active Text\')" style="background-color:var(--active-title-background-color); color:var(--active-text-tertiary-background-color);">A</block>' +
+				'<block class="td-block" title="Tertiary Highlight" onclick="getColorContrastOfAnElement(this,\'Active Caption\',\'Tertiary Highlight\')" style="background-color:var(--active-title-background-color); color:var(--highlight-tertiary-background-color);">A</block>' +
+				'<block class="td-block" title="Tertiary Active Caption" onclick="getColorContrastOfAnElement(this,\'Active Caption\',\'Tertiary Active Caption\')" style="background-color:var(--active-title-background-color); color:var(--active-title-tertiary-background-color);">A</block>' +
 	// Generic Colors
 				'<block class="td-block" title="Tertiary Alert" onclick="getColorContrastOfAnElement(this,\'Active Caption\',\'Tertiary Alert\')" style="background-color:var(--active-title-background-color); color:var(--alert-tertiary-background-color);">A</block>' +
 				'<block class="td-block" title="Tertiary Pause" onclick="getColorContrastOfAnElement(this,\'Active Caption\',\'Tertiary Pause\')" style="background-color:var(--active-title-background-color); color:var(--pause-tertiary-background-color);">A</block>' +
@@ -983,7 +1002,10 @@ function InitDesigner() {
 				'<block class="td-block" title="Tertiary Success" onclick="getColorContrastOfAnElement(this,\'Active Caption\',\'Tertiary Success\')" style="background-color:var(--active-title-background-color); color:var(--success-tertiary-background-color);">A</block>' +
 				'<block class="td-block" title="Tertiary Progress" onclick="getColorContrastOfAnElement(this,\'Active Caption\',\'Tertiary Progress\')" style="background-color:var(--active-title-background-color); color:var(--progress-tertiary-background-color);">A</block>' +
 				'<block class="td-block" title="Tertiary Message" onclick="getColorContrastOfAnElement(this,\'Active Caption\',\'Tertiary Message\')" style="background-color:var(--active-title-background-color); color:var(--message-tertiary-background-color);">A</block>' +
-
+			'</div><br>' +
+			'<div style="display:flex; gap:5px; align-items:center; align-content:center; justify-content:center; flex-wrap:wrap;">' +
+	/// Highlight
+				'<block class="td-block" title="Highlight" onclick="getColorContrastOfAnElement(this,\'Highlight\',\'Highlight Text\')" style="background-color:var(--highlight-background-color); color:var(--highlight-text-background-color);">A</block>' +
 	/// Inactive Caption
 				'<block class="td-block" title="Inactive Caption" onclick="getColorContrastOfAnElement(this,\'Inactive Caption\',\'Inactive Caption Text\')" style="background-color:var(--inactive-title-background-color); color:var(--inactive-title-text-background-color);">A</block>' +
 
