@@ -927,35 +927,68 @@ function InitDesigner() {
 
 		'</table>' +
 		'<hr>' +
-		'<div style="display:flex; gap:5px; align-items:center; align-content:center; justify-content:center; flex-wrap:wrap;">' +
-			'<block class="td-block" title="Desktop" onclick="getColorContrastOfAnElement(this,\'Desktop\',\'Desktop Text\')" style="background-color:var(--desktop-background-color); color:var(--desktop-text-background-color);">A</block>' +
-			'<block class="td-block" title="Canvas" onclick="getColorContrastOfAnElement(this,\'Canvas\',\'Canvas Text\')" style="background-color:var(--canvas-background-color); color:var(--canvas-text-background-color);">A</block>' +
-			'<block class="td-block" title="Secondary Canvas" onclick="getColorContrastOfAnElement(this,\'Secondary Canvas\',\'Secondary Canvas Text\')" style="background-color:var(--canvas-secondary-background-color); color:var(--canvas-text-secondary-background-color);">A</block>' +
-			'<block class="td-block" title="Inactive Text" onclick="getColorContrastOfAnElement(this,\'Canvas\',\'Inactive Text\')" style="background-color:var(--canvas-background-color); color:var(--inactive-text-background-color);">A</block>' +
-			'<block class="td-block" title="Hyperlink" onclick="getColorContrastOfAnElement(this,\'Canvas\',\'Hyperlink\')" style="background-color:var(--canvas-background-color); color:var(--hyperlink-background-color);">A</block>' +
-			'<block class="td-block" title="Visited Hyperlink" onclick="getColorContrastOfAnElement(this,\'Canvas\',\'Visited Hyperlink\')" style="background-color:var(--canvas-background-color); color:var(--visited-hyperlink-background-color);">A</block>' +
-			'<block class="td-block" title="Active Text" onclick="getColorContrastOfAnElement(this,\'Canvas\',\'Active Text\')" style="background-color:var(--canvas-background-color); color:var(--active-text-background-color);">A</block>' +
-			'<block class="td-block" title="Secondary Hyperlink" onclick="getColorContrastOfAnElement(this,\'Secondary Canvas\',\'Secondary Hyperlink\')" style="background-color:var(--canvas-secondary-background-color); color:var(--hyperlink-secondary-background-color);">A</block>' +
-			'<block class="td-block" title="Secondary Visited Hyperlink" onclick="getColorContrastOfAnElement(this,\'Secondary Canvas\',\'Secondary Visited Hyperlink\')" style="background-color:var(--canvas-secondary-background-color); color:var(--visited-hyperlink-secondary-background-color);">A</block>' +
-			'<block class="td-block" title="Secondary Active Text" onclick="getColorContrastOfAnElement(this,\'Secondary Canvas\',\'Secondary Active Text\')" style="background-color:var(--canvas-secondary-background-color); color:var(--active-text-secondary-background-color);">A</block>' +
-			'<block class="td-block" title="Highlight" onclick="getColorContrastOfAnElement(this,\'Highlight\',\'Highlight Text\')" style="background-color:var(--highlight-background-color); color:var(--highlight-text-background-color);">A</block>' +
-			'<block class="td-block" title="Active Caption" onclick="getColorContrastOfAnElement(this,\'Active Caption\',\'Active Caption Text\')" style="background-color:var(--active-title-background-color); color:var(--active-title-text-background-color);">A</block>' +
-			'<block class="td-block" title="Inactive Caption" onclick="getColorContrastOfAnElement(this,\'Inactive Caption\',\'Inactive Caption Text\')" style="background-color:var(--inactive-title-background-color); color:var(--inactive-title-text-background-color);">A</block>' +
-			'<block class="td-block" title="Alert" onclick="getColorContrastOfAnElement(this,\'Canvas\',\'Alert\')" style="background-color:var(--canvas-background-color); color:var(--alert-background-color);">A</block>' +
-			'<block class="td-block" title="Pause" onclick="getColorContrastOfAnElement(this,\'Canvas\',\'Pause\')" style="background-color:var(--canvas-background-color); color:var(--pause-background-color);">A</block>' +
-			'<block class="td-block" title="Warning" onclick="getColorContrastOfAnElement(this,\'Canvas\',\'Warning\')" style="background-color:var(--canvas-background-color); color:var(--warning-background-color);">A</block>' +
-			'<block class="td-block" title="Success" onclick="getColorContrastOfAnElement(this,\'Canvas\',\'Success\')" style="background-color:var(--canvas-background-color); color:var(--success-background-color);">A</block>' +
-			'<block class="td-block" title="Progress" onclick="getColorContrastOfAnElement(this,\'Canvas\',\'Progress\')" style="background-color:var(--canvas-background-color); color:var(--progress-background-color);">A</block>' +
-			'<block class="td-block" title="Message" onclick="getColorContrastOfAnElement(this,\'Canvas\',\'Message\')" style="background-color:var(--canvas-background-color); color:var(--message-background-color);">A</block>' +
+		'<div style="line-height:0.5;">' +
+			'<div style="display:flex; gap:5px; align-items:center; align-content:center; justify-content:center; flex-wrap:wrap;">' +
+	/// Desktop
+				'<block class="td-block" title="Desktop" onclick="getColorContrastOfAnElement(this,\'Desktop\',\'Desktop Text\')" style="background-color:var(--desktop-background-color); color:var(--desktop-text-background-color);">A</block>' +
+	/// Canvas
+				'<block class="td-block" title="Canvas" onclick="getColorContrastOfAnElement(this,\'Canvas\',\'Canvas Text\')" style="background-color:var(--canvas-background-color); color:var(--canvas-text-background-color);">A</block>' +
+	// Others
+				'<block class="td-block" title="Inactive Text" onclick="getColorContrastOfAnElement(this,\'Canvas\',\'Inactive Text\')" style="background-color:var(--canvas-background-color); color:var(--inactive-text-background-color);">A</block>' +
+				'<block class="td-block" title="Hyperlink" onclick="getColorContrastOfAnElement(this,\'Canvas\',\'Hyperlink\')" style="background-color:var(--canvas-background-color); color:var(--hyperlink-background-color);">A</block>' +
+				'<block class="td-block" title="Visited Hyperlink" onclick="getColorContrastOfAnElement(this,\'Canvas\',\'Visited Hyperlink\')" style="background-color:var(--canvas-background-color); color:var(--visited-hyperlink-background-color);">A</block>' +
+				'<block class="td-block" title="Active Text" onclick="getColorContrastOfAnElement(this,\'Canvas\',\'Active Text\')" style="background-color:var(--canvas-background-color); color:var(--active-text-background-color);">A</block>' +
+				'<block class="td-block" title="Highlight" onclick="getColorContrastOfAnElement(this,\'Canvas\',\'Highlight\')" style="background-color:var(--canvas-background-color); color:var(--highlight-background-color);">A</block>' +
+				'<block class="td-block" title="Active Title" onclick="getColorContrastOfAnElement(this,\'Canvas\',\'Active Title\')" style="background-color:var(--canvas-background-color); color:var(--active-title-background-color);">A</block>' +
 
-			'<block class="td-block" title="Secondary Alert" onclick="getColorContrastOfAnElement(this,\'Secondary Canvas\',\'Secondary Alert\')" style="background-color:var(--canvas-secondary-background-color); color:var(--alert-secondary-background-color);">A</block>' +
-			'<block class="td-block" title="Secondary Pause" onclick="getColorContrastOfAnElement(this,\'Secondary Canvas\',\'Secondary Pause\')" style="background-color:var(--canvas-secondary-background-color); color:var(--pause-secondary-background-color);">A</block>' +
-			'<block class="td-block" title="Secondary Warning" onclick="getColorContrastOfAnElement(this,\'Secondary Canvas\',\'Secondary Warning\')" style="background-color:var(--canvas-secondary-background-color); color:var(--warning-secondary-background-color);">A</block>' +
-			'<block class="td-block" title="Secondary Success" onclick="getColorContrastOfAnElement(this,\'Secondary Canvas\',\'Secondary Success\')" style="background-color:var(--canvas-secondary-background-color); color:var(--success-secondary-background-color);">A</block>' +
-			'<block class="td-block" title="Secondary Progress" onclick="getColorContrastOfAnElement(this,\'Secondary Canvas\',\'Secondary Progress\')" style="background-color:var(--canvas-secondary-background-color); color:var(--progress-secondary-background-color);">A</block>' +
-			'<block class="td-block" title="Secondary Message" onclick="getColorContrastOfAnElement(this,\'Secondary Canvas\',\'Secondary Message\')" style="background-color:var(--canvas-secondary-background-color); color:var(--message-secondary-background-color);">A</block>' +
+	// Generic Colors
+				'<block class="td-block" title="Alert" onclick="getColorContrastOfAnElement(this,\'Canvas\',\'Alert\')" style="background-color:var(--canvas-background-color); color:var(--alert-background-color);">A</block>' +
+				'<block class="td-block" title="Pause" onclick="getColorContrastOfAnElement(this,\'Canvas\',\'Pause\')" style="background-color:var(--canvas-background-color); color:var(--pause-background-color);">A</block>' +
+				'<block class="td-block" title="Warning" onclick="getColorContrastOfAnElement(this,\'Canvas\',\'Warning\')" style="background-color:var(--canvas-background-color); color:var(--warning-background-color);">A</block>' +
+				'<block class="td-block" title="Success" onclick="getColorContrastOfAnElement(this,\'Canvas\',\'Success\')" style="background-color:var(--canvas-background-color); color:var(--success-background-color);">A</block>' +
+				'<block class="td-block" title="Progress" onclick="getColorContrastOfAnElement(this,\'Canvas\',\'Progress\')" style="background-color:var(--canvas-background-color); color:var(--progress-background-color);">A</block>' +
+				'<block class="td-block" title="Message" onclick="getColorContrastOfAnElement(this,\'Canvas\',\'Message\')" style="background-color:var(--canvas-background-color); color:var(--message-background-color);">A</block>' +
+			'</div><br>' +
+			'<div style="display:flex; gap:5px; align-items:center; align-content:center; justify-content:center; flex-wrap:wrap;">' +
+	/// Secondary Canvas
+				'<block class="td-block" title="Secondary Canvas" onclick="getColorContrastOfAnElement(this,\'Secondary Canvas\',\'Secondary Canvas Text\')" style="background-color:var(--canvas-secondary-background-color); color:var(--canvas-text-secondary-background-color);">A</block>' +
+	// Others
+				'<block class="td-block" title="Secondary Inactive Text" onclick="getColorContrastOfAnElement(this,\'Secondary Canvas\',\'Secondary Inactive Text\')" style="background-color:var(--canvas-secondary-background-color); color:var(--inactive-text-secondary-background-color);">A</block>' +
+				'<block class="td-block" title="Secondary Hyperlink" onclick="getColorContrastOfAnElement(this,\'Secondary Canvas\',\'Secondary Hyperlink\')" style="background-color:var(--canvas-secondary-background-color); color:var(--hyperlink-secondary-background-color);">A</block>' +
+				'<block class="td-block" title="Secondary Visited Hyperlink" onclick="getColorContrastOfAnElement(this,\'Secondary Canvas\',\'Secondary Visited Hyperlink\')" style="background-color:var(--canvas-secondary-background-color); color:var(--visited-hyperlink-secondary-background-color);">A</block>' +
+				'<block class="td-block" title="Secondary Active Text" onclick="getColorContrastOfAnElement(this,\'Secondary Canvas\',\'Secondary Active Text\')" style="background-color:var(--canvas-secondary-background-color); color:var(--active-text-secondary-background-color);">A</block>' +
+				'<block class="td-block" title="Secondary Highlight" onclick="getColorContrastOfAnElement(this,\'Secondary Canvas\',\'Secondary Highlight\')" style="background-color:var(--canvas-secondary-background-color); color:var(--highlight-secondary-background-color);">A</block>' +
+				'<block class="td-block" title="Secondary Active Title" onclick="getColorContrastOfAnElement(this,\'Secondary Canvas\',\'Secondary Active Title\')" style="background-color:var(--canvas-secondary-background-color); color:var(--active-title-secondary-background-color);">A</block>' +
+	// Generic Colors
+				'<block class="td-block" title="Secondary Alert" onclick="getColorContrastOfAnElement(this,\'Secondary Canvas\',\'Secondary Alert\')" style="background-color:var(--canvas-secondary-background-color); color:var(--alert-secondary-background-color);">A</block>' +
+				'<block class="td-block" title="Secondary Pause" onclick="getColorContrastOfAnElement(this,\'Secondary Canvas\',\'Secondary Pause\')" style="background-color:var(--canvas-secondary-background-color); color:var(--pause-secondary-background-color);">A</block>' +
+				'<block class="td-block" title="Secondary Warning" onclick="getColorContrastOfAnElement(this,\'Secondary Canvas\',\'Secondary Warning\')" style="background-color:var(--canvas-secondary-background-color); color:var(--warning-secondary-background-color);">A</block>' +
+				'<block class="td-block" title="Secondary Success" onclick="getColorContrastOfAnElement(this,\'Secondary Canvas\',\'Secondary Success\')" style="background-color:var(--canvas-secondary-background-color); color:var(--success-secondary-background-color);">A</block>' +
+				'<block class="td-block" title="Secondary Progress" onclick="getColorContrastOfAnElement(this,\'Secondary Canvas\',\'Secondary Progress\')" style="background-color:var(--canvas-secondary-background-color); color:var(--progress-secondary-background-color);">A</block>' +
+				'<block class="td-block" title="Secondary Message" onclick="getColorContrastOfAnElement(this,\'Secondary Canvas\',\'Secondary Message\')" style="background-color:var(--canvas-secondary-background-color); color:var(--message-secondary-background-color);">A</block>' +
+			'</div><br>' +
+			'<div style="display:flex; gap:5px; align-items:center; align-content:center; justify-content:center; flex-wrap:wrap;">' +
+	/// Highlight
+				'<block class="td-block" title="Highlight" onclick="getColorContrastOfAnElement(this,\'Highlight\',\'Highlight Text\')" style="background-color:var(--highlight-background-color); color:var(--highlight-text-background-color);">A</block>' +
+	/// Active Caption
+				'<block class="td-block" title="Active Caption" onclick="getColorContrastOfAnElement(this,\'Active Caption\',\'Active Caption Text\')" style="background-color:var(--active-title-background-color); color:var(--active-title-text-background-color);">A</block>' +
+	// Others
+				'<block class="td-block" title="Tertiary Hyperlink" onclick="getColorContrastOfAnElement(this,\'Active Caption\',\'Tertiary Hyperlink\')" style="background-color:var(--active-title-background-color); color:var(--hyperlink-tertiary-background-color);">A</block>' +
+				'<block class="td-block" title="Tertiary Visited Hyperlink" onclick="getColorContrastOfAnElement(this,\'Active Caption\',\'Tertiary Visited Hyperlink\')" style="background-color:var(--active-title-background-color); color:var(--visited-hyperlink-tertiary-background-color);">A</block>' +
+				'<block class="td-block" title="Tertiary Active Text" onclick="getColorContrastOfAnElement(this,\'Active Caption\',\'Tertiary Active Text\')" style="background-color:var(--active-title-background-color); color:var(--active-text-tertiary-background-color);">A</block>' +
+	// Generic Colors
+				'<block class="td-block" title="Tertiary Alert" onclick="getColorContrastOfAnElement(this,\'Active Caption\',\'Tertiary Alert\')" style="background-color:var(--active-title-background-color); color:var(--alert-tertiary-background-color);">A</block>' +
+				'<block class="td-block" title="Tertiary Pause" onclick="getColorContrastOfAnElement(this,\'Active Caption\',\'Tertiary Pause\')" style="background-color:var(--active-title-background-color); color:var(--pause-tertiary-background-color);">A</block>' +
+				'<block class="td-block" title="Tertiary Warning" onclick="getColorContrastOfAnElement(this,\'Active Caption\',\'Tertiary Warning\')" style="background-color:var(--active-title-background-color); color:var(--warning-tertiary-background-color);">A</block>' +
+				'<block class="td-block" title="Tertiary Success" onclick="getColorContrastOfAnElement(this,\'Active Caption\',\'Tertiary Success\')" style="background-color:var(--active-title-background-color); color:var(--success-tertiary-background-color);">A</block>' +
+				'<block class="td-block" title="Tertiary Progress" onclick="getColorContrastOfAnElement(this,\'Active Caption\',\'Tertiary Progress\')" style="background-color:var(--active-title-background-color); color:var(--progress-tertiary-background-color);">A</block>' +
+				'<block class="td-block" title="Tertiary Message" onclick="getColorContrastOfAnElement(this,\'Active Caption\',\'Tertiary Message\')" style="background-color:var(--active-title-background-color); color:var(--message-tertiary-background-color);">A</block>' +
+
+	/// Inactive Caption
+				'<block class="td-block" title="Inactive Caption" onclick="getColorContrastOfAnElement(this,\'Inactive Caption\',\'Inactive Caption Text\')" style="background-color:var(--inactive-title-background-color); color:var(--inactive-title-text-background-color);">A</block>' +
 
 
+			'</div>' +
 		'</div>' +
 /**/
 		'<hr>' +
