@@ -2263,6 +2263,12 @@ var headcolor1 = ColorHover(head_color,content_color);
 
 var img = GetDesktopImage();
 
+if (img == '') {
+	var deskfilter = 'none'
+} else {
+	var deskfilter = 'drop-shadow(0 0 6.5px rgba(var(--desktop-text-foreground-color-rgb),0.75))'
+}
+
 var headertext_color= GetDesktopText();
 
 	// Liatch Quirk
@@ -3301,6 +3307,7 @@ var invfilters = [
 						  "--bg-tile-x:" + ['repeat','no-repeat'][["false", "true"].indexOf( getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--desktop-background-no-horizontal-tiling") ) ] + ";\n" +
 						  "--bg-tile-y:" + ['repeat','no-repeat'][["false", "true"].indexOf( getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--desktop-background-no-vertical-tiling") ) ] + ";\n" +
 						  "--color-mode-filter:" + invfilters[window.MW18spdarkmode][[false, true].indexOf(window.MW18darkmode) ] + ";\n" +
+						  "--desktop-filter:" + deskfilter +
 						  "}"
 						  //
 
