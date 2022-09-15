@@ -102,6 +102,10 @@ Aleo = Latin
 @import url('https://rsms.me/inter/inter.css');
 
 
+/* Emoji */
+@import url('https://fonts.googleapis.com/css?family=Noto+Color+Emoji|Noto+Emoji:300,400,500,600,700');
+
+
 /* Rounded */
 @font-face {
   font-family: 'Material Icons Round';
@@ -202,17 +206,20 @@ font-family:Trebuchet MS;
 /* Transition */
 --transitioner:cubic-bezier(0.25,0.25,0,1);
 /** Fonts **/
+/* Emoji */
+--emoji-fonts:"Noto Color Emoji", "Noto Emoji";
+--code-emoji-fonts:"Noto Emoji";
 /* Primary */
 --main-fonts:"Roboto Flex", "Inter"; /* Empty but other languages will depend on it */
 --foreign-fonts:"Roboto", "M PLUS 1p",  "Nanum Gothic", "Prompt", "Cairo", "Ramabhadra", "Catamaran", "Noto Sans", "Noto Sans SC", "Noto Sans TC", "Noto Sans HK", "Hind Siliguri", "Baloo Tamma 2", "Kantumruy", "Manjari", "Padauk", "Baloo Bhaina 2", "Alef";
---font-family:var(--custom-font), var(--main-fonts), var(--foreign-fonts), sans-serif;
+--font-family:var(--custom-font), var(--main-fonts), var(--emoji-fonts), var(--foreign-fonts), sans-serif;
 /* Secondary */
+--main-secondary-fonts:"Rubik"; /* Empty but other languages will depend on it */
 --secondary-foreign-fonts:"M PLUS Rounded 1c", "Jua", "Mitr", "NTR", "Pavanam", "Mukta", "Noto Sans SC", "Noto Sans TC", "Noto Sans HK", "Baloo Da 2", "Baloo Tamma 2", "Battambang", "Baloo Chettan 2", "Padauk", "Baloo Bhaina 2", "Exo 2";
---main-secondary-fonts:"Rubik", "Helvetica Neue", "Helvetica", "Arial"; /* Empty but other languages will depend on it */
---secondary-font:var(--custom-secondary-font), var(--main-secondary-fonts), var(--secondary-foreign-fonts);
+--secondary-font:var(--custom-secondary-font), var(--main-secondary-fonts), var(--emoji-fonts), var(--secondary-foreign-fonts), sans-serif;
 /* Code */
---main-code-fonts:"Inconsolata", "Courier", "Courier New"; /* Empty but other languages will depend on it */
---code-font:var(--custom-code-font), var(--main-code-fonts);
+--main-code-fonts:"Inconsolata"; /* Empty but other languages will depend on it */
+--code-font:var(--custom-code-font), var(--main-code-fonts), var(--code-emoji-fonts), monospace;
 --header-size:160px;
 	/* Theme-related 
 	--bg-size:cover;
@@ -4507,6 +4514,10 @@ html:not(.visualmode-contrast) .contrast-on {
 
 
 /* Contrast */
+.visualmode-contrast {
+	--emoji-fonts:"Noto Emoji"; /* Don't use Color Emoji in High Contrast Mode */
+}
+
 .visualmode-contrast body {
 /* Mica */
 --mica-background-color:var(--canvas-secondary-background-color);
