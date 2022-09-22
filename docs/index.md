@@ -47,7 +47,7 @@ List of MediaWiki versions and what Evelution version can be installed at most. 
 | ---------- | ------------------------- |
 | 1.38.x     | ~✅                       |
 | 1.37.x     | ~✅                       |
-| 1.36.x     | ~89.2.0, 91.0.0-✅        |
+| 1.36.x     | ~89.2.0, 91.0.0-119.1.0	 |
 
 # Installation
 To Install Evelution, you must download the reposistory first. Make a folder called **Evelution** in **Skins** diractory where you have installed MediaWiki and extract the zipped file contents in **Evelution** folder.  Lastly, put this in **LocalSettings.php**:
