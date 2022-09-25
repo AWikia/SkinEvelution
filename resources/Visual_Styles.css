@@ -1725,6 +1725,9 @@ color:inherit;
 
 .visualstyle-simple body,
 .visualstyle-simple body .toc {
+/* Selection Styling */
+	--selection-background-color:var(--highlight-background-color);
+	--selection-text-color:var(--highlight-foreground-color);
 /* Base Styling */
 --dropdown-background-color:var(--simple-luna-background-color-rgb);
 --dropdown-border-color:var(--simple-luna-background-color-hover);
@@ -2521,7 +2524,38 @@ box-shadow:none!important;
 .visualstyle-retro body .catlinks,
 .visualstyle-retro body div.thumbinner,
 .visualstyle-retro body .thumbimage,
-.visualstyle-retro body li.gallerybox div.thumb {
+.visualstyle-retro body li.gallerybox div.thumb,
+.visualstyle-retro body figure[typeof~='mw:Image/Thumb'], 
+.visualstyle-retro body figure[typeof~='mw:Video/Thumb'], 
+.visualstyle-retro body figure[typeof~='mw:Audio/Thumb'], 
+.visualstyle-retro body figure[typeof~='mw:Image/Frame'], 
+.visualstyle-retro body figure[typeof~='mw:Video/Frame'], 
+.visualstyle-retro body figure[typeof~='mw:Audio/Frame'],
+.visualstyle-retro body figure[typeof~='mw:Image/Thumb'] > figcaption, 
+.visualstyle-retro body figure[typeof~='mw:Video/Thumb'] > figcaption, 
+.visualstyle-retro body figure[typeof~='mw:Audio/Thumb'] > figcaption, 
+.visualstyle-retro body figure[typeof~='mw:Image/Frame'] > figcaption, 
+.visualstyle-retro body figure[typeof~='mw:Video/Frame'] > figcaption, 
+.visualstyle-retro body figure[typeof~='mw:Audio/Frame'] > figcaption,
+.visualstyle-retro body figure[typeof~='mw:Image/Thumb'] > *:first-child > audio, 
+.visualstyle-retro body figure[typeof~='mw:Video/Thumb'] > *:first-child > audio, 
+.visualstyle-retro body figure[typeof~='mw:Audio/Thumb'] > *:first-child > audio, 
+.visualstyle-retro body figure[typeof~='mw:Image/Frame'] > *:first-child > audio, 
+.visualstyle-retro body figure[typeof~='mw:Video/Frame'] > *:first-child > audio, 
+.visualstyle-retro body figure[typeof~='mw:Audio/Frame'] > *:first-child > audio, 
+.visualstyle-retro body figure[typeof~='mw:Image/Thumb'] > *:first-child > img, 
+.visualstyle-retro body figure[typeof~='mw:Video/Thumb'] > *:first-child > img, 
+.visualstyle-retro body figure[typeof~='mw:Audio/Thumb'] > *:first-child > img, 
+.visualstyle-retro body figure[typeof~='mw:Image/Frame'] > *:first-child > img, 
+.visualstyle-retro body figure[typeof~='mw:Video/Frame'] > *:first-child > img, 
+.visualstyle-retro body figure[typeof~='mw:Audio/Frame'] > *:first-child > img, 
+.visualstyle-retro body figure[typeof~='mw:Image/Thumb'] > *:first-child > video, 
+.visualstyle-retro body figure[typeof~='mw:Video/Thumb'] > *:first-child > video, 
+.visualstyle-retro body figure[typeof~='mw:Audio/Thumb'] > *:first-child > video, 
+.visualstyle-retro body figure[typeof~='mw:Image/Frame'] > *:first-child > video, 
+.visualstyle-retro body figure[typeof~='mw:Video/Frame'] > *:first-child > video, 
+.visualstyle-retro body figure[typeof~='mw:Audio/Frame'] > *:first-child > video {
+
 	box-shadow:none!important;
 	background:var(--canvas-secondary-background-color)!important;
 	color:var(--canvas-text-secondary-background-color)!important;
@@ -2531,6 +2565,25 @@ box-shadow:none!important;
 	outline:0!important;
 	box-sizing:border-box;
 }
+
+.visualstyle-retro body figure[typeof~='mw:Image/Thumb'], 
+.visualstyle-retro body figure[typeof~='mw:Video/Thumb'], 
+.visualstyle-retro body figure[typeof~='mw:Audio/Thumb'], 
+.visualstyle-retro body figure[typeof~='mw:Image/Frame'], 
+.visualstyle-retro body figure[typeof~='mw:Video/Frame'], 
+.visualstyle-retro body figure[typeof~='mw:Audio/Frame'] {
+	border-bottom:0!important;
+}
+
+.visualstyle-retro body figure[typeof~='mw:Image/Thumb'] > figcaption, 
+.visualstyle-retro body figure[typeof~='mw:Video/Thumb'] > figcaption, 
+.visualstyle-retro body figure[typeof~='mw:Audio/Thumb'] > figcaption, 
+.visualstyle-retro body figure[typeof~='mw:Image/Frame'] > figcaption, 
+.visualstyle-retro body figure[typeof~='mw:Video/Frame'] > figcaption, 
+.visualstyle-retro body figure[typeof~='mw:Audio/Frame'] > figcaption {
+	border-top:0!important;
+}
+
 
 .visualstyle-retro body .oo-ui-popupWidget-popup,
 .visualstyle-retro body .oo-ui-menuSelectWidget {
@@ -3100,6 +3153,9 @@ border-color:var(--highlight-background-color);
 --dropdown-hyperlink-background-color:var(--hyperlink-background-color);
 --dropdown-hyperlink-border-color:transparent;
 --dropdown-hyperlink-text-color:var(--hyperlink-foreground-color);
+/* Selection Styling */
+	--selection-background-color:var(--hyperlink-background-color);
+	--selection-text-color:var(--hyperlink-foreground-color);
 }
 
 .visualstyle-general.visualmode-contrast body {
@@ -3262,28 +3318,6 @@ background-color:var(--hyperlink-background-color);
 	border-color:var(--scrollbar-thumb-color-1);
 	box-shadow:0 0px 0 2px inset var(--scrollbar-thumb-color-1)!important;
 }
-
-
-/* Selection Styles per B19 */
-.visualstyle-simple ::selection {
-color:var(--highlight-foreground-color);
-background-color:var(--highlight-background-color);
-}
-
-.visualstyle-retro ::selection {
-color:var(--highlight-text-background-color);
-background-color:var(--highlight-background-color);
-}
-
-
-.visualstyle-general ::selection {
-color:var(--hyperlink-foreground-color);
-background-color:var(--hyperlink-background-color);
-}
-
-
-
-
 
 
 /*** Color Schemes ***/

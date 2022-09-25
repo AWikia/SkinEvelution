@@ -60,7 +60,8 @@ var visualStyles = [
 ** First item of a subarray should be the visualcolor class name to be used
 ** Second item should be the narrative name done in Yorkbook Digital Professional (title) 
 ** Third item should be the material icon to be used
-** Fourth item should be the additional material icon to be used as a badge (Not required)
+** Fourth item should be the additional material icon to be used as a 1st badge (Not required)
+** Fifth item should be the additional material icon to be used as a 2nd badge (Not required, requires the fourth item to be set)
 **
 */
 
@@ -498,7 +499,8 @@ function VisualColorCompile() {
 		var length = visualColorNames.length
 		for (let i = 0; i < visualColors.length; i++) {
 			visualColorNames[i+length] =  visualColors[i][0];
-			badge = ''
+			badge = '';
+			badge2 = '';
 			iconfinal = visualColors[i][2];
 			if (iconfinal === 'evelution') {
 				icon = '<svg xmlns="http://www.w3.org/2000/svg" class="cpe-icon"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#evelution-logo" /> </svg>'
@@ -509,9 +511,13 @@ function VisualColorCompile() {
 			}
 			if (visualColors[i][3] != undefined) {
 				badge ='<span class="cpe-icon cpe-icon-small material-icons cpe-icon-badge">'+ visualColors[i][3] +'</span>'
+				if (visualColors[i][4] != undefined) {
+					badge2 ='<span class="cpe-icon cpe-icon-small material-icons cpe-icon-badge">'+ visualColors[i][4] +'</span>'
+				}
 			}
 			str = 	'<li data-visual-color="' + visualColors[i][0] + '" title="' + visualColors[i][1] + '">' +
 						'<a onclick="VisualColor(' + "'" + visualColors[i][0]  + "'" + ')">' +
+							badge2 +
 							badge +
 							icon +
 						'</a>' +

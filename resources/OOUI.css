@@ -352,12 +352,77 @@ body .catlinks {
 
 body div.thumbinner,
 body .thumbimage,
-body li.gallerybox div.thumb {
+body li.gallerybox div.thumb,
+body figure[typeof~='mw:Image/Thumb'], 
+body figure[typeof~='mw:Video/Thumb'], 
+body figure[typeof~='mw:Audio/Thumb'], 
+body figure[typeof~='mw:Image/Frame'], 
+body figure[typeof~='mw:Video/Frame'], 
+body figure[typeof~='mw:Audio/Frame'],
+body figure[typeof~='mw:Image/Thumb'] > figcaption, 
+body figure[typeof~='mw:Video/Thumb'] > figcaption, 
+body figure[typeof~='mw:Audio/Thumb'] > figcaption, 
+body figure[typeof~='mw:Image/Frame'] > figcaption, 
+body figure[typeof~='mw:Video/Frame'] > figcaption, 
+body figure[typeof~='mw:Audio/Frame'] > figcaption,
+body figure[typeof~='mw:Image/Thumb'] > *:first-child > audio, 
+body figure[typeof~='mw:Video/Thumb'] > *:first-child > audio, 
+body figure[typeof~='mw:Audio/Thumb'] > *:first-child > audio, 
+body figure[typeof~='mw:Image/Frame'] > *:first-child > audio, 
+body figure[typeof~='mw:Video/Frame'] > *:first-child > audio, 
+body figure[typeof~='mw:Audio/Frame'] > *:first-child > audio, 
+body figure[typeof~='mw:Image/Thumb'] > *:first-child > img, 
+body figure[typeof~='mw:Video/Thumb'] > *:first-child > img, 
+body figure[typeof~='mw:Audio/Thumb'] > *:first-child > img, 
+body figure[typeof~='mw:Image/Frame'] > *:first-child > img, 
+body figure[typeof~='mw:Video/Frame'] > *:first-child > img, 
+body figure[typeof~='mw:Audio/Frame'] > *:first-child > img, 
+body figure[typeof~='mw:Image/Thumb'] > *:first-child > video, 
+body figure[typeof~='mw:Video/Thumb'] > *:first-child > video, 
+body figure[typeof~='mw:Audio/Thumb'] > *:first-child > video, 
+body figure[typeof~='mw:Image/Frame'] > *:first-child > video, 
+body figure[typeof~='mw:Video/Frame'] > *:first-child > video, 
+body figure[typeof~='mw:Audio/Frame'] > *:first-child > video {
+
 	border-radius:var(--border-radius);
 	border-color:var(--inactive-text-background-color);
 	background-color:var(--canvas-secondary-background-color);
 	color:var(--canvas-text-secondary-background-color);
 }
+
+body figure[typeof~='mw:Image/Thumb'], 
+body figure[typeof~='mw:Video/Thumb'], 
+body figure[typeof~='mw:Audio/Thumb'], 
+body figure[typeof~='mw:Image/Frame'], 
+body figure[typeof~='mw:Video/Frame'], 
+body figure[typeof~='mw:Audio/Frame'],
+body figure[typeof~='mw:Image/Thumb'] > figcaption, 
+body figure[typeof~='mw:Video/Thumb'] > figcaption, 
+body figure[typeof~='mw:Audio/Thumb'] > figcaption, 
+body figure[typeof~='mw:Image/Frame'] > figcaption, 
+body figure[typeof~='mw:Video/Frame'] > figcaption, 
+body figure[typeof~='mw:Audio/Frame'] > figcaption,
+body figure[typeof~='mw:Image/Thumb'] > *:first-child > audio, 
+body figure[typeof~='mw:Video/Thumb'] > *:first-child > audio, 
+body figure[typeof~='mw:Audio/Thumb'] > *:first-child > audio, 
+body figure[typeof~='mw:Image/Frame'] > *:first-child > audio, 
+body figure[typeof~='mw:Video/Frame'] > *:first-child > audio, 
+body figure[typeof~='mw:Audio/Frame'] > *:first-child > audio, 
+body figure[typeof~='mw:Image/Thumb'] > *:first-child > img, 
+body figure[typeof~='mw:Video/Thumb'] > *:first-child > img, 
+body figure[typeof~='mw:Audio/Thumb'] > *:first-child > img, 
+body figure[typeof~='mw:Image/Frame'] > *:first-child > img, 
+body figure[typeof~='mw:Video/Frame'] > *:first-child > img, 
+body figure[typeof~='mw:Audio/Frame'] > *:first-child > img, 
+body figure[typeof~='mw:Image/Thumb'] > *:first-child > video, 
+body figure[typeof~='mw:Video/Thumb'] > *:first-child > video, 
+body figure[typeof~='mw:Audio/Thumb'] > *:first-child > video, 
+body figure[typeof~='mw:Image/Frame'] > *:first-child > video, 
+body figure[typeof~='mw:Video/Frame'] > *:first-child > video, 
+body figure[typeof~='mw:Audio/Frame'] > *:first-child > video {
+	border-radius:0;
+}
+
 
 .mw-content-ltr .mw-editsection, .mw-content-rtl .mw-content-ltr .mw-editsection {
 	margin-left:1em;
@@ -1421,12 +1486,18 @@ body .oo-ui-toolbar-bar,
 body .wikiEditor-ui-toolbar,
 body .editOptions,
 body #msupload-dropzone {
-    background-color: var(--canvas-secondary-background-color);
+	--toolbar-opacity:1;
+	--toolbar-opacity-filter:none;
+    background-color: rgba(var(--canvas-secondary-background-color-rgb),var(--toolbar-opacity));
 	color:var(--canvas-text-secondary-background-color);
     border-color:var(--inactive-text-background-color);
+    -webkit-backdrop-filter:var(--toolbar-opacity-filter);
+    backdrop-filter:var(--toolbar-opacity-filter);
 }
 
 body .ve-ui-toolbar-floating > .oo-ui-toolbar-bar {
+	--toolbar-opacity:var(--acrylic-opacity);
+	--toolbar-opacity-filter:var(--acrylic-filter);
     top: var(--minibar-size);
 }
 
@@ -1825,9 +1896,11 @@ body .oo-ui-toggleSwitchWidget.oo-ui-toggleWidget-on .oo-ui-toggleSwitchWidget-g
 }
 
 body .mw-apisandbox-toolbar {
-	background-color:var(--canvas-background-color);
+	background-color:rgba(var(--canvas-background-color-rgb),var(--acrylic-opacity));
 	top:var(--minibar-size);
 	border-bottom:1px solid var(--inactive-text-background-color);
+	-webkit-backdrop-filter:var(--acrylic-filter);
+	backdrop-filter:var(--acrylic-filter);
 }
 
 /* Translate Extension */

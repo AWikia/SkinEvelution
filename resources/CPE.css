@@ -894,6 +894,9 @@ body {
 	--checkbox-checked-text:var(--highlight-foreground-color);
 	--checkbox-checked-text-hover:var(--checkbox-checked-text);
 	--checkbox-focused-shadow:transparent;
+/* Selection Styling */
+	--selection-background-color:var(--highlight-background-color);
+	--selection-text-color:var(--highlight-text-background-color);
   margin:0;
 	overflow-x:hidden!important;
   font-family:var(--font-family);
@@ -1331,9 +1334,11 @@ font-weight:inherit;
 
 /* Selection */
 
-::selection {
-color:var(--highlight-text-background-color);
-background-color:var(--highlight-background-color);
+::selection,
+body .ve-ce-attachedRootNode::selection, 
+body .ve-ce-attachedRootNode *::selection {
+color:var(--selection-text-color);
+background-color:var(--selection-background-color);
 cursor:inherit;
 text-shadow:none;
 }
@@ -3027,6 +3032,9 @@ max-height:152px;
 	font-variation-settings:'FILL' 1;
 }
 
+.cpe-dropdown__content .cpe-list.is-linked.has-icons > li > a .cpe-icon-badge + .cpe-icon-badge {
+    right: 17px;
+}
 
 .cpe-dropdown__content.cpe-visual-appearance .cpe-list.is-linked.cpe-themes > li,
 .cpe-dropdown__content.cpe-visual-appearance .cpe-list.is-linked.cpe-visual-styles > .custom,
