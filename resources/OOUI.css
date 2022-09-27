@@ -1,4 +1,6 @@
-/* OOUI and Extension Overrides for Evelution */
+/* OOUI and Extension Overrides for Evelution 
+** Those cannot go to Evelution.css as other skins based on CPE Language (If ever exist) need to have those overrides as well since they're not 100% dependant on Evelution
+*/
 /* Begin */
 
 /* Static Variables for non-color management compliance 
@@ -2817,4 +2819,20 @@ body .oo-ui-buttonWidget.oo-ui-popupButtonWidget .oo-ui-buttonElement-button > .
 
 body .oo-ui-buttonWidget.oo-ui-popupButtonWidget .oo-ui-buttonElement-button > .mw-rcfilters-ui-filterItemHighlightButton-circle-color-c5 {
 	color:var(--rc-highlight-red-background-color);
+}
+
+/* Cookies Container */
+body .mw-cookiewarning-container {
+	z-index:99999999999999999;
+    color:rgb(var(--dropdown-text-color));
+    background-color:rgba(var(--dropdown-background-color),var(--acrylic-opacity));
+    border-top:1px solid var(--dropdown-border-color);
+    box-shadow:0 -2px 6px 0 rgba(var(--canvas-text-background-color-rgb),.4),0 -2px 6px 0 rgba(var(--canvas-background-color-rgb),0.4);
+    -webkit-backdrop-filter:var(--acrylic-filter);
+    backdrop-filter:var(--acrylic-filter);
+    transition:left 400ms var(--transitioner), width 400ms var(--transitioner);
+}
+
+body .mw-cookiewarning-container .mw-cookiewarning-text {
+    color:inherit;
 }
