@@ -13,6 +13,7 @@ window.MW18ActiveTheme = 'A';
 window.MW18ActiveThemeMode = 'none';
 /* Visual Colors */
 window.MW18ActiveColors = 'standard';
+window.MW18ActiveColorScheme = 'light';
 /* Visual Styles */
 window.MW18ActiveStyle = '-';
 window.MW18ActiveStyleMode = '-';
@@ -67,15 +68,11 @@ var visualStyles = [
 
 var visualColors = [
 					['forced', '{{msg-evelution-color-forced}}', 'contrast'],
-					['evelution', 'Evelution ({{msg-evelution-standard}})', 'evelution', 'build'],
-					['evelution__dyna', 'Evelution ({{msg-evelution-color-dynamic}})', 'evelution', 'colorize'],
-					['colors', '{{msg-evelution-color-colors}} ({{msg-evelution-lightmode}})', 'format_paint', 'light_mode'],
-					['colors__dark', '{{msg-evelution-color-colors}} ({{msg-evelution-darkmode}})', 'format_paint', 'dark_mode'],
-					['colors__pokemon', '{{msg-evelution-color-pokemoncolors}}', 'format_paint', 'pets'],
+					['evelution', 'Evelution', 'evelution'],
+					['colors', '{{msg-evelution-color-colors}}', 'format_paint'],
 					['android', 'Android', 'android'],
 					['qqore', 'Qora Qore', 'qqore'],
-					['dynamic', '{{msg-evelution-color-dynamic}} ({{msg-evelution-lightmode}})', 'colorize', 'light_mode'],
-					['dynamic__dark', '{{msg-evelution-color-dynamic}} ({{msg-evelution-darkmode}})', 'colorize', 'dark_mode'],
+					['dynamic', '{{msg-evelution-color-dynamic}}', 'colorize'],
 				    ];
 var visualColorNames = ['standard', 'nocolormanagement'];
 
@@ -93,6 +90,9 @@ var visualColorNames = ['standard', 'nocolormanagement'];
 	}
 	if (getKey('visual-appearance-style') === '-1') {
 		insertKey('visual-appearance-style', 'standard' );
+	}
+	if (getKey('color-scheme') === '-1') {
+		insertKey('color-scheme', 'light' );
 	}
 	if (getKey('visual-color') === '-1') {
 		insertKey('visual-color', 'standard' );
@@ -129,6 +129,7 @@ var visualColorNames = ['standard', 'nocolormanagement'];
 	var theme_selected = getKey('theme-selected');
 	var visual_mode = getKey('visual-appearance-mode');
 	var visual_style = getKey('visual-appearance-style');
+	var color_scheme = getKey('color-scheme');
 	var visual_color = getKey('visual-color');
 	var device_theme = getKey('device-theme');
 	var color_style = getKey('color-style');
@@ -200,6 +201,10 @@ var visualColorNames = ['standard', 'nocolormanagement'];
 				visual_style = value;
 				console.info('Active visual style settings overriden')
                 break;
+            case 'usecolorscheme':
+				color_scheme = value;
+				console.info('Active color scheme settings overriden')
+                break;
             case 'usevisualcolors':
 				if (value === 'standard') {
 					visual_color = 'standard';
@@ -255,7 +260,8 @@ var visualColorNames = ['standard', 'nocolormanagement'];
 	contrastmode(contrast_mode,false,false);
 	SetDCM(dcm_type,dcm_mode,false,false);
 	VisualColorCompile(); // Compiles the Contrast Options
-	VisualColor(visual_color,false);
+	VisualColor(visual_color,false,false);
+	ColorScheme(color_scheme,false);
 
 /* The Following were prior to the Theme Compiling but were moved to improve performance */
 	SetAccent(accent_active,false);
@@ -431,6 +437,53 @@ function VisualStyle(style,save=true) {
 }
 
 
+function getColorScheme() {
+	type = window.MW18ActiveColorScheme;
+	if (type === 'auto') {
+		return ( window.matchMedia('(prefers-color-scheme: light)').matches ) ? 'light' : 'dark';
+	} else if (type === 'auto-dark') {
+		return ( window.matchMedia('(prefers-color-scheme: dark)').matches ) ? 'light' : 'dark';
+	} else if (type === 'dark') {
+		return 'dark';
+	} else if (type === 'light') {
+		return 'light';
+	} else {
+		return 'light';
+	}
+}
+
+function ColorScheme(style,save=true,repaint=true) {
+    var x = document.querySelector('html');
+		oldscheme = window.MW18ActiveColorScheme;
+	try {
+		window.MW18ActiveColorScheme = style;
+		if (repaint) {
+			CompileThemingEngine(true);
+		}
+
+		var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-color-schemes li.selected");
+		if (x) {
+			x.classList.remove("selected");
+		}
+		var y = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-color-schemes li[data-color-scheme='" + style + "']");
+		if (y) {
+			y.classList.add("selected")
+		}
+		if (save) {
+		insertKey('color-scheme', style );
+		}
+	}
+
+	catch (err) {
+		window.MW18ActiveColorScheme = oldscheme
+		AddFloatingBanner('Failed to switch to this Color Scheme as theme ' + window.MW18ActiveTheme + ' had typographical errors.','alert');
+		console.error(err);
+	}
+
+
+}
+
+
 function VisualColor(style,save=true,repaint=true) {
     var x = document.querySelector('html');
 		if (!(visualColorNames.includes(style))) {
@@ -522,14 +575,22 @@ function VisualColorCompile() {
 							icon +
 						'</a>' +
 						'<div style="position:absolute; z-index:-1; pointer-events:none;">' +
-							'<div class="cpe-theming visualcolors-' + visualColors[i][0] + ' theme-A"></div>' +
-							'<div class="cpe-theming visualcolors-' + visualColors[i][0] + ' theme-B"></div>' +
-							'<div class="cpe-theming visualcolors-' + visualColors[i][0] + ' theme-C"></div>' +
-							'<div class="cpe-theming visualcolors-' + visualColors[i][0] + ' theme-D"></div>' +
-							'<div class="cpe-theming visualcolors-' + visualColors[i][0] + ' theme-E"></div>' +
-							'<div class="cpe-theming visualcolors-' + visualColors[i][0] + ' theme-F"></div>' +
-							'<div class="cpe-theming visualcolors-' + visualColors[i][0] + ' theme-G"></div>' +
-							'<div class="cpe-theming visualcolors-' + visualColors[i][0] + ' theme-H"></div>' +
+							'<div class="cpe-theming visualcolors-' + visualColors[i][0] + ' colorscheme-light theme-A"></div>' +
+							'<div class="cpe-theming visualcolors-' + visualColors[i][0] + ' colorscheme-light theme-B"></div>' +
+							'<div class="cpe-theming visualcolors-' + visualColors[i][0] + ' colorscheme-light theme-C"></div>' +
+							'<div class="cpe-theming visualcolors-' + visualColors[i][0] + ' colorscheme-light theme-D"></div>' +
+							'<div class="cpe-theming visualcolors-' + visualColors[i][0] + ' colorscheme-light theme-E"></div>' +
+							'<div class="cpe-theming visualcolors-' + visualColors[i][0] + ' colorscheme-light theme-F"></div>' +
+							'<div class="cpe-theming visualcolors-' + visualColors[i][0] + ' colorscheme-light theme-G"></div>' +
+							'<div class="cpe-theming visualcolors-' + visualColors[i][0] + ' colorscheme-light theme-H"></div>' +
+							'<div class="cpe-theming visualcolors-' + visualColors[i][0] + ' colorscheme-dark theme-A"></div>' +
+							'<div class="cpe-theming visualcolors-' + visualColors[i][0] + ' colorscheme-dark theme-B"></div>' +
+							'<div class="cpe-theming visualcolors-' + visualColors[i][0] + ' colorscheme-dark theme-C"></div>' +
+							'<div class="cpe-theming visualcolors-' + visualColors[i][0] + ' colorscheme-dark theme-D"></div>' +
+							'<div class="cpe-theming visualcolors-' + visualColors[i][0] + ' colorscheme-dark theme-E"></div>' +
+							'<div class="cpe-theming visualcolors-' + visualColors[i][0] + ' colorscheme-dark theme-F"></div>' +
+							'<div class="cpe-theming visualcolors-' + visualColors[i][0] + ' colorscheme-dark theme-G"></div>' +
+							'<div class="cpe-theming visualcolors-' + visualColors[i][0] + ' colorscheme-dark theme-H"></div>' +
 						'</div>' +
 					'</li>'
 			var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-colors");
@@ -547,7 +608,7 @@ function VisualColorCompile() {
 /* Getting non-generic color values */
 
 function GetActiveThemeConfiguration() { // Used for ECM (Enabled Color Management)
-	return document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme);
+	return document.querySelector('.cpe-theming.colorscheme-' + getColorScheme()  + '.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme);
 }
 
 function GetActiveDCMConfiguration() { // Used for DCM (Disabled Color Management)
@@ -1165,54 +1226,49 @@ function colortheme(style='match-parent', theme='match-parent', hue='match-paren
     var oldsat = window.MW18saturation;
     var muststay = false;
 		document.querySelector('head .devicetheme').innerHTML = '' ;
-    if (ForcedColors()) {
+    if (DisabledColorManagement()) {
 		window.MW18darkmode = false;
 		window.MW18spdarkmode = 0;
 	} else {
-		if (DisabledColorManagement()) {
-			window.MW18darkmode = false;
-			window.MW18spdarkmode = 0;
-			document.querySelector('head .devicetheme').innerHTML += '.cpe-dropdown.color-modes .cpe-dropdown__content.cpe-visual-appearance { top:0%!important;}' ;
-		} else {
-			if (style == 'standard') {
-				if (solo == 'solo') {
-					window.MW18darkmode = (isLightColor(body_bg)) ? (theme == 'dark') : (theme == 'light');
-				} else {
-					window.MW18darkmode = (theme == 'dark');
-				}
-				window.MW18spdarkmode = 0;
-			} else if (style == 'colorscale') {
-				if (solo == 'solo') {
-					window.MW18darkmode = (isLightColor(body_bg)) ? (theme == 'dark') : (theme == 'light');
-				} else {
-					window.MW18darkmode = (theme == 'dark');
-				}
-				window.MW18spdarkmode = 1;
-			} else if (style == 'hottemperature') {
-				if (solo == 'solo') {
-					window.MW18darkmode = (theme == 'dark');
-				} else {
-					window.MW18darkmode = (isLightColor(body_bg)) ? (theme == 'dark') : (theme == 'light');
-				}
-				window.MW18spdarkmode = 2;
-			} else if (style == 'coldtemperature') {
-				if (solo == 'solo') {
-					window.MW18darkmode = (theme == 'dark');
-				} else {
-					window.MW18darkmode = (isLightColor(body_bg)) ? (theme == 'dark') : (theme == 'light');
-				}
-				window.MW18spdarkmode = 3;
+		if (style == 'standard') {
+			if (solo == 'solo') {
+				window.MW18darkmode = (isLightColor(body_bg)) ? (theme == 'dark') : (theme == 'light');
 			} else {
-				if (solo == 'solo') {
-					window.MW18darkmode = (isLightColor(body_bg)) ? (theme == 'dark') : (theme == 'light');
-				} else {
-					window.MW18darkmode = (theme == 'dark');
-				}
-				window.MW18spdarkmode = 0;
+				window.MW18darkmode = (theme == 'dark');
 			}
+			window.MW18spdarkmode = 0;
+		} else if (style == 'colorscale') {
+			if (solo == 'solo') {
+				window.MW18darkmode = (isLightColor(body_bg)) ? (theme == 'dark') : (theme == 'light');
+			} else {
+				window.MW18darkmode = (theme == 'dark');
+			}
+			window.MW18spdarkmode = 1;
+		} else if (style == 'hottemperature') {
+			if (solo == 'solo') {
+				window.MW18darkmode = (theme == 'dark');
+			} else {
+				window.MW18darkmode = (isLightColor(body_bg)) ? (theme == 'dark') : (theme == 'light');
+			}
+			window.MW18spdarkmode = 2;
+		} else if (style == 'coldtemperature') {
+			if (solo == 'solo') {
+				window.MW18darkmode = (theme == 'dark');
+			} else {
+				window.MW18darkmode = (isLightColor(body_bg)) ? (theme == 'dark') : (theme == 'light');
+			}
+			window.MW18spdarkmode = 3;
+		} else {
+			if (solo == 'solo') {
+				window.MW18darkmode = (isLightColor(body_bg)) ? (theme == 'dark') : (theme == 'light');
+			} else {
+				window.MW18darkmode = (theme == 'dark');
+			}
+			window.MW18spdarkmode = 0;
 		}
-		document.querySelector('head .devicetheme').innerHTML += '.' + theme + 'device-off { display:none!important } .cpe-system-colors { color-scheme:' + theme + '; color-scheme:only ' + theme + '; }' ;
 	}
+	colorscheme = getColorScheme();
+	document.querySelector('head .devicetheme').innerHTML += '.' + theme + 'device-off { display:none!important } .cpe-system-colors { color-scheme:' + getColorScheme() + '; color-scheme:only ' + getColorScheme() + '; }' ;
 	window.MW18devicetheme = selected_theme
 	window.MW18wikitheme = style
 	window.MW18hueshift = parseInt( hue )

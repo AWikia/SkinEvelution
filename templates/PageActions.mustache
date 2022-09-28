@@ -86,7 +86,7 @@
 			</div>
 		</div>
 		<!-- Color Modes -->
-		<div class="cpe-dropdown color-modes forced-colors-off" cpe-orient="land">				
+		<div class="cpe-dropdown color-modes color-management-on" cpe-orient="land">				
 			<div class="cpe-floating-button is-unaccented color-modes page-side-tool" cpe-tooltip="{{msg-evelution-colormodes}}">
 				<span class="cpe-icon material-icons">
 					hdr_auto
@@ -115,8 +115,8 @@
 						</a>
 					</li>
 				</ul>
-				<hr class="color-management-on">
-				 <ul class="cpe-list cpe-colorhue-range color-management-on">
+				<hr>
+				 <ul class="cpe-list cpe-colorhue-range">
 					<li class="slider-with-icon">
 						<datalist id="colorhues" class="is-hidden">
 							<option value="0"    label="0deg">
@@ -142,8 +142,8 @@
 						<input type="range" min="0" max="100" value="100" step="5" class="colorsat" list="colorsats" onchange="SliderColorSaturation()"></input>
 					</li>
 				 </ul>
-				<hr class="color-management-on">
-				<ul class="cpe-list is-linked cpe-color-styles has-icons color-management-on">
+				<hr>
+				<ul class="cpe-list is-linked cpe-color-styles has-icons">
 					<li data-color-style="standard" title="{{msg-evelution-standard}}">
 						<a onclick="colortheme('standard')">
 							<span class="cpe-icon material-icons darkdevice-off">brightness_auto</span>
@@ -169,7 +169,7 @@
 						</a>
 					</li>
 				</ul>
-				<ul class="cpe-list is-linked cpe-solo-modes has-icons color-management-on">
+				<ul class="cpe-list is-linked cpe-solo-modes has-icons">
 					<li data-solo-mode="duo">
 						<a onclick="colortheme('match-parent','match-parent','match-parent', 'match-parent', 'duo')">
 							<span>Duo</span>
@@ -240,7 +240,6 @@
 				</ul>
 			</div>
 		</div>
-	{{^has-no-color-management}}
 		<!-- Colors -->
 		<div class="cpe-dropdown colors forced-colors-off" cpe-orient="land">				
 			<div class="cpe-floating-button is-unaccented colors page-side-tool" cpe-tooltip="{{msg-evelution-visual-colors}}">
@@ -248,7 +247,31 @@
 					palette
 				</span>
 			</div>
-			<div class="cpe-dropdown__content cpe-visual-appearance" style="top:-75%;">					
+			<div class="cpe-dropdown__content cpe-visual-appearance" style="top:{{^has-no-color-management}}-91{{/has-no-color-management}}{{#has-no-color-management}}0{{/has-no-color-management}}%;">					
+				<ul class="cpe-list is-linked cpe-color-schemes has-icons">
+					<li data-color-scheme="auto" title="{{msg-evelution-designer-auto}}">
+						<a onclick="ColorScheme('auto')">
+							<span class="cpe-icon material-icons">brightness_auto</span>
+						</a>
+					</li>
+					<li data-color-scheme="auto-dark" title="{{msg-evelution-designer-auto}} ({{msg-evelution-darkmode}})">
+						<a onclick="ColorScheme('auto-dark')">
+							<span class="cpe-icon material-icons">hdr_auto</span>
+						</a>
+					</li>
+					<li data-color-scheme="light" title="{{msg-evelution-lightmode}}">
+						<a onclick="ColorScheme('light')">
+							<span class="cpe-icon material-icons">light_mode</span>
+						</a>
+					</li>
+					<li data-color-scheme="dark" title="{{msg-evelution-darkmode}}">
+						<a onclick="ColorScheme('dark')">
+							<span class="cpe-icon material-icons">dark_mode</span>
+						</a>
+					</li>
+				</ul>
+				{{^has-no-color-management}}
+				<hr>
 				 <ul class="cpe-list is-linked cpe-visual-colors has-icons">						
 					<li data-visual-color="standard" title="{{msg-evelution-standard}}">
 						<a onclick="VisualColor('standard')">
@@ -262,9 +285,9 @@
 						</a>
 					</li>
 				</ul>
+				{{/has-no-color-management}}
 			</div>
 		</div>
-	{{/has-no-color-management}}
 		<!-- Disabled Color Management Modes -->
 		<div class="cpe-dropdown dcm-modes color-management-off" cpe-orient="land">
 			<div class="cpe-floating-button is-unaccented dcm-toggle page-side-tool" cpe-tooltip="{{msg-evelution-dcmmodes}}">

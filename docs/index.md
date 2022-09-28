@@ -67,7 +67,7 @@ If you want to create a new theme without using CPE Theme Designer (i.e. Due to 
 
 ### CSS Way (Apply it to MediaWiki:Common.css or MediaWiki:Evelution.css)
 ```css
-.theme-A.visualcolors-standard { /* Replace .theme-A with either .theme-B, .theme-C, .theme-D, .theme-E, .theme-F, .theme-G, .theme-H if you want to target the other 7 slots, otherwise don't replace .theme-A with anything */ 
+.theme-A.colorscheme-light.visualcolors-standard { /* Replace .theme-A with either .theme-B, .theme-C, .theme-D, .theme-E, .theme-F, .theme-G, .theme-H if you want to target the other 7 slots, otherwise don't replace .theme-A with anything. Replace .colorscheme-light with .colorscheme-dark if you want to target the dark color scheme, otherwise don't replace .colorscheme-light with anything */ 
 --desktop-background-image:url("loadbg_dev.png"); /* <image> */
 --desktop-background-image-filter:opacity(100%); /* <filter-function> */
 --desktop-background-image-blend-mode:normal; /* <blend-mode> */
@@ -108,7 +108,7 @@ If you want to create a new theme without using CPE Theme Designer (i.e. Due to 
 
 ### PHP Way (Apply it to LocalSettings.php)
 ```php
-$wgEvelutionThemeA = [/* Replace $wgEvelutionThemeA with either $wgEvelutionThemeB, $wgEvelutionThemeC, $wgEvelutionThemeD, $wgEvelutionThemeE, $wgEvelutionThemeF, $wgEvelutionThemeG, $wgEvelutionThemeH if you want to target the other 7 slots, otherwise don't replace $wgEvelutionThemeA with anything */ 
+$wgEvelutionThemeA = [/* Replace $wgEvelutionThemeA with either $wgEvelutionThemeB, $wgEvelutionThemeC, $wgEvelutionThemeD, $wgEvelutionThemeE, $wgEvelutionThemeF, $wgEvelutionThemeG, $wgEvelutionThemeH, $wgEvelutionThemeADark, $wgEvelutionThemeBDark, $wgEvelutionThemeCDark, $wgEvelutionThemeDDark, $wgEvelutionThemeEDark, $wgEvelutionThemeFDark, $wgEvelutionThemeGDark or $wgEvelutionThemeHDark if you want to target the other 7 slots or the dark color scheme, otherwise don't replace $wgEvelutionThemeA with anything */ 
 'desktop-background-image' => 'url("loadbg_dev.png")', /* <image> */
 'desktop-background-image-filter' => 'opacity(100%)', /* <filter-function> */
 'desktop-background-image-blend-mode' => 'normal', /* <blend-mode> */

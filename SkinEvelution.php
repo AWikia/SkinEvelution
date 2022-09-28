@@ -143,7 +143,17 @@ class SkinEvelution extends SkinMustache {
 		$data["data-theme-F"] = $this->getConfig()->get ( 'EvelutionThemeF' );
 		$data["data-theme-G"] = $this->getConfig()->get ( 'EvelutionThemeG' );
 		$data["data-theme-H"] = $this->getConfig()->get ( 'EvelutionThemeH' );
-		$data["data-theme-H"] = $this->getConfig()->get ( 'EvelutionThemeH' );
+
+		$data["data-theme-A-dark"] = $this->getConfig()->get ( 'EvelutionThemeADark' );
+		$data["data-theme-B-dark"] = $this->getConfig()->get ( 'EvelutionThemeBDark' );
+		$data["data-theme-C-dark"] = $this->getConfig()->get ( 'EvelutionThemeCDark' );
+		$data["data-theme-D-dark"] = $this->getConfig()->get ( 'EvelutionThemeDDark' );
+		$data["data-theme-E-dark"] = $this->getConfig()->get ( 'EvelutionThemeEDark' );
+		$data["data-theme-F-dark"] = $this->getConfig()->get ( 'EvelutionThemeFDark' );
+		$data["data-theme-G-dark"] = $this->getConfig()->get ( 'EvelutionThemeGDark' );
+		$data["data-theme-H-dark"] = $this->getConfig()->get ( 'EvelutionThemeHDark' );
+
+
 		$data["data-dcmmode-1"] = $this->getConfig()->get ( 'EvelutionCustomDCMMode1' );
 		$data["data-dcmmode-2"] = $this->getConfig()->get ( 'EvelutionCustomDCMMode2' );
 		$data["data-dcmmode-3"] = $this->getConfig()->get ( 'EvelutionCustomDCMMode3' );

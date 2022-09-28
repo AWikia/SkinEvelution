@@ -123,9 +123,9 @@ Yes. Evelution not only offers many dark themes but also an Inverted Colors Mode
   - Community Background Image gets inverted to improve legibility of Community Header
 
 ## Can I change the themes using CSS?
-Of course. It has been tested and it works. For instance, if you want to modify the 2nd theme, paste this to ``MediaWiki:Common.css``:
+Of course. It has been tested and it works. For instance, if you want to modify the 2nd Light theme, paste this to ``MediaWiki:Common.css``:
 ```css
-.theme-B.visualcolors-standard { 
+.theme-B.colorscheme-light.visualcolors-standard { 
 --desktop-background-image:url("loadbg_dev.png"); /* <image> */
 --desktop-background-image-filter:opacity(100%); /* <filter-function> */
 --desktop-background-image-blend-mode:normal; /* <blend-mode> */
@@ -163,9 +163,9 @@ Of course. It has been tested and it works. For instance, if you want to modify 
 --system-generic-color-saturation:100%; /* <number> 20% to 100% */
 }
 ```
-Per-page theming is also supported. If you want to use a different theme for the 1st theme on **Sample Test Page** article, paste this to ``MediaWiki:Common.css``:
+Per-page theming is also supported. If you want to use a different theme for the 1st Light theme on **Sample Test Page** article, paste this to ``MediaWiki:Common.css``:
 ```css
-.rootpage-Sample_Test_Page .theme-A.visualcolors-standard {
+.rootpage-Sample_Test_Page .theme-A.colorscheme-light.visualcolors-standard {
 --desktop-background-image:url("loadbg_dev.png"); /* <image> */
 --desktop-background-image-filter:opacity(100%); /* <filter-function> */
 --desktop-background-image-blend-mode:normal; /* <blend-mode> */

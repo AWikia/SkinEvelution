@@ -46,7 +46,9 @@ If you need to use your own colors for background and foreground color, always p
 
 On no account will you expect contrast issues when using the theming variables properly as Evelution automatically adjusts offending themes (Those with low contrast) to be as great as possible. This means that creating a theme with all color variables set to the same color (Such as red) will not create an illegible theme. If you're still not satisfied with the color contrast, you can increase contrast level by using the Contrast Modes dropdown and either move the slider more to the right or pick one of the eight Contrast Mode presets (The first one is automatic to match your system preferences).
 
-Evelution also provides Inactive Text, Hyperlink, Visited Hyperlink, Active Text, Highlight and Active Caption colors variables that can be paired either with the neutral color ( ``-*-secondary-background-color-*`` like ``active-text-secondary-background-color`` ) which also apply to the Generic Colors, the Luna Lavccent color aka the Active Caption color ( ``-*-tertiary-background-color-*`` like ``hyperlink-tertiary-background-color`` ) or the Desktop color ( ``-*-quaternary-background-color-*`` like ``highlight-quaternary-background-color`` )
+Evelution also provides Inactive Text, Hyperlink, Visited Hyperlink, Active Text, Highlight, Active Caption and Generic colors variables that can be paired either with the neutral color ( ``-*-secondary-background-color-*`` like ``active-text-secondary-background-color`` ), the Luna Lavccent color aka the Active Caption color ( ``-*-tertiary-background-color-*`` like ``hyperlink-tertiary-background-color`` ) or the Desktop color ( ``-*-quaternary-background-color-*`` like ``highlight-quaternary-background-color`` ) so as to have good color contrast although the Highlight and Active Caption Colors are not usually used as text color of small regular text.
+
+Rememeber that you can increase up Contrast Level in Evelution by changing the contrast mode slider in the contrast modes dropdown if the current minumum contrast requires can't satisfy you although you cannot increase contrast of a specific color pair if the text color against the background color is black or white as the text color cannot be adjusted any further.
 
 ## Avoid destroying the layout
 When styling the Evelution Skin with CSS, make sure that the layout will still be usable and will not cause any distorts. This is also the case for many other skins.
@@ -65,7 +67,7 @@ Here's a theming template you can use for getting custom theme(s) for your wiki:
 
 ### CSS Way (Apply it to MediaWiki:Common.css or MediaWiki:Evelution.css)
 ```css
-.theme-A.visualcolors-standard { /* Replace .theme-A with either .theme-B, .theme-C, .theme-D, .theme-E, .theme-F, .theme-G, .theme-H if you want to target the other 7 slots, otherwise don't replace .theme-A with anything */ 
+.theme-A.colorscheme-light.visualcolors-standard { /* Replace .theme-A with either .theme-B, .theme-C, .theme-D, .theme-E, .theme-F, .theme-G, .theme-H if you want to target the other 7 slots, otherwise don't replace .theme-A with anything. Replace .colorscheme-light with .colorscheme-dark if you want to target the dark color scheme, otherwise don't replace .colorscheme-light with anything */ 
 --desktop-background-image:url("loadbg_dev.png"); /* <image> */
 --desktop-background-image-filter:opacity(100%); /* <filter-function> */
 --desktop-background-image-blend-mode:normal; /* <blend-mode> */
@@ -106,7 +108,7 @@ Here's a theming template you can use for getting custom theme(s) for your wiki:
 
 ### PHP Way (Apply it to LocalSettings.php)
 ```php
-$wgEvelutionThemeA = [/* Replace $wgEvelutionThemeA with either $wgEvelutionThemeB, $wgEvelutionThemeC, $wgEvelutionThemeD, $wgEvelutionThemeE, $wgEvelutionThemeF, $wgEvelutionThemeG, $wgEvelutionThemeH if you want to target the other 7 slots, otherwise don't replace $wgEvelutionThemeA with anything */ 
+$wgEvelutionThemeA = [/* Replace $wgEvelutionThemeA with either $wgEvelutionThemeB, $wgEvelutionThemeC, $wgEvelutionThemeD, $wgEvelutionThemeE, $wgEvelutionThemeF, $wgEvelutionThemeG, $wgEvelutionThemeH, $wgEvelutionThemeADark, $wgEvelutionThemeBDark, $wgEvelutionThemeCDark, $wgEvelutionThemeDDark, $wgEvelutionThemeEDark, $wgEvelutionThemeFDark, $wgEvelutionThemeGDark or $wgEvelutionThemeHDark if you want to target the other 7 slots or the dark color scheme, otherwise don't replace $wgEvelutionThemeA with anything */ 
 'desktop-background-image' => 'url("loadbg_dev.png")', /* <image> */
 'desktop-background-image-filter' => 'opacity(100%)', /* <filter-function> */
 'desktop-background-image-blend-mode' => 'normal', /* <blend-mode> */

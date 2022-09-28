@@ -1,7 +1,8 @@
-'/** Themes */' +
+'/*** Themes ***/' +
 {{^has-no-color-management}}
+'/** Light Color Scheme **/' +
 '/* Theme A */' +
-	'.theme-A.visualcolors-standard {' +
+	'.theme-A.colorscheme-light.visualcolors-standard {' +
 		{{#data-theme-A}}
 			{{#desktop-background-image}}
 				'--desktop-background-image:\'{{.}}\';' + /* <image> */
@@ -111,7 +112,7 @@
 	{{/data-theme-A}}
 	'}' +
 '/* Theme B */' +
-	'.theme-B.visualcolors-standard {' +
+	'.theme-B.colorscheme-light.visualcolors-standard {' +
 		{{#data-theme-B}}
 			{{#desktop-background-image}}
 				'--desktop-background-image:\'{{.}}\';' + /* <image> */
@@ -221,7 +222,7 @@
 	{{/data-theme-B}}
 	'}' +
 '/* Theme C */' +
-	'.theme-C.visualcolors-standard {' +
+	'.theme-C.colorscheme-light.visualcolors-standard {' +
 		{{#data-theme-C}}
 			{{#desktop-background-image}}
 				'--desktop-background-image:\'{{.}}\';' + /* <image> */
@@ -331,7 +332,7 @@
 	{{/data-theme-C}}
 	'}' +
 '/* Theme D */' +
-	'.theme-D.visualcolors-standard {' +
+	'.theme-D.colorscheme-light.visualcolors-standard {' +
 		{{#data-theme-D}}
 			{{#desktop-background-image}}
 				'--desktop-background-image:\'{{.}}\';' + /* <image> */
@@ -441,7 +442,7 @@
 	{{/data-theme-D}}
 	'}' +
 '/* Theme E */' +
-	'.theme-E.visualcolors-standard {' +
+	'.theme-E.colorscheme-light.visualcolors-standard {' +
 		{{#data-theme-E}}
 			{{#desktop-background-image}}
 				'--desktop-background-image:\'{{.}}\';' + /* <image> */
@@ -551,7 +552,7 @@
 	{{/data-theme-E}}
 	'}' +
 '/* Theme F */' +
-	'.theme-F.visualcolors-standard {' +
+	'.theme-F.colorscheme-light.visualcolors-standard {' +
 		{{#data-theme-F}}
 			{{#desktop-background-image}}
 				'--desktop-background-image:\'{{.}}\';' + /* <image> */
@@ -661,7 +662,7 @@
 	{{/data-theme-F}}
 	'}' +
 '/* Theme G */' +
-	'.theme-G.visualcolors-standard {' +
+	'.theme-G.colorscheme-light.visualcolors-standard {' +
 		{{#data-theme-G}}
 			{{#desktop-background-image}}
 				'--desktop-background-image:\'{{.}}\';' + /* <image> */
@@ -771,7 +772,7 @@
 	{{/data-theme-G}}
 	'}' +
 '/* Theme H */' +
-	'.theme-H.visualcolors-standard {' +
+	'.theme-H.colorscheme-light.visualcolors-standard {' +
 		{{#data-theme-H}}
 			{{#desktop-background-image}}
 				'--desktop-background-image:\'{{.}}\';' + /* <image> */
@@ -880,6 +881,888 @@
 			{{/system-generic-color-saturation}}
 	{{/data-theme-H}}
 	'}' +
+'/** Dark Color Scheme **/' +
+'/* Theme A */' +
+	'.theme-A.colorscheme-dark.visualcolors-standard {' +
+		{{#data-theme-A-dark}}
+			{{#desktop-background-image}}
+				'--desktop-background-image:\'{{.}}\';' + /* <image> */
+			{{/desktop-background-image}}
+			{{#desktop-background-image-filter}}
+				'--desktop-background-image-filter:{{.}};' + /* <filter-function> */
+			{{/desktop-background-image-filter}}
+			{{#desktop-background-image-blend-mode}}
+				'--desktop-background-image-blend-mode:{{.}};' + /* <blend-mode> */
+			{{/desktop-background-image-blend-mode}}
+			{{#desktop-background-color}}
+				'--desktop-background-color:{{.}};' + /* <color> */
+			{{/desktop-background-color}}
+			{{#desktop-background-size}}
+				'--desktop-background-size:{{.}};' + /* cover | contain | stretched | full */
+			{{/desktop-background-size}}
+			{{#desktop-background-horizontal-alignment}}
+				'--desktop-background-horizontal-alignment:{{.}};' + /* left | center | right */
+			{{/desktop-background-horizontal-alignment}}
+			{{#desktop-background-vertical-alignment}}
+				'--desktop-background-vertical-alignment:{{.}};' + /* top | center | bottom */
+			{{/desktop-background-vertical-alignment}}
+			{{#desktop-background-no-horizontal-tiling}}
+				'--desktop-background-no-horizontal-tiling:{{.}};' + /* <boolean> */
+			{{/desktop-background-no-horizontal-tiling}}
+			{{#desktop-background-no-vertical-tiling}}
+				'--desktop-background-no-vertical-tiling:{{.}};' + /* <boolean> */
+			{{/desktop-background-no-vertical-tiling}}
+			{{#desktop-text-background-color}}
+				'--desktop-text-background-color:{{.}};' + /* auto | <color> */
+			{{/desktop-text-background-color}}
+			{{#canvas-background-color}}
+				'--canvas-background-color:{{.}};' + /* <color> */
+			{{/canvas-background-color}}
+			{{#canvas-secondary-background-color}}
+				'--canvas-secondary-background-color:{{.}};' + /* auto | <color> */
+			{{/canvas-secondary-background-color}}
+			{{#inactive-text-background-color}}
+				'--inactive-text-background-color:{{.}};' + /* auto | <color> */
+			{{/inactive-text-background-color}}
+			{{#active-text-background-color}}
+				'--active-text-background-color:{{.}};' + /* auto | <color> */
+			{{/active-text-background-color}}
+			{{#canvas-text-background-color}}
+				'--canvas-text-background-color:{{.}};' + /* auto | <color> */
+			{{/canvas-text-background-color}}
+			{{#canvas-text-secondary-background-color}}
+				'--canvas-text-secondary-background-color:{{.}};' + /* auto | <color> */
+			{{/canvas-text-secondary-background-color}}
+			{{#highlight-background-color}}
+				'--highlight-background-color:{{.}};' + /* <color> */
+			{{/highlight-background-color}}
+			{{#highlight-text-background-color}}
+				'--highlight-text-background-color:{{.}};' + /* <color> */
+			{{/highlight-text-background-color}}
+			{{#hyperlink-background-color}}
+				'--hyperlink-background-color:{{.}};' + /* <color> */
+			{{/hyperlink-background-color}}
+			{{#visited-hyperlink-background-color}}
+				'--visited-hyperlink-background-color:{{.}};' + /* <color> */
+			{{/visited-hyperlink-background-color}}
+			{{#active-title-background-color}}
+				'--active-title-background-color:{{.}};' + /* auto | <color> */
+			{{/active-title-background-color}}
+			{{#active-title-text-background-color}}
+				'--active-title-text-background-color:{{.}};' + /* auto | <color> */
+			{{/active-title-text-background-color}}
+			{{#inactive-title-background-color}}
+				'--inactive-title-background-color:{{.}};' + /* auto | <color> */
+			{{/inactive-title-background-color}}
+			{{#inactive-title-text-background-color}}
+				'--inactive-title-text-background-color:{{.}};' + /* auto | <color> */
+			{{/inactive-title-text-background-color}}
+			{{#custom-font}}
+				'--custom-font:\'<{{.}}>\';' + /* <string> */
+			{{/custom-font}}
+			{{#custom-secondary-font}}
+				'--custom-secondary-font:\'<{{.}}>\';' + /* <string> */
+			{{/custom-secondary-font}}
+			{{#custom-code-font}}
+				'--custom-code-font:\'<{{.}}>\';' + /* <string> */
+			{{/custom-code-font}}
+			{{#border-radius}}
+				'--border-radius:{{.}};' + /* <number> 0 to 15 */
+			{{/border-radius}}
+			{{#icon-filter}}
+				'--icon-filter:{{.}};' + /* <filter-function> */
+			{{/icon-filter}}
+			{{#icon-filter-hover}}
+				'--icon-filter-hover:{{.}};' + /* <filter-function> */
+			{{/icon-filter-hover}}
+			{{#icon-filter-duration}}
+				'--icon-filter-duration:{{.}};' + /* <duration> */
+			{{/icon-filter-duration}}
+			{{#icon-filter-delay}}
+				'--icon-filter-delay:{{.}};' + /* <duration> */
+			{{/icon-filter-delay}}
+			{{#system-acryllic-opacity}}
+				'--system-acryllic-opacity:{{.}};' + /* <number> 0.4 to 0.8 */
+			{{/system-acryllic-opacity}}
+			{{#system-generic-color-hue-shift}}
+				'--system-generic-color-hue-shift:{{.}};' + /* <number> -10 to 10 */
+			{{/system-generic-color-hue-shift}}
+			{{#system-generic-color-saturation}}
+				'--system-generic-color-saturation:{{.}};' + /* <number> 0.25 to 1 */
+			{{/system-generic-color-saturation}}
+	{{/data-theme-A-dark}}
+	'}' +
+'/* Theme B */' +
+	'.theme-B.colorscheme-dark.visualcolors-standard {' +
+		{{#data-theme-B-dark}}
+			{{#desktop-background-image}}
+				'--desktop-background-image:\'{{.}}\';' + /* <image> */
+			{{/desktop-background-image}}
+			{{#desktop-background-image-filter}}
+				'--desktop-background-image-filter:{{.}};' + /* <filter-function> */
+			{{/desktop-background-image-filter}}
+			{{#desktop-background-image-blend-mode}}
+				'--desktop-background-image-blend-mode:{{.}};' + /* <blend-mode> */
+			{{/desktop-background-image-blend-mode}}
+			{{#desktop-background-color}}
+				'--desktop-background-color:{{.}};' + /* <color> */
+			{{/desktop-background-color}}
+			{{#desktop-background-size}}
+				'--desktop-background-size:{{.}};' + /* cover | contain | stretched | full */
+			{{/desktop-background-size}}
+			{{#desktop-background-horizontal-alignment}}
+				'--desktop-background-horizontal-alignment:{{.}};' + /* left | center | right */
+			{{/desktop-background-horizontal-alignment}}
+			{{#desktop-background-vertical-alignment}}
+				'--desktop-background-vertical-alignment:{{.}};' + /* top | center | bottom */
+			{{/desktop-background-vertical-alignment}}
+			{{#desktop-background-no-horizontal-tiling}}
+				'--desktop-background-no-horizontal-tiling:{{.}};' + /* <boolean> */
+			{{/desktop-background-no-horizontal-tiling}}
+			{{#desktop-background-no-vertical-tiling}}
+				'--desktop-background-no-vertical-tiling:{{.}};' + /* <boolean> */
+			{{/desktop-background-no-vertical-tiling}}
+			{{#desktop-text-background-color}}
+				'--desktop-text-background-color:{{.}};' + /* auto | <color> */
+			{{/desktop-text-background-color}}
+			{{#canvas-background-color}}
+				'--canvas-background-color:{{.}};' + /* <color> */
+			{{/canvas-background-color}}
+			{{#canvas-secondary-background-color}}
+				'--canvas-secondary-background-color:{{.}};' + /* auto | <color> */
+			{{/canvas-secondary-background-color}}
+			{{#inactive-text-background-color}}
+				'--inactive-text-background-color:{{.}};' + /* auto | <color> */
+			{{/inactive-text-background-color}}
+			{{#active-text-background-color}}
+				'--active-text-background-color:{{.}};' + /* auto | <color> */
+			{{/active-text-background-color}}
+			{{#canvas-text-background-color}}
+				'--canvas-text-background-color:{{.}};' + /* auto | <color> */
+			{{/canvas-text-background-color}}
+			{{#canvas-text-secondary-background-color}}
+				'--canvas-text-secondary-background-color:{{.}};' + /* auto | <color> */
+			{{/canvas-text-secondary-background-color}}
+			{{#highlight-background-color}}
+				'--highlight-background-color:{{.}};' + /* <color> */
+			{{/highlight-background-color}}
+			{{#highlight-text-background-color}}
+				'--highlight-text-background-color:{{.}};' + /* <color> */
+			{{/highlight-text-background-color}}
+			{{#hyperlink-background-color}}
+				'--hyperlink-background-color:{{.}};' + /* <color> */
+			{{/hyperlink-background-color}}
+			{{#visited-hyperlink-background-color}}
+				'--visited-hyperlink-background-color:{{.}};' + /* <color> */
+			{{/visited-hyperlink-background-color}}
+			{{#active-title-background-color}}
+				'--active-title-background-color:{{.}};' + /* auto | <color> */
+			{{/active-title-background-color}}
+			{{#active-title-text-background-color}}
+				'--active-title-text-background-color:{{.}};' + /* auto | <color> */
+			{{/active-title-text-background-color}}
+			{{#inactive-title-background-color}}
+				'--inactive-title-background-color:{{.}};' + /* auto | <color> */
+			{{/inactive-title-background-color}}
+			{{#inactive-title-text-background-color}}
+				'--inactive-title-text-background-color:{{.}};' + /* auto | <color> */
+			{{/inactive-title-text-background-color}}
+			{{#custom-font}}
+				'--custom-font:\'<{{.}}>\';' + /* <string> */
+			{{/custom-font}}
+			{{#custom-secondary-font}}
+				'--custom-secondary-font:\'<{{.}}>\';' + /* <string> */
+			{{/custom-secondary-font}}
+			{{#custom-code-font}}
+				'--custom-code-font:\'<{{.}}>\';' + /* <string> */
+			{{/custom-code-font}}
+			{{#border-radius}}
+				'--border-radius:{{.}};' + /* <number> 0 to 15 */
+			{{/border-radius}}
+			{{#icon-filter}}
+				'--icon-filter:{{.}};' + /* <filter-function> */
+			{{/icon-filter}}
+			{{#icon-filter-hover}}
+				'--icon-filter-hover:{{.}};' + /* <filter-function> */
+			{{/icon-filter-hover}}
+			{{#icon-filter-duration}}
+				'--icon-filter-duration:{{.}};' + /* <duration> */
+			{{/icon-filter-duration}}
+			{{#icon-filter-delay}}
+				'--icon-filter-delay:{{.}};' + /* <duration> */
+			{{/icon-filter-delay}}
+			{{#system-acryllic-opacity}}
+				'--system-acryllic-opacity:{{.}};' + /* <number> 0.4 to 0.8 */
+			{{/system-acryllic-opacity}}
+			{{#system-generic-color-hue-shift}}
+				'--system-generic-color-hue-shift:{{.}};' + /* <number> -10 to 10 */
+			{{/system-generic-color-hue-shift}}
+			{{#system-generic-color-saturation}}
+				'--system-generic-color-saturation:{{.}};' + /* <number> 0.25 to 1 */
+			{{/system-generic-color-saturation}}
+	{{/data-theme-B-dark}}
+	'}' +
+'/* Theme C */' +
+	'.theme-C.colorscheme-dark.visualcolors-standard {' +
+		{{#data-theme-C-dark}}
+			{{#desktop-background-image}}
+				'--desktop-background-image:\'{{.}}\';' + /* <image> */
+			{{/desktop-background-image}}
+			{{#desktop-background-image-filter}}
+				'--desktop-background-image-filter:{{.}};' + /* <filter-function> */
+			{{/desktop-background-image-filter}}
+			{{#desktop-background-image-blend-mode}}
+				'--desktop-background-image-blend-mode:{{.}};' + /* <blend-mode> */
+			{{/desktop-background-image-blend-mode}}
+			{{#desktop-background-color}}
+				'--desktop-background-color:{{.}};' + /* <color> */
+			{{/desktop-background-color}}
+			{{#desktop-background-size}}
+				'--desktop-background-size:{{.}};' + /* cover | contain | stretched | full */
+			{{/desktop-background-size}}
+			{{#desktop-background-horizontal-alignment}}
+				'--desktop-background-horizontal-alignment:{{.}};' + /* left | center | right */
+			{{/desktop-background-horizontal-alignment}}
+			{{#desktop-background-vertical-alignment}}
+				'--desktop-background-vertical-alignment:{{.}};' + /* top | center | bottom */
+			{{/desktop-background-vertical-alignment}}
+			{{#desktop-background-no-horizontal-tiling}}
+				'--desktop-background-no-horizontal-tiling:{{.}};' + /* <boolean> */
+			{{/desktop-background-no-horizontal-tiling}}
+			{{#desktop-background-no-vertical-tiling}}
+				'--desktop-background-no-vertical-tiling:{{.}};' + /* <boolean> */
+			{{/desktop-background-no-vertical-tiling}}
+			{{#desktop-text-background-color}}
+				'--desktop-text-background-color:{{.}};' + /* auto | <color> */
+			{{/desktop-text-background-color}}
+			{{#canvas-background-color}}
+				'--canvas-background-color:{{.}};' + /* <color> */
+			{{/canvas-background-color}}
+			{{#canvas-secondary-background-color}}
+				'--canvas-secondary-background-color:{{.}};' + /* auto | <color> */
+			{{/canvas-secondary-background-color}}
+			{{#inactive-text-background-color}}
+				'--inactive-text-background-color:{{.}};' + /* auto | <color> */
+			{{/inactive-text-background-color}}
+			{{#active-text-background-color}}
+				'--active-text-background-color:{{.}};' + /* auto | <color> */
+			{{/active-text-background-color}}
+			{{#canvas-text-background-color}}
+				'--canvas-text-background-color:{{.}};' + /* auto | <color> */
+			{{/canvas-text-background-color}}
+			{{#canvas-text-secondary-background-color}}
+				'--canvas-text-secondary-background-color:{{.}};' + /* auto | <color> */
+			{{/canvas-text-secondary-background-color}}
+			{{#highlight-background-color}}
+				'--highlight-background-color:{{.}};' + /* <color> */
+			{{/highlight-background-color}}
+			{{#highlight-text-background-color}}
+				'--highlight-text-background-color:{{.}};' + /* <color> */
+			{{/highlight-text-background-color}}
+			{{#hyperlink-background-color}}
+				'--hyperlink-background-color:{{.}};' + /* <color> */
+			{{/hyperlink-background-color}}
+			{{#visited-hyperlink-background-color}}
+				'--visited-hyperlink-background-color:{{.}};' + /* <color> */
+			{{/visited-hyperlink-background-color}}
+			{{#active-title-background-color}}
+				'--active-title-background-color:{{.}};' + /* auto | <color> */
+			{{/active-title-background-color}}
+			{{#active-title-text-background-color}}
+				'--active-title-text-background-color:{{.}};' + /* auto | <color> */
+			{{/active-title-text-background-color}}
+			{{#inactive-title-background-color}}
+				'--inactive-title-background-color:{{.}};' + /* auto | <color> */
+			{{/inactive-title-background-color}}
+			{{#inactive-title-text-background-color}}
+				'--inactive-title-text-background-color:{{.}};' + /* auto | <color> */
+			{{/inactive-title-text-background-color}}
+			{{#custom-font}}
+				'--custom-font:\'<{{.}}>\';' + /* <string> */
+			{{/custom-font}}
+			{{#custom-secondary-font}}
+				'--custom-secondary-font:\'<{{.}}>\';' + /* <string> */
+			{{/custom-secondary-font}}
+			{{#custom-code-font}}
+				'--custom-code-font:\'<{{.}}>\';' + /* <string> */
+			{{/custom-code-font}}
+			{{#border-radius}}
+				'--border-radius:{{.}};' + /* <number> 0 to 15 */
+			{{/border-radius}}
+			{{#icon-filter}}
+				'--icon-filter:{{.}};' + /* <filter-function> */
+			{{/icon-filter}}
+			{{#icon-filter-hover}}
+				'--icon-filter-hover:{{.}};' + /* <filter-function> */
+			{{/icon-filter-hover}}
+			{{#icon-filter-duration}}
+				'--icon-filter-duration:{{.}};' + /* <duration> */
+			{{/icon-filter-duration}}
+			{{#icon-filter-delay}}
+				'--icon-filter-delay:{{.}};' + /* <duration> */
+			{{/icon-filter-delay}}
+			{{#system-acryllic-opacity}}
+				'--system-acryllic-opacity:{{.}};' + /* <number> 0.4 to 0.8 */
+			{{/system-acryllic-opacity}}
+			{{#system-generic-color-hue-shift}}
+				'--system-generic-color-hue-shift:{{.}};' + /* <number> -10 to 10 */
+			{{/system-generic-color-hue-shift}}
+			{{#system-generic-color-saturation}}
+				'--system-generic-color-saturation:{{.}};' + /* <number> 0.25 to 1 */
+			{{/system-generic-color-saturation}}
+	{{/data-theme-C-dark}}
+	'}' +
+'/* Theme D */' +
+	'.theme-D.colorscheme-dark.visualcolors-standard {' +
+		{{#data-theme-D-dark}}
+			{{#desktop-background-image}}
+				'--desktop-background-image:\'{{.}}\';' + /* <image> */
+			{{/desktop-background-image}}
+			{{#desktop-background-image-filter}}
+				'--desktop-background-image-filter:{{.}};' + /* <filter-function> */
+			{{/desktop-background-image-filter}}
+			{{#desktop-background-image-blend-mode}}
+				'--desktop-background-image-blend-mode:{{.}};' + /* <blend-mode> */
+			{{/desktop-background-image-blend-mode}}
+			{{#desktop-background-color}}
+				'--desktop-background-color:{{.}};' + /* <color> */
+			{{/desktop-background-color}}
+			{{#desktop-background-size}}
+				'--desktop-background-size:{{.}};' + /* cover | contain | stretched | full */
+			{{/desktop-background-size}}
+			{{#desktop-background-horizontal-alignment}}
+				'--desktop-background-horizontal-alignment:{{.}};' + /* left | center | right */
+			{{/desktop-background-horizontal-alignment}}
+			{{#desktop-background-vertical-alignment}}
+				'--desktop-background-vertical-alignment:{{.}};' + /* top | center | bottom */
+			{{/desktop-background-vertical-alignment}}
+			{{#desktop-background-no-horizontal-tiling}}
+				'--desktop-background-no-horizontal-tiling:{{.}};' + /* <boolean> */
+			{{/desktop-background-no-horizontal-tiling}}
+			{{#desktop-background-no-vertical-tiling}}
+				'--desktop-background-no-vertical-tiling:{{.}};' + /* <boolean> */
+			{{/desktop-background-no-vertical-tiling}}
+			{{#desktop-text-background-color}}
+				'--desktop-text-background-color:{{.}};' + /* auto | <color> */
+			{{/desktop-text-background-color}}
+			{{#canvas-background-color}}
+				'--canvas-background-color:{{.}};' + /* <color> */
+			{{/canvas-background-color}}
+			{{#canvas-secondary-background-color}}
+				'--canvas-secondary-background-color:{{.}};' + /* auto | <color> */
+			{{/canvas-secondary-background-color}}
+			{{#inactive-text-background-color}}
+				'--inactive-text-background-color:{{.}};' + /* auto | <color> */
+			{{/inactive-text-background-color}}
+			{{#active-text-background-color}}
+				'--active-text-background-color:{{.}};' + /* auto | <color> */
+			{{/active-text-background-color}}
+			{{#canvas-text-background-color}}
+				'--canvas-text-background-color:{{.}};' + /* auto | <color> */
+			{{/canvas-text-background-color}}
+			{{#canvas-text-secondary-background-color}}
+				'--canvas-text-secondary-background-color:{{.}};' + /* auto | <color> */
+			{{/canvas-text-secondary-background-color}}
+			{{#highlight-background-color}}
+				'--highlight-background-color:{{.}};' + /* <color> */
+			{{/highlight-background-color}}
+			{{#highlight-text-background-color}}
+				'--highlight-text-background-color:{{.}};' + /* <color> */
+			{{/highlight-text-background-color}}
+			{{#hyperlink-background-color}}
+				'--hyperlink-background-color:{{.}};' + /* <color> */
+			{{/hyperlink-background-color}}
+			{{#visited-hyperlink-background-color}}
+				'--visited-hyperlink-background-color:{{.}};' + /* <color> */
+			{{/visited-hyperlink-background-color}}
+			{{#active-title-background-color}}
+				'--active-title-background-color:{{.}};' + /* auto | <color> */
+			{{/active-title-background-color}}
+			{{#active-title-text-background-color}}
+				'--active-title-text-background-color:{{.}};' + /* auto | <color> */
+			{{/active-title-text-background-color}}
+			{{#inactive-title-background-color}}
+				'--inactive-title-background-color:{{.}};' + /* auto | <color> */
+			{{/inactive-title-background-color}}
+			{{#inactive-title-text-background-color}}
+				'--inactive-title-text-background-color:{{.}};' + /* auto | <color> */
+			{{/inactive-title-text-background-color}}
+			{{#custom-font}}
+				'--custom-font:\'<{{.}}>\';' + /* <string> */
+			{{/custom-font}}
+			{{#custom-secondary-font}}
+				'--custom-secondary-font:\'<{{.}}>\';' + /* <string> */
+			{{/custom-secondary-font}}
+			{{#custom-code-font}}
+				'--custom-code-font:\'<{{.}}>\';' + /* <string> */
+			{{/custom-code-font}}
+			{{#border-radius}}
+				'--border-radius:{{.}};' + /* <number> 0 to 15 */
+			{{/border-radius}}
+			{{#icon-filter}}
+				'--icon-filter:{{.}};' + /* <filter-function> */
+			{{/icon-filter}}
+			{{#icon-filter-hover}}
+				'--icon-filter-hover:{{.}};' + /* <filter-function> */
+			{{/icon-filter-hover}}
+			{{#icon-filter-duration}}
+				'--icon-filter-duration:{{.}};' + /* <duration> */
+			{{/icon-filter-duration}}
+			{{#icon-filter-delay}}
+				'--icon-filter-delay:{{.}};' + /* <duration> */
+			{{/icon-filter-delay}}
+			{{#system-acryllic-opacity}}
+				'--system-acryllic-opacity:{{.}};' + /* <number> 0.4 to 0.8 */
+			{{/system-acryllic-opacity}}
+			{{#system-generic-color-hue-shift}}
+				'--system-generic-color-hue-shift:{{.}};' + /* <number> -10 to 10 */
+			{{/system-generic-color-hue-shift}}
+			{{#system-generic-color-saturation}}
+				'--system-generic-color-saturation:{{.}};' + /* <number> 0.25 to 1 */
+			{{/system-generic-color-saturation}}
+	{{/data-theme-D-dark}}
+	'}' +
+'/* Theme E */' +
+	'.theme-E.colorscheme-dark.visualcolors-standard {' +
+		{{#data-theme-E-dark}}
+			{{#desktop-background-image}}
+				'--desktop-background-image:\'{{.}}\';' + /* <image> */
+			{{/desktop-background-image}}
+			{{#desktop-background-image-filter}}
+				'--desktop-background-image-filter:{{.}};' + /* <filter-function> */
+			{{/desktop-background-image-filter}}
+			{{#desktop-background-image-blend-mode}}
+				'--desktop-background-image-blend-mode:{{.}};' + /* <blend-mode> */
+			{{/desktop-background-image-blend-mode}}
+			{{#desktop-background-color}}
+				'--desktop-background-color:{{.}};' + /* <color> */
+			{{/desktop-background-color}}
+			{{#desktop-background-size}}
+				'--desktop-background-size:{{.}};' + /* cover | contain | stretched | full */
+			{{/desktop-background-size}}
+			{{#desktop-background-horizontal-alignment}}
+				'--desktop-background-horizontal-alignment:{{.}};' + /* left | center | right */
+			{{/desktop-background-horizontal-alignment}}
+			{{#desktop-background-vertical-alignment}}
+				'--desktop-background-vertical-alignment:{{.}};' + /* top | center | bottom */
+			{{/desktop-background-vertical-alignment}}
+			{{#desktop-background-no-horizontal-tiling}}
+				'--desktop-background-no-horizontal-tiling:{{.}};' + /* <boolean> */
+			{{/desktop-background-no-horizontal-tiling}}
+			{{#desktop-background-no-vertical-tiling}}
+				'--desktop-background-no-vertical-tiling:{{.}};' + /* <boolean> */
+			{{/desktop-background-no-vertical-tiling}}
+			{{#desktop-text-background-color}}
+				'--desktop-text-background-color:{{.}};' + /* auto | <color> */
+			{{/desktop-text-background-color}}
+			{{#canvas-background-color}}
+				'--canvas-background-color:{{.}};' + /* <color> */
+			{{/canvas-background-color}}
+			{{#canvas-secondary-background-color}}
+				'--canvas-secondary-background-color:{{.}};' + /* auto | <color> */
+			{{/canvas-secondary-background-color}}
+			{{#inactive-text-background-color}}
+				'--inactive-text-background-color:{{.}};' + /* auto | <color> */
+			{{/inactive-text-background-color}}
+			{{#active-text-background-color}}
+				'--active-text-background-color:{{.}};' + /* auto | <color> */
+			{{/active-text-background-color}}
+			{{#canvas-text-background-color}}
+				'--canvas-text-background-color:{{.}};' + /* auto | <color> */
+			{{/canvas-text-background-color}}
+			{{#canvas-text-secondary-background-color}}
+				'--canvas-text-secondary-background-color:{{.}};' + /* auto | <color> */
+			{{/canvas-text-secondary-background-color}}
+			{{#highlight-background-color}}
+				'--highlight-background-color:{{.}};' + /* <color> */
+			{{/highlight-background-color}}
+			{{#highlight-text-background-color}}
+				'--highlight-text-background-color:{{.}};' + /* <color> */
+			{{/highlight-text-background-color}}
+			{{#hyperlink-background-color}}
+				'--hyperlink-background-color:{{.}};' + /* <color> */
+			{{/hyperlink-background-color}}
+			{{#visited-hyperlink-background-color}}
+				'--visited-hyperlink-background-color:{{.}};' + /* <color> */
+			{{/visited-hyperlink-background-color}}
+			{{#active-title-background-color}}
+				'--active-title-background-color:{{.}};' + /* auto | <color> */
+			{{/active-title-background-color}}
+			{{#active-title-text-background-color}}
+				'--active-title-text-background-color:{{.}};' + /* auto | <color> */
+			{{/active-title-text-background-color}}
+			{{#inactive-title-background-color}}
+				'--inactive-title-background-color:{{.}};' + /* auto | <color> */
+			{{/inactive-title-background-color}}
+			{{#inactive-title-text-background-color}}
+				'--inactive-title-text-background-color:{{.}};' + /* auto | <color> */
+			{{/inactive-title-text-background-color}}
+			{{#custom-font}}
+				'--custom-font:\'<{{.}}>\';' + /* <string> */
+			{{/custom-font}}
+			{{#custom-secondary-font}}
+				'--custom-secondary-font:\'<{{.}}>\';' + /* <string> */
+			{{/custom-secondary-font}}
+			{{#custom-code-font}}
+				'--custom-code-font:\'<{{.}}>\';' + /* <string> */
+			{{/custom-code-font}}
+			{{#border-radius}}
+				'--border-radius:{{.}};' + /* <number> 0 to 15 */
+			{{/border-radius}}
+			{{#icon-filter}}
+				'--icon-filter:{{.}};' + /* <filter-function> */
+			{{/icon-filter}}
+			{{#icon-filter-hover}}
+				'--icon-filter-hover:{{.}};' + /* <filter-function> */
+			{{/icon-filter-hover}}
+			{{#icon-filter-duration}}
+				'--icon-filter-duration:{{.}};' + /* <duration> */
+			{{/icon-filter-duration}}
+			{{#icon-filter-delay}}
+				'--icon-filter-delay:{{.}};' + /* <duration> */
+			{{/icon-filter-delay}}
+			{{#system-acryllic-opacity}}
+				'--system-acryllic-opacity:{{.}};' + /* <number> 0.4 to 0.8 */
+			{{/system-acryllic-opacity}}
+			{{#system-generic-color-hue-shift}}
+				'--system-generic-color-hue-shift:{{.}};' + /* <number> -10 to 10 */
+			{{/system-generic-color-hue-shift}}
+			{{#system-generic-color-saturation}}
+				'--system-generic-color-saturation:{{.}};' + /* <number> 0.25 to 1 */
+			{{/system-generic-color-saturation}}
+	{{/data-theme-E-dark}}
+	'}' +
+'/* Theme F */' +
+	'.theme-F.colorscheme-dark.visualcolors-standard {' +
+		{{#data-theme-F-dark}}
+			{{#desktop-background-image}}
+				'--desktop-background-image:\'{{.}}\';' + /* <image> */
+			{{/desktop-background-image}}
+			{{#desktop-background-image-filter}}
+				'--desktop-background-image-filter:{{.}};' + /* <filter-function> */
+			{{/desktop-background-image-filter}}
+			{{#desktop-background-image-blend-mode}}
+				'--desktop-background-image-blend-mode:{{.}};' + /* <blend-mode> */
+			{{/desktop-background-image-blend-mode}}
+			{{#desktop-background-color}}
+				'--desktop-background-color:{{.}};' + /* <color> */
+			{{/desktop-background-color}}
+			{{#desktop-background-size}}
+				'--desktop-background-size:{{.}};' + /* cover | contain | stretched | full */
+			{{/desktop-background-size}}
+			{{#desktop-background-horizontal-alignment}}
+				'--desktop-background-horizontal-alignment:{{.}};' + /* left | center | right */
+			{{/desktop-background-horizontal-alignment}}
+			{{#desktop-background-vertical-alignment}}
+				'--desktop-background-vertical-alignment:{{.}};' + /* top | center | bottom */
+			{{/desktop-background-vertical-alignment}}
+			{{#desktop-background-no-horizontal-tiling}}
+				'--desktop-background-no-horizontal-tiling:{{.}};' + /* <boolean> */
+			{{/desktop-background-no-horizontal-tiling}}
+			{{#desktop-background-no-vertical-tiling}}
+				'--desktop-background-no-vertical-tiling:{{.}};' + /* <boolean> */
+			{{/desktop-background-no-vertical-tiling}}
+			{{#desktop-text-background-color}}
+				'--desktop-text-background-color:{{.}};' + /* auto | <color> */
+			{{/desktop-text-background-color}}
+			{{#canvas-background-color}}
+				'--canvas-background-color:{{.}};' + /* <color> */
+			{{/canvas-background-color}}
+			{{#canvas-secondary-background-color}}
+				'--canvas-secondary-background-color:{{.}};' + /* auto | <color> */
+			{{/canvas-secondary-background-color}}
+			{{#inactive-text-background-color}}
+				'--inactive-text-background-color:{{.}};' + /* auto | <color> */
+			{{/inactive-text-background-color}}
+			{{#active-text-background-color}}
+				'--active-text-background-color:{{.}};' + /* auto | <color> */
+			{{/active-text-background-color}}
+			{{#canvas-text-background-color}}
+				'--canvas-text-background-color:{{.}};' + /* auto | <color> */
+			{{/canvas-text-background-color}}
+			{{#canvas-text-secondary-background-color}}
+				'--canvas-text-secondary-background-color:{{.}};' + /* auto | <color> */
+			{{/canvas-text-secondary-background-color}}
+			{{#highlight-background-color}}
+				'--highlight-background-color:{{.}};' + /* <color> */
+			{{/highlight-background-color}}
+			{{#highlight-text-background-color}}
+				'--highlight-text-background-color:{{.}};' + /* <color> */
+			{{/highlight-text-background-color}}
+			{{#hyperlink-background-color}}
+				'--hyperlink-background-color:{{.}};' + /* <color> */
+			{{/hyperlink-background-color}}
+			{{#visited-hyperlink-background-color}}
+				'--visited-hyperlink-background-color:{{.}};' + /* <color> */
+			{{/visited-hyperlink-background-color}}
+			{{#active-title-background-color}}
+				'--active-title-background-color:{{.}};' + /* auto | <color> */
+			{{/active-title-background-color}}
+			{{#active-title-text-background-color}}
+				'--active-title-text-background-color:{{.}};' + /* auto | <color> */
+			{{/active-title-text-background-color}}
+			{{#inactive-title-background-color}}
+				'--inactive-title-background-color:{{.}};' + /* auto | <color> */
+			{{/inactive-title-background-color}}
+			{{#inactive-title-text-background-color}}
+				'--inactive-title-text-background-color:{{.}};' + /* auto | <color> */
+			{{/inactive-title-text-background-color}}
+			{{#custom-font}}
+				'--custom-font:\'<{{.}}>\';' + /* <string> */
+			{{/custom-font}}
+			{{#custom-secondary-font}}
+				'--custom-secondary-font:\'<{{.}}>\';' + /* <string> */
+			{{/custom-secondary-font}}
+			{{#custom-code-font}}
+				'--custom-code-font:\'<{{.}}>\';' + /* <string> */
+			{{/custom-code-font}}
+			{{#border-radius}}
+				'--border-radius:{{.}};' + /* <number> 0 to 15 */
+			{{/border-radius}}
+			{{#icon-filter}}
+				'--icon-filter:{{.}};' + /* <filter-function> */
+			{{/icon-filter}}
+			{{#icon-filter-hover}}
+				'--icon-filter-hover:{{.}};' + /* <filter-function> */
+			{{/icon-filter-hover}}
+			{{#icon-filter-duration}}
+				'--icon-filter-duration:{{.}};' + /* <duration> */
+			{{/icon-filter-duration}}
+			{{#icon-filter-delay}}
+				'--icon-filter-delay:{{.}};' + /* <duration> */
+			{{/icon-filter-delay}}
+			{{#system-acryllic-opacity}}
+				'--system-acryllic-opacity:{{.}};' + /* <number> 0.4 to 0.8 */
+			{{/system-acryllic-opacity}}
+			{{#system-generic-color-hue-shift}}
+				'--system-generic-color-hue-shift:{{.}};' + /* <number> -10 to 10 */
+			{{/system-generic-color-hue-shift}}
+			{{#system-generic-color-saturation}}
+				'--system-generic-color-saturation:{{.}};' + /* <number> 0.25 to 1 */
+			{{/system-generic-color-saturation}}
+	{{/data-theme-F-dark}}
+	'}' +
+'/* Theme G */' +
+	'.theme-G.colorscheme-dark.visualcolors-standard {' +
+		{{#data-theme-G-dark}}
+			{{#desktop-background-image}}
+				'--desktop-background-image:\'{{.}}\';' + /* <image> */
+			{{/desktop-background-image}}
+			{{#desktop-background-image-filter}}
+				'--desktop-background-image-filter:{{.}};' + /* <filter-function> */
+			{{/desktop-background-image-filter}}
+			{{#desktop-background-image-blend-mode}}
+				'--desktop-background-image-blend-mode:{{.}};' + /* <blend-mode> */
+			{{/desktop-background-image-blend-mode}}
+			{{#desktop-background-color}}
+				'--desktop-background-color:{{.}};' + /* <color> */
+			{{/desktop-background-color}}
+			{{#desktop-background-size}}
+				'--desktop-background-size:{{.}};' + /* cover | contain | stretched | full */
+			{{/desktop-background-size}}
+			{{#desktop-background-horizontal-alignment}}
+				'--desktop-background-horizontal-alignment:{{.}};' + /* left | center | right */
+			{{/desktop-background-horizontal-alignment}}
+			{{#desktop-background-vertical-alignment}}
+				'--desktop-background-vertical-alignment:{{.}};' + /* top | center | bottom */
+			{{/desktop-background-vertical-alignment}}
+			{{#desktop-background-no-horizontal-tiling}}
+				'--desktop-background-no-horizontal-tiling:{{.}};' + /* <boolean> */
+			{{/desktop-background-no-horizontal-tiling}}
+			{{#desktop-background-no-vertical-tiling}}
+				'--desktop-background-no-vertical-tiling:{{.}};' + /* <boolean> */
+			{{/desktop-background-no-vertical-tiling}}
+			{{#desktop-text-background-color}}
+				'--desktop-text-background-color:{{.}};' + /* auto | <color> */
+			{{/desktop-text-background-color}}
+			{{#canvas-background-color}}
+				'--canvas-background-color:{{.}};' + /* <color> */
+			{{/canvas-background-color}}
+			{{#canvas-secondary-background-color}}
+				'--canvas-secondary-background-color:{{.}};' + /* auto | <color> */
+			{{/canvas-secondary-background-color}}
+			{{#inactive-text-background-color}}
+				'--inactive-text-background-color:{{.}};' + /* auto | <color> */
+			{{/inactive-text-background-color}}
+			{{#active-text-background-color}}
+				'--active-text-background-color:{{.}};' + /* auto | <color> */
+			{{/active-text-background-color}}
+			{{#canvas-text-background-color}}
+				'--canvas-text-background-color:{{.}};' + /* auto | <color> */
+			{{/canvas-text-background-color}}
+			{{#canvas-text-secondary-background-color}}
+				'--canvas-text-secondary-background-color:{{.}};' + /* auto | <color> */
+			{{/canvas-text-secondary-background-color}}
+			{{#highlight-background-color}}
+				'--highlight-background-color:{{.}};' + /* <color> */
+			{{/highlight-background-color}}
+			{{#highlight-text-background-color}}
+				'--highlight-text-background-color:{{.}};' + /* <color> */
+			{{/highlight-text-background-color}}
+			{{#hyperlink-background-color}}
+				'--hyperlink-background-color:{{.}};' + /* <color> */
+			{{/hyperlink-background-color}}
+			{{#visited-hyperlink-background-color}}
+				'--visited-hyperlink-background-color:{{.}};' + /* <color> */
+			{{/visited-hyperlink-background-color}}
+			{{#active-title-background-color}}
+				'--active-title-background-color:{{.}};' + /* auto | <color> */
+			{{/active-title-background-color}}
+			{{#active-title-text-background-color}}
+				'--active-title-text-background-color:{{.}};' + /* auto | <color> */
+			{{/active-title-text-background-color}}
+			{{#inactive-title-background-color}}
+				'--inactive-title-background-color:{{.}};' + /* auto | <color> */
+			{{/inactive-title-background-color}}
+			{{#inactive-title-text-background-color}}
+				'--inactive-title-text-background-color:{{.}};' + /* auto | <color> */
+			{{/inactive-title-text-background-color}}
+			{{#custom-font}}
+				'--custom-font:\'<{{.}}>\';' + /* <string> */
+			{{/custom-font}}
+			{{#custom-secondary-font}}
+				'--custom-secondary-font:\'<{{.}}>\';' + /* <string> */
+			{{/custom-secondary-font}}
+			{{#custom-code-font}}
+				'--custom-code-font:\'<{{.}}>\';' + /* <string> */
+			{{/custom-code-font}}
+			{{#border-radius}}
+				'--border-radius:{{.}};' + /* <number> 0 to 15 */
+			{{/border-radius}}
+			{{#icon-filter}}
+				'--icon-filter:{{.}};' + /* <filter-function> */
+			{{/icon-filter}}
+			{{#icon-filter-hover}}
+				'--icon-filter-hover:{{.}};' + /* <filter-function> */
+			{{/icon-filter-hover}}
+			{{#icon-filter-duration}}
+				'--icon-filter-duration:{{.}};' + /* <duration> */
+			{{/icon-filter-duration}}
+			{{#icon-filter-delay}}
+				'--icon-filter-delay:{{.}};' + /* <duration> */
+			{{/icon-filter-delay}}
+			{{#system-acryllic-opacity}}
+				'--system-acryllic-opacity:{{.}};' + /* <number> 0.4 to 0.8 */
+			{{/system-acryllic-opacity}}
+			{{#system-generic-color-hue-shift}}
+				'--system-generic-color-hue-shift:{{.}};' + /* <number> -10 to 10 */
+			{{/system-generic-color-hue-shift}}
+			{{#system-generic-color-saturation}}
+				'--system-generic-color-saturation:{{.}};' + /* <number> 0.25 to 1 */
+			{{/system-generic-color-saturation}}
+	{{/data-theme-G-dark}}
+	'}' +
+'/* Theme H */' +
+	'.theme-H.colorscheme-dark.visualcolors-standard {' +
+		{{#data-theme-H-dark}}
+			{{#desktop-background-image}}
+				'--desktop-background-image:\'{{.}}\';' + /* <image> */
+			{{/desktop-background-image}}
+			{{#desktop-background-image-filter}}
+				'--desktop-background-image-filter:{{.}};' + /* <filter-function> */
+			{{/desktop-background-image-filter}}
+			{{#desktop-background-image-blend-mode}}
+				'--desktop-background-image-blend-mode:{{.}};' + /* <blend-mode> */
+			{{/desktop-background-image-blend-mode}}
+			{{#desktop-background-color}}
+				'--desktop-background-color:{{.}};' + /* <color> */
+			{{/desktop-background-color}}
+			{{#desktop-background-size}}
+				'--desktop-background-size:{{.}};' + /* cover | contain | stretched | full */
+			{{/desktop-background-size}}
+			{{#desktop-background-horizontal-alignment}}
+				'--desktop-background-horizontal-alignment:{{.}};' + /* left | center | right */
+			{{/desktop-background-horizontal-alignment}}
+			{{#desktop-background-vertical-alignment}}
+				'--desktop-background-vertical-alignment:{{.}};' + /* top | center | bottom */
+			{{/desktop-background-vertical-alignment}}
+			{{#desktop-background-no-horizontal-tiling}}
+				'--desktop-background-no-horizontal-tiling:{{.}};' + /* <boolean> */
+			{{/desktop-background-no-horizontal-tiling}}
+			{{#desktop-background-no-vertical-tiling}}
+				'--desktop-background-no-vertical-tiling:{{.}};' + /* <boolean> */
+			{{/desktop-background-no-vertical-tiling}}
+			{{#desktop-text-background-color}}
+				'--desktop-text-background-color:{{.}};' + /* auto | <color> */
+			{{/desktop-text-background-color}}
+			{{#canvas-background-color}}
+				'--canvas-background-color:{{.}};' + /* <color> */
+			{{/canvas-background-color}}
+			{{#canvas-secondary-background-color}}
+				'--canvas-secondary-background-color:{{.}};' + /* auto | <color> */
+			{{/canvas-secondary-background-color}}
+			{{#inactive-text-background-color}}
+				'--inactive-text-background-color:{{.}};' + /* auto | <color> */
+			{{/inactive-text-background-color}}
+			{{#active-text-background-color}}
+				'--active-text-background-color:{{.}};' + /* auto | <color> */
+			{{/active-text-background-color}}
+			{{#canvas-text-background-color}}
+				'--canvas-text-background-color:{{.}};' + /* auto | <color> */
+			{{/canvas-text-background-color}}
+			{{#canvas-text-secondary-background-color}}
+				'--canvas-text-secondary-background-color:{{.}};' + /* auto | <color> */
+			{{/canvas-text-secondary-background-color}}
+			{{#highlight-background-color}}
+				'--highlight-background-color:{{.}};' + /* <color> */
+			{{/highlight-background-color}}
+			{{#highlight-text-background-color}}
+				'--highlight-text-background-color:{{.}};' + /* <color> */
+			{{/highlight-text-background-color}}
+			{{#hyperlink-background-color}}
+				'--hyperlink-background-color:{{.}};' + /* <color> */
+			{{/hyperlink-background-color}}
+			{{#visited-hyperlink-background-color}}
+				'--visited-hyperlink-background-color:{{.}};' + /* <color> */
+			{{/visited-hyperlink-background-color}}
+			{{#active-title-background-color}}
+				'--active-title-background-color:{{.}};' + /* auto | <color> */
+			{{/active-title-background-color}}
+			{{#active-title-text-background-color}}
+				'--active-title-text-background-color:{{.}};' + /* auto | <color> */
+			{{/active-title-text-background-color}}
+			{{#inactive-title-background-color}}
+				'--inactive-title-background-color:{{.}};' + /* auto | <color> */
+			{{/inactive-title-background-color}}
+			{{#inactive-title-text-background-color}}
+				'--inactive-title-text-background-color:{{.}};' + /* auto | <color> */
+			{{/inactive-title-text-background-color}}
+			{{#custom-font}}
+				'--custom-font:\'<{{.}}>\';' + /* <string> */
+			{{/custom-font}}
+			{{#custom-secondary-font}}
+				'--custom-secondary-font:\'<{{.}}>\';' + /* <string> */
+			{{/custom-secondary-font}}
+			{{#custom-code-font}}
+				'--custom-code-font:\'<{{.}}>\';' + /* <string> */
+			{{/custom-code-font}}
+			{{#border-radius}}
+				'--border-radius:{{.}};' + /* <number> 0 to 15 */
+			{{/border-radius}}
+			{{#icon-filter}}
+				'--icon-filter:{{.}};' + /* <filter-function> */
+			{{/icon-filter}}
+			{{#icon-filter-hover}}
+				'--icon-filter-hover:{{.}};' + /* <filter-function> */
+			{{/icon-filter-hover}}
+			{{#icon-filter-duration}}
+				'--icon-filter-duration:{{.}};' + /* <duration> */
+			{{/icon-filter-duration}}
+			{{#icon-filter-delay}}
+				'--icon-filter-delay:{{.}};' + /* <duration> */
+			{{/icon-filter-delay}}
+			{{#system-acryllic-opacity}}
+				'--system-acryllic-opacity:{{.}};' + /* <number> 0.4 to 0.8 */
+			{{/system-acryllic-opacity}}
+			{{#system-generic-color-hue-shift}}
+				'--system-generic-color-hue-shift:{{.}};' + /* <number> -10 to 10 */
+			{{/system-generic-color-hue-shift}}
+			{{#system-generic-color-saturation}}
+				'--system-generic-color-saturation:{{.}};' + /* <number> 0.25 to 1 */
+			{{/system-generic-color-saturation}}
+	{{/data-theme-H-dark}}
+	'}' +
+
 	{{/has-no-color-management}}
 '/* Custom DCM Mode 1 */' +
 	'.visualcolors-nocolormanagement.dcmmode-custom_1 {' +
