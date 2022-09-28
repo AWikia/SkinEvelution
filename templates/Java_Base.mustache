@@ -496,12 +496,9 @@ function ResetSettings() {
 		insertKey('content-full', 'false' );
 		insertKey('right-rail-full', 'true' );
 		insertKey('theme-selected', 'A' );
-		if ( ( window.matchMedia('(forced-colors: active)').matches ) ) {
-			insertKey('visual-appearance-mode', 'contrast' );
-		} else {
-			insertKey('visual-appearance-mode', 'standard' );
-		}
-			insertKey('visual-appearance-style', 'standard' );
+		insertKey('visual-appearance-mode', 'standard' );
+		insertKey('visual-appearance-style', 'standard' );
+		insertKey('color-scheme', 'light' );
 		insertKey('visual-color', 'standard' );
 		insertKey('filter-active', 'standard' );
 		insertKey('device-theme', 'light' );
@@ -511,11 +508,7 @@ function ResetSettings() {
 		insertKey('color-sat', 100 );
 		insertKey('contrast-mode', 'auto' );
 		insertKey('accent-active', 'false' );
-		if ( ( window.matchMedia('(forced-colors: active)').matches ) ) {
-			insertKey('dcm-mode', 'classic' );
-		} else {
-			insertKey('dcm-mode', 'standard' );
-		}
+		insertKey('dcm-mode', 'standard' );
 		AddFloatingBanner('Succesfully resetted Evelution\'s settings to their defaults. Page will now reload.','success');
 		location.reload()
 	}
