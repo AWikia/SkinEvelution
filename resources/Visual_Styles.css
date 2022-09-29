@@ -541,8 +541,8 @@ background-image:linear-gradient(to left,rgba(255,255,255, 0) 200px,var(--canvas
 }
 
 .visualstyle-basic .preview-window-window h2 button.close {
-	--button-background-hover:rgba(var(--alert-background-color-rgb),0.2);
-	--button-background-active:rgba(var(--alert-background-color-rgb),0.4);
+	--button-background-hover:rgba(var(--luna-alert-background-color-rgb),0.2);
+	--button-background-active:rgba(var(--luna-alert-background-color-rgb),0.4);
 	--button-background-color:inherit;
 }
 
@@ -1624,7 +1624,7 @@ color:inherit;
 
 .visualstyle-simple .preview-window-window h2 button {
 	--button-background-hover:rgba(var(--luna-background-color-hover-rgb),var(--acrylic-opacity));
-	--button-background-active:var(--luna-background-color-hover);
+	--button-background-active:rgba(var(--luna-background-color-hover-rgb),var(--acrylic-opacity));
 	--button-background-color:var(--luna-foreground-color-inverted);
 	border-color:transparent;
 }
@@ -1633,9 +1633,12 @@ color:inherit;
 	border-color:rgba(var(--canvas-foreground-color-rgb),0.2);
 }
 
-
 .visualstyle-simple.has-accents .preview-window-window h2 button:hover {
 	border-color:rgba(var(--luna-foreground-color-rgb),0.2);
+}
+
+.visualstyle-simple .preview-window-window h2 button:active {
+	color:var(--button-background-color);
 }
 
 .visualstyle-simple.visualmode-contrast .preview-window-window h2 button {
@@ -1664,6 +1667,12 @@ color:inherit;
 
 .visualstyle-simple.has-accents .preview-window-window h2 button.close:hover {
 	border-color:rgba(var(--canvas-foreground-color-rgb),0.2);
+}
+
+.visualstyle-simple.visualmode-contrast .preview-window-window h2 button.close {
+	--button-background-hover:var(--luna-foreground-color);
+	--button-background-active:var(--luna-foreground-color);
+	--button-background-color:var(--luna-background-color);
 }
 
 
