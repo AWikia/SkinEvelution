@@ -1487,9 +1487,14 @@ function InitDesigner() {
 }
 
 function ApplyTheme () {
+	if (getColorScheme() === 'dark' ) {
+		schemeN = 'Dark';
+	} else {
+		schemeN = 'Light';
+	}
 	// Copies theme to clipboard
 	$(".evelution-floating-actions.extra-actions .theme-apply-button").prop('disabled', true);
-	AddFloatingBanner('Applying Theme '  +  window.MW18ActiveTheme + ' to MediaWiki:Evelution.css. Please wait...','progress','InProgressBanner')
+	AddFloatingBanner('Applying ' + schemeN + ' Theme '  +  window.MW18ActiveTheme + ' to MediaWiki:Evelution.css. Please wait...','progress','InProgressBanner')
 	document.querySelector('.focus-overlay').focus();
 	if (document.querySelector('.wikitable #auto1').checked) {
 		var autocolor1 = 'auto';
@@ -1589,7 +1594,7 @@ function ApplyTheme () {
     }
 
 		result = '\n/* Community Theme */\n' +
-				 '.theme-' + window.MW18ActiveTheme + '.visualcolors-standard {\n' + // Beginning
+				 '.theme-' + window.MW18ActiveTheme + '.colorscheme-' + getColorScheme() + '.visualcolors-standard {\n' + // Beginning
 				 '--desktop-background-image:' + image + ';\n' +
 				 '--desktop-background-image-filter:' + $('#bodyimagefilter').val() + ';\n' +
 				 '--desktop-background-image-blend-mode:' + $('.blend_mode .cpe-select__value').attr('value') + ';\n' +
@@ -1646,7 +1651,7 @@ var params = {
 	},
 	api = new mw.Api();
 
-api.postWithToken( 'csrf', params ).done( function ( data ) { $(".evelution-floating-actions.extra-actions .theme-apply-button").prop('disabled', false); $("#InProgressBanner").remove(); /* Success */ AddFloatingBanner('Succesfully applied Theme '  +  window.MW18ActiveTheme + ' to MediaWiki:Evelution.css.','success'); } ).fail( function (data) { $(".evelution-floating-actions.extra-actions .theme-apply-button").prop('disabled', false); $("#InProgressBanner").remove(); /* Fail */ AddFloatingBanner('Failed to apply Theme '  +  window.MW18ActiveTheme + ' to MediaWiki:Evelution.css as page couldn\'t be edited.','alert'); } );
+api.postWithToken( 'csrf', params ).done( function ( data ) { $(".evelution-floating-actions.extra-actions .theme-apply-button").prop('disabled', false); $("#InProgressBanner").remove(); /* Success */ AddFloatingBanner('Succesfully applied ' + schemeN + ' Theme '  +  window.MW18ActiveTheme + ' to MediaWiki:Evelution.css.','success'); } ).fail( function (data) { $(".evelution-floating-actions.extra-actions .theme-apply-button").prop('disabled', false); $("#InProgressBanner").remove(); /* Fail */ AddFloatingBanner('Failed to apply ' + schemeN + ' Theme' +  window.MW18ActiveTheme + ' to MediaWiki:Evelution.css as page couldn\'t be edited.','alert'); } );
 
 }
 
@@ -1753,7 +1758,7 @@ function CopyTheme() {
 		var customfont3 = $('#thirdfont').val().replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
     }
 
-		result = '.theme-' + window.MW18ActiveTheme + '.visualcolors-standard {\n' + // Beginning
+		result = '.theme-' + window.MW18ActiveTheme + '.colorscheme-' + getColorScheme() + '.visualcolors-standard {\n' + // Beginning
 				 '--desktop-background-image:' + image + ';\n' +
 				 '--desktop-background-image-filter:' + $('#bodyimagefilter').val() + ';\n' +
 				 '--desktop-background-image-blend-mode:' + $('.blend_mode .cpe-select__value').attr('value') + ';\n' +
@@ -1924,7 +1929,11 @@ function CopyTheme2() {
     } else {
 		var customfont3 = $('#thirdfont').val().replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
     }
-		result = "$wgEvelutionTheme" + window.MW18ActiveTheme + " = [\n" + // Beginning
+	var scheme = '';
+    if (getColorScheme() === 'dark') {
+		var scheme = 'Dark';
+    }
+		result = "$wgEvelutionTheme" + window.MW18ActiveTheme + scheme +  " = [\n" + // Beginning
 				 "'desktop-background-image' => '" + image + "',\n" +
 				 "'desktop-background-image-filter' => '" + $("#bodyimagefilter").val() + "',\n" +
 				 "'desktop-background-image-blend-mode' => '" + $('.blend_mode .cpe-select__value').attr('value') + "',\n" +
@@ -2000,201 +2009,201 @@ function PasteTheme() {
 	AddFloatingBanner('Pasting theme. Please wait...','progress','InProgressBanner2')
 	document.querySelector('.focus-overlay').focus();
 	// Body BG
-	if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-color") === 'auto' ) {
+	if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--desktop-background-color") === 'auto' ) {
 		document.querySelector('.wikitable #auto14').checked = true;
 	} else {
 		document.querySelector('.wikitable #auto14').checked = false;
-		$('#bodybg').val( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-color") );
+		$('#bodybg').val( getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--desktop-background-color") );
 	}
 	$('.wikitable #bodybg').prop('disabled',(document.querySelector('.wikitable #auto14').checked) );
 	// Body Header Text
-	if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-text-background-color") === 'auto' ) {
+	if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--desktop-text-background-color") === 'auto' ) {
 		document.querySelector('.wikitable #auto1').checked = true;
 	} else {
 		document.querySelector('.wikitable #auto1').checked = false;
-		$('#bodybg2').val( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-text-background-color") );
+		$('#bodybg2').val( getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--desktop-text-background-color") );
 	}
 	$('.wikitable #bodybg2').prop('disabled',(document.querySelector('.wikitable #auto1').checked) );
 	// Body Image
-	$('#bodyimage').val( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-image").replace('url(', '').replace(')', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("").split("\"").join("") );
+	$('#bodyimage').val( getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--desktop-background-image").replace('url(', '').replace(')', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("").split("\"").join("") );
 	// Body Image Filter
-	$('#bodyimagefilter').val( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-image-filter") );
+	$('#bodyimagefilter').val( getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--desktop-background-image-filter") );
 
 	// Body Image Blend Mode
-	blend_mode = [mw.msg ('evelution-designer-setting-normal'), mw.msg ('evelution-designer-setting-multiply'), mw.msg ('evelution-designer-setting-screen'), mw.msg ('evelution-designer-setting-overlay'), mw.msg ('evelution-designer-setting-darken'), mw.msg ('evelution-designer-setting-lighten'), mw.msg ('evelution-designer-setting-colordodge'), mw.msg ('evelution-designer-setting-colorburn'), mw.msg ('evelution-designer-setting-hardlight'), mw.msg ('evelution-designer-setting-softlight'), mw.msg ('evelution-designer-setting-difference'), mw.msg ('evelution-designer-setting-exclusion'), mw.msg ('evelution-designer-setting-hue'), mw.msg ('evelution-designer-setting-saturation'), mw.msg ('evelution-designer-setting-color'), mw.msg ('evelution-designer-setting-luminosity')][['normal','multiply','screen','overlay','darken','lighten','color-dodge','color-burn','hard-light','soft-light','difference','exclusion','hue','saturation','color','luminosity'].indexOf( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-image-blend-mode") ) ]
-	$('.blend_mode .cpe-select__value').attr('value', getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-image-blend-mode") );
+	blend_mode = [mw.msg ('evelution-designer-setting-normal'), mw.msg ('evelution-designer-setting-multiply'), mw.msg ('evelution-designer-setting-screen'), mw.msg ('evelution-designer-setting-overlay'), mw.msg ('evelution-designer-setting-darken'), mw.msg ('evelution-designer-setting-lighten'), mw.msg ('evelution-designer-setting-colordodge'), mw.msg ('evelution-designer-setting-colorburn'), mw.msg ('evelution-designer-setting-hardlight'), mw.msg ('evelution-designer-setting-softlight'), mw.msg ('evelution-designer-setting-difference'), mw.msg ('evelution-designer-setting-exclusion'), mw.msg ('evelution-designer-setting-hue'), mw.msg ('evelution-designer-setting-saturation'), mw.msg ('evelution-designer-setting-color'), mw.msg ('evelution-designer-setting-luminosity')][['normal','multiply','screen','overlay','darken','lighten','color-dodge','color-burn','hard-light','soft-light','difference','exclusion','hue','saturation','color','luminosity'].indexOf( getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--desktop-background-image-blend-mode") ) ]
+	$('.blend_mode .cpe-select__value').attr('value', getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--desktop-background-image-blend-mode") );
 	$('.blend_mode .cpe-select__value').html( blend_mode );
 
 
 	// Body Image Alignment V
-	bg_align = [mw.msg ('evelution-designer-setting-top'), mw.msg ('evelution-designer-setting-middle'), mw.msg ('evelution-designer-setting-bottom')][["top", "center", "bottom"].indexOf( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-vertical-alignment") ) ]
-	$('.bg_align .cpe-select__value').attr('value', getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-vertical-alignment") );
+	bg_align = [mw.msg ('evelution-designer-setting-top'), mw.msg ('evelution-designer-setting-middle'), mw.msg ('evelution-designer-setting-bottom')][["top", "center", "bottom"].indexOf( getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--desktop-background-vertical-alignment") ) ]
+	$('.bg_align .cpe-select__value').attr('value', getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--desktop-background-vertical-alignment") );
 	$('.bg_align .cpe-select__value').html( bg_align );
 	// Body Image Alignment H
-	bg_align2 = [mw.msg ('evelution-designer-setting-left'), mw.msg ('evelution-designer-setting-middle'), mw.msg ('evelution-designer-setting-right')][["left", "center", "right"].indexOf( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-horizontal-alignment") ) ]
-	$('.bg_align2 .cpe-select__value').attr('value', getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-horizontal-alignment") );
+	bg_align2 = [mw.msg ('evelution-designer-setting-left'), mw.msg ('evelution-designer-setting-middle'), mw.msg ('evelution-designer-setting-right')][["left", "center", "right"].indexOf( getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--desktop-background-horizontal-alignment") ) ]
+	$('.bg_align2 .cpe-select__value').attr('value', getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--desktop-background-horizontal-alignment") );
 	$('.bg_align2 .cpe-select__value').html( bg_align2 );
 	// Body Image Size
-	bg_size = [mw.msg ('evelution-designer-setting-cover'), mw.msg ('evelution-designer-setting-contain'), mw.msg ('evelution-designer-setting-stretched'), mw.msg ('evelution-designer-setting-full')][["cover", "contain", "stretched", "full"].indexOf( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-size") ) ]
-	$('.bg_size .cpe-select__value').attr('value', getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-size") )
+	bg_size = [mw.msg ('evelution-designer-setting-cover'), mw.msg ('evelution-designer-setting-contain'), mw.msg ('evelution-designer-setting-stretched'), mw.msg ('evelution-designer-setting-full')][["cover", "contain", "stretched", "full"].indexOf( getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--desktop-background-size") ) ]
+	$('.bg_size .cpe-select__value').attr('value', getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--desktop-background-size") )
 	$('.bg_size .cpe-select__value').html( bg_size );
 	// Body Image Tiling
-	document.querySelector('input#tilingH').checked = (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-no-horizontal-tiling") === 'false');
-	document.querySelector('input#tilingV').checked = (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--desktop-background-no-vertical-tiling") === 'false');
+	document.querySelector('input#tilingH').checked = (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--desktop-background-no-horizontal-tiling") === 'false');
+	document.querySelector('input#tilingV').checked = (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--desktop-background-no-vertical-tiling") === 'false');
 	// Page BG
-	if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--canvas-background-color") === 'auto' ) {
+	if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--canvas-background-color") === 'auto' ) {
 		document.querySelector('.wikitable #auto15').checked = true;
 	} else {
 		document.querySelector('.wikitable #auto15').checked = false;
-		$('#pagebg').val( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--canvas-background-color") );
+		$('#pagebg').val( getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--canvas-background-color") );
 	}
 	$('.wikitable #pagebg').prop('disabled',(document.querySelector('.wikitable #auto15').checked) );
 	// 2nd Page BG
-	if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--canvas-secondary-background-color") === 'auto' ) {
+	if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--canvas-secondary-background-color") === 'auto' ) {
 		document.querySelector('.wikitable #auto7').checked = true;
 	} else {
 		document.querySelector('.wikitable #auto7').checked = false;
-		$('#pagebg_s').val( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--canvas-secondary-background-color") );
+		$('#pagebg_s').val( getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--canvas-secondary-background-color") );
 	}
 	$('.wikitable #pagebg_s').prop('disabled',(document.querySelector('.wikitable #auto7').checked) );
 	// Page Text BG
-	if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--canvas-text-background-color") === 'auto' ) {
+	if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--canvas-text-background-color") === 'auto' ) {
 		document.querySelector('.wikitable #auto3').checked = true;
 	} else {
 		document.querySelector('.wikitable #auto3').checked = false;
-		$('#pagebg3').val( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--canvas-text-background-color") );
+		$('#pagebg3').val( getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--canvas-text-background-color") );
 	}
 	$('.wikitable #pagebg3').prop('disabled',(document.querySelector('.wikitable #auto3').checked) );
 	// 2nd Page Text BG
-	if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--canvas-text-secondary-background-color") === 'auto' ) {
+	if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--canvas-text-secondary-background-color") === 'auto' ) {
 		document.querySelector('.wikitable #auto8').checked = true;
 	} else {
 		document.querySelector('.wikitable #auto8').checked = false;
-		$('#pagebg3_s').val( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--canvas-text-secondary-background-color") );
+		$('#pagebg3_s').val( getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--canvas-text-secondary-background-color") );
 	}
 	$('.wikitable #pagebg3_s').prop('disabled',(document.querySelector('.wikitable #auto8').checked) );
 	// Page Border BG
-	if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--inactive-text-background-color") === 'auto' ) {
+	if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--inactive-text-background-color") === 'auto' ) {
 		document.querySelector('.wikitable #auto2').checked = true;
 	} else {
 		document.querySelector('.wikitable #auto2').checked = false;
-		$('#pagebg2').val( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--inactive-text-background-color") );
+		$('#pagebg2').val( getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--inactive-text-background-color") );
 	}
 	$('.wikitable #pagebg2').prop('disabled',(document.querySelector('.wikitable #auto2').checked) );
 
 	// Visited BG
-	if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--active-text-background-color") === 'auto' ) {
+	if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--active-text-background-color") === 'auto' ) {
 		document.querySelector('.wikitable #auto13').checked = true;
 	} else {
 		document.querySelector('.wikitable #auto13').checked = false;
-		$('#saaccentcolor').val( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--active-text-background-color") );
+		$('#saaccentcolor').val( getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--active-text-background-color") );
 	}
 	$('.wikitable #saaccentcolor').prop('disabled',(document.querySelector('.wikitable #auto13').checked) );
 
 
 	// Anchor BG
-	$('#saccentcolor').val( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--hyperlink-background-color") );
+	$('#saccentcolor').val( getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--hyperlink-background-color") );
 	// Visited BG
-	if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--visited-hyperlink-background-color") === 'auto' ) {
+	if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--visited-hyperlink-background-color") === 'auto' ) {
 		document.querySelector('.wikitable #auto12').checked = true;
 	} else {
 		document.querySelector('.wikitable #auto12').checked = false;
-		$('#svaccentcolor').val( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--visited-hyperlink-background-color") );
+		$('#svaccentcolor').val( getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--visited-hyperlink-background-color") );
 	}
 	$('.wikitable #svaccentcolor').prop('disabled',(document.querySelector('.wikitable #auto12').checked) );
 
 
 	// Accent BG
-	if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--highlight-background-color") === 'auto' ) {
+	if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--highlight-background-color") === 'auto' ) {
 		document.querySelector('.wikitable #auto6').checked = true;
 	} else {
 		document.querySelector('.wikitable #auto6').checked = false;
-		$('#accentcolor').val( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--highlight-background-color") );
+		$('#accentcolor').val( getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--highlight-background-color") );
 	}
 	$('.wikitable #accentcolor').prop('disabled',(document.querySelector('.wikitable #auto6').checked) );
 
 	// Accent Text BG
-	if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--highlight-text-background-color") === 'auto' ) {
+	if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--highlight-text-background-color") === 'auto' ) {
 		document.querySelector('.wikitable #auto9').checked = true;
 	} else {
 		document.querySelector('.wikitable #auto9').checked = false;
-		$('#accenttextcolor').val( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--highlight-text-background-color") );
+		$('#accenttextcolor').val( getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--highlight-text-background-color") );
 	}
 	$('.wikitable #accenttextcolor').prop('disabled',(document.querySelector('.wikitable #auto9').checked) );
 
 
 	// Caret Color
-	if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--active-title-background-color") === 'auto' ) {
+	if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--active-title-background-color") === 'auto' ) {
 		document.querySelector('.wikitable #auto5').checked = true;
 	} else {
 		document.querySelector('.wikitable #auto5').checked = false;
-		$('#taccentcolor').val( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--active-title-background-color") );
+		$('#taccentcolor').val( getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--active-title-background-color") );
 	}
 	$('.wikitable #taccentcolor').prop('disabled',(document.querySelector('.wikitable #auto5').checked) );
 
 	// Active Title BG
-	if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--active-title-text-background-color") === 'auto' ) {
+	if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--active-title-text-background-color") === 'auto' ) {
 		document.querySelector('.wikitable #auto10').checked = true;
 	} else {
 		document.querySelector('.wikitable #auto10').checked = false;
-		$('#taccenttextcolor').val( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--active-title-text-background-color") );
+		$('#taccenttextcolor').val( getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--active-title-text-background-color") );
 	}
 	$('.wikitable #taccenttextcolor').prop('disabled',(document.querySelector('.wikitable #auto10').checked) );
 
 
 	// Quaternary Accent Color
-	if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--inactive-title-background-color") === 'auto' ) {
+	if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--inactive-title-background-color") === 'auto' ) {
 		document.querySelector('.wikitable #auto4').checked = true;
 	} else {
 		document.querySelector('.wikitable #auto4').checked = false;
-		$('#qaccentcolor').val( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--inactive-title-background-color") );
+		$('#qaccentcolor').val( getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--inactive-title-background-color") );
 	}
 	$('.wikitable #qaccentcolor').prop('disabled',(document.querySelector('.wikitable #auto4').checked) );
 
 	// Quaternary Accent Text
-	if (getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--inactive-title-text-background-color") === 'auto' ) {
+	if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--inactive-title-text-background-color") === 'auto' ) {
 		document.querySelector('.wikitable #auto11').checked = true;
 	} else {
 		document.querySelector('.wikitable #auto11').checked = false;
-		$('#qaccenttextcolor').val( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--inactive-title-text-background-color") );
+		$('#qaccenttextcolor').val( getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--inactive-title-text-background-color") );
 	}
 	$('.wikitable #qaccenttextcolor').prop('disabled',(document.querySelector('.wikitable #auto11').checked) );
 
 
 	// Border Radius
-	$('#border-radius').val( parseInt(getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--border-radius")) );
+	$('#border-radius').val( parseInt(getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--border-radius")) );
 	// Primary Font
-	var pfont = getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--custom-font").replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
+	var pfont = getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--custom-font").replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
 	if (pfont == '""') {
 		var pfont = '';
 	}
 	$('#firstfont').val( pfont );
 	// Secondary Font
-	var sfont = getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--custom-secondary-font").replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
+	var sfont = getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--custom-secondary-font").replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
 	if (sfont == '""') {
 		var sfont = '';
 	}
 	$('#secondfont').val( sfont );
 	// Code Font
-	var tfont = getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--custom-code-font").replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
+	var tfont = getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--custom-code-font").replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
 	if (tfont == '""') {
 		var sfont = '';
 	}
 	$('#thirdfont').val( tfont );
 
 	// Filter
-	$('#filter').val( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--icon-filter") );
+	$('#filter').val( getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--icon-filter") );
 	// Filter (Hover)
-	$('#filter2').val( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--icon-filter-hover") );
+	$('#filter2').val( getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--icon-filter-hover") );
 	// Filter Duration
-	$('#filter3').val( parseInt(getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--icon-filter-duration")) );
+	$('#filter3').val( parseInt(getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--icon-filter-duration")) );
 	// Filter Delay
-	$('#filter4').val( parseInt(getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--icon-filter-delay")) );
+	$('#filter4').val( parseInt(getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--icon-filter-delay")) );
 	// acrylic Opacity
-	$('#aopacity').val( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--system-acryllic-opacity") );
+	$('#aopacity').val( getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--system-acryllic-opacity") );
 	// acrylic Opacity
-	$('#gchs').val( getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--system-generic-color-hue-shift") );
-	$('#gcs').val( parseInt(getComputedStyle(document.querySelector('.cpe-theming.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme)).getPropertyValue("--system-generic-color-saturation")) );
+	$('#gchs').val( getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--system-generic-color-hue-shift") );
+	$('#gcs').val( parseInt(getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--system-generic-color-saturation")) );
 
 	UpdateRangeInputs();
 	$(".evelution-floating-actions.extra-actions .theme-paste-button").prop('disabled', false);
