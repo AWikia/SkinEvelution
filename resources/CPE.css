@@ -1678,7 +1678,7 @@ body .wikitable > * > tr > td {
 	position:absolute;
 	z-index:100;
 	border:8px solid transparent;
-	border-color:var(--canvas-secondary-background-color);
+	border-color:var(--canvas-background-color-hover);
     -webkit-mask: url("Arrow.svg") no-repeat;
     mask: url("Arrow.svg") no-repeat;
     -webkit-mask-size: 48px;
@@ -1703,7 +1703,7 @@ body .wikitable > * > tr > td {
 	text-transform:none;
 	text-shadow:none;
 	font-size:12px;
-	border:1px solid var(--canvas-secondary-background-color);
+	border:1px solid var(--canvas-background-color-hover);
 	border-radius:var(--border-radius);
 	background-color:rgb(var(--canvas-background-color-rgb));
 	color:var(--canvas-text-background-color);
@@ -4589,6 +4589,9 @@ html:not(.visualmode-contrast) .contrast-on {
 --canvas-foreground-color-hover-rgb:var(--canvas-text-background-color-rgb)!important;
 --canvas-alternative-foreground-color-rgb:var(--canvas-text-background-color-rgb)!important;
 --canvas-alternative-foreground-color-hover-rgb:var(--canvas-text-background-color-rgb)!important;
+/* 3d Canvas */
+	--canvas-3d-background-color:#c0c0c0!important;
+	--canvas-3d-background-color-dark:#808080!important;
 /* 2nd Canvas */
 --canvas-secondary-background-color-hover:var(--canvas-secondary-background-color)!important;
 --canvas-secondary-foreground-color:var(--canvas-text-secondary-background-color)!important;
@@ -4958,6 +4961,15 @@ html:not(.visualmode-contrast) .contrast-on {
 .visualmode-contrast container *:not(progress), .visualmode-contrast container :after  {
   text-shadow:none!important;
   box-shadow:none!important;
+}
+
+
+.visualmode-contrast [cpe-tooltip]:before {
+	border-color:var(--canvas-text-background-color);
+}
+
+.visualmode-contrast [cpe-tooltip]:after {
+	border:1px solid var(--canvas-text-background-color);
 }
 
 
