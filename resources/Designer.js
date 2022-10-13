@@ -1451,32 +1451,32 @@ function InitDesigner() {
 			'<div class="cpe-button">Base Color</div>' +
 			'<div class="cpe-button is-unaccented">Unaccented Color</div>' +
 			'<div class="cpe-button is-alternate">Alternate Color</div>' +
-			'<div class="cpe-button is-alert-color">Alert Background Color</div>' +
-			'<div class="cpe-button is-pause-color">Pause Background Color</div>' +
-			'<div class="cpe-button is-warning-color">Warning Background Color</div>' +
-			'<div class="cpe-button is-success-color">Success Background Color</div>' +
-			'<div class="cpe-button is-progress-color">Progress Background Color</div>' +
-			'<div class="cpe-button is-message-color">Message Background Color</div>' +
+			'<div class="cpe-button is-alert-color">Alert Color</div>' +
+			'<div class="cpe-button is-pause-color">Pause Color</div>' +
+			'<div class="cpe-button is-warning-color">Warning Color</div>' +
+			'<div class="cpe-button is-success-color">Success Color</div>' +
+			'<div class="cpe-button is-progress-color">Progress Color</div>' +
+			'<div class="cpe-button is-message-color">Message Color</div>' +
 			'<hr>' +
 			'<div class="cpe-button is-secondary">Base Color</div>' +
 			'<div class="cpe-button is-secondary is-unaccented">Unaccented Color</div>' +
 			'<div class="cpe-button is-secondary is-alternate">Alternate Color</div>' +
-			'<div class="cpe-button is-secondary is-alert-color">Alert Background Color</div>' +
-			'<div class="cpe-button is-secondary is-pause-color">Pause Background Color</div>' +
-			'<div class="cpe-button is-secondary is-warning-color">Warning Background Color</div>' +
-			'<div class="cpe-button is-secondary is-success-color">Success Background Color</div>' +
-			'<div class="cpe-button is-secondary is-progress-color">Progress Background Color</div>' +
-			'<div class="cpe-button is-secondary is-message-color">Message Background Color</div>' +
+			'<div class="cpe-button is-secondary is-alert-color">Alert Color</div>' +
+			'<div class="cpe-button is-secondary is-pause-color">Pause Color</div>' +
+			'<div class="cpe-button is-secondary is-warning-color">Warning Color</div>' +
+			'<div class="cpe-button is-secondary is-success-color">Success Color</div>' +
+			'<div class="cpe-button is-secondary is-progress-color">Progress Color</div>' +
+			'<div class="cpe-button is-secondary is-message-color">Message Color</div>' +
 			'<hr>' +
 			'<div class="cpe-button is-tertiary">Base Color</div>' +
 			'<div class="cpe-button is-tertiary is-unaccented">Unaccented Color</div>' +
 			'<div class="cpe-button is-tertiary is-alternate">Alternate Color</div>' +
-			'<div class="cpe-button is-tertiary is-alert-color">Alert Background Color</div>' +
-			'<div class="cpe-button is-tertiary is-pause-color">Pause Background Color</div>' +
-			'<div class="cpe-button is-tertiary is-warning-color">Warning Background Color</div>' +
-			'<div class="cpe-button is-tertiary is-success-color">Success Background Color</div>' +
-			'<div class="cpe-button is-tertiary is-progress-color">Progress Background Color</div>' +
-			'<div class="cpe-button is-tertiary is-message-color">Message Background Color</div>' +
+			'<div class="cpe-button is-tertiary is-alert-color">Alert Color</div>' +
+			'<div class="cpe-button is-tertiary is-pause-color">Pause Color</div>' +
+			'<div class="cpe-button is-tertiary is-warning-color">Warning Color</div>' +
+			'<div class="cpe-button is-tertiary is-success-color">Success Color</div>' +
+			'<div class="cpe-button is-tertiary is-progress-color">Progress Color</div>' +
+			'<div class="cpe-button is-tertiary is-message-color">Message Color</div>' +
 		'</div>' +
 		'<div class="theme-code"></div>'
 	);

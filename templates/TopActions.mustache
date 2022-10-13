@@ -1,17 +1,33 @@
 <nav class="evelution-top-actions">
-	  <a href="{{html-logs-link}}" class="link logs" title="{{msg-log}}">
+	{{#has-af}}
+	  <a href="{{html-af-link}}" class="link abuse-filter" title="{{msg-abusefilter}}">
 				<span class="cpe-icon material-icons">
-					visibility
+					filter_alt
 				</span>
 	  </a>
+	{{/has-af}}
 	  <a href="{{html-categories-link}}" class="link categories" title="{{msg-categories}}">
 				<span class="cpe-icon material-icons">
 					grid_view
 				</span>
 	  </a>
-	  <a href="{{html-import-link}}" class="link import" title="{{msg-import}}">
+	{{#has-chat}}
+	  <a href="{{html-chat-link}}" class="link chat" title="{{msg-chat}}">
 				<span class="cpe-icon material-icons">
-					file_upload
+					chat
+				</span>
+	  </a>
+	{{/has-chat}}
+	{{#has-contact}}
+	  <a href="{{html-contact-link}}" class="link contact" title="{{msg-contactpage-title}}">
+				<span class="cpe-icon material-icons">
+					contact_support
+				</span>
+	  </a>
+	{{/has-contact}}
+	  <a href="{{html-dredirect-link}}" class="link doubleredirects" title="{{msg-doubleredirects}}">
+				<span class="cpe-icon material-icons">
+					double_arrow
 				</span>
 	  </a>
 	  <a href="{{html-export-link}}" class="link export" title="{{msg-export}}">
@@ -19,11 +35,30 @@
 					file_download
 				</span>
 	  </a>
-	  <a href="{{html-dredirect-link}}" class="link doubleredirects" title="{{msg-doubleredirects}}">
+	{{#has-gadgets}}
+	  <a href="{{html-gadgets-link}}" class="link gadgets" title="{{msg-gadgets}}">
 				<span class="cpe-icon material-icons">
-					double_arrow
+					extension
 				</span>
 	  </a>
+	{{/has-gadgets}}
+	  <a href="{{html-import-link}}" class="link import" title="{{msg-import}}">
+				<span class="cpe-icon material-icons">
+					file_upload
+				</span>
+	  </a>
+	  <a href="{{html-logs-link}}" class="link logs" title="{{msg-log}}">
+				<span class="cpe-icon material-icons">
+					visibility
+				</span>
+	  </a>
+	{{#has-cpage}}
+	  <a href="{{html-cpage-link}}" class="link newpage" title="{{msg-createpage}}">
+				<span class="cpe-icon material-icons">
+					note_add
+				</span>
+	  </a>
+	{{/has-cpage}}
 	  <a href="{{msg-policy-link}}" class="link policy" title="Wiki Policy">
 				<span class="cpe-icon material-icons">
 					book
@@ -34,27 +69,6 @@
 					category
 				</span>
 	  </a>
-	{{#has-af}}
-	  <a href="{{html-af-link}}" class="link abuse-filter" title="{{msg-abusefilter}}">
-				<span class="cpe-icon material-icons">
-					filter_alt
-				</span>
-	  </a>
-	{{/has-af}}
-	{{#has-chat}}
-	  <a href="{{html-chat-link}}" class="link chat" title="{{msg-chat}}">
-				<span class="cpe-icon material-icons">
-					chat
-				</span>
-	  </a>
-	{{/has-chat}}
-	{{#has-gadgets}}
-	  <a href="{{html-gadgets-link}}" class="link gadgets" title="{{msg-gadgets}}">
-				<span class="cpe-icon material-icons">
-					extension
-				</span>
-	  </a>
-	{{/has-gadgets}}
 	{{#has-translate}}
 	  <a href="{{html-translate-link}}" class="link translate" title="{{msg-translate}}">
 				<span class="cpe-icon material-icons">
@@ -62,24 +76,9 @@
 				</span>
 	  </a>
 	{{/has-translate}}
-	{{#has-cpage}}
-	  <a href="{{html-cpage-link}}" class="link newpage" title="{{msg-createpage}}">
-				<span class="cpe-icon material-icons">
-					note_add
-				</span>
-	  </a>
-	{{/has-cpage}}
-	{{#has-contact}}
-	  <a href="{{html-contact-link}}" class="link contact" title="{{msg-contactpage-title}}">
-				<span class="cpe-icon material-icons">
-					contact_support
-				</span>
-	  </a>
-	{{/has-contact}}
 	<a class="link reset-settings right-align" onclick="ResetSettings()" title="{{msg-evelution-reset-settings}}">
 		<span class="cpe-icon material-icons">
 			delete_sweep
 		</span>
 	</a>
-
 </nav>
