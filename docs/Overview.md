@@ -230,6 +230,7 @@ Each release of Evelution comes with different Sevelution releases, to name a fe
 - 4.0.0 = Codenamed Ruthenium  = Introduced in Evelution 81.0.0 - Introduces Generic Color Shift (Hue Shift & Saturation) and CPE Language 3.0
 - 4.1.0 = Codenamed Rhodium = Introduced in Evelution 85.0.0 - Introduces Background Image Blend Modes
 - 4.2.0 = Codenamed Palladium = Introduced in Evelution 99.0.0 - Introduces Dynamic Canvas Color
+- 5.0.0 = Codenamed Silver = Introduced in Evelution 122.0.0 - Introduces CPE Language 4.0 and Evelution Spotlight
 
 
 ### The Luna Theming System

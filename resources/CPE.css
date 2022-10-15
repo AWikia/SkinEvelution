@@ -880,9 +880,13 @@ body {
 --dropdown-header-background-color:var(--inactive-text-background-color);
 --dropdown-header-text-color:var(--inactive-text-foreground-color);
 /* Link Styling */
---dropdown-hyperlink-background-color:rgba(var(--hyperlink-secondary-background-color-rgb),0.4);
---dropdown-hyperlink-border-color:rgba(var(--hyperlink-secondary-background-color-rgb),0.2);
---dropdown-hyperlink-text-color:var(--hyperlink-secondary-background-color);
+--dropdown-hyperlink-background-color:rgba(var(--canvas-text-secondary-background-color-rgb),0.2);
+--dropdown-hyperlink-border-color:rgba(var(--canvas-text-secondary-background-color-rgb),0.1);
+--dropdown-hyperlink-text-color:var(--canvas-text-secondary-background-color-hover);
+/* Active Link Styling */
+--dropdown-active-hyperlink-background-color:rgba(var(--hyperlink-secondary-background-color-rgb),0.4);
+--dropdown-active-hyperlink-border-color:rgba(var(--hyperlink-secondary-background-color-rgb),0.2);
+--dropdown-active-hyperlink-text-color:var(--hyperlink-secondary-background-color);
 /** Checkbox Styling **/
 	--checkbox-unchecked-bg:transparent;
 	--checkbox-unchecked-shadow:var(--inactive-text-background-color);
@@ -3178,12 +3182,21 @@ max-height:152px;
 	--icon-scale:2;
 }
 
- .cpe-dropdown__content .cpe-list.is-linked>li.is-selected>a:not(.cpe-button),
-  .cpe-dropdown__content .cpe-list.is-linked>li.selected>a:not(.cpe-button), .cpe-dropdown__content .cpe-list.is-linked>li:hover>a:not(.cpe-button),
-  .cpe-dropdown__content .cpe-list.is-linked>li>a:focus:not(.cpe-button) {
+  .cpe-dropdown__content .cpe-list.is-linked>li:hover>a:not(.cpe-button) {
 	background-color:var(--dropdown-hyperlink-background-color);
 	border-color:var(--dropdown-hyperlink-border-color);
 	color:var(--dropdown-hyperlink-text-color);
+}
+
+
+  .cpe-dropdown__content .cpe-list.is-linked>li.cpe-dropdown-level-2:hover>a:not(.cpe-button), 
+  .cpe-dropdown__content .cpe-list.is-linked>li.is-selected>a:not(.cpe-button),
+  .cpe-dropdown__content .cpe-list.is-linked>li.selected>a:not(.cpe-button), 
+  .cpe-dropdown__content .cpe-list.is-linked>li:active>a:not(.cpe-button),
+  .cpe-dropdown__content .cpe-list.is-linked>li>a:focus:not(.cpe-button) {
+	background-color:var(--dropdown-active-hyperlink-background-color);
+	border-color:var(--dropdown-active-hyperlink-border-color);
+	color:var(--dropdown-active-hyperlink-text-color);
 }
 
 
@@ -5003,14 +5016,14 @@ box-shadow:2px 0 0 6px rgba(var(--canvas-text-background-color-rgb),.4), 2px 0 0
 .visualmode-contrast body {
 /* Base Styling */
 --dropdown-inactive-text-color:var(--dropdown-text-color);
-/* Secondary Styling (Used in OOUI) */
---dropdown-background-color-2:var(--highlight-text-background-color-rgb);
---dropdown-text-color-2:var(--highlight-background-color-rgb);
---dropdown-text-color-hover-2:var(--highlight-background-color-rgb);
 /* Link Styling */
---dropdown-hyperlink-background-color:var(--highlight-background-color);
---dropdown-hyperlink-border-color:transparent;
---dropdown-hyperlink-text-color:var(--highlight-text-background-color);
+--dropdown-hyperlink-background-color:var(--highlight-text-background-color);
+--dropdown-hyperlink-border-color:var(--highlight-background-color);
+--dropdown-hyperlink-text-color:var(--highlight-background-color);
+/* Link Styling */
+--dropdown-active-hyperlink-background-color:var(--highlight-background-color);
+--dropdown-active-hyperlink-border-color:transparent;
+--dropdown-active-hyperlink-text-color:var(--highlight-text-background-color);
 }
 
 

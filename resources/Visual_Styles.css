@@ -52,6 +52,10 @@ filter:none!important;
 
 
 /* New High Contrast */
+/*
+** This only includes additional code the Evelution Skin requires for the Standard High Contrast Styling. 
+** Code for Standard High Contrast Styling that affects the CPE Language Core must be put in CPE.css, not in this one
+*/
 .visualmode-contrast body {
 /* RC Filters */
 /* Blue */
@@ -180,12 +184,25 @@ filter:none!important;
 }
 
 
-.visualmode-contrast body .toc .module-toc li a:hover,
-.visualmode-contrast body .toc .module-toc li a:focus,
-.visualmode-contrast body .toc .module-toc li.selected a {
+.visualmode-contrast body .toc .module-toc li a:hover {
   background-color:var(--dropdown-hyperlink-background-color);
   color:var(--dropdown-hyperlink-text-color);
   border-color:var(--dropdown-hyperlink-border-color);
+}
+
+
+.visualmode-contrast body .toc .module-toc li a:active,
+.visualmode-contrast body .toc .module-toc li a:focus,
+.visualmode-contrast body .toc .module-toc li.selected a {
+  background-color:var(--dropdown-active-hyperlink-background-color);
+  color:var(--dropdown-active-hyperlink-text-color);
+  border-color:var(--dropdown-active-hyperlink-border-color);
+}
+
+
+.visualmode-contrast .oo-ui-outlineOptionWidget.oo-ui-optionWidget-highlighted {
+  background-color:var(--highlight-text-background-color);
+  color:var(--highlight-background-color);
 }
 
 
@@ -387,13 +404,20 @@ background-color:var(--canvas-background-color);
 
 .visualstyle-basic body {
 /* Link Styling */
---dropdown-hyperlink-background-color:var(--hyperlink-secondary-fadeout-color);
---dropdown-hyperlink-border-color:var(--dropdown-hyperlink-text-color);
---dropdown-hyperlink-text-color:var(--hyperlink-secondary-background-color);
+--dropdown-hyperlink-border-color:rgba(var(--canvas-text-secondary-background-color-rgb),0.5);
+/* Active Link Styling */
+--dropdown-active-hyperlink-background-color:var(--hyperlink-secondary-fadeout-color);
+--dropdown-active-hyperlink-border-color:var(--dropdown-active-hyperlink-text-color);
+--dropdown-active-hyperlink-text-color:var(--hyperlink-secondary-background-color);
 }
 
 
-.visualstyle-basic body .toc .module-toc li a:hover,
+.visualstyle-basic body .toc .module-toc li a:hover {
+  border-color:rgba(var(--canvas-text-background-color-rgb),0.5);
+}
+
+
+.visualstyle-basic body .toc .module-toc li a:active,
 .visualstyle-basic body .toc .module-toc li a:focus,
 .visualstyle-basic body .toc .module-toc li.selected a {
   background-color:var(--hyperlink-fadeout-color);
@@ -866,29 +890,32 @@ box-shadow:2px 0 0 6px rgba(var(--canvas-text-background-color-rgb),.4), 2px 0 0
 
 
 .visualstyle-basic.visualmode-contrast body {
-/* Secondary Styling (Used in OOUI) */
---dropdown-background-color-2:var(--highlight-background-color-rgb);
---dropdown-text-color-2:var(--highlight-text-background-color-rgb);
---dropdown-text-color-hover-2:var(--highlight-text-background-color-rgb);
 /* Link Styling */
 --dropdown-hyperlink-background-color:var(--highlight-background-color);
---dropdown-hyperlink-border-color:var(--dropdown-hyperlink-text-color);
+--dropdown-hyperlink-border-color:var(--dropdown-active-hyperlink-text-color);
 --dropdown-hyperlink-text-color:var(--highlight-text-background-color);
+/* Active Link Styling */
+--dropdown-active-hyperlink-background-color:var(--dropdown-hyperlink-background-color);
+--dropdown-active-hyperlink-border-color:var(--dropdown-hyperlink-border-color);
+--dropdown-active-hyperlink-text-color:var(--dropdown-hyperlink-text-color);
+
 }
 
 
 .visualstyle-basic.visualmode-contrast body .toc .module-toc li a:hover,
+.visualstyle-basic.visualmode-contrast body .toc .module-toc li a:active,
 .visualstyle-basic.visualmode-contrast body .toc .module-toc li a:focus,
 .visualstyle-basic.visualmode-contrast body .toc .module-toc li.selected a {
-  background-color:var(--dropdown-hyperlink-background-color);
-  color:var(--dropdown-hyperlink-text-color);
-  border-color:var(--dropdown-hyperlink-border-color);
+  background-color:var(--dropdown-active-hyperlink-background-color);
+  color:var(--dropdown-active-hyperlink-text-color);
+  border-color:var(--dropdown-active-hyperlink-border-color);
 }
 
 
 
 
-.visualstyle-basic.visualmode-contrast .wikiEditor-ui-toolbar .booklet > .index > .current {
+.visualstyle-basic.visualmode-contrast .wikiEditor-ui-toolbar .booklet > .index > .current,
+.visualstyle-basic.visualmode-contrast .oo-ui-outlineOptionWidget.oo-ui-optionWidget-highlighted {
   background-color:var(--highlight-background-color);
   color:var(--highlight-text-background-color)!important;
 }
@@ -1751,9 +1778,13 @@ color:inherit;
 --dropdown-header-background-color:rgba(var(--dropdown-text-color),0.125);
 --dropdown-header-text-color:var(--simple-luna-foreground-color-hover);
 /* Link Styling */
---dropdown-hyperlink-background-color:rgba(var(--simple-luna-background-color-hover-rgb),var(--acrylic-opacity));
+--dropdown-hyperlink-background-color:rgba(var(--dropdown-background-color-2),var(--acrylic-opacity));
 --dropdown-hyperlink-border-color:rgba(var(--canvas-foreground-color-rgb),0.2);
---dropdown-hyperlink-text-color:var(--simple-luna-foreground-color-inverted);
+--dropdown-hyperlink-text-color:rgb(var(--dropdown-text-color-2));
+/* Active Link Styling */
+--dropdown-active-hyperlink-background-color:var(--dropdown-hyperlink-background-color);
+--dropdown-active-hyperlink-border-color:var(--dropdown-hyperlink-border-color);
+--dropdown-active-hyperlink-text-color:var(--dropdown-hyperlink-text-color);
 }
 
 
@@ -1766,9 +1797,7 @@ color:inherit;
 --dropdown-text-color-2:var(--dropdown-background-color);
 --dropdown-text-color-hover-2:var(--dropdown-background-color);
 /* Link Styling */
---dropdown-hyperlink-background-color:rgb(var(--dropdown-text-color));
 --dropdown-hyperlink-border-color:rgba(var(--dropdown-background-color),0.5);
---dropdown-hyperlink-text-color:rgb(var(--dropdown-background-color));
 }
 
 
@@ -1784,6 +1813,7 @@ color:inherit;
 }
 
 
+.visualstyle-simple .oo-ui-outlineOptionWidget.oo-ui-optionWidget-highlighted,
 .visualstyle-simple .oo-ui-outlineOptionWidget.oo-ui-optionWidget-pressed, 
 .visualstyle-simple .oo-ui-outlineOptionWidget.oo-ui-optionWidget-selected {
   background-color:var(--canvas-background-color-hover);
@@ -1801,6 +1831,7 @@ color:inherit;
   color:var(--canvas-secondary-background-color);
 }
 
+.visualstyle-simple.visualmode-contrast .oo-ui-outlineOptionWidget.oo-ui-optionWidget-highlighted,
 .visualstyle-simple.visualmode-contrast .oo-ui-outlineOptionWidget.oo-ui-optionWidget-pressed, 
 .visualstyle-simple.visualmode-contrast .oo-ui-outlineOptionWidget.oo-ui-optionWidget-selected {
   background-color:var(--canvas-foreground-color);
@@ -1871,6 +1902,7 @@ color:inherit;
 
 
 .visualstyle-simple body .toc .module-toc li a:hover,
+.visualstyle-simple body .toc .module-toc li a:active,
 .visualstyle-simple body .toc .module-toc li a:focus,
 .visualstyle-simple body .toc .module-toc li.selected a {
 	color:var(--canvas-foreground-color-inverted);
@@ -1879,6 +1911,7 @@ color:inherit;
 }
 
 .visualstyle-simple.visualmode-contrast body .toc .module-toc li a:hover,
+.visualstyle-simple.visualmode-contrast body .toc .module-toc li a:active,
 .visualstyle-simple.visualmode-contrast body .toc .module-toc li a:focus,
 .visualstyle-simple.visualmode-contrast body .toc .module-toc li.selected a {
 	color:var(--canvas-background-color)!important;
@@ -2381,7 +2414,10 @@ color:inherit;
 --dropdown-hyperlink-background-color:var(--highlight-background-color);
 --dropdown-hyperlink-border-color:transparent;
 --dropdown-hyperlink-text-color:var(--highlight-text-background-color);
-
+/* Active Link Styling */
+--dropdown-active-hyperlink-background-color:var(--dropdown-hyperlink-background-color);
+--dropdown-active-hyperlink-border-color:var(--dropdown-hyperlink-border-color);
+--dropdown-active-hyperlink-text-color:var(--dropdown-hyperlink-text-color);
 }
 
 
@@ -2997,8 +3033,8 @@ border-color:var(--highlight-background-color);
 }
 
 
-
 .visualstyle-retro .wikiEditor-ui-toolbar .booklet > .index > .current,
+.visualstyle-retro .oo-ui-outlineOptionWidget.oo-ui-optionWidget-highlighted,
 .visualstyle-retro .oo-ui-outlineOptionWidget.oo-ui-optionWidget-pressed, 
 .visualstyle-retro .oo-ui-outlineOptionWidget.oo-ui-optionWidget-selected {
   background-color:var(--highlight-background-color);
@@ -3166,24 +3202,28 @@ border-color:var(--highlight-background-color);
 --dropdown-hyperlink-background-color:var(--hyperlink-background-color);
 --dropdown-hyperlink-border-color:transparent;
 --dropdown-hyperlink-text-color:var(--hyperlink-foreground-color);
+/* Active Link Styling */
+--dropdown-active-hyperlink-background-color:var(--hyperlink-background-color-hover);
+--dropdown-active-hyperlink-border-color:transparent;
+--dropdown-active-hyperlink-text-color:var(--hyperlink-foreground-color-inverted);
 /* Selection Styling */
 	--selection-background-color:var(--hyperlink-background-color);
 	--selection-text-color:var(--hyperlink-foreground-color);
 }
 
-.visualstyle-general.visualmode-contrast body {
-/* Secondary Styling (Used in OOUI) */
---dropdown-background-color-2:var(--hyperlink-background-color-rgb);
---dropdown-text-color-2:var(--hyperlink-foreground-color-rgb);
---dropdown-text-color-hover-2:var(--hyperlink-foreground-color-rgb);
-}
-
-.visualstyle-general body .toc .module-toc li a:hover,
-.visualstyle-general body .toc .module-toc li a:focus,
-.visualstyle-general body .toc .module-toc li.selected a {
+.visualstyle-general body .toc .module-toc li a:hover {
   background-color:var(--dropdown-hyperlink-background-color);
   color:var(--dropdown-hyperlink-text-color);
   border-color:var(--dropdown-hyperlink-border-color);
+}
+
+
+.visualstyle-general body .toc .module-toc li a:active,
+.visualstyle-general body .toc .module-toc li a:focus,
+.visualstyle-general body .toc .module-toc li.selected a {
+  background-color:var(--dropdown-active-hyperlink-background-color);
+  color:var(--dropdown-active-hyperlink-text-color);
+  border-color:var(--dropdown-active-hyperlink-border-color);
 }
 
 .visualstyle-general .wikiEditor-ui-toolbar .booklet > .index > .current,
@@ -3318,11 +3358,18 @@ background-color:var(--hyperlink-background-color);
 	border-color:var(--hyperlink-background-color);
 }
 
+
 .visualstyle-general .wikiEditor-ui-toolbar .booklet > .index > .current,
-.visualstyle-general .oo-ui-outlineOptionWidget.oo-ui-optionWidget-pressed, 
-.visualstyle-general .oo-ui-outlineOptionWidget.oo-ui-optionWidget-selected {
+.visualstyle-general .oo-ui-outlineOptionWidget.oo-ui-optionWidget-highlighted {
   background-color:var(--hyperlink-background-color);
   color:var(--hyperlink-foreground-color);
+}
+
+
+.visualstyle-general .oo-ui-outlineOptionWidget.oo-ui-optionWidget-pressed, 
+.visualstyle-general .oo-ui-outlineOptionWidget.oo-ui-optionWidget-selected {
+  background-color:var(--hyperlink-background-color-hover);
+  color:var(--hyperlink-foreground-color-inverted);
 }
 
 .visualstyle-general.visualmode-contrast ::-webkit-scrollbar-thumb {

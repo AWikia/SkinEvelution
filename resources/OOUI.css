@@ -302,6 +302,10 @@ body .unpatrolled {
 	color:var(--alert-background-color);
 }
 
+body #preferences {
+	filter:none;
+}
+
 .mw-prefs-buttons {
 	background-color:var(--canvas-background-color);
 	border-top-color:var(--inactive-text-background-color);
@@ -630,12 +634,14 @@ body .oo-ui-numberInputWidget-plusButton > .oo-ui-buttonElement-button {
     margin-left:0;
 }
 
-body .oo-ui-buttonSelectWidget .oo-ui-buttonOptionWidget:first-child .oo-ui-buttonElement-button {
+body .oo-ui-buttonSelectWidget .oo-ui-buttonOptionWidget:first-child .oo-ui-buttonElement-button,
+body .oo-ui-buttonGroupWidget .oo-ui-buttonElement-framed:first-child .oo-ui-buttonElement-button {
 	border-top-left-radius:var(--border-radius);
 	border-bottom-left-radius:var(--border-radius);
 }
 
-body .oo-ui-buttonSelectWidget .oo-ui-buttonOptionWidget:last-child .oo-ui-buttonElement-button {
+body .oo-ui-buttonSelectWidget .oo-ui-buttonOptionWidget:last-child .oo-ui-buttonElement-button,
+body .oo-ui-buttonGroupWidget .oo-ui-buttonElement-framed:last-child .oo-ui-buttonElement-button {
 	border-top-right-radius:var(--border-radius);
 	border-bottom-right-radius:var(--border-radius);
 }
@@ -644,6 +650,8 @@ body .oo-ui-actionFieldLayout .oo-ui-actionFieldLayout-button .oo-ui-buttonEleme
 	border-top-right-radius:var(--border-radius);
 	border-bottom-right-radius:var(--border-radius);
 }
+
+
 
 body .oo-ui-buttonElement-framed.oo-ui-labelElement > .oo-ui-buttonElement-button {
 	padding-top:5px;
@@ -968,15 +976,29 @@ body .toc ul li a .tocnumber {
     color:inherit;
 }
 
-body .toc ul li a:hover,
-body .toc ul li a:focus,
-body .toc ul li.selected a {
+body .toc ul li a:hover {
 	background-color:var(--dropdown-hyperlink-background-color);
 	border-color:var(--dropdown-hyperlink-border-color);
     color: var(--dropdown-hyperlink-text-color);
 }
 
-body .toc .module-toc li a:hover,
+
+body .toc ul li a:active,
+body .toc ul li a:focus,
+body .toc ul li.selected a {
+	background-color:var(--dropdown-active-hyperlink-background-color);
+	border-color:var(--dropdown-active-hyperlink-border-color);
+    color: var(--dropdown-active-hyperlink-text-color);
+}
+
+body .toc .module-toc li a:hover {
+	background-color:rgba(var(--canvas-text-background-color-rgb),0.2);
+	border-color:rgba(var(--canvas-text-background-color-rgb),0.1);
+    color: var(--canvas-text-background-color-hover);
+}
+
+
+body .toc .module-toc li a:active,
 body .toc .module-toc li a:focus,
 body .toc .module-toc li.selected a {
 	background-color:rgba(var(--hyperlink-background-color-rgb),0.4);
@@ -1032,13 +1054,17 @@ body .wikiEditor-ui-toolbar .group .tool-select .menu .options .option:hover {
 body .mw-rcfilters-ui-itemMenuOptionWidget:hover,
 body .mw-rcfilters-ui-filterMenuOptionWidget.oo-ui-flaggedElement-muted.oo-ui-optionWidget-highlighted,
 body .oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted,
-body .oo-ui-menuOptionWidget.oo-ui-widget-enabled.oo-ui-optionWidget-highlighted,
+body .oo-ui-menuOptionWidget.oo-ui-widget-enabled.oo-ui-optionWidget-highlighted {
+	background-color:var(--dropdown-hyperlink-background-color);
+	color:var(--dropdown-hyperlink-text-color);
+}
 
 body .mw-rcfilters-ui-filterMenuHeaderWidget-header,
 body .mw-rcfilters-ui-menuSelectWidget-footer {
 	background-color:rgba(var(--dropdown-background-color-2),var(--acrylic-opacity));
 	color:rgb(var(--dropdown-text-color-2));
 }
+
 
 
 body .mw-rcfilters-ui-itemMenuOptionWidget-label-desc,
@@ -1056,6 +1082,7 @@ body .mw-rcfilters-ui-filterMenuOptionWidget.oo-ui-flaggedElement-muted:hover .m
 body .mw-rcfilters-ui-filterMenuOptionWidget:hover  .mw-rcfilters-ui-datePopupWidget .mw-rcfilters-ui-valuePickerWidget-title,
 body .mw-rcfilters-ui-filterMenuOptionWidget:hover  .mw-rcfilters-ui-savedLinksListWidget-placeholder.oo-ui-optionWidget .oo-ui-labelElement-label {
 	color:rgb(var(--dropdown-text-color-hover-2));
+	color:inherit;
 }
 
 body .mw-rcfilters-ui-itemMenuOptionWidget-label-title {
@@ -1088,15 +1115,18 @@ body .oo-ui-listToolGroup-tools .oo-ui-tool-active.oo-ui-widget-enabled .oo-ui-t
 
 body .oo-ui-menuOptionWidget.oo-ui-optionWidget-selected,
 body .oo-ui-menuOptionWidget.oo-ui-widget-enabled.oo-ui-optionWidget-selected {
-	background-color:var(--dropdown-hyperlink-background-color);
-	color:var(--dropdown-hyperlink-text-color);
+	background-color:var(--dropdown-active-hyperlink-background-color);
+	color:var(--dropdown-active-hyperlink-text-color);
 }
 
 body .mw-rcfilters-ui-itemMenuOptionWidget.oo-ui-optionWidget-selected {
-	background-color:var(--dropdown-hyperlink-background-color);
-	color:var(--dropdown-hyperlink-text-color);
+	background-color:var(--dropdown-active-hyperlink-background-color);
+	color:var(--dropdown-active-hyperlink-text-color);
 }
 
+
+body .mw-rcfilters-ui-itemMenuOptionWidget.oo-ui-optionWidget-highlighted  .mw-rcfilters-ui-itemMenuOptionWidget-label-title,
+body .mw-rcfilters-ui-itemMenuOptionWidget.oo-ui-optionWidget-highlighted .mw-rcfilters-ui-itemMenuOptionWidget-label-desc,
 body .mw-rcfilters-ui-itemMenuOptionWidget.oo-ui-optionWidget-selected  .mw-rcfilters-ui-itemMenuOptionWidget-label-title,
 body .mw-rcfilters-ui-itemMenuOptionWidget.oo-ui-optionWidget-selected .mw-rcfilters-ui-itemMenuOptionWidget-label-desc {
 	color:inherit;
@@ -1106,8 +1136,8 @@ body .mw-rcfilters-ui-itemMenuOptionWidget.oo-ui-optionWidget-selected .mw-rcfil
 
 body .oo-ui-menuOptionWidget.oo-ui-optionWidget-selected.oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted,
 body .oo-ui-menuOptionWidget.oo-ui-optionWidget-pressed.oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted {
-	background-color:var(--dropdown-hyperlink-background-color);
-	color:var(--dropdown-hyperlink-text-color);
+	background-color:var(--dropdown-active-hyperlink-background-color);
+	color:var(--dropdown-active-hyperlink-text-color);
 }
 
 
@@ -1452,8 +1482,8 @@ body .oo-ui-processDialog-content .oo-ui-window-head, .oo-ui-processDialog-conte
 }
 
 body .oo-ui-outlineOptionWidget.oo-ui-optionWidget-highlighted {
-	background-color:var(--canvas-background-color);
-	color:var(--canvas-text-background-color);
+    color:var(--canvas-text-background-color-hover);
+    background-color:rgba(var(--canvas-text-background-color-rgb),0.2);
 }
 
 body .oo-ui-outlineOptionWidget.oo-ui-optionWidget-pressed,
@@ -1537,8 +1567,8 @@ body .oo-ui-tool.oo-ui-widget-enabled > .oo-ui-tool-link:hover {
 }
 
 body .oo-ui-popupToolGroup-tools .oo-ui-tool.oo-ui-widget-enabled > .oo-ui-tool-link:hover {
-	background-color:rgb(var(--dropdown-background-color-2));
-	color:rgb(var(--dropdown-text-color-2));
+	background-color:var(--dropdown-hyperlink-background-color);
+	color:var(--dropdown-hyperlink-text-color);
 
 }
 
@@ -1556,8 +1586,8 @@ body .oo-ui-tool.oo-ui-widget-enabled.oo-ui-popupToolGroup-active > .oo-ui-tool-
 body .oo-ui-listToolGroup-tools .oo-ui-tool.oo-ui-widget-enabled > .oo-ui-tool-link:active, 
 body .oo-ui-listToolGroup-tools .oo-ui-tool.oo-ui-widget-enabled.oo-ui-tool-active > .oo-ui-tool-link, 
 body .oo-ui-listToolGroup-tools .oo-ui-tool.oo-ui-widget-enabled.oo-ui-popupToolGroup-active > .oo-ui-tool-link {
-	background-color:var(--dropdown-hyperlink-background-color);
-	color:var(--dropdown-hyperlink-text-color);
+	background-color:var(--dropdown-active-hyperlink-background-color);
+	color:var(--dropdown-active-hyperlink-text-color);
 }
 
 
@@ -2396,18 +2426,18 @@ body .mw-echo-ui-notificationsInboxWidget-toolbarWrapper {
 }
 
 body .mw-echo-ui-pageNotificationsOptionWidget.oo-ui-optionWidget-selected {
-	background-color:var(--dropdown-hyperlink-background-color);
-	color:var(--dropdown-hyperlink-text-color);
+	background-color:var(--dropdown-active-hyperlink-background-color);
+	color:var(--dropdown-active-hyperlink-text-color);
 }
 
 body .mw-echo-ui-pageNotificationsOptionWidget.oo-ui-optionWidget-selected.mw-echo-ui-pageNotificationsOptionWidget.oo-ui-optionWidget-highlighted, 
 body .mw-echo-ui-pageNotificationsOptionWidget.oo-ui-optionWidget-pressed.mw-echo-ui-pageNotificationsOptionWidget.oo-ui-optionWidget-highlighted {
-	background-color:var(--dropdown-hyperlink-background-color);
-	color:var(--dropdown-hyperlink-text-color);
+	background-color:var(--dropdown-active-hyperlink-background-color);
+	color:var(--dropdown-active-hyperlink-text-color);
 }
 
 body .oo-ui-optionWidget-selected .mw-echo-ui-pageNotificationsOptionWidget-label-count {
-	color:var(--dropdown-hyperlink-text-color);
+	color:var(--dropdown-active-hyperlink-text-color);
 }
 
 body .mw-echo-ui-notificationBadgeButtonPopupWidget-popup {
@@ -2478,8 +2508,8 @@ body .mw-echo-ui-notificationItemWidget {
 }
 
 body .mw-echo-ui-notificationItemWidget:hover {
-	background-color:rgb(var(--dropdown-background-color-2));
-	color:rgb(var(--dropdown-text-color-2));
+	background-color:var(--dropdown-hyperlink-background-color);
+	color:var(--dropdown-hyperlink-text-color);
 }
 
 
@@ -2499,7 +2529,7 @@ body .mw-echo-ui-notificationItemWidget-unread  {
 
 
 body .mw-echo-ui-notificationItemWidget-unread:hover {
-	background-color:rgb(var(--dropdown-background-color-2));
+	background-color:var(--dropdown-hyperlink-background-color);
 }
 
 body .mw-echo-ui-notificationsListWidget:not(:hover) a, 
