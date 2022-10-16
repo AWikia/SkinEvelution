@@ -86,7 +86,7 @@ class SkinEvelution extends SkinMustache {
         $data["html-mypage-link"] = SpecialPage::getTitleFor( 'MyPage' )->getLocalURL();
         $data["html-discord-link"] = Title::newFromText( 'Project:Discord' )->getLocalURL();
         $data["html-categories-link"] = SpecialPage::getTitleFor( 'Categories' )->getLocalURL();
-        $data["html-drediercts-link"] = SpecialPage::getTitleFor( 'DoubleRedirects' )->getLocalURL();
+        $data["html-dredirects-link"] = SpecialPage::getTitleFor( 'DoubleRedirects' )->getLocalURL();
         $data["html-sandbox-link"] = Title::newFromText( 'Project:Sandbox' )->getLocalURL();
         $data["html-af-link"] = SpecialPage::getTitleFor( 'AbuseFilter' )->getLocalURL();
         $data["html-chat-link"] = SpecialPage::getTitleFor( 'Chat' )->getLocalURL();
