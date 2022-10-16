@@ -150,9 +150,10 @@ Of course. It has been tested and it works. For instance, if you want to modify 
 --active-title-text-background-color:auto; /* auto |<color> */
 --inactive-title-background-color:#b88300; /* auto | <color> */
 --inactive-title-text-background-color:auto; /* auto |<color> */
---custom-font:""; /* <string> */
---custom-secondary-font:""; /* <string> */
---custom-code-font:""; /* <string> */
+--custom-sans-serif-font:""; /* <string> */
+--custom-serif-font:""; /* <string> */
+--custom-rounded-font:""; /* <string> */
+--custom-monospace-font:""; /* <string> */
 --border-radius:3px; /* <number> 0 to 15 */
 --icon-filter:opacity(1); /* <filter-function> */
 --icon-filter-hover:opacity(0.8); /* <filter-function> */
@@ -190,9 +191,10 @@ Per-page theming is also supported. If you want to use a different theme for the
 --active-title-text-background-color:auto; /* auto |<color> */
 --inactive-title-background-color:#b88300; /* auto | <color> */
 --inactive-title-text-background-color:auto; /* auto |<color> */
---custom-font:""; /* <string> */
---custom-secondary-font:""; /* <string> */
---custom-code-font:""; /* <string> */
+--custom-sans-serif-font:""; /* <string> */
+--custom-serif-font:""; /* <string> */
+--custom-rounded-font:""; /* <string> */
+--custom-monospace-font:""; /* <string> */
 --border-radius:3px; /* <number> 0 to 15 */
 --icon-filter:opacity(1); /* <filter-function> */
 --icon-filter-hover:opacity(0.8); /* <filter-function> */
@@ -338,14 +340,17 @@ This is used as the background color of accent-colored elements in inactive Luna
 ### ``--inactive-title-text-background-color`` (Accepts: ``<color> | auto``)
 This is used as the foreground color of accent-colored elements in inactive Luna state.
 
-### ``--custom-font`` (Accepts: ``<family-name>``)
-This is used as the extra primary font to be used other than the stock ones. When set to an empty quoted string, no special extra font is used.
+### ``--custom-sans-serif-font`` (Accepts: ``<family-name>``)
+This is used as the extra sans serif font to be used other than the stock ones. When set to an empty quoted string, no special extra font is used. This is used as the main UI font.
 
-### ``--custom-secondary-font`` (Accepts: ``<family-name>``)
-This is used as the extra secondary font to be used other than the stock ones. When set to an empty quoted string, no special extra font is used.
+### ``--custom-serif-font`` (Accepts: ``<family-name>``)
+This is used as the extra serif font to be used other than the stock ones. When set to an empty quoted string, no special extra font is used. This is used as the blockquote and printing font
 
-### ``--custom-code-font`` (Accepts: ``<family-name>``)
-This is used as the extra code font to be used other than the stock ones. When set to an empty quoted string, no special extra font is used.
+### ``--custom-rounded-font`` (Accepts: ``<family-name>``)
+This is used as the extra rounded font to be used other than the stock ones. When set to an empty quoted string, no special extra font is used. This is used as the buttons, headings and caption tile font.
+
+### ``--custom-monospace-font`` (Accepts: ``<family-name>``)
+This is used as the extra monospace font to be used other than the stock ones. When set to an empty quoted string, no special extra font is used. This is used as the terminal and code font.
 
 ### ``--border-radius`` (Accepts: ``<length>``)
 This is used to control the rounded corners of all supported elements. 0px removes the rounded corners entirely. Values between 0 to 15px are generally favored. When Hardware acceleration is missing or access to the GPU Benchmarks list site (Found at ``unpkg.com``) is denied, this property is completely ignored.

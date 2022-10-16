@@ -869,17 +869,22 @@ function GetMessage() {
 }
 
 function GetCustomFont() {
-	var img = getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--custom-font").trim();
+	var img = getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--custom-sans-serif-font").trim();
 		return img.replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
 }
 
 function GetCustomFont2() {
-	var img = getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--custom-secondary-font").trim();
+	var img = getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--custom-rounded-font").trim();
 		return img.replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
 }
 
 function GetCustomFont3() {
-	var img = getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--custom-code-font").trim();
+	var img = getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--custom-monospace-font").trim();
+		return img.replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
+}
+
+function GetCustomFont4() {
+	var img = getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--custom-serif-font").trim();
 		return img.replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
 }
 
@@ -2005,9 +2010,10 @@ function DownloadTheme(full=false) {
 				 '--message-quaternary-background-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--message-quaternary-background-color-hover")  + ';\n' +
 				 '--message-quaternary-background-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--message-quaternary-background-color-rgb")  + ';\n' +
 				 // Font
-				 '--custom-font:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--custom-font")  + ';\n' +
-				 '--custom-secondary-font:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--custom-secondary-font")  + ';\n' +
-				 '--custom-code-font:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--custom-code-font")  + ';\n' +
+				 '--custom-sans-serif-font:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--custom-sans-serif-font")  + ';\n' +
+				 '--custom-serif-font:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--custom-serif-font")  + ';\n' +
+				 '--custom-rounded-font:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--custom-rounded-font")  + ';\n' +
+				 '--custom-monospace-font:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--custom-monospace-font")  + ';\n' +
 				 // Border Radius
 				 '--border-radius:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--border-radius")  + ';\n' +
 				 '--window-border-radius:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--window-border-radius")  + ';\n' +
@@ -2053,9 +2059,10 @@ function DownloadTheme(full=false) {
 				 '--active-title-text-background-color:' + getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--active-title-text-background-color")  + ';\n' +
 				 '--inactive-title-background-color:' + getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--inactive-title-background-color")  + ';\n' +
 				 '--inactive-title-text-background-color:' + getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--inactive-title-text-background-color")  + ';\n' +
-				 '--custom-font:' + GetCustomFont()  + ';\n' +
-				 '--custom-secondary-font:' + GetCustomFont2()  + ';\n' +
-				 '--custom-code-font:' + GetCustomFont3()  + ';\n' +
+				 '--custom-sans-serif-font:' + GetCustomFont()  + ';\n' +
+				 '--custom-serif-font:' + GetCustomFont4()  + ';\n' +
+				 '--custom-rounded-font:' + GetCustomFont2()  + ';\n' +
+				 '--custom-monospace-font:' + GetCustomFont3()  + ';\n' +
 				 '--border-radius:' + getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--border-radius")  + ';\n' +
 				 '--icon-filter:' + getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--icon-filter")  + ';\n' +
 				 '--icon-filter-hover:' + wordfilter2  + ';\n' +
@@ -3396,9 +3403,10 @@ var invfilters = [
 						'--desktop-background-image-blend-mode:' + getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--desktop-background-image-blend-mode")  + ';\n' +
 						'--desktop-background-horizontal-alignment:' + getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--desktop-background-horizontal-alignment")  + ';\n' +
 						'--desktop-background-vertical-alignment:' + getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--desktop-background-vertical-alignment")  + ';\n' +
-						 '--custom-font:' + GetCustomFont()  + ';\n' +
-						 '--custom-secondary-font:' + GetCustomFont2()  + ';\n' +
-						 '--custom-code-font:' + GetCustomFont3()  + ';\n' +
+						 '--custom-sans-serif-font:' + GetCustomFont()  + ';\n' +
+						 '--custom-serif-font:' + GetCustomFont4()  + ';\n' +
+						 '--custom-rounded-font:' + GetCustomFont2()  + ';\n' +
+						 '--custom-monospace-font:' + GetCustomFont3()  + ';\n' +
 						 '--border-radius:' + brad  + 'px;\n' +
 						 '--window-border-radius:' + (brad * 2)  + 'px;\n' +
 						 '--menu-border-radius:' + (brad * 0.6)  + 'px;\n' +

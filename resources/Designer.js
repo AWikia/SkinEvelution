@@ -515,37 +515,39 @@ function InitDesigner() {
 				// Special Colors (1)
 				'<option value="#18bbc5">' +
 			'</datalist>' +
-			'<datalist id="td_fonts3">' + // Fonts (7)
-				'<option value="\'Anonymous Pro\'">' + 
-				'<option value="\'Courier Prime\'">' +
-				'<option value="\'Cousine\'">' +
-				'<option value="\'Cutive Mono\'">' +
-				'<option value="\'Inconsolata\'">' +
-				'<option value="\'Roboto Mono\'">' +
-				'<option value="\'Ubuntu Mono\'">' + // NEW
-			'</datalist>' +
-			'<datalist id="td_fonts2">' + // Fonts (10)
+			'<datalist id="td_fonts2">' + // Sans Serif Fonts (12)
+				'<option value="\'Alegreya Sans\'">' +	// NEW
 				'<option value="\'Arimo\'">' + 
 				'<option value="\'Commissioner\'">' +
 				'<option value="\'Didact Gothic\'">' +
 				'<option value="\'Inter\'">' +
 				'<option value="\'Noto Sans\'">' +
+				'<option value="\'Questrial\'">' + // NEW
 				'<option value="\'Roboto\'">' +
 				'<option value="\'Roboto Condensed\'">' + // NEW
 				'<option value="\'Roboto Flex\'">' + // NEW
 				'<option value="\'Ubuntu\'">' +
 				'<option value="\'Ubuntu Condensed\'">' + // NEW
 			'</datalist>' +
-			'<datalist id="td_fonts">' + // Fonts (25)
+			'<datalist id="td_fonts4">' + // Serif Fonts (11)
+				'<option value="\'Alegreya\'">' +	// NEW
+				'<option value="\'Aleo\'">' +	// NEW
 				'<option value="\'BioRhyme\'">' +
 				'<option value="\'BioRhyme Expanded\'">' + // NEW
-				'<option value="\'Chango\'">' + // NEW
-				'<option value="\'Comic Neue\'">' +
-				'<option value="\'Exo 2\'">' +
 				'<option value="\'Inknut Antiqua\'">' +
 				'<option value="\'Lora\'">' +
+				'<option value="\'Noto Serif\'">' + // NEW
 				'<option value="\'Roboto Serif\'">' + // NEW
 				'<option value="\'Roboto Slab\'">' +
+				'<option value="\'Tinos\'">' + // NEW
+				'<option value="\'Vollkorn\'">' +	// NEW
+			'</datalist>' +
+			'<datalist id="td_fonts">' + // Rounded Fonts (22)
+				'<option value="\'Chango\'">' + // NEW
+				'<option value="\'Comic Neue\'">' +
+				'<option value="\'Coming Soon\'">' + // NEW
+				'<option value="\'Exo 2\'">' +
+				'<option value="\'Nunito\'">' + // NEW
 				'<option value="\'Rubik\'">' +
 				'<option value="\'Rubik Beastly\'">' + // NEW
 				'<option value="\'Rubik Bubbles\'">' + // NEW
@@ -561,7 +563,18 @@ function InitDesigner() {
 				'<option value="\'Rubik Puddles\'">' + // NEW
 				'<option value="\'Rubik Wet Paint\'">' + // NEW
 				'<option value="\'Style Script\'">' + // NEW
+				'<option value="\'Varela Round\'">' + // NEW
 				'<option value="\'Work Sans\'">' +
+			'</datalist>' +
+			'<datalist id="td_fonts3">' + // Monospace Fonts (7)
+				'<option value="\'Anonymous Pro\'">' + 
+				'<option value="\'Courier Prime\'">' +
+				'<option value="\'Cousine\'">' +
+				'<option value="\'Cutive Mono\'">' +
+				'<option value="\'Inconsolata\'">' +
+				'<option value="\'Noto Sans Mono\'">' + // NEW
+				'<option value="\'Roboto Mono\'">' +
+				'<option value="\'Ubuntu Mono\'">' + // NEW
 			'</datalist>' +
 			'<datalist id="td_imagefilter">' + // Fonts
 				'<option value="opacity(100%)">' +
@@ -599,6 +612,7 @@ function InitDesigner() {
 			'</datalist>' +
 
 		'</div>' +
+		'<h2>Theme Configuration</h2>' +
 		'<table class="wikitable" style="max-width:var(--breakpoint-size); font-size:14px; margin:0 auto;">' +
 			'<tr>' +
 				'<th colspan="3">' + mw.msg( 'evelution-designer-body' ) + '</th>' +
@@ -933,7 +947,7 @@ function InitDesigner() {
 					mw.msg( 'evelution-designer-font' ) + 
 				'</th>' +
 				'<th><span class="cpe-icon material-icons">title</span></th>' +
-				'<th><span class="cpe-icon material-icons">text_fields</span></th>' +
+				'<th><span class="cpe-icon material-icons">format_italics</span></th>' +
 			'</tr>' +
 
 
@@ -941,21 +955,24 @@ function InitDesigner() {
 				'<td style="text-align:center; width:150px">' +
 					'<input type="text" id="firstfont" class="cpe-input designer-text" style="width:150px; min-width:150px;" placeholder="Font" list="td_fonts2" autocomplete="off" />' + // Body Background 
 				'</td>' +
-
 				'<td style="text-align:center; width:150px">' +
-					'<input type="text" id="secondfont" class="cpe-input designer-text" style="width:150px; min-width:150px;" placeholder="Font" list="td_fonts" autocomplete="off" />' + // Body Background 
+					'<input type="text" id="fourthfont" class="cpe-input designer-text" style="width:150px; min-width:150px;" placeholder="Font" list="td_fonts4" autocomplete="off" />' + // Body Background 
 				'</td>' +
 
 
 			'</tr>' +
 
 			'<tr>' +
-				'<th colspan="2"><span class="cpe-icon material-icons">code</span></th>' +
+				'<th><span class="cpe-icon material-icons">text_fields</span></th>' +
+				'<th><span class="cpe-icon material-icons">code</span></th>' +
 			'</tr>' +
 
 			'<tr>' +
-				'<td colspan="2" style="text-align:center; width:150px">' +
-					'<input type="text" id="thirdfont" class="cpe-input designer-text" style="width:300px; min-width:300px;" placeholder="Font" list="td_fonts3" autocomplete="off" />' + // Body Background 
+				'<td style="text-align:center; width:150px">' +
+					'<input type="text" id="secondfont" class="cpe-input designer-text" style="width:150px; min-width:150px;" placeholder="Font" list="td_fonts" autocomplete="off" />' + // Body Background 
+				'</td>' +
+				'<td style="text-align:center; width:150px">' +
+					'<input type="text" id="thirdfont" class="cpe-input designer-text" style="width:150px; min-width:150px;" placeholder="Font" list="td_fonts3" autocomplete="off" />' + // Body Background 
 				'</td>' +
 
 
@@ -1027,7 +1044,7 @@ function InitDesigner() {
 			'</tr>' +
 
 		'</table>' +
-		'<hr>' +
+		'<h2>Previews</h2>' +
 		'<div style="line-height:0.5;">' +
 			'<div style="display:flex; gap:5px; align-items:center; align-content:center; justify-content:center; flex-wrap:wrap;">' +
 	/// Desktop
@@ -1582,6 +1599,11 @@ function ApplyTheme () {
     } else {
 		var customfont2 = $('#firstfont').val().replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
     }
+    if ( $('#fourthfont').val().length === 0) {
+		var customfont4 = 'Roboto Serif';
+    } else {
+		var customfont4 = $('#fourthfont').val().replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
+    }
     if ( $('#secondfont').val().length === 0) {
 		var customfont = 'Rubik';
     } else {
@@ -1617,9 +1639,10 @@ function ApplyTheme () {
 				 '--active-title-text-background-color:' + autocolor10  + ';\n' +
 				 '--inactive-title-background-color:' + autocolor4  + ';\n' +
 				 '--inactive-title-text-background-color:' + autocolor11  + ';\n' +
-				 '--custom-font:' + customfont2 + ';\n' +
-				 '--custom-secondary-font:' + customfont + ';\n' +
-				 '--custom-code-font:' + customfont3 + ';\n' +
+				 '--custom-sans-serif-font:' + customfont2 + ';\n' +
+				 '--custom-serif-font:' + customfont4 + ';\n' +
+				 '--custom-rounded-font:' + customfont + ';\n' +
+				 '--custom-monospace-font:' + customfont3 + ';\n' +
 				 '--border-radius:' + $('#border-radius').val() + "px"  + ';\n' +
 				 '--icon-filter:' + $('#filter').val() + ';\n' +
 				 '--icon-filter-hover:' + $('#filter2').val()  + ';\n' +
@@ -1747,6 +1770,11 @@ function CopyTheme() {
     } else {
 		var customfont2 = $('#firstfont').val().replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
     }
+    if ( $('#fourthfont').val().length === 0) {
+		var customfont4 = 'Roboto Serif';
+    } else {
+		var customfont4 = $('#fourthfont').val().replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
+    }
     if ( $('#secondfont').val().length === 0) {
 		var customfont = 'Rubik';
     } else {
@@ -1783,9 +1811,10 @@ function CopyTheme() {
 				 '--active-title-text-background-color:' + autocolor10  + ';\n' +
 				 '--inactive-title-background-color:' + autocolor4  + ';\n' +
 				 '--inactive-title-text-background-color:' + autocolor11  + ';\n' +
-				 '--custom-font:' + customfont2 + ';\n' +
-				 '--custom-secondary-font:' + customfont + ';\n' +
-				 '--custom-code-font:' + customfont3 + ';\n' +
+				 '--custom-sans-serif-font:' + customfont2 + ';\n' +
+				 '--custom-serif-font:' + customfont4 + ';\n' +
+				 '--custom-rounded-font:' + customfont + ';\n' +
+				 '--custom-monospace-font:' + customfont3 + ';\n' +
 				 '--border-radius:' + $('#border-radius').val() + "px"  + ';\n' +
 				 '--icon-filter:' + $('#filter').val() + ';\n' +
 				 '--icon-filter-hover:' + $('#filter2').val()  + ';\n' +
@@ -1919,6 +1948,11 @@ function CopyTheme2() {
     } else {
 		var customfont2 = $('#firstfont').val().replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
     }
+    if ( $('#fourthfont').val().length === 0) {
+		var customfont4 = 'Roboto Serif';
+    } else {
+		var customfont4 = $('#fourthfont').val().replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
+    }
     if ( $('#secondfont').val().length === 0) {
 		var customfont = 'Rubik';
     } else {
@@ -1958,9 +1992,10 @@ function CopyTheme2() {
 				 "'active-title-text-background-color' => '" + autocolor10  + "',\n" +
 				 "'inactive-title-background-color' => '" + autocolor4  + "',\n" +
 				 "'inactive-title-text-background-color' => '" + autocolor11  + "',\n" +
-				 "'custom-font' => '" + customfont2 + "',\n" +
-				 "'custom-secondary-font' => '" + customfont + "',\n" +
-				 "'custom-code-font' => '" + customfont3 + "',\n" +
+				 "'custom-sans-serif-font' => '" + customfont2 + "',\n" +
+				 "'custom-serif-font' => '" + customfont4 + "',\n" +
+				 "'custom-rounded-font' => '" + customfont + "',\n" +
+				 "'custom-monospace-font' => '" + customfont3 + "',\n" +
 				 "'border-radius' => '" + $("#border-radius").val() + 'px'  + "',\n" +
 				 "'icon-filter' => '" + $("#filter").val() + "',\n" +
 				 "'icon-filter-hover' => '" + $("#filter2").val()  + "',\n" +
@@ -2172,22 +2207,28 @@ function PasteTheme() {
 
 	// Border Radius
 	$('#border-radius').val( parseInt(getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--border-radius")) );
-	// Primary Font
-	var pfont = getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--custom-font").replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
+	// Sans Serif Font
+	var pfont = getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--custom-sans-serif-font").replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
 	if (pfont == '""') {
 		var pfont = '';
 	}
 	$('#firstfont').val( pfont );
-	// Secondary Font
-	var sfont = getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--custom-secondary-font").replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
+	// Serif Font
+	var qfont = getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--custom-serif-font").replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
+	if (qfont == '""') {
+		var qfont = '';
+	}
+	$('#fourthfont').val( qfont );
+	// Rounded Font
+	var sfont = getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--custom-rounded-font").replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
 	if (sfont == '""') {
 		var sfont = '';
 	}
 	$('#secondfont').val( sfont );
-	// Code Font
-	var tfont = getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--custom-code-font").replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
+	// Monospace Font
+	var tfont = getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--custom-monospace-font").replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
 	if (tfont == '""') {
-		var sfont = '';
+		var tfont = '';
 	}
 	$('#thirdfont').val( tfont );
 
@@ -2308,6 +2349,11 @@ function TestTheme(banner=false) {
     } else {
 		var customfont2 = $('#firstfont').val().replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
     }
+    if ( $('#fourthfont').val().length === 0) {
+		var customfont4 = 'Roboto Serif';
+    } else {
+		var customfont4 = $('#fourthfont').val().replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
+    }
     if ( $('#secondfont').val().length === 0) {
 		var customfont = 'Rubik';
     } else {
@@ -2344,9 +2390,10 @@ function TestTheme(banner=false) {
 				 '--active-title-text-background-color:' + autocolor10  + '!important;\n' +
 				 '--inactive-title-background-color:' + autocolor4  + '!important;\n' +
 				 '--inactive-title-text-background-color:' + autocolor11  + '!important;\n' +
-				 '--custom-font:' + customfont2 + '!important;\n' +
-				 '--custom-secondary-font:' + customfont + '!important;\n' +
-				 '--custom-code-font:' + customfont3 + '!important;\n' +
+				 '--custom-sans-serif-font:' + customfont2 + '!important;\n' +
+				 '--custom-serif-font:' + customfont4 + '!important;\n' +
+				 '--custom-rounded-font:' + customfont + '!important;\n' +
+				 '--custom-monospace-font:' + customfont3 + '!important;\n' +
 				 '--border-radius:' + $('#border-radius').val() + "px"  + '!important;\n' +
 				 '--icon-filter:' + $('#filter').val() + '!important;\n' +
 				 '--icon-filter-hover:' + $('#filter2').val()  + '!important;\n' +
