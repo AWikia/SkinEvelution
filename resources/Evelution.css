@@ -1084,66 +1084,48 @@ body:not(.mw-special-Preferences) .evelution-top-actions .reset-settings {
 
 /* Adjust Sizing */
 
-@media only screen and (max-width:759px) {
-	/* With Minibar */
-	@media only screen and (max-height:339px) {
-		body .evelution-floating-actions .cpe-floating-button {
-			width:18px;
-			height:18px;
-		}
-		
-		body .evelution-floating-actions .cpe-floating-button .cpe-icon{
-			--icon-size:0.5;
-		}
-
+/* With Minibar */
+@media only screen and (max-height:319px) {
+	body .evelution-floating-actions .cpe-floating-button {
+		width:18px;
+		height:18px;
 	}
 
-
-
-	@media only screen and (min-height:340px) and (max-height:429px) {
-		body .evelution-floating-actions .cpe-floating-button {
-			width:27px;
-			height:27px;
-		}
-		
-		body .evelution-floating-actions .cpe-floating-button .cpe-icon {
-			--icon-size:0.7;
-		}
-
+body .evelution-floating-actions .cpe-floating-button .cpe-icon{
+		--icon-size:0.5;
 	}
 }
 
 
-@media only screen and (min-width:760px) {
-	/* With Minibar */
-	@media only screen and (max-height:389px) {
-		body .evelution-floating-actions .cpe-floating-button {
-			width:18px;
-			height:18px;
-		}
-		
-		body .evelution-floating-actions .cpe-floating-button .cpe-icon{
-			--icon-size:0.5;
-		}
-
+@media only screen and (min-height:320px) and (max-height:389px) {
+	body .evelution-floating-actions .cpe-floating-button {
+		width:27px;
+		height:27px;
 	}
-
-
-
-	@media only screen and (min-height:390px) and (max-height:479px) {
-		body .evelution-floating-actions .cpe-floating-button {
-			width:27px;
-			height:27px;
-		}
-		
-		body .evelution-floating-actions .cpe-floating-button .cpe-icon {
-			--icon-size:0.7;
-		}
-
+	
+	body .evelution-floating-actions .cpe-floating-button .cpe-icon {
+		--icon-size:0.7;
 	}
 
 }
 
+@media only screen and (max-height:479px) {
+	body .evelution-floating-actions .hides-in-small-screens {
+		display:none!important;
+	}
+
+}
+
+@media only screen and (min-height:480px) {
+	body .evelution-floating-actions .hides-in-large-screens {
+		display:none!important;
+	}
+
+	body .evelution-floating-actions .cpe-floating-button-group.is-vertical > .adjusts-in-large-screens {
+		margin-top:0;
+	}
+
+}
 
 
 /* Page Header */

@@ -41,27 +41,29 @@ function InitDesigner() {
 	// Put new buttons
 	// Copy theme
 	$(".evelution-floating-actions.extra-actions .evelution-floating-actions-container").append(
-		'<button class="cpe-floating-button theme-copy-button page-side-tool" cpe-tooltip-position="reverse" cpe-tooltip="' + mw.msg( 'evelution-designer-copy' ) + ' (CSS)">' +
-			'<span class="cpe-icon material-icons" style="position:absolute; top:1.5px;">' +
-				'content_copy' +
-			'</span>' +
-			'<span class="cpe-icon material-icons" style="position:absolute; bottom:-6px;">' +
-				'css' +
-			'</span>' +
-		'</button>'
+		'<div class="cpe-dropdown has-reversed-nested-menus is-flipped theme-copy" cpe-orient="land" tabindex="-1">' +
+			'<button class="cpe-floating-button theme-copy page-side-tool" cpe-tooltip-position="reverse" cpe-tooltip="' + mw.msg( 'evelution-designer-copy' ) + ' ">' +
+				'<span class="cpe-icon material-icons">' +
+					'content_copy' +
+				'</span>' +
+			'</button>' +
+			'<div class="cpe-dropdown__content is-not-scrollable is-left-aligned">' +
+				'<ul class="cpe-list is-linked">' +
+					'<li>' +
+						'<a class="theme-copy-button">' +
+							'<span>CSS</span>' +
+						'</a>' +
+					'</li>' +
+					'<li>' +
+						'<a class="theme-copy-button-2 action-link">' +
+							'<span>PHP</span>' +
+						'</a>' +
+					'</li>' +
+				'</ul>' +
+			'</div>' +
+		'</div>'
 	);
 	$(".evelution-floating-actions.extra-actions .theme-copy-button").click( function(e) { e.preventDefault; CopyTheme();  });
-	// Copy theme 2
-	$(".evelution-floating-actions.extra-actions .evelution-floating-actions-container").append(
-		'<button class="cpe-floating-button theme-copy-button-2 page-side-tool" cpe-tooltip-position="reverse" cpe-tooltip="' + mw.msg( 'evelution-designer-copy' ) + ' (PHP)">' +
-			'<span class="cpe-icon material-icons" style="position:absolute; top:1.5px;">' +
-				'content_copy' +
-			'</span>' +
-			'<span class="cpe-icon material-icons" style="position:absolute; bottom:-6px;">' +
-				'php' +
-			'</span>' +
-		'</button>'
-	);
 	$(".evelution-floating-actions.extra-actions .theme-copy-button-2").click( function(e) { e.preventDefault; CopyTheme2();  });
 
 	// Paste theme

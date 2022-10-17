@@ -119,6 +119,9 @@ var visualColorNames = ['standard', 'nocolormanagement'];
 	if (getKey('accent-active') === '-1') {
 		insertKey('accent-active', 'false' );
 	}
+	if (getKey('serif-font') === '-1') {
+		insertKey('serif-font', 'false' );
+	}
 	if (getKey('dcm-mode') === '-1') {
 		insertKey('dcm-mode', 'standard' );
 	}
@@ -138,6 +141,7 @@ var visualColorNames = ['standard', 'nocolormanagement'];
 	var color_sat = getKey('color-sat');
 	var contrast_mode = getKey('contrast-mode');
 	var accent_active = getKey('accent-active');
+	var serif_font = getKey('serif-font');
 	var dcm_mode = getKey('dcm-mode');
 	var dcm_type = getKey('dcm-type');
     getParams().forEach(function (param) {
@@ -243,6 +247,10 @@ var visualColorNames = ['standard', 'nocolormanagement'];
 				accent_active = value;
 				console.info('Accent mode settings overriden');
                 break;
+            case 'useseriffont':
+				serif_font = value;
+				console.info('Serif Font settings overriden');
+                break;
             case 'usedcmmode':
 				dcm_mode = value;
 				console.info('DCM mode settings overriden');
@@ -265,6 +273,7 @@ var visualColorNames = ['standard', 'nocolormanagement'];
 
 /* The Following were prior to the Theme Compiling but were moved to improve performance */
 	SetAccent(accent_active,false);
+	SetSerifFont(serif_font,false);
 	ManagerRows(); // For Task Manager Only
 	VisualStyleCompile(); // Compiles the Contrast Options
 	VisualMode(visual_mode,false);
@@ -1395,6 +1404,29 @@ function ToggleAccent() {
 		SetAccent ( 'true' )
 	}
 }
+
+
+
+function SetSerifFont(tick='false',save='true') {
+		if (save) {
+			insertKey('serif-font', tick );
+		}
+		if (tick === 'true') {
+			document.querySelector('html').classList.add('has-serif-font');
+		} else {
+			document.querySelector('html').classList.remove('has-serif-font');
+		}
+}
+
+
+function ToggleSerifFont() {
+	if (document.querySelector('html.has-serif-font')) {
+		SetSerifFont( 'false' )
+	} else {
+		SetSerifFont( 'true' )
+	}
+}
+
 
 function SetDCM(type='match-parent',tick='match-parent',save='true',repaint='true') {
 	if (type === 'match-parent') {

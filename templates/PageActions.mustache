@@ -1,7 +1,53 @@
 <div class="evelution-floating-actions page-side-tools__wrapper">
 	<div class="evelution-floating-actions-container cpe-floating-button-group is-vertical page-side-tools">
+		<!-- Settings for Small Screens -->
+		<div class="cpe-dropdown site-settings hides-in-large-screens" cpe-orient="land">			
+			<div class="cpe-floating-button is-unaccented site-settings page-side-tool" cpe-tooltip="{{msg-preferences}}">
+				<span class="cpe-icon material-icons">
+					settings
+				</span>
+			</div>
+
+			<div class="cpe-dropdown__content cpe-site-setings is-left-aligned is-not-scrollable">					
+				 <ul class="cpe-list">
+					<li class="cpe-floating-button-group is-vertical">
+					{{^has-forced-full-width}}
+						<button class="cpe-floating-button is-unaccented toggle-size page-side-tool content-size-toggle" onclick="ToggleWidth()" cpe-tooltip="{{msg-evelution-togglesize}}">
+							<span class="cpe-icon material-icons wide-off">
+								open_in_full
+							</span>
+							<span class="cpe-icon material-icons wide-on">
+								close_fullscreen
+							</span>
+						</button>
+					{{/has-forced-full-width}}
+						<button class="cpe-floating-button is-unaccented accent-toggle page-side-tool" onclick="ToggleAccent()" cpe-tooltip="{{msg-evelution-toggleaccent}}">
+							<span class="cpe-icon material-icons">
+								<span class="accented-off">
+									invert_colors
+								</span>
+								<span class="accented-on">
+									invert_colors_off
+								</span>
+							</span>
+						</button>
+						<button class="cpe-floating-button is-unaccented font-toggle page-side-tool" onclick="ToggleSerifFont()" cpe-tooltip="{{msg-evelution-togglefont}}">
+							<span class="cpe-icon font-icon">
+								<span style="font-family:Roboto Serif, serif" class="serif-off">
+									A
+								</span>
+								<span style="font-family:Roboto Flex, sans-serif" class="serif-on">
+									A
+								</span>
+							</span>
+						</button>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<!-- Settings for Large Screens -->
 		{{^has-forced-full-width}}
-			<button class="cpe-floating-button is-unaccented toggle-size page-side-tool content-size-toggle" onclick="ToggleWidth()" cpe-tooltip="{{msg-evelution-togglesize}}">
+			<button class="cpe-floating-button is-unaccented toggle-size hides-in-small-screens adjusts-in-large-screens page-side-tool content-size-toggle" onclick="ToggleWidth()" cpe-tooltip="{{msg-evelution-togglesize}}">
 				<span class="cpe-icon material-icons wide-off">
 					open_in_full
 				</span>
@@ -10,13 +56,23 @@
 				</span>
 			</button>
 		{{/has-forced-full-width}}
-			<button class="cpe-floating-button is-unaccented accent-toggle page-side-tool" onclick="ToggleAccent()" cpe-tooltip="{{msg-evelution-toggleaccent}}">
+			<button class="cpe-floating-button is-unaccented accent-toggle hides-in-small-screens page-side-tool" onclick="ToggleAccent()" cpe-tooltip="{{msg-evelution-toggleaccent}}">
 				<span class="cpe-icon material-icons">
 					<span class="accented-off">
 						invert_colors
 					</span>
 					<span class="accented-on">
 						invert_colors_off
+					</span>
+				</span>
+			</button>
+			<button class="cpe-floating-button is-unaccented font-toggle hides-in-small-screens {{#has-forced-full-width}}adjusts-in-large-screens{{/has-forced-full-width}} page-side-tool" onclick="ToggleSerifFont()" cpe-tooltip="{{msg-evelution-togglefont}}">
+				<span class="cpe-icon font-icon">
+					<span style="font-family:Roboto Serif, serif" class="serif-off">
+						A
+					</span>
+					<span style="font-family:Roboto Flex, sans-serif" class="serif-on">
+						A
 					</span>
 				</span>
 			</button>

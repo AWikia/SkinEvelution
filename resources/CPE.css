@@ -921,6 +921,10 @@ body {
     color: var(--desktop-foreground-color);
 }
 
+.has-serif-font body {
+  font-family:var(--serif-font-stack);
+}
+
 /** Image Rendering **/
 
 /* Webkit */
@@ -1243,11 +1247,11 @@ container {
   font-family:var(--sans-serif-font-stack), sans-serif;
 }
 
-[data-font-stack="serif"], h1, h2 {
+[data-font-stack="serif"] {
   font-family:var(--serif-font-stack), serif;
 }
 
-.secondary, [data-font-stack="rounded"], h3, h4, h5, h6 {
+.secondary, [data-font-stack="rounded"], h1, h2, h3, h4, h5, h6 {
   font-family:var(--rounded-font-stack), sans-serif;
 }
 
@@ -1549,6 +1553,12 @@ html.has-accents .accented-off,
 html:not(.has-accents) .accented-on {
 	display:none!important;
 }
+
+html.has-serif-font .serif-off,
+html:not(.has-serif-font) .serif-on {
+	display:none!important;
+}
+
 
 
 body .invertion-on,
@@ -2465,6 +2475,11 @@ input[type="checkbox"]::after, input[type="radio"]::after {
   text-indent:0;
 }
 
+.cpe-icon.font-icon {
+	height:auto!important;
+	font-family:Roboto Flex;
+}
+
 .has-icon:before {
 	margin-right:5px;
 	--icon-size:0.7;
@@ -2987,7 +3002,7 @@ right:0;
 left:-10px;
 }
 
-.cpe-dropdown[cpe-orient="land"] .cpe-dropdown__content.is-right-aligned{
+.cpe-dropdown[cpe-orient="land"] .cpe-dropdown__content.is-right-aligned {
 --dropdown-translate:0%;
 right:auto;
 right:revert;
@@ -3136,6 +3151,10 @@ max-height:152px;
 	 white-space:nowrap
  }
 
+ .cpe-dropdown__content .cpe-list>li.cpe-floating-button-group {
+	padding:0;
+}
+
 
 @media only screen and (max-height:509px) {
 	.is-fixed-positioned .cpe-dropdown__content.has-small-content .cpe-list>li > a:not(.cpe-button){
@@ -3243,6 +3262,8 @@ max-height:152px;
 	right:auto;
 	left:8px;
  }
+ 
+
 
 
  .cpe-dropdown.is-flipped::after,.cpe-dropdown.is-flipped::before {
@@ -3539,6 +3560,14 @@ margin-right:16px;
 	right:calc(100%);
 	top:-50%;
 	bottom:auto;
+}
+
+.cpe-dropdown.is-flipped[cpe-orient="land"] .cpe-dropdown__content.is-right-aligned {
+top:auto;
+bottom:0;
+}
+.cpe-dropdown.is-flipped[cpe-orient="land"] .cpe-dropdown__content.is-left-aligned{
+top:0;
 }
 
 
