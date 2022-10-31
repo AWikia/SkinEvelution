@@ -326,7 +326,6 @@ background-color:var(--canvas-background-color);
   --icon-font-family:'Material Icons';
 }
 
-
 .visualstyle-basic .evelution-content .evelution-page-header .toggle-rail-button,
 .visualstyle-basic .evelution-module .rail-buttons .rail-button {
 	border-color:var(--luna-foreground-color);
@@ -988,6 +987,8 @@ background-color:var(--canvas-background-color);
 }
 
 .visualstyle-general.visualmode-contrast body {
+	--checkbox-unchecked-bg-hover:var(--hyperlink-foreground-color);
+	--checkbox-unchecked-shadow-hover:var(--hyperlink-background-color);
 	--checkbox-active-bg:var(--hyperlink-background-color);
 	--checkbox-checked-bg:var(--hyperlink-background-color);
 	--checkbox-checked-bg-hover:var(--checkbox-checked-text);
@@ -998,9 +999,18 @@ background-color:var(--canvas-background-color);
 }
 
 
+.visualstyle-basic.visualmode-contrast body {
+	--checkbox-unchecked-bg-hover:transparent;
+	--checkbox-unchecked-shadow-hover:var(--checkbox-active-bg);
+	--checkbox-checked-bg-hover:var(--checkbox-checked-text);
+	--checkbox-checked-shadow-hover:var(--checkbox-checked-text-hover);
+	--checkbox-checked-text-hover:var(--checkbox-checked-bg);
+}
+
+
 
 .visualstyle-simple.visualmode-contrast body  {
---checkbox-active-bg:var(--highlight-background-color);
+	--checkbox-active-bg:var(--highlight-background-color);
 	--checkbox-checked-bg:var(--highlight-background-color);
 	--checkbox-checked-bg-hover:var(--checkbox-checked-text);
 	--checkbox-checked-shadow:var(--checkbox-checked-bg);

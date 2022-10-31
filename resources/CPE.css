@@ -900,6 +900,8 @@ body {
 /** Checkbox Styling **/
 	--checkbox-unchecked-bg:transparent;
 	--checkbox-unchecked-shadow:var(--inactive-text-background-color);
+	--checkbox-unchecked-hover:var(--checkbox-unchecked-bg);
+	--checkbox-unchecked-shadow-hover:var(--checkbox-active-bg);
 	--checkbox-active-bg:var(--highlight-background-color);
 	--checkbox-checked-bg:var(--highlight-background-color);
 	--checkbox-checked-bg-hover:var(--highlight-background-color-hover);
@@ -2826,7 +2828,8 @@ flex:1 1 0;
 
 .cpe-toggle__label:hover::before,
 .cpe-toggle__label:hover::after {
-	border-color:var(--checkbox-active-bg);
+	background-color:var(--checkbox-unchecked-bg-hover);
+	border-color:var(--checkbox-unchecked-shadow-hover);
 }
 
 .cpe-toggle__label:active::before,
@@ -4288,7 +4291,8 @@ input[type="radio"] {
 
 input[type="checkbox"]:hover, input[type="radio"]:hover {
 	box-shadow:inset 0 0 0 1px var(--checkbox-focused-shadow);
-	border-color:var(--checkbox-active-bg);
+	background-color:var(--checkbox-unchecked-bg-hover);
+	border-color:var(--checkbox-unchecked-shadow-hover);
 }
 
 
@@ -5246,19 +5250,22 @@ background-color:var(--highlight-background-color);
 }
 
 .visualmode-contrast body {
+	--checkbox-unchecked-bg-hover:var(--highlight-text-background-color);
+	--checkbox-unchecked-shadow-hover:var(--highlight-background-color);
 	--checkbox-active-bg:var(--highlight-background-color);
 	--checkbox-checked-bg:var(--highlight-background-color);
-	--checkbox-checked-bg-hover:var(--checkbox-checked-text);
+	--checkbox-checked-bg-hover:var(--canvas-text-background-color);
 	--checkbox-checked-shadow:var(--checkbox-checked-bg);
-	--checkbox-checked-shadow-hover:var(--checkbox-checked-bg);
+	--checkbox-checked-shadow-hover:var(--checkbox-checked-bg-hover);
 	--checkbox-checked-text:var(--highlight-foreground-color);
-	--checkbox-checked-text-hover:var(--checkbox-checked-bg);
+	--checkbox-checked-text-hover:var(--canvas-background-color);
 }
 
 
 .visualmode-contrast body {
 	--checkbox-unchecked-shadow:rgb(var(--canvas-text-background-color-rgb));
 }
+
 
 .visualmode-contrast input[type="checkbox"]:checked, .visualmode-contrast input[type="radio"]:checked,
 .visualmode-contrast input[type="checkbox"]:indeterminate {
@@ -5274,7 +5281,6 @@ background-color:var(--highlight-background-color);
 .visualmode-contrast input[type="checkbox"]:indeterminate:active {
   box-shadow:inset 0 0 0 1px var(--checkbox-focused-shadow)!important;
 }
-
 
 .visualmode-contrast .is-alert .cpe-banner-notification__icon{
 	background-color:var(--hyperlink-background-color);
