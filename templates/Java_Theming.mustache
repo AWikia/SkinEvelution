@@ -41,17 +41,17 @@ window.MW18highContrast = 4.50;
 ** First item of a subarray should be the visualcolor class name to be used.
 ** Second item should be the narrative name done in Yorkbook Digital Professional (title) 
 ** Third item should be an arry of three items with material icons to be used
-**** First item should be the icon for the Standard Visual Mode
-**** Second item should be the icon for the Lite Visual Mode
-**** Third item should be the icon for the Contrast Visual Mode
+**** First item should be the icon for the 3D Visual Mode
+**** Second item should be the icon for the Standard Visual Mode
+**** Third item should be the icon for the Lite Visual Mode
+**** Fourth item should be the icon for the Contrast Visual Mode
 **
 */
 
 var visualStyles = [
-					['general', '{{msg-evelution-style-general}}', ['computer', 'smartphone','monochrome_photos']],
-					['basic', '{{msg-evelution-style-basic}}', ['home', 'inbox', 'invert_colors']],
-					['simple', '{{msg-evelution-style-simple}}', ['opacity', 'brush', 'filter_alt']],
-					['retro', '{{msg-evelution-color-retro}}', ['gradient', 'smart_toy', 'filter_b_and_w']]
+					['general', '{{msg-evelution-style-general}}', ['camera_enhance' ,'computer', 'smartphone','monochrome_photos']],
+					['basic', '{{msg-evelution-style-basic}}', ['memory', 'home', 'inbox', 'invert_colors']],
+					['simple', '{{msg-evelution-style-simple}}', ['speed', 'opacity', 'brush', 'filter_alt']],
 				    ];
 
 /*
@@ -537,9 +537,10 @@ function VisualStyleCompile() {
 	for (let i = 0; i < visualStyles.length; i++) {
 		str = 	'<li data-visual-style="' + visualStyles[i][0] + '" title="' + visualStyles[i][1] + '">' +
 					'<a onclick="VisualStyle(' + "'" + visualStyles[i][0]  + "'" + ')">' +
-						'<span class="cpe-icon material-icons standard-on">' + visualStyles[i][2][0] + '</span>' +
-						'<span class="cpe-icon material-icons lite-on">' + visualStyles[i][2][1] + '</span>' +
-						'<span class="cpe-icon material-icons contrast-on">' + visualStyles[i][2][2] + '</span>' +
+						'<span class="cpe-icon material-icons threeD-on">' + visualStyles[i][2][0] + '</span>' +
+						'<span class="cpe-icon material-icons standard-on">' + visualStyles[i][2][1] + '</span>' +
+						'<span class="cpe-icon material-icons lite-on">' + visualStyles[i][2][2] + '</span>' +
+						'<span class="cpe-icon material-icons contrast-on">' + visualStyles[i][2][3] + '</span>' +
 					'</a>' +
 				'</li>'
 		var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-styles > .base-visual-style");

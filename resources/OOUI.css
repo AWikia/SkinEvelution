@@ -147,6 +147,7 @@ body .mw-email-not-authenticated .oo-ui-labelWidget {
     overflow-wrap: break-word;
     overflow: hidden;
     border-radius:var(--border-radius);
+    box-shadow:var(--threeD-shadow);
     
 }
 
@@ -350,6 +351,7 @@ body .catlinks {
 	border:1px solid var(--inactive-text-background-color);
 	background-color:var(--canvas-secondary-background-color);
 	color:var(--canvas-text-secondary-background-color);
+    box-shadow:var(--threeD-shadow);
 	padding:4px;
 	margin-top:4px;
 	clear:both;
@@ -394,6 +396,7 @@ body figure[typeof~='mw:Audio/Frame'] > *:first-child > video {
 	border-color:var(--inactive-text-background-color);
 	background-color:var(--canvas-secondary-background-color);
 	color:var(--canvas-text-secondary-background-color);
+    box-shadow:var(--threeD-shadow);
 }
 
 body figure[typeof~='mw:Image/Thumb'], 
@@ -553,7 +556,14 @@ body .oo-ui-tool.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flagged
     border-width:2px;
     outline:1px solid transparent;
     outline-offset:0px;
-    box-shadow:none!important;
+    box-shadow:var(--threeD-shadow)!important;
+}
+
+body .oo-ui-buttonElement > .oo-ui-buttonElement-button:active,
+body .mw-ui-button:active,
+body .mw-ui-button:not(:disabled):active,
+body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-buttonElement-active > .oo-ui-buttonElement-button {
+    box-shadow:var(--threeD-shadow-active)!important;
 }
 
 body .oo-ui-tool.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive > .oo-ui-tool-link {
@@ -779,6 +789,8 @@ body .mw-ui-button:active {
     border-color:currentColor;
     background-color:var(--secondary-button-background-color);
     color:var(--secondary-button-foreground-color-hover); /* color:var(--secondary-button-foreground-color-hover); */ 
+    box-shadow:var(--threeD-shadow-active)!important;
+
 }
 
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled > .oo-ui-buttonElement-button:focus:not(:active),
@@ -907,6 +919,7 @@ body .oo-ui-popupToolGroup-tools {
 	color:rgb(var(--dropdown-text-color));
 	border-color:var(--dropdown-border-color);
 	border-radius:var(--border-radius);
+    box-shadow:var(--threeD-shadow);
 }
 
 body .oo-ui-menuSelectWidget,
@@ -914,7 +927,7 @@ body .oo-ui-popupWidget-popup {
 	background-color:rgba(var(--dropdown-background-color),var(--acrylic-opacity));
 	-webkit-backdrop-filter:var(--acrylic-filter);
 	backdrop-filter:var(--acrylic-filter);
-	box-shadow:0 2px 2px rgba(var(--canvas-foreground-color-rgb),0.2);
+	box-shadow:0 2px 2px rgba(var(--canvas-foreground-color-rgb),0.2), var(--threeD-shadow);
 }
 
 body .oo-ui-popupWidget {
@@ -943,6 +956,7 @@ body .toc {
 	border-color:var(--dropdown-border-color);
 	border-radius:var(--menu-border-radius);
 	padding:0;
+    box-shadow:var(--threeD-shadow);
 }
 
 body .toc h2 {
@@ -984,6 +998,7 @@ body .toc ul li a:hover {
 	background-color:var(--dropdown-hyperlink-background-color);
 	border-color:var(--dropdown-hyperlink-border-color);
     color: var(--dropdown-hyperlink-text-color);
+    box-shadow:var(--threeD-shadow);
 }
 
 
@@ -993,6 +1008,7 @@ body .toc ul li.selected a {
 	background-color:var(--dropdown-active-hyperlink-background-color);
 	border-color:var(--dropdown-active-hyperlink-border-color);
     color: var(--dropdown-active-hyperlink-text-color);
+    box-shadow:var(--threeD-shadow-active);
 }
 
 body .toc .module-toc li a:hover {
@@ -1061,6 +1077,7 @@ body .oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted,
 body .oo-ui-menuOptionWidget.oo-ui-widget-enabled.oo-ui-optionWidget-highlighted {
 	background-color:var(--dropdown-hyperlink-background-color);
 	color:var(--dropdown-hyperlink-text-color);
+	box-shadow:var(--threeD-shadow);
 }
 
 body .mw-rcfilters-ui-filterMenuHeaderWidget-header,
@@ -1121,11 +1138,13 @@ body .oo-ui-menuOptionWidget.oo-ui-optionWidget-selected,
 body .oo-ui-menuOptionWidget.oo-ui-widget-enabled.oo-ui-optionWidget-selected {
 	background-color:var(--dropdown-active-hyperlink-background-color);
 	color:var(--dropdown-active-hyperlink-text-color);
+	box-shadow:var(--threeD-shadow-active);
 }
 
 body .mw-rcfilters-ui-itemMenuOptionWidget.oo-ui-optionWidget-selected {
 	background-color:var(--dropdown-active-hyperlink-background-color);
 	color:var(--dropdown-active-hyperlink-text-color);
+	box-shadow:var(--threeD-shadow-active);
 }
 
 
@@ -1142,6 +1161,7 @@ body .oo-ui-menuOptionWidget.oo-ui-optionWidget-selected.oo-ui-menuOptionWidget.
 body .oo-ui-menuOptionWidget.oo-ui-optionWidget-pressed.oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted {
 	background-color:var(--dropdown-active-hyperlink-background-color);
 	color:var(--dropdown-active-hyperlink-text-color);
+	box-shadow:var(--threeD-shadow-active);
 }
 
 
@@ -1220,6 +1240,7 @@ body .oo-ui-tagItemWidget.oo-ui-widget-enabled .oo-ui-buttonElement-button:activ
 body .oo-ui-tagMultiselectWidget.oo-ui-widget-enabled.oo-ui-tagMultiselectWidget-outlined .mw-rcfilters-ui-tagItemWidget-selected.oo-ui-tagItemWidget.oo-ui-widget-enabled {
 	background-color:var(--hyperlink-fadeout-color);
 	border-color:var(--hyperlink-background-color);
+	box-shadow:var(--threeD-shadow-active);
 }
 
 body .oo-ui-buttonElement-frameless.oo-ui-widget-enabled > .oo-ui-buttonElement-button:focus {
@@ -1284,7 +1305,7 @@ body .mw-ui-input  {
     outline:0px;
     outline-offset:0px;
     box-sizing:border-box;
-    box-shadow:0 0 0 100vh rgba(var(--input-box-focus),0) inset;
+    box-shadow:var(--threeD-shadow-active), 0 0 0 100vh rgba(var(--input-box-focus),0) inset;
     margin:1px;
 }
 
@@ -1403,7 +1424,7 @@ body .mw-widget-dateInputWidget.oo-ui-widget-enabled .mw-widget-dateInputWidget-
 body .mw-ui-input:hover {
     background-color:var(--input-box-color);
     border-color:var(--input-box-solid);
-    box-shadow:0 0 0 100vh rgba(var(--input-box-focus),0) inset;
+    box-shadow:var(--threeD-shadow-active), 0 0 0 100vh rgba(var(--input-box-focus),0) inset;
 }
 
 body .oo-ui-textInputWidget.oo-ui-widget-enabled .oo-ui-inputWidget-input:focus,
@@ -1413,7 +1434,7 @@ body .mw-widget-dateInputWidget.oo-ui-widget-enabled .mw-widget-dateInputWidget-
 body .mw-ui-input:focus {
     background-color:var(--input-box-focus);
     border-color:var(--input-box-solid);
-    box-shadow:0 0 0 100vh rgba(var(--input-box-focus),0.3) inset;
+    box-shadow:var(--threeD-shadow-active), 0 0 0 100vh rgba(var(--input-box-focus),0.3) inset;
 }
 
 /* Select Boxes */
@@ -1446,7 +1467,7 @@ body .oo-ui-dropdownWidget.oo-ui-widget-disabled .oo-ui-dropdownWidget-handle {
     outline:0px;
     outline-offset:0px;
     box-sizing:border-box;
-    box-shadow:0 0 0 100vh rgba(var(--input-box-focus),0) inset;
+    box-shadow:var(--threeD-shadow-active), 0 0 0 100vh rgba(var(--input-box-focus),0) inset;
     margin:1px;
     padding:5px 11px;
 }
@@ -1458,12 +1479,12 @@ body .oo-ui-dropdownWidget.oo-ui-widget-enabled .oo-ui-dropdownWidget-handle:hov
     background-color:var(--input-box-color);
     border-color:var(--input-box-solid);
     color:var(--canvas-text-background-color);
-    box-shadow:0 0 0 100vh rgba(var(--input-box-focus),0) inset;
+    box-shadow:var(--threeD-shadow-active), 0 0 0 100vh rgba(var(--input-box-focus),0) inset;
 }
 
 body .oo-ui-dropdownWidget.oo-ui-widget-enabled .oo-ui-dropdownWidget-handle:focus {
     background-color:var(--input-box-focus);
-    box-shadow:0 0 0 100vh rgba(var(--input-box-focus),0.3) inset;
+    box-shadow:var(--threeD-shadow-active), 0 0 0 100vh rgba(var(--input-box-focus),0.3) inset;
     border-color:var(--input-box-solid);
     color:var(--canvas-text-background-color);
 }
@@ -1488,12 +1509,14 @@ body .oo-ui-processDialog-content .oo-ui-window-head, .oo-ui-processDialog-conte
 body .oo-ui-outlineOptionWidget.oo-ui-optionWidget-highlighted {
     color:var(--canvas-text-background-color-hover);
     background-color:rgba(var(--canvas-text-background-color-rgb),0.2);
+	box-shadow:var(--threeD-shadow);
 }
 
 body .oo-ui-outlineOptionWidget.oo-ui-optionWidget-pressed,
 body .oo-ui-outlineOptionWidget.oo-ui-optionWidget-selected {
 	background-color:var(--hyperlink-fadeout-color);
 	color:var(--hyperlink-background-color);
+	box-shadow:var(--threeD-shadow-active);
 }
 
 body .oo-ui-processDialog-actions-safe .oo-ui-widget-enabled.oo-ui-iconElement:not(.oo-ui-labelElement) > .oo-ui-buttonElement-button {
@@ -1573,7 +1596,7 @@ body .oo-ui-tool.oo-ui-widget-enabled > .oo-ui-tool-link:hover {
 body .oo-ui-popupToolGroup-tools .oo-ui-tool.oo-ui-widget-enabled > .oo-ui-tool-link:hover {
 	background-color:var(--dropdown-hyperlink-background-color);
 	color:var(--dropdown-hyperlink-text-color);
-
+	box-shadow:var(--threeD-shadow);
 }
 
 
@@ -1585,6 +1608,7 @@ body .oo-ui-tool.oo-ui-widget-enabled.oo-ui-tool-active > .oo-ui-tool-link,
 body .oo-ui-tool.oo-ui-widget-enabled.oo-ui-popupToolGroup-active > .oo-ui-tool-link {
 	background-color:var(--hyperlink-fadeout-color);
 	color:var(--hyperlink-background-color);
+	box-shadow:var(--threeD-shadow-active);
 }
 
 body .oo-ui-listToolGroup-tools .oo-ui-tool.oo-ui-widget-enabled > .oo-ui-tool-link:active, 
@@ -1592,6 +1616,7 @@ body .oo-ui-listToolGroup-tools .oo-ui-tool.oo-ui-widget-enabled.oo-ui-tool-acti
 body .oo-ui-listToolGroup-tools .oo-ui-tool.oo-ui-widget-enabled.oo-ui-popupToolGroup-active > .oo-ui-tool-link {
 	background-color:var(--dropdown-active-hyperlink-background-color);
 	color:var(--dropdown-active-hyperlink-text-color);
+	box-shadow:var(--threeD-shadow-active);
 }
 
 
@@ -1636,6 +1661,7 @@ body .wikiEditor-ui-toolbar .booklet > .index > :hover {
 body .wikiEditor-ui-toolbar .booklet > .index > .current {
 	background-color:var(--hyperlink-fadeout-color);
 	color:var(--hyperlink-background-color);
+	box-shadow:var(--threeD-shadow-active);
 }
 
 /* Frameless Tabs */
@@ -1817,7 +1843,7 @@ body .oo-ui-toggleSwitchWidget {
 	background-color:var(--checkbox-unchecked-bg);
 	border-width:2px;
 	border-color:var(--checkbox-unchecked-shadow);
-	box-shadow:none!important;
+	box-shadow:var(--threeD-shadow)!important;
 	transition:transform,background-color,border-color,color;
 	transition-duration:.3s;
 	transition-timing-function:var(--transitioner);
@@ -1826,7 +1852,8 @@ body .oo-ui-toggleSwitchWidget {
 body .oo-ui-toggleSwitchWidget.oo-ui-widget-enabled .oo-ui-toggleSwitchWidget-grip {
 	background-color:var(--checkbox-unchecked-bg);
 	border-width:2px;
-	border-color:var(--checkbox-unchecked-shadow)
+	border-color:var(--checkbox-unchecked-shadow);
+	box-shadow:none!important;
 }
 
 body .oo-ui-toggleSwitchWidget.oo-ui-widget-enabled:focus,
@@ -1838,7 +1865,7 @@ body .oo-ui-toggleSwitchWidget.oo-ui-widget-enabled:focus .oo-ui-toggleSwitchWid
 body .oo-ui-toggleSwitchWidget.oo-ui-widget-enabled:hover,
 body .oo-ui-toggleSwitchWidget.oo-ui-widget-enabled:hover .oo-ui-toggleSwitchWidget-grip {
 	background-color:var(--checkbox-unchecked-bg-hover);
-	border-color:var(--checkbox-unchecked-shadow-hover)
+	border-color:var(--checkbox-unchecked-shadow-hover);
 	
 }
 
@@ -1850,8 +1877,13 @@ body .oo-ui-toggleSwitchWidget.oo-ui-widget-enabled:active:focus .oo-ui-toggleSw
   border-color:var(--checkbox-active-bg);
   background-color:var(--checkbox-active-bg);
   color:var(--checkbox-active-bg);
-  box-shadow:none;
 }
+
+body .oo-ui-toggleSwitchWidget.oo-ui-widget-enabled:active,
+body .oo-ui-toggleSwitchWidget.oo-ui-widget-enabled:active:focus {
+  box-shadow:var(--threeD-shadow-active)!important;
+}
+
 
 
 body .oo-ui-toggleSwitchWidget.oo-ui-widget-enabled.oo-ui-toggleWidget-on {
@@ -1869,10 +1901,12 @@ body .oo-ui-toggleSwitchWidget.oo-ui-widget-enabled.oo-ui-toggleWidget-on .oo-ui
 
 body .oo-ui-toggleSwitchWidget.oo-ui-widget-enabled.oo-ui-toggleWidget-on:focus {
 	border-color:var(--checkbox-checked-shadow);
+	
 }
 
 body .oo-ui-toggleSwitchWidget.oo-ui-widget-enabled.oo-ui-toggleWidget-on:focus .oo-ui-toggleSwitchWidget-grip {
 	border-color:var(--checkbox-checked-text);
+	box-shadow:none!important;
 }
 
 
@@ -1897,7 +1931,11 @@ body .oo-ui-toggleSwitchWidget.oo-ui-widget-enabled.oo-ui-toggleWidget-on:active
   border-color:var(--checkbox-active-bg);
   background-color:var(--checkbox-active-bg);
   color:var(--checkbox-active-bg);
-  box-shadow:none;
+}
+
+body .oo-ui-toggleSwitchWidget.oo-ui-widget-enabled.oo-ui-toggleWidget-on:active,
+body .oo-ui-toggleSwitchWidget.oo-ui-widget-enabled.oo-ui-toggleWidget-on:active:focus {
+  box-shadow:var(--threeD-shadow-active)!important;
 }
 
 
@@ -2254,11 +2292,13 @@ body .mw-widget-calendarWidget-day {
 body .mw-widget-calendarWidget-item:hover {
 	background-color:var(--highlight-background-color);
 	color:var(--highlight-foreground-color);
+	box-shadow:var(--threeD-shadow);
 }
 
 body .mw-widget-calendarWidget-item-selected {
 	background-color:var(--highlight-background-color-hover);
 	color:var(--highlight-foreground-color-inverted);
+	box-shadow:var(--threeD-shadow-active);
 }
 
 body .mw-widget-calendarWidget-day-heading {
@@ -2281,12 +2321,14 @@ body .mw-widgets-datetime-calendarWidget-grid .mw-widgets-datetime-calendarWidge
 	background-color:var(--highlight-background-color);
 	border-color:var(--highlight-background-color);
 	color:var(--highlight-foreground-color);
+	box-shadow:var(--threeD-shadow);
 }
 
 body .mw-widgets-datetime-calendarWidget-grid .mw-widgets-datetime-calendarWidget-cell.mw-widgets-datetime-calendarWidget-selected .oo-ui-buttonElement-button {
 	background-color:var(--highlight-background-color-hover);
 	border-color:var(--highlight-background-color-hover);
 	color:var(--highlight-foreground-color-inverted);
+	box-shadow:var(--threeD-shadow-active);
 }
 
 body .mw-widgets-datetime-calendarWidget-grid .mw-widgets-datetime-calendarWidget-cell.mw-widgets-datetime-calendarWidget-selected .oo-ui-buttonElement-button .oo-ui-labelElement-label {
@@ -2432,12 +2474,14 @@ body .mw-echo-ui-notificationsInboxWidget-toolbarWrapper {
 body .mw-echo-ui-pageNotificationsOptionWidget.oo-ui-optionWidget-selected {
 	background-color:var(--dropdown-active-hyperlink-background-color);
 	color:var(--dropdown-active-hyperlink-text-color);
+	box-shadow:var(--threeD-shadow-active);
 }
 
 body .mw-echo-ui-pageNotificationsOptionWidget.oo-ui-optionWidget-selected.mw-echo-ui-pageNotificationsOptionWidget.oo-ui-optionWidget-highlighted, 
 body .mw-echo-ui-pageNotificationsOptionWidget.oo-ui-optionWidget-pressed.mw-echo-ui-pageNotificationsOptionWidget.oo-ui-optionWidget-highlighted {
 	background-color:var(--dropdown-active-hyperlink-background-color);
 	color:var(--dropdown-active-hyperlink-text-color);
+	box-shadow:var(--threeD-shadow-active);
 }
 
 body .oo-ui-optionWidget-selected .mw-echo-ui-pageNotificationsOptionWidget-label-count {
@@ -2514,6 +2558,7 @@ body .mw-echo-ui-notificationItemWidget {
 body .mw-echo-ui-notificationItemWidget:hover {
 	background-color:var(--dropdown-hyperlink-background-color);
 	color:var(--dropdown-hyperlink-text-color);
+	box-shadow:var(--threeD-shadow);
 }
 
 
@@ -2534,6 +2579,7 @@ body .mw-echo-ui-notificationItemWidget-unread  {
 
 body .mw-echo-ui-notificationItemWidget-unread:hover {
 	background-color:var(--dropdown-hyperlink-background-color);
+	box-shadow:var(--threeD-shadow);
 }
 
 body .mw-echo-ui-notificationsListWidget:not(:hover) a, 

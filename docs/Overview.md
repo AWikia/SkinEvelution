@@ -36,18 +36,18 @@ Eight DCM Modes Exist along with two types (Standard and Reversi):
 
 
 ### Visual Modes
-Three Visual Modes exist:
+Four Visual Modes exist:
+- 3D has neumorphism-like cues into various parts of the skin and replaces the former Retro Visual Style 
 - Standard is the normal ones
 - Lite has no transparency effects in it
 - High Contrast has high emphasis on people with disabilities and disables certain effects such as blurred shadows and hover states of generated colors
 
 ### Visual Styles
-Five Visual Styles exist:
+Four Visual Styles exist:
 - Standard is the normal ones
 - General has styling more akin to Mobile Devices
 - Basic has lesser blurred shadows and focuses on a less demanding layout
-- Simple has funner-styled containers (i.e. Dropdowns are styled soley using Secondary Accent color)
-- Classic has styling dating back to Windows 95 - 2000
+- Simple has funner-styled containers (i.e. Dropdowns are styled soley using Secondary Accent color when Accent Color is enabled)
 
 ### Visual Colors
 Nine different Visual Colors exist:
@@ -242,17 +242,17 @@ Evelution comes with its own theming system, the Luna theming. It consists of th
 - Luna Lavccent is an additional color that will replace the Neutral Color when enabled.
 
 Luna Lovit will display as a fallback Solid Color when:
-- Running a visual mode other than Standard
+- Running a visual mode other than Standard or 3D
 - System's Reduced transparcney is enabled
-- GPUs level is lower than 4
+- GPUs level is lower than 3
 - App workspace is not focused
 - App runs on a low-end skin (i.e. Tunic) or under Ivilution
 - App runs on a browser without support of ``backdrop-filter``
 
 Luna Levit will display as a fallback Solid Color when:
-- Running a visual mode other than Standard
+- Running a visual mode other than Standard or 3D
 - System's Reduced transparcney is enabled
-- GPUs level is lower than 2
+- GPUs level is lower than 3
 - App workspace is not focused or runs fullscreen
 - App runs on a low-end skin (i.e. Tunic) or under Ivilution
 - App runs on a Servelution version lower than 3.2.0
