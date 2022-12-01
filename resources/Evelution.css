@@ -505,36 +505,36 @@ container > .main {
 
 
 /* Left Aligned Taskbar */
-	.evelution-taskbar.left-links,
-	.evelution-taskbar.v-taskbar {
+	body.has-left-aligned-taskbar .evelution-taskbar,
+	body.has-disabled-dynamic-taskbar-widgets .evelution-taskbar {
 		--explore-link-size:var(--toolbar-link-size);
 	}
 
 
-	.evelution-taskbar.left-links .upper-links .is-widget-style,
-	.evelution-taskbar.v-taskbar .upper-links .is-widget-style {
+	body.has-left-aligned-taskbar .evelution-taskbar .upper-links .is-widget-style,
+	body.has-disabled-dynamic-taskbar-widgets .evelution-taskbar .upper-links .is-widget-style {
 		position:relative;
 		left:0;
 	}
 
-	.evelution-taskbar.left-links .upper-links {
+	body.has-left-aligned-taskbar .evelution-taskbar .upper-links {
 		justify-content:flex-start;
 	}
 
-	.evelution-taskbar.left-links .upper-links,
-	.evelution-taskbar.v-taskbar .upper-links {
+	body.has-left-aligned-taskbar .evelution-taskbar .upper-links,
+	body.has-disabled-dynamic-taskbar-widgets .evelution-taskbar .upper-links {
 		padding-left:0;
 	}
 
-	.evelution-taskbar.v-taskbar .upper-links .is-widget-style .widget-text {
+	body.has-disabled-dynamic-taskbar-widgets .evelution-taskbar .upper-links .is-widget-style .widget-text {
 		display:none;
 	}
 
-	.evelution-taskbar.left-links .upper-links .is-widget-style {
+	body.has-left-aligned-taskbar .evelution-taskbar .upper-links .is-widget-style {
 		overflow:visible;
 	}
 	
-	.evelution-taskbar.left-links .upper-links .is-widget-style .widget-text {
+	body.has-left-aligned-taskbar .evelution-taskbar .upper-links .is-widget-style .widget-text {
 		position: absolute;
 		top: 0;
 		width: calc(var(--explore-link-size) - 2px);
@@ -542,8 +542,8 @@ container > .main {
 		margin-left:0;
    	}
 
-	.evelution-taskbar.left-links .upper-links .is-widget-style .widget-text .upper-text,
-	.evelution-taskbar.left-links .upper-links .is-widget-style .widget-text .bottom-text {
+	body.has-left-aligned-taskbar .evelution-taskbar .upper-links .is-widget-style .widget-text .upper-text,
+	body.has-left-aligned-taskbar .evelution-taskbar .upper-links .is-widget-style .widget-text .bottom-text {
 		position: absolute;
 		top: 0;
 		border-radius: 500px;
@@ -557,25 +557,25 @@ container > .main {
 		text-align: center;
 	}
 	
-	.evelution-taskbar.left-links .upper-links .is-widget-style .link .widget-text .bottom-text {
+	body.has-left-aligned-taskbar .evelution-taskbar .upper-links .is-widget-style .link .widget-text .bottom-text {
 		top:auto;
 		bottom:0;
 	}
 
-	.evelution-taskbar.left-links .upper-links .is-widget-style .link,
-	.evelution-taskbar.v-taskbar .upper-links .is-widget-style .link {
+	body.has-left-aligned-taskbar .evelution-taskbar .upper-links .is-widget-style .link,
+	body.has-disabled-dynamic-taskbar-widgets .evelution-taskbar .upper-links .is-widget-style .link {
 		justify-content:center;
 		padding-left:0;
 		padding-right:0;
 	}
 
-	.evelution-taskbar.left-links .upper-links .is-widget-style .link[cpe-tooltip-position="top"][cpe-tooltip]:after,
-	.evelution-taskbar.v-taskbar .upper-links .is-widget-style .link[cpe-tooltip-position="top"][cpe-tooltip]:after {
+	body.has-left-aligned-taskbar .evelution-taskbar .upper-links .is-widget-style .link[cpe-tooltip-position="top"][cpe-tooltip]:after,
+	body.has-disabled-dynamic-taskbar-widgets .evelution-taskbar .upper-links .is-widget-style .link[cpe-tooltip-position="top"][cpe-tooltip]:after {
 		left:auto;
 	}
 
-	.evelution-taskbar.left-links .upper-links .is-widget-style .cpe-dropdown__content.is-left-aligned,
-	.evelution-taskbar.v-taskbar .upper-links .is-widget-style .cpe-dropdown__content.is-left-aligned {
+	body.has-left-aligned-taskbar .evelution-taskbar .upper-links .is-widget-style .cpe-dropdown__content.is-left-aligned,
+	body.has-disabled-dynamic-taskbar-widgets .evelution-taskbar .upper-links .is-widget-style .cpe-dropdown__content.is-left-aligned {
 		left:calc(0px - var(--toolbar-link-size) - var(--toolbar-link-size));
 	}
 
@@ -595,11 +595,11 @@ container > .main {
 }
 
 
-	.evelution-taskbar.anon-taskbar .anon-off,
-	.evelution-taskbar.v-taskbar .anon-off,
-	.evelution-taskbar.v-taskbar .dyna-on,
-	.evelution-taskbar:not(.v-taskbar) .v-on,
-	.evelution-taskbar:not(.anon-taskbar) .anon-on {
+	body.user-anon .evelution-taskbar .anon-off,
+	body.has-disabled-dynamic-taskbar-widgets .evelution-taskbar .anon-off,
+	body.has-disabled-dynamic-taskbar-widgets .evelution-taskbar .dyna-on,
+	body:not(.has-disabled-dynamic-taskbar-widgets) .evelution-taskbar .v-on,
+	body:not(.user-anon) .evelution-taskbar .anon-on {
 		display:none!important;
 	}
 
@@ -2570,86 +2570,86 @@ margin-left:1px;
 		margin-left: calc(0px - var(--module-size));
 	}
 	
-	.action-view:not(.ns--1):not(.ns-8):not(.mainpage) container:not(.no-rail) .evelution-page-header-notices,
-	.action-view:not(.ns--1):not(.ns-8):not(.mainpage) container:not(.no-rail) .evelution-page-header-title {
+	.action-view:not(.ns--1):not(.ns-8):not(.mainpage):not(.no-rail) .evelution-page-header-notices,
+	.action-view:not(.ns--1):not(.ns-8):not(.mainpage):not(.no-rail) .evelution-page-header-title {
 		padding-right:55px;
 	}
 
 
-	.action-view:not(.ns--1):not(.ns-8):not(.mainpage) container:not(.no-rail) .evelution-article-actions .right-separator {
+	.action-view:not(.ns--1):not(.ns-8):not(.mainpage):not(.no-rail) .evelution-article-actions .right-separator {
 		flex-basis:55px;
 	}	
 
 	
 	@media only screen and (min-height:480px) {
-		[sticky-rail="1"] .evelution-rail-wrapper .evelution-sticky-modules {
+		.has-sticky-rail .evelution-rail-wrapper .evelution-sticky-modules {
 			position:-webkit-sticky;
 			position:sticky;
 			top:calc(var(--minibar-size) + 15px);
 			transition:top 400ms var(--transitioner);
 		}
-		[sticky-rail="1"] .evelution-rail-wrapper  .evelution-sticky-modules .evelution-module-content {
+		.has-sticky-rail .evelution-rail-wrapper  .evelution-sticky-modules .evelution-module-content {
 			max-height:50px;
 			overflow-y:auto;
 		}
 
 		@media only screen and (min-height:530px) {
-			[sticky-rail="1"] .evelution-rail-wrapper .evelution-sticky-modules .evelution-module-content {
+			.has-sticky-rail .evelution-rail-wrapper .evelution-sticky-modules .evelution-module-content {
 				max-height:90px;
 			}
 		}
 		@media only screen and (min-height:580px) {
-			[sticky-rail="1"] .evelution-rail-wrapper .evelution-sticky-modules .evelution-module-content {
+			.has-sticky-rail .evelution-rail-wrapper .evelution-sticky-modules .evelution-module-content {
 				max-height:115px;
 			}
 		}
 		@media only screen and (min-height:630px) {
-			[sticky-rail="1"] .evelution-rail-wrapper .evelution-sticky-modules .evelution-module-content {
+			.has-sticky-rail .evelution-rail-wrapper .evelution-sticky-modules .evelution-module-content {
 				max-height:140px;
 			}
 		}
 		@media only screen and (min-height:680px) {
-			[sticky-rail="1"] .evelution-rail-wrapper .evelution-sticky-modules .evelution-module-content {
+			.has-sticky-rail .evelution-rail-wrapper .evelution-sticky-modules .evelution-module-content {
 				max-height:165px;
 			}
 		}
 		@media only screen and (min-height:730px) {
-			[sticky-rail="1"] .evelution-rail-wrapper .evelution-sticky-modules .evelution-module-content {
+			.has-sticky-rail .evelution-rail-wrapper .evelution-sticky-modules .evelution-module-content {
 				max-height:190px;
 			}
 		}
 		@media only screen and (min-height:780px) {
-			[sticky-rail="1"] .evelution-rail-wrapper .evelution-sticky-modules .evelution-module-content {
+			.has-sticky-rail .evelution-rail-wrapper .evelution-sticky-modules .evelution-module-content {
 				max-height:215px;
 			}
 		}
 		@media only screen and (min-height:830px) {
-			[sticky-rail="1"] .evelution-rail-wrapper .evelution-sticky-modules .evelution-module-content {
+			.has-sticky-rail .evelution-rail-wrapper .evelution-sticky-modules .evelution-module-content {
 				max-height:240px;
 			}
 		}
 		@media only screen and (min-height:880px) {
-			[sticky-rail="1"] .evelution-rail-wrapper .evelution-sticky-modules .evelution-module-content {
+			.has-sticky-rail .evelution-rail-wrapper .evelution-sticky-modules .evelution-module-content {
 				max-height:265px;
 			}
 		}
 		@media only screen and (min-height:930px) {
-			[sticky-rail="1"] .evelution-rail-wrapper .evelution-sticky-modules .evelution-module-content {
+			.has-sticky-rail .evelution-rail-wrapper .evelution-sticky-modules .evelution-module-content {
 				max-height:290px;
 			}
 		}
 		@media only screen and (min-height:980px) {
-			[sticky-rail="1"] .evelution-rail-wrapper .evelution-sticky-modules .evelution-module-content {
+			.has-sticky-rail .evelution-rail-wrapper .evelution-sticky-modules .evelution-module-content {
 				max-height:315px;
 			}
 		}
 		@media only screen and (min-height:1030px) {
-			[sticky-rail="1"] .evelution-rail-wrapper .evelution-sticky-modules .evelution-module-content {
+			.has-sticky-rail .evelution-rail-wrapper .evelution-sticky-modules .evelution-module-content {
 				max-height:340px;
 			}
 		}
 		@media only screen and (min-height:1080px) {
-			[sticky-rail="1"] .evelution-rail-wrapper .evelution-sticky-modules .evelution-module-content {
+			.has-sticky-rail .evelution-rail-wrapper .evelution-sticky-modules .evelution-module-content {
 				max-height:365px;
 			}
 		}
@@ -2657,8 +2657,8 @@ margin-left:1px;
 }
 
 
- .action-view:not(.ns--1):not(.ns-8):not(.mainpage) container:not(.no-rail) .evelution-rail-wrapper,
- .action-view:not(.ns--1):not(.ns-8):not(.mainpage) container:not(.no-rail) .evelution-page-header .toggle-rail-button {
+ .action-view:not(.ns--1):not(.ns-8):not(.mainpage):not(.no-rail) .evelution-rail-wrapper,
+ .action-view:not(.ns--1):not(.ns-8):not(.mainpage):not(.no-rail) .evelution-page-header .toggle-rail-button {
 	display:flex;
 }
 
@@ -2666,7 +2666,7 @@ body:not(.action-view) .evelution-wrapper .evelution-article-wrapper,
 .ns--1 .evelution-wrapper .evelution-article-wrapper,
 .ns-8 .evelution-wrapper .evelution-article-wrapper,
 .mainpage .evelution-wrapper .evelution-article-wrapper,
-container.no-rail .evelution-wrapper .evelution-article-wrapper {
+body.no-rail .evelution-wrapper .evelution-article-wrapper {
 	grid-template-columns:100%;
 }
 

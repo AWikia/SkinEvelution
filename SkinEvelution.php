@@ -1,6 +1,7 @@
 <?php
  use MediaWiki\User\UserOptionsLookup;
  use MediaWiki\MediaWikiServices;
+ use MediaWiki\Hook\OutputPageBodyAttributesHook;
 
 /* Code From Universal Omega's Cosmos Skin */
 class EvelutionSocialProfile {
@@ -27,6 +28,50 @@ class EvelutionSocialProfile {
 
 		return $user;
 	}
+}
+
+class EvelutionHooks implements OutputPageBodyAttributesHook {
+
+	/**
+	 * @see https://www.mediawiki.org/wiki/Special:MyLanguage/Manual:Hooks/OutputPageBodyAttributes
+	 * @param OutputPage $out
+	 * @param Skin $skin
+	 * @param array &$bodyAttrs
+	 */
+	public function onOutputPageBodyAttributes( $out, $skin, &$bodyAttrs ): void {
+		// Disabled Right Rail
+		$blacklistedPages = $out->getConfig()->get( 'EvelutionDisableRightRailFromSpecificPages' );
+		if ( ($out->getConfig()->get( 'EvelutionDisableRightRail' ) || ($out->getTitle()->isMainPage()) || in_array( $out->getTitle()->getFullText(), $blacklistedPages ) ) ) {
+			$bodyAttrs['class'] .= ' no-rail';
+		}
+		// Forced Full Width
+		if ( $out->getConfig()->get ( 'EvelutionForceFullWidth' ) ) {
+			$bodyAttrs['class'] .= ' forced-full';
+		}
+		// Sticky Rail
+		if ( $out->getConfig()->get( 'EvelutionStickyRail' ) ) {
+			$bodyAttrs['class'] .= ' has-sticky-rail';
+		}
+		// Disabled Color Management
+		if ( $out->getConfig()->get( 'EvelutionDisableColorManagement' ) ) {
+			$bodyAttrs['class'] .= ' no-color-management';
+		}
+		// Left Aligned Taskbar
+		if ( $out->getConfig()->get( 'EvelutionLeftPersonalLinks' ) ) {
+			$bodyAttrs['class'] .= ' has-left-aligned-taskbar';
+		}
+		// Disabled Dynamic Widgets
+		if ( $out->getConfig()->get ( 'EvelutionDisableDynamicWidgets' ) ) {
+			$bodyAttrs['class'] .= ' has-disabled-dynamic-taskbar-widgets';
+		}
+		// User State
+		if ( $skin->getUser()->isRegistered() ) {
+			$bodyAttrs['class'] .= ' user-logged';
+		} else {
+			$bodyAttrs['class'] .= ' user-anon';
+		}
+	}
+
 }
 
 class SkinEvelution extends SkinMustache {
@@ -105,7 +150,6 @@ class SkinEvelution extends SkinMustache {
 			$data["has-avatar"] = false;
 		}
 		$data["html-avatar"] = $avatarElement;
-		$data["html-sticky-rail"] = $this->getConfig()->get( 'EvelutionStickyRail' );
 		$data["has-left-links"] = $this->getConfig()->get( 'EvelutionLeftPersonalLinks' );
 		$blacklistedPages = $this->getConfig()->get( 'EvelutionDisableRightRailFromSpecificPages' );
 		$data["has-disabled-rail"] = ($this->getConfig()->get( 'EvelutionDisableRightRail' ) || ($this->getOutput()->getTitle()->isMainPage()) || in_array( $this->getOutput()->getTitle()->getFullText(), $blacklistedPages ) );

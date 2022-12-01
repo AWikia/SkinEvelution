@@ -1,6 +1,6 @@
 {
   "name": "Evelution",
-  "version": "125.2.0",
+  "version": "126.0.0",
   "namemsg": "skinname-evelution",
   "descriptionmsg": "evelution-skin-desc",
   "url": "https://www.mediawiki.org/wiki/Skin:Evelution",
@@ -18,7 +18,20 @@
   "manifest_version": 2,
 	"AutoloadClasses": {
 		"EvelutionSocialProfile": "SkinEvelution.php",
+		"EvelutionHooks": "SkinEvelution.php",
 		"SkinEvelution": "SkinEvelution.php"
+	},
+
+
+	"HookHandlers": {
+		"main": {
+			"class": "EvelutionHooks"
+		}
+	},
+	"Hooks": {
+		"OutputPageBodyAttributes": {
+			"handler": "main"
+		}
 	},
 	"config": {
 		"EvelutionLeftPersonalLinks": {

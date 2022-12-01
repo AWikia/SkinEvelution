@@ -328,7 +328,7 @@ function SupportsColorContrast() {
 }
 
 function DisabledColorManagement() {
-	return ( (ForcedColors()) || (document.querySelector("container.no-color-management") ) ||  (window.MW18ActiveColors === 'nocolormanagement') )
+	return ( (ForcedColors()) || (document.querySelector("body.no-color-management") ) ||  (window.MW18ActiveColors === 'nocolormanagement') )
 }
 
 function ForcedColors() {
@@ -558,7 +558,7 @@ function VisualStyleCompile() {
 function VisualColorCompile() {
 // Puts new options
 /* Visual Colors */
-	if (! (document.querySelector("container.no-color-management") ) ) {
+	if (! (document.querySelector("body.no-color-management") ) ) {
 		var length = visualColorNames.length
 		for (let i = 0; i < visualColors.length; i++) {
 			visualColorNames[i+length] =  visualColors[i][0];
