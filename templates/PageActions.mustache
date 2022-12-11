@@ -11,7 +11,6 @@
 			<div class="cpe-dropdown__content cpe-site-setings is-left-aligned is-not-scrollable">					
 				 <ul class="cpe-list">
 					<li class="cpe-floating-button-group is-vertical">
-					{{^has-forced-full-width}}
 						<button class="cpe-floating-button is-unaccented toggle-size page-side-tool content-size-toggle" onclick="ToggleWidth()" cpe-tooltip="{{msg-evelution-togglesize}}">
 							<span class="cpe-icon material-icons wide-off">
 								open_in_full
@@ -20,8 +19,7 @@
 								close_fullscreen
 							</span>
 						</button>
-					{{/has-forced-full-width}}
-						<button class="cpe-floating-button is-unaccented accent-toggle page-side-tool" onclick="ToggleAccent()" cpe-tooltip="{{msg-evelution-toggleaccent}}">
+						<button class="cpe-floating-button is-unaccented accent-toggle page-side-tool adjusts-in-large-screens-forced" onclick="ToggleAccent()" cpe-tooltip="{{msg-evelution-toggleaccent}}">
 							<span class="cpe-icon material-icons">
 								<span class="accented-off">
 									invert_colors
@@ -46,7 +44,6 @@
 			</div>
 		</div>
 		<!-- Settings for Large Screens -->
-		{{^has-forced-full-width}}
 			<button class="cpe-floating-button is-unaccented toggle-size hides-in-small-screens adjusts-in-large-screens page-side-tool content-size-toggle" onclick="ToggleWidth()" cpe-tooltip="{{msg-evelution-togglesize}}">
 				<span class="cpe-icon material-icons wide-off">
 					open_in_full
@@ -55,8 +52,7 @@
 					close_fullscreen
 				</span>
 			</button>
-		{{/has-forced-full-width}}
-			<button class="cpe-floating-button is-unaccented accent-toggle hides-in-small-screens {{#has-forced-full-width}}adjusts-in-large-screens{{/has-forced-full-width}} page-side-tool" onclick="ToggleAccent()" cpe-tooltip="{{msg-evelution-toggleaccent}}">
+			<button class="cpe-floating-button is-unaccented accent-toggle hides-in-small-screens adjusts-in-large-screens-forced page-side-tool" onclick="ToggleAccent()" cpe-tooltip="{{msg-evelution-toggleaccent}}">
 				<span class="cpe-icon material-icons">
 					<span class="accented-off">
 						invert_colors

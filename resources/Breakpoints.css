@@ -531,6 +531,66 @@
 
 	}
 
+@media only screen and (min-width:1390px) {
+	.evelution-taskbar .search > .link {
+		display:none;
+	}
+
+	.evelution-taskbar .search.is-flipped .cpe-dropdown__content {
+		 pointer-events:all;
+		 bottom:0%;
+		 opacity:1;
+		--dropdown-scale:1;
+		animation:none;
+		-webkit-backdrop-filter:none;
+		backdrop-filter:none;
+		transition:padding-left 400ms var(--transitioner), padding-right 400ms var(--transitioner), transform 400ms var(--transitioner);
+		transform-origin:left;
+		background-color:transparent;
+		color:inherit;
+		border:0;
+		border-radius:0;
+		position:relative;
+		padding:0;
+		box-shadow:none!important;
+		left:auto; 
+		transition:none!important;
+ 	}
+ 	
+ 	.evelution-taskbar .search .cpe-dropdown__content .cpe-list>li {
+		padding:0 4.5px;
+		display:flex;
+		align-items:center;
+		justify-content:center;
+		height:var(--minibar-size);
+ 	}
+
+/* Search button should be without an accent color, per evelution design standards */
+	.has-accents .evelution-taskbar .search .cpe-dropdown__content .cpe-list>li .cpe-button {
+		--button-background-color: var(--luna-inactive-text-background-color);
+		--button-background-color-hover: var(--luna-inactive-text-background-color-hover);
+		--button-foreground-color: var(--luna-background-color);
+		--button-foreground-color-inverted: var(--luna-background-color);
+		--button-foreground-color-rgb:var(--luna-background-color-rgb);
+	}
+
+	.has-accents .search .cpe-dropdown__content .cpe-list .pageheader-search .cpe-input {
+		--input-box-color:var(--luna-background-color);
+		--input-box-text:var(--luna-text-background-color);
+		--input-box-border:currentColor;
+		--input-box-focus:var(--luna-inactive-text-background-color-rgb);
+		--input-box-solid:var(--luna-inactive-text-background-color);
+	}
+	
+	.evelution-taskbar .search:before,
+	.evelution-taskbar .search:after {
+		animation:none;
+		display:none;
+	}
+
+
+}
+
 
 /* XL */
 @media only screen and (min-width:1500px) /*and (max-width:1919px)*/ {
@@ -581,16 +641,17 @@
 	}
 
 	.evelution-header .local-navigation .cpe-dropdown__content {
-	 pointer-events:all;
-	 top:100%;
-	 opacity:1;
-	--dropdown-scale:1;
-	animation:none;
-	-webkit-backdrop-filter:var(--acrylic-filter);
-	backdrop-filter:var(--acrylic-filter);
-	transition:padding-left 400ms var(--transitioner), padding-right 400ms var(--transitioner), transform 400ms var(--transitioner);
-	transform-origin:left;
+		 pointer-events:all;
+		 top:100%;
+		 opacity:1;
+		--dropdown-scale:1;
+		animation:none;
+		-webkit-backdrop-filter:var(--acrylic-filter);
+		backdrop-filter:var(--acrylic-filter);
+		transition:padding-left 400ms var(--transitioner), padding-right 400ms var(--transitioner), transform 400ms var(--transitioner);
+		transform-origin:left;
 	}
+	
 	
 	 body:not(.has-left-nav) .evelution-header .local-navigation .cpe-dropdown__content {
 		padding-left:0;
@@ -624,6 +685,10 @@
 
 
 /* Content w/ header code end */
+
+	.pageheader-search .cpe-input {
+		width:225px
+	}
 
 
 }
@@ -673,6 +738,10 @@
 	.evelution-content .evelution-page-header-subtitle {
 		font-size:13px;
 	}
+	
+	.pageheader-search .cpe-input {
+		width:250px
+	}
 
 
 }
@@ -720,6 +789,10 @@
 
 	.evelution-content .evelution-page-header-subtitle {
 		font-size:14px;
+	}
+	
+	.pageheader-search .cpe-input {
+		width:275px;
 	}
 
 
