@@ -70,7 +70,11 @@ class EvelutionHooks implements OutputPageBodyAttributesHook {
 		} else {
 			$bodyAttrs['class'] .= ' user-anon';
 		}
-	}
+		// DPL Forum
+		if (!( defined( 'NS_FORUM' ) )) {
+			$bodyAttrs['class'] .= ' has-no-dpl-forum';
+		}
+   	}
 
 }
 

@@ -1,34 +1,25 @@
-							<a class="link cell" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-recentchanges}}"  href="{{html-rc-link}}">
+							<a class="link cell mobile-xl" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-recentchanges}}"  href="{{html-rc-link}}">
 								<span class="cpe-icon material-icons">
 								timeline
 								</span>
 							</a>
-						{{#is-loggedin}}
-							<a class="link cell" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-evelution-newfiles}}"  href="{{html-files-link}}">
+							<a class="link cell mobile-xxl" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-evelution-newfiles}}"  href="{{html-files-link}}">
 								<span class="cpe-icon material-icons">
 								photo_library
 								</span>
 							</a>
-						{{/is-loggedin}}
-						{{#has-forum}}
-						  <a class="link forum {{#is-loggedin}}smallp{{/is-loggedin}}" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-talk}}" href="{{html-forum-link}}">
-									<span class="cpe-icon material-icons">
-										forum
-									</span>
-						  </a>
-						{{/has-forum}}
 						{{#is-loggedin}}
-							<a class="link cell {{#has-forum}}small{{/has-forum}}{{^has-forum}}smallp{{/has-forum}}" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-statistics}}"  href="{{html-stats-link}}">
+							<a class="link cell smallp" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-statistics}}"  href="{{html-stats-link}}">
 								<span class="cpe-icon material-icons">
 								leaderboard
 								</span>
 							</a>
-							<a class="link cell {{#has-forum}}largep{{/has-forum}}{{^has-forum}}small{{/has-forum}}" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-upload}}"  href="{{html-upload-link}}">
+							<a class="link cell small" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-upload}}"  href="{{html-upload-link}}">
 								<span class="cpe-icon material-icons">
 								file_upload
 								</span>
 							</a>
-							<div class="cpe-dropdown {{#has-forum}}large{{/has-forum}}{{^has-forum}}largep{{/has-forum}}">
+							<div class="cpe-dropdown largep">
 								<a class="link cell" cpe-tooltip-position="bottom" cpe-tooltip="CSS">
 									<span class="cpe-icon material-icons">
 									palette
@@ -85,7 +76,7 @@
 									{{/has-css}}
 								</div>
 							</div>
-							<div class="cpe-dropdown {{#has-forum}}vlargep{{/has-forum}}{{^has-forum}}large{{/has-forum}}">
+							<div class="cpe-dropdown large">
 								<a class="link cell" cpe-tooltip-position="bottom" cpe-tooltip="JS">
 									<span class="cpe-icon material-icons">
 									code
@@ -143,46 +134,57 @@
 								</div>
 							</div>
 						{{/is-loggedin}}
-							<a class="link cell {{#is-loggedin}}{{#has-forum}}vlarge{{/has-forum}}{{^has-forum}}vlargep{{/has-forum}}{{/is-loggedin}}" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-allarticles}}"  href="{{html-allpages-link}}">
+							<a class="link cell {{#is-loggedin}}vlargep{{/is-loggedin}} {{^is-loggedin}}mobile-xxl{{/is-loggedin}}" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-allarticles}}"  href="{{html-allpages-link}}">
 								<span class="cpe-icon material-icons">
 								pages
 								</span>
 							</a>
 						{{#is-loggedin}}
-							<a class="link cell {{#has-forum}}xlargep{{/has-forum}}{{^has-forum}}vlarge{{/has-forum}}" cpe-tooltip="{{msg-apisandbox}}" cpe-tooltip-position="bottom" href="{{html-apisandbox-link}}">
+							<a class="link cell vlarge" cpe-tooltip="{{msg-apisandbox}}" cpe-tooltip-position="bottom" href="{{html-apisandbox-link}}">
 								<span class="cpe-icon material-icons">
 								api
 								</span>
 							</a>
-							<a class="link cell {{#has-forum}}xlarge{{/has-forum}}{{^has-forum}}xlargep{{/has-forum}}" cpe-tooltip="{{msg-allmessages}}" cpe-tooltip-position="bottom" href="{{html-allmessages-link}}">
+							<a class="link cell xlargep" cpe-tooltip="{{msg-allmessages}}" cpe-tooltip-position="bottom" href="{{html-allmessages-link}}">
 								<span class="cpe-icon material-icons">
 								security
 								</span>
 							</a>
-							<a class="link cell last-action {{#has-forum}}xlarge{{/has-forum}}{{^has-forum}}xlargep{{/has-forum}}" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-specialpages}}"  href="{{html-spages-link}}">
+							<a class="link cell last-action xlargep" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-specialpages}}"  href="{{html-spages-link}}">
 								<span class="cpe-icon material-icons">
 								app_shortcut
 								</span>
 							</a>
-							<div class="cpe-dropdown has-reversed-nested-menus more-items-menu overflow-{{#has-forum}}small{{/has-forum}}{{^has-forum}}smallp{{/has-forum}}">
+						{{/is-loggedin}}
+<!-- Overflow-menu -->
+							<div class="cpe-dropdown has-reversed-nested-menus more-items-menu  {{#is-loggedin}}overflow-mobile-smallp{{/is-loggedin}} {{^is-loggedin}}overflow-mobile-xxl{{/is-loggedin}}">
 								<div class="link cell" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-moredotdotdot}}">
 									<span class="cpe-icon material-icons">
 										more_vertical
 									</span>
 								</div>
-								<div class="cpe-dropdown__content is-right-aligned is-not-scrollable">
+								<div class="cpe-dropdown__content is-right-aligned is-not-scrollable has-small-content">
 									<ul class="cpe-list is-linked">
-									{{#has-forum}}
-										<li class="smallp">
-											<a class="action-link" href="{{html-forum-link}}">
+
+
+										<li class="mobile-xl">
+											<a class="action-link" href="{{html-rc-link}}">
 												<span class="cpe-icon material-icons">
-													forum
+													timeline
 												</span>
-												<span>{{msg-talk}}</span>
+												<span>{{msg-recentchanges}}</span>
 											</a>
 										</li>
-									{{/has-forum}}
-										<li class="{{#has-forum}}small{{/has-forum}}{{^has-forum}}smallp{{/has-forum}}">
+										<li class="mobile-xxl">
+											<a class="action-link" href="{{html-files-link}}">
+												<span class="cpe-icon material-icons">
+													photo_library
+												</span>
+												<span>{{msg-evelution-newfiles}}</span>
+											</a>
+										</li>
+									{{#is-loggedin}}
+										<li class="smallp">
 											<a class="action-link" href="{{html-stats-link}}">
 												<span class="cpe-icon material-icons">
 													leaderboard
@@ -190,7 +192,7 @@
 												<span>{{msg-statistics}}</span>
 											</a>
 										</li>
-										<li class="{{#has-forum}}largep{{/has-forum}}{{^has-forum}}small{{/has-forum}}">
+										<li class="small">
 											<a class="action-link" href="{{html-upload-link}}">
 												<span class="cpe-icon material-icons">
 													file_upload
@@ -198,7 +200,7 @@
 												<span>{{msg-upload}}</span>
 											</a>
 										</li>
-										<li class="cpe-dropdown-level-2 {{#has-forum}}large{{/has-forum}}{{^has-forum}}largep{{/has-forum}}">
+										<li class="cpe-dropdown-level-2 largep">
 											<a class="action-link">
 												<span class="cpe-icon material-icons">
 													palette
@@ -259,7 +261,7 @@
 												{{/has-css}}
 											</div>
 										</li>
-										<li class="cpe-dropdown-level-2 {{#has-forum}}vlargep{{/has-forum}}{{^has-forum}}large{{/has-forum}}">
+										<li class="cpe-dropdown-level-2 large">
 											<a class="action-link">
 												<span class="cpe-icon material-icons">
 													code
@@ -320,7 +322,8 @@
 												{{/has-js}}
 											</div>
 										</li>
-										<li class="{{#has-forum}}vlarge{{/has-forum}}{{^has-forum}}vlargep{{/has-forum}}">
+									{{/is-loggedin}}
+										<li class="{{#is-loggedin}}vlargep{{/is-loggedin}} {{^is-loggedin}}mobile-xxl{{/is-loggedin}}">
 											<a class="action-link" href="{{html-allpages-link}}">
 												<span class="cpe-icon material-icons">
 													pages
@@ -328,7 +331,8 @@
 												<span>{{msg-allarticles}}</span>
 											</a>
 										</li>
-										<li class="{{#has-forum}}xlargep{{/has-forum}}{{^has-forum}}vlarge{{/has-forum}}">
+									{{#is-loggedin}}
+										<li class="vlarge">
 											<a class="action-link" href="{{html-apisandbox-link}}">
 												<span class="cpe-icon material-icons">
 													apisandbox
@@ -336,7 +340,7 @@
 												<span>{{msg-apisandbox}}</span>
 											</a>
 										</li>
-										<li class="{{^has-forum}}xlargep{{/has-forum}}">
+										<li class="xlargep">
 											<a class="action-link" href="{{html-allmessages-link}}">
 												<span class="cpe-icon material-icons">
 													security
@@ -352,7 +356,7 @@
 												<span>{{msg-specialpages}}</span>
 											</a>
 										</li>
+										{{/is-loggedin}}
 									</ul>
 								</div>
 							</div>
-						{{/is-loggedin}}
