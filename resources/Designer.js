@@ -50,7 +50,7 @@ function InitDesigner() {
 			'<div class="cpe-dropdown__content is-not-scrollable is-left-aligned">' +
 				'<ul class="cpe-list is-linked">' +
 					'<li>' +
-						'<a class="theme-copy-button">' +
+						'<a class="theme-copy-button action-link">' +
 							'<span>CSS</span>' +
 						'</a>' +
 					'</li>' +
