@@ -2236,39 +2236,55 @@ a.cpe-button, button.cpe-button {
 }
 
 /* Text */
-.cpe-button.is-text {
+.cpe-button.is-text,
+/* Force */
+.force-text .cpe-button:not(.is-primary):not(.is-secondary):not(.is-tertiary) {
   border-color:transparent!important;
   color:var(--secondary-button-foreground-color);
   background-color:transparent;
   box-shadow:none; /* Disabled 3D for frameless buttons */
 }
 
-.cpe-button.is-text:visited {
+.cpe-button.is-text:visited,
+/* Force */
+.force-text .cpe-button:not(.is-primary):not(.is-secondary):not(.is-tertiary):focus {
+
     color:var(--secondary-button-foreground-color);
 }
 
-.cpe-button.is-text:visited:hover {
+.cpe-button.is-text:visited:hover,
+/* Force */
+.force-text .cpe-button:not(.is-primary):not(.is-secondary):not(.is-tertiary):visited:hover {
     color:var(--secondary-button-foreground-color-hover);
 }
 
-.cpe-button.is-text:visited:active {
+.cpe-button.is-text:visited:active,
+/* Force */
+.force-text .cpe-button:not(.is-primary):not(.is-secondary):not(.is-tertiary):visited:active {
     color:var(--secondary-button-foreground-color-hover);
 }
 
 
-.cpe-button.is-text:hover {
+.cpe-button.is-text:hover,
+/* Force */
+.force-text .cpe-button:not(.is-primary):not(.is-secondary):not(.is-tertiary):hover {
   border-color:transparent;
   color:var(--secondary-button-foreground-color-hover);
   background-color:transparent;
 }
 
-.cpe-button.is-text:active {
+.cpe-button.is-text:active,
+/* Force */
+.force-text .cpe-button:not(.is-primary):not(.is-secondary):not(.is-tertiary):active {
+
   border-color:transparent;
   color:var(--secondary-button-foreground-color-hover);
   background-color:transparent;
 }
 
-.cpe-button.is-text:focus:not(:active) {
+.cpe-button.is-text:focus:not(:active),
+/* Force */
+.force-text .cpe-button:not(.is-primary):not(.is-secondary):not(.is-tertiary):focus:not(:active) {
   border-color:transparent;
   color:var(--secondary-button-foreground-color);  
 }

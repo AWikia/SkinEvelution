@@ -1496,6 +1496,17 @@ function InitDesigner() {
 			'<div class="cpe-button is-tertiary is-success-color">Success Color</div>' +
 			'<div class="cpe-button is-tertiary is-progress-color">Progress Color</div>' +
 			'<div class="cpe-button is-tertiary is-message-color">Message Color</div>' +
+			'<hr>' +
+			'<div class="cpe-button is-text">Base Color</div>' +
+			'<div class="cpe-button is-text is-unaccented">Unaccented Color</div>' +
+			'<div class="cpe-button is-text is-alternate">Alternate Color</div>' +
+			'<div class="cpe-button is-text is-alert-color">Alert Color</div>' +
+			'<div class="cpe-button is-text is-pause-color">Pause Color</div>' +
+			'<div class="cpe-button is-text is-warning-color">Warning Color</div>' +
+			'<div class="cpe-button is-text is-success-color">Success Color</div>' +
+			'<div class="cpe-button is-text is-progress-color">Progress Color</div>' +
+			'<div class="cpe-button is-text is-message-color">Message Color</div>' +
+
 		'</div>' +
 		'<div class="theme-code"></div>'
 	);
