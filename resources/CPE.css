@@ -306,6 +306,7 @@ body [force-unaccented] {
 	--luna-hyperlink-background-color:var(--hyperlink-secondary-background-color);
 	--luna-hyperlink-background-color-hover:var(--hyperlink-secondary-background-color-hover);
 	--luna-hyperlink-background-color-rgb:var(--hyperlink-secondary-background-color-rgb);
+	--luna-hyperlink-default-text-decoration:var(--hyperlink-secondary-default-text-decoration);
 	--luna-visited-hyperlink-background-color:var(--visited-hyperlink-secondary-background-color);
 	--luna-visited-hyperlink-background-color-hover:var(--visited-hyperlink-secondary-background-color-hover);
 	--luna-visited-hyperlink-background-color-rgb:var(--visited-hyperlink-secondary-background-color-rgb);
@@ -392,6 +393,7 @@ body:not(:focus):not(:focus-within) [force-unaccented] {
 	--luna-hyperlink-background-color:var(--hyperlink-tertiary-background-color);
 	--luna-hyperlink-background-color-hover:var(--hyperlink-tertiary-background-color-hover);
 	--luna-hyperlink-background-color-rgb:var(--hyperlink-tertiary-background-color-rgb);
+	--luna-hyperlink-default-text-decoration:var(--hyperlink-tertiary-default-text-decoration);
 	--luna-visited-hyperlink-background-color:var(--visited-hyperlink-tertiary-background-color);
 	--luna-visited-hyperlink-background-color-hover:var(--visited-hyperlink-tertiary-background-color-hover);
 	--luna-visited-hyperlink-background-color-rgb:var(--visited-hyperlink-tertiary-background-color-rgb);
@@ -1493,8 +1495,9 @@ cursor:var(--cpe-auto-cursor);
 /* Misc */
 a,
 body a {
+--hyperlink-decoration:var(--hyperlink-default-text-decoration);
 transition:color 200ms var(--transitioner);
-text-decoration:none;
+text-decoration:var(--hyperlink-decoration);
 color:var(--hyperlink-background-color);
 cursor:var(--cpe-hand-cursor);
 background-color:transparent;
