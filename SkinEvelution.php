@@ -39,6 +39,10 @@ class EvelutionHooks implements OutputPageBodyAttributesHook {
 	 * @param array &$bodyAttrs
 	 */
 	public function onOutputPageBodyAttributes( $out, $skin, &$bodyAttrs ): void {
+		if ( !$skin instanceof SkinEvelution ) {
+			return;
+		}
+
 		// Disabled Right Rail
 		$blacklistedPages = $out->getConfig()->get( 'EvelutionDisableRightRailFromSpecificPages' );
 		if ( ($out->getConfig()->get( 'EvelutionDisableRightRail' ) || ($out->getTitle()->isMainPage()) || in_array( $out->getTitle()->getFullText(), $blacklistedPages ) ) ) {
