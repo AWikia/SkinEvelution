@@ -1545,8 +1545,6 @@ function DownloadTheme(full=false) {
 				 // 2nd Page Color
 				 '--canvas-secondary-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--canvas-secondary-background-color")  + ';\n' +
 				 '--canvas-secondary-background-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--canvas-secondary-background-color-hover")  + ';\n' +
-				 '--canvas-3d-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--canvas-3d-background-color")  + ';\n' +
-				 '--canvas-3d-background-color-dark:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--canvas-3d-background-color-dark")  + ';\n' +
 				 '--canvas-secondary-fadeout-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--canvas-secondary-fadeout-color")  + ';\n' +
 				 '--canvas-secondary-gradient-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--canvas-secondary-gradient-color")  + ';\n' +
 				 '--canvas-secondary-gradient-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--canvas-secondary-gradient-color-hover")  + ';\n' +
@@ -2069,6 +2067,7 @@ function DownloadTheme(full=false) {
 				 // Misc
 				 '--mica-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--mica-background-color")  + ';\n' +
 				 '--fadeout-opacity:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--fadeout-opacity")  + ';\n' +
+				 '--disabled-elements-opacity:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--disabled-elements-opacity")  + ';\n' +
 				 '}' // Ending
 	} else { // For use with Theme Management
 		result = '.visualcolors-standard.theme-A {\n' + // Beginning
@@ -2321,7 +2320,7 @@ var content_color =  GetCanvas();
 	var content_color = ColorStyleAdjust(content_color)
 
 	window.MW18PageColor = content_color;
-	var darkpage = isLightColor(content_color);
+	var lightPage = isLightColor(content_color);
 
 
 var content_color2 = ColorHover(content_color);
@@ -2329,7 +2328,7 @@ var content_color2 = ColorHover(content_color);
 var adjustment = ContrastRatio2();
 window.MW18FinalContrast = ContrastRatio4();
 
-	if (darkpage) {
+	if (lightPage) {
 		var lightness = '#000000';
 		var lightnessR = '#ffffff';
 		var fadeouto = 0.2;
@@ -2338,10 +2337,12 @@ window.MW18FinalContrast = ContrastRatio4();
 		var lightnessR = '#000000';
 		var fadeouto = 0.3;
 	}
+
+		var disabledo = 0.7;
 		window.MW18PageColorFG = lightness
 
 if ((getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--canvas-secondary-background-color") == 'auto') ) {
-	if (darkpage) {
+	if (lightPage) {
 		var dropdowncolor = ColorMix(content_color,"#000000",adjustment);
 	} else {
 		var dropdowncolor = ColorMix(content_color,"#ffffff",adjustment);
@@ -2356,15 +2357,11 @@ if ((getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--canvas-
 
 
 }
-	var darkpage2 = isLightColor(dropdowncolor);
-	if (darkpage2) {
-		var lightness3 = '#000000';
-		var c3dlight = 0.75;
-		var c3ddark = 0.5;
+	var lightDropdown = isLightColor(dropdowncolor);
+	if (lightDropdown) {
+		var lightnessDropdown = '#000000';
 	} else {
-		var lightness3 = '#ffffff';
-		var c3dlight = 0.5;
-		var c3ddark = 0.75;
+		var lightnessDropdown = '#ffffff';
 	}
 
 var dropdowncolor2 = GetInactiveText();
@@ -2390,7 +2387,7 @@ var content2_text= GetCanvasText2();
 var content2_text = ColorStyleAdjust(content2_text);
 
 	
-while ( ( !(isSuitableColorText(content2_text, dropdowncolor)) ) && (content2_text !== lightness3) ) {
+while ( ( !(isSuitableColorText(content2_text, dropdowncolor)) ) && (content2_text !== lightnessDropdown) ) {
 	var content2_text= ColorAdjust(content2_text,dropdowncolor);
 }
 
@@ -2406,11 +2403,11 @@ var head_color =	GetDesktop();
 
 // Liatch Quirk
 		var head_color = ColorStyleAdjust(head_color);
-	var lighthead = isLightColor(head_color);
-	if (lighthead) {
-		var lightness2 = '#000000';
+	var lightHead = isLightColor(head_color);
+	if (lightHead) {
+		var lightnessHead = '#000000';
 	} else {
-		var lightness2 = '#ffffff';
+		var lightnessHead = '#ffffff';
 	}
 
 window.MW18BgColor = head_color
@@ -2433,7 +2430,7 @@ var headertext_color= GetDesktopText();
 	// Liatch Quirk
 		var headertext_color = ColorStyleAdjust(headertext_color);
 	
-		while ( ( !(isSuitableColorText(headertext_color, head_color)) ) && (headertext_color !== lightness2)  ) {
+		while ( ( !(isSuitableColorText(headertext_color, head_color)) ) && (headertext_color !== lightnessHead)  ) {
 			var headertext_color= ColorAdjust(headertext_color,window.MW18BgColor);
 		}
 
@@ -2457,22 +2454,22 @@ var caret_color = GetActiveTitle();
 			var caret_color= ColorAdjust(caret_color,window.MW18PageColor);
 		}
 
-		var lightcaret = isLightColor(caret_color);
-		if (lightcaret) {
-			var lightnessAT = '#000000';
+		var lightCaret = isLightColor(caret_color);
+		if (lightCaret) {
+			var lightnessCaret = '#000000';
 		} else {
-			var lightnessAT = '#ffffff';
+			var lightnessCaret = '#ffffff';
 		}
 
 
 
-		while ( ( !(isSuitableColorFormControls(caret2_color, dropdowncolor)) ) && (caret2_color !== lightness3) ) {
+		while ( ( !(isSuitableColorFormControls(caret2_color, dropdowncolor)) ) && (caret2_color !== lightnessDropdown) ) {
 			var caret2_color= ColorAdjust(caret2_color,dropdowncolor);
 		}
-		while ( ( !(isSuitableColorFormControls(caret3_color, caret_color)) ) && (caret3_color !== lightnessAT) ) {
+		while ( ( !(isSuitableColorFormControls(caret3_color, caret_color)) ) && (caret3_color !== lightnessCaret) ) {
 			var caret3_color= ColorAdjust(caret3_color,caret_color);
 		}
-		while ( ( !(isSuitableColorFormControls(caret4_color, head_color)) ) && (caret4_color !== lightness2)  ) {
+		while ( ( !(isSuitableColorFormControls(caret4_color, head_color)) ) && (caret4_color !== lightnessHead)  ) {
 			var caret4_color= ColorAdjust(caret4_color,window.MW18BgColor);
 		}
 
@@ -2495,7 +2492,7 @@ var carettext_color= GetActiveTitleText();
 if ((getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--active-title-text-background-color") != 'auto') ) { // Only run Liatch quirk if not in autocolorization
 		var carettext_color = ColorStyleAdjust(carettext_color);
 }
-			while ( ( !(isSuitableColorText(carettext_color, caret_color)) ) && (carettext_color !== lightnessAT)  ) {
+			while ( ( !(isSuitableColorText(carettext_color, caret_color)) ) && (carettext_color !== lightnessCaret)  ) {
 				var carettext_color= ColorAdjust(carettext_color,caret_color);
 			}
 
@@ -2515,11 +2512,11 @@ if ((getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--inactiv
 		}
 
 
-	var lightcaretIT = isLightColor(caretIT_color);
-	if (lightcaretIT) {
-		var lightnessIT = '#000000';
+	var lightCaretIT = isLightColor(caretIT_color);
+	if (lightCaretIT) {
+		var lightnessCaretIT = '#000000';
 	} else {
-		var lightnessIT = '#ffffff';
+		var lightnessCaretIT = '#ffffff';
 	}
 
 window.MW18ITColor = caretIT_color
@@ -2539,7 +2536,7 @@ if ((getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--inactiv
 		var caretITtext_color = ColorStyleAdjust(caretITtext_color);
 }
 
-			while ( ( !(isSuitableColorFormControls(caretITtext_color, caretIT_color)) ) && (caretITtext_color !== lightnessIT)  ) {
+			while ( ( !(isSuitableColorFormControls(caretITtext_color, caretIT_color)) ) && (caretITtext_color !== lightnessCaretIT)  ) {
 				var caretITtext_color= ColorAdjust(caretITtext_color,caretIT_color);
 			}
 
@@ -2560,13 +2557,13 @@ var button_color = GetHighlight();
 		while ( ( !(isSuitableColorFormControls(button_color, content_color)) ) && (button_color !== lightness)  ) {
 			var button_color= ColorAdjust(button_color,window.MW18PageColor);
 		}
-		while ( ( !(isSuitableColorFormControls(button2_color, dropdowncolor)) ) && (button2_color !== lightness3) ) {
+		while ( ( !(isSuitableColorFormControls(button2_color, dropdowncolor)) ) && (button2_color !== lightnessDropdown) ) {
 			var button2_color= ColorAdjust(button2_color,dropdowncolor);
 		}
-		while ( ( !(isSuitableColorFormControls(button3_color, caret_color)) ) && (button3_color !== lightnessAT) ) {
+		while ( ( !(isSuitableColorFormControls(button3_color, caret_color)) ) && (button3_color !== lightnessCaret) ) {
 			var button3_color= ColorAdjust(button3_color,caret_color);
 		}
-		while ( ( !(isSuitableColorFormControls(button4_color, head_color)) ) && (button4_color !== lightness2)  ) {
+		while ( ( !(isSuitableColorFormControls(button4_color, head_color)) ) && (button4_color !== lightnessHead)  ) {
 			var button4_color= ColorAdjust(button4_color,window.MW18BgColor);
 		}
 
@@ -2618,13 +2615,13 @@ var link_color = GetHyperlink();
 		while ( ( !(isSuitableColorText(link_color, content_color)) ) && (link_color !== lightness) ) {
 			var link_color= ColorAdjust(link_color,window.MW18PageColor);
 		}
-		while ( ( !(isSuitableColorText(link2_color, dropdowncolor)) ) && (link2_color !== lightness3) ) {
+		while ( ( !(isSuitableColorText(link2_color, dropdowncolor)) ) && (link2_color !== lightnessDropdown) ) {
 			var link2_color= ColorAdjust(link2_color,dropdowncolor);
 		}
-		while ( ( !(isSuitableColorText(link3_color, caret_color)) ) && (link3_color !== lightnessAT) ) {
+		while ( ( !(isSuitableColorText(link3_color, caret_color)) ) && (link3_color !== lightnessCaret) ) {
 			var link3_color= ColorAdjust(link3_color,caret_color);
 		}
-		while ( ( !(isSuitableColorText(link4_color, head_color)) ) && (link4_color !== lightness2)  ) {
+		while ( ( !(isSuitableColorText(link4_color, head_color)) ) && (link4_color !== lightnessHead)  ) {
 			var link4_color= ColorAdjust(link4_color,window.MW18BgColor);
 		}
 
@@ -2648,13 +2645,13 @@ var vlink_color = GetVisitedHyperlink();
 		while ( ( !(isSuitableColorText(vlink_color, content_color)) ) && (vlink_color !== lightness) ) {
 			var vlink_color= ColorAdjust(vlink_color,window.MW18PageColor);
 		}
-		while ( ( !(isSuitableColorText(vlink2_color, dropdowncolor)) ) && (vlink2_color !== lightness3) ) {
+		while ( ( !(isSuitableColorText(vlink2_color, dropdowncolor)) ) && (vlink2_color !== lightnessDropdown) ) {
 			var vlink2_color= ColorAdjust(vlink2_color,dropdowncolor);
 		}
-		while ( ( !(isSuitableColorText(vlink3_color, caret_color)) ) && (vlink3_color !== lightnessAT) ) {
+		while ( ( !(isSuitableColorText(vlink3_color, caret_color)) ) && (vlink3_color !== lightnessCaret) ) {
 			var vlink3_color= ColorAdjust(vlink3_color,caret_color);
 		}
-		while ( ( !(isSuitableColorText(vlink4_color, head_color)) ) && (vlink4_color !== lightness2)  ) {
+		while ( ( !(isSuitableColorText(vlink4_color, head_color)) ) && (vlink4_color !== lightnessHead)  ) {
 			var vlink4_color= ColorAdjust(vlink4_color,window.MW18BgColor);
 		}
 
@@ -2678,13 +2675,13 @@ var alink_color = GetActiveText();
 		while ( ( !(isSuitableColorText(alink_color, content_color)) ) && (alink_color !== lightness) ) {
 			var alink_color= ColorAdjust(alink_color,window.MW18PageColor);
 		}
-		while ( ( !(isSuitableColorText(alink2_color, dropdowncolor)) ) && (alink2_color !== lightness3) ) {
+		while ( ( !(isSuitableColorText(alink2_color, dropdowncolor)) ) && (alink2_color !== lightnessDropdown) ) {
 			var alink2_color= ColorAdjust(alink2_color,dropdowncolor);
 		}
-		while ( ( !(isSuitableColorText(alink3_color, caret_color)) ) && (alink3_color !== lightnessAT) ) {
+		while ( ( !(isSuitableColorText(alink3_color, caret_color)) ) && (alink3_color !== lightnessCaret) ) {
 			var alink3_color= ColorAdjust(alink3_color,caret_color);
 		}
-		while ( ( !(isSuitableColorText(alink4_color, head_color)) ) && (alink4_color !== lightness2)  ) {
+		while ( ( !(isSuitableColorText(alink4_color, head_color)) ) && (alink4_color !== lightnessHead)  ) {
 			var alink4_color= ColorAdjust(alink4_color,window.MW18BgColor);
 		}
 
@@ -2712,13 +2709,13 @@ if ((getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--inactiv
 		while ( ( !(isSuitableColorFormControls(border_color, content_color)) ) && (border_color !== lightness)  ) {
 			var border_color= ColorAdjust(border_color,window.MW18PageColor);
 		}
-		while ( ( !(isSuitableColorFormControls(border2_color, dropdowncolor)) ) && (border2_color !== lightness3) ) {
+		while ( ( !(isSuitableColorFormControls(border2_color, dropdowncolor)) ) && (border2_color !== lightnessDropdown) ) {
 			var border2_color= ColorAdjust(border2_color,dropdowncolor);
 		}
-		while ( ( !(isSuitableColorFormControls(border3_color, caret_color)) ) && (border3_color !== lightnessAT) ) {
+		while ( ( !(isSuitableColorFormControls(border3_color, caret_color)) ) && (border3_color !== lightnessCaret) ) {
 			var border3_color= ColorAdjust(border3_color,caret_color);
 		}
-		while ( ( !(isSuitableColorFormControls(border4_color, head_color)) ) && (border4_color !== lightness2)  ) {
+		while ( ( !(isSuitableColorFormControls(border4_color, head_color)) ) && (border4_color !== lightnessHead)  ) {
 			var border4_color= ColorAdjust(border4_color,window.MW18BgColor);
 		}
 
@@ -2899,9 +2896,7 @@ var caretITtext_2fg = GetForegroundVariables(caretITtextcolor1);
 	if ( wordfilter2 == "" ) {
 		wordfilter2 == 'initial'
 	}
-	
-	var tdbg = ColorMix(dropdowncolor,"#ffffff",c3dlight);
-	var tdbg2 = ColorMix(dropdowncolor,"#000000",c3ddark);
+
 
 	micabg = [ColorMix(dropdowncolor,content_color,0.5),'color'];
 	
@@ -2919,6 +2914,7 @@ var invfilters = [
 	var result = 		  colorstyle +
 						  ":root {" +
 						  "--fadeout-opacity:" + fadeouto + ";\n" + 
+						  "--disabled-elements-opacity:" + disabledo + ";\n" + 
 						  "--desktop-alternative-foreground-color:" + head_fg[4] + ";\n" + 
 						  "--desktop-alternative-foreground-color-hover:" + head_fg[6] + ";\n" + 
 						  "--desktop-alternative-foreground-color-rgb:" + head_fg[5] + ";\n" +
@@ -3068,8 +3064,6 @@ var invfilters = [
 						  "--canvas-secondary-foreground-color:" + dropdowncolor_fg[0] + ";\n" +
 						  "--canvas-secondary-foreground-color-hover:" +  dropdowncolor_fg[1] + ";\n" + 
 						  "--canvas-secondary-foreground-color-inverted:" + dropdowncolor_2fg[0] + ";\n" +
-						  "--canvas-3d-background-color:" + tdbg + ";\n" +
-						  "--canvas-3d-background-color-dark:" + tdbg2 + ";\n" +
 						  "--canvas-background-color:" + content_color + ";\n" +
 						  "--canvas-background-color-hover:" + content_color2 + ";\n" +
 						  "--canvas-gradient-color:" + content_color_gradient[0] + ";\n" +
@@ -3481,7 +3475,7 @@ document.querySelector("head .theming").innerHTML = result;
 
 		/* Theme Mode */
 		var oldtheme = window.MW18ActiveThemeMode;
-		if (!(darkpage)) {
+		if (!(lightPage)) {
 			 window.MW18ActiveThemeMode = 'dark';
 		} else {
 			 window.MW18ActiveThemeMode = 'light';

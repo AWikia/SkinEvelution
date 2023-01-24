@@ -524,8 +524,9 @@ body {
 	--theme-community-header-color:var(--desktop-text-background-color);
 	--theme-community-header-color--hover:var(--desktop-text-background-color-hover);
 	--theme-background-image-opacity:100%;
-    --theme-page-text-opacity-factor: 0.85;
-    --theme-body-text-opacity-factor: 0.85;
+    --theme-page-text-opacity-factor:var(--disabled-elements-opacity);
+    --theme-body-text-opacity-factor:var(--disabled-elements-opacity);
+    --theme-link-decoration: var(--hyperlink-default-text-decoration);
 }
 
 
@@ -1601,9 +1602,7 @@ body #mw-content-text img {
 :not(.unset)[disabled], 
 :not(.unset):disabled, 
 html:not([visualcolors="standard"]) .forcedcolors-off {
--webkit-filter:grayscale(100%)!important;
-filter:grayscale(100%)!important;
-opacity:1!important;
+opacity:var(--disabled-elements-opacity)!important;
 pointer-events:none!important;
 -webkit-user-select:none!important;
 -moz-user-select:none!important;
@@ -2577,7 +2576,7 @@ body * > .selected > :first-child,
 body * > .selected > .cpe-icon,
 body .has-icon-labels > .selected > :focus:before,
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-buttonElement-active > .oo-ui-buttonElement-button > .oo-ui-iconElement-icon:before,
-body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-buttonElement-active > .oo-ui-buttonElement-button > .oo-ui-indicatorElement-indicator:before {
+body .oo-ui-indicatorElement-indicator:before {
   font-variation-settings:'FILL' 1;
 }
 

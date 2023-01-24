@@ -522,7 +522,18 @@ body .oo-ui-tabSelectWidget-framed .oo-ui-tabOptionWidget.oo-ui-optionWidget-sel
 
 /* All Buttons */
 .oo-ui-buttonElement-framed.oo-ui-widget-disabled > .oo-ui-buttonElement-button {
-	filter:grayscale(100%)!important;
+	--button-background-color:var(--inactive-text-background-color);
+	--button-background-color-hover:var(--inactive-text-background-color-hover);
+	--button-foreground-color:var(--inactive-text-foreground-color);
+	--button-foreground-color-hover:var(--button-foreground-color);
+	--button-foreground-color-inverted:var(--inactive-text-foreground-color-inverted);
+	--button-foreground-color-rgb:var(--inactive-text-foreground-color-rgb);
+	--button-border-color:var(--button-background-color);
+	--button-border-color-hover:var(--button-background-color-hover);
+	--secondary-button-background-color:var(--canvas-background-color);
+	--secondary-button-foreground-color:var(--canvas-text-background-color);
+	--secondary-button-foreground-color-hover:var(--canvas-text-background-color-hover);
+	opacity:var(--disabled-elements-opacity)!important;
 }
 
 body .oo-ui-buttonElement > .oo-ui-buttonElement-button,
@@ -1402,8 +1413,7 @@ body .oo-ui-dropdownWidget.oo-ui-indicatorElement .oo-ui-dropdownWidget-handle {
 }
 
 body .oo-ui-textInputWidget.oo-ui-widget-disabled .oo-ui-inputWidget-input {
-	filter:grayscale(1)!important;
-	opacity:1;
+	opacity:var(--disabled-elements-opacity)!important;
 }
 
 body .mw-rcfilters-ui-filterTagMultiselectWidget .oo-ui-tagMultiselectWidget-input input {
@@ -1445,7 +1455,7 @@ body .oo-ui-dropdownInputWidget.oo-ui-widget-enabled:hover {
 }
 
 body .oo-ui-dropdownWidget.oo-ui-widget-disabled .oo-ui-dropdownWidget-handle {
-	filter:grayscale(100%)!important;
+	opacity:var(--disabled-elements-opacity)!important;
 }
 
 body .oo-ui-dropdownWidget.oo-ui-widget-enabled .oo-ui-dropdownWidget-handle,
@@ -1818,7 +1828,7 @@ body .oo-ui-progressBarWidget {
 }
 
 body .oo-ui-progressBarWidget.oo-ui-widget-disabled {
-	filter:grayscale(1)!important;
+	opacity:var(--disabled-elements-opacity)!important;
 }
 
 body .oo-ui-progressBarWidget:not( .oo-ui-pendingElement-pending ) {

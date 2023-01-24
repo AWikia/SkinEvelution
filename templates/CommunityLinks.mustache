@@ -8,18 +8,17 @@
 								photo_library
 								</span>
 							</a>
-						{{#is-loggedin}}
 							<a class="link cell smallp" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-statistics}}"  href="{{html-stats-link}}">
 								<span class="cpe-icon material-icons">
 								leaderboard
 								</span>
 							</a>
-							<a class="link cell small" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-upload}}"  href="{{html-upload-link}}">
+							<a class="link cell small disables-on-logged-out" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-upload}}"  href="{{html-upload-link}}">
 								<span class="cpe-icon material-icons">
 								file_upload
 								</span>
 							</a>
-							<div class="cpe-dropdown largep">
+							<div class="cpe-dropdown largep disables-on-logged-out">
 								<a class="link cell" cpe-tooltip-position="bottom" cpe-tooltip="CSS">
 									<span class="cpe-icon material-icons">
 									palette
@@ -76,7 +75,7 @@
 									{{/has-css}}
 								</div>
 							</div>
-							<div class="cpe-dropdown large">
+							<div class="cpe-dropdown large disables-on-logged-out">
 								<a class="link cell" cpe-tooltip-position="bottom" cpe-tooltip="JS">
 									<span class="cpe-icon material-icons">
 									code
@@ -133,13 +132,11 @@
 									{{/has-js}}
 								</div>
 							</div>
-						{{/is-loggedin}}
-							<a class="link cell {{#is-loggedin}}vlargep{{/is-loggedin}} {{^is-loggedin}}mobile-xxl{{/is-loggedin}}" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-allarticles}}"  href="{{html-allpages-link}}">
+							<a class="link cell vlargep" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-allarticles}}"  href="{{html-allpages-link}}">
 								<span class="cpe-icon material-icons">
 								pages
 								</span>
 							</a>
-						{{#is-loggedin}}
 							<a class="link cell vlarge" cpe-tooltip="{{msg-apisandbox}}" cpe-tooltip-position="bottom" href="{{html-apisandbox-link}}">
 								<span class="cpe-icon material-icons">
 								api
@@ -155,9 +152,8 @@
 								app_shortcut
 								</span>
 							</a>
-						{{/is-loggedin}}
 <!-- Overflow-menu -->
-							<div class="cpe-dropdown has-reversed-nested-menus more-items-menu  {{#is-loggedin}}overflow-mobile-smallp{{/is-loggedin}} {{^is-loggedin}}overflow-mobile-xxl{{/is-loggedin}}">
+							<div class="cpe-dropdown has-reversed-nested-menus more-items-menu overflow-mobile-smallp">
 								<div class="link cell" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-moredotdotdot}}">
 									<span class="cpe-icon material-icons">
 										more_vertical
@@ -183,7 +179,6 @@
 												<span>{{msg-evelution-newfiles}}</span>
 											</a>
 										</li>
-									{{#is-loggedin}}
 										<li class="smallp">
 											<a class="action-link" href="{{html-stats-link}}">
 												<span class="cpe-icon material-icons">
@@ -192,7 +187,7 @@
 												<span>{{msg-statistics}}</span>
 											</a>
 										</li>
-										<li class="small">
+										<li class="small disables-on-logged-out">
 											<a class="action-link" href="{{html-upload-link}}">
 												<span class="cpe-icon material-icons">
 													file_upload
@@ -200,7 +195,7 @@
 												<span>{{msg-upload}}</span>
 											</a>
 										</li>
-										<li class="cpe-dropdown-level-2 largep">
+										<li class="cpe-dropdown-level-2 largep disables-on-logged-out">
 											<a class="action-link">
 												<span class="cpe-icon material-icons">
 													palette
@@ -261,7 +256,7 @@
 												{{/has-css}}
 											</div>
 										</li>
-										<li class="cpe-dropdown-level-2 large">
+										<li class="cpe-dropdown-level-2 large disables-on-logged-out">
 											<a class="action-link">
 												<span class="cpe-icon material-icons">
 													code
@@ -322,8 +317,7 @@
 												{{/has-js}}
 											</div>
 										</li>
-									{{/is-loggedin}}
-										<li class="{{#is-loggedin}}vlargep{{/is-loggedin}} {{^is-loggedin}}mobile-xxl{{/is-loggedin}}">
+										<li class="vlargep">
 											<a class="action-link" href="{{html-allpages-link}}">
 												<span class="cpe-icon material-icons">
 													pages
@@ -331,7 +325,6 @@
 												<span>{{msg-allarticles}}</span>
 											</a>
 										</li>
-									{{#is-loggedin}}
 										<li class="vlarge">
 											<a class="action-link" href="{{html-apisandbox-link}}">
 												<span class="cpe-icon material-icons">
@@ -356,7 +349,6 @@
 												<span>{{msg-specialpages}}</span>
 											</a>
 										</li>
-										{{/is-loggedin}}
 									</ul>
 								</div>
 							</div>
