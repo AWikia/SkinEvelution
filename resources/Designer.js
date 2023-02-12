@@ -1045,6 +1045,35 @@ function InitDesigner() {
 				'</td>' +
 			'</tr>' +
 
+		// TR
+			'<tr>' +
+				'<th rowspan="2" style="width:150px;">' + 
+					mw.msg( 'evelution-designer-icon-style' ) + 
+				'</th>' +
+				'<th colspan="2"><span class="cpe-icon material-icons">settings</span></th>' +
+			'</tr>' +
+
+			'<tr>' +
+				'<td style="text-align:center; width:300px" colspan=2>' +
+				   '<div class="cpe-dropdown cpe-select" tabindex="-1">' +
+						'<div class="cpe-input icon_style cpe-dropdown__toggle" style="width:300px; min-width:300px;">' +
+							'<span class="cpe-select__value" value="cover">'+ 'Round' +'</span>' +
+							'<span class="cpe-icon cpe-icon-tiny cpe-icon-large cpe-dropdown__toggle-chevron material-icons">' +
+								'arrow_drop_down' +
+							'</span>' +
+						'</div>' +
+						'<div class="cpe-dropdown__content">' +
+							'<ul class="cpe-list is-linked">' +
+								'<li value="round"><a>'+'Round'+'</a></li>' +
+								'<li value="outlined"><a>'+'Outlined'+'</a></li>' +
+								'<li value="sharp"><a>'+'Sharp'+'</a></li>' +
+							'</ul>' +
+						'</div>' +
+					'</div>' +
+				'</td>' +
+			'</tr>' +
+
+
 		'</table>' +
 		'<h2>Previews</h2>' +
 		'<div style="line-height:0.5;">' +
@@ -1664,6 +1693,7 @@ function ApplyTheme () {
 				 '--system-acryllic-opacity:' + $('#aopacity').val() + ';\n' +
 				 '--system-generic-color-hue-shift:' + $('#gchs').val() + ';\n' +
 				 '--system-generic-color-saturation:' + $('#gcs').val() + "%" + ';\n' +
+				 '--system-icon-style:' + $('.icon_style .cpe-select__value').attr('value')  + ';\n' +
 				 '}\n' // Ending
 
 /*
@@ -1836,6 +1866,7 @@ function CopyTheme() {
 				 '--system-acryllic-opacity:' + $('#aopacity').val() + ';\n' +
 				 '--system-generic-color-hue-shift:' + $('#gchs').val() + ';\n' +
 				 '--system-generic-color-saturation:' + $('#gcs').val() + "%" + ';\n' +
+				 '--system-icon-style:' + $('.icon_style .cpe-select__value').attr('value')  + ';\n' +
 				 '}' // Ending
 		if (navigator.clipboard) {
 			navigator.clipboard.writeText(result).then(function() {
@@ -2017,6 +2048,7 @@ function CopyTheme2() {
 				 "'system-acryllic-opacity' => '" + $("#aopacity").val() + "',\n" +
 				 "'system-generic-color-hue-shift' => '" + $("#gchs").val() + "',\n" +
 				 "'system-generic-color-saturation' => '" + $("#gcs").val() + '%' + "',\n" +
+				 "'system-icon-style' => '" + $(".icon_style .cpe-select__value").attr("value")  + "',\n" +
 				 "];" // Ending
 		if (navigator.clipboard) {
 			navigator.clipboard.writeText(result).then(function() {
@@ -2258,7 +2290,11 @@ function PasteTheme() {
 	// acrylic Opacity
 	$('#gchs').val( getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--system-generic-color-hue-shift") );
 	$('#gcs').val( parseInt(getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--system-generic-color-saturation")) );
-
+	// Icon Style
+	icon_style = ['Round', 'Round', 'Outlined', 'Sharp'][["round", "rounded", "outlined", "sharp"].indexOf( getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--system-icon-style") ) ]
+	$('.icon_style .cpe-select__value').attr('value', getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--system-icon-style") );
+	$('.icon_style .cpe-select__value').html( icon_style );
+	
 	UpdateRangeInputs();
 	$(".evelution-floating-actions.extra-actions .theme-paste-button").prop('disabled', false);
 	$("#InProgressBanner2").remove();
@@ -2415,6 +2451,7 @@ function TestTheme(banner=false) {
 				 '--system-acryllic-opacity:' + $('#aopacity').val() + '!important;\n' +
 				 '--system-generic-color-hue-shift:' + $('#gchs').val() + '!important;\n' +
 				 '--system-generic-color-saturation:' + $('#gcs').val() + "%" + '!important;\n' +
+				 '--system-icon-style:' + $('.icon_style .cpe-select__value').attr('value')  + '!important;\n' +
 				 '}' // Ending
 			document.querySelector("#mw-content-text .theme-designer-css").innerHTML = result;
 			try {

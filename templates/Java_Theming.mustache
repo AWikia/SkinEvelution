@@ -900,7 +900,6 @@ function GetCustomFont4() {
 		return img.replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
 }
 
-
 function ContrastRatio() { // Used for Text
 
 	if (MW18contrastmode == 'auto') {
@@ -1992,6 +1991,9 @@ var link2color1 = ColorHover(link2_color,content_color);
 var link3color1 = ColorHover(link3_color,caret_color);
 var link4color1 = ColorHover(link4_color,content_color);
 
+	var tabsoLink = window.MW18TabsOpacity + (chroma(link_color).luminance() * 0.4 );
+
+
 
 /** Visited Link Color **/
 /* Set Vars */
@@ -2259,6 +2261,15 @@ var caretITtext_2fg = GetForegroundVariables(caretITtextcolor1);
 	}
 
 
+	if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--system-icon-style") === 'outlined') {
+		var iconstyle= 'Material Icons'
+ 	} else if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--system-icon-style") === 'sharp') {
+		var iconstyle=  'Material Icons Sharp'
+ 	} else {
+		var iconstyle=  'Material Icons Round'
+ 	}
+
+
 	micabg = [ColorMix(dropdowncolor,content_color,0.5),'color'];
 	
 	var saturation = (1 - (GetSaturation() / 100));
@@ -2516,6 +2527,8 @@ var invfilters = [
 						  "--hyperlink-foreground-color-hover-rgb:" + link_fg[3] + ";\n" +
 						  "--hyperlink-foreground-color-inverted-rgb:" + link_2fg[2] + ";\n" +
 						  "--hyperlink-default-text-decoration:" + getDefaultHyperlinkTextDecoration(link_color,content_text) + ";\n" +
+						  "--hyperlink-tabs-opacity:" + (tabsoLink * 0.5)  + ";\n" +
+						  "--hyperlink-active-tabs-opacity:" + tabsoLink  + ";\n" +
 						  "--hyperlink-secondary-background-color:" + link2_color + ";\n" +
 						  "--hyperlink-secondary-background-color-hover:" + link2color1 + ";\n" +
 						  "--hyperlink-secondary-background-color-rgb:" + ColorRGB(link2_color) + ";\n" +
@@ -2825,6 +2838,8 @@ var invfilters = [
 						 '--system-mica-opacity:' + (1 - aopacity)  + ';\n' +
 						 '--system-generic-color-hue-shift:' + getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--system-generic-color-hue-shift")  + ';\n' +
 						 '--system-generic-color-saturation:' + getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--system-generic-color-saturation")  + ';\n' +
+						 '--system-icon-style:' + getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--system-icon-style")  + ';\n' +
+						 '--system-icon-font-family:' + iconstyle  + ';\n' +
 
 
 // Misc Background Settings

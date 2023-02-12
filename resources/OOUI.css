@@ -555,7 +555,7 @@ body .oo-ui-tool.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flagged
     font-size:13px;
     font-family:var(--rounded-font-stack);
     font-weight:600;
-    padding:7px 11px;
+    padding:7.5px 11.5px;
     border-radius:var(--border-radius); 
     display:inline-flex;
     align-items:center;
@@ -564,7 +564,7 @@ body .oo-ui-tool.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flagged
     line-height:16px;
     text-decoration:none;
     margin:1px;
-    border-width:2px;
+    border-width:1px;
     outline:1px solid transparent;
     outline-offset:0px;
     box-shadow:var(--threeD-shadow)!important;
@@ -579,8 +579,8 @@ body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-buttonElement-active
 
 body .oo-ui-tool.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive > .oo-ui-tool-link {
 	border-radius:0!important;
-	padding:11px;
-	border-width:2px;
+	padding:11.5px;
+	border-width:1px;
 	border-style:solid;
 }
 
@@ -1294,7 +1294,9 @@ body .oo-ui-textInputWidget.oo-ui-widget-disabled .oo-ui-inputWidget-input,
 body .mw-widget-dateInputWidget-handle,
 body .mw-widgets-datetime-dateTimeInputWidget-handle,
 body .mw-ui-input  {
-	--input-box-color:var(--canvas-background-color);
+	--tabs-opacity:var(--canvas-active-tabs-opacity);
+	--input-box-color:rgba(255,255,255,var(--tabs-opacity));
+	--input-box-color-contrast:var(--canvas-background-color);
 	--input-box-border:currentColor;
 	--input-box-focus:var(--highlight-background-color-rgb);
 	--input-box-solid:var(--highlight-background-color);
@@ -1303,8 +1305,8 @@ body .mw-ui-input  {
     font-family:var(--rounded-font-stack);
     font-weight:600;
     color:var(--canvas-text-background-color);
-    padding:16px 11px;
-    border:2px solid var(--input-box-border);
+    padding:16.5px 11.5px;
+    border:1px solid var(--input-box-border);
 /*    border-color:var(--inactive-text-background-color); */
     border-radius:var(--border-radius); 
     display:inline-flex;
@@ -1460,7 +1462,9 @@ body .oo-ui-dropdownWidget.oo-ui-widget-disabled .oo-ui-dropdownWidget-handle {
 
 body .oo-ui-dropdownWidget.oo-ui-widget-enabled .oo-ui-dropdownWidget-handle,
 body .oo-ui-dropdownWidget.oo-ui-widget-disabled .oo-ui-dropdownWidget-handle {
-	--input-box-color:var(--canvas-background-color);
+	--tabs-opacity:var(--canvas-active-tabs-opacity);
+	--input-box-color:rgba(255,255,255,var(--tabs-opacity));
+	--input-box-color-contrast:var(--canvas-background-color);
 	--input-box-border:currentColor;
 	--input-box-focus:var(--highlight-background-color-rgb);
 	--input-box-solid:var(--highlight-background-color);
@@ -1469,7 +1473,7 @@ body .oo-ui-dropdownWidget.oo-ui-widget-disabled .oo-ui-dropdownWidget-handle {
     font-family:var(--rounded-font-stack);
     font-weight:600;
     color:var(--canvas-text-background-color);
-    border:2px solid var(--input-box-border);
+    border:1px solid var(--input-box-border);
 /*    border-color:var(--inactive-text-background-color); */
 /*    border-radius:var(--border-radius); */
     vertical-align:middle;
@@ -1479,7 +1483,7 @@ body .oo-ui-dropdownWidget.oo-ui-widget-disabled .oo-ui-dropdownWidget-handle {
     box-sizing:border-box;
     box-shadow:var(--threeD-shadow-active), 0 0 0 100vh rgba(var(--input-box-focus),0) inset;
     margin:1px;
-    padding:5px 11px;
+    padding:5.5px 11.5px;
 }
 
 
@@ -2022,7 +2026,7 @@ body .tux-messagetable-header {
 body .group-warning {
 	background-color:var(--warning-background-color);
 	color:#0e191a;
-	border:2px solid var(--warning-background-color-hover);
+	border:1px solid var(--warning-background-color-hover);
 }
 
 body .ext-translate-container .tux-messagelist .tux-message-pagemode .tux-message-item-compact:hover {

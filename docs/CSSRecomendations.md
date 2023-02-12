@@ -104,6 +104,7 @@ Here's a theming template you can use for getting custom theme(s) for your wiki:
 --system-acryllic-opacity:0.6; /* <number> 0.4 to 0.8 */
 --system-generic-color-hue-shift:1; /* <number> -12 to 12 */
 --system-generic-color-saturation:100%; /* <number> 20% to 100% */
+--system-icon-style:rounded; /* rounded | outlined | sharp */
 }
 ```
 
@@ -146,6 +147,7 @@ $wgEvelutionThemeA = [/* Replace $wgEvelutionThemeA with either $wgEvelutionThem
 'system-acryllic-opacity' => '0.6', /* <number> 0.4 to 0.8 */
 'system-generic-color-hue-shift' => '1', /* <number> -12 to 12 */
 'system-generic-color-saturation' => '100%', /* <number> 20% to 100% */
+'system-icon-style' => 'rounded' /* rounded | outlined | sharp */
 ];
 
 ```

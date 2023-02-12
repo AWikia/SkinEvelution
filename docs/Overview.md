@@ -162,6 +162,7 @@ Of course. It has been tested and it works. For instance, if you want to modify 
 --system-acryllic-opacity:0.6; /* <number> 0.4 to 0.8 */
 --system-generic-color-hue-shift:1; /* <number> -12 to 12 */
 --system-generic-color-saturation:100%; /* <number> 20% to 100% */
+--system-icon-style:rounded; /* rounded | outlined | sharp */
 }
 ```
 Per-page theming is also supported. If you want to use a different theme for the 1st Light theme on **Sample Test Page** article, paste this to ``MediaWiki:Common.css``:
@@ -203,6 +204,7 @@ Per-page theming is also supported. If you want to use a different theme for the
 --system-acryllic-opacity:0.6; /* <number> 0.4 to 0.8 */
 --system-generic-color-hue-shift:1; /* <number> -12 to 12 */
 --system-generic-color-saturation:100%; /* <number> 20% to 100% */
+--system-icon-style:rounded; /* rounded | outlined | sharp */
 }
 ```
 
@@ -233,6 +235,7 @@ Each release of Evelution comes with different Sevelution releases, to name a fe
 - 4.1.0 = Codenamed Rhodium = Introduced in Evelution 85.0.0 - Introduces Background Image Blend Modes
 - 4.2.0 = Codenamed Palladium = Introduced in Evelution 99.0.0 - Introduces Dynamic Canvas Color
 - 5.0.0 = Codenamed Silver = Introduced in Evelution 122.0.0 - Introduces CPE Language 4.0 and Evelution Spotlight
+- 6.0.0 = Codenamed Cadmium = Introduced in Evelution 130.0.0 - Introduces CPE Language 5.0 and Custom Icon Styles
 
 
 ### The Luna Theming System
