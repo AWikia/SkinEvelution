@@ -338,6 +338,7 @@ body [force-unaccented] {
 	--luna-message-background-color:var(--message-secondary-background-color);
 	--luna-message-background-color-hover:var(--message-secondary-background-color-hover);
 	--luna-message-background-color-rgb:var(--message-secondary-background-color-rgb);
+	--luna-tabs-background-color:var(--canvas-tabs-background-color);
 	--luna-tabs-opacity:var(--canvas-tabs-opacity);
 	--luna-active-tabs-opacity:var(--canvas-active-tabs-opacity);
 }
@@ -366,6 +367,7 @@ body:not(:focus):not(:focus-within) [force-unaccented] {
 	--luna-foreground-color-hover-rgb:var(--canvas-secondary-foreground-color-hover-rgb);
 	--luna-alternative-foreground-color:var(--canvas-secondary-alternative-foreground-color);
 	--luna-alternative-foreground-color-hover:var(--canvas-secondary-alternative-foreground-color-hover);
+	--luna-tabs-background-color:var(--canvas-tabs-background-color);
 	--luna-tabs-opacity:var(--canvas-tabs-opacity);
 	--luna-active-tabs-opacity:var(--canvas-active-tabs-opacity);
 }
@@ -429,6 +431,7 @@ body:not(:focus):not(:focus-within) [force-unaccented] {
 	--luna-message-background-color:var(--message-tertiary-background-color);
 	--luna-message-background-color-hover:var(--message-tertiary-background-color-hover);
 	--luna-message-background-color-rgb:var(--message-tertiary-background-color-rgb);
+	--luna-tabs-background-color:var(--active-title-tabs-background-color);
 	--luna-tabs-opacity:var(--active-title-tabs-opacity);
 	--luna-active-tabs-opacity:var(--active-title-active-tabs-opacity);
 }
@@ -455,6 +458,7 @@ body:not(:focus):not(:focus-within) [force-unaccented] {
 	--luna-alternative-foreground-color:var(--inactive-title-alternative-foreground-color);
 	--luna-alternative-foreground-color-hover:var(--inactive-title-alternative-foreground-color-hover);
 	--luna-alternative-foreground-color-rgb:var(--inactive-title-alternative-foreground-color-rgb);
+	--luna-tabs-background-color:var(--inactive-title-tabs-background-color);
 	--luna-tabs-opacity:var(--inactive-title-tabs-opacity);
 	--luna-active-tabs-opacity:var(--inactive-title-active-tabs-opacity);
 }
@@ -1858,8 +1862,9 @@ body .wikitable > * > tr > td {
 
 /* Input Boxes */
 .cpe-input {
+	--tabs-color:var(--canvas-tabs-background-color);
 	--tabs-opacity:var(--canvas-active-tabs-opacity);
-	--input-box-color:rgba(255,255,255,var(--tabs-opacity));
+	--input-box-color:rgba(var(--tabs-color),var(--tabs-opacity));
 	--input-box-color-contrast:var(--canvas-background-color);
 	--input-box-text:var(--canvas-text-background-color);
 	--input-box-border:currentColor;

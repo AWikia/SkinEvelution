@@ -1717,10 +1717,13 @@ if ((getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--canvas-
 	var lightDropdown = isLightColor(dropdowncolor);
 	if (lightDropdown) {
 		var lightnessDropdown = '#000000';
+		var tabscPage = '255,255,255';
+		var tabsoPage = window.MW18TabsOpacity + (chroma(dropdowncolor).luminance() * 0.4 );
 	} else {
 		var lightnessDropdown = '#ffffff';
+		var tabscPage = '58,58,58';
+		var tabsoPage = window.MW18TabsOpacity + ((1 - chroma(dropdowncolor).luminance()) * 0.4 );
 	}
-	var tabsoPage = window.MW18TabsOpacity + (chroma(dropdowncolor).luminance() * 0.4 );
 
 var dropdowncolor2 = GetInactiveText();
 var dropdowncolorH = ColorHover(dropdowncolor,content_color);
@@ -1815,10 +1818,13 @@ var caret_color = GetActiveTitle();
 		var lightCaret = isLightColor(caret_color);
 		if (lightCaret) {
 			var lightnessCaret = '#000000';
+			var tabscCaret = '255,255,255';
+			var tabsoCaret = window.MW18TabsOpacity + (chroma(caret_color).luminance() * 0.4 );
 		} else {
 			var lightnessCaret = '#ffffff';
+			var tabscCaret = '58,58,58';
+			var tabsoCaret = window.MW18TabsOpacity + ((1 - chroma(caret_color).luminance()) * 0.4 );
 		}
-		var tabsoCaret = window.MW18TabsOpacity + (chroma(caret_color).luminance() * 0.4 );
 
 
 
@@ -1874,10 +1880,13 @@ if ((getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--inactiv
 	var lightCaretIT = isLightColor(caretIT_color);
 	if (lightCaretIT) {
 		var lightnessCaretIT = '#000000';
+		var tabscCaretIT = '255,255,255';
+		var tabsoCaretIT = window.MW18TabsOpacity + (chroma(caretIT_color).luminance() * 0.4 );
 	} else {
 		var lightnessCaretIT = '#ffffff';
+		var tabscCaretIT = '58,58,58';
+		var tabsoCaretIT = window.MW18TabsOpacity + ((1 - chroma(caretIT_color).luminance()) * 0.4 );
 	}
-		var tabsoCaretIT = window.MW18TabsOpacity + (chroma(caretIT_color).luminance() * 0.4 );
 
 window.MW18ITColor = caretIT_color
 
@@ -1991,7 +2000,16 @@ var link2color1 = ColorHover(link2_color,content_color);
 var link3color1 = ColorHover(link3_color,caret_color);
 var link4color1 = ColorHover(link4_color,content_color);
 
-	var tabsoLink = window.MW18TabsOpacity + (chroma(link_color).luminance() * 0.4 );
+
+	var lightLink = isLightColor(link_color);
+	if (lightLink) {
+		var tabscLink = '255,255,255';
+		var tabsoLink = window.MW18TabsOpacity + (chroma(link_color).luminance() * 0.4 );
+	} else {
+		var tabscLink = '58,58,58';
+		var tabsoLink = window.MW18TabsOpacity + ((1 - chroma(link_color).luminance()) * 0.4 );
+	}
+
 
 
 
@@ -2448,6 +2466,7 @@ var invfilters = [
 						  "--canvas-secondary-foreground-color-rgb:" + dropdowncolor_fg[2] + ";\n" +
 						  "--canvas-secondary-foreground-color-hover-rgb:" +  dropdowncolor_fg[3] + ";\n" + 
 						  "--canvas-secondary-foreground-color-inverted-rgb:" + dropdowncolor_2fg[2] + ";\n" +
+						  "--canvas-tabs-background-color:" + tabscPage  + ";\n" +
 						  "--canvas-tabs-opacity:" + (tabsoPage * 0.5)  + ";\n" +
 						  "--canvas-active-tabs-opacity:" + tabsoPage  + ";\n" +
 						  "--canvas-background-color-rgb:" + ColorRGB( content_color ) + ";\n" +
@@ -2527,6 +2546,7 @@ var invfilters = [
 						  "--hyperlink-foreground-color-hover-rgb:" + link_fg[3] + ";\n" +
 						  "--hyperlink-foreground-color-inverted-rgb:" + link_2fg[2] + ";\n" +
 						  "--hyperlink-default-text-decoration:" + getDefaultHyperlinkTextDecoration(link_color,content_text) + ";\n" +
+						  "--hyperlink-tabs-background-color:" + tabscLink  + ";\n" +
 						  "--hyperlink-tabs-opacity:" + (tabsoLink * 0.5)  + ";\n" +
 						  "--hyperlink-active-tabs-opacity:" + tabsoLink  + ";\n" +
 						  "--hyperlink-secondary-background-color:" + link2_color + ";\n" +
@@ -2640,6 +2660,7 @@ var invfilters = [
 						  "--active-title-foreground-color-rgb:" + caret_fg[2] + ";\n" +
 						  "--active-title-foreground-color-hover-rgb:" + caret_fg[3] + ";\n" +
 						  "--active-title-foreground-color-inverted-rgb:" + caret_2fg[2] + ";\n" +
+						  "--active-title-tabs-background-color:" + tabscCaret  + ";\n" +
 						  "--active-title-tabs-opacity:" + (tabsoCaret * 0.5)  + ";\n" +
 						  "--active-title-active-tabs-opacity:" + tabsoCaret  + ";\n" +
 						  "--active-title-text-background-color:" + carettext_color + ";\n" +
@@ -2675,6 +2696,7 @@ var invfilters = [
 						  "--inactive-title-foreground-color-rgb:" + caretIT_fg[2] + ";\n" +
 						  "--inactive-title-foreground-color-hover-rgb:" + caretIT_fg[3] + ";\n" +
 						  "--inactive-title-foreground-color-inverted-rgb:" + caretIT_fg[2] + ";\n" +
+						  "--inactive-title-tabs-background-color:" + tabscCaretIT  + ";\n" +
 						  "--inactive-title-tabs-opacity:" + (tabsoCaretIT * 0.5)  + ";\n" +
 						  "--inactive-title-active-tabs-opacity:" + tabsoCaretIT  + ";\n" +
 						  "--inactive-title-text-background-color:" + caretITtext_color + ";\n" +
