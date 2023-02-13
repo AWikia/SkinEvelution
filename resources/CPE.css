@@ -1998,6 +1998,8 @@ select.cpe-input {
 /** Buttons **/
 /* Primary */
 .cpe-button {
+	--tabs-color:var(--canvas-tabs-background-color);
+	--tabs-opacity:var(--canvas-active-tabs-opacity);
 	--button-background-color:var(--highlight-background-color);
 	--button-background-color-rgb:var(--highlight-background-color-rgb);
 	--button-background-color-hover:var(--highlight-background-color-hover);
@@ -2007,7 +2009,7 @@ select.cpe-input {
 	--button-foreground-color-rgb:var(--highlight-foreground-color-rgb);
 	--button-border-color:var(--button-background-color);
 	--button-border-color-hover:var(--button-background-color-hover);
-	--secondary-button-background-color:transparent;
+	--secondary-button-background-color:rgba(var(--tabs-color),var(--tabs-opacity));
 	--secondary-button-foreground-color:var(--hyperlink-background-color);
 	--secondary-button-foreground-color-hover:var(--hyperlink-background-color-hover);
 	--tertiary-button-background-color:var(--hyperlink-fadeout-color);
@@ -5255,6 +5257,15 @@ box-shadow:2px 0 0 6px rgba(var(--canvas-text-background-color-rgb),.4), 2px 0 0
 .visualmode-contrast mark {
 color:var(--highlight-text-background-color);
 background-color:var(--highlight-background-color);
+}
+
+.visualmode-contrast .cpe-button,
+.visualmode-contrast body .oo-ui-buttonElement > .oo-ui-buttonElement-button,
+.visualmode-contrast body .mw-ui-button,
+.visualmode-contrast body .mw-ui-button:not(:disabled),
+.visualmode-contrast body .oo-ui-tool.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive > .oo-ui-tool-link {
+	--tabs-color:0,0,0!important;
+	--tabs-opacity:0!important;
 }
 
 

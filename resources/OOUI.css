@@ -108,6 +108,12 @@ body .oo-ui-iconWidget:before {
 	width:24px;
 }
 
+.oo-ui-numberInputWidget-buttoned .oo-ui-buttonWidget .oo-ui-iconElement-icon:before {
+	margin-right:0px;
+}
+
+
+
 .oo-ui-iconElement-icon.oo-ui-iconElement-noIcon {
 	visibility:hidden;
 }
@@ -530,7 +536,6 @@ body .oo-ui-tabSelectWidget-framed .oo-ui-tabOptionWidget.oo-ui-optionWidget-sel
 	--button-foreground-color-rgb:var(--inactive-text-foreground-color-rgb);
 	--button-border-color:var(--button-background-color);
 	--button-border-color-hover:var(--button-background-color-hover);
-	--secondary-button-background-color:var(--canvas-background-color);
 	--secondary-button-foreground-color:var(--canvas-text-background-color);
 	--secondary-button-foreground-color-hover:var(--canvas-text-background-color-hover);
 	opacity:var(--disabled-elements-opacity)!important;
@@ -540,6 +545,8 @@ body .oo-ui-buttonElement > .oo-ui-buttonElement-button,
 body .mw-ui-button,
 body .mw-ui-button:not(:disabled),
 body .oo-ui-tool.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive > .oo-ui-tool-link {
+	--tabs-color:var(--canvas-tabs-background-color);
+	--tabs-opacity:var(--canvas-active-tabs-opacity);
 	--button-background-color:var(--highlight-background-color);
 	--button-background-color-hover:var(--highlight-background-color-hover);
 	--button-foreground-color:var(--highlight-foreground-color);
@@ -548,7 +555,7 @@ body .oo-ui-tool.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flagged
 	--button-foreground-color-rgb:var(--highlight-foreground-color-rgb);
 	--button-border-color:var(--button-background-color);
 	--button-border-color-hover:var(--button-background-color-hover);
-	--secondary-button-background-color:var(--canvas-background-color);
+	--secondary-button-background-color:rgba(var(--tabs-color),var(--tabs-opacity));
 	--secondary-button-foreground-color:var(--hyperlink-background-color);
 	--secondary-button-foreground-color-hover:var(--hyperlink-background-color-hover);
     transition:background-color 200ms var(--transitioner), border-color 200ms var(--transitioner), outline-offset 50ms var(--transitioner), outline-color 200ms var(--transitioner), color 200ms var(--transitioner), box-shadow 200ms var(--transitioner)!important;
@@ -640,7 +647,7 @@ body .oo-ui-buttonElement-framed.oo-ui-indicatorElement > .oo-ui-buttonElement-b
 
 
 body .oo-ui-numberInputWidget-buttoned .oo-ui-buttonWidget .oo-ui-buttonElement-button {
-	min-height:36px;
+	min-height:34px;
 }
 
 body .oo-ui-numberInputWidget-minusButton > .oo-ui-buttonElement-button {
@@ -680,7 +687,7 @@ body .oo-ui-buttonElement-framed.oo-ui-labelElement > .oo-ui-buttonElement-butto
 }
 
 body .oo-ui-buttonElement-framed.oo-ui-iconElement > .oo-ui-buttonElement-button {
-	min-height:36px;
+	min-height:34px;
 }
 
 body .mw-rcfilters-ui-liveUpdateButtonWidget.oo-ui-toggleWidget-on:after {
@@ -1323,6 +1330,13 @@ body .mw-ui-input  {
     margin:1px;
 }
 
+body .oo-ui-textInputWidget.oo-ui-widget-disabled .oo-ui-inputWidget-input {
+	-webkit-text-fill-color:currentColor;
+	color:var(--inactive-text-background-color);
+	text-shadow:none;
+}
+
+
 body .oo-ui-numberInputWidget-buttoned  .oo-ui-inputWidget-input,
 body .oo-ui-numberInputWidget-buttoned.oo-ui-widget-enabled  .oo-ui-inputWidget-input {
 	--input-box-focus:var(--hyperlink-background-color-rgb);
@@ -1462,7 +1476,8 @@ body .oo-ui-dropdownWidget.oo-ui-widget-disabled .oo-ui-dropdownWidget-handle {
 }
 
 body .oo-ui-dropdownWidget.oo-ui-widget-enabled .oo-ui-dropdownWidget-handle,
-body .oo-ui-dropdownWidget.oo-ui-widget-disabled .oo-ui-dropdownWidget-handle {
+body .oo-ui-dropdownWidget.oo-ui-widget-disabled .oo-ui-dropdownWidget-handle,
+body .oo-ui-dropdownWidget-handle {
 	--tabs-color:var(--canvas-tabs-background-color);
 	--tabs-opacity:var(--canvas-active-tabs-opacity);
 	--input-box-color:rgba(var(--tabs-color),var(--tabs-opacity));
@@ -1477,7 +1492,7 @@ body .oo-ui-dropdownWidget.oo-ui-widget-disabled .oo-ui-dropdownWidget-handle {
     color:var(--canvas-text-background-color);
     border:1px solid var(--input-box-border);
 /*    border-color:var(--inactive-text-background-color); */
-/*    border-radius:var(--border-radius); */
+    border-radius:var(--border-radius);
     vertical-align:middle;
     background-color:var(--input-box-color);
     outline:0px;
@@ -1488,6 +1503,10 @@ body .oo-ui-dropdownWidget.oo-ui-widget-disabled .oo-ui-dropdownWidget-handle {
     padding:5.5px 11.5px;
 }
 
+body .oo-ui-dropdownWidget.oo-ui-widget-disabled .oo-ui-dropdownWidget-handle {
+	color:var(--inactive-text-background-color);
+	text-shadow:none;
+}
 
 
 body .oo-ui-dropdownWidget.oo-ui-widget-enabled.oo-ui-dropdownWidget-open .oo-ui-dropdownWidget-handle,
@@ -1857,7 +1876,7 @@ body .oo-ui-toggleSwitchWidget {
 	height:1.66em;
 	min-height:auto;
 	background-color:var(--checkbox-unchecked-bg);
-	border-width:2px;
+	border-width:1px;
 	border-color:var(--checkbox-unchecked-shadow);
 	box-shadow:var(--threeD-shadow)!important;
 	transition:transform,background-color,border-color,color;
@@ -1867,7 +1886,7 @@ body .oo-ui-toggleSwitchWidget {
 
 body .oo-ui-toggleSwitchWidget.oo-ui-widget-enabled .oo-ui-toggleSwitchWidget-grip {
 	background-color:var(--checkbox-unchecked-bg);
-	border-width:2px;
+	border-width:1px;
 	border-color:var(--checkbox-unchecked-shadow);
 	box-shadow:none!important;
 }
@@ -1962,7 +1981,7 @@ body .oo-ui-toggleSwitchWidget:before {
 }
 
 body .oo-ui-toggleSwitchWidget-grip {
-    top: 0.09em;
+    top: 0.14em;
     min-width: 1.2em;
     width: 1.2em;
     min-height: 1.2em;
@@ -1970,7 +1989,7 @@ body .oo-ui-toggleSwitchWidget-grip {
     border-radius: 1.66em;
     margin-left:-2px;
     left:0.35714286em;
-    transform:translateX(-5%);
+    transform:translateX(0%);
 	transition:transform,background-color,border-color,color,margin-left;
 	transition-duration:.3s;
 	transition-timing-function:var(--transitioner);
@@ -1982,7 +2001,11 @@ body .oo-ui-toggleSwitchWidget.oo-ui-toggleWidget-off .oo-ui-toggleSwitchWidget-
 
 body .oo-ui-toggleSwitchWidget.oo-ui-toggleWidget-on .oo-ui-toggleSwitchWidget-grip {
     left:0.35714286em;
-    transform:translateX(80%);
+    transform:translateX(90%);
+}
+
+body .oo-ui-toggleSwitchWidget.oo-ui-toggleWidget-off .oo-ui-toggleSwitchWidget-grip {
+    left:0.35714286em;	
 }
 
 body .mw-apisandbox-toolbar {
