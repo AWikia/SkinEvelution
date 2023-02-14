@@ -921,9 +921,11 @@ body {
 --dropdown-active-hyperlink-border-color:rgba(var(--hyperlink-secondary-background-color-rgb),0.2);
 --dropdown-active-hyperlink-text-color:var(--hyperlink-secondary-background-color);
 /** Checkbox Styling **/
-	--checkbox-unchecked-bg:transparent;
+	--checkbox-tabs-opacity:var(--canvas-active-tabs-opacity);
+	--checkbox-tabs-background-color:var(--canvas-tabs-background-color);
+	--checkbox-unchecked-bg:rgba(var(--checkbox-tabs-background-color),var(--checkbox-tabs-opacity));
 	--checkbox-unchecked-shadow:var(--inactive-text-background-color);
-	--checkbox-unchecked-hover:var(--checkbox-unchecked-bg);
+	--checkbox-unchecked-bg-hover:var(--checkbox-unchecked-bg);
 	--checkbox-unchecked-shadow-hover:var(--checkbox-active-bg);
 	--checkbox-active-bg:var(--highlight-background-color);
 	--checkbox-checked-bg:var(--highlight-background-color);
@@ -2886,7 +2888,7 @@ flex:1 1 0;
 	height:1.2em;
 	min-width:1.2em;
 	width:1.2em;
-	background-color:var(--checkbox-unchecked-bg);
+	background-color:transparent;
 	border-radius:50%;
 	border:1px solid var(--checkbox-unchecked-shadow);
 	left:0.35714286em;
@@ -2899,6 +2901,11 @@ flex:1 1 0;
 	background-color:var(--checkbox-unchecked-bg-hover);
 	border-color:var(--checkbox-unchecked-shadow-hover);
 }
+
+.cpe-toggle__label:hover::after {
+	background-color:transparent;
+}
+
 
 .cpe-toggle__label:active::before,
 .cpe-toggle__label:active::after,
@@ -5409,6 +5416,8 @@ background-color:var(--highlight-background-color);
 }
 
 .visualmode-contrast body {
+	--checkbox-tabs-opacity:0;
+	--checkbox-tabs-background-color:0,0,0;
 	--checkbox-unchecked-bg-hover:var(--highlight-text-background-color);
 	--checkbox-unchecked-shadow-hover:var(--highlight-background-color);
 	--checkbox-active-bg:var(--highlight-background-color);

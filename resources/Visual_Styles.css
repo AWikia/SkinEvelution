@@ -1890,13 +1890,19 @@ color:inherit;
 .visualstyle-simple body .oo-ui-popupWidget-popup, 
 .visualstyle-simple body .mw-rcfilters-ui-changesListWrapperWidget .mw-changeslist-legend, 
 .visualstyle-simple body .oo-ui-popupToolGroup-tools {
+	--checkbox-tabs-opacity:var(--simple-luna-active-tabs-opacity);
+	--checkbox-tabs-background-color:var(--simple-luna-tabs-background-color);
+	--checkbox-unchecked-bg:rgba(var(--checkbox-tabs-background-color),var(--checkbox-tabs-opacity));
 	--checkbox-unchecked-shadow:rgba(var(--simple-luna-foreground-color-rgb), 0.5);
+	--checkbox-unchecked-bg-hover:var(--checkbox-unchecked-bg);
+	--checkbox-unchecked-shadow-hover:var(--checkbox-checked-bg);
 	--checkbox-active-bg:var(--simple-luna-foreground-color);
 	--checkbox-checked-bg:var(--simple-luna-foreground-color);
 	--checkbox-checked-bg-hover:var(--simple-luna-foreground-color-hover);
 	--checkbox-checked-shadow:var(--checkbox-checked-bg);
 	--checkbox-checked-shadow-hover:rgba(var(--simple-luna-background-color-rgb),0.2);
 	--checkbox-checked-text:var(--simple-luna-background-color);
+	--checkbox-checked-text-hover:var(--checkbox-checked-text);
 }
 
 
@@ -1905,6 +1911,8 @@ color:inherit;
 .visualstyle-simple.visualmode-contrast body .oo-ui-popupWidget-popup,
 .visualstyle-simple.visualmode-contrast body .mw-rcfilters-ui-changesListWrapperWidget .mw-changeslist-legend,
 .visualstyle-simple.visualmode-contrast body .oo-ui-popupToolGroup-tools {
+	--checkbox-tabs-opacity:0;
+	--checkbox-tabs-background-color:0,0,0;
 	--checkbox-active-bg:var(--simple-luna-background-color);
 	--checkbox-checked-shadow-hover:rgba(var(--simple-luna-foreground-color-rgb),0.5);
 }
@@ -1956,6 +1964,8 @@ color:inherit;
 .visualstyle-simple body .mw-cookiewarning-container .oo-ui-buttonElement > .oo-ui-buttonElement-button,
 .visualstyle-simple .evelution-header .local-navigation .cpe-dropdown__content .local-navigation__button > .edit-button .cpe-button,
 .visualstyle-simple .search .cpe-dropdown__content .cpe-list .pageheader-search .cpe-button {
+	--tabs-color:var(--simple-luna-tabs-background-color);
+	--tabs-opacity:var(--simple-luna-active-tabs-opacity);
     --button-background-color: var(--simple-luna-foreground-color);
     --button-background-color-rgb: var(--simple-luna-foreground-color-rgb);
     --button-background-color-hover: var(--simple-luna-foreground-color-hover);
@@ -1963,7 +1973,7 @@ color:inherit;
     --button-foreground-color-hover: var(--simple-luna-background-color);
     --button-foreground-color-inverted: var(--simple-luna-background-color-hover);
 	--button-foreground-color-rgb:var(--simple-luna-background-color-rgb);
-    --secondary-button-background-color:var(--simple-luna-background-color);
+    --secondary-button-background-color:rgba(var(--tabs-color),var(--tabs-opacity));
     --secondary-button-foreground-color: var(--simple-luna-foreground-color);
     --secondary-button-foreground-color-hover: var(--simple-luna-foreground-color-hover);
 }
