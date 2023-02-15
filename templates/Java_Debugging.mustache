@@ -4,6 +4,11 @@ function DownloadTheme(full=false) {
 	if ( wordfilter2 == "" ) {
 		wordfilter2 == 'initial'
 	}
+	var fon1 = GetCustomFont();
+	var fon2 = GetCustomFont4();
+	var fon3 = GetCustomFont2();
+	var fon4 = GetCustomFont3();
+
 	if (full) { // For use without Theme Management
 		result = '.visualcolors-standard.theme-A {\n' + // Beginning
 				// Body BG
@@ -637,10 +642,10 @@ function DownloadTheme(full=false) {
 				 '--active-title-text-background-color:' + getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--active-title-text-background-color")  + ';\n' +
 				 '--inactive-title-background-color:' + getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--inactive-title-background-color")  + ';\n' +
 				 '--inactive-title-text-background-color:' + getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--inactive-title-text-background-color")  + ';\n' +
-				 '--custom-sans-serif-font:' + GetCustomFont()  + ';\n' +
-				 '--custom-serif-font:' + GetCustomFont4()  + ';\n' +
-				 '--custom-rounded-font:' + GetCustomFont2()  + ';\n' +
-				 '--custom-monospace-font:' + GetCustomFont3()  + ';\n' +
+				 '--custom-sans-serif-font:' + fon1  + ';\n' +
+				 '--custom-serif-font:' + fon2  + ';\n' +
+				 '--custom-rounded-font:' + fon3  + ';\n' +
+				 '--custom-monospace-font:' + fon4 + ';\n' +
 				 '--border-radius:' + getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--border-radius")  + ';\n' +
 				 '--icon-filter:' + getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--icon-filter")  + ';\n' +
 				 '--icon-filter-hover:' + wordfilter2  + ';\n' +

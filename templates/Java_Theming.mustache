@@ -18,8 +18,6 @@ window.MW18ActiveColorScheme = 'light';
 window.MW18ActiveStyle = '-';
 window.MW18ActiveStyleMode = '-';
 window.MW18ActiveStyleMode2 = '-'; // This is like MW18ActiveStyleMode but different for High Contrast Mode (where it is contrast)
-/* Auto Accent (Unused for now) */
-window.MW18AutoAccent = '0';
 /* DCM Modes */
 window.MW18DCMMode = 'standard';
 window.MW18DCMType = 'standard';
@@ -560,7 +558,6 @@ function VisualStyleCompile() {
 function VisualColorCompile() {
 // Puts new options
 /* Visual Colors */
-	if (! (document.querySelector("body.no-color-management") ) ) {
 		var length = visualColorNames.length
 		for (let i = 0; i < visualColors.length; i++) {
 			visualColorNames[i+length] =  visualColors[i][0];
@@ -580,6 +577,12 @@ function VisualColorCompile() {
 					badge2 ='<span class="cpe-icon cpe-icon-small material-icons cpe-icon-badge">'+ visualColors[i][4] +'</span>'
 				}
 			}
+			theme = "";
+			themeD = "";
+			for (let j = 0; j < 8; j++) {
+				theme += '<div class="cpe-theming visualcolors-' + visualColors[i][0] + ' colorscheme-light theme-'+ ['A','B','C','D','E','F','G','H'][j] + '"></div>'
+				themeD += '<div class="cpe-theming visualcolors-' + visualColors[i][0] + ' colorscheme-dark theme-'+ ['A','B','C','D','E','F','G','H'][j] + '"></div>'
+			}
 			str = 	'<li data-visual-color="' + visualColors[i][0] + '" title="' + visualColors[i][1] + '">' +
 						'<a onclick="VisualColor(' + "'" + visualColors[i][0]  + "'" + ')">' +
 							badge2 +
@@ -587,22 +590,7 @@ function VisualColorCompile() {
 							icon +
 						'</a>' +
 						'<div style="position:absolute; z-index:-1; pointer-events:none;">' +
-							'<div class="cpe-theming visualcolors-' + visualColors[i][0] + ' colorscheme-light theme-A"></div>' +
-							'<div class="cpe-theming visualcolors-' + visualColors[i][0] + ' colorscheme-light theme-B"></div>' +
-							'<div class="cpe-theming visualcolors-' + visualColors[i][0] + ' colorscheme-light theme-C"></div>' +
-							'<div class="cpe-theming visualcolors-' + visualColors[i][0] + ' colorscheme-light theme-D"></div>' +
-							'<div class="cpe-theming visualcolors-' + visualColors[i][0] + ' colorscheme-light theme-E"></div>' +
-							'<div class="cpe-theming visualcolors-' + visualColors[i][0] + ' colorscheme-light theme-F"></div>' +
-							'<div class="cpe-theming visualcolors-' + visualColors[i][0] + ' colorscheme-light theme-G"></div>' +
-							'<div class="cpe-theming visualcolors-' + visualColors[i][0] + ' colorscheme-light theme-H"></div>' +
-							'<div class="cpe-theming visualcolors-' + visualColors[i][0] + ' colorscheme-dark theme-A"></div>' +
-							'<div class="cpe-theming visualcolors-' + visualColors[i][0] + ' colorscheme-dark theme-B"></div>' +
-							'<div class="cpe-theming visualcolors-' + visualColors[i][0] + ' colorscheme-dark theme-C"></div>' +
-							'<div class="cpe-theming visualcolors-' + visualColors[i][0] + ' colorscheme-dark theme-D"></div>' +
-							'<div class="cpe-theming visualcolors-' + visualColors[i][0] + ' colorscheme-dark theme-E"></div>' +
-							'<div class="cpe-theming visualcolors-' + visualColors[i][0] + ' colorscheme-dark theme-F"></div>' +
-							'<div class="cpe-theming visualcolors-' + visualColors[i][0] + ' colorscheme-dark theme-G"></div>' +
-							'<div class="cpe-theming visualcolors-' + visualColors[i][0] + ' colorscheme-dark theme-H"></div>' +
+							theme + themeD +
 						'</div>' +
 					'</li>'
 			var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-colors");
@@ -610,7 +598,6 @@ function VisualColorCompile() {
 				x.insertAdjacentHTML('beforeend',str);
 			}
 		}
-	}
 
 
 // In the Visual Styles Options
@@ -620,7 +607,11 @@ function VisualColorCompile() {
 /* Getting non-generic color values */
 
 function GetActiveThemeConfiguration() { // Used for ECM (Enabled Color Management)
-	return document.querySelector('.cpe-theming.colorscheme-' + getColorScheme()  + '.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme);
+	if (DisabledColorManagement()) {
+		return document.querySelector('.cpe-theming.visualcolors-nocolormanagement');
+	} else {
+		return document.querySelector('.cpe-theming.colorscheme-' + getColorScheme()  + '.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme);
+	}
 }
 
 function GetActiveDCMConfiguration() { // Used for DCM (Disabled Color Management)
@@ -647,50 +638,15 @@ function GetDesktop() {
 	}
 }
 
-function GetDesktopImage(trimmed=false) {
+function GetDesktopImage() {
 	var img = getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--desktop-background-image").trim();
 	if ( (img === '') || (img === 'url()') || (img === "url('')") || (img === 'url("")') || (img === 'none') || (img === "'none'") || (img === '"none"')) {
 		return '';
-	} else if (trimmed) {
-		return img.replace('url(', '').replace(')', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("").split("\"").join("");
 	} else {
 		return 'url(' + img.replace('url(', '').replace(')', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("").split("\"").join("") + ')';
 	}
 }
 
-/*
-GetAutoColorDesktop()
-var s = window.MW18AutoAccent;
-s
-*/
-function GetAutoColorDesktop() {
-const myImg = new Image();
-myImg.crossOrigin = "Anonymous";
-myImg.onload =  () => {
- const x = document.createElement('canvas');
-    x.width=myImg.width
-    x.height=myImg.height
-  const context = x.getContext('2d');
-  context.drawImage(myImg, 0, 0);
-  const {
-    data
-  } = context.getImageData((Math.round(myImg.width /2) - 1), (Math.round(myImg.height /2) - 1), 1, 1);
-  if (myImg.src === '""') {
-	window.MW18AutoAccent = '';
-  } else {
-	window.MW18AutoAccent = chroma('rgb(' + data[0] + ',' + data[1] + ',' + data[2] + ')').hex();
-	
-  }
-}
-
-var img = GetDesktopImage(true);
-
-if (img == '""') {
-	window.MW18AutoAccent = '';
-} else {
-	myImg.src = img;
-}
-}
 
 function GetDesktopText() {
 	if (DisabledColorManagement()) {
@@ -880,6 +836,7 @@ function GetMessage() {
 		return CompileGenericColors(window.MW18PageColor)[5];
 }
 
+
 function GetCustomFont() {
 	var img = getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--custom-sans-serif-font").trim();
 		return img.replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
@@ -899,6 +856,7 @@ function GetCustomFont4() {
 	var img = getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--custom-serif-font").trim();
 		return img.replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
 }
+
 
 function ContrastRatio() { // Used for Text
 
@@ -1654,11 +1612,6 @@ if (refresh === true) {
 		var colorstyle= ".color-management-off { display:none!important;}\n"
 	}
 
-if (refresh) {
-//	GetAutoColorDesktop();
-//alert(window.MW18AutoAccent);
-}
-
 /** Page BG **/
 /* Set Vars */
 // content_text is Content Color
@@ -2294,6 +2247,12 @@ var caretITtext_2fg = GetForegroundVariables(caretITtextcolor1);
 	var hue = GetHueShift();	
 	brad = parseInt(getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--border-radius"));
 
+	var fon1 = GetCustomFont();
+	var fon2 = GetCustomFont4();
+	var fon3 = GetCustomFont2();
+	var fon4 = GetCustomFont3();
+
+
 var invfilters = [
 					['hue-rotate(' + hue + 'deg) grayscale(' + saturation + ')',			  					'invert(1) hue-rotate(' + (180+hue) + 'deg)  grayscale(' + saturation + ')'],						// Sp Dark Mode 0 (Normal)
 					['sepia(1) hue-rotate(' + (320+hue) + 'deg)  grayscale(' + saturation + ')', 	  			'invert(1) sepia(1) hue-rotate(' + (320+hue) + 'deg)  grayscale(' + saturation + ')'],				// Sp Dark Mode 1 (Colorscale)
@@ -2845,10 +2804,10 @@ var invfilters = [
 						'--desktop-background-image-blend-mode:' + getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--desktop-background-image-blend-mode")  + ';\n' +
 						'--desktop-background-horizontal-alignment:' + getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--desktop-background-horizontal-alignment")  + ';\n' +
 						'--desktop-background-vertical-alignment:' + getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--desktop-background-vertical-alignment")  + ';\n' +
-						 '--custom-sans-serif-font:' + GetCustomFont()  + ';\n' +
-						 '--custom-serif-font:' + GetCustomFont4()  + ';\n' +
-						 '--custom-rounded-font:' + GetCustomFont2()  + ';\n' +
-						 '--custom-monospace-font:' + GetCustomFont3()  + ';\n' +
+						 '--custom-sans-serif-font:' + fon1  + ';\n' +
+						 '--custom-serif-font:' + fon2  + ';\n' +
+						 '--custom-rounded-font:' + fon3  + ';\n' +
+						 '--custom-monospace-font:' + fon4  + ';\n' +
 						 '--border-radius:' + brad  + 'px;\n' +
 						 '--window-border-radius:' + (brad * 2)  + 'px;\n' +
 						 '--menu-border-radius:' + (brad * 0.6)  + 'px;\n' +

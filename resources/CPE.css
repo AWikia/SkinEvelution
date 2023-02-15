@@ -550,6 +550,15 @@ body {
 
 /* Forced Colors */
 @media (forced-colors: active) {
+	:root .visualcolors-nocolormanagement {
+		--desktop-background-image:url("")!important;
+		--icon-filter:opacity(1)!important;
+		--icon-filter-hover:opacity(1)!important;
+		--icon-filter-duration:0ms!important;
+		--icon-filter-delay:0ms!important;
+		--system-visual-mode:contrast!important;
+	}
+
 	.forced-colors-off {
 		display:none!important;
 	}
@@ -557,46 +566,7 @@ body {
 	.forced-colors-styles.cpe-dropdown__content {
 		top:-50%!important; /* Override Inline Style */
 	}
-	
-	.theme-A, .theme-B, .theme-C, .theme-D, .theme-E, .theme-F, .theme-G, .theme-H {
-		--desktop-background-image:url("")!important;
-		--desktop-background-image-filter:none!important;
-		--desktop-background-color:background!important;
-		--desktop-text-background-color:auto!important;
-		--desktop-background-horizontal-alignment:center!important;
-		--desktop-background-vertical-alignment:center!important;
-		--desktop-background-size:cover!important;
-		--desktop-background-no-horizontal-tiling:false!important;
-		--desktop-background-no-vertical-tiling:false!important;
-		--hyperlink-background-color:linktext!important;
-		--canvas-background-color:canvas!important;
-		--canvas-secondary-background-color:buttonface!important;
-		--inactive-text-background-color:graytext!important;
-		--canvas-text-background-color:canvastext!important;
-		--canvas-text-secondary-background-color:buttontext!important;
-		--highlight-background-color:highlight!important;
-		--highlight-text-background-color:highlighttext!important;
-		--active-title-background-color:activecaption!important;
-		--active-title-text-background-color:captiontext!important;
-		--inactive-title-background-color:inactivecaption!important;
-		--inactive-title-text-background-color:inactivecaptiontext!important;
-		--custom-sans-serif-font:""!important;
-		--custom-serif-font:""!important;
-		--custom-rounded-font:""!important;
-		--custom-monospace-font:""!important;
-		--border-radius:5px!important;
-		--icon-filter:opacity(1)!important;
-		--icon-filter-hover:opacity(1)!important;
-		--icon-filter-duration:0ms!important;
-		--icon-filter-delay:0ms!important;
-		--system-acryllic-opacity:0.6!important;
-		--system-generic-color-hue-shift:0!important;
-		--system-generic-color-saturation:100%!important;
-		--system-icon-style:round!important;
-		--system-visual-mode:contrast;
-		--system-visual-style:standard;
-	}
-	
+		
 	.fc-selecteditem,
 	.fc-accentcolor {
 		color:highlight!important
@@ -609,7 +579,7 @@ body {
 
 	
 	.cpe-system-colors {
-		color-scheme:normal!important;
+		color-scheme:light dark!important;
 	}
 }
 
@@ -617,50 +587,37 @@ body {
 
 /* Base */
 
-	:root .visualcolors-nocolormanagement.theme-A, 
-	:root .visualcolors-nocolormanagement.theme-B, 
-	:root .visualcolors-nocolormanagement.theme-C, 
-	:root .visualcolors-nocolormanagement.theme-D, 
-	:root .visualcolors-nocolormanagement.theme-E, 
-	:root .visualcolors-nocolormanagement.theme-F, 
-	:root .visualcolors-nocolormanagement.theme-G, 
-	:root .visualcolors-nocolormanagement.theme-H {
-		--desktop-background-image:url("")!important;
-		--desktop-background-image-filter:none!important;
-		--desktop-background-color:background!important;
-		--desktop-text-background-color:auto!important;
-		--desktop-background-horizontal-alignment:center!important;
-		--desktop-background-vertical-alignment:center!important;
-		--desktop-background-size:cover!important;
-		--desktop-background-no-horizontal-tiling:false!important;
-		--desktop-background-no-vertical-tiling:false!important;
-		--hyperlink-background-color:linktext!important;
-		--canvas-background-color:canvas!important;
-		--canvas-secondary-background-color:buttonface!important;
-		--inactive-text-background-color:graytext!important;
-		--canvas-text-background-color:canvastext!important;
-		--canvas-text-secondary-background-color:buttontext!important;
-		--highlight-background-color:highlight!important;
-		--highlight-text-background-color:highlighttext!important;
-		--active-title-background-color:activecaption!important;
-		--active-title-text-background-color:captiontext!important;
-		--inactive-title-background-color:inactivecaption!important;
-		--inactive-title-text-background-color:inactivecaptiontext!important;
-		--custom-sans-serif-font:""!important;
-		--custom-serif-font:""!important;
-		--custom-rounded-font:""!important;
-		--custom-monospace-font:""!important;
-		--border-radius:5px!important;
-		--icon-filter:opacity(1)!important;
-		--icon-filter-hover:opacity(0.8)!important;
-		--icon-filter-duration:0ms!important;
-		--icon-filter-delay:0ms!important;
-		--system-acryllic-opacity:0.6!important;
-		--system-generic-color-hue-shift:0!important;
-		--system-generic-color-saturation:100%!important;
-		--system-icon-style:round!important;
+	:root .visualcolors-nocolormanagement {
+		--desktop-background-image:url("");
+		--desktop-background-image-filter:none;
+		--desktop-background-horizontal-alignment:center;
+		--desktop-background-vertical-alignment:center;
+		--desktop-background-size:cover;
+		--desktop-background-no-horizontal-tiling:false;
+		--desktop-background-no-vertical-tiling:false;
+		--custom-sans-serif-font:"";
+		--custom-serif-font:"";
+		--custom-rounded-font:"";
+		--custom-monospace-font:"";
+		--border-radius:5px;
+		--icon-filter:opacity(1);
+		--icon-filter-hover:opacity(0.8);
+		--icon-filter-duration:0ms;
+		--icon-filter-delay:0ms;
+		--system-acryllic-opacity:0.6;
+		--system-generic-color-hue-shift:0;
+		--system-generic-color-saturation:100%;
+		--system-icon-style:round;
 		--system-visual-mode:standard;
 		--system-visual-style:standard;
+	}
+	
+	body.no-color-management .colors .cpe-dropdown__content {
+		top:0%!important; /* Override Inline Style */
+	}
+
+	body.no-color-management .colors .cpe-dropdown__content .fcm-off {
+		display:none!important;
 	}
 	
 /* Custom */
