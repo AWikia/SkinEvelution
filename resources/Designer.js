@@ -514,6 +514,26 @@ function InitDesigner() {
 				'<option value="#002266">' + 
 				'<option value="#580062">' + 
 				'<option value="#808080">' +
+				// Graph Colors (19)
+				'<option value="#117dbb">' + 
+				'<option value="#9528b4">' + 
+				'<option value="#4da60c">' + 
+				'<option value="#a74f01">' + 
+				'<option value="#31b0cd">' + 
+				'<option value="#768df1">' + 
+				'<option value="#218b8b">' + 
+				'<option value="#ef8ccb">' + 
+				'<option value="#a083c9">' + 
+				'<option value="#006f91">' + 
+				'<option value="#095bde">' + 
+				'<option value="#4a7500">' + 
+				'<option value="#bf174f">' + 
+				'<option value="#7e13f0">' + 
+				'<option value="#39b8e3">' + 
+				'<option value="#5c9efa">' + 
+				'<option value="#84c718">' + 
+				'<option value="#f5628e">' + 
+				'<option value="#de68f2">' + 
 				// Special Colors (1)
 				'<option value="#18bbc5">' +
 			'</datalist>' +
