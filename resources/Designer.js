@@ -1077,7 +1077,7 @@ function InitDesigner() {
 				'<td style="text-align:center; width:300px" colspan=2>' +
 				   '<div class="cpe-dropdown cpe-select" tabindex="-1">' +
 						'<div class="cpe-input icon_style cpe-dropdown__toggle" style="width:300px; min-width:300px;">' +
-							'<span class="cpe-select__value" value="cover">'+ 'Round' +'</span>' +
+							'<span class="cpe-select__value" value="round">'+ 'Round' +'</span>' +
 							'<span class="cpe-icon cpe-icon-tiny cpe-icon-large cpe-dropdown__toggle-chevron material-icons">' +
 								'arrow_drop_down' +
 							'</span>' +
