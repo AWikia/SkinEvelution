@@ -31,8 +31,6 @@ window.MW18ITColor = GetInactiveTitle();
 /* Contrast Values */
 window.MW18lowContrast = 3.00;
 window.MW18highContrast = 4.50;
-/* Opacity Values */
-window.MW18TabsOpacity = 0.1;
 
 /*
 **
@@ -1671,11 +1669,11 @@ if ((getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--canvas-
 	if (lightDropdown) {
 		var lightnessDropdown = '#000000';
 		var tabscPage = '255,255,255';
-		var tabsoPage = window.MW18TabsOpacity + (chroma(dropdowncolor).luminance() * 0.4 );
+		var tabsoPage = 0.1 + (chroma(dropdowncolor).luminance() * 0.4 );
 	} else {
 		var lightnessDropdown = '#ffffff';
 		var tabscPage = '58,58,58';
-		var tabsoPage = window.MW18TabsOpacity + ((1 - chroma(dropdowncolor).luminance()) * 0.4 );
+		var tabsoPage = 0.1 + ((1 - chroma(dropdowncolor).luminance()) * 0.4 );
 	}
 
 var dropdowncolor2 = GetInactiveText();
@@ -1772,11 +1770,11 @@ var caret_color = GetActiveTitle();
 		if (lightCaret) {
 			var lightnessCaret = '#000000';
 			var tabscCaret = '255,255,255';
-			var tabsoCaret = window.MW18TabsOpacity + (chroma(caret_color).luminance() * 0.4 );
+			var tabsoCaret = 0.1 + (chroma(caret_color).luminance() * 0.4 );
 		} else {
 			var lightnessCaret = '#ffffff';
 			var tabscCaret = '58,58,58';
-			var tabsoCaret = window.MW18TabsOpacity + ((1 - chroma(caret_color).luminance()) * 0.4 );
+			var tabsoCaret = 0.1 + ((1 - chroma(caret_color).luminance()) * 0.4 );
 		}
 
 
@@ -1834,11 +1832,11 @@ if ((getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--inactiv
 	if (lightCaretIT) {
 		var lightnessCaretIT = '#000000';
 		var tabscCaretIT = '255,255,255';
-		var tabsoCaretIT = window.MW18TabsOpacity + (chroma(caretIT_color).luminance() * 0.4 );
+		var tabsoCaretIT = 0.1 + (chroma(caretIT_color).luminance() * 0.4 );
 	} else {
 		var lightnessCaretIT = '#ffffff';
 		var tabscCaretIT = '58,58,58';
-		var tabsoCaretIT = window.MW18TabsOpacity + ((1 - chroma(caretIT_color).luminance()) * 0.4 );
+		var tabsoCaretIT = 0.1 + ((1 - chroma(caretIT_color).luminance()) * 0.4 );
 	}
 
 window.MW18ITColor = caretIT_color
@@ -1957,10 +1955,10 @@ var link4color1 = ColorHover(link4_color,content_color);
 	var lightLink = isLightColor(link_color);
 	if (lightLink) {
 		var tabscLink = '255,255,255';
-		var tabsoLink = window.MW18TabsOpacity + (chroma(link_color).luminance() * 0.4 );
+		var tabsoLink = 0.1 + (chroma(link_color).luminance() * 0.4 );
 	} else {
 		var tabscLink = '58,58,58';
-		var tabsoLink = window.MW18TabsOpacity + ((1 - chroma(link_color).luminance()) * 0.4 );
+		var tabsoLink = 0.1 + ((1 - chroma(link_color).luminance()) * 0.4 );
 	}
 
 
