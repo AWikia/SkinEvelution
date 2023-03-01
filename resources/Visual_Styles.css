@@ -1866,9 +1866,11 @@ color:inherit;
 }
 
 .visualstyle-simple .cpe-dropdown__content .cpe-list > li > input[type="range"] {
+	--tabs-color:var(--simple-luna-tabs-background-color);
+	--tabs-opacity:var(--simple-luna-active-tabs-opacity);
   --range-filler-color:var(--inactive-text-background-color);
   --range-filler-color-hover:var(--inactive-text-background-color-hover);
-  --range-filler-color-2:rgba(var(--simple-luna-background-color-rgb),var(--acrylic-opacity));
+  --range-filler-color-2:rgba(var(--tabs-color),var(--tabs-opacity));
   --range-border-color:var(--simple-luna-foreground-color-inverted);
 }
 
@@ -2851,6 +2853,28 @@ color:inherit;
 		--input-box-solid:var(--luna-hyperlink-background-color);
 	}
 
+}
+
+/* Range and Progress */
+.visualstyle-general progress {
+  --range-filler-color:var(--hyperlink-background-color);
+}
+
+.visualstyle-general progress.is-halted {
+  --range-filler-color:var(--pause-background-color);
+}
+
+.visualstyle-general progress.is-done {
+  --range-filler-color:var(--success-background-color);
+}
+
+.visualstyle-general progress.is-failed {
+  --range-filler-color:var(--alert-background-color);
+}
+
+.visualstyle-general input[type="range"] {
+  --range-filler-color:var(--hyperlink-background-color);
+  --range-filler-color-hover:var(--hyperlink-background-color-hover);
 }
 
 

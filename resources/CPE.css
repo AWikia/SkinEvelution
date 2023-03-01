@@ -4491,9 +4491,11 @@ input[type="radio"]:checked::after  {
 
 /* Progresses */
 progress {
+  --tabs-color:var(--canvas-tabs-background-color);
+  --tabs-opacity:var(--canvas-active-tabs-opacity);
   --range-percent:0%;
   --range-filler-color:var(--highlight-background-color);
-  --range-filler-color-2:rgba(var(--canvas-tabs-background-color),var(--canvas-active-tabs-opacity));
+  --range-filler-color-2:rgba(var(--tabs-color),var(--tabs-opacity));
   --range-border-color:var(--canvas-foreground-color);
   color: var(--range-border-color);
   margin: 0 auto;
@@ -4555,10 +4557,12 @@ progress::-moz-progress-bar {
 
 /* Base */
 input[type="range"] {
+  --tabs-color:var(--canvas-tabs-background-color);
+  --tabs-opacity:var(--canvas-active-tabs-opacity);
   --range-percent:0%;
   --range-filler-color:var(--highlight-background-color);
   --range-filler-color-hover:var(--highlight-background-color-hover);
-  --range-filler-color-2:rgba(var(--canvas-tabs-background-color),var(--canvas-active-tabs-opacity));
+  --range-filler-color-2:rgba(var(--tabs-color),var(--tabs-opacity));
   --range-border-color:var(--canvas-foreground-color);
   color: var(--range-border-color);
   margin: 0 auto;
@@ -5248,6 +5252,8 @@ background-color:var(--highlight-background-color);
 }
 
 .visualmode-contrast .cpe-button,
+.visualmode-contrast input[type="range"],
+.visualmode-contrast progress,
 .visualmode-contrast body .oo-ui-buttonElement > .oo-ui-buttonElement-button,
 .visualmode-contrast body .mw-ui-button,
 .visualmode-contrast body .mw-ui-button:not(:disabled),
@@ -5454,10 +5460,6 @@ background-color:var(--highlight-background-color);
 .visualmode-contrast .is-message .cpe-banner-notification__icon{
 	background-color:var(--inactive-title-background-color);
 	color:var(--inactive-title-foreground-color);
-}
-
-.visualmode-contrast progress.is-halted {
-    --range-filler-color: var(--inactive-text-background-color);
 }
 
 /* Low End Skins and Interpreters */
