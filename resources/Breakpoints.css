@@ -103,6 +103,10 @@
 
 	
 	/* All Phones */	
+	.evelution-taskbar .search > .search-button {
+			display:none;
+	}
+
 	.body-background,
 	.body-background-color {
 /*		margin-top:var(--extra-size); */
@@ -248,14 +252,6 @@
 		margin-bottom:4px;
 	}
 
-	.evelution-userpages-header .evelution-profile-masthead hgroup .cpe-button span {
-		display:none;
-	}
-
-	.evelution-userpages-header .evelution-profile-masthead hgroup .cpe-button .cpe-icon {
-		margin:0;
-	}
-
 	.top-gap {
 		
 	}
@@ -270,33 +266,6 @@
 	}
 	*/
 
-
-
-	.evelution-userpages-header .evelution-profile-masthead section .cpe-button span {
-		display:none;
-	}
-
-
-	.evelution-userpages-header .evelution-profile-masthead section .cpe-button .cpe-icon.single-icon {
-		margin:auto!Important;
-	}
-
-	.evelution-userpages-actions .user-actions {
-		clear:both;
-	}
-
-	.evelution-userpages-tabs .user-actions .cpe-button span {
-		display:none;
-	}
-
-	.evelution-userpages-tabs .user-actions .cpe-button svg {
-		margin:0!important;
-	}
-
-	.evelution-userpages-header .evelution-userpages-main .evelution-avatar {
-		width:64px;
-		border-width:3px;
-	}
 
 	.evelution-floating-actions {
 		left:0;
@@ -339,27 +308,6 @@
 	.evelution-2018 .evelution-content, .evelution-2018 footer.evelution-footer, .evelution-2018 .evelution-editors-content, .evelution-2018 .lightbox, .evelution-2018 .evelution-options-content, .evelution-2018 header.evelution-navbar .evelution-navbar-wrapper, .evelution-2018 header.evelutionnavigation .evelutionnavigation-wrapper {
 		min-width:calc(315px - var(--global-nav-size) - var(--scrollbar-width));
 	}
-
-	.evelution-userpages-header .evelution-profile-masthead hgroup .cpe-button {
-		padding-left:12px;
-		padding-right:12px;
-	}
-
-
-
-
-	.evelution-userpages-header .evelution-profile-masthead hgroup h1 {
-		font-size:30px;
-	}
-
-	.evelution-userpages-header .evelution-profile-masthead hgroup h2 {
-		font-size:22px;
-	}
-
-	.evelution-userpages-header .evelution-profile-masthead hgroup .aka {
-		font-size:15px;
-	}
-
 
 	/*.evelution-content {
 	padding-left:24px;
@@ -410,17 +358,6 @@
 	}
 
 
-	.evelution-userpages-header .evelution-profile-masthead header {
-		flex-direction:column;
-	}
-
-	.evelution-userpages-header .evelution-profile-masthead section {
-		width:100%!important;
-		flex:none!important;
-	}
-
-
-
 	body {
 		--breakpoint-size:760px;
 	}
@@ -464,8 +401,14 @@
 
 }
 
+/* S+ */
+@media only screen and (min-width:760px) {
+		.evelution-taskbar .search > .search-icon {
+				display:none;
+		}
 
 
+}
 
 /* M */
 @media only screen and (min-width:1020px) and (max-width:1279px) {
@@ -476,20 +419,11 @@
 	*/
 
 
-
 	body {
 		--breakpoint-size:1020px;
 	}
 
 
-	.evelution-userpages-header .evelution-profile-masthead .left-pane {
-		width:50%;
-	}
-
-	.evelution-userpages-header .evelution-profile-masthead .right-pane {
-		width:50%;
-	}
-	
 	@media only screen and (min-width:1150px) and (max-width:1279px) {
 		body {
 			--breakpoint-size:1150px;
@@ -502,26 +436,8 @@
 
 /* S + M */
 @media only screen and (max-width:1279px) {
-	.evelution-userpages-header .evelution-userpages-main {
-			display:block;
-	}
-
-	.evelution-userpages-header .evelution-userpages-main .evelution-avatar {
-		margin:0 auto;
-		display:block;
-		border-bottom-width:0;
-		border-bottom-left-radius:0;
-		border-bottom-right-radius:0;
-		
-	}
-
-	.evelution-userpages-header .evelution-profile-masthead {
-		margin-left:0;
-
-	}
-
+	/* No Code Currently */
 }
-
 
 /* L + XL */
 	@media only screen and (min-width:1390px) and (max-width:1499px) {
@@ -531,9 +447,11 @@
 
 	}
 
+/* L-XL + XL + XXL */
 @media only screen and (min-width:1390px) {
-	.evelution-taskbar .search > .link {
-		display:none;
+/* Search Box */
+	.evelution-taskbar .search > .search-button {
+			display:none;
 	}
 
 	.evelution-taskbar .search.is-flipped .cpe-dropdown__content {
@@ -567,8 +485,8 @@
 
 /* Search button should be without an accent color, per evelution design standards */
 	.has-accents .evelution-taskbar .search .cpe-dropdown__content .cpe-list>li .cpe-button {
-		--button-background-color: var(--luna-inactive-text-background-color);
-		--button-background-color-hover: var(--luna-inactive-text-background-color-hover);
+		--button-background-color: var(--luna-highlight-background-color);
+		--button-background-color-hover: var(--luna-highlight-background-color-hover);
 		--button-foreground-color: var(--luna-background-color);
 		--button-foreground-color-inverted: var(--luna-background-color);
 		--button-foreground-color-rgb:var(--luna-background-color-rgb);
@@ -580,8 +498,8 @@
 		--input-box-color-contrast:var(--luna-background-color);
 		--input-box-text:var(--luna-text-background-color);
 		--input-box-border:currentColor;
-		--input-box-focus:var(--luna-inactive-text-background-color-rgb);
-		--input-box-solid:var(--luna-inactive-text-background-color);
+		--input-box-focus:var(--luna-highlight-background-color-rgb);
+		--input-box-solid:var(--luna-highlight-background-color);
 	}
 	
 	.evelution-taskbar .search:before,

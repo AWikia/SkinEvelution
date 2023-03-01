@@ -1437,9 +1437,6 @@ color:inherit;
 .visualstyle-simple.visualmode-contrast .oo-ui-buttonElement > .oo-ui-buttonElement-button,
 .visualstyle-simple.visualmode-contrast .mw-ui-button,
 .visualstyle-simple.visualmode-contrast .oo-ui-tool.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive > .oo-ui-tool-link {
-	--button-background-color-hover:var(--button-foreground-color);
-	--button-foreground-color-hover:var(--button-background-color);
-	--button-foreground-color-inverted:var(--button-background-color);
 	--button-border-color-hover:rgba(var(--button-background-color-rgb),0.5);
 }
 
@@ -1494,8 +1491,6 @@ color:inherit;
 .visualstyle-simple.visualmode-contrast body .oo-ui-tool.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive > .oo-ui-tool-link:active,
 .visualstyle-simple.visualmode-contrast body .oo-ui-tool.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive > .oo-ui-tool-link:focus {
     border-color:var(--button-border-color-hover);
-    color:var(--button-foreground-color-hover);
-    background-color:var(--button-background-color-hover);
 }
 
 
@@ -1999,12 +1994,39 @@ color:inherit;
 .visualstyle-simple .search .cpe-dropdown__content .cpe-list .pageheader-search .cpe-input {
 	--tabs-color:var(--simple-luna-tabs-background-color);
 	--tabs-opacity:var(--simple-luna-active-tabs-opacity);
+		--input-box-color-contrast:var(--simple-luna-background-color);
 	--input-box-text:var(--simple-luna-foreground-color);
 	--input-box-border:currentColor;
 	--input-box-focus:var(--simple-luna-foreground-color-rgb);
 	--input-box-solid:var(--simple-luna-foreground-color-hover);
 }
 
+/* Search Button */
+.visualstyle-simple	.evelution-taskbar .search .cpe-button.search-button {
+		--tabs-color:var(--luna-tabs-background-color);
+		--tabs-opacity:var(--luna-active-tabs-opacity);
+		--button-background-color: var(--luna-foreground-color);
+		--button-background-color-rgb: var(--luna-foreground-color-rgb);
+		--button-background-color-hover: var(--luna-foreground-color-hover);
+		--button-foreground-color: var(--luna-background-color);
+		--button-foreground-color-hover: var(--luna-background-color);
+		--button-foreground-color-inverted: var(--luna-background-color-hover);
+		--button-foreground-color-rgb:var(--luna-background-color-rgb);
+		--secondary-button-background-color:rgba(var(--tabs-color),var(--tabs-opacity));
+		--secondary-button-foreground-color: var(--luna-foreground-color);
+		--secondary-button-foreground-color-hover: var(--luna-foreground-color-hover);
+	}
+
+.visualstyle-simple.visualmode-contrast .evelution-taskbar .search .cpe-button.search-button {
+    --button-background-color-hover: var(--button-foreground-color);
+    --button-foreground-color-hover: var(--button-background-color);
+    --button-foreground-color-inverted: var(--button-background-color);
+    --secondary-button-background-color-hover:var(--button-foreground-color);
+    --secondary-button-foreground-color-hover: var(--button-background-color);
+}
+
+
+/* Search Box */ 
 @media only screen and (min-width:1390px) {
 
 	.visualstyle-simple .evelution-taskbar .search .cpe-dropdown__content .cpe-list>li .cpe-button {
@@ -2020,6 +2042,7 @@ color:inherit;
 	.visualstyle-simple .search .cpe-dropdown__content .cpe-list .pageheader-search .cpe-input {
 		--tabs-color:var(--luna-tabs-background-color);
 		--tabs-opacity:var(--luna-active-tabs-opacity);
+		--input-box-color-contrast:var(--luna-background-color);
 		--input-box-text:var(--luna-foreground-color);
 		--input-box-border:currentColor;
 		--input-box-focus:var(--luna-foreground-color-rgb);
@@ -2580,6 +2603,155 @@ color:inherit;
 	background-color:var(--hyperlink-background-color);
 }
 
+/* Inputs */
+.visualstyle-general .cpe-input,
+.visualstyle-general body .oo-ui-textInputWidget .oo-ui-inputWidget-input,
+.visualstyle-general body .oo-ui-textInputWidget.oo-ui-widget-enabled .oo-ui-inputWidget-input,
+.visualstyle-general body .oo-ui-dropdownWidget.oo-ui-widget-enabled .oo-ui-dropdownWidget-handle,
+.visualstyle-general body .oo-ui-textInputWidget.oo-ui-widget-disabled .oo-ui-inputWidget-input,
+.visualstyle-general body .mw-widget-dateInputWidget-handle,
+.visualstyle-general body .mw-widgets-datetime-dateTimeInputWidget-handle,
+.visualstyle-general body .mw-ui-input {
+  --input-box-solid:var(--hyperlink-background-color);
+  --input-box-focus:var(--hyperlink-background-color-rgb);
+}
+
+.visualstyle-general .cpe-input.is-unaccented {
+  --input-box-solid:var(--canvas-text-background-color-hover);
+  --input-box-focus:var(--canvas-text-background-color-rgb);
+}
+
+.visualstyle-general .cpe-input.is-alternate {
+  --input-box-solid:var(--active-text-background-color);
+  --input-box-focus:var(--active-text-background-color-rgb);
+}
+
+.visualstyle-general .cpe-input.is-alert-color {
+  --input-box-solid:var(--alert-background-color);
+  --input-box-focus:var(--alert-background-color-rgb);
+}
+
+.visualstyle-general .cpe-input.is-pause-color {
+  --input-box-solid:var(--pause-background-color);
+  --input-box-focus:var(--pause-background-color-rgb);
+}
+
+.visualstyle-general .cpe-input.is-warning-color {
+  --input-box-solid:var(--warning-background-color);
+  --input-box-focus:var(--warning-background-color-rgb);
+}
+
+.visualstyle-general .cpe-input.is-success-color {
+  --input-box-solid:var(--success-background-color);
+  --input-box-focus:var(--success-background-color-rgb);
+}
+
+.visualstyle-general .cpe-input.is-progress-color {
+  --input-box-solid:var(--progress-background-color);
+  --input-box-focus:var(--progress-background-color-rgb);
+}
+
+.visualstyle-general .cpe-input.is-message-color {
+  --input-box-solid:var(--message-background-color);
+  --input-box-focus:var(--message-background-color-rgb);
+}
+
+
+/* Buttons */
+.visualstyle-general .cpe-button,
+.visualstyle-general body .oo-ui-buttonElement > .oo-ui-buttonElement-button,
+.visualstyle-general body .mw-ui-button,
+.visualstyle-general body .mw-ui-button:not(:disabled),
+.visualstyle-general body .oo-ui-tool.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive > .oo-ui-tool-link {
+	--button-background-color:var(--hyperlink-background-color);
+	--button-background-color-rgb:var(--hyperlink-background-color-rgb);
+	--button-background-color-hover:var(--hyperlink-background-color-hover);
+	--button-foreground-color:var(--hyperlink-foreground-color);
+	--button-foreground-color-hover:var(--button-foreground-color);
+	--button-foreground-color-inverted:var(--hyperlink-foreground-color-inverted);
+	--button-foreground-color-rgb:var(--hyperlink-foreground-color-rgb);
+}
+
+.visualstyle-general .cpe-button.is-unaccented,
+.visualstyle-general body .oo-ui-buttonElement-framed.oo-ui-widget-disabled > .oo-ui-buttonElement-button  {
+	--button-background-color:var(--canvas-text-background-color);
+	--button-background-color-rgb:var(--canvas-text-background-color-rgb);
+	--button-background-color-hover:var(--canvas-text-background-color-hover);
+	--button-foreground-color:var(--canvas-text-foreground-color);
+	--button-foreground-color-hover:var(--button-foreground-color);
+	--button-foreground-color-inverted:var(--canvas-text-foreground-color-inverted);
+	--button-foreground-color-rgb:var(--canvas-text-foreground-color-rgb);
+}
+
+.visualstyle-general .cpe-button.is-alternate {
+	--button-background-color:var(--active-text-background-color);
+	--button-background-color-rgb:var(--active-text-background-color-rgb);
+	--button-background-color-hover:var(--active-text-background-color-hover);
+	--button-foreground-color:var(--active-text-foreground-color);
+	--button-foreground-color-hover:var(--button-foreground-color);
+	--button-foreground-color-inverted:var(--active-text-foreground-color-inverted);
+	--button-foreground-color-rgb:var(--active-text-foreground-color-rgb);
+}
+
+.visualstyle-general .cpe-button.is-alert-color {
+	--button-background-color:var(--alert-background-color);
+	--button-background-color-rgb:var(--alert-background-color-rgb);
+	--button-background-color-hover:var(--alert-background-color-hover);
+	--button-foreground-color:var(--alert-foreground-color);
+	--button-foreground-color-hover:var(--button-foreground-color);
+	--button-foreground-color-inverted:var(--alert-foreground-color-inverted);
+	--button-foreground-color-rgb:var(--alert-foreground-color-rgb);
+}
+
+.visualstyle-general .cpe-button.is-pause-color {
+	--button-background-color:var(--pause-background-color);
+	--button-background-color-rgb:var(--pause-background-color-rgb);
+	--button-background-color-hover:var(--pause-background-color-hover);
+	--button-foreground-color:var(--pause-foreground-color);
+	--button-foreground-color-hover:var(--button-foreground-color);
+	--button-foreground-color-inverted:var(--pause-foreground-color-inverted);
+	--button-foreground-color-rgb:var(--pause-foreground-color-rgb);
+}
+
+.visualstyle-general .cpe-button.is-warning-color {
+	--button-background-color:var(--warning-background-color);
+	--button-background-color-rgb:var(--warning-background-color-rgb);
+	--button-background-color-hover:var(--warning-background-color-hover);
+	--button-foreground-color:var(--warning-foreground-color);
+	--button-foreground-color-hover:var(--button-foreground-color);
+	--button-foreground-color-inverted:var(--warning-foreground-color-inverted);
+	--button-foreground-color-rgb:var(--warning-foreground-color-rgb);
+}
+
+.visualstyle-general .cpe-button.is-success-color {
+	--button-background-color:var(--success-background-color);
+	--button-background-color-rgb:var(--success-background-color-rgb);
+	--button-background-color-hover:var(--success-background-color-hover);
+	--button-foreground-color:var(--success-foreground-color);
+	--button-foreground-color-hover:var(--button-foreground-color);
+	--button-foreground-color-inverted:var(--success-foreground-color-inverted);
+	--button-foreground-color-rgb:var(--success-foreground-color-rgb);
+}
+
+.visualstyle-general .cpe-button.is-progress-color {
+	--button-background-color:var(--progress-background-color);
+	--button-background-color-rgb:var(--progress-background-color-rgb);
+	--button-background-color-hover:var(--progress-background-color-hover);
+	--button-foreground-color:var(--progress-foreground-color);
+	--button-foreground-color-hover:var(--button-foreground-color);
+	--button-foreground-color-inverted:var(--progress-foreground-color-inverted);
+	--button-foreground-color-rgb:var(--progress-foreground-color-rgb);
+}
+
+.visualstyle-general .cpe-button.is-message-color {
+	--button-background-color:var(--message-background-color);
+	--button-background-color-rgb:var(--message-background-color-rgb);
+	--button-background-color-hover:var(--message-background-color-hover);
+	--button-foreground-color:var(--message-foreground-color);
+	--button-foreground-color-hover:var(--button-foreground-color);
+	--button-foreground-color-inverted:var(--message-foreground-color-inverted);
+	--button-foreground-color-rgb:var(--message-foreground-color-rgb);
+}
 
 .visualstyle-general .cpe-floating-button {
   --floating-button-color-hover:var(--hyperlink-foreground-color);
@@ -2647,6 +2819,38 @@ color:inherit;
   --floating-button-color-active:var(--message-foreground-color-inverted);
   --floating-button-background-color-hover:var(--message-background-color);
   --floating-button-background-color-active:var(--message-background-color-hover);
+}
+
+/* Search Button */
+	.visualstyle-general.has-accents .evelution-taskbar .search .cpe-button.search-button {
+		--button-background-color: var(--luna-hyperlink-background-color);
+		--button-background-color-hover: var(--luna-hyperlink-background-color-hover);
+		--button-foreground-color: var(--luna-background-color);
+		--button-foreground-color-inverted: var(--luna-background-color);
+		--button-foreground-color-rgb:var(--luna-background-color-rgb);
+	}
+
+
+/* Search Box */
+@media only screen and (min-width:1390px) {
+	.visualstyle-general.has-accents .evelution-taskbar .search .cpe-dropdown__content .cpe-list>li .cpe-button {
+		--button-background-color: var(--luna-hyperlink-background-color);
+		--button-background-color-hover: var(--luna-hyperlink-background-color-hover);
+		--button-foreground-color: var(--luna-background-color);
+		--button-foreground-color-inverted: var(--luna-background-color);
+		--button-foreground-color-rgb:var(--luna-background-color-rgb);
+	}
+
+	.visualstyle-general.has-accents .search .cpe-dropdown__content .cpe-list .pageheader-search .cpe-input {
+		--tabs-color:var(--luna-tabs-background-color);
+		--tabs-opacity:var(--luna-active-tabs-opacity);
+		--input-box-color-contrast:var(--luna-background-color);
+		--input-box-text:var(--luna-text-background-color);
+		--input-box-border:currentColor;
+		--input-box-focus:var(--luna-hyperlink-background-color-rgb);
+		--input-box-solid:var(--luna-hyperlink-background-color);
+	}
+
 }
 
 

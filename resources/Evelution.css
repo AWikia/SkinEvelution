@@ -258,7 +258,8 @@ container > .main {
 }
 
 /* Icon Scales */
-.link .cpe-icon {
+.link .cpe-icon,
+.force-grow .cpe-icon {
 	--icon-grow:1;
 	transition:transform 400ms var(--transitioner);
 }
@@ -269,7 +270,14 @@ container > .main {
 .link:not([disabled]):focus .cpe-icon,
 .link:not(.is-disabled):focus .cpe-icon,
 .cpe-dropdown:focus > .link .cpe-icon,
-.cpe-dropdown:focus-within > .link .cpe-icon {
+.cpe-dropdown:focus-within > .link .cpe-icon,
+/* Force Grow */
+.force-grow:not([disabled]):active .cpe-icon,
+.force-grow:not(.is-disabled):active .cpe-icon,
+.force-grow:not([disabled]):focus .cpe-icon,
+.force-grow:not(.is-disabled):focus .cpe-icon,
+.cpe-dropdown:focus > .force-grow .cpe-icon,
+.cpe-dropdown:focus-within > .force-grow .cpe-icon {
 	--icon-grow:1.1;
 }
 
@@ -508,6 +516,33 @@ container > .main {
 	left:calc(0px - var(--toolbar-link-size));
 }
 */
+
+/* Search button */
+.evelution-taskbar .search > .cpe-button.search-button {
+	min-height:18px;
+	border-radius:500px;
+	align-self:center;
+	margin:0 5px;
+}
+
+	.evelution-taskbar .search .cpe-button.search-button {
+		--tabs-color:var(--luna-tabs-background-color);
+		--tabs-opacity:var(--luna-active-tabs-opacity);
+		--secondary-button-background-color:rgba(var(--tabs-color),var(--tabs-opacity));
+		--secondary-button-foreground-color:var(--luna-text-background-color);
+		--secondary-button-foreground-color-hover:var(--luna-text-background-color-hover);
+	}
+
+
+	.has-accents .evelution-taskbar .search .cpe-button.search-button {
+		--button-background-color: var(--luna-highlight-background-color);
+		--button-background-color-hover: var(--luna-highlight-background-color-hover);
+		--button-foreground-color: var(--luna-background-color);
+		--button-foreground-color-inverted: var(--luna-background-color);
+		--button-foreground-color-rgb:var(--luna-background-color-rgb);
+	}
+
+
 
 
 /* Left Aligned Taskbar */
@@ -785,11 +820,6 @@ article, aside, footer, header, hgroup, main, nav, section {
 display:block;
 }
 
-
-
-.cpe-button.search-button {
-min-height:14px;
-}
 
 .cpe-dropdown .link {
 cursor:var(--cpe-auto-cursor);
@@ -3001,7 +3031,7 @@ body .mw-cookiewarning-container {
 	font-size:14px;
 	font-weight:500;
 	font-family:inherit;
-	height:45px;
+	height:46px;
 	display:flex;
 	width:100%;
 	align-self:center;

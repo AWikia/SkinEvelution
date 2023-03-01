@@ -14,7 +14,7 @@
 		</a>
 		<!-- Search -->
 		<div class="cpe-dropdown is-flipped has-dark-shadow search">
-			<div class="link cpe-dropdown__toggle" cpe-tooltip-position="top" cpe-tooltip="{{msg-search}}">
+			<div class="link search-icon cpe-dropdown__toggle" cpe-tooltip-position="top" cpe-tooltip="{{msg-search}}">
 				<span class="cpe-icon material-icons">
 					<span class="focused-dropdown-off">
 						search
@@ -24,6 +24,19 @@
 					</span>
 				</span>
 			</div>
+			<div class="cpe-button is-secondary is-primary-when-selected search-button force-grow">
+				<span class="cpe-icon cpe-icon-small material-icons">
+					<span class="focused-dropdown-off">
+						search
+					</span>
+					<span class="focused-dropdown-on">
+						saved_search
+					</span>
+				</span>
+				<span>
+					{{msg-search}}
+				</span>
+			</div>
 		    <div class="cpe-dropdown__content is-left-aligned">
 				<ul class="cpe-list">
 					<li>
@@ -31,9 +44,9 @@
 					{{#data-search-box}}
 					<form action="{{form-action}}" role="search" class="mw-portlet" id="p-search">
 						<div class="pageheader-search">
-							<input type="search" name="search" class="cpe-input is-unaccented taskbar-search" placeholder="{{msg-searchsuggest-search}}" autocapitalize="sentences" accesskey="f" id="searchInput" autocomplete="off">
+							<input type="search" name="search" class="cpe-input taskbar-search" placeholder="{{msg-searchsuggest-search}}" autocapitalize="sentences" accesskey="f" id="searchInput" autocomplete="off">
 							<input style="width:0px; height:0px; visibility:hidden; position:absolute;" type="submit" id="searchButton2"></input>
-							<label for="searchButton2" class="cpe-button is-unaccented">
+							<label for="searchButton2" class="cpe-button">
 								<span class="cpe-icon cpe-icon-small material-icons">
 									search
 								</span>

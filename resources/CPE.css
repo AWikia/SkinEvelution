@@ -2142,6 +2142,29 @@ a.cpe-button, button.cpe-button {
 	color:var(--secondary-button-foreground-color-hover);
 }
 
+/* Primary Force */
+.cpe-dropdown:focus > .cpe-button.is-secondary.is-primary-when-selected,
+.cpe-dropdown:focus-within > .cpe-button.is-secondary.is-primary-when-selected,
+.selected .cpe-button.is-secondary:focus:not(:active).is-primary-when-selected,
+.selected .cpe-button.is-secondary.is-primary-when-selected,
+.selected .cpe-button.is-secondary:hover.is-primary-when-selected,
+.selected .cpe-button.is-secondary:active.is-primary-when-selected,
+.cpe-button.is-secondary.is-active.is-primary-when-selected,
+.cpe-button.is-secondary:focus:not(.is-active).is-primary-when-selected,
+/* Force */
+.force-secondary .cpe-dropdown:focus > .cpe-button:not(.is-primary):not(.is-tertiary):not(.is-text).is-primary-when-selected,
+.force-secondary .cpe-dropdown:focus-within > .cpe-button:not(.is-primary):not(.is-tertiary):not(.is-text).is-primary-when-selected,
+.force-secondary .selected .cpe-button:not(.is-primary):not(.is-tertiary):not(.is-text).is-primary-when-selected,
+.force-secondary .selected .cpe-button:not(.is-primary):not(.is-tertiary):not(.is-text):hover.is-primary-when-selected,
+.force-secondary .selected .cpe-button:not(.is-primary):not(.is-tertiary):not(.is-text):active.is-primary-when-selected,
+.force-secondary .cpe-button:not(.is-primary):not(.is-tertiary):not(.is-text).is-active.is-primary-when-selected,
+.force-secondary .cpe-button:not(.is-primary):not(.is-tertiary):not(.is-text):not(.is-active):focus.is-primary-when-selected {
+	background-color:var(--button-background-color); 
+	border-color:var(--button-background-color); 
+	color:var(--button-foreground-color);
+}
+
+
 
 /* Tertiary */
 .cpe-button.is-tertiary,
@@ -4470,21 +4493,21 @@ input[type="radio"]:checked::after  {
 progress {
   --range-percent:0%;
   --range-filler-color:var(--highlight-background-color);
-  --range-filler-color-2:var(--canvas-secondary-background-color);
+  --range-filler-color-2:rgba(var(--canvas-tabs-background-color),var(--canvas-active-tabs-opacity));
   --range-border-color:var(--canvas-foreground-color);
   color: var(--range-border-color);
   margin: 0 auto;
   background-color: var(--range-filler-background-color-2);
   background-image:linear-gradient(90deg,var(--range-filler-color) var(--range-percent),transparent var(--range-percent));
-  height: 12.5px;
+  height: 14.5px;
   min-width: 150px;
   -webkit-appearance: none;
   appearance:none;
   cursor:inherit;
-    border:0;
+    border:1px solid var(--range-border-color);
     margin:5.5px 0 11.25px;
 	border-radius:var(--border-radius);
-	box-shadow:0 0 0 1px var(--range-border-color), var(--threeD-shadow);
+	box-shadow:var(--threeD-shadow);
 	box-sizing:border-box;
 }
 
@@ -4535,7 +4558,7 @@ input[type="range"] {
   --range-percent:0%;
   --range-filler-color:var(--highlight-background-color);
   --range-filler-color-hover:var(--highlight-background-color-hover);
-  --range-filler-color-2:var(--canvas-secondary-background-color);
+  --range-filler-color-2:rgba(var(--canvas-tabs-background-color),var(--canvas-active-tabs-opacity));
   --range-border-color:var(--canvas-foreground-color);
   color: var(--range-border-color);
   margin: 0 auto;
@@ -4551,14 +4574,14 @@ input[type="range"] {
 input[type="range"]::-webkit-slider-thumb {
   border-radius: 50%;
   background-color: var(--range-filler-color);
-  box-shadow:0 0 0 1px var(--range-border-color), var(--threeD-shadow);
-  border: 0;
+  box-shadow:0 0 0 0 var(--range-border-color), var(--threeD-shadow);
+  border: 1px solid var(--range-border-color);
   -webkit-appearance: none;
   appearance:none;
   width: 25px;
   height: 25px;
   transition: background-color 200ms var(--transitioner), box-shadow 100ms var(--transitioner), background-image 200ms var(--transitioner);
-  margin-top: -6.25px;
+  margin-top: -6.75px;
   /* Hack for Chrome and Safari */
   overflow: visible;
 }
@@ -4566,8 +4589,8 @@ input[type="range"]::-webkit-slider-thumb {
 input[type="range"]::-moz-range-thumb {
   border-radius: 50%;
   background-color: var(--range-filler-color);
-  box-shadow:0 0 0 1px var(--range-border-color), var(--threeD-shadow);
-  border: 0;
+  box-shadow:0 0 0 0 var(--range-border-color), var(--threeD-shadow);
+  border: 1px solid var(--range-border-color);
   -webkit-appearance: none;
   appearance:none;
   width: 25px;
@@ -4580,55 +4603,55 @@ input[type="range"]::-moz-range-thumb {
 
 input[type="range"]::-webkit-slider-thumb:hover {
   background-color: var(--range-filler-color-hover);
-  box-shadow:0 0 0 1.5px var(--range-border-color), var(--threeD-shadow);
+  box-shadow:0 0 0 0.5px var(--range-border-color), var(--threeD-shadow);
 }
 
 input[type="range"]::-moz-range-thumb:hover {
   background-color: var(--range-filler-color-hover);
-  box-shadow:0 0 0 1.5px var(--range-border-color), var(--threeD-shadow);
+  box-shadow:0 0 0 0.5px var(--range-border-color), var(--threeD-shadow);
 }
 
 
 input[type="range"]::-webkit-slider-thumb:active {
   background-color: var(--range-filler-color-hover);
-  box-shadow:0 0 0 2px var(--range-border-color), var(--threeD-shadow-active);
+  box-shadow:0 0 0 1px var(--range-border-color), var(--threeD-shadow-active);
 }
 
 input[type="range"]::-moz-range-thumb:active {
   background-color: var(--range-filler-color-hover);
-  box-shadow:0 0 0 2px var(--range-border-color), var(--threeD-shadow-active);
+  box-shadow:0 0 0 1px var(--range-border-color), var(--threeD-shadow-active);
 }
 
 
 /* Runnable Track */
 input[type="range"]::-webkit-slider-runnable-track {
-  border:0;
+  border:1px solid var(--range-border-color);
   padding: 0;
   background-color: var(--range-filler-color-2);
   background-image:linear-gradient(90deg,var(--range-filler-color) var(--range-percent),transparent var(--range-percent));
   color: transparent;
-  height: 12.5px;
+  height: 14.5px;
   -webkit-appearance: none;
   appearance:none;
   vertical-align: middle;
   border-radius:var(--border-radius);
-  box-shadow:0 0 0 1px var(--range-border-color), var(--threeD-shadow);
+  box-shadow:var(--threeD-shadow);
   box-sizing:border-box;
   transition: background-color 200ms var(--transitioner), box-shadow 50ms var(--transitioner), background-image 200ms var(--transitioner);
 }
 
 input[type="range"]::-moz-range-track {
-  border:0;
+  border:1px solid var(--range-border-color);
   padding: 0;
   background-color: var(--range-filler-color-2);
   background-image:linear-gradient(90deg,var(--range-filler-color) var(--range-percent),transparent var(--range-percent));
   color: transparent;
-  height: 12.5px;
+  height: 14.5px;
   -webkit-appearance: none;
   appearance:none;
   vertical-align: middle;
   border-radius:var(--border-radius);
-  box-shadow:0 0 0 1px var(--range-border-color), var(--threeD-shadow);
+  box-shadow:var(--threeD-shadow);
   box-sizing:border-box;
   transition: background-color 200ms var(--transitioner), box-shadow 50ms var(--transitioner), background-image 200ms var(--transitioner);
 }
@@ -4637,7 +4660,7 @@ input[type="range"]::-moz-range-track {
 input[type="range"]::-moz-range-progress {
   background-color: transparent;
   border: 0;
-  height: 12.5px;
+  height: 14.5px;
   display:none;
 }
 
