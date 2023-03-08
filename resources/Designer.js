@@ -32,7 +32,7 @@ if (mwConfig2.wgNamespaceNumber === -1 && mwConfig2.wgTitle === "CPEThemeDesigne
 
 function InitDesigner() {
 	// Change Title
-	$(".evelution-page-header .evelution-title > span, .evelution-header .namespace-with-title .title > a").html( mw.msg( 'evelution-designer-title' ) );
+	$(".evelution-page-header .evelution-title > span, .evelution-header .namespace-with-title .title > a > .firstHeading").html( mw.msg( 'evelution-designer-title' ) );
 
 	$(".link[designer-on]").addClass( 'active' );
 	document.querySelector("body").classList.replace("mw-invalidspecialpage","mw-special-cpethemedesigner");
