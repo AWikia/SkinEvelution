@@ -371,11 +371,16 @@ background-color:var(--canvas-background-color);
 }
 
 .visualstyle-basic.visualmode-contrast .evelution-content .evelution-page-header .toggle-rail-button:hover,
+.visualstyle-basic.visualmode-contrast .evelution-module .rail-buttons .rail-button:hover {
+	background-color:var(--canvas-secondary-background-color);
+	border-color:var(--canvas-text-secondary-background-color);
+	color:var(--canvas-text-secondary-background-color);
+}
+
 .visualstyle-basic.visualmode-contrast .evelution-content .evelution-page-header .toggle-rail-button:active,
-.visualstyle-basic.visualmode-contrast .evelution-module .rail-buttons .rail-button:hover,
 .visualstyle-basic.visualmode-contrast .evelution-module .rail-buttons .rail-button:active {
 	background-color:var(--highlight-background-color);
-	border-color:var(--highlight-text-background-color);
+	border-color:var(--canvas-text-secondary-background-color);
 	color:var(--highlight-text-background-color);
 }
 
@@ -408,10 +413,20 @@ background-color:var(--canvas-background-color);
 
 
 .visualstyle-basic.visualmode-contrast .evelution-sidebar {
-	--global-nav-link-color-hover:var(--highlight-text-background-color)!important;
-	--global-nav-link-background-hover:var(--highlight-background-color-rgb)!important;
-	--global-nav-link-color-active:var(--highlight-text-background-color)!important;
-	--global-nav-link-background-active:var(--highlight-background-color-rgb)!important;
+	/* Regular */
+	--global-nav-color:var(--luna-background-color-rgb);
+	--global-nav-text-color:var(--luna-text-background-color);
+	/* Hovered Links */
+	--global-nav-link-color-hover:var(--canvas-text-secondary-background-color);
+	--global-nav-link-background-hover:var(--canvas-secondary-background-color-rgb);
+	--global-nav-link-border-hover:var(--canvas-text-secondary-background-color-rgb);
+	/* Active Links */
+	--global-nav-link-color-active:var(--highlight-text-background-color);
+	--global-nav-link-background-active:var(--highlight-background-color-rgb);
+	--global-nav-link-border-active:var(--canvas-text-secondary-background-color);
+	/* Misc */
+	--global-nav-link-opacity:1;
+	--global-nav-link-border-opacity:1;
 }
 
 
@@ -788,14 +803,24 @@ linear-gradient(90deg, transparent 0%, transparent calc(50% - -3px), currentColo
 
 
 .visualstyle-basic.visualmode-contrast .evelution-header .link:hover, 
+.visualstyle-basic.visualmode-contrast .evelution-content .evelution-page-header .evelution-middle-actions a:hover, 
+.visualstyle-basic.visualmode-contrast .evelution-top-actions .link:hover {
+	-webkit-animation:none;
+	animation:none;
+	color:var(--canvas-text-secondary-background-color);
+	border-color:var(--canvas-text-secondary-background-color);
+	background-color:var(--canvas-secondary-background-color);
+}
+
+.visualstyle-basic.visualmode-contrast .evelution-header .link:active, 
 .visualstyle-basic.visualmode-contrast .evelution-header .link:focus, 
 .visualstyle-basic.visualmode-contrast .evelution-header .cpe-dropdown:focus > .link, 
 .visualstyle-basic.visualmode-contrast .evelution-header .cpe-dropdown:focus-within > .link, 
 .visualstyle-basic.visualmode-contrast .evelution-header .link.active,
-.visualstyle-basic.visualmode-contrast .evelution-content .evelution-page-header .evelution-middle-actions a:hover, 
+.visualstyle-basic.visualmode-contrast .evelution-content .evelution-page-header .evelution-middle-actions a:active, 
 .visualstyle-basic.visualmode-contrast .evelution-content .evelution-page-header .evelution-middle-actions a:focus, 
 .visualstyle-basic.visualmode-contrast .evelution-content .evelution-page-header .evelution-middle-actions .selected a, 
-.visualstyle-basic.visualmode-contrast .evelution-top-actions .link:hover, 
+.visualstyle-basic.visualmode-contrast .evelution-top-actions .link:active, 
 .visualstyle-basic.visualmode-contrast .evelution-top-actions .link:focus, 
 .visualstyle-basic.visualmode-contrast .evelution-top-actions .cpe-dropdown:focus > .link, 
 .visualstyle-basic.visualmode-contrast .evelution-top-actions .cpe-dropdown:focus-within > .link, 
@@ -803,19 +828,10 @@ linear-gradient(90deg, transparent 0%, transparent calc(50% - -3px), currentColo
 	-webkit-animation:none;
 	animation:none;
 	color:var(--highlight-text-background-color);
-	border-color:currentColor;
+	border-color:var(--canvas-text-secondary-background-color);
 	background-color:var(--highlight-background-color);
 }
 
-
-
-.visualstyle-basic.visualmode-contrast .evelution-taskbar {
-	--global-nav-color:var(--luna-background-color-rgb);
-	--global-nav-text-color:var(--luna-text-background-color);
-	--global-nav-link-color-hover:var(--luna-text-background-color-hover);
-	--global-nav-link-color-active:rgba(var(--luna-text-foreground-color-hover-rgb),1);
-	--global-nav-link-background-active:var(--luna-text-background-color-hover-rgb);
-}
 
 
 .visualstyle-basic.visualmode-contrast .evelution-taskbar {
@@ -853,16 +869,22 @@ linear-gradient(90deg, transparent 0%, transparent calc(50% - -3px), currentColo
 }
 
 
-	.visualstyle-basic.visualmode-contrast .evelution-sidebar .link:hover, 
+	.visualstyle-basic.visualmode-contrast .evelution-sidebar .link:hover {
+	background-color:rgb(var(--global-nav-link-background-hover));
+	border-color:rgb(var(--global-nav-link-border-hover));
+	color:var(--global-nav-link-color-hover);
+}
+
 	.visualstyle-basic.visualmode-contrast .evelution-sidebar .link:active, 
 	.visualstyle-basic.visualmode-contrast .evelution-sidebar .link:focus, 
 	.visualstyle-basic.visualmode-contrast .evelution-sidebar .link.active,
 	.visualstyle-basic.visualmode-contrast .evelution-sidebar .cpe-dropdown:focus > .link,
 	.visualstyle-basic.visualmode-contrast .evelution-sidebar .cpe-dropdown:focus-within > .link {
 	background-color:rgb(var(--global-nav-link-background-active));
-	border-color:var(--global-nav-link-color-active);
+	border-color:var(--global-nav-link-border-active);
 	color:var(--global-nav-link-color-active);
 }
+
 
 .visualstyle-basic .evelution-content .evelution-article-container, .visualstyle-basic .pane-on .evelution-article-wrapper:after {
   background-color:var(--canvas-background-color);
@@ -887,18 +909,22 @@ linear-gradient(90deg, transparent 0%, transparent calc(50% - -3px), currentColo
 
 .visualstyle-basic.visualmode-contrast body {
 /* Link Styling */
---dropdown-hyperlink-background-color:var(--highlight-background-color);
---dropdown-hyperlink-border-color:var(--dropdown-active-hyperlink-text-color);
---dropdown-hyperlink-text-color:var(--highlight-text-background-color);
+--dropdown-hyperlink-background-color:var(--canvas-secondary-background-color);
+--dropdown-hyperlink-border-color:var(--canvas-text-secondary-background-color);
+--dropdown-hyperlink-text-color:var(--canvas-text-secondary-background-color);
 /* Active Link Styling */
---dropdown-active-hyperlink-background-color:var(--dropdown-hyperlink-background-color);
+--dropdown-active-hyperlink-background-color:var(--highlight-background-color);
 --dropdown-active-hyperlink-border-color:var(--dropdown-hyperlink-border-color);
---dropdown-active-hyperlink-text-color:var(--dropdown-hyperlink-text-color);
-
+--dropdown-active-hyperlink-text-color:var(--highlight-text-background-color);
 }
 
 
-.visualstyle-basic.visualmode-contrast body .toc .module-toc li a:hover,
+.visualstyle-basic.visualmode-contrast body .toc .module-toc li a:hover {
+  background-color:var(--dropdown-hyperlink-background-color);
+  color:var(--dropdown-hyperlink-text-color);
+  border-color:var(--dropdown-hyperlink-border-color);
+}
+
 .visualstyle-basic.visualmode-contrast body .toc .module-toc li a:active,
 .visualstyle-basic.visualmode-contrast body .toc .module-toc li a:focus,
 .visualstyle-basic.visualmode-contrast body .toc .module-toc li.selected a {
@@ -945,13 +971,13 @@ linear-gradient(90deg, transparent 0%, transparent calc(50% - -3px), currentColo
 
 
 .visualstyle-basic.visualmode-contrast .cpe-floating-button {
-  --floating-button-color-hover:var(--highlight-text-background-color)!important;
-  --floating-button-color-active:var(--floating-button-color-hover)!important;
-  --floating-button-background-color-hover:var(--highlight-background-color)!important;
-  --floating-button-background-color-active:var(--floating-button-background-color-hover)!important;
+  --floating-button-color-hover:var(--canvas-text-secondary-background-color)!important;
+  --floating-button-color-active:var(--highlight-text-background-color)!important;
+  --floating-button-background-color-hover:var(--canvas-secondary-background-color)!important;
+  --floating-button-background-color-active:var(--highlight-background-color)!important;
   --floating-button-border-color:var(--floating-button-color)!important;
   --floating-button-border-color-hover:var(--floating-button-color-hover)!important;
-  --floating-button-border-color-active:var(--floating-button-color-active)!important;
+  --floating-button-border-color-active:var(--floating-button-color-hover)!important;
 
 }
 
@@ -1115,16 +1141,30 @@ color:inherit;
 
 
 .visualstyle-basic.visualmode-contrast .preview-window-window h2 button:hover {
-	background-color:var(--highlight-background-color);
-	color:var(--highlight-text-background-color);
-	border-color:currentColor;
+	background-color:var(--canvas-secondary-background-color);
+	color:var(--canvas-text-secondary-background-color);
+	border-color:var(--canvas-text-secondary-background-color);
 }
 
 
 .visualstyle-basic.visualmode-contrast .preview-window-window h2 button.close:hover {
+	background-color:var(--canvas-secondary-background-color);
+	color:var(--canvas-text-secondary-background-color);
+	border-color:var(--canvas-text-secondary-background-color);
+}
+
+
+.visualstyle-basic.visualmode-contrast .preview-window-window h2 button:active {
 	background-color:var(--highlight-background-color);
 	color:var(--highlight-text-background-color);
-	border-color:currentColor;
+	border-color:var(--canvas-text-secondary-background-color);
+}
+
+
+.visualstyle-basic.visualmode-contrast .preview-window-window h2 button.close:active {
+	background-color:var(--highlight-background-color);
+	color:var(--highlight-text-background-color);
+	border-color:var(--canvas-text-secondary-background-color);
 }
 
 

@@ -1069,6 +1069,16 @@ body .toc > ul {
 	margin:0;
 }
 
+body .oo-ui-decoratedOptionWidget {
+	padding:5px 11px;
+	border:1px solid transparent;
+}
+
+body .mw-rcfilters-ui-filterMenuSectionOptionWidget ~ .mw-rcfilters-ui-filterMenuOptionWidget {
+    padding-left: calc(0.85714286em - 1px);
+    padding-right: calc(0.85714286em - 1px);
+}
+
 body .oo-ui-menuOptionWidget.oo-ui-widget-enabled.oo-ui-optionWidget  {
 	color:rgb(var(--dropdown-text-color));
 }
@@ -1088,7 +1098,6 @@ body .wikiEditor-ui-toolbar .group .tool-select .menu .options .option:hover {
 }
 
 
-
 body .mw-rcfilters-ui-itemMenuOptionWidget:hover,
 body .mw-rcfilters-ui-filterMenuOptionWidget.oo-ui-flaggedElement-muted.oo-ui-optionWidget-highlighted,
 body .oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted,
@@ -1096,12 +1105,15 @@ body .oo-ui-menuOptionWidget.oo-ui-widget-enabled.oo-ui-optionWidget-highlighted
 	background-color:var(--dropdown-hyperlink-background-color);
 	color:var(--dropdown-hyperlink-text-color);
 	box-shadow:var(--threeD-shadow);
+	border-color:var(--dropdown-hyperlink-border-color);
 }
+
 
 body .mw-rcfilters-ui-filterMenuHeaderWidget-header,
 body .mw-rcfilters-ui-menuSelectWidget-footer {
 	background-color:rgba(var(--dropdown-background-color-2),var(--acrylic-opacity));
 	color:rgb(var(--dropdown-text-color-2));
+	border-color:var(--dropdown-border-color);
 }
 
 
@@ -1157,14 +1169,19 @@ body .oo-ui-menuOptionWidget.oo-ui-widget-enabled.oo-ui-optionWidget-selected {
 	background-color:var(--dropdown-active-hyperlink-background-color);
 	color:var(--dropdown-active-hyperlink-text-color);
 	box-shadow:var(--threeD-shadow-active);
+	border-color:var(--dropdown-active-hyperlink-border-color);
 }
 
 body .mw-rcfilters-ui-itemMenuOptionWidget.oo-ui-optionWidget-selected {
 	background-color:var(--dropdown-active-hyperlink-background-color);
 	color:var(--dropdown-active-hyperlink-text-color);
 	box-shadow:var(--threeD-shadow-active);
+	border-color:var(--dropdown-active-hyperlink-border-color);
 }
 
+body .mw-rcfilters-ui-itemMenuOptionWidget:not(:last-child):not(.mw-rcfilters-ui-itemMenuOptionWidget-identifier-talk) {
+	border-bottom-color:var(--dropdown-border-color);
+}
 
 body .mw-rcfilters-ui-itemMenuOptionWidget.oo-ui-optionWidget-highlighted  .mw-rcfilters-ui-itemMenuOptionWidget-label-title,
 body .mw-rcfilters-ui-itemMenuOptionWidget.oo-ui-optionWidget-highlighted .mw-rcfilters-ui-itemMenuOptionWidget-label-desc,
