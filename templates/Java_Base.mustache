@@ -2,8 +2,10 @@
 	var mediawiki = document.querySelector("html:not(.ivilution-loaded) body.mediawiki");
 
 /* Mobile Only CSS */
-if (navigator.userAgent.match("Mobile")) {
-document.querySelector("html").className += " phone"
+
+if (('ontouchstart' in window) ||
+     (navigator.maxTouchPoints > 0)) {
+document.querySelector("html").className += " touch-events"
 }
 
 /* Local Storage */

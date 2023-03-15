@@ -2458,7 +2458,36 @@ margin-left:5px;
 
 
 
-/* Icons */
+/** Icons **/
+
+/* OOUI Base */
+body .oo-ui-iconElement-icon {
+  background:none!Important;
+  -webkit-mask-image:none!important;
+  width:1.42857143em; /* Was 24px */
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+}
+
+body .oo-ui-indicatorElement-indicator {
+  background:none!Important;
+  -webkit-mask-image:none!important;
+  width:1.257143em; /* Was 24px */
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+}
+
+body .oo-ui-menuOptionWidget-checkIcon {
+	display:none;
+}
+
+.oo-ui-iconElement-icon.oo-ui-iconElement-noIcon {
+	visibility:hidden;
+}
+
+/* Rest */
 .material-icons,
 .has-icon:before,
 .has-icon-labels li > a:before,
@@ -2540,9 +2569,6 @@ input[type="checkbox"]::after, input[type="radio"]::after {
 
 .oo-ui-iconElement-icon:before,
 .oo-ui-indicatorElement-indicator:before {
-	margin-top:10px;
-	margin-right:4px;
-	margin-left:4px;
 	--icon-size:0.5;
 	--icon-scale:2;
 	content:"";
@@ -3218,12 +3244,20 @@ max-height:152px;
 }
 
 
-@media only screen and (max-height:479px) {
-	.is-fixed-positioned .cpe-dropdown__content.has-small-content .cpe-list>li > a:not(.cpe-button){
+@media only screen and (max-height:459px) {
+	html:not(.touch-events) .is-fixed-positioned .cpe-dropdown__content.has-small-content .cpe-list>li > a:not(.cpe-button){
 		padding-top:8px;
 		padding-bottom:8px;
 	}
 }
+
+@media only screen and (max-height:479px) {
+	html.touch-events .is-fixed-positioned .cpe-dropdown__content.has-small-content .cpe-list>li > a:not(.cpe-button){
+		padding-top:8px;
+		padding-bottom:8px;
+	}
+}
+
 
 @media only screen and (max-height:439px) {
 	 .is-fixed-positioned .cpe-dropdown__content.has-small-content .cpe-list>li > a:not(.cpe-button){
@@ -3862,9 +3896,13 @@ top:0;
 
 .cpe-list.is-linked>li>a:not(.cpe-button) {
 	display:block;
-	padding:10px 0;
+	padding:9px 0;
 } /* Was 12px 0 */
 
+.touch-events .cpe-list.is-linked>li>a:not(.cpe-button) {
+	padding-top:10px;
+	padding-bottom:10px;
+}
 
 .cpe-menu-chevron{
 	--icon-rotate:0deg;
