@@ -68,14 +68,31 @@ function InitDesigner() {
 
 	// Paste theme
 	$(".evelution-floating-actions.extra-actions .evelution-floating-actions-container").append(
-		'<button class="cpe-floating-button is-alternate theme-paste-button page-side-tool" cpe-tooltip-position="reverse" cpe-tooltip="' + mw.msg( 'evelution-designer-paste' ) + '">' +
-			'<span class="cpe-icon material-icons">' +
-				'content_paste' +
-			'</span>' +
-		'</button>'
+		'<div class="cpe-dropdown has-reversed-nested-menus is-flipped theme-paste" cpe-orient="land" tabindex="-1">' +
+			'<button class="cpe-floating-button is-alternate theme-paste page-side-tool" cpe-tooltip-position="reverse" cpe-tooltip="' + mw.msg( 'evelution-designer-paste' ) + '">' +
+				'<span class="cpe-icon material-icons">' +
+					'content_paste' +
+				'</span>' +
+			'</button>' +
+			'<div class="cpe-dropdown__content is-not-scrollable">' +
+				'<ul class="cpe-list is-linked">' +
+					'<li>' +
+						'<a class="theme-paste-button action-link">' +
+							'<span>'+ mw.msg( 'evelution-designer-current' ) +'</span>' +
+						'</a>' +
+					'</li>' +
+					'<li>' +
+						'<a class="theme-paste-button-2 action-link">' +
+							'<span>'+ mw.msg( 'evelution-designer-random' ) +'</span>' +
+						'</a>' +
+					'</li>' +
+				'</ul>' +
+			'</div>' +
+		'</div>'
 	);
 
 	$(".evelution-floating-actions.extra-actions .theme-paste-button").click( function(e) { e.preventDefault; PasteTheme();  });
+	$(".evelution-floating-actions.extra-actions .theme-paste-button-2").click( function(e) { e.preventDefault; RandomTheme();  });
 	// Apply theme
 	$(".evelution-floating-actions.extra-actions .evelution-floating-actions-container").append(
 		'<button class="cpe-floating-button is-alert-color theme-apply-button page-side-tool" cpe-tooltip-position="reverse" cpe-tooltip="' + mw.msg( 'evelution-designer-apply' ) + '">' +
@@ -651,12 +668,17 @@ function InitDesigner() {
 			'<tr>' +
 				'<td style="text-align:center; width:150px">' + 
 					'<input type="checkbox" name="auto14" id="auto14">' + '<label for="auto14">' + mw.msg( 'evelution-designer-auto' ) + '</label> <br>' +
-
-					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#ffcba4" id="bodybg" list="td_colors" />' + // Body Background 
+					'<div class="cpe-button-group color-value">' +
+						'<input type="color" class="cpe-button is-square" style="width:68px;" value="#ffcba4" id="bodybg" list="td_colors" />' + // Body Background 
+						'<button class="cpe-button is-square" id="bodybg_r" title="'+  mw.msg( 'evelution-designer-random' ) +'"><span class="cpe-icon material-icons">shuffle</span></button>' +
+					'</div>' +
 				'</td>' +
 				'<td style="text-align:center; width:150px">' +
 					'<input type="checkbox" name="auto1" id="auto1">' + '<label for="auto1">' + mw.msg( 'evelution-designer-auto' ) + '</label> <br>' +
-					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#2d383a" id="bodybg2" list="td_colors" />' + // Body Background 
+					'<div class="cpe-button-group color-value">' +
+						'<input type="color" class="cpe-button is-square" style="width:68px;" value="#2d383a" id="bodybg2" list="td_colors" />' + // Body Background 
+						'<button class="cpe-button is-square" id="bodybg2_r" title="'+  mw.msg( 'evelution-designer-random' ) +'"><span class="cpe-icon material-icons">shuffle</span></button>' + 
+					'</div>' +
 				'</td>' +
 
 			'</tr>' +
@@ -839,17 +861,31 @@ function InitDesigner() {
 			'<tr>' +
 				'<td style="text-align:center; width:150px">' + 
 					'<input type="checkbox" name="auto15" id="auto15">' + '<label for="auto15">' + mw.msg( 'evelution-designer-auto' ) + '</label> <br>' +
-					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#ffffff" id="pagebg" list="td_colors" />' + // Page BG
+					'<div class="cpe-button-group color-value">' +
+						'<input type="color" class="cpe-button is-square" style="width:68px;" value="#ffffff" id="pagebg" list="td_colors" />' + // Page BG
+						'<button class="cpe-button is-square" id="pagebg_r" title="'+  mw.msg( 'evelution-designer-random' ) +'"><span class="cpe-icon material-icons">shuffle</span></button>' +
+					'</div>' +
 					'<hr>' +
 					'<input type="checkbox" name="auto7" id="auto7" checked>' + '<label for="auto7">' + mw.msg( 'evelution-designer-auto' ) + '</label> <br>' +
-					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#ffffff" id="pagebg_s" list="td_colors" disabled />' + // Page BG
+					'<div class="cpe-button-group color-value">' +
+						'<input type="color" class="cpe-button is-square" style="width:68px;" value="#ffffff" id="pagebg_s" list="td_colors" disabled />' + // Page BG
+						'<button class="cpe-button is-square" id="pagebg_s_r" title="'+  mw.msg( 'evelution-designer-random' ) +'"><span class="cpe-icon material-icons">shuffle</span></button>' +
+					'</div>' +
+
 				'</td>' +
 				'<td style="text-align:center; width:150px">' + 
 					'<input type="checkbox" name="auto3" id="auto3">' + '<label for="auto3">' + mw.msg( 'evelution-designer-auto' ) + '</label> <br>' +
-					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#2d383a" id="pagebg3" list="td_colors" />' + // Page BG
+					'<div class="cpe-button-group color-value">' +
+						'<input type="color" class="cpe-button is-square" style="width:68px;" value="#2d383a" id="pagebg3" list="td_colors" />' + // Page BG
+						'<button class="cpe-button is-square" id="pagebg3_r" title="'+  mw.msg( 'evelution-designer-random' ) +'"><span class="cpe-icon material-icons">shuffle</span></button>' +
+					'</div>' +
+
 					'<hr>' +
 					'<input type="checkbox" name="auto8" id="auto8" checked>' + '<label for="auto8">' + mw.msg( 'evelution-designer-auto' ) + '</label> <br>' +
-					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#2d383a" id="pagebg3_s" list="td_colors" disabled />' + // Page BG
+					'<div class="cpe-button-group color-value">' +
+						'<input type="color" class="cpe-button is-square" style="width:68px;" value="#2d383a" id="pagebg3_s" list="td_colors" disabled />' + // Page BG
+						'<button class="cpe-button is-square" id="pagebg3_s_r" title="'+  mw.msg( 'evelution-designer-random' ) +'"><span class="cpe-icon material-icons">shuffle</span></button>' +
+					'</div>' +
 				'</td>' +
 			'</tr>' +
 		// TR
@@ -864,11 +900,17 @@ function InitDesigner() {
 			'<tr>' +
 				'<td style="text-align:center; width:150px">' + 
 					'<input type="checkbox" name="auto2" id="auto2">' + '<label for="auto2">' + mw.msg( 'evelution-designer-auto' ) + '</label> <br>' +
-					'<input type="color"  class="cpe-button is-square" style="width:68px;" value="#c8c8cd" id="pagebg2" list="td_colors" />' + // Page BG
+					'<div class="cpe-button-group color-value">' +
+						'<input type="color"  class="cpe-button is-square" style="width:68px;" value="#c8c8cd" id="pagebg2" list="td_colors" />' + // Page BG
+						'<button class="cpe-button is-square" id="pagebg2_r" title="'+  mw.msg( 'evelution-designer-random' ) +'"><span class="cpe-icon material-icons">shuffle</span></button>' +
+					'</div>' +
 				'</td>' +
 				'<td style="text-align:center; width:150px">' + 
 					'<span><input type="checkbox" name="auto13" id="auto13">' + '<label for="auto13">' + mw.msg( 'evelution-designer-auto' ) + '</label></span> <br>' +
-					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#c62d42" id="saaccentcolor" list="td_colors" />' + // Page BG
+					'<div class="cpe-button-group color-value">' +
+						'<input type="color" class="cpe-button is-square" style="width:68px;" value="#c62d42" id="saaccentcolor" list="td_colors" />' + // Page BG
+						'<button class="cpe-button is-square" id="saaccentcolor_r" title="'+  mw.msg( 'evelution-designer-random' ) +'"><span class="cpe-icon material-icons">shuffle</span></button>' +
+					'</div>' +
 				'</td>' +
 
 			'</tr>' +
@@ -883,11 +925,17 @@ function InitDesigner() {
 			'<tr>' +
 				'<td style="text-align:center; width:150px">' + 
 					'<span style="visibility:hidden; pointer-events:none;"><input type="checkbox" name="autoDDR" id="autoDDR">' + '<label for="autoDDR">' + mw.msg( 'evelution-designer-auto' ) + '</label></span> <br>' +
-					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#1560bd" id="saccentcolor" list="td_colors" />' + // Page BG
+					'<div class="cpe-button-group color-value">' +
+						'<input type="color" class="cpe-button is-square" style="width:68px;" value="#1560bd" id="saccentcolor" list="td_colors" />' + // Page BG
+						'<button class="cpe-button is-square" id="saccentcolor_r" title="'+  mw.msg( 'evelution-designer-random' ) +'"><span class="cpe-icon material-icons">shuffle</span></button>' +
+					'</div>' +
 				'</td>' +
 				'<td style="text-align:center; width:150px">' + 
 					'<span><input type="checkbox" name="auto12" id="auto12">' + '<label for="auto12">' + mw.msg( 'evelution-designer-auto' ) + '</label></span> <br>' +
-					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#733380" id="svaccentcolor" list="td_colors" />' + // Page BG
+					'<div class="cpe-button-group color-value">' +
+						'<input type="color" class="cpe-button is-square" style="width:68px;" value="#733380" id="svaccentcolor" list="td_colors" />' + // Page BG
+						'<button class="cpe-button is-square" id="svaccentcolor_r" title="'+  mw.msg( 'evelution-designer-random' ) +'"><span class="cpe-icon material-icons">shuffle</span></button>' +
+					'</div>' +
 				'</td>' +
 			'</tr>' +
 		// TR
@@ -902,11 +950,17 @@ function InitDesigner() {
 			'<tr>' +
 				'<td style="text-align:center; width:150px">' + 
 					'<input type="checkbox" name="auto6" id="auto6">' + '<label for="auto6">' + mw.msg( 'evelution-designer-auto' ) + '</label> <br>' +
-					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#93cceA" id="accentcolor" list="td_colors" />' + // Page BG
+					'<div class="cpe-button-group color-value">' +
+						'<input type="color" class="cpe-button is-square" style="width:68px;" value="#93cceA" id="accentcolor" list="td_colors" />' + // Page BG
+						'<button class="cpe-button is-square" id="accentcolor_r" title="'+  mw.msg( 'evelution-designer-random' ) +'"><span class="cpe-icon material-icons">shuffle</span></button>' +
+					'</div>' +
 				'</td>' +
 				'<td style="text-align:center; width:150px">' + 
 					'<input type="checkbox" name="auto9" id="auto9" checked>' + '<label for="auto9">' + mw.msg( 'evelution-designer-auto' ) + '</label> <br>' +
-					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#000000" id="accenttextcolor" list="td_colors" disabled />' + // Page BG
+					'<div class="cpe-button-group color-value">' +
+						'<input type="color" class="cpe-button is-square" style="width:68px;" value="#000000" id="accenttextcolor" list="td_colors" disabled />' + // Page BG
+						'<button class="cpe-button is-square" id="accenttextcolor_r" title="'+  mw.msg( 'evelution-designer-random' ) +'"><span class="cpe-icon material-icons">shuffle</span></button>' +
+					'</div>' +
 				'</td>' +
 			'</tr>' +
 		// TR
@@ -921,11 +975,17 @@ function InitDesigner() {
 			'<tr>' +
 				'<td style="text-align:center; width:150px">' + 
 					'<input type="checkbox" name="auto5" id="auto5">' + '<label for="auto5">' + mw.msg( 'evelution-designer-auto' ) + '</label> <br>' +
-					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#00755e" id="taccentcolor" list="td_colors" />' + // Page BG
+					'<div class="cpe-button-group color-value">' +
+						'<input type="color" class="cpe-button is-square" style="width:68px;" value="#00755e" id="taccentcolor" list="td_colors" />' + // Page BG
+						'<button class="cpe-button is-square" id="taccentcolor_r" title="'+  mw.msg( 'evelution-designer-random' ) +'"><span class="cpe-icon material-icons">shuffle</span></button>' +
+					'</div>' +
 				'</td>' +
 				'<td style="text-align:center; width:150px">' + 
 					'<input type="checkbox" name="auto10" id="auto10" checked>' + '<label for="auto10">' + mw.msg( 'evelution-designer-auto' ) + '</label> <br>' +
-					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#ffffff" id="taccenttextcolor" list="td_colors" disabled />' + // Page BG
+					'<div class="cpe-button-group color-value">' +
+						'<input type="color" class="cpe-button is-square" style="width:68px;" value="#ffffff" id="taccenttextcolor" list="td_colors" disabled />' + // Page BG
+						'<button class="cpe-button is-square" id="taccenttextcolor_r" title="'+  mw.msg( 'evelution-designer-random' ) +'"><span class="cpe-icon material-icons">shuffle</span></button>' +
+					'</div>' +
 				'</td>' +
 			'</tr>' +
 		// TR
@@ -940,11 +1000,17 @@ function InitDesigner() {
 			'<tr>' +
 				'<td style="text-align:center; width:150px">' + 
 					'<input type="checkbox" name="auto4" id="auto4">' + '<label for="auto4">' + mw.msg( 'evelution-designer-auto' ) + '</label> <br>' +
-					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#01786f" id="qaccentcolor" list="td_colors" />' + // Page BG
+					'<div class="cpe-button-group color-value">' +
+						'<input type="color" class="cpe-button is-square" style="width:68px;" value="#01786f" id="qaccentcolor" list="td_colors" />' + // Page BG
+						'<button class="cpe-button is-square" id="qaccentcolor_r" title="'+  mw.msg( 'evelution-designer-random' ) +'"><span class="cpe-icon material-icons">shuffle</span></button>' +
+					'</div>' +
 				'</td>' +
 				'<td style="text-align:center; width:150px">' + 
 					'<input type="checkbox" name="auto11" id="auto11" checked>' + '<label for="auto11">' + mw.msg( 'evelution-designer-auto' ) + '</label> <br>' +
-					'<input type="color" class="cpe-button is-square" style="width:68px;" value="#ffffff" id="qaccenttextcolor" list="td_colors" disabled />' + // Page BG
+					'<div class="cpe-button-group color-value">' +
+						'<input type="color" class="cpe-button is-square" style="width:68px;" value="#ffffff" id="qaccenttextcolor" list="td_colors" disabled />' + // Page BG
+						'<button class="cpe-button is-square" id="qaccenttextcolor_r" title="'+  mw.msg( 'evelution-designer-random' ) +'"><span class="cpe-icon material-icons">shuffle</span></button>' +
+					'</div>' +
 				'</td>' +
 			'</tr>' +
 			'<tr>' +
@@ -2659,6 +2725,151 @@ $('.wikitable #auto15').click(
 	$("input[type='color']").change( function(e) { TestDynamicTheme(); } ); // Change
 	$("input.designer-text").change( function(e) { TestDynamicTheme(); } ); // Change
 
+// Color Shuffle
+	$('.color-value #bodybg_r').click(
+								function(e) {
+									e.preventDefault
+									document.querySelector('.wikitable #auto14').checked = false
+									$('.wikitable #bodybg').prop('disabled',(false) );
+									$('#bodybg').val( $('#td_colors option:nth-child('+getRandomInt($('#td_colors option').length)+')').val() )
+									TestDynamicTheme();
+								}   
+							);
+	$('.color-value #bodybg2_r').click(
+								function(e) {
+									e.preventDefault
+									document.querySelector('.wikitable #auto1').checked = false
+									$('.wikitable #bodybg2').prop('disabled',(false) );
+									$('#bodybg2').val( $('#td_colors option:nth-child('+getRandomInt($('#td_colors option').length)+')').val() )
+									TestDynamicTheme();
+								}   
+							);
+	$('.color-value #pagebg_r').click(
+								function(e) {
+									e.preventDefault
+									document.querySelector('.wikitable #auto15').checked = false
+									$('.wikitable #pagebg').prop('disabled',(false) );
+									$('#pagebg').val( $('#td_colors option:nth-child('+getRandomInt($('#td_colors option').length)+')').val() )
+									TestDynamicTheme();
+								}   
+							);
+	$('.color-value #pagebg_s_r').click(
+								function(e) {
+									e.preventDefault
+									document.querySelector('.wikitable #auto7').checked = false
+									$('.wikitable #pagebg_s').prop('disabled',(false) );
+									$('#pagebg_s').val( $('#td_colors option:nth-child('+getRandomInt($('#td_colors option').length)+')').val() )
+									TestDynamicTheme();
+								}   
+							);
+	$('.color-value #pagebg3_r').click(
+								function(e) {
+									e.preventDefault
+									document.querySelector('.wikitable #auto3').checked = false
+									$('.wikitable #pagebg3').prop('disabled',(false) );
+									$('#pagebg3').val( $('#td_colors option:nth-child('+getRandomInt($('#td_colors option').length)+')').val() )
+									TestDynamicTheme();
+								}   
+							);
+	$('.color-value #pagebg3_s_r').click(
+								function(e) {
+									e.preventDefault
+									document.querySelector('.wikitable #auto8').checked = false
+									$('.wikitable #pagebg3_s').prop('disabled',(false) );
+									$('#pagebg3_s').val( $('#td_colors option:nth-child('+getRandomInt($('#td_colors option').length)+')').val() )
+									TestDynamicTheme();
+								}   
+							);
+	$('.color-value #pagebg2_r').click(
+								function(e) {
+									e.preventDefault
+									document.querySelector('.wikitable #auto2').checked = false
+									$('.wikitable #pagebg2').prop('disabled',(false) );
+									$('#pagebg2').val( $('#td_colors option:nth-child('+getRandomInt($('#td_colors option').length)+')').val() )
+									TestDynamicTheme();
+								}   
+							);
+	$('.color-value #saaccentcolor_r').click(
+								function(e) {
+									e.preventDefault
+									document.querySelector('.wikitable #auto13').checked = false
+									$('.wikitable #saaccentcolor').prop('disabled',(false) );
+									$('#saaccentcolor').val( $('#td_colors option:nth-child('+getRandomInt($('#td_colors option').length)+')').val() )
+									TestDynamicTheme();
+								}   
+							);
+							
+	$('.color-value #saccentcolor_r').click(
+								function(e) {
+									e.preventDefault
+									$('#saccentcolor').val( $('#td_colors option:nth-child('+getRandomInt($('#td_colors option').length)+')').val() )
+									TestDynamicTheme();
+								}   
+							);
+	$('.color-value #svaccentcolor_r').click(
+								function(e) {
+									e.preventDefault
+									document.querySelector('.wikitable #auto12').checked = false
+									$('.wikitable #svaccentcolor').prop('disabled',(false) );
+									$('#svaccentcolor').val( $('#td_colors option:nth-child('+getRandomInt($('#td_colors option').length)+')').val() )
+									TestDynamicTheme();
+								}   
+							);
+	$('.color-value #accentcolor_r').click(
+								function(e) {
+									e.preventDefault
+									document.querySelector('.wikitable #auto6').checked = false
+									$('.wikitable #accentcolor').prop('disabled',(false) );
+									$('#accentcolor').val( $('#td_colors option:nth-child('+getRandomInt($('#td_colors option').length)+')').val() )
+									TestDynamicTheme();
+								}   
+							);
+	$('.color-value #accenttextcolor_r').click(
+								function(e) {
+									e.preventDefault
+									document.querySelector('.wikitable #auto9').checked = false
+									$('.wikitable #accenttextcolor').prop('disabled',(false) );
+									$('#accenttextcolor').val( $('#td_colors option:nth-child('+getRandomInt($('#td_colors option').length)+')').val() )
+									TestDynamicTheme();
+								}   
+							);
+	$('.color-value #taccentcolor_r').click(
+								function(e) {
+									e.preventDefault
+									document.querySelector('.wikitable #auto5').checked = false
+									$('.wikitable #taccentcolor').prop('disabled',(false) );
+									$('#taccentcolor').val( $('#td_colors option:nth-child('+getRandomInt($('#td_colors option').length)+')').val() )
+									TestDynamicTheme();
+								}   
+							);
+	$('.color-value #taccenttextcolor_r').click(
+								function(e) {
+									e.preventDefault
+									document.querySelector('.wikitable #auto10').checked = false
+									$('.wikitable #taccenttextcolor').prop('disabled',(false) );
+									$('#taccenttextcolor').val( $('#td_colors option:nth-child('+getRandomInt($('#td_colors option').length)+')').val() )
+									TestDynamicTheme();
+								}   
+							);
+	$('.color-value #qaccentcolor_r').click(
+								function(e) {
+									e.preventDefault
+									document.querySelector('.wikitable #auto4').checked = false
+									$('.wikitable #qaccentcolor').prop('disabled',(false) );
+									$('#qaccentcolor').val( $('#td_colors option:nth-child('+getRandomInt($('#td_colors option').length)+')').val() )
+									TestDynamicTheme();
+								}   
+							);
+	$('.color-value #qaccenttextcolor_r').click(
+								function(e) {
+									e.preventDefault
+									document.querySelector('.wikitable #auto11').checked = false
+									$('.wikitable #qaccenttextcolor').prop('disabled',(false) );
+									$('#qaccenttextcolor').val( $('#td_colors option:nth-child('+getRandomInt($('#td_colors option').length)+')').val() )
+									TestDynamicTheme();
+								}   
+							);
+
 
 /* Select Inputs */
 	$(' .cpe-dropdown.cpe-select').blur(function() { TestDynamicTheme() })
@@ -2695,6 +2906,82 @@ $('.wikitable #auto15').click(
 
 
 }
+
+function RandomTheme() {
+	$(".evelution-floating-actions.extra-actions .theme-paste-button").prop('disabled', true);
+	AddFloatingBanner('Pasting theme. Please wait...','progress','InProgressBanner2')
+	oldtest= window.MW18TDTest;
+	window.MW18TDTest = false;
+
+									document.querySelector('.wikitable #auto14').checked = false
+									$('.wikitable #bodybg').prop('disabled',(false) );
+									$('#bodybg').val( $('#td_colors option:nth-child('+getRandomInt($('#td_colors option').length)+')').val() )
+
+									document.querySelector('.wikitable #auto1').checked = false
+									$('.wikitable #bodybg2').prop('disabled',(false) );
+									$('#bodybg2').val( $('#td_colors option:nth-child('+getRandomInt($('#td_colors option').length)+')').val() )
+
+									document.querySelector('.wikitable #auto15').checked = false
+									$('.wikitable #pagebg').prop('disabled',(false) );
+									$('#pagebg').val( $('#td_colors option:nth-child('+getRandomInt($('#td_colors option').length)+')').val() )
+
+									document.querySelector('.wikitable #auto7').checked = false
+									$('.wikitable #pagebg_s').prop('disabled',(false) );
+									$('#pagebg_s').val( $('#td_colors option:nth-child('+getRandomInt($('#td_colors option').length)+')').val() )
+
+									document.querySelector('.wikitable #auto3').checked = false
+									$('.wikitable #pagebg3').prop('disabled',(false) );
+									$('#pagebg3').val( $('#td_colors option:nth-child('+getRandomInt($('#td_colors option').length)+')').val() )
+
+									document.querySelector('.wikitable #auto8').checked = false
+									$('.wikitable #pagebg3_s').prop('disabled',(false) );
+									$('#pagebg3_s').val( $('#td_colors option:nth-child('+getRandomInt($('#td_colors option').length)+')').val() )
+									TestDynamicTheme();
+
+									document.querySelector('.wikitable #auto2').checked = false
+									$('.wikitable #pagebg2').prop('disabled',(false) );
+									$('#pagebg2').val( $('#td_colors option:nth-child('+getRandomInt($('#td_colors option').length)+')').val() )
+
+									document.querySelector('.wikitable #auto13').checked = false
+									$('.wikitable #saaccentcolor').prop('disabled',(false) );
+									$('#saaccentcolor').val( $('#td_colors option:nth-child('+getRandomInt($('#td_colors option').length)+')').val() )
+
+									$('#saccentcolor').val( $('#td_colors option:nth-child('+getRandomInt($('#td_colors option').length)+')').val() )
+
+									document.querySelector('.wikitable #auto12').checked = false
+									$('.wikitable #svaccentcolor').prop('disabled',(false) );
+									$('#svaccentcolor').val( $('#td_colors option:nth-child('+getRandomInt($('#td_colors option').length)+')').val() )
+
+									document.querySelector('.wikitable #auto6').checked = false
+									$('.wikitable #accentcolor').prop('disabled',(false) );
+									$('#accentcolor').val( $('#td_colors option:nth-child('+getRandomInt($('#td_colors option').length)+')').val() )
+
+									document.querySelector('.wikitable #auto9').checked = false
+									$('.wikitable #accenttextcolor').prop('disabled',(false) );
+									$('#accenttextcolor').val( $('#td_colors option:nth-child('+getRandomInt($('#td_colors option').length)+')').val() )
+
+									document.querySelector('.wikitable #auto5').checked = false
+									$('.wikitable #taccentcolor').prop('disabled',(false) );
+									$('#taccentcolor').val( $('#td_colors option:nth-child('+getRandomInt($('#td_colors option').length)+')').val() )
+
+									document.querySelector('.wikitable #auto10').checked = false
+									$('.wikitable #taccenttextcolor').prop('disabled',(false) );
+									$('#taccenttextcolor').val( $('#td_colors option:nth-child('+getRandomInt($('#td_colors option').length)+')').val() )
+
+									document.querySelector('.wikitable #auto4').checked = false
+									$('.wikitable #qaccentcolor').prop('disabled',(false) );
+									$('#qaccentcolor').val( $('#td_colors option:nth-child('+getRandomInt($('#td_colors option').length)+')').val() )
+
+									document.querySelector('.wikitable #auto11').checked = false
+									$('.wikitable #qaccenttextcolor').prop('disabled',(false) );
+									$('#qaccenttextcolor').val( $('#td_colors option:nth-child('+getRandomInt($('#td_colors option').length)+')').val() )
+
+	window.MW18TDTest = oldtest;
+	TestDynamicTheme();
+	$("#InProgressBanner2").remove();
+	AddFloatingBanner('Successfully pasted random theme to Theme Designer','success'); // alert('Successfully copied CPE Framework theme to Clipboard');
+}
+
 
 function InitSBT() {
 	// Change Title
