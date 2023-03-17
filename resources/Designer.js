@@ -560,12 +560,13 @@ function InitDesigner() {
 				// Special Colors (1)
 				'<option value="#18bbc5">' +
 			'</datalist>' +
-			'<datalist id="td_fonts2">' + // Sans Serif Fonts (12)
+			'<datalist id="td_fonts2">' + // Sans Serif Fonts (13)
 				'<option value="\'Alegreya Sans\'">' +	// NEW
 				'<option value="\'Arimo\'">' + 
 				'<option value="\'Commissioner\'">' +
 				'<option value="\'Didact Gothic\'">' +
 				'<option value="\'Inter\'">' +
+				'<option value="\'Nanum Gothic\'">' + // NEW
 				'<option value="\'Noto Sans\'">' +
 				'<option value="\'Questrial\'">' + // NEW
 				'<option value="\'Roboto\'">' +
@@ -574,49 +575,56 @@ function InitDesigner() {
 				'<option value="\'Ubuntu\'">' +
 				'<option value="\'Ubuntu Condensed\'">' + // NEW
 			'</datalist>' +
-			'<datalist id="td_fonts4">' + // Serif Fonts (11)
+			'<datalist id="td_fonts4">' + // Serif Fonts (12)
 				'<option value="\'Alegreya\'">' +	// NEW
 				'<option value="\'Aleo\'">' +	// NEW
 				'<option value="\'BioRhyme\'">' +
 				'<option value="\'BioRhyme Expanded\'">' + // NEW
 				'<option value="\'Inknut Antiqua\'">' +
 				'<option value="\'Lora\'">' +
+				'<option value="\'Nanum Myeongjo\'">' + // NEW
 				'<option value="\'Noto Serif\'">' + // NEW
 				'<option value="\'Roboto Serif\'">' + // NEW
 				'<option value="\'Roboto Slab\'">' +
 				'<option value="\'Tinos\'">' + // NEW
 				'<option value="\'Vollkorn\'">' +	// NEW
 			'</datalist>' +
-			'<datalist id="td_fonts">' + // Rounded Fonts (22)
+			'<datalist id="td_fonts">' + // Rounded Fonts (27)
 				'<option value="\'Chango\'">' + // NEW
 				'<option value="\'Comic Neue\'">' +
 				'<option value="\'Coming Soon\'">' + // NEW
 				'<option value="\'Exo 2\'">' +
 				'<option value="\'Nunito\'">' + // NEW
 				'<option value="\'Rubik\'">' +
+				'<option value="\'Rubik 80s Fade\'">' + // NEW
 				'<option value="\'Rubik Beastly\'">' + // NEW
 				'<option value="\'Rubik Bubbles\'">' + // NEW
 				'<option value="\'Rubik Burned\'">' + // NEW
 				'<option value="\'Rubik Dirt\'">' + // NEW
 				'<option value="\'Rubik Distressed\'">' + // NEW
+				'<option value="\'Rubik Gemstones\'">' + // NEW
 				'<option value="\'Rubik Glitch\'">' + // NEW
 				'<option value="\'Rubik Iso\'">' + // NEW
-				'<option value="\'Rubik Maker Hatch\'">' + // NEW
+				'<option value="\'Rubik Marker Hatch\'">' + // NEW
 				'<option value="\'Rubik Maze\'">' + // NEW
 				'<option value="\'Rubik Microbe\'">' + // NEW
 				'<option value="\'Rubik Moonrocks\'">' + // NEW
 				'<option value="\'Rubik Puddles\'">' + // NEW
+				'<option value="\'Rubik Spray Paint\'">' + // NEW
+				'<option value="\'Rubik Storm\'">' + // NEW
+				'<option value="\'Rubik Vinyl\'">' + // NEW
 				'<option value="\'Rubik Wet Paint\'">' + // NEW
 				'<option value="\'Style Script\'">' + // NEW
 				'<option value="\'Varela Round\'">' + // NEW
 				'<option value="\'Work Sans\'">' +
 			'</datalist>' +
-			'<datalist id="td_fonts3">' + // Monospace Fonts (7)
+			'<datalist id="td_fonts3">' + // Monospace Fonts (9)
 				'<option value="\'Anonymous Pro\'">' + 
 				'<option value="\'Courier Prime\'">' +
 				'<option value="\'Cousine\'">' +
 				'<option value="\'Cutive Mono\'">' +
 				'<option value="\'Inconsolata\'">' +
+				'<option value="\'Nanum Gothic Coding\'">' + // NEW
 				'<option value="\'Noto Sans Mono\'">' + // NEW
 				'<option value="\'Roboto Mono\'">' +
 				'<option value="\'Ubuntu Mono\'">' + // NEW
