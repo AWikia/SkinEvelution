@@ -2671,7 +2671,8 @@ vertical-align:middle;
 margin:1px 0;
 }
 
-.cpe-button-group .cpe-button{
+.cpe-button-group .cpe-button,
+.cpe-button-group .cpe-input {
 height:auto;
 margin:0 2px;
 /*white-space:nowrap;*/
@@ -2681,68 +2682,16 @@ margin:0 2px;
 	height:34px;
 }
 
-.cpe-button-group:not(.force-tertiary)>.cpe-button:not(:first-child):not(:last-child):not(.is-tertiary),
-.cpe-button-group:not(.force-tertiary)>.cpe-dropdown:not(:first-child):not(:last-child) .cpe-button:not(.is-tertiary),
-.cpe-button-group:not(.force-tertiary)>label:not(:first-child):not(:last-child) .cpe-button:not(.is-tertiary),
-.cpe-button-group:not(.force-tertiary)>li:not(:first-child):not(:last-child) .cpe-button:not(.is-tertiary),
-/* Force */
-.cpe-button-group.force-tertiary>.cpe-button:not(:first-child):not(:last-child).is-primary,
-.cpe-button-group.force-tertiary>.cpe-dropdown:not(:first-child):not(:last-child) .cpe-button.is-primary,
-.cpe-button-group.force-tertiary>label:not(:first-child):not(:last-child) .cpe-button.is-primary,
-.cpe-button-group.force-tertiary>li:not(:first-child):not(:last-child) .cpe-button.is-primary,
-/**/
-.cpe-button-group.force-tertiary>.cpe-button:not(:first-child):not(:last-child).is-secondary,
-.cpe-button-group.force-tertiary>.cpe-dropdown:not(:first-child):not(:last-child) .cpe-button.is-secondary,
-.cpe-button-group.force-tertiary>label:not(:first-child):not(:last-child) .cpe-button.is-secondary,
-.cpe-button-group.force-tertiary>li:not(:first-child):not(:last-child) .cpe-button.is-secondary {
-  border-radius:0;
-  margin-left:1px;
-  margin-right:1px;
-}
-
-.cpe-button-group:not(.force-tertiary) >.cpe-button:not(:last-child):not(.is-tertiary),
-.cpe-button-group:not(.force-tertiary) >.cpe-dropdown:not(:last-child) .cpe-button:not(.is-tertiary),
-.cpe-button-group:not(.force-tertiary)>label:not(:last-child) .cpe-button:not(.is-tertiary),
-.cpe-button-group:not(.force-tertiary)>li:not(:last-child) .cpe-button:not(.is-tertiary),
-/* Force */
-.cpe-button-group.force-tertiary >.cpe-button:not(:last-child).is-primary,
-.cpe-button-group.force-tertiary >.cpe-dropdown:not(:last-child) .cpe-button.is-primary,
-.cpe-button-group.force-tertiary>label:not(:last-child) .cpe-button.is-primary,
-.cpe-button-group.force-tertiary>li:not(:last-child) .cpe-button.is-primary,
-/**/
-.cpe-button-group.force-tertiary >.cpe-button:not(:last-child).is-secondary,
-.cpe-button-group.force-tertiary >.cpe-dropdown:not(:last-child) .cpe-button.is-secondary,
-.cpe-button-group.force-tertiary>label:not(:last-child) .cpe-button.is-secondary,
-.cpe-button-group.force-tertiary>li:not(:last-child) .cpe-button.is-secondary {
-border-bottom-right-radius:0;
-border-top-right-radius:0;
-margin-right:1px;
-}
-
-.cpe-button-group:not(.force-tertiary) > .cpe-button:not(:first-child):not(.is-tertiary),
-.cpe-button-group:not(.force-tertiary) > .cpe-dropdown:not(:first-child) .cpe-button:not(.is-tertiary),
-.cpe-button-group:not(.force-tertiary)>  label:not(:first-child) .cpe-button:not(.is-tertiary),
-.cpe-button-group:not(.force-tertiary)>  li:not(:first-child) .cpe-button:not(.is-tertiary),
-/* Force */
-.cpe-button-group.force-tertiary > .cpe-button:not(:first-child).is-primary,
-.cpe-button-group.force-tertiary > .cpe-dropdown:not(:first-child) .cpe-button.is-primary,
-.cpe-button-group.force-tertiary>  label:not(:first-child) .cpe-button.is-primary,
-.cpe-button-group.force-tertiary>  li:not(:first-child) .cpe-button.is-primary,
-/**/
-.cpe-button-group.force-tertiary > .cpe-button:not(:first-child).is-secondary,
-.cpe-button-group.force-tertiary > .cpe-dropdown:not(:first-child) .cpe-button.is-secondary,
-.cpe-button-group.force-tertiary>  label:not(:first-child) .cpe-button.is-secondary,
-.cpe-button-group.force-tertiary>  li:not(:first-child) .cpe-button.is-secondary {
-border-bottom-left-radius:0;
-border-top-left-radius:0;
-margin-left:1px;
-}
-
-
 .cpe-button-group>.cpe-button:not(:first-child):not(:last-child),
 .cpe-button-group>.cpe-dropdown:not(:first-child):not(:last-child) .cpe-button,
 .cpe-button-group>label:not(:first-child):not(:last-child) .cpe-button,
-.cpe-button-group>li:not(:first-child):not(:last-child) .cpe-button {
+.cpe-button-group>li:not(:first-child):not(:last-child) .cpe-button,
+/* Inputs */
+.cpe-button-group>.cpe-input:not(:first-child):not(:last-child),
+.cpe-button-group>.cpe-dropdown:not(:first-child):not(:last-child) .cpe-input,
+.cpe-button-group>label:not(:first-child):not(:last-child) .cpe-input,
+.cpe-button-group>li:not(:first-child):not(:last-child) .cpe-input {
+  border-radius:0;
   margin-left:1px;
   margin-right:1px;
 }
@@ -2750,14 +2699,28 @@ margin-left:1px;
 .cpe-button-group >.cpe-button:not(:last-child),
 .cpe-button-group >.cpe-dropdown:not(:last-child) .cpe-button,
 .cpe-button-group>label:not(:last-child) .cpe-button,
-.cpe-button-group>li:not(:last-child) .cpe-button {
+.cpe-button-group>li:not(:last-child) .cpe-button,
+/* Inputs */
+.cpe-button-group >.cpe-input:not(:last-child),
+.cpe-button-group >.cpe-dropdown:not(:last-child) .cpe-input,
+.cpe-button-group>label:not(:last-child) .cpe-input,
+.cpe-button-group>li:not(:last-child) .cpe-input {
+border-bottom-right-radius:0;
+border-top-right-radius:0;
 margin-right:1px;
 }
 
 .cpe-button-group > .cpe-button:not(:first-child),
 .cpe-button-group > .cpe-dropdown:not(:first-child) .cpe-button,
 .cpe-button-group>  label:not(:first-child) .cpe-button,
-.cpe-button-group>  li:not(:first-child) .cpe-button {
+.cpe-button-group>  li:not(:first-child) .cpe-button,
+/* Inputs */
+.cpe-button-group > .cpe-button:not(:first-child),
+.cpe-button-group > .cpe-dropdown:not(:first-child) .cpe-input,
+.cpe-button-group>  label:not(:first-child) .cpe-input,
+.cpe-button-group>  li:not(:first-child) .cpe-input {
+border-bottom-left-radius:0;
+border-top-left-radius:0;
 margin-left:1px;
 }
 

@@ -83,7 +83,12 @@ function InitDesigner() {
 					'</li>' +
 					'<li>' +
 						'<a class="theme-paste-button-2 action-link">' +
-							'<span>'+ mw.msg( 'evelution-designer-random' ) +'</span>' +
+							'<span>'+ mw.msg( 'evelution-designer-random' ) +' ('+  mw.msg( 'evelution-color-colors' ) +')</span>' +
+						'</a>' +
+					'</li>' +
+					'<li>' +
+						'<a class="theme-paste-button-3 action-link">' +
+							'<span>'+ mw.msg( 'evelution-designer-random' ) +' ('+  mw.msg( 'evelution-designer-setting-full' ) +')</span>' +
 						'</a>' +
 					'</li>' +
 				'</ul>' +
@@ -93,6 +98,7 @@ function InitDesigner() {
 
 	$(".evelution-floating-actions.extra-actions .theme-paste-button").click( function(e) { e.preventDefault; PasteTheme();  });
 	$(".evelution-floating-actions.extra-actions .theme-paste-button-2").click( function(e) { e.preventDefault; RandomTheme();  });
+	$(".evelution-floating-actions.extra-actions .theme-paste-button-3").click( function(e) { e.preventDefault; RandomTheme(true);  });
 	// Apply theme
 	$(".evelution-floating-actions.extra-actions .evelution-floating-actions-container").append(
 		'<button class="cpe-floating-button is-alert-color theme-apply-button page-side-tool" cpe-tooltip-position="reverse" cpe-tooltip="' + mw.msg( 'evelution-designer-apply' ) + '">' +
@@ -617,14 +623,42 @@ function InitDesigner() {
 			'</datalist>' +
 			'<datalist id="td_imagefilter">' + // Fonts
 				'<option value="opacity(100%)">' +
+				'<option value="opacity(80%)">' +
 				'<option value="opacity(75%)">' +
 				'<option value="opacity(50%)">' +
 				'<option value="opacity(25%)">' +
 				'<option value="opacity(0%)">' +
+				'<option value="hue-rotate(45deg)">' +
+				'<option value="hue-rotate(90deg)">' +
+				'<option value="hue-rotate(135deg)">' +
+				'<option value="hue-rotate(180deg)">' +
+				'<option value="hue-rotate(180deg) opacity(50%)">' +
+				'<option value="hue-rotate(225deg)">' +
+				'<option value="hue-rotate(270deg)">' +
+				'<option value="hue-rotate(315deg)">' +
+				'<option value="grayscale(25%)">' +
+				'<option value="grayscale(50%)">' +
+				'<option value="grayscale(75%)">' +
+				'<option value="grayscale(100%)">' +
+				'<option value="grayscale(100%) opacity(50%)">' +
+				'<option value="sepia(25%)">' +
+				'<option value="sepia(50%)">' +
+				'<option value="sepia(75%)">' +
+				'<option value="sepia(100%)">' +
+				'<option value="sepia(100%) opacity(50%)">' +
+				'<option value="blur(3px)">' +
+				'<option value="blur(3px) opacity(50%)">' +
+				'<option value="blur(6px)">' +
 				'<option value="invert(100%)">' +
 				'<option value="invert(100%) hue-rotate(180deg)">' +
+				'<option value="invert(100%) grayscale(100%)">' +
+				'<option value="invert(100%) sepia(100%)">' +
+				'<option value="invert(100%) blur(3px)">' +
 				'<option value="invert(100%) opacity(50%)">' +
 				'<option value="invert(100%) hue-rotate(180deg) opacity(50%)">' +
+				'<option value="invert(100%) grayscale(100%) opacity(50%)">' +
+				'<option value="invert(100%) sepia(100%) opacity(50%)">' +
+				'<option value="invert(100%) blur(3px) opacity(50%)">' +
 			'</datalist>' +
 			'<datalist id="td_aopacity">' + // Image Opacity
 				'<option value="0.6" label="60%">' +
@@ -657,7 +691,7 @@ function InitDesigner() {
 				'<th colspan="3">' + mw.msg( 'evelution-designer-body' ) + '</th>' +
 			'</tr>' +
 			'<tr>' +
-				'<th rowspan="2" style="width:150px;">' + 
+				'<th rowspan="2" style="width:var(--td-size);">' + 
 					mw.msg( 'evelution-designer-community' ) + 
 				'</th>' +
 				'<th><span class="cpe-icon material-icons">format_color_fill</span></th>' +
@@ -684,7 +718,7 @@ function InitDesigner() {
 			'</tr>' +
 		// TR
 			'<tr>' +
-				'<th rowspan="2" style="width:150px;">' + 
+				'<th rowspan="2" style="width:var(--td-size);">' + 
 					mw.msg( 'evelution-designer-community-image' ) + 
 				'</th>' +
 				'<th colspan=2><span class="cpe-icon material-icons">image</span></th>' +
@@ -692,12 +726,12 @@ function InitDesigner() {
 
 			'<tr>' +
 				'<td style="text-align:center; width:300px" colspan="2">' +
-					'<input type="text" id="bodyimage" class="cpe-input designer-text" style="width:300px; min-width:300px;" placeholder="URL" />' + // Body Background 
+					'<input type="text" id="bodyimage" class="cpe-input designer-text" style="width:calc(var(--td-size) * 2); min-width:calc(var(--td-size) * 2);" placeholder="URL" />' + // Body Background 
 				'</td>' +
 			'</tr>' +
 		// TR
 			'<tr>' +
-				'<th rowspan="2" style="width:150px;">' + 
+				'<th rowspan="2" style="width:var(--td-size);">' + 
 					mw.msg( 'evelution-designer-community-image-filter' ) + 
 				'</th>' +
 				'<th colspan=2><span class="cpe-icon material-icons">photo_filter</span></th>' +
@@ -705,12 +739,16 @@ function InitDesigner() {
 
 			'<tr>' +
 				'<td style="text-align:center; width:300px" colspan=2>' +
-					'<input type="text" id="bodyimagefilter" class="cpe-input designer-text" style="width:300px; min-width:300px;" placeholder="Filter" value="opacity(1)" list="td_imagefilter" />' + // Body Background 
+					'<div class="cpe-button-group color-value">' +
+						'<input type="text" id="bodyimagefilter" class="cpe-input designer-text" style="width:calc(calc(var(--td-size) * 2) - 40px); min-width:calc(calc(var(--td-size) * 2) - 40px);" placeholder="Filter" value="opacity(1)" list="td_imagefilter" />' + // Body Background 
+						'<button class="cpe-button is-square" id="bodyimagefilter_r" title="'+  mw.msg( 'evelution-designer-random' ) +'"><span class="cpe-icon material-icons">shuffle</span></button>' + 
+					'</div>' +
+
 				'</td>' +
 			'</tr>' +
 		// TR
 			'<tr>' +
-				'<th rowspan="2" style="width:150px;">' + 
+				'<th rowspan="2" style="width:var(--td-size);">' + 
 					mw.msg( 'evelution-designer-community-image-blend-mode' ) + 
 				'</th>' +
 				'<th colspan=2><span class="cpe-icon material-icons">gradient</span></th>' +
@@ -719,7 +757,7 @@ function InitDesigner() {
 			'<tr>' +
 				'<td style="text-align:center; width:300px" colspan=2>' +
 				   '<div class="cpe-dropdown cpe-select" tabindex="-1">' +
-						'<div class="cpe-input blend_mode cpe-dropdown__toggle" style="width:300px; min-width:300px;">' +
+						'<div class="cpe-input blend_mode cpe-dropdown__toggle" style="width:calc(var(--td-size) * 2); min-width:calc(var(--td-size) * 2);">' +
 							'<span class="cpe-select__value" value="normal">'+mw.msg ('evelution-designer-setting-normal')+'</span>' +
 							'<span class="cpe-icon cpe-icon-tiny cpe-icon-large cpe-dropdown__toggle-chevron material-icons">' +
 								'arrow_drop_down' +
@@ -751,7 +789,7 @@ function InitDesigner() {
 		// TR
 		// TR
 			'<tr>' +
-				'<th rowspan="2" style="width:150px;">' + 
+				'<th rowspan="2" style="width:var(--td-size);">' + 
 					mw.msg( 'evelution-designer-community-image-alignment' ) + 
 				'</th>' +
 				'<th><span class="cpe-icon material-icons">align_horizontal_center</span></th>' +
@@ -761,7 +799,7 @@ function InitDesigner() {
 			'<tr>' +
 				'<td style="text-align:center; width:150px">' +
 				   '<div class="cpe-dropdown cpe-select" tabindex="-1">' +
-						'<div class="cpe-input bg_align2 cpe-dropdown__toggle" style="width:150px; min-width:150px;">' +
+						'<div class="cpe-input bg_align2 cpe-dropdown__toggle" style="width:var(--td-size); min-width:var(--td-size);">' +
 							'<span class="cpe-select__value" value="center">'+mw.msg ('evelution-designer-setting-middle')+'</span>' +
 							'<span class="cpe-icon cpe-icon-tiny cpe-icon-large cpe-dropdown__toggle-chevron material-icons">' +
 								'arrow_drop_down' +
@@ -779,7 +817,7 @@ function InitDesigner() {
 
 				'<td style="text-align:center; width:150px">' +
 				   '<div class="cpe-dropdown cpe-select" tabindex="-1">' +
-						'<div class="cpe-input bg_align cpe-dropdown__toggle" style="width:150px; min-width:150px;">' +
+						'<div class="cpe-input bg_align cpe-dropdown__toggle" style="width:var(--td-size); min-width:var(--td-size);">' +
 							'<span class="cpe-select__value" value="center">'+mw.msg ('evelution-designer-setting-middle')+'</span>' +
 							'<span class="cpe-icon cpe-icon-tiny cpe-icon-large cpe-dropdown__toggle-chevron material-icons">' +
 								'arrow_drop_down' +
@@ -799,7 +837,7 @@ function InitDesigner() {
 			'</tr>' +
 		// TR
 			'<tr>' +
-				'<th rowspan="2" style="width:150px;">' + 
+				'<th rowspan="2" style="width:var(--td-size);">' + 
 					mw.msg( 'evelution-designer-community-image-size' ) + 
 				'</th>' +
 				'<th colspan="2"><span class="cpe-icon material-icons">aspect_ratio</span></th>' +
@@ -808,7 +846,7 @@ function InitDesigner() {
 			'<tr>' +
 				'<td style="text-align:center; width:300px" colspan=2>' +
 				   '<div class="cpe-dropdown cpe-select" tabindex="-1">' +
-						'<div class="cpe-input bg_size cpe-dropdown__toggle" style="width:300px; min-width:300px;">' +
+						'<div class="cpe-input bg_size cpe-dropdown__toggle" style="width:calc(var(--td-size) * 2); min-width:calc(var(--td-size) * 2);">' +
 							'<span class="cpe-select__value" value="cover">'+mw.msg ('evelution-designer-setting-cover')+'</span>' +
 							'<span class="cpe-icon cpe-icon-tiny cpe-icon-large cpe-dropdown__toggle-chevron material-icons">' +
 								'arrow_drop_down' +
@@ -828,7 +866,7 @@ function InitDesigner() {
 
 		// TR
 			'<tr>' +
-				'<th rowspan="2" style="width:150px;">' + 
+				'<th rowspan="2" style="width:var(--td-size);">' + 
 					mw.msg( 'evelution-designer-community-image-tiling' ) + 
 				'</th>' +
 				'<th><span class="cpe-icon material-icons">align_horizontal_center</span></th>' +
@@ -851,7 +889,7 @@ function InitDesigner() {
 			'</tr>' +
 		// TR
 			'<tr>' +
-				'<th rowspan="2" style="width:150px;">' + 
+				'<th rowspan="2" style="width:var(--td-size);">' + 
 					mw.msg( 'evelution-designer-page' ) + 
 				'</th>' +
 				'<th><span class="cpe-icon material-icons">format_color_fill</span></th>' +
@@ -890,7 +928,7 @@ function InitDesigner() {
 			'</tr>' +
 		// TR
 			'<tr>' +
-				'<th rowspan="2" style="width:150px;">' + 
+				'<th rowspan="2" style="width:var(--td-size);">' + 
 					mw.msg( 'evelution-designer-page-border' ) + 
 				'</th>' +
 				'<th><span class="cpe-icon material-icons">font_download_off</span></th>' +
@@ -916,7 +954,7 @@ function InitDesigner() {
 			'</tr>' +
 		// TR
 			'<tr>' +
-				'<th rowspan="2" style="width:150px;">' + 
+				'<th rowspan="2" style="width:var(--td-size);">' + 
 					mw.msg( 'evelution-designer-saccent' ) + 
 				'</th>' +
 				'<th><span class="cpe-icon material-icons">link_off</span></th>' +
@@ -940,7 +978,7 @@ function InitDesigner() {
 			'</tr>' +
 		// TR
 			'<tr>' +
-				'<th rowspan="2" style="width:150px;">' + 
+				'<th rowspan="2" style="width:var(--td-size);">' + 
 					mw.msg( 'evelution-designer-accent' ) + 
 				'</th>' +
 				'<th><span class="cpe-icon material-icons">format_color_fill</span></th>' +
@@ -965,7 +1003,7 @@ function InitDesigner() {
 			'</tr>' +
 		// TR
 			'<tr>' +
-				'<th rowspan="2" style="width:150px;">' + 
+				'<th rowspan="2" style="width:var(--td-size);">' + 
 					mw.msg( 'evelution-designer-taccent' ) + 
 				'</th>' +
 				'<th><span class="cpe-icon material-icons">format_color_fill</span></th>' +
@@ -990,7 +1028,7 @@ function InitDesigner() {
 			'</tr>' +
 		// TR
 			'<tr>' +
-				'<th rowspan="2" style="width:150px;">' + 
+				'<th rowspan="2" style="width:var(--td-size);">' + 
 					mw.msg( 'evelution-designer-qaccent' ) + 
 				'</th>' +
 				'<th><span class="cpe-icon material-icons">format_color_fill</span></th>' +
@@ -1018,7 +1056,7 @@ function InitDesigner() {
 			'</tr>' +
 		// TR
 			'<tr>' +
-				'<th rowspan="2" style="width:150px;">' + 
+				'<th rowspan="2" style="width:var(--td-size);">' + 
 					mw.msg( 'evelution-designer-border-radius' ) + 
 				'</th>' +
 				'<th colspan="2"><span class="cpe-icon material-icons">rounded_corner</span></th>' +
@@ -1026,12 +1064,12 @@ function InitDesigner() {
 
 			'<tr>' +
 				'<td style="text-align:center; width:300px" colspan=2>' +
-					'<input type="range" class="big" style="min-width:300px; min-width:300px;" id="border-radius" value="5" min="0" max="15" autocomplete="off" />' + // Body Background 
+					'<input type="range" class="big" style="min-width:calc(var(--td-size) * 2); min-width:calc(var(--td-size) * 2);" id="border-radius" value="5" min="0" max="15" autocomplete="off" />' + // Body Background 
 				'</td>' +
 			'</tr>' +
 		// TR
 			'<tr>' +
-				'<th rowspan="4" style="width:150px;">' + 
+				'<th rowspan="4" style="width:var(--td-size);">' + 
 					mw.msg( 'evelution-designer-font' ) + 
 				'</th>' +
 				'<th><span class="cpe-icon material-icons">title</span></th>' +
@@ -1041,10 +1079,18 @@ function InitDesigner() {
 
 			'<tr>' +
 				'<td style="text-align:center; width:150px">' +
-					'<input type="text" id="firstfont" class="cpe-input designer-text" style="width:150px; min-width:150px;" placeholder="Font" list="td_fonts2" autocomplete="off" />' + // Body Background 
+					'<div class="cpe-button-group color-value">' +
+						'<input type="text" id="firstfont" class="cpe-input designer-text" style="width:calc(var(--td-size) - 40px) ; min-width:calc(var(--td-size) - 40px) ;" placeholder="Font" list="td_fonts2" autocomplete="off" />' + // Body Background 
+						'<button class="cpe-button is-square" id="firstfont_r" title="'+  mw.msg( 'evelution-designer-random' ) +'"><span class="cpe-icon material-icons">shuffle</span></button>' +
+					'</div>' +
+
+
 				'</td>' +
 				'<td style="text-align:center; width:150px">' +
-					'<input type="text" id="fourthfont" class="cpe-input designer-text" style="width:150px; min-width:150px;" placeholder="Font" list="td_fonts4" autocomplete="off" />' + // Body Background 
+					'<div class="cpe-button-group color-value">' +
+						'<input type="text" id="fourthfont" class="cpe-input designer-text" style="width:calc(var(--td-size) - 40px) ; min-width:calc(var(--td-size) - 40px) ;" placeholder="Font" list="td_fonts4" autocomplete="off" />' + // Body Background 
+						'<button class="cpe-button is-square" id="fourthfont_r" title="'+  mw.msg( 'evelution-designer-random' ) +'"><span class="cpe-icon material-icons">shuffle</span></button>' +
+					'</div>' +
 				'</td>' +
 
 
@@ -1057,10 +1103,16 @@ function InitDesigner() {
 
 			'<tr>' +
 				'<td style="text-align:center; width:150px">' +
-					'<input type="text" id="secondfont" class="cpe-input designer-text" style="width:150px; min-width:150px;" placeholder="Font" list="td_fonts" autocomplete="off" />' + // Body Background 
+					'<div class="cpe-button-group color-value">' +
+						'<input type="text" id="secondfont" class="cpe-input designer-text" style="width:calc(var(--td-size) - 40px) ; min-width:calc(var(--td-size) - 40px) ;" placeholder="Font" list="td_fonts" autocomplete="off" />' + // Body Background 
+						'<button class="cpe-button is-square" id="secondfont_r" title="'+  mw.msg( 'evelution-designer-random' ) +'"><span class="cpe-icon material-icons">shuffle</span></button>' +
+					'</div>' +
 				'</td>' +
 				'<td style="text-align:center; width:150px">' +
-					'<input type="text" id="thirdfont" class="cpe-input designer-text" style="width:150px; min-width:150px;" placeholder="Font" list="td_fonts3" autocomplete="off" />' + // Body Background 
+					'<div class="cpe-button-group color-value">' +
+						'<input type="text" id="thirdfont" class="cpe-input designer-text" style="width:calc(var(--td-size) - 40px) ; min-width:calc(var(--td-size) - 40px) ;" placeholder="Font" list="td_fonts3" autocomplete="off" />' + // Body Background 
+						'<button class="cpe-button is-square" id="thirdfont_r" title="'+  mw.msg( 'evelution-designer-random' ) +'"><span class="cpe-icon material-icons">shuffle</span></button>' +
+					'</div>' +
 				'</td>' +
 
 
@@ -1068,7 +1120,7 @@ function InitDesigner() {
 
 		// TR
 			'<tr>' +
-				'<th rowspan="4" style="width:150px;">' + 
+				'<th rowspan="4" style="width:var(--td-size);">' + 
 					mw.msg( 'evelution-designer-filter' ) + 
 				'</th>' +
 				'<th><span class="cpe-icon material-icons">invert_colors_off</span></th>' +
@@ -1077,10 +1129,17 @@ function InitDesigner() {
 
 			'<tr>' +
 				'<td style="text-align:center; width:150px">' +
-					'<input type="text" id="filter" class="cpe-input designer-text" style="width:150px; min-width:150px;" placeholder="Filter" value="opacity(1)" />' + // Body Background 
+					'<div class="cpe-button-group color-value">' +
+						'<input type="text" id="filter" class="cpe-input designer-text" style="width:calc(var(--td-size) - 40px) ; min-width:calc(var(--td-size) - 40px) ;" placeholder="Filter" value="opacity(1)" list="td_imagefilter" />' + // Body Background 
+						'<button class="cpe-button is-square" id="filter_r" title="'+  mw.msg( 'evelution-designer-random' ) +'"><span class="cpe-icon material-icons">shuffle</span></button>' + 
+					'</div>' +
 				'</td>' +
 				'<td style="text-align:center; width:150px">' +
-					'<input type="text" id="filter2" class="cpe-input designer-text" style="width:150px; min-width:150px;" placeholder="Filter" value="opacity(0.8)" />' + // Body Background 
+					'<div class="cpe-button-group color-value">' +
+						'<input type="text" id="filter2" class="cpe-input designer-text" style="width:calc(var(--td-size) - 40px) ; min-width:calc(var(--td-size) - 40px) ;" placeholder="Filter" value="opacity(0.8)" list="td_imagefilter" />' + // Body Background 
+						'<button class="cpe-button is-square" id="filter2_r" title="'+  mw.msg( 'evelution-designer-random' ) +'"><span class="cpe-icon material-icons">shuffle</span></button>' + 
+					'</div>' +
+
 				'</td>' +
 			'</tr>' +
 
@@ -1091,17 +1150,17 @@ function InitDesigner() {
 
 			'<tr>' +
 				'<td style="text-align:center; width:150px">' +
-					'<input type="range" class="big" style="min-width:150px;" id="filter3" value="300" min="0" max="1000" step="20" list="td_filterdur" autocomplete="off" />' + // Body Background 
+					'<input type="range" class="big" style="min-width:var(--td-size);" id="filter3" value="300" min="0" max="1000" step="20" list="td_filterdur" autocomplete="off" />' + // Body Background 
 				'</td>' +
 				'<td style="text-align:center; width:150px">' +
-					'<input type="range" class="big" style="min-width:150px;" id="filter4" value="0" min="0" max="1000" step="20" list="td_filterdur" autocomplete="off"  />' + // Body Background 
+					'<input type="range" class="big" style="min-width:var(--td-size);" id="filter4" value="0" min="0" max="1000" step="20" list="td_filterdur" autocomplete="off"  />' + // Body Background 
 				'</td>' +
 			'</tr>' +
 
 
 		// TR
 			'<tr>' +
-				'<th rowspan="2" style="width:150px;">' + 
+				'<th rowspan="2" style="width:var(--td-size);">' + 
 					mw.msg( 'evelution-designer-acrylic-opacity' ) + 
 				'</th>' +
 				'<th colspan="2"><span class="cpe-icon material-icons">opacity</span></th>' +
@@ -1109,12 +1168,12 @@ function InitDesigner() {
 
 			'<tr>' +
 				'<td style="text-align:center; width:300px" colspan="2">' +
-					'<input type="range" class="big" style="min-width:300px; min-width:300px;" id="aopacity" value="0.6" min="0.6" max="0.8" step="0.01" list="td_aopacity" autocomplete="off" />' + // Body Background 
+					'<input type="range" class="big" style="min-width:calc(var(--td-size) * 2); min-width:calc(var(--td-size) * 2);" id="aopacity" value="0.6" min="0.6" max="0.8" step="0.01" list="td_aopacity" autocomplete="off" />' + // Body Background 
 				'</td>' +
 			'</tr>' +
 		// TR
 			'<tr>' +
-				'<th rowspan="2" style="width:150px;">' + 
+				'<th rowspan="2" style="width:var(--td-size);">' + 
 					mw.msg( 'evelution-designer-gchs' ) + 
 				'</th>' +
 				'<th><span class="cpe-icon material-icons">palette</span></th>' +
@@ -1124,16 +1183,16 @@ function InitDesigner() {
 
 			'<tr>' +
 				'<td style="text-align:center; width:150px">' +
-					'<input type="range" class="big" style="min-width:150px;" id="gchs" value="0" min="-15" max="15" step="1" list="td_gchs" autocomplete="off" />' + // Body Background 
+					'<input type="range" class="big" style="min-width:var(--td-size);" id="gchs" value="0" min="-15" max="15" step="1" list="td_gchs" autocomplete="off" />' + // Body Background 
 				'</td>' +
 				'<td style="text-align:center; width:150px">' +
-					'<input type="range" class="big" style="min-width:150px;" id="gcs" value="100" min="20" max="100" step="5" list="td_gcs" autocomplete="off" />' + // Body Background 
+					'<input type="range" class="big" style="min-width:var(--td-size);" id="gcs" value="100" min="20" max="100" step="5" list="td_gcs" autocomplete="off" />' + // Body Background 
 				'</td>' +
 			'</tr>' +
 
 		// TR
 			'<tr>' +
-				'<th rowspan="2" style="width:150px;">' + 
+				'<th rowspan="2" style="width:var(--td-size);">' + 
 					mw.msg( 'evelution-designer-icon-style' ) + 
 				'</th>' +
 				'<th colspan="2"><span class="cpe-icon material-icons">settings</span></th>' +
@@ -1142,7 +1201,7 @@ function InitDesigner() {
 			'<tr>' +
 				'<td style="text-align:center; width:300px" colspan=2>' +
 				   '<div class="cpe-dropdown cpe-select" tabindex="-1">' +
-						'<div class="cpe-input icon_style cpe-dropdown__toggle" style="width:300px; min-width:300px;">' +
+						'<div class="cpe-input icon_style cpe-dropdown__toggle" style="width:calc(var(--td-size) * 2); min-width:calc(var(--td-size) * 2);">' +
 							'<span class="cpe-select__value" value="round">'+ 'Round' +'</span>' +
 							'<span class="cpe-icon cpe-icon-tiny cpe-icon-large cpe-dropdown__toggle-chevron material-icons">' +
 								'arrow_drop_down' +
@@ -2870,6 +2929,56 @@ $('.wikitable #auto15').click(
 								}   
 							);
 
+	$('.color-value #firstfont_r').click(
+								function(e) {
+									e.preventDefault
+									$('#firstfont').val( $('#td_fonts2 option:nth-child('+getRandomInt($('#td_fonts2 option').length)+')').val() )
+									TestDynamicTheme();
+								}   
+							);
+	$('.color-value #secondfont_r').click(
+								function(e) {
+									e.preventDefault
+									$('#secondfont').val( $('#td_fonts option:nth-child('+getRandomInt($('#td_fonts option').length)+')').val() )
+									TestDynamicTheme();
+								}   
+							);
+	$('.color-value #thirdfont_r').click(
+								function(e) {
+									e.preventDefault
+									$('#thirdfont').val( $('#td_fonts3 option:nth-child('+getRandomInt($('#td_fonts3 option').length)+')').val() )
+									TestDynamicTheme();
+								}   
+							);
+	$('.color-value #fourthfont_r').click(
+								function(e) {
+									e.preventDefault
+									$('#fourthfont').val( $('#td_fonts4 option:nth-child('+getRandomInt($('#td_fonts4 option').length)+')').val() )
+									TestDynamicTheme();
+								}   
+							);
+	$('.color-value #bodyimagefilter_r').click(
+								function(e) {
+									e.preventDefault
+									$('#bodyimagefilter').val( $('#td_imagefilter option:nth-child('+getRandomInt($('#td_imagefilter option').length)+')').val() )
+									TestDynamicTheme();
+								}   
+							);
+	$('.color-value #filter_r').click(
+								function(e) {
+									e.preventDefault
+									$('#filter').val( $('#td_imagefilter option:nth-child('+getRandomInt($('#td_imagefilter option').length)+')').val() )
+									TestDynamicTheme();
+								}   
+							);
+	$('.color-value #filter2_r').click(
+								function(e) {
+									e.preventDefault
+									$('#filter2').val( $('#td_imagefilter option:nth-child('+getRandomInt($('#td_imagefilter option').length)+')').val() )
+									TestDynamicTheme();
+								}   
+							);
+
 
 /* Select Inputs */
 	$(' .cpe-dropdown.cpe-select').blur(function() { TestDynamicTheme() })
@@ -2907,7 +3016,7 @@ $('.wikitable #auto15').click(
 
 }
 
-function RandomTheme() {
+function RandomTheme(full=false) {
 	$(".evelution-floating-actions.extra-actions .theme-paste-button").prop('disabled', true);
 	AddFloatingBanner('Pasting theme. Please wait...','progress','InProgressBanner2')
 	oldtest= window.MW18TDTest;
@@ -2975,6 +3084,15 @@ function RandomTheme() {
 									document.querySelector('.wikitable #auto11').checked = false
 									$('.wikitable #qaccenttextcolor').prop('disabled',(false) );
 									$('#qaccenttextcolor').val( $('#td_colors option:nth-child('+getRandomInt($('#td_colors option').length)+')').val() )
+								if (full) {
+									$('#firstfont').val( $('#td_fonts2 option:nth-child('+getRandomInt($('#td_fonts2 option').length)+')').val() )
+									$('#secondfont').val( $('#td_fonts option:nth-child('+getRandomInt($('#td_fonts option').length)+')').val() )
+									$('#thirdfont').val( $('#td_fonts3 option:nth-child('+getRandomInt($('#td_fonts3 option').length)+')').val() )
+									$('#fourthfont').val( $('#td_fonts4 option:nth-child('+getRandomInt($('#td_fonts4 option').length)+')').val() )
+									$('#bodyimagefilter').val( $('#td_imagefilter option:nth-child('+getRandomInt($('#td_imagefilter option').length)+')').val() )
+									$('#filter').val( $('#td_imagefilter option:nth-child('+getRandomInt($('#td_imagefilter option').length)+')').val() )
+									$('#filter2').val( $('#td_imagefilter option:nth-child('+getRandomInt($('#td_imagefilter option').length)+')').val() )
+								}
 
 	window.MW18TDTest = oldtest;
 	TestDynamicTheme();
