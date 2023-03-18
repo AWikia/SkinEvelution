@@ -18,11 +18,7 @@
 		}
 		
 		.evelution-taskbar {
-			--toolbar-link-size:calc(var(--minibar-size) / 1.35);
-		}
-
-		.evelution-taskbar .link .cpe-icon {
-			--icon-size:1;
+			--toolbar-link-size:calc(var(--minibar-size) / 1.2);
 		}
 
 	}
@@ -36,7 +32,7 @@
 
 
 		.evelution-taskbar {
-			--toolbar-link-size:calc(var(--minibar-size) / 1.2);
+			--toolbar-link-size:calc(var(--minibar-size) / 1.1);
 		}
 		
 	}
@@ -50,22 +46,25 @@
 
 
 		.evelution-taskbar {
-			--toolbar-link-size:calc(var(--minibar-size) / 1.05);
+			--toolbar-link-size:calc(var(--minibar-size) / 1.0);
 		}
 	}
 
 
 	@media only screen and (max-width:639px) {
-			.evelution-taskbar .bottom-links .cpe-dropdown__content.is-right-aligned {
-				right:0!important;
-			}
-
 			.evelution-content .evelution-page-header .evelution-middle-actions a {
 				font-size:12px;
 			}
+			.evelution-taskbar .search > .search-button {
+					display:none;
+			}
+
 	}
 	
-	@media only screen and (max-width:511px) {		
+	@media only screen and (max-width:511px) {
+			.evelution-taskbar .bottom-links .cpe-dropdown__content.is-right-aligned {
+				right:0!important;
+			}
 		
 			.evelution-content .evelution-page-header .evelution-middle-actions a {
 				font-size:0;
@@ -103,8 +102,9 @@
 
 	
 	/* All Phones */	
-	.evelution-taskbar .search > .search-button {
-			display:none;
+
+	.evelution-taskbar .search > .cpe-button.search-button span {
+		max-width:140px;
 	}
 
 	.body-background,
@@ -402,7 +402,7 @@
 }
 
 /* S+ */
-@media only screen and (min-width:760px) {
+@media only screen and (min-width:640px) {
 		.evelution-taskbar .search > .search-icon {
 				display:none;
 		}
@@ -447,8 +447,8 @@
 
 	}
 
-/* L-XL + XL + XXL */
-@media only screen and (min-width:1390px) {
+/* L + XL + XXL */
+@media only screen and (min-width:1280px) {
 /* Search Box */
 	.evelution-taskbar .search > .search-button {
 			display:none;
@@ -510,9 +510,16 @@
 		animation:none;
 		display:none;
 	}
-
+	
 
 }
+
+@media only screen and (min-width:1390px) and (max-width:1499px) {
+	.pageheader-search .cpe-input {
+		width:225px;
+	}
+}
+
 
 
 /* XL */
@@ -610,7 +617,7 @@
 /* Content w/ header code end */
 
 	.pageheader-search .cpe-input {
-		width:225px
+		width:250px
 	}
 
 
@@ -663,7 +670,7 @@
 	}
 	
 	.pageheader-search .cpe-input {
-		width:250px
+		width:275px
 	}
 
 
@@ -715,7 +722,7 @@
 	}
 	
 	.pageheader-search .cpe-input {
-		width:275px;
+		width:300px;
 	}
 
 
