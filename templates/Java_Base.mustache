@@ -396,20 +396,24 @@ function CheckCompat() {
 
 	if ( (ua_agent.match("Safari/")) && !( (ua_agent.match("Chrome/")) || (ua_agent.match("YNGT")) ) ) { // Safari
 		window.oldBrowser = ua_agent.match(/Version\/(\d+)/)[1] < 14
+		window.oldBrowser2 = ua_agent.match(/Version\/(\d+)/)[1] < 15
 	}
 
 	if ( (ua_agent.match("Firefox/")) && !( (ua_agent.match("PaleMoon/")) ) ) { // Mozilla Firefox
 		window.oldBrowser = ua_agent.match(/Firefox\/(\d+)/)[1] < 84
+		window.oldBrowser2 = ua_agent.match(/Firefox\/(\d+)/)[1] < 100
 	}
 
 	if ( (ua_agent.match("PaleMoon/")) ) { // Pale Moon
 		window.oldBrowser = ua_agent.match(/PaleMoon\/(\d+)/)[1] < 29
+		window.oldBrowser2 = ua_agent.match(/PaleMoon\/(\d+)/)[1] < 31
 	document.querySelector('html').classList.add('pale-moon')
 	}
 
 
 	if ( (ua_agent.match("Chrome/")) && !( (ua_agent.match("Edge/")) ) ) { // Google Chrome
 		window.oldBrowser = ua_agent.match(/Chrome\/(\d+)/)[1] < 84
+		window.oldBrowser2 = ua_agent.match(/Chrome\/(\d+)/)[1] < 100
 	}
 	
 
@@ -432,6 +436,10 @@ function CheckCompat() {
 	if (window.oldBrowser) {
 		document.querySelector('body').innerHTML='<style> *, :before, :after {all:initial!important;}*:not(html):not(body):not(.warn) {display:none!important;}</style><div class="warn">Unsupported Configuration</div>';
 		console.error('Browser requirements are not met and Evelution can\'t run. Please upgrade your browser to latest');
+	}
+	if (window.oldBrowser2) {
+		AddFloatingBanner("Browser requirements are not met and you may experience issues with Evelution. Please upgrade your browser to latest before support gets dropped","warning")
+		console.warn('Browser requirements are not met and you may experience issues with Evelution. Please upgrade your browser to latest before support gets dropped');
 	}
 	{{#is-outdated}}
 	AddFloatingBanner("We're dropping support for this MediaWiki version soon. Please make sure to update MediaWiki as soon as possible so as to keep enjoying the latest Evelution improvements","warning")
