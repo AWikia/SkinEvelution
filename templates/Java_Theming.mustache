@@ -1461,9 +1461,9 @@ function ColorAdjust(color,color2,dark=false) { // Regular Colors
 	var light = chroma(color).get('hsl.l');
 	var hue = chroma(color).get('hsl.h');
 	if (func) {
-		return chroma(color).set('hsl.l', light-0.01).set('hsl.h', hue).hex();
+		return chroma( chroma.mix(color,'#000000',0.01,'hsl') ).set('hsl.l', light-0.01).set('hsl.h', hue).hex();
 	} else {
-		return chroma(color).set('hsl.l', light+0.01).set('hsl.h', hue).hex();
+		return chroma( chroma.mix(color,'#ffffff',0.01,'hsl') ).set('hsl.l', light+0.01).set('hsl.h', hue).hex();
 	}
 }
 
