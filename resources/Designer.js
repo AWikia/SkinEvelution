@@ -1210,16 +1210,16 @@ function InitDesigner() {
 				'<td style="text-align:center; width:300px" colspan=2>' +
 				   '<div class="cpe-dropdown cpe-select" tabindex="-1">' +
 						'<div class="cpe-input icon_style cpe-dropdown__toggle" style="width:calc(var(--td-size) * 2); min-width:calc(var(--td-size) * 2);">' +
-							'<span class="cpe-select__value" value="round">'+ 'Round' +'</span>' +
+							'<span class="cpe-select__value" value="round">'+ mw.msg( 'evelution-designer-setting-round' ) +'</span>' +
 							'<span class="cpe-icon cpe-icon-tiny cpe-icon-large cpe-dropdown__toggle-chevron material-icons">' +
 								'arrow_drop_down' +
 							'</span>' +
 						'</div>' +
 						'<div class="cpe-dropdown__content">' +
 							'<ul class="cpe-list is-linked">' +
-								'<li value="round"><a>'+'Round'+'</a></li>' +
-								'<li value="outlined"><a>'+'Outlined'+'</a></li>' +
-								'<li value="sharp"><a>'+'Sharp'+'</a></li>' +
+								'<li value="round"><a>'+mw.msg( 'evelution-designer-setting-round' )+'</a></li>' +
+								'<li value="outlined"><a>'+mw.msg( 'evelution-designer-setting-outlined' )+'</a></li>' +
+								'<li value="sharp"><a>'+mw.msg( 'evelution-designer-setting-sharp' )+'</a></li>' +
 							'</ul>' +
 						'</div>' +
 					'</div>' +
@@ -2444,7 +2444,7 @@ function PasteTheme() {
 	$('#gchs').val( getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--system-generic-color-hue-shift") );
 	$('#gcs').val( parseInt(getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--system-generic-color-saturation")) );
 	// Icon Style
-	icon_style = ['Round', 'Round', 'Outlined', 'Sharp'][["round", "rounded", "outlined", "sharp"].indexOf( getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--system-icon-style") ) ]
+	icon_style = [mw.msg( 'evelution-designer-setting-round' ), mw.msg( 'evelution-designer-setting-round' ), mw.msg( 'evelution-designer-setting-outlined' ), mw.msg( 'evelution-designer-setting-sharp' )][["round", "rounded", "outlined", "sharp"].indexOf( getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--system-icon-style") ) ]
 	$('.icon_style .cpe-select__value').attr('value', getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--system-icon-style") );
 	$('.icon_style .cpe-select__value').html( icon_style );
 	
