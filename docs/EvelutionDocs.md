@@ -8,7 +8,7 @@ This skin is based on the Cayman Jekyll theme, one of the themes available for u
 
 It is nicknamed as EvelutionDocs and is a minimal Environment of Evelution. Differences from Cayman theme include:
 - Persistent Taskbar and Community Header. The latter does not include local nav or counters and the former lacks dynamic content
-- Support for themes, which use the CPE Language System but it lacks support for the advanced Theming Engine found in CPE Language, Evelution and Ivilution
+- Support for themes, which use the CPE Language System and supports the advanced Theming Engine found in CPE Language, Evelution and Ivilution
 - Support for Dark Mode. All eight themes included support dark mode
 - A more responsive layout for Larger Screens
 - Visited Hyperlink Support
@@ -16,23 +16,27 @@ It is nicknamed as EvelutionDocs and is a minimal Environment of Evelution. Diff
 
 However, there're several downsides compared to the full Evelution Experience:
 - No support for Luna Lovit or Levit
-- No support for Luna Lavccent
-- No support for Visual Styles or extra color schemes
-- No support for Forced Colors or Disabled Color Management
-- No support for Higher Contrast beyond the 4.5+ for Text and 3.0+ for Form Controls
-- No support for Advanced Color Modes (Only dark mode is supported, and this works differently than in Evelution. It merely changes the theme shown rather than modifying it so)
+- No support for Visual Styles or extra color schemes (Only a single color scheme is given alongside Disabled Color Management and although only a single visual style is given which is the base ones, it does support the High Contrast Visual Mode)
+- No support for Advanced Color Modes and Luna Lavccent in the GUI (See [here](https://www.mediawiki.org/wiki/Skin:Evelution#URL_Parameters) for the URL parameters supported by CPE Language for alternative way of using advanced color modes temporarly)
 - No support for Full Width Mode (Small devices, do however display the Documentation using full width container)
 - No Local Navigation or Right Rail Support (The contents menu in the documentation partially resolves this)
-- No support for the advanced theming engine (All themes must be in their full format)
-- No support for GPU Levels (However, the lack of Luna Lovit and Luna Levit defeats the purpose for this addition)
+- No support for GPU Levels (GPU Level is always locked to Level 1)
 
 ## Reporting bugs
 
 If you have something to report about the layout, use the GitHub issues or do it so on our Discord Server (Link found in the bottom of the taskbar that says Support Server in the tooltip)
 
-## Latest Revision
+## 2023 Revision
 
-In 2022, the Documentation Site was redesigned to match the layout of the later Evelution Skin revisions, including a bottom Taskbar, persistent Minibar and support for themes.
+In 2023, the Documentation Site was slightly redesigned to match the layout used in later Evelution Skin revisions.
+
+The advanced theming engine which also brings the advanced forced colors mode support was added as well to reduce filesize on CSS code used for themes.
+
+Last but not least, the Full CPE Language Core is now being present instead of having a subset of it included
+
+## 2022 Revision
+
+In 2022, the Documentation Site was redesigned to match the layout of the later Evelution Skin revisions, including a bottom Taskbar, persistent Minibar and support for themes albeit without the advanced theming engine found in CPE Language, Evelution and Ivilution.
 
 This revision also makes the layout a lot better for larger screens by adding support for the Desktop Background Color and making the page container more like the ones found in Evelution. Additional usage of Secondary font and Rounded corners has made into the redesign as well.
 
