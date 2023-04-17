@@ -451,7 +451,12 @@ container > .main {
 
 .evelution-taskbar .upper-links {
 	justify-content:center;
-	padding-left:calc(var(--explore-link-size) * 1);
+	padding-left:calc(calc(var(--explore-link-size) * 1) + 4px);
+	padding-right:4px;
+}
+
+.evelution-taskbar .upper-links .link {
+	flex:0 0 var(--toolbar-link-size);
 }
 
 .evelution-taskbar .upper-links .is-widget-style { /* This will cause issues when more are added. Be sure to add additional code when adding a new widget-style entry point which makes it align to the left */
@@ -478,6 +483,7 @@ container > .main {
 	justify-content:flex-start;
 	padding-left:11.8px;
 	padding-right:11.8px;
+	flex:none;
 }
 
 .evelution-taskbar .upper-links .is-widget-style .link > div {

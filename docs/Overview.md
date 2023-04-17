@@ -406,6 +406,7 @@ Defaults to false meaning you have color management, When set to true, it:
 - Hardcodes all non-color theming variables to their stock settings
 - Removes the ability to change themes, visual colors and color modes
 This setting is useful for wikis that can't adapt to the many color schemes Evelution gives. This is also the case when Forced Colors mode is active
+
 ### ``$wgEvelutionDisableRightRail`` (Since 5.0.0)
 Defaults to false meaning that a right rail will be shown where appropriate. When set to true, no right rail will appear. If the wiki heavily relies on layouts that might break with the Right Rail on, this setting is very useful to be turned on.
 
