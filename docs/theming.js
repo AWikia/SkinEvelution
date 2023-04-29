@@ -263,7 +263,7 @@ var visualColorNames = ['standard', 'nocolormanagement'];
 	VisualStyleCompile(); // Compiles the Contrast Options
 	VisualMode(visual_mode,false);
 	VisualStyle(visual_style,false);
-	document.querySelector('body').setAttribute('tabindex',-1);; // Add the CPE button class
+	document.querySelector('body').setAttribute('tabindex',-1); // Add the CPE button class
 	document.querySelector('body').focus();
 
 })();

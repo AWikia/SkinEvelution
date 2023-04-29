@@ -23,11 +23,11 @@ Evelution requires at least one of these browsers in order to run properly:
 
 | Browser    | Supported Releases        | Notes																						   |
 | ---------- | ------------------------- | ----------------------------------------------------------------------------------------------- |
-| Chrome     | 84+ (100+ Recommended)    | Has customized scrollbar styling.															   |
-| Firefox    | 84+ (100+ Recommended)    | Most versions will not show all transparency effects though newer ones will show them all.	   |
-| Edge       | 84+ (100+ Recommended)    | EdgeHTML version is not supported. Has customized scrollbar styling.							   |
-| Safari     | 14+ (15+ Recommended)     | Only on Apple Devices.					  													   |
-| Pale Moon  | 29+ (31+ Recommended)     | Not Recommended. Performance will be degraded and certain functionlity will not work correctly. |
+| Chrome     | 100+                      | Has customized scrollbar styling.															   |
+| Firefox    | 100+                      | Most versions will not show all transparency effects though newer ones will show them all.	   |
+| Edge       | 100+                      | EdgeHTML version is not supported. Has customized scrollbar styling.							   |
+| Safari     | 15+                       | Only on Apple Devices.					  													   |
+| Pale Moon  | 31+                       | Not Recommended. Performance will be degraded and certain functionlity will not work correctly. |
 
 
 Evelution skin will die if it is found to be running on unsupported browsers with the **Unsupported Configuration** error and will load up with a deprecated browswer warning if it is found to be running on not recommended but still supported browsers.
