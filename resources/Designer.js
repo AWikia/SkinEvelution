@@ -1,22 +1,48 @@
 ﻿window.MW18TDTest = false;
 
 (function () {
-    if ( ($("#footer-icons img[alt='Miraheze Wiki Hosting']").length) || ($("#footer-icons img[alt='Hosted by Miraheze']").length) || ($("#footer-icons img[alt='7 years of Miraheze!']").length) ) { // Don't run with disabled designer or on Miraheze Wikis
-	$(".link.theme-designer").remove();
-		return
-    }
 
+    allow_td = false;
+    getParams().forEach(function (param) {
+        var key = param.split("=")[0];
+        var value = param.split("=")[1];
+
+        switch (key) {
+            case 'allowthemedesigner':
+				allow_td = (value==0) ? false : true;
+                break;
+        }
+    });
+
+    if ( ($("#footer-icons img[alt='Miraheze Wiki Hosting']").length) || ($("#footer-icons img[alt='Hosted by Miraheze']").length) || ($("#footer-icons img[alt='7 years of Miraheze!']").length) ) { // Don't run with disabled designer or on Miraheze Wikis
+		$(".link.theme-designer").remove();
+		if (allow_td) {
+			LoadThemeDesigner();
+		}
+		return
+    } else {
+		const mwConfig2 = mw.config.get([
+			"wgNamespaceNumber",
+			"wgTitle",
+			"wgCanonicalSpecialPageName",
+			"wgArticlePath"
+		]);
+
+		if (mwConfig2.wgNamespaceNumber === -1 && mwConfig2.wgCanonicalSpecialPageName === "Specialpages") {
+			$("#mw-specialpagesgroup-other + .mw-specialpages-list ul").append('<li><a href="' + mwConfig2.wgArticlePath.replace("$1", 'Special:CPEThemeDesigner') + '" title="CPE Theme Designer">' + mw.msg( 'evelution-designer-title' ) + '</a></li>')
+		}
+		LoadThemeDesigner();
+}
+
+
+})();
+
+function LoadThemeDesigner() {
 
   const mwConfig2 = mw.config.get([
     "wgNamespaceNumber",
     "wgTitle",
-    "wgCanonicalSpecialPageName",
-    "wgArticlePath"
   ]);
-
-if (mwConfig2.wgNamespaceNumber === -1 && mwConfig2.wgCanonicalSpecialPageName === "Specialpages") {
-	$("#mw-specialpagesgroup-other + .mw-specialpages-list ul").append('<li><a href="' + mwConfig2.wgArticlePath.replace("$1", 'Special:CPEThemeDesigner') + '" title="CPE Theme Designer">' + mw.msg( 'evelution-designer-title' ) + '</a></li>')
-}
 
 
 if (mwConfig2.wgNamespaceNumber === -1 && mwConfig2.wgTitle === "CPEThemeDesigner") {
@@ -27,8 +53,7 @@ if (mwConfig2.wgNamespaceNumber === -1 && mwConfig2.wgTitle === "CPEThemeDesigne
 }
 
 
-
-})();
+}
 
 function InitDesigner() {
 	// Change Title
@@ -713,6 +738,7 @@ function InitDesigner() {
 					'<div class="cpe-button-group color-value">' +
 						'<input type="color" class="cpe-button is-square" style="width:68px;" value="#ffcba4" id="bodybg" list="td_colors" />' + // Body Background 
 						'<button class="cpe-button is-square" id="bodybg_r" title="'+  mw.msg( 'evelution-designer-random' ) +'"><span class="cpe-icon material-icons">shuffle</span></button>' +
+						'<button class="cpe-button is-square" id="bodybg_e" title="'+  mw.msg( 'evelution-designer-eyedropper' ) +'"><span class="cpe-icon material-icons">colorize</span></button>' +
 					'</div>' +
 				'</td>' +
 				'<td style="text-align:center; width:150px">' +
@@ -720,6 +746,7 @@ function InitDesigner() {
 					'<div class="cpe-button-group color-value">' +
 						'<input type="color" class="cpe-button is-square" style="width:68px;" value="#2d383a" id="bodybg2" list="td_colors" />' + // Body Background 
 						'<button class="cpe-button is-square" id="bodybg2_r" title="'+  mw.msg( 'evelution-designer-random' ) +'"><span class="cpe-icon material-icons">shuffle</span></button>' + 
+						'<button class="cpe-button is-square" id="bodybg2_e" title="'+  mw.msg( 'evelution-designer-eyedropper' ) +'"><span class="cpe-icon material-icons">colorize</span></button>' +
 					'</div>' +
 				'</td>' +
 
@@ -910,12 +937,14 @@ function InitDesigner() {
 					'<div class="cpe-button-group color-value">' +
 						'<input type="color" class="cpe-button is-square" style="width:68px;" value="#ffffff" id="pagebg" list="td_colors" />' + // Page BG
 						'<button class="cpe-button is-square" id="pagebg_r" title="'+  mw.msg( 'evelution-designer-random' ) +'"><span class="cpe-icon material-icons">shuffle</span></button>' +
+						'<button class="cpe-button is-square" id="pagebg_e" title="'+  mw.msg( 'evelution-designer-eyedropper' ) +'"><span class="cpe-icon material-icons">colorize</span></button>' +
 					'</div>' +
 					'<hr>' +
 					'<input type="checkbox" name="auto7" id="auto7" checked>' + '<label for="auto7">' + mw.msg( 'evelution-designer-auto' ) + '</label> <br>' +
 					'<div class="cpe-button-group color-value">' +
 						'<input type="color" class="cpe-button is-square" style="width:68px;" value="#ffffff" id="pagebg_s" list="td_colors" disabled />' + // Page BG
 						'<button class="cpe-button is-square" id="pagebg_s_r" title="'+  mw.msg( 'evelution-designer-random' ) +'"><span class="cpe-icon material-icons">shuffle</span></button>' +
+						'<button class="cpe-button is-square" id="pagebg_s_e" title="'+  mw.msg( 'evelution-designer-eyedropper' ) +'"><span class="cpe-icon material-icons">colorize</span></button>' +
 					'</div>' +
 
 				'</td>' +
@@ -924,6 +953,7 @@ function InitDesigner() {
 					'<div class="cpe-button-group color-value">' +
 						'<input type="color" class="cpe-button is-square" style="width:68px;" value="#2d383a" id="pagebg3" list="td_colors" />' + // Page BG
 						'<button class="cpe-button is-square" id="pagebg3_r" title="'+  mw.msg( 'evelution-designer-random' ) +'"><span class="cpe-icon material-icons">shuffle</span></button>' +
+						'<button class="cpe-button is-square" id="pagebg3_e" title="'+  mw.msg( 'evelution-designer-eyedropper' ) +'"><span class="cpe-icon material-icons">colorize</span></button>' +
 					'</div>' +
 
 					'<hr>' +
@@ -931,6 +961,7 @@ function InitDesigner() {
 					'<div class="cpe-button-group color-value">' +
 						'<input type="color" class="cpe-button is-square" style="width:68px;" value="#2d383a" id="pagebg3_s" list="td_colors" disabled />' + // Page BG
 						'<button class="cpe-button is-square" id="pagebg3_s_r" title="'+  mw.msg( 'evelution-designer-random' ) +'"><span class="cpe-icon material-icons">shuffle</span></button>' +
+						'<button class="cpe-button is-square" id="pagebg3_s_e" title="'+  mw.msg( 'evelution-designer-eyedropper' ) +'"><span class="cpe-icon material-icons">colorize</span></button>' +
 					'</div>' +
 				'</td>' +
 			'</tr>' +
@@ -949,6 +980,7 @@ function InitDesigner() {
 					'<div class="cpe-button-group color-value">' +
 						'<input type="color"  class="cpe-button is-square" style="width:68px;" value="#c8c8cd" id="pagebg2" list="td_colors" />' + // Page BG
 						'<button class="cpe-button is-square" id="pagebg2_r" title="'+  mw.msg( 'evelution-designer-random' ) +'"><span class="cpe-icon material-icons">shuffle</span></button>' +
+						'<button class="cpe-button is-square" id="pagebg2_e" title="'+  mw.msg( 'evelution-designer-eyedropper' ) +'"><span class="cpe-icon material-icons">colorize</span></button>' +
 					'</div>' +
 				'</td>' +
 				'<td style="text-align:center; width:150px">' + 
@@ -956,6 +988,7 @@ function InitDesigner() {
 					'<div class="cpe-button-group color-value">' +
 						'<input type="color" class="cpe-button is-square" style="width:68px;" value="#c62d42" id="saaccentcolor" list="td_colors" />' + // Page BG
 						'<button class="cpe-button is-square" id="saaccentcolor_r" title="'+  mw.msg( 'evelution-designer-random' ) +'"><span class="cpe-icon material-icons">shuffle</span></button>' +
+						'<button class="cpe-button is-square" id="saaccentcolor_e" title="'+  mw.msg( 'evelution-designer-eyedropper' ) +'"><span class="cpe-icon material-icons">colorize</span></button>' +
 					'</div>' +
 				'</td>' +
 
@@ -974,6 +1007,7 @@ function InitDesigner() {
 					'<div class="cpe-button-group color-value">' +
 						'<input type="color" class="cpe-button is-square" style="width:68px;" value="#1560bd" id="saccentcolor" list="td_colors" />' + // Page BG
 						'<button class="cpe-button is-square" id="saccentcolor_r" title="'+  mw.msg( 'evelution-designer-random' ) +'"><span class="cpe-icon material-icons">shuffle</span></button>' +
+						'<button class="cpe-button is-square" id="saccentcolor_e" title="'+  mw.msg( 'evelution-designer-eyedropper' ) +'"><span class="cpe-icon material-icons">colorize</span></button>' +
 					'</div>' +
 				'</td>' +
 				'<td style="text-align:center; width:150px">' + 
@@ -981,6 +1015,7 @@ function InitDesigner() {
 					'<div class="cpe-button-group color-value">' +
 						'<input type="color" class="cpe-button is-square" style="width:68px;" value="#733380" id="svaccentcolor" list="td_colors" />' + // Page BG
 						'<button class="cpe-button is-square" id="svaccentcolor_r" title="'+  mw.msg( 'evelution-designer-random' ) +'"><span class="cpe-icon material-icons">shuffle</span></button>' +
+						'<button class="cpe-button is-square" id="svaccentcolor_e" title="'+  mw.msg( 'evelution-designer-eyedropper' ) +'"><span class="cpe-icon material-icons">colorize</span></button>' +
 					'</div>' +
 				'</td>' +
 			'</tr>' +
@@ -999,6 +1034,7 @@ function InitDesigner() {
 					'<div class="cpe-button-group color-value">' +
 						'<input type="color" class="cpe-button is-square" style="width:68px;" value="#93cceA" id="accentcolor" list="td_colors" />' + // Page BG
 						'<button class="cpe-button is-square" id="accentcolor_r" title="'+  mw.msg( 'evelution-designer-random' ) +'"><span class="cpe-icon material-icons">shuffle</span></button>' +
+						'<button class="cpe-button is-square" id="accentcolor_e" title="'+  mw.msg( 'evelution-designer-eyedropper' ) +'"><span class="cpe-icon material-icons">colorize</span></button>' +
 					'</div>' +
 				'</td>' +
 				'<td style="text-align:center; width:150px">' + 
@@ -1006,6 +1042,7 @@ function InitDesigner() {
 					'<div class="cpe-button-group color-value">' +
 						'<input type="color" class="cpe-button is-square" style="width:68px;" value="#000000" id="accenttextcolor" list="td_colors" disabled />' + // Page BG
 						'<button class="cpe-button is-square" id="accenttextcolor_r" title="'+  mw.msg( 'evelution-designer-random' ) +'"><span class="cpe-icon material-icons">shuffle</span></button>' +
+						'<button class="cpe-button is-square" id="accenttextcolor_e" title="'+  mw.msg( 'evelution-designer-eyedropper' ) +'"><span class="cpe-icon material-icons">colorize</span></button>' +
 					'</div>' +
 				'</td>' +
 			'</tr>' +
@@ -1024,6 +1061,7 @@ function InitDesigner() {
 					'<div class="cpe-button-group color-value">' +
 						'<input type="color" class="cpe-button is-square" style="width:68px;" value="#00755e" id="taccentcolor" list="td_colors" />' + // Page BG
 						'<button class="cpe-button is-square" id="taccentcolor_r" title="'+  mw.msg( 'evelution-designer-random' ) +'"><span class="cpe-icon material-icons">shuffle</span></button>' +
+						'<button class="cpe-button is-square" id="taccentcolor_e" title="'+  mw.msg( 'evelution-designer-eyedropper' ) +'"><span class="cpe-icon material-icons">colorize</span></button>' +
 					'</div>' +
 				'</td>' +
 				'<td style="text-align:center; width:150px">' + 
@@ -1031,6 +1069,7 @@ function InitDesigner() {
 					'<div class="cpe-button-group color-value">' +
 						'<input type="color" class="cpe-button is-square" style="width:68px;" value="#ffffff" id="taccenttextcolor" list="td_colors" disabled />' + // Page BG
 						'<button class="cpe-button is-square" id="taccenttextcolor_r" title="'+  mw.msg( 'evelution-designer-random' ) +'"><span class="cpe-icon material-icons">shuffle</span></button>' +
+						'<button class="cpe-button is-square" id="taccenttextcolor_e" title="'+  mw.msg( 'evelution-designer-eyedropper' ) +'"><span class="cpe-icon material-icons">colorize</span></button>' +
 					'</div>' +
 				'</td>' +
 			'</tr>' +
@@ -1049,6 +1088,7 @@ function InitDesigner() {
 					'<div class="cpe-button-group color-value">' +
 						'<input type="color" class="cpe-button is-square" style="width:68px;" value="#01786f" id="qaccentcolor" list="td_colors" />' + // Page BG
 						'<button class="cpe-button is-square" id="qaccentcolor_r" title="'+  mw.msg( 'evelution-designer-random' ) +'"><span class="cpe-icon material-icons">shuffle</span></button>' +
+						'<button class="cpe-button is-square" id="qaccentcolor_e" title="'+  mw.msg( 'evelution-designer-eyedropper' ) +'"><span class="cpe-icon material-icons">colorize</span></button>' +
 					'</div>' +
 				'</td>' +
 				'<td style="text-align:center; width:150px">' + 
@@ -1056,6 +1096,7 @@ function InitDesigner() {
 					'<div class="cpe-button-group color-value">' +
 						'<input type="color" class="cpe-button is-square" style="width:68px;" value="#ffffff" id="qaccenttextcolor" list="td_colors" disabled />' + // Page BG
 						'<button class="cpe-button is-square" id="qaccenttextcolor_r" title="'+  mw.msg( 'evelution-designer-random' ) +'"><span class="cpe-icon material-icons">shuffle</span></button>' +
+						'<button class="cpe-button is-square" id="qaccenttextcolor_e" title="'+  mw.msg( 'evelution-designer-eyedropepr' ) +'"><span class="cpe-icon material-icons">colorize</span></button>' +
 					'</div>' +
 				'</td>' +
 			'</tr>' +
@@ -1692,6 +1733,7 @@ function InitDesigner() {
 		'</div>' +
 		'<div class="theme-code"></div>'
 	);
+	$(".cpe-button#bodybg_e, .cpe-button#bodybg2_e, .cpe-button#pagebg_e, .cpe-button#pagebg_s_e, .cpe-button#pagebg3_e, .cpe-button#pagebg3_s_e, .cpe-button#pagebg2_e, .cpe-button#saaccentcolor_e, .cpe-button#saccentcolor_e, .cpe-button#svaccentcolor_e, .cpe-button#accentcolor_e, .cpe-button#accenttextcolor_e, .cpe-button#taccentcolor_e, .cpe-button#taccenttextcolor_e, .cpe-button#qaccentcolor_e, .cpe-button#qaccenttextcolor_e").prop('disabled', (!window.EyeDropper))
 	SelectInputs();
     var pageTitle = $("#firstheading > span").html();
     var title = mw.message( 'pagetitle' ).text();
@@ -2984,6 +3026,312 @@ $('.wikitable #auto15').click(
 									e.preventDefault
 									$('#filter2').val( $('#td_imagefilter option:nth-child('+getRandomInt($('#td_imagefilter option').length)+')').val() )
 									TestDynamicTheme();
+								}   
+							);
+
+
+
+
+// Color Pick
+	$('.color-value #bodybg_e').click(
+								function(e) {
+									e.preventDefault
+								  new EyeDropper()
+									.open()
+									.then((result) => {
+									  color = result.sRGBHex;
+										document.querySelector('.wikitable #auto14').checked = false
+										$('.wikitable #bodybg').prop('disabled',(false) );
+										$('#bodybg').val( color )
+										TestDynamicTheme();
+									})
+									.catch((e2) => {
+									  color = e2;
+									});
+								}   
+							);
+	$('.color-value #bodybg2_e').click(
+								function(e) {
+									e.preventDefault
+
+								  new EyeDropper()
+									.open()
+									.then((result) => {
+									  color = result.sRGBHex;
+										document.querySelector('.wikitable #auto1').checked = false
+										$('.wikitable #bodybg2').prop('disabled',(false) );
+										$('#bodybg2').val( color )
+										TestDynamicTheme();
+									})
+									.catch((e2) => {
+									  color = e2;
+									});
+									
+								}   
+							);
+	$('.color-value #pagebg_e').click(
+								function(e) {
+									e.preventDefault
+
+								  new EyeDropper()
+									.open()
+									.then((result) => {
+									  color = result.sRGBHex;
+										document.querySelector('.wikitable #auto15').checked = false
+										$('.wikitable #pagebg').prop('disabled',(false) );
+										$('#pagebg').val( color )
+										TestDynamicTheme();
+									})
+									.catch((e2) => {
+									  color = e2;
+									});
+									
+								}   
+							);
+	$('.color-value #pagebg_s_e').click(
+								function(e) {
+									e.preventDefault
+
+								  new EyeDropper()
+									.open()
+									.then((result) => {
+									  color = result.sRGBHex;
+										document.querySelector('.wikitable #auto7').checked = false
+										$('.wikitable #pagebg_s').prop('disabled',(false) );
+										$('#pagebg_s').val( color )
+										TestDynamicTheme();
+									})
+									.catch((e2) => {
+									  color = e2;
+									});
+									
+								}   
+							);
+	$('.color-value #pagebg3_e').click(
+								function(e) {
+									e.preventDefault
+
+								  new EyeDropper()
+									.open()
+									.then((result) => {
+									  color = result.sRGBHex;
+										document.querySelector('.wikitable #auto3').checked = false
+										$('.wikitable #pagebg3').prop('disabled',(false) );
+										$('#pagebg3').val( color )
+										TestDynamicTheme();
+									})
+									.catch((e2) => {
+									  color = e2;
+									});
+									
+								}   
+							);
+	$('.color-value #pagebg3_s_e').click(
+								function(e) {
+									e.preventDefault
+
+								  new EyeDropper()
+									.open()
+									.then((result) => {
+									  color = result.sRGBHex;
+										document.querySelector('.wikitable #auto8').checked = false
+										$('.wikitable #pagebg3_s').prop('disabled',(false) );
+										$('#pagebg3_s').val( color )
+										TestDynamicTheme();
+									})
+									.catch((e2) => {
+									  color = e2;
+									});
+									
+								}   
+							);
+	$('.color-value #pagebg2_e').click(
+								function(e) {
+									e.preventDefault
+
+								  new EyeDropper()
+									.open()
+									.then((result) => {
+									  color = result.sRGBHex;
+										document.querySelector('.wikitable #auto2').checked = false
+										$('.wikitable #pagebg2').prop('disabled',(false) );
+										$('#pagebg2').val( color )
+										TestDynamicTheme();
+									})
+									.catch((e2) => {
+									  color = e2;
+									});
+									
+								}   
+							);
+	$('.color-value #saaccentcolor_e').click(
+								function(e) {
+									e.preventDefault
+
+								  new EyeDropper()
+									.open()
+									.then((result) => {
+									  color = result.sRGBHex;
+										document.querySelector('.wikitable #auto13').checked = false
+										$('.wikitable #saaccentcolor').prop('disabled',(false) );
+										$('#saaccentcolor').val( color )
+										TestDynamicTheme();
+									})
+									.catch((e2) => {
+									  color = e2;
+									});
+									
+								}   
+							);
+							
+	$('.color-value #saccentcolor_e').click(
+								function(e) {
+									e.preventDefault
+
+								  new EyeDropper()
+									.open()
+									.then((result) => {
+									  color = result.sRGBHex;
+										$('#saccentcolor').val( color )
+										TestDynamicTheme();
+									})
+									.catch((e2) => {
+									  color = e2;
+									});
+									
+								}   
+							);
+	$('.color-value #svaccentcolor_e').click(
+								function(e) {
+									e.preventDefault
+
+								  new EyeDropper()
+									.open()
+									.then((result) => {
+									  color = result.sRGBHex;
+										document.querySelector('.wikitable #auto12').checked = false
+										$('.wikitable #svaccentcolor').prop('disabled',(false) );
+										$('#svaccentcolor').val( color )
+										TestDynamicTheme();
+									})
+									.catch((e2) => {
+									  color = e2;
+									});
+									
+								}   
+							);
+	$('.color-value #accentcolor_e').click(
+								function(e) {
+									e.preventDefault
+
+								  new EyeDropper()
+									.open()
+									.then((result) => {
+									  color = result.sRGBHex;
+										document.querySelector('.wikitable #auto6').checked = false
+										$('.wikitable #accentcolor').prop('disabled',(false) );
+										$('#accentcolor').val( color )
+										TestDynamicTheme();
+									})
+									.catch((e2) => {
+									  color = e2;
+									});
+									
+								}   
+							);
+	$('.color-value #accenttextcolor_e').click(
+								function(e) {
+									e.preventDefault
+
+								  new EyeDropper()
+									.open()
+									.then((result) => {
+									  color = result.sRGBHex;
+										document.querySelector('.wikitable #auto9').checked = false
+										$('.wikitable #accenttextcolor').prop('disabled',(false) );
+										$('#accenttextcolor').val( color )
+										TestDynamicTheme();
+									})
+									.catch((e2) => {
+									  color = e2;
+									});
+									
+								}   
+							);
+	$('.color-value #taccentcolor_e').click(
+								function(e) {
+									e.preventDefault
+
+								  new EyeDropper()
+									.open()
+									.then((result) => {
+									  color = result.sRGBHex;
+										document.querySelector('.wikitable #auto5').checked = false
+										$('.wikitable #taccentcolor').prop('disabled',(false) );
+										$('#taccentcolor').val( color )
+										TestDynamicTheme();
+									})
+									.catch((e2) => {
+									  color = e2;
+									});
+									
+								}   
+							);
+	$('.color-value #taccenttextcolor_e').click(
+								function(e) {
+									e.preventDefault
+
+								  new EyeDropper()
+									.open()
+									.then((result) => {
+									  color = result.sRGBHex;
+										document.querySelector('.wikitable #auto10').checked = false
+										$('.wikitable #taccenttextcolor').prop('disabled',(false) );
+										$('#taccenttextcolor').val( color )
+										TestDynamicTheme();
+									})
+									.catch((e2) => {
+									  color = e2;
+									});
+									
+								}   
+							);
+	$('.color-value #qaccentcolor_e').click(
+								function(e) {
+									e.preventDefault
+
+								  new EyeDropper()
+									.open()
+									.then((result) => {
+									  color = result.sRGBHex;
+										document.querySelector('.wikitable #auto4').checked = false
+										$('.wikitable #qaccentcolor').prop('disabled',(false) );
+										$('#qaccentcolor').val( color )
+										TestDynamicTheme();
+									})
+									.catch((e2) => {
+									  color = e2;
+									});
+									
+								}   
+							);
+	$('.color-value #qaccenttextcolor_e').click(
+								function(e) {
+									e.preventDefault
+
+								  new EyeDropper()
+									.open()
+									.then((result) => {
+									  color = result.sRGBHex;
+										document.querySelector('.wikitable #auto11').checked = false
+										$('.wikitable #qaccenttextcolor').prop('disabled',(false) );
+										$('#qaccenttextcolor').val( color )
+										TestDynamicTheme();
+									})
+									.catch((e2) => {
+									  color = e2;
+									});
+									
 								}   
 							);
 
