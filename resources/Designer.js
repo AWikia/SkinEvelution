@@ -431,7 +431,7 @@ function InitDesigner() {
 				'<option value="#bf0077">' +
 				'<option value="#c239b3">' +
 				'<option value="#9a0089">' +
-				'<option value="#0078d4">' +
+				'<option value="#0078d7">' +
 				'<option value="#0063b1">' +
 				'<option value="#8e8cd8">' +
 				'<option value="#6b69d6">' +
@@ -562,11 +562,16 @@ function InitDesigner() {
 				'<option value="#002266">' + 
 				'<option value="#580062">' + 
 				'<option value="#808080">' +
-				// Graph Colors (19)
+				// Graph Colors (24)
 				'<option value="#117dbb">' + 
 				'<option value="#9528b4">' + 
 				'<option value="#4da60c">' + 
 				'<option value="#a74f01">' + 
+				'<option value="#0078d4">' + 
+				'<option value="#4f6bed">' + 
+				'<option value="#0e7878">' + 
+				'<option value="#e43ba6">' + 
+				'<option value="#8764b8">' + 
 				'<option value="#31b0cd">' + 
 				'<option value="#768df1">' + 
 				'<option value="#218b8b">' + 
