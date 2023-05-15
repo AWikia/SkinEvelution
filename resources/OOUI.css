@@ -264,7 +264,7 @@ body #preferences {
 	background-color:var(--canvas-background-color);
 	border-top-color:var(--inactive-text-background-color);
 	bottom:var(--minibar-size);
-	transition:bottom 400ms var(--transitioner);
+	transition:bottom var(--transition-duration) var(--transition-timing-function);
 }
 
 main[toolbar="false"] .mw-prefs-buttons {
@@ -505,7 +505,7 @@ body .oo-ui-tool.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flagged
 	--secondary-button-background-color:rgba(var(--tabs-color),var(--tabs-opacity));
 	--secondary-button-foreground-color:var(--canvas-text-background-color);
 	--secondary-button-foreground-color-hover:var(--canvas-text-background-color-hover);
-    transition:background-color 200ms var(--transitioner), border-color 200ms var(--transitioner), outline-offset 50ms var(--transitioner), outline-color 200ms var(--transitioner), color 200ms var(--transitioner), box-shadow 200ms var(--transitioner)!important;
+    transition:background-color var(--transition-duration) var(--transition-timing-function), border-color var(--transition-duration) var(--transition-timing-function), outline-offset var(--outline-transition-duration) var(--transition-timing-function), outline-color var(--transition-duration) var(--transition-timing-function), color var(--transition-duration) var(--transition-timing-function), box-shadow var(--transition-duration) var(--transition-timing-function)!important;
     font-size:13px;
 /*    font-family:var(--rounded-font-stack); */
     font-weight:600;
@@ -951,8 +951,8 @@ body .toc ul li a {
     padding: 2px 6px;
     text-decoration: none;
     transition-property: background-color,color;
-    transition-duration:0.3s;
-    transition-timing-function:var(--transitioner);
+    transition-duration:var(--transition-duration);
+    transition-timing-function:var(--transition-timing-function);
     border:1px solid transparent;
 }
 
@@ -964,8 +964,8 @@ body .toc .module-toc li a {
 body .toc ul li a .tocnumber {
 	opacity:0.7;
     transition-property: opacity;
-    transition-duration:0.3s;
-    transition-timing-function:var(--transitioner);
+    transition-duration:var(--transition-duration);
+    transition-timing-function:var(--transition-timing-function);
     color:inherit;
 }
 
@@ -1295,7 +1295,7 @@ body .mw-ui-input  {
 	--input-box-border:currentColor;
 	--input-box-focus:var(--highlight-background-color-rgb);
 	--input-box-solid:var(--highlight-background-color);
-    transition:background-color 200ms var(--transitioner), border-color 200ms var(--transitioner), outline-offset 50ms var(--transitioner), outline-color 200ms var(--transitioner), color 200ms var(--transitioner), box-shadow 200ms var(--transitioner)!important;
+    transition:background-color var(--transition-duration) var(--transition-timing-function), border-color var(--transition-duration) var(--transition-timing-function), outline-offset var(--outline-transition-duration) var(--transition-timing-function), outline-color var(--transition-duration) var(--transition-timing-function), color var(--transition-duration) var(--transition-timing-function), box-shadow var(--transition-duration) var(--transition-timing-function)!important;
     font-size:13px;
 /*    font-family:var(--rounded-font-stack); */
     font-weight:600;
@@ -1473,7 +1473,7 @@ body .oo-ui-dropdownWidget-handle {
 	--input-box-border:currentColor;
 	--input-box-focus:var(--highlight-background-color-rgb);
 	--input-box-solid:var(--highlight-background-color);
-    transition:background-color 200ms var(--transitioner), border-color 200ms var(--transitioner), outline-offset 50ms var(--transitioner), outline-color 200ms var(--transitioner), color 200ms var(--transitioner), box-shadow 200ms var(--transitioner);
+    transition:background-color var(--transition-duration) var(--transition-timing-function), border-color var(--transition-duration) var(--transition-timing-function), outline-offset var(--outline-transition-duration) var(--transition-timing-function), outline-color var(--transition-duration) var(--transition-timing-function), color var(--transition-duration) var(--transition-timing-function), box-shadow var(--transition-duration) var(--transition-timing-function);
     font-size:13px;
 /*    font-family:var(--rounded-font-stack); */
     font-weight:600;
@@ -1720,7 +1720,7 @@ body .uls-menu {
 	border-color:var(--inactive-text-background-color);
 	background-color:var(--canvas-background-color);
 	color:var(--canvas-text-background-color);
-	transition:top 400ms var(--transitioner);
+	transition:top var(--transition-duration) var(--transition-timing-function);
 	position:fixed!important;
 }
 
@@ -1868,8 +1868,8 @@ body .oo-ui-toggleSwitchWidget {
 	border-color:var(--checkbox-unchecked-shadow);
 	box-shadow:var(--threeD-shadow)!important;
 	transition:transform,background-color,border-color,color;
-	transition-duration:.3s;
-	transition-timing-function:var(--transitioner);
+	transition-duration:var(--transition-duration);
+	transition-timing-function:var(--transition-timing-function);
 }
 
 body .oo-ui-toggleSwitchWidget.oo-ui-widget-enabled .oo-ui-toggleSwitchWidget-grip {
@@ -1982,8 +1982,8 @@ body .oo-ui-toggleSwitchWidget-grip {
     left:0.35714286em;
     transform:translateX(0%);
 	transition:transform,background-color,border-color,color,margin-left;
-	transition-duration:.3s;
-	transition-timing-function:var(--transitioner);
+	transition-duration:var(--transition-duration);
+	transition-timing-function:var(--transition-timing-function);
 }
 
 body .oo-ui-toggleSwitchWidget.oo-ui-toggleWidget-off .oo-ui-toggleSwitchWidget-grip {
@@ -2526,7 +2526,7 @@ body .mw-echo-ui-notificationBadgeButtonPopupWidget-popup {
 	height:calc(100vh - var(--minibar-size) - var(--minibar-size))!important;
     display:flex;
     margin-top:0!important;
-    transition:top 400ms var(--transitioner), height 400ms var(--transitioner);
+    transition:top var(--transition-duration) var(--transition-timing-function), height var(--transition-duration) var(--transition-timing-function);
     position:fixed;
 }
 
@@ -2947,7 +2947,7 @@ body .mw-cookiewarning-container {
     box-shadow:0 -2px 6px 0 rgba(var(--canvas-text-background-color-rgb),.4),0 -2px 6px 0 rgba(var(--canvas-background-color-rgb),0.4);
     -webkit-backdrop-filter:var(--acrylic-filter);
     backdrop-filter:var(--acrylic-filter);
-    transition:left 400ms var(--transitioner), width 400ms var(--transitioner);
+    transition:left var(--transition-duration) var(--transition-timing-function), width var(--transition-duration) var(--transition-timing-function);
 }
 
 body .mw-cookiewarning-container .mw-cookiewarning-text {

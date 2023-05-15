@@ -28,7 +28,6 @@ body {
   --cpe-help-cursor:help;
   --cpe-text-cursor:text;
   --cpe-hand-cursor:pointer;
-  --transitioner:cubic-bezier(0.25,0.25,0,1);
 }
 
 :root {
@@ -207,7 +206,7 @@ body {
 
 
 	.evelution-sidebar .link {
-		transition:background-color 400ms var(--transitioner), color 400ms var(--transitioner), text-shadow 400ms var(--transitioner), opacity 300ms var(--transitioner), padding 300ms var(--transitioner), max-width 300ms var(--transitioner), font-size 300ms var(--transitioner);
+		transition:background-color var(--transition-duration) var(--transition-timing-function), color var(--transition-duration) var(--transition-timing-function), text-shadow var(--transition-duration) var(--transition-timing-function), opacity var(--transition-duration) var(--transition-timing-function), padding var(--transition-duration) var(--transition-timing-function), max-width var(--transition-duration) var(--transition-timing-function), font-size var(--transition-duration) var(--transition-timing-function);
 		height:var(--global-nav-size);
 		width:var(--global-nav-size);
 		color:inherit;
@@ -700,7 +699,7 @@ margin-bottom:0;
 		box-sizing:content-box;
 		transform-origin:top;
 		border-bottom:1px solid var(--luna-border-background-color);
-		transition:background color 400ms var(--transitioner), background image 400ms var(--transitioner);
+		transition:background color var(--transition-duration) var(--transition-timing-function), background image var(--transition-duration) var(--transition-timing-function);
 	}
 
 
@@ -714,7 +713,7 @@ margin-bottom:0;
 	content:"";
 	z-index:-2;
 	background-color:var(--luna-mica-background-color);
-    transition:background-color 400ms var(--transitioner), background-image 400ms var(--transitioner);
+    transition:background-color var(--transition-duration) var(--transition-timing-function), background-image var(--transition-duration) var(--transition-timing-function);
 	pointer-events:none;
 	overflow:hidden;
 }
@@ -740,7 +739,7 @@ margin-bottom:0;
 		margin-bottom:-7px;
 		padding-top:7px;
 		padding-bottom:7px;
-		transition:max-height:400ms var(--transitioner), height 400ms var(--transitioner);
+		transition:max-height:var(--transition-duration) var(--transition-timing-function), height var(--transition-duration) var(--transition-timing-function);
 	}
 	
 	.evelution-header .local-navigation .cpe-dropdown__content .local-navigation__button  {
@@ -792,7 +791,7 @@ margin-bottom:0;
 
 .evelution-header .logo-with-wordmark,
 .evelution-header .namespace-with-title {
-	transition:transform 400ms var(--transitioner);
+	transition:transform var(--transition-duration) var(--transition-timing-function);
 	display:flex;
 	align-items:center;
 	height:inherit;
@@ -807,7 +806,7 @@ margin-bottom:0;
 
 .headroom .evelution-header .logo-with-wordmark,
 .headroom .evelution-header .namespace-with-title {
-	transition:transform 400ms var(--transitioner);
+	transition:transform var(--transition-duration) var(--transition-timing-function);
 }
 
 .namespace-with-title .has-icon:before {
@@ -860,7 +859,7 @@ margin-bottom:0;
 		transition-property:filter;
 		transition-delay:var(--icon-filter-delay,0);
 		transition-duration:var(--icon-filter-duration,300ms) ;
-		transition-timing-function:var(--transitioner);
+		transition-timing-function:var(--transition-timing-function);
 		filter:var(--icon-filter,none);
 		align-self:center;
 		max-width:210px;
@@ -884,8 +883,8 @@ margin-bottom:0;
 		mask-repeat:no-repeat;
 		vertical-align: middle;
 		transition-property: color;
-		transition-duration: 400ms;
-		transition-timing-function:var(--transitioner);
+		transition-duration: var(--transition-duration);
+		transition-timing-function:var(--transition-timing-function);
 		height: 100%;
 		object-position: bottom;
 		width: auto;
@@ -924,7 +923,7 @@ margin-bottom:0;
 	.evelution-header .title a {
 		text-decoration:none;
 		color:inherit;
-		transition:color 400ms var(--transitioner);
+		transition:color var(--transition-duration) var(--transition-timing-function);
 		overflow:hidden;
 		text-overflow:ellipsis;
 		align-self:center;
@@ -992,7 +991,7 @@ margin-bottom:0;
 }
 
 	.evelution-header .link {
-		transition:color 400ms var(--transitioner), background-color 300ms var(--transitioner), background-image 300ms var(--transitioner), transform 300ms var(--transitioner), box-shadow 50ms var(--transitioner);
+		transition:color var(--transition-duration) var(--transition-timing-function), background-color var(--transition-duration) var(--transition-timing-function), background-image var(--transition-duration) var(--transition-timing-function), transform var(--transition-duration) var(--transition-timing-function), box-shadow var(--outline-transition-duration) var(--transition-timing-function);
 		padding: 0 7px;
 		height:inherit;
 		color:inherit;
@@ -1748,7 +1747,7 @@ fieldset {
 
 a {
   color: var(--hyperlink-background-color);
-  transition:color 400ms var(--transitioner);
+  transition:color var(--transition-duration) var(--transition-timing-function);
 }
 
 a:hover {

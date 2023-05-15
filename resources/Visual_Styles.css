@@ -490,7 +490,7 @@ background-image:linear-gradient(to left,rgba(255,255,255, 0) 200px,var(--canvas
 .visualstyle-basic .evelution-header .link,
 .visualstyle-basic .evelution-content .evelution-page-header .evelution-middle-actions a,
 .visualstyle-basic .evelution-top-actions .link {
-	transition:background-color 400ms var(--transitioner) 0ms;
+	transition:background-color var(--transition-duration) var(--transition-timing-function) 0ms;
 }
 
 
@@ -785,7 +785,7 @@ linear-gradient(90deg, transparent 0%, transparent calc(50% - -3px), currentColo
 .visualstyle-basic.visualmode-contrast .evelution-header .link,
 .visualstyle-basic.visualmode-contrast .evelution-content .evelution-page-header .evelution-middle-actions a,
 .visualstyle-basic.visualmode-contrast .evelution-top-actions .link {
-	transition:background-color 400ms var(--transitioner) 0ms, color 10ms var(--transitioner) 10ms, border-color 10ms var(--transitioner) 10ms, transform 200ms var(--transitioner) 0ms;
+	transition:background-color var(--transition-duration) var(--transition-timing-function) 0ms, color 10ms var(--transition-timing-function) 10ms, border-color 10ms var(--transition-timing-function) 10ms, transform var(--transition-duration) var(--transition-timing-function) 0ms;
 }
 
 
@@ -939,24 +939,6 @@ linear-gradient(90deg, transparent 0%, transparent calc(50% - -3px), currentColo
 .visualstyle-basic.visualmode-contrast .wikiEditor-ui-toolbar .booklet > .index > .current,
 .visualstyle-basic.visualmode-contrast .oo-ui-outlineOptionWidget.oo-ui-optionWidget-highlighted {
   background-color:var(--highlight-background-color);
-  color:var(--highlight-text-background-color)!important;
-}
-
-.visualstyle-basic.visualmode-contrast .notification.cpe-dropdown__content .cpe-list.has-lines-between.has-ellipsis > li:not(:last-child):not(.empty) {
-  transition:background-color .2s var(--transitioner) 0.01s, color .2s var(--transitioner);
-}
-
-
-.visualstyle-basic.visualmode-contrast .notification.cpe-dropdown__content .cpe-list.has-lines-between.has-ellipsis > li:not(:last-child):not(.empty):hover {
-  background-color:var(--highlight-background-color);
-}
-
-.visualstyle-basic.visualmode-contrast  .notification.cpe-dropdown__content .cpe-list.has-lines-between.has-ellipsis > li:not(:last-child) div h3, .visualstyle-basic.visualmode-contrast  .notification.cpe-dropdown__content .cpe-list.has-lines-between.has-ellipsis > li:not(:last-child) div h6 {
-  color:var(--canvas-text-background-color)!important;
-  transition:color .2s var(--transitioner);
-}
-
-.visualstyle-basic.visualmode-contrast  .notification.cpe-dropdown__content .cpe-list.has-lines-between.has-ellipsis > li:not(:last-child):hover div h3, .visualstyle-basic.visualmode-contrast  .notification.cpe-dropdown__content .cpe-list.has-lines-between.has-ellipsis > li:not(:last-child):hover div h6 {
   color:var(--highlight-text-background-color)!important;
 }
 
@@ -2115,30 +2097,6 @@ color:inherit;
 	border-radius:100px;
 	border-color:var(--alert-alternative-foreground-color)!important;
 	background-color:var(--alert-alternative-foreground-color)!important;
-}
-
-
-
-.visualstyle-simple  .notification.cpe-dropdown__content .cpe-list > li:not(:last-child):not(.empty) a:hover:after {
-	opacity:1;
-	color:var(--simple-luna-foreground-color-hover);
-	background-color:var(--simple-luna-background-color-hover);
-}
-
-.visualstyle-simple.visualmode-contrast  .notification.cpe-dropdown__content .cpe-list > li:not(:last-child):not(.empty) a:hover:after {
-	opacity:1;
-	color:var(--simple-luna-background-color);
-	background-color:var(--simple-luna-foreground-color);
-}
-
-
-.visualstyle-simple .notification.cpe-dropdown__content .cpe-list > li:not(:last-child) a div h3,
-.visualstyle-simple .notification.cpe-dropdown__content .cpe-list > li:not(:last-child) div h6 {
-	color:var(--simple-luna-foreground-color);
-}
-
-.visualstyle-simple .notification.cpe-dropdown__content .cpe-list > li:last-child  a {
-	color:var(--simple-luna-foreground-color);
 }
 
 

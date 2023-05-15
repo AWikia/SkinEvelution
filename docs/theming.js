@@ -1448,9 +1448,9 @@ function ColorAdjust(color,color2,dark=false) { // Regular Colors
 	var light = chroma(color).get('hsl.l');
 	var hue = chroma(color).get('hsl.h');
 	if (func) {
-		return chroma( chroma.mix(color,'#000000',0.01,'hsl') ).set('hsl.l', light-0.01).set('hsl.h', hue).hex();
+		return chroma(color).set('hsl.l', light-0.01).set('hsl.h', hue).hex();
 	} else {
-		return chroma( chroma.mix(color,'#ffffff',0.01,'hsl') ).set('hsl.l', light+0.01).set('hsl.h', hue).hex();
+		return chroma(color).set('hsl.l', light+0.01).set('hsl.h', hue).hex();
 	}
 }
 
@@ -1459,9 +1459,9 @@ function ColorInvert(color) {
 	var r = 255 - chroma(color).get('rgb.r');
 	var g = 255 - chroma(color).get('rgb.g');
 	var b = 255 - chroma(color).get('rgb.b');
-	var h = chroma(color).get('lch.h');
+	var h = chroma(color).get('oklch.h');
 	var h2 = chroma(color).get('hsl.h');
-	return 	chroma(color).set('rgb.r', r).set('rgb.g', g).set('rgb.b', b).set('lch.h', h).set('hsl.h', h2)
+	return 	chroma(color).set('rgb.r', r).set('rgb.g', g).set('rgb.b', b).set('oklch.h', h).set('hsl.h', h2)
 }
 
 /* 
@@ -1482,32 +1482,29 @@ function ColorStyleAdjust(color) {
 		var color = chroma( chroma.temperature(40000 - chroma(color2).temperature()) ).hex();
 	}
 	if ( (window.MW18darkmode === true) ) {
-		var r = 255 - chroma(color).get('rgb.r');
-		var g = 255 - chroma(color).get('rgb.g');
-		var b = 255 - chroma(color).get('rgb.b');
-	} else {
+		var color = ColorInvert(color);
+	}
 		var r = chroma(color).get('rgb.r');
 		var g = chroma(color).get('rgb.g');
 		var b = chroma(color).get('rgb.b');
-	}
 
-	var h = chroma(color).get('lch.h');
+	var h = chroma(color).get('oklch.h');
 	var h2 = chroma(color).get('hsl.h');
 	var huea = GetHueShift();
 	var adjusth = (h + huea) % 360
 	var adjusth2 = (h2 + huea) % 360
-	color3 = chroma(color).set('rgb.r', r).set('rgb.g', g).set('rgb.b', b).set('lch.h', adjusth).set('hsl.h', adjusth2)	
+	color3 = chroma(color).set('rgb.r', r).set('rgb.g', g).set('rgb.b', b).set('oklch.h', adjusth).set('hsl.h', adjusth2)	
 
-	var s = chroma(color3).get('lch.c');
+	var s = chroma(color3).get('oklch.c');
 	var s2 = chroma(color3).get('hsl.s');
 	var sata = (GetSaturation() / 100);
 
 
 	var page = [
-				chroma(color3).set('lch.c', s * sata).set('hsl.s', s2 * sata).set('hsl.h', adjusth2),	// Sp Dark Mode 0 (Normal)
-				chroma(color3).set('lch.c', s * sata).set('hsl.s', s2 * sata).set('hsl.h', huea),		// Sp Dark Mode 1 (Colorscale)
-				chroma(color3).set('lch.c', s * sata).set('hsl.s', s2 * sata).set('hsl.h', adjusth2),	// Sp Dark Mode 2 (Hot Temperature)
-				chroma(color3).set('lch.c', s * sata).set('hsl.s', s2 * sata).set('hsl.h', adjusth2),	// Sp Dark Mode 3 (Cold Temperature)
+				chroma(color3).set('oklch.c', s * sata).set('hsl.s', s2 * sata).set('hsl.h', adjusth2),	// Sp Dark Mode 0 (Normal)
+				chroma(color3).set('oklch.c', s * sata).set('hsl.s', s2 * sata).set('hsl.h', huea),		// Sp Dark Mode 1 (Colorscale)
+				chroma(color3).set('oklch.c', s * sata).set('hsl.s', s2 * sata).set('hsl.h', adjusth2),	// Sp Dark Mode 2 (Hot Temperature)
+				chroma(color3).set('oklch.c', s * sata).set('hsl.s', s2 * sata).set('hsl.h', adjusth2),	// Sp Dark Mode 3 (Cold Temperature)
 			   ][window.MW18spdarkmode];
 	return page
 
