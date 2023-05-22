@@ -1,36 +1,36 @@
 /* Color Modes */
-window.MW18darkmode = false; // false = light mode | true = light mode
-window.MW18spdarkmode = 0; // 0 = No special behavior  | 1 = Color Tint (ColorScale) | 2 = Temperature | 3 = Inverted Temperature
-window.MW18hueshift = 0; // From -180 to 180
-window.MW18saturation = 0; // From 0 to 100 (100 is grayscale)
-window.MW18devicetheme = 'light';
-window.MW18wikithemebehavior = 'duo'; // solo means solo mode
-window.MW18wikitheme = 'standard';
+window.ThemingEngine_InvertColors = false; // false = light mode | true = light mode
+window.ThemingEngine_ColorFilterMode = 0; // 0 = No special behavior  | 1 = Color Tint (ColorScale) | 2 = Temperature | 3 = Inverted Temperature
+window.ThemingEngine_ColorFilterHueShift = 0; // From -180 to 180
+window.ThemingEngine_ColorFilterSaturation = 0; // From 0 to 100 (100 is grayscale)
+window.ThemingEngine_ActiveColorFilterTheme = 'light';
+window.ThemingEngine_ActiveColorFilterBehavior = 'duo'; // solo means solo mode
+window.ThemingEngine_ActiveColorFilter = 'standard';
 /* Contrast Modes */
-window.MW18contrastmode = 'auto';
+window.ThemingEngine_ContrastMode = 'auto';
 /* Active Theme */
-window.MW18ActiveTheme = 'A';
-window.MW18ActiveThemeMode = 'none';
+window.ThemingEngine_ActiveTheme = 'A';
+window.ThemingEngine_ActiveThemeMode = 'none';
 /* Visual Colors */
-window.MW18ActiveColors = 'standard';
-window.MW18ActiveColorScheme = 'auto';
+window.ThemingEngine_ActiveVisualColors = 'standard';
+window.ThemingEngine_ActiveColorScheme = 'auto';
 /* Visual Styles */
-window.MW18ActiveStyle = '-';
-window.MW18ActiveStyleMode = '-';
-window.MW18ActiveStyleMode2 = '-'; // This is like MW18ActiveStyleMode but different for High Contrast Mode (where it is contrast)
+window.ThemingEngine_ActiveVisualStyle = '-';
+window.ThemingEngine_ActiveVisualMode = '-';
+window.ThemingEngine_ActiveVisualMode2 = '-'; // This is like ThemingEngine_ActiveVisualMode but different for High Contrast Mode (where it is contrast)
 /* DCM Modes */
-window.MW18DCMMode = 'standard';
-window.MW18DCMType = 'standard';
+window.ThemingEngine_ActiveDCMMode = 'standard';
+window.ThemingEngine_ActiveDCMType = 'standard';
 /* Some Theming Colors */
-window.MW18PageColor = GetCanvas();
-window.MW18PageColorFG = '#000000';
-window.MW18BgColor = GetDesktop();
-window.MW18HLColor = GetHighlight();
-window.MW18ATColor = GetActiveTitle();
-window.MW18ITColor = GetInactiveTitle();
+window.ThemingEngine_PageColor = GetCanvas();
+window.ThemingEngine_PageColorFG = '#000000';
+window.ThemingEngine_DesktopColor = GetDesktop();
+window.ThemingEngine_HighlightColor = GetHighlight();
+window.ThemingEngine_ActiveTitleColor = GetActiveTitle();
+window.ThemingEngine_InactiveTitleColor = GetInactiveTitle();
 /* Contrast Values */
-window.MW18lowContrast = 3.00;
-window.MW18highContrast = 4.50;
+window.ThemingEngine_LargeTextContrast = 3.00;
+window.ThemingEngine_SmallTextContrast = 4.50;
 
 /*
 **
@@ -313,7 +313,7 @@ function SupportsColorContrast() {
 }
 
 function DisabledColorManagement() {
-	return ( (ForcedColors()) || (document.querySelector("body.no-color-management") ) ||  (window.MW18ActiveColors === 'nocolormanagement') )
+	return ( (ForcedColors()) || (document.querySelector("body.no-color-management") ) ||  (window.ThemingEngine_ActiveVisualColors === 'nocolormanagement') )
 }
 
 function ForcedColors() {
@@ -322,11 +322,11 @@ function ForcedColors() {
 
 
 function ForcedColorMode() {
-	return window.MW18DCMMode;
+	return window.ThemingEngine_ActiveDCMMode;
 }
 
 function ForcedColorType() {
-	type = window.MW18DCMType;
+	type = window.ThemingEngine_ActiveDCMType;
 	if (type === 'auto') {
 		return (ForcedColors()) ? 'standard' : ( window.matchMedia('(prefers-color-scheme: light)').matches ) ? 'standard' : 'reversi';
 	} else if (type === 'auto-reversi') {
@@ -379,7 +379,7 @@ function getVisualMode() {
 	if (ForcedColors()) {
 		return 'contrast';
 	} else {
-		return window.MW18ActiveStyleMode
+		return window.ThemingEngine_ActiveVisualMode
 	}
 }
 
@@ -389,13 +389,13 @@ function VisualMode(mode,save=true) {
 	}
 	vmode = mode;
     var x = document.querySelector('html');
-		var oldmode = window.MW18ActiveStyleMode2;
-		window.MW18ActiveStyleMode = vmode;
-		window.MW18ActiveStyleMode2 = getVisualMode();
+		var oldmode = window.ThemingEngine_ActiveVisualMode2;
+		window.ThemingEngine_ActiveVisualMode = vmode;
+		window.ThemingEngine_ActiveVisualMode2 = getVisualMode();
 		if (oldmode === '-') {
-			document.querySelector('html').classList.add("visualmode-" +  window.MW18ActiveStyleMode2);
+			document.querySelector('html').classList.add("visualmode-" +  window.ThemingEngine_ActiveVisualMode2);
 		} else if (oldmode != getVisualMode() ) {
-			document.querySelector('html').classList.replace("visualmode-" +  oldmode,"visualmode-" +  window.MW18ActiveStyleMode2);
+			document.querySelector('html').classList.replace("visualmode-" +  oldmode,"visualmode-" +  window.ThemingEngine_ActiveVisualMode2);
 		}
 	var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-modes li.selected")
 	if (x) {
@@ -410,12 +410,12 @@ function VisualMode(mode,save=true) {
 function VisualStyle(style,save=true) {
 	vstyle = style;
     var x = document.querySelector('html');
-		var oldstyle = window.MW18ActiveStyle;
-		window.MW18ActiveStyle = vstyle;
+		var oldstyle = window.ThemingEngine_ActiveVisualStyle;
+		window.ThemingEngine_ActiveVisualStyle = vstyle;
 		if (oldstyle === '-') {
-			document.querySelector('html').classList.add("visualstyle-" +  window.MW18ActiveStyle);
-		} else if (oldstyle != window.MW18ActiveStyle ) {
-			document.querySelector('html').classList.replace("visualstyle-" +  oldstyle,"visualstyle-" +  window.MW18ActiveStyle);
+			document.querySelector('html').classList.add("visualstyle-" +  window.ThemingEngine_ActiveVisualStyle);
+		} else if (oldstyle != window.ThemingEngine_ActiveVisualStyle ) {
+			document.querySelector('html').classList.replace("visualstyle-" +  oldstyle,"visualstyle-" +  window.ThemingEngine_ActiveVisualStyle);
 		}
 	var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-styles li.selected")
 	if (x) {
@@ -432,7 +432,7 @@ function VisualStyle(style,save=true) {
 
 
 function getColorScheme() {
-	type = window.MW18ActiveColorScheme;
+	type = window.ThemingEngine_ActiveColorScheme;
 	if (type === 'auto') {
 		return ( window.matchMedia('(prefers-color-scheme: light)').matches ) ? 'light' : 'dark';
 	} else if (type === 'auto-dark') {
@@ -448,9 +448,9 @@ function getColorScheme() {
 
 function ColorScheme(style,save=true,repaint=true) {
     var x = document.querySelector('html');
-		oldscheme = window.MW18ActiveColorScheme;
+		oldscheme = window.ThemingEngine_ActiveColorScheme;
 	try {
-		window.MW18ActiveColorScheme = style;
+		window.ThemingEngine_ActiveColorScheme = style;
 		if (repaint) {
 			CompileThemingEngine(true);
 		}
@@ -469,8 +469,8 @@ function ColorScheme(style,save=true,repaint=true) {
 	}
 
 	catch (err) {
-		window.MW18ActiveColorScheme = oldscheme
-		AddFloatingBanner('Failed to switch to this Color Scheme as theme ' + window.MW18ActiveTheme + ' had typographical errors.','alert');
+		window.ThemingEngine_ActiveColorScheme = oldscheme
+		AddFloatingBanner('Failed to switch to this Color Scheme as theme ' + window.ThemingEngine_ActiveTheme + ' had typographical errors.','alert');
 		console.error(err);
 	}
 
@@ -485,9 +485,9 @@ function VisualColor(style,save=true,repaint=true) {
 			var style='standard';
 			var save = true;
 		}
-		oldcolors = window.MW18ActiveColors;
+		oldcolors = window.ThemingEngine_ActiveVisualColors;
 	try {
-		window.MW18ActiveColors = style;
+		window.ThemingEngine_ActiveVisualColors = style;
 		if (repaint) {
 			CompileThemingEngine(true);
 		}
@@ -506,8 +506,8 @@ function VisualColor(style,save=true,repaint=true) {
 	}
 
 	catch (err) {
-		window.MW18ActiveColors = oldcolors
-		AddFloatingBanner('Failed to switch to this Visual Color Pack as theme ' + window.MW18ActiveTheme + ' had typographical errors.','alert');
+		window.ThemingEngine_ActiveVisualColors = oldcolors
+		AddFloatingBanner('Failed to switch to this Visual Color Pack as theme ' + window.ThemingEngine_ActiveTheme + ' had typographical errors.','alert');
 		console.error(err);
 	}
 
@@ -595,7 +595,7 @@ function GetActiveThemeConfiguration() { // Used for ECM (Enabled Color Manageme
 	if (DisabledColorManagement()) {
 		return document.querySelector('.cpe-theming.visualcolors-nocolormanagement');
 	} else {
-		return document.querySelector('.cpe-theming.colorscheme-' + getColorScheme()  + '.visualcolors-' + window.MW18ActiveColors + '.theme-' + window.MW18ActiveTheme);
+		return document.querySelector('.cpe-theming.colorscheme-' + getColorScheme()  + '.visualcolors-' + window.ThemingEngine_ActiveVisualColors + '.theme-' + window.ThemingEngine_ActiveTheme);
 	}
 }
 
@@ -689,7 +689,7 @@ function GetInactiveText() {
 	if (DisabledColorManagement()) {
 		return GetSystemColor2('--inactive-text-background-color')
 	} else if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--inactive-text-background-color") === 'auto') {
-		return ColorMix(window.MW18PageColor,window.MW18PageColorFG,window.MW18FinalContrast);
+		return ColorMix(window.ThemingEngine_PageColor,window.ThemingEngine_PageColorFG,window.ThemingEngine_FinalContrast);
 	} else {
 		return getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--inactive-text-background-color").trim();
 	}
@@ -746,7 +746,7 @@ function GetHighlightText() {
 	if (DisabledColorManagement()) {
 		return GetSystemColor2('--highlight-text-background-color')
 	} else if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--highlight-text-background-color") === 'auto') {
-		return ColorInvert(window.MW18HLColor);
+		return ColorInvert(window.ThemingEngine_HighlightColor);
 	} else {
 		return getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--highlight-text-background-color").trim();
 	}
@@ -769,7 +769,7 @@ function GetActiveTitleText() {
 	if (DisabledColorManagement()) {
 		return GetSystemColor2('--active-title-text-background-color')
 	} else if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--active-title-text-background-color") === 'auto') {
-		return ColorInvert(window.MW18ATColor);
+		return ColorInvert(window.ThemingEngine_ActiveTitleColor);
 	} else {
 		return getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--active-title-text-background-color").trim();
 	}
@@ -780,7 +780,7 @@ function GetInactiveTitle() {
 	if (DisabledColorManagement()) {
 		return GetSystemColor2('--inactive-title-background-color')
 	} else if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--inactive-title-background-color") === 'auto') {
-		return ColorMix(window.MW18ATColor,window.MW18PageColor,1.5);
+		return ColorMix(window.ThemingEngine_ActiveTitleColor,window.ThemingEngine_PageColor,1.5);
 	} else {
 		return getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--inactive-title-background-color").trim();
 	}
@@ -790,7 +790,7 @@ function GetInactiveTitleText() {
 	if (DisabledColorManagement()) {
 		return GetSystemColor2('--inactive-title-text-background-color')
 	} else if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--inactive-title-text-background-color") === 'auto') {
-		return ColorInvert(window.MW18ITColor);
+		return ColorInvert(window.ThemingEngine_InactiveTitleColor);
 	} else {
 		return getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--inactive-title-text-background-color").trim();
 	}
@@ -798,27 +798,27 @@ function GetInactiveTitleText() {
 
 
 function GetAlert() {
-		return CompileGenericColors(window.MW18PageColor)[0];
+		return CompileGenericColors(window.ThemingEngine_PageColor)[0];
 }
 
 function GetPause() {
-		return CompileGenericColors(window.MW18PageColor)[1];
+		return CompileGenericColors(window.ThemingEngine_PageColor)[1];
 }
 
 function GetWarning() {
-		return CompileGenericColors(window.MW18PageColor)[2];
+		return CompileGenericColors(window.ThemingEngine_PageColor)[2];
 }
 
 function GetSuccess() {
-		return CompileGenericColors(window.MW18PageColor)[3];
+		return CompileGenericColors(window.ThemingEngine_PageColor)[3];
 }
 
 function GetProgress() {
-		return CompileGenericColors(window.MW18PageColor)[4];
+		return CompileGenericColors(window.ThemingEngine_PageColor)[4];
 }
 
 function GetMessage() {
-		return CompileGenericColors(window.MW18PageColor)[5];
+		return CompileGenericColors(window.ThemingEngine_PageColor)[5];
 }
 
 
@@ -845,33 +845,33 @@ function GetCustomFont4() {
 
 function ContrastRatio() { // Used for Text
 
-	if (MW18contrastmode == 'auto') {
+	if (ThemingEngine_ContrastMode == 'auto') {
 		return (window.matchMedia('(prefers-contrast: more)').matches) ? 1.55 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 1.275 : 1.0
-	} else if (MW18contrastmode == 'low') { // 4.5
+	} else if (ThemingEngine_ContrastMode == 'low') { // 4.5
 		return 1.00
-	} else if (MW18contrastmode == 'custom1') { // Custom
+	} else if (ThemingEngine_ContrastMode == 'custom1') { // Custom
 		return 1.06875
-	} else if (MW18contrastmode == 'med-low') {
+	} else if (ThemingEngine_ContrastMode == 'med-low') {
 		return 1.1375
-	} else if (MW18contrastmode == 'custom2') { // Custom
+	} else if (ThemingEngine_ContrastMode == 'custom2') { // Custom
 		return 1.20625
-	} else if (MW18contrastmode == 'med') {
+	} else if (ThemingEngine_ContrastMode == 'med') {
 		return 1.275
-	} else if (MW18contrastmode == 'custom3') { // Custom
+	} else if (ThemingEngine_ContrastMode == 'custom3') { // Custom
 		return 1.34375
-	} else if (MW18contrastmode == 'med-hi') {
+	} else if (ThemingEngine_ContrastMode == 'med-hi') {
 		return 1.4125
-	} else if (MW18contrastmode == 'custom4') { // Custom
+	} else if (ThemingEngine_ContrastMode == 'custom4') { // Custom
 		return 1.48125
-	} else if (MW18contrastmode == 'hi') { // 7
+	} else if (ThemingEngine_ContrastMode == 'hi') { // 7
 		return 1.55
-	} else if (MW18contrastmode == 'custom5') { // Custom
+	} else if (ThemingEngine_ContrastMode == 'custom5') { // Custom
 		return 1.61875
-	} else if (MW18contrastmode == 'hi-vhi') {
+	} else if (ThemingEngine_ContrastMode == 'hi-vhi') {
 		return 1.6875
-	} else if (MW18contrastmode == 'custom6') { // Custom
+	} else if (ThemingEngine_ContrastMode == 'custom6') { // Custom
 		return 1.75625
-	} else if (MW18contrastmode == 'vhi') {
+	} else if (ThemingEngine_ContrastMode == 'vhi') {
 		return 1.825
 	} else {
 		return (window.matchMedia('(prefers-contrast: more)').matches) ? 1.55 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 1.275 : 1.0
@@ -880,33 +880,33 @@ function ContrastRatio() { // Used for Text
 
 function ContrastRatio2() { // Used For Dropdown
 
-	if (MW18contrastmode == 'auto') {
+	if (ThemingEngine_ContrastMode == 'auto') {
 		return (window.matchMedia('(prefers-contrast: more)').matches) ? 0.35 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 0.30 : 0.25
-	} else if (MW18contrastmode == 'low') {
+	} else if (ThemingEngine_ContrastMode == 'low') {
 		return 0.25
-	} else if (MW18contrastmode == 'custom1') { // Custom
+	} else if (ThemingEngine_ContrastMode == 'custom1') { // Custom
 		return 0.2625
-	} else if (MW18contrastmode == 'med-low') {
+	} else if (ThemingEngine_ContrastMode == 'med-low') {
 		return 0.275
-	} else if (MW18contrastmode == 'custom2') { // Custom
+	} else if (ThemingEngine_ContrastMode == 'custom2') { // Custom
 		return 0.2875
-	} else if (MW18contrastmode == 'med') {
+	} else if (ThemingEngine_ContrastMode == 'med') {
 		return 0.3
-	} else if (MW18contrastmode == 'custom3') { // Custom
+	} else if (ThemingEngine_ContrastMode == 'custom3') { // Custom
 		return 0.3125
-	} else if (MW18contrastmode == 'med-hi') {
+	} else if (ThemingEngine_ContrastMode == 'med-hi') {
 		return 0.325
-	} else if (MW18contrastmode == 'custom4') { // Custom
+	} else if (ThemingEngine_ContrastMode == 'custom4') { // Custom
 		return 0.3375
-	} else if (MW18contrastmode == 'hi') {
+	} else if (ThemingEngine_ContrastMode == 'hi') {
 		return 0.35
-	} else if (MW18contrastmode == 'custom5') { // Custom
+	} else if (ThemingEngine_ContrastMode == 'custom5') { // Custom
 		return 0.3625
-	} else if (MW18contrastmode == 'hi-vhi') {
+	} else if (ThemingEngine_ContrastMode == 'hi-vhi') {
 		return 0.375
-	} else if (MW18contrastmode == 'custom6') { // Custom
+	} else if (ThemingEngine_ContrastMode == 'custom6') { // Custom
 		return 0.3875
-	} else if (MW18contrastmode == 'vhi') {
+	} else if (ThemingEngine_ContrastMode == 'vhi') {
 		return 0.4
 	} else {
 		return (window.matchMedia('(prefers-contrast: more)').matches) ? 0.35 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 0.30 : 0.25
@@ -915,33 +915,33 @@ function ContrastRatio2() { // Used For Dropdown
 
 function ContrastRatio3() { // Used for Form Controls
 
-	if (MW18contrastmode == 'auto') {
+	if (ThemingEngine_ContrastMode == 'auto') {
 		return (window.matchMedia('(prefers-contrast: more)').matches) ? 1.5 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 1.25 : 1.0
-	} else if (MW18contrastmode == 'low') { // 3
+	} else if (ThemingEngine_ContrastMode == 'low') { // 3
 		return 1.00
-	} else if (MW18contrastmode == 'custom1') { // Custom
+	} else if (ThemingEngine_ContrastMode == 'custom1') { // Custom
 		return 1.0625
-	} else if (MW18contrastmode == 'med-low') {
+	} else if (ThemingEngine_ContrastMode == 'med-low') {
 		return 1.125
-	} else if (MW18contrastmode == 'custom2') { // Custom
+	} else if (ThemingEngine_ContrastMode == 'custom2') { // Custom
 		return 1.1875
-	} else if (MW18contrastmode == 'med') {
+	} else if (ThemingEngine_ContrastMode == 'med') {
 		return 1.25
-	} else if (MW18contrastmode == 'custom3') { // Custom
+	} else if (ThemingEngine_ContrastMode == 'custom3') { // Custom
 		return 1.3125
-	} else if (MW18contrastmode == 'med-hi') {
+	} else if (ThemingEngine_ContrastMode == 'med-hi') {
 		return 1.375
-	} else if (MW18contrastmode == 'custom4') { // Custom
+	} else if (ThemingEngine_ContrastMode == 'custom4') { // Custom
 		return 1.4375
-	} else if (MW18contrastmode == 'hi') { // 4.5
+	} else if (ThemingEngine_ContrastMode == 'hi') { // 4.5
 		return 1.5
-	} else if (MW18contrastmode == 'custom5') { // Custom
+	} else if (ThemingEngine_ContrastMode == 'custom5') { // Custom
 		return 1.5625
-	} else if (MW18contrastmode == 'hi-vhi') {
+	} else if (ThemingEngine_ContrastMode == 'hi-vhi') {
 		return 1.625
-	} else if (MW18contrastmode == 'custom6') { // Custom
+	} else if (ThemingEngine_ContrastMode == 'custom6') { // Custom
 		return 1.6875
-	} else if (MW18contrastmode == 'vhi') {
+	} else if (ThemingEngine_ContrastMode == 'vhi') {
 		return 1.75
 	} else {
 		return (window.matchMedia('(prefers-contrast: more)').matches) ? 1.5 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 1.25 : 1.0
@@ -950,33 +950,33 @@ function ContrastRatio3() { // Used for Form Controls
 
 function ContrastRatio4() { // Used For Inactive Text
 
-	if (MW18contrastmode == 'auto') {
+	if (ThemingEngine_ContrastMode == 'auto') {
 		return (window.matchMedia('(prefers-contrast: more)').matches) ? 0.86 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 0.78 : 0.7
-	} else if (MW18contrastmode == 'low') {
+	} else if (ThemingEngine_ContrastMode == 'low') {
 		return 0.7
-	} else if (MW18contrastmode == 'custom1') { // Custom
+	} else if (ThemingEngine_ContrastMode == 'custom1') { // Custom
 		return 0.72
-	} else if (MW18contrastmode == 'med-low') {
+	} else if (ThemingEngine_ContrastMode == 'med-low') {
 		return 0.74
-	} else if (MW18contrastmode == 'custom2') { // Custom
+	} else if (ThemingEngine_ContrastMode == 'custom2') { // Custom
 		return 0.76
-	} else if (MW18contrastmode == 'med') {
+	} else if (ThemingEngine_ContrastMode == 'med') {
 		return 0.78
-	} else if (MW18contrastmode == 'custom3') { // Custom
+	} else if (ThemingEngine_ContrastMode == 'custom3') { // Custom
 		return 0.8
-	} else if (MW18contrastmode == 'med-hi') {
+	} else if (ThemingEngine_ContrastMode == 'med-hi') {
 		return 0.82
-	} else if (MW18contrastmode == 'custom4') { // Custom
+	} else if (ThemingEngine_ContrastMode == 'custom4') { // Custom
 		return 0.84
-	} else if (MW18contrastmode == 'hi') {
+	} else if (ThemingEngine_ContrastMode == 'hi') {
 		return 0.86
-	} else if (MW18contrastmode == 'custom5') { // Custom
+	} else if (ThemingEngine_ContrastMode == 'custom5') { // Custom
 		return 0.88
-	} else if (MW18contrastmode == 'hi-vhi') {
+	} else if (ThemingEngine_ContrastMode == 'hi-vhi') {
 		return 0.9
-	} else if (MW18contrastmode == 'custom6') { // Custom
+	} else if (ThemingEngine_ContrastMode == 'custom6') { // Custom
 		return 0.92
-	} else if (MW18contrastmode == 'vhi') {
+	} else if (ThemingEngine_ContrastMode == 'vhi') {
 		return 0.94
 	} else {
 		return (window.matchMedia('(prefers-contrast: more)').matches) ? 0.86 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 0.78 : 0.7
@@ -1008,7 +1008,7 @@ if (isLightColor(page)) { // ( chroma(page).get('hsl.l') < 0.5)
 		progressh = 220
 //		messageh = -1
 		
-		contrast = window.MW18highContrast*ContrastRatio()*1
+		contrast = window.ThemingEngine_SmallTextContrast*ContrastRatio()*1
 
 	for (let i = 0; i < colors.length; i++) {
 		var color = chroma('hsl(0,' + saturation + ',' + colors[i] + ')').hex(); // Base Color
@@ -1118,7 +1118,7 @@ function GetHueShift() {
 	if (DisabledColorManagement()) {
 		return 0;
 	} else {
-		return window.MW18hueshift;
+		return window.ThemingEngine_ColorFilterHueShift;
 	}
 }
 
@@ -1126,7 +1126,7 @@ function GetSaturation() {
 	if (DisabledColorManagement()) {
 		return 100;
 	} else {
-		return window.MW18saturation;
+		return window.ThemingEngine_ColorFilterSaturation;
 	}
 }
 
@@ -1156,19 +1156,19 @@ function SliderColorSaturation() {
 */
 function colortheme(style='match-parent', theme='match-parent', hue='match-parent', saturation='match-parent', solo='match-parent', repaint=true, save=true, notfromrange=true) {
 	if (style === 'match-parent') {
-		style = window.MW18wikitheme;
+		style = window.ThemingEngine_ActiveColorFilter;
 	}
 	if (theme === 'match-parent') {
-		theme = window.MW18devicetheme;
+		theme = window.ThemingEngine_ActiveColorFilterTheme;
 	}
 	if (hue === 'match-parent') {
-		hue = window.MW18hueshift;
+		hue = window.ThemingEngine_ColorFilterHueShift;
 	}
 	if (saturation === 'match-parent') {
-		saturation = window.MW18saturation;
+		saturation = window.ThemingEngine_ColorFilterSaturation;
 	}
 	if (solo === 'match-parent') {
-		solo = window.MW18wikithemebehavior;
+		solo = window.ThemingEngine_ActiveColorFilterBehavior;
 	}
 
 
@@ -1179,60 +1179,60 @@ function colortheme(style='match-parent', theme='match-parent', hue='match-paren
 		theme = ( window.matchMedia('(prefers-color-scheme: dark)').matches ) ? 'light' : 'dark';
 	}
     var body_bg =	GetCanvas();
-    var old_dark = window.MW18darkmode;
-    var old_dark2 = window.MW18spdarkmode;
-    var oldhue = window.MW18hueshift;
-    var oldsat = window.MW18saturation;
+    var old_dark = window.ThemingEngine_InvertColors;
+    var old_dark2 = window.ThemingEngine_ColorFilterMode;
+    var oldhue = window.ThemingEngine_ColorFilterHueShift;
+    var oldsat = window.ThemingEngine_ColorFilterSaturation;
     var muststay = false;
 		document.querySelector('head .devicetheme').innerHTML = '' ;
     if (DisabledColorManagement()) {
-		window.MW18darkmode = false;
-		window.MW18spdarkmode = 0;
+		window.ThemingEngine_InvertColors = false;
+		window.ThemingEngine_ColorFilterMode = 0;
 	} else {
 		if (style == 'standard') {
 			if (solo == 'solo') {
-				window.MW18darkmode = (isLightColor(body_bg)) ? (theme == 'dark') : (theme == 'light');
+				window.ThemingEngine_InvertColors = (isLightColor(body_bg)) ? (theme == 'dark') : (theme == 'light');
 			} else {
-				window.MW18darkmode = (theme == 'dark');
+				window.ThemingEngine_InvertColors = (theme == 'dark');
 			}
-			window.MW18spdarkmode = 0;
+			window.ThemingEngine_ColorFilterMode = 0;
 		} else if (style == 'colorscale') {
 			if (solo == 'solo') {
-				window.MW18darkmode = (isLightColor(body_bg)) ? (theme == 'dark') : (theme == 'light');
+				window.ThemingEngine_InvertColors = (isLightColor(body_bg)) ? (theme == 'dark') : (theme == 'light');
 			} else {
-				window.MW18darkmode = (theme == 'dark');
+				window.ThemingEngine_InvertColors = (theme == 'dark');
 			}
-			window.MW18spdarkmode = 1;
+			window.ThemingEngine_ColorFilterMode = 1;
 		} else if (style == 'hottemperature') {
 			if (solo == 'solo') {
-				window.MW18darkmode = (theme == 'dark');
+				window.ThemingEngine_InvertColors = (theme == 'dark');
 			} else {
-				window.MW18darkmode = (isLightColor(body_bg)) ? (theme == 'dark') : (theme == 'light');
+				window.ThemingEngine_InvertColors = (isLightColor(body_bg)) ? (theme == 'dark') : (theme == 'light');
 			}
-			window.MW18spdarkmode = 2;
+			window.ThemingEngine_ColorFilterMode = 2;
 		} else if (style == 'coldtemperature') {
 			if (solo == 'solo') {
-				window.MW18darkmode = (theme == 'dark');
+				window.ThemingEngine_InvertColors = (theme == 'dark');
 			} else {
-				window.MW18darkmode = (isLightColor(body_bg)) ? (theme == 'dark') : (theme == 'light');
+				window.ThemingEngine_InvertColors = (isLightColor(body_bg)) ? (theme == 'dark') : (theme == 'light');
 			}
-			window.MW18spdarkmode = 3;
+			window.ThemingEngine_ColorFilterMode = 3;
 		} else {
 			if (solo == 'solo') {
-				window.MW18darkmode = (isLightColor(body_bg)) ? (theme == 'dark') : (theme == 'light');
+				window.ThemingEngine_InvertColors = (isLightColor(body_bg)) ? (theme == 'dark') : (theme == 'light');
 			} else {
-				window.MW18darkmode = (theme == 'dark');
+				window.ThemingEngine_InvertColors = (theme == 'dark');
 			}
-			window.MW18spdarkmode = 0;
+			window.ThemingEngine_ColorFilterMode = 0;
 		}
 	}
 	colorscheme = getColorScheme();
 	document.querySelector('head .devicetheme').innerHTML += '.' + theme + 'device-off { display:none!important } .cpe-system-colors { color-scheme:' + getColorScheme() + '; color-scheme:only ' + getColorScheme() + '; }' ;
-	window.MW18devicetheme = selected_theme
-	window.MW18wikitheme = style
-	window.MW18hueshift = parseInt( hue )
-	window.MW18saturation = parseInt( saturation )
-	window.MW18wikithemebehavior = solo
+	window.ThemingEngine_ActiveColorFilterTheme = selected_theme
+	window.ThemingEngine_ActiveColorFilter = style
+	window.ThemingEngine_ColorFilterHueShift = parseInt( hue )
+	window.ThemingEngine_ColorFilterSaturation = parseInt( saturation )
+	window.ThemingEngine_ActiveColorFilterBehavior = solo
 	if (save) {
 		insertKey('device-theme', selected_theme );
 		insertKey('color-style', style );
@@ -1271,17 +1271,17 @@ function colortheme(style='match-parent', theme='match-parent', hue='match-paren
 
 
 
-	if ((old_dark == window.MW18darkmode) && (old_dark2 == window.MW18spdarkmode) && (oldhue == window.MW18hueshift) && (oldsat == window.MW18saturation) ) {
+	if ((old_dark == window.ThemingEngine_InvertColors) && (old_dark2 == window.ThemingEngine_ColorFilterMode) && (oldhue == window.ThemingEngine_ColorFilterHueShift) && (oldsat == window.ThemingEngine_ColorFilterSaturation) ) {
 		var muststay = !(DisabledColorManagement());
 	}
 
 	var range = document.querySelector('input[type="range"].colorhue');
 	var range2 = document.querySelector('input[type="range"].colorsat');
 	if (range) {
-		range.value = window.MW18hueshift;
+		range.value = window.ThemingEngine_ColorFilterHueShift;
 	}
 	if (range2) {
-		range2.value = window.MW18saturation;
+		range2.value = window.ThemingEngine_ColorFilterSaturation;
 	}
 	if (notfromrange) {
 		UpdateRangeInputs();
@@ -1303,7 +1303,7 @@ function SliderContrastMode() {
 
 
 function contrastmode(theme='auto', repaint=true, save=true,notfromrange=true) {
-	window.MW18contrastmode = theme
+	window.ThemingEngine_ContrastMode = theme
 	if (save) {
 		insertKey('contrast-mode', theme );
 	}
@@ -1375,17 +1375,17 @@ function ToggleSerifFont() {
 
 function SetDCM(type='match-parent',tick='match-parent',save='true',repaint='true') {
 	if (type === 'match-parent') {
-		type = window.MW18DCMType;
+		type = window.ThemingEngine_ActiveDCMType;
 	}
 	if (tick === 'match-parent') {
-		tick = window.MW18DCMMode;
+		tick = window.ThemingEngine_ActiveDCMMode;
 	}
 
 		if (save) {
 			insertKey('dcm-mode', tick );
 			insertKey('dcm-type', type );
 		}
-		window.MW18DCMMode = tick;
+		window.ThemingEngine_ActiveDCMMode = tick;
 		var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-dcm-modes li.selected");
 		if (x) {
 			x.classList.remove("selected");
@@ -1394,7 +1394,7 @@ function SetDCM(type='match-parent',tick='match-parent',save='true',repaint='tru
 		if (y) {
 			y.classList.add("selected")
 		}
-		window.MW18DCMType = type;
+		window.ThemingEngine_ActiveDCMType = type;
 		var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-dcm-types li.selected");
 		if (x) {
 			x.classList.remove("selected");
@@ -1473,15 +1473,15 @@ function ColorInvert(color) {
 ** h2 = HSL Hue
 */
 function ColorStyleAdjust(color) {
-	if (window.MW18spdarkmode === 2) { // Special Case
+	if (window.ThemingEngine_ColorFilterMode === 2) { // Special Case
 		var color2 = color;
 		var color = chroma( chroma.temperature(chroma(color2).temperature()) ).hex();
 	}
-	if (window.MW18spdarkmode === 3) { // Special Case
+	if (window.ThemingEngine_ColorFilterMode === 3) { // Special Case
 		var color2 = color;
 		var color = chroma( chroma.temperature(40000 - chroma(color2).temperature()) ).hex();
 	}
-	if ( (window.MW18darkmode === true) ) {
+	if ( (window.ThemingEngine_InvertColors === true) ) {
 		var color = ColorInvert(color);
 	}
 		var r = chroma(color).get('rgb.r');
@@ -1505,7 +1505,7 @@ function ColorStyleAdjust(color) {
 				chroma(color3).set('oklch.c', s * sata).set('hsl.s', s2 * sata).set('hsl.h', huea),		// Sp Dark Mode 1 (Colorscale)
 				chroma(color3).set('oklch.c', s * sata).set('hsl.s', s2 * sata).set('hsl.h', adjusth2),	// Sp Dark Mode 2 (Hot Temperature)
 				chroma(color3).set('oklch.c', s * sata).set('hsl.s', s2 * sata).set('hsl.h', adjusth2),	// Sp Dark Mode 3 (Cold Temperature)
-			   ][window.MW18spdarkmode];
+			   ][window.ThemingEngine_ColorFilterMode];
 	return page
 
 }
@@ -1550,17 +1550,17 @@ function isDarkColor(color) {
 }
 
 function isSuitableColorText(color,color2) {
-var contrast = window.MW18highContrast*ContrastRatio()
+var contrast = window.ThemingEngine_SmallTextContrast*ContrastRatio()
 return ((chroma.contrast(color, color2)) >= contrast)
 }
 
 function isSuitableColorFormControls(color,color2) {
-var contrast = window.MW18lowContrast*ContrastRatio3()
+var contrast = window.ThemingEngine_LargeTextContrast*ContrastRatio3()
 return ((chroma.contrast(color, color2)) >= contrast) // For Border Color
 }
 
 function getDefaultHyperlinkTextDecoration(color,color2) {
-var contrast = window.MW18lowContrast / 2.0
+var contrast = window.ThemingEngine_LargeTextContrast / 2.0
 return ((chroma.contrast(color, color2)) >= contrast) ? 'none' : 'underline' // For Border Color
 }
 
@@ -1572,7 +1572,7 @@ return ((chroma.contrast(color, color2)) >= contrast) ? 'none' : 'underline' // 
 function CompileThemingEngine(refresh=true) {
 if (refresh === true) {
 	colortheme('match-parent', 'match-parent', 'match-parent', 'match-parent', 'match-parent', false,false);
-	var cmode = window.MW18contrastmode;
+	var cmode = window.ThemingEngine_ContrastMode;
 	contrastmode(cmode, false,false);
 	/** Foreground Colors 
 	document.querySelector('html').style.setProperty("--light-theme-foreground-color-hover", ColorHover(getComputedStyle(document.querySelector('html')).getPropertyValue("--light-theme-foreground-color")) );
@@ -1586,8 +1586,8 @@ if (refresh === true) {
 	**/
 }
 
-//	ToggleTheme(window.MW18ActiveTheme,false,false);
-//	VisualColor(window.MW18ActiveColors,false,false);
+//	ToggleTheme(window.ThemingEngine_ActiveTheme,false,false);
+//	VisualColor(window.ThemingEngine_ActiveVisualColors,false,false);
 	if (DisabledColorManagement()) {
 		var colorstyle =".color-management-on { display:none!important;} @supports (not (color-scheme:normal)) { .color-modes { display:none!important } }\n"
 	} else {
@@ -1611,14 +1611,14 @@ var content_color =  GetCanvas();
 // Liatch Quirk
 	var content_color = ColorStyleAdjust(content_color)
 
-	window.MW18PageColor = content_color;
+	window.ThemingEngine_PageColor = content_color;
 	var lightPage = isLightColor(content_color);
 
 
 var content_color2 = ColorHover(content_color);
 
 var adjustment = ContrastRatio2();
-window.MW18FinalContrast = ContrastRatio4();
+window.ThemingEngine_FinalContrast = ContrastRatio4();
 
 	if (lightPage) {
 		var lightness = '#000000';
@@ -1631,7 +1631,7 @@ window.MW18FinalContrast = ContrastRatio4();
 	}
 
 		var disabledo = 0.7;
-		window.MW18PageColorFG = lightness
+		window.ThemingEngine_PageColorFG = lightness
 
 if ((getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--canvas-secondary-background-color") == 'auto') ) {
 	if (lightPage) {
@@ -1644,7 +1644,7 @@ if ((getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--canvas-
 	var dropdowncolor = ColorStyleAdjust(dropdowncolor);
 
 	while ( ( isSuitableColorFormControls(dropdowncolor, content_color) ) && (dropdowncolor !== lightnessR)  ) {
-		var dropdowncolor= ColorAdjust(dropdowncolor,window.MW18PageColor,true);
+		var dropdowncolor= ColorAdjust(dropdowncolor,window.ThemingEngine_PageColor,true);
 	}
 
 
@@ -1670,7 +1670,7 @@ var content_text= GetCanvasText();
 		var content_text = ColorStyleAdjust(content_text);
 	
 		while ( ( !(isSuitableColorText(content_text, content_color)) ) && (content_text !== lightness) ) {
-			var content_text= ColorAdjust(content_text,window.MW18PageColor);
+			var content_text= ColorAdjust(content_text,window.ThemingEngine_PageColor);
 		}
 
 var content_text1 = ColorHover(content_text);
@@ -1706,7 +1706,7 @@ var head_color =	GetDesktop();
 		var lightnessHead = '#ffffff';
 	}
 
-window.MW18BgColor = head_color
+window.ThemingEngine_DesktopColor = head_color
 
 
 var headcolor1 = ColorHover(head_color,content_color);
@@ -1727,7 +1727,7 @@ var headertext_color= GetDesktopText();
 		var headertext_color = ColorStyleAdjust(headertext_color);
 	
 		while ( ( !(isSuitableColorText(headertext_color, head_color)) ) && (headertext_color !== lightnessHead)  ) {
-			var headertext_color= ColorAdjust(headertext_color,window.MW18BgColor);
+			var headertext_color= ColorAdjust(headertext_color,window.ThemingEngine_DesktopColor);
 		}
 
 
@@ -1747,7 +1747,7 @@ var caret_color = GetActiveTitle();
 
 
 		while ( ( !(isSuitableColorFormControls(caret_color, content_color)) ) && (caret_color !== lightness)  ) {
-			var caret_color= ColorAdjust(caret_color,window.MW18PageColor);
+			var caret_color= ColorAdjust(caret_color,window.ThemingEngine_PageColor);
 		}
 
 		var lightCaret = isLightColor(caret_color);
@@ -1770,12 +1770,12 @@ var caret_color = GetActiveTitle();
 			var caret3_color= ColorAdjust(caret3_color,caret_color);
 		}
 		while ( ( !(isSuitableColorFormControls(caret4_color, head_color)) ) && (caret4_color !== lightnessHead)  ) {
-			var caret4_color= ColorAdjust(caret4_color,window.MW18BgColor);
+			var caret4_color= ColorAdjust(caret4_color,window.ThemingEngine_DesktopColor);
 		}
 
 
 
-window.MW18ATColor = caret_color
+window.ThemingEngine_ActiveTitleColor = caret_color
 
 
 var caretcolor1 = ColorHover(caret_color);
@@ -1808,7 +1808,7 @@ if ((getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--inactiv
 		var caretIT_color = ColorStyleAdjust(caretIT_color);
 }
 			while ( ( isSuitableColorFormControls(caretIT_color, content_color) ) && (caretIT_color !== lightnessR)  ) {
-			var caretIT_color= ColorAdjust(caretIT_color,window.MW18PageColor,true);
+			var caretIT_color= ColorAdjust(caretIT_color,window.ThemingEngine_PageColor,true);
 		}
 
 
@@ -1823,7 +1823,7 @@ if ((getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--inactiv
 		var tabsoCaretIT = 0.1 + ((1 - chroma(caretIT_color).luminance()) * 0.4 );
 	}
 
-window.MW18ITColor = caretIT_color
+window.ThemingEngine_InactiveTitleColor = caretIT_color
 
 
 
@@ -1859,7 +1859,7 @@ var button_color = GetHighlight();
 	var button3_color = button_color;
 	var button4_color = button_color;
 		while ( ( !(isSuitableColorFormControls(button_color, content_color)) ) && (button_color !== lightness)  ) {
-			var button_color= ColorAdjust(button_color,window.MW18PageColor);
+			var button_color= ColorAdjust(button_color,window.ThemingEngine_PageColor);
 		}
 		while ( ( !(isSuitableColorFormControls(button2_color, dropdowncolor)) ) && (button2_color !== lightnessDropdown) ) {
 			var button2_color= ColorAdjust(button2_color,dropdowncolor);
@@ -1868,7 +1868,7 @@ var button_color = GetHighlight();
 			var button3_color= ColorAdjust(button3_color,caret_color);
 		}
 		while ( ( !(isSuitableColorFormControls(button4_color, head_color)) ) && (button4_color !== lightnessHead)  ) {
-			var button4_color= ColorAdjust(button4_color,window.MW18BgColor);
+			var button4_color= ColorAdjust(button4_color,window.ThemingEngine_DesktopColor);
 		}
 
 	var lightbutton = isLightColor(button_color);
@@ -1878,7 +1878,7 @@ var button_color = GetHighlight();
 		var lightnessBTN = '#ffffff';
 	}
 
-window.MW18HLColor = button_color
+window.ThemingEngine_HighlightColor = button_color
 
 
 
@@ -1917,7 +1917,7 @@ var link_color = GetHyperlink();
 	var link4_color = link_color;
 	
 		while ( ( !(isSuitableColorText(link_color, content_color)) ) && (link_color !== lightness) ) {
-			var link_color= ColorAdjust(link_color,window.MW18PageColor);
+			var link_color= ColorAdjust(link_color,window.ThemingEngine_PageColor);
 		}
 		while ( ( !(isSuitableColorText(link2_color, dropdowncolor)) ) && (link2_color !== lightnessDropdown) ) {
 			var link2_color= ColorAdjust(link2_color,dropdowncolor);
@@ -1926,7 +1926,7 @@ var link_color = GetHyperlink();
 			var link3_color= ColorAdjust(link3_color,caret_color);
 		}
 		while ( ( !(isSuitableColorText(link4_color, head_color)) ) && (link4_color !== lightnessHead)  ) {
-			var link4_color= ColorAdjust(link4_color,window.MW18BgColor);
+			var link4_color= ColorAdjust(link4_color,window.ThemingEngine_DesktopColor);
 		}
 
 
@@ -1959,7 +1959,7 @@ var vlink_color = GetVisitedHyperlink();
 	var vlink4_color = vlink_color;
 	
 		while ( ( !(isSuitableColorText(vlink_color, content_color)) ) && (vlink_color !== lightness) ) {
-			var vlink_color= ColorAdjust(vlink_color,window.MW18PageColor);
+			var vlink_color= ColorAdjust(vlink_color,window.ThemingEngine_PageColor);
 		}
 		while ( ( !(isSuitableColorText(vlink2_color, dropdowncolor)) ) && (vlink2_color !== lightnessDropdown) ) {
 			var vlink2_color= ColorAdjust(vlink2_color,dropdowncolor);
@@ -1968,7 +1968,7 @@ var vlink_color = GetVisitedHyperlink();
 			var vlink3_color= ColorAdjust(vlink3_color,caret_color);
 		}
 		while ( ( !(isSuitableColorText(vlink4_color, head_color)) ) && (vlink4_color !== lightnessHead)  ) {
-			var vlink4_color= ColorAdjust(vlink4_color,window.MW18BgColor);
+			var vlink4_color= ColorAdjust(vlink4_color,window.ThemingEngine_DesktopColor);
 		}
 
 
@@ -1989,7 +1989,7 @@ var alink_color = GetActiveText();
 	var alink4_color = alink_color;
 	
 		while ( ( !(isSuitableColorText(alink_color, content_color)) ) && (alink_color !== lightness) ) {
-			var alink_color= ColorAdjust(alink_color,window.MW18PageColor);
+			var alink_color= ColorAdjust(alink_color,window.ThemingEngine_PageColor);
 		}
 		while ( ( !(isSuitableColorText(alink2_color, dropdowncolor)) ) && (alink2_color !== lightnessDropdown) ) {
 			var alink2_color= ColorAdjust(alink2_color,dropdowncolor);
@@ -1998,7 +1998,7 @@ var alink_color = GetActiveText();
 			var alink3_color= ColorAdjust(alink3_color,caret_color);
 		}
 		while ( ( !(isSuitableColorText(alink4_color, head_color)) ) && (alink4_color !== lightnessHead)  ) {
-			var alink4_color= ColorAdjust(alink4_color,window.MW18BgColor);
+			var alink4_color= ColorAdjust(alink4_color,window.ThemingEngine_DesktopColor);
 		}
 
 
@@ -2023,7 +2023,7 @@ if ((getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--inactiv
 	var border4_color =	border_color;
 
 		while ( ( !(isSuitableColorFormControls(border_color, content_color)) ) && (border_color !== lightness)  ) {
-			var border_color= ColorAdjust(border_color,window.MW18PageColor);
+			var border_color= ColorAdjust(border_color,window.ThemingEngine_PageColor);
 		}
 		while ( ( !(isSuitableColorFormControls(border2_color, dropdowncolor)) ) && (border2_color !== lightnessDropdown) ) {
 			var border2_color= ColorAdjust(border2_color,dropdowncolor);
@@ -2032,7 +2032,7 @@ if ((getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--inactiv
 			var border3_color= ColorAdjust(border3_color,caret_color);
 		}
 		while ( ( !(isSuitableColorFormControls(border4_color, head_color)) ) && (border4_color !== lightnessHead)  ) {
-			var border4_color= ColorAdjust(border4_color,window.MW18BgColor);
+			var border4_color= ColorAdjust(border4_color,window.ThemingEngine_DesktopColor);
 		}
 
 
@@ -2045,10 +2045,10 @@ var border4color1 = ColorHover(border4_color);
 
 
 /* Generic Colors */
-var generic = CompileGenericColors(window.MW18PageColor);
+var generic = CompileGenericColors(window.ThemingEngine_PageColor);
 var generic2 = CompileGenericColors(dropdowncolor);
 var generic3 = CompileGenericColors(caret_color);
-var generic4 = CompileGenericColors(window.MW18BgColor);
+var generic4 = CompileGenericColors(window.ThemingEngine_DesktopColor);
 
 
 /** Alert Color **/
@@ -2786,6 +2786,9 @@ var invfilters = [
 						'--desktop-background-image-blend-mode:' + getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--desktop-background-image-blend-mode")  + ';\n' +
 						'--desktop-background-horizontal-alignment:' + getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--desktop-background-horizontal-alignment")  + ';\n' +
 						'--desktop-background-vertical-alignment:' + getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--desktop-background-vertical-alignment")  + ';\n' +
+						'--desktop-background-size:' + getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--desktop-background-size")  + ';\n' +
+						'--desktop-background-no-horizontal-tiling:' + getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--desktop-background-no-horizontal-tiling")  + ';\n' +
+						'--desktop-background-no-vertical-tiling:' + getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--desktop-background-no-vertical-tiling")  + ';\n' +
 						 '--custom-sans-serif-font:' + fon1  + ';\n' +
 						 '--custom-serif-font:' + fon2  + ';\n' +
 						 '--custom-rounded-font:' + fon3  + ';\n' +
@@ -2809,7 +2812,7 @@ var invfilters = [
 						  "--bg-size:" + ['cover','contain','100% 100%','auto'][["cover", "contain", "stretched", "full"].indexOf( getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--desktop-background-size") ) ] + ";\n" +
 						  "--bg-tile-x:" + ['repeat','no-repeat'][["false", "true"].indexOf( getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--desktop-background-no-horizontal-tiling") ) ] + ";\n" +
 						  "--bg-tile-y:" + ['repeat','no-repeat'][["false", "true"].indexOf( getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--desktop-background-no-vertical-tiling") ) ] + ";\n" +
-						  "--color-mode-filter:" + invfilters[window.MW18spdarkmode][[false, true].indexOf(window.MW18darkmode) ] + ";\n" +
+						  "--color-mode-filter:" + invfilters[window.ThemingEngine_ColorFilterMode][[false, true].indexOf(window.ThemingEngine_InvertColors) ] + ";\n" +
 						  "--desktop-filter:" + deskfilter +
 						  "}"
 						  //
@@ -2819,20 +2822,20 @@ var invfilters = [
 document.querySelector("head .theming").innerHTML = result;
 
 		/* Theme Mode */
-		var oldtheme = window.MW18ActiveThemeMode;
+		var oldtheme = window.ThemingEngine_ActiveThemeMode;
 		if (!(lightPage)) {
-			 window.MW18ActiveThemeMode = 'dark';
+			 window.ThemingEngine_ActiveThemeMode = 'dark';
 		} else {
-			 window.MW18ActiveThemeMode = 'light';
+			 window.ThemingEngine_ActiveThemeMode = 'light';
 		}
 		if (oldtheme === 'none') {
-			document.querySelector('html').classList.add("theme-fandomdesktop-" +  window.MW18ActiveThemeMode);
-		} else if (oldtheme != window.MW18ActiveThemeMode ) {
-			document.querySelector('html').classList.replace("theme-fandomdesktop-" +  oldtheme,"theme-fandomdesktop-" +  window.MW18ActiveThemeMode);
+			document.querySelector('html').classList.add("theme-fandomdesktop-" +  window.ThemingEngine_ActiveThemeMode);
+		} else if (oldtheme != window.ThemingEngine_ActiveThemeMode ) {
+			document.querySelector('html').classList.replace("theme-fandomdesktop-" +  oldtheme,"theme-fandomdesktop-" +  window.ThemingEngine_ActiveThemeMode);
 		}
 		/* Forced Colors */
-		if (window.MW18ActiveStyleMode != '-') {
-			VisualMode(window.MW18ActiveStyleMode,false);
+		if (window.ThemingEngine_ActiveVisualMode != '-') {
+			VisualMode(window.ThemingEngine_ActiveVisualMode,false);
 		}
 
 
@@ -2847,12 +2850,12 @@ function ToggleTheme(theme="A",repaint=true,save=true) {
 	}
 	try {
 		var x = document.querySelector('html');
-			window.MW18ActiveTheme = theme;
+			window.ThemingEngine_ActiveTheme = theme;
 			if (repaint) {
 				CompileThemingEngine(true);
 			}
 			if (save) {
-				insertKey('theme-selected', window.MW18ActiveTheme );
+				insertKey('theme-selected', window.ThemingEngine_ActiveTheme );
 			}
 			var theme_selected = theme;
 			var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-themes li.selected");
