@@ -103,7 +103,7 @@ function InitDesigner() {
 				'<ul class="cpe-list is-linked">' +
 					'<li>' +
 						'<a class="theme-paste-button action-link">' +
-							'<span>'+ mw.msg( 'evelution-designer-current' ) +'</span>' +
+							'<span>'+ mw.msg( 'evelution-designer-current' ) +' ('+  mw.msg( 'evelution-color-dynamic' ) +')</span>' +
 						'</a>' +
 					'</li>' +
 					'<li>' +
