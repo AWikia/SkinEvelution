@@ -588,6 +588,12 @@ function DownloadTheme(full=false) {
 				 '--message-quaternary-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--message-quaternary-background-color")  + ';\n' +
 				 '--message-quaternary-background-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--message-quaternary-background-color-hover")  + ';\n' +
 				 '--message-quaternary-background-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--message-quaternary-background-color-rgb")  + ';\n' +
+				 // Graph
+				 '--graph-1-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--graph-1-background-color")  + ';\n' +
+				 '--graph-2-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--graph-2-background-color")  + ';\n' +
+				 '--graph-3-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--graph-3-background-color")  + ';\n' +
+				 '--graph-4-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--graph-4-background-color")  + ';\n' +
+				 '--graph-5-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--graph-5-background-color")  + ';\n' +
 				 // Font
 				 '--custom-sans-serif-font:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--custom-sans-serif-font")  + ';\n' +
 				 '--custom-serif-font:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--custom-serif-font")  + ';\n' +

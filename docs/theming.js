@@ -1,4 +1,4 @@
-/* Color Modes */
+﻿/* Color Modes */
 window.ThemingEngine_InvertColors = false; // false = light mode | true = light mode
 window.ThemingEngine_ColorFilterMode = 0; // 0 = No special behavior  | 1 = Color Tint (ColorScale) | 2 = Temperature | 3 = Inverted Temperature
 window.ThemingEngine_ColorFilterHueShift = 0; // From -180 to 180
@@ -47,6 +47,9 @@ window.ThemingEngine_SmallTextContrast = 4.50;
 */
 
 var visualStyles = [
+					['general', '{{msg-evelution-style-general}}', ['camera_enhance' ,'computer', 'smartphone','monochrome_photos']],
+					['basic', '{{msg-evelution-style-basic}}', ['memory', 'home', 'inbox', 'invert_colors']],
+					['simple', '{{msg-evelution-style-simple}}', ['speed', 'opacity', 'brush', 'filter_alt']],
 				    ];
 
 /*
@@ -62,6 +65,12 @@ var visualStyles = [
 */
 
 var visualColors = [
+					['forced', '{{msg-evelution-color-forced}}', 'contrast'],
+					['evelution', 'Evelution', 'evelution'],
+					['colors', '{{msg-evelution-color-colors}}', 'format_paint'],
+					['android', 'Android', 'android'],
+					['qqore', 'Qora Qore', 'qqore'],
+					['dynamic', '{{msg-evelution-color-dynamic}}', 'colorize'],
 				    ];
 var visualColorNames = ['standard', 'nocolormanagement'];
 
@@ -995,10 +1004,20 @@ saturation =  parseInt(getComputedStyle(GetActiveThemeConfiguration()).getProper
 if (isLightColor(page)) { // ( chroma(page).get('hsl.l') < 0.5)
 // ['96%', '94%', '92%', '90%', '88%', '86%', '84%', '82%', '80%', '78%', '76%', '74%', '72%', '70%', '68%', '66%', '64%', '62%', '60%', '58%', '56%', '54%', '46%', '44%', '42%', '40%', '38%', '36%', '34%', '32%', '30%', '28%', '26%', '24%', '22%', '20%', '18%', '16%', '14%', '12%', '10%', '8%', '6%', '4%']
 	var colors = ['46%', '44%', '42%', '40%', '38%', '36%', '34%', '32%', '30%', '28%', '26%', '24%', '22%', '20%', '18%', '16%', '14%', '12%', '10%', '8%', '6%', '4%']
-
+		g1h = 194
+		g2h = 216
+		g3h = 82
+		g4h = 340
+		g5h = 269
 } else {
 // ['4%', '6%', '8%', '10%', '12%', '14%', '16%', '18%', '20%', '22%', '24%', '26%', '28%', '30%', '32%', '34%', '36%', '38%', '40%', '42%', '44%', '46%', '54%', '56%', '58%', '60%', '62%', '64%', '66%', '68%', '70%', '72%', '74%', '76%', '78%', '80%', '82%', '84%', '86%', '88%', '90%', '92%', '94%', '96%']
 	var colors = ['54%', '56%', '58%', '60%', '62%', '64%', '66%', '68%', '70%', '72%', '74%', '76%', '78%', '80%', '82%', '84%', '86%', '88%', '90%', '92%', '94%', '96%']
+		g1h = 195
+		g2h = 214
+		g3h = 83
+		g4h = 342
+		g5h = 291
+
 }
 
 		alerth = 360
@@ -1018,12 +1037,17 @@ if (isLightColor(page)) { // ( chroma(page).get('hsl.l') < 0.5)
 		var done = chroma(color).set('hsl.h',successh+hueshift); // Success
 		var progress = chroma(color).set('hsl.h',progressh+hueshift); // Progress
 		var info = chroma(color).set('hsl.s',0); // Message
+		var g1 = chroma(color).set('hsl.h',g1h+hueshift); // G1
+		var g2 = chroma(color).set('hsl.h',g2h+hueshift); // G2
+		var g3 = chroma(color).set('hsl.h',g3h+hueshift); // G3
+		var g4 = chroma(color).set('hsl.h',g4h+hueshift); // G4
+		var g5 = chroma(color).set('hsl.h',g5h+hueshift); // G5
 		if ( ((chroma.contrast(page, alert)) >= contrast) && ((chroma.contrast(page, pause)) >= contrast) && ((chroma.contrast(page, warn)) >= contrast) && ((chroma.contrast(page, done)) >= contrast) && ((chroma.contrast(page, progress)) >= contrast) && ((chroma.contrast(page, info)) >= contrast) ) {
-			return [alert, pause, warn, done, progress, info];
+			return [alert, pause, warn, done, progress, info,g1,g2,g3,g4,g5];
 		}
 	}
 
-	return [alert, pause, warn, done, progress, info];
+	return [alert, pause, warn, done, progress, info,g1,g2,g3,g4,g5];
 
  
 }
@@ -2124,6 +2148,13 @@ var message3color1 = ColorHover(message3_color,caret_color);
 var message4color1 = ColorHover(message4_color,content_color);
 var messagecolor2 = ColorHover(message_color);
 
+/* Graphs */
+var g1_color = generic[6];
+var g2_color = generic[7];
+var g3_color = generic[8];
+var g4_color = generic[9];
+var g5_color = generic[10];
+
 var imgfilter = getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--desktop-background-image-filter");
 
 if (imgfilter == 'none') {
@@ -2778,6 +2809,12 @@ var invfilters = [
 						  "--message-quaternary-background-color:" + message4_color + "!important;\n" +
 						  "--message-quaternary-background-color-hover:" + message4color1 + "!important;\n" +
 						  "--message-quaternary-background-color-rgb:" + ColorRGB(message4_color) + "!important;\n" +
+// Graphs
+						  "--graph-1-background-color:" + g1_color + "!important;\n" +
+						  "--graph-2-background-color:" + g2_color + "!important;\n" +
+						  "--graph-3-background-color:" + g3_color + "!important;\n" +
+						  "--graph-4-background-color:" + g4_color + "!important;\n" +
+						  "--graph-5-background-color:" + g5_color + "!important;\n" +
 // Luna Levit
 						  "--mica-background-color:" + micabg[0] + ";\n" +
 // Misc Variables
