@@ -255,7 +255,7 @@ var visualColorNames = ['standard', 'nocolormanagement'];
                 break;
         }
     });
-    var themes = ""; // @REMOVEME: In Ivilution, Parmalution and CPE Language (Change to Empty String instead)
+    var themes = ''; // @REMOVEME: In Ivilution, Parmalution and CPE Language (Change to Empty String instead)
 	document.querySelector("head").insertAdjacentHTML('afterbegin','<style class="devicetheme"></style><style class="themes">' + themes + '</style><style class="theming"></style>');
 	ToggleTheme(theme_selected,false,false);
 	colortheme(color_style,device_theme,color_hue,color_sat,color_style_behavior,false,false);
@@ -1004,20 +1004,9 @@ saturation =  parseInt(getComputedStyle(GetActiveThemeConfiguration()).getProper
 if (isLightColor(page)) { // ( chroma(page).get('hsl.l') < 0.5)
 // ['96%', '94%', '92%', '90%', '88%', '86%', '84%', '82%', '80%', '78%', '76%', '74%', '72%', '70%', '68%', '66%', '64%', '62%', '60%', '58%', '56%', '54%', '46%', '44%', '42%', '40%', '38%', '36%', '34%', '32%', '30%', '28%', '26%', '24%', '22%', '20%', '18%', '16%', '14%', '12%', '10%', '8%', '6%', '4%']
 	var colors = ['46%', '44%', '42%', '40%', '38%', '36%', '34%', '32%', '30%', '28%', '26%', '24%', '22%', '20%', '18%', '16%', '14%', '12%', '10%', '8%', '6%', '4%']
-		g1h = 194
-		g2h = 216
-		g3h = 82
-		g4h = 340
-		g5h = 269
 } else {
 // ['4%', '6%', '8%', '10%', '12%', '14%', '16%', '18%', '20%', '22%', '24%', '26%', '28%', '30%', '32%', '34%', '36%', '38%', '40%', '42%', '44%', '46%', '54%', '56%', '58%', '60%', '62%', '64%', '66%', '68%', '70%', '72%', '74%', '76%', '78%', '80%', '82%', '84%', '86%', '88%', '90%', '92%', '94%', '96%']
 	var colors = ['54%', '56%', '58%', '60%', '62%', '64%', '66%', '68%', '70%', '72%', '74%', '76%', '78%', '80%', '82%', '84%', '86%', '88%', '90%', '92%', '94%', '96%']
-		g1h = 195
-		g2h = 214
-		g3h = 83
-		g4h = 342
-		g5h = 291
-
 }
 
 		alerth = 360
@@ -1037,20 +1026,88 @@ if (isLightColor(page)) { // ( chroma(page).get('hsl.l') < 0.5)
 		var done = chroma(color).set('hsl.h',successh+hueshift); // Success
 		var progress = chroma(color).set('hsl.h',progressh+hueshift); // Progress
 		var info = chroma(color).set('hsl.s',0); // Message
+		if ( ((chroma.contrast(page, alert)) >= contrast) && ((chroma.contrast(page, pause)) >= contrast) && ((chroma.contrast(page, warn)) >= contrast) && ((chroma.contrast(page, done)) >= contrast) && ((chroma.contrast(page, progress)) >= contrast) && ((chroma.contrast(page, info)) >= contrast) ) {
+			return [alert, pause, warn, done, progress, info];
+		}
+	}
+
+	return [alert, pause, warn, done, progress, info];
+
+ 
+}
+
+function CompileGenericGraphColors(color) {
+var page = color;
+var invpage = page;
+hueshift =  parseInt(getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--system-generic-color-hue-shift"));
+saturation =  parseInt(getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--system-generic-color-saturation")) + "%";
+
+
+if (isLightColor(page)) {
+	var colors = ['46%', '44%', '42%', '40%', '38%', '36%', '34%', '32%', '30%', '28%', '26%', '24%', '22%', '20%', '18%', '16%', '14%', '12%', '10%', '8%', '6%', '4%']
+		g1h = 194
+		g2h = 216
+		g3h = 82
+		g4h = 340
+		g5h = 269
+} else {
+	var colors = ['54%', '56%', '58%', '60%', '62%', '64%', '66%', '68%', '70%', '72%', '74%', '76%', '78%', '80%', '82%', '84%', '86%', '88%', '90%', '92%', '94%', '96%']
+		g1h = 195
+		g2h = 214
+		g3h = 83
+		g4h = 342
+		g5h = 291
+
+}
+	
+		contrast = window.ThemingEngine_SmallTextContrast*ContrastRatio()*1
+		colors1 = [0,0,0,0,0];
+		remcolors = 5;
+
+	for (let i = 0; i < colors.length; i++) {
+		var color = chroma('hsl(0,' + saturation + ',' + colors[i] + ')').hex(); // Base Color
 		var g1 = chroma(color).set('hsl.h',g1h+hueshift); // G1
 		var g2 = chroma(color).set('hsl.h',g2h+hueshift); // G2
 		var g3 = chroma(color).set('hsl.h',g3h+hueshift); // G3
 		var g4 = chroma(color).set('hsl.h',g4h+hueshift); // G4
 		var g5 = chroma(color).set('hsl.h',g5h+hueshift); // G5
-		if ( ((chroma.contrast(page, alert)) >= contrast) && ((chroma.contrast(page, pause)) >= contrast) && ((chroma.contrast(page, warn)) >= contrast) && ((chroma.contrast(page, done)) >= contrast) && ((chroma.contrast(page, progress)) >= contrast) && ((chroma.contrast(page, info)) >= contrast) ) {
-			return [alert, pause, warn, done, progress, info,g1,g2,g3,g4,g5];
+///
+		if ( ((chroma.contrast(page, g1)) >= contrast) && (colors1[0] === 0) ) {
+			colors1[0] = g1;
+			remcolors = (remcolors-1);
+			i = 0;
+		}
+		if ( ((chroma.contrast(page, g2)) >= contrast) && (colors1[1] === 0) ) {
+			colors1[1] = g2;
+			remcolors = (remcolors-1);
+			i = 0;
+		}
+		if ( ((chroma.contrast(page, g3)) >= contrast) && (colors1[2] === 0) ) {
+			colors1[2] = g3;
+			remcolors = (remcolors-1);
+			i = 0;
+		}
+		if ( ((chroma.contrast(page, g4)) >= contrast) && (colors1[3] === 0) ) {
+			colors1[3] = g4;
+			remcolors = (remcolors-1);
+			i = 0;
+		}
+		if ( ((chroma.contrast(page, g5)) >= contrast) && (colors1[4] === 0) ) {
+			colors1[4] = g5;
+			remcolors = (remcolors-1);
+			i = 0;
+		}
+///
+		if (remcolors==0) {
+			return colors1;
 		}
 	}
 
-	return [alert, pause, warn, done, progress, info,g1,g2,g3,g4,g5];
+	return [g1,g2,g3,g4,g5];
 
  
 }
+
 
 /* Get Foreground Variables */
 
@@ -2073,7 +2130,7 @@ var generic = CompileGenericColors(window.ThemingEngine_PageColor);
 var generic2 = CompileGenericColors(dropdowncolor);
 var generic3 = CompileGenericColors(caret_color);
 var generic4 = CompileGenericColors(window.ThemingEngine_DesktopColor);
-
+var graphs = CompileGenericGraphColors(window.ThemingEngine_PageColor);
 
 /** Alert Color **/
 /* Set Vars */
@@ -2149,11 +2206,11 @@ var message4color1 = ColorHover(message4_color,content_color);
 var messagecolor2 = ColorHover(message_color);
 
 /* Graphs */
-var g1_color = generic[6];
-var g2_color = generic[7];
-var g3_color = generic[8];
-var g4_color = generic[9];
-var g5_color = generic[10];
+var g1_color = graphs[0];
+var g2_color = graphs[1];
+var g3_color = graphs[2];
+var g4_color = graphs[3];
+var g5_color = graphs[4];
 
 var imgfilter = getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--desktop-background-image-filter");
 

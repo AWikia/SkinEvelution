@@ -1362,6 +1362,12 @@ function InitDesigner() {
 				'<block class="td-block" title="Highlight" onclick="getColorContrastOfAnElement(this,\'Highlight\',\'Highlight Text\')" style="background-color:var(--highlight-background-color); color:var(--highlight-text-background-color);">A</block>' +
 	/// Inactive Caption
 				'<block class="td-block" title="Inactive Caption" onclick="getColorContrastOfAnElement(this,\'Inactive Caption\',\'Inactive Caption Text\')" style="background-color:var(--inactive-title-background-color); color:var(--inactive-title-text-background-color);">A</block>' +
+	/// Graphs
+				'<block class="td-block" title="CPU Graph" onclick="getColorContrastOfAnElement(this,\'Canvas\',\'CPU Graph\')" style="background-color:var(--canvas-background-color); color:var(--graph-1-background-color);">A</block>' +
+				'<block class="td-block" title="RAM Graph" onclick="getColorContrastOfAnElement(this,\'Canvas\',\'RAM Graph\')" style="background-color:var(--canvas-background-color); color:var(--graph-2-background-color);">A</block>' +
+				'<block class="td-block" title="Disk Graph" onclick="getColorContrastOfAnElement(this,\'Canvas\',\'Disk Graph\')" style="background-color:var(--canvas-background-color); color:var(--graph-3-background-color);">A</block>' +
+				'<block class="td-block" title="Network Graph" onclick="getColorContrastOfAnElement(this,\'Canvas\',\'Network Graph\')" style="background-color:var(--canvas-background-color); color:var(--graph-4-background-color);">A</block>' +
+				'<block class="td-block" title="GPU Graph" onclick="getColorContrastOfAnElement(this,\'Canvas\',\'GPU Graph\')" style="background-color:var(--canvas-background-color); color:var(--graph-5-background-color);">A</block>' +
 
 
 			'</div>' +
