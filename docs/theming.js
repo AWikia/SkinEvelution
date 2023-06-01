@@ -999,7 +999,7 @@ var page = color;
 var invpage = page;
 hueshift =  parseInt(getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--system-generic-color-hue-shift"));
 saturation =  parseInt(getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--system-generic-color-saturation")) + "%";
-
+sat2 = ( parseInt(getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--system-generic-color-saturation")) / 1 )
 
 if (isLightColor(page)) { // ( chroma(page).get('hsl.l') < 0.5)
 // ['96%', '94%', '92%', '90%', '88%', '86%', '84%', '82%', '80%', '78%', '76%', '74%', '72%', '70%', '68%', '66%', '64%', '62%', '60%', '58%', '56%', '54%', '46%', '44%', '42%', '40%', '38%', '36%', '34%', '32%', '30%', '28%', '26%', '24%', '22%', '20%', '18%', '16%', '14%', '12%', '10%', '8%', '6%', '4%']
@@ -1009,28 +1009,28 @@ if (isLightColor(page)) { // ( chroma(page).get('hsl.l') < 0.5)
 	var colors = ['54%', '56%', '58%', '60%', '62%', '64%', '66%', '68%', '70%', '72%', '74%', '76%', '78%', '80%', '82%', '84%', '86%', '88%', '90%', '92%', '94%', '96%']
 }
 
-		alerth = 360
-		pauseh = 20
+		alerth = 355
+		pauseh = 25
 		warningh = 45
-		successh = 167
-		progressh = 220
+		successh = 140
+		progressh = 225
 //		messageh = -1
 		
 		contrast = window.ThemingEngine_SmallTextContrast*ContrastRatio()*1
 
 	for (let i = 0; i < colors.length; i++) {
-		var color = chroma('hsl(0,' + saturation + ',' + colors[i] + ')').hex(); // Base Color
-		var alert = chroma(color).set('hsl.h',alerth+hueshift); // Alert
-		var pause = chroma(color).set('hsl.h',pauseh+hueshift);  // Pause
-		var warn = chroma(color).set('hsl.h',warningh+hueshift);  // Warning
-		var done = chroma(color).set('hsl.h',successh+hueshift); // Success
-		var progress = chroma(color).set('hsl.h',progressh+hueshift); // Progress
-		var info = chroma(color).set('hsl.s',0); // Message
+ 		var color = chroma('hsl(0,' + saturation + ',' + colors[i] + ')').hex(); // Base Color
+ 		var alert = chroma(color).set('hsl.h',alerth+hueshift); // Alert
+ 		var pause = chroma(color).set('hsl.h',pauseh+hueshift);  // Pause
+ 		var warn = chroma(color).set('hsl.h',warningh+hueshift);  // Warning
+ 		var done = chroma(color).set('hsl.h',successh+hueshift); // Success
+ 		var progress = chroma(color).set('hsl.h',progressh+hueshift); // Progress
+ 		var info = chroma(color).set('hsl.s',0); // Message
+ 
 		if ( ((chroma.contrast(page, alert)) >= contrast) && ((chroma.contrast(page, pause)) >= contrast) && ((chroma.contrast(page, warn)) >= contrast) && ((chroma.contrast(page, done)) >= contrast) && ((chroma.contrast(page, progress)) >= contrast) && ((chroma.contrast(page, info)) >= contrast) ) {
 			return [alert, pause, warn, done, progress, info];
 		}
 	}
-
 	return [alert, pause, warn, done, progress, info];
 
  
@@ -1041,22 +1041,23 @@ var page = color;
 var invpage = page;
 hueshift =  parseInt(getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--system-generic-color-hue-shift"));
 saturation =  parseInt(getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--system-generic-color-saturation")) + "%";
+sat2 = ( parseInt(getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--system-generic-color-saturation")) / 1 )
 
 
 if (isLightColor(page)) {
 	var colors = ['46%', '44%', '42%', '40%', '38%', '36%', '34%', '32%', '30%', '28%', '26%', '24%', '22%', '20%', '18%', '16%', '14%', '12%', '10%', '8%', '6%', '4%']
-		g1h = 194
-		g2h = 216
-		g3h = 82
+		g1h = 195
+		g2h = 215
+		g3h = 80
 		g4h = 340
-		g5h = 269
+		g5h = 270
 } else {
 	var colors = ['54%', '56%', '58%', '60%', '62%', '64%', '66%', '68%', '70%', '72%', '74%', '76%', '78%', '80%', '82%', '84%', '86%', '88%', '90%', '92%', '94%', '96%']
 		g1h = 195
-		g2h = 214
-		g3h = 83
-		g4h = 342
-		g5h = 291
+		g2h = 215
+		g3h = 80
+		g4h = 340
+		g5h = 290
 
 }
 	
@@ -1065,7 +1066,7 @@ if (isLightColor(page)) {
 		remcolors = 5;
 
 	for (let i = 0; i < colors.length; i++) {
-		var color = chroma('hsl(0,' + saturation + ',' + colors[i] + ')').hex(); // Base Color
+ 		var color = chroma('hsl(0,' + saturation + ',' + colors[i] + ')').hex(); // Base Color
 		var g1 = chroma(color).set('hsl.h',g1h+hueshift); // G1
 		var g2 = chroma(color).set('hsl.h',g2h+hueshift); // G2
 		var g3 = chroma(color).set('hsl.h',g3h+hueshift); // G3
