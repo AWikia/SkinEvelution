@@ -68,6 +68,10 @@ class EvelutionHooks implements OutputPageBodyAttributesHook {
 		if ( $out->getConfig()->get ( 'EvelutionDisableDynamicWidgets' ) ) {
 			$bodyAttrs['class'] .= ' has-disabled-dynamic-taskbar-widgets';
 		}
+		// Taskbar Labels
+		if ( $out->getConfig()->get ('EvelutionEnableTaskbarAppLabelsOnLargeScreens' ) ) {
+			$bodyAttrs['class'] .= ' has-taskbar-app-labels';
+		}
 		// User State
 		if ( $skin->getUser()->isRegistered() ) {
 			$bodyAttrs['class'] .= ' user-logged';
@@ -123,6 +127,7 @@ class SkinEvelution extends SkinMustache {
         $data["html-history-link"] = SpecialPage::getTitleFor( 'PageHistory' )->getLocalURL();
         $data["html-mcontent-link"] = SpecialPage::getTitleFor( 'ChangeContentModel' )->getLocalURL();
         $data["html-edit-link"] = SpecialPage::getTitleFor( 'EditPage' )->getLocalURL();
+        $data["html-sidebartalk-link"] = Title::newFromText( 'MediaWiki talk:Sidebar' )->getLocalURL();
         $data["html-longpages-link"] = SpecialPage::getTitleFor( 'Longpages' )->getLocalURL();
         $data["html-unusedtemplates-link"] = SpecialPage::getTitleFor( 'Unusedtemplates' )->getLocalURL();
         $data["html-apisandbox-link"] = SpecialPage::getTitleFor( 'ApiSandbox' )->getLocalURL();
