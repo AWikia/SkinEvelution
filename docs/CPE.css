@@ -1569,6 +1569,25 @@ html:not(.has-serif-font) .serif-on,
 	display:none!important;
 }
 
+html:fullscreen .fullscreen-off,
+html:not(:fullscreen) .fullscreen-on {
+	display:none;
+}
+
+html:-webkit-full-screen .fullscreen-off,
+html:not(:-webkit-full-screen) .fullscreen-on {
+	display:none;
+}
+
+/* Direction Fixes For Translated Pages */
+.translated-rtl {
+    direction:rtl;
+}
+
+.translated-ltr {
+    direction:ltr;
+}
+
 
 
 body .invertion-on,
@@ -1658,6 +1677,89 @@ input {
 	appearance:none;
 }
 */
+
+/** Settings Page **/
+.fieldset {
+  border-radius:var(--window-border-radius);
+  padding:10px;
+  margin:10px;
+  background-color:var(--canvas-secondary-background-color);
+  color:var(--canvas-text-secondary-background-color);
+  border:1px solid var(--inactive-text-background-color);
+  box-shadow: 0 0 5px 0.25px rgba(24, 24, 24, 0.3), 0 0 5px 0.25px rgba(247, 247, 247, 0.3), var(--threeD-shadow);
+}
+
+.fieldset fieldset {
+color:inherit;
+border:0;
+padding:0;
+line-height:inherit;
+}
+
+.fieldset fieldset legend,
+.fieldset > fieldset > h2 {
+  font-size:23px;
+  font-weight:bolder;
+  display:block;
+  margin:0 0 4px;
+  padding:0;
+  display:flex;
+  align-items:center;
+  color:inherit;
+}
+
+.fieldset fieldset legend .cpe-icon,
+.fieldset > fieldset > h2 .cpe-icon {
+	margin-right:5px;
+	width:27px;
+	height:27px;
+	min-width:27px;
+	min-height:27px;
+	vertical-align:middle;
+}
+
+/* Level B Fieldset */
+.fieldset fieldset .fieldset {
+  border-color:var(--canvas-background-color);
+  background-color:rgba(var(--highlight-background-color-rgb),0.1);
+  color:var(--canvas-foreground-color);
+  box-shadow:var(--threeD-shadow);
+}
+
+/* Level C Fieldset */
+.fieldset fieldset .fieldset fieldset .fieldset {
+	background-color:var(--canvas-secondary-background-color);
+	color:var(--canvas-secondary-foreground-color);
+	background-image:none;
+	border-color:var(--inactive-text-background-color);
+}
+
+.settings_page input#AppTheme05:not(:checked),
+.settings_page input#AppTheme05:not(:checked) + label { 
+    display:none; 
+}
+
+
+
+@media only screen and (max-width:1019px) {
+
+label {
+	font-size:18px;
+}
+
+.fieldset fieldset legend,
+.fieldset > fieldset > h2 {
+	font-size:20px;
+}
+
+.fieldset fieldset legend .cpe-icon,
+.fieldset > fieldset > h2 .cpe-icon {
+	margin-right:4px;
+	--icon-size:1;
+}
+
+}
+
 
 table {
 color:inherit;
@@ -5170,6 +5272,13 @@ html:not(.visualmode-threeD) .threeD-on {
 }
 
 
+.visualmode-contrast .fieldset fieldset .fieldset {
+	border-color:currentColor;
+}
+
+.visualmode-contrast .fieldset fieldset .fieldset fieldset .fieldset {
+	border-color:var(--inactive-text-background-color);
+}
 
 .visualmode-contrast container *:not(progress), .visualmode-contrast container :after  {
   text-shadow:none!important;
@@ -5477,111 +5586,3 @@ background-color:var(--highlight-background-color);
 	color:var(--inactive-title-foreground-color);
 }
 
-/* Low End Skins and Interpreters */
-	/* Ivilution */
-	.ivilution-loaded body,
-	.ivilution-loaded .cpe-dropdown__content,
-	.ivilution-loaded .cpe-dropdown__content .cpe-list.is-linked .cpe-dropdown-level-2 .cpe-dropdown-level-2__content,
-	/* Parmalution */
-	.parmalution-ready body,
-	.parmalution-ready .cpe-dropdown__content,
-	.parmalution-ready .cpe-dropdown__content .cpe-list.is-linked .cpe-dropdown-level-2 .cpe-dropdown-level-2__content   {
-		--acrylic-opacity:1!important;
-		--mica-opacity:0!important;
-		--mica-opacity-2:1!important;
-		--simple-fallback-color:var(--canvas-background-color)!important;
-	}
-
-	.ivilution-loaded,
-	.parmalution-ready /* For GTK Interpreter */ {
-		--acrylic-filter:none!important;
-	}
-
-	/* Ivilution */
-	.ivilution-loaded body,
-	.ivilution-loaded body [force-active],
-	/* Parmalution */
-	.parmalution-ready body,
-	.parmalution-ready body [force-active] {
-		--luna-background-color:var(--canvas-secondary-background-color);
-		--luna-mica-background-color:var(--mica-background-color);
-		--luna-mica-background-color-2:transparent;
-		--luna-background-color-hover:var(--canvas-secondary-background-color-hover);
-		--luna-background-color-rgb:var(--canvas-secondary-background-color-rgb);
-		--luna-background-color-hover-rgb:var(--canvas-secondary-background-color-hover-rgb);
-		--luna-text-background-color:var(--canvas-text-secondary-background-color);
-		--luna-text-background-color-hover:var(--canvas-text-secondary-background-color-hover);
-		--luna-text-background-color-rgb:var(--canvas-text-secondary-background-color-rgb);
-		--luna-text-background-color-hover-rgb:var(--canvas-text-secondary-background-color-hover-rgb);	
-		--luna-border-background-color:var(--canvas-secondary-background-color-hover);
-		--luna-foreground-color:var(--canvas-secondary-foreground-color);
-		--luna-foreground-color-inverted:var(--canvas-secondary-foreground-color-inverted);
-		--luna-foreground-color-hover:var(--canvas-secondary-foreground-color-hover);
-		--luna-foreground-color-rgb:var(--canvas-secondary-foreground-color-rgb);
-		--luna-foreground-color-hover-rgb:var(--canvas-secondary-foreground-color-hover-rgb);
-		--luna-alternative-foreground-color:var(--canvas-secondary-alternative-foreground-color);
-		--luna-alternative-foreground-color-hover:var(--canvas-secondary-alternative-foreground-color-hover);
-		--luna-alternative-foreground-color-rgb:var(--canvas-secondary-alternative-foreground-color-rgb);
-		--luna-inactive-text-background-color:var(--inactive-text-secondary-background-color);
-		--luna-inactive-text-background-color-hover:var(--inactive-text-secondary-background-color-hover);
-		--luna-inactive-text-background-color-rgb:var(--inactive-text-secondary-background-color-rgb);
-		--luna-hyperlink-background-color:var(--hyperlink-secondary-background-color);
-		--luna-hyperlink-background-color-hover:var(--hyperlink-secondary-background-color-hover);
-		--luna-hyperlink-background-color-rgb:var(--hyperlink-secondary-background-color-rgb);
-		--luna-visited-hyperlink-background-color:var(--visited-hyperlink-secondary-background-color);
-		--luna-visited-hyperlink-background-color-hover:var(--visited-hyperlink-secondary-background-color-hover);
-		--luna-visited-hyperlink-background-color-rgb:var(--visited-hyperlink-secondary-background-color-rgb);
-		--luna-active-text-background-color:var(--active-text-secondary-background-color);
-		--luna-active-text-background-color-hover:var(--active-text-secondary-background-color-hover);
-		--luna-active-text-background-color-rgb:var(--active-text-secondary-background-color-rgb);
-		--luna-highlight-background-color:var(--highlight-secondary-background-color);
-		--luna-highlight-background-color-hover:var(--highlight-secondary-background-color-hover);
-		--luna-highlight-background-color-rgb:var(--highlight-secondary-background-color-rgb);
-		--luna-active-title-background-color:var(--active-title-secondary-background-color);
-		--luna-active-title-background-color-hover:var(--active-title-secondary-background-color-hover);
-		--luna-active-title-background-color-rgb:var(--active-title-secondary-background-color-rgb);
-		--luna-alert-background-color:var(--alert-secondary-background-color);
-		--luna-alert-background-color-hover:var(--alert-secondary-background-color-hover);
-		--luna-alert-background-color-rgb:var(--alert-secondary-background-color-rgb);
-		--luna-pause-background-color:var(--pause-secondary-background-color);
-		--luna-pause-background-color-hover:var(--pause-secondary-background-color-hover);
-		--luna-pause-background-color-rgb:var(--pause-secondary-background-color-rgb);
-		--luna-warning-background-color:var(--warning-secondary-background-color);
-		--luna-warning-background-color-hover:var(--warning-secondary-background-color-hover);
-		--luna-warning-background-color-rgb:var(--warning-secondary-background-color-rgb);
-		--luna-success-background-color:var(--success-secondary-background-color);
-		--luna-success-background-color-hover:var(--success-secondary-background-color-hover);
-		--luna-success-background-color-rgb:var(--success-secondary-background-color-rgb);
-		--luna-progress-background-color:var(--progress-secondary-background-color);
-		--luna-progress-background-color-hover:var(--progress-secondary-background-color-hover);
-		--luna-progress-background-color-rgb:var(--progress-secondary-background-color-rgb);
-		--luna-message-background-color:var(--message-secondary-background-color);
-		--luna-message-background-color-hover:var(--message-secondary-background-color-hover);
-		--luna-message-background-color-rgb:var(--message-secondary-background-color-rgb);
-
-
-	}
-
-	/* Ivilution */
-	.ivilution-loaded body:not(:focus):not(:focus-within),
-	.ivilution-loaded body [force-inactive],
-	/* Parmalution */
-	.parmalution-ready body:not(:focus):not(:focus-within),
-	.parmalution-ready body [force-inactive] {
-		--luna-background-color:var(--canvas-secondary-background-color);
-		--luna-background-color-hover:var(--canvas-secondary-background-color-hover);
-		--luna-background-color-rgb:var(--canvas-secondary-background-color-rgb);
-		--luna-background-color-hover-rgb:var(--canvas-secondary-background-color-hover-rgb);
-		--luna-text-background-color:var(--canvas-text-secondary-background-color);
-		--luna-text-background-color-hover:var(--canvas-text-secondary-background-color-hover);
-		--luna-text-background-color-rgb:var(--canvas-text-secondary-background-color-rgb);
-		--luna-text-background-color-hover-rgb:var(--canvas-text-secondary-background-color-hover-rgb);	
-		--luna-border-background-color:var(--canvas-secondary-background-color-hover);
-		--luna-foreground-color:var(--canvas-secondary-foreground-color);
-		--luna-foreground-color-inverted:var(--canvas-secondary-foreground-color-inverted);
-		--luna-foreground-color-hover:var(--canvas-secondary-foreground-color-hover);
-		--luna-foreground-color-rgb:var(--canvas-secondary-foreground-color-rgb);
-		--luna-foreground-color-hover-rgb:var(--canvas-secondary-foreground-color-hover-rgb);
-		--luna-alternative-foreground-color:var(--canvas-secondary-alternative-foreground-color);
-		--luna-alternative-foreground-color-hover:var(--canvas-secondary-alternative-foreground-color-hover);
-	}
