@@ -2603,6 +2603,8 @@ input[type="checkbox"]::after, input[type="radio"]::after {
 	--icon-scale:1;
 	--icon-grow:1;
 	--icon-size:1;
+	--icon-stretch-x:1;
+	--icon-stretch-y:1;
   font-family: var(--icon-font-family)!important;
   font-weight: inherit;
   font-style: normal;
@@ -2649,6 +2651,8 @@ input[type="checkbox"]::after, input[type="radio"]::after {
 	--icon-scale:1;
 	--icon-grow:1;
 	--icon-size:1;
+	--icon-stretch-x:1;
+	--icon-stretch-y:1;
     --icon-rotate:0deg;
   fill:currentColor;
   width:1em!important;
@@ -2656,7 +2660,7 @@ input[type="checkbox"]::after, input[type="radio"]::after {
   min-width:1em!important;
   min-height:1em!important;
   font-size:calc(24px * var(--icon-size))!important;
-  transform:scale(var(--icon-scale)) scale(var(--icon-grow))  rotate(var(--icon-rotate));
+  transform:scale(var(--icon-scale)) scale(var(--icon-grow))  rotate(var(--icon-rotate)) scaleX(var(--icon-stretch-x)) scaleY(var(--icon-stretch-y));
   vertical-align:middle;
   text-indent:0;
 }
@@ -2705,13 +2709,14 @@ body * > :focus > .cpe-icon,
 body * > .cpe-dropdown:focus-within > :first-child,
 body * > .cpe-dropdown:focus-within > .cpe-icon,
 body * > .has-icon:focus:before,
-body .has-icon-labels > li > :focus:before,
 body * > .selected > :first-child,
 body * > .selected > .cpe-icon,
-body .has-icon-labels > .selected > :focus:before,
+body .has-icon-labels > li > :focus:before,
+body .has-icon-labels > .selected > :before,
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-buttonElement-active > .oo-ui-buttonElement-button > .oo-ui-iconElement-icon:before,
 body .oo-ui-indicatorElement-indicator:before,
-.cpe-icon.force-filled {
+.cpe-icon.force-filled,
+.cpe-dropdown__content .cpe-list.is-linked>li.cpe-dropdown-level-2:hover>a:not(.cpe-button) {
   font-variation-settings:'FILL' 1;
 }
 

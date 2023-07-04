@@ -597,73 +597,73 @@ function InitDesigner() {
 				'<option value="#18bbc5">' +
 			'</datalist>' +
 			'<datalist id="td_fonts2">' + // Sans Serif Fonts (13)
-				'<option value="\'Alegreya Sans\'">' +	// NEW
-				'<option value="\'Arimo\'">' + 
-				'<option value="\'Commissioner\'">' +
-				'<option value="\'Didact Gothic\'">' +
-				'<option value="\'Inter\'">' +
-				'<option value="\'Nanum Gothic\'">' + // NEW
-				'<option value="\'Noto Sans\'">' +
-				'<option value="\'Questrial\'">' + // NEW
-				'<option value="\'Roboto\'">' +
-				'<option value="\'Roboto Condensed\'">' + // NEW
-				'<option value="\'Roboto Flex\'">' + // NEW
-				'<option value="\'Ubuntu\'">' +
-				'<option value="\'Ubuntu Condensed\'">' + // NEW
+				'<option value=\'"Alegreya Sans"\'>' +	// NEW
+				'<option value=\'"Arimo"\'>' + 
+				'<option value=\'"Commissioner"\'>' +
+				'<option value=\'"Didact Gothic"\'>' +
+				'<option value=\'"Inter"\'>' +
+				'<option value=\'"Nanum Gothic"\'>' + // NEW
+				'<option value=\'"Noto Sans"\'>' +
+				'<option value=\'"Questrial"\'>' + // NEW
+				'<option value=\'"Roboto"\'>' +
+				'<option value=\'"Roboto Condensed"\'>' + // NEW
+				'<option value=\'"Roboto Flex"\'>' + // NEW
+				'<option value=\'"Ubuntu"\'>' +
+				'<option value=\'"Ubuntu Condensed"\'>' + // NEW
 			'</datalist>' +
 			'<datalist id="td_fonts4">' + // Serif Fonts (12)
-				'<option value="\'Alegreya\'">' +	// NEW
-				'<option value="\'Aleo\'">' +	// NEW
-				'<option value="\'BioRhyme\'">' +
-				'<option value="\'BioRhyme Expanded\'">' + // NEW
-				'<option value="\'Inknut Antiqua\'">' +
-				'<option value="\'Lora\'">' +
-				'<option value="\'Nanum Myeongjo\'">' + // NEW
-				'<option value="\'Noto Serif\'">' + // NEW
-				'<option value="\'Roboto Serif\'">' + // NEW
-				'<option value="\'Roboto Slab\'">' +
-				'<option value="\'Tinos\'">' + // NEW
-				'<option value="\'Vollkorn\'">' +	// NEW
+				'<option value=\'"Alegreya"\'>' +	// NEW
+				'<option value=\'"Aleo"\'>' +	// NEW
+				'<option value=\'"BioRhyme"\'>' +
+				'<option value=\'"BioRhyme Expanded"\'>' + // NEW
+				'<option value=\'"Inknut Antiqua"\'>' +
+				'<option value=\'"Lora"\'>' +
+				'<option value=\'"Nanum Myeongjo"\'>' + // NEW
+				'<option value=\'"Noto Serif"\'>' + // NEW
+				'<option value=\'"Roboto Serif"\'>' + // NEW
+				'<option value=\'"Roboto Slab"\'>' +
+				'<option value=\'"Tinos"\'>' + // NEW
+				'<option value=\'"Vollkorn"\'>' +	// NEW
 			'</datalist>' +
 			'<datalist id="td_fonts">' + // Rounded Fonts (27)
-				'<option value="\'Chango\'">' + // NEW
-				'<option value="\'Comic Neue\'">' +
-				'<option value="\'Coming Soon\'">' + // NEW
-				'<option value="\'Exo 2\'">' +
-				'<option value="\'Nunito\'">' + // NEW
-				'<option value="\'Rubik\'">' +
-				'<option value="\'Rubik 80s Fade\'">' + // NEW
-				'<option value="\'Rubik Beastly\'">' + // NEW
-				'<option value="\'Rubik Bubbles\'">' + // NEW
-				'<option value="\'Rubik Burned\'">' + // NEW
-				'<option value="\'Rubik Dirt\'">' + // NEW
-				'<option value="\'Rubik Distressed\'">' + // NEW
-				'<option value="\'Rubik Gemstones\'">' + // NEW
-				'<option value="\'Rubik Glitch\'">' + // NEW
-				'<option value="\'Rubik Iso\'">' + // NEW
-				'<option value="\'Rubik Marker Hatch\'">' + // NEW
-				'<option value="\'Rubik Maze\'">' + // NEW
-				'<option value="\'Rubik Microbe\'">' + // NEW
-				'<option value="\'Rubik Moonrocks\'">' + // NEW
-				'<option value="\'Rubik Puddles\'">' + // NEW
-				'<option value="\'Rubik Spray Paint\'">' + // NEW
-				'<option value="\'Rubik Storm\'">' + // NEW
-				'<option value="\'Rubik Vinyl\'">' + // NEW
-				'<option value="\'Rubik Wet Paint\'">' + // NEW
-				'<option value="\'Style Script\'">' + // NEW
-				'<option value="\'Varela Round\'">' + // NEW
-				'<option value="\'Work Sans\'">' +
+				'<option value=\'"Chango"\'>' + // NEW
+				'<option value=\'"Comic Neue"\'>' +
+				'<option value=\'"Coming Soon"\'>' + // NEW
+				'<option value=\'"Exo 2"\'>' +
+				'<option value=\'"Nunito"\'>' + // NEW
+				'<option value=\'"Rubik"\'>' +
+				'<option value=\'"Rubik 80s Fade"\'>' + // NEW
+				'<option value=\'"Rubik Beastly"\'>' + // NEW
+				'<option value=\'"Rubik Bubbles"\'>' + // NEW
+				'<option value=\'"Rubik Burned"\'>' + // NEW
+				'<option value=\'"Rubik Dirt"\'>' + // NEW
+				'<option value=\'"Rubik Distressed"\'>' + // NEW
+				'<option value=\'"Rubik Gemstones"\'>' + // NEW
+				'<option value=\'"Rubik Glitch"\'>' + // NEW
+				'<option value=\'"Rubik Iso"\'>' + // NEW
+				'<option value=\'"Rubik Marker Hatch"\'>' + // NEW
+				'<option value=\'"Rubik Maze"\'>' + // NEW
+				'<option value=\'"Rubik Microbe"\'>' + // NEW
+				'<option value=\'"Rubik Moonrocks"\'>' + // NEW
+				'<option value=\'"Rubik Puddles"\'>' + // NEW
+				'<option value=\'"Rubik Spray Paint"\'>' + // NEW
+				'<option value=\'"Rubik Storm"\'>' + // NEW
+				'<option value=\'"Rubik Vinyl"\'>' + // NEW
+				'<option value=\'"Rubik Wet Paint"\'>' + // NEW
+				'<option value=\'"Style Script"\'>' + // NEW
+				'<option value=\'"Varela Round"\'>' + // NEW
+				'<option value=\'"Work Sans"\'>' +
 			'</datalist>' +
 			'<datalist id="td_fonts3">' + // Monospace Fonts (9)
-				'<option value="\'Anonymous Pro\'">' + 
-				'<option value="\'Courier Prime\'">' +
-				'<option value="\'Cousine\'">' +
-				'<option value="\'Cutive Mono\'">' +
-				'<option value="\'Inconsolata\'">' +
-				'<option value="\'Nanum Gothic Coding\'">' + // NEW
-				'<option value="\'Noto Sans Mono\'">' + // NEW
-				'<option value="\'Roboto Mono\'">' +
-				'<option value="\'Ubuntu Mono\'">' + // NEW
+				'<option value=\'"Anonymous Pro"\'>' + 
+				'<option value=\'"Courier Prime"\'>' +
+				'<option value=\'"Cousine"\'>' +
+				'<option value=\'"Cutive Mono"\'>' +
+				'<option value=\'"Inconsolata"\'>' +
+				'<option value=\'"Nanum Gothic Coding"\'>' + // NEW
+				'<option value=\'"Noto Sans Mono"\'>' + // NEW
+				'<option value=\'"Roboto Mono"\'>' +
+				'<option value=\'"Ubuntu Mono"\'>' + // NEW
 			'</datalist>' +
 			'<datalist id="td_imagefilter">' + // Fonts
 				'<option value="opacity(100%)">' +
@@ -1539,17 +1539,17 @@ function InitDesigner() {
 		'<h2>' +
 			'<span>Active Window #1</span>' +
 			'<button class="minimize" title="Minimize">' +
-				'<span class="material-icons cpe-icon cpe-icon-tiny cpe-icon-large close">' +
-					'remove' +
+				'<span class="material-icons cpe-icon cpe-icon-small cpe-icon-medium close">' +
+					'minimize' +
                 '</span>' +
 			'</button>' +
 			'<button class="maximize" title="Maximize">' +
-				'<span class="material-icons cpe-icon cpe-icon-tiny cpe-icon-medium close">' +
-					'check_box_outline_blank' +
+				'<span class="material-icons cpe-icon cpe-icon-small close">' +
+					'web_asset' +
                 '</span>' +
 			'</button>' +
 			'<button class="close" title="Close">' +
-				'<span class="material-icons cpe-icon cpe-icon-tiny cpe-icon-large close">' +
+				'<span class="material-icons cpe-icon cpe-icon-small cpe-icon-medium close">' +
 					'close' +
                 '</span>' +
 			'</button>' +
@@ -1564,17 +1564,17 @@ function InitDesigner() {
 		'<h2>' +
 			'<span>Active Window #2</span>' +
 			'<button class="minimize" title="Minimize">' +
-				'<span class="material-icons cpe-icon cpe-icon-tiny cpe-icon-large close">' +
-					'remove' +
+				'<span class="material-icons cpe-icon cpe-icon-small cpe-icon-medium close">' +
+					'minimize' +
                 '</span>' +
 			'</button>' +
-			'<button class="maximize title="Restore">' +
-				'<span class="material-icons cpe-icon cpe-icon-tiny cpe-icon-medium close">' +
-					'content_copy' +
+			'<button class="restore" title="Restore">' +
+				'<span class="material-icons cpe-icon cpe-icon-small close">' +
+					'select_window' +
                 '</span>' +
 			'</button>' +
 			'<button class="close" title="Close">' +
-				'<span class="material-icons cpe-icon cpe-icon-tiny cpe-icon-large close">' +
+				'<span class="material-icons cpe-icon cpe-icon-small cpe-icon-medium close">' +
 					'close' +
                 '</span>' +
 			'</button>' +
@@ -1591,22 +1591,22 @@ function InitDesigner() {
 		'<h2>' +
 			'<span>Active Window #3</span>' +
 			'<button class="minimize" title="Minimize">' +
-				'<span class="material-icons cpe-icon cpe-icon-tiny cpe-icon-large close">' +
-					'remove' +
+				'<span class="material-icons cpe-icon cpe-icon-small cpe-icon-medium close">' +
+					'minimize' +
                 '</span>' +
 			'</button>' +
 			'<button class="fullscreen" title="Enter Fullscreen">' +
-				'<span class="material-icons cpe-icon cpe-icon-tiny cpe-icon-large close">' +
-					'fullscreen' +
+				'<span class="material-icons cpe-icon cpe-icon-small close">' +
+					'open_in_full' +
                 '</span>' +
 			'</button>' +
 			'<button class="maximize" title="Maximize">' +
-				'<span class="material-icons cpe-icon cpe-icon-tiny cpe-icon-medium close">' +
-					'check_box_outline_blank' +
+				'<span class="material-icons cpe-icon cpe-icon-small close">' +
+					'web_asset' +
                 '</span>' +
 			'</button>' +
 			'<button class="close" title="Close">' +
-				'<span class="material-icons cpe-icon cpe-icon-tiny cpe-icon-large close">' +
+				'<span class="material-icons cpe-icon cpe-icon-small cpe-icon-medium close">' +
 					'close' +
                 '</span>' +
 			'</button>' +
@@ -1623,17 +1623,17 @@ function InitDesigner() {
 		'<h2>' +
 			'<span>Active Window #4</span>' +
 			'<button class="minimize" title="Minimize">' +
-				'<span class="material-icons cpe-icon cpe-icon-tiny cpe-icon-large close">' +
-					'remove' +
+				'<span class="material-icons cpe-icon cpe-icon-small cpe-icon-medium close">' +
+					'minimize' +
                 '</span>' +
 			'</button>' +
 			'<button class="fullscreen" title="Exit Fullscreen">' +
-				'<span class="material-icons cpe-icon cpe-icon-tiny cpe-icon-large close">' +
-					'fullscreen_exit' +
+				'<span class="material-icons cpe-icon cpe-icon-small close">' +
+					'close_fullscreen' +
                 '</span>' +
 			'</button>' +
 			'<button class="close" title="Close">' +
-				'<span class="material-icons cpe-icon cpe-icon-tiny cpe-icon-large close">' +
+				'<span class="material-icons cpe-icon cpe-icon-small cpe-icon-medium close">' +
 					'close' +
                 '</span>' +
 			'</button>' +
@@ -1650,7 +1650,7 @@ function InitDesigner() {
 		'<h2>' +
 			'<span>Active Window #5</span>' +
 			'<button class="close" title="Close">' +
-				'<span class="material-icons cpe-icon cpe-icon-tiny cpe-icon-large close">' +
+				'<span class="material-icons cpe-icon cpe-icon-small cpe-icon-medium close">' +
 					'close' +
                 '</span>' +
 			'</button>' +
@@ -1668,17 +1668,17 @@ function InitDesigner() {
 		'<h2>' +
 			'<span>Inactive Window</span>' +
 			'<button class="minimize" title="Minimize">' +
-				'<span class="material-icons cpe-icon cpe-icon-tiny cpe-icon-large close">' +
-					'remove' +
+				'<span class="material-icons cpe-icon cpe-icon-small cpe-icon-medium close">' +
+					'minimize' +
                 '</span>' +
 			'</button>' +
 			'<button class="maximize" title="Maximize">' +
-				'<span class="material-icons cpe-icon cpe-icon-tiny cpe-icon-medium close">' +
-					'check_box_outline_blank' +
+				'<span class="material-icons cpe-icon cpe-icon-small close">' +
+					'web_asset' +
                 '</span>' +
 			'</button>' +
 			'<button class="close" title="Close">' +
-				'<span class="material-icons cpe-icon cpe-icon-tiny cpe-icon-large close">' +
+				'<span class="material-icons cpe-icon cpe-icon-small cpe-icon-medium close">' +
 					'close' +
                 '</span>' +
 			'</button>' +
@@ -1851,22 +1851,22 @@ function ApplyTheme () {
     if ( $('#firstfont').val().length === 0) {
 		var customfont2 = 'Roboto Flex';
     } else {
-		var customfont2 = $('#firstfont').val().replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
+		var customfont2 = $('#firstfont').val().replace("'<", '').replace(">'", '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
     }
     if ( $('#fourthfont').val().length === 0) {
 		var customfont4 = 'Roboto Serif';
     } else {
-		var customfont4 = $('#fourthfont').val().replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
+		var customfont4 = $('#fourthfont').val().replace("'<", '').replace(">'", '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
     }
     if ( $('#secondfont').val().length === 0) {
 		var customfont = 'Rubik';
     } else {
-		var customfont = $('#secondfont').val().replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
+		var customfont = $('#secondfont').val().replace("'<", '').replace(">'", '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
     }
     if ( $('#thirdfont').val().length === 0) {
 		var customfont3 = 'Inconsolata';
     } else {
-		var customfont3 = $('#thirdfont').val().replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
+		var customfont3 = $('#thirdfont').val().replace("'<", '').replace(">'", '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
     }
 
 		result = '\n/* Community Theme */\n' +
@@ -2023,22 +2023,22 @@ function CopyTheme() {
     if ( $('#firstfont').val().length === 0) {
 		var customfont2 = 'Roboto Flex';
     } else {
-		var customfont2 = $('#firstfont').val().replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
+		var customfont2 = $('#firstfont').val().replace("'<", '').replace(">'", '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
     }
     if ( $('#fourthfont').val().length === 0) {
 		var customfont4 = 'Roboto Serif';
     } else {
-		var customfont4 = $('#fourthfont').val().replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
+		var customfont4 = $('#fourthfont').val().replace("'<", '').replace(">'", '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
     }
     if ( $('#secondfont').val().length === 0) {
 		var customfont = 'Rubik';
     } else {
-		var customfont = $('#secondfont').val().replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
+		var customfont = $('#secondfont').val().replace("'<", '').replace(">'", '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
     }
     if ( $('#thirdfont').val().length === 0) {
 		var customfont3 = 'Inconsolata';
     } else {
-		var customfont3 = $('#thirdfont').val().replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
+		var customfont3 = $('#thirdfont').val().replace("'<", '').replace(">'", '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
     }
 
 		result = '.theme-' + window.ThemingEngine_ActiveTheme + '.colorscheme-' + getColorScheme() + '.visualcolors-standard {\n' + // Beginning
@@ -2202,22 +2202,22 @@ function CopyTheme2() {
     if ( $('#firstfont').val().length === 0) {
 		var customfont2 = 'Roboto Flex';
     } else {
-		var customfont2 = $('#firstfont').val().replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
+		var customfont2 = $('#firstfont').val().replace("'<", '').replace(">'", '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
     }
     if ( $('#fourthfont').val().length === 0) {
 		var customfont4 = 'Roboto Serif';
     } else {
-		var customfont4 = $('#fourthfont').val().replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
+		var customfont4 = $('#fourthfont').val().replace("'<", '').replace(">'", '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
     }
     if ( $('#secondfont').val().length === 0) {
 		var customfont = 'Rubik';
     } else {
-		var customfont = $('#secondfont').val().replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
+		var customfont = $('#secondfont').val().replace("'<", '').replace(">'", '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
     }
     if ( $('#thirdfont').val().length === 0) {
 		var customfont3 = 'Inconsolata';
     } else {
-		var customfont3 = $('#thirdfont').val().replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
+		var customfont3 = $('#thirdfont').val().replace("'<", '').replace(">'", '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
     }
 	var scheme = '';
     if (getColorScheme() === 'dark') {
@@ -2470,25 +2470,25 @@ function PasteTheme(dynamic=true) {
 	// Border Radius
 	$('#border-radius').val( parseInt(getComputedStyle(themeconfig).getPropertyValue("--border-radius")) );
 	// Sans Serif Font
-	var pfont = getComputedStyle(themeconfig).getPropertyValue("--custom-sans-serif-font").replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
+	var pfont = getComputedStyle(themeconfig).getPropertyValue("--custom-sans-serif-font").replace("'<", '').replace(">'", '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
 	if (pfont == '""') {
 		var pfont = '';
 	}
 	$('#firstfont').val( pfont );
 	// Serif Font
-	var qfont = getComputedStyle(themeconfig).getPropertyValue("--custom-serif-font").replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
+	var qfont = getComputedStyle(themeconfig).getPropertyValue("--custom-serif-font").replace("'<", '').replace(">'", '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
 	if (qfont == '""') {
 		var qfont = '';
 	}
 	$('#fourthfont').val( qfont );
 	// Rounded Font
-	var sfont = getComputedStyle(themeconfig).getPropertyValue("--custom-rounded-font").replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
+	var sfont = getComputedStyle(themeconfig).getPropertyValue("--custom-rounded-font").replace("'<", '').replace(">'", '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
 	if (sfont == '""') {
 		var sfont = '';
 	}
 	$('#secondfont').val( sfont );
 	// Monospace Font
-	var tfont = getComputedStyle(themeconfig).getPropertyValue("--custom-monospace-font").replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
+	var tfont = getComputedStyle(themeconfig).getPropertyValue("--custom-monospace-font").replace("'<", '').replace(">'", '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
 	if (tfont == '""') {
 		var tfont = '';
 	}
@@ -2613,22 +2613,22 @@ function TestTheme(banner=false) {
     if ( $('#firstfont').val().length === 0) {
 		var customfont2 = 'Roboto Flex';
     } else {
-		var customfont2 = $('#firstfont').val().replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
+		var customfont2 = $('#firstfont').val().replace("'<", '').replace(">'", '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
     }
     if ( $('#fourthfont').val().length === 0) {
 		var customfont4 = 'Roboto Serif';
     } else {
-		var customfont4 = $('#fourthfont').val().replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
+		var customfont4 = $('#fourthfont').val().replace("'<", '').replace(">'", '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
     }
     if ( $('#secondfont').val().length === 0) {
 		var customfont = 'Rubik';
     } else {
-		var customfont = $('#secondfont').val().replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
+		var customfont = $('#secondfont').val().replace("'<", '').replace(">'", '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
     }
     if ( $('#thirdfont').val().length === 0) {
 		var customfont3 = 'Inconsolata';
     } else {
-		var customfont3 = $('#thirdfont').val().replace('"<', '').replace('>"', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
+		var customfont3 = $('#thirdfont').val().replace("'<", '').replace(">'", '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
     }
 		oldhtml = document.querySelector("#mw-content-text .theme-designer-css").innerHTML;
 		result = ':root .theme-A, .theme-B, .theme-C, .theme-D, .theme-E, .theme-F, .theme-G, .theme-H {\n' + // Beginning

@@ -3058,7 +3058,7 @@ body .mw-cookiewarning-container {
 	display:flex;
 	align-items:center;
 	min-height:85px;
-	box-shadow:0 0 5px 0.25px rgba(247, 247, 247, 0.3), 0 0 5px 0.25px rgba(24, 24, 24, 0.3);
+	box-shadow:var(--threeD-shadow), 0 0 5px 0.25px rgba(247, 247, 247, 0.3), 0 0 5px 0.25px rgba(24, 24, 24, 0.3);
 }
 
 .qortex-updater .logo,
@@ -3221,8 +3221,18 @@ white-space:nowrap;
 }
 
 .preview-window-window h2 button.maximize .cpe-icon {
---icon-rotate:180deg;
+	--icon-stretch-y:1.2;
 }
+
+.preview-window-window h2 button.restore .cpe-icon {
+	--icon-stretch-y:0.9;
+}
+
+
+.preview-window-window h2 button.minimize .cpe-icon {
+	transform-origin:bottom;
+}
+
 .preview-window-window h2 button.close {
 	--button-background-hover:rgba(var(--luna-alert-background-color-rgb),0.2);
 	--button-background-active:rgba(var(--luna-alert-background-color-rgb),0.4);
@@ -3245,7 +3255,6 @@ white-space:nowrap;
 	color:var(--button-background-color-active);
 	box-shadow:var(--threeD-shadow-active);
 }
-
 
 .preview-window-window section {
 	background-color:var(--canvas-background-color);
