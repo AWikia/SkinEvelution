@@ -42,6 +42,95 @@ body .mw-pulsating-dot:before, body .mw-pulsating-dot:after {
 }
 
 /* Icons */
+/* OOUI Base */
+body .oo-ui-iconElement-icon {
+  background:none!Important;
+  -webkit-mask-image:none!important;
+  width:1.42857143em; /* Was 24px */
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+}
+
+body .oo-ui-indicatorElement-indicator {
+  background:none!Important;
+  -webkit-mask-image:none!important;
+  width:1.257143em; /* Was 24px */
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+}
+
+body .oo-ui-menuOptionWidget-checkIcon {
+	display:none;
+}
+
+.oo-ui-iconElement-icon.oo-ui-iconElement-noIcon {
+	visibility:hidden;
+}
+
+.oo-ui-iconElement-icon:before,
+.oo-ui-indicatorElement-indicator:before {
+	--icon-scale:1;
+	--icon-grow:1;
+	--icon-size:1;
+	--icon-stretch-x:1;
+	--icon-stretch-y:1;
+    --icon-rotate:0deg;
+  font-family: var(--icon-font-family)!important;
+  font-weight: inherit;
+  font-style: normal;
+  display: inline-block;
+  cursor:inherit;
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  user-select:none;
+  font-size:calc(24px * var(--icon-size))!important;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  /* @noflip */
+  direction: ltr;
+  pointer-events:none;
+  vertical-align:middle;
+  overflow:hidden;
+  fill:currentColor;
+  width:1em!important;
+  height:1em!important;
+  min-width:1em!important;
+  min-height:1em!important;
+  transform:scale(var(--icon-scale)) scale(var(--icon-grow))  rotate(var(--icon-rotate)) scaleX(var(--icon-stretch-x)) scaleY(var(--icon-stretch-y));
+  text-indent:0;
+
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+.oo-ui-iconElement-icon:before,
+.oo-ui-indicatorElement-indicator:before {
+	--icon-size:0.5;
+	--icon-scale:2;
+	content:"";
+}
+
+body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-buttonElement-active > .oo-ui-buttonElement-button > .oo-ui-iconElement-icon:before,
+body .oo-ui-indicatorElement-indicator:before {
+  font-variation-settings:'FILL' 1;
+}
+
+
+/* Rest */
 body .oo-ui-tool .oo-ui-iconElement-icon,
 body .oo-ui-fieldsetLayout.oo-ui-iconElement > .oo-ui-fieldsetLayout-header .oo-ui-iconElement-icon {
 	display:flex;
@@ -417,6 +506,16 @@ body .mw-ui-checkbox:not(#noop) [type='checkbox'] + label:before {
 body .mw-ui-checkbox:not(#noop) [type='checkbox'],
 body .mw-ui-radio:not(#noop) [type='radio'] {
 	display:inline-block;
+}
+
+body .oo-ui-checkboxInputWidget [type='checkbox'],
+body .oo-ui-radioInputWidget [type='radio'] {
+  height:1.66em;
+  width:1.66em;
+}
+
+.oo-ui-radioSelectWidget:focus input[type="checkbox"]:checked:not(:active), .oo-ui-radioSelectWidget:focus input[type="radio"]:checked:not(:active)  {
+	--checkbox-focused-shadow:var(--checkbox-checked-text);
 }
 
 body .tux-editor-header {

@@ -2565,44 +2565,18 @@ margin-left:5px;
 
 /** Icons **/
 
-/* OOUI Base */
-body .oo-ui-iconElement-icon {
-  background:none!Important;
-  -webkit-mask-image:none!important;
-  width:1.42857143em; /* Was 24px */
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-}
 
-body .oo-ui-indicatorElement-indicator {
-  background:none!Important;
-  -webkit-mask-image:none!important;
-  width:1.257143em; /* Was 24px */
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-}
-
-body .oo-ui-menuOptionWidget-checkIcon {
-	display:none;
-}
-
-.oo-ui-iconElement-icon.oo-ui-iconElement-noIcon {
-	visibility:hidden;
-}
 
 /* Rest */
 .material-icons,
 .has-icon:before,
 .has-icon-labels li > a:before,
-.oo-ui-iconElement-icon:before,
-.oo-ui-indicatorElement-indicator:before,
-.mw-specialpagesgroup:before,
 input[type="checkbox"]::after, input[type="radio"]::after {
 	--icon-scale:1;
 	--icon-grow:1;
 	--icon-size:1;
+	--icon-stretch-x:1;
+	--icon-stretch-y:1;
   font-family: var(--icon-font-family)!important;
   font-weight: inherit;
   font-style: normal;
@@ -2643,12 +2617,12 @@ input[type="checkbox"]::after, input[type="radio"]::after {
 .wds-icon,
 .has-icon:before,
 .has-icon-labels li > a:before,
-.oo-ui-iconElement-icon:before,
-.oo-ui-indicatorElement-indicator:before,
 input[type="checkbox"]::after, input[type="radio"]::after {
 	--icon-scale:1;
 	--icon-grow:1;
 	--icon-size:1;
+	--icon-stretch-x:1;
+	--icon-stretch-y:1;
     --icon-rotate:0deg;
   fill:currentColor;
   width:1em!important;
@@ -2656,7 +2630,7 @@ input[type="checkbox"]::after, input[type="radio"]::after {
   min-width:1em!important;
   min-height:1em!important;
   font-size:calc(24px * var(--icon-size))!important;
-  transform:scale(var(--icon-scale)) scale(var(--icon-grow))  rotate(var(--icon-rotate));
+  transform:scale(var(--icon-scale)) scale(var(--icon-grow))  rotate(var(--icon-rotate)) scaleX(var(--icon-stretch-x)) scaleY(var(--icon-stretch-y));
   vertical-align:middle;
   text-indent:0;
 }
@@ -2669,13 +2643,6 @@ input[type="checkbox"]::after, input[type="radio"]::after {
 .has-icon:before {
 	margin-right:5px;
 	--icon-size:0.7;
-	content:"";
-}
-
-.oo-ui-iconElement-icon:before,
-.oo-ui-indicatorElement-indicator:before {
-	--icon-size:0.5;
-	--icon-scale:2;
 	content:"";
 }
 
@@ -2705,13 +2672,12 @@ body * > :focus > .cpe-icon,
 body * > .cpe-dropdown:focus-within > :first-child,
 body * > .cpe-dropdown:focus-within > .cpe-icon,
 body * > .has-icon:focus:before,
-body .has-icon-labels > li > :focus:before,
 body * > .selected > :first-child,
 body * > .selected > .cpe-icon,
-body .has-icon-labels > .selected > :focus:before,
-body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-buttonElement-active > .oo-ui-buttonElement-button > .oo-ui-iconElement-icon:before,
-body .oo-ui-indicatorElement-indicator:before,
-.cpe-icon.force-filled {
+body .has-icon-labels > li > :focus:before,
+body .has-icon-labels > .selected > :before,
+.cpe-icon.force-filled,
+.cpe-dropdown__content .cpe-list.is-linked>li.cpe-dropdown-level-2:hover>a:not(.cpe-button) {
   font-variation-settings:'FILL' 1;
 }
 
@@ -4491,14 +4457,7 @@ input[type="checkbox"], input[type="radio"] {
 }
 
 
-body .oo-ui-checkboxInputWidget [type='checkbox'],
-body .oo-ui-radioInputWidget [type='radio'] {
-  height:1.66em;
-  width:1.66em;
-}
-
-input[type="checkbox"]:checked:not(:active):focus, input[type="radio"]:checked:not(:active):focus,
-.oo-ui-radioSelectWidget:focus input[type="checkbox"]:checked:not(:active), .oo-ui-radioSelectWidget:focus input[type="radio"]:checked:not(:active)  {
+input[type="checkbox"]:checked:not(:active):focus, input[type="radio"]:checked:not(:active):focus {
 	--checkbox-focused-shadow:var(--checkbox-checked-text);
 }
 
@@ -5285,14 +5244,7 @@ html:not(.visualmode-threeD) .threeD-on {
   box-shadow:none!important;
 }
 
-.visualmode-contrast .cpe-input,
-.visualmode-contrast body .oo-ui-textInputWidget .oo-ui-inputWidget-input,
-.visualmode-contrast body .oo-ui-textInputWidget.oo-ui-widget-enabled .oo-ui-inputWidget-input,
-.visualmode-contrast body .oo-ui-dropdownWidget.oo-ui-widget-enabled .oo-ui-dropdownWidget-handle,
-.visualmode-contrast body .oo-ui-textInputWidget.oo-ui-widget-disabled .oo-ui-inputWidget-input,
-.visualmode-contrast body .mw-widget-dateInputWidget-handle,
-.visualmode-contrast body .mw-widgets-datetime-dateTimeInputWidget-handle,
-.visualmode-contrast body .mw-ui-input {
+.visualmode-contrast .cpe-input {
     background-color:var(--input-box-color-contrast);
 }
 
@@ -5377,11 +5329,7 @@ background-color:var(--highlight-background-color);
 
 .visualmode-contrast .cpe-button,
 .visualmode-contrast input[type="range"],
-.visualmode-contrast progress,
-.visualmode-contrast body .oo-ui-buttonElement > .oo-ui-buttonElement-button,
-.visualmode-contrast body .mw-ui-button,
-.visualmode-contrast body .mw-ui-button:not(:disabled),
-.visualmode-contrast body .oo-ui-tool.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive > .oo-ui-tool-link {
+.visualmode-contrast progress {
 	--tabs-color:0,0,0!important;
 	--tabs-opacity:0!important;
 }
@@ -5453,53 +5401,7 @@ background-color:var(--highlight-background-color);
 .visualmode-contrast .cpe-button.is-active, 
 .visualmode-contrast .selected .cpe-button,
 .visualmode-contrast .cpe-dropdown:focus > .cpe-button,
-.visualmode-contrast .cpe-dropdown:focus-within > .cpe-button,
-/* OOUI */
-.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled > .oo-ui-buttonElement-button:hover,
-.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-progressive  > .oo-ui-buttonElement-button:hover,
-.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary  > .oo-ui-buttonElement-button:hover,
-.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-destructive  > .oo-ui-buttonElement-button:hover,
-.visualmode-contrast body .mw-ui-button:not(:disabled):hover,
-.visualmode-contrast body .mw-ui-button:hover,
-.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled > .oo-ui-buttonElement-button:active, 
-.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-buttonElement-pressed > .oo-ui-buttonElement-button,
-.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-progressive > .oo-ui-buttonElement-button:active, 
-.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-buttonElement-pressed.oo-ui-flaggedElement-progressive > .oo-ui-buttonElement-button,
-.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary > .oo-ui-buttonElement-button:active, 
-.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-buttonElement-pressed.oo-ui-flaggedElement-primary > .oo-ui-buttonElement-button,
-.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-destructive > .oo-ui-buttonElement-button:active, 
-.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-buttonElement-pressed.oo-ui-flaggedElement-destructive > .oo-ui-buttonElement-button,
-.visualmode-contrast body .mw-ui-button:not(:disabled):active,
-.visualmode-contrast body .mw-ui-button:active,
-.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled > .oo-ui-buttonElement-button:focus:not(:active),
-.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-progressive > .oo-ui-buttonElement-button:focus:not(:active),
-.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary > .oo-ui-buttonElement-button:focus:not(:active),
-.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-destructive > .oo-ui-buttonElement-button:focus:not(:active),
-.visualmode-contrast body .mw-ui-button:not(:disabled):focus,
-.visualmode-contrast body .mw-ui-button:focus:not(:active),
-/* OOUI Primary */
-.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive > .oo-ui-buttonElement-button:hover,
-.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-destructive > .oo-ui-buttonElement-button:hover,
-.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-buttonElement-active > .oo-ui-buttonElement-button:focus:hover,
-.visualmode-contrast body .oo-ui-buttonSelectWidget.oo-ui-widget-enabled:focus .oo-ui-buttonOptionWidget.oo-ui-optionWidget-selected .oo-ui-buttonElement-button:hover,
-.visualmode-contrast body .mw-ui-button.mw-ui-progressive:not(:disabled):hover,
-.visualmode-contrast body .mw-ui-button.mw-ui-progressive:hover,
-.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive > .oo-ui-buttonElement-button:active, 
-.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-destructive > .oo-ui-buttonElement-button:active, 
-.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive.oo-ui-buttonElement-pressed > .oo-ui-buttonElement-button, 
-.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive.oo-ui-buttonElement-active > .oo-ui-buttonElement-button, 
-.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive.oo-ui-popupToolGroup-active > .oo-ui-buttonElement-button,
-.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-buttonElement-active > .oo-ui-buttonElement-button:focus:active,
-.visualmode-contrast body .oo-ui-buttonSelectWidget.oo-ui-widget-enabled:focus .oo-ui-buttonOptionWidget.oo-ui-optionWidget-selected .oo-ui-buttonElement-button:active,
-.visualmode-contrast body .mw-ui-button.mw-ui-progressive:not(:disabled):active,
-.visualmode-contrast body .mw-ui-button.mw-ui-progressive:active,
-.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive > .oo-ui-buttonElement-button:focus:not(:active),
-.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-destructive > .oo-ui-buttonElement-button:focus:not(:active),
-.visualmode-contrast body .mw-ui-button.mw-ui-progressive:not(:disabled):focus,
-.visualmode-contrast body .mw-ui-button.mw-ui-progressive:focus:not(:active),
-.visualmode-contrast body .oo-ui-tool.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive > .oo-ui-tool-link:hover,
-.visualmode-contrast body .oo-ui-tool.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive > .oo-ui-tool-link:active,
-.visualmode-contrast body .oo-ui-tool.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive > .oo-ui-tool-link:focus {
+.visualmode-contrast .cpe-dropdown:focus-within > .cpe-button {
     border-color:var(--button-background-color);
     color:var(--button-background-color);
     background-color:var(--button-foreground-color);

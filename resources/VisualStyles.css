@@ -1,0 +1,1572 @@
+﻿/* CSS for Visual Styles that is shared between Apps. Only changes to OOUI (All Visual Styles, even to variations of Standard Visual Style) and CPE Language Components (Excluding variations of Standard Visual Style which are covered in CPE.CSS) */
+
+/* New High Contrast */
+/*
+** This only includes additional code OOUI requires for the Standard High Contrast Styling. 
+** Code for Standard High Contrast Styling that affects the CPE Language Core and your app must be put in CPE.css and VisualStyles_Extra.css respectively, not in this one
+*/
+.visualmode-contrast body {
+/* RC Filters */
+/* Blue */
+	--rc-highlight-blue-background-color:var(--active-title-background-color);
+	--rc-highlight-blue-background-color-hover:var(--active-title-background-color-hover);
+	--rc-highlight-blue-foreground-color-inverted:var(--active-title-foreground-color-inverted);
+	--rc-highlight-blue-fadeout-color:var(--active-title-fadeout-color);
+/* Green */
+	--rc-highlight-green-background-color:var(--canvas-text-background-color);
+	--rc-highlight-green-background-color-hover:var(--canvas-text-background-color-hover);
+	--rc-highlight-green-foreground-color-inverted:var(--canvas-text-foreground-color-inverted);
+	--rc-highlight-green-fadeout-color:var(--canvas-text-fadeout-color);
+/* Yellow */
+	--rc-highlight-yellow-background-color:var(--highlight-background-color);
+	--rc-highlight-yellow-background-color-hover:var(--highlight-background-color-hover);
+	--rc-highlight-yellow-foreground-color-inverted:var(--highlight-foreground-color-inverted);
+	--rc-highlight-yellow-fadeout-color:var(--highlight-fadeout-color);
+/* Orange */
+	--rc-highlight-orange-background-color:var(--inactive-text-background-color);
+	--rc-highlight-orange-background-color-hover:var(--inactive-text-background-color-hover);
+	--rc-highlight-orange-foreground-color-inverted:var(--inactive-text-foreground-color-inverted);
+	--rc-highlight-orange-fadeout-color:var(--inactive-text-fadeout-color);
+/* Red */
+	--rc-highlight-red-background-color:var(--hyperlink-background-color);
+	--rc-highlight-red-background-color-hover:var(--hyperlink-background-color-hover);
+	--rc-highlight-red-foreground-color-inverted:var(--hyperlink-foreground-color-inverted);
+	--rc-highlight-red-fadeout-color:var(--hyperlink-fadeout-color);
+}
+
+
+.visualmode-contrast body .toc .module-toc li a:hover {
+  background-color:var(--dropdown-hyperlink-background-color);
+  color:var(--dropdown-hyperlink-text-color);
+  border-color:var(--dropdown-hyperlink-border-color);
+}
+
+
+.visualmode-contrast body .toc .module-toc li a:active,
+.visualmode-contrast body .toc .module-toc li a:focus,
+.visualmode-contrast body .toc .module-toc li.selected a {
+  background-color:var(--dropdown-active-hyperlink-background-color);
+  color:var(--dropdown-active-hyperlink-text-color);
+  border-color:var(--dropdown-active-hyperlink-border-color);
+}
+
+
+.visualmode-contrast .oo-ui-outlineOptionWidget.oo-ui-optionWidget-highlighted {
+  background-color:var(--highlight-text-background-color);
+  color:var(--highlight-background-color);
+}
+
+
+.visualmode-contrast .wikiEditor-ui-toolbar .booklet > .index > .current,
+.visualmode-contrast .oo-ui-outlineOptionWidget.oo-ui-optionWidget-pressed, 
+.visualmode-contrast .oo-ui-outlineOptionWidget.oo-ui-optionWidget-selected,
+.visualmode-contrast .oo-ui-popupToolGroup.oo-ui-widget-enabled > .oo-ui-popupToolGroup-handle:active, 
+.visualmode-contrast .oo-ui-popupToolGroup.oo-ui-popupToolGroup-active > .oo-ui-popupToolGroup-handle, 
+.visualmode-contrast .oo-ui-popupToolGroup.oo-ui-popupToolGroup-active > .oo-ui-popupToolGroup-handle:hover, 
+.visualmode-contrast .oo-ui-tool.oo-ui-widget-enabled > .oo-ui-tool-link:active, 
+.visualmode-contrast .oo-ui-tool.oo-ui-widget-enabled.oo-ui-tool-active > .oo-ui-tool-link, 
+.visualmode-contrast .oo-ui-tool.oo-ui-widget-enabled.oo-ui-popupToolGroup-active > .oo-ui-tool-link {
+  background-color:var(--highlight-background-color);
+  color:var(--highlight-text-background-color);
+}
+
+
+.visualmode-contrast .lightbox-container:target {
+background-color:var(--canvas-background-color);
+}
+
+
+
+.visualmode-contrast .messagebox, 
+.visualmode-contrast .errorbox, 
+.visualmode-contrast .warningbox, 
+.visualmode-contrast .successbox {
+	background-color:var(--canvas-secondary-background-color);
+	color:var(--canvas-text-secondary-background-color);
+}
+
+.visualmode-contrast .messagebox {
+    border-color: var(--inactive-title-background-color);
+}
+
+.visualmode-contrast .errorbox {
+    border-color: var(--hyperlink-background-color);
+}
+
+.visualmode-contrast .warningbox {
+    border-color: var(--highlight-background-color);
+}
+
+.visualmode-contrast .successbox {
+    border-color: var(--canvas-text-background-color);
+}
+
+.visualmode-contrast .messagebox a, 
+.visualmode-contrast .errorbox a, 
+.visualmode-contrast .warningbox a, 
+.visualmode-contrast .successbox a,
+.visualmode-contrast .messagebox a:visited, 
+.visualmode-contrast .errorbox a:visited, 
+.visualmode-contrast .warningbox a:visited, 
+.visualmode-contrast .successbox a:visited {
+	color:var(--hyperlink-secondary-background-color);
+}
+
+.visualmode-contrast .messagebox a.new, 
+.visualmode-contrast .errorbox a.new, 
+.visualmode-contrast .warningbox a.new, 
+.visualmode-contrast .successbox a.new,
+.visualmode-contrast .messagebox a.new:visited, 
+.visualmode-contrast .errorbox a.new:visited, 
+.visualmode-contrast .warningbox a.new:visited, 
+.visualmode-contrast .successbox a.new:visited {
+	color:var(--alert-secondary-background-color);
+}
+
+
+.visualmode-contrast .mw-rcfilters-ui-filterMenuHeaderWidget-header,
+.visualmode-contrast .mw-rcfilters-ui-menuSelectWidget-footer {
+	background-color:rgba(var(--dropdown-background-color),var(--acrylic-opacity));
+	color:rgb(var(--dropdown-text-color));
+}
+
+.visualmode-contrast body .oo-ui-textInputWidget .oo-ui-inputWidget-input,
+.visualmode-contrast body .oo-ui-textInputWidget.oo-ui-widget-enabled .oo-ui-inputWidget-input,
+.visualmode-contrast body .oo-ui-dropdownWidget.oo-ui-widget-enabled .oo-ui-dropdownWidget-handle,
+.visualmode-contrast body .oo-ui-textInputWidget.oo-ui-widget-disabled .oo-ui-inputWidget-input,
+.visualmode-contrast body .mw-widget-dateInputWidget-handle,
+.visualmode-contrast body .mw-widgets-datetime-dateTimeInputWidget-handle,
+.visualmode-contrast body .mw-ui-input {
+    background-color:var(--input-box-color-contrast);
+}
+
+.visualmode-contrast body .oo-ui-buttonElement > .oo-ui-buttonElement-button,
+.visualmode-contrast body .mw-ui-button,
+.visualmode-contrast body .mw-ui-button:not(:disabled),
+.visualmode-contrast body .oo-ui-tool.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive > .oo-ui-tool-link {
+	--tabs-color:0,0,0!important;
+	--tabs-opacity:0!important;
+}
+
+/* Primary, Secondary and Frameless */
+/* OOUI */
+.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled > .oo-ui-buttonElement-button:hover,
+.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-progressive  > .oo-ui-buttonElement-button:hover,
+.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary  > .oo-ui-buttonElement-button:hover,
+.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-destructive  > .oo-ui-buttonElement-button:hover,
+.visualmode-contrast body .mw-ui-button:not(:disabled):hover,
+.visualmode-contrast body .mw-ui-button:hover,
+.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled > .oo-ui-buttonElement-button:active, 
+.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-buttonElement-pressed > .oo-ui-buttonElement-button,
+.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-progressive > .oo-ui-buttonElement-button:active, 
+.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-buttonElement-pressed.oo-ui-flaggedElement-progressive > .oo-ui-buttonElement-button,
+.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary > .oo-ui-buttonElement-button:active, 
+.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-buttonElement-pressed.oo-ui-flaggedElement-primary > .oo-ui-buttonElement-button,
+.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-destructive > .oo-ui-buttonElement-button:active, 
+.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-buttonElement-pressed.oo-ui-flaggedElement-destructive > .oo-ui-buttonElement-button,
+.visualmode-contrast body .mw-ui-button:not(:disabled):active,
+.visualmode-contrast body .mw-ui-button:active,
+.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled > .oo-ui-buttonElement-button:focus:not(:active),
+.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-progressive > .oo-ui-buttonElement-button:focus:not(:active),
+.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary > .oo-ui-buttonElement-button:focus:not(:active),
+.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-destructive > .oo-ui-buttonElement-button:focus:not(:active),
+.visualmode-contrast body .mw-ui-button:not(:disabled):focus,
+.visualmode-contrast body .mw-ui-button:focus:not(:active),
+/* OOUI Primary */
+.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive > .oo-ui-buttonElement-button:hover,
+.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-destructive > .oo-ui-buttonElement-button:hover,
+.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-buttonElement-active > .oo-ui-buttonElement-button:focus:hover,
+.visualmode-contrast body .oo-ui-buttonSelectWidget.oo-ui-widget-enabled:focus .oo-ui-buttonOptionWidget.oo-ui-optionWidget-selected .oo-ui-buttonElement-button:hover,
+.visualmode-contrast body .mw-ui-button.mw-ui-progressive:not(:disabled):hover,
+.visualmode-contrast body .mw-ui-button.mw-ui-progressive:hover,
+.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive > .oo-ui-buttonElement-button:active, 
+.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-destructive > .oo-ui-buttonElement-button:active, 
+.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive.oo-ui-buttonElement-pressed > .oo-ui-buttonElement-button, 
+.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive.oo-ui-buttonElement-active > .oo-ui-buttonElement-button, 
+.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive.oo-ui-popupToolGroup-active > .oo-ui-buttonElement-button,
+.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-buttonElement-active > .oo-ui-buttonElement-button:focus:active,
+.visualmode-contrast body .oo-ui-buttonSelectWidget.oo-ui-widget-enabled:focus .oo-ui-buttonOptionWidget.oo-ui-optionWidget-selected .oo-ui-buttonElement-button:active,
+.visualmode-contrast body .mw-ui-button.mw-ui-progressive:not(:disabled):active,
+.visualmode-contrast body .mw-ui-button.mw-ui-progressive:active,
+.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive > .oo-ui-buttonElement-button:focus:not(:active),
+.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-destructive > .oo-ui-buttonElement-button:focus:not(:active),
+.visualmode-contrast body .mw-ui-button.mw-ui-progressive:not(:disabled):focus,
+.visualmode-contrast body .mw-ui-button.mw-ui-progressive:focus:not(:active),
+.visualmode-contrast body .oo-ui-tool.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive > .oo-ui-tool-link:hover,
+.visualmode-contrast body .oo-ui-tool.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive > .oo-ui-tool-link:active,
+.visualmode-contrast body .oo-ui-tool.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive > .oo-ui-tool-link:focus {
+    border-color:var(--button-background-color);
+    color:var(--button-background-color);
+    background-color:var(--button-foreground-color);
+}
+
+
+/*** Basic Theme ***/
+/** Standard **/
+
+.visualstyle-basic body {
+/* Link Styling */
+--dropdown-hyperlink-border-color:rgba(var(--canvas-text-secondary-background-color-rgb),0.5);
+/* Active Link Styling */
+--dropdown-active-hyperlink-background-color:var(--hyperlink-secondary-fadeout-color);
+--dropdown-active-hyperlink-border-color:var(--dropdown-active-hyperlink-text-color);
+--dropdown-active-hyperlink-text-color:var(--hyperlink-secondary-background-color);
+}
+
+.visualstyle-basic body .toc .module-toc li a:hover {
+  border-color:rgba(var(--canvas-text-background-color-rgb),0.5);
+}
+
+
+.visualstyle-basic body .toc .module-toc li a:active,
+.visualstyle-basic body .toc .module-toc li a:focus,
+.visualstyle-basic body .toc .module-toc li.selected a {
+  background-color:var(--hyperlink-fadeout-color);
+  border-color:var(--hyperlink-background-color);
+  color: var(--hyperlink-background-color);
+}
+
+
+.visualstyle-basic ::-webkit-scrollbar-thumb {
+	border-color:var(--scrollbar-track-text);
+	border-width:1px;
+	box-shadow:var(--threeD-shadow), 0 0px 0 2px inset var(--scrollbar-thumb-color-1);
+}
+
+.visualstyle-basic ::-webkit-scrollbar-thumb:hover {
+  box-shadow:var(--threeD-shadow), 0 0px 0 2px inset var(--scrollbar-thumb-color-2);
+}
+
+.visualstyle-basic ::-webkit-scrollbar-thumb:active {
+  box-shadow:var(--threeD-shadow-active), 0 0px 0 2px inset var(--scrollbar-thumb-color-2);
+
+}
+
+
+
+
+.visualstyle-basic ::-webkit-scrollbar-thumb:vertical {
+	min-height:20px;
+	background-size:10px 100%;
+	background-image:
+linear-gradient(180deg, transparent 0%, transparent calc(50% - 5px), currentColor calc(50% - 5px), currentColor calc(50% - 3px), transparent calc(50% - 3px), transparent calc(50% - 1px)),
+linear-gradient(180deg, transparent 0%, transparent calc(50% - 1px), currentColor calc(50% - 1px), currentColor calc(50% - -1px), transparent calc(50% - -1px), transparent calc(50% - -3px)), 
+linear-gradient(180deg, transparent 0%, transparent calc(50% - -3px), currentColor calc(50% - -3px), currentColor calc(50% - -5px), transparent calc(50% - -5px), transparent calc(50% - -7px));
+}
+
+.visualstyle-basic ::-webkit-scrollbar-thumb:horizontal {
+	min-height:20px;
+	background-size:100% 10px;
+	background-image:
+linear-gradient(90deg, transparent 0%, transparent calc(50% - 5px), currentColor calc(50% - 5px), currentColor calc(50% - 3px), transparent calc(50% - 3px), transparent calc(50% - 1px)),
+linear-gradient(90deg, transparent 0%, transparent calc(50% - 1px), currentColor calc(50% - 1px), currentColor calc(50% - -1px), transparent calc(50% - -1px), transparent calc(50% - -3px)), 
+linear-gradient(90deg, transparent 0%, transparent calc(50% - -3px), currentColor calc(50% - -3px), currentColor calc(50% - -5px), transparent calc(50% - -5px), transparent calc(50% - -7px));
+}
+
+/* Floating buttons */
+.visualstyle-basic .cpe-floating-button {
+  --floating-button-border-color:var(--floating-button-color)!important;
+  --floating-button-border-color-hover:var(--floating-button-color-hover)!important;
+  --floating-button-border-color-active:var(--floating-button-color-active)!important;
+  --floating-button-shadow-opacity:0!important;
+  --floating-button-shadow-blur:0px!important;
+}
+
+
+/** High Contrast **/
+.visualstyle-basic.visualmode-contrast ::-webkit-scrollbar-thumb {
+	background-color:var(--scrollbar-track-color-1);
+	color:var(--scrollbar-track-text);
+	border-color:currentColor;
+	box-shadow:0 0px 0 2px inset var(--scrollbar-track-color-1)!important;
+	border-width:1px;
+}
+
+.visualstyle-basic.visualmode-contrast body {
+/* Link Styling */
+--dropdown-hyperlink-background-color:var(--canvas-secondary-background-color);
+--dropdown-hyperlink-border-color:var(--canvas-text-secondary-background-color);
+--dropdown-hyperlink-text-color:var(--canvas-text-secondary-background-color);
+/* Active Link Styling */
+--dropdown-active-hyperlink-background-color:var(--highlight-background-color);
+--dropdown-active-hyperlink-border-color:var(--dropdown-hyperlink-border-color);
+--dropdown-active-hyperlink-text-color:var(--highlight-text-background-color);
+}
+
+.visualstyle-basic.visualmode-contrast body {
+	--checkbox-unchecked-bg-hover:transparent;
+	--checkbox-unchecked-shadow-hover:var(--checkbox-active-bg);
+	--checkbox-checked-bg-hover:var(--checkbox-checked-text);
+	--checkbox-checked-shadow-hover:var(--checkbox-checked-text-hover);
+	--checkbox-checked-text-hover:var(--checkbox-checked-bg);
+}
+
+
+
+.visualstyle-basic.visualmode-contrast body .toc .module-toc li a:hover {
+  background-color:var(--dropdown-hyperlink-background-color);
+  color:var(--dropdown-hyperlink-text-color);
+  border-color:var(--dropdown-hyperlink-border-color);
+}
+
+.visualstyle-basic.visualmode-contrast body .toc .module-toc li a:active,
+.visualstyle-basic.visualmode-contrast body .toc .module-toc li a:focus,
+.visualstyle-basic.visualmode-contrast body .toc .module-toc li.selected a {
+  background-color:var(--dropdown-active-hyperlink-background-color);
+  color:var(--dropdown-active-hyperlink-text-color);
+  border-color:var(--dropdown-active-hyperlink-border-color);
+}
+
+.visualstyle-basic.visualmode-contrast .wikiEditor-ui-toolbar .booklet > .index > .current,
+.visualstyle-basic.visualmode-contrast .oo-ui-outlineOptionWidget.oo-ui-optionWidget-highlighted {
+  background-color:var(--highlight-background-color);
+  color:var(--highlight-text-background-color)!important;
+}
+
+/* Floating Buttons */
+.visualstyle-basic.visualmode-contrast .cpe-floating-button {
+  --floating-button-color-hover:var(--canvas-text-secondary-background-color)!important;
+  --floating-button-color-active:var(--highlight-text-background-color)!important;
+  --floating-button-background-color-hover:var(--canvas-secondary-background-color)!important;
+  --floating-button-background-color-active:var(--highlight-background-color)!important;
+  --floating-button-border-color:var(--floating-button-color)!important;
+  --floating-button-border-color-hover:var(--floating-button-color-hover)!important;
+  --floating-button-border-color-active:var(--floating-button-color-hover)!important;
+
+}
+
+.visualstyle-basic.visualmode-contrast .lightbox-container:target {
+background-color:var(--canvas-background-color);
+}
+
+
+/* Modules */
+
+
+.visualstyle-basic.visualmode-contrast .lightbox .footer {
+	border-color:var(--canvas-text-background-color);
+}
+
+.visualstyle-basic.visualmode-contrast .fieldset fieldset .fieldset {
+	border-color:currentColor;
+}
+
+.visualstyle-basic.visualmode-contrast .fieldset fieldset .fieldset fieldset .fieldset {
+	border-color:var(--inactive-text-background-color);
+}
+
+/*** Simple Theme ***/
+/** Standard **/
+.visualstyle-simple body {
+	--simple-luna-background-color:var(--canvas-secondary-background-color);
+	--simple-luna-background-color-hover:var(--canvas-secondary-background-color-hover);
+	--simple-luna-background-color-rgb:var(--canvas-secondary-background-color-rgb);
+	--simple-luna-background-color-hover-rgb:var(--canvas-secondary-background-color-hover-rgb);
+	--simple-luna-foreground-color:var(--canvas-secondary-foreground-color);
+	--simple-luna-foreground-color-hover:var(--canvas-secondary-foreground-color-hover);
+	--simple-luna-foreground-color-inverted:var(--canvas-secondary-foreground-color-inverted);
+	--simple-luna-foreground-color-inverted-rgb:var(--canvas-secondary-foreground-color-inverted-rgb);
+	--simple-luna-foreground-color-rgb:var(--canvas-secondary-foreground-color-rgb);
+	--simple-luna-foreground-color-hover-rgb:var(--canvas-secondary-foreground-color-hover-rgb);
+	--simple-luna-alternative-foreground-color:var(--canvas-secondary-alternative-foreground-color);
+	--simple-luna-alternative-foreground-color-hover:var(--canvas-secondary-alternative-foreground-color-hover);
+	--simple-luna-alternative-foreground-color-rgb:var(--canvas-secondary-alternative-foreground-color-rgb);
+	--simple-luna-alternative-foreground-color-hover-rgb:var(--canvas-secondary-alternative-foreground-color-hover-rgb);
+	--simple-luna-tabs-background-color:var(--canvas-tabs-background-color);
+	--simple-luna-tabs-opacity:var(--canvas-tabs-opacity);
+	--simple-luna-active-tabs-opacity:var(--canvas-active-tabs-opacity);
+}
+
+.visualstyle-simple.has-accents body {
+	--simple-luna-background-color:var(--hyperlink-background-color);
+	--simple-luna-background-color-hover:var(--hyperlink-background-color-hover);
+	--simple-luna-background-color-rgb:var(--hyperlink-background-color-rgb);
+	--simple-luna-background-color-hover-rgb:var(--hyperlink-background-color-hover-rgb);
+	--simple-luna-foreground-color:var(--hyperlink-foreground-color);
+	--simple-luna-foreground-color-hover:var(--hyperlink-foreground-color-hover);
+	--simple-luna-foreground-color-inverted:var(--hyperlink-foreground-color-inverted);
+	--simple-luna-foreground-color-inverted-rgb:var(--hyperlink-foreground-color-inverted-rgb);
+	--simple-luna-foreground-color-rgb:var(--hyperlink-foreground-color-rgb);
+	--simple-luna-foreground-color-hover-rgb:var(--hyperlink-foreground-color-hover-rgb);
+	--simple-luna-alternative-foreground-color:var(--hyperlink-alternative-foreground-color);
+	--simple-luna-alternative-foreground-color-hover:var(--hyperlink-alternative-foreground-color-hover);
+	--simple-luna-alternative-foreground-color-rgb:var(--hyperlink-alternative-foreground-color-rgb);
+	--simple-luna-alternative-foreground-color-hover-rgb:var(--hyperlink-alternative-foreground-color-hover-rgb);
+	--simple-luna-tabs-background-color:var(--hyperlink-tabs-background-color);
+	--simple-luna-tabs-opacity:var(--hyperlink-tabs-opacity);
+	--simple-luna-active-tabs-opacity:var(--hyperlink-active-tabs-opacity);
+}
+
+
+.visualstyle-simple body .oo-ui-tool.oo-ui-widget-enabled > .oo-ui-tool-link:hover, 
+.visualstyle-simple body .wikiEditor-ui-toolbar .group .tool-select .menu .options .option:hover {
+	background-color:var(--canvas-secondary-background-color-hover);
+	color:var(--canvas-secondary-foreground-color-inverted);
+	border-color:rgba(var(--canvas-foreground-color-rgb),0.2);
+}
+
+.visualstyle-simple .cpe-floating-button {
+  --floating-button-background-color:var(--highlight-background-color);
+  --floating-button-background-color-hover:var(--highlight-background-color-hover);
+  --floating-button-background-color-active:var(--floating-button-background-color-hover);
+  --floating-button-color:var(--highlight-foreground-color);
+  --floating-button-color-hover:var(--floating-button-color);
+  --floating-button-color-active:var(--highlight-foreground-color-inverted);
+  --floating-button-border-color:var(--floating-button-background-color);
+  --floating-button-border-color-hover:rgba(var(--highlight-foreground-color-rgb),0.2);
+  --floating-button-border-color-active:var(--floating-button-border-color-hover);
+  --floating-button-fadeout-opacity:0;
+  --floating-button-shadow-opacity:0.33!important;
+  --floating-button-shadow-opacity-hover:0.66!important;
+  --floating-button-shadow-blur:15px!important;
+}
+
+.visualstyle-simple .cpe-floating-button.is-unaccented {
+  --floating-button-background-color:var(--inactive-text-background-color);
+  --floating-button-background-color-hover:var(--inactive-text-background-color-hover);
+  --floating-button-color:var(--inactive-text-foreground-color);
+  --floating-button-color-hover:var(--floating-button-color);
+  --floating-button-color-active:var(--inactive-text-foreground-color-inverted);
+  --floating-button-border-color-hover:rgba(var(--inactive-text-foreground-color-rgb),0.2);
+}
+
+.visualstyle-simple .cpe-floating-button.is-alternate {
+  --floating-button-background-color:var(--active-title-background-color);
+  --floating-button-background-color-hover:var(--active-title-background-color-hover);
+  --floating-button-color:var(--active-title-foreground-color);
+  --floating-button-color-hover:var(--floating-button-color);
+  --floating-button-color-active:var(--active-title-foreground-color-inverted);
+  --floating-button-border-color-hover:rgba(var(--active-title-foreground-color-rgb),0.2);
+}
+
+
+.visualstyle-simple .cpe-floating-button.is-alert-color {
+  --floating-button-background-color:var(--alert-background-color);
+  --floating-button-background-color-hover:var(--alert-background-color-hover-2);
+  --floating-button-color:var(--alert-foreground-color);
+  --floating-button-color-hover:var(--floating-button-color);
+  --floating-button-color-active:var(--alert-foreground-color-inverted);
+  --floating-button-border-color-hover:rgba(var(--alert-foreground-color-rgb),0.2);
+}
+
+.visualstyle-simple .cpe-floating-button.is-pause-color {
+  --floating-button-background-color:var(--pause-background-color);
+  --floating-button-background-color-hover:var(--pause-background-color-hover-2);
+  --floating-button-color:var(--pause-foreground-color);
+  --floating-button-color-hover:var(--floating-button-color);
+  --floating-button-color-active:var(--pause-foreground-color-inverted);
+  --floating-button-border-color-hover:rgba(var(--pause-foreground-color-rgb),0.2);
+}
+
+
+.visualstyle-simple .cpe-floating-button.is-warning-color {
+  --floating-button-background-color:var(--warning-background-color);
+  --floating-button-background-color-hover:var(--warning-background-color-hover-2);
+  --floating-button-color:var(--warning-foreground-color);
+  --floating-button-color-hover:var(--floating-button-color);
+  --floating-button-color-active:var(--warning-foreground-color-inverted);
+  --floating-button-border-color-hover:rgba(var(--warning-foreground-color-rgb),0.2);
+}
+
+.visualstyle-simple .cpe-floating-button.is-success-color {
+  --floating-button-background-color:var(--success-background-color);
+  --floating-button-background-color-hover:var(--success-background-color-hover-2);
+  --floating-button-color:var(--success-foreground-color);
+  --floating-button-color-hover:var(--floating-button-color);
+  --floating-button-color-active:var(--success-foreground-color-inverted);
+  --floating-button-border-color-hover:rgba(var(--success-foreground-color-rgb),0.2);
+}
+
+.visualstyle-simple .cpe-floating-button.is-progress-color {
+  --floating-button-background-color:var(--progress-background-color);
+  --floating-button-background-color-hover:var(--progress-background-color-hover-2);
+  --floating-button-color:var(--progress-foreground-color);
+  --floating-button-color-hover:var(--floating-button-color);
+  --floating-button-color-active:var(--progress-foreground-color-inverted);
+  --floating-button-border-color-hover:rgba(var(--progress-foreground-color-rgb),0.2);
+}
+
+.visualstyle-simple .cpe-floating-button.is-message-color {
+  --floating-button-background-color:var(--message-background-color);
+  --floating-button-background-color-hover:var(--message-background-color-hover-2);
+  --floating-button-color:var(--message-foreground-color);
+  --floating-button-color-hover:var(--floating-button-color);
+  --floating-button-color-active:var(--message-foreground-color-inverted);
+  --floating-button-border-color-hover:rgba(var(--message-foreground-color-rgb),0.2);
+}
+
+
+.visualstyle-simple .cpe-button,
+.visualstyle-simple .oo-ui-buttonElement > .oo-ui-buttonElement-button,
+.visualstyle-simple .mw-ui-button,
+.visualstyle-simple body .oo-ui-tool.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive > .oo-ui-tool-link {
+	--button-border-color-hover:rgba(var(--button-foreground-color-rgb),0.2);
+}
+
+
+.visualstyle-simple body,
+.visualstyle-simple body .toc {
+/* Selection Styling */
+	--selection-background-color:var(--highlight-background-color);
+	--selection-text-color:var(--highlight-foreground-color);
+/* Base Styling */
+--dropdown-background-color:var(--simple-luna-background-color-rgb);
+--dropdown-border-color:var(--simple-luna-background-color-hover);
+--dropdown-text-color:var(--simple-luna-foreground-color-rgb);
+--dropdown-text-color-hover:var(--simple-luna-foreground-color-hover-rgb);
+--dropdown-inactive-text-color:var(--simple-luna-foreground-color-hover-rgb);
+/* Secondary Styling (Used in OOUI) */
+--dropdown-background-color-2:var(--simple-luna-background-color-hover-rgb);
+--dropdown-text-color-2:var(--simple-luna-foreground-color-inverted-rgb);
+--dropdown-text-color-hover-2:var(--simple-luna-foreground-color-inverted-rgb);
+/* Header Styling */
+--dropdown-header-background-color:rgba(var(--dropdown-text-color),0.125);
+--dropdown-header-text-color:var(--simple-luna-foreground-color-hover);
+/* Link Styling */
+--dropdown-hyperlink-background-color:rgba(var(--dropdown-background-color-2),var(--acrylic-opacity));
+--dropdown-hyperlink-border-color:rgba(var(--canvas-foreground-color-rgb),0.2);
+--dropdown-hyperlink-text-color:rgb(var(--dropdown-text-color-2));
+/* Active Link Styling */
+--dropdown-active-hyperlink-background-color:var(--dropdown-hyperlink-background-color);
+--dropdown-active-hyperlink-border-color:var(--dropdown-hyperlink-border-color);
+--dropdown-active-hyperlink-text-color:var(--dropdown-hyperlink-text-color);
+}
+
+
+.visualstyle-simple body  {
+	--checkbox-checked-shadow-hover:rgba(var(--highlight-foreground-color-rgb),0.2);
+}
+
+
+.visualstyle-simple .wikiEditor-ui-toolbar .booklet > .index > .current,
+.visualstyle-simple .oo-ui-popupToolGroup.oo-ui-widget-enabled > .oo-ui-popupToolGroup-handle:active, 
+.visualstyle-simple .oo-ui-popupToolGroup.oo-ui-popupToolGroup-active > .oo-ui-popupToolGroup-handle, 
+.visualstyle-simple .oo-ui-popupToolGroup.oo-ui-popupToolGroup-active > .oo-ui-popupToolGroup-handle:hover, 
+.visualstyle-simple .oo-ui-tool.oo-ui-widget-enabled > .oo-ui-tool-link:active, 
+.visualstyle-simple .oo-ui-tool.oo-ui-widget-enabled.oo-ui-tool-active > .oo-ui-tool-link, 
+.visualstyle-simple .oo-ui-tool.oo-ui-widget-enabled.oo-ui-popupToolGroup-active > .oo-ui-tool-link {
+  background-color:var(--canvas-secondary-background-color-hover);
+  color:var(--canvas-secondary-foreground-color-inverted);
+}
+
+
+.visualstyle-simple .oo-ui-outlineOptionWidget.oo-ui-optionWidget-highlighted,
+.visualstyle-simple .oo-ui-outlineOptionWidget.oo-ui-optionWidget-pressed, 
+.visualstyle-simple .oo-ui-outlineOptionWidget.oo-ui-optionWidget-selected {
+  background-color:var(--canvas-background-color-hover);
+  color:var(--canvas-foreground-color-inverted);
+}
+
+
+.visualstyle-simple .cpe-dropdown__content .cpe-list a {
+	color:var(--simple-luna-foreground-color);
+}
+
+.visualstyle-simple .cpe-dropdown__content .cpe-list a:hover,
+.visualstyle-simple .cpe-dropdown__content .cpe-list a:focus {
+	color:var(--simple-luna-foreground-color-hover);
+}
+
+.visualstyle-simple .cpe-dropdown__content .cpe-list > li > input[type="range"] {
+	--tabs-color:var(--simple-luna-tabs-background-color);
+	--tabs-opacity:var(--simple-luna-active-tabs-opacity);
+  --range-filler-color:var(--inactive-text-background-color);
+  --range-filler-color-hover:var(--inactive-text-background-color-hover);
+  --range-filler-color-2:rgba(var(--tabs-color),var(--tabs-opacity));
+  --range-border-color:var(--simple-luna-foreground-color-inverted);
+}
+
+.visualstyle-simple.has-accents .cpe-dropdown__content .cpe-list > li > input[type="range"] {
+  --range-filler-color:var(--canvas-alternative-foreground-color);
+  --range-filler-color-hover:var(--canvas-alternative-foreground-color-hover);
+}
+
+
+/* Checkboxes */
+.visualstyle-simple body .oo-ui-menuSelectWidget, 
+.visualstyle-simple body .wikiEditor-ui-toolbar .group .tool-select .options, 
+.visualstyle-simple body .oo-ui-popupWidget-popup, 
+.visualstyle-simple body .mw-rcfilters-ui-changesListWrapperWidget .mw-changeslist-legend, 
+.visualstyle-simple body .oo-ui-popupToolGroup-tools {
+	--checkbox-tabs-opacity:var(--simple-luna-active-tabs-opacity);
+	--checkbox-tabs-background-color:var(--simple-luna-tabs-background-color);
+	--checkbox-unchecked-bg:rgba(var(--checkbox-tabs-background-color),var(--checkbox-tabs-opacity));
+	--checkbox-unchecked-shadow:rgba(var(--simple-luna-foreground-color-rgb), 0.5);
+	--checkbox-unchecked-bg-hover:var(--checkbox-unchecked-bg);
+	--checkbox-unchecked-shadow-hover:var(--checkbox-checked-bg);
+	--checkbox-active-bg:var(--simple-luna-foreground-color);
+	--checkbox-checked-bg:var(--simple-luna-foreground-color);
+	--checkbox-checked-bg-hover:var(--simple-luna-foreground-color-hover);
+	--checkbox-checked-shadow:var(--checkbox-checked-bg);
+	--checkbox-checked-shadow-hover:rgba(var(--simple-luna-background-color-rgb),0.2);
+	--checkbox-checked-text:var(--simple-luna-background-color);
+	--checkbox-checked-text-hover:var(--checkbox-checked-text);
+}
+
+.visualstyle-simple body .toc .module-toc li a {
+	color:var(--canvas-foreground-color);
+}
+
+
+.visualstyle-simple body .toc .module-toc li a:hover,
+.visualstyle-simple body .toc .module-toc li a:active,
+.visualstyle-simple body .toc .module-toc li a:focus,
+.visualstyle-simple body .toc .module-toc li.selected a {
+	color:var(--canvas-foreground-color-inverted);
+	background-color:var(--canvas-background-color-hover);
+	border-color:rgba(var(--canvas-foreground-color-rgb),0.2);
+}
+
+
+.visualstyle-simple body .toctogglelabel {
+	color:inherit;
+}
+
+.visualstyle-simple body .toc .toctitle {
+	border-bottom-color:currentColor;
+}
+
+
+.visualstyle-simple body .oo-ui-menuSelectWidget .oo-ui-buttonElement > .oo-ui-buttonElement-button,
+.visualstyle-simple body .wikiEditor-ui-toolbar .group .tool-select .options .oo-ui-buttonElement > .oo-ui-buttonElement-button, 
+.visualstyle-simple body .oo-ui-popupWidget-popup .oo-ui-buttonElement > .oo-ui-buttonElement-button, 
+.visualstyle-simple body .mw-rcfilters-ui-changesListWrapperWidget .mw-changeslist-legend .oo-ui-buttonElement > .oo-ui-buttonElement-button, 
+.visualstyle-simple body .oo-ui-popupToolGroup-tools .oo-ui-buttonElement > .oo-ui-buttonElement-button,
+.visualstyle-simple body .mw-echo-ui-notificationsInboxWidget-toolbarWrapper .oo-ui-buttonElement > .oo-ui-buttonElement-button,
+.visualstyle-simple body .mw-cookiewarning-container .oo-ui-buttonElement > .oo-ui-buttonElement-button {
+	--tabs-color:var(--simple-luna-tabs-background-color);
+	--tabs-opacity:var(--simple-luna-active-tabs-opacity);
+    --button-background-color: var(--simple-luna-foreground-color);
+    --button-background-color-rgb: var(--simple-luna-foreground-color-rgb);
+    --button-background-color-hover: var(--simple-luna-foreground-color-hover);
+    --button-foreground-color: var(--simple-luna-background-color);
+    --button-foreground-color-hover: var(--simple-luna-background-color);
+    --button-foreground-color-inverted: var(--simple-luna-background-color-hover);
+	--button-foreground-color-rgb:var(--simple-luna-background-color-rgb);
+    --secondary-button-background-color:rgba(var(--tabs-color),var(--tabs-opacity));
+    --secondary-button-foreground-color: var(--simple-luna-foreground-color);
+    --secondary-button-foreground-color-hover: var(--simple-luna-foreground-color-hover);
+}
+
+
+
+.visualstyle-simple body .oo-ui-popupWidget-popup .oo-ui-buttonElement-frameless.oo-ui-widget-enabled > .oo-ui-buttonElement-button {
+	color:var(--secondary-button-foreground-color);
+}
+
+
+.visualstyle-simple body .oo-ui-popupWidget-popup .oo-ui-buttonElement-frameless.oo-ui-widget-enabled > .oo-ui-buttonElement-button:hover {
+	color:var(--secondary-button-foreground-color-hover);
+}
+
+.visualstyle-simple body .oo-ui-popupWidget-popup .oo-ui-buttonElement-frameless.oo-ui-widget-enabled.oo-ui-buttonElement-pressed > input.oo-ui-buttonElement-button, 
+.visualstyle-simple body .oo-ui-popupWidget-popup .oo-ui-buttonElement-frameless.oo-ui-widget-enabled > .oo-ui-buttonElement-button:active {
+	color:var(--secondary-button-foreground-color-hover);
+}
+
+/* Notifications and Banners */
+.visualstyle-simple body .mw-notification {
+	border-color:var(--simple-luna-background-color);
+	color:var(--simple-luna-foreground-color);
+	background-color:rgba(var(--simple-luna-background-color-rgb),var(--acrylic-opacity));
+}
+
+
+.visualstyle-simple body .mw-notification a,
+.visualstyle-simple body .mw-notification a:visited {
+	color:rgba(var(--simple-luna-alternative-foreground-color-rgb),0.8);
+}
+
+.visualstyle-simple body .mw-notification a:hover,
+.visualstyle-simple body .mw-notification a:hover:visited {
+	color:rgba(var(--simple-luna-alternative-foreground-color-rgb),1);
+}
+
+
+.visualstyle-simple body .mw-notification.mw-notification-type-error {
+	color:var(--alert-foreground-color);
+	background-color:rgba(var(--alert-background-color-rgb),var(--acrylic-opacity));
+    border-color: var(--alert-background-color);
+}
+
+
+.visualstyle-simple body .mw-notification.mw-notification-type-error a,
+.visualstyle-simple body .mw-notification.mw-notification-type-error a:visited {
+	color:rgba(var(--alert-alternative-foreground-color-rgb),0.8);
+}
+
+.visualstyle-simple body .mw-notification.mw-notification-type-error a:hover,
+.visualstyle-simple body .mw-notification.mw-notification-type-error a:hover:visited {
+	color:rgba(var(--alert-alternative-foreground-color-rgb),1);
+}
+
+
+.visualstyle-simple body .mw-notification.mw-notification-type-success {
+	color:var(--success-foreground-color);
+	background-color:rgba(var(--success-background-color-rgb),var(--acrylic-opacity));
+    border-color: var(--success-background-color);
+}
+
+
+.visualstyle-simple body .mw-notification.mw-notification-type-success a,
+.visualstyle-simple body .mw-notification.mw-notification-type-success a:visited {
+	color:rgba(var(--success-alternative-foreground-color-rgb),0.8);
+}
+
+.visualstyle-simple body .mw-notification.mw-notification-type-success a:hover,
+.visualstyle-simple body .mw-notification.mw-notification-type-success a:hover:visited {
+	color:rgba(var(--success-alternative-foreground-color-rgb),1);
+}
+
+
+.visualstyle-simple body .mw-notification.mw-notification-type-warn {
+	color:var(--warning-foreground-color);
+	background-color:rgba(var(--warning-background-color-rgb),var(--acrylic-opacity));
+    border-color: var(--warning-background-color);
+
+}
+.visualstyle-simple body .mw-notification.mw-notification-type-warn a,
+.visualstyle-simple body .mw-notification.mw-notification-type-warn a:visited {
+	color:rgba(var(--warning-alternative-foreground-color-rgb),0.8);
+}
+
+.visualstyle-simple body .mw-notification.mw-notification-type-warn a:hover,
+.visualstyle-simple body .mw-notification.mw-notification-type-warn a:hover:visited {
+	color:rgba(var(--warning-alternative-foreground-color-rgb),1);
+}
+
+.visualstyle-simple .cpe-banner-notification {
+	color:var(--simple-luna-foreground-color);
+	background-color:rgba(var(--simple-luna-background-color-rgb),var(--acrylic-opacity));
+	border-color:var(--simple-luna-background-color);
+}
+
+.visualstyle-simple .cpe-banner-notification a,
+.visualstyle-simple .cpe-banner-notification a:visited {
+	color:rgba(var(--simple-luna-alternative-foreground-color-rgb),0.8);
+}
+
+
+.visualstyle-simple .cpe-banner-notification a:hover,
+.visualstyle-simple .cpe-banner-notification a:hover:visited {
+	color:rgba(var(--simple-luna-alternative-foreground-color-rgb),1);
+}
+
+.visualstyle-simple .cpe-banner-notification__icon {
+	color:var(--simple-luna-background-color);
+	background-color:var(--simple-luna-alternative-foreground-color);
+}
+
+
+.visualstyle-simple .is-alert.cpe-banner-notification {
+	color:var(--alert-foreground-color);
+	background-color:rgba(var(--alert-background-color-rgb),var(--acrylic-opacity));
+	border-color:var(--alert-background-color-hover);
+}
+
+
+.visualstyle-simple .is-alert.cpe-banner-notification a,
+.visualstyle-simple .is-alert.cpe-banner-notification a:visited {
+	color:rgba(var(--alert-alternative-foreground-color-rgb),0.8);
+}
+
+.visualstyle-simple .is-alert.cpe-banner-notification a:hover,
+.visualstyle-simple .is-alert.cpe-banner-notification a:hover:visited {
+	color:rgba(var(--alert-alternative-foreground-color-rgb),1);
+}
+
+.visualstyle-simple .is-alert .cpe-banner-notification__icon {
+	color:var(--alert-background-color);
+	background-color:var(--alert-alternative-foreground-color);
+}
+
+.visualstyle-simple .is-pause.cpe-banner-notification {
+	color:var(--pause-foreground-color);
+	background-color:rgba(var(--pause-background-color-rgb),var(--acrylic-opacity));
+	border-color:var(--pause-background-color-hover);
+}
+
+
+.visualstyle-simple .is-pause.cpe-banner-notification a,
+.visualstyle-simple .is-pause.cpe-banner-notification a:visited {
+	color:rgba(var(--pause-alternative-foreground-color-rgb),0.8);
+}
+
+.visualstyle-simple .is-pause.cpe-banner-notification a:hover,
+.visualstyle-simple .is-pause.cpe-banner-notification a:hover:visited {
+	color:rgba(var(--pause-alternative-foreground-color-rgb),1);
+}
+
+.visualstyle-simple .is-pause .cpe-banner-notification__icon {
+	color:var(--pause-background-color);
+	background-color:var(--pause-alternative-foreground-color);
+}
+
+.visualstyle-simple .is-warning.cpe-banner-notification {
+	color:var(--warning-foreground-color);
+	background-color:rgba(var(--warning-background-color-rgb),var(--acrylic-opacity));
+	border-color:var(--warning-background-color-hover);
+}
+
+.visualstyle-simple .is-warning.cpe-banner-notification a,
+.visualstyle-simple .is-warning.cpe-banner-notification a:visited {
+	color:rgba(var(--warning-alternative-foreground-color-rgb),0.8);
+}
+
+.visualstyle-simple .is-warning.cpe-banner-notification a:hover,
+.visualstyle-simple .is-warning.cpe-banner-notification a:hover:visited {
+	color:rgba(var(--warning-alternative-foreground-color-rgb),1);
+}
+
+.visualstyle-simple .is-warning .cpe-banner-notification__icon {
+	color:var(--warning-background-color);
+	background-color:var(--warning-alternative-foreground-color);
+}
+
+.visualstyle-simple .is-success.cpe-banner-notification {
+	color:var(--success-foreground-color);
+	background-color:rgba(var(--success-background-color-rgb),var(--acrylic-opacity));
+	border-color:var(--success-background-color-hover);
+}
+
+
+.visualstyle-simple .is-success.cpe-banner-notification a,
+.visualstyle-simple .is-success.cpe-banner-notification a:visited {
+	color:rgba(var(--success-alternative-foreground-color-rgb),0.8);
+}
+
+.visualstyle-simple .is-success.cpe-banner-notification a:hover,
+.visualstyle-simple .is-success.cpe-banner-notification a:hover:visited {
+	color:rgba(var(--success-alternative-foreground-color-rgb),1);
+}
+
+.visualstyle-simple .is-success .cpe-banner-notification__icon {
+	color:var(--success-background-color);
+	background-color:var(--success-alternative-foreground-color);
+}
+
+
+.visualstyle-simple .is-progress.cpe-banner-notification {
+	color:var(--progress-foreground-color);
+	background-color:rgba(var(--progress-background-color-rgb),var(--acrylic-opacity));
+	border-color:var(--progress-background-color-hover);
+}
+
+
+.visualstyle-simple .is-progress.cpe-banner-notification a,
+.visualstyle-simple .is-progress.cpe-banner-notification a:visited {
+	color:rgba(var(--progress-alternative-foreground-color-rgb),0.8);
+}
+
+.visualstyle-simple .is-progress.cpe-banner-notification a:hover,
+.visualstyle-simple .is-progress.cpe-banner-notification a:hover:visited {
+	color:rgba(var(--progress-alternative-foreground-color-rgb),1);
+}
+
+.visualstyle-simple .is-progress .cpe-banner-notification__icon {
+	color:var(--progress-background-color);
+	background-color:var(--progress-alternative-foreground-color);
+}
+
+.visualstyle-simple .is-message.cpe-banner-notification {
+	color:var(--message-foreground-color);
+	background-color:rgba(var(--message-background-color-rgb),var(--acrylic-opacity));
+	border-color:var(--message-background-color-hover);
+}
+
+
+.visualstyle-simple .is-message.cpe-banner-notification a,
+.visualstyle-simple .is-message.cpe-banner-notification a:visited {
+	color:rgba(var(--message-alternative-foreground-color-rgb),0.8);
+}
+
+.visualstyle-simple .is-message.cpe-banner-notification a:hover,
+.visualstyle-simple .is-message.cpe-banner-notification a:hover:visited {
+	color:rgba(var(--message-alternative-foreground-color-rgb),1);
+}
+
+.visualstyle-simple .is-message .cpe-banner-notification__icon {
+	color:var(--message-background-color);
+	background-color:var(--message-alternative-foreground-color);
+}
+
+/** High Contrast  **/
+.visualstyle-simple.visualmode-contrast body,
+.visualstyle-simple.visualmode-contrast .cpe-dropdown__content,
+.visualstyle-simple.visualmode-contrast .cpe-dropdown__content .cpe-list.is-linked .cpe-dropdown-level-2 .cpe-dropdown-level-2__content {
+	--simple-fallback-color:var(--luna-background-color)!important;
+}
+
+.visualstyle-simple.visualmode-contrast ::-webkit-scrollbar-thumb {
+	background-color:var(--scrollbar-thumb-color-1);
+	color:var(--scrollbar-thumb-text);
+	border-color:var(--scrollbar-thumb-color-1);
+	box-shadow:0 0px 0 2px inset var(--scrollbar-thumb-color-1)!important;
+}
+
+.visualstyle-simple.visualmode-contrast body .oo-ui-tool.oo-ui-widget-enabled > .oo-ui-tool-link:hover, 
+.visualstyle-simple.visualmode-contrast body .wikiEditor-ui-toolbar .group .tool-select .menu .options .option:hover {
+	background-color:var(--canvas-secondary-foreground-color);
+	color:var(--canvas-secondary-background-color);
+	border-color:rgba(var(--canvas-secondary-background-color-rgb),0.5);
+}
+
+.visualstyle-simple.visualmode-contrast body .oo-ui-listToolGroup-tools .oo-ui-tool.oo-ui-widget-enabled > .oo-ui-tool-link:hover,
+.visualstyle-simple.visualmode-contrast body .oo-ui-popupToolGroup-tools .oo-ui-tool.oo-ui-widget-enabled > .oo-ui-tool-link:hover {
+	background-color:rgb(var(--dropdown-background-color-2));
+	color:rgb(var(--dropdown-text-color-2));
+}
+
+.visualstyle-simple.visualmode-contrast .cpe-floating-button {
+  --floating-button-background-color-hover:var(--floating-button-color);
+  --floating-button-background-color-active:var(--floating-button-background-color-hover);
+  --floating-button-color-hover:var(--floating-button-background-color);
+  --floating-button-color-active:var(--floating-button-color-hover);
+  --floating-button-border-color-hover:rgba(var(--highlight-background-color-rgb),0.5);
+  --floating-button-border-color-active:var(--floating-button-border-color-hover);
+}
+
+.visualstyle-simple.visualmode-contrast .cpe-floating-button.is-unaccented {
+  --floating-button-border-color-hover:rgba(var(--inactive-text-background-color-rgb),0.5);
+}
+
+.visualstyle-simple.visualmode-contrast .cpe-floating-button.is-alternate {
+  --floating-button-border-color-hover:rgba(var(--active-title-background-color-rgb),0.5);
+}
+
+.visualstyle-simple.visualmode-contrast .cpe-floating-button.is-alert-color {
+  --floating-button-background-color:var(--hyperlink-background-color);
+  --floating-button-color:var(--hyperlink-foreground-color);
+  --floating-button-border-color-hover:rgba(var(--hyperlink-background-color-rgb),0.5);
+}
+
+.visualstyle-simple.visualmode-contrast .cpe-floating-button.is-pause-color {
+  --floating-button-background-color:var(--inactive-text-background-color);
+  --floating-button-color:var(--inactive-text-foreground-color);
+  --floating-button-border-color-hover:rgba(var(--inactive-text-background-color-rgb),0.5);
+}
+
+
+.visualstyle-simple.visualmode-contrast .cpe-floating-button.is-warning-color {
+  --floating-button-background-color:var(--highlight-background-color);
+  --floating-button-color:var(--highlight-foreground-color);
+  --floating-button-border-color-hover:rgba(var(--highlight-background-color-rgb),0.5);
+}
+
+.visualstyle-simple.visualmode-contrast .cpe-floating-button.is-success-color {
+  --floating-button-background-color:var(--canvas-text-background-color);
+  --floating-button-color:var(--canvas-text-foreground-color);
+  --floating-button-border-color-hover:rgba(var(--canvas-text-background-color-rgb),0.5);
+}
+
+
+.visualstyle-simple.visualmode-contrast .cpe-floating-button.is-progress-color {
+  --floating-button-background-color:var(--active-title-background-color);
+  --floating-button-color:var(--active-title-foreground-color);
+  --floating-button-border-color-hover:rgba(var(--active-title-background-color-rgb),0.5);
+}
+
+
+.visualstyle-simple.visualmode-contrast .cpe-floating-button.is-message-color {
+  --floating-button-background-color:var(--inactive-title-background-color);
+  --floating-button-color:var(--inactive-title-foreground-color);
+  --floating-button-border-color-hover:rgba(var(--inactive-title-background-color-rgb),0.5);
+}
+
+.visualstyle-simple.visualmode-contrast .cpe-button,
+.visualstyle-simple.visualmode-contrast .oo-ui-buttonElement > .oo-ui-buttonElement-button,
+.visualstyle-simple.visualmode-contrast .mw-ui-button,
+.visualstyle-simple.visualmode-contrast .oo-ui-tool.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive > .oo-ui-tool-link {
+	--button-border-color-hover:rgba(var(--button-background-color-rgb),0.5);
+}
+
+/* Primary, Secondary and Frameless */
+.visualstyle-simple.visualmode-contrast .cpe-button:not(.is-tertiary):hover,
+.visualstyle-simple.visualmode-contrast .cpe-button:not(.is-tertiary):active, 
+.visualstyle-simple.visualmode-contrast .cpe-button:not(.is-tertiary):focus:not(:active), 
+.visualstyle-simple.visualmode-contrast .cpe-button:not(.is-tertiary).is-active, 
+.visualstyle-simple.visualmode-contrast .selected .cpe-button:not(.is-tertiary),
+.visualstyle-simple.visualmode-contrast .cpe-dropdown:focus > .cpe-button:not(.is-tertiary),
+.visualstyle-simple.visualmode-contrast .cpe-dropdown:focus-within > .cpe-button:not(.is-tertiary),
+/* OOUI */
+.visualstyle-simple.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled > .oo-ui-buttonElement-button:hover,
+.visualstyle-simple.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-progressive  > .oo-ui-buttonElement-button:hover,
+.visualstyle-simple.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-destructive  > .oo-ui-buttonElement-button:hover,
+.visualstyle-simple.visualmode-contrast body .mw-ui-button:not(:disabled):hover,
+.visualstyle-simple.visualmode-contrast body .mw-ui-button:hover,
+.visualstyle-simple.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled > .oo-ui-buttonElement-button:active, 
+.visualstyle-simple.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-buttonElement-pressed > .oo-ui-buttonElement-button,
+.visualstyle-simple.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-progressive > .oo-ui-buttonElement-button:active, 
+.visualstyle-simple.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-buttonElement-pressed.oo-ui-flaggedElement-progressive > .oo-ui-buttonElement-button,
+.visualstyle-simple.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-destructive > .oo-ui-buttonElement-button:active, 
+.visualstyle-simple.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-buttonElement-pressed.oo-ui-flaggedElement-destructive > .oo-ui-buttonElement-button,
+.visualstyle-simple.visualmode-contrast body .mw-ui-button:not(:disabled):active,
+.visualstyle-simple.visualmode-contrast body .mw-ui-button:active,
+.visualstyle-simple.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled > .oo-ui-buttonElement-button:focus:not(:active),
+.visualstyle-simple.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-progressive > .oo-ui-buttonElement-button:focus:not(:active),
+.visualstyle-simple.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-destructive > .oo-ui-buttonElement-button:focus:not(:active),
+.visualstyle-simple.visualmode-contrast body .mw-ui-button:not(:disabled):focus,
+.visualstyle-simple.visualmode-contrast body .mw-ui-button:focus:not(:active),
+/* OOUI Primary */
+.visualstyle-simple.visulmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive > .oo-ui-buttonElement-button:hover,
+.visualstyle-simple.visulmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-destructive > .oo-ui-buttonElement-button:hover,
+.visualstyle-simple.visulmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-buttonElement-active > .oo-ui-buttonElement-button:focus:hover,
+.visualstyle-simple.visulmode-contrast body .oo-ui-buttonSelectWidget.oo-ui-widget-enabled:focus .oo-ui-buttonOptionWidget.oo-ui-optionWidget-selected .oo-ui-buttonElement-button:hover,
+.visualstyle-simple.visulmode-contrast body .mw-ui-button.mw-ui-progressive:not(:disabled):hover,
+.visualstyle-simple.visulmode-contrast body .mw-ui-button.mw-ui-progressive:hover,
+.visualstyle-simple.visulmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive > .oo-ui-buttonElement-button:active, 
+.visualstyle-simple.visulmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-destructive > .oo-ui-buttonElement-button:active, 
+.visualstyle-simple.visulmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive.oo-ui-buttonElement-pressed > .oo-ui-buttonElement-button, 
+.visualstyle-simple.visulmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive.oo-ui-buttonElement-active > .oo-ui-buttonElement-button, 
+.visualstyle-simple.visulmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive.oo-ui-popupToolGroup-active > .oo-ui-buttonElement-button,
+.visualstyle-simple.visulmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-buttonElement-active > .oo-ui-buttonElement-button:focus:active,
+.visualstyle-simple.visulmode-contrast body .oo-ui-buttonSelectWidget.oo-ui-widget-enabled:focus .oo-ui-buttonOptionWidget.oo-ui-optionWidget-selected .oo-ui-buttonElement-button:active,
+.visualstyle-simple.visulmode-contrast body .mw-ui-button.mw-ui-progressive:not(:disabled):active,
+.visualstyle-simple.visulmode-contrast body .mw-ui-button.mw-ui-progressive:active,
+.visualstyle-simple.visulmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive > .oo-ui-buttonElement-button:focus:not(:active),
+.visualstyle-simple.visulmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-destructive > .oo-ui-buttonElement-button:focus:not(:active),
+.visualstyle-simple.visulmode-contrast body .mw-ui-button.mw-ui-progressive:not(:disabled):focus,
+.visualstyle-simple.visulmode-contrast body .mw-ui-button.mw-ui-progressive:focus:not(:active),
+.visualstyle-simple.visualmode-contrast body .oo-ui-tool.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive > .oo-ui-tool-link:hover,
+.visualstyle-simple.visualmode-contrast body .oo-ui-tool.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive > .oo-ui-tool-link:active,
+.visualstyle-simple.visualmode-contrast body .oo-ui-tool.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive > .oo-ui-tool-link:focus {
+    border-color:var(--button-border-color-hover);
+}
+
+.visualstyle-simple.visualmode-contrast body,
+.visualstyle-simple.visualmode-contrast body .toc {
+/* Base Styling */
+--dropdown-border-color:var(--canvas-foreground-color);
+/* Secondary Styling (Used in OOUI) */
+--dropdown-background-color-2:var(--dropdown-text-color);
+--dropdown-text-color-2:var(--dropdown-background-color);
+--dropdown-text-color-hover-2:var(--dropdown-background-color);
+/* Link Styling */
+--dropdown-hyperlink-border-color:rgba(var(--dropdown-background-color),0.5);
+}
+
+.visualstyle-simple.visualmode-contrast body  {
+	--checkbox-active-bg:var(--highlight-background-color);
+	--checkbox-checked-bg:var(--highlight-background-color);
+	--checkbox-checked-bg-hover:var(--checkbox-checked-text);
+	--checkbox-checked-shadow:var(--checkbox-checked-bg);
+	--checkbox-checked-shadow-hover:var(--checkbox-checked-bg-hover);
+	--checkbox-checked-text:var(--highlight-foreground-color);
+	--checkbox-checked-text-hover:var(--checkbox-checked-bg);
+}
+
+.visualstyle-simple.visualmode-contrast body {
+	--checkbox-checked-shadow-hover:rgba(var(--highlight-background-color-rgb),0.5);
+}
+
+.visualstyle-simple.visualmode-contrast .wikiEditor-ui-toolbar .booklet > .index > .current,
+.visualstyle-simple.visualmode-contrast .oo-ui-popupToolGroup.oo-ui-widget-enabled > .oo-ui-popupToolGroup-handle:active, 
+.visualstyle-simple.visualmode-contrast .oo-ui-popupToolGroup.oo-ui-popupToolGroup-active > .oo-ui-popupToolGroup-handle, 
+.visualstyle-simple.visualmode-contrast .oo-ui-popupToolGroup.oo-ui-popupToolGroup-active > .oo-ui-popupToolGroup-handle:hover, 
+.visualstyle-simple.visualmode-contrast .oo-ui-tool.oo-ui-widget-enabled > .oo-ui-tool-link:active, 
+/* .visualstyle-simple.visualmode-contrast .oo-ui-tool.oo-ui-widget-enabled.oo-ui-tool-active > .oo-ui-tool-link,*/
+.visualstyle-simple.visualmode-contrast .oo-ui-tool.oo-ui-widget-enabled.oo-ui-popupToolGroup-active > .oo-ui-tool-link {
+  background-color:var(--canvas-secondary-foreground-color);
+  color:var(--canvas-secondary-background-color);
+}
+
+.visualstyle-simple.visualmode-contrast .oo-ui-outlineOptionWidget.oo-ui-optionWidget-highlighted,
+.visualstyle-simple.visualmode-contrast .oo-ui-outlineOptionWidget.oo-ui-optionWidget-pressed, 
+.visualstyle-simple.visualmode-contrast .oo-ui-outlineOptionWidget.oo-ui-optionWidget-selected {
+  background-color:var(--canvas-foreground-color);
+  color:var(--canvas-background-color);
+}
+
+/* Checkboxes */
+.visualstyle-simple.visualmode-contrast body .oo-ui-menuSelectWidget,
+.visualstyle-simple.visualmode-contrast body .wikiEditor-ui-toolbar .group .tool-select .options,
+.visualstyle-simple.visualmode-contrast body .oo-ui-popupWidget-popup,
+.visualstyle-simple.visualmode-contrast body .mw-rcfilters-ui-changesListWrapperWidget .mw-changeslist-legend,
+.visualstyle-simple.visualmode-contrast body .oo-ui-popupToolGroup-tools {
+	--checkbox-tabs-opacity:0;
+	--checkbox-tabs-background-color:0,0,0;
+	--checkbox-active-bg:var(--simple-luna-background-color);
+	--checkbox-checked-shadow-hover:rgba(var(--simple-luna-foreground-color-rgb),0.5);
+}
+
+.visualstyle-simple.visualmode-contrast body .toc .module-toc li a:hover,
+.visualstyle-simple.visualmode-contrast body .toc .module-toc li a:active,
+.visualstyle-simple.visualmode-contrast body .toc .module-toc li a:focus,
+.visualstyle-simple.visualmode-contrast body .toc .module-toc li.selected a {
+	color:var(--canvas-background-color)!important;
+	background-color:var(--canvas-foreground-color);
+	border-color:rgba(var(--canvas-background-color-rgb),0.5);
+}
+
+.visualstyle-simple.visualmode-contrast body .oo-ui-menuSelectWidget .oo-ui-buttonElement > .oo-ui-buttonElement-button,
+.visualstyle-simple.visualmode-contrast body .wikiEditor-ui-toolbar .group .tool-select .options .oo-ui-buttonElement > .oo-ui-buttonElement-button, 
+.visualstyle-simple.visualmode-contrast body .oo-ui-popupWidget-popup .oo-ui-buttonElement > .oo-ui-buttonElement-button, 
+.visualstyle-simple.visualmode-contrast body .mw-rcfilters-ui-changesListWrapperWidget .mw-changeslist-legend .oo-ui-buttonElement > .oo-ui-buttonElement-button, 
+.visualstyle-simple.visualmode-contrast body .oo-ui-popupToolGroup-tools .oo-ui-buttonElement > .oo-ui-buttonElement-button,
+.visualstyle-simple.visualmode-contrast body .mw-echo-ui-notificationsInboxWidget-toolbarWrapper .oo-ui-buttonElement > .oo-ui-buttonElement-button,
+.visualstyle-simple.visualmode-contrast body .mw-cookiewarning-container .oo-ui-buttonElement > .oo-ui-buttonElement-button {
+    --button-background-color-hover: var(--button-foreground-color);
+    --button-foreground-color-hover: var(--button-background-color);
+    --button-foreground-color-inverted: var(--button-background-color);
+    --secondary-button-background-color-hover:var(--button-foreground-color);
+    --secondary-button-foreground-color-hover: var(--button-background-color);
+}
+
+/* Notifications and Banners */
+.visualstyle-simple.visualmode-contrast body .mw-notification a,
+.visualstyle-simple.visualmode-contrast body .mw-notification a:visited {
+	color:rgb(var(--simple-luna-alternative-foreground-color-rgb))!important;
+}
+
+.visualstyle-simple.visualmode-contrast body .mw-notification.mw-notification-type-success {
+	color:var(--canvas-text-foreground-color);
+	background-color:var(--canvas-text-background-color);
+	border-color:var(--canvas-text-background-color);
+}
+
+.visualstyle-simple.visualmode-contrast body .mw-notification.mw-notification-type-success a,
+.visualstyle-simple.visualmode-contrast body .mw-notification.mw-notification-type-success a:visited {
+	color:rgb(var(--canvas-text-alternative-foreground-color-rgb))!important;
+}
+
+.visualstyle-simple.visualmode-contrast body .mw-notification.mw-notification-type-warn {
+	color:var(--highlight-foreground-color);
+	background-color:var(--highlight-background-color);
+	border-color:var(--highlight-background-color);
+}
+
+.visualstyle-simple.visualmode-contrast body .mw-notification.mw-notification-type-warn a,
+.visualstyle-simple.visualmode-contrast body .mw-notification.mw-notification-type-warn a:visited {
+	color:rgb(var(--highlight-alternative-foreground-color-rgb))!important;
+}
+
+.visualstyle-simple.visualmode-contrast .cpe-banner-notification {
+	color:var(--hyperlink-foreground-color);
+	background-color:var(--hyperlink-background-color);
+	border-color:var(--canvas-foreground-color);
+}
+
+.visualstyle-simple.visualmode-contrast .cpe-banner-notification a,
+.visualstyle-simple.visualmode-contrast .cpe-banner-notification a:visited {
+	color:rgba(var(--hyperlink-alternative-foreground-color-rgb))!important;
+	opacity:0.7;
+	text-decoration:underline;
+}
+
+
+.visualstyle-simple.visualmode-contrast .cpe-banner-notification a:hover,
+.visualstyle-simple.visualmode-contrast .cpe-banner-notification a:visited:hover {
+	opacity:1;
+}
+
+.visualstyle-simple.visualmode-contrast .is-pause.cpe-banner-notification {
+	color:var(--inactive-text-foreground-color);
+	background-color:var(--inactive-text-background-color);
+}
+
+
+.visualstyle-simple.visualmode-contrast .is-pause.cpe-banner-notification a,
+.visualstyle-simple.visualmode-contrast .is-pause.cpe-banner-notification a:visited {
+	color:rgb(var(--pause-alternative-foreground-color-rgb),1)!important;
+}
+
+.visualstyle-simple.visualmode-contrast .is-pause .cpe-banner-notification__icon {
+	color:var(--inactive-text-background-color);
+	background-color:var(--inactive-text-alternative-foreground-color);
+}
+
+.visualstyle-simple.visualmode-contrast .is-warning.cpe-banner-notification {
+	color:var(--highlight-foreground-color);
+	background-color:var(--highlight-background-color);
+}
+
+.visualstyle-simple.visualmode-contrast .is-warning.cpe-banner-notification a,
+.visualstyle-simple.visualmode-contrast .is-warning.cpe-banner-notification a:visited {
+	color:rgb(var(--highlight-alternative-foreground-color-rgb))!important;
+}
+
+.visualstyle-simple.visualmode-contrast .is-warning .cpe-banner-notification__icon {
+	color:var(--highlight-background-color);
+	background-color:var(--highlight-alternative-foreground-color);
+}
+
+
+.visualstyle-simple.visualmode-contrast .is-success.cpe-banner-notification {
+	color:var(--canvas-text-foreground-color);
+	background-color:var(--canvas-text-background-color);
+}
+
+
+.visualstyle-simple.visualmode-contrast .is-success.cpe-banner-notification a,
+.visualstyle-simple.visualmode-contrast .is-success.cpe-banner-notification a:visited {
+	color:rgb(var(--canvas-text-alternative-foreground-color-rgb))!important;
+}
+
+
+.visualstyle-simple.visualmode-contrast .is-success .cpe-banner-notification__icon {
+	color:var(--canvas-text-background-color);
+	background-color:var(--canvas-text-alternative-foreground-color);
+}
+
+.visualstyle-simple.visualmode-contrast .is-progress.cpe-banner-notification {
+	color:var(--active-title-foreground-color);
+	background-color:var(--active-title-background-color);
+}
+
+.visualstyle-simple.visualmode-contrast .is-progress.cpe-banner-notification a,
+.visualstyle-simple.visualmode-contrast .is-progress.cpe-banner-notification a:visited {
+	color:rgb(var(--active-title-alternative-foreground-color-rgb))!important;
+}
+
+.visualstyle-simple.visualmode-contrast .is-progress .cpe-banner-notification__icon {
+	color:var(--active-title-background-color);
+	background-color:var(--active-title-alternative-foreground-color);
+}
+
+.visualstyle-simple.visualmode-contrast .is-message.cpe-banner-notification {
+	color:var(--inactive-title-foreground-color);
+	background-color:var(--inactive-title-background-color);
+}
+
+.visualstyle-simple.visualmode-contrast .is-message.cpe-banner-notification a,
+.visualstyle-simple.visualmode-contrast .is-message.cpe-banner-notification a:visited {
+	color:rgb(var(--inactive-title-alternative-foreground-color-rgb))!important;
+}
+
+.visualstyle-simple.visualmode-contrast .is-message .cpe-banner-notification__icon {
+	color:var(--inactive-title-background-color);
+	background-color:var(--inactive-title-alternative-foreground-color);
+}
+
+
+/*** General Visual Style ***/
+/** Standard **/
+.visualstyle-general body {
+/* Link Styling */
+--dropdown-hyperlink-background-color:var(--hyperlink-background-color);
+--dropdown-hyperlink-border-color:transparent;
+--dropdown-hyperlink-text-color:var(--hyperlink-foreground-color);
+/* Active Link Styling */
+--dropdown-active-hyperlink-background-color:var(--hyperlink-background-color-hover);
+--dropdown-active-hyperlink-border-color:transparent;
+--dropdown-active-hyperlink-text-color:var(--hyperlink-foreground-color-inverted);
+/* Selection Styling */
+	--selection-background-color:var(--hyperlink-background-color);
+	--selection-text-color:var(--hyperlink-foreground-color);
+}
+
+.visualstyle-general body {
+	--checkbox-active-bg:var(--hyperlink-background-color);
+	--checkbox-checked-bg:var(--hyperlink-background-color);
+	--checkbox-checked-bg-hover:var(--hyperlink-background-color-hover);
+	--checkbox-checked-shadow:var(--checkbox-checked-bg);
+	--checkbox-checked-shadow-hover:var(--checkbox-checked-bg-hover);
+	--checkbox-checked-text:var(--hyperlink-foreground-color);
+}
+
+
+.visualstyle-general body .toc .module-toc li a:hover {
+  background-color:var(--dropdown-hyperlink-background-color);
+  color:var(--dropdown-hyperlink-text-color);
+  border-color:var(--dropdown-hyperlink-border-color);
+}
+
+
+.visualstyle-general body .toc .module-toc li a:active,
+.visualstyle-general body .toc .module-toc li a:focus,
+.visualstyle-general body .toc .module-toc li.selected a {
+  background-color:var(--dropdown-active-hyperlink-background-color);
+  color:var(--dropdown-active-hyperlink-text-color);
+  border-color:var(--dropdown-active-hyperlink-border-color);
+}
+
+.visualstyle-general .wikiEditor-ui-toolbar .booklet > .index > .current,
+.visualstyle-general .oo-ui-popupToolGroup.oo-ui-widget-enabled > .oo-ui-popupToolGroup-handle:active, 
+.visualstyle-general .oo-ui-popupToolGroup.oo-ui-popupToolGroup-active > .oo-ui-popupToolGroup-handle, 
+.visualstyle-general .oo-ui-popupToolGroup.oo-ui-popupToolGroup-active > .oo-ui-popupToolGroup-handle:hover, 
+.visualstyle-general .oo-ui-tool.oo-ui-widget-enabled > .oo-ui-tool-link:active, 
+.visualstyle-general .oo-ui-tool.oo-ui-widget-enabled.oo-ui-tool-active > .oo-ui-tool-link, 
+.visualstyle-general .oo-ui-tool.oo-ui-widget-enabled.oo-ui-popupToolGroup-active > .oo-ui-tool-link {
+  background-color:var(--hyperlink-background-color);
+  color:var(--hyperlink-foreground-color);
+}
+
+/* Inputs */
+.visualstyle-general .cpe-input,
+.visualstyle-general body .oo-ui-textInputWidget .oo-ui-inputWidget-input,
+.visualstyle-general body .oo-ui-textInputWidget.oo-ui-widget-enabled .oo-ui-inputWidget-input,
+.visualstyle-general body .oo-ui-dropdownWidget.oo-ui-widget-enabled .oo-ui-dropdownWidget-handle,
+.visualstyle-general body .oo-ui-textInputWidget.oo-ui-widget-disabled .oo-ui-inputWidget-input,
+.visualstyle-general body .mw-widget-dateInputWidget-handle,
+.visualstyle-general body .mw-widgets-datetime-dateTimeInputWidget-handle,
+.visualstyle-general body .mw-ui-input {
+  --input-box-solid:var(--hyperlink-background-color);
+  --input-box-focus:var(--hyperlink-background-color-rgb);
+}
+
+.visualstyle-general .cpe-input.is-unaccented {
+  --input-box-solid:var(--canvas-text-background-color-hover);
+  --input-box-focus:var(--canvas-text-background-color-rgb);
+}
+
+.visualstyle-general .cpe-input.is-alternate {
+  --input-box-solid:var(--active-text-background-color);
+  --input-box-focus:var(--active-text-background-color-rgb);
+}
+
+.visualstyle-general .cpe-input.is-alert-color {
+  --input-box-solid:var(--alert-background-color);
+  --input-box-focus:var(--alert-background-color-rgb);
+}
+
+.visualstyle-general .cpe-input.is-pause-color {
+  --input-box-solid:var(--pause-background-color);
+  --input-box-focus:var(--pause-background-color-rgb);
+}
+
+.visualstyle-general .cpe-input.is-warning-color {
+  --input-box-solid:var(--warning-background-color);
+  --input-box-focus:var(--warning-background-color-rgb);
+}
+
+.visualstyle-general .cpe-input.is-success-color {
+  --input-box-solid:var(--success-background-color);
+  --input-box-focus:var(--success-background-color-rgb);
+}
+
+.visualstyle-general .cpe-input.is-progress-color {
+  --input-box-solid:var(--progress-background-color);
+  --input-box-focus:var(--progress-background-color-rgb);
+}
+
+.visualstyle-general .cpe-input.is-message-color {
+  --input-box-solid:var(--message-background-color);
+  --input-box-focus:var(--message-background-color-rgb);
+}
+
+
+/* Buttons */
+.visualstyle-general .cpe-button,
+.visualstyle-general body .oo-ui-buttonElement > .oo-ui-buttonElement-button,
+.visualstyle-general body .mw-ui-button,
+.visualstyle-general body .mw-ui-button:not(:disabled),
+.visualstyle-general body .oo-ui-tool.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive > .oo-ui-tool-link {
+	--button-background-color:var(--hyperlink-background-color);
+	--button-background-color-rgb:var(--hyperlink-background-color-rgb);
+	--button-background-color-hover:var(--hyperlink-background-color-hover);
+	--button-foreground-color:var(--hyperlink-foreground-color);
+	--button-foreground-color-hover:var(--button-foreground-color);
+	--button-foreground-color-inverted:var(--hyperlink-foreground-color-inverted);
+	--button-foreground-color-rgb:var(--hyperlink-foreground-color-rgb);
+}
+
+.visualstyle-general .cpe-button.is-unaccented,
+.visualstyle-general body .oo-ui-buttonElement-framed.oo-ui-widget-disabled > .oo-ui-buttonElement-button  {
+	--button-background-color:var(--canvas-text-background-color);
+	--button-background-color-rgb:var(--canvas-text-background-color-rgb);
+	--button-background-color-hover:var(--canvas-text-background-color-hover);
+	--button-foreground-color:var(--canvas-text-foreground-color);
+	--button-foreground-color-hover:var(--button-foreground-color);
+	--button-foreground-color-inverted:var(--canvas-text-foreground-color-inverted);
+	--button-foreground-color-rgb:var(--canvas-text-foreground-color-rgb);
+}
+
+.visualstyle-general .cpe-button.is-alternate {
+	--button-background-color:var(--active-text-background-color);
+	--button-background-color-rgb:var(--active-text-background-color-rgb);
+	--button-background-color-hover:var(--active-text-background-color-hover);
+	--button-foreground-color:var(--active-text-foreground-color);
+	--button-foreground-color-hover:var(--button-foreground-color);
+	--button-foreground-color-inverted:var(--active-text-foreground-color-inverted);
+	--button-foreground-color-rgb:var(--active-text-foreground-color-rgb);
+}
+
+.visualstyle-general .cpe-button.is-alert-color {
+	--button-background-color:var(--alert-background-color);
+	--button-background-color-rgb:var(--alert-background-color-rgb);
+	--button-background-color-hover:var(--alert-background-color-hover);
+	--button-foreground-color:var(--alert-foreground-color);
+	--button-foreground-color-hover:var(--button-foreground-color);
+	--button-foreground-color-inverted:var(--alert-foreground-color-inverted);
+	--button-foreground-color-rgb:var(--alert-foreground-color-rgb);
+}
+
+.visualstyle-general .cpe-button.is-pause-color {
+	--button-background-color:var(--pause-background-color);
+	--button-background-color-rgb:var(--pause-background-color-rgb);
+	--button-background-color-hover:var(--pause-background-color-hover);
+	--button-foreground-color:var(--pause-foreground-color);
+	--button-foreground-color-hover:var(--button-foreground-color);
+	--button-foreground-color-inverted:var(--pause-foreground-color-inverted);
+	--button-foreground-color-rgb:var(--pause-foreground-color-rgb);
+}
+
+.visualstyle-general .cpe-button.is-warning-color {
+	--button-background-color:var(--warning-background-color);
+	--button-background-color-rgb:var(--warning-background-color-rgb);
+	--button-background-color-hover:var(--warning-background-color-hover);
+	--button-foreground-color:var(--warning-foreground-color);
+	--button-foreground-color-hover:var(--button-foreground-color);
+	--button-foreground-color-inverted:var(--warning-foreground-color-inverted);
+	--button-foreground-color-rgb:var(--warning-foreground-color-rgb);
+}
+
+.visualstyle-general .cpe-button.is-success-color {
+	--button-background-color:var(--success-background-color);
+	--button-background-color-rgb:var(--success-background-color-rgb);
+	--button-background-color-hover:var(--success-background-color-hover);
+	--button-foreground-color:var(--success-foreground-color);
+	--button-foreground-color-hover:var(--button-foreground-color);
+	--button-foreground-color-inverted:var(--success-foreground-color-inverted);
+	--button-foreground-color-rgb:var(--success-foreground-color-rgb);
+}
+
+.visualstyle-general .cpe-button.is-progress-color {
+	--button-background-color:var(--progress-background-color);
+	--button-background-color-rgb:var(--progress-background-color-rgb);
+	--button-background-color-hover:var(--progress-background-color-hover);
+	--button-foreground-color:var(--progress-foreground-color);
+	--button-foreground-color-hover:var(--button-foreground-color);
+	--button-foreground-color-inverted:var(--progress-foreground-color-inverted);
+	--button-foreground-color-rgb:var(--progress-foreground-color-rgb);
+}
+
+.visualstyle-general .cpe-button.is-message-color {
+	--button-background-color:var(--message-background-color);
+	--button-background-color-rgb:var(--message-background-color-rgb);
+	--button-background-color-hover:var(--message-background-color-hover);
+	--button-foreground-color:var(--message-foreground-color);
+	--button-foreground-color-hover:var(--button-foreground-color);
+	--button-foreground-color-inverted:var(--message-foreground-color-inverted);
+	--button-foreground-color-rgb:var(--message-foreground-color-rgb);
+}
+
+.visualstyle-general .cpe-floating-button {
+  --floating-button-color-hover:var(--hyperlink-foreground-color);
+  --floating-button-color-active:var(--hyperlink-foreground-color-inverted);
+  --floating-button-background-color-hover:var(--hyperlink-background-color);
+  --floating-button-background-color-active:var(--hyperlink-background-color-hover);
+  --floating-button-border-color-hover:var(--floating-button-background-color-hover);
+  --floating-button-border-color-active:var(--floating-button-background-color-active);
+  --floating-button-fadeout-opacity:0;
+}
+
+
+.visualstyle-general .cpe-floating-button.is-unaccented {
+  --floating-button-color-hover:var(--canvas-text-foreground-color);
+  --floating-button-color-active:var(--canvas-text-foreground-color-inverted);
+  --floating-button-background-color-hover:var(--canvas-text-background-color);
+  --floating-button-background-color-active:var(--canvas-text-background-color-hover);
+}
+
+.visualstyle-general .cpe-floating-button.is-alternate {
+  --floating-button-color-hover:var(--active-text-foreground-color);
+  --floating-button-color-active:var(--active-text-foreground-color-inverted);
+  --floating-button-background-color-hover:var(--active-text-background-color);
+  --floating-button-background-color-active:var(--active-text-background-color-hover);
+}
+
+
+.visualstyle-general .cpe-floating-button.is-alert-color {
+  --floating-button-color-hover:var(--alert-foreground-color);
+  --floating-button-color-active:var(--alert-foreground-color-inverted);
+  --floating-button-background-color-hover:var(--alert-background-color);
+  --floating-button-background-color-active:var(--alert-background-color-hover);
+}
+
+.visualstyle-general .cpe-floating-button.is-pause-color {
+  --floating-button-color-hover:var(--pause-foreground-color);
+  --floating-button-color-active:var(--pause-foreground-color-inverted);
+  --floating-button-background-color-hover:var(--pause-background-color);
+  --floating-button-background-color-active:var(--pause-background-color-hover);
+}
+
+.visualstyle-general .cpe-floating-button.is-warning-color {
+  --floating-button-color-hover:var(--warning-foreground-color);
+  --floating-button-color-active:var(--warning-foreground-color-inverted);
+  --floating-button-background-color-hover:var(--warning-background-color);
+  --floating-button-background-color-active:var(--warning-background-color-hover);
+}
+
+.visualstyle-general .cpe-floating-button.is-success-color {
+  --floating-button-color-hover:var(--success-foreground-color);
+  --floating-button-color-active:var(--success-foreground-color-inverted);
+  --floating-button-background-color-hover:var(--success-background-color);
+  --floating-button-background-color-active:var(--success-background-color-hover);
+}
+
+.visualstyle-general .cpe-floating-button.is-progress-color {
+  --floating-button-color-hover:var(--progress-foreground-color);
+  --floating-button-color-active:var(--progress-foreground-color-inverted);
+  --floating-button-background-color-hover:var(--progress-background-color);
+  --floating-button-background-color-active:var(--progress-background-color-hover);
+}
+
+.visualstyle-general .cpe-floating-button.is-message-color {
+  --floating-button-color-hover:var(--message-foreground-color);
+  --floating-button-color-active:var(--message-foreground-color-inverted);
+  --floating-button-background-color-hover:var(--message-background-color);
+  --floating-button-background-color-active:var(--message-background-color-hover);
+}
+
+
+/* Range and Progress */
+.visualstyle-general progress {
+  --range-filler-color:var(--hyperlink-background-color);
+}
+
+.visualstyle-general progress.is-halted {
+  --range-filler-color:var(--pause-background-color);
+}
+
+.visualstyle-general progress.is-done {
+  --range-filler-color:var(--success-background-color);
+}
+
+.visualstyle-general progress.is-failed {
+  --range-filler-color:var(--alert-background-color);
+}
+
+.visualstyle-general input[type="range"] {
+  --range-filler-color:var(--hyperlink-background-color);
+  --range-filler-color-hover:var(--hyperlink-background-color-hover);
+}
+
+
+.visualstyle-general mark {
+color:var(--hyperlink-foreground-color);
+background-color:var(--hyperlink-background-color);
+}
+
+.visualstyle-general .wikiEditor-ui-toolbar .booklet > .index > .current,
+.visualstyle-general .oo-ui-outlineOptionWidget.oo-ui-optionWidget-highlighted {
+  background-color:var(--hyperlink-background-color);
+  color:var(--hyperlink-foreground-color);
+}
+
+
+.visualstyle-general .oo-ui-outlineOptionWidget.oo-ui-optionWidget-pressed, 
+.visualstyle-general .oo-ui-outlineOptionWidget.oo-ui-optionWidget-selected {
+  background-color:var(--hyperlink-background-color-hover);
+  color:var(--hyperlink-foreground-color-inverted);
+}
+
+/** High Contrast **/
+.visualstyle-general.visualmode-contrast body {
+	--checkbox-unchecked-bg-hover:var(--hyperlink-foreground-color);
+	--checkbox-unchecked-shadow-hover:var(--hyperlink-background-color);
+	--checkbox-active-bg:var(--hyperlink-background-color);
+	--checkbox-checked-bg:var(--hyperlink-background-color);
+	--checkbox-checked-bg-hover:var(--checkbox-checked-text);
+	--checkbox-checked-shadow:var(--checkbox-checked-bg);
+	--checkbox-checked-shadow-hover:var(--checkbox-checked-text-hover);
+	--checkbox-checked-text:var(--hyperlink-foreground-color);
+	--checkbox-checked-text-hover:var(--checkbox-checked-bg);
+}
+
+.visualstyle-general.visualmode-contrast ::-webkit-scrollbar-thumb {
+	background-color:var(--scrollbar-thumb-color-1);
+	color:var(--scrollbar-thumb-text);
+	border-color:var(--scrollbar-thumb-color-1);
+	box-shadow:0 0px 0 2px inset var(--scrollbar-thumb-color-1)!important;
+}
