@@ -1765,7 +1765,8 @@ table {
 color:inherit;
 }
 
-/* Wikiatable style */
+/** Wikiatable style **/
+/* Base Styling */
 body .wikitable {
 	line-height:1.6;
 	border:1px solid var(--inactive-text-background-color);
@@ -1794,6 +1795,105 @@ body .wikitable > * > tr > td {
 	margin:1px 0;
 }
 
+/* Special Styling */
+body .wikitable > tr > td.is-alert-color,
+body .wikitable > * > tr > td.is-alert-color {
+	box-shadow:0 0 0 100vh var(--alert-fadeout-color) inset;
+}
+
+body .wikitable > tr > td.is-pause-color,
+body .wikitable > * > tr > td.is-pause-color {
+	box-shadow:0 0 0 100vh var(--pause-fadeout-color) inset;
+}
+
+body .wikitable > tr > td.is-warning-color,
+body .wikitable > * > tr > td.is-warning-color {
+	box-shadow:0 0 0 100vh var(--warning-fadeout-color) inset;
+}
+
+body .wikitable > tr > td.is-success-color,
+body .wikitable > * > tr > td.is-success-color {
+	box-shadow:0 0 0 100vh var(--success-fadeout-color) inset;
+}
+
+body .wikitable > tr > td.is-progress-color,
+body .wikitable > * > tr > td.is-progress-color {
+	box-shadow:0 0 0 100vh var(--progress-fadeout-color) inset;
+}
+
+body .wikitable > tr > td.is-message-color,
+body .wikitable > * > tr > td.is-message-color {
+	box-shadow:0 0 0 100vh var(--message-fadeout-color) inset;
+}
+
+
+/** Fancy style **/
+/* Base Styling */
+body .fancytable {
+	line-height:1.6;
+	border:1px solid var(--inactive-text-background-color);
+	background-color:var(--canvas-background-color);
+	border-collapse:collapse;
+	font-size:inherit;
+	color:var(--canvas-text-background-color);
+	box-shadow:0 0 6px 0 rgba(var(--canvas-text-background-color-rgb),.2), 0 0 6px 0 rgba(var(--canvas-background-color-rgb),0.4);
+}
+
+
+body .fancytable > tr > th,
+body .fancytable > * > tr > th {
+	background-color:var(--highlight-background-color);
+	color:var(--highlight-text-background-color);
+	font-family:var(--rounded-font-stack), sans-serif;
+	font-weight:900;
+	text-align:center;
+}
+
+body .fancytable > tr > th,
+body .fancytable > * > tr > th,
+body .fancytable > tr > td,
+body .fancytable > * > tr > td {
+	border:1px solid var(--inactive-text-background-color);
+	padding:5px;
+	margin:1px 0;
+}
+
+/* Special Styling */
+body .fancytable > tr > td.is-alert-color,
+body .fancytable > * > tr > td.is-alert-color {
+	background-color:var(--alert-background-color);
+	color:var(--alert-foreground-color);
+}
+
+body .fancytable > tr > td.is-pause-color,
+body .fancytable > * > tr > td.is-pause-color {
+	background-color:var(--pause-background-color);
+	color:var(--pause-foreground-color);
+}
+
+body .fancytable > tr > td.is-warning-color,
+body .fancytable > * > tr > td.is-warning-color {
+	background-color:var(--warning-background-color);
+	color:var(--warning-foreground-color);
+}
+
+body .fancytable > tr > td.is-success-color,
+body .fancytable > * > tr > td.is-success-color {
+	background-color:var(--success-background-color);
+	color:var(--success-foreground-color);
+}
+
+body .fancytable > tr > td.is-progress-color,
+body .fancytable > * > tr > td.is-progress-color {
+	background-color:var(--progress-background-color);
+	color:var(--progress-foreground-color);
+}
+
+body .fancytable > tr > td.is-message-color,
+body .fancytable > * > tr > td.is-message-color {
+	background-color:var(--message-background-color);
+	color:var(--message-foreground-color);
+}
 
 /* Begin Tooltips */
 [cpe-tooltip] {
