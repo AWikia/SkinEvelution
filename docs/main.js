@@ -40,47 +40,45 @@ function DropDownUpdate() {
 		x.setAttribute('tabindex',-1); // Add the CPE button class
 	});
 
+	InitialiseSelectInputs();
+					
+}
 
 /* Select Inputs */
-	var select_items = document.querySelectorAll(".cpe-dropdown.cpe-select .cpe-dropdown__content .cpe-list li:not(.cpe-dropdown-level-2)");
+function InitialiseSelectInputs() {
+/* Select Inputs */
+	var select_items = document.querySelectorAll(".cpe-dropdown.cpe-select .cpe-dropdown__content .cpe-list li:not(.cpe-dropdown-level-nested)");
 	select_items.forEach(function(y) {
-		y.setAttribute('onclick','UpdateSelectValue()')
-		y.addEventListener('click', (function(e) {
-						e.preventDefault();
-						var selected = this;
+		y.setAttribute('onclick','HandleSelectInputBlurring()')
+		y.addEventListener('click', (function(e) { UpdateSelectInput(this) }) );
+	});
+}
 
-
+function UpdateSelectInput(obj) { // Updates a Select Input Value
 		var x = document.querySelector(".cpe-dropdown.cpe-select:focus-within .cpe-dropdown__content .cpe-list li.selected");
 		if (x) {
 			x.classList.remove("selected");
 		}
-//		this.classList.add("selected");
-
-
-						var value = selected.getAttribute("value");
-						document.querySelector(' .cpe-dropdown.cpe-select:focus-within')
-						.addEventListener('click',(function() {
-									if (selected != undefined) {
-										var content = selected.innerText;
-										document.querySelector('.cpe-select:focus-within .cpe-select__value').setAttribute("value", value);
-										document.querySelector('.cpe-select:focus-within .cpe-select__value').innerHTML= content;
-										selected = undefined;
-//										TestDynamicTheme(); // Change
-									}
-								}));
-        }) );
-	});
-
-					
+//		obj.classList.add("selected");
+		document.querySelector(' .cpe-dropdown.cpe-select:focus-within').addEventListener('click',UpdateSelectValue(obj));
+		document.querySelector(' .cpe-dropdown.cpe-select:focus-within').removeEventListener('click',UpdateSelectValue);
 }
 
+function UpdateSelectValue(obj) { // Saves the chosen value and content from the dropdown list into the select input
+	var content = obj.innerText;
+	var value = obj.getAttribute("value");
+	document.querySelector('.cpe-select:focus-within .cpe-select__value').setAttribute("value", value);
+	document.querySelector('.cpe-select:focus-within .cpe-select__value').innerHTML= content;
+}
 
-/* Range Inputs and Selects */
-function UpdateSelectValue() { // Handles Blurring
+function HandleSelectInputBlurring() { // Handles Blurring
 		setTimeout(
 		(function() { document.querySelector(' .cpe-dropdown.cpe-select:focus-within').blur(); 	document.querySelector('.focus-overlay').focus(); } )
 	,0)
 }
+
+
+/* Range Inputs */
 
 
 function UpdateRange() {
@@ -108,7 +106,8 @@ function UpdateRangeInputs() {
 
 /* Enable New Global Navigation - No exception for now */
 (function () {
-//	UpdateRangeInputs();
+	AliasFandomComponents();
+	UpdateRangeInputs();
 	DropDownUpdate();
 
 	/* DITTO */
@@ -120,6 +119,36 @@ function UpdateRangeInputs() {
 
 
 })();
+
+/* Aliases all components with the .wds prefix to the ones from .cpe ones */
+function AliasFandomComponents() {
+
+	var highlightedItems = document.querySelectorAll(":not(svg)[class*='wds-'], [class*='cpe-is-'], [class*='cpe-has-']");
+
+	while (document.querySelectorAll(':not(svg)[class*="wds-"], [class*="cpe-is-"], [class*="cpe-has-"]').length > 0) {
+		highlightedItems.forEach(function(x) {
+			/* WDS => CPE */
+			x.className = x.className.replace("wds-is-", "is-");
+			x.className = x.className.replace("wds-has-", "has-");
+			x.className = x.className.replace("wds-midlight-aqua", "cpe-midlight-color");
+			if (x.classList.contains('wds-open-to-right')) {
+				x.classList.remove("wds-open-to-right");
+				x.setAttribute("cpe-orient","land");
+			}
+			if (x.classList.contains('wds-dropdown')) {
+				x.setAttribute("tabindex","-1");
+			}
+			x.className = x.className.replace("wds-", "cpe-");
+			/* Legacy CPE => Modern CPE */
+			x.className = x.className.replace("cpe-is-", "is-");
+			x.className = x.className.replace("cpe-has-", "has-");
+			x.className = x.className.replace("cpe-dropdown-level-nested", "cpe-dropdown-level-nested");
+		});
+	}
+
+
+}
+
 
 
 /* Banners */

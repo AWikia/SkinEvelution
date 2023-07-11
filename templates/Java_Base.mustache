@@ -40,47 +40,45 @@ function DropDownUpdate() {
 		x.setAttribute('tabindex',-1); // Add the CPE button class
 	});
 
+	InitialiseSelectInputs();
+					
+}
 
 /* Select Inputs */
-	var select_items = document.querySelectorAll(".cpe-dropdown.cpe-select .cpe-dropdown__content .cpe-list li:not(.cpe-dropdown-level-2)");
+function InitialiseSelectInputs() {
+/* Select Inputs */
+	var select_items = document.querySelectorAll(".cpe-dropdown.cpe-select .cpe-dropdown__content .cpe-list li:not(.cpe-dropdown-level-nested)");
 	select_items.forEach(function(y) {
-		y.setAttribute('onclick','UpdateSelectValue()')
-		y.addEventListener('click', (function(e) {
-						e.preventDefault();
-						var selected = this;
+		y.setAttribute('onclick','HandleSelectInputBlurring()')
+		y.addEventListener('click', (function(e) { UpdateSelectInput(this) }) );
+	});
+}
 
-
+function UpdateSelectInput(obj) { // Updates a Select Input Value
 		var x = document.querySelector(".cpe-dropdown.cpe-select:focus-within .cpe-dropdown__content .cpe-list li.selected");
 		if (x) {
 			x.classList.remove("selected");
 		}
-//		this.classList.add("selected");
-
-
-						var value = selected.getAttribute("value");
-						document.querySelector(' .cpe-dropdown.cpe-select:focus-within')
-						.addEventListener('click',(function() {
-									if (selected != undefined) {
-										var content = selected.innerText;
-										document.querySelector('.cpe-select:focus-within .cpe-select__value').setAttribute("value", value);
-										document.querySelector('.cpe-select:focus-within .cpe-select__value').innerHTML= content;
-										selected = undefined;
-//										TestDynamicTheme(); // Change
-									}
-								}));
-        }) );
-	});
-
-					
+//		obj.classList.add("selected");
+		document.querySelector(' .cpe-dropdown.cpe-select:focus-within').addEventListener('click',UpdateSelectValue(obj));
+		document.querySelector(' .cpe-dropdown.cpe-select:focus-within').removeEventListener('click',UpdateSelectValue);
 }
 
+function UpdateSelectValue(obj) { // Saves the chosen value and content from the dropdown list into the select input
+	var content = obj.innerText;
+	var value = obj.getAttribute("value");
+	document.querySelector('.cpe-select:focus-within .cpe-select__value').setAttribute("value", value);
+	document.querySelector('.cpe-select:focus-within .cpe-select__value').innerHTML= content;
+}
 
-/* Range Inputs and Selects */
-function UpdateSelectValue() { // Handles Blurring
+function HandleSelectInputBlurring() { // Handles Blurring
 		setTimeout(
 		(function() { document.querySelector(' .cpe-dropdown.cpe-select:focus-within').blur(); 	document.querySelector('.focus-overlay').focus(); } )
 	,0)
 }
+
+
+/* Range Inputs */
 
 
 function UpdateRange() {
@@ -129,12 +127,22 @@ function AliasFandomComponents() {
 
 	while (document.querySelectorAll(':not(svg)[class*="wds-"], [class*="cpe-is-"], [class*="cpe-has-"]').length > 0) {
 		highlightedItems.forEach(function(x) {
+			/* WDS => CPE */
 			x.className = x.className.replace("wds-is-", "is-");
 			x.className = x.className.replace("wds-has-", "has-");
+			x.className = x.className.replace("wds-midlight-aqua", "cpe-midlight-color");
+			if (x.classList.contains('wds-open-to-right')) {
+				x.classList.remove("wds-open-to-right");
+				x.setAttribute("cpe-orient","land");
+			}
+			if (x.classList.contains('wds-dropdown')) {
+				x.setAttribute("tabindex","-1");
+			}
+			x.className = x.className.replace("wds-", "cpe-");
+			/* Legacy CPE => Modern CPE */
 			x.className = x.className.replace("cpe-is-", "is-");
 			x.className = x.className.replace("cpe-has-", "has-");
-			x.className = x.className.replace("wds-midlight-aqua", "cpe-midlight-color");
-			x.className = x.className.replace("wds-", "cpe-");
+			x.className = x.className.replace("cpe-dropdown-level-nested", "cpe-dropdown-level-nested");
 		});
 	}
 
@@ -215,321 +223,5 @@ function AddFloatingBanner(content='Sample Content',kind='message',extraclass=''
 	);
 	
 
-
-}
-
-/* Evelution Specific JS */
-
-(function () {
-	if (getKey('content-full') === '-1') {
-		insertKey('content-full', 'false' );
-	}
-	if (getKey('right-rail-full') === '-1') {
-		insertKey('right-rail-full', 'true' );
-	}
-	if (getKey('left-nav-full') === '-1') {
-		insertKey('left-nav-full', 'true' );
-	}
-	var content_full = getKey('content-full')
-	var right_rail_full = getKey('right-rail-full');
-	var left_nav_full = getKey('left-nav-full');
-    getParams().forEach(function (param) {
-        var key = param.split("=")[0];
-        var value = param.split("=")[1];
-
-        switch (key) {
-            case 'fullwidth':
-				content_full = value;
-				console.info('Article width settings overriden')
-                break;
-            case 'hiderail':
-				if (value === 'true') {
-					right_rail_full = 'false';
-				} else {
-					right_rail_full = 'true';
-				}
-				console.info('Pane visibility settings overriden')
-                break;
-            case 'hiderightrail':
-				if (value === 'true') {
-					right_rail_full = 'false';
-				} else {
-					right_rail_full = 'true';
-				}
-				console.info('Right pane visibility settings overriden')
-                break;
-            case 'hideleftnav':
-				if (value === 'true') {
-					left_nav_full = 'false';
-				} else {
-					left_nav_full = 'true';
-				}
-				console.info('Left navigation for large screens visibility settings overriden')
-                break;
-
-        }
-    });
-    if (content_full === 'true') {
-		document.querySelector(' body ').classList.add('is-wide');
-	}
-    if (right_rail_full === 'true') {
-		document.querySelector(' body ').classList.add('has-right-rail');
-	}
-    if (left_nav_full === 'true') {
-		document.querySelector(' body ').classList.add('has-left-nav');
-	}
-
-
-
-var amodule = document.querySelector(".evelution-rail-wrapper .activity-module.evelution-module")
-if  (amodule)  {
-	var amodule2 = document.querySelector(".evelution-rail-wrapper .activity-module.evelution-module .evelution-module-content")
-	var oldc = amodule2.innerText;
-	amodule2.innerHTML =  oldc ;
-}
-
-
-var imodule = document.querySelector(".evelution-rail-wrapper .info-module.evelution-module")
-if  (imodule)  {
-	var imodule2 = document.querySelector(".evelution-rail-wrapper .info-module.evelution-module .evelution-module-content")
-	var oldc2 = imodule2.innerText;
-	imodule2.innerHTML =  oldc2 ;
-}
-
-
-/* TMP Hack until best solution goes */
-var titles = document.querySelectorAll(".namespace-with-title .firstHeading")
-if  (titles) {
-		titles.forEach(function(x) {
-			var oldc3 = x.innerText;
-			x.innerHTML =  oldc3 ;
-		});
-}
-
-
-
-/* Only used in one place */
-	var parser = document.querySelector('.raw-parser');
-	if (parser) {
-		var c = parser.innerText;
-		parser.innerHTML=  c;
-		parser.classList.remove('raw-parser')
-		parser.classList.add('raw-parser-done');
-	}
-/* Avatar */
-	var avatar = document.querySelector('.evelution-taskbar .mw-socialprofile-avatar');
-	if (avatar) {
-		avatar.classList.add('cpe-icon');
-		avatar.classList.add('cpe-avatar');
-	}
-
-CheckCompat();
-RemoveEmptyMenus();
-AliasBoxes();
-
-
-	document.querySelector('html').classList.add('theming-loaded');
-
-	var y = document.querySelector('.evelution-taskbar .cpe-dropdown.search:not(:focus) .link');
-	if (y) {
-		y.addEventListener('click', (function(e) {
-						e.preventDefault();
-						var y2 = document.querySelector('.evelution-taskbar .cpe-dropdown.search input.taskbar-search');
-						y2.focus();
-        }) );
-	}
-	var y = document.querySelector('.evelution-taskbar .cpe-dropdown.search:not(:focus) .search-button');
-	if (y) {
-		y.addEventListener('click', (function(e) {
-						e.preventDefault();
-						var y2 = document.querySelector('.evelution-taskbar .cpe-dropdown.search input.taskbar-search');
-						y2.focus();
-        }) );
-	}
-
-	var level = 1;
-
-DetectGPU.getGPUTier().then(function(e) { level = (e.fps == undefined) ? 0 : (e.fps >= 72) ? 3 : (e.fps >= 60) ? 2 : 1;  document.querySelector('html').classList.add('gpu-level-' + level);});
-
-})();
-
-function AliasBoxes() {
-	{{#has-box-alias}}
-		var error = document.querySelectorAll('.errorbox:not(.tux-nojs):not(.noconvert)');
-		error.forEach(function(x) {
-			AddFloatingBanner(x.innerHTML,'alert');
-			x.remove();
-		});
-		var warn = document.querySelectorAll('.warningbox:not(.tux-nojs):not(.noconvert)');
-		warn.forEach(function(x) {
-			AddFloatingBanner(x.innerHTML,'warning');
-			x.remove();
-		});
-		var success = document.querySelectorAll('.successbox:not(.tux-nojs):not(.noconvert)');
-		success.forEach(function(x) {
-			AddFloatingBanner(x.innerHTML,'success');
-			x.remove();
-		});
-		var message = document.querySelectorAll('.messagebox:not(.tux-nojs):not(.noconvert)');
-		message.forEach(function(x) {
-			AddFloatingBanner(x.innerHTML,'messagebox');
-			x.remove();
-		});
-	{{/has-box-alias}}
-}
-
-
-/* Check Compatibility */
-function CheckCompat() {
-	// Some old Fox Versions
-	var ua_agent = navigator.userAgent
-
-	if ( (ua_agent.match("Safari/")) && !( (ua_agent.match("Chrome/")) || (ua_agent.match("YNGT")) ) ) { // Safari
-		window.oldBrowser = ua_agent.match(/Version\/(\d+)/)[1] < 15
-		window.oldBrowser2 = ua_agent.match(/Version\/(\d+)/)[1] < 15
-	}
-
-	if ( (ua_agent.match("Firefox/")) && !( (ua_agent.match("PaleMoon/")) ) ) { // Mozilla Firefox
-		window.oldBrowser = ua_agent.match(/Firefox\/(\d+)/)[1] < 100
-		window.oldBrowser2 = ua_agent.match(/Firefox\/(\d+)/)[1] < 100
-	}
-
-	if ( (ua_agent.match("PaleMoon/")) ) { // Pale Moon
-		window.oldBrowser = ua_agent.match(/PaleMoon\/(\d+)/)[1] < 31
-		window.oldBrowser2 = ua_agent.match(/PaleMoon\/(\d+)/)[1] < 31
-	document.querySelector('html').classList.add('pale-moon')
-	}
-
-
-	if ( (ua_agent.match("Chrome/")) && !( (ua_agent.match("Edge/")) ) ) { // Google Chrome
-		window.oldBrowser = ua_agent.match(/Chrome\/(\d+)/)[1] < 100
-		window.oldBrowser2 = ua_agent.match(/Chrome\/(\d+)/)[1] < 100
-	}
-	
-
-	window.oldBrowser =( 
-						(window.oldBrowser) ||						    // Old Chrome, Firefox, Safari and Pale Moon
-						(ua_agent.match("Trident")) ||					// Internet Explorer 				
-						(ua_agent.match("Presto")) || 					// Classic Opera
-						(ua_agent.match("Tessera")) || 					// 4x4 Browser
-						(ua_agent.match("MINERVOULA")) || 				// Older mInerva
-						(ua_agent.match("Silk")) || 					// Amazon Silk
-						(ua_agent.match("PLAYSTATION 3")) || 			// PS3 Browser
-						(ua_agent.match("Nintendo DSi")) || 			// Nintendo DSi Browser
-						(ua_agent.match("Nintendo 3DS")) || 			// Nintendo 3DS Browser
-						(ua_agent.match("PLAYSTATION PORTABLE")) || 	// PSP Browser
-						(ua_agent.match("Edge")) || 					// Classic Microsoft Edge
-						(ua_agent.match("BlackBerry")) || 				// Blackberry Browser
-						(ua_agent.match("IEMobile")) 					// Phone Internet Explorer
-						)
-	
-	if (window.oldBrowser) {
-		document.querySelector('body').innerHTML='<style> *, :before, :after {all:initial!important;}*:not(html):not(body):not(.warn) {display:none!important;}</style><div class="warn">Unsupported Configuration</div>';
-		console.error('Browser requirements are not met and Evelution can\'t run. Please upgrade your browser to latest');
-	}
-	if ((window.oldBrowser2) && (! ((window.oldBrowser)) )) {
-		AddFloatingBanner("Browser requirements are not met and you may experience issues with Evelution. Please upgrade your browser to latest before support gets dropped","warning")
-		console.warn('Browser requirements are not met and you may experience issues with Evelution. Please upgrade your browser to latest before support gets dropped');
-	}
-	{{#is-outdated}}
-	AddFloatingBanner("We're dropping support for this MediaWiki version soon. Please make sure to update MediaWiki as soon as possible so as to keep enjoying the latest Evelution improvements","warning")
-	{{/is-outdated}}
-}
-
-
-function ResetSettings() {
-	if (confirm("Are you sure you want to reset Evelution's settings to their defaults? This can't be undone.")) {
-		insertKey('content-full', 'false' );
-		insertKey('right-rail-full', 'true' );
-		insertKey('theme-selected', 'A' );
-		insertKey('visual-appearance-mode', 'standard' );
-		insertKey('visual-appearance-style', 'standard' );
-		insertKey('color-scheme', 'light' );
-		insertKey('visual-color', 'standard' );
-		insertKey('filter-active', 'standard' );
-		insertKey('device-theme', 'light' );
-		insertKey('color-style', 'standard' );
-		insertKey('color-style-behavior', 'duo' );
-		insertKey('color-hue', 0 );
-		insertKey('color-sat', 100 );
-		insertKey('contrast-mode', 'auto' );
-		insertKey('accent-active', 'false' );
-		insertKey('serif-font', 'false' );
-		insertKey('dcm-mode', 'standard' );
-		AddFloatingBanner('Succesfully resetted Evelution\'s settings to their defaults. Page will now reload.','success');
-		location.reload()
-	}
-}
-
-/* Width Toggler */
-function ToggleWidth() {
-	if 	(document.querySelector(' body.is-wide ')) {
-		document.querySelector(' body ').classList.remove('is-wide');
-		insertKey('content-full', 'false');
-	} else {
-		document.querySelector(' body ').classList.add('is-wide');
-		insertKey('content-full', 'true');
-	}
-}
-
-
-function ToggleRail() {
-	if 	(document.querySelector(' body.has-right-rail ')) {
-		document.querySelector(' body ').classList.remove('has-right-rail');
-		insertKey('right-rail-full', 'false' );
-	} else {
-		document.querySelector(' body ').classList.add('has-right-rail');
-		insertKey('right-rail-full', 'true' );
-	}
-}
-
-function ToggleNav() {
-	if 	(document.querySelector(' body.has-left-nav ')) {
-		document.querySelector(' body ').classList.remove('has-left-nav');
-		insertKey('left-nav-full', 'false');
-	} else {
-		document.querySelector(' body ').classList.add('has-left-nav');
-		insertKey('left-nav-full', 'true');
-	}
-}
-
-
-
-function RemoveEmptyMenus() {
-// Remove Miraheze elements
-	var miraheze = document.querySelector("#footer-icons img[alt='Miraheze Wiki Hosting'], #footer-icons img[alt='Hosted by Miraheze'], #footer-icons img[alt='7 years of Miraheze!']")
-	if (miraheze) { // Check if an image with the Miraheze Wiki hosting alt exists
-		document.querySelector('html').classList.add('wikihost-miraheze')
-	}
-	var qqore = document.querySelector("#footer-icons img[alt='Q.Qore']")
-	if (qqore) { // Check if an image with the Miraheze Wiki hosting alt exists
-		document.querySelector('html').classList.add('wikihost-qqore')
-	}
-	document.querySelector('html').classList.remove("client-dark-mode");
-	
-	
-// Remove duplicated Notices and Updates Dropdown
-
-	var langmenu4N = document.querySelector(".evelution-taskbar.evelution-sidebar .link.notices-menu #pt-notifications-notice");
-	var langmenu4bN = document.querySelector(".evelution-taskbar.evelution-sidebar .link.updates-menu #pt-notifications-alert");
-		if (langmenu4N) {
-			langmenu4N.remove();	
-		}
-		if (langmenu4bN) {
-			langmenu4bN.remove();
-		}
-
-
-	toc = document.querySelector(".toc#toc > ul");
-	if (toc) {
-		document.querySelector(".evelution-header .toc-module .evelution-module-content > .toc > .toc").innerHTML = toc.innerHTML
-	} else {
-		var toc2 = document.querySelector(".evelution-header .toc-module")
-		if (toc2) {
-			toc2.remove();
-		}
-	}
-	
-	
 
 }

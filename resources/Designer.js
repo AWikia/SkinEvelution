@@ -88,8 +88,8 @@ function InitDesigner() {
 			'</div>' +
 		'</div>'
 	);
-	$(".evelution-floating-actions.extra-actions .theme-copy-button").click( function(e) { e.preventDefault; CopyTheme();  });
-	$(".evelution-floating-actions.extra-actions .theme-copy-button-2").click( function(e) { e.preventDefault; CopyTheme2();  });
+	$(".evelution-floating-actions.extra-actions .theme-copy-button").click( function(e) { CopyTheme();  });
+	$(".evelution-floating-actions.extra-actions .theme-copy-button-2").click( function(e) { CopyTheme2();  });
 
 	// Paste theme
 	$(".evelution-floating-actions.extra-actions .evelution-floating-actions-container").append(
@@ -126,10 +126,10 @@ function InitDesigner() {
 		'</div>'
 	);
 
-	$(".evelution-floating-actions.extra-actions .theme-paste-button").click( function(e) { e.preventDefault; PasteTheme();  });
-	$(".evelution-floating-actions.extra-actions .theme-paste-button-4").click( function(e) { e.preventDefault; PasteTheme(false);  });
-	$(".evelution-floating-actions.extra-actions .theme-paste-button-2").click( function(e) { e.preventDefault; RandomTheme();  });
-	$(".evelution-floating-actions.extra-actions .theme-paste-button-3").click( function(e) { e.preventDefault; RandomTheme(true);  });
+	$(".evelution-floating-actions.extra-actions .theme-paste-button").click( function(e) { PasteTheme();  });
+	$(".evelution-floating-actions.extra-actions .theme-paste-button-4").click( function(e) { PasteTheme(false);  });
+	$(".evelution-floating-actions.extra-actions .theme-paste-button-2").click( function(e) { RandomTheme();  });
+	$(".evelution-floating-actions.extra-actions .theme-paste-button-3").click( function(e) { RandomTheme(true);  });
 	// Apply theme
 	$(".evelution-floating-actions.extra-actions .evelution-floating-actions-container").append(
 		'<button class="cpe-floating-button is-alert-color theme-apply-button page-side-tool" cpe-tooltip-position="reverse" cpe-tooltip="' + mw.msg( 'evelution-designer-apply' ) + '">' +
@@ -140,7 +140,7 @@ function InitDesigner() {
 	);
 
 
-	$(".evelution-floating-actions.extra-actions .theme-apply-button").click( function(e) { e.preventDefault; ApplyTheme();  });
+	$(".evelution-floating-actions.extra-actions .theme-apply-button").click( function(e) { ApplyTheme();  });
 	
 
 	$(".evelution-floating-actions.extra-actions .evelution-floating-actions-container").append(
@@ -151,7 +151,7 @@ function InitDesigner() {
 		'</button>'
 	);
 
-	$(".evelution-floating-actions.extra-actions .theme-test-button").click( function(e) { e.preventDefault; TestTheme(true);  });
+	$(".evelution-floating-actions.extra-actions .theme-test-button").click( function(e) { TestTheme(true);  });
 
 
 	$(".evelution-floating-actions.extra-actions .evelution-floating-actions-container").append(
@@ -161,7 +161,7 @@ function InitDesigner() {
 			'</span>' +
 		'</button>'
 	);
-	$(".evelution-floating-actions.extra-actions .theme-clear-button").click( function(e) { e.preventDefault; ClearTheme();  }).prop('disabled', true);
+	$(".evelution-floating-actions.extra-actions .theme-clear-button").click( function(e) { ClearTheme();  }).prop('disabled', true);
 
 
 	$(".evelution-floating-actions.extra-actions .evelution-floating-actions-container").append(
@@ -171,7 +171,7 @@ function InitDesigner() {
 			'</span>' +
 		'</button>'
 	);
-	$(".evelution-floating-actions.extra-actions .theme-sbt-button").click( function(e) { e.preventDefault; InitSBT();  });
+	$(".evelution-floating-actions.extra-actions .theme-sbt-button").click( function(e) { InitSBT();  });
 
 
 	// Clear out content area
@@ -179,7 +179,7 @@ function InitDesigner() {
 	$("#mw-content-text").append(
 		'<style class="theme-designer-css"></style>' +
 		'<div style="margin-bottom:10px;">' + mw.message( 'evelution-designer-notice' ).text() + '</div>' +
-		'<div class="cpe-is-hidden" style="display:none;">' +
+		'<div class="is-hidden" style="display:none;">' +
 		// Body Background Color
 			'<datalist id="td_colors">' +
 			// Default Crayola Colors (169)
@@ -2715,86 +2715,73 @@ function ClearTheme() {
 
 }
 
-function SelectInputs() {
-/* Select Inputs */
+function HandleCheckboxes() {
 $('.wikitable #tilingV').click(
 							function(e) {
-								e.preventDefault
 								TestDynamicTheme();
 							}   
 						);
 $('.wikitable #tilingH').click(
 							function(e) {
-								e.preventDefault
 								TestDynamicTheme();
 							}   
 						);
 $('.wikitable #auto1').click(
 							function(e) {
-								e.preventDefault
 								$('.wikitable #bodybg2').prop('disabled',(document.querySelector('.wikitable #auto1').checked) );
 								TestDynamicTheme();
 							}   
 						);
 $('.wikitable #auto2').click(
 							function(e) {
-								e.preventDefault
 								$('.wikitable #pagebg2').prop('disabled',(document.querySelector('.wikitable #auto2').checked) );
 								TestDynamicTheme();
 							}   
 						);
 $('.wikitable #auto3').click(
 							function(e) {
-								e.preventDefault
 								$('.wikitable #pagebg3').prop('disabled',(document.querySelector('.wikitable #auto3').checked) );
 								TestDynamicTheme();
 							}   
 						);
 $('.wikitable #auto4').click(
 							function(e) {
-								e.preventDefault
 								$('.wikitable #qaccentcolor').prop('disabled',(document.querySelector('.wikitable #auto4').checked) );
 								TestDynamicTheme();
 							}   
 						);
 $('.wikitable #auto5').click(
 							function(e) {
-								e.preventDefault
 								$('.wikitable #taccentcolor').prop('disabled',(document.querySelector('.wikitable #auto5').checked) );
 								TestDynamicTheme();
 							}   
 						);
 $('.wikitable #auto6').click(
 							function(e) {
-								e.preventDefault
 								$('.wikitable #accentcolor').prop('disabled',(document.querySelector('.wikitable #auto6').checked) );
 								TestDynamicTheme();
 							}   
 						);
 $('.wikitable #auto7').click(
 							function(e) {
-								e.preventDefault
 								$('.wikitable #pagebg_s').prop('disabled',(document.querySelector('.wikitable #auto7').checked) );
 								TestDynamicTheme();
 							}   
 						);
 $('.wikitable #auto8').click(
 							function(e) {
-								e.preventDefault
 								$('.wikitable #pagebg3_s').prop('disabled',(document.querySelector('.wikitable #auto8').checked) );
 								TestDynamicTheme();
 							}   
 						);
 $('.wikitable #auto9').click(
 							function(e) {
-								e.preventDefault
 								$('.wikitable #accenttextcolor').prop('disabled',(document.querySelector('.wikitable #auto9').checked) );
 								TestDynamicTheme();
 							}   
 						);
 $('.wikitable #auto10').click(
 							function(e) {
-								e.preventDefault
 								$('.wikitable #taccenttextcolor').prop('disabled',(document.querySelector('.wikitable #auto10').checked) );
 								TestDynamicTheme();
 							}   
@@ -2802,64 +2789,40 @@ $('.wikitable #auto10').click(
 
 $('.wikitable #auto11').click(
 							function(e) {
-								e.preventDefault
 								$('.wikitable #qaccenttextcolor').prop('disabled',(document.querySelector('.wikitable #auto11').checked) );
 								TestDynamicTheme();
 							}   
 						);
 $('.wikitable #auto12').click(
 							function(e) {
-								e.preventDefault
 								$('.wikitable #svaccentcolor').prop('disabled',(document.querySelector('.wikitable #auto12').checked) );
 								TestDynamicTheme();
 							}   
 						);
 $('.wikitable #auto13').click(
 							function(e) {
-								e.preventDefault
 								$('.wikitable #saaccentcolor').prop('disabled',(document.querySelector('.wikitable #auto13').checked) );
 								TestDynamicTheme();
 							}   
 						);
 $('.wikitable #auto14').click(
 							function(e) {
-								e.preventDefault
 								$('.wikitable #bodybg').prop('disabled',(document.querySelector('.wikitable #auto14').checked) );
 								TestDynamicTheme();
 							}   
 						);
 $('.wikitable #auto15').click(
 							function(e) {
-								e.preventDefault
 								$('.wikitable #pagebg').prop('disabled',(document.querySelector('.wikitable #auto15').checked) );
 								TestDynamicTheme();
 							}   
 						);
-// UpdateRangeInputs();
-	var ranges = document.querySelectorAll('.cpe-theme-designer input[type="range"]');
-	ranges.forEach(function(x) {
-		x.style.setProperty("--range-percent",  (( ((x.value) - x.getAttribute('min') ) * 100) / (x.getAttribute('max') - x.getAttribute('min')) ) + '%'  );
-	});
+}
 
-	var progresses = document.querySelectorAll('progress');
-	progresses.forEach(function(x) {
-		x.style.setProperty("--range-percent",  (( ((x.getAttribute('value')) - 0 ) * 100) / (x.getAttribute('max') - 0) ) + '%'  );
-	});
-
-	
-	var ranges2 = document.querySelectorAll('.cpe-theme-designer input[type="range"]');
-	ranges2.forEach(function(x) {
-		x.addEventListener("input", function(e) { UpdateRange(); });
-	});
-
-// Misc
-	$("input[type='color']").change( function(e) { TestDynamicTheme(); } ); // Change
-	$("input.designer-text").change( function(e) { TestDynamicTheme(); } ); // Change
-
+function HandleColorShuffling() {
 // Color Shuffle
 	$('.color-value #bodybg_r').click(
 								function(e) {
-									e.preventDefault
 									document.querySelector('.wikitable #auto14').checked = false
 									$('.wikitable #bodybg').prop('disabled',(false) );
 									$('#bodybg').val( $('#td_colors option:nth-child('+getRandomInt($('#td_colors option').length)+')').val() )
@@ -2868,7 +2831,6 @@ $('.wikitable #auto15').click(
 							);
 	$('.color-value #bodybg2_r').click(
 								function(e) {
-									e.preventDefault
 									document.querySelector('.wikitable #auto1').checked = false
 									$('.wikitable #bodybg2').prop('disabled',(false) );
 									$('#bodybg2').val( $('#td_colors option:nth-child('+getRandomInt($('#td_colors option').length)+')').val() )
@@ -2877,7 +2839,6 @@ $('.wikitable #auto15').click(
 							);
 	$('.color-value #pagebg_r').click(
 								function(e) {
-									e.preventDefault
 									document.querySelector('.wikitable #auto15').checked = false
 									$('.wikitable #pagebg').prop('disabled',(false) );
 									$('#pagebg').val( $('#td_colors option:nth-child('+getRandomInt($('#td_colors option').length)+')').val() )
@@ -2886,7 +2847,6 @@ $('.wikitable #auto15').click(
 							);
 	$('.color-value #pagebg_s_r').click(
 								function(e) {
-									e.preventDefault
 									document.querySelector('.wikitable #auto7').checked = false
 									$('.wikitable #pagebg_s').prop('disabled',(false) );
 									$('#pagebg_s').val( $('#td_colors option:nth-child('+getRandomInt($('#td_colors option').length)+')').val() )
@@ -2895,7 +2855,6 @@ $('.wikitable #auto15').click(
 							);
 	$('.color-value #pagebg3_r').click(
 								function(e) {
-									e.preventDefault
 									document.querySelector('.wikitable #auto3').checked = false
 									$('.wikitable #pagebg3').prop('disabled',(false) );
 									$('#pagebg3').val( $('#td_colors option:nth-child('+getRandomInt($('#td_colors option').length)+')').val() )
@@ -2904,7 +2863,6 @@ $('.wikitable #auto15').click(
 							);
 	$('.color-value #pagebg3_s_r').click(
 								function(e) {
-									e.preventDefault
 									document.querySelector('.wikitable #auto8').checked = false
 									$('.wikitable #pagebg3_s').prop('disabled',(false) );
 									$('#pagebg3_s').val( $('#td_colors option:nth-child('+getRandomInt($('#td_colors option').length)+')').val() )
@@ -2913,7 +2871,6 @@ $('.wikitable #auto15').click(
 							);
 	$('.color-value #pagebg2_r').click(
 								function(e) {
-									e.preventDefault
 									document.querySelector('.wikitable #auto2').checked = false
 									$('.wikitable #pagebg2').prop('disabled',(false) );
 									$('#pagebg2').val( $('#td_colors option:nth-child('+getRandomInt($('#td_colors option').length)+')').val() )
@@ -2922,7 +2879,6 @@ $('.wikitable #auto15').click(
 							);
 	$('.color-value #saaccentcolor_r').click(
 								function(e) {
-									e.preventDefault
 									document.querySelector('.wikitable #auto13').checked = false
 									$('.wikitable #saaccentcolor').prop('disabled',(false) );
 									$('#saaccentcolor').val( $('#td_colors option:nth-child('+getRandomInt($('#td_colors option').length)+')').val() )
@@ -2932,14 +2888,12 @@ $('.wikitable #auto15').click(
 							
 	$('.color-value #saccentcolor_r').click(
 								function(e) {
-									e.preventDefault
 									$('#saccentcolor').val( $('#td_colors option:nth-child('+getRandomInt($('#td_colors option').length)+')').val() )
 									TestDynamicTheme();
 								}   
 							);
 	$('.color-value #svaccentcolor_r').click(
 								function(e) {
-									e.preventDefault
 									document.querySelector('.wikitable #auto12').checked = false
 									$('.wikitable #svaccentcolor').prop('disabled',(false) );
 									$('#svaccentcolor').val( $('#td_colors option:nth-child('+getRandomInt($('#td_colors option').length)+')').val() )
@@ -2948,7 +2902,6 @@ $('.wikitable #auto15').click(
 							);
 	$('.color-value #accentcolor_r').click(
 								function(e) {
-									e.preventDefault
 									document.querySelector('.wikitable #auto6').checked = false
 									$('.wikitable #accentcolor').prop('disabled',(false) );
 									$('#accentcolor').val( $('#td_colors option:nth-child('+getRandomInt($('#td_colors option').length)+')').val() )
@@ -2957,7 +2910,6 @@ $('.wikitable #auto15').click(
 							);
 	$('.color-value #accenttextcolor_r').click(
 								function(e) {
-									e.preventDefault
 									document.querySelector('.wikitable #auto9').checked = false
 									$('.wikitable #accenttextcolor').prop('disabled',(false) );
 									$('#accenttextcolor').val( $('#td_colors option:nth-child('+getRandomInt($('#td_colors option').length)+')').val() )
@@ -2966,7 +2918,6 @@ $('.wikitable #auto15').click(
 							);
 	$('.color-value #taccentcolor_r').click(
 								function(e) {
-									e.preventDefault
 									document.querySelector('.wikitable #auto5').checked = false
 									$('.wikitable #taccentcolor').prop('disabled',(false) );
 									$('#taccentcolor').val( $('#td_colors option:nth-child('+getRandomInt($('#td_colors option').length)+')').val() )
@@ -2975,7 +2926,6 @@ $('.wikitable #auto15').click(
 							);
 	$('.color-value #taccenttextcolor_r').click(
 								function(e) {
-									e.preventDefault
 									document.querySelector('.wikitable #auto10').checked = false
 									$('.wikitable #taccenttextcolor').prop('disabled',(false) );
 									$('#taccenttextcolor').val( $('#td_colors option:nth-child('+getRandomInt($('#td_colors option').length)+')').val() )
@@ -2984,7 +2934,6 @@ $('.wikitable #auto15').click(
 							);
 	$('.color-value #qaccentcolor_r').click(
 								function(e) {
-									e.preventDefault
 									document.querySelector('.wikitable #auto4').checked = false
 									$('.wikitable #qaccentcolor').prop('disabled',(false) );
 									$('#qaccentcolor').val( $('#td_colors option:nth-child('+getRandomInt($('#td_colors option').length)+')').val() )
@@ -2993,7 +2942,6 @@ $('.wikitable #auto15').click(
 							);
 	$('.color-value #qaccenttextcolor_r').click(
 								function(e) {
-									e.preventDefault
 									document.querySelector('.wikitable #auto11').checked = false
 									$('.wikitable #qaccenttextcolor').prop('disabled',(false) );
 									$('#qaccenttextcolor').val( $('#td_colors option:nth-child('+getRandomInt($('#td_colors option').length)+')').val() )
@@ -3003,61 +2951,52 @@ $('.wikitable #auto15').click(
 
 	$('.color-value #firstfont_r').click(
 								function(e) {
-									e.preventDefault
 									$('#firstfont').val( $('#td_fonts2 option:nth-child('+getRandomInt($('#td_fonts2 option').length)+')').val() )
 									TestDynamicTheme();
 								}   
 							);
 	$('.color-value #secondfont_r').click(
 								function(e) {
-									e.preventDefault
 									$('#secondfont').val( $('#td_fonts option:nth-child('+getRandomInt($('#td_fonts option').length)+')').val() )
 									TestDynamicTheme();
 								}   
 							);
 	$('.color-value #thirdfont_r').click(
 								function(e) {
-									e.preventDefault
 									$('#thirdfont').val( $('#td_fonts3 option:nth-child('+getRandomInt($('#td_fonts3 option').length)+')').val() )
 									TestDynamicTheme();
 								}   
 							);
 	$('.color-value #fourthfont_r').click(
 								function(e) {
-									e.preventDefault
 									$('#fourthfont').val( $('#td_fonts4 option:nth-child('+getRandomInt($('#td_fonts4 option').length)+')').val() )
 									TestDynamicTheme();
 								}   
 							);
 	$('.color-value #bodyimagefilter_r').click(
 								function(e) {
-									e.preventDefault
 									$('#bodyimagefilter').val( $('#td_imagefilter option:nth-child('+getRandomInt($('#td_imagefilter option').length)+')').val() )
 									TestDynamicTheme();
 								}   
 							);
 	$('.color-value #filter_r').click(
 								function(e) {
-									e.preventDefault
 									$('#filter').val( $('#td_imagefilter option:nth-child('+getRandomInt($('#td_imagefilter option').length)+')').val() )
 									TestDynamicTheme();
 								}   
 							);
 	$('.color-value #filter2_r').click(
 								function(e) {
-									e.preventDefault
 									$('#filter2').val( $('#td_imagefilter option:nth-child('+getRandomInt($('#td_imagefilter option').length)+')').val() )
 									TestDynamicTheme();
 								}   
 							);
+}
 
-
-
-
+function HandleColorPickers() {
 // Color Pick
 	$('.color-value #bodybg_e').click(
 								function(e) {
-									e.preventDefault
 								  new EyeDropper()
 									.open()
 									.then((result) => {
@@ -3074,7 +3013,6 @@ $('.wikitable #auto15').click(
 							);
 	$('.color-value #bodybg2_e').click(
 								function(e) {
-									e.preventDefault
 
 								  new EyeDropper()
 									.open()
@@ -3093,7 +3031,6 @@ $('.wikitable #auto15').click(
 							);
 	$('.color-value #pagebg_e').click(
 								function(e) {
-									e.preventDefault
 
 								  new EyeDropper()
 									.open()
@@ -3112,7 +3049,6 @@ $('.wikitable #auto15').click(
 							);
 	$('.color-value #pagebg_s_e').click(
 								function(e) {
-									e.preventDefault
 
 								  new EyeDropper()
 									.open()
@@ -3131,7 +3067,6 @@ $('.wikitable #auto15').click(
 							);
 	$('.color-value #pagebg3_e').click(
 								function(e) {
-									e.preventDefault
 
 								  new EyeDropper()
 									.open()
@@ -3150,7 +3085,6 @@ $('.wikitable #auto15').click(
 							);
 	$('.color-value #pagebg3_s_e').click(
 								function(e) {
-									e.preventDefault
 
 								  new EyeDropper()
 									.open()
@@ -3169,7 +3103,6 @@ $('.wikitable #auto15').click(
 							);
 	$('.color-value #pagebg2_e').click(
 								function(e) {
-									e.preventDefault
 
 								  new EyeDropper()
 									.open()
@@ -3188,7 +3121,6 @@ $('.wikitable #auto15').click(
 							);
 	$('.color-value #saaccentcolor_e').click(
 								function(e) {
-									e.preventDefault
 
 								  new EyeDropper()
 									.open()
@@ -3208,7 +3140,6 @@ $('.wikitable #auto15').click(
 							
 	$('.color-value #saccentcolor_e').click(
 								function(e) {
-									e.preventDefault
 
 								  new EyeDropper()
 									.open()
@@ -3225,7 +3156,6 @@ $('.wikitable #auto15').click(
 							);
 	$('.color-value #svaccentcolor_e').click(
 								function(e) {
-									e.preventDefault
 
 								  new EyeDropper()
 									.open()
@@ -3244,7 +3174,6 @@ $('.wikitable #auto15').click(
 							);
 	$('.color-value #accentcolor_e').click(
 								function(e) {
-									e.preventDefault
 
 								  new EyeDropper()
 									.open()
@@ -3263,7 +3192,6 @@ $('.wikitable #auto15').click(
 							);
 	$('.color-value #accenttextcolor_e').click(
 								function(e) {
-									e.preventDefault
 
 								  new EyeDropper()
 									.open()
@@ -3282,7 +3210,6 @@ $('.wikitable #auto15').click(
 							);
 	$('.color-value #taccentcolor_e').click(
 								function(e) {
-									e.preventDefault
 
 								  new EyeDropper()
 									.open()
@@ -3301,7 +3228,6 @@ $('.wikitable #auto15').click(
 							);
 	$('.color-value #taccenttextcolor_e').click(
 								function(e) {
-									e.preventDefault
 
 								  new EyeDropper()
 									.open()
@@ -3320,7 +3246,6 @@ $('.wikitable #auto15').click(
 							);
 	$('.color-value #qaccentcolor_e').click(
 								function(e) {
-									e.preventDefault
 
 								  new EyeDropper()
 									.open()
@@ -3339,7 +3264,6 @@ $('.wikitable #auto15').click(
 							);
 	$('.color-value #qaccenttextcolor_e').click(
 								function(e) {
-									e.preventDefault
 
 								  new EyeDropper()
 									.open()
@@ -3356,43 +3280,28 @@ $('.wikitable #auto15').click(
 									
 								}   
 							);
-
-
-/* Select Inputs */
-	$(' .cpe-dropdown.cpe-select').blur(function() { TestDynamicTheme() })
-	$(' .cpe-theme-designer input[type="range"]').change(function() { TestDynamicTheme() })
-	var select_items = document.querySelectorAll(".cpe-dropdown.cpe-select .cpe-dropdown__content .cpe-list li:not(.cpe-dropdown-level-2)");
-	select_items.forEach(function(y) {
-		y.setAttribute('onclick','UpdateSelectValue()');
-		y.addEventListener('click', (function(e) {
-						e.preventDefault();
-						var selected = this;
-
-
-		var x = document.querySelector(".cpe-dropdown.cpe-select:focus-within .cpe-dropdown__content .cpe-list li.selected");
-		if (x) {
-			x.classList.remove("selected");
-		}
-//		this.classList.add("selected");
-
-
-						var value = selected.getAttribute("value");
-						document.querySelector(' .cpe-dropdown.cpe-select:focus-within')
-						.addEventListener('click',(function() {
-									if (selected != undefined) {
-										var content = selected.innerText;
-										document.querySelector('.cpe-select:focus-within .cpe-select__value').setAttribute("value", value);
-										document.querySelector('.cpe-select:focus-within .cpe-select__value').innerHTML= content;
-										selected = undefined;
-									}
-								}));
-        }) );
-	});
-					
-					
-
-
 }
+
+function SelectInputs() {
+/* Select Inputs */
+ HandleCheckboxes();
+ UpdateRangeInputs();
+ HandleColorShuffling();
+ HandleColorPickers();
+ DropDownUpdate();
+// Misc
+	$(".cpe-theme-designer input[type='color']").on( "change", function(e) { TestDynamicTheme(); } ); // Change
+	$(".cpe-theme-designer input.designer-text").on( "change", function(e) { TestDynamicTheme(); } ); // Change
+	$('.cpe-theme-designer .cpe-dropdown.cpe-select').on( "blur",function() { TestDynamicTheme() })
+	$('.cpe-theme-designer input[type="range"]').on( "change",function(e) { TestDynamicTheme() })
+					
+}
+
+
+/* Selects */
+
+
+
 
 function RandomTheme(full=false) {
 	$(".evelution-floating-actions.extra-actions .theme-paste-button").prop('disabled', true);
@@ -3504,7 +3413,6 @@ function InitSBT() {
 	
 $('#AC[name="SBT"]').click(
 							function(e) {
-								e.preventDefault
 								$('div.sbtll').addClass("hidden").removeClass("has-tabs")
 								$('div.SBT').css("--backdrop-opacity","var(--acrylic-opacity)");
 								$('div.SBT').css("background-color","rgba(var(--canvas-secondary-background-color-rgb),var(--acrylic-opacity))");
@@ -3513,7 +3421,6 @@ $('#AC[name="SBT"]').click(
 
 $('#MI[name="SBT"]').click(
 							function(e) {
-								e.preventDefault
 								$('div.sbtll').removeClass("hidden").removeClass("has-tabs")
 								$('div.SBT').css("--backdrop-opacity","1");
 								$('div.SBT').css("background-color","var(--mica-background-color)");
@@ -3522,7 +3429,6 @@ $('#MI[name="SBT"]').click(
 
 $('#TA[name="SBT"]').click(
 							function(e) {
-								e.preventDefault
 								$('div.sbtll').removeClass("hidden").addClass("has-tabs")
 								$('div.SBT').css("--backdrop-opacity","1");
 								$('div.SBT').css("background-color","var(--tabbed-background-color)");
@@ -3532,7 +3438,6 @@ $('#TA[name="SBT"]').click(
 
 $('#none[name="SBT2"]').click(
 							function(e) {
-								e.preventDefault
 								$('div.SBT').remove();
 							}   
 );
