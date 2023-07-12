@@ -351,13 +351,13 @@ function ForcedColorType() {
 
 
 /* Copied from Base JS */
-function UpdateSelectValue() { // Handles Blurring
+function HandleSelectInputBlurring() { // Handles Blurring
 		setTimeout(
 		(function() { document.querySelector(' .cpe-dropdown.cpe-select:focus-within').blur(); 	document.querySelector('.focus-overlay').focus(); } )
 	,0)
 }
 
-
+/* Select Inputs */
 function UpdateRange() {
 	var ranges = document.querySelectorAll('input[type="range"]');
 	ranges.forEach(function(x) {
