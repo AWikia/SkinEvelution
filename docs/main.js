@@ -113,6 +113,9 @@ function UpdateRangeInputs() {
 	/* DITTO */
 	document.querySelector("body").addEventListener("mouseenter", ( function(e) { CheckTheme(); } ) );
 	document.querySelector("body").addEventListener("mouseleave", ( function(e) { DropDownUpdate(); CheckTheme(); } ) );
+
+	document.querySelector("body").addEventListener("blur", ( function(e) { UpdateThemeColorMetaTag(); } ) );
+	document.querySelector("body").addEventListener("focus", ( function(e) { UpdateThemeColorMetaTag(); } ) );
 	
 
 	/* END DITTO */
@@ -142,7 +145,7 @@ function AliasFandomComponents() {
 			/* Legacy CPE => Modern CPE */
 			x.className = x.className.replace("cpe-is-", "is-");
 			x.className = x.className.replace("cpe-has-", "has-");
-			x.className = x.className.replace("cpe-dropdown-level-nested", "cpe-dropdown-level-nested");
+			x.className = x.className.replace("cpe-dropdown-level-2", "cpe-dropdown-level-nested");
 		});
 	}
 

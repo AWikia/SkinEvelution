@@ -256,7 +256,7 @@ var visualColorNames = ['standard', 'nocolormanagement'];
         }
     });
     var themes = "";
-	document.querySelector("head").insertAdjacentHTML('afterbegin','<style class="devicetheme"></style><style class="themes">' + themes + '</style><style class="theming"></style>');
+	document.querySelector("head").insertAdjacentHTML('afterbegin','<meta name="theme-color" content="#ffffff"><style class="devicetheme"></style><style class="themes">' + themes + '</style><style class="theming"></style>');
 	ToggleTheme(theme_selected,false,false);
 	colortheme(color_style,device_theme,color_hue,color_sat,color_style_behavior,false,false);
 	contrastmode(contrast_mode,false,false);
@@ -270,10 +270,11 @@ var visualColorNames = ['standard', 'nocolormanagement'];
 	SetSerifFont(serif_font,false);
 	ManagerRows(); // For Task Manager Only
 	VisualStyleCompile(); // Compiles the Contrast Options
-	VisualMode(visual_mode,false);
+	VisualMode(visual_mode,false,false);
 	VisualStyle(visual_style,false);
 	document.querySelector('body').setAttribute('tabindex',-1); // Add the CPE button class
 	document.querySelector('body').focus();
+	UpdateThemeColorMetaTag();
 
 })();
 
@@ -357,7 +358,7 @@ function HandleSelectInputBlurring() { // Handles Blurring
 	,0)
 }
 
-/* Select Inputs */
+
 function UpdateRange() {
 	var ranges = document.querySelectorAll('input[type="range"]');
 	ranges.forEach(function(x) {
@@ -392,7 +393,7 @@ function getVisualMode() {
 	}
 }
 
-function VisualMode(mode,save=true) {
+function VisualMode(mode,save=true,repaint=true) {
 	if (save) {
 		insertKey('visual-appearance-mode', mode );
 	}
@@ -405,6 +406,9 @@ function VisualMode(mode,save=true) {
 			document.querySelector('html').classList.add("visualmode-" +  window.ThemingEngine_ActiveVisualMode2);
 		} else if (oldmode != getVisualMode() ) {
 			document.querySelector('html').classList.replace("visualmode-" +  oldmode,"visualmode-" +  window.ThemingEngine_ActiveVisualMode2);
+		}
+		if (repaint) {
+			UpdateThemeColorMetaTag();
 		}
 	var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-modes li.selected")
 	if (x) {
@@ -1412,6 +1416,13 @@ function contrastmode(theme='auto', repaint=true, save=true,notfromrange=true) {
 }
 
 
+function UpdateThemeColorMetaTag() {
+	x = document.querySelector("head meta[name='theme-color'");
+	if (x) {
+		x.setAttribute("content", getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--luna-mica-background-color").trim() );
+	}
+}
+
 function SetAccent(tick='false',save='true') {
 		if (save) {
 			insertKey('accent-active', tick );
@@ -1421,6 +1432,7 @@ function SetAccent(tick='false',save='true') {
 		} else {
 			document.querySelector('html').classList.remove('has-accents');
 		}
+		UpdateThemeColorMetaTag();
 }
 
 
@@ -2930,9 +2942,9 @@ document.querySelector("head .theming").innerHTML = result;
 		}
 		/* Forced Colors */
 		if (window.ThemingEngine_ActiveVisualMode != '-') {
-			VisualMode(window.ThemingEngine_ActiveVisualMode,false);
+			VisualMode(window.ThemingEngine_ActiveVisualMode,false,false);
 		}
-
+		UpdateThemeColorMetaTag();
 
 }
 
