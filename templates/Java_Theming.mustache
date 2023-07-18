@@ -1952,6 +1952,7 @@ var button_color = GetHighlight();
 	var button2_color = button_color;
 	var button3_color = button_color;
 	var button4_color = button_color;
+	var sshighlight	  = button_color;
 		while ( ( !(isSuitableColorFormControls(button_color, content_color)) ) && (button_color !== lightness)  ) {
 			var button_color= ColorAdjust(button_color,window.ThemingEngine_PageColor);
 		}
@@ -1964,7 +1965,14 @@ var button_color = GetHighlight();
 		while ( ( !(isSuitableColorFormControls(button4_color, head_color)) ) && (button4_color !== lightnessHead)  ) {
 			var button4_color= ColorAdjust(button4_color,window.ThemingEngine_DesktopColor);
 		}
-
+/* Screensaver */
+		while ( ( isSuitableColorText(sshighlight, '#0c0c0c') ) && (sshighlight !== '#000000')  ) {
+			var sshighlight= ColorAdjust(sshighlight,'#0c0c0c',true);
+		}
+		while ( ( !(isSuitableColorFormControls(sshighlight, '#0c0c0c')) ) && (sshighlight !== '#ffffff')  ) {
+			var sshighlight= ColorAdjust(sshighlight,'#0c0c0c');
+		}
+/* Screensaver */
 	var lightbutton = isLightColor(button_color);
 	if (lightbutton) {
 		var lightnessBTN = '#000000';
@@ -2383,6 +2391,10 @@ var invfilters = [
 						  "--canvas-text-alternative-foreground-color-hover:" + content_text_fg[6] + ";\n" + 
 						  "--canvas-text-alternative-foreground-color-rgb:" + content_text_fg[5] + ";\n" +
 						  "--canvas-text-alternative-foreground-color-hover-rgb:" + content_text_fg[7] + ";\n" +
+						  "--canvas-text-secondary-alternative-foreground-color:" + content2_text_fg[4] + ";\n" + 
+						  "--canvas-text-secondary-alternative-foreground-color-hover:" + content2_text_fg[6] + ";\n" + 
+						  "--canvas-text-secondary-alternative-foreground-color-rgb:" + content2_text_fg[5] + ";\n" +
+						  "--canvas-text-secondary-alternative-foreground-color-hover-rgb:" + content2_text_fg[7] + ";\n" +
 						  "--highlight-alternative-foreground-color:" + button_fg[4] + ";\n" + 
 						  "--highlight-alternative-foreground-color-hover:" + button_fg[6] + ";\n" + 
 						  "--highlight-alternative-foreground-color-rgb:" + button_fg[5] + ";\n" +
@@ -2913,7 +2925,7 @@ var invfilters = [
 						 '--system-generic-color-saturation:' + getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--system-generic-color-saturation")  + ';\n' +
 						 '--system-icon-style:' + getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--system-icon-style")  + ';\n' +
 						 '--system-icon-font-family:' + iconstyle  + ';\n' +
-
+						 '--screensaver-highlight-color:' + sshighlight  + ';\n' +
 
 // Misc Background Settings
 						  "--bg-size:" + ['cover','contain','100% 100%','auto'][["cover", "contain", "stretched", "full"].indexOf( getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--desktop-background-size") ) ] + ";\n" +

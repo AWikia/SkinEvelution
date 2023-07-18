@@ -117,14 +117,17 @@ function DownloadTheme(full=false) {
 				 // 2nd Page Border Color
 				 '--inactive-text-secondary-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--inactive-text-secondary-background-color")  + ';\n' +
 				 '--inactive-text-secondary-background-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--inactive-text-secondary-background-color-hover")  + ';\n' +
+				 '--inactive-text-secondary-fadeout-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--inactive-text-secondary-fadeout-color")  + ';\n' +
 				 '--inactive-text-secondary-background-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--inactive-text-secondary-background-color-rgb")  + ';\n' +
 				 // 3rd Page Border Color
 				 '--inactive-text-tertiary-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--inactive-text-tertiary-background-color")  + ';\n' +
 				 '--inactive-text-tertiary-background-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--inactive-text-tertiary-background-color-hover")  + ';\n' +
+				 '--inactive-text-tertiary-fadeout-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--inactive-text-tertiary-fadeout-color")  + ';\n' +
 				 '--inactive-text-tertiary-background-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--inactive-text-tertiary-background-color-rgb")  + ';\n' +
 				 // 4th Page Border Color
 				 '--inactive-text-quaternary-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--inactive-text-quaternary-background-color")  + ';\n' +
 				 '--inactive-text-quaternary-background-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--inactive-text-quaternary-background-color-hover")  + ';\n' +
+				 '--inactive-text-quaternary-fadeout-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--inactive-text-quaternary-fadeout-color")  + ';\n' +
 				 '--inactive-text-quaternary-background-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--inactive-text-quaternary-background-color-rgb")  + ';\n' +
 
 				 // Secondary Page Border Color
@@ -148,16 +151,18 @@ function DownloadTheme(full=false) {
 				 // 2nd Secondary Page Border Color
 				 '--active-text-secondary-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--active-text-secondary-background-color")  + ';\n' +
 				 '--active-text-secondary-background-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--active-text-secondary-background-color-hover")  + ';\n' +
+				 '--active-text-secondary-fadeout-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--active-text-secondary-fadeout-color")  + ';\n' +
 				 '--active-text-secondary-background-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--active-text-secondary-background-color-rgb")  + ';\n' +
 				 // 3rd Secondary Page Border Color
 				 '--active-text-tertiary-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--active-text-tertiary-background-color")  + ';\n' +
 				 '--active-text-tertiary-background-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--active-text-tertiary-background-color-hover")  + ';\n' +
+				 '--active-text-tertiary-fadeout-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--active-text-tertiary-fadeout-color")  + ';\n' +
 				 '--active-text-tertiary-background-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--active-text-tertiary-background-color-rgb")  + ';\n' +
 				 // 4th Secondary Page Border Color
 				 '--active-text-quaternary-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--active-text-quaternary-background-color")  + ';\n' +
 				 '--active-text-quaternary-background-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--active-text-quaternary-background-color-hover")  + ';\n' +
+				 '--active-text-quaternary-fadeout-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--active-text-quaternary-fadeout-color")  + ';\n' +
 				 '--active-text-quaternary-background-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--active-text-quaternary-background-color-rgb")  + ';\n' +
-
 				 // Page Text Color
 				 '--canvas-text-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--canvas-text-background-color")  + ';\n' +
 				 '--canvas-text-background-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--canvas-text-background-color-hover")  + ';\n' +
@@ -234,14 +239,17 @@ function DownloadTheme(full=false) {
 				 // 2nd Accent Color
 				 '--highlight-secondary-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--highlight-secondary-background-color")  + ';\n' +
 				 '--highlight-secondary-background-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--highlight-secondary-background-color-hover")  + ';\n' +
+				 '--highlight-secondary-fadeout-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--highlight-secondary-fadeout-color")  + ';\n' +
 				 '--highlight-secondary-background-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--highlight-secondary-background-color-rgb")  + ';\n' +
 				 // 3rd Accent Color
 				 '--highlight-tertiary-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--highlight-tertiary-background-color")  + ';\n' +
 				 '--highlight-tertiary-background-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--highlight-tertiary-background-color-hover")  + ';\n' +
+				 '--highlight-tertiary-fadeout-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--highlight-tertiary-fadeout-color")  + ';\n' +
 				 '--highlight-tertiary-background-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--highlight-tertiary-background-color-rgb")  + ';\n' +
 				 // 4th Accent Color
 				 '--highlight-quaternary-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--highlight-quaternary-background-color")  + ';\n' +
 				 '--highlight-quaternary-background-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--highlight-quaternary-background-color-hover")  + ';\n' +
+				 '--highlight-quaternary-fadeout-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--highlight-quaternary-fadeout-color")  + ';\n' +
 				 '--highlight-quaternary-background-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--highlight-quaternary-background-color-rgb")  + ';\n' +
 
 				 // Secondary Accent Color
@@ -269,16 +277,19 @@ function DownloadTheme(full=false) {
 				 // 2nd Secondary Accent Color
 				 '--hyperlink-secondary-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--hyperlink-secondary-background-color")  + ';\n' +
 				 '--hyperlink-secondary-background-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--hyperlink-secondary-background-color-hover")  + ';\n' +
+				 '--hyperlink-secondary-fadeout-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--hyperlink-secondary-fadeout-color")  + ';\n' +
 				 '--hyperlink-secondary-background-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--hyperlink-secondary-background-color-rgb")  + ';\n' +
 				 '--hyperlink-secondary-default-text-decoration:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--hyperlink-secondary-default-text-decoration")  + ';\n' +
 				 // 3rd Secondary Accent Color
 				 '--hyperlink-tertiary-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--hyperlink-tertiary-background-color")  + ';\n' +
 				 '--hyperlink-tertiary-background-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--hyperlink-tertiary-background-color-hover")  + ';\n' +
+				 '--hyperlink-tertiary-fadeout-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--hyperlink-tertiary-fadeout-color")  + ';\n' +
 				 '--hyperlink-tertiary-background-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--hyperlink-tertiary-background-color-rgb")  + ';\n' +
 				 '--hyperlink-tertiary-default-text-decoration:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--hyperlink-tertiary-default-text-decoration")  + ';\n' +
 				 // 4th Secondary Accent Color
 				 '--hyperlink-quaternary-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--hyperlink-quaternary-background-color")  + ';\n' +
 				 '--hyperlink-quaternary-background-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--hyperlink-quaternary-background-color-hover")  + ';\n' +
+				 '--hyperlink-quaternary-fadeout-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--hyperlink-quaternary-fadeout-color")  + ';\n' +
 				 '--hyperlink-quaternary-background-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--hyperlink-quaternary-background-color-rgb")  + ';\n' +
 				 '--hyperlink-quaternary-default-text-decoration:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--hyperlink-quaternary-default-text-decoration")  + ';\n' +
 
@@ -303,14 +314,17 @@ function DownloadTheme(full=false) {
 				 // 2nd Secondary Visited Accent Color
 				 '--visited-hyperlink-secondary-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--visited-hyperlink-secondary-background-color")  + ';\n' +
 				 '--visited-hyperlink-secondary-background-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--visited-hyperlink-secondary-background-color-hover")  + ';\n' +
+				 '--visited-hyperlink-secondary-fadeout-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--visited-hyperlink-secondary-fadeout-color")  + ';\n' +
 				 '--visited-hyperlink-secondary-background-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--visited-hyperlink-secondary-background-color-rgb")  + ';\n' +
 				 // 3rd Secondary Visited Accent Color
 				 '--visited-hyperlink-tertiary-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--visited-hyperlink-tertiary-background-color")  + ';\n' +
 				 '--visited-hyperlink-tertiary-background-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--visited-hyperlink-tertiary-background-color-hover")  + ';\n' +
+				 '--visited-hyperlink-tertiary-fadeout-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--visited-hyperlink-tertiary-fadeout-color")  + ';\n' +
 				 '--visited-hyperlink-tertiary-background-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--visited-hyperlink-tertiary-background-color-rgb")  + ';\n' +
 				 // 4th Secondary Visited Accent Color
 				 '--visited-hyperlink-quaternary-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--visited-hyperlink-quaternary-background-color")  + ';\n' +
 				 '--visited-hyperlink-quaternary-background-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--visited-hyperlink-quaternary-background-color-hover")  + ';\n' +
+				 '--visited-hyperlink-quaternary-fadeout-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--visited-hyperlink-quaternary-fadeout-color")  + ';\n' +
 				 '--visited-hyperlink-quaternary-background-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--visited-hyperlink-quaternary-background-color-rgb")  + ';\n' +
 
 				 // Tertiary Accent Color
@@ -357,14 +371,17 @@ function DownloadTheme(full=false) {
 				 // 2nd Tertiary Accent Color
 				 '--active-title-secondary-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--active-title-secondary-background-color")  + ';\n' +
 				 '--active-title-secondary-background-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--active-title-secondary-background-color-hover")  + ';\n' +
+				 '--active-title-secondary-fadeout-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--active-title-secondary-fadeout-color")  + ';\n' +
 				 '--active-title-secondary-background-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--active-title-secondary-background-color-rgb")  + ';\n' +
 				 // 3rd Tertiary Accent Color
 				 '--active-title-tertiary-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--active-title-tertiary-background-color")  + ';\n' +
 				 '--active-title-tertiary-background-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--active-title-tertiary-background-color-hover")  + ';\n' +
+				 '--active-title-tertiary-fadeout-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--active-title-tertiary-fadeout-color")  + ';\n' +
 				 '--active-title-tertiary-background-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--active-title-tertiary-background-color-rgb")  + ';\n' +
 				 // 4th Tertiary Accent Color
 				 '--active-title-quaternary-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--active-title-quaternary-background-color")  + ';\n' +
 				 '--active-title-quaternary-background-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--active-title-quaternary-background-color-hover")  + ';\n' +
+				 '--active-title-quaternary-fadeout-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--active-title-quaternary-fadeout-color")  + ';\n' +
 				 '--active-title-quaternary-background-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--active-title-quaternary-background-color-rgb")  + ';\n' +
 
 				 // Quaternary Accent Color
@@ -427,14 +444,17 @@ function DownloadTheme(full=false) {
 				 // 2nd Alert Color
 				 '--alert-secondary-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--alert-secondary-background-color")  + ';\n' +
 				 '--alert-secondary-background-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--alert-secondary-background-color-hover")  + ';\n' +
+				 '--alert-secondary-fadeout-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--alert-secondary-fadeout-color")  + ';\n' +
 				 '--alert-secondary-background-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--alert-secondary-background-color-rgb")  + ';\n' +
 				 // 3rd Alert Color
 				 '--alert-tertiary-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--alert-tertiary-background-color")  + ';\n' +
 				 '--alert-tertiary-background-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--alert-tertiary-background-color-hover")  + ';\n' +
+				 '--alert-tertiary-fadeout-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--alert-tertiary-fadeout-color")  + ';\n' +
 				 '--alert-tertiary-background-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--alert-tertiary-background-color-rgb")  + ';\n' +
 				 // 4th Alert Color
 				 '--alert-quaternary-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--alert-quaternary-background-color")  + ';\n' +
 				 '--alert-quaternary-background-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--alert-quaternary-background-color-hover")  + ';\n' +
+				 '--alert-quaternary-fadeout-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--alert-quaternary-fadeout-color")  + ';\n' +
 				 '--alert-quaternary-background-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--alert-quaternary-background-color-rgb")  + ';\n' +
 				 // Pause
 				 '--pause-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--pause-background-color")  + ';\n' +
@@ -457,14 +477,17 @@ function DownloadTheme(full=false) {
 				 // 2nd Pause Color
 				 '--pause-secondary-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--pause-secondary-background-color")  + ';\n' +
 				 '--pause-secondary-background-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--pause-secondary-background-color-hover")  + ';\n' +
+				 '--pause-secondary-fadeout-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--pause-secondary-fadeout-color")  + ';\n' +
 				 '--pause-secondary-background-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--pause-secondary-background-color-rgb")  + ';\n' +
 				 // 3rd Pause Color
 				 '--pause-tertiary-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--pause-tertiary-background-color")  + ';\n' +
 				 '--pause-tertiary-background-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--pause-tertiary-background-color-hover")  + ';\n' +
+				 '--pause-tertiary-fadeout-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--pause-tertiary-fadeout-color")  + ';\n' +
 				 '--pause-tertiary-background-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--pause-tertiary-background-color-rgb")  + ';\n' +
 				 // 4th Pause Color
 				 '--pause-quaternary-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--pause-quaternary-background-color")  + ';\n' +
 				 '--pause-quaternary-background-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--pause-quaternary-background-color-hover")  + ';\n' +
+				 '--pause-quaternary-fadeout-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--pause-quaternary-fadeout-color")  + ';\n' +
 				 '--pause-quaternary-background-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--pause-quaternary-background-color-rgb")  + ';\n' +
 				 // Warning
 				 '--warning-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--warning-background-color")  + ';\n' +
@@ -482,20 +505,22 @@ function DownloadTheme(full=false) {
 				 '--warning-foreground-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--warning-foreground-color-rgb")  + ';\n' +
 				 '--warning-foreground-color-hover-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--warning-foreground-color-hover-rgb")  + ';\n' +
 				 '--warning-foreground-color-inverted-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--warning-foreground-color-inverted-rgb")  + ';\n' +
-				 '--warning-alternative-foreground-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--warning-alternative-foreground-color-rgb")  + 
-';\n' +
+				 '--warning-alternative-foreground-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--warning-alternative-foreground-color-rgb")  + ';\n' +
 				 '--warning-alternative-foreground-color-hover-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--warning-alternative-foreground-color-hover-rgb")  + ';\n' +
 				 // 2nd Warning Color
 				 '--warning-secondary-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--warning-secondary-background-color")  + ';\n' +
 				 '--warning-secondary-background-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--warning-secondary-background-color-hover")  + ';\n' +
+				 '--warning-secondary-fadeout-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--warning-secondary-fadeout-color")  + ';\n' +
 				 '--warning-secondary-background-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--warning-secondary-background-color-rgb")  + ';\n' +
 				 // 3rd Warning Color
 				 '--warning-tertiary-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--warning-tertiary-background-color")  + ';\n' +
 				 '--warning-tertiary-background-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--warning-tertiary-background-color-hover")  + ';\n' +
+				 '--warning-tertiary-fadeout-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--warning-tertiary-fadeout-color")  + ';\n' +
 				 '--warning-tertiary-background-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--warning-tertiary-background-color-rgb")  + ';\n' +
 				 // 4th Warning Color
 				 '--warning-quaternary-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--warning-quaternary-background-color")  + ';\n' +
 				 '--warning-quaternary-background-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--warning-quaternary-background-color-hover")  + ';\n' +
+				 '--warning-quaternary-fadeout-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--warning-quaternary-fadeout-color")  + ';\n' +
 				 '--warning-quaternary-background-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--warning-quaternary-background-color-rgb")  + ';\n' +
 
 				 // Success
@@ -519,14 +544,17 @@ function DownloadTheme(full=false) {
 				 // 2nd Success Color
 				 '--success-secondary-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--success-secondary-background-color")  + ';\n' +
 				 '--success-secondary-background-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--success-secondary-background-color-hover")  + ';\n' +
+				 '--success-secondary-fadeout-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--success-secondary-fadeout-color")  + ';\n' +
 				 '--success-secondary-background-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--success-secondary-background-color-rgb")  + ';\n' +
 				 // 3rd Success Color
 				 '--success-tertiary-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--success-tertiary-background-color")  + ';\n' +
 				 '--success-tertiary-background-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--success-tertiary-background-color-hover")  + ';\n' +
+				 '--success-tertiary-fadeout-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--success-tertiary-fadeout-color")  + ';\n' +
 				 '--success-tertiary-background-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--success-tertiary-background-color-rgb")  + ';\n' +
 				 // 4th Success Color
 				 '--success-quaternary-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--success-quaternary-background-color")  + ';\n' +
 				 '--success-quaternary-background-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--success-quaternary-background-color-hover")  + ';\n' +
+				 '--success-quaternary-fadeout-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--success-quaternary-fadeout-color")  + ';\n' +
 				 '--success-quaternary-background-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--success-quaternary-background-color-rgb")  + ';\n' +
 				 // Progress
 				 '--progress-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--progress-background-color")  + ';\n' +
@@ -549,14 +577,17 @@ function DownloadTheme(full=false) {
 				 // 2nd Progress Color
 				 '--progress-secondary-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--progress-secondary-background-color")  + ';\n' +
 				 '--progress-secondary-background-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--progress-secondary-background-color-hover")  + ';\n' +
+				 '--progress-secondary-fadeout-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--progress-secondary-fadeout-color")  + ';\n' +
 				 '--progress-secondary-background-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--progress-secondary-background-color-rgb")  + ';\n' +
 				 // 3rd Progress Color
 				 '--progress-tertiary-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--progress-tertiary-background-color")  + ';\n' +
 				 '--progress-tertiary-background-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--progress-tertiary-background-color-hover")  + ';\n' +
+				 '--progress-tertiary-fadeout-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--progress-tertiary-fadeout-color")  + ';\n' +
 				 '--progress-tertiary-background-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--progress-tertiary-background-color-rgb")  + ';\n' +
 				 // 4th Progress Color
 				 '--progress-quaternary-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--progress-quaternary-background-color")  + ';\n' +
 				 '--progress-quaternary-background-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--progress-quaternary-background-color-hover")  + ';\n' +
+				 '--progress-quaternary-fadeout-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--progress-quaternary-fadeout-color")  + ';\n' +
 				 '--progress-quaternary-background-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--progress-quaternary-background-color-rgb")  + ';\n' +
 				 // Message
 				 '--message-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--message-background-color")  + ';\n' +
@@ -579,14 +610,17 @@ function DownloadTheme(full=false) {
 				 // 2nd Message Color
 				 '--message-secondary-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--message-secondary-background-color")  + ';\n' +
 				 '--message-secondary-background-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--message-secondary-background-color-hover")  + ';\n' +
+				 '--message-secondary-fadeout-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--message-secondary-fadeout-color")  + ';\n' +
 				 '--message-secondary-background-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--message-secondary-background-color-rgb")  + ';\n' +
 				 // 3rd Message Color
 				 '--message-tertiary-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--message-tertiary-background-color")  + ';\n' +
 				 '--message-tertiary-background-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--message-tertiary-background-color-hover")  + ';\n' +
+				 '--message-tertiary-fadeout-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--message-tertiary-fadeout-color")  + ';\n' +
 				 '--message-tertiary-background-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--message-tertiary-background-color-rgb")  + ';\n' +
 				 // 4th Message Color
 				 '--message-quaternary-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--message-quaternary-background-color")  + ';\n' +
 				 '--message-quaternary-background-color-hover:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--message-quaternary-background-color-hover")  + ';\n' +
+				 '--message-quaternary-fadeout-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--message-quaternary-fadeout-color")  + ';\n' +
 				 '--message-quaternary-background-color-rgb:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--message-quaternary-background-color-rgb")  + ';\n' +
 				 // Graph
 				 '--graph-1-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--graph-1-background-color")  + ';\n' +
@@ -621,6 +655,8 @@ function DownloadTheme(full=false) {
 				 '--mica-background-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--mica-background-color")  + ';\n' +
 				 '--fadeout-opacity:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--fadeout-opacity")  + ';\n' +
 				 '--disabled-elements-opacity:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--disabled-elements-opacity")  + ';\n' +
+				 '--desktop-filter:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--desktop-filter")  + ';\n' +
+				 '--screensaver-highlight-color:' + getComputedStyle(document.querySelector('body')).getPropertyValue("--screensaver-highlight-color")  + ';\n' +
 				 '}' // Ending
 	} else { // For use with Theme Management
 		result = '.visualcolors-standard.theme-A {\n' + // Beginning
