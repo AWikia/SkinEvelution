@@ -2325,10 +2325,13 @@ var caretITtext_2fg = GetForegroundVariables(caretITtextcolor1);
 
 	if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--system-icon-style") === 'outlined') {
 		var iconstyle= 'Material Icons'
+		var clockstyle= 'Evelution Clock'
  	} else if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--system-icon-style") === 'sharp') {
 		var iconstyle=  'Material Icons Sharp'
+		var clockstyle= 'Evelution Clock Sharp'
  	} else {
 		var iconstyle=  'Material Icons Round'
+		var clockstyle= 'Evelution Clock Round'
  	}
 
 
@@ -2925,6 +2928,7 @@ var invfilters = [
 						 '--system-generic-color-saturation:' + getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--system-generic-color-saturation")  + ';\n' +
 						 '--system-icon-style:' + getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--system-icon-style")  + ';\n' +
 						 '--system-icon-font-family:' + iconstyle  + ';\n' +
+						 '--system-clock-font-family:' + clockstyle  + ';\n' +
 						 '--screensaver-highlight-color:' + sshighlight  + ';\n' +
 
 // Misc Background Settings
