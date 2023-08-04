@@ -1050,20 +1050,16 @@ sat2 = ( parseInt(getComputedStyle(GetActiveThemeConfiguration()).getPropertyVal
 
 if (isLightColor(page)) {
 	var colors = ['46%', '44%', '42%', '40%', '38%', '36%', '34%', '32%', '30%', '28%', '26%', '24%', '22%', '20%', '18%', '16%', '14%', '12%', '10%', '8%', '6%', '4%']
-		g1h = 195
-		g2h = 215
-		g3h = 80
-		g4h = 340
-		g5h = 270
 } else {
 	var colors = ['54%', '56%', '58%', '60%', '62%', '64%', '66%', '68%', '70%', '72%', '74%', '76%', '78%', '80%', '82%', '84%', '86%', '88%', '90%', '92%', '94%', '96%']
+
+}
 		g1h = 195
 		g2h = 215
 		g3h = 80
 		g4h = 340
-		g5h = 290
+		g5h = 280
 
-}
 	
 		contrast = window.ThemingEngine_SmallTextContrast*ContrastRatio()*1
 		colors1 = [0,0,0,0,0];
