@@ -1679,7 +1679,7 @@ input {
 */
 
 /** Settings Page **/
-.fieldset {
+.cpe-settings-fieldset {
   border-radius:var(--window-border-radius);
   padding:10px;
   margin:10px;
@@ -1689,7 +1689,7 @@ input {
   box-shadow: 0 0 5px 0.25px rgba(24, 24, 24, 0.3), 0 0 5px 0.25px rgba(247, 247, 247, 0.3), var(--threeD-shadow);
 }
 
-.fieldset fieldset {
+.cpe-settings-fieldset .cpe-settings-fieldset__content {
 color:inherit;
 border:0;
 padding:0;
@@ -1697,8 +1697,9 @@ margin:0;
 line-height:inherit;
 }
 
-.fieldset fieldset legend,
-.fieldset > fieldset > h2 {
+.cpe-settings-fieldset .cpe-settings-fieldset__content legend,
+.cpe-settings-fieldset > .cpe-settings-fieldset__content > h2,
+.cpe-settings-fieldset > .cpe-settings-fieldset__content > summary h2 {
   font-size:23px;
   font-weight:bolder;
   display:block;
@@ -1710,8 +1711,9 @@ line-height:inherit;
   border:0;
 }
 
-.fieldset fieldset legend .cpe-icon,
-.fieldset > fieldset > h2 .cpe-icon {
+.cpe-settings-fieldset .cpe-settings-fieldset__content legend .cpe-icon,
+.cpe-settings-fieldset > .cpe-settings-fieldset__content > h2 .cpe-icon,
+.cpe-settings-fieldset > .cpe-settings-fieldset__content > summary h2 .cpe-icon {
 	margin-right:5px;
 	width:27px;
 	height:27px;
@@ -1720,8 +1722,47 @@ line-height:inherit;
 	vertical-align:middle;
 }
 
+.cpe-settings-fieldset > .cpe-settings-fieldset__content > summary {
+	display:block;
+	position:relative;
+}
+
+.cpe-settings-fieldset > .cpe-settings-fieldset__content > summary::before {
+    content: "expand_more";
+    position: absolute;
+    align-self: center;
+    display: inline-block;
+    right: 0px;
+    font-family: var(--icon-font-family);
+    cursor: inherit;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    font-size: 24px;
+	transform:scale(1.5);
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+    pointer-events: none;
+    vertical-align: top;
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: 'liga';
+    overflow:hidden;
+
+}
+
+.cpe-settings-fieldset > .cpe-settings-fieldset__content[open] > summary::before {
+    content: "expand_less";
+}
+
 /* Level B Fieldset */
-.fieldset fieldset .fieldset {
+.cpe-settings-fieldset .cpe-settings-fieldset__content .cpe-settings-fieldset {
   margin-left:0;
   margin-right:0;
   border-color:var(--canvas-background-color);
@@ -1731,7 +1772,7 @@ line-height:inherit;
 }
 
 /* Level C Fieldset */
-.fieldset fieldset .fieldset fieldset .fieldset {
+.cpe-settings-fieldset .cpe-settings-fieldset__content .cpe-settings-fieldset .cpe-settings-fieldset__content .cpe-settings-fieldset {
 	background-color:var(--canvas-secondary-background-color);
 	color:var(--canvas-secondary-foreground-color);
 	background-image:none;
@@ -1751,19 +1792,20 @@ label {
 	font-size:18px;
 }
 
-.fieldset fieldset legend,
-.fieldset > fieldset > h2 {
+.cpe-settings-fieldset .cpe-settings-fieldset__content legend,
+.cpe-settings-fieldset > .cpe-settings-fieldset__content > h2,
+.cpe-settings-fieldset > .cpe-settings-fieldset__content > summary h2  {
 	font-size:20px;
 }
 
-.fieldset fieldset legend .cpe-icon,
-.fieldset > fieldset > h2 .cpe-icon {
+.cpe-settings-fieldset .cpe-settings-fieldset__content legend .cpe-icon,
+.cpe-settings-fieldset > .cpe-settings-fieldset__content > h2 .cpe-icon,
+.cpe-settings-fieldset > .cpe-settings-fieldset__content > summary h2 .cpe-icon  {
 	margin-right:4px;
 	--icon-size:1;
 }
 
 }
-
 
 table {
 color:inherit;
@@ -5335,11 +5377,11 @@ html:not(.visualmode-threeD) .threeD-on {
 }
 
 
-.visualmode-contrast .fieldset fieldset .fieldset {
+.visualmode-contrast .cpe-settings-fieldset fieldset .cpe-settings-fieldset {
 	border-color:currentColor;
 }
 
-.visualmode-contrast .fieldset fieldset .fieldset fieldset .fieldset {
+.visualmode-contrast .cpe-settings-fieldset fieldset .cpe-settings-fieldset fieldset .cpe-settings-fieldset {
 	border-color:var(--inactive-text-background-color);
 }
 
