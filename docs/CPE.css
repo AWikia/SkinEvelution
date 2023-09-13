@@ -103,7 +103,7 @@ Aleo = Latin
 
 
 /* Emoji */
-@import url('https://fonts.googleapis.com/css?family=Noto+Color+Emoji|Noto+Emoji:300,400,500,600,700');
+@import url('https://fonts.googleapis.com/css?family=Noto+Color+Emoji|Noto+Emoji:300,400,500,600,700|Noto+Sans+Symbols+2');
 
 
 /* Rounded */
@@ -111,7 +111,7 @@ Aleo = Latin
   font-family: 'Material Icons Round';
   font-style: normal;
   font-weight: 100 700;
-  src: url(https://fonts.gstatic.com/s/materialsymbolsrounded/v118/sykg-zNym6YjUruM-QrEh7-nyTnjDwKNJ_190Fjzag.woff2) format('woff2');
+  src: url(https://fonts.gstatic.com/s/materialsymbolsrounded/v135/sykg-zNym6YjUruM-QrEh7-nyTnjDwKNJ_190Fjzag.woff2) format('woff2');
 }
 
 
@@ -120,7 +120,7 @@ Aleo = Latin
   font-family: 'Material Icons Sharp';
   font-style: normal;
   font-weight: 100 700;
-  src: url(https://fonts.gstatic.com/s/materialsymbolssharp/v115/gNMVW2J8Roq16WD5tFNRaeLQk6-SHQ_R00k4aWE.woff2) format('woff2');
+  src: url(https://fonts.gstatic.com/s/materialsymbolssharp/v132/gNMVW2J8Roq16WD5tFNRaeLQk6-SHQ_R00k4aWE.woff2) format('woff2');
 }
 
 /* Regular */
@@ -128,7 +128,7 @@ Aleo = Latin
   font-family: 'Material Icons';
   font-style: normal;
   font-weight: 100 700;
-  src: url(https://fonts.gstatic.com/s/materialsymbolsoutlined/v119/kJEhBvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oFsI.woff2) format('woff2');
+  src: url(https://fonts.gstatic.com/s/materialsymbolsoutlined/v136/kJEhBvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oFsI.woff2) format('woff2');
 }
 
 
@@ -214,8 +214,8 @@ font-family:sans-serif;
 --outline-transition-duration:100ms;
 /** Fonts **/
 /* Emoji */
---emoji-fonts:"Noto Color Emoji", "Noto Emoji";
---code-emoji-fonts:"Noto Emoji";
+--emoji-fonts:"Noto Color Emoji", "Noto Emoji", "Noto Sans Symbols 2";
+--code-emoji-fonts:"Noto Emoji", "Noto Sans Symbols 2";
 /* Sans Serif */
 --base-sans-serif-fonts:"Roboto Flex", "Inter"; /* Empty but other languages will depend on it */
 --sans-serif-font-stack:var(--custom-sans-serif-font), var(--base-sans-serif-fonts), var(--emoji-fonts), sans-serif;
@@ -1085,6 +1085,11 @@ container {
 }
 */
 
+.lite-display,
+.standard-display {
+	display:none!important;
+}
+
 /* Reduced Transparency */
 @media (prefers-reduced-transparency:reduce) {
 	.lite-display,
@@ -1112,11 +1117,6 @@ container {
 */
 	}
 
-}
-
-.lite-display,
-.standard-display {
-	display:none!important;
 }
 
 /* Disable acrylic on browsers without backdrop-filter support */
@@ -4956,7 +4956,7 @@ html:not(.visualmode-threeD) .threeD-on {
 
 /* Contrast */
 .visualmode-contrast {
-	--emoji-fonts:"Noto Emoji"; /* Don't use Color Emoji in High Contrast Mode */
+	--emoji-fonts:var(--code-emoji-fonts); /* Don't use Color Emoji in High Contrast Mode */
 }
 
 .visualmode-contrast body {
