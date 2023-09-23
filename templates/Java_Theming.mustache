@@ -3,17 +3,17 @@ window.ThemingEngine_InvertColors = false; // false = light mode | true = light 
 window.ThemingEngine_ColorFilterMode = 0; // 0 = No special behavior  | 1 = Color Tint (ColorScale) | 2 = Temperature | 3 = Inverted Temperature
 window.ThemingEngine_ColorFilterHueShift = 0; // From -180 to 180
 window.ThemingEngine_ColorFilterSaturation = 0; // From 0 to 100 (100 is grayscale)
-window.ThemingEngine_ActiveColorFilterTheme = 'light';
+window.ThemingEngine_ActiveColorFilterTheme = 'light'; 	// auto | auto-dark | light | dark
 window.ThemingEngine_ActiveColorFilterBehavior = 'duo'; // solo means solo mode
 window.ThemingEngine_ActiveColorFilter = 'standard';
 /* Contrast Modes */
 window.ThemingEngine_ContrastMode = 'auto';
 /* Active Theme */
 window.ThemingEngine_ActiveTheme = 'A';
-window.ThemingEngine_ActiveThemeMode = 'none';
+window.ThemingEngine_ActiveThemeMode = 'none'; // none = Not yet loaded | light or dark = Loaded
 /* Visual Colors */
 window.ThemingEngine_ActiveVisualColors = 'standard';
-window.ThemingEngine_ActiveColorScheme = 'light';
+window.ThemingEngine_ActiveColorScheme = 'auto'; // auto | auto-dark | light | dark
 /* Visual Styles */
 window.ThemingEngine_ActiveVisualStyle = '-';
 window.ThemingEngine_ActiveVisualMode = '-';
@@ -86,7 +86,7 @@ var visualColorNames = ['standard', 'nocolormanagement'];
 		insertKey('visual-appearance-style', 'standard' );
 	}
 	if (getKey('color-scheme') === '-1') {
-		insertKey('color-scheme', 'light' );
+		insertKey('color-scheme', 'auto' );
 	}
 	if (getKey('visual-color') === '-1') {
 		insertKey('visual-color', 'standard' );

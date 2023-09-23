@@ -1,5 +1,14 @@
 ﻿window.ThemingEngine_TDTest = false;
 
+function getParams() {	//	In case it is missing
+	if (window.location.search != "") {
+		var params = window.location.search.split("?")[1].split("&");
+    } else {
+		var params = []
+    }
+	return params
+}
+
 (function () {
 
     allow_td = false;
