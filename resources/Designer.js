@@ -717,6 +717,7 @@ function InitDesigner() {
 				'<option value="0.6" label="60%">' +
 				'<option value="0.7" label="70%">' +
 				'<option value="0.8" label="80%">' +
+				'<option value="0.9" label="80%">' +
 			'</datalist>' +
 			'<datalist id="td_gchs">' + // Image Opacity
 				'<option value="-15" label="-15deg">' +
@@ -1237,7 +1238,7 @@ function InitDesigner() {
 
 			'<tr>' +
 				'<td style="text-align:center; width:300px" colspan="2">' +
-					'<input type="range" class="big" style="min-width:calc(var(--td-size) * 2); min-width:calc(var(--td-size) * 2);" id="aopacity" value="0.6" min="0.6" max="0.8" step="0.01" list="td_aopacity" autocomplete="off" />' + // Body Background 
+					'<input type="range" class="big" style="min-width:calc(var(--td-size) * 2); min-width:calc(var(--td-size) * 2);" id="aopacity" value="0.6" min="0.6" max="0.9" step="0.01" list="td_aopacity" autocomplete="off" />' + // Body Background 
 				'</td>' +
 			'</tr>' +
 		// TR

@@ -3,17 +3,17 @@ window.ThemingEngine_InvertColors = false; // false = light mode | true = light 
 window.ThemingEngine_ColorFilterMode = 0; // 0 = No special behavior  | 1 = Color Tint (ColorScale) | 2 = Temperature | 3 = Inverted Temperature
 window.ThemingEngine_ColorFilterHueShift = 0; // From -180 to 180
 window.ThemingEngine_ColorFilterSaturation = 0; // From 0 to 100 (100 is grayscale)
-window.ThemingEngine_ActiveColorFilterTheme = 'light';
+window.ThemingEngine_ActiveColorFilterTheme = 'light'; 	// auto | auto-dark | light | dark
 window.ThemingEngine_ActiveColorFilterBehavior = 'duo'; // solo means solo mode
 window.ThemingEngine_ActiveColorFilter = 'standard';
 /* Contrast Modes */
 window.ThemingEngine_ContrastMode = 'auto';
 /* Active Theme */
 window.ThemingEngine_ActiveTheme = 'A';
-window.ThemingEngine_ActiveThemeMode = 'none';
+window.ThemingEngine_ActiveThemeMode = 'none'; // none = Not yet loaded | light or dark = Loaded
 /* Visual Colors */
 window.ThemingEngine_ActiveVisualColors = 'standard';
-window.ThemingEngine_ActiveColorScheme = 'auto';
+window.ThemingEngine_ActiveColorScheme = 'auto'; // auto | auto-dark | light | dark
 /* Visual Styles */
 window.ThemingEngine_ActiveVisualStyle = '-';
 window.ThemingEngine_ActiveVisualMode = '-';
@@ -621,13 +621,13 @@ function GetSystemColor(color='canvas') { // System Colors
 	return getComputedStyle(document.querySelector('.dcm-' + ForcedColorType() + ' .fc-' + color)).getPropertyValue("color")
 }
 
-function GetSystemColor2(color='--desktop-background-color') { // Suppliment
+function GetSystemColorValue(color='--desktop-background-color') { // Suppliment
 	return GetSystemColor(  getComputedStyle(GetActiveDCMConfiguration()).getPropertyValue(color) );
 }
 
 function GetDesktop() {
 	if (DisabledColorManagement()) {
-		return GetSystemColor2('--desktop-background-color')
+		return GetSystemColorValue('--desktop-background-color')
 	} else if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--desktop-background-color") === 'auto') {
 		return GetCanvas();
 
@@ -648,7 +648,7 @@ function GetDesktopImage() {
 
 function GetDesktopText() {
 	if (DisabledColorManagement()) {
-		return GetSystemColor2('--desktop-text-background-color')
+		return GetSystemColorValue('--desktop-text-background-color')
 	} else if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--desktop-text-background-color") === 'auto') {
 		return ColorInvert(GetDesktop())
 	} else {
@@ -659,7 +659,7 @@ function GetDesktopText() {
 
 function GetCanvas() {
 	if (DisabledColorManagement()) {
-		return GetSystemColor2('--canvas-background-color')
+		return GetSystemColorValue('--canvas-background-color')
 	} else if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--canvas-background-color") === 'auto') {
 		var color = GetHyperlink();
 		return ColorMix(color,GetForegroundVariables(color)[0],1.6);
@@ -671,7 +671,7 @@ function GetCanvas() {
 
 function GetCanvas2() {
 	if (DisabledColorManagement()) {
-		return GetSystemColor2('--canvas-secondary-background-color')
+		return GetSystemColorValue('--canvas-secondary-background-color')
 	} else {
 		return getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--canvas-secondary-background-color").trim();
 	}
@@ -680,7 +680,7 @@ function GetCanvas2() {
 
 function GetHyperlink() {
 	if (DisabledColorManagement()) {
-		return GetSystemColor2('--hyperlink-background-color')
+		return GetSystemColorValue('--hyperlink-background-color')
 	} else {
 		return getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--hyperlink-background-color").trim();
 	}
@@ -689,7 +689,7 @@ function GetHyperlink() {
 
 function GetVisitedHyperlink() {
 	if (DisabledColorManagement()) {
-		return GetSystemColor2('--visited-hyperlink-background-color')
+		return GetSystemColorValue('--visited-hyperlink-background-color')
 	} else if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--visited-hyperlink-background-color") === 'auto') {
 		return GetHyperlink();
 	} else {
@@ -700,7 +700,7 @@ function GetVisitedHyperlink() {
 
 function GetInactiveText() {
 	if (DisabledColorManagement()) {
-		return GetSystemColor2('--inactive-text-background-color')
+		return GetSystemColorValue('--inactive-text-background-color')
 	} else if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--inactive-text-background-color") === 'auto') {
 		return ColorMix(window.ThemingEngine_PageColor,window.ThemingEngine_PageColorFG,window.ThemingEngine_FinalContrast);
 	} else {
@@ -710,7 +710,7 @@ function GetInactiveText() {
 
 function GetActiveText() {
 	if (DisabledColorManagement()) {
-		return GetSystemColor2('--active-text-background-color')
+		return GetSystemColorValue('--active-text-background-color')
 	} else if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--active-text-background-color") === 'auto') {
 		var color = GetHyperlink();
 		var color2 = GetForegroundVariables(GetCanvas())[0]
@@ -723,7 +723,7 @@ function GetActiveText() {
 
 function GetCanvasText() {
 	if (DisabledColorManagement()) {
-		return GetSystemColor2('--canvas-text-background-color')
+		return GetSystemColorValue('--canvas-text-background-color')
 	} else if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--canvas-text-background-color") === 'auto') {
 		return ColorInvert(GetCanvas())
 	} else {
@@ -734,7 +734,7 @@ function GetCanvasText() {
 
 function GetCanvasText2() {
 	if (DisabledColorManagement()) {
-		return GetSystemColor2('--canvas-text-secondary-background-color')
+		return GetSystemColorValue('--canvas-text-secondary-background-color')
 	} else if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--canvas-text-secondary-background-color") === 'auto') {
 		return GetCanvasText();
 	} else {
@@ -745,7 +745,7 @@ function GetCanvasText2() {
 
 function GetHighlight() {
 	if (DisabledColorManagement()) {
-		return GetSystemColor2('--highlight-background-color')
+		return GetSystemColorValue('--highlight-background-color')
 	} else if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--highlight-background-color") === 'auto') {
 		var color = GetHyperlink();
 		var color2 = GetForegroundVariables(GetCanvas())[0]
@@ -757,7 +757,7 @@ function GetHighlight() {
 
 function GetHighlightText() {
 	if (DisabledColorManagement()) {
-		return GetSystemColor2('--highlight-text-background-color')
+		return GetSystemColorValue('--highlight-text-background-color')
 	} else if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--highlight-text-background-color") === 'auto') {
 		return ColorInvert(window.ThemingEngine_HighlightColor);
 	} else {
@@ -768,7 +768,7 @@ function GetHighlightText() {
 
 function GetActiveTitle() {
 	if (DisabledColorManagement()) {
-		return GetSystemColor2('--active-title-background-color')
+		return GetSystemColorValue('--active-title-background-color')
 	} else if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--active-title-background-color") === 'auto') {
 		var color = GetHyperlink();
 		var color2 = ColorInvert(GetForegroundVariables(GetCanvas())[0])
@@ -780,7 +780,7 @@ function GetActiveTitle() {
 
 function GetActiveTitleText() {
 	if (DisabledColorManagement()) {
-		return GetSystemColor2('--active-title-text-background-color')
+		return GetSystemColorValue('--active-title-text-background-color')
 	} else if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--active-title-text-background-color") === 'auto') {
 		return ColorInvert(window.ThemingEngine_ActiveTitleColor);
 	} else {
@@ -791,7 +791,7 @@ function GetActiveTitleText() {
 
 function GetInactiveTitle() {
 	if (DisabledColorManagement()) {
-		return GetSystemColor2('--inactive-title-background-color')
+		return GetSystemColorValue('--inactive-title-background-color')
 	} else if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--inactive-title-background-color") === 'auto') {
 		return ColorMix(window.ThemingEngine_ActiveTitleColor,window.ThemingEngine_PageColor,1.5);
 	} else {
@@ -801,7 +801,7 @@ function GetInactiveTitle() {
 
 function GetInactiveTitleText() {
 	if (DisabledColorManagement()) {
-		return GetSystemColor2('--inactive-title-text-background-color')
+		return GetSystemColorValue('--inactive-title-text-background-color')
 	} else if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--inactive-title-text-background-color") === 'auto') {
 		return ColorInvert(window.ThemingEngine_InactiveTitleColor);
 	} else {
@@ -1013,11 +1013,11 @@ if (isLightColor(page)) { // ( chroma(page).get('hsl.l') < 0.5)
 	var colors = ['54%', '56%', '58%', '60%', '62%', '64%', '66%', '68%', '70%', '72%', '74%', '76%', '78%', '80%', '82%', '84%', '86%', '88%', '90%', '92%', '94%', '96%']
 }
 
-		alerth = 355
-		pauseh = 25
-		warningh = 45
-		successh = 140
-		progressh = 225
+		alerth = 350
+		pauseh = 30
+		warningh = 50
+		successh = 110
+		progressh = 230
 //		messageh = -1
 		
 		contrast = window.ThemingEngine_SmallTextContrast*ContrastRatio()*1
@@ -1054,11 +1054,11 @@ if (isLightColor(page)) {
 	var colors = ['54%', '56%', '58%', '60%', '62%', '64%', '66%', '68%', '70%', '72%', '74%', '76%', '78%', '80%', '82%', '84%', '86%', '88%', '90%', '92%', '94%', '96%']
 
 }
-		g1h = 195
-		g2h = 215
-		g3h = 80
-		g4h = 340
-		g5h = 280
+		g1h = 180
+		g2h = 200
+		g3h = 140
+		g4h = 320
+		g5h = 270
 
 	
 		contrast = window.ThemingEngine_SmallTextContrast*ContrastRatio()*1
@@ -2896,6 +2896,12 @@ var invfilters = [
 						  "--graph-3-background-color:" + g3_color + "!important;\n" +
 						  "--graph-4-background-color:" + g4_color + "!important;\n" +
 						  "--graph-5-background-color:" + g5_color + "!important;\n" +
+// Graphs (RGB)
+						  "--graph-1-background-color-rgb:" + ColorRGB(g1_color) + "!important;\n" +
+						  "--graph-2-background-color-rgb:" + ColorRGB(g2_color) + "!important;\n" +
+						  "--graph-3-background-color-rgb:" + ColorRGB(g3_color) + "!important;\n" +
+						  "--graph-4-background-color-rgb:" + ColorRGB(g4_color) + "!important;\n" +
+						  "--graph-5-background-color-rgb:" + ColorRGB(g5_color) + "!important;\n" +
 // Luna Levit
 						  "--mica-background-color:" + micabg[0] + ";\n" +
 // Misc Variables
