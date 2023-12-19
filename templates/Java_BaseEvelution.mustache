@@ -129,7 +129,7 @@ AliasBoxes();
 
 	var level = 1;
 
-DetectGPU.getGPUTier().then(function(e) { level = (e.fps == undefined) ? 0 : (e.fps >= 72) ? 3 : (e.fps >= 60) ? 2 : 1;  document.querySelector('html').classList.add('gpu-level-' + level);});
+DetectGPU.getGPUTier().then(function(e) { level = (e.fps == undefined) ? 0 : (e.fps >= 60) ? 3 : (e.fps >= 48) ? 2 : 1;  document.querySelector('html').classList.add('gpu-level-' + level);});
 
 })();
 
