@@ -662,7 +662,10 @@ function GetCanvas() {
 		return GetSystemColorValue('--canvas-background-color')
 	} else if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--canvas-background-color") === 'auto') {
 		var color = GetHyperlink();
-		return ColorMix(color,GetForegroundVariables(color)[0],1.6);
+		var fg = GetForegroundVariables(color);
+		var h2 = chroma(color).get('hsl.h');
+		var color = chroma(color).set('lch.l',fg[8]).set('hsl.h',h2);
+		return ColorMix(color,fg[0],1.6);
 	} else {
 		return getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--canvas-background-color").trim();
 	}
@@ -1114,6 +1117,7 @@ if (isLightColor(page)) {
 
 function GetForegroundVariables(color) {
 	var body = document.querySelector('body');
+	// Text Color
 	if (isSemiLightColor(color)) {
 		var fc1 =  getComputedStyle(body).getPropertyValue("--light-theme-text-background-color");
 		var fc2 =  getComputedStyle(body).getPropertyValue("--light-theme-text-background-color-rgb");
@@ -1125,19 +1129,21 @@ function GetForegroundVariables(color) {
 		var fc3 =  getComputedStyle(body).getPropertyValue("--dark-theme-text-background-color-hover");
 		var fc4 =  getComputedStyle(body).getPropertyValue("--dark-theme-text-background-color-hover-rgb");
 	}
-
+	// Foreground Color
 	if (isLightColor(color)) {
 		var f1 =  getComputedStyle(body).getPropertyValue("--light-theme-foreground-color");
 		var f2 =  getComputedStyle(body).getPropertyValue("--light-theme-foreground-color-hover");
 		var f3 =  getComputedStyle(body).getPropertyValue("--light-theme-foreground-color-rgb");
 		var f4 =  getComputedStyle(body).getPropertyValue("--light-theme-foreground-color-hover-rgb");
+		var lt = 70;
 	} else {
 		var f1 =  getComputedStyle(body).getPropertyValue("--dark-theme-foreground-color");
 		var f2 =  getComputedStyle(body).getPropertyValue("--dark-theme-foreground-color-hover");
 		var f3 =  getComputedStyle(body).getPropertyValue("--dark-theme-foreground-color-rgb");
 		var f4 =  getComputedStyle(body).getPropertyValue("--dark-theme-foreground-color-hover-rgb");
+		var lt = 30;
 	}
-	return [f1, f2, f3, f4, fc1, fc2, fc3, fc4]
+	return [f1, f2, f3, f4, fc1, fc2, fc3, fc4, lt]
 }
 
 
