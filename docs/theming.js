@@ -1733,7 +1733,7 @@ window.ThemingEngine_FinalContrast = ContrastRatio4();
 		var fadeouto = 0.3;
 	}
 
-		var disabledo = 0.7;
+		var disabledo = 0.75;
 		window.ThemingEngine_PageColorFG = lightness
 
 if ((getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--canvas-secondary-background-color") == 'auto') ) {

@@ -1,4 +1,4 @@
-﻿/* CSS for Visual Styles that is shared between Apps. Only changes to OOUI (All Visual Styles, even to variations of Standard Visual Style) and CPE Language Components (Excluding variations of Standard Visual Style which are covered in CPE.CSS) */
+﻿/* CSS for Visual Styles that is shared between Apps. Only changes to OOUI (All Visual Styles, even to variations of Standard Visual Style) and CPE Language Components (Excluding variations of Standard Visual Style which are covered in CPE.CSS) are covered here */
 
 /* New High Contrast */
 /*
@@ -136,13 +136,17 @@ background-color:var(--canvas-background-color);
 .visualmode-contrast body .oo-ui-textInputWidget.oo-ui-widget-disabled .oo-ui-inputWidget-input,
 .visualmode-contrast body .mw-widget-dateInputWidget-handle,
 .visualmode-contrast body .mw-widgets-datetime-dateTimeInputWidget-handle,
-.visualmode-contrast body .mw-ui-input {
+.visualmode-contrast body .mw-ui-input,
+.visualmode-contrast body .mw-ui-input:not(:disabled),
+.visualmode-contrast body .cdx-text-input__input:enabled,
+.visualmode-contrast body .cdx-text-input__input  {
     background-color:var(--input-box-color-contrast);
 }
 
 .visualmode-contrast body .oo-ui-buttonElement > .oo-ui-buttonElement-button,
 .visualmode-contrast body .mw-ui-button,
 .visualmode-contrast body .mw-ui-button:not(:disabled),
+.visualmode-contrast body .cdx-button,
 .visualmode-contrast body .oo-ui-tool.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive > .oo-ui-tool-link {
 	--tabs-color:0,0,0!important;
 	--tabs-opacity:0!important;
@@ -156,6 +160,11 @@ background-color:var(--canvas-background-color);
 .visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-destructive  > .oo-ui-buttonElement-button:hover,
 .visualmode-contrast body .mw-ui-button:not(:disabled):hover,
 .visualmode-contrast body .mw-ui-button:hover,
+.visualmode-contrast body .cdx-button:hover, 
+.visualmode-contrast body .cdx-button.cdx-button--fake-button--enabled:hover,
+.visualmode-contrast body .cdx-button:enabled.cdx-button--action-progressive:hover, 
+.visualmode-contrast body .cdx-button.cdx-button--action-progressive:hover, 
+.visualmode-contrast body .cdx-button.cdx-button--fake-button--enabled.cdx-button--action-progressive:hover,
 .visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled > .oo-ui-buttonElement-button:active, 
 .visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-buttonElement-pressed > .oo-ui-buttonElement-button,
 .visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-progressive > .oo-ui-buttonElement-button:active, 
@@ -166,12 +175,23 @@ background-color:var(--canvas-background-color);
 .visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-buttonElement-pressed.oo-ui-flaggedElement-destructive > .oo-ui-buttonElement-button,
 .visualmode-contrast body .mw-ui-button:not(:disabled):active,
 .visualmode-contrast body .mw-ui-button:active,
+.visualmode-contrast body .cdx-button:active, 
+.visualmode-contrast body .cdx-button.cdx-button--fake-button--enabled:active,
+.visualmode-contrast body .cdx-button:enabled.cdx-button--action-progressive:active, 
+.visualmode-contrast body .cdx-button.cdx-button--action-progressive:active, 
+.visualmode-contrast body .cdx-button.cdx-button--fake-button--enabled.cdx-button--action-progressive:active,
 .visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled > .oo-ui-buttonElement-button:focus:not(:active),
 .visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-progressive > .oo-ui-buttonElement-button:focus:not(:active),
 .visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary > .oo-ui-buttonElement-button:focus:not(:active),
 .visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-destructive > .oo-ui-buttonElement-button:focus:not(:active),
 .visualmode-contrast body .mw-ui-button:not(:disabled):focus,
 .visualmode-contrast body .mw-ui-button:focus:not(:active),
+.visualmode-contrast body .cdx-button:focus:not(:active), 
+.visualmode-contrast body .cdx-button.cdx-button--fake-button--enabled:focus:not(:active),
+.visualmode-contrast body .cdx-button:enabled.cdx-button--action-progressive:focus:not(:active), 
+.visualmode-contrast body .cdx-button.cdx-button--action-progressive:focus:not(:active), 
+.visualmode-contrast body .cdx-button.cdx-button--fake-button--enabled.cdx-button--action-progressive:focus:not(:active),
+
 /* OOUI Primary */
 .visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive > .oo-ui-buttonElement-button:hover,
 .visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-destructive > .oo-ui-buttonElement-button:hover,
@@ -499,6 +519,7 @@ background-color:var(--canvas-background-color);
 .visualstyle-simple .cpe-button,
 .visualstyle-simple .oo-ui-buttonElement > .oo-ui-buttonElement-button,
 .visualstyle-simple .mw-ui-button,
+.visualstyle-simple .cdx-button,
 .visualstyle-simple body .oo-ui-tool.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive > .oo-ui-tool-link {
 	--button-border-color-hover:rgba(var(--button-foreground-color-rgb),0.2);
 }
@@ -976,6 +997,7 @@ background-color:var(--canvas-background-color);
 .visualstyle-simple.visualmode-contrast .cpe-button,
 .visualstyle-simple.visualmode-contrast .oo-ui-buttonElement > .oo-ui-buttonElement-button,
 .visualstyle-simple.visualmode-contrast .mw-ui-button,
+.visualstyle-simple.visualmode-contrast .cdx-button,
 .visualstyle-simple.visualmode-contrast .oo-ui-tool.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive > .oo-ui-tool-link {
 	--button-border-color-hover:rgba(var(--button-background-color-rgb),0.5);
 }
@@ -994,6 +1016,11 @@ background-color:var(--canvas-background-color);
 .visualstyle-simple.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-destructive  > .oo-ui-buttonElement-button:hover,
 .visualstyle-simple.visualmode-contrast body .mw-ui-button:not(:disabled):hover,
 .visualstyle-simple.visualmode-contrast body .mw-ui-button:hover,
+.visualstyle-simple.visualmode-contrast body .cdx-button:hover, 
+.visualstyle-simple.visualmode-contrast body .cdx-button.cdx-button--fake-button--enabled:hover,
+.visualstyle-simple.visualmode-contrast body .cdx-button:enabled.cdx-button--action-progressive:hover, 
+.visualstyle-simple.visualmode-contrast body .cdx-button.cdx-button--action-progressive:hover, 
+.visualstyle-simple.visualmode-contrast body .cdx-button.cdx-button--fake-button--enabled.cdx-button--action-progressive:hover,
 .visualstyle-simple.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled > .oo-ui-buttonElement-button:active, 
 .visualstyle-simple.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-buttonElement-pressed > .oo-ui-buttonElement-button,
 .visualstyle-simple.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-progressive > .oo-ui-buttonElement-button:active, 
@@ -1002,11 +1029,21 @@ background-color:var(--canvas-background-color);
 .visualstyle-simple.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-buttonElement-pressed.oo-ui-flaggedElement-destructive > .oo-ui-buttonElement-button,
 .visualstyle-simple.visualmode-contrast body .mw-ui-button:not(:disabled):active,
 .visualstyle-simple.visualmode-contrast body .mw-ui-button:active,
+.visualstyle-simple.visualmode-contrast body .cdx-button:active, 
+.visualstyle-simple.visualmode-contrast body .cdx-button.cdx-button--fake-button--enabled:active,
+.visualstyle-simple.visualmode-contrast body .cdx-button:enabled.cdx-button--action-progressive:active, 
+.visualstyle-simple.visualmode-contrast body .cdx-button.cdx-button--action-progressive:active, 
+.visualstyle-simple.visualmode-contrast body .cdx-button.cdx-button--fake-button--enabled.cdx-button--action-progressive:active,
 .visualstyle-simple.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled > .oo-ui-buttonElement-button:focus:not(:active),
 .visualstyle-simple.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-progressive > .oo-ui-buttonElement-button:focus:not(:active),
 .visualstyle-simple.visualmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-destructive > .oo-ui-buttonElement-button:focus:not(:active),
 .visualstyle-simple.visualmode-contrast body .mw-ui-button:not(:disabled):focus,
 .visualstyle-simple.visualmode-contrast body .mw-ui-button:focus:not(:active),
+.visualstyle-simple.visualmode-contrast body .cdx-button:focus:not(:active), 
+.visualstyle-simple.visualmode-contrast body .cdx-button.cdx-button--fake-button--enabled:focus:not(:active),
+.visualstyle-simple.visualmode-contrast body .cdx-button:enabled.cdx-button--action-progressive:focus:not(:active), 
+.visualstyle-simple.visualmode-contrast body .cdx-button.cdx-button--action-progressive:focus:not(:active), 
+.visualstyle-simple.visualmode-contrast body .cdx-button.cdx-button--fake-button--enabled.cdx-button--action-progressive:active,
 /* OOUI Primary */
 .visualstyle-simple.visulmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive > .oo-ui-buttonElement-button:hover,
 .visualstyle-simple.visulmode-contrast body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-destructive > .oo-ui-buttonElement-button:hover,
@@ -1299,7 +1336,10 @@ background-color:var(--canvas-background-color);
 .visualstyle-general body .oo-ui-textInputWidget.oo-ui-widget-disabled .oo-ui-inputWidget-input,
 .visualstyle-general body .mw-widget-dateInputWidget-handle,
 .visualstyle-general body .mw-widgets-datetime-dateTimeInputWidget-handle,
-.visualstyle-general body .mw-ui-input {
+.visualstyle-general body .mw-ui-input,
+.visualstyle-general body .mw-ui-input:not(:disabled),
+.visualstyle-general body .cdx-text-input__input:enabled,
+.visualstyle-general body .cdx-text-input__input  {
   --input-box-solid:var(--hyperlink-background-color);
   --input-box-focus:var(--hyperlink-background-color-rgb);
 }
@@ -1350,6 +1390,7 @@ background-color:var(--canvas-background-color);
 .visualstyle-general body .oo-ui-buttonElement > .oo-ui-buttonElement-button,
 .visualstyle-general body .mw-ui-button,
 .visualstyle-general body .mw-ui-button:not(:disabled),
+.visualstyle-general body .cdx-button,
 .visualstyle-general body .oo-ui-tool.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive > .oo-ui-tool-link {
 	--button-background-color:var(--hyperlink-background-color);
 	--button-background-color-rgb:var(--hyperlink-background-color-rgb);

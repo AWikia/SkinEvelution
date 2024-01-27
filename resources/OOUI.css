@@ -491,27 +491,37 @@ body figure[typeof~='mw:Audio/Frame'] > *:first-child > video {
 body .oo-ui-radioInputWidget [type='radio'],
 body .mw-ui-radio:not(#noop) [type='radio'],
 body .oo-ui-checkboxInputWidget [type='checkbox'],
-body .mw-ui-checkbox:not(#noop) [type='checkbox'] {
+body .mw-ui-checkbox:not(#noop) [type='checkbox'],
+body .cdx-checkbox__input {
 	opacity:1!important;
 }
 
 body .oo-ui-radioInputWidget [type='radio'] + span,
 body .mw-ui-radio:not(#noop) [type='radio'] + label:before,
 body .oo-ui-checkboxInputWidget [type='checkbox'] + span,
-body .mw-ui-checkbox:not(#noop) [type='checkbox'] + label:before {
+body .mw-ui-checkbox:not(#noop) [type='checkbox'] + label:before,
+body .cdx-checkbox__input + span,
+body .cdx-checkbox__input + label:before   {
 	opacity:0!important;
 }
 
 
 body .mw-ui-checkbox:not(#noop) [type='checkbox'],
-body .mw-ui-radio:not(#noop) [type='radio'] {
+body .mw-ui-radio:not(#noop) [type='radio'],
+body .cdx-checkbox__input {
 	display:inline-block;
 }
 
 body .oo-ui-checkboxInputWidget [type='checkbox'],
-body .oo-ui-radioInputWidget [type='radio'] {
+body .oo-ui-radioInputWidget [type='radio'],
+body .cdx-checkbox__input {
   height:1.66em;
   width:1.66em;
+}
+
+body .cdx-checkbox__label {
+	align-items:center;
+	padding-left:8px;
 }
 
 .oo-ui-radioSelectWidget:focus input[type="checkbox"]:checked:not(:active), .oo-ui-radioSelectWidget:focus input[type="radio"]:checked:not(:active)  {
@@ -590,6 +600,7 @@ body .oo-ui-tabSelectWidget-framed .oo-ui-tabOptionWidget.oo-ui-optionWidget-sel
 body .oo-ui-buttonElement > .oo-ui-buttonElement-button,
 body .mw-ui-button,
 body .mw-ui-button:not(:disabled),
+body .cdx-button,
 body .oo-ui-tool.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive > .oo-ui-tool-link {
 	--tabs-color:var(--canvas-tabs-background-color);
 	--tabs-opacity:var(--canvas-active-tabs-opacity);
@@ -626,6 +637,8 @@ body .oo-ui-tool.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flagged
 body .oo-ui-buttonElement > .oo-ui-buttonElement-button:active,
 body .mw-ui-button:active,
 body .mw-ui-button:not(:disabled):active,
+body .cdx-button:active,
+body .cdx-button:enabled:active,
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-buttonElement-active > .oo-ui-buttonElement-button {
     box-shadow:var(--threeD-shadow-active)!important;
 }
@@ -639,7 +652,8 @@ body .oo-ui-tool.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flagged
 
 /* Progressive */
 .oo-ui-flaggedElement-progressive:not(.oo-ui-widget-disabled),
-.mw-ui-progressive  {
+.mw-ui-progressive,
+.cdx-button--action-progressive  {
 	--canvas-text-background-color:var(--hyperlink-background-color)!important;
 	--canvas-text-background-color-hover:var(--hyperlink-background-color-hover)!important;
 }
@@ -652,7 +666,8 @@ body .oo-ui-labelElement .oo-ui-labelElement-label {
 
 /* Destructive */
 .oo-ui-flaggedElement-destructive,
-.mw-ui-destructive {
+.mw-ui-destructive,
+.cdx-button--action-destructive {
 /* Primary */
     --highlight-background-color: var(--alert-background-color)!important;
     --highlight-background-color-hover: var(--alert-background-color-hover-2)!important;
@@ -817,7 +832,13 @@ body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-progr
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-destructive > .oo-ui-buttonElement-button,
 body .mw-ui-button,
 body .mw-ui-button:not(:disabled),
-body .mw-button:disabled {
+body .mw-button:disabled,
+body .cdx-button:enabled,
+body .cdx-button, 
+body .cdx-button.cdx-button--fake-button--enabled,
+body .cdx-button:enabled.cdx-button--action-progressive, 
+body .cdx-button.cdx-button--action-progressive, 
+body .cdx-button.cdx-button--fake-button--enabled.cdx-button--action-progressive {
     border-color:currentColor;
     background-color:var(--secondary-button-background-color);
     color:var(--secondary-button-foreground-color);
@@ -827,7 +848,13 @@ body .oo-ui-buttonElement-framed.oo-ui-widget-enabled > .oo-ui-buttonElement-but
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-progressive > .oo-ui-buttonElement-button:focus,
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-destructive > .oo-ui-buttonElement-button:focus,
 body .mw-ui-button:not(:disabled):focus,
-body .mw-ui-button:focus {
+body .mw-ui-button:focus,
+body .cdx-button:enabled:hover, 
+body .cdx-button:focus, 
+body .cdx-button.cdx-button--fake-button--enabled:focus,
+body .cdx-button:enabled.cdx-button--action-progressive:focus, 
+body .cdx-button.cdx-button--action-progressive:focus, 
+body .cdx-button.cdx-button--fake-button--enabled.cdx-button--action-progressive:focus {
     border-color:currentColor;
     background-color:var(--secondary-button-background-color);
     color:var(--secondary-button-foreground-color-hover);
@@ -838,7 +865,12 @@ body .oo-ui-buttonElement-framed.oo-ui-widget-enabled > .oo-ui-buttonElement-but
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-progressive  > .oo-ui-buttonElement-button:hover,
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-destructive  > .oo-ui-buttonElement-button:hover,
 body .mw-ui-button:not(:disabled):hover,
-body .mw-ui-button:hover {
+body .mw-ui-button:hover,
+body .cdx-button:hover, 
+body .cdx-button.cdx-button--fake-button--enabled:hover,
+body .cdx-button:enabled.cdx-button--action-progressive:hover, 
+body .cdx-button.cdx-button--action-progressive:hover, 
+body .cdx-button.cdx-button--fake-button--enabled.cdx-button--action-progressive:hover {
     border-color:currentColor;
     background-color:var(--secondary-button-background-color);
     color:var(--secondary-button-foreground-color-hover); /* color:var(--secondary-button-foreground-color-hover); */ 
@@ -851,7 +883,12 @@ body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-buttonElement-presse
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-destructive > .oo-ui-buttonElement-button:active, 
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-buttonElement-pressed.oo-ui-flaggedElement-destructive > .oo-ui-buttonElement-button,
 body .mw-ui-button:not(:disabled):active,
-body .mw-ui-button:active {
+body .mw-ui-button:active,
+body .cdx-button:active, 
+body .cdx-button.cdx-button--fake-button--enabled:active,
+body .cdx-button:enabled.cdx-button--action-progressive:active, 
+body .cdx-button.cdx-button--action-progressive:active, 
+body .cdx-button.cdx-button--fake-button--enabled.cdx-button--action-progressive:active {
     border-color:currentColor;
     background-color:var(--secondary-button-background-color);
     color:var(--secondary-button-foreground-color-hover); /* color:var(--secondary-button-foreground-color-hover); */ 
@@ -863,7 +900,12 @@ body .oo-ui-buttonElement-framed.oo-ui-widget-enabled > .oo-ui-buttonElement-but
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-progressive > .oo-ui-buttonElement-button:focus:not(:active),
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-destructive > .oo-ui-buttonElement-button:focus:not(:active),
 body .mw-ui-button:not(:disabled):focus,
-body .mw-ui-button:focus:not(:active) {
+body .mw-ui-button:focus:not(:active),
+body .cdx-button:focus:not(:active), 
+body .cdx-button.cdx-button--fake-button--enabled:focus:not(:active),
+body .cdx-button:enabled.cdx-button--action-progressive:focus:not(:active), 
+body .cdx-button.cdx-button--action-progressive:focus:not(:active), 
+body .cdx-button.cdx-button--fake-button--enabled.cdx-button--action-progressive:focus:not(:active) {
   outline-color:currentcolor;
   outline-offset:-2px!important;
   outline-width:1px;
@@ -882,6 +924,9 @@ body .oo-ui-buttonSelectWidget.oo-ui-widget-enabled:focus .oo-ui-buttonOptionWid
 body .mw-ui-button.mw-ui-progressive,
 body .mw-ui-button.mw-ui-progressive:not(:disabled),
 body .mw-ui-button.mw-ui-progressive:disabled,
+body .cdx-button:enabled.cdx-button--weight-primary.cdx-button--action-progressive,
+body .cdx-button.cdx-button--weight-primary.cdx-button--action-progressive,
+body .cdx-button.cdx-button--fake-button--enabled.cdx-button--weight-primary.cdx-button--action-progressive,
 body .oo-ui-tool.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive > .oo-ui-tool-link {
     border-color:var(--button-border-color);
     background-color:var(--button-background-color);
@@ -892,6 +937,9 @@ body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-prima
 body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-destructive > .oo-ui-buttonElement-button:focus,
 body .mw-ui-button.mw-ui-progressive:not(:disabled):focus,
 body .mw-ui-button.mw-ui-progressive:focus,
+body .cdx-button:enabled.cdx-button--weight-primary.cdx-button--action-progressive:focus:not(:active),
+body .cdx-button.cdx-button--weight-primary.cdx-button--action-progressive:focus:not(:active),
+body .cdx-button.cdx-button--fake-button--enabled.cdx-button--weight-primary.cdx-button--action-progressive:focus:not(:active),
 body .oo-ui-tool.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive > .oo-ui-tool-link:focus {
     border-color:var(--button-border-color);
     background-color:var(--button-background-color);
@@ -904,6 +952,9 @@ body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-buttonElement-active
 body .oo-ui-buttonSelectWidget.oo-ui-widget-enabled:focus .oo-ui-buttonOptionWidget.oo-ui-optionWidget-selected .oo-ui-buttonElement-button:hover,
 body .mw-ui-button.mw-ui-progressive:not(:disabled):hover,
 body .mw-ui-button.mw-ui-progressive:hover,
+body .cdx-button:enabled.cdx-button--weight-primary.cdx-button--action-progressive:hover,
+body .cdx-button.cdx-button--weight-primary.cdx-button--action-progressive:hover,
+body .cdx-button.cdx-button--fake-button--enabled.cdx-button--weight-primary.cdx-button--action-progressive:hover,
 body .oo-ui-tool.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive > .oo-ui-tool-link:hover,
 body .oo-ui-tool.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive > .oo-ui-tool-link:focus:hover {
     border-color:var(--button-border-color-hover);
@@ -920,6 +971,9 @@ body .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-buttonElement-active
 body .oo-ui-buttonSelectWidget.oo-ui-widget-enabled:focus .oo-ui-buttonOptionWidget.oo-ui-optionWidget-selected .oo-ui-buttonElement-button:active,
 body .mw-ui-button.mw-ui-progressive:not(:disabled):active,
 body .mw-ui-button.mw-ui-progressive:active,
+body .cdx-button:enabled.cdx-button--weight-primary.cdx-button--action-progressive:active,
+body .cdx-button.cdx-button--weight-primary.cdx-button--action-progressive:active,
+body .cdx-button.cdx-button--fake-button--enabled.cdx-button--weight-primary.cdx-button--action-progressive:active,
 body .oo-ui-tool.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive > .oo-ui-tool-link:active,
 body .oo-ui-tool.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive > .oo-ui-tool-link:focus:active {
     border-color:var(--button-border-color-hover);
@@ -1386,7 +1440,10 @@ body .oo-ui-dropdownWidget.oo-ui-widget-enabled .oo-ui-dropdownWidget-handle,
 body .oo-ui-textInputWidget.oo-ui-widget-disabled .oo-ui-inputWidget-input,
 body .mw-widget-dateInputWidget-handle,
 body .mw-widgets-datetime-dateTimeInputWidget-handle,
-body .mw-ui-input  {
+body .mw-ui-input,
+body .mw-ui-input:not(:disabled),
+body .cdx-text-input__input:enabled,
+body .cdx-text-input__input {
 	--tabs-color:var(--canvas-tabs-background-color);
 	--tabs-opacity:var(--canvas-active-tabs-opacity);
 	--input-box-color:rgba(var(--tabs-color),var(--tabs-opacity));
@@ -1429,7 +1486,10 @@ body .oo-ui-numberInputWidget-buttoned.oo-ui-widget-enabled  .oo-ui-inputWidget-
 	--input-box-solid:var(--hyperlink-background-color);
 }
 
-body .mw-ui-input  {
+body .mw-ui-input,
+body .mw-ui-input:not(:disabled),
+body .cdx-text-input__input:enabled,
+body .cdx-text-input__input  {
 	padding-top:9px;
 	padding-bottom:9px;
 }
@@ -1494,7 +1554,10 @@ body .mw-widget-dateInputWidget.oo-ui-widget-enabled .mw-widget-dateInputWidget-
     border-color: currentColor;
 }
 
-body .mw-ui-input:invalid {
+body .mw-ui-input:invalid,
+body .mw-ui-input:not(:disabled):invalid,
+body .cdx-text-input__input:enabled:invalid,
+body .cdx-text-input__input:invalid {
 	--input-box-border:var(--alert-background-color);
 	border-color:var(--input-box-border);
 }
@@ -1534,7 +1597,10 @@ body .oo-ui-buttonElement-frameless.oo-ui-iconElement > .oo-ui-buttonElement-but
 body .oo-ui-textInputWidget.oo-ui-widget-enabled:hover .oo-ui-inputWidget-input,
 body .oo-ui-dropdownWidget.oo-ui-widget-enabled.oo-ui-dropdownWidget-open .oo-ui-dropdownWidget-handle,
 body .mw-widget-dateInputWidget.oo-ui-widget-enabled .mw-widget-dateInputWidget-handle:hover,
-body .mw-ui-input:hover {
+body .mw-ui-input:hover,
+body .mw-ui-input:not(:disabled):hover,
+body .cdx-text-input__input:enabled:hover,
+body .cdx-text-input__input:hover {
     background-color:var(--input-box-color);
     border-color:var(--input-box-solid);
     box-shadow:var(--threeD-shadow-active), 0 0 0 100vh rgba(var(--input-box-focus),0) inset;
@@ -1544,7 +1610,10 @@ body .oo-ui-textInputWidget.oo-ui-widget-enabled .oo-ui-inputWidget-input:focus,
 body .oo-ui-dropdownWidget.oo-ui-widget-enabled .oo-ui-dropdownWidget-handle:focus,
 body .oo-ui-textInputWidget.oo-ui-widget-enabled:hover .oo-ui-inputWidget-input:focus,
 body .mw-widget-dateInputWidget.oo-ui-widget-enabled .mw-widget-dateInputWidget-handle:focus,
-body .mw-ui-input:focus {
+body .mw-ui-input:focus,
+body .mw-ui-input:not(:disabled):focus,
+body .cdx-text-input__input:enabled:focus,
+body .cdx-text-input__input:focus {
     background-color:var(--input-box-focus);
     border-color:var(--input-box-solid);
     box-shadow:var(--threeD-shadow-active), 0 0 0 100vh rgba(var(--input-box-focus),0.3) inset;
@@ -2784,6 +2853,10 @@ body .cnotice {
 
 .theme-fandomdesktop-dark #cnotice-toggle-box img {
 	filter:invert(1) hue-rotate(180deg);
+}
+
+body .mua-notice {
+	border-color:var(--inactive-text-background-color);
 }
 
 /* Search Suggestion */
