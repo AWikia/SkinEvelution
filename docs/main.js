@@ -8,6 +8,10 @@ if (('ontouchstart' in window) ||
 document.querySelector("html").className += " touch-events"
 }
 
+	if (navigator.userAgent.match("Chrome/")) { // Google Chrome
+		document.querySelector("html").className += " no-standard-scrollbar"
+	}
+
 /* Local Storage */
 function getKey(key) {
 var str = window.localStorage,
