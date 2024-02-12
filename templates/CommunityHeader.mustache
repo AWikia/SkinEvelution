@@ -2,79 +2,65 @@
 		<div class="background">
 			<div class="lunalevit"></div>
 		</div>
-		<div class="cpe-dropdown local-navigation">
-			<a class="link cell cpe-dropdown__toggle" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-navigation}}">
-				<span class="cpe-icon cpe-dropdown__toggle-chevron material-icons focused-dropdown-off">
-					menu
-				</span>
-				<span class="cpe-icon cpe-dropdown__toggle-chevron material-icons focused-dropdown-on">
-					menu_open
-				</span>
-			</a>
-			<div class="cpe-dropdown__content is-left-aligned">
-				<ul class="local-navigation__button">
-						<li class="edit-button">
-							<a href="{{html-edit-link}}/MediaWiki:Sidebar" class="cpe-button is-alternate is-full-width" title="{{msg-edit}}">
-								<span class="cpe-icon cpe-icon-small material-icons">
-									edit
-								</span>
-								<span>{{msg-edit}}</span>
-							</a>	
-						</li>
-				</ul>
-				<ul class="cpe-list local-navigation__content">
-						<section class="evelution-module toc-module rail-module td-off">
-							<h2 class="module-container rail-module__header">
-								<span class="cpe-icon material-icons">
-								description
-								</span>
-								<span class="module-title">
-								{{msg-toc}}
-								</span>
-							</h2>
-							<div class="evelution-module-content">
-								<div class="toc floating_toc" style="display:contents; border:0; background:transparent; box-shadow:none; display:block; color:inherit;">
-									<ul class="toc module-toc floating_toc" id="toc" style="border:0; background:transparent; box-shadow:none; display:block; color:inherit;" role="navigation">
-									</ul>
+		<div class="evelution-header__container">
+			<div class="cpe-dropdown local-navigation">
+				<a class="link cell cpe-dropdown__toggle" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-navigation}}">
+					<span class="cpe-icon cpe-dropdown__toggle-chevron material-icons focused-dropdown-off">
+						menu
+					</span>
+					<span class="cpe-icon cpe-dropdown__toggle-chevron material-icons focused-dropdown-on">
+						menu_open
+					</span>
+				</a>
+				<div class="cpe-dropdown__content is-left-aligned">
+					<ul class="local-navigation__button">
+							<li class="edit-button">
+								<a href="{{html-edit-link}}/MediaWiki:Sidebar" class="cpe-button is-alternate is-full-width" title="{{msg-edit}}">
+									<span class="cpe-icon cpe-icon-small material-icons">
+										edit
+									</span>
+									<span>{{msg-edit}}</span>
+								</a>	
+							</li>
+					</ul>
+					<ul class="cpe-list local-navigation__content">
+							<section class="evelution-module toc-module rail-module td-off">
+								<h2 class="module-container rail-module__header">
+									<span class="cpe-icon material-icons">
+									description
+									</span>
+									<span class="module-title">
+									{{msg-toc}}
+									</span>
+								</h2>
+								<div class="evelution-module-content">
+									<div class="toc floating_toc" style="display:contents; border:0; background:transparent; box-shadow:none; display:block; color:inherit;">
+										<ul class="toc module-toc floating_toc" id="toc" style="border:0; background:transparent; box-shadow:none; display:block; color:inherit;" role="navigation">
+										</ul>
+									</div>
 								</div>
-							</div>
-						</section>
-							{{#data-portlets-sidebar}}
-							{{#data-portlets-first}}{{>PortletSLN}}{{/data-portlets-first}}
-							{{#array-portlets-rest}}{{>PortletSLN}}{{/array-portlets-rest}}
-							{{#data-portlets.data-languages}}{{>PortletSLN}}{{/data-portlets.data-languages}}
-							{{#data-portlets.data-variants}}{{>PortletSLN}}{{/data-portlets.data-variants}}
-							{{/data-portlets-sidebar}}
-				</ul>
+							</section>
+								{{#data-portlets-sidebar}}
+								{{#data-portlets-first}}{{>PortletSLN}}{{/data-portlets-first}}
+								{{#array-portlets-rest}}{{>PortletSLN}}{{/array-portlets-rest}}
+								{{#data-portlets.data-languages}}{{>PortletSLN}}{{/data-portlets.data-languages}}
+								{{#data-portlets.data-variants}}{{>PortletSLN}}{{/data-portlets.data-variants}}
+								{{/data-portlets-sidebar}}
+					</ul>
+				</div>
 			</div>
-		</div>
-		<button class="link local-nav-switch cell vlarge" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-evelution-togglesize}}" onclick="ToggleNav()">
-			<span class="cpe-icon cpe-dropdown__toggle-chevron material-icons switched-nav-off">
-				keyboard_double_arrow_right
-			</span>
-			<span class="cpe-icon cpe-dropdown__toggle-chevron material-icons switched-nav-on">
-				keyboard_double_arrow_left
-			</span>
-		</button>
-		<div class="title-container">
-			<div class="logo-with-wordmark">
-							{{#data-logos}}
-								{{#icon}}
-									{{#has-mono-logo}}
-									<a class="wordmark" href="{{link-mainpage}}">							
-										<div class="icon-logo" style="-webkit-mask-image:url({{.}}); mask-image:url({{.}})">
-											<img src="{{.}}" style="opacity:0;">
-										</div>
-									</a>
-									{{/has-mono-logo}}
-									{{^has-mono-logo}}
-									<a class="wordmark invertion-on" href="{{link-mainpage}}">							
-										<img src="{{.}}">
-									</a>
-									{{/has-mono-logo}}
-								{{/icon}}
-								{{^icon}}
-									{{#1x}}
+			<button class="link local-nav-switch cell vlarge" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-evelution-togglesize}}" onclick="ToggleNav()">
+				<span class="cpe-icon cpe-dropdown__toggle-chevron material-icons switched-nav-off">
+					keyboard_double_arrow_right
+				</span>
+				<span class="cpe-icon cpe-dropdown__toggle-chevron material-icons switched-nav-on">
+					keyboard_double_arrow_left
+				</span>
+			</button>
+			<div class="title-container">
+				<div class="logo-with-wordmark">
+								{{#data-logos}}
+									{{#icon}}
 										{{#has-mono-logo}}
 										<a class="wordmark" href="{{link-mainpage}}">							
 											<div class="icon-logo" style="-webkit-mask-image:url({{.}}); mask-image:url({{.}})">
@@ -87,41 +73,56 @@
 											<img src="{{.}}">
 										</a>
 										{{/has-mono-logo}}
-									{{/1x}}
-								{{/icon}}
-							{{/data-logos}}
-				<h1 class="title cell" style="text-align:left" translate="no">
-					{{#data-logos}}
-						{{#wordmark}}
-							<div style="--height:{{height}}px; display:contents">
-								{{#src}}
-								<a href="{{link-mainpage}}" class="title-logo" style="-webkit-mask-image:url({{.}}); mask-image:url({{.}});"><span style="visibility:hidden;">Abc</span></a>
-								{{/src}}
-								{{^src}}
-								<a href="{{link-mainpage}}" class="title-logo" style="-webkit-mask-image:url({{.}}); mask-image:url({{.}});"><span style="visibility:hidden;">Abc</span></a>
-								{{/src}}
-							</div>
-						{{/wordmark}}
-						{{^wordmark}}<a href="{{link-mainpage}}"><span>{{msg-sitetitle}}</span></a>{{/wordmark}}
-					{{/data-logos}}
-				</h1>
+									{{/icon}}
+									{{^icon}}
+										{{#1x}}
+											{{#has-mono-logo}}
+											<a class="wordmark" href="{{link-mainpage}}">							
+												<div class="icon-logo" style="-webkit-mask-image:url({{.}}); mask-image:url({{.}})">
+													<img src="{{.}}" style="opacity:0;">
+												</div>
+											</a>
+											{{/has-mono-logo}}
+											{{^has-mono-logo}}
+											<a class="wordmark invertion-on" href="{{link-mainpage}}">							
+												<img src="{{.}}">
+											</a>
+											{{/has-mono-logo}}
+										{{/1x}}
+									{{/icon}}
+								{{/data-logos}}
+					<h1 class="title cell" style="text-align:left" translate="no">
+						{{#data-logos}}
+							{{#wordmark}}
+								<div style="--height:{{height}}px; display:contents">
+									{{#src}}
+									<a href="{{link-mainpage}}" class="title-logo" style="-webkit-mask-image:url({{.}}); mask-image:url({{.}});"><span style="visibility:hidden;">Abc</span></a>
+									{{/src}}
+									{{^src}}
+									<a href="{{link-mainpage}}" class="title-logo" style="-webkit-mask-image:url({{.}}); mask-image:url({{.}});"><span style="visibility:hidden;">Abc</span></a>
+									{{/src}}
+								</div>
+							{{/wordmark}}
+							{{^wordmark}}<a href="{{link-mainpage}}"><span>{{msg-sitetitle}}</span></a>{{/wordmark}}
+						{{/data-logos}}
+					</h1>
+				</div>
+				<div class="namespace-with-title">
+					<h1 class="title cell" style="text-align:left" translate="no">
+						<a class="has-icon" href="{{link-mainpage}}"><span class="firstHeading">{{html-title}}</span></a>
+					</h1>
+				</div>
 			</div>
-			<div class="namespace-with-title">
-				<h1 class="title cell" style="text-align:left" translate="no">
-					<a class="has-icon" href="{{link-mainpage}}"><span class="firstHeading">{{html-title}}</span></a>
-				</h1>
+			<div class="counters cell">
+				<div class="counter articles"><big>{{html-articlecount}}</big> <span class="cpe-icon material-icons">article</span>  <span class="text">{{msg-evelution-pages}}</span></div>
+				<div class="counter photos"><big>{{html-filecount}}</big> <span class="cpe-icon material-icons">photo</span> <span class="text">{{msg-evelution-files}}</span></div>
+			</div>
+			<div class="counters cell">
+				<div class="counter edits"><big>{{html-editcount}}</big> <span class="cpe-icon material-icons">edit</span> <span class="text">{{msg-evelution-edits}}</span></div>
+				<div class="counter users"><big>{{html-usercount}}</big> <span class="cpe-icon material-icons">person</span> <span class="text">{{msg-evelution-users}}</span></div>
+			</div>
+			<div class="wiki-tools">
+				{{>CommunityLinks}}
 			</div>
 		</div>
-		<div class="counters cell">
-			<div class="counter articles"><big>{{html-articlecount}}</big> <span class="cpe-icon material-icons">article</span>  <span class="text">{{msg-evelution-pages}}</span></div>
-			<div class="counter photos"><big>{{html-filecount}}</big> <span class="cpe-icon material-icons">photo</span> <span class="text">{{msg-evelution-files}}</span></div>
-		</div>
-		<div class="counters cell">
-			<div class="counter edits"><big>{{html-editcount}}</big> <span class="cpe-icon material-icons">edit</span> <span class="text">{{msg-evelution-edits}}</span></div>
-			<div class="counter users"><big>{{html-usercount}}</big> <span class="cpe-icon material-icons">person</span> <span class="text">{{msg-evelution-users}}</span></div>
-		</div>
-		<div class="wiki-tools">
-			{{>CommunityLinks}}
-		</div>
-
 	</header>
