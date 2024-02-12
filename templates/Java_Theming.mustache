@@ -1061,11 +1061,11 @@ if (isLightColor(page)) {
 	var colors = ['54%', '56%', '58%', '60%', '62%', '64%', '66%', '68%', '70%', '72%', '74%', '76%', '78%', '80%', '82%', '84%', '86%', '88%', '90%', '92%', '94%', '96%']
 
 }
-		g1h = 180
-		g2h = 200
-		g3h = 140
-		g4h = 320
-		g5h = 270
+		g1h = 190
+		g2h = 210
+		g3h = 80
+		g4h = 340
+		g5h = 280
 
 	
 		contrast = window.ThemingEngine_SmallTextContrast*ContrastRatio()*1
@@ -2285,6 +2285,13 @@ var g3_color = graphs[2];
 var g4_color = graphs[3];
 var g5_color = graphs[4];
 
+var g1color1 = ColorHover(g1_color,lightness);
+var g2color1 = ColorHover(g2_color,lightness);
+var g3color1 = ColorHover(g3_color,lightness);
+var g4color1 = ColorHover(g4_color,lightness);
+var g5color1 = ColorHover(g5_color,lightness);
+
+
 var imgfilter = getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--desktop-background-image-filter");
 
 if (imgfilter == 'none') {
@@ -2948,16 +2955,26 @@ var invfilters = [
 						  "--message-quaternary-background-color-rgb:" + ColorRGB(message4_color) + "!important;\n" +
 // Graphs
 						  "--graph-1-background-color:" + g1_color + "!important;\n" +
+						  "--graph-1-background-color-hover:" + g1color1 + "!important;\n" +
 						  "--graph-2-background-color:" + g2_color + "!important;\n" +
+						  "--graph-2-background-color-hover:" + g2color1 + "!important;\n" +
 						  "--graph-3-background-color:" + g3_color + "!important;\n" +
+						  "--graph-3-background-color-hover:" + g3color1 + "!important;\n" +
 						  "--graph-4-background-color:" + g4_color + "!important;\n" +
+						  "--graph-4-background-color-hover:" + g4color1 + "!important;\n" +
 						  "--graph-5-background-color:" + g5_color + "!important;\n" +
+						  "--graph-5-background-color-hover:" + g5color1 + "!important;\n" +
 // Graphs (RGB)
 						  "--graph-1-background-color-rgb:" + ColorRGB(g1_color) + "!important;\n" +
+						  "--graph-1-background-color-hover-rgb:" + ColorRGB(g1color1) + "!important;\n" +
 						  "--graph-2-background-color-rgb:" + ColorRGB(g2_color) + "!important;\n" +
+						  "--graph-2-background-color-hover-rgb:" + ColorRGB(g2color1) + "!important;\n" +
 						  "--graph-3-background-color-rgb:" + ColorRGB(g3_color) + "!important;\n" +
+						  "--graph-3-background-color-hover-rgb:" + ColorRGB(g3color1) + "!important;\n" +
 						  "--graph-4-background-color-rgb:" + ColorRGB(g4_color) + "!important;\n" +
+						  "--graph-4-background-color-hover-rgb:" + ColorRGB(g4color1) + "!important;\n" +
 						  "--graph-5-background-color-rgb:" + ColorRGB(g5_color) + "!important;\n" +
+						  "--graph-5-background-color-hover-rgb:" + ColorRGB(g5color1) + "!important;\n" +
 // Luna Levit
 						  "--mica-background-color:" + micabg[0] + ";\n" +
 // Misc Variables
