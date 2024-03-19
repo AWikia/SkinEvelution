@@ -1,3 +1,5 @@
+![Colored](https://github.com/AWikia/SkinEvelution/assets/30199227/4ac212a1-e803-411b-b1c4-d16cd9f09d44)
+
 _QQC is back on MediaWiki with the hybrid Mustache/JavaScript powered theme, Evelution, from the creators of CPE Blocks and Qora Qore_
 
 # Description
