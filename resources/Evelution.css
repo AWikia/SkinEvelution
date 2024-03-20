@@ -449,6 +449,17 @@ container > .main {
 		display:none!important;
 	}
 
+.evelution-top-actions .link.right-align[cpe-tooltip]:after,
+.evelution-header .more-items-menu .link[cpe-tooltip-position="bottom"][cpe-tooltip]:after,
+.evelution-header .link.last-action[cpe-tooltip-position="bottom"][cpe-tooltip]:after {
+	right:2px;
+}
+
+.evelution-header .local-navigation .link[cpe-tooltip-position="bottom"][cpe-tooltip]:after,
+.evelution-header .link.local-nav-switch[cpe-tooltip-position="bottom"][cpe-tooltip]:after {
+	left:2px;
+}
+
 /* Left */
 @media (orientation:landscape) {
 	body {
@@ -609,6 +620,11 @@ container > .main {
 	body .evelution-taskbar .cpe-dropdown.is-flipped:focus[cpe-orient="land-landscape"]::before, .cpe-dropdown.is-flipped:focus[cpe-orient="land-landscape"]::after,
 	body .evelution-taskbar .cpe-dropdown.is-flipped:focus-within[cpe-orient="land-landscape"]::before, body .evelution-taskbar .cpe-dropdown.is-flipped:focus-within[cpe-orient="land-landscape"]::after {
 	 animation: contribution-dropdown-b_land 0.3s var(--transition-timing-function);
+	}
+	
+	body .evelution-taskbar .cpe-dropdown.is-flipped.search[cpe-orient="land-landscape"] .cpe-dropdown__content,
+	body .evelution-taskbar .cpe-dropdown.is-flipped.explore-menu[cpe-orient="land-landscape"] .cpe-dropdown__content {
+		transform:translateY(var(--dropdown-translate)) scale(var(--dropdown-scale));
 	}
 
 }
@@ -838,17 +854,10 @@ container > .main {
 
 
 
-.evelution-top-actions .link.right-align[cpe-tooltip]:after,
-.evelution-taskbar .link.purge[cpe-tooltip-position="top"][cpe-tooltip]:after,
-.evelution-header .more-items-menu .link[cpe-tooltip-position="bottom"][cpe-tooltip]:after,
-.evelution-header .link.last-action[cpe-tooltip-position="bottom"][cpe-tooltip]:after {
+.evelution-taskbar .link.purge[cpe-tooltip-position="top"][cpe-tooltip]:after {
 	right:2px;
 }
 
-.evelution-header .local-navigation .link[cpe-tooltip-position="bottom"][cpe-tooltip]:after,
-.evelution-header .link.local-nav-switch[cpe-tooltip-position="bottom"][cpe-tooltip]:after {
-	left:2px;
-}
 
 
 

@@ -28,6 +28,7 @@ body {
   --cpe-help-cursor:help;
   --cpe-text-cursor:text;
   --cpe-hand-cursor:pointer;
+  --left-padding:0px;
 }
 
 :root {
@@ -58,6 +59,9 @@ container {
 	box-shadow:0 2px 6px 0 rgba(var(--canvas-text-background-color-rgb),.4),0 2px 6px 0 rgba(var(--canvas-background-color-rgb),0.4);
 	color:var(--canvas-text-background-color);
 	background-color:var(--canvas-background-color);
+	width:calc(100% - var(--left-padding));
+	left:var(--left-padding);
+	position:relative;
 }
 	
 body {
@@ -99,9 +103,10 @@ body {
 	
 	.responsive {
 		margin:20px auto;
-		max-width:64rem; /* 64rem */ 
+		max-width:calc(64rem - var(--left-padding) ); /* 64rem */ 
 		border:1px solid var(--luna-border-background-color);
 		border-radius:calc(var(--border-radius) * 2);
+		left:calc(var(--left-padding) / 2);
 	}
 	
 	.page-header {
@@ -274,11 +279,208 @@ body {
 	}
 	
 
-/* Personal Toolbar */
+/** Personal Toolbar **/
+
+/* Global */
 .evelution-taskbar  {
 	--toolbar-link-size:var(--minibar-size);
-	--explore-link-size:calc(var(--toolbar-link-size) * 2.75);
+	--explore-link-size:var(--toolbar-link-size);
 	--global-nav-icon-scale-factor:50;
+
+}
+
+	body.user-anon .evelution-taskbar .anon-off,
+	body.has-disabled-dynamic-taskbar-widgets .evelution-taskbar .anon-off,
+	body.has-disabled-dynamic-taskbar-widgets .evelution-taskbar .dyna-on,
+	body:not(.has-disabled-dynamic-taskbar-widgets) .evelution-taskbar .v-on,
+	body:not(.user-anon) .evelution-taskbar .anon-on {
+		display:none!important;
+	}
+
+.evelution-top-actions .link.right-align[cpe-tooltip]:after,
+.evelution-header .more-items-menu .link[cpe-tooltip-position="bottom"][cpe-tooltip]:after,
+.evelution-header .link.last-action[cpe-tooltip-position="bottom"][cpe-tooltip]:after {
+	right:2px;
+}
+
+.evelution-header .local-navigation .link[cpe-tooltip-position="bottom"][cpe-tooltip]:after,
+.evelution-header .link.local-nav-switch[cpe-tooltip-position="bottom"][cpe-tooltip]:after {
+	left:2px;
+}
+
+/* Left */
+@media (orientation:landscape) {
+	body {
+		--left-padding:var(--minibar-size);
+	}
+	.evelution-taskbar  {
+		left:0;
+	}
+	.evelution-taskbar .link  {
+		height:var(--toolbar-link-size);
+		width:var(--minibar-size);
+	}
+	
+@media only screen and (max-height:1179px) {
+	.evelution-taskbar .large-off {
+		display:none!important;
+	}
+}
+
+
+@media only screen and (min-height:1180px) {
+	.evelution-taskbar .large-on {
+		display:none!important;
+	}
+}
+
+
+@media only screen and (max-height:1049px) {
+	.evelution-taskbar .largep-off {
+		display:none!important;
+	}
+}
+
+
+@media only screen and (min-height:1050px) {
+	.evelution-taskbar .largep-on {
+		display:none!important;
+	}
+}
+
+@media only screen and (max-height:919px) {
+	.evelution-taskbar .small-off {
+		display:none!important;
+	}
+}
+
+
+@media only screen and (min-height:920px) {
+	.evelution-taskbar .small-on {
+		display:none!important;
+	}
+}
+
+
+@media only screen and (max-height:789px) {
+	.evelution-taskbar .smallp-off {
+		display:none!important;
+	}
+
+}
+
+@media only screen and (min-height:790px) {
+	.evelution-taskbar .smallp-on {
+		display:none!important;
+	}
+}
+
+@media only screen and (max-height:659px) {
+	.evelution-taskbar .vsmall-off {
+		display:none!important;
+	}
+
+}
+
+@media only screen and (min-height:660px) {
+	.evelution-taskbar .vsmall-on {
+		display:none!important;
+	}
+}
+
+
+@media only screen and (max-height:411px) {
+
+	.evelution-taskbar .mobile-off {
+		display:none!important;
+	}
+}
+
+@media only screen and (min-height:412px) {
+	.evelution-taskbar .mobile-on {
+		display:none!important;
+	}
+	
+	body .evelution-taskbar .cpe-dropdown.user-profile[cpe-orient="land-landscape"] .cpe-dropdown__content.is-right-aligned {
+		bottom:calc(0px - var(--minibar-size));
+		top:auto;
+	}
+}
+
+	
+	body .evelution-taskbar .upper-links .is-widget-style {
+		overflow:visible;
+	}
+	
+	body .evelution-taskbar .upper-links .is-widget-style .widget-text {
+		position: absolute;
+		top: 0;
+		left:0;
+		width: calc(var(--explore-link-size) - 2px);
+		height: 100%;
+		margin-left:0;
+   	}
+
+	body .evelution-taskbar .upper-links .is-widget-style .widget-text .upper-text,
+	body .evelution-taskbar .upper-links .is-widget-style .widget-text .bottom-text {
+		position: absolute;
+		top: 0;
+		border-radius: 500px;
+		width: calc(var(--explore-link-size) - 2px);
+		margin-left: 0px;
+		padding: 2px;
+		color: var(--luna-background-color);
+		background-color: var(--luna-foreground-color);
+		font-size: 9px;
+		box-sizing: border-box;
+		text-align: center;
+		opacity:1;
+		font-weight:400;
+	}
+	
+	body .evelution-taskbar .upper-links .is-widget-style .link .widget-text .bottom-text {
+		top:auto;
+		bottom:0;
+	}
+	.evelution-taskbar .search > .search-button {
+		display:none;
+	}
+	
+	body .evelution-taskbar .cpe-dropdown.is-flipped[cpe-orient="land-landscape"] .cpe-dropdown__content {
+		right:auto;
+		left:calc(100%);
+	}
+	
+		body .evelution-taskbar .cpe-dropdown.is-flipped[cpe-orient="land-landscape"]::after,body .evelution-taskbar .cpe-dropdown.is-flipped[cpe-orient="land-landscape"]::before {
+		transform:rotate(-90deg);
+		left:auto;
+		right:-1px;
+	 }
+
+	
+	body .evelution-taskbar .cpe-dropdown.is-flipped:focus[cpe-orient="land-landscape"] .cpe-dropdown__content,
+	body .evelution-taskbar .cpe-dropdown.is-flipped:focus-within[cpe-orient="land-landscape"] .cpe-dropdown__content {
+		right:auto;
+		left:100%;
+		animation:contribution-dropdown_land 0.3s var(--transition-timing-function);
+	}
+	
+	body .evelution-taskbar .cpe-dropdown.is-flipped:focus[cpe-orient="land-landscape"]::before, .cpe-dropdown.is-flipped:focus[cpe-orient="land-landscape"]::after,
+	body .evelution-taskbar .cpe-dropdown.is-flipped:focus-within[cpe-orient="land-landscape"]::before, body .evelution-taskbar .cpe-dropdown.is-flipped:focus-within[cpe-orient="land-landscape"]::after {
+	 animation: contribution-dropdown-b_land 0.3s var(--transition-timing-function);
+	}
+	
+	body .evelution-taskbar .cpe-dropdown.is-flipped.search[cpe-orient="land-landscape"] .cpe-dropdown__content,
+	body .evelution-taskbar .cpe-dropdown.is-flipped.explore-menu[cpe-orient="land-landscape"] .cpe-dropdown__content {
+		transform:translateY(var(--dropdown-translate)) scale(var(--dropdown-scale));
+	}
+
+}
+
+/* Bottom */
+@media (orientation:portrait) {
+.evelution-taskbar  {
+	--explore-link-size:calc(var(--toolbar-link-size) * 2.75);
 	bottom:0;
 	top:auto;
 	height:var(--minibar-size);
@@ -286,11 +488,6 @@ body {
 	z-index:100;
 	width:calc(100%);
 	transform-origin:bottom;
-}
-
-
-.evelution-taskbar:hover  {
-/*	z-index:100; */
 }
 
 
@@ -302,7 +499,12 @@ body {
 
 .evelution-taskbar .upper-links {
 	justify-content:center;
-	padding-left:calc(var(--explore-link-size) * 1);
+	padding-left:calc(calc(var(--explore-link-size) * 1) + 4px);
+	padding-right:4px;
+}
+
+.evelution-taskbar .upper-links .link {
+	flex:0 0 var(--toolbar-link-size);
 }
 
 .evelution-taskbar .upper-links .is-widget-style { /* This will cause issues when more are added. Be sure to add additional code when adding a new widget-style entry point which makes it align to the left */
@@ -329,6 +531,7 @@ body {
 	justify-content:flex-start;
 	padding-left:11.8px;
 	padding-right:11.8px;
+	flex:none;
 }
 
 .evelution-taskbar .upper-links .is-widget-style .link > div {
@@ -352,6 +555,15 @@ body {
 .evelution-taskbar .upper-links .is-widget-style .widget-text .bottom-text {
 	overflow:hidden;
 	text-overflow:ellipsis;
+}
+
+.evelution-taskbar .upper-links .is-widget-style .widget-text .upper-text {
+	font-size:105%;
+	font-weight:500;
+}
+
+.evelution-taskbar .upper-links .is-widget-style .widget-text .bottom-text {
+	opacity:var(--disabled-elements-opacity);
 }
 
 .evelution-taskbar .upper-links,
@@ -461,6 +673,8 @@ body {
 		font-size: 9px;
 		box-sizing: border-box;
 		text-align: center;
+		opacity:1;
+		font-weight:400;
 	}
 	
 	body.has-left-aligned-taskbar .evelution-taskbar .upper-links .is-widget-style .link .widget-text .bottom-text {
@@ -488,26 +702,10 @@ body {
 
 
 
-.evelution-top-actions .link.right-align[cpe-tooltip]:after,
-.evelution-taskbar .link.purge[cpe-tooltip-position="top"][cpe-tooltip]:after,
-.evelution-header .more-items-menu .link[cpe-tooltip-position="bottom"][cpe-tooltip]:after,
-.evelution-header .link.last-action[cpe-tooltip-position="bottom"][cpe-tooltip]:after {
+.evelution-taskbar .link.purge[cpe-tooltip-position="top"][cpe-tooltip]:after {
 	right:2px;
 }
 
-.evelution-header .local-navigation .link[cpe-tooltip-position="bottom"][cpe-tooltip]:after,
-.evelution-header .link.local-nav-switch[cpe-tooltip-position="bottom"][cpe-tooltip]:after {
-	left:2px;
-}
-
-
-	body.user-anon .evelution-taskbar .anon-off,
-	body.has-disabled-dynamic-taskbar-widgets .evelution-taskbar .anon-off,
-	body.has-disabled-dynamic-taskbar-widgets .evelution-taskbar .dyna-on,
-	body:not(.has-disabled-dynamic-taskbar-widgets) .evelution-taskbar .v-on,
-	body:not(.user-anon) .evelution-taskbar .anon-on {
-		display:none!important;
-	}
 
 
 
@@ -622,6 +820,8 @@ body {
 		font-size: 9px;
 		box-sizing: border-box;
 		text-align: center;
+		opacity:1;
+		font-weight:400;
 	}
 	
 	.evelution-taskbar .upper-links .is-widget-style .link .widget-text .bottom-text {
@@ -639,6 +839,7 @@ body {
 	.evelution-taskbar .mobile-on {
 		display:none!important;
 	}
+}
 }
 
 /* Old Global Nav
@@ -676,6 +877,10 @@ body:not(.evelution-servers) .servers-only {
   display:none!important;
 }
 
+
+.evelution-header {
+		left:var(--left-padding);
+}
 /* Taken from Evelution.css Evelution Header */
 .top-gap {
 margin-bottom:0;
@@ -692,7 +897,7 @@ margin-bottom:0;
 		padding-top:1px;
 		height:var(--minibar-size);
 		display:flex;
-		width:100%;
+		width:calc(100% - var(--left-padding));
 		box-shadow: 0 2px 6px 0 rgba(var(--canvas-text-background-color-rgb),.4), 0 2px 6px 0 rgba(var(--canvas-background-color-rgb),0.4);
 		align-items:center;
 		margin-top:calc(0px - var(--minibar-size));
