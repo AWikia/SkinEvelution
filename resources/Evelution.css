@@ -17,6 +17,7 @@ body {
 	--breakpoint-size:1280px;
 	--module-size:280px;
 	--module-size:280px;
+	--left-padding:0px;
 overscroll-behavior:auto;
 position:relative;
 text-rendering:optimizeSpeed;
@@ -25,7 +26,13 @@ text-rendering:optimizeSpeed;
 touch-action:manipulation;
 font-weight:400;
 z-index:2;
-margin-bottom:var(--minibar-size)
+margin-bottom:var(--minibar-size);
+}
+
+@media (orientation:landscape) {
+	body {
+		margin-bottom:0;
+	}
 }
 
 #pt-darkmode-toggle {
@@ -243,7 +250,8 @@ box-sizing:inherit;
 
 /* Global Navigation */
 container > .main {
-	width:100%;
+	 width:100%;
+	 padding-left:var(--left-padding);
 	display:flex;
 	flex-direction:column;
 }
@@ -423,11 +431,192 @@ container > .main {
 	}
 	
 
-/* Personal Toolbar */
+/** Personal Toolbar **/
+
+/* Global */
 .evelution-taskbar  {
 	--toolbar-link-size:var(--minibar-size);
-	--explore-link-size:calc(var(--toolbar-link-size) * 2.75);
+	--explore-link-size:var(--toolbar-link-size);
 	--global-nav-icon-scale-factor:50;
+
+}
+
+	body.user-anon .evelution-taskbar .anon-off,
+	body.has-disabled-dynamic-taskbar-widgets .evelution-taskbar .anon-off,
+	body.has-disabled-dynamic-taskbar-widgets .evelution-taskbar .dyna-on,
+	body:not(.has-disabled-dynamic-taskbar-widgets) .evelution-taskbar .v-on,
+	body:not(.user-anon) .evelution-taskbar .anon-on {
+		display:none!important;
+	}
+
+/* Left */
+@media (orientation:landscape) {
+	body {
+		--left-padding:var(--minibar-size);
+	}
+	.evelution-taskbar  {
+		left:0;
+	}
+	.evelution-taskbar .link  {
+		height:var(--toolbar-link-size);
+		width:var(--minibar-size);
+	}
+	
+@media only screen and (max-height:1179px) {
+	.evelution-taskbar .large-off {
+		display:none!important;
+	}
+}
+
+
+@media only screen and (min-height:1180px) {
+	.evelution-taskbar .large-on {
+		display:none!important;
+	}
+}
+
+
+@media only screen and (max-height:1049px) {
+	.evelution-taskbar .largep-off {
+		display:none!important;
+	}
+}
+
+
+@media only screen and (min-height:1050px) {
+	.evelution-taskbar .largep-on {
+		display:none!important;
+	}
+}
+
+@media only screen and (max-height:919px) {
+	.evelution-taskbar .small-off {
+		display:none!important;
+	}
+}
+
+
+@media only screen and (min-height:920px) {
+	.evelution-taskbar .small-on {
+		display:none!important;
+	}
+}
+
+
+@media only screen and (max-height:789px) {
+	.evelution-taskbar .smallp-off {
+		display:none!important;
+	}
+
+}
+
+@media only screen and (min-height:790px) {
+	.evelution-taskbar .smallp-on {
+		display:none!important;
+	}
+}
+
+@media only screen and (max-height:659px) {
+	.evelution-taskbar .vsmall-off {
+		display:none!important;
+	}
+
+}
+
+@media only screen and (min-height:660px) {
+	.evelution-taskbar .vsmall-on {
+		display:none!important;
+	}
+}
+
+
+@media only screen and (max-height:411px) {
+
+	.evelution-taskbar .mobile-off {
+		display:none!important;
+	}
+}
+
+@media only screen and (min-height:412px) {
+	.evelution-taskbar .mobile-on {
+		display:none!important;
+	}
+	
+	body .evelution-taskbar .cpe-dropdown.user-profile[cpe-orient="land-landscape"] .cpe-dropdown__content.is-right-aligned {
+		bottom:calc(0px - var(--minibar-size));
+		top:auto;
+	}
+}
+
+	
+	body .evelution-taskbar .upper-links .is-widget-style {
+		overflow:visible;
+	}
+	
+	body .evelution-taskbar .upper-links .is-widget-style .widget-text {
+		position: absolute;
+		top: 0;
+		left:0;
+		width: calc(var(--explore-link-size) - 2px);
+		height: 100%;
+		margin-left:0;
+   	}
+
+	body .evelution-taskbar .upper-links .is-widget-style .widget-text .upper-text,
+	body .evelution-taskbar .upper-links .is-widget-style .widget-text .bottom-text {
+		position: absolute;
+		top: 0;
+		border-radius: 500px;
+		width: calc(var(--explore-link-size) - 2px);
+		margin-left: 0px;
+		padding: 2px;
+		color: var(--luna-background-color);
+		background-color: var(--luna-foreground-color);
+		font-size: 9px;
+		box-sizing: border-box;
+		text-align: center;
+		opacity:1;
+		font-weight:400;
+	}
+	
+	body .evelution-taskbar .upper-links .is-widget-style .link .widget-text .bottom-text {
+		top:auto;
+		bottom:0;
+	}
+	.evelution-taskbar .search > .search-button {
+		display:none;
+	}
+	
+	body .evelution-taskbar .cpe-dropdown.is-flipped[cpe-orient="land-landscape"] .cpe-dropdown__content {
+		right:auto;
+		left:calc(100%);
+	}
+	
+		body .evelution-taskbar .cpe-dropdown.is-flipped[cpe-orient="land-landscape"]::after,body .evelution-taskbar .cpe-dropdown.is-flipped[cpe-orient="land-landscape"]::before {
+		transform:rotate(-90deg);
+		left:auto;
+		right:-1px;
+	 }
+
+	
+	body .evelution-taskbar .cpe-dropdown.is-flipped:focus[cpe-orient="land-landscape"] .cpe-dropdown__content,
+	body .evelution-taskbar .cpe-dropdown.is-flipped:focus-within[cpe-orient="land-landscape"] .cpe-dropdown__content {
+		right:auto;
+		left:100%;
+		animation:contribution-dropdown_land 0.3s var(--transition-timing-function);
+	}
+	
+	body .evelution-taskbar .cpe-dropdown.is-flipped:focus[cpe-orient="land-landscape"]::before, .cpe-dropdown.is-flipped:focus[cpe-orient="land-landscape"]::after,
+	body .evelution-taskbar .cpe-dropdown.is-flipped:focus-within[cpe-orient="land-landscape"]::before, body .evelution-taskbar .cpe-dropdown.is-flipped:focus-within[cpe-orient="land-landscape"]::after {
+	 animation: contribution-dropdown-b_land 0.3s var(--transition-timing-function);
+	}
+
+}
+
+/* Bottom */
+@media (orientation:portrait) {
+.evelution-taskbar  {
+	--explore-link-size:calc(var(--toolbar-link-size) * 2.75);
 	bottom:0;
 	top:auto;
 	height:var(--minibar-size);
@@ -435,11 +624,6 @@ container > .main {
 	z-index:100;
 	width:calc(100%);
 	transform-origin:bottom;
-}
-
-
-.evelution-taskbar:hover  {
-/*	z-index:100; */
 }
 
 
@@ -667,15 +851,6 @@ container > .main {
 }
 
 
-	body.user-anon .evelution-taskbar .anon-off,
-	body.has-disabled-dynamic-taskbar-widgets .evelution-taskbar .anon-off,
-	body.has-disabled-dynamic-taskbar-widgets .evelution-taskbar .dyna-on,
-	body:not(.has-disabled-dynamic-taskbar-widgets) .evelution-taskbar .v-on,
-	body:not(.user-anon) .evelution-taskbar .anon-on {
-		display:none!important;
-	}
-
-
 
 @media only screen and (max-width:1279px) {
 	.evelution-taskbar .large-off {
@@ -808,6 +983,7 @@ container > .main {
 		display:none!important;
 	}
 }
+}
 
 /* Old Global Nav
 ** Commented styles are the ones used in the old version
@@ -906,6 +1082,12 @@ margin-bottom:0px;
   background-color:transparent;
 }
 
+@media (orientation:landscape) {
+	.evelution-content {
+		margin-bottom:18px;
+	}
+}
+
 
 .evelution-content label,
 .oo-ui-labelElement .oo-ui-labelElement-label {
@@ -926,7 +1108,7 @@ position:relative;
 }
 
 [responsive]  {
-	width:calc(var(--breakpoint-size) - 60px);
+	width:calc(var(--breakpoint-size) - 60px - var(--left-padding));
 	margin-left:auto;
 	margin-right:auto;
 	transition:width var(--transition-duration) var(--transition-timing-function), margin-top var(--transition-duration) var(--transition-timing-function), top var(--transition-duration) var(--transition-timing-function), left var(--transition-duration) var(--transition-timing-function);
@@ -1641,7 +1823,7 @@ gap:2px;
 		padding-top:1px;
 		height:var(--minibar-size);
 		display:flex;
-		width:100%;
+		width:calc(100% - var(--left-padding));
 		box-shadow: 0 2px 6px 0 rgba(var(--canvas-text-background-color-rgb),.4), 0 2px 6px 0 rgba(var(--canvas-background-color-rgb),0.4);
 		align-items:center;
 		margin-top:calc(0px - var(--minibar-size));
@@ -1701,6 +1883,13 @@ gap:2px;
 		padding-top:7px;
 		padding-bottom:7px;
 		transition:max-height:var(--transition-duration) var(--transition-timing-function), height var(--transition-duration) var(--transition-timing-function);
+	}
+	
+	@media (orientation:landscape) {
+		.evelution-header .local-navigation .cpe-dropdown__content .local-navigation__content {
+			height:calc(100vh - calc(var(--minibar-size) * 1) - 14px - 48px);
+			max-height:calc(100vh - calc(var(--minibar-size) * 1) - 14px - 48px);
+		}
 	}
 	
 	.evelution-header .local-navigation .cpe-dropdown__content .local-navigation__button  {

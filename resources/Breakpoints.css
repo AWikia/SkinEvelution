@@ -55,8 +55,10 @@
 			.evelution-content .evelution-page-header .evelution-middle-actions a {
 				font-size:12px;
 			}
+			@media (orientation:portrait) {
 			.evelution-taskbar .search > .search-button {
 					display:none;
+			}
 			}
 
 	}
@@ -403,8 +405,10 @@
 
 /* S+ */
 @media only screen and (min-width:640px) {
+		@media (orientation: portrait) {
 		.evelution-taskbar .search > .search-icon {
 				display:none;
+		}
 		}
 
 
@@ -450,6 +454,7 @@
 /* L + XL + XXL */
 @media only screen and (min-width:1280px) {
 /* Search Box */
+	@media (orientation:portrait) {
 	.evelution-taskbar .search > .search-button {
 			display:none;
 	}
@@ -515,6 +520,7 @@
 		animation:none;
 		display:none;
 	}
+}
 	
 
 }
@@ -531,6 +537,7 @@
 
 
 /* Labels */
+@media (orientation:portrait) {
 .has-taskbar-app-labels .evelution-taskbar .upper-links .link.taskbar-app {
 	flex:0 1 calc(var(--toolbar-link-size) * 3);
 	justify-content:flex-start;
@@ -557,6 +564,7 @@
 	white-space:nowrap;
 	overflow:hidden;
 	padding-right:0;
+}
 }
 
 
@@ -641,7 +649,7 @@
 
 
 	.has-left-nav [responsive]  {
-		width:calc(var(--breakpoint-size) - 70px - var(--module-size) - 20px);
+		width:calc(var(--breakpoint-size) - 70px - var(--module-size) - 20px - var(--left-padding));
 	}
 	
 	body.is-wide.has-left-nav [responsive],
