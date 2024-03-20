@@ -4665,7 +4665,7 @@ color:var(--luna-active-text-background-color-hover);
  #floatingbanner {
   position:fixed;
   bottom:55px;
-  left:5px;
+  left:calc(5px + var(--left-padding,0px));
   width:inherit;
   max-width:calc(100% - 10px);
   width:480px;
@@ -4690,6 +4690,18 @@ color:var(--luna-active-text-background-color-hover);
 		overflow-y:scroll;
 		max-height:calc(100vh - calc(var(--minibar-size,0) * 2) - 45px);
 		max-height:calc(100dvh - calc(var(--minibar-size,0) * 2) - 45px);
+}
+
+@media (orientation: landscape) {
+	#floatingbanner {
+		bottom:5px;
+	}
+
+	#floatingbanner .banners {
+		max-height:calc(100vh - calc(var(--minibar-size,0) * 1) - 45px);
+		max-height:calc(100dvh - calc(var(--minibar-size,0) * 1) - 45px);
+	}
+
 }
 
 

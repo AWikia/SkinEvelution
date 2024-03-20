@@ -631,7 +631,7 @@ function GetDesktop() {
 	if (DisabledColorManagement()) {
 		return GetSystemColorValue('--desktop-background-color')
 	} else if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--desktop-background-color") === 'auto') {
-		return GetCanvas();
+		return window.ThemingEngine_PageColor;
 
 	} else {
 		return getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--desktop-background-color").trim();
