@@ -2698,10 +2698,19 @@ body .mw-echo-ui-notificationBadgeButtonPopupWidget-popup {
     position:fixed;
 }
 
+
 @media only screen and (min-width:760px) {
 	.mw-echo-ui-notificationBadgeButtonPopupWidget-popup {
 		top:var(--minibar-size)!important; /* Override Inline Style */
 		height:calc(100vh - var(--minibar-size) - var(--minibar-size))!important;
+	}
+}
+
+@media (orientation:landscape) {
+	body .mw-echo-ui-notificationBadgeButtonPopupWidget-popup {
+		right:auto!important;
+		left:var(--left-padding)!important;
+		height:calc(100vh - var(--minibar-size))!important;
 	}
 }
 

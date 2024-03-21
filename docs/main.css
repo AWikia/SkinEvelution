@@ -1588,40 +1588,69 @@ margin-bottom:0;
 @media only screen and (max-width:759px) {
 
 	/* Small Phones */
-	@media only screen and (max-width:359px) {
-
+	@media only screen and (max-height:259px) and (orientation:landscape) {
 		.evelution-taskbar {
 			--toolbar-link-size:calc(var(--minibar-size) / 1.2);
 		}
 
 	}
+
+	@media only screen and (max-width:359px) {
+
+		@media (orientation:portrait) {
+			.evelution-taskbar {
+				--toolbar-link-size:calc(var(--minibar-size) / 1.2);
+			}
+		}
+
+	}
 	
 	/* Medium Phones */
-	@media only screen and (min-width:360px) and (max-width:399px) {	
-		
+	@media only screen and (min-height:260px) and (max-height:299px) and (orientation:landscape) {
 		.evelution-taskbar {
 			--toolbar-link-size:calc(var(--minibar-size) / 1.1);
+		}
+
+	}
+
+	@media only screen and (min-width:360px) and (max-width:399px) {	
+		
+		@media (orientation:portrait) {
+			.evelution-taskbar {
+				--toolbar-link-size:calc(var(--minibar-size) / 1.1);
+			}
 		}
 		
 	}
 
 	/* Large Phones */
-	@media only screen and (min-width:400px) and (max-width:511px) {
-	
+	@media only screen and (min-height:300px) and (max-height:411px) and (orientation:landscape) {
 		.evelution-taskbar {
 			--toolbar-link-size:calc(var(--minibar-size) / 1.0);
+		}
+	}
+	
+	@media only screen and (min-width:400px) and (max-width:511px) {
+	
+		@media (orientation:portrait) {
+			.evelution-taskbar {
+				--toolbar-link-size:calc(var(--minibar-size) / 1.0);
+			}
 		}
 	}
 
 
 	@media only screen and (max-width:639px) {
+			@media (orientation:portrait) {
 			.evelution-taskbar .search > .search-button {
 					display:none;
+			}
 			}
 
 	}
 	
 	@media only screen and (max-width:511px) {
+		@media (orientation:portrait) {
 			.evelution-taskbar .bottom-links .cpe-dropdown__content.is-right-aligned {
 				right:0!important;
 			}
