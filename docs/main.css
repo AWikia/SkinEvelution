@@ -1057,6 +1057,20 @@ margin-bottom:0;
 		display:flex;
 		color:inherit;
 	}
+	
+	.evelution-header .wordmark.mono-logo {
+		display:none;
+	}
+
+	body[mono-logo="true"] .evelution-header .wordmark.color-logo,
+	.visualmode-contrast body[mono-logo="auto"] .evelution-header .wordmark.color-logo {
+		display:none;
+	}
+	
+	body[mono-logo="true"] .evelution-header .wordmark.mono-logo,
+	.visualmode-contrast body[mono-logo="auto"] .evelution-header .wordmark.mono-logo {
+		display:flex;
+	}
 		
 	.evelution-header .wordmark img {
 		height:80%;
@@ -2147,6 +2161,14 @@ a:active {
 	background-color:var(--highlight-background-color);
 }
 
+@media (orientation:portrait) {
 .visualmode-contrast .evelution-taskbar {
 	box-shadow:inset 0 1px var(--inactive-text-background-color)!important;
+}
+}
+
+@media (orientation:landscape) {
+.visualmode-contrast .evelution-taskbar {
+	box-shadow:inset -1px 0 var(--inactive-text-background-color)!important;
+}
 }

@@ -78,6 +78,16 @@ class EvelutionHooks implements OutputPageBodyAttributesHook {
 		} else {
 			$bodyAttrs['class'] .= ' user-anon';
 		}
+		// Mono Logo
+		if ($out->getConfig()->get ( 'EvelutionMonoLogo' )) {
+			if ( ($out->getConfig()->get ( 'EvelutionMonoLogo' )) === 'auto' ) {
+				$bodyAttrs['mono-logo'] = 'auto';
+			} else {
+				$bodyAttrs['mono-logo'] = 'true';
+			}
+		} else {
+			$bodyAttrs['mono-logo'] = 'false';
+		}
 		// DPL Forum
 		if (!( defined( 'NS_FORUM' ) )) {
 			$bodyAttrs['class'] .= ' has-no-dpl-forum';
