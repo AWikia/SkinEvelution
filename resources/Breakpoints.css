@@ -7,6 +7,13 @@
 	}
 
 	/* Small Phones */
+	@media only screen and (max-height:259px) and (orientation:landscape) {
+		.evelution-taskbar {
+			--toolbar-link-size:calc(var(--minibar-size) / 1.2);
+		}
+
+	}
+	
 	@media only screen and (max-width:359px) {
 	
 		.evelution-footer .logo-container > svg {
@@ -16,37 +23,53 @@
 		.pageheader-search .cpe-input {
 			width:166px;
 		}
-		
-		.evelution-taskbar {
-			--toolbar-link-size:calc(var(--minibar-size) / 1.2);
+		@media (orientation:portrait) {
+			.evelution-taskbar {
+				--toolbar-link-size:calc(var(--minibar-size) / 1.2);
+			}
 		}
 
 	}
 	
 	/* Medium Phones */
+	@media only screen and (min-height:260px) and (max-height:299px) and (orientation:landscape) {
+		.evelution-taskbar {
+			--toolbar-link-size:calc(var(--minibar-size) / 1.1);
+		}
+
+	}
+	
 	@media only screen and (min-width:360px) and (max-width:399px) {	
 		
 		.evelution-footer .logo-container > svg {
 			height:30px
 		}
 
-
-		.evelution-taskbar {
-			--toolbar-link-size:calc(var(--minibar-size) / 1.1);
+		@media (orientation:portrait) {
+			.evelution-taskbar {
+				--toolbar-link-size:calc(var(--minibar-size) / 1.1);
+			}
 		}
 		
 	}
 
 	/* Large Phones */
+	@media only screen and (min-height:300px) and (max-height:411px) and (orientation:landscape) {
+		.evelution-taskbar {
+			--toolbar-link-size:calc(var(--minibar-size) / 1.0);
+		}
+	}
+
 	@media only screen and (min-width:400px) and (max-width:511px) {
 	
 		.evelution-footer .logo-container > svg {
 			height:35px
 		}
 
-
-		.evelution-taskbar {
-			--toolbar-link-size:calc(var(--minibar-size) / 1.0);
+		@media (orientation:portrait) {
+			.evelution-taskbar {
+				--toolbar-link-size:calc(var(--minibar-size) / 1.0);
+			}
 		}
 	}
 
@@ -64,9 +87,11 @@
 	}
 	
 	@media only screen and (max-width:511px) {
+		@media (orientation:portrait) {
 			.evelution-taskbar .bottom-links .cpe-dropdown__content.is-right-aligned {
 				right:0!important;
 			}
+		}
 		
 			.evelution-content .evelution-page-header .evelution-middle-actions a {
 				font-size:0;

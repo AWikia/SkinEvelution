@@ -62,7 +62,7 @@
 								{{#data-logos}}
 									{{#icon}}
 										<a class="wordmark mono-logo" href="{{link-mainpage}}">							
-											<div class="icon-logo" style="-webkit-mask-image:url({{.}}); mask-image:url({{.}})">
+											<div class="icon-logo" style="-webkit-mask-image:url({{#data-logos}}{{#icon-mono}}{{.}}{{/icon-mono}}{{^icon-mono}}{{icon}}{{/icon-mono}}{{/data-logos}}); mask-image:url({{#data-logos}}{{#icon-mono}}{{.}}{{/icon-mono}}{{^icon-mono}}{{icon}}{{/icon-mono}}{{/data-logos}})">
 												<img src="{{.}}" style="opacity:0;">
 											</div>
 										</a>
