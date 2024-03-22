@@ -2903,14 +2903,17 @@ body .suggestions-result-current {
 	color:var(--highlight-foreground-color);
 }
 
-body.skin-evelution .suggestions {
-	top:auto!important;
-	bottom:105px!important;
-}
-
-@media only screen and (min-width:1390px) {
+@media (orientation:portrait) {
 	body.skin-evelution .suggestions {
-		bottom:40px!important;
+		top:auto!important;
+		bottom:105px!important;
+	}
+}
+@media only screen and (min-width:1280px) {
+	@media (orientation:portrait) {
+		body.skin-evelution .suggestions {
+			bottom:40px!important;
+		}
 	}
 }
 
