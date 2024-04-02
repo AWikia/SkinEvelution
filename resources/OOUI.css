@@ -23,6 +23,8 @@
     --message-background-color:#575859;
 **
 */
+
+
 container .oo-ui-defaultOverlay,
 container .mw-notification-area-overlay,
 container .uls-menu,
@@ -2731,7 +2733,8 @@ body .mw-echo-ui-notificationBadgeButtonPopupWidget-popup .oo-ui-popupWidget-bod
     max-height:100vh!important
 }
 
-body .mw-echo-ui-notificationBadgeButtonPopupWidget-popup .oo-ui-clippableElement-clippable oo-ui-popupWidget-body {
+body .mw-echo-ui-notificationBadgeButtonPopupWidget-popup .oo-ui-clippableElement-clippable .oo-ui-popupWidget-body,
+body .mw-echo-ui-notificationBadgeButtonPopupWidget-popup > .oo-ui-popupWidget-popup > .oo-ui-popupWidget-footer .mw-echo-ui-notificationBadgeButtonPopupWidget-footer-buttons {
     flex:1!important;
     
 }
@@ -2820,18 +2823,39 @@ body .mw-echo-ui-notificationBadgeButtonPopupWidget-footer {
 		height:auto!important;
 	}
 
-	.mw-echo-ui-overlay .oo-ui-popupWidget-popup {
-		width: 100%!important;
+
+	body .mw-echo-ui-overlay .oo-ui-popupWidget-popup {
 		top:var(--minibar-size)!important; /* Override Inline Style */
-		height:calc(100vh - var(--minibar-size) - var(--minibar-size))!important;
 	}
 
 	body .mw-echo-ui-overlay .mw-echo-ui-notificationBadgeButtonPopupWidget-popup {
-		left:0!important;
 		right:auto!important;
 		width: calc(100%)!important;
 		top:0!important;
-		height:calc(100vh - var(--minibar-size) - var(--minibar-size))!important;
+	}
+
+	@media (orientation:portrait) {
+		body .mw-echo-ui-overlay .oo-ui-popupWidget-popup {
+			width: 100%!important;
+			height:calc(100vh - var(--minibar-size) - var(--minibar-size))!important;
+		}
+
+		body .mw-echo-ui-overlay .mw-echo-ui-notificationBadgeButtonPopupWidget-popup {
+			left:0!important;
+			height:calc(100vh - var(--minibar-size) - var(--minibar-size))!important;
+		}
+	}
+	
+	@media (orientation:landscape) {
+		body .mw-echo-ui-overlay .oo-ui-popupWidget-popup {
+			width: calc(100% - var(--minibar-size))!important;
+			height:calc(100vh - var(--minibar-size))!important;
+		}
+
+		body .mw-echo-ui-overlay .mw-echo-ui-notificationBadgeButtonPopupWidget-popup {
+			left:var(--minibar-size)!important;
+			height:calc(100vh - var(--minibar-size))!important;
+		}
 	}
 
 	.mw-echo-ui-overlay .oo-ui-clippableElement-clippable {
@@ -2840,6 +2864,7 @@ body .mw-echo-ui-notificationBadgeButtonPopupWidget-footer {
 
 
 }
+
 
 
 .evelution-taskbar .link.notices-menu .cpe-list, 

@@ -3115,8 +3115,20 @@ body #mw-allmessagestable tbody:hover .am_default {
 
 /* Fix */
 body .mw-cookiewarning-container {
-	bottom:50px;
 	z-index:99999999999999999;
+}
+
+@media (orientation:portrait) {
+	body .mw-cookiewarning-container {
+		bottom:50px;
+	}
+}
+
+@media (orientation:landscape) {
+	.mw-cookiewarning-container {
+		left:var(--minibar-size);
+		width:calc(100% - var(--minibar-size) );
+	}
 }
 
 /* Footer */
