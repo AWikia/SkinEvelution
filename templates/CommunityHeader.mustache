@@ -86,14 +86,18 @@
 					<h1 class="title cell" style="text-align:left" translate="no">
 						{{#data-logos}}
 							{{#wordmark}}
-								{{#src}}
 								<div style="--height:{{height}}px; display:contents">
+								{{#src}}
 									<a href="{{link-mainpage}}" class="title-logo" style="-webkit-mask-image:url({{.}}); mask-image:url({{.}});"><span style="visibility:hidden;">Abc</span></a>
-								</div>
 								{{/src}}
 								{{^src}}<a href="{{link-mainpage}}"><span>{{msg-sitetitle}}</span></a>{{/src}}
+								</div>
 							{{/wordmark}}
-							{{^wordmark}}<a href="{{link-mainpage}}"><span>{{msg-sitetitle}}</span></a>{{/wordmark}}
+							{{^wordmark}}
+							<div style="display:contents">
+								<a href="{{link-mainpage}}"><span>{{msg-sitetitle}}</span></a>
+							</div>
+							{{/wordmark}}
 						{{/data-logos}}
 					</h1>
 				</div>
