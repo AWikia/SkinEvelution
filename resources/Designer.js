@@ -604,6 +604,7 @@ function InitDesigner() {
 				'<option value="#de68f2">' + 
 				// Special Colors (1)
 				'<option value="#18bbc5">' +
+				'<option value="#0c0c0c">' +
 			'</datalist>' +
 			'<datalist id="td_fonts2">' + // Sans Serif Fonts (13)
 				'<option value=\'"Alegreya Sans"\'>' +	// NEW
