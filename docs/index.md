@@ -16,18 +16,18 @@ Evelution uses the ``main`` branch that it is compatible with MediaWiki 1.36 to 
   - When changes that will only have bug fixes (Such as layout tweaks to avoid issues or fixing a major or minor fix that will still not break existing functionality) happen, it will result in a patch release but patch releases will still not be registered as a release or be formally announced.
 
 # Requirements
-To Run Evelution on your wiki, you must have MediaWiki 1.36 or greater. Older versions are not supported. Note that running on 1.36 is not recommended and support will be dropped in a future release
+To Run Evelution on your wiki, you must have MediaWiki 1.37 or greater. Older versions are not supported. Note that running on 1.36 is not recommended and support will be dropped in a future release
 
 ## Browser Requirements
 Evelution requires at least one of these browsers in order to run properly:
 
 | Browser    | Supported Releases        | Notes																						   |
 | ---------- | ------------------------- | ----------------------------------------------------------------------------------------------- |
-| Chrome     | 100+ (113+ Recommended)   | Has customized scrollbar styling.															   |
-| Firefox    | 100+ (113+ Recommended)   | Most versions will not show all transparency effects though newer ones will show them all.	   |
-| Edge       | 100+ (113+ Recommended)   | EdgeHTML version is not supported. Has customized scrollbar styling.							   |
-| Safari     | 15+ (16+ Recommended)     | Only on Apple Devices.					  													   |
-| Pale Moon  | 31+ (32+ Recommended)     | Not Recommended. Performance will be degraded and certain functionlity will not work correctly. |
+| Chrome     | 113+                      | Has customized scrollbar styling.															   |
+| Firefox    | 113+                      | Most versions will not show all transparency effects though newer ones will show them all.	   |
+| Edge       | 113+                      | EdgeHTML version is not supported. Has customized scrollbar styling.							   |
+| Safari     | 16+                       | Only on Apple Devices.					  													   |
+| Pale Moon  | 32+                       | Not Recommended. Performance will be degraded and certain functionlity will not work correctly. |
 
 
 Evelution skin will die if it is found to be running on unsupported browsers with the **Unsupported Configuration** error and will load up with a deprecated browswer warning if it is found to be running on not recommended but still supported browsers.

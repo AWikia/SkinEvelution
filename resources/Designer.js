@@ -740,7 +740,7 @@ function InitDesigner() {
 			'</datalist>' +
 
 		'</div>' +
-		'<h2>Theme Configuration</h2>' +
+		'<h2>' + mw.msg( 'evelution-designer-theme-configuration' ) +'</h2>' +
 		'<table class="wikitable" style="max-width:var(--breakpoint-size); font-size:14px; margin:0 auto;">' +
 			'<tr>' +
 				'<th colspan="3">' + mw.msg( 'evelution-designer-body' ) + '</th>' +
