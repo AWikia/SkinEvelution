@@ -631,7 +631,7 @@ function GetDesktop() {
 	if (DisabledColorManagement()) {
 		return GetSystemColorValue('--desktop-background-color')
 	} else if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--desktop-background-color") === 'auto') {
-		return GetCanvas();
+		return window.ThemingEngine_PageColor;
 
 	} else {
 		return getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--desktop-background-color").trim();
@@ -1066,11 +1066,12 @@ if (isLightColor(page)) {
 		g3h = 80
 		g4h = 340
 		g5h = 280
+		g6h = 20
 
 	
 		contrast = window.ThemingEngine_SmallTextContrast*ContrastRatio()*1
-		colors1 = [0,0,0,0,0];
-		remcolors = 5;
+		colors1 = [0,0,0,0,0,0];
+		remcolors = 6;
 
 	for (let i = 0; i < colors.length; i++) {
  		var color = chroma('hsl(0,' + saturation + ',' + colors[i] + ')').hex(); // Base Color
@@ -1079,6 +1080,8 @@ if (isLightColor(page)) {
 		var g3 = chroma(color).set('hsl.h',g3h+hueshift); // G3
 		var g4 = chroma(color).set('hsl.h',g4h+hueshift); // G4
 		var g5 = chroma(color).set('hsl.h',g5h+hueshift); // G5
+		var g6 = chroma(color).set('hsl.h',g6h+hueshift); // G5
+		
 ///
 		if ( ((chroma.contrast(page, g1)) >= contrast) && (colors1[0] === 0) ) {
 			colors1[0] = g1;
@@ -1105,13 +1108,18 @@ if (isLightColor(page)) {
 			remcolors = (remcolors-1);
 			i = 0;
 		}
+		if ( ((chroma.contrast(page, g6)) >= contrast) && (colors1[5] === 0) ) {
+			colors1[5] = g6;
+			remcolors = (remcolors-1);
+			i = 0;
+		}
 ///
 		if (remcolors==0) {
 			return colors1;
 		}
 	}
 
-	return [g1,g2,g3,g4,g5];
+	return [g1,g2,g3,g4,g5,g6];
 
  
 }
@@ -2284,12 +2292,14 @@ var g2_color = graphs[1];
 var g3_color = graphs[2];
 var g4_color = graphs[3];
 var g5_color = graphs[4];
+var g6_color = graphs[5];
 
 var g1color1 = ColorHover(g1_color,lightness);
 var g2color1 = ColorHover(g2_color,lightness);
 var g3color1 = ColorHover(g3_color,lightness);
 var g4color1 = ColorHover(g4_color,lightness);
 var g5color1 = ColorHover(g5_color,lightness);
+var g6color1 = ColorHover(g6_color,lightness);
 
 
 var imgfilter = getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--desktop-background-image-filter");
@@ -2954,27 +2964,31 @@ var invfilters = [
 						  "--message-quaternary-background-color-hover:" + message4color1 + "!important;\n" +
 						  "--message-quaternary-background-color-rgb:" + ColorRGB(message4_color) + "!important;\n" +
 // Graphs
-						  "--graph-1-background-color:" + g1_color + "!important;\n" +
-						  "--graph-1-background-color-hover:" + g1color1 + "!important;\n" +
-						  "--graph-2-background-color:" + g2_color + "!important;\n" +
-						  "--graph-2-background-color-hover:" + g2color1 + "!important;\n" +
-						  "--graph-3-background-color:" + g3_color + "!important;\n" +
-						  "--graph-3-background-color-hover:" + g3color1 + "!important;\n" +
-						  "--graph-4-background-color:" + g4_color + "!important;\n" +
-						  "--graph-4-background-color-hover:" + g4color1 + "!important;\n" +
-						  "--graph-5-background-color:" + g5_color + "!important;\n" +
-						  "--graph-5-background-color-hover:" + g5color1 + "!important;\n" +
+						  "--cpu-graph-background-color:" + g1_color + "!important;\n" +
+						  "--cpu-graph-background-color-hover:" + g1color1 + "!important;\n" +
+						  "--ram-graph-background-color:" + g2_color + "!important;\n" +
+						  "--ram-graph-background-color-hover:" + g2color1 + "!important;\n" +
+						  "--disk-graph-background-color:" + g3_color + "!important;\n" +
+						  "--disk-graph-background-color-hover:" + g3color1 + "!important;\n" +
+						  "--network-graph-background-color:" + g4_color + "!important;\n" +
+						  "--network-graph-background-color-hover:" + g4color1 + "!important;\n" +
+						  "--gpu-graph-background-color:" + g5_color + "!important;\n" +
+						  "--gpu-graph-background-color-hover:" + g5color1 + "!important;\n" +
+						  "--npu-graph-background-color:" + g6_color + "!important;\n" +
+						  "--npu-graph-background-color-hover:" + g6color1 + "!important;\n" +
 // Graphs (RGB)
-						  "--graph-1-background-color-rgb:" + ColorRGB(g1_color) + "!important;\n" +
-						  "--graph-1-background-color-hover-rgb:" + ColorRGB(g1color1) + "!important;\n" +
-						  "--graph-2-background-color-rgb:" + ColorRGB(g2_color) + "!important;\n" +
-						  "--graph-2-background-color-hover-rgb:" + ColorRGB(g2color1) + "!important;\n" +
-						  "--graph-3-background-color-rgb:" + ColorRGB(g3_color) + "!important;\n" +
-						  "--graph-3-background-color-hover-rgb:" + ColorRGB(g3color1) + "!important;\n" +
-						  "--graph-4-background-color-rgb:" + ColorRGB(g4_color) + "!important;\n" +
-						  "--graph-4-background-color-hover-rgb:" + ColorRGB(g4color1) + "!important;\n" +
-						  "--graph-5-background-color-rgb:" + ColorRGB(g5_color) + "!important;\n" +
-						  "--graph-5-background-color-hover-rgb:" + ColorRGB(g5color1) + "!important;\n" +
+						  "--cpu-graph-background-color-rgb:" + ColorRGB(g1_color) + "!important;\n" +
+						  "--cpu-graph-background-color-hover-rgb:" + ColorRGB(g1color1) + "!important;\n" +
+						  "--ram-graph-background-color-rgb:" + ColorRGB(g2_color) + "!important;\n" +
+						  "--ram-graph-background-color-hover-rgb:" + ColorRGB(g2color1) + "!important;\n" +
+						  "--disk-graph-background-color-rgb:" + ColorRGB(g3_color) + "!important;\n" +
+						  "--disk-graph-background-color-hover-rgb:" + ColorRGB(g3color1) + "!important;\n" +
+						  "--network-graph-background-color-rgb:" + ColorRGB(g4_color) + "!important;\n" +
+						  "--network-graph-background-color-hover-rgb:" + ColorRGB(g4color1) + "!important;\n" +
+						  "--gpu-graph-background-color-rgb:" + ColorRGB(g5_color) + "!important;\n" +
+						  "--gpu-graph-background-color-hover-rgb:" + ColorRGB(g5color1) + "!important;\n" +
+						  "--npu-graph-background-color-rgb:" + ColorRGB(g6_color) + "!important;\n" +
+						  "--npu-graph-background-color-hover-rgb:" + ColorRGB(g6color1) + "!important;\n" +
 // Luna Levit
 						  "--mica-background-color:" + micabg[0] + ";\n" +
 // Misc Variables

@@ -1376,11 +1376,12 @@ function InitDesigner() {
 	/// Screensaver
 				'<block class="td-block" title="Screensaver Highlight" onclick="getColorContrastOfAnElement(this,\'Screensaver Color\',\'Screensaver Highlight\')" style="background-color:#0c0c0c; color:var(--screensaver-highlight-color);">A</block>' +
 	/// Graphs
-				'<block class="td-block" title="CPU Graph" onclick="getColorContrastOfAnElement(this,\'Canvas\',\'CPU Graph\')" style="background-color:var(--canvas-background-color); color:var(--graph-1-background-color);">A</block>' +
-				'<block class="td-block" title="RAM Graph" onclick="getColorContrastOfAnElement(this,\'Canvas\',\'RAM Graph\')" style="background-color:var(--canvas-background-color); color:var(--graph-2-background-color);">A</block>' +
-				'<block class="td-block" title="Disk Graph" onclick="getColorContrastOfAnElement(this,\'Canvas\',\'Disk Graph\')" style="background-color:var(--canvas-background-color); color:var(--graph-3-background-color);">A</block>' +
-				'<block class="td-block" title="Network Graph" onclick="getColorContrastOfAnElement(this,\'Canvas\',\'Network Graph\')" style="background-color:var(--canvas-background-color); color:var(--graph-4-background-color);">A</block>' +
-				'<block class="td-block" title="GPU Graph" onclick="getColorContrastOfAnElement(this,\'Canvas\',\'GPU Graph\')" style="background-color:var(--canvas-background-color); color:var(--graph-5-background-color);">A</block>' +
+				'<block class="td-block" title="CPU Graph" onclick="getColorContrastOfAnElement(this,\'Canvas\',\'CPU Graph\')" style="background-color:var(--canvas-background-color); color:var(--cpu-graph-background-color);">A</block>' +
+				'<block class="td-block" title="RAM Graph" onclick="getColorContrastOfAnElement(this,\'Canvas\',\'RAM Graph\')" style="background-color:var(--canvas-background-color); color:var(--ram-graph-background-color);">A</block>' +
+				'<block class="td-block" title="Disk Graph" onclick="getColorContrastOfAnElement(this,\'Canvas\',\'Disk Graph\')" style="background-color:var(--canvas-background-color); color:var(--disk-graph-background-color);">A</block>' +
+				'<block class="td-block" title="Network Graph" onclick="getColorContrastOfAnElement(this,\'Canvas\',\'Network Graph\')" style="background-color:var(--canvas-background-color); color:var(--network-graph-background-color);">A</block>' +
+				'<block class="td-block" title="GPU Graph" onclick="getColorContrastOfAnElement(this,\'Canvas\',\'GPU Graph\')" style="background-color:var(--canvas-background-color); color:var(--gpu-graph-background-color);">A</block>' +
+				'<block class="td-block" title="NPU Graph" onclick="getColorContrastOfAnElement(this,\'Canvas\',\'NPU Graph\')" style="background-color:var(--canvas-background-color); color:var(--npu-graph-background-color);">A</block>' +
 
 
 			'</div>' +
