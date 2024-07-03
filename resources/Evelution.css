@@ -24,6 +24,7 @@ body {
 	--module-size:280px;
 	--module-size:280px;
 	--left-padding:0px;
+	--bottom-padding:var(--minibar-size);
 overscroll-behavior:auto;
 position:relative;
 text-rendering:optimizeSpeed;
@@ -32,13 +33,7 @@ text-rendering:optimizeSpeed;
 touch-action:manipulation;
 font-weight:400;
 z-index:2;
-margin-bottom:var(--minibar-size);
-}
-
-@media (orientation:landscape) {
-	body {
-		margin-bottom:0;
-	}
+margin-bottom:var(--bottom-padding);
 }
 
 #pt-darkmode-toggle {
@@ -470,6 +465,7 @@ container > .main {
 @media (orientation:landscape) {
 	body {
 		--left-padding:var(--minibar-size);
+		--bottom-padding:0px;
 	}
 	.evelution-taskbar  {
 		left:0;
@@ -1086,7 +1082,7 @@ margin-bottom:0px;
 
 .evelution-content {
   min-height:50px;
-  margin:var(--minibar-size) 18px calc(18px + var(--minibar-size));
+  margin:var(--minibar-size) 18px calc(18px + var(--bottom-padding));
   width:auto;
   border-radius:var(--border-radius);
   color:var(--canvas-text-background-color);
@@ -1095,12 +1091,6 @@ margin-bottom:0px;
   border:1px transparent;
   border-color:transparent;
   background-color:transparent;
-}
-
-@media (orientation:landscape) {
-	.evelution-content {
-		margin-bottom:18px;
-	}
 }
 
 
@@ -1891,20 +1881,13 @@ gap:2px;
 	}
 
 	.evelution-header .local-navigation .cpe-dropdown__content .local-navigation__content {
-		height:calc(100vh - calc(var(--minibar-size) * 2) - 14px - 48px);
-		max-height:calc(100vh - calc(var(--minibar-size) * 2) - 14px - 48px);
+		height:calc(100vh - var(--minibar-size) - var(--bottom-padding) - 14px - 48px);
+		max-height:calc(100vh - var(--minibar-size) - var(--bottom-padding) - 14px - 48px);
 		margin-top:-7px;
 		margin-bottom:-7px;
 		padding-top:7px;
 		padding-bottom:7px;
 		transition:max-height:var(--transition-duration) var(--transition-timing-function), height var(--transition-duration) var(--transition-timing-function);
-	}
-	
-	@media (orientation:landscape) {
-		.evelution-header .local-navigation .cpe-dropdown__content .local-navigation__content {
-			height:calc(100vh - calc(var(--minibar-size) * 1) - 14px - 48px);
-			max-height:calc(100vh - calc(var(--minibar-size) * 1) - 14px - 48px);
-		}
 	}
 	
 	.evelution-header .local-navigation .cpe-dropdown__content .local-navigation__button  {
@@ -3116,12 +3099,7 @@ body #mw-allmessagestable tbody:hover .am_default {
 /* Fix */
 body .mw-cookiewarning-container {
 	z-index:99999999999999999;
-}
-
-@media (orientation:portrait) {
-	body .mw-cookiewarning-container {
-		bottom:50px;
-	}
+	bottom:var(--bottom-padding);
 }
 
 @media (orientation:landscape) {

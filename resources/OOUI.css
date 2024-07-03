@@ -1,4 +1,4 @@
-/* OOUI and Extension Overrides for Evelution 
+/* OOUI, Codex and Extension Overrides for Evelution 
 ** Those cannot go to Evelution.css as other skins based on CPE Language (If ever exist) need to have those overrides as well since they're not 100% dependant on Evelution
 */
 /* Begin */
@@ -351,10 +351,11 @@ body #preferences {
 	filter:none;
 }
 
-.mw-prefs-buttons {
+.mw-prefs-buttons,
+body #preferences .mw-htmlform-submit-buttons {
 	background-color:var(--canvas-background-color);
 	border-top-color:var(--inactive-text-background-color);
-	bottom:var(--minibar-size);
+	bottom:var(--bottom-padding);
 	transition:bottom var(--transition-duration) var(--transition-timing-function);
 }
 
@@ -2693,7 +2694,7 @@ body .mw-echo-ui-notificationBadgeButtonPopupWidget-popup {
 	top:var(--minibar-size)!important; /* Override Inline Style */
     right:0!important;
     left:auto!important;
-	height:calc(100vh - var(--minibar-size) - var(--minibar-size))!important;
+	height:calc(100vh - var(--minibar-size) - var(--bottom-padding))!important;
     display:flex;
     margin-top:0!important;
     transition:top var(--transition-duration) var(--transition-timing-function), height var(--transition-duration) var(--transition-timing-function);
@@ -2704,7 +2705,7 @@ body .mw-echo-ui-notificationBadgeButtonPopupWidget-popup {
 @media only screen and (min-width:760px) {
 	.mw-echo-ui-notificationBadgeButtonPopupWidget-popup {
 		top:var(--minibar-size)!important; /* Override Inline Style */
-		height:calc(100vh - var(--minibar-size) - var(--minibar-size))!important;
+		height:calc(100vh - var(--minibar-size) - var(--bottom-padding))!important;
 	}
 }
 
@@ -2712,7 +2713,6 @@ body .mw-echo-ui-notificationBadgeButtonPopupWidget-popup {
 	body .mw-echo-ui-notificationBadgeButtonPopupWidget-popup {
 		right:auto!important;
 		left:var(--left-padding)!important;
-		height:calc(100vh - var(--minibar-size))!important;
 	}
 }
 
@@ -2826,35 +2826,33 @@ body .mw-echo-ui-notificationBadgeButtonPopupWidget-footer {
 
 	body .mw-echo-ui-overlay .oo-ui-popupWidget-popup {
 		top:var(--minibar-size)!important; /* Override Inline Style */
+		height:calc(100vh - var(--minibar-size) - var(--bottom-padding))!important;
 	}
 
 	body .mw-echo-ui-overlay .mw-echo-ui-notificationBadgeButtonPopupWidget-popup {
 		right:auto!important;
 		width: calc(100%)!important;
 		top:0!important;
+		height:calc(100vh - var(--minibar-size) - var(--bottom-padding))!important;
 	}
 
 	@media (orientation:portrait) {
 		body .mw-echo-ui-overlay .oo-ui-popupWidget-popup {
 			width: 100%!important;
-			height:calc(100vh - var(--minibar-size) - var(--minibar-size))!important;
 		}
 
 		body .mw-echo-ui-overlay .mw-echo-ui-notificationBadgeButtonPopupWidget-popup {
 			left:0!important;
-			height:calc(100vh - var(--minibar-size) - var(--minibar-size))!important;
 		}
 	}
 	
 	@media (orientation:landscape) {
 		body .mw-echo-ui-overlay .oo-ui-popupWidget-popup {
 			width: calc(100% - var(--minibar-size))!important;
-			height:calc(100vh - var(--minibar-size))!important;
 		}
 
 		body .mw-echo-ui-overlay .mw-echo-ui-notificationBadgeButtonPopupWidget-popup {
 			left:var(--minibar-size)!important;
-			height:calc(100vh - var(--minibar-size))!important;
 		}
 	}
 
