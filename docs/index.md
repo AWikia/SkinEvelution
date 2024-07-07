@@ -1,4 +1,4 @@
-﻿Evelution is a Next Gen Skin for MediaWiki. Designed to improve reading has four different thems that you can use them on a page-basis. With the inclusion of a Dark Mode, you can read pages with fewer eye stress.
+﻿Evelution is a Next Gen Skin for MediaWiki, currently at 156.0.0. Designed to improve reading has four different thems that you can use them on a page-basis. With the inclusion of a Dark Mode, you can read pages with fewer eye stress.
 
 
 With the inclusion of Sticky sidebars and Sticky Community Header, you can have many of the known tools MediaWiki following you.
@@ -7,7 +7,7 @@ Evelution Desktop Skin in three different main Breakpoint Sizes, 705px, 1280px &
 
 You can read more about the skin [here](Overview.md). For easy to use CSS snipsets, go [here](SimpleCSS.md). More topics can be found at the Explore Menu on the Navigation
 
-Evelution uses the ``main`` branch that it is compatible with MediaWiki 1.36 to MediaWiki 1.38 so currently no separate branches for 1.37 (``REL_1.37``) and 1.38 (``REL_1.38``)
+Evelution uses the ``main`` branch that it is compatible with MediaWiki 1.39 to 1.42 and the ``REL1_37`` branch that it is compatible with MediaWiki 1.37 to 1.41, intended to be used with MediaWiki 1.37 and 1.38
 
 # Version Release
 - Evelution Family now follows [Semantic Versioning II](https://semver.org/). 
@@ -43,11 +43,11 @@ If no hardware acceleration is present, then Evelution will load properly (But w
 ## Version Lifecycle
 List of MediaWiki versions and what Evelution version can be installed at most. Green tick means the latest one can be used:
 
-| MediaWiki  | Supported Releases        |
-| ---------- | ------------------------- |
-| 1.38.x     | ~✅                       |
-| 1.37.x     | ~✅                       |
-| 1.36.x     | ~89.2.0, 91.0.0-119.1.0	 |
+| MediaWiki    | Supported Releases           |
+| ------------ | ---------------------------- |
+| 1.39.x+      | ~✅                           |
+| 1.37.x-1.38x | ~155.1.0 (main), ✅ (REL1_37) |
+| 1.36.x       | ~89.2.0, 91.0.0-119.1.0      |
 
 # Installation
 To Install Evelution, you must download the reposistory first. Make a folder called **Evelution** in **Skins** diractory where you have installed MediaWiki and extract the zipped file contents in **Evelution** folder.  Lastly, put this in **LocalSettings.php**:
