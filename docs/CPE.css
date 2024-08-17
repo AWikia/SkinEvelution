@@ -955,9 +955,8 @@ body {
 /* Webkit */
 @media  (-webkit-min-device-pixel-ratio: 2) {
 	img, canvas, video {
-		image-rendering:-moz-crisp-edges;
-		image-rendering:crisp-edges;
 		image-rendering:pixelated;
+		image-rendering:crisp-edges;
 		
 	}
 }
@@ -965,9 +964,8 @@ body {
 /* Standard */
 @media (min-resolution: 2dppx) {
 	img, canvas, video {
-		image-rendering:-moz-crisp-edges;
-		image-rendering:crisp-edges;
 		image-rendering:pixelated;
+		image-rendering:crisp-edges;
 		
 	}
 }
@@ -978,7 +976,6 @@ container {
     margin: 0;
     position: relative;
     display: block;
-    height: 100vh;
     height: 100dvh;
     z-index: 1;
     top: 0;
@@ -1608,7 +1605,6 @@ html:not([visualcolors="standard"]) .forcedcolors-off {
 opacity:var(--disabled-elements-opacity)!important;
 pointer-events:none!important;
 -webkit-user-select:none!important;
--moz-user-select:none!important;
 user-select:none!important;
 cursor:var(--cpe-blocked-cursor)!important;
 }
@@ -1742,7 +1738,6 @@ line-height:inherit;
     font-family: var(--icon-font-family);
     cursor: inherit;
     -webkit-user-select: none;
-    -moz-user-select: none;
     user-select: none;
     font-size: 24px;
 	transform:scale(1.5);
@@ -2753,7 +2748,6 @@ input[type="checkbox"]::after, input[type="radio"]::after {
   display: inline-block;
   cursor:inherit;
   -webkit-user-select:none;
-  -moz-user-select:none;
   user-select:none;
   font-size:calc(24px * var(--icon-size));
   line-height: 1;
@@ -4688,7 +4682,6 @@ color:var(--luna-active-text-background-color-hover);
 		--scrollbar-thumb-color-2:var(--highlight-background-color-hover);
 		--scrollbar-thumb-text:var(--highlight-foreground-color);
 		overflow-y:scroll;
-		max-height:calc(100vh - calc(var(--minibar-size,0) * 2) - 45px);
 		max-height:calc(100dvh - calc(var(--minibar-size,0) * 2) - 45px);
 }
 
@@ -4698,7 +4691,6 @@ color:var(--luna-active-text-background-color-hover);
 	}
 
 	#floatingbanner .banners {
-		max-height:calc(100vh - calc(var(--minibar-size,0) * 1) - 45px);
 		max-height:calc(100dvh - calc(var(--minibar-size,0) * 1) - 45px);
 	}
 
@@ -4716,7 +4708,6 @@ input[type="checkbox"], input[type="radio"] {
   height:1.66em;
   width:1.66em;
   vertical-align:middle;
-  -moz-appearance:none;
   -webkit-appearance:none;
   appearance:none;
   border:1px solid;
