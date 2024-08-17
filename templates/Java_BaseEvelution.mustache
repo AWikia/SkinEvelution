@@ -188,7 +188,7 @@ function CheckCompat() {
 	
 
 	window.oldBrowser =( 
-						(window.oldBrowser) ||						    // Old Chrome, Firefox, Safari and Pale Moon
+						(window.oldBrowser) ||						    // Old Chrome, Firefox and Safari 
 						(ua_agent.match("Trident")) ||					// Internet Explorer 				
 						(ua_agent.match("Presto")) || 					// Classic Opera
 						(ua_agent.match("Tessera")) || 					// 4x4 Browser
@@ -200,7 +200,8 @@ function CheckCompat() {
 						(ua_agent.match("PLAYSTATION PORTABLE")) || 	// PSP Browser
 						(ua_agent.match("Edge")) || 					// Classic Microsoft Edge
 						(ua_agent.match("BlackBerry")) || 				// Blackberry Browser
-						(ua_agent.match("IEMobile")) 					// Phone Internet Explorer
+						(ua_agent.match("IEMobile")) ||	 				// Phone Internet Explorer
+						(ua_agent.match("PaleMoon"))					// Pale Moon/
 						)
 	
 	if (window.oldBrowser) {
