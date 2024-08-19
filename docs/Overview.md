@@ -236,6 +236,7 @@ Each release of Evelution comes with different Sevelution releases, to name a fe
 - 4.2.0 = Codenamed Palladium = Introduced in Evelution 99.0.0 - Introduces Dynamic Canvas Color
 - 5.0.0 = Codenamed Silver = Introduced in Evelution 122.0.0 - Introduces CPE Language 4.0 and Evelution Spotlight
 - 6.0.0 = Codenamed Cadmium = Introduced in Evelution 130.0.0 - Introduces CPE Language 5.0 and Custom Icon Styles
+- 7.0.0 = Codenamed Lutetium = Introduced in Evelution 159.0.0 - Introduces CPE Language 6.0 and better distinction between mouse and touch devices
 
 
 ### The Luna Theming System

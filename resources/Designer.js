@@ -1677,6 +1677,85 @@ function InitDesigner() {
 		'</section>' +
 	'</div>' +
 
+	'<div class="preview-window-window sharp" force-active>' +
+		'<div class="lunalevit disables-on-accent"></div>' +
+		'<h2>' +
+			'<span>Active Window #6</span>' +
+			'<button class="minimize" title="Minimize">' +
+				'<span class="material-icons cpe-icon cpe-icon-small cpe-icon-medium close">' +
+					'minimize' +
+                '</span>' +
+			'</button>' +
+			'<button class="maximize" title="Maximize">' +
+				'<span class="material-icons cpe-icon cpe-icon-small close">' +
+					'web_asset' +
+                '</span>' +
+			'</button>' +
+			'<button class="close" title="Close">' +
+				'<span class="material-icons cpe-icon cpe-icon-small cpe-icon-medium close">' +
+					'close' +
+                '</span>' +
+			'</button>' +
+		'</h2>' +
+		'<section>' +
+			'Sample Content' +
+			'<br>' +
+			'I\'m a without rounded corners' +
+		'</section>' +
+	'</div>' +
+
+	'<div class="preview-window-window" force-active>' +
+		'<div class="lunalevit disables-on-accent"></div>' +
+		'<h2>' +
+			'<span>Active Window #7</span>' +
+			'<button class="minimize" title="Minimize">' +
+				'<span class="material-icons cpe-icon cpe-icon-small cpe-icon-medium close">' +
+					'minimize' +
+                '</span>' +
+			'</button>' +
+			'<button class="maximize" title="Maximize" disabled>' +
+				'<span class="material-icons cpe-icon cpe-icon-small close">' +
+					'web_asset' +
+                '</span>' +
+			'</button>' +
+			'<button class="close" title="Close">' +
+				'<span class="material-icons cpe-icon cpe-icon-small cpe-icon-medium close">' +
+					'close' +
+                '</span>' +
+			'</button>' +
+		'</h2>' +
+		'<ul class="menu">' +
+			'<li class="item">' +
+				'<a>Default</a>' +
+			'</li>' +
+			'<li class="item" disabled>' +
+				'<a>Disabled</a>' +
+			'</li>' +
+			'<li class="cpe-dropdown item" tabindex="-1">' +
+				'<a>With Items</a>' +
+				'<div class="cpe-dropdown__content is-not-scrollable">' +
+					'<ul class="cpe-list is-linked">' +
+						'<li>' +
+							'<a>' +
+								'<span>Action</span>' +
+							'</a>' +
+						'</li>' +
+						'<li>' +
+							'<a>' +
+								'<span>Anohter Action</span>' +
+							'</a>' +
+						'</li>' +
+					'</ul>' +
+				'</div>' +
+			'</li>' +
+		'</ul>' +
+		'<section>' +
+			'Sample Content with menu' +
+			'<br>' +
+			'I can\'t be maximized' +
+		'</section>' +
+	'</div>' +
+
 	'<div class="preview-window-window inactive" force-inactive>' +
 		'<div class="lunalevit disables-on-accent"></div>' +
 		'<h2>' +
@@ -3407,7 +3486,7 @@ function InitSBT() {
 
 
 	$("container").append(
-		'<div style="--backdrop-opacity:var(--acrylic-opacity); position:fixed; display:flex; top:0; left:0; width:100%; height:100%; align-items:center; gap:2px; justify-content:center; background-color:rgba(var(--canvas-secondary-background-color-rgb),var(--acrylic-opacity)); color:var(--canvas-text-secondary-background-color); -webkit-backdrop-filter:var(--acrylic-filter); backdrop-filter:var(--acrylic-filter); z-index:999999999;" class="SBT">' +
+		'<div style="--backdrop-opacity:var(--acrylic-opacity); position:fixed; display:flex; top:0; left:0; width:100%; height:100%; align-items:center; gap:2px; justify-content:center; background-color:rgb(var(--canvas-secondary-background-color-rgb) / var(--acrylic-opacity)); color:var(--canvas-text-secondary-background-color); -webkit-backdrop-filter:var(--acrylic-filter); backdrop-filter:var(--acrylic-filter); z-index:999999999;" class="SBT">' +
 		'<div class="lunalevit sbtll hidden"></div>' +
 		'<section>' +
 		'<input type="checkbox" name="SBT2" id="none"></input>' +
@@ -3429,7 +3508,7 @@ $('#AC[name="SBT"]').click(
 							function(e) {
 								$('div.sbtll').addClass("hidden").removeClass("has-tabs")
 								$('div.SBT').css("--backdrop-opacity","var(--acrylic-opacity)");
-								$('div.SBT').css("background-color","rgba(var(--canvas-secondary-background-color-rgb),var(--acrylic-opacity))");
+								$('div.SBT').css("background-color","rgb(var(--canvas-secondary-background-color-rgb) / var(--acrylic-opacity))");
 							}   
 );
 
