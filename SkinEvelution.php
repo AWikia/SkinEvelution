@@ -88,6 +88,10 @@ class EvelutionHooks implements OutputPageBodyAttributesHook {
 		} else {
 			$bodyAttrs['mono-logo'] = 'false';
 		}
+		// APCA Color Contrast
+		if ( $out->getConfig()->get ('EvelutionUseAPCAContrastRules' ) ) {
+			$bodyAttrs['class'] .= ' has-apca-contrast-rules';
+		}
 		// DPL Forum
 		if (!( defined( 'NS_FORUM' ) )) {
 			$bodyAttrs['class'] .= ' has-no-dpl-forum';
