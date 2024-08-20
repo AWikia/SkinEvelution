@@ -29,9 +29,6 @@ window.ThemingEngine_DesktopColor = GetDesktop();
 window.ThemingEngine_HighlightColor = GetHighlight();
 window.ThemingEngine_ActiveTitleColor = GetActiveTitle();
 window.ThemingEngine_InactiveTitleColor = GetInactiveTitle();
-/* Contrast Values */
-window.ThemingEngine_LargeTextContrast = 3.00;
-window.ThemingEngine_SmallTextContrast = 4.50;
 
 /*
 **
@@ -311,7 +308,7 @@ function getColorContrastOfAnElement(elem,bg="Background Color",fg="Text Color")
 	if (elem) {
 	elembg = getComputedStyle(elem).getPropertyValue("background-color");
 	elemfg = getComputedStyle(elem).getPropertyValue("color");
-	contrast = chroma.contrast(elemfg,elembg)
+	contrast = getContrast(elemfg,elembg)
 	alert("Color contrast of " + fg + " on " + bg + " is " + contrast);
 	}
 }
@@ -326,6 +323,10 @@ function SupportsColorContrast() {
 
 function DisabledColorManagement() {
 	return ( (ForcedColors()) || (document.querySelector("body.no-color-management") ) ||  (window.ThemingEngine_ActiveVisualColors === 'nocolormanagement') )
+}
+
+function APCAMode() {
+	return (document.querySelector("body.has-apca-contrast-rules") )
 }
 
 function ForcedColors() {
@@ -898,7 +899,7 @@ function ContrastRatio() { // Used for Text
 	}
 }
 
-function ContrastRatio2() { // Used For Dropdown
+function ContrastRatioDropdown() { // Used For Dropdown
 
 	if (ThemingEngine_ContrastMode == 'auto') {
 		return (window.matchMedia('(prefers-contrast: more)').matches) ? 0.35 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 0.30 : 0.25
@@ -933,7 +934,7 @@ function ContrastRatio2() { // Used For Dropdown
 	}
 }
 
-function ContrastRatio3() { // Used for Form Controls
+function ContrastRatioFormControls() { // Used for Form Controls
 
 	if (ThemingEngine_ContrastMode == 'auto') {
 		return (window.matchMedia('(prefers-contrast: more)').matches) ? 1.5 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 1.25 : 1.0
@@ -968,7 +969,7 @@ function ContrastRatio3() { // Used for Form Controls
 	}
 }
 
-function ContrastRatio4() { // Used For Inactive Text
+function ContrastRatioAutoInactiveText() { // Used For Inactive Text
 
 	if (ThemingEngine_ContrastMode == 'auto') {
 		return (window.matchMedia('(prefers-contrast: more)').matches) ? 0.86 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 0.78 : 0.7
@@ -1004,6 +1005,29 @@ function ContrastRatio4() { // Used For Inactive Text
 }
 
 
+function getLargeTextContrast() {
+	if (APCAMode()) {
+		return 45
+	} else {
+		return 3.00
+	}
+}
+
+function getSmallTextContrast() {
+	if (APCAMode()) {
+		return 60
+	} else {
+		return 4.50
+	}
+}
+
+function getContrast(color1,color2) {
+	if (APCAMode()) {
+		return Math.abs(chroma.contrastAPCA(color1,color2));
+	} else {
+		return chroma.contrast(color1,color2);
+	}
+}
 
 function CompileGenericColors(color) {
 var page = color;
@@ -1027,7 +1051,7 @@ if (isLightColor(page)) { // ( chroma(page).get('hsl.l') < 0.5)
 		progressh = 230
 //		messageh = -1
 		
-		contrast = window.ThemingEngine_SmallTextContrast*ContrastRatio()*1
+		contrast = getSmallTextContrast()*ContrastRatio()*1
 
 	for (let i = 0; i < colors.length; i++) {
  		var color = chroma('hsl(0,' + saturation + ',' + colors[i] + ')').hex(); // Base Color
@@ -1038,7 +1062,7 @@ if (isLightColor(page)) { // ( chroma(page).get('hsl.l') < 0.5)
  		var progress = chroma(color).set('hsl.h',progressh+hueshift); // Progress
  		var info = chroma(color).set('hsl.s',0); // Message
  
-		if ( ((chroma.contrast(page, alert)) >= contrast) && ((chroma.contrast(page, pause)) >= contrast) && ((chroma.contrast(page, warn)) >= contrast) && ((chroma.contrast(page, done)) >= contrast) && ((chroma.contrast(page, progress)) >= contrast) && ((chroma.contrast(page, info)) >= contrast) ) {
+		if ( ((getContrast(page, alert)) >= contrast) && ((getContrast(page, pause)) >= contrast) && ((getContrast(page, warn)) >= contrast) && ((getContrast(page, done)) >= contrast) && ((getContrast(page, progress)) >= contrast) && ((getContrast(page, info)) >= contrast) ) {
 			return [alert, pause, warn, done, progress, info];
 		}
 	}
@@ -1069,7 +1093,7 @@ if (isLightColor(page)) {
 		g6h = 20
 
 	
-		contrast = window.ThemingEngine_SmallTextContrast*ContrastRatio()*1
+		contrast = getSmallTextContrast()*ContrastRatio()*1
 		colors1 = [0,0,0,0,0,0];
 		remcolors = 6;
 
@@ -1083,32 +1107,32 @@ if (isLightColor(page)) {
 		var g6 = chroma(color).set('hsl.h',g6h+hueshift); // G5
 		
 ///
-		if ( ((chroma.contrast(page, g1)) >= contrast) && (colors1[0] === 0) ) {
+		if ( ((getContrast(page, g1)) >= contrast) && (colors1[0] === 0) ) {
 			colors1[0] = g1;
 			remcolors = (remcolors-1);
 			i = 0;
 		}
-		if ( ((chroma.contrast(page, g2)) >= contrast) && (colors1[1] === 0) ) {
+		if ( ((getContrast(page, g2)) >= contrast) && (colors1[1] === 0) ) {
 			colors1[1] = g2;
 			remcolors = (remcolors-1);
 			i = 0;
 		}
-		if ( ((chroma.contrast(page, g3)) >= contrast) && (colors1[2] === 0) ) {
+		if ( ((getContrast(page, g3)) >= contrast) && (colors1[2] === 0) ) {
 			colors1[2] = g3;
 			remcolors = (remcolors-1);
 			i = 0;
 		}
-		if ( ((chroma.contrast(page, g4)) >= contrast) && (colors1[3] === 0) ) {
+		if ( ((getContrast(page, g4)) >= contrast) && (colors1[3] === 0) ) {
 			colors1[3] = g4;
 			remcolors = (remcolors-1);
 			i = 0;
 		}
-		if ( ((chroma.contrast(page, g5)) >= contrast) && (colors1[4] === 0) ) {
+		if ( ((getContrast(page, g5)) >= contrast) && (colors1[4] === 0) ) {
 			colors1[4] = g5;
 			remcolors = (remcolors-1);
 			i = 0;
 		}
-		if ( ((chroma.contrast(page, g6)) >= contrast) && (colors1[5] === 0) ) {
+		if ( ((getContrast(page, g6)) >= contrast) && (colors1[5] === 0) ) {
 			colors1[5] = g6;
 			remcolors = (remcolors-1);
 			i = 0;
@@ -1632,8 +1656,8 @@ function ColorRGB(color) {
 }
 
 function isLightColor(color) {
-	var c1 = (chroma.contrast('#000000',  chroma(color)))
-	var c2 = (chroma.contrast('#ffffff',  chroma(color)))
+	var c1 = (getContrast('#000000',  chroma(color)))
+	var c2 = (getContrast('#ffffff',  chroma(color)))
 	return (c1 > c2);
 
 /*
@@ -1644,8 +1668,8 @@ function isLightColor(color) {
 }
 
 function isSemiLightColor(color) {
-	var c1 = (chroma.contrast(getComputedStyle(document.querySelector('body')).getPropertyValue("--light-theme-text-background-color"),  chroma(color)))
-	var c2 = (chroma.contrast(getComputedStyle(document.querySelector('body')).getPropertyValue("--dark-theme-text-background-color"),  chroma(color)))
+	var c1 = (getContrast(getComputedStyle(document.querySelector('body')).getPropertyValue("--light-theme-text-background-color"),  chroma(color)))
+	var c2 = (getContrast(getComputedStyle(document.querySelector('body')).getPropertyValue("--dark-theme-text-background-color"),  chroma(color)))
 	return (c1 > c2);
 /*
 	return chroma.deltaE('#e6e6e6', color) >= chroma.deltaE('#3a3a3a', color);
@@ -1658,18 +1682,18 @@ function isDarkColor(color) {
 }
 
 function isSuitableColorText(color,color2) {
-var contrast = window.ThemingEngine_SmallTextContrast*ContrastRatio()
-return ((chroma.contrast(color, color2)) >= contrast)
+var contrast = getSmallTextContrast()*ContrastRatio()
+return ((getContrast(color, color2)) >= contrast)
 }
 
 function isSuitableColorFormControls(color,color2) {
-var contrast = window.ThemingEngine_LargeTextContrast*ContrastRatio3()
-return ((chroma.contrast(color, color2)) >= contrast) // For Border Color
+var contrast = getLargeTextContrast()*ContrastRatioFormControls()
+return ((getContrast(color, color2)) >= contrast) // For Border Color
 }
 
 function getDefaultHyperlinkTextDecoration(color,color2) {
-var contrast = window.ThemingEngine_LargeTextContrast / 2.0
-return ((chroma.contrast(color, color2)) >= contrast) ? 'none' : 'underline' // For Border Color
+var contrast = getLargeTextContrast() / 2.0
+return ((getContrast(color, color2)) >= contrast) ? 'none' : 'underline' // For Border Color
 }
 
 
@@ -1728,8 +1752,8 @@ if ((getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--canvas-
 
 var content_color2 = ColorHover(content_color);
 
-var adjustment = ContrastRatio2();
-window.ThemingEngine_FinalContrast = ContrastRatio4();
+var adjustment = ContrastRatioDropdown();
+window.ThemingEngine_FinalContrast = ContrastRatioAutoInactiveText();
 
 	if (lightPage) {
 		var lightness = '#000000';
