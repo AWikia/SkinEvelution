@@ -722,7 +722,8 @@ function GetActiveText() {
 	} else if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--active-text-background-color") === 'auto') {
 		var color = ThemingEngine_HyperlinkColor;
 		var color2 = ThemingEngine_PageColorFG;
-		return ColorMix(color2,color,1.2);
+		var h = chroma(color).get("hsl.h");
+		return chroma(ColorMix(color2,color,1.2)).set("hsl.h",(h + 30) % 360 );
 	} else {
 		return getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--active-text-background-color").trim();
 	}
@@ -780,7 +781,8 @@ function GetActiveTitle() {
 	} else if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--active-title-background-color") === 'auto') {
 		var color = ThemingEngine_HyperlinkColor;
 		var color2 = ColorInvert(ThemingEngine_PageColorFG);
-		return ColorMix(color2,color,1.6);
+		var h = chroma(color).get("hsl.h");
+		return chroma(ColorMix(color2,color,1.6)).set("hsl.h",(h + 30) % 360 );
 	} else {
 		return getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--active-title-background-color").trim();
 	}
@@ -864,39 +866,46 @@ function GetCustomFont4() {
 }
 
 
-function ContrastRatio() { // Used for Text
-
-	if (ThemingEngine_ContrastMode == 'auto') {
-		return (window.matchMedia('(prefers-contrast: more)').matches) ? 1.55 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 1.275 : 1.0
-	} else if (ThemingEngine_ContrastMode == 'low') { // 4.5
-		return 1.00
-	} else if (ThemingEngine_ContrastMode == 'custom1') { // Custom
-		return 1.06875
-	} else if (ThemingEngine_ContrastMode == 'med-low') {
-		return 1.1375
-	} else if (ThemingEngine_ContrastMode == 'custom2') { // Custom
-		return 1.20625
-	} else if (ThemingEngine_ContrastMode == 'med') {
-		return 1.275
-	} else if (ThemingEngine_ContrastMode == 'custom3') { // Custom
-		return 1.34375
-	} else if (ThemingEngine_ContrastMode == 'med-hi') {
-		return 1.4125
-	} else if (ThemingEngine_ContrastMode == 'custom4') { // Custom
-		return 1.48125
-	} else if (ThemingEngine_ContrastMode == 'hi') { // 7
-		return 1.55
-	} else if (ThemingEngine_ContrastMode == 'custom5') { // Custom
-		return 1.61875
-	} else if (ThemingEngine_ContrastMode == 'hi-vhi') {
-		return 1.6875
-	} else if (ThemingEngine_ContrastMode == 'custom6') { // Custom
-		return 1.75625
-	} else if (ThemingEngine_ContrastMode == 'vhi') {
-		return 1.825
-	} else {
-		return (window.matchMedia('(prefers-contrast: more)').matches) ? 1.55 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 1.275 : 1.0
+function ContrastRatio() { // Used for Text (Non-APCA mode only)
+	if (APCAMode()) {
+		return ContrastRatioFormControls() // Not for non-APCA mode
 	}
+	var result = 0
+	if (ThemingEngine_ContrastMode == 'auto') {
+		result = (window.matchMedia('(prefers-contrast: more)').matches) ? 2.50 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 1.25 : 0.0
+	} else if (ThemingEngine_ContrastMode == 'low') { // 4.5
+		result = 0.00
+	} else if (ThemingEngine_ContrastMode == 'custom1') { // Custom
+		result = 0.3125
+	} else if (ThemingEngine_ContrastMode == 'med-low') {
+		result = 0.625
+	} else if (ThemingEngine_ContrastMode == 'custom2') { // Custom
+		result = 0.9375
+	} else if (ThemingEngine_ContrastMode == 'med') {
+		result = 1.25
+	} else if (ThemingEngine_ContrastMode == 'custom3') { // Custom
+		result = 1.5625
+	} else if (ThemingEngine_ContrastMode == 'med-hi') {
+		result = 1.875
+	} else if (ThemingEngine_ContrastMode == 'custom4') { // Custom
+		result = 2.1875
+	} else if (ThemingEngine_ContrastMode == 'hi') { // 7
+		result = 2.50
+	} else if (ThemingEngine_ContrastMode == 'custom5') { // Custom
+		result = 2.8125
+	} else if (ThemingEngine_ContrastMode == 'hi-vhi') {
+		result = 3.125
+	} else if (ThemingEngine_ContrastMode == 'custom6') { // Custom
+		result = 3.4375
+	} else if (ThemingEngine_ContrastMode == 'vhi') {
+		result = 3.75
+	} else {
+		result = (window.matchMedia('(prefers-contrast: more)').matches) ? 2.50 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 1.25 : 0.0
+	}
+	if (APCAMode()) { // Unused
+		result*=10
+	}
+	return result
 }
 
 function ContrastRatioDropdown() { // Used For Dropdown
@@ -934,39 +943,43 @@ function ContrastRatioDropdown() { // Used For Dropdown
 	}
 }
 
-function ContrastRatioFormControls() { // Used for Form Controls
-
+function ContrastRatioFormControls() { // Used for Form Controls (And Text in APCA Mode)
+	var result = 0
 	if (ThemingEngine_ContrastMode == 'auto') {
-		return (window.matchMedia('(prefers-contrast: more)').matches) ? 1.5 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 1.25 : 1.0
+		result = (window.matchMedia('(prefers-contrast: more)').matches) ? 1.5 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 0.75 : 0.0
 	} else if (ThemingEngine_ContrastMode == 'low') { // 3
-		return 1.00
+		result = 0.00
 	} else if (ThemingEngine_ContrastMode == 'custom1') { // Custom
-		return 1.0625
+		result = 0.1875
 	} else if (ThemingEngine_ContrastMode == 'med-low') {
-		return 1.125
+		result = 0.375
 	} else if (ThemingEngine_ContrastMode == 'custom2') { // Custom
-		return 1.1875
+		result = 0.5625
 	} else if (ThemingEngine_ContrastMode == 'med') {
-		return 1.25
+		result = 0.75
 	} else if (ThemingEngine_ContrastMode == 'custom3') { // Custom
-		return 1.3125
+		result = 0.9375
 	} else if (ThemingEngine_ContrastMode == 'med-hi') {
-		return 1.375
+		result = 1.125
 	} else if (ThemingEngine_ContrastMode == 'custom4') { // Custom
-		return 1.4375
+		result = 1.3125
 	} else if (ThemingEngine_ContrastMode == 'hi') { // 4.5
-		return 1.5
+		result = 1.5
 	} else if (ThemingEngine_ContrastMode == 'custom5') { // Custom
-		return 1.5625
+		result = 1.6875
 	} else if (ThemingEngine_ContrastMode == 'hi-vhi') {
-		return 1.625
+		result = 1.875
 	} else if (ThemingEngine_ContrastMode == 'custom6') { // Custom
-		return 1.6875
+		result = 2.0625
 	} else if (ThemingEngine_ContrastMode == 'vhi') {
-		return 1.75
+		result = 2.25
 	} else {
-		return (window.matchMedia('(prefers-contrast: more)').matches) ? 1.5 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 1.25 : 1.0
+		result = (window.matchMedia('(prefers-contrast: more)').matches) ? 1.5 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 0.75 : 0.0
 	}
+	if (APCAMode()) {
+		result*=10
+	}
+	return result
 }
 
 function ContrastRatioAutoInactiveText() { // Used For Inactive Text
@@ -1051,7 +1064,7 @@ if (isLightColor(page)) { // ( chroma(page).get('hsl.l') < 0.5)
 		progressh = 230
 //		messageh = -1
 		
-		contrast = getSmallTextContrast()*ContrastRatio()*1
+		contrast = getSmallTextContrast()+ContrastRatio()
 
 	for (let i = 0; i < colors.length; i++) {
  		var color = chroma('hsl(0,' + saturation + ',' + colors[i] + ')').hex(); // Base Color
@@ -1093,7 +1106,7 @@ if (isLightColor(page)) {
 		g6h = 20
 
 	
-		contrast = getSmallTextContrast()*ContrastRatio()*1
+		contrast = getSmallTextContrast()+ContrastRatio()
 		colors1 = [0,0,0,0,0,0];
 		remcolors = 6;
 
@@ -1682,12 +1695,12 @@ function isDarkColor(color) {
 }
 
 function isSuitableColorText(color,color2) {
-var contrast = getSmallTextContrast()*ContrastRatio()
+var contrast = getSmallTextContrast()+ContrastRatio()
 return ((getContrast(color, color2)) >= contrast)
 }
 
 function isSuitableColorFormControls(color,color2) {
-var contrast = getLargeTextContrast()*ContrastRatioFormControls()
+var contrast = getLargeTextContrast()+ContrastRatioFormControls()
 return ((getContrast(color, color2)) >= contrast) // For Border Color
 }
 
