@@ -1291,7 +1291,7 @@ function SliderColorSaturation() {
 ** Solo = duo, solo (Only two supported)
 ** All above = match-parent (Inherits the currently applied value)
 */
-function colortheme(style='match-parent', theme='match-parent', hue='match-parent', saturation='match-parent', solo='match-parent', repaint=true, save=true, notfromrange=true) {
+function colortheme(style='match-parent', theme='match-parent', hue='match-parent', saturation='match-parent', solo='match-parent', repaint=true, save=true, notfromrange=true,updateinput=true) {
 	if (style === 'match-parent') {
 		style = window.ThemingEngine_ActiveColorFilter;
 	}
@@ -1378,32 +1378,34 @@ function colortheme(style='match-parent', theme='match-parent', hue='match-paren
 		insertKey('color-sat', saturation );
 	}
 
-// Color Styles
-	var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-color-styles li.selected");
-	if (x) {
-		x.classList.remove("selected");
-	}
-	var y = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-color-styles li[data-color-style='" + style + "']");
-	if (y) {
-		y.classList.add("selected")
-	}
-// Device Themes
-	var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-device-themes li.selected");
-	if (x) {
-		x.classList.remove("selected");
-	}
-	var y = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-device-themes li[data-device-theme='" + selected_theme + "']");
-	if (y) {
-		y.classList.add("selected")
-	}
-// Color Style Behaviors
-	var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-solo-modes li.selected");
-	if (x) {
-		x.classList.remove("selected");
-	}
-	var y = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-solo-modes li[data-solo-mode='" + solo + "']");
-	if (y) {
-		y.classList.add("selected")
+	if (updateinput) {
+	// Color Styles
+		var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-color-styles li.selected");
+		if (x) {
+			x.classList.remove("selected");
+		}
+		var y = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-color-styles li[data-color-style='" + style + "']");
+		if (y) {
+			y.classList.add("selected")
+		}
+	// Device Themes
+		var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-device-themes li.selected");
+		if (x) {
+			x.classList.remove("selected");
+		}
+		var y = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-device-themes li[data-device-theme='" + selected_theme + "']");
+		if (y) {
+			y.classList.add("selected")
+		}
+	// Color Style Behaviors
+		var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-solo-modes li.selected");
+		if (x) {
+			x.classList.remove("selected");
+		}
+		var y = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-solo-modes li[data-solo-mode='" + solo + "']");
+		if (y) {
+			y.classList.add("selected")
+		}
 	}
 
 
@@ -1412,16 +1414,18 @@ function colortheme(style='match-parent', theme='match-parent', hue='match-paren
 		var muststay = !(DisabledColorManagement());
 	}
 
-	var range = document.querySelector('input[type="range"].colorhue');
-	var range2 = document.querySelector('input[type="range"].colorsat');
-	if (range) {
-		range.value = window.ThemingEngine_ColorFilterHueShift;
-	}
-	if (range2) {
-		range2.value = window.ThemingEngine_ColorFilterSaturation;
-	}
-	if (notfromrange) {
-		UpdateRangeInputs();
+	if (updateinput) {
+		var range = document.querySelector('input[type="range"].colorhue');
+		var range2 = document.querySelector('input[type="range"].colorsat');
+		if (range) {
+			range.value = window.ThemingEngine_ColorFilterHueShift;
+		}
+		if (range2) {
+			range2.value = window.ThemingEngine_ColorFilterSaturation;
+		}
+		if (notfromrange) {
+			UpdateRangeInputs();
+		}
 	}
 
 
@@ -1439,28 +1443,29 @@ function SliderContrastMode() {
 }
 
 
-function contrastmode(theme='auto', repaint=true, save=true,notfromrange=true) {
+function contrastmode(theme='auto', repaint=true, save=true,notfromrange=true,updateinput=true) {
 	window.ThemingEngine_ContrastMode = theme
 	if (save) {
 		insertKey('contrast-mode', theme );
 	}
-	var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-contrast-modes li.selected");
-	if (x) {
-		x.classList.remove("selected");
-	}
-	var y = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-contrast-modes li[data-contrast-mode='" + theme + "']");
-	if (y) {
-		y.classList.add("selected")
-	}
-	var range = document.querySelector('input[type="range"].contrastratio');
-	if (range) {
-		range2 = ['auto','low','custom1','med-low','custom2','med','custom3','med-hi','custom4','hi','custom5','hi-vhi','custom6','vhi'].indexOf(theme)
-		range.value = range2;
-		if (notfromrange) {
-			UpdateRangeInputs();
+	if (updateinput) {
+		var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-contrast-modes li.selected");
+		if (x) {
+			x.classList.remove("selected");
+		}
+		var y = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-contrast-modes li[data-contrast-mode='" + theme + "']");
+		if (y) {
+			y.classList.add("selected")
+		}
+		var range = document.querySelector('input[type="range"].contrastratio');
+		if (range) {
+			range2 = ['auto','low','custom1','med-low','custom2','med','custom3','med-hi','custom4','hi','custom5','hi-vhi','custom6','vhi'].indexOf(theme)
+			range.value = range2;
+			if (notfromrange) {
+				UpdateRangeInputs();
+			}
 		}
 	}
-
 	if (repaint) {
 		CompileThemingEngine(false);
 	}
@@ -1716,9 +1721,10 @@ return ((getContrast(color, color2)) >= contrast) ? 'none' : 'underline' // For 
 /* Used to udpate all dynamical variables */
 function CompileThemingEngine(refresh=true) {
 if (refresh === true) {
-	colortheme('match-parent', 'match-parent', 'match-parent', 'match-parent', 'match-parent', false,false);
+	colortheme('match-parent', 'match-parent', 'match-parent', 'match-parent', 'match-parent', false,false,true,false);
+
 	var cmode = window.ThemingEngine_ContrastMode;
-	contrastmode(cmode, false,false);
+	contrastmode(cmode, false,false,true,false);
 	/** Foreground Colors 
 	document.querySelector('html').style.setProperty("--light-theme-foreground-color-hover", ColorHover(getComputedStyle(document.querySelector('html')).getPropertyValue("--light-theme-foreground-color")) );
 	document.querySelector('html').style.setProperty("--dark-theme-foreground-color-hover", ColorHover(getComputedStyle(document.querySelector('html')).getPropertyValue("--dark-theme-foreground-color")) );

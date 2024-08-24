@@ -319,6 +319,8 @@ container > .main {
 	position:fixed;
 	z-index:100;
 	top:0;
+	transition:transform var(--transition-duration) var(--transition-timing-function), opacity var(--transition-duration) var(--transition-timing-function), background-color var(--transition-duration) var(--transition-timing-function), border-left-color var(--transition-duration) var(--transition-timing-function);
+
 }
 
 .evelution-sidebar .explore-menu .cpe-list {
@@ -1387,27 +1389,20 @@ body .evelution-floating-actions .cpe-floating-button .cpe-icon{
 
 }
 
-@media only screen and (max-height:479px) {
-	body .evelution-floating-actions .hides-in-small-screens {
-		display:none!important;
-	}
-
-}
-
 @media only screen and (min-height:480px) {
-	body .evelution-floating-actions .hides-in-large-screens {
+	body .evelution-floating-actions .cpe-dropdown.overflow-actions::before,
+	body .evelution-floating-actions .cpe-dropdown.overflow-actions::after,
+	body .evelution-floating-actions .cpe-dropdown.overflow-actions > .cpe-floating-button {
 		display:none!important;
 	}
-
-	body .evelution-floating-actions .cpe-floating-button-group.is-vertical > .adjusts-in-large-screens,
-	body.forced-full .evelution-floating-actions .cpe-floating-button-group.is-vertical > .adjusts-in-large-screens-forced {
-		margin-top:0;
+	body .evelution-floating-actions .cpe-dropdown.overflow-actions,
+	body .evelution-floating-actions .cpe-dropdown.overflow-actions > .cpe-dropdown__content {
+		display:contents!important;
+		pointer-events:initial;
 	}
+
 }
 
-	body.forced-full .evelution-floating-actions .cpe-dropdown__content .cpe-floating-button-group.is-vertical > .adjusts-in-large-screens-forced {
-		margin-top:0;
-	}
 
 
 /* Page Header */
@@ -1841,6 +1836,8 @@ gap:2px;
 		border-bottom:1px solid var(--luna-border-background-color);
 		transition:background color var(--transition-duration) var(--transition-timing-function), background image var(--transition-duration) var(--transition-timing-function);
 	}
+
+
 
 .evelution-header .evelution-header__container {
 	display:flex;
