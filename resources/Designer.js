@@ -714,11 +714,12 @@ function InitDesigner() {
 				'<option value=\'"Varela Round"\'>' + 
 				'<option value=\'"Work Sans"\'>' +
 			'</datalist>' +
-			'<datalist id="td_fonts3">' + // Monospace Fonts (15)
+			'<datalist id="td_fonts3">' + // Monospace Fonts (16)
 				'<option value=\'"Anonymous Pro"\'>' + 
 				'<option value=\'"Courier Prime"\'>' +
 				'<option value=\'"Cousine"\'>' +
 				'<option value=\'"Cutive Mono"\'>' +
+				'<option value=\'"Evelution Terminal"\'>' + // Custom
 				'<option value=\'"Fira Code"\'>' +
 				'<option value=\'"Fira Mono"\'>' +
 				'<option value=\'"Inconsolata"\'>' +
