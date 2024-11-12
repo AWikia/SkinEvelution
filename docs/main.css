@@ -23,7 +23,7 @@ body {
 	--global-nav-size:50px;
 	--minibar-size:50px;
   --cpe-body-cursor:auto;
-  --cpe-auto-cursor: default;
+  --cpe-default-cursor: default;
   --cpe-blocked-cursor:not-allowed;
   --cpe-help-cursor:help;
   --cpe-text-cursor:text;
@@ -150,6 +150,10 @@ body {
 	--global-nav-link-color-active:var(--luna-hyperlink-background-color);
 	--global-nav-link-background-active:rgb(var(--luna-hyperlink-background-color-rgb) / 0.4);
 	--global-nav-link-border-active:rgb(var(--luna-hyperlink-background-color-rgb) / 0.2);
+	/* Keybord-Focused Links */
+	--global-nav-link-color-focus:var(--global-nav-link-color-active);
+	--global-nav-link-background-focus:var(--global-nav-link-background-active);
+	--global-nav-link-border-focus:var(--luna-foreground-color);
 	/* Misc */
 	--global-nav-link-opacity:0.2;
 	--global-nav-link-border-opacity:0.1;
@@ -259,6 +263,13 @@ body {
 		border-color:var(--global-nav-link-border-active);
 		color:var(--global-nav-link-color-active);
 		box-shadow:var(--threeD-shadow-active);
+	}
+	
+	.evelution-sidebar .link:focus-visible,
+	.evelution-sidebar .cpe-dropdown:focus-visible > .link {
+		background-color:var(--global-nav-link-background-focus);
+		border-color:var(--global-nav-link-border-focus);
+		color:var(--global-nav-link-color-focus);
 	}
 	
 	.evelution-sidebar {
@@ -1284,6 +1295,11 @@ margin-bottom:0;
 		font-weight:bolder;
 	}
 	
+	.evelution-header .link:focus-visible, 
+	.evelution-header .cpe-dropdown:focus-visible > .link  {
+		border-color:var(--luna-foreground-color);
+	}	
+
 	.evelution-header .wiki-tools {
 		height:inherit;
 		display:contents;
@@ -2156,6 +2172,11 @@ a:active {
 .visualmode-contrast .evelution-sidebar .cpe-dropdown:focus-within > .link {
 		background-color:var(--global-nav-link-background-active);
 	}
+	
+.visualmode-contrast .evelution-sidebar .link:focus-visible, 
+.visualmode-contrast .evelution-sidebar .cpe-dropdown:focus-visible > .link {
+		background-color:var(--global-nav-link-background-focus);
+}
 
 
 .visualmode-contrast .evelution-header .link:hover {
@@ -2177,6 +2198,11 @@ a:active {
 	color:var(--highlight-text-background-color);
 	border-color:var(--highlight-background-color);
 	background-color:var(--highlight-background-color);
+}
+
+.visualmode-contrast .evelution-header .link:focus-visible, 
+.visualmode-contrast .evelution-header .cpe-dropdown:focus-visible > .link {
+		border-color:var(--luna-foreground-color);
 }
 
 @media (orientation:portrait) {

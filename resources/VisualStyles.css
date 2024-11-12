@@ -50,6 +50,12 @@
   border-color:var(--dropdown-active-hyperlink-border-color);
 }
 
+.visualmode-contrast body .toc .module-toc li a:focus-visible {
+  background-color:var(--dropdown-focused-hyperlink-background-color);
+  color:var(--dropdown-focused-hyperlink-text-color);
+  border-color:var(--dropdown-focused-hyperlink-border-color);
+}
+
 
 .visualmode-contrast .oo-ui-outlineOptionWidget.oo-ui-optionWidget-highlighted {
   background-color:var(--highlight-text-background-color);
@@ -246,6 +252,10 @@ background-color:var(--canvas-background-color);
   color: var(--hyperlink-background-color);
 }
 
+.visualstyle-basic body .toc .module-toc li a:focus-visible {
+  border-color:var(--canvas-foreground-color);
+}
+
 
 .visualstyle-basic ::-webkit-scrollbar-thumb {
 	border-color:var(--scrollbar-track-text);
@@ -311,6 +321,10 @@ linear-gradient(90deg, transparent 0%, transparent calc(50% - -3px), currentColo
 --dropdown-active-hyperlink-background-color:var(--highlight-background-color);
 --dropdown-active-hyperlink-border-color:var(--dropdown-hyperlink-border-color);
 --dropdown-active-hyperlink-text-color:var(--highlight-text-background-color);
+/* Keyboard-Focused Link Styling */
+--dropdown-focused-hyperlink-background-color:var(--canvas-text-secondary-background-color);
+--dropdown-focused-hyperlink-border-color:var(--canvas-text-secondary-background-color);
+--dropdown-focused-hyperlink-text-color:var(--canvas-secondary-background-color);
 }
 
 .visualstyle-basic.visualmode-contrast body {
@@ -335,6 +349,12 @@ linear-gradient(90deg, transparent 0%, transparent calc(50% - -3px), currentColo
   background-color:var(--dropdown-active-hyperlink-background-color);
   color:var(--dropdown-active-hyperlink-text-color);
   border-color:var(--dropdown-active-hyperlink-border-color);
+}
+
+.visualstyle-basic.visualmode-contrast body .toc .module-toc li a:focus-visible {
+  background-color:var(--dropdown-focused-hyperlink-background-color);
+  color:var(--dropdown-focused-hyperlink-text-color);
+  border-color:var(--dropdown-focused-hyperlink-border-color);
 }
 
 .visualstyle-basic.visualmode-contrast .wikiEditor-ui-toolbar .booklet > .index > .current,
@@ -551,6 +571,8 @@ background-color:var(--canvas-background-color);
 --dropdown-active-hyperlink-background-color:var(--dropdown-hyperlink-background-color);
 --dropdown-active-hyperlink-border-color:var(--dropdown-hyperlink-border-color);
 --dropdown-active-hyperlink-text-color:var(--dropdown-hyperlink-text-color);
+/* Keyboard-Focused Link Styling */
+--dropdown-focused-hyperlink-border-color:var(--simple-luna-foreground-color);
 }
 
 
@@ -636,6 +658,10 @@ background-color:var(--canvas-background-color);
 	color:var(--canvas-foreground-color-inverted);
 	background-color:var(--canvas-background-color-hover);
 	border-color:rgb(var(--canvas-foreground-color-rgb) / 0.2);
+}
+
+.visualstyle-simple body .toc .module-toc li a:focus-visible {
+  border-color:var(--canvas-foreground-color);
 }
 
 
@@ -1008,6 +1034,7 @@ background-color:var(--canvas-background-color);
 .visualstyle-simple.visualmode-contrast .cpe-button:not(.is-tertiary):focus:not(:active), 
 .visualstyle-simple.visualmode-contrast .cpe-button:not(.is-tertiary).is-active, 
 .visualstyle-simple.visualmode-contrast .selected .cpe-button:not(.is-tertiary),
+.visualstyle-simple.visualmode-contrast .cpe-dropdown.opens-on-hover:hover > .cpe-button:not(.is-tertiary),
 .visualstyle-simple.visualmode-contrast .cpe-dropdown:focus > .cpe-button:not(.is-tertiary),
 .visualstyle-simple.visualmode-contrast .cpe-dropdown:focus-within > .cpe-button:not(.is-tertiary),
 /* OOUI */
@@ -1080,6 +1107,10 @@ background-color:var(--canvas-background-color);
 --dropdown-text-color-hover-2:var(--dropdown-background-color);
 /* Link Styling */
 --dropdown-hyperlink-border-color:rgb(var(--dropdown-background-color) / 0.5);
+/* Keyboard-Focused Link Styling */
+--dropdown-focused-hyperlink-background-color:var(--dropdown-text-color-2);
+--dropdown-focused-hyperlink-border-color:var(--dropdown-background-color-2);
+--dropdown-focused-hyperlink-text-color:var(--dropdown-text-color-2);
 }
 
 .visualstyle-simple.visualmode-contrast body  {
@@ -1130,9 +1161,15 @@ background-color:var(--canvas-background-color);
 .visualstyle-simple.visualmode-contrast body .toc .module-toc li a:active,
 .visualstyle-simple.visualmode-contrast body .toc .module-toc li a:focus,
 .visualstyle-simple.visualmode-contrast body .toc .module-toc li.selected a {
-	color:var(--canvas-background-color)!important;
+	color:var(--canvas-background-color);
 	background-color:var(--canvas-foreground-color);
 	border-color:rgb(var(--canvas-background-color-rgb) / 0.5);
+}
+
+.visualstyle-simple.visualmode-contrast body .toc .module-toc li a:focus-visible {
+  background-color:var(--canvas-background-color);
+  color:var(--canvas-forgeground-color);
+  border-color:var(--canvas-foreground-color);
 }
 
 .visualstyle-simple.visualmode-contrast body .oo-ui-menuSelectWidget .oo-ui-buttonElement > .oo-ui-buttonElement-button,
@@ -1287,6 +1324,11 @@ background-color:var(--canvas-background-color);
 --dropdown-active-hyperlink-background-color:var(--hyperlink-background-color-hover);
 --dropdown-active-hyperlink-border-color:transparent;
 --dropdown-active-hyperlink-text-color:var(--hyperlink-foreground-color-inverted);
+/* Keyboard-Focused Link Styling */
+--dropdown-focused-hyperlink-background-color:var(--canvas-text-background-color);
+--dropdown-focused-hyperlink-border-color:var(--hyperlink-background-color);
+--dropdown-focused-hyperlink-text-color:var(--canvas-text-foreground-color);
+
 /* Selection Styling */
 	--selection-background-color:var(--hyperlink-background-color);
 	--selection-text-color:var(--hyperlink-foreground-color);
@@ -1315,6 +1357,12 @@ background-color:var(--canvas-background-color);
   background-color:var(--dropdown-active-hyperlink-background-color);
   color:var(--dropdown-active-hyperlink-text-color);
   border-color:var(--dropdown-active-hyperlink-border-color);
+}
+
+.visualstyle-general body .toc .module-toc li a:focus-visible {
+  background-color:var(--dropdown-focused-hyperlink-background-color);
+  color:var(--dropdown-focused-hyperlink-text-color);
+  border-color:var(--dropdown-focused-hyperlink-border-color);
 }
 
 .visualstyle-general .wikiEditor-ui-toolbar .booklet > .index > .current,

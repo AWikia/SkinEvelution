@@ -78,9 +78,15 @@
 .visualmode-contrast .evelution-sidebar .link:active, 
 .visualmode-contrast .evelution-sidebar .link:focus, 
 .visualmode-contrast .evelution-sidebar .link.active, 
+.visualmode-contrast .evelution-sidebar .cpe-dropdown.opens-on-hover:hover > .link,
 .visualmode-contrast .evelution-sidebar .cpe-dropdown:focus > .link,
 .visualmode-contrast .evelution-sidebar .cpe-dropdown:focus-within > .link {
 		background-color:var(--global-nav-link-background-active);
+	}
+	
+.visualmode-contrast .evelution-sidebar .link:focus-visible, 
+.visualmode-contrast .evelution-sidebar .cpe-dropdown:focus-visible > .link {
+		background-color:var(--global-nav-link-background-focus);
 	}
 
 
@@ -104,6 +110,7 @@
 
 .visualmode-contrast .evelution-header .link:active, 
 .visualmode-contrast .evelution-header .link:focus, 
+.visualmode-contrast .evelution-header .cpe-dropdown.opens-on-hover:hover > .link, 
 .visualmode-contrast .evelution-header .cpe-dropdown:focus > .link, 
 .visualmode-contrast .evelution-header .cpe-dropdown:focus-within > .link, 
 .visualmode-contrast .evelution-header .link.active,
@@ -112,6 +119,7 @@
 .visualmode-contrast .evelution-content .evelution-page-header .evelution-middle-actions .selected a, 
 .visualmode-contrast .evelution-top-actions .link:active, 
 .visualmode-contrast .evelution-top-actions .link:focus, 
+.visualmode-contrast .evelution-top-actions .cpe-dropdown.opens-on-hover:hover > .link, 
 .visualmode-contrast .evelution-top-actions .cpe-dropdown:focus > .link, 
 .visualmode-contrast .evelution-top-actions .cpe-dropdown:focus-within > .link, 
 .visualmode-contrast .evelution-top-actions .link.active {
@@ -120,6 +128,17 @@
 	color:var(--highlight-text-background-color);
 	border-color:var(--highlight-background-color);
 	background-color:var(--highlight-background-color);
+}
+
+.visualmode-contrast .evelution-header .link:focus-visible, 
+.visualmode-contrast .evelution-header .cpe-dropdown:focus-visible > .link,
+.visualmode-contrast .evelution-content .evelution-page-header .evelution-middle-actions a:focus-visible {
+		border-color:var(--luna-foreground-color);
+}
+
+.visualmode-contrast .evelution-top-actions .link:focus-visible, 
+.visualmode-contrast .evelution-top-actions .cpe-dropdown:focus-visible > .link  {
+		border-color:var(--desktop-foreground-color);
 }
 
 @media (orientation:portrait) {
@@ -181,6 +200,7 @@
 .visualmode-contrast .preview-window-window .menu > li > a:active,
 .visualmode-contrast .preview-window-window .menu > li > a:focus,
 .visualmode-contrast .preview-window-window .menu > li.selected > a,
+.visualmode-contrast .preview-window-window .menu > .cpe-dropdown.opens-on-hover:hover > a,
 .visualmode-contrast .preview-window-window .menu > .cpe-dropdown:focus > a,
 .visualmode-contrast .preview-window-window .menu > .cpe-dropdown:focus-within > a {
   background-color:var(--dropdown-active-hyperlink-background-color);
@@ -223,6 +243,7 @@
 	.visualstyle-basic .evelution-sidebar .link:active, 
 	.visualstyle-basic .evelution-sidebar .link:focus, 
 	.visualstyle-basic .evelution-sidebar .link.active,
+	.visualstyle-basic .evelution-sidebar .cpe-dropdown.opens-on-hover:hover > .link,
 	.visualstyle-basic .evelution-sidebar .cpe-dropdown:focus > .link,
 	.visualstyle-basic .evelution-sidebar .cpe-dropdown:focus-within > .link {
 	border-color:var(--global-nav-link-color-hover);
@@ -234,12 +255,18 @@
 .visualstyle-basic .evelution-sidebar .link:active, 
 .visualstyle-basic .evelution-sidebar .link:focus, 
 .visualstyle-basic .evelution-sidebar .link.active,
+.visualstyle-basic .evelution-sidebar .cpe-dropdown.opens-on-hover:hover > .link,
 .visualstyle-basic .evelution-sidebar .cpe-dropdown:focus > .link,
 .visualstyle-basic .evelution-sidebar .cpe-dropdown:focus-within > .link {
 		background-color:rgb(var(--luna-hyperlink-background-color-rgb) / 0.4);
 }
 
-
+	.visualstyle-basic .evelution-sidebar .link:focus-visible, 
+	.visualstyle-basic .evelution-sidebar .cpe-dropdown:focus-visible > .link {
+	border-color:var(--global-nav-link-color-focus);
+	color:var(--global-nav-link-color-focus);
+	background-color:rgb(var(--luna-hyperlink-background-color-rgb) / 0.4);
+}
 
 	.visualstyle-basic  .evelution-content .evelution-page-header a,
 	.visualstyle-basic  .evelution-content .evelution-page-header a:visited {
@@ -295,6 +322,7 @@
 .visualstyle-basic .evelution-header .link.active, 
 .visualstyle-basic .evelution-header .link:active, 
 .visualstyle-basic .evelution-header .link:focus, 
+.visualstyle-basic .evelution-header .cpe-dropdown.opens-on-hover:hover > .link,
 .visualstyle-basic .evelution-header .cpe-dropdown:focus > .link,
 .visualstyle-basic .evelution-header .cpe-dropdown:focus-within > .link,
 .visualstyle-basic .evelution-content .evelution-page-header .evelution-middle-actions a:active, 
@@ -305,6 +333,13 @@
 		color:rgb(var(--luna-foreground-color-hover-rgb) / 0.8);
 }
 
+.visualstyle-basic .evelution-header .link:focus-visible, 
+.visualstyle-basic .evelution-content .evelution-page-header .evelution-middle-actions a:focus-visible,
+.visualstyle-basic .evelution-header .cpe-dropdown:focus-visible > .link  {
+		border:1px solid var(--luna-hyperlink-background-color);
+		background-color:rgb(var(--luna-hyperlink-background-color-rgb) / 0.4);
+		color:var(--luna-hyperlink-background-color);
+	}
 
 .visualstyle-basic .evelution-top-actions .link {
     border:1px solid var(--header-foreground-color);
@@ -320,12 +355,19 @@
 .visualstyle-basic .evelution-top-actions .link.active, 
 .visualstyle-basic .evelution-top-actions .link:active, 
 .visualstyle-basic .evelution-top-actions .link:focus, 
+.visualstyle-basic .evelution-top-actions .cpe-dropdown.opens-on-hover:hover > .link,
 .visualstyle-basic .evelution-top-actions .cpe-dropdown:focus > .link,
 .visualstyle-basic .evelution-top-actions .cpe-dropdown:focus-within > .link {
 		border:1px solid var(--header-foreground-color-hover);
 		background-color:rgb(var(--hyperlink-quaternary-background-color-rgb) / 0.4);
 		color:rgb(var(--header-foreground-color-hover-rgb) / 0.8);
 }
+
+.visualstyle-basic .evelution-top-actions .link:focus-visible, 
+.visualstyle-basic .evelution-top-actions .cpe-dropdown:focus-visible > .link  {
+		border-color:var(--hyperlink-quaternary-background-color);
+		color:var(--hyperlink-quaternary-background-color);
+	}
 
 .visualstyle-basic .preview-window-window {
 	color:var(--luna-foreground-color);
@@ -363,6 +405,7 @@
 .visualstyle-basic .preview-window-window .menu > li > a:active,
 .visualstyle-basic .preview-window-window .menu > li > a:focus,
 .visualstyle-basic .preview-window-window .menu > li.selected > a,
+.visualstyle-basic .preview-window-window .menu > .cpe-dropdown.opens-on-hover:hover > a,
 .visualstyle-basic .preview-window-window .menu > .cpe-dropdown:focus > a,
 .visualstyle-basic .preview-window-window .menu > .cpe-dropdown:focus-within > a {
   background-color:var(--hyperlink-fadeout-color);
@@ -641,6 +684,11 @@ border-color:var(--luna-foreground-color);
 	--global-nav-link-color-active:var(--highlight-text-background-color);
 	--global-nav-link-background-active:var(--highlight-background-color-rgb);
 	--global-nav-link-border-active:var(--canvas-text-secondary-background-color);
+	/* Keybord-Focused Links */
+	--global-nav-link-color-focus:var(--canvas-secondary-background-color);
+	--global-nav-link-background-focus:var(--canvas-text-secondary-background-color-rgb);
+	--global-nav-link-border-focus:var(--canvas-text-secondary-background-color);
+
 	/* Misc */
 	--global-nav-link-opacity:1;
 	--global-nav-link-border-opacity:1;
@@ -688,6 +736,7 @@ border-color:var(--luna-foreground-color);
 
 .visualstyle-basic.visualmode-contrast .evelution-header .link:active, 
 .visualstyle-basic.visualmode-contrast .evelution-header .link:focus, 
+.visualstyle-basic.visualmode-contrast .evelution-header .cpe-dropdown.opens-on-hover:hover > .link, 
 .visualstyle-basic.visualmode-contrast .evelution-header .cpe-dropdown:focus > .link, 
 .visualstyle-basic.visualmode-contrast .evelution-header .cpe-dropdown:focus-within > .link, 
 .visualstyle-basic.visualmode-contrast .evelution-header .link.active,
@@ -696,6 +745,7 @@ border-color:var(--luna-foreground-color);
 .visualstyle-basic.visualmode-contrast .evelution-content .evelution-page-header .evelution-middle-actions .selected a, 
 .visualstyle-basic.visualmode-contrast .evelution-top-actions .link:active, 
 .visualstyle-basic.visualmode-contrast .evelution-top-actions .link:focus, 
+.visualstyle-basic.visualmode-contrast .evelution-top-actions .cpe-dropdown.opens-on-hover:hover > .link, 
 .visualstyle-basic.visualmode-contrast .evelution-top-actions .cpe-dropdown:focus > .link, 
 .visualstyle-basic.visualmode-contrast .evelution-top-actions .cpe-dropdown:focus-within > .link, 
 .visualstyle-basic.visualmode-contrast .evelution-top-actions .link.active {
@@ -706,6 +756,15 @@ border-color:var(--luna-foreground-color);
 	background-color:var(--highlight-background-color);
 }
 
+.visualstyle-basic.visualmode-contrast .evelution-header .link:focus-visible, 
+.visualstyle-basic.visualmode-contrast .evelution-header .cpe-dropdown:focus-visible > .link,
+.visualstyle-basic.visualmode-contrast .evelution-content .evelution-page-header .evelution-middle-actions a:focus-visible, 
+.visualstyle-basic.visualmode-contrast .evelution-top-actions .link:focus-visible, 
+.visualstyle-basic.visualmode-contrast .evelution-top-actions .cpe-dropdown:focus-visible > .link  {
+	color:var(--canvas-secondary-background-color);
+	border-color:var(--canvas-text-secondary-background-color);
+	background-color:var(--canvas-text-secondary-background-color);
+}
 
 
 .visualstyle-basic.visualmode-contrast .evelution-taskbar {
@@ -721,11 +780,19 @@ border-color:var(--luna-foreground-color);
 .visualstyle-basic.visualmode-contrast .evelution-sidebar .link:active, 
 .visualstyle-basic.visualmode-contrast .evelution-sidebar .link:focus, 
 .visualstyle-basic.visualmode-contrast .evelution-sidebar .link.active,
+.visualstyle-basic.visualmode-contrast .evelution-sidebar .cpe-dropdown.opens-on-hover:hover > .link,
 .visualstyle-basic.visualmode-contrast .evelution-sidebar .cpe-dropdown:focus > .link,
 .visualstyle-basic.visualmode-contrast .evelution-sidebar .cpe-dropdown:focus-within > .link {
 	background-color:rgb(var(--global-nav-link-background-active));
 	border-color:var(--global-nav-link-border-active);
 	color:var(--global-nav-link-color-active);
+}
+
+.visualstyle-basic.visualmode-contrast .evelution-sidebar .link:focus-visible, 
+.visualstyle-basic.visualmode-contrast .evelution-sidebar .cpe-dropdown:focus-visible > .link {
+	background-color:rgb(var(--global-nav-link-background-focus));
+	border-color:var(--global-nav-link-border-focus);
+	color:var(--global-nav-link-color-focus);
 }
 
 .visualstyle-basic.visualmode-contrast .preview-window-window h2 button {
@@ -773,6 +840,7 @@ border-color:var(--luna-foreground-color);
 .visualstyle-basic.visualmode-contrast .preview-window-window .menu > li > a:active,
 .visualstyle-basic.visualmode-contrast .preview-window-window .menu > li > a:focus,
 .visualstyle-basic.visualmode-contrast .preview-window-window .menu > li.selected > a,
+.visualstyle-basic.visualmode-contrast .preview-window-window .menu > .cpe-dropdown.opens-on-hover:hover > a,
 .visualstyle-basic.visualmode-contrast .preview-window-window .menu > .cpe-dropdown:focus > a,
 .visualstyle-basic.visualmode-contrast .preview-window-window .menu > .cpe-dropdown:focus-within > a {
   background-color:var(--dropdown-active-hyperlink-background-color);
@@ -805,21 +873,27 @@ border-color:var(--luna-foreground-color);
 	color:var(--luna-text-background-color-hover);
 }
 
-.visualstyle-simple .evelution-sidebar  {
+.visualstyle-simple .evelution-sidebar {
 	--global-nav-color:var(--luna-background-color-rgb)!important;
 	--global-nav-text-color:var(--luna-foreground-color)!important;
 	--global-nav-link-color-hover:var(--luna-foreground-color-inverted)!important;
 	--global-nav-link-background-hover:rgb(var(--luna-background-color-hover-rgb) / var(--acrylic-opacity))!important;
-	--global-nav-link-color-active:var(--luna-foreground-color-inverted)!important;
-	--global-nav-link-background-active:rgb(var(--luna-background-color-hover-rgb) / var(--acrylic-opacity))!important;
+	--global-nav-link-color-active:var(--global-nav-link-color-hover)!important;
+	--global-nav-link-background-active:var(--global-nav-link-background-hover)!important;
+	--global-nav-link-color-focus:var(--global-nav-link-color-active)!important;
+	--global-nav-link-background-focus:var(--global-nav-link-background-active)!important;
+
 }
 
 .visualstyle-simple .evelution-header .link.active, 
 .visualstyle-simple .evelution-header .link:hover, 
+.visualstyle-simple .evelution-header .link:active, 
 .visualstyle-simple .evelution-header .link:focus, 
+.visualstyle-simple .evelution-header .cpe-dropdown.opens-on-hover:hover > .link, 
 .visualstyle-simple .evelution-header .cpe-dropdown:focus > .link, 
 .visualstyle-simple .evelution-header .cpe-dropdown:focus-within > .link,
 .visualstyle-simple .evelution-content .evelution-page-header .evelution-middle-actions a:hover, 
+.visualstyle-simple .evelution-content .evelution-page-header .evelution-middle-actions a:active, 
 .visualstyle-simple .evelution-content .evelution-page-header .evelution-middle-actions a:focus, 
 .visualstyle-simple .evelution-content .evelution-page-header .evelution-middle-actions .selected a {
 	background-color:rgb(var(--luna-background-color-hover-rgb) / var(--mica-opacity-2));
@@ -830,18 +904,32 @@ border-color:var(--luna-foreground-color);
 
 .visualstyle-simple.has-accents .evelution-header .link.active, 
 .visualstyle-simple.has-accents .evelution-header .link:hover, 
+.visualstyle-simple.has-accents .evelution-header .link:active, 
 .visualstyle-simple.has-accents .evelution-header .link:focus, 
+.visualstyle-simple.has-accents .evelution-header .cpe-dropdown.opens-on-hover:hover > .link, 
 .visualstyle-simple.has-accents .evelution-header .cpe-dropdown:focus > .link, 
 .visualstyle-simple.has-accents .evelution-header .cpe-dropdown:focus-within > .link,
 .visualstyle-simple.has-accents .evelution-content .evelution-page-header .evelution-middle-actions a:hover, 
+.visualstyle-simple.has-accents .evelution-content .evelution-page-header .evelution-middle-actions a:active, 
 .visualstyle-simple.has-accents .evelution-content .evelution-page-header .evelution-middle-actions a:focus, 
 .visualstyle-simple.has-accents .evelution-content .evelution-page-header .evelution-middle-actions .selected a {
 	border-color:rgb(var(--luna-foreground-color-rgb) / 0.2);
 }
 
+.visualstyle-simple .evelution-header .link:focus-visible, 
+.visualstyle-simple .evelution-header .cpe-dropdown:focus-visible > .link,
+.visualstyle-simple .evelution-content .evelution-page-header .evelution-middle-actions a:focus-visible, 
+.visualstyle-simple.has-accents .evelution-header .link:focus-visible, 
+.visualstyle-simple.has-accents .evelution-header .cpe-dropdown:focus-visible > .link,
+.visualstyle-simple.has-accents .evelution-content .evelution-page-header .evelution-middle-actions a:focus-visible {
+		border-color:var(--luna-foreground-color);
+}
+
 .visualstyle-simple .evelution-top-actions .link.active, 
 .visualstyle-simple .evelution-top-actions .link:hover, 
+.visualstyle-simple .evelution-top-actions .link:active, 
 .visualstyle-simple .evelution-top-actions .link:focus, 
+.visualstyle-simple .evelution-top-actions .cpe-dropdown.opens-on-hover:hover > .link, 
 .visualstyle-simple .evelution-top-actions .cpe-dropdown:focus > .link, 
 .visualstyle-simple .evelution-top-actions .cpe-dropdown:focus-within > .link {
 	--desktop-filter:none;
@@ -851,10 +939,16 @@ border-color:var(--luna-foreground-color);
 	border-color:rgb(var(--canvas-foreground-color-rgb) / 0.2);
 }
 
+.visualstyle-simple .evelution-top-actions .link:focus-visible, 
+.visualstyle-simple .evelution-top-actions .cpe-dropdown:focus-visible > .link  {
+	border-color:var(--desktop-foreground-color);
+}
+
 .visualstyle-simple .evelution-sidebar .link:hover, 
 .visualstyle-simple .evelution-sidebar .link:active, 
 .visualstyle-simple .evelution-sidebar .link:focus,
 .visualstyle-simple .evelution-sidebar .link.active,
+.visualstyle-simple .evelution-sidebar .cpe-dropdown.opens-on-hover:hover > .link,
 .visualstyle-simple .evelution-sidebar .cpe-dropdown:focus > .link,
 .visualstyle-simple .evelution-sidebar .cpe-dropdown:focus-within > .link {
 		background-color:var(--global-nav-link-background-active);
@@ -865,9 +959,21 @@ border-color:var(--luna-foreground-color);
 .visualstyle-simple.has-accents .evelution-sidebar .link:active, 
 .visualstyle-simple.has-accents .evelution-sidebar .link:focus,
 .visualstyle-simple.has-accents .evelution-sidebar .link.active,
+.visualstyle-simple.has-accents .evelution-sidebar .cpe-dropdown.opens-on-hover:hover > .link,
 .visualstyle-simple.has-accents .evelution-sidebar .cpe-dropdown:focus > .link,
 .visualstyle-simple.has-accents .evelution-sidebar .cpe-dropdown:focus-within > .link {
 	border-color:rgb(var(--luna-foreground-color-rgb) / 0.2);
+}
+
+.visualstyle-simple .evelution-sidebar .link:focus-visible,
+.visualstyle-simple .evelution-sidebar .cpe-dropdown:focus-visible > .link {
+		background-color:var(--global-nav-link-background-focus);
+		border-color:var(--luna-foreground-color);
+}
+
+.visualstyle-simple.has-accents .evelution-sidebar .link:focus-visible,
+.visualstyle-simple.has-accents .evelution-sidebar .cpe-dropdown:focus-visible > .link {
+		border-color:var(--luna-foreground-color);
 }
 
 .visualstyle-simple .evelution-content .evelution-page-header .evelution-title {
@@ -919,6 +1025,7 @@ border-color:var(--luna-foreground-color);
 .visualstyle-simple .preview-window-window .menu > li > a:active,
 .visualstyle-simple .preview-window-window .menu > li > a:focus,
 .visualstyle-simple .preview-window-window .menu > li.selected > a,
+.visualstyle-simple .preview-window-window .menu > .cpe-dropdown.opens-on-hover:hover > a,
 .visualstyle-simple .preview-window-window .menu > .cpe-dropdown:focus > a,
 .visualstyle-simple .preview-window-window .menu > .cpe-dropdown:focus-within > a {
 	color:var(--canvas-foreground-color-inverted);
@@ -1035,6 +1142,8 @@ border-color:var(--luna-foreground-color);
 	--global-nav-link-background-hover:var(--global-nav-text-color)!important;
 	--global-nav-link-color-active:rgb(var(--global-nav-color))!important;
 	--global-nav-link-background-active:var(--global-nav-text-color)!important;
+	--global-nav-link-color-focus:var(--global-text-color)!important;
+	--global-nav-link-background-focus:var(--global-nav-color)!important;
 	--global-nav-opacity:2!important;
 }
 
@@ -1048,10 +1157,13 @@ border-color:var(--luna-foreground-color);
 
 .visualstyle-simple.visualmode-contrast .evelution-header .link.active, 
 .visualstyle-simple.visualmode-contrast .evelution-header .link:hover, 
+.visualstyle-simple.visualmode-contrast .evelution-header .link:active, 
 .visualstyle-simple.visualmode-contrast .evelution-header .link:focus, 
+.visualstyle-simple.visualmode-contrast .evelution-header .cpe-dropdown.opens-on-hover:hover > .link, 
 .visualstyle-simple.visualmode-contrast .evelution-header .cpe-dropdown:focus > .link, 
 .visualstyle-simple.visualmode-contrast .evelution-header .cpe-dropdown:focus-within > .link,
 .visualstyle-simple.visualmode-contrast .evelution-content .evelution-page-header .evelution-middle-actions a:hover, 
+.visualstyle-simple.visualmode-contrast .evelution-content .evelution-page-header .evelution-middle-actions a:active, 
 .visualstyle-simple.visualmode-contrast .evelution-content .evelution-page-header .evelution-middle-actions a:focus,
 .visualstyle-simple.visualmode-contrast .evelution-content .evelution-page-header .evelution-middle-actions .selected a {
 	background-color:var(--luna-foreground-color);
@@ -1061,9 +1173,19 @@ border-color:var(--luna-foreground-color);
 	border-color:rgb(var(--luna-background-color-rgb) / 0.5);
 }
 
+.visualstyle-simple.visualmode-contrast .evelution-header .link:focus-visible, 
+.visualstyle-simple.visualmode-contrast .evelution-header .cpe-dropdown:focus-visible > .link,
+.visualstyle-simple.visualmode-contrast .evelution-content .evelution-page-header .evelution-middle-actions a:focus-visible  {
+		background-color:var(--luna-background-color);
+		border-color:var(--luna-foreground-color);
+		color:var(--luna-foreground-color);
+}
+
 .visualstyle-simple.visualmode-contrast .evelution-top-actions .link.active, 
 .visualstyle-simple.visualmode-contrast .evelution-top-actions .link:hover, 
+.visualstyle-simple.visualmode-contrast .evelution-top-actions .link:active, 
 .visualstyle-simple.visualmode-contrast .evelution-top-actions .link:focus, 
+.visualstyle-simple.visualmode-contrast .evelution-top-actions .cpe-dropdown.opens-on-hover:hover > .link, 
 .visualstyle-simple.visualmode-contrast .evelution-top-actions .cpe-dropdown:focus > .link, 
 .visualstyle-simple.visualmode-contrast .evelution-top-actions .cpe-dropdown:focus-within > .link {
 	--desktop-filter:none;
@@ -1074,14 +1196,28 @@ border-color:var(--luna-foreground-color);
 	border-color:rgb(var(--desktop-background-color-rgb) / 0.5);
 }
 
+.visualstyle-simple.visualmode-contrast .evelution-top-actions .link:focus-visible, 
+.visualstyle-simple.visualmode-contrast .evelution-top-actions .cpe-dropdown:focus-visible > .link  {
+	color:var(--desktop-foreground-color);
+	border-color:var(--desktop-foreground-color);
+	background-color:var(--desktop-background-color);
+}
+
 .visualstyle-simple.visualmode-contrast .evelution-sidebar .link:hover, 
 .visualstyle-simple.visualmode-contrast .evelution-sidebar .link:active, 
 .visualstyle-simple.visualmode-contrast .evelution-sidebar .link:focus,
 .visualstyle-simple.visualmode-contrast .evelution-sidebar .link.active,
+.visualstyle-simple.visualmode-contrast .evelution-sidebar .cpe-dropdown.opens-on-hover:hover > .link,
 .visualstyle-simple.visualmode-contrast .evelution-sidebar .cpe-dropdown:focus > .link,
 .visualstyle-simple.visualmode-contrast .evelution-sidebar .cpe-dropdown:focus-within > .link {
 		background-color:var(--global-nav-link-background-active);
 		border-color:rgb(var(--global-nav-color) / 0.5);
+}
+
+.visualstyle-simple.visualmode-contrast .evelution-sidebar .link:focus-visible,
+.visualstyle-simple.visualmode-contrast .evelution-sidebar .cpe-dropdown:focus-visible > .link {
+		background-color:var(--global-nav-link-background-focus);
+		border-color:var(--luna-foreground-color);
 }
 
 .visualstyle-simple.visualmode-contrast .preview-window-window h2 button {
@@ -1106,6 +1242,7 @@ border-color:var(--luna-foreground-color);
 .visualstyle-simple.visualmode-contrast .preview-window-window .menu > li > a:active,
 .visualstyle-simple.visualmode-contrast .preview-window-window .menu > li > a:focus,
 .visualstyle-simple.visualmode-contrast .preview-window-window .menu > li.selected > a,
+.visualstyle-simple.visualmode-contrast .preview-window-window .menu > .cpe-dropdown.opens-on-hover:hover > a,
 .visualstyle-simple.visualmode-contrast .preview-window-window .menu > .cpe-dropdown:focus > a,
 .visualstyle-simple.visualmode-contrast .preview-window-window .menu > .cpe-dropdown:focus-within > a {
 	color:var(--canvas-background-color)!important;
@@ -1160,26 +1297,20 @@ border-color:var(--luna-foreground-color);
 
 .visualstyle-general .evelution-sidebar {
 	--global-nav-link-color-hover:var(--hyperlink-foreground-color);
-	--global-nav-link-background-hover:var(--hyperlink-background-color);
+	--global-nav-link-background-hover:var(--hyperlink-background-color-rgb);
+	--global-nav-link-border-hover:var(--hyperlink-background-color-rgb);
 	--global-nav-link-color-active:var(--hyperlink-foreground-color-inverted);
 	--global-nav-link-background-active:var(--hyperlink-background-color-hover);
-}
+	--global-nav-link-border-active:var(--hyperlink-background-color-hover);
+	/* Keybord-Focused Links */
+	--global-nav-link-color-focus:var(--canvas-text-foreground-color);
+	--global-nav-link-background-focus:var(--canvas-text-background-color);
+	--global-nav-link-border-focus:var(--hyperlink-background-color);
+
+	--global-nav-link-opacity:1;
+	--global-nav-link-border-opacity:1;
 
 
-	.visualstyle-general .evelution-sidebar .link:hover {
-	background-color:var(--global-nav-link-background-hover);
-	border-color:var(--global-nav-link-background-hover);
-	color:var(--global-nav-link-color-hover);
-}
-
-	.visualstyle-general .evelution-sidebar .link:active, 
-	.visualstyle-general .evelution-sidebar .link:focus, 
-	.visualstyle-general .evelution-sidebar .link.active,
-	.visualstyle-general .evelution-sidebar .cpe-dropdown:focus > .link,
-	.visualstyle-general .evelution-sidebar .cpe-dropdown:focus-within > .link {
-	background-color:var(--global-nav-link-background-active);
-	border-color:var(--global-nav-link-background-active);
-	color:var(--global-nav-link-color-active);
 }
 
 
@@ -1196,6 +1327,7 @@ border-color:var(--luna-foreground-color);
 
 .visualstyle-general .evelution-header .link:active, 
 .visualstyle-general .evelution-header .link:focus, 
+.visualstyle-general .evelution-header .cpe-dropdown.opens-on-hover:hover > .link, 
 .visualstyle-general .evelution-header .cpe-dropdown:focus > .link, 
 .visualstyle-general .evelution-header .cpe-dropdown:focus-within > .link, 
 .visualstyle-general .evelution-header .link.active,
@@ -1204,6 +1336,7 @@ border-color:var(--luna-foreground-color);
 .visualstyle-general .evelution-content .evelution-page-header .evelution-middle-actions .selected a, 
 .visualstyle-general .evelution-top-actions .link:active, 
 .visualstyle-general .evelution-top-actions .link:focus, 
+.visualstyle-general .evelution-top-actions .cpe-dropdown.opens-on-hover:hover > .link, 
 .visualstyle-general .evelution-top-actions .cpe-dropdown:focus > .link, 
 .visualstyle-general .evelution-top-actions .cpe-dropdown:focus-within > .link, 
 .visualstyle-general .evelution-top-actions .link.active {
@@ -1213,6 +1346,16 @@ border-color:var(--luna-foreground-color);
 	color:var(--hyperlink-foreground-color-inverted);
 	border-color:var(--hyperlink-background-color-hover);
 	background-color:var(--hyperlink-background-color-hover);
+}
+
+.visualstyle-general .evelution-header .link:focus-visible, 
+.visualstyle-general .evelution-header .cpe-dropdown:focus-visible > .link,
+.visualstyle-general .evelution-content .evelution-page-header .evelution-middle-actions a:focus-visible,
+.visualstyle-general .evelution-top-actions .link:focus-visible, 
+.visualstyle-general .evelution-top-actions .cpe-dropdown:focus-visible > .link  {
+		color:var(--canvas-text-foreground-color);
+		border-color:var(--hyperlink-background-color);
+		background-color:var(--canvas-text-background-color);
 }
 
 /* Search Button */
@@ -1289,6 +1432,7 @@ border-color:var(--luna-foreground-color);
 .visualstyle-general .preview-window-window .menu > li > a:active,
 .visualstyle-general .preview-window-window .menu > li > a:focus,
 .visualstyle-general .preview-window-window .menu > li.selected > a,
+.visualstyle-general .preview-window-window .menu > .cpe-dropdown.opens-on-hover:hover > a,
 .visualstyle-general .preview-window-window .menu > .cpe-dropdown:focus > a,
 .visualstyle-general .preview-window-window .menu > .cpe-dropdown:focus-within > a {
   background-color:var(--dropdown-active-hyperlink-background-color);
@@ -1298,6 +1442,14 @@ border-color:var(--luna-foreground-color);
 
 
 /** High Contrast **/
+.visualstyle-general.visualmode-contrast .evelution-sidebar {
+	--global-nav-link-background-hover:var(--hyperlink-background-color);
+	--global-nav-link-opacity:1;
+	--global-nav-link-border-opacity:1;
+
+
+}
+
 .visualstyle-general.visualmode-contrast .evelution-content .evelution-article-wrapper .evelution-article-actions > li:hover > .link,
 .visualstyle-general.visualmode-contrast .evelution-content .evelution-article-wrapper .evelution-article-actions > li:active > .link,
 .visualstyle-general.visualmode-contrast .evelution-content .evelution-article-wrapper .evelution-article-actions .cactions >li:hover > a,
