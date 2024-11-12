@@ -1493,9 +1493,7 @@ function InitDesigner() {
 		/**/
 			'<div class="update-card">' +
 				'<div class="logo">' +
-					'<svg xmlns="http://www.w3.org/2000/svg">' +
-						'<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#qoreLogo_dev" />' +
-					'</svg>' +		
+					'<div class="dev"></div>' +		
 				'</div>' +
 				'<div class="info">' +
 					'<h3> Cumulative Update to Fifth Developer Preview of Q.Qore, season ΙΨ </h3>' +
@@ -1512,9 +1510,7 @@ function InitDesigner() {
 		/**/
 			'<div class="update-card">' +
 				'<div class="logo">' +
-					'<svg xmlns="http://www.w3.org/2000/svg">' +
-						'<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#qoreLogo_stable" />' +
-					'</svg>' +		
+					'<div class="stable"></div>' +		
 				'</div>' +
 				'<div class="info">' +
 					'<h3> Feature Update to Q.Qore, version 22H1 </h3>' +
@@ -1541,9 +1537,7 @@ function InitDesigner() {
 		/**/
 			'<div class="update-card">' +
 				'<div class="logo">' +
-					'<svg xmlns="http://www.w3.org/2000/svg">' +
-						'<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#qoreLogo_canary" />' +
-					'</svg>' +		
+					'<div class="canary"></div>' +		
 				'</div>' +
 				'<div class="info">' +
 					'<h3> Early Preview to Qora Qore of 21/5/2022, season ΙΨ </h3>' +
@@ -1571,9 +1565,7 @@ function InitDesigner() {
 		/**/
 			'<div class="update-card">' +
 				'<div class="logo">' +
-					'<svg xmlns="http://www.w3.org/2000/svg">' +
-						'<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#qoreLogo_beta" />' +
-					'</svg>' +		
+					'<div class="beta"></div>' +		
 				'</div>' +
 				'<div class="info">' +
 					'<h3>  Cumulative Update of Qora Qore, season ΙΨ </h3>' +
