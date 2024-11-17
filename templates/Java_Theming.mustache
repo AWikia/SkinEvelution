@@ -29,6 +29,7 @@ window.ThemingEngine_DesktopColor = GetDesktop();
 window.ThemingEngine_HighlightColor = GetHighlight();
 window.ThemingEngine_ActiveTitleColor = GetActiveTitle();
 window.ThemingEngine_InactiveTitleColor = GetInactiveTitle();
+window.AutoColor = '#3366cc'; // Fallback Starting color
 
 /*
 **
@@ -255,6 +256,8 @@ var visualColorNames = ['standard', 'nocolormanagement'];
         }
     });
     var themes = {{>Themes}} // @REMOVEME: In Ivilution, Parmalution and CPE Language (Change to Empty String instead)
+
+
 	document.querySelector("head").insertAdjacentHTML('afterbegin','<meta name="theme-color" content="#ffffff"><style class="devicetheme"></style><style class="themes">' + themes + '</style><style class="theming"></style>');
 	ToggleTheme(theme_selected,false,false);
 	colortheme(color_style,device_theme,color_hue,color_sat,color_style_behavior,false,false);
@@ -333,6 +336,11 @@ function ForcedColors() {
 	return ( window.matchMedia('(forced-colors: active)').matches )
 }
 
+function ShouldUseFallbackColor() {
+	return ((getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--canvas-background-color") === 'auto') &&
+			(getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--desktop-background-color") === 'auto') &&
+			(GetDesktopImage2() === ''))
+}
 
 function ForcedColorMode() {
 	return window.ThemingEngine_ActiveDCMMode;
@@ -628,6 +636,17 @@ function GetSystemColorValue(color='--desktop-background-color') { // Suppliment
 	return GetSystemColor(  getComputedStyle(GetActiveDCMConfiguration()).getPropertyValue(color) );
 }
 
+async function RecalcAutoColor() {
+	var clr = GetDesktop();
+	if (GetDesktopImage2() != '') {
+		clr = await colorjs.prominent(GetDesktopImage2(), { format: 'hex', amount: 1  });
+		/*colorjs.average(GetDesktopImage2(), { format: 'hex' }).then(color => {
+		  clr= color; return clr; // [241, 221, 63]
+		});*/
+	}
+	return clr;
+}
+
 function GetDesktop() {
 	if (DisabledColorManagement()) {
 		return GetSystemColorValue('--desktop-background-color')
@@ -645,6 +664,15 @@ function GetDesktopImage() {
 		return '';
 	} else {
 		return 'url(' + img.replace('url(', '').replace(')', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("").split("\"").join("") + ')';
+	}
+}
+
+function GetDesktopImage2() {
+	var img = getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--desktop-background-image").trim();
+	if ( (img === '') || (img === 'url()') || (img === "url('')") || (img === 'url("")') || (img === 'none') || (img === "'none'") || (img === '"none"')) {
+		return '';
+	} else {
+		return img.replace('url(', '').replace(')', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("").split("\"").join("");
 	}
 }
 
@@ -688,7 +716,11 @@ function GetHyperlink() {
 	if (DisabledColorManagement()) {
 		return GetSystemColorValue('--hyperlink-background-color')
 	} else if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--hyperlink-background-color") === 'auto') {
-		return chroma('#3366cc'); // Fallback method
+		if (ShouldUseFallbackColor()) {
+			return chroma('#3366cc'); // Fallback method
+		} else {
+			return ColorInvert(window.AutoColor); // Fallback method
+		}
 	} else {
 		return getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--hyperlink-background-color").trim();
 	}
@@ -1720,6 +1752,7 @@ return ((getContrast(color, color2)) >= contrast) ? 'none' : 'underline' // For 
 
 /* Used to udpate all dynamical variables */
 function CompileThemingEngine(refresh=true) {
+
 if (refresh === true) {
 	colortheme('match-parent', 'match-parent', 'match-parent', 'match-parent', 'match-parent', false,false,true,false);
 
@@ -1737,6 +1770,7 @@ if (refresh === true) {
 	**/
 }
 
+
 //	ToggleTheme(window.ThemingEngine_ActiveTheme,false,false);
 //	VisualColor(window.ThemingEngine_ActiveVisualColors,false,false);
 	if (DisabledColorManagement()) {
@@ -1744,6 +1778,22 @@ if (refresh === true) {
 	} else {
 		var colorstyle= ".color-management-off { display:none!important;}\n"
 	}
+
+if ((getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--hyperlink-background-color") === 'auto') && (GetDesktopImage2() != '')) {
+
+RecalcAutoColor().then( (v) => {
+    window.AutoColor=v; // "fulfilled!"
+	CompileThemingEngine2(colorstyle);
+  });
+} else {
+    window.AutoColor=GetDesktop(); // "fulfilled!"
+	CompileThemingEngine2(colorstyle);
+}
+}
+
+
+
+function CompileThemingEngine2(colorstyle='') {
 
 /** Page BG **/
 /* Set Vars */

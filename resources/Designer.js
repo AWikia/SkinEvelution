@@ -1082,7 +1082,7 @@ function InitDesigner() {
 			'</tr>' +
 			'<tr>' +
 				'<td style="text-align:center; width:150px">' + 
-					'<span style="visibility:hidden; pointer-events:none;"><input type="checkbox" name="autoDDR" id="autoDDR">' + '<label for="autoDDR">' + mw.msg( 'evelution-designer-auto' ) + '</label></span> <br>' +
+					'<input type="checkbox" name="auto16" id="auto16">' + '<label for="auto16">' + mw.msg( 'evelution-designer-auto' ) + '</label> <br>' +
 					'<div class="cpe-button-group color-value">' +
 						'<input type="color" class="cpe-button is-square" style="width:68px;" value="#1560bd" id="saccentcolor" list="td_colors" />' + // Page BG
 						'<button class="cpe-button is-square" id="saccentcolor_r" title="'+  mw.msg( 'evelution-designer-random' ) +'"><span class="cpe-icon material-icons">shuffle</span></button>' +
@@ -1987,7 +1987,11 @@ function ApplyTheme () {
 	} else {
 		var autocolor15 = $('#pagebg').val();
 	}
-
+	if (document.querySelector('.wikitable #auto16').checked) {
+		var autocolor16 = 'auto';
+	} else {
+		var autocolor16 = $('#saccentcolor').val();
+	}
 	
 	var image = $("#bodyimage").val().replace('url(', '').replace(')', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("").split("\"").join("");
     if ( $('#firstfont').val().length === 0) {
@@ -2029,7 +2033,7 @@ function ApplyTheme () {
 				 '--canvas-text-background-color:' + autocolor3  + ';\n' +
 				 '--highlight-background-color:' + autocolor6 + ';\n' +
 				 '--highlight-text-background-color:' + autocolor9 + ';\n' +
-				 '--hyperlink-background-color:' + $('#saccentcolor').val() + ';\n' +
+				 '--hyperlink-background-color:' + autocolor16 + ';\n' +
 				 '--visited-hyperlink-background-color:' + autocolor12 + ';\n' +
 				 '--active-title-background-color:' + autocolor5  + ';\n' +
 				 '--active-title-text-background-color:' + autocolor10  + ';\n' +
@@ -2160,6 +2164,11 @@ function CopyTheme() {
 	} else {
 		var autocolor15 = $('#pagebg').val();
 	}
+	if (document.querySelector('.wikitable #auto16').checked) {
+		var autocolor16 = 'auto';
+	} else {
+		var autocolor16 = $('#saccentcolor').val();
+	}
 
 	var image = $("#bodyimage").val().replace('url(', '').replace(')', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("").split("\"").join("");
     if ( $('#firstfont').val().length === 0) {
@@ -2202,7 +2211,7 @@ function CopyTheme() {
 				 '--canvas-text-secondary-background-color:' + autocolor8  + ';\n' +
 				 '--highlight-background-color:' + autocolor6 + ';\n' +
 				 '--highlight-text-background-color:' + autocolor9 + ';\n' +
-				 '--hyperlink-background-color:' + $('#saccentcolor').val() + ';\n' +
+				 '--hyperlink-background-color:' + autocolor16 + ';\n' +
 				 '--visited-hyperlink-background-color:' + autocolor12 + ';\n' +
 				 '--active-title-background-color:' + autocolor5  + ';\n' +
 				 '--active-title-text-background-color:' + autocolor10  + ';\n' +
@@ -2339,6 +2348,11 @@ function CopyTheme2() {
 	} else {
 		var autocolor15 = $('#pagebg').val();
 	}
+	if (document.querySelector('.wikitable #auto16').checked) {
+		var autocolor16 = 'auto';
+	} else {
+		var autocolor16 = $('#saccentcolor').val();
+	}
 
 	var image = $("#bodyimage").val().replace('url(', '').replace(')', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("").split("\"").join("");
     if ( $('#firstfont').val().length === 0) {
@@ -2384,7 +2398,7 @@ function CopyTheme2() {
 				 "'canvas-text-secondary-background-color' => '" + autocolor8  + "',\n" +
 				 "'highlight-background-color' => '" + autocolor6 + "',\n" +
 				 "'highlight-text-background-color' => '" + autocolor9 + "',\n" +
-				 "'hyperlink-background-color' => '" + $("#saccentcolor").val() + "',\n" +
+				 "'hyperlink-background-color' => '" + autocolor16 + "',\n" +
 				 "'visited-hyperlink-background-color' => '" + autocolor12 + "',\n" +
 				 "'active-title-background-color' => '" + autocolor5  + "',\n" +
 				 "'active-title-text-background-color' => '" + autocolor10  + "',\n" +
@@ -2541,7 +2555,14 @@ function PasteTheme(dynamic=true) {
 
 
 	// Anchor BG
-	$('#saccentcolor').val( getComputedStyle(themeconfig).getPropertyValue("--hyperlink-background-color") );
+	if (getComputedStyle(themeconfig).getPropertyValue("--hyperlink-background-color") === 'auto' ) {
+		document.querySelector('.wikitable #auto16').checked = true;
+	} else {
+		document.querySelector('.wikitable #auto16').checked = false;
+		$('#saccentcolor').val( getComputedStyle(themeconfig).getPropertyValue("--hyperlink-background-color") );
+	}
+	$('.wikitable #saccentcolor').prop('disabled',(document.querySelector('.wikitable #auto16').checked) );
+
 	// Visited BG
 	if (getComputedStyle(themeconfig).getPropertyValue("--visited-hyperlink-background-color") === 'auto' ) {
 		document.querySelector('.wikitable #auto12').checked = true;
@@ -2750,6 +2771,11 @@ function TestTheme(banner=false) {
 	} else {
 		var autocolor15 = $('#pagebg').val();
 	}
+	if (document.querySelector('.wikitable #auto16').checked) {
+		var autocolor16 = 'auto';
+	} else {
+		var autocolor16 = $('#saccentcolor').val();
+	}
 
 	var image = $("#bodyimage").val().replace('url(', '').replace(')', '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("").split("\"").join("");
     if ( $('#firstfont').val().length === 0) {
@@ -2792,7 +2818,7 @@ function TestTheme(banner=false) {
 				 '--canvas-text-secondary-background-color:' + autocolor8  + '!important;\n' +
 				 '--highlight-background-color:' + autocolor6 + '!important;\n' +
 				 '--highlight-text-background-color:' + autocolor9 + '!important;\n' +
-				 '--hyperlink-background-color:' + $('#saccentcolor').val() + '!important;\n' +
+				 '--hyperlink-background-color:' + autocolor16 + '!important;\n' +
 				 '--visited-hyperlink-background-color:' + autocolor12 + '!important;\n' +
 				 '--active-title-background-color:' + autocolor5  + '!important;\n' +
 				 '--active-title-text-background-color:' + autocolor10  + '!important;\n' +
@@ -2959,6 +2985,12 @@ $('.wikitable #auto15').click(
 								TestDynamicTheme();
 							}   
 						);
+$('.wikitable #auto16').click(
+							function(e) {
+								$('.wikitable #saccentcolor').prop('disabled',(document.querySelector('.wikitable #auto16').checked) );
+								TestDynamicTheme();
+							}   
+						);
 }
 
 function HandleColorShuffling() {
@@ -3030,6 +3062,8 @@ function HandleColorShuffling() {
 							
 	$('.color-value #saccentcolor_r').click(
 								function(e) {
+									document.querySelector('.wikitable #auto16').checked = false
+									$('.wikitable #saccentcolor').prop('disabled',(false) );
 									$('#saccentcolor').val( $('#td_colors option:nth-child('+getRandomInt($('#td_colors option').length)+')').val() )
 									TestDynamicTheme();
 								}   
@@ -3287,6 +3321,8 @@ function HandleColorPickers() {
 									.open()
 									.then((result) => {
 									  color = result.sRGBHex;
+										document.querySelector('.wikitable #auto16').checked = false
+										$('.wikitable #saccentcolor').prop('disabled',(false) );
 										$('#saccentcolor').val( color )
 										TestDynamicTheme();
 									})
@@ -3484,6 +3520,8 @@ function RandomTheme(full=false) {
 									$('.wikitable #saaccentcolor').prop('disabled',(false) );
 									$('#saaccentcolor').val( $('#td_colors option:nth-child('+getRandomInt($('#td_colors option').length)+')').val() )
 
+									document.querySelector('.wikitable #auto16').checked = false
+									$('.wikitable #saccentcolor').prop('disabled',(false) );
 									$('#saccentcolor').val( $('#td_colors option:nth-child('+getRandomInt($('#td_colors option').length)+')').val() )
 
 									document.querySelector('.wikitable #auto12').checked = false
