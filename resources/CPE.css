@@ -14,13 +14,13 @@
 /* Emoji */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&family=Noto+Emoji:wght@300..700&family=Noto+Sans+Symbols+2&family=Noto+Sans+Symbols:wght@100..900&display=swap');
 
-/* Icons */
+/** Icons **/
 /* Rounded */
 @font-face {
   font-family: 'Material Icons Round';
   font-style: normal;
   font-weight: 100 700;
-  src: url(https://fonts.gstatic.com/s/materialsymbolsrounded/v193/sykg-zNym6YjUruM-QrEh7-nyTnjDwKNJ_190Fjzag.woff2) format('woff2');
+  src: url(https://fonts.gstatic.com/s/materialsymbolsrounded/v219/sykg-zNym6YjUruM-QrEh7-nyTnjDwKNJ_190Fjzag.woff2) format('woff2');
 }
 
 
@@ -29,7 +29,7 @@
   font-family: 'Material Icons Sharp';
   font-style: normal;
   font-weight: 100 700;
-  src: url(https://fonts.gstatic.com/s/materialsymbolssharp/v191/gNMVW2J8Roq16WD5tFNRaeLQk6-SHQ_R00k4aWE.woff2) format('woff2');
+  src: url(https://fonts.gstatic.com/s/materialsymbolssharp/v216/gNMVW2J8Roq16WD5tFNRaeLQk6-SHQ_R00k4aWE.woff2) format('woff2');
 }
 
 /* Regular */
@@ -37,7 +37,7 @@
   font-family: 'Material Icons';
   font-style: normal;
   font-weight: 100 700;
-  src: url(https://fonts.gstatic.com/s/materialsymbolsoutlined/v195/kJEhBvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oFsI.woff2) format('woff2');
+  src: url(https://fonts.gstatic.com/s/materialsymbolsoutlined/v220/kJEhBvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oFsI.woff2) format('woff2');
 }
 
 /** Evelution Fonts **/
@@ -89,6 +89,14 @@
 }
 
 
+/* Patty Console */
+@font-face {
+    font-family: Patty Console;
+    font-weight:400;
+    font-stretch:100% 150%;
+    src:url('Fonts/patty-console.ttf') format('truetype');
+}
+
 .theme-A, .theme-B, .theme-C, .theme-D, .theme-E, .theme-F, .theme-G, .theme-H { /* Standard */
 /* Aliases */
 --desktop-background-image:url("");
@@ -135,6 +143,7 @@
 
 :root {
 font-family:sans-serif;
+font-variant-emoji:unicode;
 /* Base Text Background Colors */
 	--light-theme-text-background-color:#E6E6E6!important;
 	--light-theme-text-background-color-hover:#b3b3b3!important;
@@ -1229,6 +1238,7 @@ container {
 
 [data-font-stack="monospace"] {
   font-family:var(--monospace-font-stack), sans-serif;
+  font-variant-emoji:text;
 }
 
 
@@ -1617,6 +1627,7 @@ textarea {
 	-webkit-appearance:none;
 	appearance:none;
 	font-family:var(--monospace-font-stack),monospace;
+	font-variant-emoji:text;
 }
 
 
@@ -1632,6 +1643,7 @@ font-size:95%;
 scrollbar-width:thin;
 white-space:pre-wrap;
 font-family:var(--monospace-font-stack),monospace;
+font-variant-emoji:text;
 }
 
 
@@ -5146,6 +5158,7 @@ html:not(.visualmode-threeD) .threeD-on {
 /* Contrast */
 .visualmode-contrast {
 	--emoji-fonts:var(--code-emoji-fonts); /* Don't use Color Emoji in High Contrast Mode */
+	font-variant-emoji:text;
 }
 
 .visualmode-contrast body {
@@ -5539,7 +5552,7 @@ html:not(.visualmode-threeD) .threeD-on {
 --message-quaternary-background-color-hover:var(--message-quaternary-background-color)!important;
 --message-quaternary-background-color-rgb:var(--inactive-text-quaternary-background-color-rgb)!important;
 /* Graphs */
---cpu-grph-background-color:var(--canvas-text-background-color)!important;
+--cpu-graph-background-color:var(--canvas-text-background-color)!important;
 --ram-graph-background-color:var(--canvas-text-background-color)!important;
 --disk-graph-background-color:var(--canvas-text-background-color)!important;
 --network-graph-background-color:var(--canvas-text-background-color)!important;

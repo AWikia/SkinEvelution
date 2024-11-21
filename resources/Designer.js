@@ -728,6 +728,7 @@ function InitDesigner() {
 				'<option value=\'"Nanum Gothic Coding"\'>' + 
 				'<option value=\'"Noto Sans Mono"\'>' + 
 				'<option value=\'"PT Mono"\'>' + 
+				'<option value=\'"Patty Console"\'>' + // Custom
 				'<option value=\'"Source Code Pro"\'>' + 
 				'<option value=\'"Roboto Mono"\'>' +
 				'<option value=\'"Ubuntu Mono"\'>' + 
