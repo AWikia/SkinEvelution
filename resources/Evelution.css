@@ -54,7 +54,7 @@ body .mw-editfont-serif {
 body {
     --pi-background: var(--canvas-secondary-background-color);
     --pi-secondary-background: var(--canvas-secondary-background-color-hover);
-    --pi-border-color: rgb(var(--inactive-text-background-color-rgb));
+    --pi-border-color: var(--inactive-text-background-color);
 }
 
 /* Link tweaks */
@@ -290,16 +290,16 @@ container > .main {
 
 .evelution-sidebar {
 	/* Regular */
-	--global-nav-color:var(--luna-background-color-rgb);
+	--global-nav-color:var(--luna-background-color);
 	--global-nav-text-color:var(--luna-text-background-color);
 	/* Hovered Links */
 	--global-nav-link-color-hover:var(--luna-text-background-color-hover);
-	--global-nav-link-background-hover:var(--luna-text-background-color-rgb);
+	--global-nav-link-background-hover:var(--luna-text-background-color);
 	--global-nav-link-border-hover:var(--global-nav-link-background-hover);
 	/* Active Links */
 	--global-nav-link-color-active:var(--luna-hyperlink-background-color);
-	--global-nav-link-background-active:rgb(var(--luna-hyperlink-background-color-rgb) / 0.4);
-	--global-nav-link-border-active:rgb(var(--luna-hyperlink-background-color-rgb) / 0.2);
+	--global-nav-link-background-active:rgb(from var(--luna-hyperlink-background-color) r g b / 0.4);
+	--global-nav-link-border-active:rgb(from var(--luna-hyperlink-background-color) r g b / 0.2);
 	/* Keybord-Focused Links */
 	--global-nav-link-color-focus:var(--global-nav-link-color-active);
 	--global-nav-link-background-focus:var(--global-nav-link-background-active);
@@ -311,7 +311,7 @@ container > .main {
 	--global-nav-opacity:var(--acrylic-opacity);
 	-webkit-backdrop-filter:var(--acrylic-filter);
 	backdrop-filter:var(--acrylic-filter);
-	background-color:rgb(var(--global-nav-color) / var(--global-nav-opacity));
+	background-color:rgb(from var(--global-nav-color) r g b / var(--global-nav-opacity));
 	display:flex;
 	flex-direction:column;
 	color:var(--global-nav-text-color);
@@ -400,8 +400,8 @@ container > .main {
 
 	.evelution-sidebar .link:hover {
 		color:var(--global-nav-link-color-hover);
-		background-color:rgb(var(--global-nav-link-background-hover) / var(--global-nav-link-opacity));
-		border-color:rgb(var(--global-nav-link-border-hover) / var(--global-nav-link-border-opacity));
+		background-color:rgb(from var(--global-nav-link-background-hover) r g b / var(--global-nav-link-opacity));
+		border-color:rgb(from var(--global-nav-link-border-hover) r g b / var(--global-nav-link-border-opacity));
 		box-shadow:var(--threeD-shadow);
 	}
 
@@ -804,7 +804,6 @@ container > .main {
 		--button-background-color-hover: var(--luna-highlight-background-color-hover);
 		--button-foreground-color: var(--luna-background-color);
 		--button-foreground-color-inverted: var(--luna-background-color);
-		--button-foreground-color-rgb:var(--luna-background-color-rgb);
 	}
 
 
@@ -1198,7 +1197,7 @@ position:relative;
 }
 
 .evelution-content .evelution-article-wrapper .evelution-article-container {
-  box-shadow:0 2px 6px 0 rgb(var(--canvas-text-background-color-rgb) / .4), 0 2px 6px 0 rgb(var(--canvas-background-color-rgb) / 0.4);
+  box-shadow:0 2px 6px 0 rgb(from var(--canvas-text-background-color) r g b / .4), 0 2px 6px 0 rgb(from var(--canvas-background-color) r g b / 0.4);
   border:1px solid var(--luna-border-background-color);
   background-color:var(--canvas-secondary-background-color);
   border-radius:var(--window-border-radius);
@@ -1707,8 +1706,6 @@ gap:2px;
 	display:flex;
 		--header-foreground-color:var(--desktop-text-background-color)!important;
 		--header-foreground-color-hover:var(--desktop-text-background-color-hover)!important;
-		--header-foreground-color-rgb:var(--desktop-text-background-color-rgb)!important;
-		--header-foreground-color-hover-rgb:var(--desktop-text-background-color-hover-rgb)!important;
 	color:var(--header-foreground-color);
 	height:60px;
 	margin-top:10px;
@@ -1760,8 +1757,8 @@ gap:2px;
 	.evelution-top-actions .cpe-dropdown:focus > .link, 
 	.evelution-top-actions .cpe-dropdown:focus-within > .link, 
 	.evelution-top-actions .link.active  {
-		background-color:rgb(var(--header-foreground-color-rgb) / 0.2);
-		border-color:rgb(var(--header-foreground-color-rgb) / 0.1);
+		background-color:rgb(from var(--header-foreground-color) r g b / 0.2);
+		border-color:rgb(from var(--header-foreground-color) r g b / 0.1);
 		color:var(--header-foreground-color-hover);
 		box-shadow:var(--threeD-shadow);
 	}
@@ -1777,8 +1774,8 @@ gap:2px;
 	.evelution-top-actions .cpe-dropdown:focus > .link, 
 	.evelution-top-actions .cpe-dropdown:focus-within > .link, 
 	.evelution-top-actions .link.active  {
-		background-color:rgb(var(--hyperlink-quaternary-background-color-rgb) / 0.4);
-		border-color:rgb(var(--hyperlink-quaternary-background-color-rgb) / 0.2);
+		background-color:rgb(from var(--hyperlink-quaternary-background-color) r g b / 0.4);
+		border-color:rgb(from var(--hyperlink-quaternary-background-color) r g b / 0.2);
 		color:var(--hyperlink-quaternary-background-color);
 		box-shadow:var(--threeD-shadow-active)
 
@@ -1830,8 +1827,8 @@ gap:2px;
 	}
 
 	.evelution-content .evelution-page-header .evelution-middle-actions a:hover {
-		background-color:rgb(var(--luna-text-background-color-rgb) / 0.12);
-		border-color:rgb(var(--luna-text-background-color-rgb) / 0.1);
+		background-color:rgb(from var(--luna-text-background-color) r g b / 0.12);
+		border-color:rgb(from var(--luna-text-background-color) r g b / 0.1);
 		color:var(--luna-text-background-color-hover);
 		box-shadow:var(--threeD-shadow);
 	}
@@ -1840,8 +1837,8 @@ gap:2px;
 	.evelution-content .evelution-page-header .evelution-middle-actions a:active, 
 	.evelution-content .evelution-page-header .evelution-middle-actions a:focus, 
 	.evelution-content .evelution-page-header .evelution-middle-actions .selected a {
-		background-color:rgb(var(--luna-hyperlink-background-color-rgb) / 0.4);
-		border-color:rgb(var(--luna-hyperlink-background-color-rgb) / 0.2);
+		background-color:rgb(from var(--luna-hyperlink-background-color) r g b / 0.4);
+		border-color:rgb(from var(--luna-hyperlink-background-color) r g b / 0.2);
 		color:var(--luna-hyperlink-background-color);
 		box-shadow:var(--threeD-shadow-active);
 	}
@@ -1872,7 +1869,7 @@ gap:2px;
 		height:var(--minibar-size);
 		display:flex;
 		width:calc(100% - var(--left-padding));
-		box-shadow: 0 2px 6px 0 rgb(var(--canvas-text-background-color-rgb) / .4), 0 2px 6px 0 rgb(var(--canvas-background-color-rgb) / 0.4);
+		box-shadow: 0 2px 6px 0 rgb(from var(--canvas-text-background-color) r g b / .4), 0 2px 6px 0 rgb(from var(--canvas-background-color) r g b / 0.4);
 		align-items:center;
 		margin-top:calc(0px - var(--minibar-size));
 		box-sizing:content-box;
@@ -2229,8 +2226,8 @@ gap:2px;
 	.evelution-header .cpe-dropdown:focus > .link, 
 	.evelution-header .cpe-dropdown:focus-within > .link, 
 	.evelution-header .link.active  {
-		background-color:rgb(var(--luna-text-background-color-rgb) / 0.17);
-		border-color:rgb(var(--luna-text-background-color-rgb) / 0.15);
+		background-color:rgb(from var(--luna-text-background-color) r g b / 0.17);
+		border-color:rgb(from var(--luna-text-background-color) r g b / 0.15);
 		color:var(--luna-text-background-color-hover);
 		box-shadow:var(--threeD-shadow);
 	}
@@ -2246,8 +2243,8 @@ gap:2px;
 	.evelution-header .cpe-dropdown:focus > .link, 
 	.evelution-header .cpe-dropdown:focus-within > .link, 
 	.evelution-header .link.active  {
-		background-color:rgb(var(--luna-hyperlink-background-color-rgb) / 0.4);
-		border-color:rgb(var(--luna-hyperlink-background-color-rgb) / 0.2);
+		background-color:rgb(from var(--luna-hyperlink-background-color) r g b / 0.4);
+		border-color:rgb(from var(--luna-hyperlink-background-color) r g b / 0.2);
 		color:var(--luna-hyperlink-background-color);
 		box-shadow:var(--threeD-shadow-active);
 
@@ -2612,7 +2609,7 @@ border-top-right-radius:0;
 
 .evelution-module {
 	display:flex;
-	box-shadow:0 2px 6px 0 rgb(var(--canvas-text-background-color-rgb) / .4), 0 2px 6px 0 rgb(var(--canvas-background-color-rgb) / 0.4);
+	box-shadow:0 2px 6px 0 rgb(from var(--canvas-text-background-color) r g b / .4), 0 2px 6px 0 rgb(from var(--canvas-background-color) r g b / 0.4);
 	background-color:var(--luna-mica-background-color);
     transition:background-color var(--transition-duration) var(--transition-timing-function), background-image var(--transition-duration) var(--transition-timing-function);
 	border-radius:var(--window-border-radius);
@@ -2714,21 +2711,21 @@ border-top-right-radius:0;
 		--tabs-opacity:var(--luna-active-tabs-opacity);
 		--secondary-button-foreground-color: var(--luna-hyperlink-background-color);
 		--secondary-button-foreground-color-hover: var(--luna-hyperlink-background-color-hover);
-		--tertiary-button-background-color:rgb(var(--luna-hyperlink-background-color-rgb) /  var(--fadeout-opacity));
+		--tertiary-button-background-color:rgb(from var(--luna-hyperlink-background-color) r g b /  var(--fadeout-opacity));
 		--tertiary-button-foreground-color:var(--luna-hyperlink-background-color);
 	}
 
 	 .evelution-page-header .cpe-button.is-unaccented {
 		--secondary-button-foreground-color: var(--luna-text-background-color);
 		--secondary-button-foreground-color-hover: var(--luna-text-background-color-hover);
-		--tertiary-button-background-color:rgb(var(--luna-text-background-color-rgb) /  var(--fadeout-opacity));
+		--tertiary-button-background-color:rgb(from var(--luna-text-background-color) r g b /  var(--fadeout-opacity));
 		--tertiary-button-foreground-color:var(--luna-text-background-color);
 	}
 
 	 .evelution-page-header .cpe-button.is-alternate {
 		--secondary-button-foreground-color: var(--luna-active-text-background-color);
 		--secondary-button-foreground-color-hover: var(--luna-active-text-background-color-hover);
-		--tertiary-button-background-color:rgb(var(--luna-active-text-background-color-rgb) /  var(--fadeout-opacity));
+		--tertiary-button-background-color:rgb(from var(--luna-active-text-background-color) r g b /  var(--fadeout-opacity));
 		--tertiary-button-foreground-color:var(--luna-active-text-background-color);
 	}
 
@@ -2737,28 +2734,28 @@ border-top-right-radius:0;
 	 .evelution-page-header li.new .cpe-button {
 		--secondary-button-foreground-color: var(--luna-alert-background-color);
 		--secondary-button-foreground-color-hover: var(--luna-alert-background-color-hover);
-		--tertiary-button-background-color:rgb(var(--luna-alert-background-color-rgb) /  var(--fadeout-opacity));
+		--tertiary-button-background-color:rgb(from var(--luna-alert-background-color) r g b /  var(--fadeout-opacity));
 		--tertiary-button-foreground-color:var(--luna-alert-background-color);
 	}
 
 	 .evelution-page-header .cpe-button.is-pause-color {
 		--secondary-button-foreground-color: var(--luna-pause-background-color);
 		--secondary-button-foreground-color-hover: var(--luna-pause-background-color-hover);
-		--tertiary-button-background-color:rgb(var(--luna-pause-background-color-rgb) /  var(--fadeout-opacity));
+		--tertiary-button-background-color:rgb(from var(--luna-pause-background-color) r g b /  var(--fadeout-opacity));
 		--tertiary-button-foreground-color:var(--luna-pause-background-color);
 	}
 
 	 .evelution-page-header .cpe-button.is-warning-color {
 		--secondary-button-foreground-color: var(--luna-warning-background-color);
 		--secondary-button-foreground-color-hover: var(--luna-warning-background-color-hover);
-		--tertiary-button-background-color:rgb(var(--luna-warning-background-color-rgb) /  var(--fadeout-opacity));
+		--tertiary-button-background-color:rgb(from var(--luna-warning-background-color) r g b /  var(--fadeout-opacity));
 		--tertiary-button-foreground-color:var(--luna-warning-background-color);
 	}
 
 	 .evelution-page-header .cpe-button.is-success-color {
 		--secondary-button-foreground-color: var(--luna-success-background-color);
 		--secondary-button-foreground-color-hover: var(--luna-success-background-color-hover);
-		--tertiary-button-background-color:rgb(var(--luna-success-background-color-rgb) /  var(--fadeout-opacity));
+		--tertiary-button-background-color:rgb(from var(--luna-success-background-color) r g b /  var(--fadeout-opacity));
 		--tertiary-button-foreground-color:var(--luna-success-background-color);
 	}
 	
@@ -2766,14 +2763,14 @@ border-top-right-radius:0;
 	 .evelution-page-header li.stub .cpe-button {
 		--secondary-button-foreground-color: var(--luna-progress-background-color);
 		--secondary-button-foreground-color-hover: var(--luna-progress-background-color-hover);
-		--tertiary-button-background-color:rgb(var(--luna-progress-background-color-rgb) /  var(--fadeout-opacity));
+		--tertiary-button-background-color:rgb(from var(--luna-progress-background-color) r g b /  var(--fadeout-opacity));
 		--tertiary-button-foreground-color:var(--luna-progress-background-color);
 	}
 
 	 .evelution-page-header .cpe-button.is-message-color {
 		--secondary-button-foreground-color: var(--luna-message-background-color);
 		--secondary-button-foreground-color-hover: var(--luna-message-background-color-hover);
-		--tertiary-button-background-color:rgb(var(--luna-message-background-color-rgb) /  var(--fadeout-opacity));
+		--tertiary-button-background-color:rgb(from var(--luna-message-background-color) r g b /  var(--fadeout-opacity));
 		--tertiary-button-foreground-color:var(--luna-message-background-color);
 	}
 
@@ -2783,7 +2780,6 @@ border-top-right-radius:0;
 		--button-background-color-hover: var(--luna-highlight-background-color-hover);
 		--button-foreground-color: var(--luna-background-color);
 		--button-foreground-color-inverted: var(--luna-background-color);
-		--button-foreground-color-rgb:var(--luna-background-color-rgb);
 	}
 
 	.has-accents .evelution-page-header .cpe-button.is-unaccented {
@@ -2884,8 +2880,8 @@ margin-left:1px;
 .evelution-module .rail-buttons .rail-button:hover {
 
 		color:var(--luna-text-background-color-hover);
-		background-color:rgb(var(--luna-text-background-color-hover-rgb) /  0.2);
-		border-color:rgb(var(--luna-text-background-color-hover-rgb) /  0.1);
+		background-color:rgb(from var(--luna-text-background-color-hover) r g b /  0.2);
+		border-color:rgb(from var(--luna-text-background-color-hover) r g b /  0.1);
 		box-shadow:var(--threeD-shadow)
 
 }
@@ -2893,8 +2889,8 @@ margin-left:1px;
 .evelution-content .evelution-page-header .toggle-rail-button:active,
 .evelution-module .rail-buttons .rail-button:active {
 		color:var(--luna-hyperlink-background-color);
-		background-color:rgb(var(--luna-hyperlink-background-color-rgb) / 0.4);
-		border-color:rgb(var(--luna-hyperlink-background-color-rgb) /  0.2);
+		background-color:rgb(from var(--luna-hyperlink-background-color) r g b / 0.4);
+		border-color:rgb(from var(--luna-hyperlink-background-color) r g b /  0.2);
 		box-shadow:var(--threeD-shadow-active)
 }
 
@@ -3119,33 +3115,33 @@ body .mw-datatable > * > tr > td {
 
 body .mw-datatable tr:hover td {
 	background-color:var(--canvas-background-color);
-	box-shadow:0 0 0 100vh rgb(var(--hyperlink-background-color-rgb) / 0.2) inset;
+	box-shadow:0 0 0 100vh rgb(from var(--hyperlink-background-color-hover) r g b / 0.2) inset;
 }
 
 
 body #mw-allmessagestable tbody:hover td {
 	background-color:var(--canvas-background-color);
-	box-shadow:0 0 0 100vh rgb(var(--hyperlink-background-color-rgb) / 0.2) inset;
+	box-shadow:0 0 0 100vh rgb(from var(--hyperlink-background-color-hover) r g b / 0.2) inset;
 }
 
 body #mw-allmessagestable .am_actual {
 	background-color:var(--canvas-background-color);
-	box-shadow:0 0 0 100vh rgb(var(--success-background-color-rgb) / 0.2) inset;
+	box-shadow:0 0 0 100vh rgb(from var(--success-background-color-hover) r g b / 0.2) inset;
 }
 
 body #mw-allmessagestable .am_default {
 	background-color:var(--canvas-background-color);
-	box-shadow:0 0 0 100vh rgb(var(--warning-background-color-rgb) / 0.2) inset;
+	box-shadow:0 0 0 100vh rgb(from var(--warning-background-color-hover) r g b / 0.2) inset;
 }
 
 body #mw-allmessagestable tbody:hover .am_actual {
 	background-color:var(--canvas-background-color);
-	box-shadow:0 0 0 100vh rgb(var(--success-background-color-rgb) / 0.4) inset;
+	box-shadow:0 0 0 100vh rgb(from var(--success-background-color-hover) r g b / 0.4) inset;
 }
 
 body #mw-allmessagestable tbody:hover .am_default {
 	background-color:var(--canvas-background-color);
-	box-shadow:0 0 0 100vh rgb(var(--warning-background-color-rgb) / 0.4) inset;
+	box-shadow:0 0 0 100vh rgb(from var(--warning-background-color-hover) r g b / 0.4) inset;
 }
 
 /* Fix */
@@ -3285,7 +3281,7 @@ body .mw-cookiewarning-container {
 	--desk-image-display:none;
 	--desk-border-radius:var(--window-border-radius);
 /* Smoke Backplate */
-	--smoke-background:rgb(var(--canvas-background-color-rgb) / var(--acrylic-opacity));
+	--smoke-background:rgb(from var(--canvas-background-color) r g b / var(--acrylic-opacity));
 	--smoke-text:var(--canvas-text-background-color);
 	--smoke-border:var(--canvas-background-color-hover);
 	--smoke-border-size:1px;
@@ -3464,7 +3460,7 @@ body .mw-cookiewarning-container {
 	background-color:var(--luna-mica-background-color);
     transition:background-color var(--transition-duration) var(--transition-timing-function), background-image var(--transition-duration) var(--transition-timing-function);
 	color:var(--luna-text-background-color);
-	box-shadow:0px 0px 0 1px var(--luna-border-background-color), 0 2px 6px 0 rgb(var(--canvas-text-background-color-rgb) / .4), 0 2px 6px 0 rgb(var(--canvas-background-color-rgb) / 0.4);
+	box-shadow:0px 0px 0 1px var(--luna-border-background-color), 0 2px 6px 0 rgb(from var(--canvas-text-background-color) r g b / .4), 0 2px 6px 0 rgb(from var(--canvas-background-color) r g b / 0.4);
 	border-radius:var(--window-radius);
 	z-index:1;
 }
@@ -3479,7 +3475,7 @@ body .mw-cookiewarning-container {
 
 
 .preview-window-window.inactive {
-	box-shadow:0px 0px 0 1px var(--luna-border-background-color), 0 2px 6px 0 rgb(var(--canvas-text-background-color-rgb) / .2), 0 2px 6px 0 rgb(var(--canvas-background-color-rgb) / 0.2);
+	box-shadow:0px 0px 0 1px var(--luna-border-background-color), 0 2px 6px 0 rgb(from var(--canvas-text-background-color) r g b / .2), 0 2px 6px 0 rgb(from var(--canvas-background-color) r g b / 0.2);
 }
 
 
@@ -3511,10 +3507,10 @@ white-space:nowrap;
 }
 
 .preview-window-window h2 button {
-	--button-background-hover:rgb(var(--luna-text-background-color-rgb) / 0.2);
-	--button-background-active:rgb(var(--luna-hyperlink-background-color-rgb) / 0.4);
-	--button-border-hover:rgb(var(--luna-text-background-color-rgb) / 0.1);
-	--button-border-active:rgb(var(--luna-hyperlink-background-color-rgb) / 0.2);
+	--button-background-hover:rgb(from var(--luna-text-background-color) r g b / 0.2);
+	--button-background-active:rgb(from var(--luna-hyperlink-background-color) r g b / 0.4);
+	--button-border-hover:rgb(from var(--luna-text-background-color) r g b / 0.1);
+	--button-border-active:rgb(from var(--luna-hyperlink-background-color) r g b / 0.2);
 	--button-background-color:inherit;
 	--button-background-color-active:var(--luna-hyperlink-background-color);
 	background-color:transparent;
@@ -3554,10 +3550,10 @@ white-space:nowrap;
 }
 
 .preview-window-window h2 button.close {
-	--button-background-hover:rgb(var(--luna-alert-background-color-rgb) / 0.2);
-	--button-background-active:rgb(var(--luna-alert-background-color-rgb) / 0.4);
-	--button-border-hover:rgb(var(--luna-alert-background-color-rgb) / 0.1);
-	--button-border-active:rgb(var(--luna-alert-background-color-rgb) / 0.2);
+	--button-background-hover:rgb(from var(--luna-alert-background-color) r g b / 0.2);
+	--button-background-active:rgb(from var(--luna-alert-background-color) r g b / 0.4);
+	--button-border-hover:rgb(from var(--luna-alert-background-color) r g b / 0.1);
+	--button-border-active:rgb(from var(--luna-alert-background-color) r g b / 0.2);
 	--button-background-color-active:var(--luna-alert-background-color);
 	border-top-right-radius:var(--window-radius);
 }
@@ -3616,8 +3612,8 @@ white-space:nowrap;
 }
 
 .preview-window-window .menu > li > a:hover {
-	background-color:rgb(var(--canvas-text-background-color-rgb) / 0.2);
-	border-color:rgb(var(--canvas-text-background-color-rgb) / 0.1);
+	background-color:rgb(from var(--canvas-text-background-color) r g b / 0.2);
+	border-color:rgb(from var(--canvas-text-background-color) r g b / 0.1);
     color: var(--canvas-text-background-color-hover);
     box-shadow:var(--threeD-shadow);
 }
@@ -3628,8 +3624,8 @@ white-space:nowrap;
 .preview-window-window .menu > .cpe-dropdown.opens-on-hover:hover > a,
 .preview-window-window .menu > .cpe-dropdown:focus > a,
 .preview-window-window .menu > .cpe-dropdown:focus-within > a {
-	background-color:rgb(var(--hyperlink-background-color-rgb) / 0.4);
-	border-color:rgb(var(--hyperlink-background-color-rgb) / 0.2);
+	background-color:rgb(from var(--hyperlink-background-color-hover) r g b / 0.4);
+	border-color:rgb(from var(--hyperlink-background-color-hover) r g b / 0.2);
     color: var(--hyperlink-background-color);
     box-shadow:var(--threeD-shadow-active);
 }
@@ -3658,7 +3654,7 @@ white-space:nowrap;
 	--bg-img:var(--desktop-background-image);
 	--window-color:var(--canvas-background-color);
 	--window-text:var(--canvas-text-background-color);
-	--header-color:var(--luna-background-color-rgb);
+	--header-color:var(--luna-background-color);
 	--header-border:var(--luna-border-background-color);
 	--header-text:var(--luna-text-background-color);
 	width:150px;
@@ -3693,9 +3689,9 @@ white-space:nowrap;
 }
 
 .preview-theme-wrapper .window {
-	background-color:rgb(var(--header-color) / var(--acrylic-opacity));
+	background-color:rgb(from var(--header-color) r g b / var(--acrylic-opacity));
 	color:var(--header-text);
-	box-shadow:0 2px 6px 0 rgb(var(--canvas-text-background-color-rgb) / .4), 0 2px 6px 0 rgb(var(--canvas-background-color-rgb) / 0.4), 0 0 0 1px var(--header-border); /* On Evelution OS, canvas and canvas text color are set under a different parent */
+	box-shadow:0 2px 6px 0 rgb(from var(--canvas-text-background-color) r g b / .4), 0 2px 6px 0 rgb(from var(--canvas-background-color) r g b / 0.4), 0 0 0 1px var(--header-border); /* On Evelution OS, canvas and canvas text color are set under a different parent */
 	width:64px;
 	height:64px;
 	position:relative;

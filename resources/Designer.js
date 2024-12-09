@@ -649,7 +649,7 @@ function InitDesigner() {
 				'<option value=\'"Ubuntu Condensed"\'>' + 
 				'<option value=\'"Varela"\'>' +
 			'</datalist>' +
-			'<datalist id="td_fonts4">' + // Serif Fonts (34)
+			'<datalist id="td_fonts4">' + // Serif Fonts (35)
 				'<option value=\'"Alegreya"\'>' +
 				'<option value=\'"Aleo"\'>' +
 				'<option value=\'"Amiri"\'>' +
@@ -684,6 +684,7 @@ function InitDesigner() {
 				'<option value=\'"Source Serif 4"\'>' +
 				'<option value=\'"Tinos"\'>' + 
 				'<option value=\'"Vollkorn"\'>' +
+				'<option value=\'"Yorkbook Xe"\'>' + // Custom
 			'</datalist>' +
 			'<datalist id="td_fonts">' + // Rounded Fonts (27)
 				'<option value=\'"Baloo Bhaina 2"\'>' +
@@ -714,7 +715,7 @@ function InitDesigner() {
 				'<option value=\'"Varela Round"\'>' + 
 				'<option value=\'"Work Sans"\'>' +
 			'</datalist>' +
-			'<datalist id="td_fonts3">' + // Monospace Fonts (16)
+			'<datalist id="td_fonts3">' + // Monospace Fonts (18)
 				'<option value=\'"Anonymous Pro"\'>' + 
 				'<option value=\'"Courier Prime"\'>' +
 				'<option value=\'"Cousine"\'>' +
@@ -731,7 +732,7 @@ function InitDesigner() {
 				'<option value=\'"Patty Console"\'>' + // Custom
 				'<option value=\'"Source Code Pro"\'>' + 
 				'<option value=\'"Roboto Mono"\'>' +
-				'<option value=\'"Ubuntu Mono"\'>' + 
+				'<option value=\'"Yorkbook Xe Mono"\'>' + 
 			'</datalist>' +
 			'<datalist id="td_imagefilter">' + // Fonts
 				'<option value="opacity(100%)">' +
