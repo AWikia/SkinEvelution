@@ -18,7 +18,7 @@
 		}
 		@media (orientation:portrait) {
 			.evelution-taskbar {
-				--toolbar-link-size:calc(var(--minibar-size) / 1.2);
+				/*--toolbar-link-size:calc(var(--minibar-size) / 1.2);*/
 			}
 		}
 
@@ -33,7 +33,7 @@
 
 		@media (orientation:portrait) {
 			.evelution-taskbar {
-				--toolbar-link-size:calc(var(--minibar-size) / 1.1);
+				/*--toolbar-link-size:calc(var(--minibar-size) / 1.1);*/
 			}
 		}
 		
@@ -48,7 +48,7 @@
 
 		@media (orientation:portrait) {
 			.evelution-taskbar {
-				--toolbar-link-size:calc(var(--minibar-size) / 1.0);
+				/*--toolbar-link-size:calc(var(--minibar-size) / 1.0);*/
 			}
 		}
 	}
@@ -59,9 +59,6 @@
 				font-size:12px;
 			}
 			@media (orientation:portrait) {
-			.evelution-taskbar .search > .search-button {
-					display:none;
-			}
 			}
 
 	}
@@ -110,9 +107,6 @@
 	
 	/* All Phones */	
 
-	.evelution-taskbar .search > .cpe-button.search-button span {
-		max-width:140px;
-	}
 
 	.body-background,
 	.body-background-color {
@@ -411,9 +405,6 @@
 /* S+ */
 @media only screen and (min-width:640px) {
 		@media (orientation: portrait) {
-		.evelution-taskbar .search > .search-icon {
-				display:none;
-		}
 		}
 
 
@@ -457,18 +448,19 @@
 	}
 
 /* L + XL + XXL */
-@media only screen and (min-width:1280px) {
+@media only screen and (min-width:1020px) {
 /* Search Box */
-	@media (orientation:portrait) {
-	.evelution-taskbar .search > .search-button {
+	.evelution-header .search > .search-icon {
 			display:none;
 	}
 
-	.evelution-taskbar .search.is-flipped .cpe-dropdown__content {
+	.evelution-header .search .cpe-dropdown__content {
 		 pointer-events:all;
-		 bottom:0%;
+		 top:0%;
+		 bottom:auto;
 		 opacity:1;
 		--dropdown-scale:1;
+		--dropdown-translate:0!important;
 		animation:none;
 		-webkit-backdrop-filter:none;
 		backdrop-filter:none;
@@ -485,12 +477,12 @@
 		transition:none!important;
  	}
  	
- 	.evelution-taskbar .search .cpe-dropdown__content .cpe-list {
+ 	.evelution-header .search .cpe-dropdown__content .cpe-list {
 		padding:0;
 		margin:0;
 	}
 	
- 	.evelution-taskbar .search .cpe-dropdown__content .cpe-list>li {
+ 	.evelution-header .search .cpe-dropdown__content .cpe-list>li {
 		padding:0 4.5px;
 		display:flex;
 		align-items:center;
@@ -499,7 +491,7 @@
  	}
 
 /* Search button should be without an accent color, per evelution design standards */
-	.has-accents .evelution-taskbar .search .cpe-dropdown__content .cpe-list>li .cpe-button {
+	.has-accents .evelution-header .search .cpe-dropdown__content .cpe-list>li .cpe-button {
 		--button-background-color: var(--luna-highlight-background-color);
 		--button-background-color-hover: var(--luna-highlight-background-color-hover);
 		--button-foreground-color: var(--luna-background-color);
@@ -518,12 +510,11 @@
 		--input-box-solid:var(--luna-highlight-background-color);
 	}
 	
-	.evelution-taskbar .search:before,
-	.evelution-taskbar .search:after {
+	.evelution-header .search:before,
+	.evelution-header .search:after {
 		animation:none;
 		display:none;
 	}
-}
 	
 
 }
@@ -536,7 +527,7 @@
 
 }
 
-@media only screen and (min-width:1390px) {
+@media only screen and (min-width:1020px) {
 
 
 /* Labels */

@@ -110,19 +110,11 @@ AliasBoxes();
 
 	document.querySelector('html').classList.add('theming-loaded');
 
-	var y = document.querySelector('.evelution-taskbar .cpe-dropdown.search:not(:focus) .link');
+	var y = document.querySelector('.evelution-header .cpe-dropdown.search:not(:focus) .link');
 	if (y) {
 		y.addEventListener('click', (function(e) {
 						e.preventDefault();
-						var y2 = document.querySelector('.evelution-taskbar .cpe-dropdown.search input.taskbar-search');
-						y2.focus();
-        }) );
-	}
-	var y = document.querySelector('.evelution-taskbar .cpe-dropdown.search:not(:focus) .search-button');
-	if (y) {
-		y.addEventListener('click', (function(e) {
-						e.preventDefault();
-						var y2 = document.querySelector('.evelution-taskbar .cpe-dropdown.search input.taskbar-search');
+						var y2 = document.querySelector('.evelution-header .cpe-dropdown.search input.taskbar-search');
 						y2.focus();
         }) );
 	}
@@ -279,21 +271,13 @@ function ToggleNav() {
 
 function RemoveEmptyMenus() {
 // Remove Miraheze elements
-	var miraheze = document.querySelector("#footer-icons img[alt='Miraheze Wiki Hosting'], #footer-icons img[alt='Hosted by Miraheze'], #footer-icons img[alt='7 years of Miraheze!']")
-	if (miraheze) { // Check if an image with the Miraheze Wiki hosting alt exists
-		document.querySelector('html').classList.add('wikihost-miraheze')
-	}
-	var qqore = document.querySelector("#footer-icons img[alt='Q.Qore']")
-	if (qqore) { // Check if an image with the Miraheze Wiki hosting alt exists
-		document.querySelector('html').classList.add('wikihost-qqore')
-	}
 	document.querySelector('html').classList.remove("client-dark-mode");
 	
 	
 // Remove duplicated Notices and Updates Dropdown
 
-	var langmenu4N = document.querySelector(".evelution-taskbar.evelution-sidebar .link.notices-menu #pt-notifications-notice");
-	var langmenu4bN = document.querySelector(".evelution-taskbar.evelution-sidebar .link.updates-menu #pt-notifications-alert");
+	var langmenu4N = document.querySelector(".evelution-header .link.notices-menu #pt-notifications-notice");
+	var langmenu4bN = document.querySelector(".evelution-header .link.updates-menu #pt-notifications-alert");
 		if (langmenu4N) {
 			langmenu4N.remove();	
 		}
