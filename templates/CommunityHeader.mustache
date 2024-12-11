@@ -107,16 +107,113 @@
 					</h1>
 				</div>
 			</div>
-			<div class="counters cell">
+			<div class="counters cell mobileS-off">
 				<div class="counter articles"><big>{{html-articlecount}}</big> <span class="cpe-icon material-icons">article</span>  <span class="text">{{msg-evelution-pages}}</span></div>
 				<div class="counter photos"><big>{{html-filecount}}</big> <span class="cpe-icon material-icons">photo</span> <span class="text">{{msg-evelution-files}}</span></div>
 			</div>
-			<div class="counters cell">
+			<div class="counters cell mobileS-off">
 				<div class="counter edits"><big>{{html-editcount}}</big> <span class="cpe-icon material-icons">edit</span> <span class="text">{{msg-evelution-edits}}</span></div>
 				<div class="counter users"><big>{{html-usercount}}</big> <span class="cpe-icon material-icons">person</span> <span class="text">{{msg-evelution-users}}</span></div>
 			</div>
+		<!-- Search -->
+		<div class="cpe-dropdown search">
+			<div class="link search-icon cpe-dropdown__toggle" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-search}}">
+				<span class="cpe-icon material-icons">
+					<span class="focused-dropdown-off">
+						search
+					</span>
+					<span class="focused-dropdown-on">
+						saved_search
+					</span>
+				</span>
+			</div>
+		    <div class="cpe-dropdown__content">
+				<ul class="cpe-list">
+					<li class="mobileS-on mobile-counters">
+						<div class="counters">
+							<div class="counter articles"><big>{{html-articlecount}}</big> <span class="cpe-icon material-icons">article</span>  <span class="text">{{msg-evelution-pages}}</span></div>
+							<div class="counter photos"><big>{{html-filecount}}</big> <span class="cpe-icon material-icons">photo</span> <span class="text">{{msg-evelution-files}}</span></div>
+							<div class="counter edits"><big>{{html-editcount}}</big> <span class="cpe-icon material-icons">edit</span> <span class="text">{{msg-evelution-edits}}</span></div>
+							<div class="counter users"><big>{{html-usercount}}</big> <span class="cpe-icon material-icons">person</span> <span class="text">{{msg-evelution-users}}</span></div>
+						</div>
+							<hr>
+					</li>
+					<li>
+
+					{{#data-search-box}}
+					<form action="{{form-action}}" role="search" class="mw-portlet" id="p-search">
+						<div class="pageheader-search">
+							<input type="search" name="search" class="cpe-input taskbar-search" placeholder="{{msg-searchsuggest-search}}" autocapitalize="sentences" accesskey="f" id="searchInput" autocomplete="off">
+							<input type="hidden" name="title" value="Special:Search">
+							<input style="width:0px; height:0px; visibility:hidden; position:absolute;" type="submit" id="searchButton2"></input>
+							<label for="searchButton2" class="cpe-button">
+								<span class="cpe-icon cpe-icon-small material-icons">
+									search
+								</span>
+							</label>
+						</div>
+					</form>
+					{{/data-search-box}}
+					</li>
+				</ul>
+			</div>
+		</div>
 			<div class="wiki-tools">
 				{{>CommunityLinks}}
 			</div>
+		{{#has-echo}}
+			  <!-- Notifications -->
+				<div class="link cell notice notices-menu focus-within" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-tooltip-pt-notifications-alert}}">
+					<div style="position:absolute; visibility:visible; width:inherit;">
+									{{#data-portlets.data-notifications}}{{>Portlet2}}{{/data-portlets.data-notifications}}
+					</div>
+					<span class="cpe-icon material-icons">
+						notifications
+					</span>
+				</div>
+				<div class="link cell notice updates-menu focus-within" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-tooltip-pt-notifications-notice}}">
+					<div style="position:absolute; visibility:visible; inherit;">
+									{{#data-portlets.data-notifications}}{{>Portlet2}}{{/data-portlets.data-notifications}}
+					</div>
+					<span class="cpe-icon material-icons">
+						inbox
+					</span>
+				</div>
+		{{/has-echo}}
+
+		<div class="cpe-dropdown user-profile">
+			<div class="link cell cpe-dropdown__toggle" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-personaltools}}">
+			{{#has-avatar}}
+				<div class="raw-parser">{{html-avatar}}</div>
+			{{/has-avatar}}
+			{{^has-avatar}}
+				<span class="cpe-icon material-icons">account_circle</span>
+			{{/has-avatar}}
+								
+			</div>
+			<div class="cpe-dropdown__content is-right-aligned">
+				<ul class="cpe-list is-linked has-icons is-single-row mobile-on">
+					<li class="purge">
+						<a href="{{html-purge-link}}/{{html-titlealt}}" title="{{msg-purge}}">
+							<span class="cpe-icon material-icons">
+								refresh
+							</span>						
+						</a>
+					</li>
+				</ul>
+				<hr class="mobile-on">
+				<ul class="cpe-list cpe-is-linked has-icon-labels mw-portlet-body" {{{html-user-language-attributes}}}>
+{{#data-portlets.data-user-interface-preferences}}{{>PortletPT}}			{{/data-portlets.data-user-interface-preferences}}				{{#data-portlets.data-user-menu}}{{>PortletPT}}{{/data-portlets.data-user-menu}}
+				</ul>
+				{{{html-after-portal}}}
+			</div>
+		</div>
+	  <a href="{{html-purge-link}}" class="link purge mobile-xxl" cpe-tooltip-position="bottom" cpe-tooltip="{{msg-purge}}">
+				<span class="cpe-icon material-icons">
+					refresh
+				</span>
+	  </a>
+
+
 		</div>
 	</header>
