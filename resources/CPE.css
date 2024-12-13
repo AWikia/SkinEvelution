@@ -157,20 +157,21 @@
 font-family:sans-serif;
 font-variant-emoji:unicode;
 /* Base Text Background Colors */
-	--light-theme-text-background-color:#E6E6E6!important;
-	--light-theme-text-background-color-hover:#b3b3b3!important;
-	--dark-theme-text-background-color:#3a3a3a!important;
-	--dark-theme-text-background-color-hover:#6d6d6d!important;
+	--light-theme-text-background-color:#3a3a3a!important;
+	--light-theme-text-background-color-hover:hsl(from var(--light-theme-text-background-color) h s calc(l + 20))!important;
+	--dark-theme-text-background-color:#E6E6E6!important;
+	--dark-theme-text-background-color-hover:hsl(from var(--dark-theme-text-background-color) h s calc(l + -20))!important;
 /* Base Foreground Colors */
 	--light-theme-foreground-color:#000000!important;
-    --light-theme-foreground-color-hover: #333333!important;
+    --light-theme-foreground-color-hover:hsl(from var(--light-theme-foreground-color) h s calc(l + 20))!important;
 	--dark-theme-foreground-color:#ffffff!important;
-    --dark-theme-foreground-color-hover: #CCCCCC!important;
+    --dark-theme-foreground-color-hover: hsl(from var(--light-theme-foreground-color) h s calc(l + -20))!important;
 /* BG Align */
 --desktop-background-alignment:var(--desktop-background-vertical-alignment) var(--desktop-background-horizontal-alignment);
 /* acrylic */
 --acrylic-filter:blur( 20px ) saturate(125%);
 --mica-filter:blur( 9vh );
+--system-mica-opacity:calc(1 - var(--system-acryllic-opacity));
 /* ThreeD */
 --threeD-shadow:0 0 0 transparent;
 --threeD-shadow-active:0 0 0 transparent;
@@ -198,6 +199,77 @@ font-variant-emoji:unicode;
 --monospace-font-stack:var(--custom-monospace-font), var(--base-monospace-fonts), var(--code-emoji-fonts), monospace;
 --header-size:160px;
 /** Theming Variables **/
+/* Background Color Hover/ */
+--desktop-background-color-hover:hsl(from var(--desktop-background-color) h s calc(l + var(--canvas-background-color-hover-ratio)) );
+--desktop-text-background-color-hover:hsl(from var(--desktop-text-background-color) h s calc(l - var(--canvas-background-color-hover-ratio)) );
+--hyperlink-background-color-hover:hsl(from var(--hyperlink-background-color) h s calc(l + var(--canvas-background-color-hover-ratio)) );
+--hyperlink-secondary-background-color-hover:hsl(from var(--hyperlink-secondary-background-color) h s calc(l + var(--canvas-background-color-hover-ratio)) );
+--hyperlink-tertiary-background-color-hover:hsl(from var(--hyperlink-tertiary-background-color) h s calc(l + var(--active-title-background-color-hover-ratio)) );
+--hyperlink-quaternary-background-color-hover:hsl(from var(--hyperlink-quaternary-background-color) h s calc(l + var(--canvas-background-color-hover-ratio)) );
+--visited-hyperlink-background-color-hover:hsl(from var(--visited-hyperlink-background-color) h s calc(l + var(--canvas-background-color-hover-ratio)) );
+--visited-hyperlink-secondary-background-color-hover:hsl(from var(--visited-hyperlink-secondary-background-color) h s calc(l + var(--canvas-background-color-hover-ratio)) );
+--visited-hyperlink-tertiary-background-color-hover:hsl(from var(--visited-hyperlink-tertiary-background-color) h s calc(l + var(--active-title-background-color-hover-ratio)) );
+--visited-hyperlink-quaternary-background-color-hover:hsl(from var(--visited-hyperlink-quaternary-background-color) h s calc(l + var(--canvas-background-color-hover-ratio)) );
+--canvas-background-color-hover:hsl(from var(--canvas-background-color) h s calc(l + var(--canvas-background-color-hover-ratio)) );
+--canvas-secondary-background-color-hover:hsl(from var(--canvas-secondary-background-color) h s calc(l + var(--canvas-background-color-hover-ratio)) );
+--inactive-text-background-color-hover:hsl(from var(--inactive-text-background-color) h s calc(l + var(--inactive-text-background-color-hover-ratio)) );
+--inactive-text-secondary-background-color-hover:hsl(from var(--inactive-text-secondary-background-color) h s calc(l + var(--canvas-background-color-hover-ratio)) );
+--inactive-text-tertiary-background-color-hover:hsl(from var(--inactive-text-tertiary-background-color) h s calc(l + var(--active-title-background-color-hover-ratio)) );
+--inactive-text-quaternary-background-color-hover:hsl(from var(--inactive-text-quaternary-background-color) h s calc(l + var(--canvas-background-color-hover-ratio)) );
+--active-text-background-color-hover:hsl(from var(--active-text-background-color) h s calc(l + var(--canvas-background-color-hover-ratio)) );
+--active-text-secondary-background-color-hover:hsl(from var(--active-text-secondary-background-color) h s calc(l + var(--canvas-background-color-hover-ratio)) );
+--active-text-tertiary-background-color-hover:hsl(from var(--active-text-tertiary-background-color) h s calc(l + var(--active-title-background-color-hover-ratio)) );
+--active-text-quaternary-background-color-hover:hsl(from var(--active-text-quaternary-background-color) h s calc(l + var(--canvas-background-color-hover-ratio)) );
+--canvas-text-background-color-hover:hsl(from var(--canvas-text-background-color) h s calc(l - var(--canvas-background-color-hover-ratio)) );
+--canvas-text-secondary-background-color-hover:hsl(from var(--canvas-text-secondary-background-color) h s calc(l - var(--canvas-background-color-hover-ratio)) );
+--highlight-background-color-hover:hsl(from var(--highlight-background-color) h s calc(l + var(--highlight-background-color-hover-ratio)) );
+--highlight-text-background-color-hover:hsl(from var(--highlight-text-background-color) h s calc(l - var(--highlight-background-color-hover-ratio)) );
+--highlight-secondary-background-color-hover:hsl(from var(--highlight-secondary-background-color) h s calc(l + var(--canvas-background-color-hover-ratio)) );
+--highlight-tertiary-background-color-hover:hsl(from var(--highlight-secondary-background-color) h s calc(l + var(--active-title-background-color-hover-ratio)) );
+--highlight-quaternary-background-color-hover:hsl(from var(--highlight-tertiary-background-color) h s calc(l + var(--canvas-background-color-hover-ratio)) );
+--active-title-background-color-hover:hsl(from var(--active-title-background-color) h s calc(l + var(--active-title-background-color-hover-ratio)) );
+--active-title-text-background-color-hover:hsl(from var(--active-title-text-background-color) h s calc(l - var(--active-title-background-color-hover-ratio)) );
+--active-title-secondary-background-color-hover:hsl(from var(--active-title-secondary-background-color) h s calc(l + var(--canvas-background-color-hover-ratio)) );
+--active-title-tertiary-background-color-hover:hsl(from var(--active-title-tertiary-background-color) h s calc(l + var(--active-title-background-color-hover-ratio)) );
+--active-title-quaternary-background-color-hover:hsl(from var(--active-title-quaternary-background-color) h s calc(l + var(--canvas-background-color-hover-ratio)) );
+--inactive-title-background-color-hover:hsl(from var(--inactive-title-background-color) h s calc(l + var(--canvas-background-color-hover-ratio)) );
+--inactive-title-text-background-color-hover:hsl(from var(--inactive-title-text-background-color) h s calc(l - var(--canvas-background-color-hover-ratio)) );
+--alert-background-color-hover:hsl(from var(--alert-background-color) h s calc(l + var(--canvas-background-color-hover-ratio)) );
+--alert-background-color-hover-2:hsl(from var(--alert-background-color) h s calc(l - var(--canvas-background-color-hover-ratio)) );
+--alert-secondary-background-color-hover:hsl(from var(--alert-secondary-background-color) h s calc(l + var(--canvas-background-color-hover-ratio)) );
+--alert-tertiary-background-color-hover:hsl(from var(--alert-tertiary-background-color) h s calc(l + var(--active-title-background-color-hover-ratio)) );
+--alert-quaternary-background-color-hover:hsl(from var(--alert-quaternary-background-color) h s calc(l + var(--canvas-background-color-hover-ratio)) );
+--pause-background-color-hover:hsl(from var(--pause-background-color) h s calc(l + var(--canvas-background-color-hover-ratio)) );
+--pause-background-color-hover-2:hsl(from var(--pause-background-color) h s calc(l - var(--canvas-background-color-hover-ratio)) );
+--pause-secondary-background-color-hover:hsl(from var(--pause-secondary-background-color) h s calc(l + var(--canvas-background-color-hover-ratio)) );
+--pause-tertiary-background-color-hover:hsl(from var(--pause-tertiary-background-color) h s calc(l + var(--active-title-background-color-hover-ratio)) );
+--pause-quaternary-background-color-hover:hsl(from var(--pause-quaternary-background-color) h s calc(l + var(--canvas-background-color-hover-ratio)) );
+--warning-background-color-hover:hsl(from var(--warning-background-color) h s calc(l + var(--canvas-background-color-hover-ratio)) );
+--warning-background-color-hover-2:hsl(from var(--warning-background-color) h s calc(l - var(--canvas-background-color-hover-ratio)) );
+--warning-secondary-background-color-hover:hsl(from var(--warning-secondary-background-color) h s calc(l + var(--canvas-background-color-hover-ratio)) );
+--warning-tertiary-background-color-hover:hsl(from var(--warning-tertiary-background-color) h s calc(l + var(--active-title-background-color-hover-ratio)) );
+--warning-quaternary-background-color-hover:hsl(from var(--warning-quaternary-background-color) h s calc(l + var(--canvas-background-color-hover-ratio)) );
+--success-background-color-hover:hsl(from var(--success-background-color) h s calc(l + var(--canvas-background-color-hover-ratio)) );
+--success-background-color-hover-2:hsl(from var(--success-background-color) h s calc(l - var(--canvas-background-color-hover-ratio)) );
+--success-secondary-background-color-hover:hsl(from var(--success-secondary-background-color) h s calc(l + var(--canvas-background-color-hover-ratio)) );
+--success-tertiary-background-color-hover:hsl(from var(--success-tertiary-background-color) h s calc(l + var(--active-title-background-color-hover-ratio)) );
+--success-quaternary-background-color-hover:hsl(from var(--success-quaternary-background-color) h s calc(l + var(--canvas-background-color-hover-ratio)) );
+--progress-background-color-hover:hsl(from var(--progress-background-color) h s calc(l + var(--canvas-background-color-hover-ratio)) );
+--progress-background-color-hover-2:hsl(from var(--progress-background-color) h s calc(l - var(--canvas-background-color-hover-ratio)) );
+--progress-secondary-background-color-hover:hsl(from var(--progress-secondary-background-color) h s calc(l + var(--canvas-background-color-hover-ratio)) );
+--progress-tertiary-background-color-hover:hsl(from var(--progress-tertiary-background-color) h s calc(l + var(--active-title-background-color-hover-ratio)) );
+--progress-quaternary-background-color-hover:hsl(from var(--progress-quaternary-background-color) h s calc(l + var(--canvas-background-color-hover-ratio)) );
+--message-background-color-hover:hsl(from var(--message-background-color) h s calc(l + var(--canvas-background-color-hover-ratio)) );
+--message-background-color-hover-2:hsl(from var(--message-background-color) h s calc(l - var(--canvas-background-color-hover-ratio)) );
+--message-secondary-background-color-hover:hsl(from var(--message-secondary-background-color) h s calc(l + var(--canvas-background-color-hover-ratio)) );
+--message-tertiary-background-color-hover:hsl(from var(--message-tertiary-background-color) h s calc(l + var(--active-title-background-color-hover-ratio)) );
+--message-quaternary-background-color-hover:hsl(from var(--message-quaternary-background-color) h s calc(l + var(--canvas-background-color-hover-ratio)) );
+--cpu-graph-background-color-hover:hsl(from var(--cpu-graph-background-color) h s calc(l - var(--canvas-background-color-hover-ratio)) );
+--ram-graph-background-color-hover:hsl(from var(--ram-graph-background-color) h s calc(l - var(--canvas-background-color-hover-ratio)) );
+--disk-graph-background-color-hover:hsl(from var(--disk-graph-background-color) h s calc(l - var(--canvas-background-color-hover-ratio)) );
+--network-graph-background-color-hover:hsl(from var(--network-graph-background-color) h s calc(l - var(--canvas-background-color-hover-ratio)) );
+--gpu-graph-background-color-hover:hsl(from var(--gpu-graph-background-color) h s calc(l - var(--canvas-background-color-hover-ratio)) );
+--npu-graph-background-color-hover:hsl(from var(--npu-graph-background-color) h s calc(l - var(--canvas-background-color-hover-ratio)) );
 /* Fadeout */
 --fadeout-opacity:0.2;
 --disabled-elements-opacity:0.75;
@@ -328,7 +400,6 @@ body [force-unaccented] {
 	--luna-border-background-color:var(--canvas-secondary-background-color-hover);
 	/* Foreground Color  */
 	--luna-foreground-color:var(--canvas-secondary-foreground-color);
-	--luna-foreground-color-inverted:var(--canvas-secondary-foreground-color-inverted);
 	--luna-foreground-color-hover:var(--canvas-secondary-foreground-color-hover);
 	/* 2nd Foreground Color  */
 	--luna-alternative-foreground-color:var(--canvas-secondary-alternative-foreground-color);
@@ -389,7 +460,6 @@ body:not(:focus):not(:focus-within) [force-unaccented] {
 	--luna-border-background-color:var(--canvas-secondary-background-color-hover);
 	/* Foreground Color  */
 	--luna-foreground-color:var(--canvas-secondary-foreground-color);
-	--luna-foreground-color-inverted:var(--canvas-secondary-foreground-color-inverted);
 	--luna-foreground-color-hover:var(--canvas-secondary-foreground-color-hover);
 	/* 2nd Foreground Color  */
 	--luna-alternative-foreground-color:var(--canvas-secondary-alternative-foreground-color);
@@ -415,7 +485,6 @@ body:not(:focus):not(:focus-within) [force-unaccented] {
 	--luna-border-background-color:var(--active-title-background-color-hover);
 	/* Foreground Color  */
 	--luna-foreground-color:var(--active-title-foreground-color);
-	--luna-foreground-color-inverted:var(--active-title-foreground-color-inverted);
 	--luna-foreground-color-hover:var(--active-title-foreground-color-hover);
 	/* 2nd Foreground Color  */
 	--luna-alternative-foreground-color:var(--active-title-alternative-foreground-color);
@@ -473,7 +542,6 @@ body:not(:focus):not(:focus-within) [force-unaccented] {
 	--luna-border-background-color:var(--inactive-title-background-color-hover);
 	/* Foreground Color  */
 	--luna-foreground-color:var(--inactive-title-foreground-color);
-	--luna-foreground-color-inverted:var(--inactive-title-foreground-color-inverted);
 	--luna-foreground-color-hover:var(--inactive-title-foreground-color-hover);
 	/* 2nd Foreground Color  */
 	--luna-alternative-foreground-color:var(--inactive-title-alternative-foreground-color);
@@ -2208,7 +2276,6 @@ select.cpe-input {
 	--button-background-color-hover:var(--highlight-background-color-hover);
 	--button-foreground-color:var(--highlight-foreground-color);
 	--button-foreground-color-hover:var(--button-foreground-color);
-	--button-foreground-color-inverted:var(--highlight-foreground-color-inverted);
 	--button-border-color:var(--button-background-color);
 	--button-border-color-hover:var(--button-background-color-hover);
 	--secondary-button-background-color:rgb(var(--tabs-color) / var(--tabs-opacity));
@@ -2254,7 +2321,7 @@ select.cpe-input {
 }
 
 .cpe-button:visited:active {
-    color:var(--button-foreground-color-inverted);
+    color:var(--button-foreground-color);
 }
 
 .cpe-button::-webkit-color-swatch {
@@ -2290,7 +2357,7 @@ select.cpe-input {
     outline-color:transparent;
     outline-offset:0px;
     text-decoration:none;
-	color:var(--button-foreground-color-inverted);
+	color:var(--button-foreground-color);
     box-shadow:var(--threeD-shadow-active);
 }
 
@@ -2309,12 +2376,12 @@ select.cpe-input {
 .cpe-dropdown.opens-on-hover:hover > .cpe-button,
 .cpe-dropdown:focus > .cpe-button,
 .cpe-dropdown:focus-within > .cpe-button  {
-	color:var(--button-foreground-color-inverted);
+	color:var(--button-foreground-color);
 }
 
 .cpe-button.is-active:focus,
 .selected .cpe-button:focus:not(:active) {
-	color:var(--button-foreground-color-inverted);
+	color:var(--button-foreground-color);
 	outline-color:transparent;
 }
 
@@ -2589,7 +2656,6 @@ select.cpe-input {
   --button-background-color:var(--inactive-text-background-color);
   --button-background-color-hover:var(--inactive-text-background-color-hover);
   --button-foreground-color:var(--inactive-text-foreground-color);
-  --button-foreground-color-inverted:var(--inactive-text-foreground-color-inverted);
   --secondary-button-foreground-color:var(--canvas-text-background-color);
   --secondary-button-foreground-color-hover:var(--canvas-text-background-color-hover);
   --tertiary-button-background-color:var(--canvas-text-fadeout-color);
@@ -2601,7 +2667,6 @@ select.cpe-input {
   --button-background-color:var(--active-title-background-color);
   --button-background-color-hover:var(--active-title-background-color-hover);
   --button-foreground-color:var(--active-title-foreground-color);
-  --button-foreground-color-inverted:var(--active-title-foreground-color-inverted);
   --secondary-button-foreground-color:var(--active-text-background-color);
   --secondary-button-foreground-color-hover:var(--active-text-background-color-hover);
   --tertiary-button-background-color:var(--active-text-fadeout-color);
@@ -2614,7 +2679,6 @@ li.new .cpe-button {
   --button-background-color:var(--alert-background-color);
   --button-background-color-hover:var(--alert-background-color-hover-2);
   --button-foreground-color:var(--alert-foreground-color);
-  --button-foreground-color-inverted:var(--alert-foreground-color-inverted);
   --secondary-button-foreground-color:var(--alert-background-color);
   --secondary-button-foreground-color-hover:var(--alert-background-color-hover);
   --tertiary-button-background-color:var(--alert-fadeout-color);
@@ -2626,7 +2690,6 @@ li.new .cpe-button {
   --button-background-color:var(--pause-background-color);
   --button-background-color-hover:var(--pause-background-color-hover-2);
   --button-foreground-color:var(--pause-foreground-color);
-  --button-foreground-color-inverted:var(--pause-foreground-color-inverted);
   --secondary-button-foreground-color:var(--pause-background-color);
   --secondary-button-foreground-color-hover:var(--pause-background-color-hover);
   --tertiary-button-background-color:var(--pause-fadeout-color);
@@ -2639,7 +2702,6 @@ li.new .cpe-button {
   --button-background-color:var(--warning-background-color);
   --button-background-color-hover:var(--warning-background-color-hover-2);
   --button-foreground-color:var(--warning-foreground-color);
-  --button-foreground-color-inverted:var(--warning-foreground-color-inverted);
   --secondary-button-foreground-color:var(--warning-background-color);
   --secondary-button-foreground-color-hover:var(--warning-background-color-hover);
   --tertiary-button-background-color:var(--warning-fadeout-color);
@@ -2651,7 +2713,6 @@ li.new .cpe-button {
   --button-background-color:var(--success-background-color);
   --button-background-color-hover:var(--success-background-color-hover-2);
   --button-foreground-color:var(--success-foreground-color);
-  --button-foreground-color-inverted:var(--success-foreground-color-inverted);
   --secondary-button-foreground-color:var(--success-background-color);
   --secondary-button-foreground-color-hover:var(--success-background-color-hover);
   --tertiary-button-background-color:var(--success-fadeout-color);
@@ -2664,7 +2725,6 @@ li.stub .cpe-button {
   --button-background-color:var(--progress-background-color);
   --button-background-color-hover:var(--progress-background-color-hover-2);
   --button-foreground-color:var(--progress-foreground-color);
-  --button-foreground-color-inverted:var(--progress-foreground-color-inverted);
   --secondary-button-foreground-color:var(--progress-background-color);
   --secondary-button-foreground-color-hover:var(--progress-background-color-hover);
   --tertiary-button-background-color:var(--progress-fadeout-color);
@@ -2676,7 +2736,6 @@ li.stub .cpe-button {
   --button-background-color:var(--message-background-color);
   --button-background-color-hover:var(--message-background-color-hover-2);
   --button-foreground-color:var(--message-foreground-color);
-  --button-foreground-color-inverted:var(--message-foreground-color-inverted);
   --secondary-button-foreground-color:var(--message-background-color);
   --secondary-button-foreground-color-hover:var(--message-background-color-hover);
   --tertiary-button-background-color:var(--message-fadeout-color);
@@ -5145,21 +5204,18 @@ html:not(.visualmode-threeD) .threeD-on {
 --desktop-foreground-color-hover:var(--desktop-text-background-color)!important;
 --desktop-alternative-foreground-color:var(--desktop-text-background-color)!important;
 --desktop-alternative-foreground-color-hover:var(--desktop-text-background-color)!important;
---desktop-foreground-color-inverted:var(--desktop-text-background-color)!important;
 /* Desktop Text */
 --desktop-text-background-color-hover:var(--desktop-text-background-color)!important;
 --desktop-text-foreground-color:var(--desktop-background-color)!important;
 --desktop-text-foreground-color-hover:var(--desktop-background-color)!important;
 --desktop-text-alternative-foreground-color:var(--desktop-background-color)!important;
 --desktop-text-alternative-foreground-color-hover:var(--desktop-background-color)!important;
---desktop-text-foreground-color-inverted:var(--desktop-background-color)!important;
 /* Canvas */
 --canvas-background-color-hover:var(--canvas-background-color)!important;
 --canvas-foreground-color:var(--canvas-text-background-color)!important;
 --canvas-foreground-color-hover:var(--canvas-text-background-color)!important;
 --canvas-alternative-foreground-color:var(--canvas-text-background-color)!important;
 --canvas-alternative-foreground-color-hover:var(--canvas-text-background-color)!important;
---canvas-foreground-color-inverted:var(--canvas-text-background-color)!important;
 /* 3d Canvas */
 	--canvas-3d-background-color:#c0c0c0!important;
 	--canvas-3d-background-color-dark:#808080!important;
@@ -5169,14 +5225,12 @@ html:not(.visualmode-threeD) .threeD-on {
 --canvas-secondary-foreground-color-hover:var(--canvas-text-secondary-background-color)!important;
 --canvas-secondary-alternative-foreground-color:var(--canvas-text-secondary-background-color)!important;
 --canvas-secondary-alternative-foreground-color-hover:var(--canvas-text-secondary-background-color)!important;
---canvas-secondary-foreground-color-inverted:var(--canvas-text-secondary-background-color)!important;
 /* Inactive Text */
 --inactive-text-background-color-hover:var(--inactive-text-background-color)!important;
 --inactive-text-foreground-color:var(--canvas-background-color)!important;
 --inactive-text-foreground-color-hover:var(--canvas-background-color)!important;
 --inactive-text-alternative-foreground-color:var(--canvas-background-color)!important;
 --inactive-text-alternative-foreground-color-hover:var(--canvas-background-color)!important;
---inactive-text-foreground-color-inverted:var(--canvas-background-color)!important;
 /* Inctive Text */
 --inactive-text-secondary-background-color-hover:var(--inactive-text-secondary-background-color)!important;
 --inactive-text-tertiary-background-color-hover:var(--inactive-text-tertiary-background-color)!important;
@@ -5187,7 +5241,6 @@ html:not(.visualmode-threeD) .threeD-on {
 --active-text-foreground-color-hover:var(--canvas-background-color)!important;
 --active-text-alternative-foreground-color:var(--canvas-background-color)!important;
 --active-text-alternative-foreground-color-hover:var(--canvas-background-color)!important;
---active-text-foreground-color-inverted:var(--canvas-background-color)!important;
 /* Active Text */
 --active-text-secondary-background-color-hover:var(--active-text-secondary-background-color)!important;
 --active-text-tertiary-background-color-hover:var(--active-text-tertiary-background-color)!important;
@@ -5198,21 +5251,18 @@ html:not(.visualmode-threeD) .threeD-on {
 --canvas-text-foreground-color-hover:var(--canvas-background-color)!important;
 --canvas-text-alternative-foreground-color:var(--canvas-background-color)!important;
 --canvas-text-alternative-foreground-color-hover:var(--canvas-background-color)!important;
---canvas-text-foreground-color-inverted:var(--canvas-background-color)!important;
 /* 2nd Canvas Text */
 --canvas-text-secondary-background-color-hover:var(--canvas-text-secondary-background-color)!important;
 --canvas-text-secondary-foreground-color:var(--canvas-secondary-background-color)!important;
 --canvas-text-secondary-foreground-color-hover:var(--canvas-secondary-background-color)!important;
 --canvas-text-secondary-alternative-foreground-color:var(--canvas-secondary-background-color)!important;
 --canvas-text-secondary-alternative-foreground-color-hover:var(--canvas-secondary-background-color)!important;
---canvas-text-secondary-foreground-color-inverted:var(--canvas-secondary-background-color)!important;
 /* Highlight */
 --highlight-background-color-hover:var(--highlight-background-color)!important;
 --highlight-foreground-color:var(--highlight-text-background-color)!important;
 --highlight-foreground-color-hover:var(--highlight-text-background-color)!important;
 --highlight-alternative-foreground-color:var(--highlight-text-background-color)!important;
 --highlight-alternative-foreground-color-hover:var(--highlight-text-background-color)!important;
---highlight-foreground-color-inverted:var(--highlight-text-background-color)!important;
 /* Highlight */
 --highlight-secondary-background-color-hover:var(--highlight-secondary-background-color)!important;
 --highlight-tertiary-background-color-hover:var(--highlight-tertiary-background-color)!important;
@@ -5223,14 +5273,12 @@ html:not(.visualmode-threeD) .threeD-on {
 --highlight-text-foreground-color-hover:var(--highlight-background-color)!important;
 --highlight-text-alternative-foreground-color:var(--highlight-background-color)!important;
 --highlight-text-alternative-foreground-color-hover:var(--highlight-background-color)!important;
---highlight-text-foreground-color-inverted:var(--highlight-background-color)!important;
 /* Hyperlink */
 --hyperlink-background-color-hover:var(--hyperlink-background-color)!important;
 --hyperlink-foreground-color:var(--canvas-background-color)!important;
 --hyperlink-foreground-color-hover:var(--canvas-background-color)!important;
 --hyperlink-alternative-foreground-color:var(--canvas-background-color)!important;
 --hyperlink-alternative-foreground-color-hover:var(--canvas-background-color)!important;
---hyperlink-foreground-color-inverted:var(--canvas-background-color)!important;
 /* Hyperlink */
 --hyperlink-secondary-background-color-hover:var(--hyperlink-secondary-background-color)!important;
 --hyperlink-tertiary-background-color-hover:var(--hyperlink-tertiary-background-color)!important;
@@ -5241,7 +5289,6 @@ html:not(.visualmode-threeD) .threeD-on {
 --visited-hyperlink-foreground-color-hover:var(--canvas-background-color)!important;
 --visited-hyperlink-alternative-foreground-color:var(--canvas-background-color)!important;
 --visited-hyperlink-alternative-foreground-color-hover:var(--canvas-background-color)!important;
---visited-hyperlink-foreground-color-inverted:var(--canvas-background-color)!important;
 /* Visited Hyperlink */
 --visited-hyperlink-secondary-background-color-hover:var(--visited-hyperlink-secondary-background-color)!important;
 --visited-hyperlink-tertiary-background-color-hover:var(--visited-hyperlink-tertiary-background-color)!important;
@@ -5252,7 +5299,6 @@ html:not(.visualmode-threeD) .threeD-on {
 --active-title-foreground-color-hover:var(--active-title-text-background-color)!important;
 --active-title-alternative-foreground-color:var(--active-title-text-background-color)!important;
 --active-title-alternative-foreground-color-hover:var(--active-title-text-background-color)!important;
---active-title-foreground-color-inverted:var(--active-title-text-background-color)!important;
 /* Active Title */
 --active-title-secondary-background-color-hover:var(--active-title-secondary-background-color)!important;
 --active-title-tertiary-background-color-hover:var(--active-title-tertiary-background-color)!important;
@@ -5263,21 +5309,18 @@ html:not(.visualmode-threeD) .threeD-on {
 --active-title-text-foreground-color-hover:var(--active-title-background-color)!important;
 --active-title-text-alternative-foreground-color:var(--active-title-background-color)!important;
 --active-title-text-alternative-foreground-color-hover:var(--active-title-background-color)!important;
---active-title-text-foreground-color-inverted:var(--active-title-background-color)!important;
 /* Inactive Title */
 --inactive-title-background-color-hover:var(--inactive-title-background-color)!important;
 --inactive-title-foreground-color:var(--inactive-title-text-background-color)!important;
 --inactive-title-foreground-color-hover:var(--inactive-title-text-background-color)!important;
 --inactive-title-alternative-foreground-color:var(--inactive-title-text-background-color)!important;
 --inactive-title-alternative-foreground-color-hover:var(--inactive-title-text-background-color)!important;
---inactive-title-foreground-color-inverted:var(--inactive-title-text-background-color)!important;
 /* Inactive Title Text */
 --inactive-title-text-background-color-hover:var(--inactive-title-text-background-color)!important;
 --inactive-title-text-foreground-color:var(--inactive-title-background-color)!important;
 --inactive-title-text-foreground-color-hover:var(--inactive-title-background-color)!important;
 --inactive-title-text-alternative-foreground-color:var(--inactive-title-background-color)!important;
 --inactive-title-text-alternative-foreground-color-hover:var(--inactive-title-background-color)!important;
---inactive-title-text-foreground-color-inverted:var(--inactive-title-background-color)!important;
 /* Alert */
 --alert-alternative-foreground-color:var(--hyperlink-alternative-foreground-color)!important;
 --alert-fadeout-color:var(--hyperlink-fadeout-color)!important;
@@ -5288,7 +5331,6 @@ html:not(.visualmode-threeD) .threeD-on {
 --alert-gradient-color-hover:var(--hyperlink-gradient-color-hover)!important;
 --alert-foreground-color:var(--hyperlink-foreground-color)!important;
 --alert-foreground-color-hover:var(--hyperlink-foreground-color-hover)!important;
---alert-foreground-color-inverted:var(--hyperlink-foreground-color-inverted)!important;
 --alert-secondary-background-color:var(--hyperlink-secondary-background-color)!important;
 --alert-secondary-background-color-hover:var(--alert-secondary-background-color)!important;
 --alert-tertiary-background-color:var(--hyperlink-tertiary-background-color)!important;
@@ -5305,7 +5347,6 @@ html:not(.visualmode-threeD) .threeD-on {
 --pause-gradient-color-hover:var(--inactive-text-gradient-color-hover)!important;
 --pause-foreground-color:var(--inactive-text-foreground-color)!important;
 --pause-foreground-color-hover:var(--inactive-text-foreground-color-hover)!important;
---pause-foreground-color-inverted:var(--inactive-text-foreground-color-inverted)!important;
 --pause-secondary-background-color:var(--inactive-text-secondary-background-color)!important;
 --pause-secondary-background-color-hover:var(--pause-secondary-background-color)!important;
 --pause-tertiary-background-color:var(--inactive-text-tertiary-background-color)!important;
@@ -5322,7 +5363,6 @@ html:not(.visualmode-threeD) .threeD-on {
 --warning-gradient-color-hover:var(--highlight-gradient-color-hover)!important;
 --warning-foreground-color:var(--highlight-foreground-color)!important;
 --warning-foreground-color-hover:var(--highlight-foreground-color-hover)!important;
---warning-foreground-color-inverted:var(--highlight-foreground-color-inverted)!important;
 --warning-secondary-background-color:var(--highlight-secondary-background-color)!important;
 --warning-secondary-background-color-hover:var(--warning-secondary-background-color)!important;
 --warning-tertiary-background-color:var(--highlight-tertiary-background-color)!important;
@@ -5339,7 +5379,6 @@ html:not(.visualmode-threeD) .threeD-on {
 --success-gradient-color-hover:var(--canvas-text-gradient-color-hover)!important;
 --success-foreground-color:var(--canvas-text-foreground-color)!important;
 --success-foreground-color-hover:var(--canvas-text-foreground-color-hover)!important;
---success-foreground-color-inverted:var(--canvas-text-foreground-color-inverted)!important;
 --success-secondary-background-color:var(--canvas-text-secondary-background-color)!important;
 --success-secondary-background-color-hover:var(--success-secondary-background-color)!important;
 --success-tertiary-background-color:var(--active-title-text-background-color)!important;
@@ -5356,7 +5395,6 @@ html:not(.visualmode-threeD) .threeD-on {
 --progress-gradient-color-hover:var(--active-title-gradient-color-hover)!important;
 --progress-foreground-color:var(--active-title-foreground-color)!important;
 --progress-foreground-color-hover:var(--active-title-foreground-color-hover)!important;
---progress-foreground-color-inverted:var(--active-title-foreground-color-inverted)!important;
 --progress-secondary-background-color:var(--active-title-secondary-background-color)!important;
 --progress-secondary-background-color-hover:var(--progress-secondary-background-color)!important;
 --progress-tertiary-background-color:var(--active-title-tertiary-background-color)!important;
@@ -5373,7 +5411,6 @@ html:not(.visualmode-threeD) .threeD-on {
 --message-gradient-color-hover:var(--inactive-text-gradient-color-hover)!important;
 --message-foreground-color:var(--inactive-text-foreground-color)!important;
 --message-foreground-color-hover:var(--inactive-text-foreground-color-hover)!important;
---message-foreground-color-inverted:var(--inactive-text-foreground-color-inverted)!important;
 --message-secondary-background-color:var(--inactive-text-secondary-background-color)!important;
 --message-secondary-background-color-hover:var(--message-secondary-background-color)!important;
 --message-tertiary-background-color:var(--inactive-text-tertiary-background-color)!important;
@@ -5525,7 +5562,6 @@ background-color:var(--highlight-background-color);
   --button-background-color:var(--hyperlink-background-color);
   --button-background-color-hover:var(--hyperlink-background-color-hover-2);
   --button-foreground-color:var(--hyperlink-foreground-color);
-  --button-foreground-color-inverted:var(--hyperlink-foreground-color-inverted);
  
 }
 
@@ -5533,7 +5569,6 @@ background-color:var(--highlight-background-color);
   --button-background-color:var(--inactive-text-background-color);
   --button-background-color-hover:var(--inactive-text-background-color-hover-2);
   --button-foreground-color:var(--inactive-text-foreground-color);
-  --button-foreground-color-inverted:var(--inactive-text-foreground-color-inverted);
  
 }
 
@@ -5542,14 +5577,12 @@ background-color:var(--highlight-background-color);
   --button-background-color:var(--highlight-background-color);
   --button-background-color-hover:var(--highlight-background-color-hover-2);
   --button-foreground-color:var(--highlight-foreground-color);
-  --button-foreground-color-inverted:var(--highlight-foreground-color-inverted);
 }
 
 .visualmode-contrast .cpe-button.is-success-color {
   --button-background-color:var(--canvas-text-background-color);
   --button-background-color-hover:var(--canvas-text-background-color-hover-2);
   --button-foreground-color:var(--canvas-text-foreground-color);
-  --button-foreground-color-inverted:var(--canvas-text-foreground-color-inverted);
 }
 
 .visualmode-contrast .cpe-button.is-progress-color,
@@ -5557,7 +5590,6 @@ background-color:var(--highlight-background-color);
   --button-background-color:var(--active-title-background-color);
   --button-background-color-hover:var(--active-title-background-color-hover-2);
   --button-foreground-color:var(--active-title-foreground-color);
-  --button-foreground-color-inverted:var(--active-title-foreground-color-inverted);
 }
 
 .visualmode-contrast .cpe-button.is-info-color,
@@ -5565,7 +5597,6 @@ background-color:var(--highlight-background-color);
   --button-background-color:var(--inactive-title-background-color);
   --button-background-color-hover:var(--inactive-title-background-color-hover-2);
   --button-foreground-color:var(--inactive-title-foreground-color);
-  --button-foreground-color-inverted:var(--inactive-title-foreground-color-inverted);
  
 }
 
