@@ -216,7 +216,7 @@ function AddFloatingBanner(content='Sample Content',kind='message',extraclass=''
 	}
 
 	document.querySelector(".top-gap #floatingbanner .banners").insertAdjacentHTML('beforeend', 
-			'<div class=" cpe-banner-notification is-' + kind + '" id="' + extraclass  + '">' +
+			'<div class=" cpe-banner-notification is-transparent is-' + kind + '" id="' + extraclass  + '">' +
 			  '<div class="cpe-banner-notification__icon">' +
 				'<span class="cpe-icon cpe-icon-small material-icons">' +
 					icon + 
@@ -228,6 +228,11 @@ function AddFloatingBanner(content='Sample Content',kind='message',extraclass=''
 			  '</span>' +
 			'</div>' 
 	);
+
+setTimeout(
+		(function () {
+			document.querySelector(".top-gap #floatingbanner .banners .cpe-banner-notification.is-transparent").classList.remove("is-transparent")
+	}),0);
 	
 
 
