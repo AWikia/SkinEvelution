@@ -3204,3 +3204,28 @@ body .mw-cookiewarning-container {
 body .mw-cookiewarning-container .mw-cookiewarning-text {
     color:inherit;
 }
+
+/* Progress Bar */
+body .mw-pt-progress::after {
+	outline:1px solid var(--hightlight-background-color);
+}
+
+body .mw-pt-progress--low::after {
+	border:2px solid var(--inactive-text-background-color);
+	background:conic-gradient(var(--highlight-background-color) 0deg,var(--canvas-background-color) 0deg);
+}
+
+body .mw-pt-progress--med::after {
+	background:conic-gradient(var(--highlight-background-color) 180deg,var(--canvas-background-color) 0deg);
+	border:0;
+}
+
+body .mw-pt-progress--high::after {
+	background:conic-gradient(var(--highlight-background-color) 252deg,var(--canvas-background-color) 0deg);
+	border:0;
+}
+
+body .mw-pt-progress--complete::after {
+	background:conic-gradient(var(--canvas-background-color) 0deg,var(--highlight-background-color) 0deg);
+	border:0;
+}

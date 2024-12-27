@@ -773,12 +773,6 @@ function InitDesigner() {
 				'<option value="invert(100%) sepia(100%) opacity(50%)">' +
 				'<option value="invert(100%) blur(3px) opacity(50%)">' +
 			'</datalist>' +
-			'<datalist id="td_aopacity">' + // Image Opacity
-				'<option value="0.6" label="60%">' +
-				'<option value="0.7" label="70%">' +
-				'<option value="0.8" label="80%">' +
-				'<option value="0.9" label="80%">' +
-			'</datalist>' +
 			'<datalist id="td_gchs">' + // Image Opacity
 				'<option value="-15" label="-15deg">' +
 				'<option value="0" label="0deg">' +
@@ -1291,19 +1285,6 @@ function InitDesigner() {
 		// TR
 			'<tr>' +
 				'<th rowspan="2" style="width:var(--td-size);">' + 
-					mw.msg( 'evelution-designer-acrylic-opacity' ) + 
-				'</th>' +
-				'<th colspan="2"><span class="cpe-icon material-icons">opacity</span></th>' +
-			'</tr>' +
-
-			'<tr>' +
-				'<td style="text-align:center; width:300px" colspan="2">' +
-					'<input type="range" class="big" style="min-width:calc(var(--td-size) * 2); min-width:calc(var(--td-size) * 2);" id="aopacity" value="0.6" min="0.6" max="0.9" step="0.01" list="td_aopacity" autocomplete="off" />' + // Body Background 
-				'</td>' +
-			'</tr>' +
-		// TR
-			'<tr>' +
-				'<th rowspan="2" style="width:var(--td-size);">' + 
 					mw.msg( 'evelution-designer-gchs' ) + 
 				'</th>' +
 				'<th><span class="cpe-icon material-icons">palette</span></th>' +
@@ -1600,7 +1581,7 @@ function InitDesigner() {
 '<hr>' +
 '<div class="preview-window-desk">' +
 	'<div class="preview-window-window" force-active>' +
-		'<div class="lunalevit disables-on-accent"></div>' +
+		'<div class="lunalevit accented"></div>' +
 		'<h2>' +
 			'<span>Active Window #1</span>' +
 			'<button class="minimize" title="Minimize">' +
@@ -1625,7 +1606,7 @@ function InitDesigner() {
 	'</div>' +
 
 	'<div class="preview-window-window" force-active>' +
-		'<div class="lunalevit disables-on-accent"></div>' +
+		'<div class="lunalevit accented"></div>' +
 		'<h2>' +
 			'<span>Active Window #2</span>' +
 			'<button class="minimize" title="Minimize">' +
@@ -1652,7 +1633,7 @@ function InitDesigner() {
 	'</div>' +
 
 	'<div class="preview-window-window" force-active>' +
-		'<div class="lunalevit disables-on-accent"></div>' +
+		'<div class="lunalevit accented"></div>' +
 		'<h2>' +
 			'<span>Active Window #3</span>' +
 			'<button class="minimize" title="Minimize">' +
@@ -1684,7 +1665,7 @@ function InitDesigner() {
 	'</div>' +
 
 	'<div class="preview-window-window" force-active>' +
-		'<div class="lunalevit disables-on-accent"></div>' +
+		'<div class="lunalevit accented"></div>' +
 		'<h2>' +
 			'<span>Active Window #4</span>' +
 			'<button class="minimize" title="Minimize">' +
@@ -1711,7 +1692,7 @@ function InitDesigner() {
 	'</div>' +
 
 	'<div class="preview-window-window" force-active>' +
-		'<div class="lunalevit disables-on-accent"></div>' +
+		'<div class="lunalevit accented"></div>' +
 		'<h2>' +
 			'<span>Active Window #5</span>' +
 			'<button class="close" title="Close">' +
@@ -1729,7 +1710,7 @@ function InitDesigner() {
 	'</div>' +
 
 	'<div class="preview-window-window sharp" force-active>' +
-		'<div class="lunalevit disables-on-accent"></div>' +
+		'<div class="lunalevit accented"></div>' +
 		'<h2>' +
 			'<span>Active Window #6</span>' +
 			'<button class="minimize" title="Minimize">' +
@@ -1756,7 +1737,7 @@ function InitDesigner() {
 	'</div>' +
 
 	'<div class="preview-window-window" force-active>' +
-		'<div class="lunalevit disables-on-accent"></div>' +
+		'<div class="lunalevit accented"></div>' +
 		'<h2>' +
 			'<span>Active Window #7</span>' +
 			'<button class="minimize" title="Minimize">' +
@@ -1808,7 +1789,7 @@ function InitDesigner() {
 	'</div>' +
 
 	'<div class="preview-window-window inactive" force-inactive>' +
-		'<div class="lunalevit disables-on-accent"></div>' +
+		'<div class="lunalevit accented"></div>' +
 		'<h2>' +
 			'<span>Inactive Window</span>' +
 			'<button class="minimize" title="Minimize">' +
@@ -2050,7 +2031,6 @@ function ApplyTheme () {
 				 '--icon-filter-hover:' + $('#filter2').val()  + ';\n' +
 				 '--icon-filter-duration:' + $('#filter3').val() + "ms" + ';\n' +
 				 '--icon-filter-delay:' + $('#filter4').val() + "ms" + ';\n' +
-				 '--system-acryllic-opacity:' + $('#aopacity').val() + ';\n' +
 				 '--system-generic-color-hue-shift:' + $('#gchs').val() + ';\n' +
 				 '--system-generic-color-saturation:' + $('#gcs').val() + "%" + ';\n' +
 				 '--system-icon-style:' + $('.icon_style .cpe-select__value').attr('value')  + ';\n' +
@@ -2228,7 +2208,6 @@ function CopyTheme() {
 				 '--icon-filter-hover:' + $('#filter2').val()  + ';\n' +
 				 '--icon-filter-duration:' + $('#filter3').val() + "ms" + ';\n' +
 				 '--icon-filter-delay:' + $('#filter4').val() + "ms" + ';\n' +
-				 '--system-acryllic-opacity:' + $('#aopacity').val() + ';\n' +
 				 '--system-generic-color-hue-shift:' + $('#gchs').val() + ';\n' +
 				 '--system-generic-color-saturation:' + $('#gcs').val() + "%" + ';\n' +
 				 '--system-icon-style:' + $('.icon_style .cpe-select__value').attr('value')  + ';\n' +
@@ -2668,8 +2647,6 @@ function PasteTheme(dynamic=true) {
 	// Filter Delay
 	$('#filter4').val( parseInt(getComputedStyle(themeconfig).getPropertyValue("--icon-filter-delay")) );
 	// acrylic Opacity
-	$('#aopacity').val( getComputedStyle(themeconfig).getPropertyValue("--system-acryllic-opacity") );
-	// acrylic Opacity
 	$('#gchs').val( getComputedStyle(themeconfig).getPropertyValue("--system-generic-color-hue-shift") );
 	$('#gcs').val( parseInt(getComputedStyle(themeconfig).getPropertyValue("--system-generic-color-saturation")) );
 	// Icon Style
@@ -2835,7 +2812,6 @@ function TestTheme(banner=false) {
 				 '--icon-filter-hover:' + $('#filter2').val()  + '!important;\n' +
 				 '--icon-filter-duration:' + $('#filter3').val() + "ms" + '!important;\n' +
 				 '--icon-filter-delay:' + $('#filter4').val() + "ms" + '!important;\n' +
-				 '--system-acryllic-opacity:' + $('#aopacity').val() + '!important;\n' +
 				 '--system-generic-color-hue-shift:' + $('#gchs').val() + '!important;\n' +
 				 '--system-generic-color-saturation:' + $('#gcs').val() + "%" + '!important;\n' +
 				 '--system-icon-style:' + $('.icon_style .cpe-select__value').attr('value')  + '!important;\n' +

@@ -273,9 +273,12 @@ container > .main {
 .link:not(.is-disabled):active .cpe-icon,
 .link:not([disabled]):focus .cpe-icon,
 .link:not(.is-disabled):focus .cpe-icon,
+.link:not([disabled]).active .cpe-icon,
+.link:not(.is-disabled).active .cpe-icon,
 .cpe-dropdown.opens-on-hover:hover > .link .cpe-icon,
 .cpe-dropdown:focus > .link .cpe-icon,
 .cpe-dropdown:focus-within > .link .cpe-icon,
+.selected > .link .cpe-icon,
 /* Force Grow */
 .force-grow:not([disabled]):active .cpe-icon,
 .force-grow:not(.is-disabled):active .cpe-icon,
@@ -283,7 +286,8 @@ container > .main {
 .force-grow:not(.is-disabled):focus .cpe-icon,
 .cpe-dropdown.opens-on-hover:hover > .force-grow .cpe-icon,
 .cpe-dropdown:focus > .force-grow .cpe-icon,
-.cpe-dropdown:focus-within > .force-grow .cpe-icon {
+.cpe-dropdown:focus-within > .force-grow .cpe-icon,
+.selected > .force-grow .cpe-icon {
 	--icon-grow:1.1;
 }
 
@@ -308,21 +312,22 @@ container > .main {
 	--global-nav-link-opacity:0.2;
 	--global-nav-link-border-opacity:0.1;
 	--global-nav-icon-scale-factor:50;
-	--global-nav-opacity:var(--acrylic-opacity);
+	--global-nav-opacity:var(--luna-acrylic-opacity);
 	-webkit-backdrop-filter:var(--acrylic-filter);
 	backdrop-filter:var(--acrylic-filter);
 	background-color:rgb(from var(--global-nav-color) r g b / var(--global-nav-opacity));
 	display:flex;
 	flex-direction:column;
 	color:var(--global-nav-text-color);
-	box-shadow: 0 0 3px var(--canvas-text-background-color), 0 0 3px var(--canvas-background-color), var(--threeD-shadow);
+	box-shadow: 1px var(--minibar-size) 3px 0 rgb(from var(--canvas-text-background-color) r g b / .2), 1px var(--minibar-size) 3px 0 rgb(from var(--canvas-background-color) r g b / 0.2), var(--threeD-shadow);
 	height:100%;
 	width:var(--global-nav-size);
 	position:fixed;
 	z-index:100;
 	top:0;
 	transition:transform var(--transition-duration) var(--transition-timing-function), opacity var(--transition-duration) var(--transition-timing-function), background-color var(--transition-duration) var(--transition-timing-function), border-left-color var(--transition-duration) var(--transition-timing-function);
-
+	border:0 solid var(--luna-border-background-color);
+	box-sizing:content-box;
 }
 
 .evelution-sidebar .explore-menu .cpe-list {
@@ -346,6 +351,7 @@ container > .main {
 	flex:1;
 	display:flex;
 	flex-direction:column;
+	box-sizing:border-box;
 }
 
 .evelution-sidebar .bottom-links {
@@ -481,6 +487,7 @@ container > .main {
 	}
 	.evelution-taskbar  {
 		left:0;
+		border-right-width:1px;
 	}
 	.evelution-taskbar .link  {
 		height:var(--toolbar-link-size);
@@ -604,6 +611,8 @@ container > .main {
 		z-index:100;
 		width:calc(100%);
 		transform-origin:bottom;
+		box-shadow: 0 -2px 6px 0 rgb(from var(--canvas-text-background-color) r g b / .4), 0 -2px 6px 0 rgb(from var(--canvas-background-color) r g b / 0.4);
+		border-top-width:1px;
 	}
 
 
@@ -1492,6 +1501,10 @@ gap:2px;
 		flex:1;
 	}
 
+	.evelution-top-actions .link:first-child {
+		margin-left:0px;
+	}
+
 	.evelution-top-actions .link .cpe-icon {
 		filter:var(--desktop-filter);
 	}
@@ -1661,16 +1674,26 @@ gap:2px;
  }
 
 
+	.evelution-header .local-navigation .link,
+	.evelution-header .link.local-nav-switch {
+		margin-left:0;
+	}
+	@media (orientation:landscape) {
+		.evelution-header .local-navigation .link,
+		.evelution-header .link.local-nav-switch {
+			margin-left:1px;
+		}
+	}
 
 	.evelution-header .local-navigation .cpe-dropdown__content {
 		transform:none;
-		left:0;
+		left:0px;
 		left:calc(0px - env(safe-area-inset-left));
 	}
 
 	.evelution-header .local-navigation .cpe-dropdown__content .local-navigation__content {
-		height:calc(100vh - var(--minibar-size) - var(--bottom-padding) - 14px - 48px);
-		max-height:calc(100vh - var(--minibar-size) - var(--bottom-padding) - 14px - 48px);
+		height:calc(100vh - var(--minibar-size) - var(--bottom-padding) - 12px - 48px);
+		max-height:calc(100vh - var(--minibar-size) - var(--bottom-padding) - 12px - 48px);
 		margin-top:-7px;
 		margin-bottom:-7px;
 		padding-top:7px;
@@ -3232,6 +3255,7 @@ body .mw-cookiewarning-container {
 }
 
 .preview-window-window {
+	--contrast-box-shadow:0px 0px 0 1px var(--luna-border-background-color);
 	--window-radius:var(--window-border-radius);
 	margin:0px auto 20px;
 	top:10px;
@@ -3471,7 +3495,8 @@ white-space:nowrap;
 }
 
 .preview-theme-wrapper .window {
-	background-color:rgb(from var(--header-color) r g b / var(--acrylic-opacity));
+	--contrast-box-shadow:0px 0px 0 1px var(--luna-border-background-color);
+	background-color:rgb(from var(--header-color) r g b / var(--luna-acrylic-opacity));
 	color:var(--header-text);
 	box-shadow:0 2px 6px 0 rgb(from var(--canvas-text-background-color) r g b / .4), 0 2px 6px 0 rgb(from var(--canvas-background-color) r g b / 0.4), 0 0 0 1px var(--header-border); /* On Evelution OS, canvas and canvas text color are set under a different parent */
 	width:64px;
