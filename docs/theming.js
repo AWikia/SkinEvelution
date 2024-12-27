@@ -1220,8 +1220,9 @@ function GetForegroundVariables(color) {
 
 
 /* Get Gradient Variables */
-function GetGradientVariable(color,name="canvas") {
-	if (isLightColor(color)) {
+function GetGradientVariable(color,name="canvas", invert=false) {
+	var func = invert ? (isDarkColor(color)) : (isLightColor(color));
+	if (func) {
 		return ['var(--' + name + '-background-color)', 'var(--' + name + '-background-color-hover)']
 	} else {
 		return ['var(--' + name + '-background-color-hover)', 'var(--' + name + '-background-color)']
@@ -2275,34 +2276,15 @@ if (imgfilter == 'none') {
 	var imgfilter = 'opacity(1)';
 }
 
-aopacity = getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--system-acryllic-opacity");
 
 // Gradient Sets
-		// Dledlen
-		var alert_gradient= GetGradientVariable(content_color,'alert');
-		var pause_gradient= GetGradientVariable(content_color,'pause');
-		var warning_gradient = GetGradientVariable(content_color,'warning');
-		var success_gradient = GetGradientVariable(content_color,'success');
-		var progress_gradient = GetGradientVariable(content_color,'progress');
-		var message_gradient = GetGradientVariable(content_color,'message');
-		var dropdowncolor_gradient = GetGradientVariable(content_color,'canvas-secondary');
-		var head_gradient = GetGradientVariable(content_color,'desktop');
-		var link_gradient = GetGradientVariable(content_color,'hyperlink');
-		var vlink_gradient = GetGradientVariable(content_color,'visited-hyperlink');
-		var alink_gradient = GetGradientVariable(content_color,'active-text');
-
-		// Inverted Dledlen
-		var content2_text_gradient = GetGradientVariable(content_text,'canvas-text-secondary');
-		var headertext_gradient = GetGradientVariable(content_text,'desktop-text')
-var content_color_gradient = GetGradientVariable(content_color,'canvas');
-var content_text_gradient = GetGradientVariable(content_text,'canvas-text');
 var button_gradient = GetGradientVariable(button_color,'highlight');
-var buttontext_gradient = GetGradientVariable(buttontext_color,'highlight-text');
+var buttontext_gradient = GetGradientVariable(button_color,'highlight-text',true);
 var border_gradient = GetGradientVariable(border_color,'inactive-text');
 var caret_gradient = GetGradientVariable(caret_color,'active-title');
-var carettext_gradient = GetGradientVariable(caret_color,'active-title-text');
+var carettext_gradient = GetGradientVariable(caret_color,'active-title-text',true);
 var caretIT_gradient = GetGradientVariable(caretIT_color,'inactive-title');
-var caretITtext_gradient = GetGradientVariable(caretITtext_color,'inactive-title-text');
+var caretITtext_gradient = GetGradientVariable(caretIT_color,'inactive-title-text',true);
 
 // Foreground texts
 var alert_fg = GetForegroundVariables(alert_color);
@@ -2415,29 +2397,18 @@ var invfilters = [
 						  "--message-alternative-foreground-color:" + message_fg[2] + "!important;\n" + 
 						  "--message-alternative-foreground-color-hover:" + message_fg[3] + "!important;\n" + 
 						  "--canvas-secondary-background-color:" + dropdowncolor + ";\n" + 
-						  "--canvas-secondary-gradient-color:" + dropdowncolor_gradient[0] + ";\n" +
-						  "--canvas-secondary-gradient-color-hover:" + dropdowncolor_gradient[1] + ";\n" +
 						  "--canvas-secondary-foreground-color:" + dropdowncolor_fg[0] + ";\n" +
 						  "--canvas-secondary-foreground-color-hover:" +  dropdowncolor_fg[1] + ";\n" + 
 						  "--canvas-background-color:" + content_color + ";\n" +
 						  "--canvas-background-color-hover-ratio:" + content_colorR + ";\n" +
-						  "--canvas-gradient-color:" + content_color_gradient[0] + ";\n" +
-						  "--canvas-gradient-color-hover:" + content_color_gradient[1] + ";\n" +
 						  "--canvas-foreground-color:" + content_color_fg[0] + ";\n" +
 						  "--canvas-foreground-color-hover:" +  content_color_fg[1] + ";\n" + 
 						  "--canvas-tabs-background-color:" + tabscPage  + ";\n" +
-						  "--canvas-tabs-opacity:" + (tabsoPage * 0.5)  + ";\n" +
 						  "--canvas-active-tabs-opacity:" + tabsoPage  + ";\n" +
 						  "--canvas-text-background-color:" + content_text + ";\n" +
-						  "--canvas-text-gradient-color:" + content_text_gradient[0] + ";\n" +
-						  "--canvas-text-gradient-color-hover:" + content_text_gradient[1] + ";\n" +
 						  "--canvas-text-foreground-color:" + content_text_fg[0] + ";\n" +
 						  "--canvas-text-foreground-color-hover:" + content_text_fg[1] + ";\n" +
 						  "--canvas-text-secondary-background-color:" + content2_text + ";\n" +
-						  "--canvas-text-secondary-gradient-color:" + content2_text_gradient[0] + ";\n" +
-						  "--canvas-text-secondary-gradient-color-hover:" + content2_text_gradient[1] + ";\n" +
-						  "--canvas-text-secondary-gradient-color:" + content2_text_gradient[0] + ";\n" +
-						  "--canvas-text-secondary-gradient-color-hover:" + content2_text_gradient[1] + ";\n" +
 						  "--canvas-text-secondary-foreground-color:" + content2_text_fg[0] + ";\n" +
 						  "--canvas-text-secondary-foreground-color-hover:" + content2_text_fg[1] + ";\n" +
 						  "--highlight-background-color:" + button_color + ";\n" +
@@ -2455,13 +2426,10 @@ var invfilters = [
 						  "--highlight-tertiary-background-color:" + button3_color + ";\n" +
 						  "--highlight-quaternary-background-color:" + button4_color + ";\n" +
 						  "--hyperlink-background-color:" + link_color + ";\n" +
-						  "--hyperlink-gradient-color:" + link_gradient[0] + ";\n" +
-						  "--hyperlink-gradient-color-hover:" + link_gradient[1] + ";\n" +
 						  "--hyperlink-foreground-color:" + link_fg[0] + ";\n" +
 						  "--hyperlink-foreground-color-hover:" + link_fg[1] + ";\n" +
 						  "--hyperlink-default-text-decoration:" + getDefaultHyperlinkTextDecoration(link_color,content_text) + ";\n" +
 						  "--hyperlink-tabs-background-color:" + tabscLink  + ";\n" +
-						  "--hyperlink-tabs-opacity:" + (tabsoLink * 0.5)  + ";\n" +
 						  "--hyperlink-active-tabs-opacity:" + tabsoLink  + ";\n" +
 						  "--hyperlink-secondary-background-color:" + link2_color + ";\n" +
 						  "--hyperlink-secondary-default-text-decoration:" + getDefaultHyperlinkTextDecoration(link2_color,content2_text) + ";\n" +
@@ -2470,16 +2438,12 @@ var invfilters = [
 						  "--hyperlink-quaternary-background-color:" + link4_color + ";\n" +
 						  "--hyperlink-quaternary-default-text-decoration:" + getDefaultHyperlinkTextDecoration(link4_color,headertext_color) + ";\n" +
 						  "--visited-hyperlink-background-color:" + vlink_color + ";\n" +
-						  "--visited-hyperlink-gradient-color:" + vlink_gradient[0] + ";\n" +
-						  "--visited-hyperlink-gradient-color-hover:" + vlink_gradient[1] + ";\n" +
 						  "--visited-hyperlink-foreground-color:" + vlink_fg[0] + ";\n" +
 						  "--visited-hyperlink-foreground-color-hover:" + vlink_fg[1] + ";\n" +
 						  "--visited-hyperlink-secondary-background-color:" + vlink2_color + ";\n" +
 						  "--visited-hyperlink-tertiary-background-color:" + vlink3_color + ";\n" +
 						  "--visited-hyperlink-quaternary-background-color:" + vlink4_color + ";\n" +
 						  "--active-text-background-color:" + alink_color + ";\n" +
-						  "--active-text-gradient-color:" + alink_gradient[0] + ";\n" +
-						  "--active-text-gradient-color-hover:" + alink_gradient[1] + ";\n" +
 						  "--active-text-foreground-color:" + alink_fg[0] + ";\n" +
 						  "--active-text-foreground-color-hover:" + alink_fg[1] + ";\n" +
 						  "--active-text-secondary-background-color:" + alink2_color + ";\n" +
@@ -2495,13 +2459,9 @@ var invfilters = [
 						  "--inactive-text-tertiary-background-color:" + border3_color + ";\n" +
 						  "--inactive-text-quaternary-background-color:" + border4_color + ";\n" +
 						  "--desktop-background-color:" + head_color + ";\n" +
-						  "--desktop-gradient-color:" + head_gradient[0] + ";\n" +
-						  "--desktop-gradient-color-hover:" + head_gradient[1] + ";\n" +
 						  "--desktop-foreground-color:" + head_fg[0] + ";\n" +
 						  "--desktop-foreground-color-hover:" + head_fg[1] + ";\n" +
 						  "--desktop-text-background-color:" + headertext_color + ";\n" +
-						  "--desktop-text-gradient-color:" + headertext_gradient[0] + ";\n" +
-						  "--desktop-text-gradient-color-hover:" + headertext_gradient[1] + ";\n" +
 						  "--desktop-text-foreground-color:" + headertext_fg[0] + ";\n" +
 						  "--desktop-text-foreground-color-hover:" + headertext_fg[1] + ";\n" +
 						  "--active-title-background-color:" + caret_color + ";\n" +
@@ -2511,7 +2471,6 @@ var invfilters = [
 						  "--active-title-foreground-color:" + caret_fg[0] + ";\n" +
 						  "--active-title-foreground-color-hover:" + caret_fg[1] + ";\n" +
 						  "--active-title-tabs-background-color:" + tabscCaret  + ";\n" +
-						  "--active-title-tabs-opacity:" + (tabsoCaret * 0.5)  + ";\n" +
 						  "--active-title-active-tabs-opacity:" + tabsoCaret  + ";\n" +
 						  "--active-title-text-background-color:" + carettext_color + ";\n" +
 						  "--active-title-text-gradient-color:" + carettext_gradient[0] + ";\n" +
@@ -2527,7 +2486,6 @@ var invfilters = [
 						  "--inactive-title-foreground-color:" + caretIT_fg[0] + ";\n" +
 						  "--inactive-title-foreground-color-hover:" + caretIT_fg[1] + ";\n" +
 						  "--inactive-title-tabs-background-color:" + tabscCaretIT  + ";\n" +
-						  "--inactive-title-tabs-opacity:" + (tabsoCaretIT * 0.5)  + ";\n" +
 						  "--inactive-title-active-tabs-opacity:" + tabsoCaretIT  + ";\n" +
 						  "--inactive-title-text-background-color:" + caretITtext_color + ";\n" +
 						  "--inactive-title-text-gradient-color:" + caretITtext_gradient[0] + ";\n" +
@@ -2535,48 +2493,36 @@ var invfilters = [
 						  "--inactive-title-text-foreground-color:" + caretITtext_fg[0] + ";\n" +
 						  "--inactive-title-text-foreground-color-hover:" + caretITtext_fg[1] + ";\n" +
 						  "--alert-background-color:" + alert_color + "!important;\n" +
-						  "--alert-gradient-color:" + alert_gradient[0] + "!important;\n" +
-						  "--alert-gradient-color-hover:" + alert_gradient[1] + "!important;\n" +
 						  "--alert-foreground-color:" + alert_fg[0] + "!important;\n" +
 						  "--alert-foreground-color-hover:" + alert_fg[1] + "!important;\n" +
 						  "--alert-secondary-background-color:" + alert2_color + "!important;\n" +
 						  "--alert-tertiary-background-color:" + alert3_color + "!important;\n" +
 						  "--alert-quaternary-background-color:" + alert4_color + "!important;\n" +
 						  "--pause-background-color:" + pause_color + "!important;\n" +
-						  "--pause-gradient-color:" + pause_gradient[0] + "!important;\n" +
-						  "--pause-gradient-color-hover:" + pause_gradient[1] + "!important;\n" +
 						  "--pause-foreground-color:" + pause_fg[0] + "!important;\n" +
 						  "--pause-foreground-color-hover:" + pause_fg[1] + "!important;\n" +
 						  "--pause-secondary-background-color:" + pause2_color + "!important;\n" +
 						  "--pause-tertiary-background-color:" + pause3_color + "!important;\n" +
 						  "--pause-quaternary-background-color:" + pause4_color + "!important;\n" +
 						  "--warning-background-color:" + warning_color + "!important;\n" +
-						  "--warning-gradient-color:" + warning_gradient[0] + "!important;\n" +
-						  "--warning-gradient-color-hover:" + warning_gradient[1] + "!important;\n" +
 						  "--warning-foreground-color:" + warning_fg[0] + "!important;\n" +
 						  "--warning-foreground-color-hover:" + warning_fg[1] + "!important;\n" +
 						  "--warning-secondary-background-color:" + warning2_color + "!important;\n" +
 						  "--warning-tertiary-background-color:" + warning3_color + "!important;\n" +
 						  "--warning-quaternary-background-color:" + warning4_color + "!important;\n" +
 						  "--success-background-color:" + success_color + "!important;\n" +
-						  "--success-gradient-color:" + success_gradient[0] + "!important;\n" +
-						  "--success-gradient-color-hover:" + success_gradient[1] + "!important;\n" +
 						  "--success-foreground-color:" + success_fg[0] + "!important;\n" +
 						  "--success-foreground-color-hover:" + success_fg[1] + "!important;\n" +
 						  "--success-secondary-background-color:" + success2_color + "!important;\n" +
 						  "--success-tertiary-background-color:" + success3_color + "!important;\n" +
 						  "--success-quaternary-background-color:" + success4_color + "!important;\n" +
 						  "--progress-background-color:" + progress_color + "!important;\n" +
-						  "--progress-gradient-color:" + progress_gradient[0] + "!important;\n" +
-						  "--progress-gradient-color-hover:" + progress_gradient[1] + "!important;\n" +
 						  "--progress-foreground-color:" + progress_fg[0] + "!important;\n" +
 						  "--progress-foreground-color-hover:" + progress_fg[1] + "!important;\n" +
 						  "--progress-secondary-background-color:" + progress2_color + "!important;\n" +
 						  "--progress-tertiary-background-color:" + progress3_color + "!important;\n" +
 						  "--progress-quaternary-background-color:" + progress4_color + "!important;\n" +
 						  "--message-background-color:" + message_color + "!important;\n" +
-						  "--message-gradient-color:" + message_gradient[0] + "!important;\n" +
-						  "--message-gradient-color-hover:" + message_gradient[1] + "!important;\n" +
 						  "--message-foreground-color:" + message_fg[0] + "!important;\n" +
 						  "--message-foreground-color-hover:" + message_fg[1] + "!important;\n" +
 						  "--message-secondary-background-color:" + message2_color + "!important;\n" +
@@ -2605,13 +2551,10 @@ var invfilters = [
 						 '--custom-rounded-font:' + fon3  + ';\n' +
 						 '--custom-monospace-font:' + fon4  + ';\n' +
 						 '--border-radius:' + brad  + 'px;\n' +
-						 '--window-border-radius:' + (brad * 2)  + 'px;\n' +
-						 '--menu-border-radius:' + (brad * 0.6)  + 'px;\n' +
 						 '--icon-filter:' + getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--icon-filter")  + ';\n' +
 						 '--icon-filter-hover:' + wordfilter2  + ';\n' +
 						 '--icon-filter-duration:' + getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--icon-filter-duration")  + ';\n' +
 						 '--icon-filter-delay:' + getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--icon-filter-delay")  + ';\n' +
-						 '--system-acryllic-opacity:' + aopacity  + ';\n' +
 						 '--system-generic-color-hue-shift:' + getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--system-generic-color-hue-shift")  + ';\n' +
 						 '--system-generic-color-saturation:' + getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--system-generic-color-saturation")  + ';\n' +
 						 '--system-icon-style:' + getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--system-icon-style")  + ';\n' +
