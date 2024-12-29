@@ -327,10 +327,6 @@ function DisabledColorManagement() {
 	return ( (ForcedColors()) || (document.querySelector("body.no-color-management") ) ||  (window.ThemingEngine_ActiveVisualColors === 'nocolormanagement') )
 }
 
-function APCAMode() {
-	return (document.querySelector("body.has-apca-contrast-rules") )
-}
-
 function ForcedColors() {
 	return ( window.matchMedia('(forced-colors: active)').matches )
 }
@@ -694,7 +690,7 @@ function GetCanvas() {
 		var color = GetHyperlink();
 		var fg = GetForegroundVariables(color);
 		var h2 = chroma(color).get('hsl.h');
-		var color = ColorStyleAdjust(chroma(color).set('lch.l',fg[4]).set('hsl.h',h2));
+		var color = ColorStyleAdjust(chroma(color).set('lch.l',fg[2]).set('hsl.h',h2));
 		return ColorMix(color,ColorStyleAdjust(fg[0]),1.6);
 	} else {
 		return getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--canvas-background-color").trim();
@@ -897,44 +893,38 @@ function GetCustomFont4() {
 }
 
 
-function ContrastRatio() { // Used for Text (Non-APCA mode only)
-	if (APCAMode()) {
-		return ContrastRatioFormControls() // Not for non-APCA mode
-	}
+function ContrastRatio() { // Used for Text and Form Controls
 	var result = 0
 	if (ThemingEngine_ContrastMode == 'auto') {
-		result = (window.matchMedia('(prefers-contrast: more)').matches) ? 2.50 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 1.25 : 0.0
-	} else if (ThemingEngine_ContrastMode == 'low') { // 4.5
+		result = (window.matchMedia('(prefers-contrast: more)').matches) ? 15 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 7.5 : 0.0
+	} else if (ThemingEngine_ContrastMode == 'low') { // 3
 		result = 0.00
 	} else if (ThemingEngine_ContrastMode == 'custom1') { // Custom
-		result = 0.3125
-	} else if (ThemingEngine_ContrastMode == 'med-low') {
-		result = 0.625
-	} else if (ThemingEngine_ContrastMode == 'custom2') { // Custom
-		result = 0.9375
-	} else if (ThemingEngine_ContrastMode == 'med') {
-		result = 1.25
-	} else if (ThemingEngine_ContrastMode == 'custom3') { // Custom
-		result = 1.5625
-	} else if (ThemingEngine_ContrastMode == 'med-hi') {
 		result = 1.875
-	} else if (ThemingEngine_ContrastMode == 'custom4') { // Custom
-		result = 2.1875
-	} else if (ThemingEngine_ContrastMode == 'hi') { // 7
-		result = 2.50
-	} else if (ThemingEngine_ContrastMode == 'custom5') { // Custom
-		result = 2.8125
-	} else if (ThemingEngine_ContrastMode == 'hi-vhi') {
-		result = 3.125
-	} else if (ThemingEngine_ContrastMode == 'custom6') { // Custom
-		result = 3.4375
-	} else if (ThemingEngine_ContrastMode == 'vhi') {
+	} else if (ThemingEngine_ContrastMode == 'med-low') {
 		result = 3.75
+	} else if (ThemingEngine_ContrastMode == 'custom2') { // Custom
+		result = 5.625
+	} else if (ThemingEngine_ContrastMode == 'med') {
+		result = 7.5
+	} else if (ThemingEngine_ContrastMode == 'custom3') { // Custom
+		result = 9.375
+	} else if (ThemingEngine_ContrastMode == 'med-hi') {
+		result = 11.25
+	} else if (ThemingEngine_ContrastMode == 'custom4') { // Custom
+		result = 13.125
+	} else if (ThemingEngine_ContrastMode == 'hi') { // 4.5
+		result = 15
+	} else if (ThemingEngine_ContrastMode == 'custom5') { // Custom
+		result = 16.875
+	} else if (ThemingEngine_ContrastMode == 'hi-vhi') {
+		result = 18.75
+	} else if (ThemingEngine_ContrastMode == 'custom6') { // Custom
+		result = 20.625
+	} else if (ThemingEngine_ContrastMode == 'vhi') {
+		result = 22.5
 	} else {
-		result = (window.matchMedia('(prefers-contrast: more)').matches) ? 2.50 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 1.25 : 0.0
-	}
-	if (APCAMode()) { // Unused
-		result*=10
+		result = (window.matchMedia('(prefers-contrast: more)').matches) ? 15 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 7.5 : 0.0
 	}
 	return result
 }
@@ -974,45 +964,6 @@ function ContrastRatioDropdown() { // Used For Dropdown
 	}
 }
 
-function ContrastRatioFormControls() { // Used for Form Controls (And Text in APCA Mode)
-	var result = 0
-	if (ThemingEngine_ContrastMode == 'auto') {
-		result = (window.matchMedia('(prefers-contrast: more)').matches) ? 1.5 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 0.75 : 0.0
-	} else if (ThemingEngine_ContrastMode == 'low') { // 3
-		result = 0.00
-	} else if (ThemingEngine_ContrastMode == 'custom1') { // Custom
-		result = 0.1875
-	} else if (ThemingEngine_ContrastMode == 'med-low') {
-		result = 0.375
-	} else if (ThemingEngine_ContrastMode == 'custom2') { // Custom
-		result = 0.5625
-	} else if (ThemingEngine_ContrastMode == 'med') {
-		result = 0.75
-	} else if (ThemingEngine_ContrastMode == 'custom3') { // Custom
-		result = 0.9375
-	} else if (ThemingEngine_ContrastMode == 'med-hi') {
-		result = 1.125
-	} else if (ThemingEngine_ContrastMode == 'custom4') { // Custom
-		result = 1.3125
-	} else if (ThemingEngine_ContrastMode == 'hi') { // 4.5
-		result = 1.5
-	} else if (ThemingEngine_ContrastMode == 'custom5') { // Custom
-		result = 1.6875
-	} else if (ThemingEngine_ContrastMode == 'hi-vhi') {
-		result = 1.875
-	} else if (ThemingEngine_ContrastMode == 'custom6') { // Custom
-		result = 2.0625
-	} else if (ThemingEngine_ContrastMode == 'vhi') {
-		result = 2.25
-	} else {
-		result = (window.matchMedia('(prefers-contrast: more)').matches) ? 1.5 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 0.75 : 0.0
-	}
-	if (APCAMode()) {
-		result*=10
-	}
-	return result
-}
-
 function ContrastRatioAutoInactiveText() { // Used For Inactive Text
 
 	if (ThemingEngine_ContrastMode == 'auto') {
@@ -1050,27 +1001,16 @@ function ContrastRatioAutoInactiveText() { // Used For Inactive Text
 
 
 function getLargeTextContrast() {
-	if (APCAMode()) {
-		return 45
-	} else {
-		return 3.00
-	}
+	return 45
 }
 
 function getSmallTextContrast() {
-	if (APCAMode()) {
-		return 60
-	} else {
-		return 4.50
-	}
+	return 60
 }
 
 function getContrast(color1,color2) {
-	if (APCAMode()) {
-		return Math.abs(chroma.contrastAPCA(color1,color2));
-	} else {
-		return chroma.contrast(color1,color2);
-	}
+	return Math.abs(chroma.contrastAPCA(color1,color2));
+
 }
 
 function CompileGenericColors(color) {
@@ -1197,14 +1137,6 @@ if (isLightColor(page)) {
 
 function GetForegroundVariables(color) {
 	var body = document.querySelector('body');
-	// Text Color
-	if (isSemiLightColor(color)) {
-		var fc1 =  getComputedStyle(body).getPropertyValue("--light-theme-text-background-color");
-		var fc2 =  getComputedStyle(body).getPropertyValue("--light-theme-text-background-color-hover");
-	} else {
-		var fc1 =  getComputedStyle(body).getPropertyValue("--dark-theme-text-background-color");
-		var fc2 =  getComputedStyle(body).getPropertyValue("--dark-theme-text-background-color-hover");
-	}
 	// Foreground Color
 	if (isLightColor(color)) {
 		var f1 =  getComputedStyle(body).getPropertyValue("--light-theme-foreground-color");
@@ -1215,7 +1147,7 @@ function GetForegroundVariables(color) {
 		var f2 =  getComputedStyle(body).getPropertyValue("--dark-theme-foreground-color-hover");
 		var lt = 30;
 	}
-	return [f1, f2, fc1, fc2, lt]
+	return [f1, f2, lt]
 }
 
 
@@ -1689,15 +1621,6 @@ function isLightColor(color) {
 
 }
 
-function isSemiLightColor(color) {
-	var c1 = (getContrast(getComputedStyle(document.querySelector('body')).getPropertyValue("--light-theme-text-background-color"),  chroma(color)))
-	var c2 = (getContrast(getComputedStyle(document.querySelector('body')).getPropertyValue("--dark-theme-text-background-color"),  chroma(color)))
-	return (c1 > c2);
-/*
-	return chroma.deltaE('#e6e6e6', color) >= chroma.deltaE('#3a3a3a', color);
-*/
-}
-
 
 function isDarkColor(color) {
 	return !isLightColor(color)
@@ -1709,7 +1632,7 @@ return ((getContrast(color, color2)) >= contrast)
 }
 
 function isSuitableColorFormControls(color,color2) {
-var contrast = getLargeTextContrast()+ContrastRatioFormControls()
+var contrast = getLargeTextContrast()+ContrastRatio()
 return ((getContrast(color, color2)) >= contrast) // For Border Color
 }
 
@@ -2283,32 +2206,14 @@ var buttontext_gradient = GetGradientVariable(button_color,'highlight-text',true
 var border_gradient = GetGradientVariable(border_color,'inactive-text');
 var caret_gradient = GetGradientVariable(caret_color,'active-title');
 var carettext_gradient = GetGradientVariable(caret_color,'active-title-text',true);
-var caretIT_gradient = GetGradientVariable(caretIT_color,'inactive-title');
-var caretITtext_gradient = GetGradientVariable(caretIT_color,'inactive-title-text',true);
 
 // Foreground texts
-var alert_fg = GetForegroundVariables(alert_color);
-var pause_fg = GetForegroundVariables(pause_color);
-var warning_fg = GetForegroundVariables(warning_color);
-var success_fg = GetForegroundVariables(success_color);
-var progress_fg = GetForegroundVariables(progress_color);
-var message_fg = GetForegroundVariables(message_color);
-var content_color_fg = GetForegroundVariables(content_color);
-var dropdowncolor_fg = GetForegroundVariables(dropdowncolor);
-var content_text_fg = GetForegroundVariables(content_text);
-var content2_text_fg = GetForegroundVariables(content2_text);
+var dropdowncolor_fg = GetForegroundVariables(dropdowncolor); // Still required, as one can have a light canvas but a dark secondary canvas color under certain circumstances
 var button_fg = GetForegroundVariables(button_color);
-var buttontext_fg = GetForegroundVariables(buttontext_color);
-var link_fg = GetForegroundVariables(link_color);
-var vlink_fg = GetForegroundVariables(vlink_color);
-var alink_fg = GetForegroundVariables(alink_color);
 var border_fg = GetForegroundVariables(border_color);
 var head_fg = GetForegroundVariables(head_color);
-var headertext_fg = GetForegroundVariables(headertext_color);
 var caret_fg = GetForegroundVariables(caret_color);
-var carettext_fg = GetForegroundVariables(carettext_color);
-var caretIT_fg = GetForegroundVariables(caretIT_color);
-var caretITtext_fg = GetForegroundVariables(caretITtext_color);
+var caretIT_fg = GetForegroundVariables(caretIT_color); // Still required, as one can have a light canvas but a dark inactive title color under certain circumstances
 
 // Inverted Foreground texts
 
@@ -2352,65 +2257,15 @@ var invfilters = [
 /* Set Values for dynamical variables */
 	var result = 		  colorstyle +
 						  ":root {" +
-						  "--desktop-alternative-foreground-color:" + head_fg[2] + ";\n" + 
-						  "--desktop-alternative-foreground-color-hover:" + head_fg[3] + ";\n" + 
-						  "--desktop-text-alternative-foreground-color:" + headertext_fg[2] + ";\n" + 
-						  "--desktop-text-alternative-foreground-color-hover:" + headertext_fg[3] + ";\n" + 
-						  "--hyperlink-alternative-foreground-color:" + link_fg[2] + ";\n" + 
-						  "--hyperlink-alternative-foreground-color-hover:" + link_fg[3] + ";\n" + 
-						  "--visited-hyperlink-alternative-foreground-color:" + vlink_fg[2] + ";\n" + 
-						  "--visited-hyperlink-alternative-foreground-color-hover:" + vlink_fg[3] + ";\n" + 
-						  "--canvas-alternative-foreground-color:" + content_color_fg[2] + ";\n" + 
-						  "--canvas-alternative-foreground-color-hover:" + content_color_fg[3] + ";\n" + 
-						  "--canvas-secondary-alternative-foreground-color:" + dropdowncolor_fg[2] + ";\n" + 
-						  "--canvas-secondary-alternative-foreground-color-hover:" + dropdowncolor_fg[3] + ";\n" + 
-						  "--inactive-text-alternative-foreground-color:" + border_fg[2] + ";\n" + 
-						  "--inactive-text-alternative-foreground-color-hover:" + border_fg[3] + ";\n" + 
-						  "--active-text-alternative-foreground-color:" + alink_fg[2] + ";\n" + 
-						  "--active-text-alternative-foreground-color-hover:" + alink_fg[3] + ";\n" + 
-						  "--canvas-text-alternative-foreground-color:" + content_text_fg[2] + ";\n" + 
-						  "--canvas-text-alternative-foreground-color-hover:" + content_text_fg[3] + ";\n" + 
-						  "--canvas-text-secondary-alternative-foreground-color:" + content2_text_fg[2] + ";\n" + 
-						  "--canvas-text-secondary-alternative-foreground-color-hover:" + content2_text_fg[3] + ";\n" + 
-						  "--highlight-alternative-foreground-color:" + button_fg[2] + ";\n" + 
-						  "--highlight-alternative-foreground-color-hover:" + button_fg[3] + ";\n" + 
-						  "--highlight-text-alternative-foreground-color:" + buttontext_fg[2] + ";\n" + 
-						  "--highlight-text-alternative-foreground-color-hover:" + buttontext_fg[3] + ";\n" + 
-						  "--active-title-alternative-foreground-color:" + caret_fg[2] + ";\n" + 
-						  "--active-title-alternative-foreground-color-hover:" + caret_fg[3] + ";\n" + 
-						  "--active-title-text-alternative-foreground-color:" + carettext_fg[2] + ";\n" + 
-						  "--active-title-text-alternative-foreground-color-hover:" + carettext_fg[3] + ";\n" + 
-						  "--inactive-title-alternative-foreground-color:" + caretIT_fg[2] + ";\n" + 
-						  "--inactive-title-alternative-foreground-color-hover:" + caretIT_fg[3] + ";\n" + 
-						  "--inactive-title-text-alternative-foreground-color:" + caretITtext_fg[2] + ";\n" + 
-						  "--inactive-title-text-alternative-foreground-color-hover:" + caretITtext_fg[3] + ";\n" + 
-						  "--alert-alternative-foreground-color:" + alert_fg[2] + "!important;\n" + 
-						  "--alert-alternative-foreground-color-hover:" + alert_fg[3] + "!important;\n" + 
-						  "--pause-alternative-foreground-color:" + pause_fg[2] + "!important;\n" + 
-						  "--pause-alternative-foreground-color-hover:" + pause_fg[3] + "!important;\n" + 
-						  "--warning-alternative-foreground-color:" + warning_fg[2] + "!important;\n" + 
-						  "--warning-alternative-foreground-color-hover:" + warning_fg[3] + "!important;\n" + 
-						  "--success-alternative-foreground-color:" + success_fg[2] + "!important;\n" + 
-						  "--success-alternative-foreground-color-hover:" + success_fg[3] + "!important;\n" + 
-						  "--progress-alternative-foreground-color:" + progress_fg[2] + "!important;\n" + 
-						  "--progress-alternative-foreground-color-hover:" + progress_fg[3] + "!important;\n" + 
-						  "--message-alternative-foreground-color:" + message_fg[2] + "!important;\n" + 
-						  "--message-alternative-foreground-color-hover:" + message_fg[3] + "!important;\n" + 
 						  "--canvas-secondary-background-color:" + dropdowncolor + ";\n" + 
 						  "--canvas-secondary-foreground-color:" + dropdowncolor_fg[0] + ";\n" +
 						  "--canvas-secondary-foreground-color-hover:" +  dropdowncolor_fg[1] + ";\n" + 
 						  "--canvas-background-color:" + content_color + ";\n" +
 						  "--canvas-background-color-hover-ratio:" + content_colorR + ";\n" +
-						  "--canvas-foreground-color:" + content_color_fg[0] + ";\n" +
-						  "--canvas-foreground-color-hover:" +  content_color_fg[1] + ";\n" + 
 						  "--canvas-tabs-background-color:" + tabscPage  + ";\n" +
 						  "--canvas-active-tabs-opacity:" + tabsoPage  + ";\n" +
 						  "--canvas-text-background-color:" + content_text + ";\n" +
-						  "--canvas-text-foreground-color:" + content_text_fg[0] + ";\n" +
-						  "--canvas-text-foreground-color-hover:" + content_text_fg[1] + ";\n" +
 						  "--canvas-text-secondary-background-color:" + content2_text + ";\n" +
-						  "--canvas-text-secondary-foreground-color:" + content2_text_fg[0] + ";\n" +
-						  "--canvas-text-secondary-foreground-color-hover:" + content2_text_fg[1] + ";\n" +
 						  "--highlight-background-color:" + button_color + ";\n" +
 						  "--highlight-background-color-hover-ratio:" + buttoncolorR + ";\n" +
 						  "--highlight-gradient-color:" + button_gradient[0] + ";\n" +
@@ -2420,14 +2275,10 @@ var invfilters = [
 						  "--highlight-text-background-color:" + buttontext_color + ";\n" +
 						  "--highlight-text-gradient-color:" + buttontext_gradient[0] + ";\n" +
 						  "--highlight-text-gradient-color-hover:" + buttontext_gradient[1] + ";\n" +
-						  "--highlight-text-foreground-color:" + buttontext_fg[0] + ";\n" +
-						  "--highlight-text-foreground-color-hover:" + buttontext_fg[1] + ";\n" +
 						  "--highlight-secondary-background-color:" + button2_color + ";\n" +
 						  "--highlight-tertiary-background-color:" + button3_color + ";\n" +
 						  "--highlight-quaternary-background-color:" + button4_color + ";\n" +
 						  "--hyperlink-background-color:" + link_color + ";\n" +
-						  "--hyperlink-foreground-color:" + link_fg[0] + ";\n" +
-						  "--hyperlink-foreground-color-hover:" + link_fg[1] + ";\n" +
 						  "--hyperlink-default-text-decoration:" + getDefaultHyperlinkTextDecoration(link_color,content_text) + ";\n" +
 						  "--hyperlink-tabs-background-color:" + tabscLink  + ";\n" +
 						  "--hyperlink-active-tabs-opacity:" + tabsoLink  + ";\n" +
@@ -2438,14 +2289,10 @@ var invfilters = [
 						  "--hyperlink-quaternary-background-color:" + link4_color + ";\n" +
 						  "--hyperlink-quaternary-default-text-decoration:" + getDefaultHyperlinkTextDecoration(link4_color,headertext_color) + ";\n" +
 						  "--visited-hyperlink-background-color:" + vlink_color + ";\n" +
-						  "--visited-hyperlink-foreground-color:" + vlink_fg[0] + ";\n" +
-						  "--visited-hyperlink-foreground-color-hover:" + vlink_fg[1] + ";\n" +
 						  "--visited-hyperlink-secondary-background-color:" + vlink2_color + ";\n" +
 						  "--visited-hyperlink-tertiary-background-color:" + vlink3_color + ";\n" +
 						  "--visited-hyperlink-quaternary-background-color:" + vlink4_color + ";\n" +
 						  "--active-text-background-color:" + alink_color + ";\n" +
-						  "--active-text-foreground-color:" + alink_fg[0] + ";\n" +
-						  "--active-text-foreground-color-hover:" + alink_fg[1] + ";\n" +
 						  "--active-text-secondary-background-color:" + alink2_color + ";\n" +
 						  "--active-text-tertiary-background-color:" + alink3_color + ";\n" +
 						  "--active-text-quaternary-background-color:" + alink4_color + ";\n" +
@@ -2462,8 +2309,6 @@ var invfilters = [
 						  "--desktop-foreground-color:" + head_fg[0] + ";\n" +
 						  "--desktop-foreground-color-hover:" + head_fg[1] + ";\n" +
 						  "--desktop-text-background-color:" + headertext_color + ";\n" +
-						  "--desktop-text-foreground-color:" + headertext_fg[0] + ";\n" +
-						  "--desktop-text-foreground-color-hover:" + headertext_fg[1] + ";\n" +
 						  "--active-title-background-color:" + caret_color + ";\n" +
 						  "--active-title-background-color-hover-ratio:" + caretcolorR + ";\n" +
 						  "--active-title-gradient-color:" + caret_gradient[0] + ";\n" +
@@ -2475,56 +2320,36 @@ var invfilters = [
 						  "--active-title-text-background-color:" + carettext_color + ";\n" +
 						  "--active-title-text-gradient-color:" + carettext_gradient[0] + ";\n" +
 						  "--active-title-text-gradient-color-hover:" + carettext_gradient[1] + ";\n" +
-						  "--active-title-text-foreground-color:" + carettext_fg[0] + ";\n" +
-						  "--active-title-text-foreground-color-hover:" + carettext_fg[1] + ";\n" +
 						  "--active-title-secondary-background-color:" + caret2_color + ";\n" +
 						  "--active-title-tertiary-background-color:" + caret3_color + ";\n" +
 						  "--active-title-quaternary-background-color:" + caret4_color + ";\n" +
 						  "--inactive-title-background-color:" + caretIT_color + ";\n" +
-						  "--inactive-title-gradient-color:" + caretIT_gradient[0] + ";\n" +
-						  "--inactive-title-gradient-color-hover:" + caretIT_gradient[1] + ";\n" +
 						  "--inactive-title-foreground-color:" + caretIT_fg[0] + ";\n" +
 						  "--inactive-title-foreground-color-hover:" + caretIT_fg[1] + ";\n" +
 						  "--inactive-title-tabs-background-color:" + tabscCaretIT  + ";\n" +
 						  "--inactive-title-active-tabs-opacity:" + tabsoCaretIT  + ";\n" +
 						  "--inactive-title-text-background-color:" + caretITtext_color + ";\n" +
-						  "--inactive-title-text-gradient-color:" + caretITtext_gradient[0] + ";\n" +
-						  "--inactive-title-text-gradient-color-hover:" + caretITtext_gradient[1] + ";\n" +
-						  "--inactive-title-text-foreground-color:" + caretITtext_fg[0] + ";\n" +
-						  "--inactive-title-text-foreground-color-hover:" + caretITtext_fg[1] + ";\n" +
 						  "--alert-background-color:" + alert_color + "!important;\n" +
-						  "--alert-foreground-color:" + alert_fg[0] + "!important;\n" +
-						  "--alert-foreground-color-hover:" + alert_fg[1] + "!important;\n" +
 						  "--alert-secondary-background-color:" + alert2_color + "!important;\n" +
 						  "--alert-tertiary-background-color:" + alert3_color + "!important;\n" +
 						  "--alert-quaternary-background-color:" + alert4_color + "!important;\n" +
 						  "--pause-background-color:" + pause_color + "!important;\n" +
-						  "--pause-foreground-color:" + pause_fg[0] + "!important;\n" +
-						  "--pause-foreground-color-hover:" + pause_fg[1] + "!important;\n" +
 						  "--pause-secondary-background-color:" + pause2_color + "!important;\n" +
 						  "--pause-tertiary-background-color:" + pause3_color + "!important;\n" +
 						  "--pause-quaternary-background-color:" + pause4_color + "!important;\n" +
 						  "--warning-background-color:" + warning_color + "!important;\n" +
-						  "--warning-foreground-color:" + warning_fg[0] + "!important;\n" +
-						  "--warning-foreground-color-hover:" + warning_fg[1] + "!important;\n" +
 						  "--warning-secondary-background-color:" + warning2_color + "!important;\n" +
 						  "--warning-tertiary-background-color:" + warning3_color + "!important;\n" +
 						  "--warning-quaternary-background-color:" + warning4_color + "!important;\n" +
 						  "--success-background-color:" + success_color + "!important;\n" +
-						  "--success-foreground-color:" + success_fg[0] + "!important;\n" +
-						  "--success-foreground-color-hover:" + success_fg[1] + "!important;\n" +
 						  "--success-secondary-background-color:" + success2_color + "!important;\n" +
 						  "--success-tertiary-background-color:" + success3_color + "!important;\n" +
 						  "--success-quaternary-background-color:" + success4_color + "!important;\n" +
 						  "--progress-background-color:" + progress_color + "!important;\n" +
-						  "--progress-foreground-color:" + progress_fg[0] + "!important;\n" +
-						  "--progress-foreground-color-hover:" + progress_fg[1] + "!important;\n" +
 						  "--progress-secondary-background-color:" + progress2_color + "!important;\n" +
 						  "--progress-tertiary-background-color:" + progress3_color + "!important;\n" +
 						  "--progress-quaternary-background-color:" + progress4_color + "!important;\n" +
 						  "--message-background-color:" + message_color + "!important;\n" +
-						  "--message-foreground-color:" + message_fg[0] + "!important;\n" +
-						  "--message-foreground-color-hover:" + message_fg[1] + "!important;\n" +
 						  "--message-secondary-background-color:" + message2_color + "!important;\n" +
 						  "--message-tertiary-background-color:" + message3_color + "!important;\n" +
 						  "--message-quaternary-background-color:" + message4_color + "!important;\n" +

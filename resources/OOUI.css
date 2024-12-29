@@ -553,20 +553,22 @@ body .oo-ui-tabOptionWidget {
 }
 
 body .oo-ui-tabSelectWidget-framed .oo-ui-tabOptionWidget {
-	border-radius:var(--window-border-radius) var(--window-border-radius) 0 0;
+	border-radius:var(--window-border-radius);
 	border:1px solid transparent;
-	border-bottom:1px solid transparent;
 	background-clip:padding-box;
+	margin-bottom:4px;
 }
 
 body .oo-ui-tabSelectWidget-framed .oo-ui-tabOptionWidget.oo-ui-widget-enabled:hover {
 	background-color:rgb(from var(--canvas-background-color) r g b / 0.3);
 	color:var(--canvas-text-secondary-background-color);
+	box-shadow:var(--threeD-shadow);
 }
 
 body .oo-ui-tabSelectWidget-framed .oo-ui-tabOptionWidget.oo-ui-widget-enabled:active {
 	background-color:rgb(from var(--canvas-background-color) r g b / 0.8);
 	color:var(--canvas-text-background-color);
+	box-shadow:var(--threeD-shadow-active);
 }
 
 body .oo-ui-tabSelectWidget-framed .oo-ui-tabOptionWidget.oo-ui-optionWidget-selected,
@@ -575,7 +577,7 @@ body .oo-ui-tabSelectWidget-framed .oo-ui-tabOptionWidget.oo-ui-widget-enabled.o
 	background-color:var(--canvas-background-color);
 	color:var(--canvas-text-background-color);
 	border-color:var(--inactive-text-background-color);
-	border-bottom-color:var(--canvas-background-color);
+	box-shadow:var(--threeD-shadow-active);
 }
 
 body .oo-ui-tabSelectWidget-framed .oo-ui-tabOptionWidget.oo-ui-optionWidget-selected .oo-ui-labelElement-label {
