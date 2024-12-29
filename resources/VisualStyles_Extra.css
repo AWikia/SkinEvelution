@@ -20,6 +20,7 @@
 .visualmode-contrast .evelution-content .evelution-article-wrapper .evelution-article-actions .cactions >li:hover > a {
 	background-color:var(--highlight-text-background-color);
 	color:var(--highlight-background-color);
+	border-color:var(--highlight-background-color);
 }
 
 .visualmode-contrast .evelution-content .evelution-article-wrapper .evelution-article-actions > li:active > .link,
@@ -28,6 +29,11 @@
 .visualmode-contrast .evelution-content .evelution-article-wrapper .evelution-article-actions .cactions >li.selected > a {
 	color:var(--highlight-text-background-color);
 	background-color:var(--highlight-background-color);
+	border-color:var(--highlight-background-color);
+}
+
+.visualmode-contrast .evelution-content .evelution-article-wrapper .evelution-article-actions .cactions >li.selected > a {
+	border-color:var(--border-color)!important;
 }
 
 .visualmode-contrast .evelution-page-header-main {
@@ -268,7 +274,7 @@
 	.visualstyle-basic  .evelution-content .evelution-page-header a.new:visited,
 	.visualstyle-basic  .evelution-content .evelution-page-header .new a,
 	.visualstyle-basic  .evelution-content .evelution-page-header .new a:visited {
-		color:var(--luna-alternative-foreground-color);
+		color:var(--luna-text-background-color);
 	}
 
 
@@ -276,7 +282,7 @@
 	.visualstyle-basic  .evelution-content .evelution-page-header a.new:visited:hover,
 	.visualstyle-basic  .evelution-content .evelution-page-header .new a:hover,
 	.visualstyle-basic  .evelution-content .evelution-page-header .new a:visited:hover {
-		color:var(--luna-alternative-foreground-color-hover);
+		color:var(--luna-text-background-color-hover);
 	}
 
 
@@ -403,7 +409,11 @@
 }
 
 .visualstyle-basic .evelution-page-header .evelution-page-header-main {
-	border:0;
+	border-bottom:0;
+}
+
+.visualstyle-basic .evelution-content .evelution-page-footer .evelution-page-header-main {
+	border-top:0;
 }
 
 .visualstyle-basic .evelution-content .evelution-article-wrapper .evelution-article-actions .cactions >li.selected > a {
@@ -521,14 +531,14 @@ border-color:var(--luna-foreground-color);
 	.visualstyle-basic .evelution-page-header .cpe-button.is-message-color,
 	.visualstyle-basic  .evelution-page-header li.stub .cpe-button,
 	.visualstyle-basic  .evelution-page-header li.new .cpe-button  {
-		--button-background-color: var(--luna-alternative-foreground-color);
-		--button-background-color-hover: var(--luna-alternative-foreground-color-hover);
+		--button-background-color: var(--luna-text-background-color);
+		--button-background-color-hover: var(--luna-text-background-color-hover);
 		--button-foreground-color: var(--luna-background-color);
 		--secondary-button-background-color:transparent;
-		--secondary-button-foreground-color: var(--luna-alternative-foreground-color);
-		--secondary-button-foreground-color-hover: var(--luna-alternative-foreground-color-hover);
-		--tertiary-button-background-color:rgb(from var(--luna-alternative-foreground-color) r g b /  var(--fadeout-opacity));
-		--tertiary-button-foreground-color:var(--luna-alternative-foreground-color);
+		--secondary-button-foreground-color: var(--luna-text-background-color);
+		--secondary-button-foreground-color-hover: var(--luna-text-background-color-hover);
+		--tertiary-button-background-color:rgb(from var(--luna-text-background-color) r g b /  var(--fadeout-opacity));
+		--tertiary-button-foreground-color:var(--luna-text-background-color);
 }
 
 .visualstyle-basic .evelution-header {
@@ -675,14 +685,21 @@ border-color:var(--luna-foreground-color);
 }
 
 .visualstyle-basic.visualmode-contrast .evelution-content .evelution-article-wrapper .evelution-article-actions > li:hover > .link,
+.visualstyle-basic.visualmode-contrast .evelution-content .evelution-article-wrapper .evelution-article-actions .cactions >li:hover > a {
+	color:var(--canvas-text-secondary-background-color);
+	background-color:var(--canvas-secondary-background-color);
+	border-color:var(--canvas-text-secondary-background-color);
+}
+
 .visualstyle-basic.visualmode-contrast .evelution-content .evelution-article-wrapper .evelution-article-actions > li:active > .link,
-.visualstyle-basic.visualmode-contrast .evelution-content .evelution-article-wrapper .evelution-article-actions .cactions >li:hover > a,
 .visualstyle-basic.visualmode-contrast .evelution-content .evelution-article-wrapper .evelution-article-actions .cactions >li:active > a,
 .visualstyle-basic.visualmode-contrast .evelution-content .evelution-article-wrapper .evelution-article-actions .cactions >li > a:focus,
 .visualstyle-basic.visualmode-contrast .evelution-content .evelution-article-wrapper .evelution-article-actions .cactions >li.selected > a {
 	color:var(--highlight-text-background-color);
 	background-color:var(--highlight-background-color);
+	border-color:var(--canvas-text-secondary-background-color);
 }
+
 
 .visualstyle-basic.visualmode-contrast .evelution-header .link,
 .visualstyle-basic.visualmode-contrast .evelution-content .evelution-page-header .evelution-middle-actions a,
@@ -1088,8 +1105,8 @@ border-color:var(--luna-foreground-color);
 .visualstyle-simple body .evelution-sidebar #pt-notifications-notice .mw-echo-notifications-badge:after {
 	color:var(--alert-background-color)!important;
 	border-radius:100px;
-	border-color:var(--alert-alternative-foreground-color)!important;
-	background-color:var(--alert-alternative-foreground-color)!important;
+	border-color:var(--canvas-background-color)!important;
+	background-color:var(--canvas-background-color)!important;
 }
 
 
@@ -1102,6 +1119,7 @@ border-color:var(--luna-foreground-color);
 .visualstyle-simple.visualmode-contrast .evelution-content .evelution-article-wrapper .evelution-article-actions .cactions >li.selected > a {
 	color:var(--luna-background-color);
 	background-color:var(--luna-text-background-color);
+	border-color:rgb(from var(--luna-background-color) r g b / 0.5);
 }
 
 .visualstyle-simple.visualmode-contrast .evelution-sidebar  {
@@ -1412,6 +1430,7 @@ border-color:var(--luna-foreground-color);
 .visualstyle-general.visualmode-contrast .evelution-content .evelution-article-wrapper .evelution-article-actions .cactions >li.selected > a {
 	color:var(--canvas-background-color);
 	background-color:var(--hyperlink-background-color);
+	border-color:var(--hyperlink-background-color);
 }
 
 .visualstyle-general.visualmode-contrast .preview-window-window h2 button.close:hover {

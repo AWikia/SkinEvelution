@@ -400,10 +400,10 @@ background-color:var(--canvas-background-color);
 .visualstyle-simple body {
 	--simple-luna-background-color:var(--canvas-secondary-background-color);
 	--simple-luna-background-color-hover:var(--canvas-secondary-background-color-hover);
+	--simple-luna-text-background-color:var(--canvas-text-secondary-background-color);
+	--simple-luna-text-background-color-hover:var(--canvas-text-secondary-background-color-hover);
 	--simple-luna-foreground-color:var(--canvas-secondary-foreground-color);
 	--simple-luna-foreground-color-hover:var(--canvas-secondary-foreground-color-hover);
-	--simple-luna-alternative-foreground-color:var(--canvas-secondary-alternative-foreground-color);
-	--simple-luna-alternative-foreground-color-hover:var(--canvas-secondary-alternative-foreground-color-hover);
 	--simple-luna-tabs-background-color:var(--canvas-tabs-background-color);
 	--simple-luna-tabs-opacity:var(--canvas-tabs-opacity);
 	--simple-luna-active-tabs-opacity:var(--canvas-active-tabs-opacity);
@@ -417,8 +417,8 @@ background-color:var(--canvas-background-color);
 	--simple-luna-background-color-hover:var(--hyperlink-background-color-hover);
 	--simple-luna-foreground-color:var(--hyperlink-foreground-color);
 	--simple-luna-foreground-color-hover:var(--hyperlink-foreground-color-hover);
-	--simple-luna-alternative-foreground-color:var(--hyperlink-alternative-foreground-color);
-	--simple-luna-alternative-foreground-color-hover:var(--hyperlink-alternative-foreground-color-hover);
+	--simple-luna-text-background-color:var(--canvas-background-color);
+	--simple-luna-text-background-color-hover:var(--canvas-background-color-hover);
 	--simple-luna-tabs-background-color:var(--hyperlink-tabs-background-color);
 	--simple-luna-tabs-opacity:var(--hyperlink-tabs-opacity);
 	--simple-luna-active-tabs-opacity:var(--hyperlink-active-tabs-opacity);
@@ -611,8 +611,8 @@ background-color:var(--canvas-background-color);
 }
 
 .visualstyle-simple.has-accents .cpe-dropdown__content .cpe-list > li > input[type="range"] {
-  --range-filler-color:var(--canvas-alternative-foreground-color);
-  --range-filler-color-hover:var(--canvas-alternative-foreground-color-hover);
+  --range-filler-color:var(--canvas-text-background-color);
+  --range-filler-color-hover:var(--canvas-text-background-color-hover);
 }
 
 
@@ -709,12 +709,13 @@ background-color:var(--canvas-background-color);
 
 .visualstyle-simple body .mw-notification a,
 .visualstyle-simple body .mw-notification a:visited {
-	color:rgb(from var(--simple-luna-alternative-foreground-color)  r g b / 0.8);
+	color:rgb(from var(--simple-luna-text-background-color)  r g b / 0.8);
+	text-decoration:underline;
 }
 
 .visualstyle-simple body .mw-notification a:hover,
 .visualstyle-simple body .mw-notification a:hover:visited {
-	color:from var(--simple-luna-alternative-foreground-color);
+	color:from var(--simple-luna-text-background-color);
 }
 
 
@@ -727,12 +728,12 @@ background-color:var(--canvas-background-color);
 
 .visualstyle-simple body .mw-notification.mw-notification-type-error a,
 .visualstyle-simple body .mw-notification.mw-notification-type-error a:visited {
-	color:rgb(from var(--alert-alternative-foreground-color) r g b / 0.8);
+	color:rgb(from var(--canvas-background-color) r g b / 0.8);
 }
 
 .visualstyle-simple body .mw-notification.mw-notification-type-error a:hover,
 .visualstyle-simple body .mw-notification.mw-notification-type-error a:hover:visited {
-	color:var(--alert-alternative-foreground-color);
+	color:var(--canvas-background-color);
 }
 
 
@@ -745,12 +746,12 @@ background-color:var(--canvas-background-color);
 
 .visualstyle-simple body .mw-notification.mw-notification-type-success a,
 .visualstyle-simple body .mw-notification.mw-notification-type-success a:visited {
-	color:rgb(from var(--success-alternative-foreground-color) r g b / 0.8);
+	color:rgb(from var(--canvas-background-color) r g b / 0.8);
 }
 
 .visualstyle-simple body .mw-notification.mw-notification-type-success a:hover,
 .visualstyle-simple body .mw-notification.mw-notification-type-success a:hover:visited {
-	color:var(--success-alternative-foreground-color);
+	color:var(--canvas-background-color);
 }
 
 
@@ -762,12 +763,12 @@ background-color:var(--canvas-background-color);
 }
 .visualstyle-simple body .mw-notification.mw-notification-type-warn a,
 .visualstyle-simple body .mw-notification.mw-notification-type-warn a:visited {
-	color:rgb(from var(--warning-alternative-foreground-color) r g b / 0.8);
+	color:rgb(from var(--canvas-background-color) r g b / 0.8);
 }
 
 .visualstyle-simple body .mw-notification.mw-notification-type-warn a:hover,
 .visualstyle-simple body .mw-notification.mw-notification-type-warn a:hover:visited {
-	color:var(--warning-alternative-foreground-color);
+	color:var(--canvas-background-color);
 }
 
 .visualstyle-simple .cpe-banner-notification {
@@ -778,18 +779,18 @@ background-color:var(--canvas-background-color);
 
 .visualstyle-simple .cpe-banner-notification a,
 .visualstyle-simple .cpe-banner-notification a:visited {
-	color:rgb(from var(--simple-luna-alternative-foreground-color)  r g b / 0.8);
+	color:rgb(from var(--simple-luna-text-background-color)  r g b / 0.8);
 }
 
 
 .visualstyle-simple .cpe-banner-notification a:hover,
 .visualstyle-simple .cpe-banner-notification a:hover:visited {
-	color:from var(--simple-luna-alternative-foreground-color)  r g b;
+	color:from var(--simple-luna-text-background-color)  r g b;
 }
 
 .visualstyle-simple .cpe-banner-notification__icon {
 	color:var(--simple-luna-background-color);
-	background-color:var(--simple-luna-alternative-foreground-color);
+	background-color:var(--simple-luna-text-background-color);
 }
 
 
@@ -802,17 +803,17 @@ background-color:var(--canvas-background-color);
 
 .visualstyle-simple .is-alert.cpe-banner-notification a,
 .visualstyle-simple .is-alert.cpe-banner-notification a:visited {
-	color:rgb(from var(--alert-alternative-foreground-color) r g b / 0.8);
+	color:rgb(from var(--canvas-background-color) r g b / 0.8);
 }
 
 .visualstyle-simple .is-alert.cpe-banner-notification a:hover,
 .visualstyle-simple .is-alert.cpe-banner-notification a:hover:visited {
-	color:var(--alert-alternative-foreground-color);
+	color:var(--canvas-background-color);
 }
 
 .visualstyle-simple .is-alert .cpe-banner-notification__icon {
 	color:var(--alert-background-color);
-	background-color:var(--alert-alternative-foreground-color);
+	background-color:var(--canvas-background-color);
 }
 
 .visualstyle-simple .is-pause.cpe-banner-notification {
@@ -824,17 +825,17 @@ background-color:var(--canvas-background-color);
 
 .visualstyle-simple .is-pause.cpe-banner-notification a,
 .visualstyle-simple .is-pause.cpe-banner-notification a:visited {
-	color:rgb(from var(--pause alternative-foreground-color) r g b / 0.8);
+	color:rgb(from var(--canvas-background-color) r g b / 0.8);
 }
 
 .visualstyle-simple .is-pause.cpe-banner-notification a:hover,
 .visualstyle-simple .is-pause.cpe-banner-notification a:hover:visited {
-	color:var(--pause alternative-foreground-color);
+	color:var(--canvas-background-color);
 }
 
 .visualstyle-simple .is-pause .cpe-banner-notification__icon {
 	color:var(--pause-background-color);
-	background-color:var(--pause-alternative-foreground-color);
+	background-color:var(--canvas-background-color);
 }
 
 .visualstyle-simple .is-warning.cpe-banner-notification {
@@ -845,17 +846,17 @@ background-color:var(--canvas-background-color);
 
 .visualstyle-simple .is-warning.cpe-banner-notification a,
 .visualstyle-simple .is-warning.cpe-banner-notification a:visited {
-	color:rgb(from var(--warning-alternative-foreground-color) r g b / 0.8);
+	color:rgb(from var(--canvas-background-color) r g b / 0.8);
 }
 
 .visualstyle-simple .is-warning.cpe-banner-notification a:hover,
 .visualstyle-simple .is-warning.cpe-banner-notification a:hover:visited {
-	color:var(--warning-alternative-foreground-color);
+	color:var(--canvas-background-color);
 }
 
 .visualstyle-simple .is-warning .cpe-banner-notification__icon {
 	color:var(--warning-background-color);
-	background-color:var(--warning-alternative-foreground-color);
+	background-color:var(--canvas-background-color);
 }
 
 .visualstyle-simple .is-success.cpe-banner-notification {
@@ -867,17 +868,17 @@ background-color:var(--canvas-background-color);
 
 .visualstyle-simple .is-success.cpe-banner-notification a,
 .visualstyle-simple .is-success.cpe-banner-notification a:visited {
-	color:rgb(from var(--success-alternative-foreground-color) r g b / 0.8);
+	color:rgb(from var(--canvas-background-color) r g b / 0.8);
 }
 
 .visualstyle-simple .is-success.cpe-banner-notification a:hover,
 .visualstyle-simple .is-success.cpe-banner-notification a:hover:visited {
-	color:var(--success-alternative-foreground-color);
+	color:var(--canvas-background-color);
 }
 
 .visualstyle-simple .is-success .cpe-banner-notification__icon {
 	color:var(--success-background-color);
-	background-color:var(--success-alternative-foreground-color);
+	background-color:var(--canvas-background-color);
 }
 
 
@@ -890,17 +891,17 @@ background-color:var(--canvas-background-color);
 
 .visualstyle-simple .is-progress.cpe-banner-notification a,
 .visualstyle-simple .is-progress.cpe-banner-notification a:visited {
-	color:rgb(from var(--progress-alternative-foreground-color) r g b / 0.8);
+	color:rgb(from var(--canvas-background-color) r g b / 0.8);
 }
 
 .visualstyle-simple .is-progress.cpe-banner-notification a:hover,
 .visualstyle-simple .is-progress.cpe-banner-notification a:hover:visited {
-	color:var(--progress-alternative-foreground-color);
+	color:var(--canvas-background-color);
 }
 
 .visualstyle-simple .is-progress .cpe-banner-notification__icon {
 	color:var(--progress-background-color);
-	background-color:var(--progress-alternative-foreground-color);
+	background-color:var(--canvas-background-color);
 }
 
 .visualstyle-simple .is-message.cpe-banner-notification {
@@ -912,17 +913,17 @@ background-color:var(--canvas-background-color);
 
 .visualstyle-simple .is-message.cpe-banner-notification a,
 .visualstyle-simple .is-message.cpe-banner-notification a:visited {
-	color:rgb(from var(--message-alternative-foreground-color) r g b / 0.8);
+	color:rgb(from var(--canvas-background-color) r g b / 0.8);
 }
 
 .visualstyle-simple .is-message.cpe-banner-notification a:hover,
 .visualstyle-simple .is-message.cpe-banner-notification a:hover:visited {
-	color:var(--message-alternative-foreground-color);
+	color:var(--canvas-background-color);
 }
 
 .visualstyle-simple .is-message .cpe-banner-notification__icon {
 	color:var(--message-background-color);
-	background-color:var(--message-alternative-foreground-color);
+	background-color:var(--canvas-background-color);
 }
 
 /** High Contrast  **/
@@ -1176,7 +1177,7 @@ background-color:var(--canvas-background-color);
 /* Notifications and Banners */
 .visualstyle-simple.visualmode-contrast body .mw-notification a,
 .visualstyle-simple.visualmode-contrast body .mw-notification a:visited {
-	color:var(--simple-luna-alternative-foreground-color)!important;
+	color:var(--simple-luna-text-background-color)!important;
 }
 
 .visualstyle-simple.visualmode-contrast body .mw-notification.mw-notification-type-success {
@@ -1187,7 +1188,7 @@ background-color:var(--canvas-background-color);
 
 .visualstyle-simple.visualmode-contrast body .mw-notification.mw-notification-type-success a,
 .visualstyle-simple.visualmode-contrast body .mw-notification.mw-notification-type-success a:visited {
-	color:var(--canvas-text-alternative-foreground-color)!important;
+	color:var(--canvas-background-color)!important;
 }
 
 .visualstyle-simple.visualmode-contrast body .mw-notification.mw-notification-type-warn {
@@ -1198,7 +1199,7 @@ background-color:var(--canvas-background-color);
 
 .visualstyle-simple.visualmode-contrast body .mw-notification.mw-notification-type-warn a,
 .visualstyle-simple.visualmode-contrast body .mw-notification.mw-notification-type-warn a:visited {
-	color:var(--highlight-alternative-foreground-color)!important;
+	color:var(--highlight-text-background-color)!important;
 }
 
 .visualstyle-simple.visualmode-contrast .cpe-banner-notification {
@@ -1209,7 +1210,7 @@ background-color:var(--canvas-background-color);
 
 .visualstyle-simple.visualmode-contrast .cpe-banner-notification a,
 .visualstyle-simple.visualmode-contrast .cpe-banner-notification a:visited {
-	color:var(--hyperlink-alternative-foreground-color)!important;
+	color:var(--canvas-background-color)!important;
 	opacity:0.7;
 	text-decoration:underline;
 }
@@ -1228,12 +1229,12 @@ background-color:var(--canvas-background-color);
 
 .visualstyle-simple.visualmode-contrast .is-pause.cpe-banner-notification a,
 .visualstyle-simple.visualmode-contrast .is-pause.cpe-banner-notification a:visited {
-	color:var(--pause alternative-foreground-color)!important;
+	color:var(--canvas-background-color)!important;
 }
 
 .visualstyle-simple.visualmode-contrast .is-pause .cpe-banner-notification__icon {
 	color:var(--inactive-text-background-color);
-	background-color:var(--inactive-text-alternative-foreground-color);
+	background-color:var(--canvas-background-color-color);
 }
 
 .visualstyle-simple.visualmode-contrast .is-warning.cpe-banner-notification {
@@ -1243,12 +1244,12 @@ background-color:var(--canvas-background-color);
 
 .visualstyle-simple.visualmode-contrast .is-warning.cpe-banner-notification a,
 .visualstyle-simple.visualmode-contrast .is-warning.cpe-banner-notification a:visited {
-	color:var(--highlight-alternative-foreground-color)!important;
+	color:var(--highlight-text-background-color)!important;
 }
 
 .visualstyle-simple.visualmode-contrast .is-warning .cpe-banner-notification__icon {
 	color:var(--highlight-background-color);
-	background-color:var(--highlight-alternative-foreground-color);
+	background-color:var(--highlight-text-background-color);
 }
 
 
@@ -1260,13 +1261,13 @@ background-color:var(--canvas-background-color);
 
 .visualstyle-simple.visualmode-contrast .is-success.cpe-banner-notification a,
 .visualstyle-simple.visualmode-contrast .is-success.cpe-banner-notification a:visited {
-	color:var(--canvas-text-alternative-foreground-color)!important;
+	color:var(--canvas-background-color)!important;
 }
 
 
 .visualstyle-simple.visualmode-contrast .is-success .cpe-banner-notification__icon {
 	color:var(--canvas-text-background-color);
-	background-color:var(--canvas-text-alternative-foreground-color);
+	background-color:var(--canvas-background-color);
 }
 
 .visualstyle-simple.visualmode-contrast .is-progress.cpe-banner-notification {
@@ -1276,12 +1277,12 @@ background-color:var(--canvas-background-color);
 
 .visualstyle-simple.visualmode-contrast .is-progress.cpe-banner-notification a,
 .visualstyle-simple.visualmode-contrast .is-progress.cpe-banner-notification a:visited {
-	color:var(--active-title-alternative-foreground-color)!important;
+	color:var(--active-title-text-background-color)!important;
 }
 
 .visualstyle-simple.visualmode-contrast .is-progress .cpe-banner-notification__icon {
 	color:var(--active-title-background-color);
-	background-color:var(--active-title-alternative-foreground-color);
+	background-color:var(--active-title-text-background-color);
 }
 
 .visualstyle-simple.visualmode-contrast .is-message.cpe-banner-notification {
@@ -1291,12 +1292,12 @@ background-color:var(--canvas-background-color);
 
 .visualstyle-simple.visualmode-contrast .is-message.cpe-banner-notification a,
 .visualstyle-simple.visualmode-contrast .is-message.cpe-banner-notification a:visited {
-	color:var(--inactive-title-alternative-foreground-color)!important;
+	color:var(--inactive-title-text-background-color)!important;
 }
 
 .visualstyle-simple.visualmode-contrast .is-message .cpe-banner-notification__icon {
 	color:var(--inactive-title-background-color);
-	background-color:var(--inactive-title-alternative-foreground-color);
+	background-color:var(--inactive-title-text-background-color);
 }
 
 

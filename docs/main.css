@@ -170,13 +170,15 @@ body {
 	display:flex;
 	flex-direction:column;
 	color:var(--global-nav-text-color);
-	box-shadow: 0 0 3px var(--canvas-text-background-color), 0 0 3px var(--canvas-background-color), var(--threeD-shadow);
+	box-shadow: 1px var(--minibar-size) 3px 0 rgb(from var(--canvas-text-background-color) r g b / .2), 1px var(--minibar-size) 3px 0 rgb(from var(--canvas-background-color) r g b / 0.2), var(--threeD-shadow);
 	height:100%;
 	width:var(--global-nav-size);
 	position:fixed;
 	z-index:100;
 	top:0;
 	transition:transform var(--transition-duration) var(--transition-timing-function), opacity var(--transition-duration) var(--transition-timing-function), background-color var(--transition-duration) var(--transition-timing-function), border-left-color var(--transition-duration) var(--transition-timing-function);
+	border:0 solid var(--luna-border-background-color);
+	box-sizing:content-box;
 }
 
 .evelution-sidebar .explore-menu .cpe-list {
@@ -200,11 +202,13 @@ body {
 	flex:1;
 	display:flex;
 	flex-direction:column;
+	box-sizing:border-box;
 }
 
 .evelution-sidebar .bottom-links {
 	display:flex;
 	flex-direction:column;
+	box-sizing:border-box;
 }
 
 
@@ -332,6 +336,7 @@ body {
 	}
 	.evelution-taskbar  {
 		left:0;
+		border-right-width:1px;
 	}
 	.evelution-taskbar .link  {
 		height:var(--toolbar-link-size);
@@ -521,6 +526,8 @@ body {
 	z-index:100;
 	width:calc(100%);
 	transform-origin:bottom;
+	box-shadow: 0 -2px 6px 0 rgb(from var(--canvas-text-background-color) r g b / .4), 0 -2px 6px 0 rgb(from var(--canvas-background-color) r g b / 0.4);
+	border-top-width:1px;
 }
 
 
@@ -962,7 +969,17 @@ margin-bottom:0;
  }
 
 
-
+	.evelution-header .local-navigation .link,
+	.evelution-header .link.local-nav-switch {
+		margin-left:0;
+	}
+	@media (orientation:landscape) {
+		.evelution-header .local-navigation .link,
+		.evelution-header .link.local-nav-switch {
+			margin-left:1px;
+		}
+	}
+	
 	.evelution-header .local-navigation .cpe-dropdown__content {
 		transform:none;
 		left:0;
