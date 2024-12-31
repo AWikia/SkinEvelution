@@ -1431,12 +1431,6 @@ function InitDesigner() {
 
 /**/
 '<div class="qortex-updater">' +
-	'<div id="LunaLevit" style=" pointer-events: none; position: absolute; z-index: -2; width: 100%; height: 100%;">' +
-		'<div class="invertion-on" style=" pointer-events: none; position: absolute; z-index: -2; width: 100%; height: 100%;">' +
-			'<div id="LunaLevit3" class="desktop-background fandom-community-header__background" style="position:absolute; pointer-events:none;" id="desktop-background">' +
-			'</div>' +
-		'</div>' +
-	'</div>' +
 	'<div class="container">' +
 		'<div class="evelution-floating-actions page-side-tools__wrapper">' +
 			'<div class="evelution-floating-actions-container cpe-floating-button-group is-vertical page-side-tools">' +
