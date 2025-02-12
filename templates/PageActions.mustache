@@ -109,7 +109,7 @@
 			</div>
 		</div>
 		<!-- Color Modes -->
-		<div class="cpe-dropdown color-modes color-management-on" cpe-orient="land">				
+		<div class="cpe-dropdown color-modes" cpe-orient="land">				
 			<div class="cpe-floating-button is-unaccented color-modes page-side-tool" cpe-tooltip="{{msg-evelution-colormodes}}">
 				<span class="cpe-icon material-icons">
 					hdr_auto
@@ -117,24 +117,16 @@
 			</div>
 			<div class="cpe-dropdown__content cpe-visual-appearance">
 				<ul class="cpe-list is-linked cpe-device-themes has-icons">
-					<li data-device-theme="auto" title="{{msg-evelution-designer-auto}}">
-						<a onclick="colortheme('match-parent','auto')">
-							<span class="cpe-icon material-icons">brightness_auto</span>
-						</a>
-					</li>
-					<li data-device-theme="auto-dark" title="{{msg-evelution-designer-auto}} ({{msg-evelution-darkmode}})">
-						<a onclick="colortheme('match-parent','auto-dark')">
-							<span class="cpe-icon material-icons">hdr_auto</span>
-						</a>
-					</li>
 					<li data-device-theme="light" title="{{msg-evelution-lightmode}}">
 						<a onclick="colortheme('match-parent','light')">
 							<span class="cpe-icon material-icons">light_mode</span>
+							<span class="text">{{msg-evelution-lightmode}}</span>
 						</a>
 					</li>
 					<li data-device-theme="dark" title="{{msg-evelution-darkmode}}">
 						<a onclick="colortheme('match-parent','dark')">
 							<span class="cpe-icon material-icons">dark_mode</span>
+							<span class="text">{{msg-evelution-darkmode}}</span>
 						</a>
 					</li>
 				</ul>
@@ -173,34 +165,19 @@
 							<span class="cpe-icon material-icons lightdevice-off">hdr_auto</span>
 						</a>
 					</li>
-					<li data-color-style="colorscale" title="{{msg-evelution-colorstyle-colorscale}}">
-						<a onclick="colortheme('colorscale')">
-							<span class="cpe-icon material-icons darkdevice-off" style="--icon-rotate:-90deg;">gradient</span>
-							<span class="cpe-icon material-icons lightdevice-off" style="--icon-rotate:90deg;">gradient</span>
+					<li data-color-style="protanopia" title="{{msg-evelution-colorstyle-protanopia}}">
+						<a onclick="colortheme('protanopia')">
+							<span class="cpe-icon material-icons">filter_1</span>
 						</a>
 					</li>
-					<li data-color-style="hottemperature" title="{{msg-evelution-colorstyle-hottemperature}}">
-						<a onclick="colortheme('hottemperature')">
-							<span class="cpe-icon material-icons darkdevice-off">thermostat</span>
-							<span class="cpe-icon material-icons lightdevice-off" style="--icon-rotate:180deg;">thermostat</span>
+					<li data-color-style="deuteranopia" title="{{msg-evelution-colorstyle-deuteranopia}}">
+						<a onclick="colortheme('deuteranopia')">
+							<span class="cpe-icon material-icons">filter_2</span>
 						</a>
 					</li>
-					<li data-color-style="coldtemperature" title="{{msg-evelution-colorstyle-coldtemperature}}">
-						<a onclick="colortheme('coldtemperature')">
-							<span class="cpe-icon material-icons darkdevice-off">ac_unit</span>
-							<span class="cpe-icon material-icons lightdevice-off">storm</span>
-						</a>
-					</li>
-				</ul>
-				<ul class="cpe-list is-linked cpe-solo-modes has-icons">
-					<li data-solo-mode="duo">
-						<a onclick="colortheme('match-parent','match-parent','match-parent', 'match-parent', 'duo')">
-							<span>Duo</span>
-						</a>
-					</li>
-					<li data-solo-mode="solo">
-						<a onclick="colortheme('match-parent','match-parent','match-parent', 'match-parent', 'solo')">
-							<span>Solo</span>
+					<li data-color-style="tritanopia" title="{{msg-evelution-colorstyle-tritanopia}}">
+						<a onclick="colortheme('tritanopia')">
+							<span class="cpe-icon material-icons">filter_3</span>
 						</a>
 					</li>
 				</ul>

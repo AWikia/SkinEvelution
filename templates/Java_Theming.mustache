@@ -4,7 +4,6 @@ window.ThemingEngine_ColorFilterMode = 0; // 0 = No special behavior  | 1 = Colo
 window.ThemingEngine_ColorFilterHueShift = 0; // From -180 to 180
 window.ThemingEngine_ColorFilterSaturation = 0; // From 0 to 100 (100 is grayscale)
 window.ThemingEngine_ActiveColorFilterTheme = 'light'; 	// auto | auto-dark | light | dark
-window.ThemingEngine_ActiveColorFilterBehavior = 'duo'; // solo means solo mode
 window.ThemingEngine_ActiveColorFilter = 'standard';
 /* Contrast Modes */
 window.ThemingEngine_ContrastMode = 'auto';
@@ -97,9 +96,6 @@ var visualColorNames = ['standard', 'nocolormanagement'];
 	if (getKey('color-style') === '-1') {
 		insertKey('color-style', 'standard' );
 	}
-	if (getKey('color-style-behavior') === '-1') {
-		insertKey('color-style-behavior', 'duo' );
-	}
 	if (getKey('color-hue') === '-1') {
 		insertKey('color-hue', 0 );
 	}
@@ -130,7 +126,6 @@ var visualColorNames = ['standard', 'nocolormanagement'];
 	var visual_color = getKey('visual-color');
 	var device_theme = getKey('device-theme');
 	var color_style = getKey('color-style');
-	var color_style_behavior = getKey('color-style-behavior');
 	var color_hue = getKey('color-hue');
 	var color_sat = getKey('color-sat');
 	var contrast_mode = getKey('contrast-mode');
@@ -217,10 +212,6 @@ var visualColorNames = ['standard', 'nocolormanagement'];
 				color_style = value;
 				console.info('Color style settings overriden');
                 break;
-            case 'usecolorstylebehavior':
-				color_style_behavior = value;
-				console.info('Color style behavior settings overriden');
-                break;
             case 'usedevicetheme':
 				device_theme = value;
 				console.info('Device theme settings overriden');
@@ -260,7 +251,7 @@ var visualColorNames = ['standard', 'nocolormanagement'];
 
 	document.querySelector("head").insertAdjacentHTML('afterbegin','<meta name="theme-color" content="#ffffff"><style class="devicetheme"></style><style class="themes">' + themes + '</style><style class="theming"></style>');
 	ToggleTheme(theme_selected,false,false);
-	colortheme(color_style,device_theme,color_hue,color_sat,color_style_behavior,false,false);
+	colortheme(color_style,device_theme,color_hue,color_sat,false,false);
 	contrastmode(contrast_mode,false,false);
 	SetDCM(dcm_type,dcm_mode,false,false);
 	VisualColorCompile(); // Compiles the Contrast Options
@@ -691,8 +682,8 @@ function GetCanvas() {
 		var color = GetHyperlink();
 		var fg = GetForegroundVariables(color);
 		var h2 = chroma(color).get('hsl.h');
-		var color = ColorStyleAdjust(chroma(color).set('lch.l',fg[2]).set('hsl.h',h2));
-		return ColorMix(color,ColorStyleAdjust(fg[0]),1.6);
+		var color = chroma(color).set('lch.l',fg[2]).set('hsl.h',h2);
+		return ColorMix(color,fg[0],1.6);
 	} else {
 		return getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--canvas-background-color").trim();
 	}
@@ -1209,19 +1200,11 @@ function ManagerRows() {
 /* Changes Wiki theme style */
 
 function GetHueShift() {
-	if (DisabledColorManagement()) {
-		return 0;
-	} else {
-		return window.ThemingEngine_ColorFilterHueShift;
-	}
+	return window.ThemingEngine_ColorFilterHueShift;
 }
 
 function GetSaturation() {
-	if (DisabledColorManagement()) {
-		return 100;
-	} else {
-		return window.ThemingEngine_ColorFilterSaturation;
-	}
+	return window.ThemingEngine_ColorFilterSaturation;
 }
 
 
@@ -1229,13 +1212,13 @@ function GetSaturation() {
 function SliderColorHue() {
 	var range = document.querySelector('input[type="range"].colorhue');
 	if (range) {
-		colortheme('match-parent', 'match-parent', range.value, 'match-parent', 'match-parent', true, true, false);
+		colortheme('match-parent', 'match-parent', range.value, 'match-parent', true, true, false);
 	}
 }
 function SliderColorSaturation() {
 	var range = document.querySelector('input[type="range"].colorsat');
 	if (range) {
-		colortheme('match-parent', 'match-parent', 'match-parent', range.value, 'match-parent', true, true, false);
+		colortheme('match-parent', 'match-parent', 'match-parent', range.value, true, true, false);
 	}
 }
 
@@ -1245,10 +1228,9 @@ function SliderColorSaturation() {
 ** Theme = auto, auto-dark, light, dark (The code that hides colorstyle icons and sets the color scheme only supports Light and Dark Mode)
 ** hue = 0 to 360
 ** saturation = 0 to 100
-** Solo = duo, solo (Only two supported)
 ** All above = match-parent (Inherits the currently applied value)
 */
-function colortheme(style='match-parent', theme='match-parent', hue='match-parent', saturation='match-parent', solo='match-parent', repaint=true, save=true, notfromrange=true,updateinput=true) {
+function colortheme(style='match-parent', theme='match-parent', hue='match-parent', saturation='match-parent', repaint=true, save=true, notfromrange=true,updateinput=true) {
 	if (style === 'match-parent') {
 		style = window.ThemingEngine_ActiveColorFilter;
 	}
@@ -1261,16 +1243,14 @@ function colortheme(style='match-parent', theme='match-parent', hue='match-paren
 	if (saturation === 'match-parent') {
 		saturation = window.ThemingEngine_ColorFilterSaturation;
 	}
-	if (solo === 'match-parent') {
-		solo = window.ThemingEngine_ActiveColorFilterBehavior;
-	}
+
 
 
 	selected_theme = theme;
 	if (selected_theme === 'auto') {
-		theme = ( window.matchMedia('(prefers-color-scheme: light)').matches ) ? 'light' : 'dark';
+		theme = 'light';
 	} else if (selected_theme === 'auto-dark') {
-		theme = ( window.matchMedia('(prefers-color-scheme: dark)').matches ) ? 'light' : 'dark';
+		theme = 'dark';
 	}
     var body_bg =	GetCanvas();
     var old_dark = window.ThemingEngine_InvertColors;
@@ -1279,58 +1259,27 @@ function colortheme(style='match-parent', theme='match-parent', hue='match-paren
     var oldsat = window.ThemingEngine_ColorFilterSaturation;
     var muststay = false;
 		document.querySelector('head .devicetheme').innerHTML = '' ;
-    if (DisabledColorManagement()) {
-		window.ThemingEngine_InvertColors = false;
-		window.ThemingEngine_ColorFilterMode = 0;
-	} else {
+		window.ThemingEngine_InvertColors = (theme == 'dark');
 		if (style == 'standard') {
-			if (solo == 'solo') {
-				window.ThemingEngine_InvertColors = (isLightColor(body_bg)) ? (theme == 'dark') : (theme == 'light');
-			} else {
-				window.ThemingEngine_InvertColors = (theme == 'dark');
-			}
 			window.ThemingEngine_ColorFilterMode = 0;
-		} else if (style == 'colorscale') {
-			if (solo == 'solo') {
-				window.ThemingEngine_InvertColors = (isLightColor(body_bg)) ? (theme == 'dark') : (theme == 'light');
-			} else {
-				window.ThemingEngine_InvertColors = (theme == 'dark');
-			}
+		} else if (style == 'protanopia') {
 			window.ThemingEngine_ColorFilterMode = 1;
-		} else if (style == 'hottemperature') {
-			if (solo == 'solo') {
-				window.ThemingEngine_InvertColors = (theme == 'dark');
-			} else {
-				window.ThemingEngine_InvertColors = (isLightColor(body_bg)) ? (theme == 'dark') : (theme == 'light');
-			}
+		} else if (style == 'deuteranopia') {
 			window.ThemingEngine_ColorFilterMode = 2;
-		} else if (style == 'coldtemperature') {
-			if (solo == 'solo') {
-				window.ThemingEngine_InvertColors = (theme == 'dark');
-			} else {
-				window.ThemingEngine_InvertColors = (isLightColor(body_bg)) ? (theme == 'dark') : (theme == 'light');
-			}
+		} else if (style == 'tritanopia') {
 			window.ThemingEngine_ColorFilterMode = 3;
 		} else {
-			if (solo == 'solo') {
-				window.ThemingEngine_InvertColors = (isLightColor(body_bg)) ? (theme == 'dark') : (theme == 'light');
-			} else {
-				window.ThemingEngine_InvertColors = (theme == 'dark');
-			}
 			window.ThemingEngine_ColorFilterMode = 0;
 		}
-	}
 	colorscheme = getColorScheme();
 	document.querySelector('head .devicetheme').innerHTML += '.' + theme + 'device-off { display:none!important } .cpe-system-colors { color-scheme:' + getColorScheme() + '; color-scheme:only ' + getColorScheme() + '; }' ;
 	window.ThemingEngine_ActiveColorFilterTheme = selected_theme
 	window.ThemingEngine_ActiveColorFilter = style
 	window.ThemingEngine_ColorFilterHueShift = parseInt( hue )
 	window.ThemingEngine_ColorFilterSaturation = parseInt( saturation )
-	window.ThemingEngine_ActiveColorFilterBehavior = solo
 	if (save) {
 		insertKey('device-theme', selected_theme );
 		insertKey('color-style', style );
-		insertKey('color-style-behavior', solo );
 		insertKey('color-hue', hue );
 		insertKey('color-sat', saturation );
 	}
@@ -1351,15 +1300,6 @@ function colortheme(style='match-parent', theme='match-parent', hue='match-paren
 			x.classList.remove("selected");
 		}
 		var y = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-device-themes li[data-device-theme='" + selected_theme + "']");
-		if (y) {
-			y.classList.add("selected")
-		}
-	// Color Style Behaviors
-		var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-solo-modes li.selected");
-		if (x) {
-			x.classList.remove("selected");
-		}
-		var y = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-solo-modes li[data-solo-mode='" + solo + "']");
 		if (y) {
 			y.classList.add("selected")
 		}
@@ -1564,51 +1504,6 @@ function ColorInvert(color) {
 	return 	chroma(color).set('rgb.r', r).set('rgb.g', g).set('rgb.b', b).set('oklch.h', h).set('hsl.h', h2)
 }
 
-/* 
-** Adjust the Color based on the current active Device Theme, Color Hue and Color Style
-** r  = Red
-** g  = Green
-** b  = Blue
-** h  = LCH Hue
-** h2 = HSL Hue
-*/
-function ColorStyleAdjust(color) {
-	if (window.ThemingEngine_ColorFilterMode === 2) { // Special Case
-		var color2 = color;
-		var color = chroma( chroma.temperature(chroma(color2).temperature()) ).hex();
-	}
-	if (window.ThemingEngine_ColorFilterMode === 3) { // Special Case
-		var color2 = color;
-		var color = chroma( chroma.temperature(40000 - chroma(color2).temperature()) ).hex();
-	}
-	if ( (window.ThemingEngine_InvertColors === true) ) {
-		var color = ColorInvert(color);
-	}
-		var r = chroma(color).get('rgb.r');
-		var g = chroma(color).get('rgb.g');
-		var b = chroma(color).get('rgb.b');
-
-	var h = chroma(color).get('oklch.h');
-	var h2 = chroma(color).get('hsl.h');
-	var huea = GetHueShift();
-	var adjusth = (h + huea) % 360
-	var adjusth2 = (h2 + huea) % 360
-	color3 = chroma(color).set('rgb.r', r).set('rgb.g', g).set('rgb.b', b).set('oklch.h', adjusth).set('hsl.h', adjusth2)	
-
-	var s = chroma(color3).get('oklch.c');
-	var s2 = chroma(color3).get('hsl.s');
-	var sata = (GetSaturation() / 100);
-
-
-	var page = [
-				chroma(color3).set('oklch.c', s * sata).set('hsl.s', s2 * sata).set('hsl.h', adjusth2),	// Sp Dark Mode 0 (Normal)
-				chroma(color3).set('oklch.c', s * sata).set('hsl.s', s2 * sata).set('hsl.h', huea),		// Sp Dark Mode 1 (Colorscale)
-				chroma(color3).set('oklch.c', s * sata).set('hsl.s', s2 * sata).set('hsl.h', adjusth2),	// Sp Dark Mode 2 (Hot Temperature)
-				chroma(color3).set('oklch.c', s * sata).set('hsl.s', s2 * sata).set('hsl.h', adjusth2),	// Sp Dark Mode 3 (Cold Temperature)
-			   ][window.ThemingEngine_ColorFilterMode];
-	return page
-
-}
 
 function isLightColor(color) {
 	var c1 = (getContrast('#000000',  chroma(color)))
@@ -1650,7 +1545,7 @@ return ((getContrast(color, color2)) >= contrast) ? 'none' : 'underline' // For 
 function CompileThemingEngine(refresh=true) {
 
 if (refresh === true) {
-	colortheme('match-parent', 'match-parent', 'match-parent', 'match-parent', 'match-parent', false,false,true,false);
+	colortheme('match-parent', 'match-parent', 'match-parent', 'match-parent', false,false,true,false);
 
 	var cmode = window.ThemingEngine_ContrastMode;
 	contrastmode(cmode, false,false,true,false);
@@ -1696,11 +1591,6 @@ var content_color =  GetCanvas();
 
 /* This goes before compiling Generic Colors or else they will think the theme is light */
 
-// Liatch Quirk
-if ((getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--canvas-background-color") != 'auto') ) { // Only run Liatch quirk if not in autocolorization
-	// Liatch Quirk
-	var content_color = ColorStyleAdjust(content_color)
-}
 
 	window.ThemingEngine_PageColor = content_color;
 	var lightPage = isLightColor(content_color);
@@ -1729,7 +1619,6 @@ if ((getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--canvas-
 	}
 } else {
 	var dropdowncolor = GetCanvas2();
-	var dropdowncolor = ColorStyleAdjust(dropdowncolor);
 
 	while ( ( isSuitableColorFormControls(dropdowncolor, content_color) ) && (dropdowncolor !== lightnessR)  ) {
 		var dropdowncolor= ColorAdjust(dropdowncolor,window.ThemingEngine_PageColor,true);
@@ -1753,10 +1642,7 @@ var dropdowncolor2 = GetInactiveText();
 /** Page text color **/
 var content_text= GetCanvasText();
 
-	// Liatch Quirk
-if ((getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--canvas-text-background-color") != 'auto') ) { // Only run Liatch quirk if not in autocolorization
-		var content_text = ColorStyleAdjust(content_text);
-}	
+
 		while ( ( !(isSuitableColorText(content_text, content_color)) ) && (content_text !== lightness) ) {
 			var content_text= ColorAdjust(content_text,window.ThemingEngine_PageColor);
 		}
@@ -1765,11 +1651,8 @@ if ((getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--canvas-
 var content2_text= GetCanvasText2();
 
 
-// Liatch Quirk
-if ((getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--canvas-text-secondary-background-color") != 'auto') || (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--canvas-text-background-color") != 'auto') ) { // Only run Liatch quirk if not in autocolorization
-var content2_text = ColorStyleAdjust(content2_text);
-}
-	
+
+
 while ( ( !(isSuitableColorText(content2_text, dropdowncolor)) ) && (content2_text !== lightnessDropdown) ) {
 	var content2_text= ColorAdjust(content2_text,dropdowncolor);
 }
@@ -1783,10 +1666,7 @@ var head_color =	GetDesktop();
 
 
 
-// Liatch Quirk
-if ((getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--desktop-background-color") != 'auto') ) { // Only run Liatch quirk if not in autocolorization
-		var head_color = ColorStyleAdjust(head_color);
-}
+
 	var lightHead = isLightColor(head_color);
 	if (lightHead) {
 		var lightnessHead = '#000000';
@@ -1809,10 +1689,7 @@ if (img == '') {
 
 var headertext_color= GetDesktopText();
 
-	// Liatch Quirk
-if ((getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--desktop-text-background-color") != 'auto') ) { // Only run Liatch quirk if not in autocolorization
-		var headertext_color = ColorStyleAdjust(headertext_color);
-}	
+
 		while ( ( !(isSuitableColorText(headertext_color, head_color)) ) && (headertext_color !== lightnessHead)  ) {
 			var headertext_color= ColorAdjust(headertext_color,window.ThemingEngine_DesktopColor);
 		}
@@ -1824,7 +1701,6 @@ if ((getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--desktop
 var link_color = GetHyperlink();
 
 // Liatch Quirk
-	var link_color = ColorStyleAdjust(link_color);
 	
 		while ( ( !(isSuitableColorText(link_color, content_color)) ) && (link_color !== lightness) ) {
 			var link_color= ColorAdjust(link_color,window.ThemingEngine_PageColor);
@@ -1854,10 +1730,7 @@ window.ThemingEngine_HyperlinkColor = link_color;
 /* Set Vars */
 var caret_color = GetActiveTitle();
 
-// Liatch Quirk
-if ((getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--active-title-background-color") != 'auto') ) { // Only run Liatch quirk if not in autocolorization
-		var caret_color = ColorStyleAdjust(caret_color);
-}
+
 		while ( ( !(isSuitableColorFormControls(caret_color, content_color)) ) && (caret_color !== lightness)  ) {
 			var caret_color= ColorAdjust(caret_color,window.ThemingEngine_PageColor);
 		}
@@ -1890,10 +1763,7 @@ var caretcolorR = ColorHoverRatio(caret_color);
 
 var carettext_color= GetActiveTitleText();
 
-	// Liatch Quirk
-if ((getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--active-title-text-background-color") != 'auto') ) { // Only run Liatch quirk if not in autocolorization
-		var carettext_color = ColorStyleAdjust(carettext_color);
-}
+
 			while ( ( !(isSuitableColorText(carettext_color, caret_color)) ) && (carettext_color !== lightnessCaret)  ) {
 				var carettext_color= ColorAdjust(carettext_color,caret_color);
 			}
@@ -1903,10 +1773,7 @@ if ((getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--active-
 /** Caret 2 Color **/
 /* Set Vars */
 var caretIT_color = GetInactiveTitle();
-// Liatch Quirk
-if ((getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--inactive-title-background-color") != 'auto') ) { // Only run Liatch quirk if not in autocolorization
-		var caretIT_color = ColorStyleAdjust(caretIT_color);
-}
+
 			while ( ( isSuitableColorFormControls(caretIT_color, content_color) ) && (caretIT_color !== lightnessR)  ) {
 			var caretIT_color= ColorAdjust(caretIT_color,window.ThemingEngine_PageColor,true);
 		}
@@ -1933,10 +1800,7 @@ window.ThemingEngine_InactiveTitleColor = caretIT_color
 
 var caretITtext_color= GetInactiveTitleText();
 
-	// Liatch Quirk
-if ((getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--inactive-title-text-background-color") != 'auto') ) { // Only run Liatch quirk if not in autocolorization
-		var caretITtext_color = ColorStyleAdjust(caretITtext_color);
-}
+
 
 			while ( ( !(isSuitableColorFormControls(caretITtext_color, caretIT_color)) ) && (caretITtext_color !== lightnessCaretIT)  ) {
 				var caretITtext_color= ColorAdjust(caretITtext_color,caretIT_color);
@@ -1948,10 +1812,7 @@ if ((getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--inactiv
 
 var button_color = GetHighlight();
 
-// Liatch Quirk
-if ((getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--highlight-background-color") != 'auto') ) { // Only run Liatch quirk if not in autocolorization
-	var button_color = ColorStyleAdjust(button_color);
-}
+
 
 	var button2_color = button_color;
 	var button3_color = button_color;
@@ -1991,10 +1852,7 @@ var buttoncolorR = ColorHoverRatio(button_color);
 
 var buttontext_color= GetHighlightText();
 
-	// Liatch Quirk
-if ((getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--highlight-text-background-color") != 'auto') ) { // Only run Liatch quirk if not in autocolorization
-		var buttontext_color = ColorStyleAdjust(buttontext_color);
-}
+
 			while ( ( !(isSuitableColorText(buttontext_color, button_color)) ) && (buttontext_color !== lightnessBTN)  ) {
 				var buttontext_color= ColorAdjust(buttontext_color,button_color);
 			}
@@ -2006,10 +1864,7 @@ if ((getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--highlig
 /* Set Vars */
 var vlink_color = GetVisitedHyperlink();
 
-// Liatch Quirk
-if ((getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--visited-hyperlink-background-color") != 'auto') ) { // Only run Liatch quirk if not in autocolorization
-	var vlink_color = ColorStyleAdjust(vlink_color);
-}
+
 
 	var vlink2_color = vlink_color;
 	var vlink3_color = vlink_color;
@@ -2025,10 +1880,7 @@ if ((getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--visited
 /* Set Vars */
 var alink_color = GetActiveText();
 
-// Liatch Quirk
-if ((getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--active-text-background-color") != 'auto') ) { // Only run Liatch quirk if not in autocolorization
-	var alink_color = ColorStyleAdjust(alink_color);
-}
+
 	
 		while ( ( !(isSuitableColorText(alink_color, content_color)) ) && (alink_color !== lightness) ) {
 			var alink_color= ColorAdjust(alink_color,window.ThemingEngine_PageColor);
@@ -2044,11 +1896,7 @@ if ((getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--active-
 
 var border_color =	dropdowncolor2;
 
-if ((getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--inactive-text-background-color") != 'auto') ) { // Only run Liatch quirk if not in autocolorization
-	// Liatch Quirk
 
-		var border_color = ColorStyleAdjust(border_color);
-}
 
 		while ( ( !(isSuitableColorFormControls(border_color, content_color)) ) && (border_color !== lightness)  ) {
 			var border_color= ColorAdjust(border_color,window.ThemingEngine_PageColor);
@@ -2250,10 +2098,10 @@ var caretIT_fg = GetForegroundVariables(caretIT_color); // Still required, as on
 
 
 var invfilters = [
-					['hue-rotate(' + hue + 'deg) grayscale(' + saturation + ')',			  					'invert(1) hue-rotate(' + (180+hue) + 'deg)  grayscale(' + saturation + ')'],						// Sp Dark Mode 0 (Normal)
-					['sepia(1) hue-rotate(' + (320+hue) + 'deg)  grayscale(' + saturation + ')', 	  			'invert(1) sepia(1) hue-rotate(' + (320+hue) + 'deg)  grayscale(' + saturation + ')'],				// Sp Dark Mode 1 (Colorscale)
-					['sepia(1) hue-rotate(' + hue + 'deg) grayscale(' + saturation + ') opacity(0.5)',			'invert(1) sepia(1) hue-rotate(' + hue + 'deg) opacity(0.5) grayscale(' + saturation + ')'], 		// Sp Dark Mode 2 (Hot Temperature)
-					['sepia(1) hue-rotate(' + (180 + hue) + 'deg) grayscale(' + saturation + ') opacity(0.5)',	'invert(1) sepia(1) hue-rotate(' + (180+hue) + 'deg) opacity(0.5) grayscale(' + saturation + ')'],	// Sp Dark Mode 3 (Cold Temperature)
+					['hue-rotate(' + hue + 'deg) grayscale(' + saturation + ')',			  					'invert(1) hue-rotate(' + (180+hue) + 'deg)  grayscale(' + saturation + ')'],								// Mode 0 (Normal)
+					['hue-rotate(' + hue + 'deg) grayscale(' + saturation + ') var(--protanopia-filter) ',		'invert(1) hue-rotate(' + (180+hue) + 'deg)  grayscale(' + saturation + ')  var(--protanopia-filter)'],		// Mode 1 (Protanopia)
+					['hue-rotate(' + hue + 'deg) grayscale(' + saturation + ') var(--deuteranopia-filter)',		'invert(1) hue-rotate(' + (180+hue) + 'deg)  grayscale(' + saturation + ')  var(--deuteranopia-filter)'],	// Sp Dark Mode 2 (Hot Temperature)
+					['hue-rotate(' + hue + 'deg) grayscale(' + saturation + ') var(--tritanopia-filter)',		'invert(1) hue-rotate(' + (180+hue) + 'deg)  grayscale(' + saturation + ')  var(--tritanopia-filter)'],		// Sp Dark Mode 3 (Cold Temperature)
 				 ];
 /* Set Values for dynamical variables */
 	var result = 		  colorstyle +

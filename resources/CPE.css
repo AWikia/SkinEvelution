@@ -198,6 +198,10 @@ font-variant-emoji:unicode;
 --base-monospace-fonts:"Inconsolata"; /* Empty but other languages will depend on it */
 --monospace-font-stack:var(--custom-monospace-font), var(--base-monospace-fonts), var(--code-emoji-fonts), monospace;
 --header-size:160px;
+/* Color Modes */
+--protanopia-filter:url('filters.svg#protanopia');
+--deuteranopia-filter:url('filters.svg#deuteranopia');
+--tritanopia-filter:url('filters.svg#tritanopia');
 /* Contrast Mode */
 --contrast-box-shadow:none;
 /** Theming Variables **/
@@ -1160,6 +1164,17 @@ body {
 }
 
 
+.filter-overlay {
+	backdrop-filter:var(--color-mode-filter, none);
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 999;
+	pointer-events: none;
+}
+
 
 container {
     margin: 0;
@@ -1812,7 +1827,7 @@ html:not(:-webkit-full-screen) .fullscreen-on {
 body .invertion-on,
 body .mw-content-text img,
 body #mw-content-text img {
-	filter:var(--color-mode-filter, none);
+/*	filter:var(--color-mode-filter, none); */
 }
 
 :not(.unset)[disabled], 
@@ -3594,12 +3609,13 @@ max-height:152px;
 	justify-content:flex-start;
 }
 
-.cpe-dropdown__content .cpe-list.is-linked.cpe-solo-modes.has-icons {
+.cpe-dropdown__content .cpe-list.is-linked.cpe-device-themes.has-icons {
 	grid:auto-flow / repeat(2, 1fr);
 }
 
 .cpe-dropdown__content .cpe-list.cpe-visual-modes.is-linked.has-icons,
-.cpe-dropdown__content .cpe-list.cpe-dcm-types.is-linked.has-icons {
+.cpe-dropdown__content .cpe-list.cpe-dcm-types.is-linked.has-icons,
+.cpe-dropdown__content .cpe-list.cpe-device-themes.is-linked.has-icons {
 	justify-content:center;
 }
 
@@ -3631,15 +3647,20 @@ max-height:152px;
 }
 
 
-.cpe-dropdown__content .cpe-list.is-linked.cpe-solo-modes.has-icons > li {
-    font-size: 24px;
+.cpe-dropdown__content .cpe-list.is-linked.cpe-device-themes.has-icons > li span.text {
+    font-size: 12.5px;
     font-weight: 900;
-    font-family: 'Rubik',sans-serif;
+    font-family: var(--rounded-font-stack),sans-serif;
     text-transform: uppercase;
+    align-self: center;
+    width: 42px;
+    margin-left:2px;
+    overflow: hidden;
+    user-select:none;
 }
 
-.cpe-dropdown__content .cpe-list.is-linked.cpe-solo-modes.has-icons > li > a:not(.cpe-button) {
-    padding: 6px 3px;
+.cpe-dropdown__content .cpe-list.is-linked.cpe-device-themes.has-icons > li > a:not(.cpe-button) {
+    padding: 6px 2px;
 }
 
 
