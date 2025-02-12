@@ -1267,6 +1267,14 @@ function colortheme(style='match-parent', theme='match-parent', hue='match-paren
 			window.ThemingEngine_ColorFilterMode = 2;
 		} else if (style == 'tritanopia') {
 			window.ThemingEngine_ColorFilterMode = 3;
+		} else if (style == 'protanomaly') {
+			window.ThemingEngine_ColorFilterMode = 4;
+		} else if (style == 'deuteranomaly') {
+			window.ThemingEngine_ColorFilterMode = 5;
+		} else if (style == 'tritanomaly') {
+			window.ThemingEngine_ColorFilterMode = 6;
+		} else if (style == 'achromatomaly') {
+			window.ThemingEngine_ColorFilterMode = 7;
 		} else {
 			window.ThemingEngine_ColorFilterMode = 0;
 		}
@@ -2099,8 +2107,13 @@ var caretIT_fg = GetForegroundVariables(caretIT_color); // Still required, as on
 var invfilters = [
 					['hue-rotate(' + hue + 'deg) grayscale(' + saturation + ')',			  					'invert(1) hue-rotate(' + (180+hue) + 'deg)  grayscale(' + saturation + ')'],								// Mode 0 (Normal)
 					['hue-rotate(' + hue + 'deg) grayscale(' + saturation + ') var(--protanopia-filter) ',		'invert(1) hue-rotate(' + (180+hue) + 'deg)  grayscale(' + saturation + ')  var(--protanopia-filter)'],		// Mode 1 (Protanopia)
-					['hue-rotate(' + hue + 'deg) grayscale(' + saturation + ') var(--deuteranopia-filter)',		'invert(1) hue-rotate(' + (180+hue) + 'deg)  grayscale(' + saturation + ')  var(--deuteranopia-filter)'],	// Sp Dark Mode 2 (Hot Temperature)
-					['hue-rotate(' + hue + 'deg) grayscale(' + saturation + ') var(--tritanopia-filter)',		'invert(1) hue-rotate(' + (180+hue) + 'deg)  grayscale(' + saturation + ')  var(--tritanopia-filter)'],		// Sp Dark Mode 3 (Cold Temperature)
+					['hue-rotate(' + hue + 'deg) grayscale(' + saturation + ') var(--deuteranopia-filter)',		'invert(1) hue-rotate(' + (180+hue) + 'deg)  grayscale(' + saturation + ')  var(--deuteranopia-filter)'],	// Mode 2 (Deuteranopia)
+					['hue-rotate(' + hue + 'deg) grayscale(' + saturation + ') var(--tritanopia-filter)',		'invert(1) hue-rotate(' + (180+hue) + 'deg)  grayscale(' + saturation + ')  var(--tritanopia-filter)'],		// Mode 3 (Tritanopia)
+					['hue-rotate(' + hue + 'deg) grayscale(' + saturation + ') var(--protanomaly-filter) ',		'invert(1) hue-rotate(' + (180+hue) + 'deg)  grayscale(' + saturation + ')  var(--protanomaly-filter)'],	// Mode 4 (Protanomaly)
+					['hue-rotate(' + hue + 'deg) grayscale(' + saturation + ') var(--deuteranomaly-filter)',	'invert(1) hue-rotate(' + (180+hue) + 'deg)  grayscale(' + saturation + ')  var(--deuteranomaly-filter)'],	// Mode 5 (Deuteranomaly)
+					['hue-rotate(' + hue + 'deg) grayscale(' + saturation + ') var(--tritanomaly-filter)',		'invert(1) hue-rotate(' + (180+hue) + 'deg)  grayscale(' + saturation + ')  var(--tritanomaly-filter)'],	// Mode 6 (Tritanomaly)
+					['hue-rotate(' + hue + 'deg) grayscale(' + saturation + ') var(--achromatomaly-filter)',	'invert(1) hue-rotate(' + (180+hue) + 'deg)  grayscale(' + saturation + ')  var(--achromatomaly-filter)'],	// Mode 7 (Achromatomaly)
+
 				 ];
 /* Set Values for dynamical variables */
 	var result = 		  colorstyle +
