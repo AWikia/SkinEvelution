@@ -21,11 +21,11 @@ window.ThemingEngine_ActiveVisualMode2 = '-'; // This is like ThemingEngine_Acti
 window.ThemingEngine_ActiveDCMMode = 'standard';
 window.ThemingEngine_ActiveDCMType = 'standard';
 /* Some Theming Colors */
-window.ThemingEngine_HyperlinkColor = GetHyperlink();
+window.ThemingEngine_HighlightColor = GetHighlight();
 window.ThemingEngine_PageColor = GetCanvas();
 window.ThemingEngine_PageColorFG = '#000000';
 window.ThemingEngine_DesktopColor = GetDesktop();
-window.ThemingEngine_HighlightColor = GetHighlight();
+window.ThemingEngine_HyperlinkColor = GetHyperlink();
 window.ThemingEngine_ActiveTitleColor = GetActiveTitle();
 window.ThemingEngine_InactiveTitleColor = GetInactiveTitle();
 window.AutoColor = '#3366cc'; // Fallback Starting color
@@ -679,7 +679,7 @@ function GetCanvas() {
 	if (DisabledColorManagement()) {
 		return GetSystemColorValue('--canvas-background-color')
 	} else if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--canvas-background-color") === 'auto') {
-		var color = GetHyperlink();
+		var color = GetHighlight();
 		var fg = GetForegroundVariables(color);
 		var h2 = chroma(color).get('hsl.h');
 		var color = chroma(color).set('lch.l',fg[2]).set('hsl.h',h2);
@@ -703,11 +703,10 @@ function GetHyperlink() {
 	if (DisabledColorManagement()) {
 		return GetSystemColorValue('--hyperlink-background-color')
 	} else if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--hyperlink-background-color") === 'auto') {
-		if (ShouldUseFallbackColor()) {
-			return chroma('#3366cc'); // Fallback method
-		} else {
-			return ColorInvert(window.AutoColor); // Fallback method
-		}
+		var color = ThemingEngine_HighlightColor;
+		var color2 = ThemingEngine_PageColorFG;
+		return ColorMix(color2,color,1.6);
+
 	} else {
 		return getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--hyperlink-background-color").trim();
 	}
@@ -775,9 +774,11 @@ function GetHighlight() {
 	if (DisabledColorManagement()) {
 		return GetSystemColorValue('--highlight-background-color')
 	} else if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--highlight-background-color") === 'auto') {
-		var color = ThemingEngine_HyperlinkColor;
-		var color2 = ThemingEngine_PageColorFG;
-		return ColorMix(color2,color,1.6);
+		if (ShouldUseFallbackColor()) {
+			return chroma('#3366cc'); // Fallback method
+		} else {
+			return ColorInvert(window.AutoColor); // Fallback method
+		}
 	} else {
 		return getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--highlight-background-color").trim();
 	}
@@ -798,7 +799,7 @@ function GetActiveTitle() {
 	if (DisabledColorManagement()) {
 		return GetSystemColorValue('--active-title-background-color')
 	} else if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--active-title-background-color") === 'auto') {
-		var color = ThemingEngine_HyperlinkColor;
+		var color = ThemingEngine_HighlightColor;
 		var color2 = ColorInvert(ThemingEngine_PageColorFG);
 		var h = chroma(color).get("hsl.h");
 		return chroma(ColorMix(color2,color,1.6)).set("hsl.h",(h + 30) % 360 );
@@ -1542,7 +1543,7 @@ return ((getContrast(color, color2)) >= contrast) // For Border Color
 
 function getDefaultHyperlinkTextDecoration(color,color2) {
 var contrast = getLargeTextContrast() / 2.0
-return ((getContrast(color, color2)) >= contrast) ? 'none' : 'underline' // For Border Color
+return (((getContrast(color, color2)) >= contrast) && (window.ThemingEngine_ColorFilterSaturation > 50)) ? 'none' : 'underline' // For Border Color
 }
 
 
@@ -1702,34 +1703,55 @@ var headertext_color= GetDesktopText();
 			var headertext_color= ColorAdjust(headertext_color,window.ThemingEngine_DesktopColor);
 		}
 
-
-
-/** Link Color **/
+/** Button Color **/
 /* Set Vars */
-var link_color = GetHyperlink();
 
-// Liatch Quirk
-	
-		while ( ( !(isSuitableColorText(link_color, content_color)) ) && (link_color !== lightness) ) {
-			var link_color= ColorAdjust(link_color,window.ThemingEngine_PageColor);
+var button_color = GetHighlight();
+
+
+
+	var button2_color = button_color;
+	var button3_color = button_color;
+	var button4_color = button_color;
+	var sshighlight	  = button_color;
+
+		while ( ( !(isSuitableColorFormControls(button_color, content_color)) ) && (button_color !== lightness)  ) {
+			var button_color= ColorAdjust(button_color,window.ThemingEngine_PageColor);
 		}
 
-	var link2_color = link_color;
-	var link3_color = link_color;
-	var link4_color = link_color;
 
-
-window.ThemingEngine_HyperlinkColor = link_color;
-
-	var lightLink = isLightColor(link_color);
-	if (lightLink) {
-		var tabscLink = '255 255 255';
-		var tabsoLink = 0.1 + (chroma(link_color).luminance() * 0.4 );
+/* Screensaver */
+		while ( ( isSuitableColorText(sshighlight, '#0c0c0c') ) && (sshighlight !== '#000000')  ) {
+			var sshighlight= ColorAdjust(sshighlight,'#0c0c0c',true);
+		}
+		while ( ( !(isSuitableColorFormControls(sshighlight, '#0c0c0c')) ) && (sshighlight !== '#ffffff')  ) {
+			var sshighlight= ColorAdjust(sshighlight,'#0c0c0c');
+		}
+/* Screensaver */
+	var lightbutton = isLightColor(button_color);
+	if (lightbutton) {
+		var lightnessBTN = '#000000';
 	} else {
-		var tabscLink = '58 58 58';
-		var tabsoLink = 0.1 + ((1 - chroma(link_color).luminance()) * 0.4 );
+		var lightnessBTN = '#ffffff';
 	}
 
+window.ThemingEngine_HighlightColor = button_color
+
+
+
+var buttoncolorR = ColorHoverRatio(button_color);
+
+
+
+/** Button text color **/
+
+
+var buttontext_color= GetHighlightText();
+
+
+			while ( ( !(isSuitableColorText(buttontext_color, button_color)) ) && (buttontext_color !== lightnessBTN)  ) {
+				var buttontext_color= ColorAdjust(buttontext_color,button_color);
+			}
 
 
 
@@ -1815,55 +1837,31 @@ var caretITtext_color= GetInactiveTitleText();
 			}
 
 
-/** Button Color **/
+/** Link Color **/
 /* Set Vars */
+var link_color = GetHyperlink();
 
-var button_color = GetHighlight();
-
-
-
-	var button2_color = button_color;
-	var button3_color = button_color;
-	var button4_color = button_color;
-	var sshighlight	  = button_color;
-
-		while ( ( !(isSuitableColorFormControls(button_color, content_color)) ) && (button_color !== lightness)  ) {
-			var button_color= ColorAdjust(button_color,window.ThemingEngine_PageColor);
+// Liatch Quirk
+	
+		while ( ( !(isSuitableColorText(link_color, content_color)) ) && (link_color !== lightness) ) {
+			var link_color= ColorAdjust(link_color,window.ThemingEngine_PageColor);
 		}
 
+	var link2_color = link_color;
+	var link3_color = link_color;
+	var link4_color = link_color;
 
-/* Screensaver */
-		while ( ( isSuitableColorText(sshighlight, '#0c0c0c') ) && (sshighlight !== '#000000')  ) {
-			var sshighlight= ColorAdjust(sshighlight,'#0c0c0c',true);
-		}
-		while ( ( !(isSuitableColorFormControls(sshighlight, '#0c0c0c')) ) && (sshighlight !== '#ffffff')  ) {
-			var sshighlight= ColorAdjust(sshighlight,'#0c0c0c');
-		}
-/* Screensaver */
-	var lightbutton = isLightColor(button_color);
-	if (lightbutton) {
-		var lightnessBTN = '#000000';
+
+window.ThemingEngine_HyperlinkColor = link_color;
+
+	var lightLink = isLightColor(link_color);
+	if (lightLink) {
+		var tabscLink = '255 255 255';
+		var tabsoLink = 0.1 + (chroma(link_color).luminance() * 0.4 );
 	} else {
-		var lightnessBTN = '#ffffff';
+		var tabscLink = '58 58 58';
+		var tabsoLink = 0.1 + ((1 - chroma(link_color).luminance()) * 0.4 );
 	}
-
-window.ThemingEngine_HighlightColor = button_color
-
-
-
-var buttoncolorR = ColorHoverRatio(button_color);
-
-
-
-/** Button text color **/
-
-
-var buttontext_color= GetHighlightText();
-
-
-			while ( ( !(isSuitableColorText(buttontext_color, button_color)) ) && (buttontext_color !== lightnessBTN)  ) {
-				var buttontext_color= ColorAdjust(buttontext_color,button_color);
-			}
 
 
 
