@@ -1569,7 +1569,7 @@ if (refresh === true) {
 		var colorstyle= ".color-management-off { display:none!important;}\n"
 	}
 
-if ((getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--hyperlink-background-color") === 'auto') && (GetDesktopImage2() != '')) {
+if ((getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--highlight-background-color") === 'auto') && (GetDesktopImage2() != '')) {
 
 RecalcAutoColor().then( (v) => {
     window.AutoColor=v; // "fulfilled!"
