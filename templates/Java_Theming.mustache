@@ -682,8 +682,8 @@ function GetCanvas() {
 		var color = GetHighlight();
 		var fg = GetForegroundVariables(color);
 		var h2 = chroma(color).get('hsl.h');
-		var color = chroma(color).set('lch.l',fg[2]).set('hsl.h',h2);
-		return ColorMix(color,fg[0],1.6);
+		var color = chroma(color).luminance(fg[2]).set('hsl.h',h2);
+		return color;
 	} else {
 		return getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--canvas-background-color").trim();
 	}
@@ -693,6 +693,11 @@ function GetCanvas() {
 function GetCanvas2() {
 	if (DisabledColorManagement()) {
 		return GetSystemColorValue('--canvas-secondary-background-color')
+	} else if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--canvas-secondary-background-color") === 'auto') {
+		var color = window.ThemingEngine_PageColor;
+		var color2 = window.ThemingEngine_PageColorFG;
+		return ColorMix(color,color2,ContrastRatioDropdown());
+
 	} else {
 		return getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--canvas-secondary-background-color").trim();
 	}
@@ -703,9 +708,9 @@ function GetHyperlink() {
 	if (DisabledColorManagement()) {
 		return GetSystemColorValue('--hyperlink-background-color')
 	} else if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--hyperlink-background-color") === 'auto') {
-		var color = ThemingEngine_HighlightColor;
-		var color2 = ThemingEngine_PageColorFG;
-		return ColorMix(color2,color,1.6);
+		var color = window.ThemingEngine_HighlightColor;
+		var color2 = [0.7,-0.8][['#000000','#ffffff'].indexOf(window.ThemingEngine_PageColorFG)];
+		return ColorLuminanceAdjust(color,color2)
 
 	} else {
 		return getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--hyperlink-background-color").trim();
@@ -738,10 +743,11 @@ function GetActiveText() {
 	if (DisabledColorManagement()) {
 		return GetSystemColorValue('--active-text-background-color')
 	} else if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--active-text-background-color") === 'auto') {
-		var color = ThemingEngine_HyperlinkColor;
-		var color2 = ThemingEngine_PageColorFG;
+		var color = window.ThemingEngine_HyperlinkColor;
+		var color2 = [0.7,-0.8][['#000000','#ffffff'].indexOf(window.ThemingEngine_PageColorFG)];
 		var h = chroma(color).get("hsl.h");
-		return chroma(ColorMix(color2,color,1.2)).set("hsl.h",(h + 30) % 360 );
+		return chroma(ColorLuminanceAdjust(color,color2)).set("hsl.h",(h + 60) % 360 )
+
 	} else {
 		return getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--active-text-background-color").trim();
 	}
@@ -799,10 +805,10 @@ function GetActiveTitle() {
 	if (DisabledColorManagement()) {
 		return GetSystemColorValue('--active-title-background-color')
 	} else if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--active-title-background-color") === 'auto') {
-		var color = ThemingEngine_HighlightColor;
-		var color2 = ColorInvert(ThemingEngine_PageColorFG);
+		var color = window.ThemingEngine_HighlightColor;
+		var color2 = [-0.8,0.7][['#000000','#ffffff'].indexOf(window.ThemingEngine_PageColorFG)];
 		var h = chroma(color).get("hsl.h");
-		return chroma(ColorMix(color2,color,1.6)).set("hsl.h",(h + 30) % 360 );
+		return chroma(ColorLuminanceAdjust(color,color2)).set("hsl.h",(h + 60) % 360 )
 	} else {
 		return getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--active-title-background-color").trim();
 	}
@@ -1134,11 +1140,11 @@ function GetForegroundVariables(color) {
 	if (isLightColor(color)) {
 		var f1 =  getComputedStyle(body).getPropertyValue("--light-theme-foreground-color");
 		var f2 =  getComputedStyle(body).getPropertyValue("--light-theme-foreground-color-hover");
-		var lt = 70;
+		var lt = 0.0075;
 	} else {
 		var f1 =  getComputedStyle(body).getPropertyValue("--dark-theme-foreground-color");
 		var f2 =  getComputedStyle(body).getPropertyValue("--dark-theme-foreground-color-hover");
-		var lt = 30;
+		var lt = 0.85;
 	}
 	return [f1, f2, lt]
 }
@@ -1472,14 +1478,24 @@ function SetDCM(type='match-parent',tick='match-parent',save='true',repaint='tru
 **/
 
 /* Begin Color Parsers */
-function ColorMix(color1,color2,intensity=1,hue='nil') {
+function ColorMix(color1,color2,intensity=1,hue='nil',int='rgb') {
 	var alpha = 0.5*intensity;
 	if (hue === 'nil') {
-		return chroma.mix(color1, color2, alpha, 'rgb');
+		return chroma.mix(color1, color2, alpha, int);
 	} else if (hue === -1) {
-		return chroma.mix(color1, color2, alpha, 'rgb').set('hsl.s', 0).set('hsl.h', 0);
+		return chroma.mix(color1, color2, alpha, int).set('hsl.s', 0).set('hsl.h', 0);
 	} else {
-		return chroma.mix(color1, color2, alpha, 'rgb').set('hsl.h', hue);
+		return chroma.mix(color1, color2, alpha, int).set('hsl.h', hue);
+	}
+}
+
+function ColorLuminanceAdjust(color,ratio) {
+	if (ratio < 0) {
+		var lum = 1 - chroma(color).luminance();
+		return chroma(color).luminance(1 - (lum * (ratio * -1)));
+	} else {
+		var lum = chroma(color).luminance();
+		return chroma(color).luminance(lum * ratio);
 	}
 }
 
@@ -1620,13 +1636,7 @@ window.ThemingEngine_FinalContrast = ContrastRatioAutoInactiveText();
 
 		window.ThemingEngine_PageColorFG = lightness
 
-if ((getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--canvas-secondary-background-color") == 'auto') ) {
-	if (lightPage) {
-		var dropdowncolor = ColorMix(content_color,"#000000",adjustment);
-	} else {
-		var dropdowncolor = ColorMix(content_color,"#ffffff",adjustment);
-	}
-} else {
+
 	var dropdowncolor = GetCanvas2();
 
 	while ( ( isSuitableColorFormControls(dropdowncolor, content_color) ) && (dropdowncolor !== lightnessR)  ) {
@@ -1634,7 +1644,6 @@ if ((getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--canvas-
 	}
 
 
-}
 	var lightDropdown = isLightColor(dropdowncolor);
 	if (lightDropdown) {
 		var lightnessDropdown = '#000000';
