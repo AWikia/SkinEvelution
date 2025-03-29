@@ -63,7 +63,7 @@ function UpdateSelectInput(obj) { // Updates a Select Input Value
 		if (x) {
 			x.classList.remove("selected");
 		}
-//		obj.classList.add("selected");
+		obj.classList.add("selected"); // Test
 		document.querySelector(' .cpe-dropdown.cpe-select:focus-within').addEventListener('click',UpdateSelectValue(obj));
 		document.querySelector(' .cpe-dropdown.cpe-select:focus-within').removeEventListener('click',UpdateSelectValue);
 }
