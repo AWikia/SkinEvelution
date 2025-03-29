@@ -258,39 +258,45 @@ background-color:var(--canvas-background-color);
 
 
 .visualstyle-basic ::-webkit-scrollbar-thumb {
-	border-color:var(--scrollbar-track-text);
-	border-width:1px;
-	box-shadow:var(--threeD-shadow), 0 0px 0 2px inset var(--scrollbar-thumb-color-1);
+	box-shadow:var(--threeD-shadow), 0 0px 0 calc(var(--scrollbar-width) * 0.125) inset var(--scrollbar-thumb-color-1);
 }
 
 .visualstyle-basic ::-webkit-scrollbar-thumb:hover {
-  box-shadow:var(--threeD-shadow), 0 0px 0 2px inset var(--scrollbar-thumb-color-2);
+  box-shadow:var(--threeD-shadow), 0 0px 0 calc(var(--scrollbar-width) * 0.125) inset var(--scrollbar-thumb-color-2);
 }
 
 .visualstyle-basic ::-webkit-scrollbar-thumb:active {
-  box-shadow:var(--threeD-shadow-active), 0 0px 0 2px inset var(--scrollbar-thumb-color-2);
+  box-shadow:var(--threeD-shadow-active), 0 0px 0 calc(var(--scrollbar-width) * 0.125) inset var(--scrollbar-thumb-color-2);
 
 }
 
+/* Grippers for scrollbars */
 
-
+/*
+**
+* 0.0625 = 1px
+* 0.1875 = 3px
+* 0.3125 = 5px
+* 0.4375 = 7px
+**
+*/
 
 .visualstyle-basic ::-webkit-scrollbar-thumb:vertical {
-	min-height:20px;
-	background-size:10px 100%;
+	min-height:var(--scrollbar-width);
+	background-size:calc(var(--scrollbar-width) * 0.625) 100%;
 	background-image:
-linear-gradient(180deg, transparent 0%, transparent calc(50% - 5px), currentColor calc(50% - 5px), currentColor calc(50% - 3px), transparent calc(50% - 3px), transparent calc(50% - 1px)),
-linear-gradient(180deg, transparent 0%, transparent calc(50% - 1px), currentColor calc(50% - 1px), currentColor calc(50% - -1px), transparent calc(50% - -1px), transparent calc(50% - -3px)), 
-linear-gradient(180deg, transparent 0%, transparent calc(50% - -3px), currentColor calc(50% - -3px), currentColor calc(50% - -5px), transparent calc(50% - -5px), transparent calc(50% - -7px));
+linear-gradient(180deg, transparent 0%, transparent calc(50% - calc(var(--scrollbar-width) * 0.3125)), currentColor calc(50% - calc(var(--scrollbar-width) * 0.3125)), currentColor calc(50% - calc(var(--scrollbar-width) * 0.1875)), transparent calc(50% - calc(var(--scrollbar-width) * 0.1875)), transparent calc(50% - calc(var(--scrollbar-width) * 0.0625))),
+linear-gradient(180deg, transparent 0%, transparent calc(50% - calc(var(--scrollbar-width) * 0.0625)), currentColor calc(50% - calc(var(--scrollbar-width) * 0.0625)), currentColor calc(50% - calc(var(--scrollbar-width) * -0.0625)), transparent calc(50% - calc(var(--scrollbar-width) * -0.0625)), transparent calc(50% - calc(var(--scrollbar-width) * -0.1875))), 
+linear-gradient(180deg, transparent 0%, transparent calc(50% - calc(var(--scrollbar-width) * -0.1875)), currentColor calc(50% - calc(var(--scrollbar-width) * -0.1875)), currentColor calc(50% - calc(var(--scrollbar-width) * -0.3125)), transparent calc(50% - calc(var(--scrollbar-width) * -0.3125)), transparent calc(50% - calc(var(--scrollbar-width) * -0.4375)));
 }
 
 .visualstyle-basic ::-webkit-scrollbar-thumb:horizontal {
-	min-height:20px;
-	background-size:100% 10px;
+	min-width:var(--scrollbar-width);
+	background-size:100% calc(var(--scrollbar-width) * 6.25);
 	background-image:
-linear-gradient(90deg, transparent 0%, transparent calc(50% - 5px), currentColor calc(50% - 5px), currentColor calc(50% - 3px), transparent calc(50% - 3px), transparent calc(50% - 1px)),
-linear-gradient(90deg, transparent 0%, transparent calc(50% - 1px), currentColor calc(50% - 1px), currentColor calc(50% - -1px), transparent calc(50% - -1px), transparent calc(50% - -3px)), 
-linear-gradient(90deg, transparent 0%, transparent calc(50% - -3px), currentColor calc(50% - -3px), currentColor calc(50% - -5px), transparent calc(50% - -5px), transparent calc(50% - -7px));
+linear-gradient(90deg, transparent 0%, transparent calc(50% - calc(var(--scrollbar-width) * 0.3125)), currentColor calc(50% - calc(var(--scrollbar-width) * 0.3125)), currentColor calc(50% - calc(var(--scrollbar-width) * 0.1875)), transparent calc(50% - calc(var(--scrollbar-width) * 0.1875)), transparent calc(50% - calc(var(--scrollbar-width) * 0.0625))),
+linear-gradient(90deg, transparent 0%, transparent calc(50% - calc(var(--scrollbar-width) * 0.0625)), currentColor calc(50% - calc(var(--scrollbar-width) * 0.0625)), currentColor calc(50% - calc(var(--scrollbar-width) * -0.0625)), transparent calc(50% - calc(var(--scrollbar-width) * -0.0625)), transparent calc(50% - calc(var(--scrollbar-width) * -0.1875))), 
+linear-gradient(90deg, transparent 0%, transparent calc(50% - calc(var(--scrollbar-width) * -0.1875)), currentColor calc(50% - calc(var(--scrollbar-width) * -0.1875)), currentColor calc(50% - calc(var(--scrollbar-width) * -0.3125)), transparent calc(50% - calc(var(--scrollbar-width) * -0.3125)), transparent calc(50% - calc(var(--scrollbar-width) * -0.4375)));
 }
 
 /* Floating buttons */
@@ -304,13 +310,6 @@ linear-gradient(90deg, transparent 0%, transparent calc(50% - -3px), currentColo
 
 
 /** High Contrast **/
-.visualstyle-basic.visualmode-contrast ::-webkit-scrollbar-thumb {
-	background-color:var(--scrollbar-track-color-1);
-	color:var(--scrollbar-track-text);
-	border-color:currentColor;
-	box-shadow:0 0px 0 2px inset var(--scrollbar-track-color-1)!important;
-	border-width:1px;
-}
 
 .visualstyle-basic.visualmode-contrast body {
 /* Link Styling */
@@ -931,13 +930,6 @@ background-color:var(--canvas-background-color);
 .visualstyle-simple.visualmode-contrast .cpe-dropdown__content,
 .visualstyle-simple.visualmode-contrast .cpe-dropdown__content .cpe-list.is-linked .cpe-dropdown-level-2 .cpe-dropdown-level-2__content {
 	--simple-fallback-color:var(--luna-background-color)!important;
-}
-
-.visualstyle-simple.visualmode-contrast ::-webkit-scrollbar-thumb {
-	background-color:var(--scrollbar-thumb-color-1);
-	color:var(--scrollbar-thumb-text);
-	border-color:var(--scrollbar-thumb-color-1);
-	box-shadow:0 0px 0 2px inset var(--scrollbar-thumb-color-1)!important;
 }
 
 .visualstyle-simple.visualmode-contrast body .oo-ui-tool.oo-ui-widget-enabled > .oo-ui-tool-link:hover, 
@@ -1612,11 +1604,4 @@ background-color:var(--hyperlink-background-color);
 	--checkbox-checked-shadow-hover:var(--checkbox-checked-text-hover);
 	--checkbox-checked-text:var(--hyperlink-foreground-color);
 	--checkbox-checked-text-hover:var(--checkbox-checked-bg);
-}
-
-.visualstyle-general.visualmode-contrast ::-webkit-scrollbar-thumb {
-	background-color:var(--scrollbar-thumb-color-1);
-	color:var(--scrollbar-thumb-text);
-	border-color:var(--scrollbar-thumb-color-1);
-	box-shadow:0 0px 0 2px inset var(--scrollbar-thumb-color-1)!important;
 }

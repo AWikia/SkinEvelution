@@ -866,7 +866,7 @@ function InitDesigner() {
 
 			'<tr>' +
 				'<td style="text-align:center; width:300px" colspan=2>' +
-				   '<div class="cpe-dropdown cpe-select" tabindex="-1">' +
+				   '<div class="cpe-dropdown blend_modes cpe-select" tabindex="-1">' +
 						'<div class="cpe-input blend_mode cpe-dropdown__toggle" style="width:calc(var(--td-size) * 2); min-width:calc(var(--td-size) * 2);">' +
 							'<span class="cpe-select__value" value="normal">'+mw.msg ('evelution-designer-setting-normal')+'</span>' +
 							'<span class="cpe-icon cpe-icon-tiny cpe-icon-large cpe-dropdown__toggle-chevron material-icons">' +
@@ -875,7 +875,7 @@ function InitDesigner() {
 						'</div>' +
 						'<div class="cpe-dropdown__content">' +
 							'<ul class="cpe-list is-linked">' +
-								'<li value="normal"><a>'+mw.msg ('evelution-designer-setting-normal')+'</a></li>' +
+								'<li value="normal" class="selected"><a>'+mw.msg ('evelution-designer-setting-normal')+'</a></li>' +
 								'<li value="multiply"><a>'+mw.msg ('evelution-designer-setting-multiply')+'</a></li>' +
 								'<li value="screen"><a>'+mw.msg ('evelution-designer-setting-screen')+'</a></li>' +
 								'<li value="overlay"><a>'+mw.msg ('evelution-designer-setting-overlay')+'</a></li>' +
@@ -908,7 +908,7 @@ function InitDesigner() {
 
 			'<tr>' +
 				'<td style="text-align:center; width:150px">' +
-				   '<div class="cpe-dropdown cpe-select" tabindex="-1">' +
+				   '<div class="cpe-dropdown bg_aligns2 cpe-select" tabindex="-1">' +
 						'<div class="cpe-input bg_align2 cpe-dropdown__toggle" style="width:var(--td-size); min-width:var(--td-size);">' +
 							'<span class="cpe-select__value" value="center">'+mw.msg ('evelution-designer-setting-middle')+'</span>' +
 							'<span class="cpe-icon cpe-icon-tiny cpe-icon-large cpe-dropdown__toggle-chevron material-icons">' +
@@ -918,7 +918,7 @@ function InitDesigner() {
 						'<div class="cpe-dropdown__content">' +
 							'<ul class="cpe-list is-linked">' +
 								'<li value="left"><a>'+mw.msg ('evelution-designer-setting-left')+'</a></li>' +
-								'<li value="center"><a>'+mw.msg ('evelution-designer-setting-middle')+'</a></li>' +
+								'<li value="center" class="selected"><a>'+mw.msg ('evelution-designer-setting-middle')+'</a></li>' +
 								'<li value="right"><a>'+mw.msg ('evelution-designer-setting-right')+'</a></li>' +
 							'</ul>' +
 						'</div>' +
@@ -926,7 +926,7 @@ function InitDesigner() {
 				'</td>' +
 
 				'<td style="text-align:center; width:150px">' +
-				   '<div class="cpe-dropdown cpe-select" tabindex="-1">' +
+				   '<div class="cpe-dropdown bg_aligns cpe-select" tabindex="-1">' +
 						'<div class="cpe-input bg_align cpe-dropdown__toggle" style="width:var(--td-size); min-width:var(--td-size);">' +
 							'<span class="cpe-select__value" value="center">'+mw.msg ('evelution-designer-setting-middle')+'</span>' +
 							'<span class="cpe-icon cpe-icon-tiny cpe-icon-large cpe-dropdown__toggle-chevron material-icons">' +
@@ -936,7 +936,7 @@ function InitDesigner() {
 						'<div class="cpe-dropdown__content">' +
 							'<ul class="cpe-list is-linked">' +
 								'<li value="top"><a>'+mw.msg ('evelution-designer-setting-top')+'</a></li>' +
-								'<li value="center"><a>'+mw.msg ('evelution-designer-setting-middle')+'</a></li>' +
+								'<li value="center" class="selected"><a>'+mw.msg ('evelution-designer-setting-middle')+'</a></li>' +
 								'<li value="bottom"><a>'+mw.msg ('evelution-designer-setting-bottom')+'</a></li>' +
 							'</ul>' +
 						'</div>' +
@@ -955,7 +955,7 @@ function InitDesigner() {
 
 			'<tr>' +
 				'<td style="text-align:center; width:300px" colspan=2>' +
-				   '<div class="cpe-dropdown cpe-select" tabindex="-1">' +
+				   '<div class="cpe-dropdown bg_sizes cpe-select" tabindex="-1">' +
 						'<div class="cpe-input bg_size cpe-dropdown__toggle" style="width:calc(var(--td-size) * 2); min-width:calc(var(--td-size) * 2);">' +
 							'<span class="cpe-select__value" value="cover">'+mw.msg ('evelution-designer-setting-cover')+'</span>' +
 							'<span class="cpe-icon cpe-icon-tiny cpe-icon-large cpe-dropdown__toggle-chevron material-icons">' +
@@ -964,7 +964,7 @@ function InitDesigner() {
 						'</div>' +
 						'<div class="cpe-dropdown__content">' +
 							'<ul class="cpe-list is-linked">' +
-								'<li value="cover"><a>'+mw.msg ('evelution-designer-setting-cover')+'</a></li>' +
+								'<li value="cover" class="selected"><a>'+mw.msg ('evelution-designer-setting-cover')+'</a></li>' +
 								'<li value="contain"><a>'+mw.msg ('evelution-designer-setting-contain')+'</a></li>' +
 								'<li value="stretched"><a>'+mw.msg ('evelution-designer-setting-stretched')+'</a></li>' +
 								'<li value="full"><a>'+mw.msg ('evelution-designer-setting-full')+'</a></li>' +
@@ -1311,7 +1311,7 @@ function InitDesigner() {
 
 			'<tr>' +
 				'<td style="text-align:center; width:300px" colspan=2>' +
-				   '<div class="cpe-dropdown cpe-select" tabindex="-1">' +
+				   '<div class="cpe-dropdown icon_styles cpe-select" tabindex="-1">' +
 						'<div class="cpe-input icon_style cpe-dropdown__toggle" style="width:calc(var(--td-size) * 2); min-width:calc(var(--td-size) * 2);">' +
 							'<span class="cpe-select__value" value="round">'+ mw.msg( 'evelution-designer-setting-round' ) +'</span>' +
 							'<span class="cpe-icon cpe-icon-tiny cpe-icon-large cpe-dropdown__toggle-chevron material-icons">' +
@@ -1320,7 +1320,7 @@ function InitDesigner() {
 						'</div>' +
 						'<div class="cpe-dropdown__content">' +
 							'<ul class="cpe-list is-linked">' +
-								'<li value="round"><a>'+mw.msg( 'evelution-designer-setting-round' )+'</a></li>' +
+								'<li value="round" class="selected"><a>'+mw.msg( 'evelution-designer-setting-round' )+'</a></li>' +
 								'<li value="outlined"><a>'+mw.msg( 'evelution-designer-setting-outlined' )+'</a></li>' +
 								'<li value="sharp"><a>'+mw.msg( 'evelution-designer-setting-sharp' )+'</a></li>' +
 							'</ul>' +
@@ -2461,20 +2461,35 @@ function PasteTheme(dynamic=true) {
 	blend_mode = [mw.msg ('evelution-designer-setting-normal'), mw.msg ('evelution-designer-setting-multiply'), mw.msg ('evelution-designer-setting-screen'), mw.msg ('evelution-designer-setting-overlay'), mw.msg ('evelution-designer-setting-darken'), mw.msg ('evelution-designer-setting-lighten'), mw.msg ('evelution-designer-setting-colordodge'), mw.msg ('evelution-designer-setting-colorburn'), mw.msg ('evelution-designer-setting-hardlight'), mw.msg ('evelution-designer-setting-softlight'), mw.msg ('evelution-designer-setting-difference'), mw.msg ('evelution-designer-setting-exclusion'), mw.msg ('evelution-designer-setting-hue'), mw.msg ('evelution-designer-setting-saturation'), mw.msg ('evelution-designer-setting-color'), mw.msg ('evelution-designer-setting-luminosity')][['normal','multiply','screen','overlay','darken','lighten','color-dodge','color-burn','hard-light','soft-light','difference','exclusion','hue','saturation','color','luminosity'].indexOf( getComputedStyle(themeconfig).getPropertyValue("--desktop-background-image-blend-mode") ) ]
 	$('.blend_mode .cpe-select__value').attr('value', getComputedStyle(themeconfig).getPropertyValue("--desktop-background-image-blend-mode") );
 	$('.blend_mode .cpe-select__value').html( blend_mode );
+ 	document.querySelector(".blend_modes .cpe-dropdown__content .cpe-list li.selected").classList.remove("selected");
+ 	document.querySelector(".blend_modes .cpe-dropdown__content .cpe-list li[value='" + getComputedStyle(themeconfig).getPropertyValue("--desktop-background-image-blend-mode") + "']").classList.add("selected");
+
+
 
 
 	// Body Image Alignment V
 	bg_align = [mw.msg ('evelution-designer-setting-top'), mw.msg ('evelution-designer-setting-middle'), mw.msg ('evelution-designer-setting-bottom')][["top", "center", "bottom"].indexOf( getComputedStyle(themeconfig).getPropertyValue("--desktop-background-vertical-alignment") ) ]
 	$('.bg_align .cpe-select__value').attr('value', getComputedStyle(themeconfig).getPropertyValue("--desktop-background-vertical-alignment") );
-	$('.bg_align .cpe-select__value').html( bg_align );
+	$('.bg_align .cpe-select__value').html( bg_align );	
+ 	document.querySelector(".bg_aligns .cpe-dropdown__content .cpe-list li.selected").classList.remove("selected");
+ 	document.querySelector(".bg_aligns .cpe-dropdown__content .cpe-list li[value='" + getComputedStyle(themeconfig).getPropertyValue("--desktop-background-vertical-alignment") + "']").classList.add("selected");
+	
+
 	// Body Image Alignment H
 	bg_align2 = [mw.msg ('evelution-designer-setting-left'), mw.msg ('evelution-designer-setting-middle'), mw.msg ('evelution-designer-setting-right')][["left", "center", "right"].indexOf( getComputedStyle(themeconfig).getPropertyValue("--desktop-background-horizontal-alignment") ) ]
 	$('.bg_align2 .cpe-select__value').attr('value', getComputedStyle(themeconfig).getPropertyValue("--desktop-background-horizontal-alignment") );
 	$('.bg_align2 .cpe-select__value').html( bg_align2 );
+ 	document.querySelector(".bg_aligns2 .cpe-dropdown__content .cpe-list li.selected").classList.remove("selected");
+ 	document.querySelector(".bg_aligns2 .cpe-dropdown__content .cpe-list li[value='" + getComputedStyle(themeconfig).getPropertyValue("--desktop-background-horizontal-alignment") + "']").classList.add("selected");
+
 	// Body Image Size
 	bg_size = [mw.msg ('evelution-designer-setting-cover'), mw.msg ('evelution-designer-setting-contain'), mw.msg ('evelution-designer-setting-stretched'), mw.msg ('evelution-designer-setting-full')][["cover", "contain", "stretched", "full"].indexOf( getComputedStyle(themeconfig).getPropertyValue("--desktop-background-size") ) ]
 	$('.bg_size .cpe-select__value').attr('value', getComputedStyle(themeconfig).getPropertyValue("--desktop-background-size") )
 	$('.bg_size .cpe-select__value').html( bg_size );
+ 	document.querySelector(".bg_sizes .cpe-dropdown__content .cpe-list li.selected").classList.remove("selected");
+ 	document.querySelector(".bg_sizes .cpe-dropdown__content .cpe-list li[value='" + getComputedStyle(themeconfig).getPropertyValue("--desktop-background-size") + "']").classList.add("selected");
+
+
 	// Body Image Tiling
 	document.querySelector('input#tilingH').checked = (getComputedStyle(themeconfig).getPropertyValue("--desktop-background-no-horizontal-tiling") === 'false');
 	document.querySelector('input#tilingV').checked = (getComputedStyle(themeconfig).getPropertyValue("--desktop-background-no-vertical-tiling") === 'false');
@@ -2647,6 +2662,9 @@ function PasteTheme(dynamic=true) {
 	icon_style = [mw.msg( 'evelution-designer-setting-round' ), mw.msg( 'evelution-designer-setting-round' ), mw.msg( 'evelution-designer-setting-outlined' ), mw.msg( 'evelution-designer-setting-sharp' )][["round", "rounded", "outlined", "sharp"].indexOf( getComputedStyle(themeconfig).getPropertyValue("--system-icon-style") ) ]
 	$('.icon_style .cpe-select__value').attr('value', getComputedStyle(themeconfig).getPropertyValue("--system-icon-style") );
 	$('.icon_style .cpe-select__value').html( icon_style );
+ 	document.querySelector(".icon_styles .cpe-dropdown__content .cpe-list li.selected").classList.remove("selected");
+ 	document.querySelector(".icon_styles .cpe-dropdown__content .cpe-list li[value='" + getComputedStyle(themeconfig).getPropertyValue("--system-icon-style") + "']").classList.add("selected");
+
 	
 	UpdateRangeInputs();
 	$(".evelution-floating-actions.extra-actions .theme-paste-button").prop('disabled', false);
