@@ -23,9 +23,9 @@ Evelution requires at least one of these browsers in order to run properly:
 
 | Browser    | Supported Releases        | Notes																						   |
 | ---------- | ------------------------- | ----------------------------------------------------------------------------------------------- |
-| Chrome     | 125+ (131+ Recommended)   | Has customized scrollbar styling.															   |
-| Firefox    | 128+ (133+ Recommended)   | Does not support the color picker function in Theme Designer.								   |
-| Edge       | 125+ (131+ Recommended)   | EdgeHTML version is not supported. Has customized scrollbar styling.							   |
+| Chrome     | 131+                      | Has customized scrollbar styling.															   |
+| Firefox    | 133+                      | Does not support the color picker function in Theme Designer.								   |
+| Edge       | 131+                      | EdgeHTML version is not supported. Has customized scrollbar styling.							   |
 | Safari     | 18+                       | Only on Apple Devices.					  													   |
 
 
