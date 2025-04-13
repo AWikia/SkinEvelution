@@ -1150,16 +1150,6 @@ function GetForegroundVariables(color) {
 }
 
 
-/* Get Gradient Variables */
-function GetGradientVariable(color,name="canvas", invert=false) {
-	var func = invert ? (isDarkColor(color)) : (isLightColor(color));
-	if (func) {
-		return ['var(--' + name + '-background-color)', 'var(--' + name + '-background-color-hover)']
-	} else {
-		return ['var(--' + name + '-background-color-hover)', 'var(--' + name + '-background-color)']
-	}
-}
-
 /* End of this work */
 
 
@@ -1499,15 +1489,6 @@ function ColorLuminanceAdjust(color,ratio) {
 	}
 }
 
-function ColorHoverRatio(color) { // Regular Colors
-	if (isLightColor(color)) {
-		return -20;
-	} else {
-		return 20;
-	}
-}
-
-
 function ColorAdjust(color,color2,dark=false) { // Regular Colors
 	var func = dark ? (isDarkColor(color2)) : (isLightColor(color2));
 	var light = chroma(color).get('hsl.l');
@@ -1620,8 +1601,6 @@ var content_color =  GetCanvas();
 	window.ThemingEngine_PageColor = content_color;
 	var lightPage = isLightColor(content_color);
 
-
-var content_colorR = ColorHoverRatio(content_color);
 
 var adjustment = ContrastRatioDropdown();
 window.ThemingEngine_FinalContrast = ContrastRatioAutoInactiveText();
@@ -1747,11 +1726,6 @@ var button_color = GetHighlight();
 window.ThemingEngine_HighlightColor = button_color
 
 
-
-var buttoncolorR = ColorHoverRatio(button_color);
-
-
-
 /** Button text color **/
 
 
@@ -1794,8 +1768,6 @@ var caret_color = GetActiveTitle();
 
 
 window.ThemingEngine_ActiveTitleColor = caret_color
-
-var caretcolorR = ColorHoverRatio(caret_color);
 
 /** Caret text color **/
 
@@ -1921,9 +1893,6 @@ var border_color =	dropdowncolor2;
 	var border3_color =	border_color;
 	var border4_color =	border_color;
 
-
-
-var bordercolorR = ColorHoverRatio(border_color);
 
 
 /* Generic Colors */
@@ -2064,13 +2033,6 @@ if (imgfilter == 'none') {
 }
 
 
-// Gradient Sets
-var button_gradient = GetGradientVariable(button_color,'highlight');
-var buttontext_gradient = GetGradientVariable(button_color,'highlight-text',true);
-var border_gradient = GetGradientVariable(border_color,'inactive-text');
-var caret_gradient = GetGradientVariable(caret_color,'active-title');
-var carettext_gradient = GetGradientVariable(caret_color,'active-title-text',true);
-
 // Foreground texts
 var dropdowncolor_fg = GetForegroundVariables(dropdowncolor); // Still required, as one can have a light canvas but a dark secondary canvas color under certain circumstances
 var button_fg = GetForegroundVariables(button_color);
@@ -2123,6 +2085,14 @@ var invfilters = [
 					['hue-rotate(' + hue + 'deg) grayscale(' + saturation + ') var(--achromatomaly-filter)',	'invert(1) hue-rotate(' + (180+hue) + 'deg)  grayscale(' + saturation + ')  var(--achromatomaly-filter)'],	// Mode 7 (Achromatomaly)
 
 				 ];
+		/* Theme Mode */
+		var oldtheme = window.ThemingEngine_ActiveThemeMode;
+		if (!(lightPage)) {
+			 window.ThemingEngine_ActiveThemeMode = 'dark';
+		} else {
+			 window.ThemingEngine_ActiveThemeMode = 'light';
+		}
+
 /* Set Values for dynamical variables */
 	var result = 		  colorstyle +
 						  ":root {" +
@@ -2130,20 +2100,14 @@ var invfilters = [
 						  "--canvas-secondary-foreground-color:" + dropdowncolor_fg[0] + ";\n" +
 						  "--canvas-secondary-foreground-color-hover:" +  dropdowncolor_fg[1] + ";\n" + 
 						  "--canvas-background-color:" + content_color + ";\n" +
-						  "--canvas-background-color-hover-ratio:" + content_colorR + ";\n" +
 						  "--canvas-tabs-background-color:" + tabscPage  + ";\n" +
 						  "--canvas-active-tabs-opacity:" + tabsoPage  + ";\n" +
 						  "--canvas-text-background-color:" + content_text + ";\n" +
 						  "--canvas-text-secondary-background-color:" + content2_text + ";\n" +
 						  "--highlight-background-color:" + button_color + ";\n" +
-						  "--highlight-background-color-hover-ratio:" + buttoncolorR + ";\n" +
-						  "--highlight-gradient-color:" + button_gradient[0] + ";\n" +
-						  "--highlight-gradient-color-hover:" + button_gradient[1] + ";\n" +
 						  "--highlight-foreground-color:" + button_fg[0] + ";\n" +
 						  "--highlight-foreground-color-hover:" + button_fg[1] + ";\n" +
 						  "--highlight-text-background-color:" + buttontext_color + ";\n" +
-						  "--highlight-text-gradient-color:" + buttontext_gradient[0] + ";\n" +
-						  "--highlight-text-gradient-color-hover:" + buttontext_gradient[1] + ";\n" +
 						  "--highlight-secondary-background-color:" + button2_color + ";\n" +
 						  "--highlight-tertiary-background-color:" + button3_color + ";\n" +
 						  "--highlight-quaternary-background-color:" + button4_color + ";\n" +
@@ -2166,9 +2130,6 @@ var invfilters = [
 						  "--active-text-tertiary-background-color:" + alink3_color + ";\n" +
 						  "--active-text-quaternary-background-color:" + alink4_color + ";\n" +
 						  "--inactive-text-background-color:" + border_color + ";\n" +
-						  "--inactive-text-background-color-hover-ratio:" + bordercolorR + ";\n" +
-						  "--inactive-text-gradient-color:" + border_gradient[0] + ";\n" +
-						  "--inactive-text-gradient-color-hover:" + border_gradient[1] + ";\n" +
 						  "--inactive-text-foreground-color:" + border_fg[0] + ";\n" +
 						  "--inactive-text-foreground-color-hover:" + border_fg[1] + ";\n" +
 						  "--inactive-text-secondary-background-color:" + border2_color + ";\n" +
@@ -2179,16 +2140,11 @@ var invfilters = [
 						  "--desktop-foreground-color-hover:" + head_fg[1] + ";\n" +
 						  "--desktop-text-background-color:" + headertext_color + ";\n" +
 						  "--active-title-background-color:" + caret_color + ";\n" +
-						  "--active-title-background-color-hover-ratio:" + caretcolorR + ";\n" +
-						  "--active-title-gradient-color:" + caret_gradient[0] + ";\n" +
-						  "--active-title-gradient-color-hover:" + caret_gradient[1] + ";\n" +
 						  "--active-title-foreground-color:" + caret_fg[0] + ";\n" +
 						  "--active-title-foreground-color-hover:" + caret_fg[1] + ";\n" +
 						  "--active-title-tabs-background-color:" + tabscCaret  + ";\n" +
 						  "--active-title-active-tabs-opacity:" + tabsoCaret  + ";\n" +
 						  "--active-title-text-background-color:" + carettext_color + ";\n" +
-						  "--active-title-text-gradient-color:" + carettext_gradient[0] + ";\n" +
-						  "--active-title-text-gradient-color-hover:" + carettext_gradient[1] + ";\n" +
 						  "--active-title-secondary-background-color:" + caret2_color + ";\n" +
 						  "--active-title-tertiary-background-color:" + caret3_color + ";\n" +
 						  "--active-title-quaternary-background-color:" + caret4_color + ";\n" +
@@ -2261,7 +2217,9 @@ var invfilters = [
 						  "--bg-tile-x:" + ['repeat','no-repeat'][["false", "true"].indexOf( getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--desktop-background-no-horizontal-tiling") ) ] + ";\n" +
 						  "--bg-tile-y:" + ['repeat','no-repeat'][["false", "true"].indexOf( getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--desktop-background-no-vertical-tiling") ) ] + ";\n" +
 						  "--color-mode-filter:" + invfilters[window.ThemingEngine_ColorFilterMode][[false, true].indexOf(window.ThemingEngine_InvertColors) ] + ";\n" +
-						  "--desktop-filter:" + deskfilter +
+						  "--desktop-filter:" + deskfilter + ";\n" +
+// Color Scheme
+						  "--color-scheme:" + window.ThemingEngine_ActiveThemeMode + ";\n" +
 						  "}"
 						  //
 
@@ -2269,13 +2227,7 @@ var invfilters = [
 /* Write them to the stylesheet */
 document.querySelector("head .theming").innerHTML = result;
 
-		/* Theme Mode */
-		var oldtheme = window.ThemingEngine_ActiveThemeMode;
-		if (!(lightPage)) {
-			 window.ThemingEngine_ActiveThemeMode = 'dark';
-		} else {
-			 window.ThemingEngine_ActiveThemeMode = 'light';
-		}
+
 		if (oldtheme === 'none') {
 			document.querySelector('html').classList.add("theme-fandomdesktop-" +  window.ThemingEngine_ActiveThemeMode);
 		} else if (oldtheme != window.ThemingEngine_ActiveThemeMode ) {
