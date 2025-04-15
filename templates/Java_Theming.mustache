@@ -696,7 +696,7 @@ function GetCanvas2() {
 	} else if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--canvas-secondary-background-color") === 'auto') {
 		var color = window.ThemingEngine_PageColor;
 		var color2 = window.ThemingEngine_PageColorFG;
-		return ColorMix(color,color2,ContrastRatioDropdown());
+		return ColorMix(color,color2,0.25);
 
 	} else {
 		return getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--canvas-secondary-background-color").trim();
@@ -733,7 +733,7 @@ function GetInactiveText() {
 	if (DisabledColorManagement()) {
 		return GetSystemColorValue('--inactive-text-background-color')
 	} else if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--inactive-text-background-color") === 'auto') {
-		return ColorMix(window.ThemingEngine_PageColor,window.ThemingEngine_PageColorFG,window.ThemingEngine_FinalContrast);
+		return ColorMix(window.ThemingEngine_PageColor,window.ThemingEngine_PageColorFG,0.7);
 	} else {
 		return getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--inactive-text-background-color").trim();
 	}
@@ -926,76 +926,6 @@ function ContrastRatio() { // Used for Text and Form Controls
 		result = (window.matchMedia('(prefers-contrast: more)').matches) ? 15 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 7.5 : 0.0
 	}
 	return result
-}
-
-function ContrastRatioDropdown() { // Used For Dropdown
-
-	if (ThemingEngine_ContrastMode == 'auto') {
-		return (window.matchMedia('(prefers-contrast: more)').matches) ? 0.35 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 0.30 : 0.25
-	} else if (ThemingEngine_ContrastMode == 'low') {
-		return 0.25
-	} else if (ThemingEngine_ContrastMode == 'custom1') { // Custom
-		return 0.2625
-	} else if (ThemingEngine_ContrastMode == 'med-low') {
-		return 0.275
-	} else if (ThemingEngine_ContrastMode == 'custom2') { // Custom
-		return 0.2875
-	} else if (ThemingEngine_ContrastMode == 'med') {
-		return 0.3
-	} else if (ThemingEngine_ContrastMode == 'custom3') { // Custom
-		return 0.3125
-	} else if (ThemingEngine_ContrastMode == 'med-hi') {
-		return 0.325
-	} else if (ThemingEngine_ContrastMode == 'custom4') { // Custom
-		return 0.3375
-	} else if (ThemingEngine_ContrastMode == 'hi') {
-		return 0.35
-	} else if (ThemingEngine_ContrastMode == 'custom5') { // Custom
-		return 0.3625
-	} else if (ThemingEngine_ContrastMode == 'hi-vhi') {
-		return 0.375
-	} else if (ThemingEngine_ContrastMode == 'custom6') { // Custom
-		return 0.3875
-	} else if (ThemingEngine_ContrastMode == 'vhi') {
-		return 0.4
-	} else {
-		return (window.matchMedia('(prefers-contrast: more)').matches) ? 0.35 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 0.30 : 0.25
-	}
-}
-
-function ContrastRatioAutoInactiveText() { // Used For Inactive Text
-
-	if (ThemingEngine_ContrastMode == 'auto') {
-		return (window.matchMedia('(prefers-contrast: more)').matches) ? 0.86 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 0.78 : 0.7
-	} else if (ThemingEngine_ContrastMode == 'low') {
-		return 0.7
-	} else if (ThemingEngine_ContrastMode == 'custom1') { // Custom
-		return 0.72
-	} else if (ThemingEngine_ContrastMode == 'med-low') {
-		return 0.74
-	} else if (ThemingEngine_ContrastMode == 'custom2') { // Custom
-		return 0.76
-	} else if (ThemingEngine_ContrastMode == 'med') {
-		return 0.78
-	} else if (ThemingEngine_ContrastMode == 'custom3') { // Custom
-		return 0.8
-	} else if (ThemingEngine_ContrastMode == 'med-hi') {
-		return 0.82
-	} else if (ThemingEngine_ContrastMode == 'custom4') { // Custom
-		return 0.84
-	} else if (ThemingEngine_ContrastMode == 'hi') {
-		return 0.86
-	} else if (ThemingEngine_ContrastMode == 'custom5') { // Custom
-		return 0.88
-	} else if (ThemingEngine_ContrastMode == 'hi-vhi') {
-		return 0.9
-	} else if (ThemingEngine_ContrastMode == 'custom6') { // Custom
-		return 0.92
-	} else if (ThemingEngine_ContrastMode == 'vhi') {
-		return 0.94
-	} else {
-		return (window.matchMedia('(prefers-contrast: more)').matches) ? 0.86 : (window.matchMedia('(prefers-contrast: custom)').matches) ? 0.78 : 0.7
-	}
 }
 
 
@@ -1538,6 +1468,12 @@ var contrast = getLargeTextContrast()+ContrastRatio()
 return ((getContrast(color, color2)) >= contrast) // For Border Color
 }
 
+function isSuitableColorSecondary(color,color2) {
+var contrast = ContrastRatio()
+return ((getContrast(color, color2)) >= contrast) // For Border Color
+}
+
+
 function getDefaultHyperlinkTextDecoration(color,color2) {
 var contrast = getLargeTextContrast() / 2.0
 return (((getContrast(color, color2)) >= contrast) && (window.ThemingEngine_ColorFilterSaturation > 50)) ? 'none' : 'underline' // For Border Color
@@ -1602,8 +1538,6 @@ var content_color =  GetCanvas();
 	var lightPage = isLightColor(content_color);
 
 
-var adjustment = ContrastRatioDropdown();
-window.ThemingEngine_FinalContrast = ContrastRatioAutoInactiveText();
 
 	if (lightPage) {
 		var lightness = '#000000';
@@ -1620,6 +1554,10 @@ window.ThemingEngine_FinalContrast = ContrastRatioAutoInactiveText();
 
 	while ( ( isSuitableColorFormControls(dropdowncolor, content_color) ) && (dropdowncolor !== lightnessR)  ) {
 		var dropdowncolor= ColorAdjust(dropdowncolor,window.ThemingEngine_PageColor,true);
+	}
+	
+	while ( ( !(isSuitableColorSecondary(dropdowncolor, content_color)) ) && (dropdowncolor !== lightness)  ) {
+		var dropdowncolor= ColorAdjust(dropdowncolor,window.ThemingEngine_PageColor);
 	}
 
 
@@ -1785,10 +1723,12 @@ var carettext_color= GetActiveTitleText();
 /* Set Vars */
 var caretIT_color = GetInactiveTitle();
 
-			while ( ( isSuitableColorFormControls(caretIT_color, content_color) ) && (caretIT_color !== lightnessR)  ) {
+		while ( ( isSuitableColorFormControls(caretIT_color, content_color) ) && (caretIT_color !== lightnessR)  ) {
 			var caretIT_color= ColorAdjust(caretIT_color,window.ThemingEngine_PageColor,true);
 		}
-
+		while ( ( !(isSuitableColorSecondary(caretIT_color, content_color)) ) && (caretIT_color !== lightness)  ) {
+			var caretIT_color= ColorAdjust(caretIT_color,window.ThemingEngine_PageColor);
+		}
 
 	var lightCaretIT = isLightColor(caretIT_color);
 	if (lightCaretIT) {
