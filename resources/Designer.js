@@ -1993,7 +1993,7 @@ function ApplyTheme () {
     }
 
 		result = '\n/* Community Theme */\n' +
-				 '.theme-' + window.ThemingEngine_ActiveTheme + '.colorscheme-' + getColorScheme() + '.visualcolors-standard {\n' + // Beginning
+				 '.visualcolors-standard.colorscheme-' + getColorScheme() + '.theme-' + window.ThemingEngine_ActiveTheme + ' {\n' + // Beginning
 				 '--desktop-background-image:' + image + ';\n' +
 				 '--desktop-background-image-filter:' + $('#bodyimagefilter').val() + ';\n' +
 				 '--desktop-background-image-blend-mode:' + $('.blend_mode .cpe-select__value').attr('value') + ';\n' +
@@ -2168,7 +2168,7 @@ function CopyTheme() {
 		var customfont3 = $('#thirdfont').val().replace("'<", '').replace(">'", '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
     }
 
-		result = '.theme-' + window.ThemingEngine_ActiveTheme + '.colorscheme-' + getColorScheme() + '.visualcolors-standard {\n' + // Beginning
+		result = '.visualcolors-standard.colorscheme-' + getColorScheme() + '.theme-' + window.ThemingEngine_ActiveTheme + ' {\n' + // Beginning
 				 '--desktop-background-image:' + image + ';\n' +
 				 '--desktop-background-image-filter:' + $('#bodyimagefilter').val() + ';\n' +
 				 '--desktop-background-image-blend-mode:' + $('.blend_mode .cpe-select__value').attr('value') + ';\n' +
