@@ -2832,6 +2832,7 @@ function TestTheme(banner=false) {
 			try {
 				CompileThemingEngine(true,true)
 				if (!window.ThemingEngine_TDTest) {
+					window.ThemingEngine_TDTest = true;
 					if (banner) {
 						$("#InProgressBanner4").remove();
 						AddFloatingBanner('Successfully enabled theme preview','success'); // alert('Successfully copied CPE Framework theme to Clipboard');
@@ -2849,9 +2850,6 @@ function TestTheme(banner=false) {
 				}
 			}
 
-	if (!window.ThemingEngine_TDTest) {
-		window.ThemingEngine_TDTest = true;
-	}
 }
 
 
