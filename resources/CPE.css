@@ -1185,6 +1185,7 @@ container {
     pointer-events: none;
     mix-blend-mode:color;
     border-radius: inherit;
+    corner-shape: inherit;
     filter: saturate(150%);
     transition:opacity var(--transition-duration) var(--transition-timing-function);
 	
@@ -2225,7 +2226,7 @@ body .fancytable {
 
 }
 
-@media (orientation:portrait) {
+@media (max-width:759px) { /* @media (orientation:portrait) { */
 	[cpe-tooltip][cpe-tooltip-position="top-portrait"] {
 		&:before {
 			transform:rotate(180deg);
@@ -3795,7 +3796,7 @@ font-size:14px;
 .is-hidden{display:none!important}
 
 /* Landscape variants for specific cases */
-@media only screen and (orientation:landscape) {
+@media (min-width:760px) { /* @media (orientation:landscape) { */
 	.cpe-dropdown[cpe-orient="land-landscape"] {
 		 &::after,&::before {
 			transform:rotate(-90deg);
@@ -4402,7 +4403,7 @@ font-size:14px;
 	}
 }
 
-@media (orientation: landscape) {
+@media (min-width:760px) { /* @media (orientation:landscape) { */
 	#floatingbanner {
 		bottom:5px;
 
@@ -4748,10 +4749,10 @@ html:not(.visualmode-threeD) .threeD-on {
 /* ThreeD */
 .visualmode-threeD {
 /* ThreeD */
---threeD-shadow:inset 2px 2px 4px 0 #fff5, inset -2px -2px 5px 0px #0005;
---threeD-shadow-active:inset 2px 2px 4px 0 #0005, inset -2px -2px 5px 0px #fff5;
---threeD-shadow-small:inset 1px 1px 2px 0 #fff5, inset -1px -1px 2.5px 0px #0005;
---threeD-shadow-small-active:inset 1px 1px 2px 0 #0005, inset -1px -1px 5px 0px #fff5;
+--threeD-shadow:inset 0px 2px 4px 0 #fff5, inset -0px -2px 5px 0px #0005;
+--threeD-shadow-active:inset 0px 2px 4px 0 #0005, inset -0px -2px 5px 0px #fff5;
+--threeD-shadow-small:inset 0px 1px 2px 0 #fff5, inset -0px -1px 2.5px 0px #0005;
+--threeD-shadow-small-active:inset 0px 1px 2px 0 #0005, inset -0px -1px 5px 0px #fff5;
 }
 
 /* Lite */

@@ -175,6 +175,8 @@ body {
 	transition:transform var(--transition-duration) var(--transition-timing-function), opacity var(--transition-duration) var(--transition-timing-function), background-color var(--transition-duration) var(--transition-timing-function), border-left-color var(--transition-duration) var(--transition-timing-function);
 	border:0 solid var(--luna-border-background-color);
 	box-sizing:content-box;
+	border-radius:var(--window-border-radius);
+/*    corner-shape: scoop; */
 }
 
 .evelution-sidebar .explore-menu .cpe-list {
@@ -199,12 +201,18 @@ body {
 	display:flex;
 	flex-direction:column;
 	box-sizing:border-box;
+	padding:4px;
+	justify-content:center;
+}
+
+/* Left Aligned Taskbar */
+body.has-left-aligned-taskbar .evelution-taskbar .upper-links {
+	justify-content:flex-start;
 }
 
 .evelution-sidebar .bottom-links {
 	display:flex;
 	flex-direction:column;
-	box-sizing:border-box;
 }
 
 
@@ -262,6 +270,7 @@ body {
 	.evelution-sidebar .link:active, 
 	.evelution-sidebar .link:focus, 
 	.evelution-sidebar .link.active, 
+	.evelution-sidebar .cpe-dropdown.opens-on-hover:hover > .link,
 	.evelution-sidebar .cpe-dropdown:focus > .link,
 	.evelution-sidebar .cpe-dropdown:focus-within > .link {
 		background-color:var(--global-nav-link-background-active);
@@ -277,7 +286,7 @@ body {
 		color:var(--global-nav-link-color-focus);
 	}
 	
-	.evelution-sidebar {
+/*	.evelution-sidebar {
 		-webkit-backdrop-filter:none;
 		backdrop-filter:none;
 	}
@@ -293,7 +302,9 @@ body {
 		-webkit-backdrop-filter:var(--acrylic-filter);
 		backdrop-filter:var(--acrylic-filter);
 		z-index:-1;
-	}
+		border-radius:calc(var(--window-border-radius) - 3px);
+		corner-shape: scoop;
+	}*/
 	
 
 /** Personal Toolbar **/
@@ -301,7 +312,7 @@ body {
 /* Global */
 .evelution-taskbar  {
 	--toolbar-link-size:var(--minibar-size);
-	--explore-link-size:var(--toolbar-link-size);
+	--explore-link-size:var(--minibar-size);
 	--global-nav-icon-scale-factor:50;
 
 }
@@ -326,122 +337,293 @@ body {
 }
 
 /* Left */
-@media (orientation:landscape) {
+@media (min-width:760px) { /* @media (orientation:landscape) { */
 	body {
-		--left-padding:var(--minibar-size);
+		/* @noflip */
+		--left-padding:calc(var(--minibar-size) + env(safe-area-inset-left) + 3px);
+		--bottom-padding:env(safe-area-inset-bottom);
 	}
 	.evelution-taskbar  {
 		left:0;
-		border-right-width:1px;
+		border-right-width:3px;
+		padding-top:env(safe-area-inset-top);
+		padding-left:env(safe-area-inset-left);
+		border-top-left-radius:0;
+		border-bottom-left-radius:0;
 	}
+	
+	.evelution-taskbar::after  {
+		border-top-left-radius:0;
+		border-bottom-left-radius:0;
+	}
+	
 	.evelution-taskbar .link  {
 		height:var(--toolbar-link-size);
 		width:var(--minibar-size);
 	}
+
+	.evelution-taskbar .upper-links {
+		padding-left:0;
+		padding-right:0;
+	}
 	
-	@media only screen and (max-height:1179px) {
+	@media only screen and (max-height:759px) {
 		.evelution-taskbar .large-off {
 			display:none!important;
 		}
 	}
 
 
-	@media only screen and (min-height:1180px) {
+	@media only screen and (min-height:760px) {
 		.evelution-taskbar .large-on {
 			display:none!important;
 		}
 	}
 
 
-	@media only screen and (max-height:1049px) {
+	@media only screen and (max-height:559px) {
 		.evelution-taskbar .largep-off {
 			display:none!important;
 		}
 	}
 
 
-	@media only screen and (min-height:1050px) {
+	@media only screen and (min-height:560px) {
 		.evelution-taskbar .largep-on {
 			display:none!important;
 		}
 	}
 
-	@media only screen and (max-height:919px) {
+	@media only screen and (max-height:459px) {
 		.evelution-taskbar .small-off {
 			display:none!important;
 		}
 	}
 
 
-	@media only screen and (min-height:920px) {
+	@media only screen and (min-height:460px) {
 		.evelution-taskbar .small-on {
 			display:none!important;
 		}
 	}
 
 
-	@media only screen and (max-height:789px) {
+	@media only screen and (max-height:359px) {
 		.evelution-taskbar .smallp-off {
 			display:none!important;
 		}
 
 	}
 
-	@media only screen and (min-height:790px) {
+	@media only screen and (min-height:360px) {
 		.evelution-taskbar .smallp-on {
 			display:none!important;
 		}
 	}
 
-	@media only screen and (max-height:659px) {
+	@media only screen and (max-height:259px) {
 		.evelution-taskbar .vsmall-off {
 			display:none!important;
 		}
 
 	}
 
-	@media only screen and (min-height:660px) {
+	@media only screen and (min-height:260px) {
 		.evelution-taskbar .vsmall-on {
 			display:none!important;
 		}
 	}
 
 
-	@media only screen and (max-height:411px) {
+	body .evelution-taskbar .cpe-dropdown.is-flipped[cpe-orient="land-landscape"] .cpe-dropdown__content,
+	body .evelution-taskbar .cpe-dropdown.is-flipped.opens-on-hover[cpe-orient="land-landscape"] .cpe-dropdown__content  {
+		right:auto;
+		left:calc(100%);
+	}
+	
+		body .evelution-taskbar .cpe-dropdown.is-flipped[cpe-orient="land-landscape"]::after,body .evelution-taskbar .cpe-dropdown.is-flipped[cpe-orient="land-landscape"]::before,
+		body .evelution-taskbar .cpe-dropdown.is-flipped.opens-on-hover[cpe-orient="land-landscape"]::after,body .evelution-taskbar .cpe-dropdown.is-flipped.opens-on-hover[cpe-orient="land-landscape"]::before {
+		transform:rotate(-90deg);
+		left:auto;
+		right:-1px;
+	 }
 
+	
+	body .evelution-taskbar .cpe-dropdown.is-flipped.opens-on-hover:hover[cpe-orient="land-landscape"] .cpe-dropdown__content,
+	body .evelution-taskbar .cpe-dropdown.is-flipped:focus[cpe-orient="land-landscape"] .cpe-dropdown__content,
+	body .evelution-taskbar .cpe-dropdown.is-flipped:focus-within[cpe-orient="land-landscape"] .cpe-dropdown__content {
+		right:auto;
+		left:100%;
+		animation:contribution-dropdown_land 0.3s var(--transition-timing-function);
+	}
+	
+	body .evelution-taskbar .cpe-dropdown.is-flipped.opens-on-hover:hover[cpe-orient="land-landscape"]::before, .cpe-dropdown.is-flipped.opens-on-hover:hover[cpe-orient="land-landscape"]::after,
+	body .evelution-taskbar .cpe-dropdown.is-flipped:focus[cpe-orient="land-landscape"]::before, .cpe-dropdown.is-flipped:focus[cpe-orient="land-landscape"]::after,
+	body .evelution-taskbar .cpe-dropdown.is-flipped:focus-within[cpe-orient="land-landscape"]::before, body .evelution-taskbar .cpe-dropdown.is-flipped:focus-within[cpe-orient="land-landscape"]::after {
+	 animation: contribution-dropdown-b_land 0.3s var(--transition-timing-function);
+	}
+	
+	body .evelution-taskbar .cpe-dropdown.is-flipped.search[cpe-orient="land-landscape"] .cpe-dropdown__content,
+	body .evelution-taskbar .cpe-dropdown.is-flipped.explore-menu[cpe-orient="land-landscape"] .cpe-dropdown__content,
+	body .evelution-taskbar .cpe-dropdown.is-flipped.opens-on-hover.search[cpe-orient="land-landscape"] .cpe-dropdown__content,
+	body .evelution-taskbar .cpe-dropdown.is-flipped.opens-on-hover.explore-menu[cpe-orient="land-landscape"] .cpe-dropdown__content {
+		transform:translateY(var(--dropdown-translate)) scale(var(--dropdown-scale));
+		bottom:auto;
+	}
+
+}
+
+/* Bottom */
+@media (max-width:759px) { /* @media (orientation:portrait) { */
+	.evelution-taskbar  {
+		--explore-link-size:calc(var(--toolbar-link-size) * 1);
+		bottom:0;
+		top:auto;
+		height:var(--minibar-size);
+		flex-direction:row;
+		z-index:100;
+		width:calc(100%);
+		transform-origin:bottom;
+		box-shadow: 0 -2px 6px 0 rgb(from var(--canvas-text-background-color) r g b / .4), 0 -2px 6px 0 rgb(from var(--canvas-background-color) r g b / 0.4);
+		border-top-width:3px;
+		border-bottom-left-radius:0;
+		border-bottom-right-radius:0;
+	}
+	
+	.evelution-taskbar::after  {
+		border-bottom-left-radius:0;
+		border-bottom-right-radius:0;
+	}
+
+
+	.evelution-taskbar .link  {
+		width:var(--toolbar-link-size);
+		height:var(--minibar-size);
+	}
+
+
+	.evelution-taskbar .upper-links {
+		padding-top:0;
+		padding-bottom:0;
+	}
+
+	.evelution-taskbar .upper-links .link {
+		flex:0 0 var(--toolbar-link-size);
+	}
+
+
+	.evelution-taskbar .upper-links,
+	.evelution-taskbar .bottom-links  {
+		flex-direction:row;
+	}
+
+	/*
+	.evelution-taskbar .upper-links .explore-menu .cpe-dropdown__content.is-left-aligned {
+		left:calc(0px - var(--toolbar-link-size));
+	}
+	*/
+
+
+/* Left Aligned Taskbar */
+	body.has-left-aligned-taskbar .evelution-taskbar,
+	body.has-disabled-dynamic-taskbar-widgets .evelution-taskbar {
+		--explore-link-size:var(--toolbar-link-size);
+	}
+
+
+	body.has-left-aligned-taskbar .evelution-taskbar .upper-links .is-widget-style,
+	body.has-disabled-dynamic-taskbar-widgets .evelution-taskbar .upper-links .is-widget-style {
+		position:relative;
+		left:0;
+	}
+
+	body.has-disabled-dynamic-taskbar-widgets .evelution-taskbar .upper-links .is-widget-style .widget-text {
+		display:none;
+	}
+
+
+
+	@media only screen and (max-width:659px) {
+		.evelution-taskbar .large-off {
+			display:none!important;
+		}
+	}
+
+
+	@media only screen and (min-width:660px) {
+		.evelution-taskbar .large-on {
+			display:none!important;
+		}
+	}
+
+
+	@media only screen and (max-width:559px) {
+		.evelution-taskbar .largep-off {
+			display:none!important;
+		}
+	}
+
+
+	@media only screen and (min-width:560px) {
+		.evelution-taskbar .largep-on {
+			display:none!important;
+		}
+	}
+
+	@media only screen and (max-width:459px) {
+		.evelution-taskbar .small-off {
+			display:none!important;
+		}
+	}
+
+
+	@media only screen and (min-width:460px) {
+		.evelution-taskbar .small-on {
+			display:none!important;
+		}
+	}
+
+
+	@media only screen and (max-width:359px) {
+		.evelution-taskbar .smallp-off {
+			display:none!important;
+		}
+
+	}
+
+	@media only screen and (min-width:360px) {
+		.evelution-taskbar .smallp-on {
+			display:none!important;
+		}
+	}
+
+	@media only screen and (max-width:259px) {
+		.evelution-taskbar .vsmall-off {
+			display:none!important;
+		}
+
+	}
+
+	@media only screen and (min-width:260px) {
+		.evelution-taskbar .vsmall-on {
+			display:none!important;
+		}
+	}
+
+	@media only screen and (max-width:219px) {
 		.evelution-taskbar .mobile-off {
 			display:none!important;
 		}
 	}
 
-	@media only screen and (min-height:412px) {
+	@media only screen and (min-width:220px) {
 		.evelution-taskbar .mobile-on {
 			display:none!important;
 		}
-		
-		body .evelution-taskbar .cpe-dropdown.user-profile[cpe-orient="land-landscape"] .cpe-dropdown__content.is-right-aligned {
-			bottom:calc(0px - var(--minibar-size));
-			top:auto;
-		}
 	}
+}
 
-	@media only screen and (min-height:300px) and (max-height:411px) {
-		.evelution-taskbar {
-			--toolbar-link-size:calc(var(--minibar-size) / 1.0);
-		}
-	}
-	@media only screen and (min-height:260px) and (max-height:299px) {
-		.evelution-taskbar {
-			--toolbar-link-size:calc(var(--minibar-size) / 1.1);
-		}
-	}	
-	@media only screen and (max-height:259px) {
-			.evelution-taskbar {
-				--toolbar-link-size:calc(var(--minibar-size) / 1.2);
-			}
-		}
-
-	
+/* Both */
 	body .evelution-taskbar .upper-links .is-widget-style {
 		overflow:visible;
 	}
@@ -476,405 +658,6 @@ body {
 		top:auto;
 		bottom:0;
 	}
-	.evelution-taskbar .search > .search-button {
-		display:none;
-	}
-	
-	body .evelution-taskbar .cpe-dropdown.is-flipped[cpe-orient="land-landscape"] .cpe-dropdown__content {
-		right:auto;
-		left:calc(100%);
-	}
-	
-		body .evelution-taskbar .cpe-dropdown.is-flipped[cpe-orient="land-landscape"]::after,body .evelution-taskbar .cpe-dropdown.is-flipped[cpe-orient="land-landscape"]::before {
-		transform:rotate(-90deg);
-		left:auto;
-		right:-1px;
-	 }
-
-	
-	body .evelution-taskbar .cpe-dropdown.is-flipped:focus[cpe-orient="land-landscape"] .cpe-dropdown__content,
-	body .evelution-taskbar .cpe-dropdown.is-flipped:focus-within[cpe-orient="land-landscape"] .cpe-dropdown__content {
-		right:auto;
-		left:100%;
-		animation:contribution-dropdown_land 0.3s var(--transition-timing-function);
-	}
-	
-	body .evelution-taskbar .cpe-dropdown.is-flipped:focus[cpe-orient="land-landscape"]::before, .cpe-dropdown.is-flipped:focus[cpe-orient="land-landscape"]::after,
-	body .evelution-taskbar .cpe-dropdown.is-flipped:focus-within[cpe-orient="land-landscape"]::before, body .evelution-taskbar .cpe-dropdown.is-flipped:focus-within[cpe-orient="land-landscape"]::after {
-	 animation: contribution-dropdown-b_land 0.3s var(--transition-timing-function);
-	}
-	
-	body .evelution-taskbar .cpe-dropdown.is-flipped.search[cpe-orient="land-landscape"] .cpe-dropdown__content,
-	body .evelution-taskbar .cpe-dropdown.is-flipped.explore-menu[cpe-orient="land-landscape"] .cpe-dropdown__content {
-		transform:translateY(var(--dropdown-translate)) scale(var(--dropdown-scale));
-	}
-
-}
-
-/* Bottom */
-@media (orientation:portrait) {
-.evelution-taskbar  {
-	--explore-link-size:calc(var(--toolbar-link-size) * 2.75);
-	bottom:0;
-	top:auto;
-	height:var(--minibar-size);
-	flex-direction:row;
-	z-index:100;
-	width:calc(100%);
-	transform-origin:bottom;
-	box-shadow: 0 -2px 6px 0 rgb(from var(--canvas-text-background-color) r g b / .4), 0 -2px 6px 0 rgb(from var(--canvas-background-color) r g b / 0.4);
-	border-top-width:1px;
-}
-
-
-.evelution-taskbar .link  {
-	width:var(--toolbar-link-size);
-	height:var(--minibar-size);
-}
-
-
-.evelution-taskbar .upper-links {
-	justify-content:center;
-	padding-left:calc(calc(var(--explore-link-size) * 1) + 4px);
-	padding-right:4px;
-}
-
-.evelution-taskbar .upper-links .link {
-	flex:0 0 var(--toolbar-link-size);
-}
-
-.evelution-taskbar .upper-links .is-widget-style { /* This will cause issues when more are added. Be sure to add additional code when adding a new widget-style entry point which makes it align to the left */
-	position:absolute;
-	left:0;
-}
-
-/*
-.evelution-taskbar .upper-links .explore-menu {
-	left:var(--explore-link-size);
-}
-*/
-
-.evelution-taskbar .upper-links .explore-menu .link[cpe-tooltip-position="top"][cpe-tooltip]:after {
-	left:25%;
-}
-
-.evelution-taskbar .upper-links .search .cpe-dropdown__content {
-	left:calc(0px - var(--toolbar-link-size));
-}
-
-.evelution-taskbar .upper-links .is-widget-style .link {
-	width:var(--explore-link-size);
-	justify-content:flex-start;
-	padding-left:11.8px;
-	padding-right:11.8px;
-	flex:none;
-}
-
-.evelution-taskbar .upper-links .is-widget-style .link > div {
-	display:flex;
-	align-items:center;
-	justify-content:center;
-	overflow:hidden;
-	height:inherit;
-}
-
-.evelution-taskbar .upper-links .is-widget-style .widget-text {
-	vertical-align:middle;
-	margin-left:4px;
-	overflow:hidden;
-	text-overflow:ellipsis;
-	display:flex;
-	flex-flow:column nowrap;
-}
-
-.evelution-taskbar .upper-links .is-widget-style .widget-text .upper-text,
-.evelution-taskbar .upper-links .is-widget-style .widget-text .bottom-text {
-	overflow:hidden;
-	text-overflow:ellipsis;
-}
-
-.evelution-taskbar .upper-links .is-widget-style .widget-text .upper-text {
-	font-size:105%;
-	font-weight:500;
-}
-
-.evelution-taskbar .upper-links .is-widget-style .widget-text .bottom-text {
-	opacity:var(--disabled-elements-opacity);
-}
-
-.evelution-taskbar .upper-links,
-.evelution-taskbar .bottom-links  {
-	flex-direction:row;
-}
-
-.evelution-taskbar .bottom-links .cpe-dropdown__content.is-right-aligned {
-	right:calc(0px - var(--toolbar-link-size));
-}
-
-.evelution-taskbar .upper-links .is-widget-style .cpe-dropdown__content.is-left-aligned {
-	left:0;
-}
-
-/*
-.evelution-taskbar .upper-links .explore-menu .cpe-dropdown__content.is-left-aligned {
-	left:calc(0px - var(--toolbar-link-size));
-}
-*/
-
-/* Search button */
-.evelution-taskbar .search > .cpe-button.search-button {
-	min-height:18px;
-	border-radius:500px;
-	align-self:center;
-	margin:0 5px;
-}
-
-.evelution-taskbar .search > .cpe-button.search-button span {
-	max-width:240px;
-    overflow:hidden;
-    text-overflow:ellipsis;
-	white-space:nowrap;
-
-}
-
-
-	.evelution-taskbar .search .cpe-button.search-button {
-		--tabs-color:var(--luna-tabs-background-color);
-		--tabs-opacity:var(--luna-active-tabs-opacity);
-		--secondary-button-background-color:rgb(var(--tabs-color) / var(--tabs-opacity));
-		--secondary-button-foreground-color:var(--luna-text-background-color);
-		--secondary-button-foreground-color-hover:var(--luna-text-background-color-hover);
-	}
-
-
-	.has-accents .evelution-taskbar .search .cpe-button.search-button {
-		--button-background-color: var(--luna-highlight-background-color);
-		--button-background-color-hover: var(--luna-highlight-background-color-hover);
-		--button-foreground-color: var(--luna-background-color);
-	}
-
-
-
-
-/* Left Aligned Taskbar */
-	body.has-left-aligned-taskbar .evelution-taskbar,
-	body.has-disabled-dynamic-taskbar-widgets .evelution-taskbar {
-		--explore-link-size:var(--toolbar-link-size);
-	}
-
-
-	body.has-left-aligned-taskbar .evelution-taskbar .upper-links .is-widget-style,
-	body.has-disabled-dynamic-taskbar-widgets .evelution-taskbar .upper-links .is-widget-style {
-		position:relative;
-		left:0;
-	}
-
-	body.has-left-aligned-taskbar .evelution-taskbar .upper-links {
-		justify-content:flex-start;
-	}
-
-	body.has-left-aligned-taskbar .evelution-taskbar .upper-links,
-	body.has-disabled-dynamic-taskbar-widgets .evelution-taskbar .upper-links {
-		padding-left:0;
-	}
-
-	body.has-disabled-dynamic-taskbar-widgets .evelution-taskbar .upper-links .is-widget-style .widget-text {
-		display:none;
-	}
-
-	body.has-left-aligned-taskbar .evelution-taskbar .upper-links .is-widget-style {
-		overflow:visible;
-	}
-	
-	body.has-left-aligned-taskbar .evelution-taskbar .upper-links .is-widget-style .widget-text {
-		position: absolute;
-		top: 0;
-		width: calc(var(--explore-link-size) - 2px);
-		height: 100%;
-		margin-left:0;
-   	}
-
-	body.has-left-aligned-taskbar .evelution-taskbar .upper-links .is-widget-style .widget-text .upper-text,
-	body.has-left-aligned-taskbar .evelution-taskbar .upper-links .is-widget-style .widget-text .bottom-text {
-		position: absolute;
-		top: 0;
-		border-radius: 500px;
-		width: calc(var(--explore-link-size) - 2px);
-		margin-left: 0px;
-		padding: 2px;
-		color: var(--luna-background-color);
-		background-color: var(--luna-foreground-color);
-		font-size: 9px;
-		box-sizing: border-box;
-		text-align: center;
-		opacity:1;
-		font-weight:400;
-	}
-	
-	body.has-left-aligned-taskbar .evelution-taskbar .upper-links .is-widget-style .link .widget-text .bottom-text {
-		top:auto;
-		bottom:0;
-	}
-
-	body.has-left-aligned-taskbar .evelution-taskbar .upper-links .is-widget-style .link,
-	body.has-disabled-dynamic-taskbar-widgets .evelution-taskbar .upper-links .is-widget-style .link {
-		justify-content:center;
-		padding-left:0;
-		padding-right:0;
-	}
-
-	body.has-left-aligned-taskbar .evelution-taskbar .upper-links .is-widget-style .link[cpe-tooltip-position="top"][cpe-tooltip]:after,
-	body.has-disabled-dynamic-taskbar-widgets .evelution-taskbar .upper-links .is-widget-style .link[cpe-tooltip-position="top"][cpe-tooltip]:after {
-		left:auto;
-	}
-
-	body.has-left-aligned-taskbar .evelution-taskbar .upper-links .is-widget-style .cpe-dropdown__content.is-left-aligned,
-	body.has-disabled-dynamic-taskbar-widgets .evelution-taskbar .upper-links .is-widget-style .cpe-dropdown__content.is-left-aligned {
-		left:calc(0px - var(--toolbar-link-size) - var(--toolbar-link-size));
-	}
-
-
-
-
-.evelution-taskbar .link.purge[cpe-tooltip-position="top"][cpe-tooltip]:after {
-	right:2px;
-}
-
-
-
-
-@media only screen and (max-width:1279px) {
-	.evelution-taskbar .large-off {
-		display:none!important;
-	}
-}
-
-
-@media only screen and (min-width:1280px) {
-	.evelution-taskbar .large-on {
-		display:none!important;
-	}
-}
-
-
-@media only screen and (max-width:1149px) {
-	.evelution-taskbar .largep-off {
-		display:none!important;
-	}
-}
-
-
-@media only screen and (min-width:1150px) {
-	.evelution-taskbar .largep-on {
-		display:none!important;
-	}
-}
-
-@media only screen and (max-width:1019px) {
-	.evelution-taskbar .small-off {
-		display:none!important;
-	}
-}
-
-
-@media only screen and (min-width:1020px) {
-	.evelution-taskbar .small-on {
-		display:none!important;
-	}
-}
-
-
-@media only screen and (max-width:889px) {
-	.evelution-taskbar .smallp-off {
-		display:none!important;
-	}
-
-}
-
-@media only screen and (min-width:890px) {
-	.evelution-taskbar .smallp-on {
-		display:none!important;
-	}
-}
-
-@media only screen and (max-width:759px) {
-	.evelution-taskbar .vsmall-off {
-		display:none!important;
-	}
-
-}
-
-@media only screen and (min-width:760px) {
-	.evelution-taskbar .vsmall-on {
-		display:none!important;
-	}
-}
-
-@media only screen and (max-width:639px) {
-	.evelution-taskbar {
-		--explore-link-size:calc(var(--toolbar-link-size) * 2.25)
-	}
-}
-
-@media only screen and (max-width:511px) {
-	.evelution-taskbar {
-		--explore-link-size:var(--toolbar-link-size);
-	}
-
-	/* Most code taken from left-aligned taskbar behavior */
-	.evelution-taskbar .upper-links .is-widget-style .link {
-		padding-left:0;
-		padding-right:0;
-		justify-content:center;
-	}
-
-
-	.evelution-taskbar .upper-links .is-widget-style {
-		overflow:visible;
-	}
-
-	.evelution-taskbar .upper-links .is-widget-style .widget-text {
-		position: absolute;
-		top: 0;
-		width: calc(var(--explore-link-size) - 2px);
-		height: 100%;
-		margin-left:0;
-   	}
-
-	.evelution-taskbar .upper-links .is-widget-style .widget-text .upper-text,
-	.evelution-taskbar .upper-links .is-widget-style .widget-text .bottom-text {
-		position: absolute;
-		top: 0;
-		border-radius: 500px;
-		width: calc(var(--explore-link-size) - 2px);
-		margin-left: 0px;
-		padding: 2px;
-		color: var(--luna-background-color);
-		background-color: var(--luna-foreground-color);
-		font-size: 9px;
-		box-sizing: border-box;
-		text-align: center;
-		opacity:1;
-		font-weight:400;
-	}
-	
-	.evelution-taskbar .upper-links .is-widget-style .link .widget-text .bottom-text {
-		top:auto;
-		bottom:0;
-	}
-
-
-	.evelution-taskbar .mobile-off {
-		display:none!important;
-	}
-}
-
-@media only screen and (min-width:512px) {
-	.evelution-taskbar .mobile-on {
-		display:none!important;
-	}
-}
-}
 
 /* Old Global Nav
 ** Commented styles are the ones used in the old version
@@ -928,7 +711,7 @@ margin-bottom:0;
 		position:fixed;
 		top:calc(var(--minibar-size) - 1px);
 		z-index:99;
-		padding-top:1px;
+		padding-top:calc(env(safe-area-inset-top) + 1px);
 		height:var(--minibar-size);
 		display:flex;
 		width:calc(100% - var(--left-padding));
@@ -937,15 +720,17 @@ margin-bottom:0;
 		margin-top:calc(0px - var(--minibar-size));
 		box-sizing:content-box;
 		transform-origin:top;
-		border-bottom:1px solid var(--luna-border-background-color);
+		border-bottom:3px solid var(--luna-border-background-color);
 		transition:background color var(--transition-duration) var(--transition-timing-function), background image var(--transition-duration) var(--transition-timing-function);
+		border-bottom-left-radius:var(--window-border-radius);
+		border-bottom-right-radius:var(--window-border-radius);
+/*		corner-shape:scoop;*/
 	}
-
 
  .evelution-header .background {
 	top:0;
 	left:0;
-	width:100%;
+	width:calc(100% - 2px);
 	height:100%;
 	position:absolute!Important;
 	display:block;
@@ -955,6 +740,10 @@ margin-bottom:0;
     transition:background-color var(--transition-duration) var(--transition-timing-function), background-image var(--transition-duration) var(--transition-timing-function);
 	pointer-events:none;
 	overflow:hidden;
+	border-radius:inherit;
+	border-bottom-left-radius:calc(var(--window-border-radius) + 1.5px);
+	border-bottom-right-radius:calc(var(--window-border-radius) + 1.5px);
+	corner-shape:inherit;
 }
 
  .evelution-header .background .lunalevit {
@@ -969,7 +758,7 @@ margin-bottom:0;
 	.evelution-header .link.local-nav-switch {
 		margin-left:0;
 	}
-	@media (orientation:landscape) {
+	@media (min-width:760px) { /* @media (orientation:landscape) { */
 		.evelution-header .local-navigation .link,
 		.evelution-header .link.local-nav-switch {
 			margin-left:1px;
@@ -1661,7 +1450,7 @@ margin-bottom:0;
 
 
 	@media only screen and (max-width:639px) {
-			@media (orientation:portrait) {
+			@media (max-width:759px) { /* @media (orientation:portrait) { */
 			.evelution-taskbar .search > .search-button {
 					display:none;
 			}
@@ -1670,7 +1459,7 @@ margin-bottom:0;
 	}
 	
 	@media only screen and (max-width:511px) {
-		@media (orientation:portrait) {
+		@media (max-width:759px) { /* @media (orientation:portrait) { */
 			.evelution-taskbar .bottom-links .cpe-dropdown__content.is-right-aligned {
 				right:0!important;
 			}
@@ -2222,13 +2011,13 @@ a:active {
 		border-color:var(--luna-foreground-color);
 }
 
-@media (orientation:portrait) {
+@media (max-width:759px) { /* @media (orientation:portrait) { */
 .visualmode-contrast .evelution-taskbar {
 	box-shadow:inset 0 1px var(--inactive-text-background-color)!important;
 }
 }
 
-@media (orientation:landscape) {
+@media (min-width:760px) { /* @media (orientation:landscape) { */
 .visualmode-contrast .evelution-taskbar {
 	box-shadow:inset -1px 0 var(--inactive-text-background-color)!important;
 }
