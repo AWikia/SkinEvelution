@@ -68,10 +68,6 @@ class EvelutionHooks implements OutputPageBodyAttributesHook {
 		if ( $out->getConfig()->get ( 'EvelutionDisableDynamicWidgets' ) ) {
 			$bodyAttrs['class'] .= ' has-disabled-dynamic-taskbar-widgets';
 		}
-		// Taskbar Labels
-		if ( $out->getConfig()->get ('EvelutionEnableTaskbarAppLabelsOnLargeScreens' ) ) {
-			$bodyAttrs['class'] .= ' has-taskbar-app-labels';
-		}
 		// User State
 		if ( $skin->getUser()->isRegistered() ) {
 			$bodyAttrs['class'] .= ' user-logged';
