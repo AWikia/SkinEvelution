@@ -2166,11 +2166,12 @@ var invfilters = [
 /* Write them to the stylesheet */
 document.querySelector("head .theming").innerHTML = result;
 
-
-		if (oldtheme === 'none') {
-			document.querySelector('html').classList.add("theme-fandomdesktop-" +  window.ThemingEngine_ActiveThemeMode);
-		} else if (oldtheme != window.ThemingEngine_ActiveThemeMode ) {
-			document.querySelector('html').classList.replace("theme-fandomdesktop-" +  oldtheme,"theme-fandomdesktop-" +  window.ThemingEngine_ActiveThemeMode);
+		if ( (getComputedStyle( document.querySelector('body') ).getPropertyValue("--style-query-value-2") === '0') ) { // Fallback for browsers not supporting Style Queries, detection done with a property
+			if (oldtheme === 'none') {
+				document.querySelector('html').classList.add("theme-fandomdesktop-" +  window.ThemingEngine_ActiveThemeMode);
+			} else if (oldtheme != window.ThemingEngine_ActiveThemeMode ) {
+				document.querySelector('html').classList.replace("theme-fandomdesktop-" +  oldtheme,"theme-fandomdesktop-" +  window.ThemingEngine_ActiveThemeMode);
+			}
 		}
 		/* Forced Colors */
 		if (window.ThemingEngine_ActiveVisualMode != '-') {
