@@ -9,7 +9,7 @@ window.ThemingEngine_ActiveColorFilter = 'standard';
 window.ThemingEngine_ContrastMode = 'auto';
 /* Active Theme */
 window.ThemingEngine_ActiveTheme = 'A';
-window.ThemingEngine_ActiveThemeMode = 'none'; // none = Not yet loaded | light or dark = Loaded
+window.ThemingEngine_ActiveThemeMode = 'none'; // none = Not yet loaded | light or dark = Loaded // @FIXME: Remove once If() gets supported more broadly
 /* Visual Colors */
 window.ThemingEngine_ActiveVisualColors = 'standard';
 window.ThemingEngine_ActiveColorScheme = 'auto'; // auto | auto-dark | light | dark
@@ -635,7 +635,7 @@ async function RecalcAutoColor() {
 
 function GetDesktop() {
 	if (DisabledColorManagement()) {
-		return GetSystemColorValue('--desktop-background-color')
+		return GetSystemColorValue('--dcm-desktop-background-color')
 	} else if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--desktop-background-color") === 'auto') {
 		return window.ThemingEngine_PageColor;
 
@@ -665,7 +665,7 @@ function GetDesktopImage2() {
 
 function GetDesktopText() {
 	if (DisabledColorManagement()) {
-		return GetSystemColorValue('--desktop-text-background-color')
+		return GetSystemColorValue('--dcm-desktop-text-background-color')
 	} else if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--desktop-text-background-color") === 'auto') {
 		return ColorInvert(window.ThemingEngine_DesktopColor)
 	} else {
@@ -676,7 +676,7 @@ function GetDesktopText() {
 
 function GetCanvas() {
 	if (DisabledColorManagement()) {
-		return GetSystemColorValue('--canvas-background-color')
+		return GetSystemColorValue('--dcm-canvas-background-color')
 	} else if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--canvas-background-color") === 'auto') {
 		var color = GetHighlight();
 		var fg = GetForegroundVariables(color);
@@ -691,7 +691,7 @@ function GetCanvas() {
 
 function GetCanvas2() {
 	if (DisabledColorManagement()) {
-		return GetSystemColorValue('--canvas-secondary-background-color')
+		return GetSystemColorValue('--dcm-canvas-secondary-background-color')
 	} else if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--canvas-secondary-background-color") === 'auto') {
 		var color = window.ThemingEngine_PageColor;
 		var color2 = window.ThemingEngine_PageColorFG;
@@ -705,7 +705,7 @@ function GetCanvas2() {
 
 function GetHyperlink() {
 	if (DisabledColorManagement()) {
-		return GetSystemColorValue('--hyperlink-background-color')
+		return GetSystemColorValue('--dcm-hyperlink-background-color')
 	} else if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--hyperlink-background-color") === 'auto') {
 		var color = window.ThemingEngine_HighlightColor;
 		var color2 = [0.7,-0.8][['#000000','#ffffff'].indexOf(window.ThemingEngine_PageColorFG)];
@@ -719,7 +719,7 @@ function GetHyperlink() {
 
 function GetVisitedHyperlink() {
 	if (DisabledColorManagement()) {
-		return GetSystemColorValue('--visited-hyperlink-background-color')
+		return GetSystemColorValue('--dcm-visited-hyperlink-background-color')
 	} else if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--visited-hyperlink-background-color") === 'auto') {
 		return window.ThemingEngine_HyperlinkColor;
 	} else {
@@ -730,7 +730,7 @@ function GetVisitedHyperlink() {
 
 function GetInactiveText() {
 	if (DisabledColorManagement()) {
-		return GetSystemColorValue('--inactive-text-background-color')
+		return GetSystemColorValue('--dcm-inactive-text-background-color')
 	} else if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--inactive-text-background-color") === 'auto') {
 		return ColorMix(window.ThemingEngine_PageColor,window.ThemingEngine_PageColorFG,0.7);
 	} else {
@@ -740,7 +740,7 @@ function GetInactiveText() {
 
 function GetActiveText() {
 	if (DisabledColorManagement()) {
-		return GetSystemColorValue('--active-text-background-color')
+		return GetSystemColorValue('--dcm-active-text-background-color')
 	} else if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--active-text-background-color") === 'auto') {
 		var color = window.ThemingEngine_HyperlinkColor;
 		var color2 = [0.7,-0.8][['#000000','#ffffff'].indexOf(window.ThemingEngine_PageColorFG)];
@@ -755,7 +755,7 @@ function GetActiveText() {
 
 function GetCanvasText() {
 	if (DisabledColorManagement()) {
-		return GetSystemColorValue('--canvas-text-background-color')
+		return GetSystemColorValue('--dcm-canvas-text-background-color')
 	} else if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--canvas-text-background-color") === 'auto') {
 		return ColorInvert(window.ThemingEngine_PageColor)
 	} else {
@@ -766,7 +766,7 @@ function GetCanvasText() {
 
 function GetCanvasText2() {
 	if (DisabledColorManagement()) {
-		return GetSystemColorValue('--canvas-text-secondary-background-color')
+		return GetSystemColorValue('--dcm-canvas-text-secondary-background-color')
 	} else if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--canvas-text-secondary-background-color") === 'auto') {
 		return GetCanvasText();
 	} else {
@@ -777,7 +777,7 @@ function GetCanvasText2() {
 
 function GetHighlight() {
 	if (DisabledColorManagement()) {
-		return GetSystemColorValue('--highlight-background-color')
+		return GetSystemColorValue('--dcm-highlight-background-color')
 	} else if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--highlight-background-color") === 'auto') {
 		if (ShouldUseFallbackColor()) {
 			return chroma('#3366cc'); // Fallback method
@@ -791,7 +791,7 @@ function GetHighlight() {
 
 function GetHighlightText() {
 	if (DisabledColorManagement()) {
-		return GetSystemColorValue('--highlight-text-background-color')
+		return GetSystemColorValue('--dcm-highlight-text-background-color')
 	} else if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--highlight-text-background-color") === 'auto') {
 		return ColorInvert(window.ThemingEngine_HighlightColor);
 	} else {
@@ -802,7 +802,7 @@ function GetHighlightText() {
 
 function GetActiveTitle() {
 	if (DisabledColorManagement()) {
-		return GetSystemColorValue('--active-title-background-color')
+		return GetSystemColorValue('--dcm-active-title-background-color')
 	} else if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--active-title-background-color") === 'auto') {
 		var color = window.ThemingEngine_HighlightColor;
 		var color2 = [-0.8,0.7][['#000000','#ffffff'].indexOf(window.ThemingEngine_PageColorFG)];
@@ -815,7 +815,7 @@ function GetActiveTitle() {
 
 function GetActiveTitleText() {
 	if (DisabledColorManagement()) {
-		return GetSystemColorValue('--active-title-text-background-color')
+		return GetSystemColorValue('--dcm-active-title-text-background-color')
 	} else if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--active-title-text-background-color") === 'auto') {
 		return ColorInvert(window.ThemingEngine_ActiveTitleColor);
 	} else {
@@ -826,7 +826,7 @@ function GetActiveTitleText() {
 
 function GetInactiveTitle() {
 	if (DisabledColorManagement()) {
-		return GetSystemColorValue('--inactive-title-background-color')
+		return GetSystemColorValue('--dcm-inactive-title-background-color')
 	} else if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--inactive-title-background-color") === 'auto') {
 		return ColorMix(window.ThemingEngine_ActiveTitleColor,window.ThemingEngine_PageColor,1.5);
 	} else {
@@ -836,7 +836,7 @@ function GetInactiveTitle() {
 
 function GetInactiveTitleText() {
 	if (DisabledColorManagement()) {
-		return GetSystemColorValue('--inactive-title-text-background-color')
+		return GetSystemColorValue('--dcm-inactive-title-text-background-color')
 	} else if (getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--inactive-title-text-background-color") === 'auto') {
 		return ColorInvert(window.ThemingEngine_InactiveTitleColor);
 	} else {
@@ -1436,7 +1436,7 @@ function ColorInvert(color) {
 	var b = 255 - chroma(color).get('rgb.b');
 	var h = chroma(color).get('oklch.h');
 	var h2 = chroma(color).get('hsl.h');
-	return 	chroma(color).set('rgb.r', r).set('rgb.g', g).set('rgb.b', b).set('oklch.h', h).set('hsl.h', h2)
+	return 	chroma(color).set('rgb.r', r).set('rgb.g', g).set('rgb.b', b).set('oklch.h', h).set('hsl.h', h2).hex();
 }
 
 
@@ -1972,15 +1972,6 @@ if (imgfilter == 'none') {
 }
 
 
-// Foreground texts
-var dropdowncolor_fg = GetForegroundVariables(dropdowncolor); // Still required, as one can have a light canvas but a dark secondary canvas color under certain circumstances
-var button_fg = GetForegroundVariables(button_color);
-var border_fg = GetForegroundVariables(border_color);
-var head_fg = GetForegroundVariables(head_color);
-var caret_fg = GetForegroundVariables(caret_color);
-var caretIT_fg = GetForegroundVariables(caretIT_color); // Still required, as one can have a light canvas but a dark inactive title color under certain circumstances
-
-// Inverted Foreground texts
 
 
 	wordfilter2 = getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--icon-filter-hover")
@@ -2036,16 +2027,12 @@ var invfilters = [
 	var result = 		  colorstyle +
 						  ":root {" +
 						  "--canvas-secondary-background-color:" + dropdowncolor + ";\n" + 
-						  "--canvas-secondary-foreground-color:" + dropdowncolor_fg[0] + ";\n" +
-						  "--canvas-secondary-foreground-color-hover:" +  dropdowncolor_fg[1] + ";\n" + 
 						  "--canvas-background-color:" + content_color + ";\n" +
 						  "--canvas-tabs-background-color:" + tabscPage  + ";\n" +
 						  "--canvas-active-tabs-opacity:" + tabsoPage  + ";\n" +
 						  "--canvas-text-background-color:" + content_text + ";\n" +
 						  "--canvas-text-secondary-background-color:" + content2_text + ";\n" +
 						  "--highlight-background-color:" + button_color + ";\n" +
-						  "--highlight-foreground-color:" + button_fg[0] + ";\n" +
-						  "--highlight-foreground-color-hover:" + button_fg[1] + ";\n" +
 						  "--highlight-text-background-color:" + buttontext_color + ";\n" +
 						  "--highlight-secondary-background-color:" + button2_color + ";\n" +
 						  "--highlight-tertiary-background-color:" + button3_color + ";\n" +
@@ -2069,18 +2056,12 @@ var invfilters = [
 						  "--active-text-tertiary-background-color:" + alink3_color + ";\n" +
 						  "--active-text-quaternary-background-color:" + alink4_color + ";\n" +
 						  "--inactive-text-background-color:" + border_color + ";\n" +
-						  "--inactive-text-foreground-color:" + border_fg[0] + ";\n" +
-						  "--inactive-text-foreground-color-hover:" + border_fg[1] + ";\n" +
 						  "--inactive-text-secondary-background-color:" + border2_color + ";\n" +
 						  "--inactive-text-tertiary-background-color:" + border3_color + ";\n" +
 						  "--inactive-text-quaternary-background-color:" + border4_color + ";\n" +
 						  "--desktop-background-color:" + head_color + ";\n" +
-						  "--desktop-foreground-color:" + head_fg[0] + ";\n" +
-						  "--desktop-foreground-color-hover:" + head_fg[1] + ";\n" +
 						  "--desktop-text-background-color:" + headertext_color + ";\n" +
 						  "--active-title-background-color:" + caret_color + ";\n" +
-						  "--active-title-foreground-color:" + caret_fg[0] + ";\n" +
-						  "--active-title-foreground-color-hover:" + caret_fg[1] + ";\n" +
 						  "--active-title-tabs-background-color:" + tabscCaret  + ";\n" +
 						  "--active-title-active-tabs-opacity:" + tabsoCaret  + ";\n" +
 						  "--active-title-text-background-color:" + carettext_color + ";\n" +
@@ -2088,8 +2069,6 @@ var invfilters = [
 						  "--active-title-tertiary-background-color:" + caret3_color + ";\n" +
 						  "--active-title-quaternary-background-color:" + caret4_color + ";\n" +
 						  "--inactive-title-background-color:" + caretIT_color + ";\n" +
-						  "--inactive-title-foreground-color:" + caretIT_fg[0] + ";\n" +
-						  "--inactive-title-foreground-color-hover:" + caretIT_fg[1] + ";\n" +
 						  "--inactive-title-tabs-background-color:" + tabscCaretIT  + ";\n" +
 						  "--inactive-title-active-tabs-opacity:" + tabsoCaretIT  + ";\n" +
 						  "--inactive-title-text-background-color:" + caretITtext_color + ";\n" +
@@ -2156,9 +2135,11 @@ var invfilters = [
 						  "--bg-tile-x:" + ['repeat','no-repeat'][["false", "true"].indexOf( getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--desktop-background-no-horizontal-tiling") ) ] + ";\n" +
 						  "--bg-tile-y:" + ['repeat','no-repeat'][["false", "true"].indexOf( getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--desktop-background-no-vertical-tiling") ) ] + ";\n" +
 						  "--color-mode-filter:" + invfilters[window.ThemingEngine_ColorFilterMode][[false, true].indexOf(window.ThemingEngine_InvertColors) ] + ";\n" +
+						  "--threeD-color-light:" + ["#fff5","#0005"][[false, true].indexOf(window.ThemingEngine_InvertColors) ] +
+						  "--threeD-color-dark:" + ["#fff5","#0005"][[true, false].indexOf(window.ThemingEngine_InvertColors) ] +
 						  "--desktop-filter:" + deskfilter + ";\n" +
 // Color Scheme
-						  "--color-scheme:" + window.ThemingEngine_ActiveThemeMode + ";\n" +
+						  "--color-scheme:" + window.ThemingEngine_ActiveThemeMode + ";\n" + // @FIXME: Remove once If() gets supported more broadly
 						  "}"
 						  //
 
@@ -2166,13 +2147,7 @@ var invfilters = [
 /* Write them to the stylesheet */
 document.querySelector("head .theming").innerHTML = result;
 
-		if ( (getComputedStyle( document.querySelector('body') ).getPropertyValue("--style-query-value-2") === '0') ) { // Fallback for browsers not supporting Style Queries, detection done with a property
-			if (oldtheme === 'none') {
-				document.querySelector('html').classList.add("theme-fandomdesktop-" +  window.ThemingEngine_ActiveThemeMode);
-			} else if (oldtheme != window.ThemingEngine_ActiveThemeMode ) {
-				document.querySelector('html').classList.replace("theme-fandomdesktop-" +  oldtheme,"theme-fandomdesktop-" +  window.ThemingEngine_ActiveThemeMode);
-			}
-		}
+
 		/* Forced Colors */
 		if (window.ThemingEngine_ActiveVisualMode != '-') {
 			VisualMode(window.ThemingEngine_ActiveVisualMode,false,false);
