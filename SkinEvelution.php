@@ -2,6 +2,7 @@
  use MediaWiki\User\UserOptionsLookup;
  use MediaWiki\MediaWikiServices;
  use MediaWiki\Hook\OutputPageBodyAttributesHook;
+ use MediaWiki\Title\Title;
 
 /* Code From Universal Omega's Cosmos Skin */
 class EvelutionSocialProfile {

@@ -7,7 +7,7 @@ Evelution Desktop Skin in three different main Breakpoint Sizes, 705px, 1280px &
 
 You can read more about the skin [here](Overview.md). For easy to use CSS snipsets, go [here](SimpleCSS.md). More topics can be found at the Explore Menu on the Navigation
 
-Evelution uses the ``main`` branch that it is compatible with MediaWiki 1.39 to 1.42 and the ``REL1_37`` branch that it is compatible with MediaWiki 1.37 to 1.41, intended to be used with MediaWiki 1.37 and 1.38
+Evelution uses the ``main`` branch that it is compatible with MediaWiki 1.46 and the ``REL1_37`` branch that it is compatible with MediaWiki 1.37 to 1.41, intended to be used with MediaWiki 1.37 to 1.41. MediaWiki 1.42 to 1.45 are not supported.
 
 # Version Release
 - Evelution Family now follows [Semantic Versioning II](https://semver.org/). 
@@ -23,10 +23,10 @@ Evelution requires at least one of these browsers in order to run properly:
 
 | Browser    | Supported Releases        | Notes																						   |
 | ---------- | ------------------------- | ----------------------------------------------------------------------------------------------- |
-| Chrome     | 139+                      | Has customized scrollbar styling.															   |
-| Firefox    | 141+                      | Does not support the color picker function in Theme Designer.								   |
-| Edge       | 139+                      | EdgeHTML version is not supported. Has customized scrollbar styling.							   |
-| Safari     | 26+                       | Only on Apple Devices.					  													   |
+| Chrome     | 149+                      | Has customized scrollbar styling.															   |
+| Firefox    | 151+                      | Does not support the color picker function in Theme Designer.								   |
+| Edge       | 149+                      | EdgeHTML version is not supported. Has customized scrollbar styling.							   |
+| Safari     | 27+                       | Only on Apple Devices.					  													   |
 
 
 Evelution skin will die if it is found to be running on unsupported browsers with the **Unsupported Configuration** error and will load up with a deprecated browswer warning if it is found to be running on not recommended but still supported browsers.
@@ -44,7 +44,9 @@ List of MediaWiki versions and what Evelution version can be installed at most. 
 
 | MediaWiki    | Supported Releases           |
 | ------------ | ---------------------------- |
-| 1.39.x+      | ~✅                           |
+| 1.46.x+      | ~✅                           |
+| 1.42.x-1.45x | ~177.0.0                     |
+| 1.39.x-1.41x | ~177.0.0 (main), ✅ (REL1_37) |
 | 1.37.x-1.38x | ~155.1.0 (main), ✅ (REL1_37) |
 | 1.36.x       | ~89.2.0, 91.0.0-119.1.0      |
 

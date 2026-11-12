@@ -606,16 +606,19 @@ function InitDesigner() {
 				'<option value="#18bbc5">' +
 				'<option value="#0c0c0c">' +
 			'</datalist>' +
-			'<datalist id="td_fonts2">' + // Sans Serif Fonts (40)
+			'<datalist id="td_fonts2">' + // Sans Serif Fonts (43)
 				'<option value=\'"Alef"\'>' +
 				'<option value=\'"Alegreya Sans"\'>' +
 				'<option value=\'"Arimo"\'>' + 
 				'<option value=\'"Cairo"\'>' +
 				'<option value=\'"Catamaran"\'>' +
 				'<option value=\'"Commissioner"\'>' +
+				'<option value=\'"DM Sans"\'>' +
 				'<option value=\'"Didact Gothic"\'>' +
 				'<option value=\'"Evelution Sans"\'>' + // Custom
 				'<option value=\'"Fira Sans"\'>' +
+				'<option value=\'"Google Sans Flex"\'>' +
+				'<option value=\'"Google Sans"\'>' +
 				'<option value=\'"Gothic A1"\'>' +
 				'<option value=\'"Hind Siliguri"\'>' +
 				'<option value=\'"Inter"\'>' +
@@ -649,7 +652,7 @@ function InitDesigner() {
 				'<option value=\'"Ubuntu Condensed"\'>' + 
 				'<option value=\'"Varela"\'>' +
 			'</datalist>' +
-			'<datalist id="td_fonts4">' + // Serif Fonts (35)
+			'<datalist id="td_fonts4">' + // Serif Fonts (36)
 				'<option value=\'"Alegreya"\'>' +
 				'<option value=\'"Aleo"\'>' +
 				'<option value=\'"Amiri"\'>' +
@@ -661,6 +664,7 @@ function InitDesigner() {
 				'<option value=\'"Brileback Xtreme"\'>' + // Custom
 				'<option value=\'"Cambo"\'>' +
 				'<option value=\'"Cutive"\'>' +
+				'<option value=\'"DM Serif Display"\'>' +
 				'<option value=\'"David Libre"\'>' +
 				'<option value=\'"Gentium Plus"\'>' +
 				'<option value=\'"Hanuman"\'>' +
@@ -715,14 +719,16 @@ function InitDesigner() {
 				'<option value=\'"Varela Round"\'>' + 
 				'<option value=\'"Work Sans"\'>' +
 			'</datalist>' +
-			'<datalist id="td_fonts3">' + // Monospace Fonts (18)
+			'<datalist id="td_fonts3">' + // Monospace Fonts (20)
 				'<option value=\'"Anonymous Pro"\'>' + 
 				'<option value=\'"Courier Prime"\'>' +
 				'<option value=\'"Cousine"\'>' +
 				'<option value=\'"Cutive Mono"\'>' +
+				'<option value=\'"DM Mono"\'>' +
 				'<option value=\'"Evelution Terminal"\'>' + // Custom
 				'<option value=\'"Fira Code"\'>' +
 				'<option value=\'"Fira Mono"\'>' +
+				'<option value=\'"Google Sans Code"\'>' +
 				'<option value=\'"Inconsolata"\'>' +
 				'<option value=\'"M PLUS 1 Code"\'>' + 
 				'<option value=\'"M PLUS Code Latin"\'>' + 
