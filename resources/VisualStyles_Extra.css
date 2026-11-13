@@ -1267,7 +1267,7 @@ border-color:var(--luna-foreground-color);
 .visualstyle-general .evelution-module .rail-buttons .rail-button:active {
 	background-color:var(--hyperlink-background-color-hover);
 	border-color:var(--hyperlink-background-color-hover);
-	color:var(--hyperlink-foreground-color);
+	color:contrast-color(var(--hyperlink-background-color-hover));
 }
 
 
@@ -1275,7 +1275,7 @@ border-color:var(--luna-foreground-color);
 	--global-nav-link-color-hover:var(--hyperlink-foreground-color);
 	--global-nav-link-background-hover:var(--hyperlink-background-color);
 	--global-nav-link-border-hover:var(--hyperlink-background-color);
-	--global-nav-link-color-active:var(--hyperlink-foreground-color);
+	--global-nav-link-color-active:contrast-color(var(--hyperlink-background-color-hover));
 	--global-nav-link-background-active:var(--hyperlink-background-color-hover);
 	--global-nav-link-border-active:var(--hyperlink-background-color-hover);
 	/* Keybord-Focused Links */
@@ -1319,7 +1319,7 @@ border-color:var(--luna-foreground-color);
 	--desktop-filter:none;
 	-webkit-animation:none;
 	animation:none;
-	color:var(--hyperlink-foreground-color);
+	color:constrast-color(var(--hyperlink-background-color-hover));
 	border-color:var(--hyperlink-background-color-hover);
 	background-color:var(--hyperlink-background-color-hover);
 }
@@ -1375,7 +1375,7 @@ border-color:var(--luna-foreground-color);
 
 .visualstyle-general .preview-window-window h2 button:active {
 	background-color:var(--hyperlink-background-color-hover);
-	color:var(--hyperlink-foreground-color);
+	color:contrast-color(var(--hyperlink-background-color-hover));
 	border-color:var(--hyperlink-background-color-hover);
 }
 
@@ -1391,7 +1391,7 @@ border-color:var(--luna-foreground-color);
 .visualstyle-general .preview-window-window h2 button.close:active {
   background-color:var(--alert-background-color-hover);
   border-color:var(--alert-background-color-hover);
-  color:var(--alert-foreground-color);
+  color:contrast-color(var(--alert-background-color-hover));
 }
 
 .visualstyle-general .preview-window-window .menu > li > a:hover {
@@ -1414,8 +1414,10 @@ border-color:var(--luna-foreground-color);
 
 
 /** High Contrast **/
+
 .visualstyle-general.visualmode-contrast .evelution-sidebar {
 	--global-nav-link-background-hover:var(--hyperlink-background-color);
+	--global-nav-link-color-active:var(--hyperlink-foreground-color);
 	--global-nav-link-opacity:1;
 	--global-nav-link-border-opacity:1;
 
@@ -1433,13 +1435,33 @@ border-color:var(--luna-foreground-color);
 	border-color:var(--hyperlink-background-color);
 }
 
+.visualstyle-general.visualmode-contrast .evelution-header .link:active, 
+.visualstyle-general.visualmode-contrast .evelution-header .link:focus, 
+.visualstyle-general.visualmode-contrast .evelution-header .cpe-dropdown.opens-on-hover:hover > .link, 
+.visualstyle-general.visualmode-contrast .evelution-header .cpe-dropdown:focus > .link, 
+.visualstyle-general.visualmode-contrast .evelution-header .cpe-dropdown:focus-within > .link, 
+.visualstyle-general.visualmode-contrast .evelution-header .link.active,
+.visualstyle-general.visualmode-contrast .evelution-content .evelution-page-header .evelution-middle-actions a:active, 
+.visualstyle-general.visualmode-contrast .evelution-content .evelution-page-header .evelution-middle-actions a:focus, 
+.visualstyle-general.visualmode-contrast .evelution-content .evelution-page-header .evelution-middle-actions .selected a, 
+.visualstyle-general.visualmode-contrast .evelution-top-actions .link:active, 
+.visualstyle-general.visualmode-contrast .evelution-top-actions .link:focus, 
+.visualstyle-general.visualmode-contrast .evelution-top-actions .cpe-dropdown.opens-on-hover:hover > .link, 
+.visualstyle-general.visualmode-contrast .evelution-top-actions .cpe-dropdown:focus > .link, 
+.visualstyle-general.visualmode-contrast .evelution-top-actions .cpe-dropdown:focus-within > .link, 
+.visualstyle-general.visualmode-contrast .evelution-top-actions .link.active {
+	color:var(--hyperlink-foreground-color-hover);
+}
+
+
+.visualstyle-general.visualmode-contrast .preview-window-window h2 button:hover,
 .visualstyle-general.visualmode-contrast .preview-window-window h2 button.close:hover {
 	background-color:var(--hyperlink-background-color);
 	color:var(--hyperlink-foreground-color);
 	border-color:var(--hyperlink-background-color);
 }
 
-
+.visualstyle-general.visualmode-contrast .preview-window-window h2 button:active,
 .visualstyle-general.visualmode-contrast .preview-window-window h2 button.close:active {
 	background-color:var(--hyperlink-background-color);
 	color:var(--hyperlink-foreground-color);
