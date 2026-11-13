@@ -1295,7 +1295,7 @@ background-color:var(--canvas-background-color);
 /* Active Link Styling */
 --dropdown-active-hyperlink-background-color:var(--hyperlink-background-color-hover);
 --dropdown-active-hyperlink-border-color:transparent;
---dropdown-active-hyperlink-text-color:var(--hyperlink-foreground-color);
+--dropdown-active-hyperlink-text-color:contrast-color(var(--hyperlink-background-color-hover));
 /* Keyboard-Focused Link Styling */
 --dropdown-focused-hyperlink-background-color:var(--canvas-text-background-color);
 --dropdown-focused-hyperlink-border-color:var(--hyperlink-background-color);
@@ -1477,7 +1477,7 @@ background-color:var(--canvas-background-color);
 
 .visualstyle-general .cpe-floating-button {
   --floating-button-color-hover:var(--hyperlink-foreground-color);
-  --floating-button-color-active:var(--hyperlink-foreground-color);
+  --floating-button-color-active:contrast-color(var(--floating-button-background-color-active));
   --floating-button-background-color-hover:var(--hyperlink-background-color);
   --floating-button-background-color-active:var(--hyperlink-background-color-hover);
   --floating-button-border-color-hover:var(--floating-button-background-color-hover);
@@ -1488,14 +1488,12 @@ background-color:var(--canvas-background-color);
 
 .visualstyle-general .cpe-floating-button.is-unaccented {
   --floating-button-color-hover:var(--canvas-text-foreground-color);
-  --floating-button-color-active:var(--canvas-text-foreground-color);
   --floating-button-background-color-hover:var(--canvas-text-background-color);
   --floating-button-background-color-active:var(--canvas-text-background-color-hover);
 }
 
 .visualstyle-general .cpe-floating-button.is-alternate {
   --floating-button-color-hover:var(--active-text-foreground-color);
-  --floating-button-color-active:var(--active-text-foreground-color);
   --floating-button-background-color-hover:var(--active-text-background-color);
   --floating-button-background-color-active:var(--active-text-background-color-hover);
 }
@@ -1503,42 +1501,36 @@ background-color:var(--canvas-background-color);
 
 .visualstyle-general .cpe-floating-button.is-alert-color {
   --floating-button-color-hover:var(--alert-foreground-color);
-  --floating-button-color-active:var(--alert-foreground-color);
   --floating-button-background-color-hover:var(--alert-background-color);
   --floating-button-background-color-active:var(--alert-background-color-hover);
 }
 
 .visualstyle-general .cpe-floating-button.is-pause-color {
   --floating-button-color-hover:var(--pause-foreground-color);
-  --floating-button-color-active:var(--pause-foreground-color);
   --floating-button-background-color-hover:var(--pause-background-color);
   --floating-button-background-color-active:var(--pause-background-color-hover);
 }
 
 .visualstyle-general .cpe-floating-button.is-warning-color {
   --floating-button-color-hover:var(--warning-foreground-color);
-  --floating-button-color-active:var(--warning-foreground-color);
   --floating-button-background-color-hover:var(--warning-background-color);
   --floating-button-background-color-active:var(--warning-background-color-hover);
 }
 
 .visualstyle-general .cpe-floating-button.is-success-color {
   --floating-button-color-hover:var(--success-foreground-color);
-  --floating-button-color-active:var(--success-foreground-color);
   --floating-button-background-color-hover:var(--success-background-color);
   --floating-button-background-color-active:var(--success-background-color-hover);
 }
 
 .visualstyle-general .cpe-floating-button.is-progress-color {
   --floating-button-color-hover:var(--progress-foreground-color);
-  --floating-button-color-active:var(--progress-foreground-color);
   --floating-button-background-color-hover:var(--progress-background-color);
   --floating-button-background-color-active:var(--progress-background-color-hover);
 }
 
 .visualstyle-general .cpe-floating-button.is-message-color {
   --floating-button-color-hover:var(--message-foreground-color);
-  --floating-button-color-active:var(--message-foreground-color);
   --floating-button-background-color-hover:var(--message-background-color);
   --floating-button-background-color-active:var(--message-background-color-hover);
 }
@@ -1587,6 +1579,12 @@ background-color:var(--hyperlink-background-color);
 
 /** High Contrast **/
 .visualstyle-general.visualmode-contrast body {
+/* Link Styling */
+/* Active Link Styling */
+--dropdown-active-hyperlink-text-color:var(--hyperlink-foreground-color);
+}
+
+.visualstyle-general.visualmode-contrast body {
 	--checkbox-unchecked-bg-hover:var(--hyperlink-foreground-color);
 	--checkbox-unchecked-shadow-hover:var(--hyperlink-background-color);
 	--checkbox-active-bg:var(--hyperlink-background-color);
@@ -1596,4 +1594,8 @@ background-color:var(--hyperlink-background-color);
 	--checkbox-checked-shadow-hover:var(--checkbox-checked-text-hover);
 	--checkbox-checked-text:var(--hyperlink-foreground-color);
 	--checkbox-checked-text-hover:var(--checkbox-checked-bg);
+}
+
+.visualstyle-general.visualmode-contrast .cpe-floating-button {
+  --floating-button-color-active:var(--floating-button-color-hover);
 }
