@@ -20,7 +20,7 @@
   font-family: 'Material Icons Round';
   font-style: normal;
   font-weight: 100 700;
-  src: url(https://fonts.gstatic.com/s/materialsymbolsrounded/v219/sykg-zNym6YjUruM-QrEh7-nyTnjDwKNJ_190Fjzag.woff2) format('woff2');
+  src: url(https://fonts.gstatic.com/s/materialsymbolsrounded/v387/sykg-zNym6YjUruM-QrEh7-nyTnjDwKNJ_190Fjzag.woff2) format('woff2');
 }
 
 
@@ -29,7 +29,7 @@
   font-family: 'Material Icons Sharp';
   font-style: normal;
   font-weight: 100 700;
-  src: url(https://fonts.gstatic.com/s/materialsymbolssharp/v216/gNMVW2J8Roq16WD5tFNRaeLQk6-SHQ_R00k4aWE.woff2) format('woff2');
+  src: url(https://fonts.gstatic.com/s/materialsymbolssharp/v383/gNMVW2J8Roq16WD5tFNRaeLQk6-SHQ_R00k4aWE.woff2) format('woff2');
 }
 
 /* Regular */
@@ -37,7 +37,7 @@
   font-family: 'Material Icons';
   font-style: normal;
   font-weight: 100 700;
-  src: url(https://fonts.gstatic.com/s/materialsymbolsoutlined/v220/kJEhBvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oFsI.woff2) format('woff2');
+  src: url(https://fonts.gstatic.com/s/materialsymbolsoutlined/v386/kJEhBvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oFsI.woff2) format('woff2');
 }
 
 /** Evelution Fonts **/
@@ -117,6 +117,13 @@
   initial-value: 'none';
 }
 
+/* Configuration */
+@property --active-visual-colors {
+  syntax: "<custom-ident>";
+  inherits: true;
+  initial-value: standard;
+}
+
 /* Desktop */
 @property --desktop-background-color {
   syntax: "<color> | auto";
@@ -141,6 +148,55 @@
   syntax: "<color>";
   inherits: true;
   initial-value: black;
+}
+
+/* Desktop Image */
+@property --desktop-background-image {
+  syntax: "*";
+  inherits: true;
+  initial-value: none;
+}
+
+@property --desktop-background-image-filter {
+  syntax: "*"; /* <filter-function> | none */
+  inherits: true;
+  initial-value: opacity(100%);
+}
+
+@property --desktop-background-image-blend-mode {
+  syntax: "normal | darken | multiply | color-burn | lighten | screen | color-dodge | overlay | soft-light | hard-light | difference | exclusion | hue |  saturation | color | luminosity"; /* <blend-mode> */
+  inherits: true;
+  initial-value: normal;
+}
+
+@property --desktop-background-image-size {
+  syntax: "cover | contain | stretched | full";
+  inherits: true;
+  initial-value: cover;
+}
+
+@property --desktop-background-horizontal-alignment {
+  syntax: "left | center | right";
+  inherits: true;
+  initial-value: center;
+}
+
+@property --desktop-background-vertical-alignment {
+  syntax: "top | center | bottom";
+  inherits: true;
+  initial-value: center;
+}
+
+@property --desktop-background-no-horizontal-tiling {
+  syntax: "false | true";
+  inherits: true;
+  initial-value: false;
+}
+
+@property --desktop-background-no-vertical-tiling {
+  syntax: "false | true";
+  inherits: true;
+  initial-value: false;
 }
 
 /* Canvas */
@@ -297,29 +353,91 @@
   initial-value: black;
 }
 
+/* Fonts */
+@property --custom-sans-serif-font {
+  syntax: "<string>#";
+  inherits: true;
+  initial-value: "DM Sans";
+}
+
+@property --custom-serif-font {
+  syntax: "<string>#";
+  inherits: true;
+  initial-value: "DM Serif";
+}
+ 
+@property --custom-rounded-font {
+  syntax: "<string>#";
+  inherits: true;
+  initial-value: "Rubik";
+}
+
+@property --custom-monospace-font {
+  syntax: "<string>#";
+  inherits: true;
+  initial-value: "DM Mono";
+}
+
+/* Border Radius */
+@property --border-radius {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 5px;
+}
+
+/* Logo Filter */
+@property --icon-filter {
+  syntax: "*"; /* <filter-function> | none */
+  inherits: true;
+  initial-value: opacity(1);
+}
+
+@property --icon-filter-hover {
+  syntax: "*"; /* <filter-function> | none */
+  inherits: true;
+  initial-value: opacity(0.8);
+}
+
+@property --icon-filter-duration {
+  syntax: "<time> | 0";
+  inherits: true;
+  initial-value: 300ms;
+}
+
+@property --icon-filter-delay {
+  syntax: "<time> | 0";
+  inherits: true;
+  initial-value: 0;
+}
+
+/* Generic Colors */
+@property --system-generic-color-hue-shift {
+  syntax: "<integer>";
+  inherits: true;
+  initial-value: 0;
+}
+
+@property --system-generic-color-saturation {
+  syntax: "<percentage>";
+  inherits: true;
+  initial-value: 100%;
+}
+
+@property --system-icon-style {
+  syntax: "round | outlined | sharp";
+  inherits: true;
+  initial-value: round;
+}
+
+@property --system-icon-shape {
+  syntax: "sharp | bevel | round | squircle | circle | sharp-inverted |  round-inverted";
+  inherits: true;
+  initial-value: round;
+}
+
 /* The rest */
 .theme-A, .theme-B, .theme-C, .theme-D, .theme-E, .theme-F, .theme-G, .theme-H { /* Standard */
 /* Aliases */
---desktop-background-image:url("");
---desktop-background-image-filter:opacity(100%);
---desktop-background-image-blend-mode:normal;
---desktop-background-size:cover;
---desktop-background-horizontal-alignment:center;
---desktop-background-vertical-alignment:center;
---desktop-background-no-horizontal-tiling:false;
---desktop-background-no-vertical-tiling:false;
---custom-sans-serif-font-:"DM Sans";
---custom-serif-font:"DM Serif Display";
---custom-rounded-font:"Rubik";
---custom-monospace-font:"DM Mono";
---border-radius:5px;
---icon-filter:opacity(1);
---icon-filter-hover:opacity(0.8);
---icon-filter-duration:300ms;
---icon-filter-delay:0;
---system-generic-color-hue-shift:0;
---system-generic-color-saturation:100%;
---system-icon-style:round;
 --system-visual-mode:standard;
 --system-visual-style:standard;
 }
@@ -603,6 +721,10 @@ font-variant-emoji:unicode;
 /* Border Radius */
 --window-border-radius:calc(var(--border-radius) * 2);
 --menu-border-radius:calc(var(--border-radius) * 0.6);
+/* Appl;ication Border Radius **/
+--icon-border-radius:25%;
+--icon-corner-shape:superellipse(1);
+--squircle-intense:1; /* This is required to make Squircle Borders look nice when unsupported */
 /* Tabs Opacity */
 --canvas-tabs-opacity:calc(var(--canvas-active-tabs-opacity) * 0.5 );
 --hyperlink-tabs-opacity:calc(var(--canvas-active-tabs-opacity) * 0.5 );
@@ -627,6 +749,55 @@ font-variant-emoji:unicode;
 /* Shapes */
 --cpe-teadrop:url("data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHdpZHRoPSI4Mi42NjY2NyIgaGVpZ2h0PSI4Mi42NjY2NyIgdmlld0JveD0iMCwwLDgyLjY2NjY3LDgyLjY2NjY3Ij4NCgk8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMTk4LjY2NjY2LC0xMzguNjY2NjYpIj4NCgkJPGcgZGF0YS1wYXBlci1kYXRhPSJ7JnF1b3Q7aXNQYWludGluZ0xheWVyJnF1b3Q7OnRydWV9IiBmaWxsPSIjMDAwMDAwIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMCIgc3Ryb2tlLWxpbmVjYXA9ImJ1dHQiIHN0cm9rZS1saW5lam9pbj0ibWl0ZXIiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgc3Ryb2tlLWRhc2hhcnJheT0iIiBzdHJva2UtZGFzaG9mZnNldD0iMCIgc3R5bGU9Im1peC1ibGVuZC1tb2RlOiBub3JtYWwiPg0KCQkJPHBhdGggZmlsbD0iIzAwMDAwMCIgZD0iTTE5OC42NjY2NywxODBjMCwtMjIuODI3NzcgNDEuMzMzMzQsLTQxLjMzMzM0IDQxLjMzMzM0LC00MS4zMzMzNGMwLDAgNDEuMzMzMzMsMTguNTA1NTcgNDEuMzMzMzMsNDEuMzMzMzRjMCwyMi44Mjc3NyAtMTguNTA1NTYsNDEuMzMzMzQgLTQxLjMzMzMzLDQxLjMzMzM0Yy0yMi44Mjc3NywwIC00MS4zMzMzNCwtMTguNTA1NTcgLTQxLjMzMzM0LC00MS4zMzMzNHoiLz4NCgkJPC9nPg0KCTwvZz4NCjwvc3ZnPg==");
 /* Scrollbar */
+}
+
+@supports (corner-shape:squircle) {
+	:root {
+		--squircle-intense:2;
+	}
+}
+
+/* Icon Shapes */
+@container style(--system-icon-shape:sharp) {
+	body {
+		--icon-border-radius:0%;
+		--icon-corner-shape:superellipse(infinity);
+	}
+}
+
+@container style(--system-icon-shape:bevel) {
+	body {
+		--icon-border-radius:25%;
+		--icon-corner-shape:superellipse(0);
+	}
+}
+
+@container style(--system-icon-shape:squircle) {
+	body {
+		--icon-border-radius:calc(25% * var(--squircle-intense));
+		--icon-corner-shape:superellipse(2);
+	}
+}
+
+@container style(--system-icon-shape:circle) {
+	body {
+		--icon-border-radius:50%;
+		--icon-corner-shape:superellipse(1);
+	}
+}
+
+@container style(--system-icon-shape:sharp-inverted) {
+	body {
+		--icon-border-radius:25%;
+		--icon-corner-shape:superellipse(-infinity);
+	}
+}
+
+@container style(--system-icon-shape:round-inverted) {
+	body {
+		--icon-border-radius:25%;
+		--icon-corner-shape:superellipse(-1);
+	}
 }
 
 /* Check for Style Queries 
@@ -1209,6 +1380,7 @@ body {
 		--system-generic-color-hue-shift:0;
 		--system-generic-color-saturation:100%;
 		--system-icon-style:round;
+		--system-icon-shape:round;
 		--system-visual-mode:standard;
 		--system-visual-style:standard;
 	}
@@ -1231,170 +1403,10 @@ body {
 	--dcm-canvas-text-secondary-background-color:buttontext;
 	--dcm-highlight-background-color:highlight;
 	--dcm-highlight-text-background-color:highlighttext;
-	--dcm-active-title-background-color:fieldtext;
-	--dcm-active-title-text-background-color:field;
+	--dcm-active-title-background-color:accentcolor;
+	--dcm-active-title-text-background-color:accentcolortext;
 	--dcm-inactive-title-background-color:canvas;
 	--dcm-inactive-title-text-background-color:graytext;
-
-	/* Standard */
-	&.dcmmode-standard {
-		--dcm-desktop-background-color:field;
-		--dcm-desktop-text-background-color:fieldtext;
-		--dcm-canvas-background-color:canvas;
-		--dcm-canvas-secondary-background-color:buttonface;
-		--dcm-hyperlink-background-color:linktext;
-		--dcm-visited-hyperlink-background-color:visitedtext;
-		--dcm-inactive-text-background-color:graytext;
-		--dcm-active-text-background-color:activetext;
-		--dcm-canvas-text-background-color:canvastext;
-		--dcm-canvas-text-secondary-background-color:buttontext;
-		--dcm-highlight-background-color:highlight;
-		--dcm-highlight-text-background-color:highlighttext;
-		--dcm-active-title-background-color:fieldtext;
-		--dcm-active-title-text-background-color:field;
-		--dcm-inactive-title-background-color:canvas;
-		--dcm-inactive-title-text-background-color:graytext;
-	}
-
-	/* Lite */
-	&.dcmmode-lite {
-		--dcm-desktop-background-color:graytext;
-		--dcm-desktop-text-background-color:canvas;
-		--dcm-canvas-background-color:canvas;
-		--dcm-canvas-secondary-background-color:buttonface;
-		--dcm-hyperlink-background-color:highlight;
-		--dcm-visited-hyperlink-background-color:highlight;
-		--dcm-inactive-text-background-color:graytext;
-		--dcm-active-text-background-color:highlight;
-		--dcm-canvas-text-background-color:canvastext;
-		--dcm-canvas-text-secondary-background-color:buttontext;
-		--dcm-highlight-background-color:highlight;
-		--dcm-highlight-text-background-color:highlighttext;
-		--dcm-active-title-background-color:canvastext;
-		--dcm-active-title-text-background-color:canvas;
-		--dcm-inactive-title-background-color:canvas;
-		--dcm-inactive-title-text-background-color:canvastext;
-	}
-
-	/* General */
-	&.dcmmode-general {
-		--dcm-desktop-background-color:canvas;
-		--dcm-desktop-text-background-color:accentcolor;
-		--dcm-canvas-background-color:canvas;
-		--dcm-canvas-secondary-background-color:buttonface;
-		--dcm-hyperlink-background-color:accentcolor;
-		--dcm-visited-hyperlink-background-color:accentcolor;
-		--dcm-inactive-text-background-color:graytext;
-		--dcm-active-text-background-color:accentcolor;
-		--dcm-canvas-text-background-color:canvastext;
-		--dcm-canvas-text-secondary-background-color:buttontext;
-		--dcm-highlight-background-color:accentcolor;
-		--dcm-highlight-text-background-color:accentcolortext;
-		--dcm-active-title-background-color:accentcolor;
-		--dcm-active-title-text-background-color:accentcolortext;
-		--dcm-inactive-title-background-color:buttonface;
-		--dcm-inactive-title-text-background-color:graytext;
-	}
-
-	/* Basic */
-	&.dcmmode-basic {
-		--dcm-desktop-background-color:buttonface;
-		--dcm-desktop-text-background-color:buttontext;
-		--dcm-canvas-background-color:canvas;
-		--dcm-canvas-secondary-background-color:buttonface;
-		--dcm-hyperlink-background-color:linktext;
-		--dcm-visited-hyperlink-background-color:visitedtext;
-		--dcm-inactive-text-background-color:graytext;
-		--dcm-active-text-background-color:activetext;
-		--dcm-canvas-text-background-color:canvastext;
-		--dcm-canvas-text-secondary-background-color:buttontext;
-		--dcm-highlight-background-color:linktext;
-		--dcm-highlight-text-background-color:canvas;
-		--dcm-active-title-background-color:linktext;
-		--dcm-active-title-text-background-color:canvas;
-		--dcm-inactive-title-background-color:canvas;
-		--dcm-inactive-title-text-background-color:canvastext;
-	}
-
-	/* Simple */
-	&.dcmmode-simple {
-		--dcm-desktop-background-color:buttonborder;
-		--dcm-desktop-text-background-color:buttonface;
-		--dcm-canvas-background-color:canvas;
-		--dcm-canvas-secondary-background-color:buttonface;
-		--dcm-hyperlink-background-color:linktext;
-		--dcm-visited-hyperlink-background-color:visitedtext;
-		--dcm-inactive-text-background-color:graytext;
-		--dcm-active-text-background-color:activetext;
-		--dcm-canvas-text-background-color:canvastext;
-		--dcm-canvas-text-secondary-background-color:buttontext;
-		--dcm-highlight-background-color:selecteditem;
-		--dcm-highlight-text-background-color:selecteditemtext;
-		--dcm-active-title-background-color:buttontext;
-		--dcm-active-title-text-background-color:buttonface;
-		--dcm-inactive-title-background-color:canvastext;
-		--dcm-inactive-title-text-background-color:canvas;
-	}
-
-	/* Classic */
-	&.dcmmode-classic {
-		--dcm-desktop-background-color:canvas;
-		--dcm-desktop-text-background-color:linktext;
-		--dcm-canvas-background-color:canvas;
-		--dcm-canvas-secondary-background-color:buttonface;
-		--dcm-hyperlink-background-color:linktext;
-		--dcm-visited-hyperlink-background-color:visitedtext;
-		--dcm-inactive-text-background-color:graytext;
-		--dcm-active-text-background-color:activetext;
-		--dcm-canvas-text-background-color:canvastext;
-		--dcm-canvas-text-secondary-background-color:buttontext;
-		--dcm-highlight-background-color:highlight;
-		--dcm-highlight-text-background-color:highlighttext;
-		--dcm-active-title-background-color:linktext;
-		--dcm-active-title-text-background-color:canvas;
-		--dcm-inactive-title-background-color:graytext;
-		--dcm-inactive-title-text-background-color:canvas;
-	}
-
-	/* High Contrast */
-	&.dcmmode-contrast {
-		--dcm-desktop-background-color:canvas;
-		--dcm-desktop-text-background-color:canvastext;
-		--dcm-canvas-background-color:canvas;
-		--dcm-canvas-secondary-background-color:canvas;
-		--dcm-hyperlink-background-color:linktext;
-		--dcm-visited-hyperlink-background-color:linktext;
-		--dcm-inactive-text-background-color:graytext;
-		--dcm-active-text-background-color:linktext;
-		--dcm-canvas-text-background-color:canvastext;
-		--dcm-canvas-text-secondary-background-color:canvastext;
-		--dcm-highlight-background-color:highlight;
-		--dcm-highlight-text-background-color:highlighttext;
-		--dcm-active-title-background-color:buttonface;
-		--dcm-active-title-text-background-color:buttontext;
-		--dcm-inactive-title-background-color:canvas;
-		--dcm-inactive-title-text-background-color:graytext;
-	}
-
-	/* Retro */
-	&.dcmmode-retro {
-		--dcm-desktop-background-color:highlight;
-		--dcm-desktop-text-background-color:highlighttext;
-		--dcm-canvas-background-color:canvas;
-		--dcm-canvas-secondary-background-color:field;
-		--dcm-hyperlink-background-color:linktext;
-		--dcm-visited-hyperlink-background-color:linktext;
-		--dcm-inactive-text-background-color:graytext;
-		--dcm-active-text-background-color:graytext;
-		--dcm-canvas-text-background-color:canvastext;
-		--dcm-canvas-text-secondary-background-color:fieldtext;
-		--dcm-highlight-background-color:canvastext;
-		--dcm-highlight-text-background-color:canvas;
-		--dcm-active-title-background-color:graytext;
-		--dcm-active-title-text-background-color:canvas;
-		--dcm-inactive-title-background-color:canvas;
-		--dcm-inactive-title-text-background-color:graytext;
-	}
 }
 
 * {
