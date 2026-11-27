@@ -21,23 +21,25 @@ Themes can easily be made through the use of ThemeDesigner tool (Not available o
 ## Using the Different Color Modes, Visual Styles and Colors
 
 ### Color Schemes
-Twelve Color Schemes exist, in both Light and Dark modes.
+Two Color Schemes exist which is the Light and Dark. All Visual Colors are expected to work with these minus while in High Contrast Mode where only the Light Scheme can be used.
 
-#### Disabled Color Management presets
-Eight DCM Modes Exist along with two types (Standard and Reversi):
-- Standard is the normal ones
-- Lite uses only four Visual Color pairs (Canvas, Gray Text, Button and Highlight). Gray Text is used as desktop background color
-- General has theming akin to Windows 10 and 11 aka use of Accent Color provided by the system in Desktop Text, Highlight, Hyperlink, Visited Hyperlink, Active Text and Active Title. Fall backs to Highlight or SelectedItem for browsers without such support. Uses Canvas color as desktop backgrouhnd color.
-- Basic creates theming that excludes the use of Highlight color as well as any deprecated system color
-- Simple has funner-theming (i.e. Accented Active Titlebars are displayed using ButtonText and ButtonFace as Background and Foreground colors respectively)
-- Classic has theming akin to Windows 95 - 2000 albeit without any use of deprecated system colors
-- High Contrast has unified Primary and Secondary Canvas Color, unified link stylings and use of ButtonFace as Active Title background color.
-- Retro has some styling that it is akin to the ancient era of Windows
+#### Disabled Color Management/System Colors Mode
+When DCM is on:
+- Non-color theming variables are set to the factory defaults
+- Desktop Color is set to Field and FieldText (BG and Text)
+- Canvas Color is set to Canvas and CanvasText (BG and Text)
+- Inactive Text Color is set to GrayText
+- Active Text Color is set to ActiveText
+- Hyperlink Color is set to LinkText and VisitedText (For visited links)
+- Highlight Color is set to Highlight and HighlightText (BG and Text)
+- Active Title/Caption Color is set to AccentColor and AccentColor Text (BG and Text, Those are Blue and White/Black on browsers outside of PWA apps)
+- Inactive Title/Caption Color is set to Canvas and GrayText (BG and Text)
+In High Contrast Mode, Active Caption color is modified to use Highlight Color
 
 
 ### Visual Modes
 Four Visual Modes exist:
-- 3D has neumorphism-like cues into various parts of the skin and replaces the former Retro Visual Style 
+- 3D has neumorphism-like cues into various parts of the skin and replaces the former Retro Visual Style. Akin to Noto Color Emoji shading
 - Standard is the normal ones
 - Lite has no transparency effects in it
 - High Contrast has high emphasis on people with disabilities and disables certain effects such as blurred shadows and hover states of generated colors
@@ -47,19 +49,18 @@ Four Visual Styles exist:
 - Standard is the normal ones
 - General has styling more akin to Mobile Devices
 - Basic has lesser blurred shadows and focuses on a less demanding layout
-- Simple has funner-styled containers (i.e. Dropdowns are styled soley using Secondary Accent color when Accent Color is enabled)
+- Simple has funner-styled containers (i.e. Dropdowns are styled soley using Hyperlink color when Accent Color is enabled)
 
 ### Visual Colors
-Nine different Visual Colors exist:
+Eight different Visual Colors exist:
 - Standard Pack is the normal ones.
-- No Color Management Pack disables all color-related settings (Themes and Color Modes) and forces System Colors, similar to the High Contrast Mode and having color management disabled.
-- Forced Pack contains eight high contrast-optimized themes. Six are light and two are dark with the first four resembling the ones from Windows 10 while the last four resembling the ones from Windows 11.
-- Evelution Packs contain eight light and eight dark themes. The first eight themes are standard and the other are dynamic versions of the afromentioned ones. All of them use Roboto Slab as the headings font.
-- Colors Packs contain eight light and eight dark themes. Each theme use different background image. Those images are inverted in the dark themes. No rounded corners is applied into them and they use lower elements opacity.
-- Pokémon Colors Pack contain eight different themes with the latter four being dark. The First and fifth themes contain colors from Let's Go Pikachu and Eevee, the Second and Sixth from Sword and Shield, the Third and Seventh from Isle of Armor and Crown Tundra and the Fourth and Eigth from Scarlet and Violet. This color pack is also considered a variant of the Colors Theme Pack.
-- Android Pack contains eight dynamic themes based on the basic accent colors you can choose on an Android 12 device in both Light and Dark Mode. This theme pack focuses more on Rounded Corners and is using Roboto as Headings font in addition to as main font.
-- Qora Qore Pack contains four light and four dark themes, each representing the Stable, Beta, Dev and Canary channel of the afromentioned game. Light and Dark themes use Light Gray and Dark Gray as Canvas color respectively. Didact Gothic is the main font.
-- Dynamic Packs contain Eight Light and Eight Dark themes that are made by only setting the Hyperlink Color. The first theme of the light version is the same as the Factory CPE Language Theme. All of them use Ubuntu as both Primary and Secondary font.
+- System Colors Pack disables themes and forces System Colors, similar to the High Contrast Mode and having color management disabled. Supports both Light and Dark Modes.
+- Forced Pack contains eight high contrast-optimized themes. The first four resemble the ones from Windows 10 while the last four resemble the ones from Windows 11. Uses beveled icons.
+- Evelution Pack contain eight themes. The first four themes are standard and the other are dynamic versions of the afromentioned ones. All of them use Roboto Slab as the headings font. Squircle Icons are used.
+- Colors Pack contain eight themes. Each theme use different background image. Those images are inverted in dark mode. No rounded corners is applied into them and they use sharp (square) icons.
+- Android Pack contains eight themes based on the basic accent colors you can choose on an Android 12 device with the first four being dynamic themes. This theme pack focuses more on Rounded Corners and is using Google Sans Flex as main font. Uses circlular icons.
+- Qora Qore Pack contains eight themes, each representing the Stable, Beta, Dev and Canary channel of the afromentioned game. Light and Dark modes use Light Gray and Dark Gray as Canvas color respectively. The PowerPlus font used since the 24H2 update of Q.Qore (Albeit using a stripped down Power font there) is the main font. Icons use a shape praying homage to the 2024 logo of Q.Qore
+- Dynamic Packs contain Eight themes that are made by only setting the Highlight Color. The first theme of the light mode is the same as the Factory CPE Language Theme. All of them use Ubuntu as both Primary and Secondary font. Icons use a shape resembling a cross.
 
 ## Differences of Evelution and MpistoSkin2
 Evelution, despite being essentially similar to MpistoSkin2 from Q.Qore, there're several differences, to name a few:
@@ -163,6 +164,7 @@ Of course. It has been tested and it works. For instance, if you want to modify 
 --system-generic-color-hue-shift:1; /* <number> -12 to 12 */
 --system-generic-color-saturation:100%; /* <number> 20% to 100% */
 --system-icon-style:rounded; /* rounded | outlined | sharp */
+--system-icon-shape:round; /* sharp | bevel | round | squircle | circle | sharp-inverted | round-inverted */
 }
 ```
 Per-page theming is also supported. If you want to use a different theme for the 1st Light theme on **Sample Test Page** article, paste this to ``MediaWiki:Common.css``:
@@ -205,6 +207,7 @@ Per-page theming is also supported. If you want to use a different theme for the
 --system-generic-color-hue-shift:1; /* <number> -12 to 12 */
 --system-generic-color-saturation:100%; /* <number> 20% to 100% */
 --system-icon-style:rounded; /* rounded | outlined | sharp */
+--system-icon-shape:round; /* sharp | bevel | round | squircle | circle | sharp-inverted | round-inverted */
 }
 ```
 
@@ -379,6 +382,12 @@ This is used to control the additional hue shift that will be applied to generic
 
 ### ``--system-generic-color-saturation`` (Accepts: ``<percentage>``)
 This is used to control the HSL Saturation that will be applied to generic colors. Values between 20% to 100% that are multiple of 5 are generally favored. Under High Contrast Mode, this property is completely ignored.
+
+### ``--system-icon-style`` (Accepts ``round | outlined | sharp``)
+This is used to control the roundness of the Material Symbols/Icons font family (Between Sharp, Outlined and Rounded) and the Evelution Clock font. ``rounded`` is an alias of ``round``
+
+### ``--system-icon-shape`` (Accepts ``sharp | bevel | round | squircle | circle | sharp-inverted | round-inverted``)
+This is used to control the shape of Avatars, Floating Buttons, Application Icons and Thumnbails in Grid and List Views (Including certain Video Containers). On browsers that do not support ``corner-shape``, only ``sharp``, ``round`` and ``circle`` produce distinct results, all others are aliases to ``round``.
 
 ### Generic colors (Alert, Pause, Warning, Success, Progress Message)
 Those six colors are user customizable using the ``--system-generic-color-hue-shift`` and ``--system-generic-color-saturation`` properties (Except for the Message Color) but the base colors are rather picked automatically based on contrast with Page Background Color. ``--alert-background-color`` is always a red color and is used on new links, destructive buttons and errorboxes. ``--pause-background-color`` is always an orange color and is used on halted elements.  ``--warning-background-color`` is always a yellow color and is used on warningboxes. ``--success-background-color`` is always an green color and is used on constructive buttons and successboxes. ``--progress-background-color`` is always a blue color and is used on progressive buttons and in-progress actions. ``--message-background-color`` is always a grayscale color and is used on neutral buttons and messageboxes. All six colors will share the same lightness so there'll be no inconsistancy between them and those are not matched for a specific color scheme aka the same color can be used in both light and dark themes.

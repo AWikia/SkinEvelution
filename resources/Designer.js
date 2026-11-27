@@ -1312,13 +1312,14 @@ function InitDesigner() {
 				'<th rowspan="2" style="width:var(--td-size);">' + 
 					mw.msg( 'evelution-designer-icon-style' ) + 
 				'</th>' +
-				'<th colspan="2"><span class="cpe-icon material-icons">settings</span></th>' +
+				'<th><span class="cpe-icon material-icons">line_curve</span></th>' +
+				'<th><span class="cpe-icon material-icons">shapes</span></th>' +
 			'</tr>' +
 
 			'<tr>' +
-				'<td style="text-align:center; width:300px" colspan=2>' +
+				'<td style="text-align:center; width:150px">' +
 				   '<div class="cpe-dropdown icon_styles cpe-select" tabindex="-1">' +
-						'<div class="cpe-input icon_style cpe-dropdown__toggle" style="width:calc(var(--td-size) * 2); min-width:calc(var(--td-size) * 2);">' +
+						'<div class="cpe-input icon_style cpe-dropdown__toggle" style="width:var(--td-size); min-width:var(--td-size);">' +
 							'<span class="cpe-select__value" value="round">'+ mw.msg( 'evelution-designer-setting-round' ) +'</span>' +
 							'<span class="cpe-icon cpe-icon-tiny cpe-icon-large cpe-dropdown__toggle-chevron material-icons">' +
 								'arrow_drop_down' +
@@ -1329,6 +1330,27 @@ function InitDesigner() {
 								'<li value="round" class="selected"><a>'+mw.msg( 'evelution-designer-setting-round' )+'</a></li>' +
 								'<li value="outlined"><a>'+mw.msg( 'evelution-designer-setting-outlined' )+'</a></li>' +
 								'<li value="sharp"><a>'+mw.msg( 'evelution-designer-setting-sharp' )+'</a></li>' +
+							'</ul>' +
+						'</div>' +
+					'</div>' +
+				'</td>' +
+				'<td style="text-align:center; width:150px">' +
+				   '<div class="cpe-dropdown icon_shapes cpe-select" tabindex="-1">' +
+						'<div class="cpe-input icon_shape cpe-dropdown__toggle" style="width:var(--td-size); min-width:var(--td-size);">' +
+							'<span class="cpe-select__value" value="round">'+ mw.msg( 'evelution-designer-setting-round' ) +'</span>' +
+							'<span class="cpe-icon cpe-icon-tiny cpe-icon-large cpe-dropdown__toggle-chevron material-icons">' +
+								'arrow_drop_down' +
+							'</span>' +
+						'</div>' +
+						'<div class="cpe-dropdown__content">' +
+							'<ul class="cpe-list is-linked">' +
+								'<li value="sharp"><a>'+mw.msg( 'evelution-designer-setting-sharp' )+'</a></li>' +
+								'<li value="bevel"><a>'+mw.msg( 'evelution-designer-setting-bevel' )+'</a></li>' +
+								'<li value="round" class="selected"><a>'+mw.msg( 'evelution-designer-setting-round' )+'</a></li>' +
+								'<li value="squircle"><a>'+mw.msg( 'evelution-designer-setting-squircle' )+'</a></li>' +
+								'<li value="circle"><a>'+mw.msg( 'evelution-designer-setting-circle' )+'</a></li>' +
+								'<li value="sharp-inverted"><a>'+mw.msg( 'evelution-designer-setting-sharp' )+" ("+mw.msg( 'evelution-designer-inverted' )+')</a></li>' +
+								'<li value="round-inverted"><a>'+mw.msg( 'evelution-designer-setting-round' )+" ("+mw.msg( 'evelution-designer-inverted' )+')</a></li>' +
 							'</ul>' +
 						'</div>' +
 					'</div>' +
@@ -1999,7 +2021,8 @@ function ApplyTheme () {
     }
 
 		result = '\n/* Community Theme */\n' +
-				 '.visualcolors-standard.colorscheme-' + getColorScheme() + '.theme-' + window.ThemingEngine_ActiveTheme + ' {\n' + // Beginning
+				 '@container style(--active-visual-colors:standard) {\n' +
+				 '.colorscheme-' + getColorScheme() + '.theme-' + window.ThemingEngine_ActiveTheme + ' {\n' + // Beginning
 				 '--desktop-background-image:' + image + ';\n' +
 				 '--desktop-background-image-filter:' + $('#bodyimagefilter').val() + ';\n' +
 				 '--desktop-background-image-blend-mode:' + $('.blend_mode .cpe-select__value').attr('value') + ';\n' +
@@ -2034,6 +2057,8 @@ function ApplyTheme () {
 				 '--system-generic-color-hue-shift:' + $('#gchs').val() + ';\n' +
 				 '--system-generic-color-saturation:' + $('#gcs').val() + "%" + ';\n' +
 				 '--system-icon-style:' + $('.icon_style .cpe-select__value').attr('value')  + ';\n' +
+				 '--system-icon-shape:' + $('.icon_shape .cpe-select__value').attr('value')  + ';\n' +
+				 '}\n' +
 				 '}\n' // Ending
 
 /*
@@ -2174,7 +2199,8 @@ function CopyTheme() {
 		var customfont3 = $('#thirdfont').val().replace("'<", '').replace(">'", '').split('\\').join('').split("&amp;").join("&").split("&quot;").join("\"");
     }
 
-		result = '.visualcolors-standard.colorscheme-' + getColorScheme() + '.theme-' + window.ThemingEngine_ActiveTheme + ' {\n' + // Beginning
+		result = '@container style(--active-visual-colors:standard) {\n' + // Beginning
+				 '.colorscheme-' + getColorScheme() + '.theme-' + window.ThemingEngine_ActiveTheme + ' {\n' +
 				 '--desktop-background-image:' + image + ';\n' +
 				 '--desktop-background-image-filter:' + $('#bodyimagefilter').val() + ';\n' +
 				 '--desktop-background-image-blend-mode:' + $('.blend_mode .cpe-select__value').attr('value') + ';\n' +
@@ -2211,6 +2237,8 @@ function CopyTheme() {
 				 '--system-generic-color-hue-shift:' + $('#gchs').val() + ';\n' +
 				 '--system-generic-color-saturation:' + $('#gcs').val() + "%" + ';\n' +
 				 '--system-icon-style:' + $('.icon_style .cpe-select__value').attr('value')  + ';\n' +
+				 '--system-icon-shape:' + $('.icon_shape .cpe-select__value').attr('value')  + ';\n' +
+				 '}' +
 				 '}' // Ending
 		if (navigator.clipboard) {
 			navigator.clipboard.writeText(result).then(function() {
@@ -2394,10 +2422,10 @@ function CopyTheme2() {
 				 "'icon-filter-hover' => '" + $("#filter2").val()  + "',\n" +
 				 "'icon-filter-duration' => '" + $("#filter3").val() + 'ms' + "',\n" +
 				 "'icon-filter-delay' => '" + $("#filter4").val() + 'ms' + "',\n" +
-				 "'system-acryllic-opacity' => '" + $("#aopacity").val() + "',\n" +
 				 "'system-generic-color-hue-shift' => '" + $("#gchs").val() + "',\n" +
 				 "'system-generic-color-saturation' => '" + $("#gcs").val() + '%' + "',\n" +
 				 "'system-icon-style' => '" + $(".icon_style .cpe-select__value").attr("value")  + "',\n" +
+				 "'system-icon-shape' => '" + $(".icon_shape .cpe-select__value").attr("value")  + "',\n" +
 				 "];" // Ending
 		if (navigator.clipboard) {
 			navigator.clipboard.writeText(result).then(function() {
@@ -2670,6 +2698,12 @@ function PasteTheme(dynamic=true) {
 	$('.icon_style .cpe-select__value').html( icon_style );
  	document.querySelector(".icon_styles .cpe-dropdown__content .cpe-list li.selected").classList.remove("selected");
  	document.querySelector(".icon_styles .cpe-dropdown__content .cpe-list li[value='" + getComputedStyle(themeconfig).getPropertyValue("--system-icon-style") + "']").classList.add("selected");
+	// Icon Shape
+	icon_shape = [mw.msg( 'evelution-designer-setting-sharp' ), mw.msg( 'evelution-designer-setting-bevel' ), mw.msg( 'evelution-designer-setting-round' ), mw.msg( 'evelution-designer-setting-squircle' ), mw.msg( 'evelution-designer-setting-circle' ), mw.msg( 'evelution-designer-setting-sharp' ) + " (" + mw.msg( 'evelution-designer-inverted' ) + ")", mw.msg( 'evelution-designer-setting-round' ) + " (" + mw.msg( 'evelution-designer-inverted' ) + ")"][["sharp", "bevel", "round", "squircle", "circle", "sharp-inverted", "round-inverted"].indexOf( getComputedStyle(themeconfig).getPropertyValue("--system-icon-shape") ) ]
+	$('.icon_shape .cpe-select__value').attr('value', getComputedStyle(themeconfig).getPropertyValue("--system-icon-shape") );
+	$('.icon_shape .cpe-select__value').html( icon_shape );
+ 	document.querySelector(".icon_shapes .cpe-dropdown__content .cpe-list li.selected").classList.remove("selected");
+ 	document.querySelector(".icon_shapes .cpe-dropdown__content .cpe-list li[value='" + getComputedStyle(themeconfig).getPropertyValue("--system-icon-shape") + "']").classList.add("selected");
 
 	
 	UpdateRangeInputs();
@@ -2833,6 +2867,7 @@ function TestTheme(banner=false) {
 				 '--system-generic-color-hue-shift:' + $('#gchs').val() + '!important;\n' +
 				 '--system-generic-color-saturation:' + $('#gcs').val() + "%" + '!important;\n' +
 				 '--system-icon-style:' + $('.icon_style .cpe-select__value').attr('value')  + '!important;\n' +
+				 '--system-icon-shape:' + $('.icon_shape .cpe-select__value').attr('value')  + '!important;\n' +
 				 '}' // Ending
 			document.querySelector("#mw-content-text .theme-designer-css").innerHTML = result;
 			try {

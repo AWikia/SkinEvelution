@@ -17,9 +17,6 @@ window.ThemingEngine_ActiveColorScheme = 'auto'; // auto | auto-dark | light | d
 window.ThemingEngine_ActiveVisualStyle = '-';
 window.ThemingEngine_ActiveVisualMode = '-';
 window.ThemingEngine_ActiveVisualMode2 = '-'; // This is like ThemingEngine_ActiveVisualMode but different for High Contrast Mode (where it is contrast)
-/* DCM Modes */
-window.ThemingEngine_ActiveDCMMode = 'standard';
-window.ThemingEngine_ActiveDCMType = 'standard';
 /* Some Theming Colors */
 window.ThemingEngine_HighlightColor = GetHighlight();
 window.ThemingEngine_PageColor = GetCanvas();
@@ -112,12 +109,6 @@ var visualColorNames = ['standard', 'nocolormanagement'];
 	if (getKey('serif-font') === '-1') {
 		insertKey('serif-font', 'false' );
 	}
-	if (getKey('dcm-mode') === '-1') {
-		insertKey('dcm-mode', 'standard' );
-	}
-	if (getKey('dcm-type') === '-1') {
-		insertKey('dcm-type', 'standard' );
-	}
 
 	var theme_selected = getKey('theme-selected');
 	var visual_mode = getKey('visual-appearance-mode');
@@ -131,8 +122,6 @@ var visualColorNames = ['standard', 'nocolormanagement'];
 	var contrast_mode = getKey('contrast-mode');
 	var accent_active = getKey('accent-active');
 	var serif_font = getKey('serif-font');
-	var dcm_mode = getKey('dcm-mode');
-	var dcm_type = getKey('dcm-type');
     getParams().forEach(function (param) {
         var key = param.split("=")[0];
         var value = param.split("=")[1];
@@ -236,24 +225,13 @@ var visualColorNames = ['standard', 'nocolormanagement'];
 				serif_font = value;
 				console.info('Serif Font settings overriden');
                 break;
-            case 'usedcmmode':
-				dcm_mode = value;
-				console.info('DCM mode settings overriden');
-                break;
-            case 'usedcmtype':
-				dcm_type = value;
-				console.info('DCM type settings overriden');
-                break;
         }
     });
     var themes = {{>Themes}} // @REMOVEME: In Ivilution, Parmalution and CPE Language (Change to Empty String instead)
-
-
-	document.querySelector("head").insertAdjacentHTML('afterbegin','<meta name="theme-color" content="#ffffff"><style class="devicetheme"></style><style class="themes">' + themes + '</style><style class="theming"></style>');
+	document.querySelector("head").insertAdjacentHTML('afterbegin','<meta name="theme-color" content="#ffffff"><style class="theming_configuration_active-visual-colors"></style><style class="devicetheme"></style><style class="themes">' + themes + '</style><style class="theming"></style>');
 	ToggleTheme(theme_selected,false,false);
 	colortheme(color_style,device_theme,color_hue,color_sat,false,false);
 	contrastmode(contrast_mode,false,false);
-	SetDCM(dcm_type,dcm_mode,false,false);
 	VisualColorCompile(); // Compiles the Contrast Options
 	VisualColor(visual_color,false,false);
 	ColorScheme(color_scheme,false);
@@ -316,7 +294,7 @@ function SupportsColorContrast() {
 }
 
 function DisabledColorManagement() {
-	return ( (ForcedColors()) || (document.querySelector("body.no-color-management") ) ||  (window.ThemingEngine_ActiveVisualColors === 'nocolormanagement') )
+	return ( (ForcedColors()) || (document.querySelector("body.no-color-management") ) ||  (getVisualColors() === 'nocolormanagement') )
 }
 
 function ForcedColors() {
@@ -328,26 +306,6 @@ function ShouldUseFallbackColor() {
 			(getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--desktop-background-color") === 'auto') &&
 			(GetDesktopImage2() === ''))
 }
-
-function ForcedColorMode() {
-	return window.ThemingEngine_ActiveDCMMode;
-}
-
-function ForcedColorType() {
-	type = window.ThemingEngine_ActiveDCMType;
-	if (type === 'auto') {
-		return (ForcedColors()) ? 'standard' : ( window.matchMedia('(prefers-color-scheme: light)').matches ) ? 'standard' : 'reversi';
-	} else if (type === 'auto-reversi') {
-		return (ForcedColors()) ? 'reversi' : ( window.matchMedia('(prefers-color-scheme: dark)').matches ) ? 'standard' : 'reversi';
-	} else if (type === 'reversi') {
-		return 'reversi';
-	} else if (type === 'standard') {
-		return 'standard';
-	} else {
-		return 'standard';
-	}
-}
-
 
 /* Copied from Base JS */
 function HandleSelectInputBlurring() { // Handles Blurring
@@ -383,6 +341,16 @@ function UpdateRangeInputs() {
 
 
 /* Visual Styles */
+function setConfig(cnf="active-visual-colors",val="standard") { // Does not repaint anything, just changes config
+    var config = "\n:root {" +
+					"--"+ cnf + ":" + val + ";\n" +
+				 "}"
+	var x = document.querySelector("head .theming_configuration_" + cnf)
+	if (x) {
+		x.innerHTML = config 
+	}
+}
+
 function getVisualMode() {
 	if (ForcedColors()) {
 		return 'contrast';
@@ -488,6 +456,9 @@ function ColorScheme(style,save=true,repaint=true) {
 
 }
 
+function getVisualColors() {
+	return getComputedStyle(document.querySelector("html")).getPropertyValue("--active-visual-colors")
+}
 
 function VisualColor(style,save=true,repaint=true) {
     var x = document.querySelector('html');
@@ -496,9 +467,9 @@ function VisualColor(style,save=true,repaint=true) {
 			var style='standard';
 			var save = true;
 		}
-		oldcolors = window.ThemingEngine_ActiveVisualColors;
+		oldcolors = getVisualColors();
 	try {
-		window.ThemingEngine_ActiveVisualColors = style;
+		setConfig("active-visual-colors",style);
 		if (repaint) {
 			CompileThemingEngine(true);
 		}
@@ -517,7 +488,7 @@ function VisualColor(style,save=true,repaint=true) {
 	}
 
 	catch (err) {
-		window.ThemingEngine_ActiveVisualColors = oldcolors
+		setConfig("active-visual-colors",oldcolors);
 		AddFloatingBanner('Failed to switch to this Visual Color Pack as theme ' + window.ThemingEngine_ActiveTheme + ' had typographical errors.','alert');
 		console.error(err);
 	}
@@ -573,21 +544,12 @@ function VisualColorCompile() {
 					badge2 ='<span class="cpe-icon cpe-icon-small material-icons cpe-icon-badge">'+ visualColors[i][4] +'</span>'
 				}
 			}
-			theme = "";
-			themeD = "";
-			for (let j = 0; j < 8; j++) {
-				theme += '<div class="cpe-theming visualcolors-' + visualColors[i][0] + ' colorscheme-light theme-'+ ['A','B','C','D','E','F','G','H'][j] + '"></div>'
-				themeD += '<div class="cpe-theming visualcolors-' + visualColors[i][0] + ' colorscheme-dark theme-'+ ['A','B','C','D','E','F','G','H'][j] + '"></div>'
-			}
 			str = 	'<li data-visual-color="' + visualColors[i][0] + '" title="' + visualColors[i][1] + '">' +
 						'<a onclick="VisualColor(' + "'" + visualColors[i][0]  + "'" + ')">' +
 							badge2 +
 							badge +
 							icon +
 						'</a>' +
-						'<div style="position:absolute; z-index:-1; pointer-events:none;">' +
-							theme + themeD +
-						'</div>' +
 					'</li>'
 			var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-visual-colors");
 			if (x) {
@@ -606,17 +568,17 @@ function GetActiveThemeConfiguration() { // Used for ECM (Enabled Color Manageme
 	if (DisabledColorManagement()) {
 		return document.querySelector('.cpe-theming.visualcolors-nocolormanagement');
 	} else {
-		return document.querySelector('.cpe-theming.colorscheme-' + getColorScheme()  + '.visualcolors-' + window.ThemingEngine_ActiveVisualColors + '.theme-' + window.ThemingEngine_ActiveTheme);
+		return document.querySelector('.cpe-theming.colorscheme-' + getColorScheme() + '.theme-' + window.ThemingEngine_ActiveTheme);
 	}
 }
 
 function GetActiveDCMConfiguration() { // Used for DCM (Disabled Color Management)
-	return document.querySelector('.cpe-theming.visualcolors-nocolormanagement.dcmmode-' + ForcedColorMode());
+	return document.querySelector('.cpe-theming.visualcolors-nocolormanagement.dcmmode-standard');
 }
 
 
 function GetSystemColor(color='canvas') { // System Colors
-	return getComputedStyle(document.querySelector('.dcm-' + ForcedColorType() + ' .fc-' + color)).getPropertyValue("color")
+	return chroma(getComputedStyle(document.querySelector('.dcm-standard' + ' .fc-' + color)).getPropertyValue("color")).alpha(1)
 }
 
 function GetSystemColorValue(color='--desktop-background-color') { // Suppliment
@@ -1352,44 +1314,6 @@ function ToggleSerifFont() {
 	} else {
 		SetSerifFont( 'true' )
 	}
-}
-
-
-function SetDCM(type='match-parent',tick='match-parent',save='true',repaint='true') {
-	if (type === 'match-parent') {
-		type = window.ThemingEngine_ActiveDCMType;
-	}
-	if (tick === 'match-parent') {
-		tick = window.ThemingEngine_ActiveDCMMode;
-	}
-
-		if (save) {
-			insertKey('dcm-mode', tick );
-			insertKey('dcm-type', type );
-		}
-		window.ThemingEngine_ActiveDCMMode = tick;
-		var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-dcm-modes li.selected");
-		if (x) {
-			x.classList.remove("selected");
-		}
-		var y = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-dcm-modes li[data-dcm-mode='" + tick + "']");
-		if (y) {
-			y.classList.add("selected")
-		}
-		window.ThemingEngine_ActiveDCMType = type;
-		var x = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-dcm-types li.selected");
-		if (x) {
-			x.classList.remove("selected");
-		}
-		var y = document.querySelector(".cpe-dropdown .cpe-dropdown__content .cpe-list.cpe-dcm-types li[data-dcm-type='" + type + "']");
-		if (y) {
-			y.classList.add("selected")
-		}
-
-		if (repaint) {
-			CompileThemingEngine(false);
-		}
-
 }
 
 /* Downloads all modificative values of the current selected theme to a file */
@@ -2129,6 +2053,7 @@ var invfilters = [
 						 '--system-icon-style:' + getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--system-icon-style")  + ';\n' +
 						 '--system-icon-font-family:' + iconstyle  + ';\n' +
 						 '--system-clock-font-family:' + clockstyle  + ';\n' +
+						 '--system-icon-shape:' + getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--system-icon-shape")  + ';\n' +
 						 '--screensaver-highlight-color:' + sshighlight  + ';\n' +
 
 // Misc Background Settings
@@ -2136,8 +2061,8 @@ var invfilters = [
 						  "--bg-tile-x:" + ['repeat','no-repeat'][["false", "true"].indexOf( getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--desktop-background-no-horizontal-tiling") ) ] + ";\n" +
 						  "--bg-tile-y:" + ['repeat','no-repeat'][["false", "true"].indexOf( getComputedStyle(GetActiveThemeConfiguration()).getPropertyValue("--desktop-background-no-vertical-tiling") ) ] + ";\n" +
 						  "--color-mode-filter:" + invfilters[window.ThemingEngine_ColorFilterMode][[false, true].indexOf(window.ThemingEngine_InvertColors) ] + ";\n" +
-						  "--threeD-color-light:" + ["#fff5","#0005"][[false, true].indexOf(window.ThemingEngine_InvertColors) ] +
-						  "--threeD-color-dark:" + ["#fff5","#0005"][[true, false].indexOf(window.ThemingEngine_InvertColors) ] +
+						  "--threeD-color-light:" + ["#fff5","#0005"][[false, true].indexOf(window.ThemingEngine_InvertColors) ]  + ";\n" +
+						  "--threeD-color-dark:" + ["#fff5","#0005"][[true, false].indexOf(window.ThemingEngine_InvertColors) ]  + ";\n" +
 						  "--desktop-filter:" + deskfilter + ";\n" +
 // Color Scheme
 						  "--color-scheme:" + window.ThemingEngine_ActiveThemeMode + ";\n" + // @FIXME: Remove once If() gets supported more broadly
